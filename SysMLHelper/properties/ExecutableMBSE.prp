@@ -1,4 +1,0 @@
-Include "SysMLHelper_ExistingProperties.prp"
-Include "ExecutableMBSE_NewProperties.prp"
-Include "SysMLHelper_Perspectives.prp"
-end
