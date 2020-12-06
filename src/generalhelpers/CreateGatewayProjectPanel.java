@@ -618,7 +618,7 @@ public class CreateGatewayProjectPanel extends CreateStructuralElementPanel {
 			theUMLModelDoc.setVariableXValue( "doorsModule", theDoorsInfo.getPathName() );
 		}
 
-		String theUMLModelPath = "..\\" + m_Project.getName() + ".rpy";
+		String theUMLModelPath = "..\\" + m_Project.getName() + ".rpyx";
 		theUMLModelDoc.setValueFor( "Path", theUMLModelPath );
 	}
 
