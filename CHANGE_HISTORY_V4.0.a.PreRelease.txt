@@ -379,6 +379,6 @@ UNDER DEV RELEASE 3.0.X.PRERELEASE (07-JUL-2020):
 
 ----------------------------------------------------------------------------------
 
-3.0.X.PRERELEASE (XX-XXX-XXXX):
+4.0.a.PRERELEASE (08-DEC-2020):
 #265 07-DEC-2020: Add IsAutoPopulatePackageDiagram property to enable package diagrams creation to be turned off (F.J.Chadburn)
 #266 07-DEC-2020: Add initial support for CVS export & switching master of requirements to DOORS NG (F.J.Chadburn)
