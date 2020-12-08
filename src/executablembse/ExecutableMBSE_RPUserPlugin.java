@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import requirementsanalysisplugin.ActivityDiagramChecker;
+import requirementsanalysisplugin.ExportRequirementsToCSV;
 import requirementsanalysisplugin.LayoutHelper;
 import requirementsanalysisplugin.MarkedAsDeletedPanel;
 import requirementsanalysisplugin.MoveRequirements;
@@ -14,6 +15,7 @@ import requirementsanalysisplugin.PopulateTransitionRequirementsPanel;
 import requirementsanalysisplugin.RenameActions;
 import requirementsanalysisplugin.RequirementsHelper;
 import requirementsanalysisplugin.SmartLinkPanel;
+import requirementsanalysisplugin.SwitchRhapsodyRequirementsToDNG;
 import sysmlhelperplugin.DependencySelector;
 import executablembse.CreateFunctionalExecutablePackagePanel;
 import executablembse.CreateUseCasesPackagePanel;
@@ -457,6 +459,32 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						} catch (Exception e) {
 							Logger.error("Error: Exception in OnMenuItemSelect when invoking MarkedAsDeletedPanel.launchThePanel e=" + e.getMessage() );
 						}
+					} else if( menuItem.equals( _configSettings.getString( 
+							"executablembseplugin.ExportRequirementsToCsvForImportIntoDOORSNG" ))){
+
+						try {
+							ExportRequirementsToCSV theExporter = new ExportRequirementsToCSV( 
+									_rhpApp.getApplicationConnectionString() );
+							
+							theExporter.exportRequirementsToCSVUnderSelectedEl();
+
+						} catch (Exception e) {
+							Logger.error("Error: Exception in OnMenuItemSelect when invoking theExporter.exportRequirementsToCSV e=" + e.getMessage() );
+						}
+					} else if( menuItem.equals( _configSettings.getString( 
+							"executablembseplugin.SwitchRequirementsToDOORSNG" ))){
+
+						try {
+							SwitchRhapsodyRequirementsToDNG theSwitcher = new SwitchRhapsodyRequirementsToDNG( 
+									_rhpApp.getApplicationConnectionString() );
+							
+							theSwitcher.SwitchRequirements();
+
+						} catch (Exception e) {
+							Logger.error("Error: Exception in OnMenuItemSelect when invoking theExporter.exportRequirementsToCSV e=" + e.getMessage() );
+						}						
+						
+						
 					} else if( menuItem.equals( _configSettings.getString( 
 							"executablembseplugin.StartLinkMenu" ) ) ){
 
@@ -932,15 +960,228 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 	@Override
 	public void OnTrigger(String trigger) {
+	}
+	
+	public void getElementsThatTraceToRequirements(
+			IRPModelElement element, 
+			IRPCollection result ){
 
+		Logger.writeLine( "getElementsThatTraceToRequirements invoked for " + Logger.elementInfo( element ) );
+
+		@SuppressWarnings("unchecked")
+		List<IRPDependency> theDependencies = 
+				element.getNestedElementsByMetaClass( "Dependency", 1 ).toList();
+		
+		for (IRPDependency theDependency : theDependencies) {
+			
+			IRPModelElement theDependsOn = theDependency.getDependsOn();
+			IRPModelElement theDependent= theDependency.getDependent();
+
+			// Don't add itself
+			if( !theDependent.equals( element ) &&
+					theDependsOn instanceof IRPRequirement ){
+				result.addItem( theDependent );
+			}
+		}		
+	}
+	
+	public IRPPackage getOwningPackage(
+			IRPModelElement forEl ){
+
+		IRPPackage theOwningPackage = null;
+
+		if( forEl instanceof IRPPackage ){
+			theOwningPackage = (RPPackage)forEl;
+
+		} else if( forEl instanceof IRPProject ){
+
+		} else if( forEl.getOwner() != null ){
+			theOwningPackage = getOwningPackage( forEl.getOwner() );
+		} else {
+		}
+
+		return theOwningPackage;
+	}
+	
+	public void getOwnerOfElementsThatTraceFromRequirements(
+			IRPModelElement element, 
+			IRPCollection result ){
+
+		Logger.writeLine( "getOwnerOfElementsThatTraceFromRequirements invoked for " + Logger.elementInfo( element ) );
+
+		@SuppressWarnings("unchecked")
+		List<IRPRequirement> theRequirements = 
+				element.getNestedElementsByMetaClass( "Requirement", 1 ).toList();
+		
+		for (IRPRequirement theRequirement : theRequirements) {
+			
+			@SuppressWarnings("unchecked")
+			List<IRPModelElement> theReferences = theRequirement.getReferences().toList();
+			
+			for (IRPModelElement theReference : theReferences) {
+				
+				Logger.writeLine( "theReference invoked for " + Logger.elementInfo( element ) + " is " + Logger.elementInfo( theReference ) );
+
+				if( theReference instanceof IRPDependency ){
+					IRPDependency theDependency = (IRPDependency)theReference;
+					IRPModelElement theDependent = theDependency.getDependent();	
+					
+					IRPModelElement theOwner = theDependent.getOwner();
+					
+					if( theOwner instanceof IRPState && 
+							theOwner.getName().equals( "ROOT" ) ){
+					
+						theOwner = theOwner.getOwner();
+					}
+					
+					result.addItem( theOwner );						
+				}
+			}
+		}		
+	}
+	
+	public void getElementsThatTraceFromRequirements(
+			IRPModelElement element, 
+			IRPCollection result ){
+
+		if( element instanceof IRPRequirement ){
+			
+			@SuppressWarnings("unchecked")
+			List<IRPModelElement> theReferences = element.getReferences().toList();
+			
+			for( IRPModelElement theReference : theReferences ){
+				
+				if( theReference instanceof IRPDependency ){
+					IRPDependency theDependency = (IRPDependency)theReference;
+					IRPModelElement theDependent = theDependency.getDependent();
+					result.addItem( theDependent );
+				}
+			}
+		}		
+	}
+	
+	public void getRequirementsThatTraceFromElements(
+			IRPModelElement element, 
+			IRPCollection result ){
+
+		Logger.writeLine( "getRequirementsThatTraceFromElements invoked for " + Logger.elementInfo( element ) );
+
+		@SuppressWarnings("unchecked")
+		List<IRPDependency> theDependencies = 
+				element.getNestedElementsByMetaClass( "Dependency", 1 ).toList();
+		
+		for (IRPDependency theDependency : theDependencies) {
+			
+			IRPModelElement theDependsOn = theDependency.getDependsOn();
+
+			// Don't add itself
+			if( !theDependsOn.equals( element ) &&
+					theDependsOn instanceof IRPRequirement ){
+				result.addItem( theDependsOn );
+			}
+		}		
+	}
+	
+	public void getElementsThatTraceFromRequirements2(
+			IRPModelElement element, 
+			IRPCollection result ){
+
+		@SuppressWarnings("unchecked")
+		List<IRPRequirement> theRequirements = 
+				element.getNestedElementsByMetaClass( "Requirement", 1 ).toList();
+		
+		for (IRPRequirement theRequirement : theRequirements) {
+			
+			@SuppressWarnings("unchecked")
+			List<IRPModelElement> theReferences = theRequirement.getReferences().toList();
+			
+			for (IRPModelElement theReference : theReferences) {
+				
+				if( theReference instanceof IRPDependency ){
+					IRPDependency theDependency = (IRPDependency)theReference;
+					IRPModelElement theDependent = theDependency.getDependent();	
+					
+					result.addItem( theDependent );
+				}
+			}
+		}		
+	}
+	
+	private static List<IRPModelElement> getElementsThatTraceToRequirements(
+			IRPModelElement underTheEl ){
+		
+		Logger.writeLine( "getElementsThatTraceToRequirements invoked for " + Logger.elementInfo( underTheEl ) );
+
+		List<IRPModelElement> theMatchedEls = new ArrayList<>();
+		
+		@SuppressWarnings("unchecked")
+		List<IRPDependency> theDependencies = 
+				underTheEl.getNestedElementsByMetaClass( "Dependency", 1 ).toList();
+		
+		for (IRPDependency theDependency : theDependencies) {
+			
+			IRPModelElement theDependsOn = theDependency.getDependsOn();
+			IRPModelElement theDependent= theDependency.getDependent();
+
+			if( theDependsOn instanceof IRPRequirement ){
+				theMatchedEls.add( theDependent );
+			}
+		}
+		
+		return theMatchedEls;
+	}
+	
+	private static List<IRPModelElement> getOwnerOfElementsThatTraceToRequirements(
+			IRPModelElement underTheEl ){
+		
+		List<IRPModelElement> theMatchedEls = new ArrayList<>();
+		
+		@SuppressWarnings("unchecked")
+		List<IRPDependency> theDependencies = 
+				underTheEl.getNestedElementsByMetaClass( "Dependency", 1 ).toList();
+		
+		for( IRPDependency theDependency : theDependencies ){
+			
+			IRPModelElement theDependsOn = theDependency.getDependsOn();
+			IRPModelElement theDependent= theDependency.getDependent();
+
+			if( theDependsOn instanceof IRPRequirement ){
+				theMatchedEls.add( theDependent.getOwner() );
+			}
+		}
+		
+		return theMatchedEls;
+	}
+	
+	public static List<IRPRequirement> getTracedRequirementsForUseCase(
+			IRPUseCase theUseCase ){
+		
+		List<IRPRequirement> theTracedReqts = new ArrayList<>();
+		
+		@SuppressWarnings("unchecked")
+		List<IRPDependency> theDependencies = 
+			theUseCase.getNestedElementsByMetaClass( "Dependency", 1 ).toList();
+		
+		for (IRPDependency theDependency : theDependencies) {
+			
+			IRPModelElement theDependsOn = theDependency.getDependsOn();
+			
+			if( theDependsOn instanceof IRPRequirement ){
+				theTracedReqts.add( (IRPRequirement) theDependsOn );
+			}
+		}
+
+		return theTracedReqts;
 	}
 }
 
 /**
- * Copyright (C) 2018-2019  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2018-2020  MBSE Training and Consulting Limited (www.executablembse.com)
 
     Change history:
     #249 29-MAY-2019: First official version of new ExecutableMBSEProfile  (F.J.Chadburn)
+    #265 07-DEC-2020: Add IsAutoPopulatePackageDiagram property to enable package diagrams creation to be turned off (F.J.Chadburn)
+    #266 07-DEC-2020: Add initial support for CVS export & switching master of requirements to DOORS NG
 
     This file is part of SysMLHelperPlugin.
 

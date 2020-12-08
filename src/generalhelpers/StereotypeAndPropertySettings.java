@@ -227,6 +227,39 @@ public class StereotypeAndPropertySettings {
 		return theValue;
 	}
 	
+	public static boolean getIsAutoPopulatePackageDiagram(
+			IRPModelElement basedOnContext ){
+	
+		boolean result = getBooleanPropertyValue(
+				basedOnContext,
+				"SysMLHelper.General.IsAutoPopulatePackageDiagram" );
+		
+		return result;		
+	}
+	
+	public static String getCSVExportArtifactType(
+			IRPModelElement basedOnContext ){
+	
+		String theValue = basedOnContext.getPropertyValue(
+				"SysMLHelper.RequirementsAnalysis.CSVExportArtifactType");
+		
+		if( theValue == null || theValue.isEmpty() ){
+			theValue = "Error";
+		}
+		
+		return theValue;
+	}
+	
+	public static boolean getCVSExportIncludeArtifactName(
+			IRPModelElement basedOnContext ){
+	
+		boolean result = getBooleanPropertyValue(
+				basedOnContext,
+				"SysMLHelper.RequirementsAnalysis.CVSExportIncludeArtifactName" );
+		
+		return result;		
+	}
+	
 	public static List<String> getStoreUnitInSeparateDirectoryNewTerms(
 			IRPModelElement theContextEl ){
 		
@@ -805,10 +838,12 @@ public class StereotypeAndPropertySettings {
 }
 
 /**
- * Copyright (C) 2018-2019  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2018-2020  MBSE Training and Consulting Limited (www.executablembse.com)
 
     Change history:
     #252 29-MAY-2019: Implement generic features for profile/settings loading (F.J.Chadburn)
+    #265 07-DEC-2020: Add IsAutoPopulatePackageDiagram property to enable package diagrams creation to be turned off (F.J.Chadburn)
+    #266 07-DEC-2020: Add initial support for CVS export & switching master of requirements to DOORS NG
 
     This file is part of SysMLHelperPlugin.
 

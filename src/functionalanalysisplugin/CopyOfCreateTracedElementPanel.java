@@ -4,6 +4,7 @@ import generalhelpers.GeneralHelpers;
 import generalhelpers.Logger;
 import generalhelpers.StereotypeAndPropertySettings;
 import generalhelpers.TraceabilityHelper;
+import generalhelpers.UserInterfaceHelpers;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -426,6 +427,20 @@ public abstract class CopyOfCreateTracedElementPanel extends JPanel {
 					Logger.writeLine( theElement, "already has a «" + theStereotypeName + 
 							"» dependency to " + Logger.elementInfo( theReqt ) + 
 							", so doing nothing" );
+					
+				} else if( theReqt.isRemote()== 1 ){
+					
+					Logger.writeLine( "Add remote " +
+							Logger.elementInfo( theDependencyStereotype) + " from " +
+							Logger.elementInfo(theElement) + " \n" +
+							"to " + Logger.elementInfo(theReqt) );
+					
+					if( theDependencyStereotype.getName().equals( "satisfy" ) ){
+						
+						// "Derives From", "Refines", "Satisfies", and "Trace".
+						theElement.addRemoteDependencyTo( theReqt, "Satisfies" );
+					}
+					
 				} else {					
 					Logger.writeLine( theElement, "does not have a «" + theStereotypeName + 
 							"» dependency to " + Logger.elementInfo( theReqt ) + 
@@ -751,6 +766,7 @@ public abstract class CopyOfCreateTracedElementPanel extends JPanel {
     #258 11-SEP-2018: Move from using tags to properties to control plugin behaviour (F.J.Chadburn)
     #252 29-MAY-2019: Implement generic features for profile/settings loading (F.J.Chadburn)
     #256 29-MAY-2019: Rewrite to Java Swing dialog launching to make thread safe between versions (F.J.Chadburn)
+    #266 07-DEC-2020: Add initial support for CVS export & switching master of requirements to DOORS NG
 
     This file is part of SysMLHelperPlugin.
 

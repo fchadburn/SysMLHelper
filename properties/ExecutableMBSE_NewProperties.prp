@@ -13,6 +13,7 @@ Subject SysMLHelper
 		Property ElapsedTimeBlockStereotype String "ElapsedTimeBlock"
 		Property ElapsedTimeActorStereotype String "ElapsedTimeGenerator"
 		Property TestbenchStereotype String "Testbench"          
+		Property IsAutoPopulatePackageDiagram Bool "True"          
 	end
 	Metaclass RequirementsAnalysis
 		Property CreateRequirementTextForPrefixing String "The feature shall allow the"
@@ -44,6 +45,8 @@ Subject SysMLHelper
 8.  Don't use relations between use cases unless you have a real need (i.e. you've actually written the use cases and can see the relations).
 
 9. You can delete this Note, if you want."
+		Property CSVExportArtifactType String "System Requirement"
+		Property CVSExportIncludeArtifactName Bool "False"
 	end
 	Metaclass FunctionalAnalysis
 		Property TraceabilityTypeToUseForFunctions String "satisfy"

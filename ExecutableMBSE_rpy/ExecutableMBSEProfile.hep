@@ -1,5 +1,5 @@
 [Helpers]
-numberOfElements=70
+numberOfElements=72
 
 #REM: Definition of the plug-in
 name1=InvokeExecutableMBSEHelper
@@ -544,10 +544,27 @@ applicableTo70=Attribute,ValueProperty,FlowPort
 isVisible70=1
 DLLServerCompatible70=1
 
-#REM Copyright (C) 2018  MBSE Training and Consulting Limited (www.executablembse.com)
+#REM: Add pop-up menu
+name71=MBSE Method: Requirements Analysis\Export requirements to csv for import into DOORS NG
+isPluginCommand71=1
+command71=InvokeExecutableMBSEHelper
+applicableTo71=13 Reqts Analysis - Requirement Package,Package
+isVisible71=1
+DLLServerCompatible71=1
+
+#REM: Add pop-up menu
+name72=MBSE Method: Requirements Analysis\Switch requirements to DOORS NG
+isPluginCommand72=1
+command72=InvokeExecutableMBSEHelper
+applicableTo72=13 Reqts Analysis - Requirement Package,Package
+isVisible72=1
+DLLServerCompatible72=1
+
+#REM Copyright (C) 2018-2020  MBSE Training and Consulting Limited (www.executablembse.com)
 #REM
 #REM Change history:
 #REM #021 30-MAY-2016: Added Copyright/History statements to the hep files (F.J.Chadburn)
+#REM #266 07-DEC-2020: Add initial support for CVS export & switching master of requirements to DOORS NG (F.J.Chadburn)
 #REM
 #REM This file is part of SysMLHelperPlugin.
 #REM

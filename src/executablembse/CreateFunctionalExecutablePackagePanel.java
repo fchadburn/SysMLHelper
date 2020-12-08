@@ -873,9 +873,10 @@ public class CreateFunctionalExecutablePackagePanel extends CreateStructuralElem
 					"IBD - " + theSystemAssemblyBlock.getName(),
 					"Internal Block Diagram" );
 
-			AutoPackageDiagram theAPD = new AutoPackageDiagram( theProject );
-			theAPD.drawDiagram();
-
+			if( StereotypeAndPropertySettings.getIsAutoPopulatePackageDiagram( theProject ) ){
+				AutoPackageDiagram theAPD = new AutoPackageDiagram( theProject );
+				theAPD.drawDiagram();
+			}
 		} else {
 			Logger.writeLine("Error in CreateFunctionalBlockPackagePanel.performAction, checkValidity returned false");
 		}	
@@ -883,11 +884,12 @@ public class CreateFunctionalExecutablePackagePanel extends CreateStructuralElem
 }
 
 /**
- * Copyright (C) 2018-2019  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2018-2020  MBSE Training and Consulting Limited (www.executablembse.com)
 
     Change history:
     #249 29-MAY-2019: First official version of new ExecutableMBSEProfile  (F.J.Chadburn)
-
+    #265 07-DEC-2020: Add IsAutoPopulatePackageDiagram property to enable package diagrams creation to be turned off (F.J.Chadburn)
+    
     This file is part of SysMLHelperPlugin.
 
     SysMLHelperPlugin is free software: you can redistribute it and/or modify
