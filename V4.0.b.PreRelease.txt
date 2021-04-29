@@ -382,3 +382,15 @@ UNDER DEV RELEASE 3.0.X.PRERELEASE (07-JUL-2020):
 4.0.a.PRERELEASE (08-DEC-2020):
 #265 07-DEC-2020: Add IsAutoPopulatePackageDiagram property to enable package diagrams creation to be turned off (F.J.Chadburn)
 #266 07-DEC-2020: Add initial support for CVS export & switching master of requirements to DOORS NG (F.J.Chadburn)
+
+----------------------------------------------------------------------------------
+
+4.0.b.PRERELEASE (XX-XXX-XXXX): [PENDING]
+
+MetamodelProfile:
+#267 29-APR-2021: Initial incorporation of Metamodeling Profile developed by MBSE Training for MBSEProfiles work (F.J.Chadburn)
+#268 29-APR-2021: Adaptation of Metamodeling Profile to allow for extension of SysML Profile (F.J.Chadburn)
+
+ExecutableMBSEProfile:
+#269 29-APR-2021: Initial work on a system context diagram and association DSL package structure (F.J.Chadburn)
+#270 29-APR-2021: Adaptation of Actor Packages to accept rendering of properties using the Metamodeling Profile (F.J.Chadburn)

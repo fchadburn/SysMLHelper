@@ -1,0 +1,104 @@
+Subject MetamodelProfile
+        Metaclass General
+		Property PluginVersion String "0.1"
+		Property EnableInfoLogging Bool "True"
+		Property EnableWarningLogging Bool "True"
+		Property EnableErrorLogging Bool "True"
+		Property EnableDebugLogging Bool "False"
+		Property EnableLogFile Bool "False"
+		Property AllowPluginToControlUnitGranularity Bool "False"
+		Property UserDefinedMetaClassesAsSeparateUnit String ""
+	end
+end
+Subject ObjectModelGe
+	Metaclass Object
+		Property ShowAttributes Enum "All,None,Public,Explicit" "None"
+		Property ShowOperations Enum "All,None,Public,Explicit" "None"
+		Property ShowStereotype Enum "Label,Bitmap,None" "Label"
+		Property ShowStereotypeOfClass Bool "False"
+		Property ShowName Enum  "Full_path,Relative,Name_only,Type,Label,Type Only" "Type Only"
+		Property ShowType Bool "True"
+		Property ShowPorts Bool "True"
+		Property ShowPortsInterfaces Bool "True"
+		Property PortsSingleLabelLayout Enum "Off,Internal,External" "Off"
+		Property MultilineNameCompartment Bool "False"
+		Property Compartments MultiLine ""
+		Property ShowInheritedAttributes Bool "True"
+		Property ShowInheritedOperations Bool "True"
+		Property ShowRedefinesLabel Bool "True"
+		Property QuickNavigationCategories String "MainBehavior,MainDiagram,Hyperlinks,Diagrams"
+	end
+	Metaclass Requirement
+		Property Compartments MultiLine "Specification"
+		Property RequirementNotation Enum "Note_Style,Box_Style" "Box_Style"
+		Property ShowAnnotationContents Enum  "Name,Specification,Description,Label" "Description"
+		Property ShowForm Enum "Plain,Note,Pushpin" "Note"
+		Property ShowName Enum  "Full_path,Relative,Name_only,Label" "Name_only"
+		Property ShowStereotype Enum "Label,Bitmap,None" "Label"
+		Property SpecificationAnnotationFormat MultiLine "$Specification"
+		Property QuickNavigationCategories String "Hyperlinks"
+	end
+	Metaclass Comment
+		Property Compartments MultiLine "Description"
+		Property CommentNotation Enum "Note_Style,Box_Style" "Box_Style"
+		Property ShowAnnotationContents Enum  "Name,Description,Label" "Description"
+		Property ShowForm Enum "Plain,Note,Pushpin" "Note"
+		Property ShowName Enum  "Full_path,Relative,Name_only,Label" "Name_only"
+		Property ShowStereotype Enum "Label,Bitmap,None" "Label"
+		Property QuickNavigationCategories String "Hyperlinks"
+    	end
+	Metaclass Constraint
+		Property Compartments MultiLine "Specification"
+		Property ConstraintNotation Enum "Note_Style,Box_Style" "Box_Style"
+		Property ShowAnnotationContents Enum  "Name,Specification,Description,Label" "Description"
+		Property ShowForm Enum "Plain,Note,Pushpin" "Note"
+		Property ShowName Enum  "Full_path,Relative,Name_only,Label" "Name_only"
+		Property ShowStereotype Enum "Label,Bitmap,None" "Label"
+		Property QuickNavigationCategories String "Hyperlinks"
+    	end
+end
+Subject UseCaseGe
+	Metaclass Flow
+		Property line_style Enum "straight_arrows,rectilinear_arrows,spline_arrows,rounded_rectilinear_arrows" "spline_arrows"
+	end
+	Metaclass UseCaseDiagram
+		Property Fillcolor Color "243,243,243"
+	end
+	Metaclass Actor
+		Property ShowName Enum  "Full_path,Relative,Name_only,Label" "Name_only"
+		Property ShowPorts Bool "False"
+	end
+	Metaclass Association
+		Property ShowName Enum  "Name,Label,None" "None"
+		Property ShowStereotype Enum "Label,Bitmap,None" "None"
+		Property ShowSourceRole Bool "False"
+		Property ShowTargetRole Bool "False"
+	end
+	Metaclass Inheritance
+		Property line_style Enum "straight_arrows,rectilinear_arrows,spline_arrows,tree,rounded_rectilinear_arrows" "straight_arrows"
+	end
+	Metaclass Requirement
+		Property Compartments MultiLine "Specification"
+		Property RequirementNotation Enum "Note_Style,Box_Style" "Box_Style"
+		Property ShowName Enum  "Full_path,Relative,Name_only,Label" "Name_only"
+		Property ShowStereotype Enum "Label,Bitmap,None" "Label"
+	end
+	Metaclass Comment
+		Property Compartments MultiLine ""
+		Property CommentNotation Enum "Note_Style,Box_Style" "Box_Style"
+    end
+	Metaclass Constraint
+		Property ConstraintNotation Enum "Note_Style,Box_Style" "Box_Style"
+    end
+end
+Subject General
+	Metaclass Graphics
+		Property ShowDiagramFrame Bool "True"
+		Property AllowRequirementReparenting Bool "False"
+	    	Property AllowObjectReparenting Bool "False"
+	    	Property StructureDiagramContext Enum "Default,ClassOwner" "ClassOwner"
+		Property WrapNameCompartmentText Bool "True"
+		Property EnableQuickNavigation Bool "True"
+	end
+end
+end

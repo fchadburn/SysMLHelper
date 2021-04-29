@@ -3,7 +3,7 @@ I-Logix-RPY-Archive version 8.13.0 C++ 9794446
 	- _id = GUID c3e7e210-b993-496d-bb8e-c1dec61ab214;
 	- _myState = 8192;
 	- _name = "NotUsedPkg";
-	- _modifiedTimeWeak = 1.9.2019::11:38:57;
+	- _modifiedTimeWeak = 4.28.2021::12:23:37;
 	- EmbededFiles = { IRPYRawContainer 
 		- size = 1;
 		- value = 
@@ -12,11 +12,12 @@ I-Logix-RPY-Archive version 8.13.0 C++ 9794446
 			- _name = "ExecutableMBSEProfile.hep";
 			- _modifiedTimeWeak = 1.2.1990::0:0:0;
 			- _MayNeedToRelocate = 0;
-			- _LastKnownFullPath = "C:\\Users\\frase\\IBM\\Rational\\Rhapsody\\8.2\\Share\\Profiles\\SysMLHelper\\ExecutableMBSE_rpy\\ExecutableMBSEProfile.hep";
+			- _LastKnownFullPath = "C:\\Users\\frase\\IBM\\Rational\\Rhapsody\\8.3.1x64\\Share\\Profiles\\SysMLHelper\\ExecutableMBSE_rpy\\ExecutableMBSEProfile.hep";
 		}
 	}
-	- weakCGTime = 1.9.2019::11:38:57;
-	- strongCGTime = 10.9.2018::15:50:2;
+	- _lastID = 10002;
+	- weakCGTime = 4.28.2021::12:24:0;
+	- strongCGTime = 4.28.2021::12:24:0;
 	- _defaultComposite = GUID 870695f4-704a-4952-926d-6c52a4e3ec6c;
 	- _eventsBaseID = -1;
 	- Classes = { IRPYRawContainer 
@@ -26,9 +27,254 @@ I-Logix-RPY-Archive version 8.13.0 C++ 9794446
 			- _id = GUID 870695f4-704a-4952-926d-6c52a4e3ec6c;
 			- _myState = 40960;
 			- _name = "TopLevel";
-			- _modifiedTimeWeak = 10.9.2018::15:50:2;
-			- weakCGTime = 10.9.2018::15:50:2;
-			- strongCGTime = 10.9.2018::15:50:2;
+			- _modifiedTimeWeak = 4.28.2021::12:24:0;
+			- _lastID = 6;
+			- Declaratives = { IRPYRawContainer 
+				- size = 4;
+				- value = 
+				{ IInformationFlow 
+					- _id = GUID ee70364a-7f9d-45cc-a062-7cb081320419;
+					- _myState = 2048;
+					- _name = "systemcontext_3_itsActor_10001";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "ExecutableMBSEProfile.sbs";
+							- _subsystem = "ExecutableMBSEProfile::ContextDiagran";
+							- _class = "";
+							- _name = "System Flow";
+							- _id = GUID 649d5b76-e7af-497d-ab81-8bf9ea364dd3;
+						}
+					}
+					- _modifiedTimeWeak = 1.2.1990::0:0:0;
+					- end1_ = { IHandle 
+						- _m2Class = "IPart";
+						- _id = GUID 4a08d3af-cc19-4ba6-a73e-9b54215f7524;
+					}
+					- end2_ = { IHandle 
+						- _m2Class = "IPart";
+						- _id = GUID 2ffcc0f1-5e4e-435c-9304-32a04a2f8ef5;
+					}
+					- direction_ = toEnd2;
+				}
+				{ IInformationFlow 
+					- _id = GUID f9ada462-263b-4298-a127-248502fa9892;
+					- _myState = 2048;
+					- _name = "itsActor_10001_systemcontext_3";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "ExecutableMBSEProfile.sbs";
+							- _subsystem = "ExecutableMBSEProfile::ContextDiagran";
+							- _class = "";
+							- _name = "System Flow";
+							- _id = GUID 649d5b76-e7af-497d-ab81-8bf9ea364dd3;
+						}
+					}
+					- _modifiedTimeWeak = 1.2.1990::0:0:0;
+					- end1_ = { IHandle 
+						- _m2Class = "IPart";
+						- _id = GUID 2ffcc0f1-5e4e-435c-9304-32a04a2f8ef5;
+					}
+					- end2_ = { IHandle 
+						- _m2Class = "IPart";
+						- _id = GUID 4a08d3af-cc19-4ba6-a73e-9b54215f7524;
+					}
+					- direction_ = toEnd2;
+				}
+				{ IInformationFlow 
+					- _id = GUID 7c993df1-8d4a-447d-a5d7-f1a1dfd6af0c;
+					- _myState = 2048;
+					- _name = "systemcontext_3_itsActor_10001_0";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "ExecutableMBSEProfile.sbs";
+							- _subsystem = "ExecutableMBSEProfile::ContextDiagran";
+							- _class = "";
+							- _name = "System Flow";
+							- _id = GUID 649d5b76-e7af-497d-ab81-8bf9ea364dd3;
+						}
+					}
+					- _modifiedTimeWeak = 1.2.1990::0:0:0;
+					- Conveyed = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IInformationItem";
+							- _id = GUID 4d355ab0-1420-4844-8a1e-2c5140d9e1b0;
+						}
+					}
+					- end1_ = { IHandle 
+						- _m2Class = "IPart";
+						- _id = GUID 4a08d3af-cc19-4ba6-a73e-9b54215f7524;
+					}
+					- end2_ = { IHandle 
+						- _m2Class = "IPart";
+						- _id = GUID 2ffcc0f1-5e4e-435c-9304-32a04a2f8ef5;
+					}
+					- direction_ = toEnd2;
+				}
+				{ IInformationItem 
+					- _id = GUID 4d355ab0-1420-4844-8a1e-2c5140d9e1b0;
+					- _myState = 8192;
+					- _name = "Data";
+					- _modifiedTimeWeak = 1.2.1990::0:0:0;
+				}
+			}
+			- weakCGTime = 4.28.2021::12:24:0;
+			- strongCGTime = 4.28.2021::11:59:13;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- Associations = { IRPYRawContainer 
+				- size = 2;
+				- value = 
+				{ IPart 
+					- _id = GUID 4a08d3af-cc19-4ba6-a73e-9b54215f7524;
+					- _myState = 10240;
+					- _name = "systemcontext_3";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "ExecutableMBSEProfile.sbs";
+							- _subsystem = "ExecutableMBSEProfile::ContextDiagran";
+							- _class = "";
+							- _name = "System Context";
+							- _id = GUID 95f558eb-1f1f-4947-8fad-ac72d8dba531;
+						}
+					}
+					- _modifiedTimeWeak = 4.28.2021::11:58:58;
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 688f6f42-7883-44b8-a6e4-f75585d9e5b4;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "";
+					}
+					- _implicitClass = { IClass 
+						- _id = GUID 688f6f42-7883-44b8-a6e4-f75585d9e5b4;
+						- _myState = 10240;
+						- _name = "systemcontext_3";
+						- _modifiedTimeWeak = 4.28.2021::11:59:8;
+						- _theMainDiagram = { IHandle 
+							- _m2Class = "IStructureDiagram";
+							- _filename = "";
+							- _subsystem = "";
+							- _class = "";
+							- _name = "system context diagram_19";
+							- _id = GUID 24c7edbe-246f-4272-8ad6-5882ca9bf9d0;
+						}
+						- weakCGTime = 4.28.2021::11:59:8;
+						- strongCGTime = 4.28.2021::11:58:58;
+						- _multiplicity = "";
+						- _itsStateChart = { IHandle 
+							- _m2Class = "";
+						}
+						- Associations = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPart 
+								- _id = GUID fcdc0384-a932-4611-a506-05b357732560;
+								- _myState = 10240;
+								- _name = "systemfeature_2";
+								- Stereotypes = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IHandle 
+										- _m2Class = "IStereotype";
+										- _filename = "ExecutableMBSEProfile.sbs";
+										- _subsystem = "ExecutableMBSEProfile::ContextDiagran";
+										- _class = "";
+										- _name = "System Feature";
+										- _id = GUID cdb14785-e3f1-4f68-be0d-9a246d7d7f77;
+									}
+								}
+								- _modifiedTimeWeak = 4.28.2021::11:59:8;
+								- _multiplicity = "1";
+								- _otherClass = { IClassifierHandle 
+									- _m2Class = "IClass";
+									- _id = GUID d693d514-6cdc-45b9-ac79-797def6c6136;
+								}
+								- _inverse = { IHandle 
+									- _m2Class = "";
+								}
+								- _implicitClass = { IClass 
+									- _id = GUID d693d514-6cdc-45b9-ac79-797def6c6136;
+									- _myState = 10240;
+									- _name = "systemfeature_2";
+									- _modifiedTimeWeak = 4.28.2021::11:59:8;
+									- _theMainDiagram = { IHandle 
+										- _m2Class = "IStructureDiagram";
+										- _filename = "";
+										- _subsystem = "";
+										- _class = "";
+										- _name = "system context diagram_19";
+										- _id = GUID 24c7edbe-246f-4272-8ad6-5882ca9bf9d0;
+									}
+									- weakCGTime = 4.28.2021::11:59:8;
+									- strongCGTime = 4.28.2021::11:59:8;
+									- _multiplicity = "";
+									- _itsStateChart = { IHandle 
+										- _m2Class = "";
+									}
+									- _classModifier = Unspecified;
+								}
+							}
+						}
+						- _classModifier = Unspecified;
+					}
+				}
+				{ IPart 
+					- _id = GUID 2ffcc0f1-5e4e-435c-9304-32a04a2f8ef5;
+					- _myState = 10240;
+					- _name = "itsActor_10001";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "ExecutableMBSEProfile.sbs";
+							- _subsystem = "ExecutableMBSEProfile::ContextDiagran";
+							- _class = "";
+							- _name = "Actor Instance";
+							- _id = GUID 1594c9e3-a1ea-41cf-bfcb-b15264d9eea0;
+						}
+					}
+					- _modifiedTimeWeak = 4.28.2021::12:24:0;
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IActor";
+						- _id = GUID 7e66ab49-a321-4c25-a3b1-bbe1dd79700f;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "";
+					}
+				}
+			}
+			- _classModifier = Unspecified;
+		}
+	}
+	- Actors = { IRPYRawContainer 
+		- size = 1;
+		- value = 
+		{ IActor 
+			- _id = GUID 7e66ab49-a321-4c25-a3b1-bbe1dd79700f;
+			- _myState = 10240;
+			- _name = "actor_10001";
+			- _modifiedTimeWeak = 4.28.2021::12:23:37;
+			- weakCGTime = 4.28.2021::12:23:37;
+			- strongCGTime = 4.28.2021::12:23:37;
 			- _multiplicity = "";
 			- _itsStateChart = { IHandle 
 				- _m2Class = "";
@@ -36,6 +282,6 @@ I-Logix-RPY-Archive version 8.13.0 C++ 9794446
 			- _classModifier = Unspecified;
 		}
 	}
-	- _configurationRelatedTime = 1.2.1990::0:0:0;
+	- _configurationRelatedTime = 4.28.2021::12:1:9;
 }
 

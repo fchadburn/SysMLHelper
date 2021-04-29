@@ -1,0 +1,2507 @@
+I-Logix-RPY-Archive version 8.14.0 C++ 9810313
+{ ISubsystem 
+	- _id = GUID 66ce32f5-6908-43e4-bcd2-5191392e805b;
+	- _myState = 8192;
+	- _name = "Base_MetaModelPkg";
+	- Stereotypes = { IRPYRawContainer 
+		- size = 1;
+		- value = 
+		{ IHandle 
+			- _m2Class = "IStereotype";
+			- _filename = ".\\MetamodelProfile.sbs";
+			- _subsystem = "MetamodelProfile";
+			- _name = "Metamodel Package";
+			- _id = GUID 07e3765a-4e90-466c-91d7-8783e5435485;
+		}
+	}
+	- _modifiedTimeWeak = 8.25.2020::7:37:53;
+	- _lastID = 7;
+	- weakCGTime = 8.25.2020::7:37:53;
+	- strongCGTime = 6.21.2020::13:38:42;
+	- _defaultComposite = GUID 3e326672-39e1-4622-ba2e-fb6b5f7591a8;
+	- _eventsBaseID = -1;
+	- Classes = { IRPYRawContainer 
+		- size = 68;
+		- value = 
+		{ IClass 
+			- _id = GUID 3e326672-39e1-4622-ba2e-fb6b5f7591a8;
+			- _myState = 40960;
+			- _name = "TopLevel";
+			- _modifiedTimeWeak = 1.2.1990::0:0:0;
+			- weakCGTime = 1.2.1990::0:0:0;
+			- strongCGTime = 1.2.1990::0:0:0;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 83400e65-ffe1-4f22-981f-2a2f8741e428;
+			- _myState = 8192;
+			- _name = "Attributes";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "Tab";
+					- _id = GUID cc48c921-e212-4b46-b047-5021611568ed;
+				}
+			}
+			- _modifiedTimeWeak = 6.21.2020::13:37:13;
+			- weakCGTime = 6.21.2020::13:37:13;
+			- strongCGTime = 6.21.2020::13:37:13;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 7e3cde99-8f76-4b3b-b436-0d914ab4fcd2;
+			- _myState = 8192;
+			- _name = "Flow Ports";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "Tab";
+					- _id = GUID cc48c921-e212-4b46-b047-5021611568ed;
+				}
+			}
+			- _modifiedTimeWeak = 6.21.2020::13:37:13;
+			- weakCGTime = 6.21.2020::13:37:13;
+			- strongCGTime = 6.21.2020::13:37:13;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID a0f356a5-7012-41fb-b8eb-a8c5db74fa60;
+			- _myState = 8192;
+			- _name = "Operations";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "Tab";
+					- _id = GUID cc48c921-e212-4b46-b047-5021611568ed;
+				}
+			}
+			- _modifiedTimeWeak = 6.21.2020::13:37:13;
+			- weakCGTime = 6.21.2020::13:37:13;
+			- strongCGTime = 6.21.2020::13:37:13;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 334fe19e-219a-4172-b859-a9be359f98eb;
+			- _myState = 8192;
+			- _name = "Ports";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "Tab";
+					- _id = GUID cc48c921-e212-4b46-b047-5021611568ed;
+				}
+			}
+			- _modifiedTimeWeak = 6.21.2020::13:37:13;
+			- weakCGTime = 6.21.2020::13:37:13;
+			- strongCGTime = 6.21.2020::13:37:13;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 43c5684f-226f-4fdb-9267-7ee0bc404c62;
+			- _myState = 8192;
+			- _name = "ActivityDiagram";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Diagram";
+					- _id = GUID b9141df3-c4d2-4f80-b150-d1e5d9a5cde7;
+				}
+			}
+			- _modifiedTimeWeak = 6.21.2020::13:37:13;
+			- weakCGTime = 6.21.2020::13:37:13;
+			- strongCGTime = 6.21.2020::13:37:13;
+			- Inheritances = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IGeneralization 
+					- _id = GUID a368df8c-214f-49e8-8c32-d3420729b325;
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _id = GUID d34f5f9c-66e5-4fa2-bb6a-440e3710b219;
+					}
+					- _inheritanceType = iPublic;
+					- _isVirtual = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 498ecf6b-4832-4e52-b40e-9d8a8ac48d94;
+			- _myState = 8192;
+			- _name = "MatrixLayout";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Diagram";
+					- _id = GUID b9141df3-c4d2-4f80-b150-d1e5d9a5cde7;
+				}
+			}
+			- _modifiedTimeWeak = 6.21.2020::13:37:13;
+			- weakCGTime = 6.21.2020::13:37:13;
+			- strongCGTime = 6.21.2020::13:37:13;
+			- Inheritances = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IGeneralization 
+					- _id = GUID b83b3731-dfd4-487c-be93-36df1be1f49b;
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 3e418e73-25a6-4c58-863e-05da06118993;
+					}
+					- _inheritanceType = iPublic;
+					- _isVirtual = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID c0fd827a-e051-481c-9d04-6780e7ca3e6d;
+			- _myState = 8192;
+			- _name = "MatrixView";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Diagram";
+					- _id = GUID b9141df3-c4d2-4f80-b150-d1e5d9a5cde7;
+				}
+			}
+			- _modifiedTimeWeak = 6.21.2020::13:37:13;
+			- weakCGTime = 6.21.2020::13:37:13;
+			- strongCGTime = 6.21.2020::13:37:13;
+			- Inheritances = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IGeneralization 
+					- _id = GUID e4edab09-a929-4e96-ba64-cbcc6409c9f7;
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 3e418e73-25a6-4c58-863e-05da06118993;
+					}
+					- _inheritanceType = iPublic;
+					- _isVirtual = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 509dad90-ca5b-4daa-a725-8287a3d241e6;
+			- _myState = 8192;
+			- _name = "ObjectModelDiagram";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Diagram";
+					- _id = GUID b9141df3-c4d2-4f80-b150-d1e5d9a5cde7;
+				}
+			}
+			- _modifiedTimeWeak = 7.3.2020::11:24:26;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "BasePkg";
+				- _name = "MMD - Add Timing diagram";
+				- _id = GUID f494f629-abf6-42e6-8613-382aa7e967c4;
+			}
+			- _lastID = 2;
+			- weakCGTime = 7.3.2020::11:24:26;
+			- strongCGTime = 6.21.2020::13:37:13;
+			- Inheritances = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IGeneralization 
+					- _id = GUID 3174ea55-237b-40a6-9912-53c76e1fe67b;
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _id = GUID d34f5f9c-66e5-4fa2-bb6a-440e3710b219;
+					}
+					- _inheritanceType = iPublic;
+					- _isVirtual = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 6acb1a6d-75ca-4c4c-af8f-1cff04c19c0a;
+			- _myState = 8192;
+			- _name = "StructureDiagram";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Diagram";
+					- _id = GUID b9141df3-c4d2-4f80-b150-d1e5d9a5cde7;
+				}
+			}
+			- _modifiedTimeWeak = 6.21.2020::13:37:13;
+			- weakCGTime = 6.21.2020::13:37:13;
+			- strongCGTime = 6.21.2020::13:37:13;
+			- Inheritances = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IGeneralization 
+					- _id = GUID 3fffb4d0-792c-482b-aa70-e1252777219d;
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _id = GUID d34f5f9c-66e5-4fa2-bb6a-440e3710b219;
+					}
+					- _inheritanceType = iPublic;
+					- _isVirtual = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 231c9e8d-86a5-4419-9d0a-9b5a52ed0738;
+			- _myState = 8192;
+			- _name = "TableLayout";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Diagram";
+					- _id = GUID b9141df3-c4d2-4f80-b150-d1e5d9a5cde7;
+				}
+			}
+			- _modifiedTimeWeak = 6.21.2020::13:37:13;
+			- weakCGTime = 6.21.2020::13:37:13;
+			- strongCGTime = 6.21.2020::13:37:13;
+			- Inheritances = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IGeneralization 
+					- _id = GUID 52826cb2-2474-4cf1-808a-09c26be62fd7;
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 3e418e73-25a6-4c58-863e-05da06118993;
+					}
+					- _inheritanceType = iPublic;
+					- _isVirtual = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID d8cb7b17-4253-4263-93bc-63b98f81cdf9;
+			- _myState = 8192;
+			- _name = "TableView";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Diagram";
+					- _id = GUID b9141df3-c4d2-4f80-b150-d1e5d9a5cde7;
+				}
+			}
+			- _modifiedTimeWeak = 6.21.2020::13:37:13;
+			- weakCGTime = 6.21.2020::13:37:13;
+			- strongCGTime = 6.21.2020::13:37:13;
+			- Inheritances = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IGeneralization 
+					- _id = GUID 03553be8-4de7-43b2-933a-c17745264f43;
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 3e418e73-25a6-4c58-863e-05da06118993;
+					}
+					- _inheritanceType = iPublic;
+					- _isVirtual = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 3c13c5f8-47e9-4a97-875a-fd0d0d8a3a7c;
+			- _myState = 8192;
+			- _name = "Actor";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 8.25.2020::7:37:53;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "AutoMBSE_MetaModelPkg";
+				- _name = "MMD - ActorPackages";
+				- _id = GUID f2fb8cd0-2e1b-4b64-b1bb-81b495d134b1;
+			}
+			- weakCGTime = 8.25.2020::7:37:53;
+			- strongCGTime = 6.21.2020::13:37:13;
+			- Inheritances = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IGeneralization 
+					- _id = GUID 5729ccbd-cbae-46c0-8ab3-bc3f3ca2eeb0;
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 3e418e73-25a6-4c58-863e-05da06118993;
+					}
+					- _inheritanceType = iPublic;
+					- _isVirtual = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 66f74b40-a992-4e41-8d89-f2d03788eafe;
+			- _myState = 8192;
+			- _name = "AssociationEnd";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Relation";
+					- _id = GUID 56053e54-dc2f-45a6-a2d7-48afe8ef5f92;
+				}
+			}
+			- _modifiedTimeWeak = 8.24.2020::9:34:12;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "AutoMBSE_MetaModelPkg";
+				- _name = "MMD - Use Case Packages";
+				- _id = GUID 2a8f6d60-de0f-4963-b337-07ae89ff9a74;
+			}
+			- weakCGTime = 8.24.2020::9:34:12;
+			- strongCGTime = 7.2.2020::17:18:51;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 3ac0103f-e89f-4a61-9ff1-5d3b8f5f837c;
+			- _myState = 8192;
+			- _name = "Class";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 7.2.2020::17:18:59;
+			- _lastID = 1;
+			- weakCGTime = 7.2.2020::17:18:59;
+			- strongCGTime = 6.21.2020::13:37:13;
+			- Inheritances = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IGeneralization 
+					- _id = GUID 6865ed6c-a010-42e1-ae85-11aeb688eebe;
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 3e418e73-25a6-4c58-863e-05da06118993;
+					}
+					- _inheritanceType = iPublic;
+					- _isVirtual = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- Associations = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IAssociationEnd 
+					- _id = GUID 0f38e33e-31fe-4c0c-8dc1-4845575a2d99;
+					- _myState = 10240;
+					- _name = "itsAssociationEnd";
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 66f74b40-a992-4e41-8d89-f2d03788eafe;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "";
+					}
+					- _linkName = "";
+					- _linkType = Composition;
+					- _navigability = Navigable;
+				}
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID a0eddad9-2b58-428e-9412-0421bd8074b8;
+			- _myState = 8192;
+			- _name = "Comment";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 8.24.2020::9:19:36;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "AutoMBSE_MetaModelPkg";
+				- _name = "MMD - Use Case Packages";
+				- _id = GUID 2a8f6d60-de0f-4963-b337-07ae89ff9a74;
+			}
+			- weakCGTime = 8.24.2020::9:19:36;
+			- strongCGTime = 6.21.2020::13:37:13;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 24600348-2e89-4147-abb9-1a7b06156c1b;
+			- _myState = 8192;
+			- _name = "Constraint";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 6.21.2020::13:37:13;
+			- weakCGTime = 6.21.2020::13:37:13;
+			- strongCGTime = 6.21.2020::13:37:13;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID c028cc00-0c0f-46f6-8f6d-d65da692acb3;
+			- _myState = 8192;
+			- _name = "Dependency";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Relation";
+					- _id = GUID 56053e54-dc2f-45a6-a2d7-48afe8ef5f92;
+				}
+			}
+			- _modifiedTimeWeak = 7.6.2020::9:1:23;
+			- weakCGTime = 7.6.2020::9:1:23;
+			- strongCGTime = 7.2.2020::17:20:46;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID d34f5f9c-66e5-4fa2-bb6a-440e3710b219;
+			- _myState = 8192;
+			- _name = "Diagram";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 7.3.2020::11:25:48;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "BasePkg";
+				- _name = "MMD - Add Timing diagram";
+				- _id = GUID f494f629-abf6-42e6-8613-382aa7e967c4;
+			}
+			- weakCGTime = 7.3.2020::11:25:48;
+			- strongCGTime = 6.21.2020::13:37:13;
+			- Inheritances = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IGeneralization 
+					- _id = GUID 72b9bc72-41cf-4482-89bd-9892e5c29ca3;
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 3e418e73-25a6-4c58-863e-05da06118993;
+					}
+					- _inheritanceType = iPublic;
+					- _isVirtual = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- Associations = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IAssociationEnd 
+					- _id = GUID 2faca557-8a31-4b1c-b612-1696f7cc1fec;
+					- _myState = 10240;
+					- _name = "itsDependency_1";
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _id = GUID c028cc00-0c0f-46f6-8f6d-d65da692acb3;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "";
+					}
+					- _linkName = "";
+					- _linkType = Aggreg;
+					- _navigability = Navigable;
+				}
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID e7d9ad69-9074-4313-be7e-a4e61fa6d58c;
+			- _myState = 8192;
+			- _name = "Directed Composition";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Relation";
+					- _id = GUID 56053e54-dc2f-45a6-a2d7-48afe8ef5f92;
+				}
+			}
+			- _modifiedTimeWeak = 6.21.2020::13:37:13;
+			- weakCGTime = 6.21.2020::13:37:13;
+			- strongCGTime = 6.21.2020::13:37:13;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 49bdb0e0-48e4-4902-a11b-8ce454bdff50;
+			- _myState = 8192;
+			- _name = "Event";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 6.21.2020::13:37:13;
+			- weakCGTime = 6.21.2020::13:37:13;
+			- strongCGTime = 6.21.2020::13:37:13;
+			- Inheritances = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IGeneralization 
+					- _id = GUID 91d341b7-b035-4887-a106-8bafad165748;
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 3e418e73-25a6-4c58-863e-05da06118993;
+					}
+					- _inheritanceType = iPublic;
+					- _isVirtual = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 4d350b0d-4e70-48d0-a934-7191ee256a53;
+			- _myState = 8192;
+			- _name = "Flow";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Relation";
+					- _id = GUID 56053e54-dc2f-45a6-a2d7-48afe8ef5f92;
+				}
+			}
+			- _modifiedTimeWeak = 8.24.2020::9:50:33;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "AutoMBSE_MetaModelPkg";
+				- _name = "MMD - Use Case Packages";
+				- _id = GUID 2a8f6d60-de0f-4963-b337-07ae89ff9a74;
+			}
+			- weakCGTime = 8.24.2020::9:50:33;
+			- strongCGTime = 6.21.2020::13:37:13;
+			- Inheritances = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IGeneralization 
+					- _id = GUID 554508af-8792-4b3b-8586-ca2d02e51c1a;
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 3e418e73-25a6-4c58-863e-05da06118993;
+					}
+					- _inheritanceType = iPublic;
+					- _isVirtual = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 7648fd0b-fee8-4a1e-a730-b97bfa419ce6;
+			- _myState = 8192;
+			- _name = "FlowPort";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 6.21.2020::13:37:13;
+			- weakCGTime = 6.21.2020::13:37:13;
+			- strongCGTime = 6.21.2020::13:37:13;
+			- Inheritances = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IGeneralization 
+					- _id = GUID 9265c98a-c4cc-4119-8c63-ef8615e7d92b;
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 3e418e73-25a6-4c58-863e-05da06118993;
+					}
+					- _inheritanceType = iPublic;
+					- _isVirtual = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 55b3e4ac-e9c5-4e99-b15d-73f346024538;
+			- _myState = 8192;
+			- _name = "Generalization";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Relation";
+					- _id = GUID 56053e54-dc2f-45a6-a2d7-48afe8ef5f92;
+				}
+			}
+			- _modifiedTimeWeak = 7.6.2020::9:54:2;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "FeatureFunction_MetamodelPkg";
+				- _name = "MMD - Add Realization";
+				- _id = GUID 1eb57b59-d1ac-4bf9-a6e8-460dd725c5c4;
+			}
+			- weakCGTime = 7.6.2020::9:54:2;
+			- strongCGTime = 6.21.2020::13:37:13;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 0f0a6b0a-c27f-4afc-bcc0-330bc222bf99;
+			- _myState = 8192;
+			- _name = "Hyperlink";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Relation";
+					- _id = GUID 56053e54-dc2f-45a6-a2d7-48afe8ef5f92;
+				}
+			}
+			- _modifiedTimeWeak = 6.21.2020::13:37:13;
+			- weakCGTime = 6.21.2020::13:37:13;
+			- strongCGTime = 6.21.2020::13:37:13;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 952bd987-25e4-43ee-a251-ff851522e651;
+			- _myState = 8192;
+			- _name = "Interface";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 6.21.2020::13:37:13;
+			- _lastID = 1;
+			- weakCGTime = 6.21.2020::13:37:13;
+			- strongCGTime = 6.21.2020::13:37:13;
+			- Inheritances = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IGeneralization 
+					- _id = GUID 5c924539-5ea0-4a35-a80f-17fd7e1abb63;
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 3e418e73-25a6-4c58-863e-05da06118993;
+					}
+					- _inheritanceType = iPublic;
+					- _isVirtual = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID aedbf005-35d2-4fc7-915c-a59b6204b74d;
+			- _myState = 8192;
+			- _name = "ItemFlow";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 6.21.2020::13:37:13;
+			- weakCGTime = 6.21.2020::13:37:13;
+			- strongCGTime = 6.21.2020::13:37:13;
+			- Inheritances = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IGeneralization 
+					- _id = GUID 5ed34b25-2e2f-4540-855e-85f743208038;
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 3e418e73-25a6-4c58-863e-05da06118993;
+					}
+					- _inheritanceType = iPublic;
+					- _isVirtual = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID abd3dc1d-c6f4-4c7e-ac11-f3264d6fdc8c;
+			- _myState = 8192;
+			- _name = "Link";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Relation";
+					- _id = GUID 56053e54-dc2f-45a6-a2d7-48afe8ef5f92;
+				}
+			}
+			- _modifiedTimeWeak = 7.2.2020::17:22:39;
+			- weakCGTime = 7.2.2020::17:22:39;
+			- strongCGTime = 7.2.2020::17:22:39;
+			- Inheritances = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IGeneralization 
+					- _id = GUID cf78db59-0eb2-49a5-9808-b20f732e8c87;
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 3e418e73-25a6-4c58-863e-05da06118993;
+					}
+					- _inheritanceType = iPublic;
+					- _isVirtual = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 3e418e73-25a6-4c58-863e-05da06118993;
+			- _myState = 8192;
+			- _name = "ModelElement";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 7.3.2020::14:52:46;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "BasePkg";
+				- _name = "metamodel diagram_3";
+				- _id = GUID 28d34d6d-40fd-4f4c-8b14-87997f25d78e;
+			}
+			- weakCGTime = 7.3.2020::14:52:46;
+			- strongCGTime = 6.21.2020::13:37:13;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- Associations = { IRPYRawContainer 
+				- size = 5;
+				- value = 
+				{ IAssociationEnd 
+					- _id = GUID 741b4e1e-6084-4880-8a79-7f53b6bd64f4;
+					- _myState = 10240;
+					- _name = "itsHyperlink";
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 0f0a6b0a-c27f-4afc-bcc0-330bc222bf99;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "";
+					}
+					- _linkName = "";
+					- _linkType = Composition;
+					- _navigability = Navigable;
+				}
+				{ IAssociationEnd 
+					- _id = GUID 6c2562cb-c014-4bb7-a2e5-0ff3274b7eae;
+					- _myState = 10240;
+					- _name = "itsTag";
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _id = GUID bd7bd021-f37c-43ec-95e6-29504a1dfbff;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "";
+					}
+					- _linkName = "";
+					- _linkType = Composition;
+					- _navigability = Navigable;
+				}
+				{ IAssociationEnd 
+					- _id = GUID b6d15c9f-0d1c-47e9-aa2f-b66364156c3f;
+					- _myState = 10240;
+					- _name = "itsDependency";
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _id = GUID c028cc00-0c0f-46f6-8f6d-d65da692acb3;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "";
+					}
+					- _linkName = "";
+					- _linkType = Composition;
+					- _navigability = Navigable;
+				}
+				{ IAssociationEnd 
+					- _id = GUID a7216c55-aa3e-4e42-8dd3-0521de5e838c;
+					- _myState = 10240;
+					- _name = "itsComment";
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _id = GUID a0eddad9-2b58-428e-9412-0421bd8074b8;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "";
+					}
+					- _linkName = "";
+					- _linkType = Composition;
+					- _navigability = Navigable;
+				}
+				{ IAssociationEnd 
+					- _id = GUID bbc63fd0-53c9-4404-aed5-65f3c5112ee0;
+					- _myState = 10240;
+					- _name = "itsControlledFile";
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 69338e8c-4ec3-4337-8550-1baf9d71694e;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "";
+					}
+					- _linkName = "";
+					- _linkType = Composition;
+					- _navigability = Navigable;
+				}
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 6f1d2a18-5bb2-4717-b51e-d34ea17577a3;
+			- _myState = 8192;
+			- _name = "Object";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 6.21.2020::13:37:13;
+			- weakCGTime = 6.21.2020::13:37:13;
+			- strongCGTime = 6.21.2020::13:37:13;
+			- Inheritances = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IGeneralization 
+					- _id = GUID b5c052f1-3215-405a-8ed1-3fb281e1049c;
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 3e418e73-25a6-4c58-863e-05da06118993;
+					}
+					- _inheritanceType = iPublic;
+					- _isVirtual = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 53f37de5-2614-497b-8c1d-ffd29ef8c61b;
+			- _myState = 8192;
+			- _name = "Package";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 8.25.2020::7:38:19;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "AutoMBSE_MetaModelPkg";
+				- _name = "MMD - ActorPackages";
+				- _id = GUID f2fb8cd0-2e1b-4b64-b1bb-81b495d134b1;
+			}
+			- _lastID = 1;
+			- weakCGTime = 8.25.2020::7:38:19;
+			- strongCGTime = 6.21.2020::13:37:13;
+			- Inheritances = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IGeneralization 
+					- _id = GUID e435365a-a464-495b-a505-abfed242ce75;
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 3e418e73-25a6-4c58-863e-05da06118993;
+					}
+					- _inheritanceType = iPublic;
+					- _isVirtual = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- Associations = { IRPYRawContainer 
+				- size = 8;
+				- value = 
+				{ IAssociationEnd 
+					- _id = GUID 322f0341-acf1-40ec-b092-eafee1146f65;
+					- _myState = 10240;
+					- _name = "itsStereotype";
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _id = GUID f5dc86cd-6025-4b53-87c8-97ca35a2be57;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "";
+					}
+					- _linkName = "";
+					- _linkType = Composition;
+					- _navigability = Navigable;
+				}
+				{ IAssociationEnd 
+					- _id = GUID ded0e2ff-a1ae-4535-9e61-8e171eea671b;
+					- _myState = 10240;
+					- _name = "itsQuery";
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 48b02cd4-21a0-4669-85db-cca74eb3b6f8;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "";
+					}
+					- _linkName = "";
+					- _linkType = Composition;
+					- _navigability = Navigable;
+				}
+				{ IAssociationEnd 
+					- _id = GUID 8077a7fb-b1e6-47b8-8fb6-f27364479fa6;
+					- _myState = 10240;
+					- _name = "itsRequirement";
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _id = GUID a038bbd7-48ad-45d0-b9f1-06c8d912b9e3;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "";
+					}
+					- _linkName = "";
+					- _linkType = Composition;
+					- _navigability = Navigable;
+				}
+				{ IAssociationEnd 
+					- _id = GUID 5002effb-c1db-4828-9fe4-79eb9c546975;
+					- _myState = 10240;
+					- _name = "itsConstraint";
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 24600348-2e89-4147-abb9-1a7b06156c1b;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "";
+					}
+					- _linkName = "";
+					- _linkType = Composition;
+					- _navigability = Navigable;
+				}
+				{ IAssociationEnd 
+					- _id = GUID b8b76b7b-cad1-4e42-8e48-a70585016c0b;
+					- _myState = 10240;
+					- _name = "itsTableView";
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _id = GUID d8cb7b17-4253-4263-93bc-63b98f81cdf9;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "";
+					}
+					- _linkName = "";
+					- _linkType = Composition;
+					- _navigability = Navigable;
+				}
+				{ IAssociationEnd 
+					- _id = GUID e4ef794a-a1d9-4294-a4ce-9ffe8056ffac;
+					- _myState = 10240;
+					- _name = "itsTableLayout";
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 231c9e8d-86a5-4419-9d0a-9b5a52ed0738;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "";
+					}
+					- _linkName = "";
+					- _linkType = Composition;
+					- _navigability = Navigable;
+				}
+				{ IAssociationEnd 
+					- _id = GUID e91f1901-b2ed-4076-bdc5-e0f9d6a6f774;
+					- _myState = 10240;
+					- _name = "itsMatrixView";
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _id = GUID c0fd827a-e051-481c-9d04-6780e7ca3e6d;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "";
+					}
+					- _linkName = "";
+					- _linkType = Composition;
+					- _navigability = Navigable;
+				}
+				{ IAssociationEnd 
+					- _id = GUID d0925fd6-562e-4398-ab56-9937660ca24c;
+					- _myState = 10240;
+					- _name = "itsMatrixLayout";
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 498ecf6b-4832-4e52-b40e-9d8a8ac48d94;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "";
+					}
+					- _linkName = "";
+					- _linkType = Composition;
+					- _navigability = Navigable;
+				}
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 6e53efc9-0629-4658-a3d9-39536396fff5;
+			- _myState = 8192;
+			- _name = "Port";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 6.21.2020::13:37:13;
+			- _lastID = 1;
+			- weakCGTime = 6.21.2020::13:37:13;
+			- strongCGTime = 6.21.2020::13:37:13;
+			- Inheritances = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IGeneralization 
+					- _id = GUID e6023f62-c953-4e39-9113-128e3d079590;
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 3e418e73-25a6-4c58-863e-05da06118993;
+					}
+					- _inheritanceType = iPublic;
+					- _isVirtual = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 48b02cd4-21a0-4669-85db-cca74eb3b6f8;
+			- _myState = 8192;
+			- _name = "Query";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Extension";
+					- _id = GUID 958ed6b8-4bca-45ca-8cf3-75aa63e44a06;
+				}
+			}
+			- _modifiedTimeWeak = 8.24.2020::15:4:19;
+			- weakCGTime = 8.24.2020::15:4:19;
+			- strongCGTime = 8.24.2020::15:4:19;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 0978e452-83d3-4f41-b43b-5fd2782d8e38;
+			- _myState = 8192;
+			- _name = "Reception";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 6.21.2020::13:37:13;
+			- weakCGTime = 6.21.2020::13:37:13;
+			- strongCGTime = 6.21.2020::13:37:13;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID a038bbd7-48ad-45d0-b9f1-06c8d912b9e3;
+			- _myState = 8192;
+			- _name = "Requirement";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 6.21.2020::13:37:13;
+			- weakCGTime = 6.21.2020::13:37:13;
+			- strongCGTime = 6.21.2020::13:37:13;
+			- Inheritances = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IGeneralization 
+					- _id = GUID d80a471a-a57a-404f-a0fd-f8d1430ed55d;
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 3e418e73-25a6-4c58-863e-05da06118993;
+					}
+					- _inheritanceType = iPublic;
+					- _isVirtual = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID f5dc86cd-6025-4b53-87c8-97ca35a2be57;
+			- _myState = 8192;
+			- _name = "Stereotype";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Extension";
+					- _id = GUID 958ed6b8-4bca-45ca-8cf3-75aa63e44a06;
+				}
+			}
+			- _modifiedTimeWeak = 8.24.2020::15:5:11;
+			- weakCGTime = 8.24.2020::15:5:11;
+			- strongCGTime = 8.24.2020::15:5:11;
+			- Inheritances = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IGeneralization 
+					- _id = GUID 86bf107c-c9e3-48b9-9ca4-6a2b1971dfc1;
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 3e418e73-25a6-4c58-863e-05da06118993;
+					}
+					- _inheritanceType = iPublic;
+					- _isVirtual = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID bd7bd021-f37c-43ec-95e6-29504a1dfbff;
+			- _myState = 8192;
+			- _name = "Tag";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Extension";
+					- _id = GUID 958ed6b8-4bca-45ca-8cf3-75aa63e44a06;
+				}
+			}
+			- _modifiedTimeWeak = 8.24.2020::15:4:9;
+			- weakCGTime = 8.24.2020::15:4:9;
+			- strongCGTime = 8.24.2020::15:4:9;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID ca9bd9b7-7bb4-4771-a27f-ef415a809c52;
+			- _myState = 8192;
+			- _name = "Type";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 6.21.2020::13:37:13;
+			- weakCGTime = 6.21.2020::13:37:13;
+			- strongCGTime = 6.21.2020::13:37:13;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 707c42a7-500c-40bf-a538-bb54708d9a19;
+			- _myState = 8192;
+			- _name = "Satisfaction";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Relation";
+					- _id = GUID 56053e54-dc2f-45a6-a2d7-48afe8ef5f92;
+				}
+			}
+			- _modifiedTimeWeak = 7.3.2020::11:23:15;
+			- weakCGTime = 7.3.2020::11:23:15;
+			- strongCGTime = 6.21.2020::13:37:13;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID db8fe1fc-5c0d-4a56-b5bc-0b9eea239b08;
+			- _myState = 8192;
+			- _name = "AcceptEventAction";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 7.2.2020::16:2:29;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "FeatureFunction_MetamodelPkg";
+				- _name = "MMD - Activity Diagram";
+				- _id = GUID 05b09373-80c9-48c3-9dd3-1f32d2228930;
+			}
+			- weakCGTime = 7.2.2020::16:2:29;
+			- strongCGTime = 7.2.2020::16:2:29;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID a8f7832b-59f5-42aa-9ab4-6a00c961aed6;
+			- _myState = 8192;
+			- _name = "AcceptTimeEvent";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 7.2.2020::16:2:29;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "FeatureFunction_MetamodelPkg";
+				- _name = "MMD - Activity Diagram";
+				- _id = GUID 05b09373-80c9-48c3-9dd3-1f32d2228930;
+			}
+			- weakCGTime = 7.2.2020::16:2:29;
+			- strongCGTime = 7.2.2020::16:2:29;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 2bad5c9c-5a14-4fe5-b44e-160b6d7af930;
+			- _myState = 8192;
+			- _name = "Action";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 7.2.2020::16:2:29;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "FeatureFunction_MetamodelPkg";
+				- _name = "MMD - Activity Diagram";
+				- _id = GUID 05b09373-80c9-48c3-9dd3-1f32d2228930;
+			}
+			- weakCGTime = 7.2.2020::16:2:29;
+			- strongCGTime = 7.2.2020::16:2:29;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 918e501c-92e2-4f0a-9f27-6411b2739450;
+			- _myState = 8192;
+			- _name = "ActivityFinal";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 7.2.2020::16:2:29;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "FeatureFunction_MetamodelPkg";
+				- _name = "MMD - Activity Diagram";
+				- _id = GUID 05b09373-80c9-48c3-9dd3-1f32d2228930;
+			}
+			- weakCGTime = 7.2.2020::16:2:29;
+			- strongCGTime = 7.2.2020::16:2:29;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 5fdc75fc-1dc7-48b5-ac7b-9f093d7b975f;
+			- _myState = 8192;
+			- _name = "CallBehavior";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 7.2.2020::16:2:29;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "FeatureFunction_MetamodelPkg";
+				- _name = "MMD - Activity Diagram";
+				- _id = GUID 05b09373-80c9-48c3-9dd3-1f32d2228930;
+			}
+			- weakCGTime = 7.2.2020::16:2:29;
+			- strongCGTime = 7.2.2020::16:2:29;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 1006a4b6-59b9-4593-9220-cfa20a8d1dc3;
+			- _myState = 8192;
+			- _name = "Connector";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 7.2.2020::16:2:29;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "FeatureFunction_MetamodelPkg";
+				- _name = "MMD - Activity Diagram";
+				- _id = GUID 05b09373-80c9-48c3-9dd3-1f32d2228930;
+			}
+			- weakCGTime = 7.2.2020::16:2:29;
+			- strongCGTime = 7.2.2020::16:2:29;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID e5cb9c87-6098-4b25-891c-b204e145c749;
+			- _myState = 8192;
+			- _name = "DecisionNode";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 7.2.2020::16:2:29;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "FeatureFunction_MetamodelPkg";
+				- _name = "MMD - Activity Diagram";
+				- _id = GUID 05b09373-80c9-48c3-9dd3-1f32d2228930;
+			}
+			- weakCGTime = 7.2.2020::16:2:29;
+			- strongCGTime = 7.2.2020::16:2:29;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID a071cd4b-ec84-4d5f-bc5c-15ea9ae94bc7;
+			- _myState = 8192;
+			- _name = "DiagramConnector";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 7.2.2020::16:2:29;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "FeatureFunction_MetamodelPkg";
+				- _name = "MMD - Activity Diagram";
+				- _id = GUID 05b09373-80c9-48c3-9dd3-1f32d2228930;
+			}
+			- weakCGTime = 7.2.2020::16:2:29;
+			- strongCGTime = 7.2.2020::16:2:29;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 315e142a-c2ed-416f-928e-eafcfe97b39a;
+			- _myState = 8192;
+			- _name = "FlowFinal";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 7.2.2020::16:2:29;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "FeatureFunction_MetamodelPkg";
+				- _name = "MMD - Activity Diagram";
+				- _id = GUID 05b09373-80c9-48c3-9dd3-1f32d2228930;
+			}
+			- weakCGTime = 7.2.2020::16:2:29;
+			- strongCGTime = 7.2.2020::16:2:29;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 90168b8a-6cef-46b8-a243-d5cff7363f95;
+			- _myState = 8192;
+			- _name = "Fork";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 7.2.2020::16:2:29;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "FeatureFunction_MetamodelPkg";
+				- _name = "MMD - Activity Diagram";
+				- _id = GUID 05b09373-80c9-48c3-9dd3-1f32d2228930;
+			}
+			- weakCGTime = 7.2.2020::16:2:29;
+			- strongCGTime = 7.2.2020::16:2:29;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID ee8eea1a-990e-4a21-ad5a-135b7612f393;
+			- _myState = 8192;
+			- _name = "ForkConnector";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 7.2.2020::16:2:29;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "FeatureFunction_MetamodelPkg";
+				- _name = "MMD - Activity Diagram";
+				- _id = GUID 05b09373-80c9-48c3-9dd3-1f32d2228930;
+			}
+			- weakCGTime = 7.2.2020::16:2:29;
+			- strongCGTime = 7.2.2020::16:2:29;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID b75f4024-fe37-4515-9152-3bf6ee2c053a;
+			- _myState = 8192;
+			- _name = "InterruptibleRegion";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 7.2.2020::16:2:29;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "FeatureFunction_MetamodelPkg";
+				- _name = "MMD - Activity Diagram";
+				- _id = GUID 05b09373-80c9-48c3-9dd3-1f32d2228930;
+			}
+			- weakCGTime = 7.2.2020::16:2:29;
+			- strongCGTime = 7.2.2020::16:2:29;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID c74953d1-5fdf-44ed-9b77-d93988f2e1e8;
+			- _myState = 8192;
+			- _name = "JoinConnector";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 7.2.2020::16:2:29;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "FeatureFunction_MetamodelPkg";
+				- _name = "MMD - Activity Diagram";
+				- _id = GUID 05b09373-80c9-48c3-9dd3-1f32d2228930;
+			}
+			- weakCGTime = 7.2.2020::16:2:29;
+			- strongCGTime = 7.2.2020::16:2:29;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 5db63ff3-79e3-4cb1-8066-e9beb66fd9b5;
+			- _myState = 8192;
+			- _name = "MergeNode";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 7.2.2020::16:2:29;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "FeatureFunction_MetamodelPkg";
+				- _name = "MMD - Activity Diagram";
+				- _id = GUID 05b09373-80c9-48c3-9dd3-1f32d2228930;
+			}
+			- weakCGTime = 7.2.2020::16:2:29;
+			- strongCGTime = 7.2.2020::16:2:29;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID a51c88b9-b7fc-4c69-8788-76533a68fcca;
+			- _myState = 8192;
+			- _name = "SendAction";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 7.2.2020::16:2:29;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "FeatureFunction_MetamodelPkg";
+				- _name = "MMD - Activity Diagram";
+				- _id = GUID 05b09373-80c9-48c3-9dd3-1f32d2228930;
+			}
+			- weakCGTime = 7.2.2020::16:2:29;
+			- strongCGTime = 7.2.2020::16:2:29;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID dddf4e55-fda8-4a0b-90a7-0ad2da2a0b55;
+			- _myState = 8192;
+			- _name = "State";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 7.2.2020::16:2:29;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "FeatureFunction_MetamodelPkg";
+				- _name = "MMD - Activity Diagram";
+				- _id = GUID 05b09373-80c9-48c3-9dd3-1f32d2228930;
+			}
+			- weakCGTime = 7.2.2020::16:2:29;
+			- strongCGTime = 7.2.2020::16:2:29;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 0857e450-955b-467b-af95-e346a5e31e27;
+			- _myState = 8192;
+			- _name = "ControlFlow";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Relation";
+					- _id = GUID 56053e54-dc2f-45a6-a2d7-48afe8ef5f92;
+				}
+			}
+			- _modifiedTimeWeak = 7.2.2020::16:2:29;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "FeatureFunction_MetamodelPkg";
+				- _name = "MMD - Activity Diagram";
+				- _id = GUID 05b09373-80c9-48c3-9dd3-1f32d2228930;
+			}
+			- weakCGTime = 7.2.2020::16:2:29;
+			- strongCGTime = 7.2.2020::16:2:29;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID b9540473-9074-45f5-a701-b653614277c3;
+			- _myState = 8192;
+			- _name = "DefaultTransition";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Relation";
+					- _id = GUID 56053e54-dc2f-45a6-a2d7-48afe8ef5f92;
+				}
+			}
+			- _modifiedTimeWeak = 7.2.2020::16:2:29;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "FeatureFunction_MetamodelPkg";
+				- _name = "MMD - Activity Diagram";
+				- _id = GUID 05b09373-80c9-48c3-9dd3-1f32d2228930;
+			}
+			- weakCGTime = 7.2.2020::16:2:29;
+			- strongCGTime = 7.2.2020::16:2:29;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID a5aa6ccf-ec96-4428-80cd-635e7f23fe64;
+			- _myState = 8192;
+			- _name = "Derivation";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Relation";
+					- _id = GUID 56053e54-dc2f-45a6-a2d7-48afe8ef5f92;
+				}
+			}
+			- _modifiedTimeWeak = 7.2.2020::16:2:29;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "FeatureFunction_MetamodelPkg";
+				- _name = "MMD - Activity Diagram";
+				- _id = GUID 05b09373-80c9-48c3-9dd3-1f32d2228930;
+			}
+			- weakCGTime = 7.2.2020::16:2:29;
+			- strongCGTime = 7.2.2020::16:2:29;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID b3a20eeb-498f-4056-aceb-e191c2ebdc04;
+			- _myState = 8192;
+			- _name = "InitialFlow";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Relation";
+					- _id = GUID 56053e54-dc2f-45a6-a2d7-48afe8ef5f92;
+				}
+			}
+			- _modifiedTimeWeak = 7.2.2020::16:2:29;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "FeatureFunction_MetamodelPkg";
+				- _name = "MMD - Activity Diagram";
+				- _id = GUID 05b09373-80c9-48c3-9dd3-1f32d2228930;
+			}
+			- weakCGTime = 7.2.2020::16:2:29;
+			- strongCGTime = 7.2.2020::16:2:29;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 69338e8c-4ec3-4337-8550-1baf9d71694e;
+			- _myState = 8192;
+			- _name = "ControlledFile";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Extension";
+					- _id = GUID 958ed6b8-4bca-45ca-8cf3-75aa63e44a06;
+				}
+			}
+			- _modifiedTimeWeak = 8.24.2020::15:4:55;
+			- weakCGTime = 8.24.2020::15:4:55;
+			- strongCGTime = 8.24.2020::15:4:55;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 604642f5-8d0b-4cff-9c48-632093024776;
+			- _myState = 8192;
+			- _name = "TimingDiagram";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Diagram";
+					- _id = GUID b9141df3-c4d2-4f80-b150-d1e5d9a5cde7;
+				}
+			}
+			- _modifiedTimeWeak = 7.3.2020::15:36:21;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "BasePkg";
+				- _name = "metamodel diagram_3";
+				- _id = GUID 28d34d6d-40fd-4f4c-8b14-87997f25d78e;
+			}
+			- weakCGTime = 7.3.2020::15:36:21;
+			- strongCGTime = 7.3.2020::11:30:33;
+			- Inheritances = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IGeneralization 
+					- _id = GUID 14893459-f905-40c5-b3d8-2db083ef165b;
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _id = GUID d34f5f9c-66e5-4fa2-bb6a-440e3710b219;
+					}
+					- _inheritanceType = iPublic;
+					- _isVirtual = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 1870f282-13c3-4753-bf26-fafd222ca618;
+			- _myState = 8192;
+			- _name = "SequenceDiagram";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Diagram";
+					- _id = GUID b9141df3-c4d2-4f80-b150-d1e5d9a5cde7;
+				}
+			}
+			- _modifiedTimeWeak = 7.6.2020::9:0:41;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "BasePkg";
+				- _name = "metamodel diagram_3";
+				- _id = GUID 28d34d6d-40fd-4f4c-8b14-87997f25d78e;
+			}
+			- weakCGTime = 7.6.2020::9:0:41;
+			- strongCGTime = 7.6.2020::9:0:41;
+			- Inheritances = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IGeneralization 
+					- _id = GUID 3277e880-8a5f-4c23-8b28-d2a37b6d4835;
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _id = GUID d34f5f9c-66e5-4fa2-bb6a-440e3710b219;
+					}
+					- _inheritanceType = iPublic;
+					- _isVirtual = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 40ca111d-99f3-4e06-9456-2d640a72e2f0;
+			- _myState = 8192;
+			- _name = "Realization";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Relation";
+					- _id = GUID 56053e54-dc2f-45a6-a2d7-48afe8ef5f92;
+				}
+			}
+			- _modifiedTimeWeak = 7.6.2020::9:55:2;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "FeatureFunction_MetamodelPkg";
+				- _name = "MMD - Add Realization";
+				- _id = GUID 1eb57b59-d1ac-4bf9-a6e8-460dd725c5c4;
+			}
+			- weakCGTime = 7.6.2020::9:55:2;
+			- strongCGTime = 7.6.2020::9:53:17;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 2bb96019-2765-4ede-82e6-0d7e80d1adb3;
+			- _myState = 8192;
+			- _name = "UseCase";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 8.22.2020::9:1:1;
+			- weakCGTime = 8.22.2020::9:1:1;
+			- strongCGTime = 8.22.2020::9:1:1;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 82042227-69dd-44ec-afe7-b47ad1b554cd;
+			- _myState = 8192;
+			- _name = "UseCaseDiagram";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Diagram";
+					- _id = GUID b9141df3-c4d2-4f80-b150-d1e5d9a5cde7;
+				}
+			}
+			- _modifiedTimeWeak = 8.22.2020::9:2:14;
+			- weakCGTime = 8.22.2020::9:2:14;
+			- strongCGTime = 8.22.2020::9:1:43;
+			- Inheritances = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IGeneralization 
+					- _id = GUID 0f0d6508-f174-409d-a128-e6d2307645de;
+					- _modifiedTimeWeak = 1.1.1970::0:0:0;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _id = GUID d34f5f9c-66e5-4fa2-bb6a-440e3710b219;
+					}
+					- _inheritanceType = iPublic;
+					- _isVirtual = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 9c56ad31-b1f2-455e-a200-6411f7562943;
+			- _myState = 8192;
+			- _name = "Include";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Relation";
+					- _id = GUID 56053e54-dc2f-45a6-a2d7-48afe8ef5f92;
+				}
+			}
+			- _modifiedTimeWeak = 8.24.2020::9:35:13;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "AutoMBSE_MetaModelPkg";
+				- _name = "MMD - Use Case Packages";
+				- _id = GUID 2a8f6d60-de0f-4963-b337-07ae89ff9a74;
+			}
+			- weakCGTime = 8.24.2020::9:35:13;
+			- strongCGTime = 8.24.2020::9:34:49;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 2678ae98-aa6b-4b0c-9508-9e475ebec9aa;
+			- _myState = 8192;
+			- _name = "Extend";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Relation";
+					- _id = GUID 56053e54-dc2f-45a6-a2d7-48afe8ef5f92;
+				}
+			}
+			- _modifiedTimeWeak = 8.24.2020::9:35:16;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "AutoMBSE_MetaModelPkg";
+				- _name = "MMD - Use Case Packages";
+				- _id = GUID 2a8f6d60-de0f-4963-b337-07ae89ff9a74;
+			}
+			- weakCGTime = 8.24.2020::9:35:16;
+			- strongCGTime = 8.24.2020::9:35:7;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID c9936ba0-7bf7-4442-a575-ffd043951e38;
+			- _myState = 8192;
+			- _name = "System Border";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = ".\\MetamodelProfile.sbs";
+					- _subsystem = "MetamodelProfile";
+					- _name = "UML Element";
+					- _id = GUID c546edaf-0940-491b-9aec-a3d87afcaf95;
+				}
+			}
+			- _modifiedTimeWeak = 8.24.2020::9:48:50;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = ".\\..\\Metamodel.rpy";
+				- _subsystem = "AutoMBSE_MetaModelPkg";
+				- _name = "MMD - Use Case Packages";
+				- _id = GUID 2a8f6d60-de0f-4963-b337-07ae89ff9a74;
+			}
+			- weakCGTime = 8.24.2020::9:48:50;
+			- strongCGTime = 8.24.2020::9:48:50;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+	}
+	- _configurationRelatedTime = 6.21.2020::13:37:13;
+}
+

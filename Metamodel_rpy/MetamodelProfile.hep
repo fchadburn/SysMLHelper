@@ -1,0 +1,10 @@
+[Helpers]
+numberOfElements=1
+
+#REM: Definition of the plug-in
+name1=InvokeMetamodelPlugin
+JavaMainClass1=com.rhapsody.mbseprofiles.metamodel.Metamodel_RPUserPlugin
+JavaClassPath1=$OMROOT\Profiles\MBSEProfiles\bin
+isPlugin1=1
+isVisible1=0
+DLLServerCompatible1=1

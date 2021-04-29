@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RhapsodyArchive>
+	<MagicNumber></MagicNumber>
+	<CODE-PAGE>1252</CODE-PAGE>
+	<version>100.831.0</version>
+	<lang>C++</lang>
+	<BuildNo>9835718</BuildNo>
+	
+	<RHAPSODY-MODEL>
+	<ISubsystem type="e">
+			<_id type="a">GUID 78e114e6-855d-4b84-97cb-eb1f30152d2c</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">DDSProfileRelated</_name>
+			<_modifiedTimeWeak type="a">4.29.2021::12:0:44</_modifiedTimeWeak>
+			<_modifiedTime type="a">4.29.2021::12:6:22</_modifiedTime>
+			<_lastID type="a">1</_lastID>
+			<weakCGTime type="a">4.29.2021::12:0:44</weakCGTime>
+			<strongCGTime type="a">4.29.2021::12:0:15</strongCGTime>
+			<_defaultComposite type="s">GUID 1fef0a47-3f83-49c4-bc2e-cf0403067091</_defaultComposite>
+			<_eventsBaseID type="a">-1</_eventsBaseID>
+			<_configurationRelatedTime type="a">1.1.1970::0:0:0</_configurationRelatedTime>
+			<AggregatesList type="e">
+				<value>GUID ead6329b-af35-4153-8640-bb9e283d0e7a</value>
+				<value>GUID 1fef0a47-3f83-49c4-bc2e-cf0403067091</value>
+			</AggregatesList>
+		</ISubsystem>
+		<IStereotype type="e">
+			<_id type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">DDS</_name>
+			<_modifiedTimeWeak type="a">4.29.2021::12:0:44</_modifiedTimeWeak>
+			<_modifiedTime type="a">4.29.2021::12:0:44</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>Class</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+		</IStereotype>
+		<IClass type="e">
+			<_id type="a">GUID 1fef0a47-3f83-49c4-bc2e-cf0403067091</_id>
+			<_myState type="a">40960</_myState>
+			<_name type="a">TopLevel</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.1.1970::0:0:0</_modifiedTime>
+			<weakCGTime type="a">1.2.1990::0:0:0</weakCGTime>
+			<strongCGTime type="a">1.2.1990::0:0:0</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		
+	</RHAPSODY-MODEL>
+	<OslcLinks type="c">
+		<IRPYRawContainer type="e">
+			<size type="a">0</size>
+		</IRPYRawContainer>
+	</OslcLinks>
+
+<INCLUDES-RHAPSODY-INDEX>false</INCLUDES-RHAPSODY-INDEX>
+</RhapsodyArchive>
+

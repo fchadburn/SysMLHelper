@@ -1173,10 +1173,31 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 		return theTracedReqts;
 	}
+	
+	public void onApplyPluginMethodForSystemFlows( String guid ){
+		
+		@SuppressWarnings("unchecked")
+		List<IRPGraphElement> theSelectedGraphEls = _rhpApp.getSelectedGraphElements().toList();
+
+		if( theSelectedGraphEls.size()>0 ){
+			
+			IRPGraphElement theGraphEl = theSelectedGraphEls.get( 0 );
+			IRPModelElement theModelObject = theGraphEl.getModelObject();
+			if( theModelObject != null ){
+				Logger.writeLine( "theModelObject = " + Logger.elementInfo( theModelObject ) );
+			} else {
+				Logger.writeLine( "theModelObject is null ");
+			}
+		}
+		
+		IRPModelElement theSelectedEl = _rhpApp.getSelectedElement();
+		Logger.writeLine( "onApplyPluginMethodForSystemFlows invoked for " + Logger.elementInfo( theSelectedEl ) + " with " + theSelectedGraphEls.size() );
+		theSelectedEl.highLightElement();
+	}
 }
 
 /**
- * Copyright (C) 2018-2020  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     Change history:
     #249 29-MAY-2019: First official version of new ExecutableMBSEProfile  (F.J.Chadburn)

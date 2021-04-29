@@ -1,0 +1,1 @@
+This MetamodelProfile (V0.1) developed by MBSE Training and Consulting Ltd supports the creation and maintenance of domain-specific models.

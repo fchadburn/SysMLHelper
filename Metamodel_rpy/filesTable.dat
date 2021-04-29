@@ -1,0 +1,11 @@
+I-Logix-RPY-Archive version 8.15.0 * 9810313
+
+- filesTable = { IRPYRawContainer 
+	- size = 4;
+	- value = "Metamodel.rpy" ""
+	"Metamodel_rpy\\Base_MetaModelPkg.sbs" "Base_MetaModelPkg"
+	"Metamodel_rpy\\MetamodelProfile.sbs" "MetamodelProfile"
+	"Metamodel_rpy\\TimingDiagramPkg.sbs" "TimingDiagramPkg"
+	
+}
+
