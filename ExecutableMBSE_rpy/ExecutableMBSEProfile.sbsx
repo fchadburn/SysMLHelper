@@ -1658,10 +1658,10 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTimeWeak type="a">4.29.2021::16:53:26</_modifiedTimeWeak>
-			<_modifiedTime type="a">4.29.2021::17:3:12</_modifiedTime>
+			<_modifiedTimeWeak type="a">4.30.2021::16:31:55</_modifiedTimeWeak>
+			<_modifiedTime type="a">4.30.2021::16:31:55</_modifiedTime>
 			<_lastID type="a">16</_lastID>
-			<weakCGTime type="a">4.29.2021::16:53:26</weakCGTime>
+			<weakCGTime type="a">4.30.2021::16:31:55</weakCGTime>
 			<strongCGTime type="a">1.9.2019::13:0:4</strongCGTime>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -9177,17 +9177,16 @@ sleep(2);</_bodyData>
 			<_id type="a">GUID 4cab28b8-28b8-4e00-9ec8-5e71cca4a766</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ContextDiagran</_name>
-			<_modifiedTimeWeak type="a">4.29.2021::16:53:38</_modifiedTimeWeak>
-			<_modifiedTime type="a">4.29.2021::16:53:38</_modifiedTime>
+			<_modifiedTimeWeak type="a">4.30.2021::16:31:55</_modifiedTimeWeak>
+			<_modifiedTime type="a">4.30.2021::16:31:55</_modifiedTime>
 			<_lastID type="a">6</_lastID>
-			<weakCGTime type="a">4.29.2021::16:53:38</weakCGTime>
+			<weakCGTime type="a">4.30.2021::16:31:55</weakCGTime>
 			<strongCGTime type="a">4.28.2021::7:18:25</strongCGTime>
 			<_defaultComposite type="s">GUID 126b210a-965a-424f-b9ef-c617f59fa371</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<_configurationRelatedTime type="a">1.2.1990::0:0:0</_configurationRelatedTime>
 			<AggregatesList type="e">
 				<value>GUID 164baeb3-08ae-4833-b033-6ac044defb4a</value>
-				<value>GUID 2a418362-0d0d-42d4-bef4-8e975e1f4540</value>
 				<value>GUID 00df2478-d2fd-48f1-b4bb-eccbff60831a</value>
 				<value>GUID 95f558eb-1f1f-4947-8fad-ac72d8dba531</value>
 				<value>GUID 1594c9e3-a1ea-41cf-bfcb-b15264d9eea0</value>
@@ -9239,7 +9238,7 @@ sleep(2);</_bodyData>
 												<size type="a">4</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">External Actor,System Context,Event,Diagram View,System Context Diagram,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Flow,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
+													<_Value type="a">Event,Diagram View,System Context Diagram,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Actor Usage,System Context,Flow,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -9274,8 +9273,8 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ContextDiagramPackage</_name>
-			<_modifiedTimeWeak type="a">4.29.2021::16:53:29</_modifiedTimeWeak>
-			<_modifiedTime type="a">4.29.2021::16:53:29</_modifiedTime>
+			<_modifiedTimeWeak type="a">4.30.2021::16:23:22</_modifiedTimeWeak>
+			<_modifiedTime type="a">4.30.2021::16:23:22</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -9284,294 +9283,6 @@ sleep(2);</_bodyData>
 			</_m2Classes>
 			<_newTerm type="a">1</_newTerm>
 		</IStereotype>
-		<IStructureDiagram type="e">
-			<_id type="a">GUID 2a418362-0d0d-42d4-bef4-8e975e1f4540</_id>
-			<_myState type="a">10240</_myState>
-			<_properties type="p"><IPropertyContainer type="e">
-				<Subjects type="c">
-					<IRPYRawContainer type="e">
-						<size type="a">1</size>
-						<IPropertySubject type="e">
-							<_Name type="a">Format</_Name>
-							<Metaclasses type="c">
-								<IRPYRawContainer type="e">
-									<size type="a">1</size>
-									<IPropertyMetaclass type="e">
-										<_Name type="a">DiagramFrame</_Name>
-										<Properties type="c">
-											<IRPYRawContainer type="e">
-												<size type="a">8</size>
-												<IProperty type="e">
-													<_Name type="a">DefaultSize</_Name>
-													<_Value type="a">20,20,590,500</_Value>
-													<_Type type="a">String</_Type>
-												</IProperty>
-												
-												<IProperty type="e">
-													<_Name type="a">Fill.FillColor</_Name>
-													<_Value type="a">247,247,247</_Value>
-													<_Type type="a">Color</_Type>
-												</IProperty>
-												
-												<IProperty type="e">
-													<_Name type="a">Fill.Transparent_Fill</_Name>
-													<_Value type="a">0</_Value>
-													<_Type type="a">Int</_Type>
-												</IProperty>
-												
-												<IProperty type="e">
-													<_Name type="a">Font.Font</_Name>
-													<_Value type="a">Tahoma</_Value>
-													<_Type type="a">String</_Type>
-												</IProperty>
-												
-												<IProperty type="e">
-													<_Name type="a">Font.Size</_Name>
-													<_Value type="a">8</_Value>
-													<_Type type="a">Int</_Type>
-												</IProperty>
-												
-												<IProperty type="e">
-													<_Name type="a">Font.Weight@Child.NameCompartment@Name</_Name>
-													<_Value type="a">700</_Value>
-													<_Type type="a">Int</_Type>
-												</IProperty>
-												
-												<IProperty type="e">
-													<_Name type="a">Line.LineColor</_Name>
-													<_Value type="a">194,192,192</_Value>
-													<_Type type="a">Color</_Type>
-												</IProperty>
-												
-												<IProperty type="e">
-													<_Name type="a">Line.LineWidth</_Name>
-													<_Value type="a">1</_Value>
-													<_Type type="a">Int</_Type>
-												</IProperty>
-												
-											</IRPYRawContainer>
-										</Properties>
-									</IPropertyMetaclass>
-									
-								</IRPYRawContainer>
-							</Metaclasses>
-						</IPropertySubject>
-						
-					</IRPYRawContainer>
-				</Subjects>
-			</IPropertyContainer>
-			</_properties>
-			<_name type="a">internal block diagram_0</_name>
-			<Stereotypes type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">1</size>
-					
-						<IHandle type="e">
-							<_hm2Class type="a">IStereotype</_hm2Class>
-							<_hfilename type="a">$OMROOT\Profiles\SysML\SysMLProfile_rpy\SysML.sbs</_hfilename>
-							<_hsubsystem type="a">SysML::Diagrams</_hsubsystem>
-							<_hname type="a">Internal Block Diagram</_hname>
-							<_hid type="a">GUID 38dfec39-1968-4f0a-87ef-c2fde9a5d5e1</_hid>
-						</IHandle>
-					
-				</IRPYRawContainer>
-			</Stereotypes>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
-			<_lastModifiedTime type="a">4.28.2021::7:19:5</_lastModifiedTime>
-			<m_hReferencedDiagram type="r">
-				<IHandle type="e">
-				</IHandle>
-			</m_hReferencedDiagram>
-			<_defaultSubsystem type="r">
-				<IHandle type="e">
-					<_hm2Class type="a">ISubsystem</_hm2Class>
-					<_hid type="a">GUID 4cab28b8-28b8-4e00-9ec8-5e71cca4a766</_hid>
-				</IHandle>
-			</_defaultSubsystem>
-			<AggregatesList type="e">
-				<value>GUID f5ac7ba6-c211-414e-afa4-3d9a70af3250</value>
-			</AggregatesList>
-		</IStructureDiagram>
-		<CGIClassChart type="e">
-			<_id type="a">GUID f5ac7ba6-c211-414e-afa4-3d9a70af3250</_id>
-			<m_type type="a">0</m_type>
-			<m_pModelObject type="r">
-				<IHandle type="e">
-					<_hm2Class type="a">IStructureDiagram</_hm2Class>
-					<_hid type="a">GUID 2a418362-0d0d-42d4-bef4-8e975e1f4540</_hid>
-				</IHandle>
-			</m_pModelObject>
-			<m_pParent type="s"></m_pParent>
-			<m_name type="p">
-				<CGIText type="e">
-					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
-					<m_color type="p">
-						<IColor type="e">
-							<m_fgColor type="a">0</m_fgColor>
-							<m_bgColor type="a">0</m_bgColor>
-							<m_bgFlag type="a">0</m_bgFlag>
-						</IColor>
-					</m_color>
-					<m_position type="a">1 0 0  </m_position>
-					<m_nIdent type="a">0</m_nIdent>
-					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
-					<m_nOrientationCtrlPt type="a">8</m_nOrientationCtrlPt>
-				</CGIText>
-			</m_name>
-			<m_drawBehavior type="a">0</m_drawBehavior>
-			<m_bIsPreferencesInitialized type="a">0</m_bIsPreferencesInitialized>
-			<elementList type="a">2</elementList>
-			
-			<m_access type="a">'Z'</m_access>
-			<m_modified type="a">'N'</m_modified>
-			<m_nModifyDate type="a">0</m_nModifyDate>
-			<m_nCreateDate type="a">0</m_nCreateDate>
-			<m_bScaleWithZoom type="a">1</m_bScaleWithZoom>
-			<m_arrowStyle type="a">'S'</m_arrowStyle>
-			<m_pRoot type="s">GUID 918e7249-abb2-4c24-a53a-b0908c717bd4</m_pRoot>
-			<m_currentLeftTop type="a">0 0 </m_currentLeftTop>
-			<m_currentRightBottom type="a">0 0 </m_currentRightBottom>
-			<m_bFreezeCompartmentContent type="a">0</m_bFreezeCompartmentContent>
-			<AggregatesList type="e">
-				<value>GUID 918e7249-abb2-4c24-a53a-b0908c717bd4</value>
-				<value>GUID 265067bc-9445-463f-a533-192d4bb367ce</value>
-			</AggregatesList>
-		</CGIClassChart>
-		<CGIClass type="e">
-			<_id type="a">GUID 918e7249-abb2-4c24-a53a-b0908c717bd4</_id>
-			<m_type type="a">78</m_type>
-			<m_pModelObject type="r">
-				<IHandle type="e">
-					<_hm2Class type="a">IClass</_hm2Class>
-					<_hid type="a">GUID 126b210a-965a-424f-b9ef-c617f59fa371</_hid>
-				</IHandle>
-			</m_pModelObject>
-			<m_pParent type="s"></m_pParent>
-			<m_name type="p">
-				<CGIText type="e">
-					<m_str type="a">TopLevel</m_str>
-					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
-					<m_color type="p">
-						<IColor type="e">
-							<m_fgColor type="a">0</m_fgColor>
-							<m_bgColor type="a">0</m_bgColor>
-							<m_bgFlag type="a">0</m_bgFlag>
-						</IColor>
-					</m_color>
-					<m_position type="a">1 0 0  </m_position>
-					<m_nIdent type="a">0</m_nIdent>
-					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
-					<m_nOrientationCtrlPt type="a">5</m_nOrientationCtrlPt>
-				</CGIText>
-			</m_name>
-			<m_drawBehavior type="a">0</m_drawBehavior>
-			<m_bIsPreferencesInitialized type="a">0</m_bIsPreferencesInitialized>
-			<m_AdditionalLabel type="p">
-				<CGIText type="e">
-					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
-					<m_color type="p">
-						<IColor type="e">
-							<m_fgColor type="a">0</m_fgColor>
-							<m_bgColor type="a">0</m_bgColor>
-							<m_bgFlag type="a">0</m_bgFlag>
-						</IColor>
-					</m_color>
-					<m_position type="a">1 0 0  </m_position>
-					<m_nIdent type="a">0</m_nIdent>
-					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
-					<m_nOrientationCtrlPt type="a">1</m_nOrientationCtrlPt>
-				</CGIText>
-			</m_AdditionalLabel>
-			<m_polygon type="a">0 </m_polygon>
-			<m_nNameFormat type="a">0</m_nNameFormat>
-			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
-			<Attrs type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">0</size>
-				</IRPYRawContainer>
-			</Attrs>
-			<Operations type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">0</size>
-				</IRPYRawContainer>
-			</Operations>
-			<AggregatesList type="e">
-				<value>GUID 6802be4b-ba64-42e1-b8d2-103d3fda285d</value>
-				<value>GUID 843edd3f-e7d4-4b6d-b22a-c33cc3c5b328</value>
-			</AggregatesList>
-		</CGIClass>
-		<CGICompartment type="e">
-			<_id type="a">GUID 6802be4b-ba64-42e1-b8d2-103d3fda285d</_id>
-			<m_name type="a">Attribute</m_name>
-			<m_displayOption type="a">Explicit</m_displayOption>
-			<m_bShowInherited type="a">0</m_bShowInherited>
-			<m_bOrdered type="a">0</m_bOrdered>
-			<Items type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">0</size>
-				</IRPYRawContainer>
-			</Items>
-		</CGICompartment>
-		<CGICompartment type="e">
-			<_id type="a">GUID 843edd3f-e7d4-4b6d-b22a-c33cc3c5b328</_id>
-			<m_name type="a">Operation</m_name>
-			<m_displayOption type="a">Explicit</m_displayOption>
-			<m_bShowInherited type="a">0</m_bShowInherited>
-			<m_bOrdered type="a">0</m_bOrdered>
-			<Items type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">0</size>
-				</IRPYRawContainer>
-			</Items>
-		</CGICompartment>
-		<CGIDiagramFrame type="e">
-			<_id type="a">GUID 265067bc-9445-463f-a533-192d4bb367ce</_id>
-			<m_type type="a">203</m_type>
-			<m_pModelObject type="r">
-				<IHandle type="e">
-				</IHandle>
-			</m_pModelObject>
-			<m_pParent type="s">GUID 918e7249-abb2-4c24-a53a-b0908c717bd4</m_pParent>
-			<m_name type="p">
-				<CGIText type="e">
-					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
-					<m_color type="p">
-						<IColor type="e">
-							<m_fgColor type="a">0</m_fgColor>
-							<m_bgColor type="a">0</m_bgColor>
-							<m_bgFlag type="a">0</m_bgFlag>
-						</IColor>
-					</m_color>
-					<m_position type="a">1 0 0  </m_position>
-					<m_nIdent type="a">0</m_nIdent>
-					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
-					<m_nOrientationCtrlPt type="a">8</m_nOrientationCtrlPt>
-				</CGIText>
-			</m_name>
-			<m_drawBehavior type="a">4096</m_drawBehavior>
-			<m_transform type="a">2.63889 0 0 3.63636 20 20 </m_transform>
-			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
-			<m_AdditionalLabel type="p">
-				<CGIText type="e">
-					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
-					<m_color type="p">
-						<IColor type="e">
-							<m_fgColor type="a">0</m_fgColor>
-							<m_bgColor type="a">0</m_bgColor>
-							<m_bgFlag type="a">0</m_bgFlag>
-						</IColor>
-					</m_color>
-					<m_position type="a">1 0 0  </m_position>
-					<m_nIdent type="a">0</m_nIdent>
-					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
-					<m_nOrientationCtrlPt type="a">1</m_nOrientationCtrlPt>
-				</CGIText>
-			</m_AdditionalLabel>
-			<m_polygon type="a">4 0 0  0 132  216 132  216 0  </m_polygon>
-			<m_nNameFormat type="a">0</m_nNameFormat>
-			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
-		</CGIDiagramFrame>
 		<IStereotype type="e">
 			<_id type="a">GUID 00df2478-d2fd-48f1-b4bb-eccbff60831a</_id>
 			<_myState type="a">8192</_myState>
@@ -9622,7 +9333,7 @@ sleep(2);</_bodyData>
 												
 												<IProperty type="e">
 													<_Name type="a">DrawingToolbar</_Name>
-													<_Value type="a">System Context,Flow,System Feature,External Actor</_Value>
+													<_Value type="a">System Context,System Feature,Actor Usage,Flow</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -9644,7 +9355,7 @@ sleep(2);</_bodyData>
 							<_Name type="a">ObjectModelGe</_Name>
 							<Metaclasses type="c">
 								<IRPYRawContainer type="e">
-									<size type="a">2</size>
+									<size type="a">3</size>
 									<IPropertyMetaclass type="e">
 										<_Name type="a">DiagramFrame</_Name>
 										<Properties type="c">
@@ -9683,6 +9394,21 @@ sleep(2);</_bodyData>
 										</Properties>
 									</IPropertyMetaclass>
 									
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Object</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">QuickNavigationCategories</_Name>
+													<_Value type="a">Hyperlinks,Diagrams</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
 								</IRPYRawContainer>
 							</Metaclasses>
 						</IPropertySubject>
@@ -9692,8 +9418,8 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SystemContextDiagram</_name>
-			<_modifiedTimeWeak type="a">4.29.2021::16:53:34</_modifiedTimeWeak>
-			<_modifiedTime type="a">4.29.2021::16:53:34</_modifiedTime>
+			<_modifiedTimeWeak type="a">4.30.2021::16:23:27</_modifiedTimeWeak>
+			<_modifiedTime type="a">4.30.2021::16:23:27</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -9708,31 +9434,7 @@ sleep(2);</_bodyData>
 			<_properties type="p"><IPropertyContainer type="e">
 				<Subjects type="c">
 					<IRPYRawContainer type="e">
-						<size type="a">2</size>
-						<IPropertySubject type="e">
-							<_Name type="a">Format</_Name>
-							<Metaclasses type="c">
-								<IRPYRawContainer type="e">
-									<size type="a">1</size>
-									<IPropertyMetaclass type="e">
-										<_Name type="a">Object</_Name>
-										<Properties type="c">
-											<IRPYRawContainer type="e">
-												<size type="a">1</size>
-												<IProperty type="e">
-													<_Name type="a">Line.LineColor</_Name>
-													<_Value type="a">0,128,0</_Value>
-													<_Type type="a">Color</_Type>
-												</IProperty>
-												
-											</IRPYRawContainer>
-										</Properties>
-									</IPropertyMetaclass>
-									
-								</IRPYRawContainer>
-							</Metaclasses>
-						</IPropertySubject>
-						
+						<size type="a">1</size>
 						<IPropertySubject type="e">
 							<_Name type="a">Model</_Name>
 							<Metaclasses type="c">
@@ -9745,13 +9447,13 @@ sleep(2);</_bodyData>
 												<size type="a">3</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">System Feature,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale</_Value>
+													<_Value type="a">ValueProperty,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale,System Feature</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
 													<_Name type="a">BrowserIcon</_Name>
-													<_Value type="a">GreenBlock.ico</_Value>
+													<_Value type="a">ContextBlock.ico</_Value>
 													<_Type type="a">File</_Type>
 												</IProperty>
 												
@@ -9774,8 +9476,8 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SystemContext</_name>
-			<_modifiedTimeWeak type="a">4.29.2021::16:34:14</_modifiedTimeWeak>
-			<_modifiedTime type="a">4.29.2021::16:34:14</_modifiedTime>
+			<_modifiedTimeWeak type="a">4.30.2021::12:58:29</_modifiedTimeWeak>
+			<_modifiedTime type="a">4.30.2021::12:58:29</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -9824,7 +9526,7 @@ sleep(2);</_bodyData>
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">3</size>
+												<size type="a">4</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
 													<_Value type="a">ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale</_Value>
@@ -9838,8 +9540,15 @@ sleep(2);</_bodyData>
 												</IProperty>
 												
 												<IProperty type="e">
+													<_Name type="a">DrawingShape</_Name>
+													<_Value type="a">RoundedBox</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">Default,BasicBox,RoundedBox</_ExtraTypeInfo>
+												</IProperty>
+												
+												<IProperty type="e">
 													<_Name type="a">Name</_Name>
-													<_Value type="a">External Actor</_Value>
+													<_Value type="a">Actor Usage</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -9855,9 +9564,9 @@ sleep(2);</_bodyData>
 				</Subjects>
 			</IPropertyContainer>
 			</_properties>
-			<_name type="a">ExternalActor</_name>
-			<_modifiedTimeWeak type="a">4.29.2021::16:53:38</_modifiedTimeWeak>
-			<_modifiedTime type="a">4.29.2021::16:53:38</_modifiedTime>
+			<_name type="a">ActorUsage</_name>
+			<_modifiedTimeWeak type="a">4.30.2021::16:31:55</_modifiedTimeWeak>
+			<_modifiedTime type="a">4.30.2021::16:31:55</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -9872,31 +9581,7 @@ sleep(2);</_bodyData>
 			<_properties type="p"><IPropertyContainer type="e">
 				<Subjects type="c">
 					<IRPYRawContainer type="e">
-						<size type="a">2</size>
-						<IPropertySubject type="e">
-							<_Name type="a">Format</_Name>
-							<Metaclasses type="c">
-								<IRPYRawContainer type="e">
-									<size type="a">1</size>
-									<IPropertyMetaclass type="e">
-										<_Name type="a">Object</_Name>
-										<Properties type="c">
-											<IRPYRawContainer type="e">
-												<size type="a">1</size>
-												<IProperty type="e">
-													<_Name type="a">Line.LineColor</_Name>
-													<_Value type="a">128,0,128</_Value>
-													<_Type type="a">Color</_Type>
-												</IProperty>
-												
-											</IRPYRawContainer>
-										</Properties>
-									</IPropertyMetaclass>
-									
-								</IRPYRawContainer>
-							</Metaclasses>
-						</IPropertySubject>
-						
+						<size type="a">1</size>
 						<IPropertySubject type="e">
 							<_Name type="a">Model</_Name>
 							<Metaclasses type="c">
@@ -9921,7 +9606,7 @@ sleep(2);</_bodyData>
 												
 												<IProperty type="e">
 													<_Name type="a">BrowserIcon</_Name>
-													<_Value type="a">FeaturePurple.ico</_Value>
+													<_Value type="a">FeatureBlue.ico</_Value>
 													<_Type type="a">File</_Type>
 												</IProperty>
 												
@@ -9951,8 +9636,8 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SystemFeature</_name>
-			<_modifiedTimeWeak type="a">4.29.2021::16:34:35</_modifiedTimeWeak>
-			<_modifiedTime type="a">4.29.2021::16:34:35</_modifiedTime>
+			<_modifiedTimeWeak type="a">4.30.2021::12:50:47</_modifiedTimeWeak>
+			<_modifiedTime type="a">4.30.2021::12:50:47</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -10040,7 +9725,7 @@ sleep(2);</_bodyData>
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">AddNewMenuStructure</_Name>
-													<_Value type="a">10 Reqts Analysis - Context Diagram Package,11 Reqts Analysis - Actor Package,External Actor,System Context,System Feature,Diagrams/System Context Diagram,Diagrams/Requirements Diagram,%0D
+													<_Value type="a">Diagrams/System Context Diagram,MBSE Element/10 Reqts Analysis - Context Diagram Package,MBSE Element/11 Reqts Analysis - Actor Package,MBSE Element/Actor Usage,MBSE Element/System Context,MBSE Element/System Feature,Diagrams/Requirements Diagram,%0D
 Diagrams/UseCaseDiagram,%0D
 Diagrams/Package Diagram,%0D
 Diagrams/Block Definition Diagram,%0D
@@ -10240,8 +9925,8 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTimeWeak type="a">4.29.2021::16:53:26</_modifiedTimeWeak>
-			<_modifiedTime type="a">4.29.2021::16:53:26</_modifiedTime>
+			<_modifiedTimeWeak type="a">4.30.2021::16:23:18</_modifiedTimeWeak>
+			<_modifiedTime type="a">4.30.2021::16:23:18</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>

@@ -11,10 +11,10 @@
 			<_id type="a">GUID c3e7e210-b993-496d-bb8e-c1dec61ab214</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">NotUsedPkg</_name>
-			<_modifiedTimeWeak type="a">4.29.2021::11:43:5</_modifiedTimeWeak>
-			<_modifiedTime type="a">4.29.2021::11:43:5</_modifiedTime>
-			<_lastID type="a">10002</_lastID>
-			<weakCGTime type="a">4.29.2021::11:43:5</weakCGTime>
+			<_modifiedTimeWeak type="a">4.30.2021::12:51:38</_modifiedTimeWeak>
+			<_modifiedTime type="a">4.30.2021::12:51:38</_modifiedTime>
+			<_lastID type="a">10004</_lastID>
+			<weakCGTime type="a">4.30.2021::12:51:38</weakCGTime>
 			<strongCGTime type="a">4.28.2021::12:24:0</strongCGTime>
 			<_defaultComposite type="s">GUID 870695f4-704a-4952-926d-6c52a4e3ec6c</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -22,6 +22,7 @@
 			<AggregatesList type="e">
 				<value>GUID 5b4ff6d6-95f5-47c0-a5db-d51a388a1e7a</value>
 				<value>GUID 870695f4-704a-4952-926d-6c52a4e3ec6c</value>
+				<value>GUID 47872645-6409-4b99-bd73-c98a5b4fb826</value>
 				<value>GUID 7e66ab49-a321-4c25-a3b1-bbe1dd79700f</value>
 			</AggregatesList>
 		</ISubsystem>
@@ -66,7 +67,7 @@
 					
 						<IHandle type="e">
 							<_hm2Class type="a">IStereotype</_hm2Class>
-							<_hfilename type="a">.\ExecutableMBSEProfile.sbs</_hfilename>
+							<_hfilename type="a">.\ExecutableMBSEProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">ExecutableMBSEProfile::ContextDiagran</_hsubsystem>
 							<_hname type="a">System Flow</_hname>
 							<_hid type="a">GUID 649d5b76-e7af-497d-ab81-8bf9ea364dd3</_hid>
@@ -100,7 +101,7 @@
 					
 						<IHandle type="e">
 							<_hm2Class type="a">IStereotype</_hm2Class>
-							<_hfilename type="a">.\ExecutableMBSEProfile.sbs</_hfilename>
+							<_hfilename type="a">.\ExecutableMBSEProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">ExecutableMBSEProfile::ContextDiagran</_hsubsystem>
 							<_hname type="a">System Flow</_hname>
 							<_hid type="a">GUID 649d5b76-e7af-497d-ab81-8bf9ea364dd3</_hid>
@@ -134,7 +135,7 @@
 					
 						<IHandle type="e">
 							<_hm2Class type="a">IStereotype</_hm2Class>
-							<_hfilename type="a">.\ExecutableMBSEProfile.sbs</_hfilename>
+							<_hfilename type="a">.\ExecutableMBSEProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">ExecutableMBSEProfile::ContextDiagran</_hsubsystem>
 							<_hname type="a">System Flow</_hname>
 							<_hid type="a">GUID 649d5b76-e7af-497d-ab81-8bf9ea364dd3</_hid>
@@ -186,9 +187,9 @@
 					
 						<IHandle type="e">
 							<_hm2Class type="a">IStereotype</_hm2Class>
-							<_hfilename type="a">.\ExecutableMBSEProfile.sbs</_hfilename>
+							<_hfilename type="a">.\ExecutableMBSEProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">ExecutableMBSEProfile::ContextDiagran</_hsubsystem>
-							<_hname type="a">System Context</_hname>
+							<_hname type="a">SystemContext</_hname>
 							<_hid type="a">GUID 95f558eb-1f1f-4947-8fad-ac72d8dba531</_hid>
 						</IHandle>
 					
@@ -234,9 +235,9 @@
 						
 							<IHandle type="e">
 								<_hm2Class type="a">IStereotype</_hm2Class>
-								<_hfilename type="a">.\ExecutableMBSEProfile.sbs</_hfilename>
+								<_hfilename type="a">.\ExecutableMBSEProfile.sbsx</_hfilename>
 								<_hsubsystem type="a">ExecutableMBSEProfile::ContextDiagran</_hsubsystem>
-								<_hname type="a">System Feature</_hname>
+								<_hname type="a">SystemFeature</_hname>
 								<_hid type="a">GUID cdb14785-e3f1-4f68-be0d-9a246d7d7f77</_hid>
 							</IHandle>
 						
@@ -283,9 +284,9 @@
 					
 						<IHandle type="e">
 							<_hm2Class type="a">IStereotype</_hm2Class>
-							<_hfilename type="a">.\ExecutableMBSEProfile.sbs</_hfilename>
+							<_hfilename type="a">.\ExecutableMBSEProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">ExecutableMBSEProfile::ContextDiagran</_hsubsystem>
-							<_hname type="a">External Actor</_hname>
+							<_hname type="a">ExternalActor</_hname>
 							<_hid type="a">GUID 1594c9e3-a1ea-41cf-bfcb-b15264d9eea0</_hid>
 						</IHandle>
 					
@@ -305,6 +306,34 @@
 				</IHandle>
 			</_inverse>
 		</IPart>
+		<IClass type="e">
+			<_id type="a">GUID 47872645-6409-4b99-bd73-c98a5b4fb826</_id>
+			<_myState type="a">10240</_myState>
+			<_name type="a">block_10003</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysML\SysMLProfile_rpy\SysML.sbs</_hfilename>
+							<_hsubsystem type="a">SysML::Blocks</_hsubsystem>
+							<_hname type="a">Block</_hname>
+							<_hid type="a">GUID f685432f-691e-4ff1-be70-4d09d19457e1</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">4.30.2021::12:51:52</_modifiedTimeWeak>
+			<_modifiedTime type="a">4.30.2021::12:51:52</_modifiedTime>
+			<weakCGTime type="a">4.30.2021::12:51:52</weakCGTime>
+			<strongCGTime type="a">4.30.2021::12:51:52</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
 		<IActor type="e">
 			<_id type="a">GUID 7e66ab49-a321-4c25-a3b1-bbe1dd79700f</_id>
 			<_myState type="a">10240</_myState>

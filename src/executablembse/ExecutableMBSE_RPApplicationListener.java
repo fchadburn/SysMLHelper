@@ -112,6 +112,18 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 					afterAddForCallOperation( 
 							(IRPCallOperation) modelElement );
+
+				} else if( modelElement != null && 
+						modelElement instanceof IRPInstance && 
+						GeneralHelpers.hasStereotypeCalled( "ActorUsage", modelElement )){
+
+					afterAddForActorUsage( (IRPInstance) modelElement );
+					
+				} else if( modelElement != null && 
+						modelElement instanceof IRPFlow ){
+					
+					afterAddForFlow( 
+							(IRPFlow) modelElement );
 				}
 			}
 		} catch( Exception e ){
@@ -228,6 +240,46 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		}
 	}
 
+	@SuppressWarnings("unchecked")
+	private void afterAddForActorUsage(
+			IRPInstance modelElement ){
+
+		IRPPackage theOwningPackage = getOwningPackageFor( modelElement );
+		
+		List<IRPModelElement> existingActors = new ArrayList<>();
+		
+		if( theOwningPackage != null ){
+			existingActors.addAll( theOwningPackage.getNestedElementsByMetaClass( "Actor", 0 ).toList() );
+		
+			List<IRPDependency> theDependencies = theOwningPackage.getDependencies().toList();
+			
+			for (IRPDependency theDependency : theDependencies) {
+				
+				IRPModelElement theDependsOn = theDependency.getDependsOn();
+				
+				Logger.writeLine( "theDependsOn is " +  Logger.elementInfo(  theDependsOn ) );
+				if( theDependsOn instanceof IRPPackage &&
+						GeneralHelpers.hasStereotypeCalled( "ActorPackage", theDependsOn ) ){
+					
+					existingActors.addAll( theDependsOn.getNestedElementsByMetaClass( "Actor", 0 ).toList() );
+				}
+			}
+		}
+		
+		if( !existingActors.isEmpty() ){
+			
+			IRPModelElement theSelectedActor =
+					UserInterfaceHelpers.launchDialogToSelectElement( existingActors, "Select existing actor", true );
+			
+			if( theSelectedActor instanceof IRPClassifier ){
+				Logger.writeLine( "theSelectedActor is " + Logger.elementInfo( theSelectedActor ) );				
+				modelElement.setOtherClass( (IRPClassifier) theSelectedActor );
+			}
+		}
+		
+		Logger.writeLine("Got here");
+	}
+	
 	private void afterAddForRequirement(
 			IRPModelElement modelElement ){
 
@@ -240,6 +292,47 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			RequirementMover theElementMover = new RequirementMover( modelElement );
 			theElementMover.performMove();
 		}
+	}
+	
+	private void afterAddForFlow(
+			IRPFlow modelElement ){
+
+		IRPPackage theOwningPkg = getOwningPackageFor( modelElement );
+				
+		if( theOwningPkg != null &&
+				!modelElement.getOwner().equals( theOwningPkg ) ){
+			
+			// only do move if property is set
+			Logger.warning( "Moving " + Logger.elementInfo( modelElement ) + 
+					" owned by " + Logger.elementInfo( modelElement.getOwner() ) + 
+					" to " + Logger.elementInfo( theOwningPkg ) );
+			
+			modelElement.setOwner( theOwningPkg );
+		}
+		
+		CreateEventForFlow.launchThePanel();
+	}
+	
+	private IRPPackage getOwningPackageFor(
+			IRPModelElement theElement ){
+
+		IRPPackage theOwningPackage = null;
+
+		if( theElement == null ){
+
+			Logger.warning( "getOwningPackage for was invoked for a null element" );
+
+		} else if( theElement instanceof IRPPackage ){
+			theOwningPackage = (RPPackage)theElement;
+
+		} else if( theElement instanceof IRPProject ){
+			Logger.warning( "Unable to find an owning package for " + theElement.getFullPathNameIn() + " as I reached project" );
+
+		} else {
+			theOwningPackage = getOwningPackageFor( theElement.getOwner() );
+		}
+
+		return theOwningPackage;
 	}
 	
 	@Override

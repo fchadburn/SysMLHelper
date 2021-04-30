@@ -51,9 +51,7 @@ public class SelectedElementContext {
 		_selectedGraphEls = _rhpApp.getSelectedGraphElements().toList();
 		_selectedEl = _rhpApp.getSelectedElement();
 		_contextEl = getContextEl();
-		_buildingBlock = getBuildingBlock();
 		_sourceGraphElDiagram = getSourceDiagram();
-		_selectedReqts = getSelectedReqts();
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -91,6 +89,33 @@ public class SelectedElementContext {
 		}
 		
 		return theGraphEl;
+	}
+	
+	private IRPPackage getOwningPackageFor(
+			IRPModelElement theElement ){
+
+		IRPPackage theOwningPackage = null;
+
+		if( theElement == null ){
+
+			Logger.warning( "getOwningPackage for was invoked for a null element" );
+
+		} else if( theElement instanceof IRPPackage ){
+			theOwningPackage = (RPPackage)theElement;
+
+		} else if( theElement instanceof IRPProject ){
+			Logger.warning( "Unable to find an owning package for " + theElement.getFullPathNameIn() + " as I reached project" );
+
+		} else {
+			theOwningPackage = getOwningPackageFor( theElement.getOwner() );
+		}
+
+		return theOwningPackage;
+	}
+	
+	public IRPPackage getPackageForSelectedEl(){
+		
+		return getOwningPackageFor( _selectedEl );
 	}
 	
 	public IRPClass getChosenBlock(){
