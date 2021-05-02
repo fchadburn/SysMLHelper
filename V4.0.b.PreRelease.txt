@@ -395,3 +395,4 @@ ExecutableMBSEProfile:
 #269 29-APR-2021: Initial work on a system context diagram and association DSL package structure (F.J.Chadburn)
 #270 29-APR-2021: Adaptation of Actor Packages to accept rendering of properties using the Metamodeling Profile (F.J.Chadburn)
 #271 30-APR-2021: Refinement of context diagram with some automation to enable actor and event selection (F.J.Chadburn)
+#272 02-MAY-2021: Adaptation of Requirement and Use Case Packages to render properties using Metamodeling Profile (F.J.Chadburn)
