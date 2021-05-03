@@ -55,7 +55,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 				"ExecutableMBSE_MessagesBundle" );
 
 		final String legalNotice = 
-				"Copyright (C) 2015-2020  MBSE Training and Consulting Limited (www.executablembse.com)"
+				"Copyright (C) 2015-2021  MBSE Training and Consulting Limited (www.executablembse.com)"
 						+ "\n"
 						+ "SysMLHelperPlugin is free software: you can redistribute it and/or modify "
 						+ "it under the terms of the GNU General Public License as published by "

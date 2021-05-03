@@ -131,9 +131,7 @@ public class CreateEventForFlow extends CreateStructuralElementPanel {
 		String theChosenName = _nameTextField.getText();
 		
 		boolean isLegalBlockName = GeneralHelpers.isLegalName( theChosenName, _eventCreationPackage );
-			
-		Logger.info( "Got here!" + isLegalBlockName );
-		
+					
 		if (!isLegalBlockName){
 				
 			errorMsg += theChosenName + " is not legal as an identifier representing an executable Actor\n";				
@@ -173,12 +171,11 @@ public class CreateEventForFlow extends CreateStructuralElementPanel {
 					
 					String theChosenName = _nameTextField.getText();
 					
-					Logger.writeLine( "Attempting to add event with " + theChosenName );
+					Logger.writeLine( "Creating event with name " + theChosenName + 
+							" under " + Logger.elementInfo( _eventCreationPackage ) );
 					
 					IRPEvent theEvent = (IRPEvent) _eventCreationPackage.addNewAggr( "Event", theChosenName );
-					
-					Logger.writeLine( "That seemed to work" );
-					
+										
 					_flow.addConveyed( theEvent );
 
 					theEvent.highLightElement();

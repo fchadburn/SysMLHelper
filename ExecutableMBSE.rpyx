@@ -13,7 +13,31 @@
 			<_properties type="p"><IPropertyContainer type="e">
 				<Subjects type="c">
 					<IRPYRawContainer type="e">
-						<size type="a">3</size>
+						<size type="a">8</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Activity</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">General</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">AutoSelectControlOrObjectFlow</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
 						<IPropertySubject type="e">
 							<_Name type="a">Browser</_Name>
 							<Metaclasses type="c">
@@ -23,11 +47,126 @@
 										<_Name type="a">Settings</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">1</size>
+												<size type="a">2</size>
 												<IProperty type="e">
 													<_Name type="a">ShowOrder</_Name>
 													<_Value type="a">True</_Value>
 													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ShowPredefinedPackage</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+						<IPropertySubject type="e">
+							<_Name type="a">CG</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">General</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">IncrementalCodeGenAcrossSession</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+						<IPropertySubject type="e">
+							<_Name type="a">CPP_CG</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">2</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Configuration</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">Environment</_Name>
+													<_Value type="a">Cygwin</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">MSVC,MSVCDLL,MSVCStandardLibrary,VxWorks,VxWorks6diab,VxWorks6gnu,VxWorks6diab_RTP,VxWorks6gnu_RTP,Solaris2,Cygwin,MicrosoftWinCE600,OseSfk,Linux,Solaris2GNU,QNXNeutrinoGCC, QNXNeutrinoMomentics,NucleusPLUS-PPC,WorkbenchManaged,WorkbenchManaged653,WorkbenchManaged_RTP</_ExtraTypeInfo>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Cygwin</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">CPU</_Name>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+						<IPropertySubject type="e">
+							<_Name type="a">ConfigurationManagement</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">RationalTeamConcert</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">4</size>
+												<IProperty type="e">
+													<_Name type="a">DeleteActivation</_Name>
+													<_Value type="a">Automatic</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">Disable,UserConfirmation,Automatic</_ExtraTypeInfo>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">MoveActivation</_Name>
+													<_Value type="a">Automatic</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">Disable,UserConfirmation,Automatic</_ExtraTypeInfo>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">RenameActivation</_Name>
+													<_Value type="a">Automatic</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">Disable,UserConfirmation,Automatic</_ExtraTypeInfo>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">StoreInSeparateDirectoryActivation</_Name>
+													<_Value type="a">Automatic</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">Disable,UserConfirmation,Automatic</_ExtraTypeInfo>
 												</IProperty>
 												
 											</IRPYRawContainer>
@@ -42,12 +181,82 @@
 							<_Name type="a">General</_Name>
 							<Metaclasses type="c">
 								<IRPYRawContainer type="e">
-									<size type="a">1</size>
+									<size type="a">2</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Graphics</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">SmartRouting</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
 									<IPropertyMetaclass type="e">
 										<_Name type="a">Model</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">3</size>
+												<size type="a">16</size>
+												<IProperty type="e">
+													<_Name type="a">AddNewMenuStructureContent</_Name>
+													<_Value type="a">Diagrams/System Context Diagram,MBSE Element/10 Reqts Analysis - Context Diagram Package,MBSE Element/11 Reqts Analysis - Actor Package,MBSE Element/12 Reqts Analysis - Use Case Package,MBSE Element/13 Reqts Analysis - Requirement Package,MBSE Element/Actor Usage,MBSE Element/Enhanced Use Case Diagram,MBSE Element/System Context,MBSE Element/System Feature,Diagrams/Requirements Diagram,Diagrams/UseCaseDiagram,Diagrams/Package Diagram,Diagrams/Block Definition Diagram,Diagrams/Internal Block Diagram,Diagrams/Parametric Diagram,Diagrams/SequenceDiagram,Diagrams/rpy_separator,Diagrams/Statechart,Diagrams/ActivityDiagram,Diagrams/PanelDiagram,Diagrams/TimingDiagram,Diagrams/rpy_separator,Diagrams/Diagram View,General Elements/Comment,General Elements/Constraint,General Elements/Package,General Elements/Problem,General Elements/Rationale,General Elements/View,General Elements/Viewpoint,General Elements/CustomView,General Elements/rpy_separator,General Elements/Conform,General Elements/Dependency,General Elements/Refinement,General Elements/Realization,Blocks/Block,Blocks/Part,Blocks/Interface,Blocks/Event,Blocks/ChangeStructuralFeatureEvent,Blocks/rpy_separator,Blocks/DataType,Blocks/ValueType,Blocks/Unit,Blocks/Dimension,Blocks/rpy_separator,Blocks/ValueProperty,Blocks/Operation,Blocks/Reception,Blocks/TriggeredOperation,Blocks/Constructor,Blocks/Destructor,Blocks/rpy_separator,Blocks/AssociationEnd,Blocks/BindingConnector,Blocks/Generalization,Blocks/InstanceSpecification,Ports and Flows/Port,Ports and Flows/FlowPort,Ports and Flows/rpy_separator,Ports and Flows/InterfaceBlock,Ports and Flows/FullPort,Ports and Flows/ProxyPort,Ports and Flows/rpy_separator,Ports and Flows/FlowSpecification,Ports and Flows/FlowProperty,Ports and Flows/FlowItem,Ports and Flows/Flow,Requirements/Requirement,Requirements/RequirementsTable,Requirements/Remote Requirements Table,Requirements/Requirements Coverage Table,Requirements/Derivation,Requirements/Satisfaction,Requirements/TestCase,Requirements/Validation,Requirements/Derive Requirement,Use Cases/UseCase,Use Cases/Actor,Constraint Blocks/ConstraintBlock,Constraint Blocks/ConstraintProperty,Constraint Blocks/ConstraintParameter,Allocations/Allocation,Allocations/AllocationsTable,Extensions/Profile,Extensions/Stereotype,Extensions/Tag,Extensions/rpy_separator,Extensions/Component,Extensions/Configuration,Extensions/File,Extensions/ControlledFile,Extensions/HyperLink,Views and Layouts/TableLayout,Views and Layouts/TableView,Views and Layouts/MatrixLayout,Views and Layouts/MatrixView,Views and Layouts/Metrics Layout,Views and Layouts/Metrics View,Views and Layouts/CSVImporter,Views and Layouts/ExtendedTableLayout,Views and Layouts/ExtendedTableView,General Elements/TestObjective,TestingProfile/TestPackage,TestingProfile/TestRequirementMatrix,TestingProfile/TestResultTable,TestingProfile/TestCase,TestingProfile/TestContext,TestingProfile/SUT,TestingProfile/TestComponent,TestingProfile/TestActor,TestingProfile/TestComponentInstance/,TestingProfile/TestConfiguration,TestingProfile/TestContext Diagram,TestingProfile/TestObjective,TestingProfile/TestScenario,TestingProfile/ScenarioRequirementFull,TestingProfile/ScenarioRequirementPartial,TestingProfile/ScenarioRequirementTable,TestingProfile/SDMapping,TestingProfile/SDMappingsTable,TestingProfile/SDInstanceRealizationMapPair,TestingProfile/SDInstanceRealizationMerge,TestingProfile/SDInstanceRealizationMergeOrigin,TestingProfile/SDInstanceRealizationSplit,TestingProfile/SDInstanceRealizationSplitTarget,DDS/dataReader,DDS/dataWriter,DDS/deadlineQosPolicy,DDS/domainParticipant,DDS/doQosPolicy,DDS/dsQosPolicy,DDS/durabilityQosPolicy,DDS/efQosPolicy,DDS/gdQosPolicy,DDS/historyQosPolicy,DDS/key,DDS/lbQosPolicy,DDS/lifespanQosPolicy,DDS/livelinessQosPolicy,DDS/osQosPolicy,DDS/ownershipQosPolicy,DDS/partitionQosPolicy,DDS/presentationQosPolicy,DDS/publisher,DDS/rdlQosPolicy,DDS/reliabilityQoSPolicy,DDS/rlQosPolicy,DDS/subscriber,DDS/tbfQosPolicy,DDS/tdQoSPolicy,DDS/topic,DDS/topicStruct,DDS/tpQosPolicy,DDS/udQosPolicy,DDS/wdlQosPolicy,DDS/ddsDiagram,DDS/guardCondition,DDS/guardConditionLink,DDS/idlType,DDS/listener,DDS/qualityOfService,DDS/queryCondition,DDS/readCondition,DDS/statusCondition,DDS/waitSet,rpy_separator,Query</_Value>
+													<_Type type="a">MultiLine</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">AutoSaveInterval</_Name>
+													<_Value type="a">5</_Value>
+													<_Type type="a">Int</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">BackUps</_Name>
+													<_Value type="a">None</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">None,One,Two</_ExtraTypeInfo>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">BlockIsSavedUnit</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ClassIsSavedUnit</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ComponentIsSavedUnit</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">DiagramIsSavedUnit</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">FileIsSavedUnit</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">HighlightElementsInActiveComponentScope</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
 												<IProperty type="e">
 													<_Name type="a">NamesRegExp</_Name>
 													<_Value type="a">^(.*)$</_Value>
@@ -55,9 +264,35 @@
 												</IProperty>
 												
 												<IProperty type="e">
+													<_Name type="a">ObjectIsSavedUnit</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">PackageIsSavedUnit</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ReferenceUnitPath</_Name>
+													<_Value type="a">Absolute</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">Absolute, Relative</_ExtraTypeInfo>
+												</IProperty>
+												
+												<IProperty type="e">
 													<_Name type="a">RenameUnusedFiles</_Name>
 													<_Value type="a">True</_Value>
 													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ShowModelTooltipInGE</_Name>
+													<_Value type="a">Simple</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">Enhanced,Simple</_ExtraTypeInfo>
 												</IProperty>
 												
 												<IProperty type="e">
@@ -98,13 +333,58 @@
 							</Metaclasses>
 						</IPropertySubject>
 						
+						<IPropertySubject type="e">
+							<_Name type="a">TestConductor</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Settings</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">2</size>
+												<IProperty type="e">
+													<_Name type="a">CreateTestArchitectureTransparency</_Name>
+													<_Value type="a">GreyBox</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">BlackBox,GreyBox</_ExtraTypeInfo>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">OverwriteTestContextDiagram</_Name>
+													<_Value type="a">Always</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">Never,Always,AskUser</_ExtraTypeInfo>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
 					</IRPYRawContainer>
 				</Subjects>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSE</_name>
-			<_modifiedTime type="a">5.3.2021::15:54:48</_modifiedTime>
-			<_lastID type="a">10039</_lastID>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hsubsystem type="a">ExecutableMBSEProfile</_hsubsystem>
+							<_hname type="a">ExecutableMBSE</_hname>
+							<_hid type="a">GUID 5df2b3b3-e0d0-4595-a39f-c823d2925305</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">5.3.2021::17:7:19</_modifiedTime>
+			<_lastID type="a">10040</_lastID>
 			<_UserColors type="w">
 				<IRPYRawContainer type="e">
 					<size type="a">16</size>

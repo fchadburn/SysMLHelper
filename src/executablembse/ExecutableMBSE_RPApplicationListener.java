@@ -118,10 +118,10 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 						GeneralHelpers.hasStereotypeCalled( "ActorUsage", modelElement )){
 
 					afterAddForActorUsage( (IRPInstance) modelElement );
-					
+
 				} else if( modelElement != null && 
 						modelElement instanceof IRPFlow ){
-					
+
 					afterAddForFlow( 
 							(IRPFlow) modelElement );
 				}
@@ -245,38 +245,38 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			IRPInstance modelElement ){
 
 		IRPPackage theOwningPackage = getOwningPackageFor( modelElement );
-		
+
 		List<IRPModelElement> existingActors = new ArrayList<>();
-		
+
 		if( theOwningPackage != null ){
 			existingActors.addAll( theOwningPackage.getNestedElementsByMetaClass( "Actor", 0 ).toList() );
-		
+
 			List<IRPDependency> theDependencies = theOwningPackage.getDependencies().toList();
-			
+
 			for (IRPDependency theDependency : theDependencies) {
-				
+
 				IRPModelElement theDependsOn = theDependency.getDependsOn();
-				
+
 				if( theDependsOn instanceof IRPPackage &&
 						GeneralHelpers.hasStereotypeCalled( "ActorPackage", theDependsOn ) ){
-					
+
 					existingActors.addAll( theDependsOn.getNestedElementsByMetaClass( "Actor", 0 ).toList() );
 				}
 			}
 		}
-		
+
 		if( !existingActors.isEmpty() ){
-			
+
 			IRPModelElement theSelectedActor =
 					UserInterfaceHelpers.launchDialogToSelectElement( 
 							existingActors, "Select existing actor", true );
-			
+
 			if( theSelectedActor instanceof IRPClassifier ){
 				modelElement.setOtherClass( (IRPClassifier) theSelectedActor );
 			}
 		}		
 	}
-	
+
 	private void afterAddForRequirement(
 			IRPModelElement modelElement ){
 
@@ -290,26 +290,28 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			theElementMover.performMove();
 		}
 	}
-	
+
 	private void afterAddForFlow(
 			IRPFlow modelElement ){
 
 		IRPPackage theOwningPkg = getOwningPackageFor( modelElement );
-				
+
 		if( theOwningPkg != null &&
 				!modelElement.getOwner().equals( theOwningPkg ) ){
-			
-			// only do move if property is set
-			Logger.warning( "Moving " + Logger.elementInfo( modelElement ) + 
-					" owned by " + Logger.elementInfo( modelElement.getOwner() ) + 
-					" to " + Logger.elementInfo( theOwningPkg ) );
-			
-			modelElement.setOwner( theOwningPkg );
+
+			try {
+				modelElement.setOwner( theOwningPkg );	
+
+			} catch( Exception e ){
+				Logger.warning( "Exception in afterAddForFlow trying to move " + Logger.elementInfo( modelElement ) + 
+						" owned by " + Logger.elementInfo( modelElement.getOwner() ) + 
+						" to " + Logger.elementInfo( theOwningPkg ) );
+			}
 		}
-		
+
 		CreateEventForFlow.launchThePanel();
 	}
-	
+
 	private IRPPackage getOwningPackageFor(
 			IRPModelElement theElement ){
 
@@ -331,7 +333,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 		return theOwningPackage;
 	}
-	
+
 	@Override
 	public boolean afterProjectClose(
 			String bstrProjectName ){
@@ -345,7 +347,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		boolean theReturn = false;
 
 		try {	
-			
+
 			List<IRPModelElement> optionsList = null;
 
 			if( pModelElement instanceof IRPCallOperation ){
@@ -579,10 +581,10 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 		List<IRPModelElement> optionsList = new ArrayList<IRPModelElement>();
 		optionsList.addAll( allDiagrams );
-		
+
 		return optionsList;
 	}
-	
+
 	@Override
 	protected void finalize() throws Throwable {
 		super.finalize();

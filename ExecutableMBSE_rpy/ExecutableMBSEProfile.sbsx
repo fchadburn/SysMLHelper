@@ -1658,14 +1658,10 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTimeWeak type="a">5.3.2021::7:19:54</_modifiedTimeWeak>
-			<_modifiedTime type="a">5.3.2021::7:19:54</_modifiedTime>
+			<_modifiedTime type="a">5.3.2021::17:13:8</_modifiedTime>
 			<_lastID type="a">16</_lastID>
-			<weakCGTime type="a">5.3.2021::7:19:54</weakCGTime>
-			<strongCGTime type="a">1.9.2019::13:0:4</strongCGTime>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
-			<_configurationRelatedTime type="a">10.13.2018::12:33:6</_configurationRelatedTime>
 			<AggregatesList type="e">
 				<value>GUID 5ce37347-7f97-4234-a1ad-2c1e2d01010c</value>
 				<value>GUID 7894c636-fa0b-47e1-b434-db37ee53e4e5</value>
@@ -1735,7 +1731,6 @@
 		<IEmbededFile type="e">
 			<_id type="a">GUID 5ce37347-7f97-4234-a1ad-2c1e2d01010c</_id>
 			<_name type="a">FeaturePurple.ico</_name>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
 			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\FeaturePurple.ico</_LastKnownFullPath>
@@ -1743,7 +1738,6 @@
 		<IEmbededFile type="e">
 			<_id type="a">GUID 7894c636-fa0b-47e1-b434-db37ee53e4e5</_id>
 			<_name type="a">FeaturesPurple.ico</_name>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
 			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\FeaturesPurple.ico</_LastKnownFullPath>
@@ -1752,13 +1746,9 @@
 			<_id type="a">GUID f825da1e-3d3d-409d-927a-c62820d97e7c</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Templates</_name>
-			<_modifiedTimeWeak type="a">10.13.2018::12:29:22</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.13.2018::12:29:22</_modifiedTime>
-			<weakCGTime type="a">10.13.2018::12:29:22</weakCGTime>
-			<strongCGTime type="a">5.27.2018::19:14:16</strongCGTime>
 			<_defaultComposite type="s">GUID fa08a209-d10e-4b0d-bee3-3c7ebad1e988</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
-			<_configurationRelatedTime type="a">1.2.1990::0:0:0</_configurationRelatedTime>
 			<AggregatesList type="e">
 				<value>GUID fa08a209-d10e-4b0d-bee3-3c7ebad1e988</value>
 				<value>GUID 52e4f427-425b-40c0-a33d-31247a3a4dd8</value>
@@ -1769,10 +1759,7 @@
 			<_id type="a">GUID fa08a209-d10e-4b0d-bee3-3c7ebad1e988</_id>
 			<_myState type="a">40960</_myState>
 			<_name type="a">TopLevel</_name>
-			<_modifiedTimeWeak type="a">5.28.2018::8:2:2</_modifiedTimeWeak>
 			<_modifiedTime type="a">5.28.2018::8:2:2</_modifiedTime>
-			<weakCGTime type="a">5.28.2018::8:2:2</weakCGTime>
-			<strongCGTime type="a">5.27.2018::19:14:16</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IActivityGraph</_hm2Class>
@@ -1800,11 +1787,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">5.3.2018::19:13:57</_modifiedTimeWeak>
 			<_modifiedTime type="a">5.3.2018::19:13:57</_modifiedTime>
 			<_lastID type="a">4</_lastID>
-			<weakCGTime type="a">5.3.2018::19:13:57</weakCGTime>
-			<strongCGTime type="a">5.3.2018::19:13:57</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -1828,7 +1812,6 @@
 			<_id type="a">GUID 93bf6c20-2579-49e2-b41b-e13543da773e</_id>
 			<_myState type="a">2048</_myState>
 			<_name type="a">defaulttransition_1</_name>
-			<_modifiedTimeWeak type="a">1.31.2016::15:28:35</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.31.2016::15:28:35</_modifiedTime>
 			<_itsTarget type="s">GUID 24b57ccd-684d-4623-8cd8-da9ca52ec6b6</_itsTarget>
 			<_staticReaction type="a">0</_staticReaction>
@@ -1840,7 +1823,6 @@
 		</IDefaultDrvdTrans>
 		<ILabel type="e">
 			<_id type="a">GUID 44244cd7-a673-4def-8b66-12988cfd1d93</_id>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_itsTrigger>NULL</_itsTrigger>
 			<_itsGuard>NULL</_itsGuard>
@@ -1863,7 +1845,6 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">1.31.2016::15:28:45</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.31.2016::15:28:45</_modifiedTime>
 			<_itsTarget type="s">GUID fd0cde4d-83c5-4a76-8bf6-12ca5c81c098</_itsTarget>
 			<_staticReaction type="a">0</_staticReaction>
@@ -1874,7 +1855,6 @@
 		</ITransition>
 		<ILabel type="e">
 			<_id type="a">GUID 9d3cf041-caaa-4214-8ec3-54791ca2562e</_id>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_itsTrigger>NULL</_itsTrigger>
 			<_itsGuard>NULL</_itsGuard>
@@ -1882,7 +1862,6 @@
 		</ILabel>
 		<IState type="e">
 			<_id type="a">GUID d47302ba-dc1e-44c0-a5e6-4c62d817693c</_id>
-			<_modifiedTimeWeak type="a">10.3.2017::13:55:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.3.2017::13:55:0</_modifiedTime>
 			<_parent type="s"></_parent>
 			<_defaultTrans type="s">GUID 93bf6c20-2579-49e2-b41b-e13543da773e</_defaultTrans>
@@ -1906,7 +1885,6 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">10.3.2017::13:55:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.3.2017::13:55:0</_modifiedTime>
 			<_lastID type="a">2</_lastID>
 			<_body type="a">&lt;type any pre-conditions else delete from model&gt;</_body>
@@ -1918,7 +1896,6 @@
 			<_id type="a">GUID 6def52f0-010f-43ce-9cd5-dd297dddf8e7</_id>
 			<_myState type="a">2048</_myState>
 			<_name type="a">anchor_1</_name>
-			<_modifiedTimeWeak type="a">1.31.2016::15:29:9</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.31.2016::15:29:9</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -1942,7 +1919,6 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">10.3.2017::13:55:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.3.2017::13:55:0</_modifiedTime>
 			<_lastID type="a">2</_lastID>
 			<_body type="a">&lt;type any post-conditions else delete from model&gt;</_body>
@@ -1954,7 +1930,6 @@
 			<_id type="a">GUID 335af847-4ca0-4845-a24c-0aa8aab021f2</_id>
 			<_myState type="a">2048</_myState>
 			<_name type="a">anchor_1</_name>
-			<_modifiedTimeWeak type="a">1.31.2016::15:31:19</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.31.2016::15:31:19</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -1966,7 +1941,6 @@
 		<IAcceptEventAction type="e">
 			<_id type="a">GUID 24b57ccd-684d-4623-8cd8-da9ca52ec6b6</_id>
 			<_name type="a">&lt;Type text-based Use Case Trigger&gt;</_name>
-			<_modifiedTimeWeak type="a">7.17.2016::8:43:59</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.17.2016::8:43:59</_modifiedTime>
 			<_parent type="s">GUID d47302ba-dc1e-44c0-a5e6-4c62d817693c</_parent>
 			<_stateType type="a">AcceptEventAction</_stateType>
@@ -1976,7 +1950,6 @@
 			<_id type="a">GUID fd0cde4d-83c5-4a76-8bf6-12ca5c81c098</_id>
 			<_myState type="a">2048</_myState>
 			<_name type="a">action_0</_name>
-			<_modifiedTimeWeak type="a">1.31.2016::21:4:13</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.31.2016::21:4:13</_modifiedTime>
 			<_parent type="s">GUID d47302ba-dc1e-44c0-a5e6-4c62d817693c</_parent>
 			<_stateType type="a">Action</_stateType>
@@ -1999,7 +1972,6 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">1.31.2016::15:30:52</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.31.2016::15:30:52</_modifiedTime>
 			<_parent type="s">GUID d47302ba-dc1e-44c0-a5e6-4c62d817693c</_parent>
 			<_stateType type="a">LocalTermination</_stateType>
@@ -2389,7 +2361,6 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">activitydiagram_0</_name>
-			<_modifiedTimeWeak type="a">5.3.2018::19:13:57</_modifiedTimeWeak>
 			<_modifiedTime type="a">5.3.2018::19:13:57</_modifiedTime>
 			<_lastModifiedTime type="a">5.3.2018::19:13:57</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
@@ -3516,11 +3487,8 @@ Tips:\par%0D
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">5.28.2018::8:2:2</_modifiedTimeWeak>
 			<_modifiedTime type="a">5.28.2018::8:2:2</_modifiedTime>
 			<_lastID type="a">4</_lastID>
-			<weakCGTime type="a">5.28.2018::8:2:2</weakCGTime>
-			<strongCGTime type="a">5.27.2018::19:14:16</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -3538,7 +3506,6 @@ Tips:\par%0D
 		</IActivityGraph>
 		<IState type="e">
 			<_id type="a">GUID 50c6b067-76de-44ff-92b4-70d482746106</_id>
-			<_modifiedTimeWeak type="a">5.28.2018::8:2:2</_modifiedTimeWeak>
 			<_modifiedTime type="a">5.28.2018::8:2:2</_modifiedTime>
 			<_parent type="s"></_parent>
 			<_defaultTrans type="s"></_defaultTrans>
@@ -3562,7 +3529,6 @@ Tips:\par%0D
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">5.28.2018::8:2:2</_modifiedTimeWeak>
 			<_modifiedTime type="a">5.28.2018::8:2:2</_modifiedTime>
 			<_lastID type="a">2</_lastID>
 			<_body type="a">&lt;type any pre-conditions else delete from model&gt;</_body>
@@ -3582,7 +3548,6 @@ Tips:\par%0D
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">10.3.2017::13:55:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.3.2017::13:55:0</_modifiedTime>
 			<_lastID type="a">2</_lastID>
 			<_body type="a">&lt;type any post-conditions else delete from model&gt;</_body>
@@ -3594,7 +3559,6 @@ Tips:\par%0D
 			<_id type="a">GUID f8ed36f2-ffe7-425c-8494-8183f3e462f3</_id>
 			<_myState type="a">2048</_myState>
 			<_name type="a">anchor_1</_name>
-			<_modifiedTimeWeak type="a">1.31.2016::15:31:19</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.31.2016::15:31:19</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -3620,7 +3584,6 @@ Tips:\par%0D
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">1.31.2016::15:30:52</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.31.2016::15:30:52</_modifiedTime>
 			<_parent type="s">GUID 50c6b067-76de-44ff-92b4-70d482746106</_parent>
 			<_stateType type="a">LocalTermination</_stateType>
@@ -4010,7 +3973,6 @@ Tips:\par%0D
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">activitydiagram_0</_name>
-			<_modifiedTimeWeak type="a">5.28.2018::8:1:59</_modifiedTimeWeak>
 			<_modifiedTime type="a">5.28.2018::8:1:59</_modifiedTime>
 			<_lastModifiedTime type="a">5.28.2018::8:2:6</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
@@ -4541,11 +4503,8 @@ Tips:\par%0D
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">6.8.2018::17:1:4</_modifiedTimeWeak>
 			<_modifiedTime type="a">6.8.2018::17:1:4</_modifiedTime>
 			<_lastID type="a">3</_lastID>
-			<weakCGTime type="a">6.8.2018::17:1:4</weakCGTime>
-			<strongCGTime type="a">5.24.2018::19:14:59</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IStateChart</_hm2Class>
@@ -4577,7 +4536,6 @@ Tips:\par%0D
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">8.22.2016::9:55:18</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.22.2016::9:55:18</_modifiedTime>
 			<_multiplicity type="a">1</_multiplicity>
 			<_otherClass type="r">
@@ -4597,7 +4555,6 @@ Tips:\par%0D
 		<IReception type="e">
 			<_id type="a">GUID 31ee283f-fc6e-4459-8221-192785c54948</_id>
 			<_myState type="a">8192</_myState>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_virtual type="a">0</_virtual>
 			<Args type="c">
@@ -4619,7 +4576,6 @@ Tips:\par%0D
 			<_id type="a">GUID 6a8d632f-2b8d-4c2d-a25d-47aa167662a7</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">elapsedTime</_name>
-			<_modifiedTimeWeak type="a">12.18.2016::9:27:14</_modifiedTimeWeak>
 			<_modifiedTime type="a">12.18.2016::9:27:14</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
@@ -4640,7 +4596,6 @@ Tips:\par%0D
 		</IAttribute>
 		<ILiteralSpecification type="e">
 			<_id type="a">GUID d7455756-b699-4efc-904f-486cfb6c78e9</_id>
-			<_modifiedTimeWeak type="a">12.18.2016::9:27:14</_modifiedTimeWeak>
 			<_modifiedTime type="a">12.18.2016::9:27:14</_modifiedTime>
 			<_value type="a">0</_value>
 		</ILiteralSpecification>
@@ -4648,11 +4603,8 @@ Tips:\par%0D
 			<_id type="a">GUID 40da844f-5312-44c3-b286-b7e81b29fd59</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">STM - FunctionalBlock</_name>
-			<_modifiedTimeWeak type="a">6.8.2018::17:1:4</_modifiedTimeWeak>
 			<_modifiedTime type="a">6.8.2018::17:1:4</_modifiedTime>
 			<_lastID type="a">1</_lastID>
-			<weakCGTime type="a">6.8.2018::17:1:4</weakCGTime>
-			<strongCGTime type="a">12.27.2015::15:2:45</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -4672,7 +4624,6 @@ Tips:\par%0D
 		</IStateChart>
 		<IState type="e">
 			<_id type="a">GUID fdc5bb89-5ad1-47ee-a37b-53f74da04d28</_id>
-			<_modifiedTimeWeak type="a">12.27.2015::15:1:2</_modifiedTimeWeak>
 			<_modifiedTime type="a">12.27.2015::15:1:2</_modifiedTime>
 			<_parent type="s"></_parent>
 			<_defaultTrans type="s"></_defaultTrans>
@@ -4680,7 +4631,6 @@ Tips:\par%0D
 		<IState type="e">
 			<_id type="a">GUID b9946bca-24ac-497c-8228-5e43e7b426b0</_id>
 			<_name type="a">Active</_name>
-			<_modifiedTimeWeak type="a">12.27.2015::15:1:13</_modifiedTimeWeak>
 			<_modifiedTime type="a">12.27.2015::15:1:13</_modifiedTime>
 			<_parent type="s">GUID fdc5bb89-5ad1-47ee-a37b-53f74da04d28</_parent>
 			<_stateType type="a">And</_stateType>
@@ -4690,7 +4640,6 @@ Tips:\par%0D
 			<_id type="a">GUID 34821727-3858-488c-b0c6-b1cdb0011c63</_id>
 			<_myState type="a">2048</_myState>
 			<_name type="a">state_1</_name>
-			<_modifiedTimeWeak type="a">12.27.2015::15:1:13</_modifiedTimeWeak>
 			<_modifiedTime type="a">12.27.2015::15:1:13</_modifiedTime>
 			<_parent type="s">GUID b9946bca-24ac-497c-8228-5e43e7b426b0</_parent>
 			<_defaultTrans type="s"></_defaultTrans>
@@ -4698,18 +4647,14 @@ Tips:\par%0D
 		<IState type="e">
 			<_id type="a">GUID 7352e789-42fa-4437-80c5-203ae28a2902</_id>
 			<_name type="a">MonitoringConditionsParallelRegion</_name>
-			<_modifiedTimeWeak type="a">6.8.2018::17:1:4</_modifiedTimeWeak>
 			<_modifiedTime type="a">6.8.2018::17:1:4</_modifiedTime>
 			<_parent type="s">GUID b9946bca-24ac-497c-8228-5e43e7b426b0</_parent>
 			<_defaultTrans type="s"></_defaultTrans>
 			<_nestedStateChart type="p"><IStateChart type="e">
 				<_id type="a">GUID e7368f58-d14c-4cbd-84cf-2c369d7ad966</_id>
 				<_myState type="a">8192</_myState>
-				<_modifiedTimeWeak type="a">6.8.2018::17:1:4</_modifiedTimeWeak>
 				<_modifiedTime type="a">6.8.2018::17:1:4</_modifiedTime>
 				<_lastID type="a">2</_lastID>
-				<weakCGTime type="a">6.8.2018::17:1:4</weakCGTime>
-				<strongCGTime type="a">1.2.1990::0:0:0</strongCGTime>
 				<_itsStateChart type="r">
 					<IHandle type="e">
 					</IHandle>
@@ -4728,7 +4673,6 @@ Tips:\par%0D
 			</IStateChart>
 			<IState type="e">
 				<_id type="a">GUID 106ecc3f-769b-486e-86e8-57d5fbb171ca</_id>
-				<_modifiedTimeWeak type="a">12.27.2015::15:1:37</_modifiedTimeWeak>
 				<_modifiedTime type="a">12.27.2015::15:1:37</_modifiedTime>
 				<_parent type="s"></_parent>
 				<_defaultTrans type="s"></_defaultTrans>
@@ -4736,7 +4680,6 @@ Tips:\par%0D
 			<IState type="e">
 				<_id type="a">GUID 9117c459-17da-4800-9adc-b2aee26e0e38</_id>
 				<_name type="a">MonitoringConditionsParallelRegion</_name>
-				<_modifiedTimeWeak type="a">12.27.2015::15:1:54</_modifiedTimeWeak>
 				<_modifiedTime type="a">12.27.2015::15:1:54</_modifiedTime>
 				<_parent type="s">GUID 106ecc3f-769b-486e-86e8-57d5fbb171ca</_parent>
 				<_defaultTrans type="s"></_defaultTrans>
@@ -4744,7 +4687,6 @@ Tips:\par%0D
 			<IState type="e">
 				<_id type="a">GUID 1fdd5433-8dd7-4976-8520-a25a32a83331</_id>
 				<_name type="a">MonitoringConditions</_name>
-				<_modifiedTimeWeak type="a">6.8.2018::17:1:4</_modifiedTimeWeak>
 				<_modifiedTime type="a">6.8.2018::17:1:4</_modifiedTime>
 				<_parent type="s">GUID 9117c459-17da-4800-9adc-b2aee26e0e38</_parent>
 				<_defaultTrans type="s"></_defaultTrans>
@@ -4893,7 +4835,6 @@ Tips:\par%0D
 				</IPropertyContainer>
 				</_properties>
 				<_name type="a">statechartdiagram_0</_name>
-				<_modifiedTimeWeak type="a">6.8.2018::17:1:4</_modifiedTimeWeak>
 				<_modifiedTime type="a">6.8.2018::17:1:4</_modifiedTime>
 				<_lastModifiedTime type="a">6.8.2018::17:1:4</_lastModifiedTime>
 				<m_hReferencedDiagram type="r">
@@ -5471,7 +5412,6 @@ Tips:\par%0D
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">statechartdiagram_0</_name>
-			<_modifiedTimeWeak type="a">5.24.2018::19:14:59</_modifiedTimeWeak>
 			<_modifiedTime type="a">5.24.2018::19:14:59</_modifiedTime>
 			<_lastModifiedTime type="a">5.24.2018::19:14:59</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
@@ -6001,11 +5941,8 @@ Tips:\par%0D
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">5.23.2018::14:28:57</_modifiedTimeWeak>
 			<_modifiedTime type="a">5.23.2018::14:28:57</_modifiedTime>
 			<_lastID type="a">7</_lastID>
-			<weakCGTime type="a">5.23.2018::14:28:57</weakCGTime>
-			<strongCGTime type="a">5.23.2018::14:28:57</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IStateChart</_hm2Class>
@@ -6025,7 +5962,6 @@ Tips:\par%0D
 			<_id type="a">GUID 448bb14a-a529-4bf8-9606-3f79589aea36</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">comment</_name>
-			<_modifiedTimeWeak type="a">8.23.2016::19:6:23</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.23.2016::19:6:23</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_virtual type="a">1</_virtual>
@@ -6056,7 +5992,6 @@ sleep(2);</_bodyData>
 			<_id type="a">GUID f9707cf4-6405-4897-bc2b-534b8c3cef28</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">msg</_name>
-			<_modifiedTimeWeak type="a">1.18.2016::13:20:15</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.18.2016::13:20:15</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
@@ -6073,7 +6008,6 @@ sleep(2);</_bodyData>
 			<_id type="a">GUID 8a86888f-e443-4982-9350-a1bd1a585e0d</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">start_of_test</_name>
-			<_modifiedTimeWeak type="a">8.23.2016::19:6:54</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.23.2016::19:6:54</_modifiedTime>
 			<_virtual type="a">1</_virtual>
 			<Args type="c">
@@ -6104,7 +6038,6 @@ sleep(2);</_bodyData>
 			<_id type="a">GUID 68dd8984-ecbf-4238-86e0-cdeb5448a78c</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">end_of_test</_name>
-			<_modifiedTimeWeak type="a">8.23.2016::19:6:39</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.23.2016::19:6:39</_modifiedTime>
 			<_virtual type="a">1</_virtual>
 			<Args type="c">
@@ -6135,7 +6068,6 @@ sleep(2);</_bodyData>
 			<_id type="a">GUID efbac4bc-b8ed-49f1-b15d-fcd7872c6c35</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">message</_name>
-			<_modifiedTimeWeak type="a">8.23.2016::19:5:52</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.23.2016::19:5:52</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
@@ -6156,7 +6088,6 @@ sleep(2);</_bodyData>
 		</IAttribute>
 		<ILiteralSpecification type="e">
 			<_id type="a">GUID a749a0ce-143b-4f55-8a72-8073143543d2</_id>
-			<_modifiedTimeWeak type="a">8.23.2016::19:5:52</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.23.2016::19:5:52</_modifiedTime>
 			<_value type="a">&quot;&quot;</_value>
 		</ILiteralSpecification>
@@ -6164,11 +6095,8 @@ sleep(2);</_bodyData>
 			<_id type="a">GUID bdf756ac-0138-4894-bb05-7165951bb2b0</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">STM - TestDriverBlock</_name>
-			<_modifiedTimeWeak type="a">1.18.2016::13:19:52</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.18.2016::13:19:52</_modifiedTime>
 			<_lastID type="a">1</_lastID>
-			<weakCGTime type="a">1.18.2016::13:19:52</weakCGTime>
-			<strongCGTime type="a">1.18.2016::13:19:52</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -6186,7 +6114,6 @@ sleep(2);</_bodyData>
 		</IStateChart>
 		<IState type="e">
 			<_id type="a">GUID f7919ba7-6fcb-4fb9-9a80-c5c37d758e3c</_id>
-			<_modifiedTimeWeak type="a">12.27.2015::15:37:18</_modifiedTimeWeak>
 			<_modifiedTime type="a">12.27.2015::15:37:18</_modifiedTime>
 			<_parent type="s"></_parent>
 			<_defaultTrans type="s"></_defaultTrans>
@@ -6194,7 +6121,6 @@ sleep(2);</_bodyData>
 		<IState type="e">
 			<_id type="a">GUID fcd5c319-f32b-483d-83bd-15b6c30810c4</_id>
 			<_name type="a">Ready</_name>
-			<_modifiedTimeWeak type="a">12.27.2015::15:37:25</_modifiedTimeWeak>
 			<_modifiedTime type="a">12.27.2015::15:37:25</_modifiedTime>
 			<_parent type="s">GUID f7919ba7-6fcb-4fb9-9a80-c5c37d758e3c</_parent>
 			<_defaultTrans type="s"></_defaultTrans>
@@ -6328,7 +6254,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">statechartdiagram_0</_name>
-			<_modifiedTimeWeak type="a">12.27.2015::15:37:38</_modifiedTimeWeak>
 			<_modifiedTime type="a">12.27.2015::15:37:38</_modifiedTime>
 			<_lastModifiedTime type="a">1.18.2016::13:19:52</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
@@ -6707,7 +6632,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ActorPackage</_name>
-			<_modifiedTimeWeak type="a">5.2.2021::11:47:51</_modifiedTimeWeak>
 			<_modifiedTime type="a">5.2.2021::11:47:51</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -6810,7 +6734,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">UseCasePackage</_name>
-			<_modifiedTimeWeak type="a">5.2.2021::11:48:5</_modifiedTimeWeak>
 			<_modifiedTime type="a">5.2.2021::11:48:5</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -6824,7 +6747,6 @@ sleep(2);</_bodyData>
 			<_id type="a">GUID a746f7e2-6384-457e-ab41-98646d75963e</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">12 Reqts Analysis - Working Copy Package</_name>
-			<_modifiedTimeWeak type="a">5.2.2021::11:32:34</_modifiedTimeWeak>
 			<_modifiedTime type="a">5.2.2021::11:32:34</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -6839,7 +6761,6 @@ sleep(2);</_bodyData>
 		</IStereotype>
 		<IGeneralization type="e">
 			<_id type="a">GUID b412e5a2-01fb-4e5b-9e50-e45f4878902a</_id>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -6928,7 +6849,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">RequirementPackage</_name>
-			<_modifiedTimeWeak type="a">5.2.2021::11:20:51</_modifiedTimeWeak>
 			<_modifiedTime type="a">5.2.2021::11:20:51</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -6980,7 +6900,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">21 Funct Analysis - Scenarios Package</_name>
-			<_modifiedTimeWeak type="a">9.25.2018::9:19:28</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
 			<_lastID type="a">6</_lastID>
 			<_m2Classes type="c">
@@ -7002,7 +6921,6 @@ sleep(2);</_bodyData>
 			<_id type="a">GUID 0bb38dc6-307d-4698-a149-6c6d8bee91d5</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">assemblyBlockUnderDev</_name>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
@@ -7019,7 +6937,6 @@ sleep(2);</_bodyData>
 			<_id type="a">GUID 857c8145-ea33-440d-95f6-f38c3a7675c3</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">packageForEventsAndInterfaces</_name>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_isOrdered type="a">0</_isOrdered>
 			<AggregatesList type="e">
@@ -7029,7 +6946,6 @@ sleep(2);</_bodyData>
 		<IType type="e">
 			<_id type="a">GUID ac41e41c-807d-4a36-904e-6cd2984d70fe</_id>
 			<_myState type="a">8192</_myState>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_declaration type="a">Package</_declaration>
 			<_kind type="a">Language</_kind>
@@ -7038,7 +6954,6 @@ sleep(2);</_bodyData>
 			<_id type="a">GUID 64cd7826-1431-4178-a118-92e9a426b3e7</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">packageForActorsAndTest</_name>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_isOrdered type="a">0</_isOrdered>
 			<AggregatesList type="e">
@@ -7048,7 +6963,6 @@ sleep(2);</_bodyData>
 		<IType type="e">
 			<_id type="a">GUID 6c77715b-cb00-4b7c-8f18-cdd6ab752548</_id>
 			<_myState type="a">8192</_myState>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_declaration type="a">Package</_declaration>
 			<_kind type="a">Language</_kind>
@@ -7057,7 +6971,6 @@ sleep(2);</_bodyData>
 			<_id type="a">GUID a234d80c-e751-4a49-a12f-9258b52d70ec</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">packageForBlocks</_name>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_isOrdered type="a">0</_isOrdered>
 			<AggregatesList type="e">
@@ -7067,7 +6980,6 @@ sleep(2);</_bodyData>
 		<IType type="e">
 			<_id type="a">GUID 6f9819e3-dbf9-4c6a-86d5-ba3ac39aef44</_id>
 			<_myState type="a">8192</_myState>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_declaration type="a">Package</_declaration>
 			<_kind type="a">Language</_kind>
@@ -7076,7 +6988,6 @@ sleep(2);</_bodyData>
 			<_id type="a">GUID e767686c-e78a-4e4d-bd0d-aee13af12d10</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">packageForWorkingCopies</_name>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_isOrdered type="a">0</_isOrdered>
 			<AggregatesList type="e">
@@ -7086,7 +6997,6 @@ sleep(2);</_bodyData>
 		<IType type="e">
 			<_id type="a">GUID 170e292d-c30b-4a0f-83fa-6e15d58e41a8</_id>
 			<_myState type="a">8192</_myState>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_declaration type="a">Package</_declaration>
 			<_kind type="a">Language</_kind>
@@ -7133,7 +7043,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">22 Funct Analysis - Design Package</_name>
-			<_modifiedTimeWeak type="a">9.25.2018::9:19:28</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -7185,7 +7094,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">23 Funct Analysis - Interfaces Package</_name>
-			<_modifiedTimeWeak type="a">9.25.2018::9:19:28</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -7237,7 +7145,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">24 Funct Analysis - Test Package</_name>
-			<_modifiedTimeWeak type="a">9.25.2018::9:19:28</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -7316,7 +7223,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">abstract</_name>
-			<_modifiedTimeWeak type="a">9.25.2018::9:19:28</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -7376,7 +7282,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Actuator</_name>
-			<_modifiedTimeWeak type="a">9.25.2018::9:19:28</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -7390,7 +7295,6 @@ sleep(2);</_bodyData>
 			<_id type="a">GUID 42cc719f-8c1b-40a0-be49-9fe5ee4e400e</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">AutoRipple</_name>
-			<_modifiedTimeWeak type="a">9.25.2018::9:19:28</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -7461,7 +7365,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">AutoShow</_name>
-			<_modifiedTimeWeak type="a">9.25.2018::9:19:28</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -7611,7 +7514,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Call Operation Activity</_name>
-			<_modifiedTimeWeak type="a">1.16.2019::18:19:12</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.16.2019::18:19:12</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -7672,7 +7574,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Component</_name>
-			<_modifiedTimeWeak type="a">9.25.2018::9:19:28</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -7686,7 +7587,6 @@ sleep(2);</_bodyData>
 			<_id type="a">GUID 4dfbc937-a87c-439a-8ea8-a6a78d02705d</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Context</_name>
-			<_modifiedTimeWeak type="a">9.25.2018::9:19:28</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -7757,7 +7657,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">DontShow</_name>
-			<_modifiedTimeWeak type="a">9.25.2018::9:19:28</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -7815,7 +7714,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">EnhancedUseCaseDiagram</_name>
-			<_modifiedTimeWeak type="a">5.2.2021::11:52:4</_modifiedTimeWeak>
 			<_modifiedTime type="a">5.2.2021::11:52:4</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -7876,7 +7774,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExternalSystem</_name>
-			<_modifiedTimeWeak type="a">9.25.2018::9:19:28</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_m2Classes type="c">
@@ -7923,7 +7820,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">HigherLevelGoal</_name>
-			<_modifiedTimeWeak type="a">9.25.2018::9:19:28</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -7936,7 +7832,6 @@ sleep(2);</_bodyData>
 			<_id type="a">GUID 95c8e146-8a56-46cd-ad46-884d54fb2dd3</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">HLTrace</_name>
-			<_modifiedTimeWeak type="a">9.25.2018::9:19:28</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -8002,7 +7897,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Internal Design - Internal Block Diagram</_name>
-			<_modifiedTimeWeak type="a">9.25.2018::9:19:28</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -8078,7 +7972,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">LogicalSystem</_name>
-			<_modifiedTimeWeak type="a">9.25.2018::9:19:28</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -8125,7 +8018,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">MoreDetailedAD</_name>
-			<_modifiedTimeWeak type="a">9.25.2018::9:19:28</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -8248,7 +8140,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">MoreDetailedRD</_name>
-			<_modifiedTimeWeak type="a">9.25.2018::9:19:28</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -8262,7 +8153,6 @@ sleep(2);</_bodyData>
 			<_id type="a">GUID eceae9c2-3822-407c-8166-33fb3c564609</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">publish</_name>
-			<_modifiedTimeWeak type="a">9.25.2018::9:19:28</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -8307,7 +8197,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">RequirementsDiagramHL</_name>
-			<_modifiedTimeWeak type="a">9.25.2018::9:19:28</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -8368,7 +8257,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Sensor</_name>
-			<_modifiedTimeWeak type="a">9.25.2018::9:19:28</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -8414,7 +8302,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SimpleAD</_name>
-			<_modifiedTimeWeak type="a">9.25.2018::9:19:28</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -8459,7 +8346,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SimpleMenu</_name>
-			<_modifiedTimeWeak type="a">9.25.2018::9:19:28</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -8472,7 +8358,6 @@ sleep(2);</_bodyData>
 			<_id type="a">GUID a4223559-32c4-4e89-9465-cfd4ce717990</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">subscribe</_name>
-			<_modifiedTimeWeak type="a">9.25.2018::9:19:28</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -8532,7 +8417,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">System</_name>
-			<_modifiedTimeWeak type="a">9.25.2018::9:19:28</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -8683,7 +8567,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Textual Activity</_name>
-			<_modifiedTimeWeak type="a">1.16.2019::18:19:31</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.16.2019::18:19:31</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -8759,7 +8642,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">UseCaseDescription</_name>
-			<_modifiedTimeWeak type="a">9.25.2018::9:19:28</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -8829,7 +8711,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">UseCasePostcondition</_name>
-			<_modifiedTimeWeak type="a">9.25.2018::9:19:28</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -8899,7 +8780,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">UseCasePrecondition</_name>
-			<_modifiedTimeWeak type="a">9.25.2018::9:19:28</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -8913,7 +8793,6 @@ sleep(2);</_bodyData>
 			<_id type="a">GUID 99d433ee-75c1-40c0-8ef0-8ea14c3d7d23</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileInfo</_name>
-			<_modifiedTimeWeak type="a">12.8.2020::18:17:35</_modifiedTimeWeak>
 			<_modifiedTime type="a">12.8.2020::18:17:35</_modifiedTime>
 			<_lastID type="a">3</_lastID>
 			<_m2Classes type="c">
@@ -8932,7 +8811,6 @@ sleep(2);</_bodyData>
 			<_id type="a">GUID 00c06448-4cf5-4b58-a462-af1a3bccd935</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileDate</_name>
-			<_modifiedTimeWeak type="a">12.8.2020::18:17:35</_modifiedTimeWeak>
 			<_modifiedTime type="a">12.8.2020::18:17:35</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
@@ -8949,7 +8827,6 @@ sleep(2);</_bodyData>
 		</ITag>
 		<ILiteralSpecification type="e">
 			<_id type="a">GUID afe0a7a2-5ad6-4a08-a681-f008e1788f91</_id>
-			<_modifiedTimeWeak type="a">12.8.2020::18:17:35</_modifiedTimeWeak>
 			<_modifiedTime type="a">12.8.2020::18:17:35</_modifiedTime>
 			<_value type="a">2020/12/07 18:17:00</_value>
 		</ILiteralSpecification>
@@ -8957,7 +8834,6 @@ sleep(2);</_bodyData>
 			<_id type="a">GUID c783ee62-7cd8-4f71-8651-25132d0e1150</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileVersion</_name>
-			<_modifiedTimeWeak type="a">12.8.2020::18:16:5</_modifiedTimeWeak>
 			<_modifiedTime type="a">12.8.2020::18:16:5</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
@@ -8974,7 +8850,6 @@ sleep(2);</_bodyData>
 		</ITag>
 		<ILiteralSpecification type="e">
 			<_id type="a">GUID b7ac1210-a130-465e-88f0-fa8c887307f7</_id>
-			<_modifiedTimeWeak type="a">12.8.2020::18:16:5</_modifiedTimeWeak>
 			<_modifiedTime type="a">12.8.2020::18:16:5</_modifiedTime>
 			<_value type="a">4.0.a.Rhp831 (PreRelease)</_value>
 		</ILiteralSpecification>
@@ -8982,7 +8857,6 @@ sleep(2);</_bodyData>
 			<_id type="a">GUID 6cadd9b1-62a9-477e-a2b1-45c9e04743fb</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileProperties</_name>
-			<_modifiedTimeWeak type="a">10.9.2018::9:25:32</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.9.2018::9:25:32</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
@@ -8999,7 +8873,6 @@ sleep(2);</_bodyData>
 		</ITag>
 		<ILiteralSpecification type="e">
 			<_id type="a">GUID b20d14e4-877f-4bac-b065-39c04a64607f</_id>
-			<_modifiedTimeWeak type="a">10.9.2018::9:25:32</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.9.2018::9:25:32</_modifiedTime>
 			<_value type="a">setPropertyForExecutableMBSEModel</_value>
 		</ILiteralSpecification>
@@ -9007,7 +8880,6 @@ sleep(2);</_bodyData>
 			<_id type="a">GUID 60c4eeac-f4e9-4ff0-a9e1-9d6c33a8f1ce</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ElapsedTimeBlock</_name>
-			<_modifiedTimeWeak type="a">10.13.2018::12:36:2</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.13.2018::12:36:2</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -9036,7 +8908,6 @@ sleep(2);</_bodyData>
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -9055,7 +8926,6 @@ sleep(2);</_bodyData>
 			<_id type="a">GUID 8e1ab178-5c64-479e-a5aa-2e97533262e9</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ElapsedTimeGenerator</_name>
-			<_modifiedTimeWeak type="a">10.9.2018::15:48:12</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.9.2018::15:48:12</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -9084,7 +8954,6 @@ sleep(2);</_bodyData>
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -9103,7 +8972,6 @@ sleep(2);</_bodyData>
 			<_id type="a">GUID a5048fa2-09ce-43d2-978c-2d81bbcbd669</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Testbench</_name>
-			<_modifiedTimeWeak type="a">10.9.2018::15:48:36</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.9.2018::15:48:36</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -9132,7 +9000,6 @@ sleep(2);</_bodyData>
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -9151,7 +9018,6 @@ sleep(2);</_bodyData>
 			<_id type="a">GUID 47f804ea-8363-4da9-96ce-cd278c9f4f13</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">TestDriver</_name>
-			<_modifiedTimeWeak type="a">10.9.2018::15:56:32</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.9.2018::15:56:32</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -9182,7 +9048,6 @@ sleep(2);</_bodyData>
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -9201,21 +9066,19 @@ sleep(2);</_bodyData>
 			<_id type="a">GUID 4cab28b8-28b8-4e00-9ec8-5e71cca4a766</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ContextDiagran</_name>
-			<_modifiedTimeWeak type="a">5.2.2021::12:43:32</_modifiedTimeWeak>
-			<_modifiedTime type="a">5.2.2021::12:43:32</_modifiedTime>
-			<_lastID type="a">6</_lastID>
-			<weakCGTime type="a">5.2.2021::12:43:32</weakCGTime>
-			<strongCGTime type="a">4.28.2021::7:18:25</strongCGTime>
+			<_modifiedTime type="a">5.3.2021::17:13:8</_modifiedTime>
+			<_lastID type="a">7</_lastID>
 			<_defaultComposite type="s">GUID 126b210a-965a-424f-b9ef-c617f59fa371</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
-			<_configurationRelatedTime type="a">1.2.1990::0:0:0</_configurationRelatedTime>
 			<AggregatesList type="e">
 				<value>GUID 164baeb3-08ae-4833-b033-6ac044defb4a</value>
 				<value>GUID 00df2478-d2fd-48f1-b4bb-eccbff60831a</value>
 				<value>GUID 95f558eb-1f1f-4947-8fad-ac72d8dba531</value>
 				<value>GUID 1594c9e3-a1ea-41cf-bfcb-b15264d9eea0</value>
 				<value>GUID cdb14785-e3f1-4f68-be0d-9a246d7d7f77</value>
+				<value>GUID da018c48-fbae-40b6-a92c-85510daea10b</value>
 				<value>GUID 126b210a-965a-424f-b9ef-c617f59fa371</value>
+				<value>GUID 44328a1d-efc3-421d-b594-fc026ac720ed</value>
 			</AggregatesList>
 		</ISubsystem>
 		<IStereotype type="e">
@@ -9261,7 +9124,7 @@ sleep(2);</_bodyData>
 												<size type="a">4</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Query,Event,Diagram View,System Context Diagram,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Actor Usage,System Context,Flow,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
+													<_Value type="a">Query,Event,Diagram View,System Context Diagram,TableV - Context Diagram Flows,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Actor Usage,System Context,Flow,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -9273,7 +9136,7 @@ sleep(2);</_bodyData>
 												
 												<IProperty type="e">
 													<_Name type="a">BrowserIcon</_Name>
-													<_Value type="a">..\icons\UseCasePackage.ico</_Value>
+													<_Value type="a">ContextDiagramPackage.ico</_Value>
 													<_Type type="a">File</_Type>
 												</IProperty>
 												
@@ -9296,8 +9159,7 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ContextDiagramPackage</_name>
-			<_modifiedTimeWeak type="a">5.2.2021::12:43:32</_modifiedTimeWeak>
-			<_modifiedTime type="a">5.2.2021::12:43:32</_modifiedTime>
+			<_modifiedTime type="a">5.3.2021::17:2:2</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -9347,11 +9209,17 @@ sleep(2);</_bodyData>
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">3</size>
+												<size type="a">4</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
 													<_Value type="a">ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale</_Value>
 													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">BrowserIcon</_Name>
+													<_Value type="a">SystemContextDiagram.ico</_Value>
+													<_Type type="a">File</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
@@ -9378,7 +9246,7 @@ sleep(2);</_bodyData>
 							<_Name type="a">ObjectModelGe</_Name>
 							<Metaclasses type="c">
 								<IRPYRawContainer type="e">
-									<size type="a">3</size>
+									<size type="a">4</size>
 									<IPropertyMetaclass type="e">
 										<_Name type="a">DiagramFrame</_Name>
 										<Properties type="c">
@@ -9418,6 +9286,21 @@ sleep(2);</_bodyData>
 									</IPropertyMetaclass>
 									
 									<IPropertyMetaclass type="e">
+										<_Name type="a">General</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">SysMLDiagramKindTitle</_Name>
+													<_Value type="a">ibd</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+									<IPropertyMetaclass type="e">
 										<_Name type="a">Object</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
@@ -9441,8 +9324,7 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SystemContextDiagram</_name>
-			<_modifiedTimeWeak type="a">5.2.2021::12:42:58</_modifiedTimeWeak>
-			<_modifiedTime type="a">5.2.2021::12:42:58</_modifiedTime>
+			<_modifiedTime type="a">5.3.2021::16:29:25</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -9499,7 +9381,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SystemContext</_name>
-			<_modifiedTimeWeak type="a">4.30.2021::12:58:29</_modifiedTimeWeak>
 			<_modifiedTime type="a">4.30.2021::12:58:29</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -9588,7 +9469,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ActorUsage</_name>
-			<_modifiedTimeWeak type="a">4.30.2021::16:31:55</_modifiedTimeWeak>
 			<_modifiedTime type="a">4.30.2021::16:31:55</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -9659,7 +9539,6 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SystemFeature</_name>
-			<_modifiedTimeWeak type="a">4.30.2021::12:50:47</_modifiedTimeWeak>
 			<_modifiedTime type="a">4.30.2021::12:50:47</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -9669,20 +9548,245 @@ sleep(2);</_bodyData>
 			</_m2Classes>
 			<_newTerm type="a">1</_newTerm>
 		</IStereotype>
+		<IStereotype type="e">
+			<_id type="a">GUID da018c48-fbae-40b6-a92c-85510daea10b</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Stereotype</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">4</size>
+												<IProperty type="e">
+													<_Name type="a">Aggregates</_Name>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">InitialLayoutForTables</_Name>
+													<_Value type="a">TableL - Context Diagram Flows</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">Name</_Name>
+													<_Value type="a">TableV - Context Diagram Flows</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">PluralName</_Name>
+													<_Value type="a">TableV - Context Diagram Flows</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">ContextDiagramFlows</_name>
+			<_modifiedTime type="a">5.3.2021::17:13:8</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>TableView</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+			<_newTerm type="a">1</_newTerm>
+		</IStereotype>
 		<IClass type="e">
 			<_id type="a">GUID 126b210a-965a-424f-b9ef-c617f59fa371</_id>
 			<_myState type="a">40960</_myState>
 			<_name type="a">TopLevel</_name>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
-			<weakCGTime type="a">1.2.1990::0:0:0</weakCGTime>
-			<strongCGTime type="a">1.2.1990::0:0:0</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
 			</_itsStateChart>
 			<_classModifier type="a">Unspecified</_classModifier>
 		</IClass>
+		<ITableLayout type="e">
+			<_id type="a">GUID 44328a1d-efc3-421d-b594-fc026ac720ed</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">2</size>
+						<IPropertySubject type="e">
+							<_Name type="a">General</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Graphics</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">TableHeaderMenuAlignment</_Name>
+													<_Value type="a">Right</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">Left,Right</_ExtraTypeInfo>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">2</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">TableLayout</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">4</size>
+												<IProperty type="e">
+													<_Name type="a">CollapseFirstColumn</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ContextTableColumnNameFormat</_Name>
+													<_Value type="a">$(Property) in $(Context)</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">EnableCriteriaCheck</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">QueryContextPattern</_Name>
+													<_Type type="a">MultiLine</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+									<IPropertyMetaclass type="e">
+										<_Name type="a">TableView</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">ChangeSelectionOnEnterTo</_Name>
+													<_Value type="a">down</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">left, right, up, down</_ExtraTypeInfo>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">TableL - Context Diagram Flows</_name>
+			<_modifiedTime type="a">5.3.2021::16:52:7</_modifiedTime>
+			<TableElementTypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID 44328a1d-efc3-421d-b594-fc026ac720ed</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Flow</TableDataDefinitionName>
+						<_DataType type="a">1835627088</_DataType>
+					</TableDataDefinition>
+					
+				</IRPYRawContainer>
+			</TableElementTypes>
+			<DataColumns type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">3</size>
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID 44328a1d-efc3-421d-b594-fc026ac720ed</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">RelationFrom.From element</TableDataDefinitionName>
+						<_columnName type="a">From element</_columnName>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID 44328a1d-efc3-421d-b594-fc026ac720ed</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Flow.Flow items</TableDataDefinitionName>
+						<_columnName type="a">Item Flows</_columnName>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID 44328a1d-efc3-421d-b594-fc026ac720ed</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">RelationTo.To element</TableDataDefinitionName>
+						<_columnName type="a">To element</_columnName>
+					</TableDataDefinition>
+					
+				</IRPYRawContainer>
+			</DataColumns>
+		</ITableLayout>
 		<IStereotype type="e">
 			<_id type="a">GUID 5df2b3b3-e0d0-4595-a39f-c823d2925305</_id>
 			<_myState type="a">8192</_myState>
@@ -9702,7 +9806,7 @@ sleep(2);</_bodyData>
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">AddNewMenuStructure</_Name>
-													<_Value type="a">Diagrams/System Context Diagram,MBSE Element/10 Reqts Analysis - Context Diagram Package,MBSE Element/11 Reqts Analysis - Actor Package,MBSE Element/12 Reqts Analysis - Use Case Package,MBSE Element/13 Reqts Analysis - Requirement Package,MBSE Element/Actor Usage,MBSE Element/Enhanced Use Case Diagram,MBSE Element/System Context,MBSE Element/System Feature,Diagrams/Requirements Diagram,%0D
+													<_Value type="a">Diagrams/System Context Diagram,Diagrams/TableV - Context Diagram Flows,MBSE Element/10 Reqts Analysis - Context Diagram Package,MBSE Element/11 Reqts Analysis - Actor Package,MBSE Element/12 Reqts Analysis - Use Case Package,MBSE Element/13 Reqts Analysis - Requirement Package,MBSE Element/Actor Usage,MBSE Element/Enhanced Use Case Diagram,MBSE Element/System Context,MBSE Element/System Feature,Diagrams/Requirements Diagram,%0D
 Diagrams/UseCaseDiagram,%0D
 Diagrams/Package Diagram,%0D
 Diagrams/Block Definition Diagram,%0D
@@ -9902,8 +10006,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSE</_name>
-			<_modifiedTimeWeak type="a">5.3.2021::7:19:54</_modifiedTimeWeak>
-			<_modifiedTime type="a">5.3.2021::7:19:54</_modifiedTime>
+			<_modifiedTime type="a">5.3.2021::17:1:58</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -9916,10 +10019,7 @@ Query</_Value>
 			<_id type="a">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_id>
 			<_myState type="a">40960</_myState>
 			<_name type="a">TopLevel</_name>
-			<_modifiedTimeWeak type="a">4.28.2021::12:45:19</_modifiedTimeWeak>
 			<_modifiedTime type="a">4.28.2021::12:45:19</_modifiedTime>
-			<weakCGTime type="a">4.28.2021::12:45:19</weakCGTime>
-			<strongCGTime type="a">1.9.2019::13:0:4</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -9930,11 +10030,8 @@ Query</_Value>
 			<_id type="a">GUID b1dcb194-973c-4c44-b648-904d65f95b78</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ElapsedTimeActor</_name>
-			<_modifiedTimeWeak type="a">10.13.2018::12:29:17</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.13.2018::12:29:17</_modifiedTime>
 			<_lastID type="a">6</_lastID>
-			<weakCGTime type="a">10.13.2018::12:29:17</weakCGTime>
-			<strongCGTime type="a">10.13.2018::12:29:17</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IStateChart</_hm2Class>
@@ -9972,7 +10069,6 @@ Query</_Value>
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">8.22.2016::9:52:45</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.22.2016::9:52:45</_modifiedTime>
 			<_multiplicity type="a">1</_multiplicity>
 			<_otherClass type="r">
@@ -9993,7 +10089,6 @@ Query</_Value>
 			<_id type="a">GUID 37d6bcf0-a654-4177-aeec-7279bb0dad26</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">pTester</_name>
-			<_modifiedTimeWeak type="a">8.22.2016::10:1:53</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.22.2016::10:1:53</_modifiedTime>
 			<_multiplicity type="a">1</_multiplicity>
 			<_otherClass type="r">
@@ -10023,10 +10118,7 @@ Query</_Value>
 						
 					</IRPYRawContainer>
 				</Stereotypes>
-				<_modifiedTimeWeak type="a">8.22.2016::10:1:53</_modifiedTimeWeak>
 				<_modifiedTime type="a">8.22.2016::10:1:53</_modifiedTime>
-				<weakCGTime type="a">8.22.2016::10:1:53</weakCGTime>
-				<strongCGTime type="a">8.22.2016::10:1:53</strongCGTime>
 				<_itsStateChart type="r">
 					<IHandle type="e">
 					</IHandle>
@@ -10038,7 +10130,6 @@ Query</_Value>
 		<IReception type="e">
 			<_id type="a">GUID a7a74a43-ce2a-4b3f-ada5-86910c8aa591</_id>
 			<_myState type="a">8192</_myState>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_virtual type="a">0</_virtual>
 			<Args type="c">
@@ -10059,7 +10150,6 @@ Query</_Value>
 		<IReception type="e">
 			<_id type="a">GUID 7bac8ce0-6e80-4e97-9c42-f90bc1be6fa2</_id>
 			<_myState type="a">8192</_myState>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_virtual type="a">0</_virtual>
 			<Args type="c">
@@ -10080,7 +10170,6 @@ Query</_Value>
 		<IReception type="e">
 			<_id type="a">GUID b491da8d-90a1-43e8-baa3-8109fedfe104</_id>
 			<_myState type="a">8192</_myState>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_virtual type="a">0</_virtual>
 			<Args type="c">
@@ -10101,7 +10190,6 @@ Query</_Value>
 		<IReception type="e">
 			<_id type="a">GUID ba90e161-7dfd-4c00-a1f9-13fa24bd08aa</_id>
 			<_myState type="a">8192</_myState>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_virtual type="a">0</_virtual>
 			<Args type="c">
@@ -10123,7 +10211,6 @@ Query</_Value>
 			<_id type="a">GUID be7bfbe1-88c5-463f-b693-eba321ce815a</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">elapsedTime</_name>
-			<_modifiedTimeWeak type="a">8.22.2016::9:52:39</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.22.2016::9:52:39</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
@@ -10144,7 +10231,6 @@ Query</_Value>
 		</IAttribute>
 		<ILiteralSpecification type="e">
 			<_id type="a">GUID 26347f71-5ced-4972-9b59-2d169e162fae</_id>
-			<_modifiedTimeWeak type="a">12.27.2015::15:14:45</_modifiedTimeWeak>
 			<_modifiedTime type="a">12.27.2015::15:14:45</_modifiedTime>
 			<_value type="a">0</_value>
 		</ILiteralSpecification>
@@ -10152,7 +10238,6 @@ Query</_Value>
 			<_id type="a">GUID c8978458-6670-4c6b-9c52-fe1fec441936</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">isContinuous</_name>
-			<_modifiedTimeWeak type="a">12.27.2015::15:14:24</_modifiedTimeWeak>
 			<_modifiedTime type="a">12.27.2015::15:14:24</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
@@ -10173,7 +10258,6 @@ Query</_Value>
 		</IAttribute>
 		<ILiteralSpecification type="e">
 			<_id type="a">GUID 6ec8fc20-7175-4aa2-9fad-061e55649667</_id>
-			<_modifiedTimeWeak type="a">12.27.2015::15:14:24</_modifiedTimeWeak>
 			<_modifiedTime type="a">12.27.2015::15:14:24</_modifiedTime>
 			<_value type="a">0</_value>
 		</ILiteralSpecification>
@@ -10181,7 +10265,6 @@ Query</_Value>
 			<_id type="a">GUID fbd9bf47-6fd6-4feb-896c-8b49199eab51</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">SIM_SPEED_ms</_name>
-			<_modifiedTimeWeak type="a">12.27.2015::15:14:12</_modifiedTimeWeak>
 			<_modifiedTime type="a">12.27.2015::15:14:12</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
@@ -10202,7 +10285,6 @@ Query</_Value>
 		</IAttribute>
 		<ILiteralSpecification type="e">
 			<_id type="a">GUID d65ef7b8-0e01-4c75-9010-d61a77d0f7fb</_id>
-			<_modifiedTimeWeak type="a">12.27.2015::15:14:12</_modifiedTimeWeak>
 			<_modifiedTime type="a">12.27.2015::15:14:12</_modifiedTime>
 			<_value type="a">1000</_value>
 		</ILiteralSpecification>
@@ -10210,11 +10292,8 @@ Query</_Value>
 			<_id type="a">GUID 6f39e854-513e-43e7-b26a-df1a8f4f5ac7</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">STM - ElapsedTime</_name>
-			<_modifiedTimeWeak type="a">5.24.2018::19:15:12</_modifiedTimeWeak>
 			<_modifiedTime type="a">5.24.2018::19:15:12</_modifiedTime>
 			<_lastID type="a">6</_lastID>
-			<weakCGTime type="a">5.24.2018::19:15:12</weakCGTime>
-			<strongCGTime type="a">12.27.2015::15:15:8</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -10243,7 +10322,6 @@ Query</_Value>
 			<_id type="a">GUID c2e846dd-9bc0-4405-a6c4-d6003206d2a0</_id>
 			<_myState type="a">2048</_myState>
 			<_name type="a">transition_1</_name>
-			<_modifiedTimeWeak type="a">12.27.2015::15:11:40</_modifiedTimeWeak>
 			<_modifiedTime type="a">12.27.2015::15:11:40</_modifiedTime>
 			<_itsTarget type="s">GUID 2a4ebf23-7281-4b05-94c3-955ea6e9b4c4</_itsTarget>
 			<_staticReaction type="a">0</_staticReaction>
@@ -10254,7 +10332,6 @@ Query</_Value>
 		</ITransition>
 		<ILabel type="e">
 			<_id type="a">GUID cfe509ba-d175-47a6-ad1b-053a2ec9185d</_id>
-			<_modifiedTimeWeak type="a">12.27.2015::15:11:40</_modifiedTimeWeak>
 			<_modifiedTime type="a">12.27.2015::15:11:40</_modifiedTime>
 			<_itsTrigger>NULL</_itsTrigger>
 			<_itsAction>NULL</_itsAction>
@@ -10264,7 +10341,6 @@ Query</_Value>
 		</ILabel>
 		<IGuard type="e">
 			<_id type="a">GUID f2b7b481-fbfb-4012-bd1c-c5aabea25146</_id>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_body type="a">isContinuous==0</_body>
 		</IGuard>
@@ -10272,7 +10348,6 @@ Query</_Value>
 			<_id type="a">GUID 4d813df6-b03f-48fa-a648-477ff749bf33</_id>
 			<_myState type="a">2048</_myState>
 			<_name type="a">transition_2</_name>
-			<_modifiedTimeWeak type="a">12.27.2015::15:11:52</_modifiedTimeWeak>
 			<_modifiedTime type="a">12.27.2015::15:11:52</_modifiedTime>
 			<_itsTarget type="s">GUID d27b0738-9b32-434b-afd4-642d4dbec204</_itsTarget>
 			<_staticReaction type="a">0</_staticReaction>
@@ -10283,7 +10358,6 @@ Query</_Value>
 		</ITransition>
 		<ILabel type="e">
 			<_id type="a">GUID 4329a9e5-5cfc-42a8-a6d8-8d480b7bdddf</_id>
-			<_modifiedTimeWeak type="a">12.27.2015::15:11:52</_modifiedTimeWeak>
 			<_modifiedTime type="a">12.27.2015::15:11:52</_modifiedTime>
 			<_itsTrigger>NULL</_itsTrigger>
 			<_itsAction>NULL</_itsAction>
@@ -10293,7 +10367,6 @@ Query</_Value>
 		</ILabel>
 		<IGuard type="e">
 			<_id type="a">GUID 2e0f2e6e-62ab-4699-bd49-42f2bf56f066</_id>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_body type="a">isContinuous</_body>
 		</IGuard>
@@ -10301,7 +10374,6 @@ Query</_Value>
 			<_id type="a">GUID 1a57cf07-a3f2-4b95-8fcc-421179304de7</_id>
 			<_myState type="a">2048</_myState>
 			<_name type="a">defaulttransition_3</_name>
-			<_modifiedTimeWeak type="a">8.9.2016::13:3:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.9.2016::13:3:0</_modifiedTime>
 			<_errorStatus type="a">ErrorItem</_errorStatus>
 			<_itsTarget type="s">GUID 2a4ebf23-7281-4b05-94c3-955ea6e9b4c4</_itsTarget>
@@ -10314,7 +10386,6 @@ Query</_Value>
 		</IDefaultDrvdTrans>
 		<ILabel type="e">
 			<_id type="a">GUID f14f0ff7-82a5-4d67-a4f7-b5ef79f15c5a</_id>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_itsTrigger>NULL</_itsTrigger>
 			<_itsGuard>NULL</_itsGuard>
@@ -10324,7 +10395,6 @@ Query</_Value>
 			<_id type="a">GUID 549ff20c-a7ca-4ed7-b50b-7941d34d9ea9</_id>
 			<_myState type="a">2048</_myState>
 			<_name type="a">transition_4</_name>
-			<_modifiedTimeWeak type="a">8.22.2016::9:53:4</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.22.2016::9:53:4</_modifiedTime>
 			<_itsTarget type="s">GUID d27b0738-9b32-434b-afd4-642d4dbec204</_itsTarget>
 			<_staticReaction type="a">0</_staticReaction>
@@ -10335,7 +10405,6 @@ Query</_Value>
 		</ITransition>
 		<ILabel type="e">
 			<_id type="a">GUID cc288ead-8eb0-4ba8-b47e-7240c413113d</_id>
-			<_modifiedTimeWeak type="a">8.22.2016::9:53:4</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.22.2016::9:53:4</_modifiedTime>
 			<_itsGuard>NULL</_itsGuard>
 			<AggregatesList type="e">
@@ -10345,14 +10414,12 @@ Query</_Value>
 		</ILabel>
 		<ITimeout type="e">
 			<_id type="a">GUID 4cc2cd1a-cbef-4694-a0f6-5acc19c183d2</_id>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_body type="a">tm(SIM_SPEED_ms)</_body>
 			<_time type="a">SIM_SPEED_ms</_time>
 		</ITimeout>
 		<IAction type="e">
 			<_id type="a">GUID a9184033-2542-4b25-a25f-42f4095a7d34</_id>
-			<_modifiedTimeWeak type="a">8.22.2016::9:53:4</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.22.2016::9:53:4</_modifiedTime>
 			<_body type="a">%0D
 setElapsedTime( elapsedTime + 1 );</_body>
@@ -10361,7 +10428,6 @@ setElapsedTime( elapsedTime + 1 );</_body>
 			<_id type="a">GUID f4f7cc16-5128-4d08-902d-22d8d8334b9a</_id>
 			<_myState type="a">2048</_myState>
 			<_name type="a">transition_5</_name>
-			<_modifiedTimeWeak type="a">8.22.2016::9:53:13</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.22.2016::9:53:13</_modifiedTime>
 			<_itsTarget type="s">GUID 2a4ebf23-7281-4b05-94c3-955ea6e9b4c4</_itsTarget>
 			<_staticReaction type="a">0</_staticReaction>
@@ -10372,7 +10438,6 @@ setElapsedTime( elapsedTime + 1 );</_body>
 		</ITransition>
 		<ILabel type="e">
 			<_id type="a">GUID 2b162a7e-2e41-4bd6-ae21-3149b0eb6e9b</_id>
-			<_modifiedTimeWeak type="a">8.22.2016::9:53:13</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.22.2016::9:53:13</_modifiedTime>
 			<_itsGuard>NULL</_itsGuard>
 			<AggregatesList type="e">
@@ -10382,7 +10447,6 @@ setElapsedTime( elapsedTime + 1 );</_body>
 		</ILabel>
 		<IInterfaceItemTrigger type="e">
 			<_id type="a">GUID 41089e7a-692a-41c3-a530-3336fd5118b5</_id>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_body type="a">send_ElapsedTimeTick</_body>
 			<_itsInterfaceItem type="r">
@@ -10397,14 +10461,12 @@ setElapsedTime( elapsedTime + 1 );</_body>
 		</IInterfaceItemTrigger>
 		<IAction type="e">
 			<_id type="a">GUID bcadef80-92c6-4b6b-8d84-e30d3d24d64a</_id>
-			<_modifiedTimeWeak type="a">8.22.2016::9:53:13</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.22.2016::9:53:13</_modifiedTime>
 			<_body type="a">%0D
 setElapsedTime( elapsedTime + 1 );</_body>
 		</IAction>
 		<IState type="e">
 			<_id type="a">GUID 75e8e6d1-9e78-4b4c-89be-57ed91ecf53b</_id>
-			<_modifiedTimeWeak type="a">8.9.2016::13:2:53</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.9.2016::13:2:53</_modifiedTime>
 			<_parent type="s"></_parent>
 			<_defaultTrans type="s"></_defaultTrans>
@@ -10412,7 +10474,6 @@ setElapsedTime( elapsedTime + 1 );</_body>
 		<IState type="e">
 			<_id type="a">GUID d27b0738-9b32-434b-afd4-642d4dbec204</_id>
 			<_name type="a">ContinuousMode</_name>
-			<_modifiedTimeWeak type="a">8.9.2016::13:3:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.9.2016::13:3:0</_modifiedTime>
 			<_parent type="s">GUID 49950318-6f15-4597-8ec9-df06016777be</_parent>
 			<_defaultTrans type="s"></_defaultTrans>
@@ -10420,7 +10481,6 @@ setElapsedTime( elapsedTime + 1 );</_body>
 		<IState type="e">
 			<_id type="a">GUID 2a4ebf23-7281-4b05-94c3-955ea6e9b4c4</_id>
 			<_name type="a">DiscreteMode</_name>
-			<_modifiedTimeWeak type="a">8.9.2016::13:3:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.9.2016::13:3:0</_modifiedTime>
 			<_parent type="s">GUID 49950318-6f15-4597-8ec9-df06016777be</_parent>
 			<_defaultTrans type="s"></_defaultTrans>
@@ -10428,7 +10488,6 @@ setElapsedTime( elapsedTime + 1 );</_body>
 		<IState type="e">
 			<_id type="a">GUID 9aa557e6-b894-43da-aa6d-685286168269</_id>
 			<_name type="a">Active</_name>
-			<_modifiedTimeWeak type="a">8.9.2016::13:3:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.9.2016::13:3:0</_modifiedTime>
 			<_parent type="s">GUID 75e8e6d1-9e78-4b4c-89be-57ed91ecf53b</_parent>
 			<_stateType type="a">And</_stateType>
@@ -10438,7 +10497,6 @@ setElapsedTime( elapsedTime + 1 );</_body>
 			<_id type="a">GUID 49950318-6f15-4597-8ec9-df06016777be</_id>
 			<_myState type="a">2048</_myState>
 			<_name type="a">state_3</_name>
-			<_modifiedTimeWeak type="a">8.9.2016::13:3:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.9.2016::13:3:0</_modifiedTime>
 			<_parent type="s">GUID 9aa557e6-b894-43da-aa6d-685286168269</_parent>
 			<_defaultTrans type="s">GUID 1a57cf07-a3f2-4b95-8fcc-421179304de7</_defaultTrans>
@@ -10446,18 +10504,14 @@ setElapsedTime( elapsedTime + 1 );</_body>
 		<IState type="e">
 			<_id type="a">GUID da8fc57f-a78d-4f0c-80dc-4663e93c9a55</_id>
 			<_name type="a">MonitoringConditionsParallelRegion</_name>
-			<_modifiedTimeWeak type="a">8.22.2016::10:8:39</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.22.2016::10:8:39</_modifiedTime>
 			<_parent type="s">GUID 9aa557e6-b894-43da-aa6d-685286168269</_parent>
 			<_defaultTrans type="s"></_defaultTrans>
 			<_nestedStateChart type="p"><IStateChart type="e">
 				<_id type="a">GUID 3a143827-4dc8-4bc2-ab98-23bca967701b</_id>
 				<_myState type="a">8192</_myState>
-				<_modifiedTimeWeak type="a">8.22.2016::10:8:39</_modifiedTimeWeak>
 				<_modifiedTime type="a">8.22.2016::10:8:39</_modifiedTime>
 				<_lastID type="a">9</_lastID>
-				<weakCGTime type="a">8.22.2016::10:8:39</weakCGTime>
-				<strongCGTime type="a">1.2.1990::0:0:0</strongCGTime>
 				<_itsStateChart type="r">
 					<IHandle type="e">
 					</IHandle>
@@ -10484,7 +10538,6 @@ setElapsedTime( elapsedTime + 1 );</_body>
 				<_id type="a">GUID 5ff4ac5b-5066-400e-b97d-2ba009d888e7</_id>
 				<_myState type="a">2048</_myState>
 				<_name type="a">transition_1</_name>
-				<_modifiedTimeWeak type="a">8.9.2016::13:4:40</_modifiedTimeWeak>
 				<_modifiedTime type="a">8.9.2016::13:4:40</_modifiedTime>
 				<_itsTarget type="s">GUID 7f1c79e8-5abb-42f8-8b18-c940aa94d82c</_itsTarget>
 				<_staticReaction type="a">0</_staticReaction>
@@ -10495,7 +10548,6 @@ setElapsedTime( elapsedTime + 1 );</_body>
 			</ITransition>
 			<ILabel type="e">
 				<_id type="a">GUID d8f68767-da67-4efc-85db-f1daefeca613</_id>
-				<_modifiedTimeWeak type="a">8.9.2016::13:4:40</_modifiedTimeWeak>
 				<_modifiedTime type="a">8.9.2016::13:4:40</_modifiedTime>
 				<_itsGuard>NULL</_itsGuard>
 				<AggregatesList type="e">
@@ -10505,7 +10557,6 @@ setElapsedTime( elapsedTime + 1 );</_body>
 			</ILabel>
 			<IInterfaceItemTrigger type="e">
 				<_id type="a">GUID 929766ee-bc02-494c-8979-aa1ce638ac33</_id>
-				<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 				<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 				<_body type="a">reqElapsedTimeIsContinuous</_body>
 				<_itsInterfaceItem type="r">
@@ -10520,7 +10571,6 @@ setElapsedTime( elapsedTime + 1 );</_body>
 			</IInterfaceItemTrigger>
 			<IAction type="e">
 				<_id type="a">GUID e826ed2c-d0b2-470d-bb7d-67f079fb0ded</_id>
-				<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 				<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 				<_body type="a">%0D
 setIsContinuous( params-&gt;value );</_body>
@@ -10529,7 +10579,6 @@ setIsContinuous( params-&gt;value );</_body>
 				<_id type="a">GUID 83378485-ce85-4c9e-805b-e87df7f32648</_id>
 				<_myState type="a">2048</_myState>
 				<_name type="a">transition_3</_name>
-				<_modifiedTimeWeak type="a">8.9.2016::13:6:51</_modifiedTimeWeak>
 				<_modifiedTime type="a">8.9.2016::13:6:51</_modifiedTime>
 				<_itsTarget type="s">GUID d188f716-e29f-4ec8-bfe5-fe1c7324eced</_itsTarget>
 				<_staticReaction type="a">0</_staticReaction>
@@ -10540,7 +10589,6 @@ setIsContinuous( params-&gt;value );</_body>
 			</ITransition>
 			<ILabel type="e">
 				<_id type="a">GUID 9e3745f7-948b-4875-8126-45cbc433b7f4</_id>
-				<_modifiedTimeWeak type="a">8.9.2016::13:5:54</_modifiedTimeWeak>
 				<_modifiedTime type="a">8.9.2016::13:5:54</_modifiedTime>
 				<_itsGuard>NULL</_itsGuard>
 				<_itsAction>NULL</_itsAction>
@@ -10550,7 +10598,6 @@ setIsContinuous( params-&gt;value );</_body>
 			</ILabel>
 			<IInterfaceItemTrigger type="e">
 				<_id type="a">GUID b9efb3fc-e8d4-455c-8ee5-a63a1a837480</_id>
-				<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 				<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 				<_body type="a">reqElapsedTimeToggleMode</_body>
 				<_itsInterfaceItem type="r">
@@ -10567,7 +10614,6 @@ setIsContinuous( params-&gt;value );</_body>
 				<_id type="a">GUID 29007f53-9ebc-463a-926f-9372b4881e86</_id>
 				<_myState type="a">2048</_myState>
 				<_name type="a">transition_6</_name>
-				<_modifiedTimeWeak type="a">8.9.2016::13:7:35</_modifiedTimeWeak>
 				<_modifiedTime type="a">8.9.2016::13:7:35</_modifiedTime>
 				<_itsTarget type="s">GUID 7f1c79e8-5abb-42f8-8b18-c940aa94d82c</_itsTarget>
 				<_staticReaction type="a">0</_staticReaction>
@@ -10578,7 +10624,6 @@ setIsContinuous( params-&gt;value );</_body>
 			</ITransition>
 			<ILabel type="e">
 				<_id type="a">GUID e916d031-eeeb-4470-9404-3644e46982a1</_id>
-				<_modifiedTimeWeak type="a">8.9.2016::13:7:35</_modifiedTimeWeak>
 				<_modifiedTime type="a">8.9.2016::13:7:35</_modifiedTime>
 				<_itsTrigger>NULL</_itsTrigger>
 				<AggregatesList type="e">
@@ -10588,13 +10633,11 @@ setIsContinuous( params-&gt;value );</_body>
 			</ILabel>
 			<IGuard type="e">
 				<_id type="a">GUID 6a934bb1-8d27-4e28-8a71-71219104f427</_id>
-				<_modifiedTimeWeak type="a">8.9.2016::13:7:35</_modifiedTimeWeak>
 				<_modifiedTime type="a">8.9.2016::13:7:35</_modifiedTime>
 				<_body type="a">isContinuous==0</_body>
 			</IGuard>
 			<IAction type="e">
 				<_id type="a">GUID 3e5a68f5-9dcf-43d2-b0dc-21d18c2320e2</_id>
-				<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 				<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 				<_body type="a">%0D
 setIsContinuous( 1 );</_body>
@@ -10603,7 +10646,6 @@ setIsContinuous( 1 );</_body>
 				<_id type="a">GUID 3c42c5da-dde2-4340-b496-f2084365c518</_id>
 				<_myState type="a">2048</_myState>
 				<_name type="a">transition_7</_name>
-				<_modifiedTimeWeak type="a">8.9.2016::13:8:1</_modifiedTimeWeak>
 				<_modifiedTime type="a">8.9.2016::13:8:1</_modifiedTime>
 				<_itsTarget type="s">GUID 7f1c79e8-5abb-42f8-8b18-c940aa94d82c</_itsTarget>
 				<_staticReaction type="a">0</_staticReaction>
@@ -10614,7 +10656,6 @@ setIsContinuous( 1 );</_body>
 			</ITransition>
 			<ILabel type="e">
 				<_id type="a">GUID cbc8142d-d9cc-422e-bbec-c558c0c8bd90</_id>
-				<_modifiedTimeWeak type="a">8.9.2016::13:8:1</_modifiedTimeWeak>
 				<_modifiedTime type="a">8.9.2016::13:8:1</_modifiedTime>
 				<_itsTrigger>NULL</_itsTrigger>
 				<AggregatesList type="e">
@@ -10624,13 +10665,11 @@ setIsContinuous( 1 );</_body>
 			</ILabel>
 			<IGuard type="e">
 				<_id type="a">GUID 611be312-2467-48b8-8e08-e1b067afa708</_id>
-				<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 				<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 				<_body type="a">else</_body>
 			</IGuard>
 			<IAction type="e">
 				<_id type="a">GUID c0b0669a-545e-4f04-9a20-5d68e53d3a31</_id>
-				<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 				<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 				<_body type="a">%0D
 setIsContinuous( 0 );</_body>
@@ -10639,7 +10678,6 @@ setIsContinuous( 0 );</_body>
 				<_id type="a">GUID c2dbd4ce-2b04-4f74-8ae2-58e65bcc0ef7</_id>
 				<_myState type="a">2048</_myState>
 				<_name type="a">transition_8</_name>
-				<_modifiedTimeWeak type="a">8.22.2016::10:8:39</_modifiedTimeWeak>
 				<_modifiedTime type="a">8.22.2016::10:8:39</_modifiedTime>
 				<_itsTarget type="s">GUID 7f1c79e8-5abb-42f8-8b18-c940aa94d82c</_itsTarget>
 				<_staticReaction type="a">0</_staticReaction>
@@ -10650,7 +10688,6 @@ setIsContinuous( 0 );</_body>
 			</ITransition>
 			<ILabel type="e">
 				<_id type="a">GUID 9a295b53-89f7-46da-ac26-b774f48a575f</_id>
-				<_modifiedTimeWeak type="a">8.22.2016::10:8:39</_modifiedTimeWeak>
 				<_modifiedTime type="a">8.22.2016::10:8:39</_modifiedTime>
 				<_itsGuard>NULL</_itsGuard>
 				<AggregatesList type="e">
@@ -10660,7 +10697,6 @@ setIsContinuous( 0 );</_body>
 			</ILabel>
 			<IInterfaceItemTrigger type="e">
 				<_id type="a">GUID dae6ae7e-72d2-4492-9705-4b1d601be71f</_id>
-				<_modifiedTimeWeak type="a">8.22.2016::10:8:39</_modifiedTimeWeak>
 				<_modifiedTime type="a">8.22.2016::10:8:39</_modifiedTime>
 				<_body type="a">reqElapsedTime</_body>
 				<_itsInterfaceItem type="r">
@@ -10675,7 +10711,6 @@ setIsContinuous( 0 );</_body>
 			</IInterfaceItemTrigger>
 			<IAction type="e">
 				<_id type="a">GUID f2179977-54df-44c0-af1c-78ac83cdd35f</_id>
-				<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 				<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 				<_body type="a">%0D
 setElapsedTime( params-&gt;value );</_body>
@@ -10683,14 +10718,12 @@ setElapsedTime( params-&gt;value );</_body>
 			<IBranch type="e">
 				<_id type="a">GUID d188f716-e29f-4ec8-bfe5-fe1c7324eced</_id>
 				<_name type="a">condition_5</_name>
-				<_modifiedTimeWeak type="a">8.9.2016::13:7:42</_modifiedTimeWeak>
 				<_modifiedTime type="a">8.9.2016::13:7:42</_modifiedTime>
 				<_parent type="s">GUID 3509af68-0d10-47f8-8c42-919b329bbfa0</_parent>
 				<_connectorType type="a">Condition</_connectorType>
 			</IBranch>
 			<IState type="e">
 				<_id type="a">GUID 3d2ab640-9f27-4de0-95c7-9c8612f14eff</_id>
-				<_modifiedTimeWeak type="a">8.9.2016::13:3:21</_modifiedTimeWeak>
 				<_modifiedTime type="a">8.9.2016::13:3:21</_modifiedTime>
 				<_parent type="s"></_parent>
 				<_defaultTrans type="s"></_defaultTrans>
@@ -10698,7 +10731,6 @@ setElapsedTime( params-&gt;value );</_body>
 			<IState type="e">
 				<_id type="a">GUID 3509af68-0d10-47f8-8c42-919b329bbfa0</_id>
 				<_name type="a">MonitoringConditionsParallelRegion</_name>
-				<_modifiedTimeWeak type="a">8.9.2016::13:6:48</_modifiedTimeWeak>
 				<_modifiedTime type="a">8.9.2016::13:6:48</_modifiedTime>
 				<_parent type="s">GUID 3d2ab640-9f27-4de0-95c7-9c8612f14eff</_parent>
 				<_defaultTrans type="s"></_defaultTrans>
@@ -10706,7 +10738,6 @@ setElapsedTime( params-&gt;value );</_body>
 			<IState type="e">
 				<_id type="a">GUID 7f1c79e8-5abb-42f8-8b18-c940aa94d82c</_id>
 				<_name type="a">MonitoringConditions</_name>
-				<_modifiedTimeWeak type="a">8.22.2016::9:53:36</_modifiedTimeWeak>
 				<_modifiedTime type="a">8.22.2016::9:53:36</_modifiedTime>
 				<_parent type="s">GUID 3509af68-0d10-47f8-8c42-919b329bbfa0</_parent>
 				<_defaultTrans type="s"></_defaultTrans>
@@ -10894,7 +10925,6 @@ setElapsedTime( params-&gt;value );</_body>
 				</IPropertyContainer>
 				</_properties>
 				<_name type="a">statechartdiagram_0</_name>
-				<_modifiedTimeWeak type="a">8.22.2016::10:8:39</_modifiedTimeWeak>
 				<_modifiedTime type="a">8.22.2016::10:8:39</_modifiedTime>
 				<_lastModifiedTime type="a">8.22.2016::10:8:39</_lastModifiedTime>
 				<m_hReferencedDiagram type="r">
@@ -12011,7 +12041,6 @@ setElapsedTime( params-&gt;value );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">statechartdiagram_0</_name>
-			<_modifiedTimeWeak type="a">5.24.2018::19:15:12</_modifiedTimeWeak>
 			<_modifiedTime type="a">5.24.2018::19:15:12</_modifiedTime>
 			<_lastModifiedTime type="a">5.24.2018::19:15:12</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
@@ -13230,11 +13259,8 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID b0846ece-08df-40a0-a656-ae66832296f6</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Testbench</_name>
-			<_modifiedTimeWeak type="a">10.13.2018::12:29:22</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.13.2018::12:29:22</_modifiedTime>
 			<_lastID type="a">1</_lastID>
-			<weakCGTime type="a">10.13.2018::12:29:22</weakCGTime>
-			<strongCGTime type="a">10.13.2018::12:29:22</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IStateChart</_hm2Class>
@@ -13250,11 +13276,8 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID b439ad49-64e4-4b2b-8d79-2e0939940d4f</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">STM - Testbench</_name>
-			<_modifiedTimeWeak type="a">1.1.2016::10:24:35</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.1.2016::10:24:35</_modifiedTime>
 			<_lastID type="a">1</_lastID>
-			<weakCGTime type="a">1.1.2016::10:24:35</weakCGTime>
-			<strongCGTime type="a">1.1.2016::10:24:13</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -13272,7 +13295,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 		</IStateChart>
 		<IState type="e">
 			<_id type="a">GUID a1d534ac-f8b3-4482-bd15-22cb2d369e16</_id>
-			<_modifiedTimeWeak type="a">1.1.2016::10:24:15</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.1.2016::10:24:15</_modifiedTime>
 			<_parent type="s"></_parent>
 			<_defaultTrans type="s"></_defaultTrans>
@@ -13280,7 +13302,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 		<IState type="e">
 			<_id type="a">GUID f9e0ad40-d4f7-4263-a0e3-6d39412a7d78</_id>
 			<_name type="a">Ready</_name>
-			<_modifiedTimeWeak type="a">1.1.2016::10:24:15</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.1.2016::10:24:15</_modifiedTime>
 			<_parent type="s">GUID a1d534ac-f8b3-4482-bd15-22cb2d369e16</_parent>
 			<_defaultTrans type="s"></_defaultTrans>
@@ -13414,7 +13435,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">statechartdiagram_0</_name>
-			<_modifiedTimeWeak type="a">1.1.2016::10:24:35</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.1.2016::10:24:35</_modifiedTime>
 			<_lastModifiedTime type="a">1.1.2016::10:24:39</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
@@ -13749,7 +13769,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">10.13.2018::12:30:28</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.13.2018::12:30:28</_modifiedTime>
 			<TableElementTypes type="c">
 				<IRPYRawContainer type="e">
@@ -13780,7 +13799,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 5fbe90af-8c90-405c-9fc7-f7485fe1646f</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">RelRef_How_Related</_name>
-			<_modifiedTimeWeak type="a">2.15.2017::20:16:30</_modifiedTimeWeak>
 			<_modifiedTime type="a">2.15.2017::20:16:30</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
@@ -13806,7 +13824,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 		</ITag>
 		<ILiteralSpecification type="e">
 			<_id type="a">GUID 8f52320c-9243-4ba9-95c9-328ddcfcc6e9</_id>
-			<_modifiedTimeWeak type="a">2.15.2017::20:16:30</_modifiedTimeWeak>
 			<_modifiedTime type="a">2.15.2017::20:16:30</_modifiedTime>
 			<_value type="a">References</_value>
 		</ILiteralSpecification>
@@ -13814,7 +13831,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 9820e449-881d-48e1-9eb7-726de0484379</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">RelRef_Metatype</_name>
-			<_modifiedTimeWeak type="a">2.15.2017::20:16:30</_modifiedTimeWeak>
 			<_modifiedTime type="a">2.15.2017::20:16:30</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
@@ -13840,7 +13856,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 		</ITag>
 		<ILiteralSpecification type="e">
 			<_id type="a">GUID 8a4c0de6-1352-44e5-ac8b-d17192c167a4</_id>
-			<_modifiedTimeWeak type="a">2.15.2017::20:16:30</_modifiedTimeWeak>
 			<_modifiedTime type="a">2.15.2017::20:16:30</_modifiedTime>
 			<_value type="a">Derivation</_value>
 		</ILiteralSpecification>
@@ -13893,7 +13908,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">10.13.2018::12:30:29</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.13.2018::12:30:29</_modifiedTime>
 			<TableElementTypes type="c">
 				<IRPYRawContainer type="e">
@@ -16230,7 +16244,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">10.13.2018::12:30:29</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.13.2018::12:30:29</_modifiedTime>
 			<TableElementTypes type="c">
 				<IRPYRawContainer type="e">
@@ -16260,7 +16273,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID c04bf590-68d9-4f7d-9a95-293e638b29ce</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">SubQueries</_name>
-			<_modifiedTimeWeak type="a">2.15.2017::20:20:33</_modifiedTimeWeak>
 			<_modifiedTime type="a">2.15.2017::20:20:33</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
@@ -16289,7 +16301,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 		</ITag>
 		<IInstanceValue type="e">
 			<_id type="a">GUID be9c5453-f84a-4125-a31f-3854e774ea9b</_id>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_value type="r">
 				<IHandle type="e">
@@ -16300,7 +16311,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 		</IInstanceValue>
 		<IInstanceValue type="e">
 			<_id type="a">GUID 8062a8ab-d643-493e-bcf0-4c5bb60cd395</_id>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_value type="r">
 				<IHandle type="e">
@@ -16311,7 +16321,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 		</IInstanceValue>
 		<IInstanceValue type="e">
 			<_id type="a">GUID 9f6d91ab-d815-4b36-b16b-51d469744798</_id>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_value type="r">
 				<IHandle type="e">
@@ -16369,7 +16378,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">10.13.2018::12:30:29</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.13.2018::12:30:29</_modifiedTime>
 			<TableElementTypes type="c">
 				<IRPYRawContainer type="e">
@@ -16400,7 +16408,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID a6ffe8a6-7d62-4894-be96-f8343b9d2e08</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">RelRef_How_Related</_name>
-			<_modifiedTimeWeak type="a">2.15.2017::20:16:59</_modifiedTimeWeak>
 			<_modifiedTime type="a">2.15.2017::20:16:59</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
@@ -16426,7 +16433,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 		</ITag>
 		<ILiteralSpecification type="e">
 			<_id type="a">GUID ca5dc43c-d250-4497-ab30-4e2ee1ced3b0</_id>
-			<_modifiedTimeWeak type="a">2.15.2017::20:16:59</_modifiedTimeWeak>
 			<_modifiedTime type="a">2.15.2017::20:16:59</_modifiedTime>
 			<_value type="a">References</_value>
 		</ILiteralSpecification>
@@ -16434,7 +16440,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID d80bfa5c-34f2-4ed0-ae92-92c50c7dc38a</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">RelRef_Metatype</_name>
-			<_modifiedTimeWeak type="a">2.15.2017::20:16:59</_modifiedTimeWeak>
 			<_modifiedTime type="a">2.15.2017::20:16:59</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
@@ -16460,7 +16465,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 		</ITag>
 		<ILiteralSpecification type="e">
 			<_id type="a">GUID 02b7a380-c063-45ae-aa27-cf013e682f98</_id>
-			<_modifiedTimeWeak type="a">2.15.2017::20:16:59</_modifiedTimeWeak>
 			<_modifiedTime type="a">2.15.2017::20:16:59</_modifiedTime>
 			<_value type="a">Refinement</_value>
 		</ILiteralSpecification>
@@ -16513,7 +16517,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">10.13.2018::12:30:30</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.13.2018::12:30:30</_modifiedTime>
 			<TableElementTypes type="c">
 				<IRPYRawContainer type="e">
@@ -16544,7 +16547,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID b27e350d-aa70-4d52-b258-59f866bb3c39</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">RelRef_How_Related</_name>
-			<_modifiedTimeWeak type="a">2.15.2017::20:17:14</_modifiedTimeWeak>
 			<_modifiedTime type="a">2.15.2017::20:17:14</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
@@ -16570,7 +16572,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 		</ITag>
 		<ILiteralSpecification type="e">
 			<_id type="a">GUID b223c921-ea72-4d61-bcb3-fe38cf2517e2</_id>
-			<_modifiedTimeWeak type="a">2.15.2017::20:17:14</_modifiedTimeWeak>
 			<_modifiedTime type="a">2.15.2017::20:17:14</_modifiedTime>
 			<_value type="a">References</_value>
 		</ILiteralSpecification>
@@ -16578,7 +16579,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID ff4dd2e0-7ad3-4c15-bd1d-1c76a9b5c9bf</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">RelRef_Metatype</_name>
-			<_modifiedTimeWeak type="a">2.15.2017::20:17:14</_modifiedTimeWeak>
 			<_modifiedTime type="a">2.15.2017::20:17:14</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
@@ -16604,7 +16604,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 		</ITag>
 		<ILiteralSpecification type="e">
 			<_id type="a">GUID 00340f97-11f9-4e4b-a3bf-c22cb12a486f</_id>
-			<_modifiedTimeWeak type="a">2.15.2017::20:17:14</_modifiedTimeWeak>
 			<_modifiedTime type="a">2.15.2017::20:17:14</_modifiedTime>
 			<_value type="a">Satisfaction</_value>
 		</ILiteralSpecification>
@@ -16657,7 +16656,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">10.13.2018::12:30:30</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.13.2018::12:30:30</_modifiedTime>
 			<TableElementTypes type="c">
 				<IRPYRawContainer type="e">
@@ -16689,7 +16687,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 910115f7-d11c-47e0-b232-11bec4a180b0</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">RelRef_Amount_Type</_name>
-			<_modifiedTimeWeak type="a">2.15.2017::20:17:27</_modifiedTimeWeak>
 			<_modifiedTime type="a">2.15.2017::20:17:27</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
@@ -16715,7 +16712,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 		</ITag>
 		<ILiteralSpecification type="e">
 			<_id type="a">GUID 0c68c1c9-6c10-4963-87ca-d49dceacc380</_id>
-			<_modifiedTimeWeak type="a">2.15.2017::20:17:27</_modifiedTimeWeak>
 			<_modifiedTime type="a">2.15.2017::20:17:27</_modifiedTime>
 			<_value type="a">Exactly</_value>
 		</ILiteralSpecification>
@@ -16723,7 +16719,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID a0f70934-d600-4a1c-a092-76fd35387308</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">RelRef_How_Related</_name>
-			<_modifiedTimeWeak type="a">2.15.2017::20:17:27</_modifiedTimeWeak>
 			<_modifiedTime type="a">2.15.2017::20:17:27</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
@@ -16749,7 +16744,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 		</ITag>
 		<ILiteralSpecification type="e">
 			<_id type="a">GUID f3822fa4-9450-4582-9778-7d9db897ca3e</_id>
-			<_modifiedTimeWeak type="a">2.15.2017::20:17:27</_modifiedTimeWeak>
 			<_modifiedTime type="a">2.15.2017::20:17:27</_modifiedTime>
 			<_value type="a">References</_value>
 		</ILiteralSpecification>
@@ -16757,7 +16751,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID c6e14f17-5062-49e5-9ed2-523db9550a9b</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">RelRef_Metatype</_name>
-			<_modifiedTimeWeak type="a">2.15.2017::20:17:27</_modifiedTimeWeak>
 			<_modifiedTime type="a">2.15.2017::20:17:27</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
@@ -16783,7 +16776,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 		</ITag>
 		<ILiteralSpecification type="e">
 			<_id type="a">GUID c9488d23-4872-4a56-a692-43009fae613a</_id>
-			<_modifiedTimeWeak type="a">2.15.2017::20:17:27</_modifiedTimeWeak>
 			<_modifiedTime type="a">2.15.2017::20:17:27</_modifiedTime>
 			<_value type="a">Derivation</_value>
 		</ILiteralSpecification>
@@ -16836,7 +16828,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">10.13.2018::12:30:30</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.13.2018::12:30:30</_modifiedTime>
 			<TableElementTypes type="c">
 				<IRPYRawContainer type="e">
@@ -16868,7 +16859,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 1feb77c0-1a48-4939-84e9-e4ee00add104</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">RelRef_Amount_Type</_name>
-			<_modifiedTimeWeak type="a">2.15.2017::20:17:44</_modifiedTimeWeak>
 			<_modifiedTime type="a">2.15.2017::20:17:44</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
@@ -16894,7 +16884,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 		</ITag>
 		<ILiteralSpecification type="e">
 			<_id type="a">GUID abc8c313-4852-4ac2-9d4f-503fd4854169</_id>
-			<_modifiedTimeWeak type="a">2.15.2017::20:17:44</_modifiedTimeWeak>
 			<_modifiedTime type="a">2.15.2017::20:17:44</_modifiedTime>
 			<_value type="a">Exactly</_value>
 		</ILiteralSpecification>
@@ -16902,7 +16891,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID e873e241-57aa-4167-8f22-e0e6d703636f</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">RelRef_How_Related</_name>
-			<_modifiedTimeWeak type="a">2.15.2017::20:17:44</_modifiedTimeWeak>
 			<_modifiedTime type="a">2.15.2017::20:17:44</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
@@ -16928,7 +16916,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 		</ITag>
 		<ILiteralSpecification type="e">
 			<_id type="a">GUID 9ec6b07b-afe3-4f1b-9e6a-bc9686b5410b</_id>
-			<_modifiedTimeWeak type="a">2.15.2017::20:17:44</_modifiedTimeWeak>
 			<_modifiedTime type="a">2.15.2017::20:17:44</_modifiedTime>
 			<_value type="a">References</_value>
 		</ILiteralSpecification>
@@ -16936,7 +16923,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID a4fff845-8d05-4372-b1a6-7f87818fb8c6</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">RelRef_Metatype</_name>
-			<_modifiedTimeWeak type="a">2.15.2017::20:17:44</_modifiedTimeWeak>
 			<_modifiedTime type="a">2.15.2017::20:17:44</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
@@ -16962,7 +16948,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 		</ITag>
 		<ILiteralSpecification type="e">
 			<_id type="a">GUID ed14381e-80d8-457c-9170-b966deafe090</_id>
-			<_modifiedTimeWeak type="a">2.15.2017::20:17:44</_modifiedTimeWeak>
 			<_modifiedTime type="a">2.15.2017::20:17:44</_modifiedTime>
 			<_value type="a">Refinement</_value>
 		</ILiteralSpecification>
@@ -17015,7 +17000,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">10.13.2018::12:30:31</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.13.2018::12:30:31</_modifiedTime>
 			<TableElementTypes type="c">
 				<IRPYRawContainer type="e">
@@ -17047,7 +17031,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 7512df43-d313-410d-bc05-866293d26d8f</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">RelRef_Amount_Type</_name>
-			<_modifiedTimeWeak type="a">2.15.2017::20:18:1</_modifiedTimeWeak>
 			<_modifiedTime type="a">2.15.2017::20:18:1</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
@@ -17073,7 +17056,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 		</ITag>
 		<ILiteralSpecification type="e">
 			<_id type="a">GUID 7fa06676-5dbc-4da9-b410-647ab97be28e</_id>
-			<_modifiedTimeWeak type="a">2.15.2017::20:18:1</_modifiedTimeWeak>
 			<_modifiedTime type="a">2.15.2017::20:18:1</_modifiedTime>
 			<_value type="a">Exactly</_value>
 		</ILiteralSpecification>
@@ -17081,7 +17063,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID d7f4d202-89b6-4cf4-af28-5a58f04d5ea3</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">RelRef_How_Related</_name>
-			<_modifiedTimeWeak type="a">2.15.2017::20:18:1</_modifiedTimeWeak>
 			<_modifiedTime type="a">2.15.2017::20:18:1</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
@@ -17107,7 +17088,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 		</ITag>
 		<ILiteralSpecification type="e">
 			<_id type="a">GUID 81d25a98-33c4-4b06-bd53-a341747e35c0</_id>
-			<_modifiedTimeWeak type="a">2.15.2017::20:18:1</_modifiedTimeWeak>
 			<_modifiedTime type="a">2.15.2017::20:18:1</_modifiedTime>
 			<_value type="a">References</_value>
 		</ILiteralSpecification>
@@ -17115,7 +17095,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 02c7f3c3-0e7c-48c0-83c9-7129ce4531aa</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">RelRef_Metatype</_name>
-			<_modifiedTimeWeak type="a">2.15.2017::20:18:1</_modifiedTimeWeak>
 			<_modifiedTime type="a">2.15.2017::20:18:1</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
@@ -17141,7 +17120,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 		</ITag>
 		<ILiteralSpecification type="e">
 			<_id type="a">GUID 8de17e57-f574-41a8-8980-09de0d566496</_id>
-			<_modifiedTimeWeak type="a">2.15.2017::20:18:1</_modifiedTimeWeak>
 			<_modifiedTime type="a">2.15.2017::20:18:1</_modifiedTime>
 			<_value type="a">Satisfaction</_value>
 		</ILiteralSpecification>
@@ -17181,7 +17159,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">TableL - Simple Requirements Table</_name>
-			<_modifiedTimeWeak type="a">10.13.2018::12:32:47</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.13.2018::12:32:47</_modifiedTime>
 			<TableElementTypes type="c">
 				<IRPYRawContainer type="e">
@@ -17354,7 +17331,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">TableL - Use case refinement relations</_name>
-			<_modifiedTimeWeak type="a">10.13.2018::12:32:48</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.13.2018::12:32:48</_modifiedTime>
 			<TableElementTypes type="c">
 				<IRPYRawContainer type="e">
@@ -17487,7 +17463,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 23956648-4810-4b41-8d14-1b51e6d19725</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">TableV - Simple requirements table</_name>
-			<_modifiedTimeWeak type="a">10.13.2018::12:32:30</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.13.2018::12:32:30</_modifiedTime>
 			<LayoutHandle type="r">
 				<IHandle type="e">
@@ -17544,7 +17519,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">TableV - Use case refinement relations</_name>
-			<_modifiedTimeWeak type="a">10.13.2018::12:32:30</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.13.2018::12:32:30</_modifiedTime>
 			<LayoutHandle type="r">
 				<IHandle type="e">
@@ -17569,7 +17543,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 41bbc743-af05-42c9-8ac2-f49a22d6a621</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">MatrixL - Derivation relations</_name>
-			<_modifiedTimeWeak type="a">10.13.2018::12:30:2</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.13.2018::12:30:2</_modifiedTime>
 			<FromElementTypes type="c">
 				<IRPYRawContainer type="e">
@@ -17711,7 +17684,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 7c5618bb-ce51-4bd0-baa0-27d6947e348d</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">MatrixL - Derive Requirement relations</_name>
-			<_modifiedTimeWeak type="a">10.13.2018::12:30:2</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.13.2018::12:30:2</_modifiedTime>
 			<FromElementTypes type="c">
 				<IRPYRawContainer type="e">
@@ -17778,7 +17750,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID d0f99b87-9d35-453b-a2a9-9e22ec5fee1d</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">MatrixL - Refinement relations</_name>
-			<_modifiedTimeWeak type="a">10.13.2018::12:30:3</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.13.2018::12:30:3</_modifiedTime>
 			<FromElementTypes type="c">
 				<IRPYRawContainer type="e">

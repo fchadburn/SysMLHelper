@@ -19,7 +19,7 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 	private SysMLHelperTriggers _listener = null;
 	
 	final String legalNotice = 
-			"Copyright (C) 2015-2019  MBSE Training and Consulting Limited (www.executablembse.com)"
+			"Copyright (C) 2015-2021  MBSE Training and Consulting Limited (www.executablembse.com)"
 			+ "\n"
 			+ "SysMLHelperPlugin is free software: you can redistribute it and/or modify "
 			+ "it under the terms of the GNU General Public License as published by "

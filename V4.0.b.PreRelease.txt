@@ -398,3 +398,5 @@ ExecutableMBSEProfile:
 #272 02-MAY-2021: Adaptation of Requirement and Use Case Packages to render properties using Metamodeling Profile (F.J.Chadburn)
 #273 03-MAY-2021: Fix listeners for both SysMLHelper and ExecutableMBSEProfile to stop duplicate double-click handling (F.J.Chadburn)
 #274 03-MAY-2021: Fix AddNewMenuStructureContent in the ExecutableMBSE.properties to apply latest menu structure (F.J.Chadburn)
+#275 03-MAY-2021: Add a TableL - Context Diagram Flows new term layout to enable tabular view of flows (F.J.Chadburn)
+#276 03-MAY-2021: Ensure NamesRegEx for the model allows spaces so that events can be created with spaces (F.J.Chadburn)
