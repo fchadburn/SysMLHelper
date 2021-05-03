@@ -17,7 +17,7 @@ Subject SysMLHelper
 	end
 	Metaclass RequirementsAnalysis
 		Property CreateRequirementTextForPrefixing String "The feature shall allow the"
-		Property NewTermForUseCaseDiagram String "Enhanced Use Case Diagram"
+		Property NewTermForUseCaseDiagram String "EnhancedUseCaseDiagram"
 		Property TemplateForActivityDiagram String "template_for_act"
 		Property TraceabilityTypeToUseForActions String "derive"
 		Property TraceabilityTypeToUseForUseCases String "refine"

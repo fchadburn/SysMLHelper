@@ -14,8 +14,9 @@ import com.telelogic.rhapsody.core.*;
 
 public class SysMLHelperPlugin extends RPUserPlugin {
 
-	static protected IRPApplication m_rhpApplication = null;
-	static protected ConfigurationSettings m_configSettings = null;
+	static protected IRPApplication _rhpApplication = null;
+	static protected ConfigurationSettings _configSettings = null;
+	private SysMLHelperTriggers _listener = null;
 	
 	final String legalNotice = 
 			"Copyright (C) 2015-2019  MBSE Training and Consulting Limited (www.executablembse.com)"
@@ -37,29 +38,29 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 	public void RhpPluginInit(final IRPApplication theRhapsodyApp) {
 		 
 		// keep the application interface for later use
-		m_rhpApplication = theRhapsodyApp;
+		_rhpApplication = theRhapsodyApp;
 		
-		m_configSettings = new ConfigurationSettings(
+		_configSettings = new ConfigurationSettings(
 				"SysMLHelper.properties", 
 				"SysMLHelper_MessagesBundle" );
 		
-		String msg = "The SysMLHelperProfile plugin V" + m_configSettings.getProperty("PluginVersion") + " was loaded successfully.\n" + legalNotice +
+		String msg = "The SysMLHelperProfile plugin V" + _configSettings.getProperty("PluginVersion") + " was loaded successfully.\n" + legalNotice +
 				"\nNew right-click 'MBSE Method' commands have been added.";
 		
 		Logger.writeLine(msg);
 		
 		// Added by F.J.Chadburn #001
-		SysMLHelperTriggers listener = new SysMLHelperTriggers(theRhapsodyApp);
-		listener.connect( theRhapsodyApp );
+		_listener = new SysMLHelperTriggers(theRhapsodyApp);
+		_listener.connect( theRhapsodyApp );
 	}
 	
 	public static IRPApplication getRhapsodyApp(){
 		
-		if (m_rhpApplication==null){
-			m_rhpApplication = RhapsodyAppServer.getActiveRhapsodyApplication();
+		if (_rhpApplication==null){
+			_rhpApplication = RhapsodyAppServer.getActiveRhapsodyApplication();
 		}
 		
-		return m_rhpApplication;
+		return _rhpApplication;
 	}
 	
 	public static IRPProject getActiveProject(){
@@ -88,24 +89,24 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 
 			if( !theSelectedEls.isEmpty() ){
 
-				if (menuItem.equals(m_configSettings.getString("sysmlhelperplugin.CreateRAStructureMenu"))){
+				if (menuItem.equals(_configSettings.getString("sysmlhelperplugin.CreateRAStructureMenu"))){
 
 					if (theSelectedEl instanceof IRPProject){
 						try { 
 							PopulateRequirementsAnalysisPkg.createRequirementsAnalysisPkg(
 									(IRPProject) theSelectedEl,
-									m_configSettings ); 
+									_configSettings ); 
 
 						} catch (Exception e) {
 							Logger.writeLine("Error: Exception in OnMenuItemSelect when invoking PopulateRequirementsAnalysisPkg.createRequirementsAnalysisPkg");
 						}
 					}
-				} else if (menuItem.equals(m_configSettings.getString("sysmlhelperplugin.SetupRAProperties"))){
+				} else if (menuItem.equals(_configSettings.getString("sysmlhelperplugin.SetupRAProperties"))){
 
 					if (theSelectedEl instanceof IRPPackage){
 						
 						try { 					    	
-					    	m_configSettings.setPropertiesValuesRequestedInConfigFile( 
+					    	_configSettings.setPropertiesValuesRequestedInConfigFile( 
 					    			theRhpPrj,
 					    			"setPropertyForRequirementsAnalysisModel" );
 
@@ -115,37 +116,37 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 							Logger.writeLine("Error: Exception in OnMenuItemSelect when invoking PopulateRequirementsAnalysisPkg.createRequirementsAnalysisPkg");
 						}
 					}
-				} else if (menuItem.equals(m_configSettings.getString("sysmlhelperplugin.CreateFullSimFAStructureMenu"))){
+				} else if (menuItem.equals(_configSettings.getString("sysmlhelperplugin.CreateFullSimFAStructureMenu"))){
 
 					if (theSelectedEl instanceof IRPProject){
 						try { 
-							PopulateFunctionalAnalysisPkg.createFunctionalAnalysisPkg( (IRPProject) theSelectedEl, SimulationType.FullSim, m_configSettings ); 
+							PopulateFunctionalAnalysisPkg.createFunctionalAnalysisPkg( (IRPProject) theSelectedEl, SimulationType.FullSim, _configSettings ); 
 
 						} catch (Exception e) {
 							Logger.writeLine("Error: Exception in OnMenuItemSelect when invoking PopulateFunctionalAnalysisPkg.createFunctionalAnalysisPkg");
 						}
 					}
-				} else if (menuItem.equals(m_configSettings.getString("sysmlhelperplugin.CreateSimpleSimFAStructureMenu"))){
+				} else if (menuItem.equals(_configSettings.getString("sysmlhelperplugin.CreateSimpleSimFAStructureMenu"))){
 
 					if (theSelectedEl instanceof IRPProject){
 						try { 
-							PopulateFunctionalAnalysisPkg.createFunctionalAnalysisPkg( (IRPProject) theSelectedEl, SimulationType.SimpleSim, m_configSettings ); 
+							PopulateFunctionalAnalysisPkg.createFunctionalAnalysisPkg( (IRPProject) theSelectedEl, SimulationType.SimpleSim, _configSettings ); 
 
 						} catch (Exception e) {
 							Logger.writeLine("Error: Exception in OnMenuItemSelect when invoking PopulateFunctionalAnalysisPkg.createFunctionalAnalysisPkg");
 						}
 					}
-				} else if (menuItem.equals(m_configSettings.getString("sysmlhelperplugin.CreateNoSimFAStructureMenu"))){
+				} else if (menuItem.equals(_configSettings.getString("sysmlhelperplugin.CreateNoSimFAStructureMenu"))){
 
 					if (theSelectedEl instanceof IRPProject){
 						try { 
-							PopulateFunctionalAnalysisPkg.createFunctionalAnalysisPkg( (IRPProject) theSelectedEl, SimulationType.NoSim, m_configSettings ); 
+							PopulateFunctionalAnalysisPkg.createFunctionalAnalysisPkg( (IRPProject) theSelectedEl, SimulationType.NoSim, _configSettings ); 
 
 						} catch (Exception e) {
 							Logger.writeLine("Error: Exception in OnMenuItemSelect when invoking PopulateFunctionalAnalysisPkg.createFunctionalAnalysisPkg");
 						}
 					}
-				} else if (menuItem.equals(m_configSettings.getString("sysmlhelperplugin.CreateDSStructureMenu"))){
+				} else if (menuItem.equals(_configSettings.getString("sysmlhelperplugin.CreateDSStructureMenu"))){
 
 					if (theSelectedEl instanceof IRPProject){
 						try { 
@@ -155,7 +156,7 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 							Logger.writeLine("Error: Exception in OnMenuItemSelect when invoking PopulateDesignSynthesisPkg.createDesignSynthesisPkg");
 						}
 					}
-				} else if (menuItem.equals(m_configSettings.getString("sysmlhelperplugin.QuickHyperlinkMenu"))){
+				} else if (menuItem.equals(_configSettings.getString("sysmlhelperplugin.QuickHyperlinkMenu"))){
 
 					try { 
 						IRPHyperLink theHyperLink = (IRPHyperLink) theSelectedEl.addNewAggr("HyperLink", "");
@@ -167,7 +168,7 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 						Logger.writeLine("Error: Exception in OnMenuItemSelect when invoking MBSE Method: General\\Quick hyperlink");
 					}
 					
-				} else if (menuItem.equals(m_configSettings.getString("sysmlhelperplugin.SelectDependsOnElementsMenu"))){
+				} else if (menuItem.equals(_configSettings.getString("sysmlhelperplugin.SelectDependsOnElementsMenu"))){
 
 					try { 					
 						Set<IRPModelElement> theCombinedSet = 
@@ -181,7 +182,7 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 						Logger.writeLine("Error: Exception in OnMenuItemSelect when invoking MBSE Method: General\\Select Depends On element(s)\\All");
 					}
 
-				} else if (menuItem.equals(m_configSettings.getString("sysmlhelperplugin.SelectDependentElementsMenu"))){
+				} else if (menuItem.equals(_configSettings.getString("sysmlhelperplugin.SelectDependentElementsMenu"))){
 
 					try {
 						Set<IRPModelElement> theCombinedSet = 
@@ -195,7 +196,7 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 						Logger.writeLine("Error: Exception in OnMenuItemSelect when invoking MBSE Method: General\\Select Dependent element(s)\\All");
 					}
 
-				} else if (menuItem.equals(m_configSettings.getString("sysmlhelperplugin.SelectDependsOnDeriveOnlyElementsMenu"))){
+				} else if (menuItem.equals(_configSettings.getString("sysmlhelperplugin.SelectDependsOnDeriveOnlyElementsMenu"))){
 
 					try { 					
 						Set<IRPModelElement> theCombinedSet = 
@@ -209,7 +210,7 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 						Logger.writeLine("Error: Exception in OnMenuItemSelect when invoking MBSE Method: General\\Select Depends On element(s)\\Derives");
 					}
 
-				} else if (menuItem.equals(m_configSettings.getString("sysmlhelperplugin.SelectDependentDeriveOnlyElementsMenu"))){
+				} else if (menuItem.equals(_configSettings.getString("sysmlhelperplugin.SelectDependentDeriveOnlyElementsMenu"))){
 
 					try {
 						Set<IRPModelElement> theCombinedSet = 
@@ -223,7 +224,7 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 						Logger.writeLine("Error: Exception in OnMenuItemSelect when invoking MBSE Method: General\\Select Dependent element(s)\\Derives");
 					}
 					
-				} else if (menuItem.equals(m_configSettings.getString("sysmlhelperplugin.SelectDependsOnSatisfyOnlyElementsMenu"))){
+				} else if (menuItem.equals(_configSettings.getString("sysmlhelperplugin.SelectDependsOnSatisfyOnlyElementsMenu"))){
 
 					try { 					
 						Set<IRPModelElement> theCombinedSet = 
@@ -237,7 +238,7 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 						Logger.writeLine("Error: Exception in OnMenuItemSelect when invoking MBSE Method: General\\Select Depends On element(s)\\Satisfies");
 					}
 
-				} else if (menuItem.equals(m_configSettings.getString("sysmlhelperplugin.SelectDependentSatisfyOnlyElementsMenu"))){
+				} else if (menuItem.equals(_configSettings.getString("sysmlhelperplugin.SelectDependentSatisfyOnlyElementsMenu"))){
 
 					try {
 						Set<IRPModelElement> theCombinedSet = 
@@ -251,7 +252,7 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 						Logger.writeLine("Error: Exception in OnMenuItemSelect when invoking MBSE Method: General\\Select Dependent element(s)\\Satisfies");
 					}
 					
-				} else if (menuItem.equals(m_configSettings.getString("sysmlhelperplugin.SelectDependsOnVerifyOnlyElementsMenu"))){
+				} else if (menuItem.equals(_configSettings.getString("sysmlhelperplugin.SelectDependsOnVerifyOnlyElementsMenu"))){
 
 					try { 					
 						Set<IRPModelElement> theCombinedSet = 
@@ -265,7 +266,7 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 						Logger.writeLine("Error: Exception in OnMenuItemSelect when invoking MBSE Method: General\\Select Depends On element(s)\\Verifies");
 					}
 
-				} else if (menuItem.equals(m_configSettings.getString("sysmlhelperplugin.SelectDependentVerifyOnlyElementsMenu"))){
+				} else if (menuItem.equals(_configSettings.getString("sysmlhelperplugin.SelectDependentVerifyOnlyElementsMenu"))){
 
 					try {
 						Set<IRPModelElement> theCombinedSet = 
@@ -279,7 +280,7 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 						Logger.writeLine("Error: Exception in OnMenuItemSelect when invoking MBSE Method: General\\Select Dependent element(s)\\Verifies");
 					}
 
-				} else if (menuItem.equals(m_configSettings.getString("sysmlhelperplugin.SelectDependsOnRefineOnlyElementsMenu"))){
+				} else if (menuItem.equals(_configSettings.getString("sysmlhelperplugin.SelectDependsOnRefineOnlyElementsMenu"))){
 
 					try { 					
 						Set<IRPModelElement> theCombinedSet = 
@@ -293,7 +294,7 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 						Logger.writeLine("Error: Exception in OnMenuItemSelect when invoking MBSE Method: General\\Select Depends On element(s)\\Refines");
 					}
 
-				} else if (menuItem.equals(m_configSettings.getString("sysmlhelperplugin.SelectDependentRefineOnlyElementsMenu"))){
+				} else if (menuItem.equals(_configSettings.getString("sysmlhelperplugin.SelectDependentRefineOnlyElementsMenu"))){
 
 					try {
 						Set<IRPModelElement> theCombinedSet = 
@@ -307,7 +308,7 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 						Logger.writeLine("Error: Exception in OnMenuItemSelect when invoking MBSE Method: General\\Select Dependent element(s)\\Refines");
 					}
 					
-				} else if (menuItem.equals(m_configSettings.getString("sysmlhelperplugin.SelectDependsOnDeriveReqtOnlyElementsMenu"))){
+				} else if (menuItem.equals(_configSettings.getString("sysmlhelperplugin.SelectDependsOnDeriveReqtOnlyElementsMenu"))){
 
 					try { 					
 						Set<IRPModelElement> theCombinedSet = 
@@ -321,7 +322,7 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 						Logger.writeLine("Error: Exception in OnMenuItemSelect when invoking MBSE Method: General\\Select Depends On element(s)\\Derive Requirement");
 					}
 
-				} else if (menuItem.equals(m_configSettings.getString("sysmlhelperplugin.SelectDependentDeriveReqtOnlyElementsMenu"))){
+				} else if (menuItem.equals(_configSettings.getString("sysmlhelperplugin.SelectDependentDeriveReqtOnlyElementsMenu"))){
 
 					try {
 						Set<IRPModelElement> theCombinedSet = 
@@ -334,17 +335,17 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 					} catch (Exception e) {
 						Logger.writeLine("Error: Exception in OnMenuItemSelect when invoking MBSE Method: General\\Select Dependent element(s)\\Derive Requirement");
 					}				
-				} else if (menuItem.equals(m_configSettings.getString("sysmlhelperplugin.SetupGatewayProjectMenu"))){
+				} else if (menuItem.equals(_configSettings.getString("sysmlhelperplugin.SetupGatewayProjectMenu"))){
 
 					if (theSelectedEl instanceof IRPProject){
 						try { 
-							CreateGatewayProjectPanel.launchThePanel( (IRPProject)theSelectedEl, ".*.rqtf$", m_configSettings );
+							CreateGatewayProjectPanel.launchThePanel( (IRPProject)theSelectedEl, ".*.rqtf$", _configSettings );
 
 						} catch (Exception e) {
 							Logger.writeLine("Error: Exception in OnMenuItemSelect when invoking CreateGatewayProjectPanel.launchThePanel");
 						}					
 					}
-				} else if (menuItem.equals(m_configSettings.getString("sysmlhelperplugin.AddRelativeUnitMenu"))){
+				} else if (menuItem.equals(_configSettings.getString("sysmlhelperplugin.AddRelativeUnitMenu"))){
 
 					try { 
 						RelativeUnitHandler.browseAndAddUnit( theSelectedEl.getProject(), true );
@@ -363,14 +364,24 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 	// if true is returned the plugin will be unloaded
 	public boolean RhpPluginCleanup() {
 
-		m_rhpApplication = null;
+		_rhpApplication = null;
+		_configSettings = null;
+		
 		return true; // plug-in will be unloaded now (on project close)
 	}
 
 	@Override
 	public void RhpPluginFinalCleanup() {
+		
+		try {			
+			_listener.finalize();
+			
+		} catch( Throwable e ){
+			UserInterfaceHelpers.askAQuestion( "Exception in SysMLHelperPlugin::RhpPluginFinalCleanup" );
+			e.printStackTrace();
+		}
 	}
-
+	
 	@Override
 	public void RhpPluginInvokeItem() {
 
@@ -487,30 +498,7 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 }
 
 /**
- * Copyright (C) 2016-2018  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #001 31-MAR-2016: Added ListenForRhapsodyTriggers (F.J.Chadburn)
-    #004 10-APR-2016: Re-factored projects into single workspace (F.J.Chadburn)
-    #006 02-MAY-2016: Add FunctionalAnalysisPkg helper support (F.J.Chadburn)
-    #011 08-MAY-2016: Simplify version numbering mechanism (F.J.Chadburn)
-    #016 11-MAY-2016: Add GPL advisory to the Log window (F.J.Chadburn)
-    #017 11-MAY-2016: Double-click now works with both nested and hyper-linked diagrams (F.J.Chadburn)
-    #035 15-JUN-2016: New panel to configure requirements package naming and gateway set-up (F.J.Chadburn)
-    #050 06-JUL-2016: Setup Gateway project based on rqtf template option now under General Utilities menu (F.J.Chadburn)
-    #109 06-NOV-2016: Added .properties support for localisation of menus (F.J.Chadburn)
-    #110 06-NOV-2016: PluginVersion now comes from Config.properties file, rather than hard wired (F.J.Chadburn)
-    #111 13-NOV-2016: Added new Simple Sim (Guard only) functional analysis structure option (F.J.Chadburn)
-    #112 13-NOV-2016: Added new No Sim functional analysis structure option (F.J.Chadburn)
-    #162 05-FEB-2017: Add new menu to add a relative reference to an external unit (.sbs) (F.J.Chadburn)
-    #165 15-FEB-2017: Added new menu to select end of Dependency relations to assist usability (F.J.Chadburn)
-    #166 15-FEB-2017: Corrected Copyright information to 2017 (F.J.Chadburn)
-    #172 02-APR-2017: Added new General Utilities > Select Dependent element(s) option (F.J.Chadburn)
-    #207 25-JUN-2017: Significant bolstering of Select Depends On/Dependent element(s) menus (F.J.Chadburn)
-    #219 12-JUL-2017: Added Select Depends On element(s)\Derive Requirement menus for deriveReqt relations (F.J.Chadburn)
-    #231 27-SEP-2017: Enhanced tooltip now shows the req't text when hovering over traceability relations (F.J.Chadburn)
-    #239 04-OCT-2017: Improve warning/behaviour if multiple Rhapsodys are open or user switches app (F.J.Chadburn)
-    #248 08-APR-2018: Update copyright notice year to 2018 (F.J.Chadburn)
+ * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

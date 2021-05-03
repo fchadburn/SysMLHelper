@@ -396,3 +396,5 @@ ExecutableMBSEProfile:
 #270 29-APR-2021: Adaptation of Actor Packages to accept rendering of properties using the Metamodeling Profile (F.J.Chadburn)
 #271 30-APR-2021: Refinement of context diagram with some automation to enable actor and event selection (F.J.Chadburn)
 #272 02-MAY-2021: Adaptation of Requirement and Use Case Packages to render properties using Metamodeling Profile (F.J.Chadburn)
+#273 03-MAY-2021: Fix listeners for both SysMLHelper and ExecutableMBSEProfile to stop duplicate double-click handling (F.J.Chadburn)
+#274 03-MAY-2021: Fix AddNewMenuStructureContent in the ExecutableMBSE.properties to apply latest menu structure (F.J.Chadburn)

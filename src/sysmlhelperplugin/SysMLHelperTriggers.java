@@ -166,7 +166,6 @@ public class SysMLHelperTriggers extends RPApplicationListener {
 				}
 			}
 		}
-
 	}
 
 	private void afterAddForDeriveRequirement(
@@ -501,33 +500,15 @@ public class SysMLHelperTriggers extends RPApplicationListener {
 		
 		return optionsList;
 	}	
+	
+	@Override
+	protected void finalize() throws Throwable {
+		super.finalize();
+	}
 }
 
 /**
- * Copyright (C) 2016-2017  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #001 31-MAR-2016: Added ListenForRhapsodyTriggers (F.J.Chadburn)
-    #003 09-APR-2016: Added double-click UC to open ACT (F.J.Chadburn)
-    #004 10-APR-2016: Re-factored projects into single workspace (F.J.Chadburn)
-    #017 11-MAY-2016: Double-click now works with both nested and hyper-linked diagrams (F.J.Chadburn)
-    #035 15-JUN-2016: Re-factored SysMLHelperTriggers to make a little more extensible (F.J.Chadburn)
-    #058 13-JUL-2016: Dropping CallOp on diagram now gives option to create Op on block (F.J.Chadburn)
-    #068 19-JUL-2016: Newline added to Open diagram dialog (F.J.Chadburn)
-    #075 28-JUL-2016: Fix unintended pop-up of Features dialog when opening diagrams with double-click (F.J.Chadburn)
-    #076 28-JUL-2016: Support IBD drill down by making double-click of part consider diagrams of Block (F.J.Chadburn)
-    #079 28-JUL-2016: Improved robustness of post add CallOp behaviour to prevent Rhapsody hanging (F.J.Chadburn)
-    #080 28-JUL-2016: Added activity diagram name to the create AD dialog for use cases (F.J.Chadburn)
-    #081 28-JUL-2016: Dragging a CallOp on to diagram should not ask to add a new one (F.J.Chadburn)
-    #089 15-AUG-2016: Add a pull-down list to select Block when adding events/ops in white box (F.J.Chadburn)
-    #093 23-AUG-2016: Added isPopulateOptionHidden tag to allow hiding of the populate check-box on dialogs (F.J.Chadburn)
-    #098 14-SEP-2016: Improve dialog for double-click to clarify cancelling gets the Features dialog (F.J.Chadburn)
-    #115 13-NOV-2016: Removed use of isEnableBlockSelectionByUser tag and <<LogicalSystem>> by helper (F.J.Chadburn)
-    #130 25-NOV-2016: Improved consistency in handling of isPopulateOptionHidden and isPopulateWantedByDefault tags (F.J.Chadburn)
-    #157 25-JAN-2017: Add additional protection to afterAddElement trigger for IRPCallOperation (F.J.Chadburn)
-    #161 05-FEB-2017: Support nested diagram links in CallOperation description (F.J.Chadburn) 
-    #186 29-MAY-2017: Add context string to getBlockUnderDev to make it clearer for user when selecting (F.J.Chadburn)
-    #245 11-OCT-2017: Fixed exception on CallOperation action drop when using detailed ADs with Ops (F.J.Chadburn)
+ * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

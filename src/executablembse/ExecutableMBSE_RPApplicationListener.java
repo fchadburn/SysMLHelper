@@ -257,7 +257,6 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				
 				IRPModelElement theDependsOn = theDependency.getDependsOn();
 				
-				Logger.writeLine( "theDependsOn is " +  Logger.elementInfo(  theDependsOn ) );
 				if( theDependsOn instanceof IRPPackage &&
 						GeneralHelpers.hasStereotypeCalled( "ActorPackage", theDependsOn ) ){
 					
@@ -269,15 +268,13 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		if( !existingActors.isEmpty() ){
 			
 			IRPModelElement theSelectedActor =
-					UserInterfaceHelpers.launchDialogToSelectElement( existingActors, "Select existing actor", true );
+					UserInterfaceHelpers.launchDialogToSelectElement( 
+							existingActors, "Select existing actor", true );
 			
 			if( theSelectedActor instanceof IRPClassifier ){
-				Logger.writeLine( "theSelectedActor is " + Logger.elementInfo( theSelectedActor ) );				
 				modelElement.setOtherClass( (IRPClassifier) theSelectedActor );
 			}
-		}
-		
-		Logger.writeLine("Got here");
+		}		
 	}
 	
 	private void afterAddForRequirement(
@@ -348,6 +345,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		boolean theReturn = false;
 
 		try {	
+			
 			List<IRPModelElement> optionsList = null;
 
 			if( pModelElement instanceof IRPCallOperation ){
@@ -581,16 +579,18 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 		List<IRPModelElement> optionsList = new ArrayList<IRPModelElement>();
 		optionsList.addAll( allDiagrams );
-
+		
 		return optionsList;
-	}	
+	}
+	
+	@Override
+	protected void finalize() throws Throwable {
+		super.finalize();
+	}
 }
 
 /**
- * Copyright (C) 2018-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #249 29-MAY-2019: First official version of new ExecutableMBSEProfile  (F.J.Chadburn)
+ * Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

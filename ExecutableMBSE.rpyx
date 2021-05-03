@@ -47,7 +47,7 @@
 										<_Name type="a">Model</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">2</size>
+												<size type="a">3</size>
 												<IProperty type="e">
 													<_Name type="a">NamesRegExp</_Name>
 													<_Value type="a">^(.*)$</_Value>
@@ -57,6 +57,12 @@
 												<IProperty type="e">
 													<_Name type="a">RenameUnusedFiles</_Name>
 													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">SupportIncrementalModelSynchronization</_Name>
+													<_Value type="a">False</_Value>
 													<_Type type="a">Bool</_Type>
 												</IProperty>
 												
@@ -97,21 +103,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSE</_name>
-			<Stereotypes type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">1</size>
-					
-						<IHandle type="e">
-							<_hm2Class type="a">IStereotype</_hm2Class>
-							<_hsubsystem type="a">ExecutableMBSEProfile</_hsubsystem>
-							<_hname type="a">ExecutableMBSEProfile</_hname>
-							<_hid type="a">GUID 5df2b3b3-e0d0-4595-a39f-c823d2925305</_hid>
-						</IHandle>
-					
-				</IRPYRawContainer>
-			</Stereotypes>
-			<_modifiedTimeWeak type="a">5.2.2021::12:46:11</_modifiedTimeWeak>
-			<_modifiedTime type="a">5.2.2021::12:46:11</_modifiedTime>
+			<_modifiedTime type="a">5.3.2021::15:54:48</_modifiedTime>
 			<_lastID type="a">10039</_lastID>
 			<_UserColors type="w">
 				<IRPYRawContainer type="e">

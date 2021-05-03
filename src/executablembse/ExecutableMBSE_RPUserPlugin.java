@@ -41,7 +41,8 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 	static protected IRPApplication _rhpApp = null;
 	static protected ConfigurationSettings _configSettings = null;
-
+	protected ExecutableMBSE_RPApplicationListener _listener = null;
+	
 	// called when plug-in is loaded
 	public void RhpPluginInit(
 			final IRPApplication theRhapsodyApp ){
@@ -75,12 +76,11 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 		Logger.info( msg );
 
-		ExecutableMBSE_RPApplicationListener listener = 
-				new ExecutableMBSE_RPApplicationListener( 
-						theRhapsodyApp, 
-						"ExecutableMBSEProfile" );
+		_listener = new ExecutableMBSE_RPApplicationListener( 
+				theRhapsodyApp, 
+				"ExecutableMBSEProfile" );
 		
-		listener.connect( theRhapsodyApp );
+		_listener.connect( theRhapsodyApp );
 	}
 
 	public static IRPApplication getRhapsodyApp(){
@@ -842,11 +842,21 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 	public boolean RhpPluginCleanup() {
 
 		_rhpApp = null;
+		_configSettings = null;
+		
 		return true; // plug-in will be unloaded now (on project close)
 	}
 
 	@Override
 	public void RhpPluginFinalCleanup() {
+		
+		try {
+			_listener.finalize();
+			_listener = null;
+			
+		} catch( Throwable e ){
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -1198,11 +1208,6 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 /**
  * Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #249 29-MAY-2019: First official version of new ExecutableMBSEProfile  (F.J.Chadburn)
-    #265 07-DEC-2020: Add IsAutoPopulatePackageDiagram property to enable package diagrams creation to be turned off (F.J.Chadburn)
-    #266 07-DEC-2020: Add initial support for CVS export & switching master of requirements to DOORS NG
 
     This file is part of SysMLHelperPlugin.
 
