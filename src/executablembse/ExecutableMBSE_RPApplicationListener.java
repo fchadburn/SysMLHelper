@@ -1,6 +1,7 @@
 package executablembse;
 
 import functionalanalysisplugin.CreateOperationPanel;
+import functionalanalysisplugin.GraphNodeInfo;
 import generalhelpers.GeneralHelpers;
 import generalhelpers.Logger;
 import generalhelpers.StereotypeAndPropertySettings;
@@ -240,17 +241,120 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	private void afterAddForActorUsage(
 			IRPInstance modelElement ){
 
 		IRPPackage theOwningPackage = getOwningPackageFor( modelElement );
+		
+		List<IRPModelElement> existingActors = getExistingActorsBasedOn( theOwningPackage );
+		
+		if( !existingActors.isEmpty() ){
+		
+			List<IRPModelElement> elsToChooseFrom = new ArrayList<>();
+			elsToChooseFrom.addAll( existingActors );
+			
+			List<IRPModelElement> existingActorUsages = getExistingActorUsagesBasedOn( theOwningPackage );
+			existingActorUsages.remove( modelElement ); // Don't include this element
+			
+			elsToChooseFrom.addAll( existingActorUsages );
 
+			IRPModelElement theSelectedElement =
+					UserInterfaceHelpers.launchDialogToSelectElement( 
+							elsToChooseFrom, "Select existing actor or actor usage", true );
+
+			if( theSelectedElement instanceof IRPInstance ){
+
+				IRPGraphElement theGraphEl = getGraphElFor( modelElement );
+				
+				if( theGraphEl instanceof IRPGraphNode ){
+					
+					IRPDiagram theDiagram = theGraphEl.getDiagram();
+
+					IRPGraphNode theNewNode = null;
+					
+					GraphNodeInfo theNodeInfo;
+										
+					try {
+						theNodeInfo = new GraphNodeInfo( (IRPGraphNode) theGraphEl );
+						
+						theNewNode = theDiagram.addNewNodeForElement(
+								theSelectedElement, 
+								theNodeInfo.getTopLeftX(), 
+								theNodeInfo.getTopLeftY(), 
+								theNodeInfo.getWidth(), 
+								theNodeInfo.getHeight() );
+						
+						String theStructuredViewPropertyValue =
+								theGraphEl.getGraphicalProperty( "StructureView" ).getValue();
+						
+						theNewNode.setGraphicalProperty( "StructureView", theStructuredViewPropertyValue );
+												
+					} catch( Exception e ){
+						
+						Logger.writeLine( "Exception in afterAddForActorUsage when switching " + 
+								Logger.elementInfo( theGraphEl.getModelObject() ) + 
+								" to " + Logger.elementInfo( theSelectedElement ) );
+						
+						e.printStackTrace();
+					}
+					
+					//dumpGraphicalProperties(theGraphEl);
+					
+					if( theNewNode instanceof IRPGraphNode ){
+						modelElement.deleteFromProject();
+						theSelectedElement.highLightElement();
+					}
+				}
+				
+			} else if( theSelectedElement instanceof IRPClassifier ){
+				
+				modelElement.setOtherClass( (IRPClassifier) theSelectedElement );
+				
+			}
+		}		
+	}
+
+	private IRPGraphElement getGraphElFor( 
+			IRPInstance modelElement ){
+		
+		@SuppressWarnings("unchecked")
+		List<IRPModelElement> theReferences = modelElement.getReferences().toList();
+		
+		IRPGraphElement theGraphEl = null;
+		
+		for( IRPModelElement theReference : theReferences) {
+						
+			if( theReference instanceof IRPDiagram ){
+				
+				IRPDiagram theDiagram = (IRPDiagram)theReference;
+				
+				@SuppressWarnings("unchecked")
+				List<IRPGraphElement> theGraphEls = 
+						theDiagram.getCorrespondingGraphicElements( modelElement ).toList();
+				
+				if( theGraphEls.size() == 1 ){					
+					theGraphEl = theGraphEls.get( 0 );
+				}				
+			}
+		}
+		
+		return theGraphEl;
+	}
+
+	private List<IRPModelElement> getExistingActorsBasedOn(
+			IRPPackage theOwningPackage ){
+		
 		List<IRPModelElement> existingActors = new ArrayList<>();
 
 		if( theOwningPackage != null ){
-			existingActors.addAll( theOwningPackage.getNestedElementsByMetaClass( "Actor", 0 ).toList() );
+			
+			@SuppressWarnings("unchecked")
+			List<IRPModelElement> theActorsInOwningPackage =
+					theOwningPackage.getNestedElementsByMetaClass( "Actor", 0 ).toList();
+			
+			existingActors.addAll( theActorsInOwningPackage );
 
+			@SuppressWarnings("unchecked")
 			List<IRPDependency> theDependencies = theOwningPackage.getDependencies().toList();
 
 			for (IRPDependency theDependency : theDependencies) {
@@ -260,21 +364,38 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				if( theDependsOn instanceof IRPPackage &&
 						GeneralHelpers.hasStereotypeCalled( "ActorPackage", theDependsOn ) ){
 
-					existingActors.addAll( theDependsOn.getNestedElementsByMetaClass( "Actor", 0 ).toList() );
+					@SuppressWarnings("unchecked")
+					List<IRPModelElement> theActorsInDependsOnActorPackage =
+							theDependsOn.getNestedElementsByMetaClass( "Actor", 0 ).toList();
+					
+					existingActors.addAll( theActorsInDependsOnActorPackage );
 				}
 			}
 		}
+		
+		return existingActors;
+	}
+	
+	private List<IRPModelElement> getExistingActorUsagesBasedOn(
+			IRPPackage theOwningPackage ){
+		
+		List<IRPModelElement> existingActorUsages = new ArrayList<>();
 
-		if( !existingActors.isEmpty() ){
+		if( theOwningPackage != null ){
+			
+			@SuppressWarnings("unchecked")
+			List<IRPModelElement> theCandidates =
+					theOwningPackage.getGlobalObjects().toList();
 
-			IRPModelElement theSelectedActor =
-					UserInterfaceHelpers.launchDialogToSelectElement( 
-							existingActors, "Select existing actor", true );
-
-			if( theSelectedActor instanceof IRPClassifier ){
-				modelElement.setOtherClass( (IRPClassifier) theSelectedActor );
+			for( IRPModelElement theCandidate : theCandidates ){
+				
+				if( GeneralHelpers.hasStereotypeCalled( "ActorUsage", theCandidate ) ){
+					existingActorUsages.add( theCandidate );
+				}
 			}
-		}		
+		}
+		
+		return existingActorUsages;
 	}
 
 	private void afterAddForRequirement(
@@ -588,6 +709,18 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 	@Override
 	protected void finalize() throws Throwable {
 		super.finalize();
+	}
+	
+	public static void dumpGraphicalProperties(IRPGraphElement theElement) {
+		
+		@SuppressWarnings("unchecked")
+		List<IRPGraphicalProperty> theGraphicalProperties = theElement.getAllGraphicalProperties().toList();
+		
+		for (IRPGraphicalProperty theGraphicalProperty : theGraphicalProperties) {
+
+			System.out.println(theGraphicalProperty.getKey() + "::" + theGraphicalProperty.getValue());
+			Logger.writeLine(theGraphicalProperty.getKey() + "::" + theGraphicalProperty.getValue());
+		}
 	}
 }
 

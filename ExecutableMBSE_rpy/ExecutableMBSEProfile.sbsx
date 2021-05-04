@@ -1658,7 +1658,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">5.3.2021::17:13:8</_modifiedTime>
+			<_modifiedTime type="a">5.4.2021::14:19:5</_modifiedTime>
 			<_lastID type="a">16</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -9066,7 +9066,7 @@ sleep(2);</_bodyData>
 			<_id type="a">GUID 4cab28b8-28b8-4e00-9ec8-5e71cca4a766</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ContextDiagran</_name>
-			<_modifiedTime type="a">5.3.2021::17:13:8</_modifiedTime>
+			<_modifiedTime type="a">5.4.2021::14:19:5</_modifiedTime>
 			<_lastID type="a">7</_lastID>
 			<_defaultComposite type="s">GUID 126b210a-965a-424f-b9ef-c617f59fa371</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -9130,7 +9130,7 @@ sleep(2);</_bodyData>
 												
 												<IProperty type="e">
 													<_Name type="a">BrowserGroupIcon</_Name>
-													<_Value type="a">..\icons\UseCasePackages.ico</_Value>
+													<_Value type="a">ContextDiagramPackages.ico</_Value>
 													<_Type type="a">File</_Type>
 												</IProperty>
 												
@@ -9159,7 +9159,7 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ContextDiagramPackage</_name>
-			<_modifiedTime type="a">5.3.2021::17:2:2</_modifiedTime>
+			<_modifiedTime type="a">5.4.2021::14:19:5</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -9349,11 +9349,17 @@ sleep(2);</_bodyData>
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">3</size>
+												<size type="a">4</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
 													<_Value type="a">ValueProperty,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale,System Feature</_Value>
 													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">BrowserGroupIcon</_Name>
+													<_Value type="a">ContextBlocks.ico</_Value>
+													<_Type type="a">File</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
@@ -9381,7 +9387,7 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SystemContext</_name>
-			<_modifiedTime type="a">4.30.2021::12:58:29</_modifiedTime>
+			<_modifiedTime type="a">5.4.2021::13:31:39</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -9430,7 +9436,7 @@ sleep(2);</_bodyData>
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">4</size>
+												<size type="a">5</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
 													<_Value type="a">ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale</_Value>
@@ -9438,8 +9444,14 @@ sleep(2);</_bodyData>
 												</IProperty>
 												
 												<IProperty type="e">
+													<_Name type="a">BrowserGroupIcon</_Name>
+													<_Value type="a">ActorUsages.ico</_Value>
+													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
 													<_Name type="a">BrowserIcon</_Name>
-													<_Value type="a">ActorInstance.ico</_Value>
+													<_Value type="a">ActorUsage.ico</_Value>
 													<_Type type="a">File</_Type>
 												</IProperty>
 												
@@ -9469,7 +9481,7 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ActorUsage</_name>
-			<_modifiedTime type="a">4.30.2021::16:31:55</_modifiedTime>
+			<_modifiedTime type="a">5.4.2021::13:24:11</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
