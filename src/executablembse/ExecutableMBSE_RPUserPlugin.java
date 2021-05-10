@@ -70,17 +70,19 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						+ "along with SysMLHelperPlugin. If not, see <http://www.gnu.org/licenses/>. "
 						+ "Source code is made available on https://github.com/fchadburn/mbsetraining";
 
-		String msg = "The ExecutableMBSE component of the SysMLHelperPlugin V" + _configSettings.getProperty("PluginVersion") + " was loaded successfully.\n" +
+		String msg = "The ExecutableMBSE component of the SysMLHelperPlugin was loaded successfully.\n" +
 				legalNotice +
 				"\nNew right-click 'MBSE Method' commands have been added.";		
 
 		Logger.info( msg );
-
+		
 		_listener = new ExecutableMBSE_RPApplicationListener( 
 				theRhapsodyApp, 
 				"ExecutableMBSEProfile" );
 		
 		_listener.connect( theRhapsodyApp );
+		
+		Logger.info( "The ExecutableMBSE profile version is " + _configSettings.getProperty( "PluginVersion" ) + "\n" );
 	}
 
 	public static IRPApplication getRhapsodyApp(){

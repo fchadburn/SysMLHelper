@@ -28,7 +28,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			IRPApplication app,
 			String expectedProfileName ) {
 
-		Logger.info( "ExecutableMBSE_RPApplicationListener was loaded - Listening for events (double-click etc)\n" ); 
+		Logger.info( "ExecutableMBSE_RPApplicationListener was loaded - Listening for events (double-click etc)" ); 
 
 		_expectedProfileName = expectedProfileName;
 		_expectedAppID = app.getApplicationConnectionString();

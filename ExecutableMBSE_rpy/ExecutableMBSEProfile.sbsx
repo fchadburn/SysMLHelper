@@ -1658,7 +1658,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">5.4.2021::14:19:5</_modifiedTime>
+			<_modifiedTime type="a">5.10.2021::9:2:3</_modifiedTime>
 			<_lastID type="a">16</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -6699,7 +6699,7 @@ sleep(2);</_bodyData>
 												<size type="a">4</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Query,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,13 Reqts Analysis - Requirement Package,Enhanced Use Case Diagram,Requirement,Actor,UseCase,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
+													<_Value type="a">Query,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Enhanced Use Case Diagram,13 Reqts Analysis - Requirement Package,Requirement,Actor,UseCase,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -6734,7 +6734,7 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">UseCasePackage</_name>
-			<_modifiedTime type="a">5.2.2021::11:48:5</_modifiedTime>
+			<_modifiedTime type="a">5.10.2021::8:36:17</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -9066,7 +9066,7 @@ sleep(2);</_bodyData>
 			<_id type="a">GUID 4cab28b8-28b8-4e00-9ec8-5e71cca4a766</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ContextDiagran</_name>
-			<_modifiedTime type="a">5.4.2021::14:19:5</_modifiedTime>
+			<_modifiedTime type="a">5.10.2021::8:39:31</_modifiedTime>
 			<_lastID type="a">7</_lastID>
 			<_defaultComposite type="s">GUID 126b210a-965a-424f-b9ef-c617f59fa371</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -9124,7 +9124,7 @@ sleep(2);</_bodyData>
 												<size type="a">4</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Query,Event,Diagram View,System Context Diagram,TableV - Context Diagram Flows,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Actor Usage,System Context,Flow,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
+													<_Value type="a">Query,Event,Diagram View,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,System Context Diagram,TableV - Context Diagram Flows,Actor Usage,System Context,Flow,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -9159,7 +9159,7 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ContextDiagramPackage</_name>
-			<_modifiedTime type="a">5.4.2021::14:19:5</_modifiedTime>
+			<_modifiedTime type="a">5.10.2021::8:39:31</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -9818,7 +9818,7 @@ sleep(2);</_bodyData>
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">AddNewMenuStructure</_Name>
-													<_Value type="a">Diagrams/System Context Diagram,Diagrams/TableV - Context Diagram Flows,MBSE Element/10 Reqts Analysis - Context Diagram Package,MBSE Element/11 Reqts Analysis - Actor Package,MBSE Element/12 Reqts Analysis - Use Case Package,MBSE Element/13 Reqts Analysis - Requirement Package,MBSE Element/Actor Usage,MBSE Element/Enhanced Use Case Diagram,MBSE Element/System Context,MBSE Element/System Feature,Diagrams/Requirements Diagram,%0D
+													<_Value type="a">MBSE Diagram/Enhanced Use Case Diagram,MBSE Diagram/System Context Diagram,MBSE Diagram/TableV - Context Diagram Flows,MBSE Diagram/Textual Activity,MBSE Element/10 Reqts Analysis - Context Diagram Package,MBSE Element/11 Reqts Analysis - Actor Package,MBSE Element/12 Reqts Analysis - Use Case Package,MBSE Element/13 Reqts Analysis - Requirement Package,MBSE Element/Actor Usage,MBSE Element/System Context,MBSE Element/System Feature,Diagrams/Requirements Diagram,%0D
 Diagrams/UseCaseDiagram,%0D
 Diagrams/Package Diagram,%0D
 Diagrams/Block Definition Diagram,%0D
@@ -10001,7 +10001,7 @@ Query</_Value>
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">10 Reqts Analysis - Context Diagram Package,11 Reqts Analysis - Actor Package,12 Reqts Analysis - Use Case Package,13 Reqts Analysis - Requirement Package</_Value>
+													<_Value type="a">Textual Activity,10 Reqts Analysis - Context Diagram Package,11 Reqts Analysis - Actor Package,12 Reqts Analysis - Use Case Package,13 Reqts Analysis - Requirement Package</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -10018,7 +10018,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSE</_name>
-			<_modifiedTime type="a">5.3.2021::17:1:58</_modifiedTime>
+			<_modifiedTime type="a">5.10.2021::9:2:3</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>

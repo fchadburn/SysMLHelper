@@ -11,16 +11,14 @@
 			<_id type="a">GUID 4f2b6707-5798-4c1e-aa4b-c08bda2216fb</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">MetamodelProfileExtensionsProfile</_name>
-			<_modifiedTimeWeak type="a">5.2.2021::11:40:19</_modifiedTimeWeak>
-			<_modifiedTime type="a">5.2.2021::11:40:19</_modifiedTime>
-			<_lastID type="a">3</_lastID>
-			<weakCGTime type="a">5.2.2021::11:40:19</weakCGTime>
-			<strongCGTime type="a">4.29.2021::17:17:20</strongCGTime>
+			<_modifiedTime type="a">5.10.2021::8:34:32</_modifiedTime>
+			<_lastID type="a">5</_lastID>
 			<_defaultComposite type="s">GUID 5acfea5e-557e-4311-ba12-6023a21b8426</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
-			<_configurationRelatedTime type="a">1.2.1990::0:0:0</_configurationRelatedTime>
 			<AggregatesList type="e">
 				<value>GUID 0d931adc-d7f1-4642-94fa-e2a2f89d3dd6</value>
+				<value>GUID 0775b38f-d678-4575-851a-bc02ac3b4018</value>
+				<value>GUID 39a1bf6f-d970-41b9-af9c-b4b35b14bb10</value>
 				<value>GUID 5acfea5e-557e-4311-ba12-6023a21b8426</value>
 			</AggregatesList>
 		</IProfile>
@@ -28,8 +26,31 @@
 			<_id type="a">GUID 0d931adc-d7f1-4642-94fa-e2a2f89d3dd6</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">MBSE Element</_name>
-			<_modifiedTimeWeak type="a">4.29.2021::17:17:40</_modifiedTimeWeak>
 			<_modifiedTime type="a">4.29.2021::17:17:40</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>Class</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+		</IStereotype>
+		<IStereotype type="e">
+			<_id type="a">GUID 0775b38f-d678-4575-851a-bc02ac3b4018</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">MBSE Diagram</_name>
+			<_modifiedTime type="a">5.10.2021::8:34:28</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>Class</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+		</IStereotype>
+		<IStereotype type="e">
+			<_id type="a">GUID 39a1bf6f-d970-41b9-af9c-b4b35b14bb10</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">MBSE Relation</_name>
+			<_modifiedTime type="a">5.10.2021::8:34:32</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -41,10 +62,7 @@
 			<_id type="a">GUID 5acfea5e-557e-4311-ba12-6023a21b8426</_id>
 			<_myState type="a">40960</_myState>
 			<_name type="a">TopLevel</_name>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
-			<weakCGTime type="a">1.2.1990::0:0:0</weakCGTime>
-			<strongCGTime type="a">1.2.1990::0:0:0</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>

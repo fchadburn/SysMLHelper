@@ -402,3 +402,5 @@ ExecutableMBSEProfile:
 #276 03-MAY-2021: Ensure NamesRegEx for the model allows spaces so that events can be created with spaces (F.J.Chadburn)
 #277 04-MAY-2021: Refined icons related to context diagrams (F.J.Chadburn)
 #278 04-MAY-2021: Added actor selection dialog to context diagrams if there's a dependency to an actor package (F.J.Chadburn)
+#279 10-MAY-2021: Make plugin version more visible in output window when plugin loads (F.J.Chadburn)
+#280 10-MAY-2021: Update Add New menus to make profile added diagrams clearer, including allowing Textual Activity (F.J.Chadburn)

@@ -370,20 +370,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSE</_name>
-			<Stereotypes type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">1</size>
-					
-						<IHandle type="e">
-							<_hm2Class type="a">IStereotype</_hm2Class>
-							<_hsubsystem type="a">ExecutableMBSEProfile</_hsubsystem>
-							<_hname type="a">ExecutableMBSE</_hname>
-							<_hid type="a">GUID 5df2b3b3-e0d0-4595-a39f-c823d2925305</_hid>
-						</IHandle>
-					
-				</IRPYRawContainer>
-			</Stereotypes>
-			<_modifiedTime type="a">5.3.2021::17:7:19</_modifiedTime>
+			<_modifiedTime type="a">5.10.2021::8:58:14</_modifiedTime>
 			<_lastID type="a">10040</_lastID>
 			<_UserColors type="w">
 				<IRPYRawContainer type="e">
