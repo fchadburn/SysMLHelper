@@ -385,7 +385,7 @@ UNDER DEV RELEASE 3.0.X.PRERELEASE (07-JUL-2020):
 
 ----------------------------------------------------------------------------------
 
-4.0.b.PRERELEASE (XX-XXX-XXXX): [PENDING]
+4.0.b.PRERELEASE (11-MAY-2021):
 
 MetamodelProfile:
 #267 29-APR-2021: Initial incorporation of Metamodeling Profile developed by MBSE Training for MBSEProfiles work (F.J.Chadburn)
