@@ -41,8 +41,11 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 		_rhpApplication = theRhapsodyApp;
 		
 		_configSettings = new ConfigurationSettings(
+				_rhpApplication,
+				_rhpApplication.activeProject(),
 				"SysMLHelper.properties", 
-				"SysMLHelper_MessagesBundle" );
+				"SysMLHelper_MessagesBundle",
+				"SysMLHelper" );
 		
 		String msg = "The SysMLHelperProfile plugin V" + _configSettings.getProperty("PluginVersion") + " was loaded successfully.\n" + legalNotice +
 				"\nNew right-click 'MBSE Method' commands have been added.";

@@ -35,8 +35,11 @@ public class TauMigrator_RPUserPlugin extends RPUserPlugin {
 		m_rhpApplication = theRhapsodyApp;
 		
 		m_configSettings = new ConfigurationSettings(
+				m_rhpApplication,
+				m_rhpApplication.activeProject(),
 				"TauMigrator.properties", 
-				"TauMigrator_MessagesBundle" );
+				"TauMigrator_MessagesBundle",
+				"TauMigrator" );
 		
 		String msg = "The TauMigratorPlugin component of the SysMLHelperPlugin V" + m_configSettings.getProperty("PluginVersion") + " was loaded successfully.\n" + legalNotice +
 				"\nNew right-click 'MBSE Method' commands have been added.";

@@ -42,13 +42,16 @@ public class AutoConnectFlowPortsPanel extends CreateStructuralElementPanel {
 	private IRPInstance m_PublishingPart = null;
 	
 	public static void main(String[] args) {
-		IRPApplication theApp = RhapsodyAppServer.getActiveRhapsodyApplication();
+		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
 		
-		IRPModelElement theEl = theApp.getSelectedElement();
+		IRPModelElement theEl = theRhpApp.getSelectedElement();
 		
 		ConfigurationSettings configSettings = new ConfigurationSettings(
+				theRhpApp,
+				theRhpApp.activeProject(),
 				"SysMLHelper.properties", 
-				"SysMLHelper_MessagesBundle" );
+				"SysMLHelper_MessagesBundle",
+				"SysMLHelper" );
 		
 		if( theEl instanceof IRPAttribute ){
 			launchThePanel( (IRPAttribute) theEl, configSettings );

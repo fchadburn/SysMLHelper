@@ -38,8 +38,11 @@ public class PopulateFunctionalAnalysisPkg extends PopulatePkg {
 		if (theSelectedEl instanceof IRPProject){
 
 			ConfigurationSettings theConfigSettings = new ConfigurationSettings(
+					theApp,
+					theApp.activeProject(),
 					"SysMLHelper.properties", 
-					"SysMLHelper_MessagesBundle" );
+					"SysMLHelper_MessagesBundle",
+					"SysMLHelper" );
 			
 			PopulateFunctionalAnalysisPkg.createFunctionalAnalysisPkg( 
 					(IRPProject) theSelectedEl, 

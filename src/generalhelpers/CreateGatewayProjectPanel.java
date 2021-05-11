@@ -39,8 +39,11 @@ public class CreateGatewayProjectPanel extends CreateStructuralElementPanel {
 		IRPModelElement theSelectedEl = theRhpApp.getSelectedElement();
 		
 		ConfigurationSettings configSettings = new ConfigurationSettings(
+				theRhpApp,
+				theRhpApp.activeProject(),
 				"SysMLHelper.properties", 
-				"SysMLHelper_MessagesBundle" );
+				"SysMLHelper_MessagesBundle",
+				"SysMLHelper" );
 		
 		if (theSelectedEl instanceof IRPProject){
 			try { 

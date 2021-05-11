@@ -86,9 +86,14 @@ public class CreateTracedAttributePanel extends CopyOfCreateTracedElementPanel {
 	
 	public static void main(String[] args) {
 		
+		IRPApplication rhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
+
 		ConfigurationSettings theConfigSettings = new ConfigurationSettings(
+				rhpApp,
+				rhpApp.activeProject(),
 				"SysMLHelper.properties", 
-				"SysMLHelper_MessagesBundle" );		
+				"SysMLHelper_MessagesBundle",
+				"SysMLHelper" );		
 		
 		launchThePanel( theConfigSettings );
 	}

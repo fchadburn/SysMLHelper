@@ -36,8 +36,11 @@ public class FunctionalDesign_RPUserPlugin extends RPUserPlugin {
 		m_rhpApplication = theRhapsodyApp;
 		
 		m_configSettings = new ConfigurationSettings(
+				m_rhpApplication,
+				m_rhpApplication.activeProject(),
 				"FunctionalDesign.properties", 
-				"FunctionalDesign_MessagesBundle" );
+				"FunctionalDesign_MessagesBundle",
+				"FunctionalDesign" );
 		
 		String msg = "The FunctionalDesignPlugin component of the SysMLHelperPlugin V" + m_configSettings.getProperty("PluginVersion") + " was loaded successfully.\n" + legalNotice +
 				"\nNew right-click 'MBSE Method' commands have been added.";

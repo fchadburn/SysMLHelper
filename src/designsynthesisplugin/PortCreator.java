@@ -23,8 +23,11 @@ public class PortCreator {
 		IRPModelElement theSelectedEl = FunctionalAnalysisPlugin.getRhapsodyApp().getSelectedElement();
 		
 		ConfigurationSettings configSettings = new ConfigurationSettings(
+				FunctionalAnalysisPlugin.getRhapsodyApp(),
+				FunctionalAnalysisPlugin.getRhapsodyApp().activeProject(),
 				"SysMLHelper.properties", 
-				"SysMLHelper_MessagesBundle" );
+				"SysMLHelper_MessagesBundle",
+				"SysMLHelper" );
 		
 		if( theSelectedEl instanceof IRPAttribute ){
 			createPublishFlowportFor( (IRPAttribute) theSelectedEl, configSettings );

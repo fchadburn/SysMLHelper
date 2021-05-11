@@ -19,8 +19,11 @@ public class DesignSynthesisPlugin extends RPUserPlugin {
 		m_rhpApplication = theRhapsodyApp;
 		
 		m_configSettings = new ConfigurationSettings(
+				m_rhpApplication,
+				m_rhpApplication.activeProject(),
 				"SysMLHelper.properties", 
-				"SysMLHelper_MessagesBundle" );
+				"SysMLHelper_MessagesBundle",
+				"SysMLHelper" );
 		
 		String msg = "The DesignSynthesisPlugin component of the SysMLHelperPlugin V" + m_configSettings.getProperty("PluginVersion") + " was loaded successfully. New right-click 'MBSE Method' commands have been added.";		
 		Logger.writeLine(msg); 

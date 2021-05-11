@@ -67,9 +67,14 @@ public class CreateFunctionalDesignSpecificationPackage extends CreateStructural
 	 */
 	public static void main(String[] args) {
 		
+		IRPApplication rhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
+		
 		ConfigurationSettings theConfigSettings = new ConfigurationSettings(
+				rhpApp,
+				rhpApp.activeProject(),
 				"FunctionalDesign.properties", 
-				"FunctionalDesign_MessagesBundle" );
+				"FunctionalDesign_MessagesBundle",
+				"FunctionalDesign" );
 		
 		launchTheDialog( theConfigSettings );		
 	}

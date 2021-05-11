@@ -440,9 +440,9 @@ public class GeneralHelpers {
 			}
 		}
 		
-		if( theChosenStereotype == null ){
-			Logger.writeLine("Warning: Unable to find a stereotype with name " + withTheName + " in getExistingStereotype");
-		}
+		//if( theChosenStereotype == null ){
+			//Logger.writeLine("Warning: Unable to find a stereotype with name " + withTheName + " in getExistingStereotype");
+		//}
 		
 		return theChosenStereotype;
 	}

@@ -802,6 +802,16 @@ public class StereotypeAndPropertySettings {
 		return result;
 	}
 	
+	public static boolean getIsShowProfileVersionCheckDialogs(
+			IRPModelElement forContextEl ){
+		
+		boolean result = getBooleanPropertyValue(
+				forContextEl,
+				"SysMLHelper.General.IsShowProfileVersionCheckDialogs" );
+				
+		return result;
+	}
+	
 	public static boolean getBooleanPropertyValue(
 			IRPModelElement forContextEl,
 			String thePropertyKey ){

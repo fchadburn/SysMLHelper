@@ -8,15 +8,6 @@ import java.util.List;
 import com.telelogic.rhapsody.core.*;
 
 public class ProfileVersionManager {
-
-	public static void main(String[] args) {
-		
-		ConfigurationSettings configSettings = new ConfigurationSettings(
-				"OrchidDesign.properties", 
-				"OrchideDesign_MessagesBundle" );
-		
-		checkAndSetProfileVersion( true, configSettings, false );
-	}
 	
 	/**
 	 * @param args

@@ -47,9 +47,15 @@ public class CreateUseCasesPackagePanel extends CreateStructuralElementPanel {
 
 		String theAppID = UserInterfaceHelpers.getAppIDIfSingleRhpRunningAndWarnUserIfNot();
 
+		
+		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplicationByID( theAppID );
+		
 		ConfigurationSettings configSettings = new ConfigurationSettings(
+				theRhpApp,
+				theRhpApp.activeProject(),
 				"ExecutableMBSE.properties", 
-				"ExecutableMBSE_MessagesBundle" );
+				"ExecutableMBSE_MessagesBundle",
+				"ExecutableMBSE" );
 
 		ProfileVersionManager.checkAndSetProfileVersion( 
 				false, 

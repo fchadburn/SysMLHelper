@@ -47,13 +47,16 @@ public class AutoConnectFlowPortsInfo {
 	
 	public static void main(String[] args) {
 	
-		IRPApplication theApp = RhapsodyAppServer.getActiveRhapsodyApplication();
+		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
 		
-		IRPModelElement theSelectedEl = theApp.getSelectedElement();
+		IRPModelElement theSelectedEl = theRhpApp.getSelectedElement();
 		
 		ConfigurationSettings configSettings = new ConfigurationSettings(
+				theRhpApp,
+				theRhpApp.activeProject(),
 				"SysMLHelper.properties", 
-				"SysMLHelper_MessagesBundle" );
+				"SysMLHelper_MessagesBundle",
+				"SysMLHelper" );
 		
 		if( theSelectedEl instanceof IRPAttribute ){
 			AutoConnectFlowPortsPanel.launchThePanel( (IRPAttribute) theSelectedEl, configSettings );

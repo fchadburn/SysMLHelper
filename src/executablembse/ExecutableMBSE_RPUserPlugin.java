@@ -49,10 +49,15 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 		// keep the application interface for later use
 		_rhpApp = theRhapsodyApp;
+		
+		IRPProject theRhpPrj = _rhpApp.activeProject();
 
 		_configSettings = new ConfigurationSettings(
+				_rhpApp,
+				theRhpPrj,
 				"ExecutableMBSE.properties", 
-				"ExecutableMBSE_MessagesBundle" );
+				"ExecutableMBSE_MessagesBundle",
+				"ExecutableMBSE" );
 
 		final String legalNotice = 
 				"Copyright (C) 2015-2021  MBSE Training and Consulting Limited (www.executablembse.com)"
@@ -82,7 +87,10 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 		
 		_listener.connect( theRhapsodyApp );
 		
-		Logger.info( "The ExecutableMBSE profile version is " + _configSettings.getProperty( "PluginVersion" ) + "\n" );
+		Logger.info( "The ExecutableMBSE profile version is " + _configSettings.getProperty( "PluginVersion" ) );
+		
+		boolean isShowInfoDialog = StereotypeAndPropertySettings.getIsShowProfileVersionCheckDialogs( theRhpPrj );
+		_configSettings.checkIfSetupProjectIsNeeded( isShowInfoDialog, true );
 	}
 
 	public static IRPApplication getRhapsodyApp(){
@@ -134,11 +142,10 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 						if( theSelectedEl instanceof IRPPackage ){
 
-							ProfileVersionManager.checkAndSetProfileVersion( 
-									false, 
-									_configSettings,
-									true );
+							boolean isShowInfoDialog = StereotypeAndPropertySettings.getIsShowProfileVersionCheckDialogs( theRhpPrj );
 
+							_configSettings.checkIfSetupProjectIsNeeded( isShowInfoDialog, true );
+							
 							CreateUseCasesPackagePanel.launchTheDialog( 
 									theAppID );
 						} else {
@@ -150,9 +157,8 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 						if( theSelectedEl instanceof IRPPackage ){
 
-								_configSettings.setPropertiesValuesRequestedInConfigFile( 
-										theRhpPrj,
-										"setPropertyForExecutableMBSEModel" );
+							checkIfSetupProjectIsNeeded( true );
+							
 						} else {
 							Logger.error( menuItem + " invoked out of context and only works for packages" );
 						}
@@ -838,6 +844,28 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 
 
+	}
+
+	private void checkIfSetupProjectIsNeeded(
+			boolean isUserDialogEnabled ) {
+		
+		boolean isSetupNeeded = _configSettings.checkIfSetupProjectIsNeeded( isUserDialogEnabled, false );
+
+		String theMsg;
+		
+		if( isSetupNeeded ){
+			
+			theMsg = "An update is needed, do you want to proceed?";
+		
+		} else {
+			theMsg = "An update is not needed, do you want to proceed with update anyway?";
+		}
+		
+		boolean answer = UserInterfaceHelpers.askAQuestion( theMsg );
+		
+		if( answer ){
+			_configSettings.setupProjectWithProperties();
+		}
 	}
 
 	// if true is returned the plugin will be unloaded

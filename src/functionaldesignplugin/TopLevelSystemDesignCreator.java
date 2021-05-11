@@ -32,8 +32,11 @@ public class TopLevelSystemDesignCreator {
 				StereotypeAndPropertySettings.getMasterActorList( theRhpPrj ); 
 		
 		ConfigurationSettings configSettings = new ConfigurationSettings(
+				theRhpApp,
+				theRhpPrj,
 				"FunctionalDesign.properties", 
-				"FunctionalDesign_MessagesBundle" );
+				"FunctionalDesign_MessagesBundle",
+				"FunctionalDesign" );
 		
 		createSampleModel( theRhpPrj, theMasterActors, configSettings );
 	}
