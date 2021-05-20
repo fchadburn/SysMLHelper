@@ -405,3 +405,10 @@ ExecutableMBSEProfile:
 #279 10-MAY-2021: Make plugin version more visible in output window when plugin loads (F.J.Chadburn)
 #280 10-MAY-2021: Update Add New menus to make profile added diagrams clearer, including allowing Textual Activity (F.J.Chadburn)
 #281 11-MAY-2021: Added improved support for detecting and advising wrt ExecutableMBSE profile version (F.J.Chadburn) 
+
+----------------------------------------------------------------------------------
+
+4.0.c.PRERELEASE (XX-XXX-XXXX):
+
+ExecutableMBSEProfile:
+#282 20-MAY-2021: Fix issue with requirement mover caused by renaming of the package new term stereotypes (F.J.Chadburn)

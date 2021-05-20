@@ -2,10 +2,10 @@ Subject SysMLHelper
         Metaclass General
 		Property StoreUnitInSeparateDirectoryNewTerms String "12 Reqts Analysis - Use Case Package,21 Funct Analysis - Scenarios Package,23 Funct Analysis - Interfaces Package"
 		Property DontCreateSeparateUnitNewTerms String ""
-		Property ActorPackageStereotype String "11 Reqts Analysis - Actor Package"
-		Property UseCasePackageStereotype String "12 Reqts Analysis - Use Case Package"
+		Property ActorPackageStereotype String "ActorPackage"
+		Property UseCasePackageStereotype String "UseCasePackage"
 		Property UseCasePackageWorkingStereotype String "12 Reqts Analysis - Working Copy Package"
-		Property RequirementPackageStereotype String "13 Reqts Analysis - Requirement Package"
+		Property RequirementPackageStereotype String "RequirementPackage"
 		Property SimulationPackageStereotype String "21 Funct Analysis - Scenarios Package"
 		Property DesignPackageStereotype String "22 Funct Analysis - Design Package"
 		Property InterfacesPackageStereotype String "23 Funct Analysis - Interfaces Package"
