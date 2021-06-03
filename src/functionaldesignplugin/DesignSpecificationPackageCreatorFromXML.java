@@ -89,7 +89,7 @@ public class DesignSpecificationPackageCreatorFromXML {
 						thePackages.getPackageNames(), 5 );
 				
 				theMsg += "\nDo you want to create their corresponding package structures under " + 
-						Logger.elementInfo(theRhpPrj) + "?";
+						Logger.elInfo(theRhpPrj) + "?";
 				
 				boolean isContinue = UserInterfaceHelpers.askAQuestion( theMsg );
 				

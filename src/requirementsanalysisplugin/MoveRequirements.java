@@ -1,10 +1,5 @@
 package requirementsanalysisplugin;
 
-import executablembse.ExecutableMBSE_RPUserPlugin;
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
-import generalhelpers.UserInterfaceHelpers;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -13,25 +8,20 @@ import java.util.Set;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
+import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
  
 public class MoveRequirements {
 	
-	public static void main(String[] args) {
+	ExecutableMBSE_Context _context;
 	
-		IRPApplication theRhpApp = ExecutableMBSE_RPUserPlugin.getRhapsodyApp();
-		IRPProject theRhpPrj = theRhpApp.activeProject();
-
-		@SuppressWarnings("unchecked")
-		List<IRPModelElement> theSelectedEls = 
-			theRhpApp.getListOfSelectedElements().toList();
-		
-		moveUnclaimedRequirementsReadyForGatewaySync(
-				theSelectedEls, 
-				theRhpPrj );
+	public MoveRequirements(
+			ExecutableMBSE_Context context ) {
+		_context = context;
 	}
 	
-	public static Set<IRPModelElement> buildSetOfUnclaimedRequirementsBasedOn(
+	public Set<IRPModelElement> buildSetOfUnclaimedRequirementsBasedOn(
 			List<IRPModelElement> theSelectedEls, 
 			String theGatewayStereotypeName) {
 		
@@ -46,7 +36,7 @@ public class MoveRequirements {
 			}
 			
 			List<IRPModelElement> theReqtsToAdd = 
-					GeneralHelpers.findModelElementsWithoutStereotypeNestedUnder( 
+					_context.findModelElementsWithoutStereotypeNestedUnder( 
 							theElementToSearchUnder, "Requirement", theGatewayStereotypeName );
 			
 			theUnclaimedReqts.addAll( theReqtsToAdd );	
@@ -55,7 +45,7 @@ public class MoveRequirements {
 		return theUnclaimedReqts;
 	}
 	
-	public static void moveUnclaimedRequirementsReadyForGatewaySync(
+	public void moveUnclaimedRequirementsReadyForGatewaySync(
 			List<IRPModelElement> theSelectedEls, 
 			IRPProject theProject ){
 		
@@ -66,20 +56,20 @@ public class MoveRequirements {
 						theSelectedEls, 
 						theGatewayStereotypeName );
 		
-		Logger.info( theUnclaimedReqts.size() + 
+		_context.info( theUnclaimedReqts.size() + 
 				" requirements unclaimed by the Gateway were found" );
 		
 		if( theUnclaimedReqts.isEmpty() ){
 			
 			String theMsg = "Nothing to do as there were no unclaimed requirements found";
 		
-			UserInterfaceHelpers.showInformationDialog( theMsg );
+			UserInterfaceHelper.showInformationDialog( theMsg );
 			
 		} else {
 			
 			List<IRPModelElement> thePackageEls = 
 					new ArrayList<IRPModelElement>(
-							GeneralHelpers.findModelElementsNestedUnder(
+							_context.findModelElementsNestedUnder(
 									theProject, "Package", theGatewayStereotypeName) );
 			
 			List<IRPModelElement> theWritablePackages = new ArrayList<>();
@@ -100,7 +90,7 @@ public class MoveRequirements {
 			for (int i = 0; i < options.length; i++) {
 				
 				IRPPackage thePackage = (IRPPackage) theWritablePackages.get(i);
-				Logger.writeLine("thePackage = " + thePackage.getFullPathNameIn());
+				_context.debug("thePackage = " + thePackage.getFullPathNameIn());
 				
 //				String theOptionName =  theWritablePackages.get(i).getName() + " in " + 
 //						theWritablePackages.get(i).getOwner().getFullPathName();
@@ -117,7 +107,7 @@ public class MoveRequirements {
 						"b) Create your own package with a from<X> stereotype to minimic the Gateway, or\n" + 
 						"c) Assess whether there are existing from<X> stereotyped packages that are present but not writable and correct the situation.\n";
 				
-				Logger.info( theMsg );
+				_context.info( theMsg );
 				
 				JOptionPane.showMessageDialog(null, theMsg);
 
@@ -135,14 +125,14 @@ public class MoveRequirements {
 				
 				if (theChoice == null){
 					
-					Logger.info( "Operation was cancelled by user with no changes made." );
+					_context.info( "Operation was cancelled by user with no changes made." );
 					
 				} else {			
 					
 					IRPModelElement thePackage = theProject.findElementsByFullName(theChoice.toString(), "Package");
 					
 					IRPStereotype theStereotypeToApply = 
-							GeneralHelpers.getStereotypeAppliedTo( thePackage, theGatewayStereotypeName );
+							_context.getStereotypeAppliedTo( thePackage, theGatewayStereotypeName );
 					
 					int dialogResult = JOptionPane.showConfirmDialog (
 							null, "Would you like to move the " + theUnclaimedReqts.size() + " unclaimed requirements into the Package \n" 
@@ -161,35 +151,35 @@ public class MoveRequirements {
 							
 							if (alreadyExistingEl != null){
 								
-								String uniqueName = GeneralHelpers.determineUniqueNameBasedOn( 
+								String uniqueName = _context.determineUniqueNameBasedOn( 
 										theReqt.getName(), "Requirement", thePackage );
 								
-								Logger.warning( "Warning: Same name as " + Logger.elementInfo( theReqt ) 
-										+ " already exists under " + Logger.elementInfo(thePackage) + 
+								_context.warning( "Warning: Same name as " + _context.elInfo( theReqt ) 
+										+ " already exists under " + _context.elInfo(thePackage) + 
 										", hence element was renamed to " + uniqueName );
 								
 								theReqt.setName( uniqueName );
 
 							}
 
-							Logger.info( "Moving " + Logger.elementInfo( theReqt ) + " from " 
-									+ Logger.elementInfo( theReqt.getOwner() ) + " to " + Logger.elementInfo( thePackage ) 
-									+ " and applying " + Logger.elementInfo( theStereotypeToApply ) );
+							_context.info( "Moving " + _context.elInfo( theReqt ) + " from " 
+									+ _context.elInfo( theReqt.getOwner() ) + " to " + _context.elInfo( thePackage ) 
+									+ " and applying " + _context.elInfo( theStereotypeToApply ) );
 							
 							theReqt.setOwner( thePackage );
 							theReqt.addStereotype(theStereotypeToApply.getName(), "Requirement");
 							count++;
 							theReqt.highLightElement();
 
-							GeneralHelpers.applyStereotypeToDeriveReqtDependenciesOriginatingFrom( 
+							_context.applyStereotypeToDeriveReqtDependenciesOriginatingFrom( 
 									theReqt, theStereotypeToApply );
 						}
 						
-						Logger.info( "Finished (" + count + 
+						_context.info( "Finished (" + count + 
 								" requirements were moved out of " + theUnclaimedReqts.size() + ")" );
 						
 					} else {
-						Logger.info( "Cancelled due to user choice not to continue with the move." );
+						_context.info( "Cancelled due to user choice not to continue with the move." );
 					}
 				}			
 			}
@@ -198,15 +188,7 @@ public class MoveRequirements {
 }
 
 /**
- * Copyright (C) 2016-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #004 10-APR-2016: Re-factored projects into single workspace (F.J.Chadburn)
-    #043 03-JUL-2016: Add Derive downstream reqt for CallOps, InterfaceItems and Event Actions (F.J.Chadburn)
-    #121 25-NOV-2016: Move unclaimed requirements ready for Gateway synch now copes with duplicate names (F.J.Chadburn)
-    #170 08-MAR-2017: Tweak to Add new requirement on ADs to add to same owner as user created (F.J.Chadburn)
-    #232 27-SEP-2017: Improve move unclaimed req'ts needs so that it handles read-only packages better (F.J.Chadburn)
-    #256 29-MAY-2019: Rewrite to Java Swing dialog launching to make thread safe between versions (F.J.Chadburn)
+ * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

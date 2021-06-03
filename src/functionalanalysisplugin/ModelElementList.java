@@ -73,7 +73,7 @@ public class ModelElementList extends ArrayList<IRPModelElement>{
 		this.removeDuplicates();
 		
 		for (IRPModelElement theEl : this) {
-			Logger.writeLine("Deleting " + Logger.elementInfo(theEl) + " from the project");
+			Logger.writeLine("Deleting " + Logger.elInfo(theEl) + " from the project");
 			theEl.deleteFromProject();
 		}
 	}

@@ -2,27 +2,23 @@ package functionalanalysisplugin;
 
 import java.util.List;
 
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
-
 public class TestCaseCreator {
-
-	public static void main(String[] args) {
-
-		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
-
-		IRPModelElement theSelectedEl = theRhpApp.getSelectedElement();
-
-		if( theSelectedEl instanceof IRPSequenceDiagram ){
-			createTestCaseFor( (IRPSequenceDiagram) theSelectedEl );			
-		}
+	
+	ExecutableMBSE_Context _context;
+	
+	public TestCaseCreator(
+			ExecutableMBSE_Context context ) {
+		
+		_context = context;
 	}
+	
+	public void createTestCaseFor( 
+			IRPSequenceDiagram theSD ){
 
-	public static void createTestCaseFor( IRPSequenceDiagram theSD ){
-
-		Logger.writeLine("createTestCaseFor invoked for " + Logger.elementInfo( theSD ) );
+		_context.debug("createTestCaseFor invoked for " + _context.elInfo( theSD ) );
 
 		IRPCollaboration theLogicalCollab = theSD.getLogicalCollaboration();
 
@@ -36,8 +32,8 @@ public class TestCaseCreator {
 
 			IRPClass theTestBlock = 
 					FunctionalAnalysisSettings.getTestBlock( theBuildingBlock );
-
-			IRPOperation theTC = OperationCreator.createTestCaseFor( theTestBlock );
+			
+			IRPOperation theTC = _context.createTestCaseFor( theTestBlock );
 
 			String theCode = 
 					"comment(\"\");\n" +
@@ -52,8 +48,8 @@ public class TestCaseCreator {
 				IRPInterfaceItem theInterfaceItem = theMessage.getFormalInterfaceItem();
 
 				if (theInterfaceItem instanceof IRPEvent) {
-					Logger.writeLine(theMessage, " was found with source = " + Logger.elementInfo(theSource)
-							+ ", and theInterfaceItem=" + Logger.elementInfo(theInterfaceItem));
+					_context.debug( _context.elInfo( theMessage ) + " was found with source = " + _context.elInfo(theSource)
+							+ ", and theInterfaceItem=" + _context.elInfo(theInterfaceItem));
 
 					IRPEvent theEvent = (IRPEvent) theInterfaceItem;
 
@@ -61,12 +57,12 @@ public class TestCaseCreator {
 
 					for (IRPActor theActor : theActors) {
 
-						IRPModelElement theSend = GeneralHelpers.findElementWithMetaClassAndName("Reception",
+						IRPModelElement theSend = _context.findElementWithMetaClassAndName("Reception",
 								theEventName, theActor);
 
 						if (theSend != null) {
-							Logger.writeLine("Voila, found " + Logger.elementInfo(theSend) + " owned by "
-									+ Logger.elementInfo(theActor));
+							_context.debug("Voila, found " + _context.elInfo(theSend) + " owned by "
+									+ _context.elInfo(theActor));
 
 							IRPLink existingLinkConnectingBlockToActor = ActorMappingInfo
 									.getExistingLinkBetweenBaseClassifiersOf(theTestBlock, theActor);
@@ -81,8 +77,8 @@ public class TestCaseCreator {
 								theCode += "sleep(4);\n";
 
 							} else {
-								Logger.writeLine("No connector found between " + Logger.elementInfo(theTestBlock) + " and "
-										+ Logger.elementInfo(theActor));
+								_context.warning("No connector found between " + _context.elInfo(theTestBlock) + " and "
+										+ _context.elInfo(theActor));
 							}
 
 						} else {
@@ -91,12 +87,12 @@ public class TestCaseCreator {
 
 							for (IRPClassifier theBaseClassifier : theBaseClassifiers) {
 
-								IRPModelElement theSendAgain = GeneralHelpers.findElementWithMetaClassAndName(
+								IRPModelElement theSendAgain = _context.findElementWithMetaClassAndName(
 										"Reception", theEventName, theBaseClassifier);
 
 								if (theSendAgain != null) {
-									Logger.writeLine("Voila, found " + Logger.elementInfo(theSendAgain)
-											+ " owned by " + Logger.elementInfo(theBaseClassifier));
+									_context.debug("Voila, found " + _context.elInfo(theSendAgain)
+											+ " owned by " + _context.elInfo(theBaseClassifier));
 
 									IRPLink existingLinkConnectingBlockToActor = ActorMappingInfo
 											.getExistingLinkBetweenBaseClassifiersOf(theTestBlock, theActor);
@@ -110,11 +106,10 @@ public class TestCaseCreator {
 										theCode += "sleep(4);\n";
 
 									} else {
-										Logger.writeLine("No connector found between " + Logger.elementInfo(theTestBlock)
-												+ " and " + Logger.elementInfo(theActor));
+										_context.warning("No connector found between " + _context.elInfo(theTestBlock)
+												+ " and " + _context.elInfo(theActor));
 									}
 								}
-
 							}
 						}
 					}
@@ -130,12 +125,7 @@ public class TestCaseCreator {
 }
 
 /**
- * Copyright (C) 2017-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #230 20-SEP-2017: Initial alpha trial for create test case script from a sequence diagram (F.J.Chadburn)
-    #252 29-MAY-2019: Implement generic features for profile/settings loading (F.J.Chadburn)
-    #256 29-MAY-2019: Rewrite to Java Swing dialog launching to make thread safe between versions (F.J.Chadburn)
+ * Copyright (C) 2017-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

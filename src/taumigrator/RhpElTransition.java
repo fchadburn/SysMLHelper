@@ -148,11 +148,11 @@ public class RhpElTransition extends RhpElGraphEdge {
 				theDst instanceof RhpElGraphNode ){
 			
 			IRPModelElement theSrcModelEl = theSrc.get_rhpEl();
-			Logger.info( "theSrcModelEl = " + Logger.elementInfo( theSrcModelEl ) );
+			Logger.info( "theSrcModelEl = " + Logger.elInfo( theSrcModelEl ) );
 			theSrcModelEl.highLightElement();
 			
 			IRPModelElement theDstModelEl = theDst.get_rhpEl();
-			Logger.info( "theDstModelEl = " + Logger.elementInfo( theDstModelEl ) );
+			Logger.info( "theDstModelEl = " + Logger.elInfo( theDstModelEl ) );
 			theDstModelEl.highLightElement();
 			
 //			RhpElGraphNode theSrcRhlElGraphNode = (RhpElGraphNode)theSrc;
@@ -173,9 +173,9 @@ public class RhpElTransition extends RhpElGraphEdge {
 			
 //			IRPGraphNode theDstGraphNode = theDstRhpElGraphNode.get_graphEl(); 
 
-			Logger.info( "The parent is " + Logger.elementInfo( parent.get_rhpEl() ) );
-			Logger.info( "The theSrcModelEl is " + Logger.elementInfo( theSrcModelEl ) );
-			Logger.info( "The theDstModelEl is " + Logger.elementInfo( theDstModelEl ) );
+			Logger.info( "The parent is " + Logger.elInfo( parent.get_rhpEl() ) );
+			Logger.info( "The theSrcModelEl is " + Logger.elInfo( theSrcModelEl ) );
+			Logger.info( "The theDstModelEl is " + Logger.elInfo( theDstModelEl ) );
 
 			IRPModelElement theParentOfDiagram = parent.getParent().get_rhpEl();
 			//Logger.info("The parent of diagram is " + Logger.elementInfo(theParentOfDiagram));
@@ -227,7 +227,7 @@ public class RhpElTransition extends RhpElGraphEdge {
 				
 				if( theAttrEl != null ){
 					
-					Logger.info( "Successfully found that DecisionNode refers to " + Logger.elementInfo( theAttrEl ) );
+					Logger.info( "Successfully found that DecisionNode refers to " + Logger.elInfo( theAttrEl ) );
 					
 					Matcher m = _p.matcher( _guard );
 					
@@ -249,7 +249,7 @@ public class RhpElTransition extends RhpElGraphEdge {
 			
 			if( theSrcModelEl instanceof IRPStateVertex ){
 
-				Logger.info( "theSrcModelEl is " + Logger.elementInfo( theSrcModelEl) );
+				Logger.info( "theSrcModelEl is " + Logger.elInfo( theSrcModelEl) );
 				IRPStateVertex theSrcState = (IRPStateVertex)theSrcModelEl;
 				
 				if( theDstModelEl instanceof IRPStateVertex ){
@@ -259,12 +259,12 @@ public class RhpElTransition extends RhpElGraphEdge {
 					boolean isSrcADecisionNode = ( theSrcState instanceof IRPConnector &&
 							((IRPConnector)theSrcState).getConnectorType().equals("Condition"));
 					
-					Logger.info( "theSrc " + Logger.elementInfo( theSrcModelEl ) + " is decision node = " + isSrcADecisionNode );
+					Logger.info( "theSrc " + Logger.elInfo( theSrcModelEl ) + " is decision node = " + isSrcADecisionNode );
 
 					boolean isDstAFinalFlow = ( theDstState instanceof IRPState &&
 							((IRPState)theDstState).getStateType().equals("FlowFinal"));
 					
-					Logger.info( "theDst " + Logger.elementInfo( theDstModelEl ) + " is flow final = " + isDstAFinalFlow );
+					Logger.info( "theDst " + Logger.elInfo( theDstModelEl ) + " is flow final = " + isDstAFinalFlow );
 					
 					theDstModelEl.highLightElement();
 					
@@ -349,8 +349,8 @@ public class RhpElTransition extends RhpElGraphEdge {
 								
 								IRPModelElement theMergeEl = theMergeNode.getModelObject();
 								
-								Logger.info( "Switching destination from " + Logger.elementInfo( theDstState ) + 
-										" to " + Logger.elementInfo( theMergeEl ) );
+								Logger.info( "Switching destination from " + Logger.elInfo( theDstState ) + 
+										" to " + Logger.elInfo( theMergeEl ) );
 								
 								theDstGraphNode = theMergeNode;
 								theDstState = (IRPStateVertex) theMergeEl;
@@ -387,7 +387,7 @@ public class RhpElTransition extends RhpElGraphEdge {
 										theSrcState,
 										theDstState);
 							} else {
-								Logger.info("Error, unable to add transition from " + Logger.elementInfo( theSrcModelEl ) + " owned by " + Logger.elementInfo( theActivityDiagram ) + " as the destination " + theDstModelEl + " has " +
+								Logger.info("Error, unable to add transition from " + Logger.elInfo( theSrcModelEl ) + " owned by " + Logger.elInfo( theActivityDiagram ) + " as the destination " + theDstModelEl + " has " +
 										outTransitions.size() + " out transitions and " + inTransitions.size() + 
 										" in transitions, and it is a diagram connector (which can only have 1)");
 							}

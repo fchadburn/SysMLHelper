@@ -69,13 +69,13 @@ public class RhpElDecisionNodeAsReceiveEvent extends RhpElGraphNode {
 
 		Logger.info("ReceiveEvent DecisionNode _text = " + _text );
 		
-		Logger.info( "The parent is " + Logger.elementInfo( parent.get_rhpEl() ) );
+		Logger.info( "The parent is " + Logger.elInfo( parent.get_rhpEl() ) );
 
 		IRPFlowchart theActivityDiagram = (IRPFlowchart) parent.get_rhpEl();
 		IRPActivityDiagram theActivityDiagramGE = theActivityDiagram.getFlowchartDiagram();
 
 		IRPModelElement theParentOfDiagram = parent.getParent().get_rhpEl();
-		Logger.info("The parent of diagram is " + Logger.elementInfo(theParentOfDiagram));
+		Logger.info("The parent of diagram is " + Logger.elInfo(theParentOfDiagram));
 
 		IRPState theRootState = theActivityDiagram.getRootState();
 

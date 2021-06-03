@@ -1,11 +1,6 @@
 package functionalanalysisplugin;
 
 import generalhelpers.CreateStructuralElementPanel;
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
-import generalhelpers.StereotypeAndPropertySettings;
-import generalhelpers.UserInterfaceHelpers;
-
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.util.ArrayList;
@@ -19,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.*;
 
 public class CreateNewActorPanel extends CreateStructuralElementPanel {
@@ -33,18 +29,14 @@ public class CreateNewActorPanel extends CreateStructuralElementPanel {
 	private ActorMappingInfo m_ClassifierMappingInfo;
 	private IRPClass m_BlockToConnectTo = null;
 	
-	public static void main(String[] args) {		
-		launchThePanel();
+	public static void main(String[] args) {	
+		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
+		launchThePanel( theRhpApp.getApplicationConnectionString() );
 	}
 	
-	public static void launchThePanel(){
-		
-		final String theAppID = 
-				UserInterfaceHelpers.getAppIDIfSingleRhpRunningAndWarnUserIfNot();
-
-		Logger.writeLine("Add new actor part" );
-		// to " + Logger.elementInfo( theBlockUnderDev ) + " was invoked");
-		
+	public static void launchThePanel(
+			final String theAppID ){
+				
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 
 			@Override
@@ -68,13 +60,11 @@ public class CreateNewActorPanel extends CreateStructuralElementPanel {
 	}
 	
 	public CreateNewActorPanel( String theAppID ){
-//			IRPClass forBlockToConnectTo, 
-//			IRPPackage theRootPackage ){
 		
 		super( theAppID );
 		
 		IRPClass theBuildingBlock = 
-				m_ElementContext.getBuildingBlock();
+				_selectedContext.getBuildingBlock();
 
 		if( theBuildingBlock == null ){
 			
@@ -85,7 +75,7 @@ public class CreateNewActorPanel extends CreateStructuralElementPanel {
 			
 		} else { // theBuildingBlock != null
 			
-			IRPClass theBlock = m_ElementContext.getBlockUnderDev(
+			IRPClass theBlock = _selectedContext.getBlockUnderDev(
 					"Which Block/Part do you want to wire the Actor to?" );
 			
 			if( theBlock == null ){
@@ -94,8 +84,8 @@ public class CreateNewActorPanel extends CreateStructuralElementPanel {
 						"there was no execution context or block found in the model. \n " +
 						"You need to add the relevant package structure first." );
 			} else {
-				m_RootPackage = m_ElementContext.getSimulationSettingsPackageBasedOn( theBlock );
-				m_BlockToConnectTo = m_ElementContext.getChosenBlock();
+				m_RootPackage = _selectedContext.getSimulationSettingsPackageBasedOn( theBlock );
+				m_BlockToConnectTo = _selectedContext.getChosenBlock();
 				
 				setLayout( new BorderLayout(10,10) );
 				setBorder( BorderFactory.createEmptyBorder( 10, 10, 10, 10 ) );
@@ -126,7 +116,7 @@ public class CreateNewActorPanel extends CreateStructuralElementPanel {
 		List<IRPModelElement> theExistingActors;
 		
 		boolean isAllowInheritanceChoices = 
-				StereotypeAndPropertySettings.getIsAllowInheritanceChoices( m_RootPackage );
+				_context.getIsAllowInheritanceChoices( m_RootPackage );
 		
 		if( isAllowInheritanceChoices ){
 			
@@ -149,7 +139,7 @@ public class CreateNewActorPanel extends CreateStructuralElementPanel {
 						theActorCheckBox, 
 						m_ChosenNameTextField, 
 						null,
-						m_RootPackage.getProject() );
+						_context );
 		
 		m_ClassifierMappingInfo.updateToBestActorNamesBasedOn( theBlockName );
 		
@@ -180,14 +170,14 @@ public class CreateNewActorPanel extends CreateStructuralElementPanel {
 			isValid = false;
 			
 		} else {
-			boolean isLegalBlockName = GeneralHelpers.isLegalName( theChosenName, m_BlockToConnectTo );
+			boolean isLegalBlockName = _context.isLegalName( theChosenName, m_BlockToConnectTo );
 			
 			if (!isLegalBlockName){
 				
 				errorMsg += theChosenName + " is not legal as an identifier representing an executable Actor\n";				
 				isValid = false;
 				
-			} else if (!GeneralHelpers.isElementNameUnique(
+			} else if (!_context.isElementNameUnique(
 					
 				theChosenName, "Actor", m_RootPackage, 1)){
 
@@ -198,7 +188,7 @@ public class CreateNewActorPanel extends CreateStructuralElementPanel {
 		
 		if (isMessageEnabled && !isValid && errorMsg != null){
 
-			UserInterfaceHelpers.showWarningDialog( errorMsg );
+			UserInterfaceHelper.showWarningDialog( errorMsg );
 		}
 		
 		return isValid;
@@ -220,35 +210,22 @@ public class CreateNewActorPanel extends CreateStructuralElementPanel {
 				
 				if( theActorPart != null ){
 					
-					SequenceDiagramHelper.updateAutoShowSequenceDiagramFor( 
-							theAssemblyBlock );
+					SequenceDiagramHelper theHelper = new SequenceDiagramHelper( _context );
+					theHelper.updateAutoShowSequenceDiagramFor( theAssemblyBlock );
 				}
 			
 			} else {
-				Logger.writeLine("Error in CreateNewActorPanel.performAction, unable to find " + Logger.elementInfo( m_RootPackage ) );
+				_context.error("Error in CreateNewActorPanel.performAction, unable to find " + _context.elInfo( m_RootPackage ) );
 			}
 						
 		} else {
-			Logger.writeLine("Error in CreateNewActorPanel.performAction, checkValidity returned false");
+			_context.error("Error in CreateNewActorPanel.performAction, checkValidity returned false");
 		}		
 	}
 }
 
 /**
- * Copyright (C) 2016-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #025 31-MAY-2016: Add new menu and dialog to add a new actor to package under development (F.J.Chadburn)
-    #029 01-JUN-2016: Add Warning Dialog helper to UserInterfaceHelpers (F.J.Chadburn)
-    #030 01-JUN-2016: Improve legal name checking across helpers (F.J.Chadburn)
-    #035 15-JUN-2016: New panel to configure requirements package naming and gateway set-up (F.J.Chadburn)
-    #126 25-NOV-2016: Fixes to CreateNewActorPanel to cope better when multiple blocks are in play (F.J.Chadburn)
-    #147 18-DEC-2016: Fix Actor part creation not being created in correct place if multiple hierarchies (F.J.Chadburn)
-    #186 29-MAY-2017: Add context string to getBlockUnderDev to make it clearer for user when selecting (F.J.Chadburn)
-    #187 29-MAY-2017: Provide option to re-create «AutoShow» sequence diagram when adding new actor (F.J.Chadburn)
-    #216 09-JUL-2017: Added a new Add Block/Part command added to the Functional Analysis menus (F.J.Chadburn)
-    #252 29-MAY-2019: Implement generic features for profile/settings loading (F.J.Chadburn)
-    #256 29-MAY-2019: Rewrite to Java Swing dialog launching to make thread safe between versions (F.J.Chadburn)
+ * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

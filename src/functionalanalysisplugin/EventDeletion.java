@@ -39,7 +39,7 @@ public class EventDeletion {
 					+ "model together with related usages and receptions?\n\n";
 			
 			for (IRPModelElement theEl : justEvents) {
-				deleteMessage += Logger.elementInfo(theEl) + "\n";
+				deleteMessage += Logger.elInfo(theEl) + "\n";
 			}
 			
 			deleteMessage += "\n";
@@ -105,7 +105,7 @@ public class EventDeletion {
 				Logger.writeLine(theRef, "was added to list to delete");
 				toDeleteList.add( theRef );
 			} else {
-				Logger.writeLine("Error in deleteEventAndRelatedElementsFor, as " + Logger.elementInfo(theRef) + " was not considered");
+				Logger.writeLine("Error in deleteEventAndRelatedElementsFor, as " + Logger.elInfo(theRef) + " was not considered");
 				isUnexpectedElement = true;
 			}
 		}
@@ -114,7 +114,7 @@ public class EventDeletion {
 			if (!withPrompt){
 				deleteTheList(toDeleteList);
 				
-				Logger.writeLine("Deleting " + Logger.elementInfo(theEvent) + " from the project");
+				Logger.writeLine("Deleting " + Logger.elInfo(theEvent) + " from the project");
 				theEvent.deleteFromProject();
 				
 			} else { // withPrompt
@@ -122,13 +122,13 @@ public class EventDeletion {
 				String deleteMessage = "";
 				
 				if (toDeleteList.isEmpty()){
-					deleteMessage = "Do you want to delete " + Logger.elementInfo( theEvent ) + "\n";
+					deleteMessage = "Do you want to delete " + Logger.elInfo( theEvent ) + "\n";
 				} else {
-					deleteMessage = "Do you want to delete " + Logger.elementInfo( theEvent ) + " and its following references:\n";
+					deleteMessage = "Do you want to delete " + Logger.elInfo( theEvent ) + " and its following references:\n";
 				}
 				
 				for (IRPModelElement theEl : toDeleteList) {
-					deleteMessage += Logger.elementInfo(theEl) + "\n";
+					deleteMessage += Logger.elInfo(theEl) + "\n";
 				}
 				
 				int chosenOption = JOptionPane.showConfirmDialog(
@@ -138,7 +138,7 @@ public class EventDeletion {
 				
 					deleteTheList(toDeleteList);
 					
-					Logger.writeLine("Deleting " + Logger.elementInfo(theEvent) + " from the project");
+					Logger.writeLine("Deleting " + Logger.elInfo(theEvent) + " from the project");
 					theEvent.deleteFromProject();					
 				}
 			}		

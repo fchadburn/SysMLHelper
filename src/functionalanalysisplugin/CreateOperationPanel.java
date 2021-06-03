@@ -1,9 +1,5 @@
 package functionalanalysisplugin;
 
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
-import generalhelpers.UserInterfaceHelpers;
-
 import java.awt.BorderLayout;
 import java.util.List;
 import java.util.Set;
@@ -14,9 +10,10 @@ import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.*;
 
-public class CreateOperationPanel extends CopyOfCreateTracedElementPanel {
+public class CreateOperationPanel extends CreateTracedElementPanel {
 
 	/**
 	 * 
@@ -25,14 +22,14 @@ public class CreateOperationPanel extends CopyOfCreateTracedElementPanel {
 
 	private JCheckBox m_CallOperationIsNeededCheckBox;
 
+	// for testing only
 	public static void main(String[] args) {
-		launchThePanel();
+		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
+		launchThePanel( theRhpApp.getApplicationConnectionString() );
 	}
 	
-	public static void launchThePanel(){
-
-		final String theAppID = 
-				UserInterfaceHelpers.getAppIDIfSingleRhpRunningAndWarnUserIfNot();
+	public static void launchThePanel(
+			final String theAppID ){
 
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 
@@ -41,7 +38,7 @@ public class CreateOperationPanel extends CopyOfCreateTracedElementPanel {
 
 				JFrame.setDefaultLookAndFeelDecorated( true );
 
-				UserInterfaceHelpers.setLookAndFeel();
+				UserInterfaceHelper.setLookAndFeel();
 
 				JFrame frame = new JFrame(
 						"Create an operation" );
@@ -65,7 +62,7 @@ public class CreateOperationPanel extends CopyOfCreateTracedElementPanel {
 		super( theAppID );
 		
 		IRPClass theBuildingBlock = 
-				m_ElementContext.getBuildingBlock();
+				_selectionContext.getBuildingBlock();
 
 		if( theBuildingBlock == null ){
 			
@@ -76,7 +73,7 @@ public class CreateOperationPanel extends CopyOfCreateTracedElementPanel {
 			
 		} else { // theBuildingBlock != null
 			
-			IRPClass theBlock = m_ElementContext.getBlockUnderDev(
+			IRPClass theBlock = _selectionContext.getBlockUnderDev(
 					"Which Block do you want to add the Operation to?" );
 			
 			if( theBlock == null ){
@@ -86,8 +83,8 @@ public class CreateOperationPanel extends CopyOfCreateTracedElementPanel {
 						"You need to add the relevant package structure first." );
 			} else {
 				createCommonContent(
-						m_ElementContext.getSelectedEl(),
-						m_ElementContext.getSelectedReqts(), 
+						_selectionContext.getSelectedEl(),
+						_selectionContext.getSelectedReqts(), 
 						theBlock );
 			}
 		}
@@ -99,20 +96,20 @@ public class CreateOperationPanel extends CopyOfCreateTracedElementPanel {
 			Set<IRPRequirement> withReqtsAlsoAdded,
 			IRPClassifier onTargetBlock ){
 		
-		String theSourceText = GeneralHelpers.getActionTextFrom( forSourceModelElement );	
+		String theSourceText = _context.getActionTextFrom( forSourceModelElement );	
 		
 		if( theSourceText == null ){
 			theSourceText = "function_name";
 		}
 		
-		Logger.writeLine("CreateOperationPanel constructor called with text '" + theSourceText + "'");
+		_context.debug( "CreateOperationPanel constructor called with text '" + theSourceText + "'" );
 		
-		String theProposedName = GeneralHelpers.determineUniqueNameBasedOn( 
-				GeneralHelpers.toMethodName( theSourceText, 40 ), 
+		String theProposedName = _context.determineUniqueNameBasedOn( 
+				_context.toMethodName( theSourceText, 40 ), 
 				"Operation", 
 				onTargetBlock );					
 		
-		Logger.writeLine("The proposed name is '" + theProposedName + "'");
+		_context.debug( "The proposed name is '" + theProposedName + "'" );
 		
 		setLayout( new BorderLayout(10,10) );
 		setBorder( BorderFactory.createEmptyBorder( 10, 10, 10, 10 ) );
@@ -143,19 +140,19 @@ public class CreateOperationPanel extends CopyOfCreateTracedElementPanel {
 		boolean isValid = true;
 		
 		String theChosenName = m_ChosenNameTextField.getText();
-		IRPClass theChosenBlock = m_ElementContext.getChosenBlock();
+		IRPClass theChosenBlock = _selectionContext.getChosenBlock();
 		
-		boolean isLegalName = GeneralHelpers.isLegalName( theChosenName, theChosenBlock );
+		boolean isLegalName = _context.isLegalName( theChosenName, theChosenBlock );
 		
 		if( !isLegalName ){
 			
 			errorMessage = theChosenName + " is not legal as an identifier representing an operation\n";				
 			isValid = false;
 			
-		} else if (!GeneralHelpers.isElementNameUnique(
+		} else if (!_context.isElementNameUnique(
 				theChosenName, 
 				"Operation", 
-				m_ElementContext.getChosenBlock(),//m_TargetOwningElement, 
+				_selectionContext.getChosenBlock(),//m_TargetOwningElement, 
 				1)){
 
 			errorMessage = "Unable to proceed as the name '" + theChosenName + "' is not unique";
@@ -164,7 +161,7 @@ public class CreateOperationPanel extends CopyOfCreateTracedElementPanel {
 
 		if (isMessageEnabled && !isValid && errorMessage != null){
 
-			UserInterfaceHelpers.showWarningDialog( errorMessage );
+			UserInterfaceHelper.showWarningDialog( errorMessage );
 		}
 		
 		return isValid;
@@ -176,10 +173,10 @@ public class CreateOperationPanel extends CopyOfCreateTracedElementPanel {
 		// it is assumed that checkValidity has returned true
 
 		IRPOperation theOperation = 
-				m_ElementContext.getChosenBlock().addOperation(
+				_selectionContext.getChosenBlock().addOperation(
 						m_ChosenNameTextField.getText() );	
 
-		IRPGraphElement theSourceGraphElement = m_ElementContext.getSelectedGraphEl();
+		IRPGraphElement theSourceGraphElement = _selectionContext.getSelectedGraphEl();
 
 		if( theSourceGraphElement != null ){
 
@@ -191,14 +188,14 @@ public class CreateOperationPanel extends CopyOfCreateTracedElementPanel {
 
 				if( theExistingOp == null ){
 
-					Logger.writeLine("Setting the " + Logger.elementInfo( theCallOp ) + 
-							" to " + Logger.elementInfo(theOperation) );
+					_context.debug("Setting the " + _context.elInfo( theCallOp ) + 
+							" to " + _context.elInfo(theOperation) );
 
 					theCallOp.setOperation( theOperation );
 
 					String theProposedName = 
-							GeneralHelpers.determineUniqueNameBasedOn( 
-									GeneralHelpers.toMethodName( theOperation.getName(), 40 ), 
+							_context.determineUniqueNameBasedOn( 
+									_context.toMethodName( theOperation.getName(), 40 ), 
 									"CallOperation", 
 									theCallOp.getOwner() );
 
@@ -207,7 +204,7 @@ public class CreateOperationPanel extends CopyOfCreateTracedElementPanel {
 			} else {
 				List<IRPRequirement> theSelectedReqtsList = m_RequirementsPanel.getSelectedRequirementsList();
 				addTraceabilityDependenciesTo( theOperation, theSelectedReqtsList );
-				m_ElementContext.bleedColorToElementsRelatedTo( theSelectedReqtsList );
+				_selectionContext.bleedColorToElementsRelatedTo( theSelectedReqtsList );
 			}
 		}
 
@@ -220,29 +217,7 @@ public class CreateOperationPanel extends CopyOfCreateTracedElementPanel {
 }
 
 /**
- * Copyright (C) 2016-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #022 30-MAY-2016: Improved handling and validation of event/operation creation by adding new forms (F.J.Chadburn) 
-    #032 05-JUN-2016: Populate call operation/event actions on diagram check-box added (F.J.Chadburn)
-    #033 05-JUN-2016: Add support for creation of operations and events from raw requirement selection (F.J.Chadburn)
-    #034 05-JUN-2016: Re-factored design to move static constructors into appropriate panel class (F.J.Chadburn)
-    #042 29-JUN-2016: launchThePanel renaming to improve Panel class design consistency (F.J.Chadburn)
-    #043 03-JUL-2016: Add Derive downstream reqt for CallOps, InterfaceItems and Event Actions (F.J.Chadburn)
-    #058 13-JUL-2016: Dropping CallOp on diagram now gives option to create Op on block (F.J.Chadburn)
-	#078 28-JUL-2016: Added isPopulateWantedByDefault tag to FunctionalAnalysisPkg to give user option (F.J.Chadburn)
-    #089 15-AUG-2016: Add a pull-down list to select Block when adding events/ops in white box (F.J.Chadburn)
-    #093 23-AUG-2016: Added isPopulateOptionHidden tag to allow hiding of the populate check-box on dialogs (F.J.Chadburn)
-    #099 14-SEP-2016: Allow event and operation creation from right-click on AD and RD diagram canvas (F.J.Chadburn)
-    #115 13-NOV-2016: Removed use of isEnableBlockSelectionByUser tag and <<LogicalSystem>> by helper (F.J.Chadburn)
-    #125 25-NOV-2016: AutoRipple used in UpdateTracedAttributePanel to keep check and FlowPort name updated (F.J.Chadburn)
-    #130 25-NOV-2016: Improved consistency in handling of isPopulateOptionHidden and isPopulateWantedByDefault tags (F.J.Chadburn)
-    #154 25-JAN-2017: Improved robustness by adding isLegalName check to CreateOperationPanel (F.J.Chadburn)
-    #186 29-MAY-2017: Add context string to getBlockUnderDev to make it clearer for user when selecting (F.J.Chadburn)
-    #196 05-JUN-2017: Enhanced create traced element dialogs to be context aware for blocks/parts (F.J.Chadburn)
-    #245 11-OCT-2017: Fixed exception on CallOperation action drop when using detailed ADs with Ops (F.J.Chadburn)
-    #252 29-MAY-2019: Implement generic features for profile/settings loading (F.J.Chadburn)
-    #256 29-MAY-2019: Rewrite to Java Swing dialog launching to make thread safe between versions (F.J.Chadburn)
+ * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

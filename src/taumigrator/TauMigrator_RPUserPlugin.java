@@ -2,8 +2,10 @@ package taumigrator;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import generalhelpers.*; 
 
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.telelogic.rhapsody.core.*;
 
 public class TauMigrator_RPUserPlugin extends RPUserPlugin {

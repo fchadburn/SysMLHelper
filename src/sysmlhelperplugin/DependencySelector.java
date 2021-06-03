@@ -1,19 +1,25 @@
 package sysmlhelperplugin;
 
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
-import generalhelpers.UserInterfaceHelpers;
-
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.*;
 
 public class DependencySelector {
 	
-	public static void selectDependsOnElementsFor(
+	ConfigurationSettings _context;
+	
+	public DependencySelector(
+			ConfigurationSettings theContext ) {
+		
+		_context = theContext;
+	}
+	
+	public void selectDependsOnElementsFor(
 			Set<IRPModelElement> theCandidateEls,
 			String theStereotypeName ){
 		
@@ -22,8 +28,8 @@ public class DependencySelector {
 		
 		for( IRPModelElement theCandidateEl : theCandidateEls ){
 			
-			Logger.writeLine( theCandidateEl, "owned by " + 
-					Logger.elementInfo( theCandidateEl.getOwner() ) + 
+			_context.debug( _context.elInfo( theCandidateEl ) + " owned by " + 
+					_context.elInfo( theCandidateEl.getOwner() ) + 
 					" was selected for DependsOn analysis");
 
 			@SuppressWarnings("unchecked")
@@ -33,7 +39,7 @@ public class DependencySelector {
 			for( IRPModelElement theNestElDependency : theNestedElDependencies ){
 
 				if( theStereotypeName == null || 
-						GeneralHelpers.hasStereotypeCalled(
+						_context.hasStereotypeCalled(
 								theStereotypeName, theNestElDependency ) ){
 
 					IRPModelElement theDependsOn = 
@@ -48,7 +54,7 @@ public class DependencySelector {
 			if( theCandidateEl instanceof IRPDependency ){
 
 				if( theStereotypeName == null || 
-						GeneralHelpers.hasStereotypeCalled(
+						_context.hasStereotypeCalled(
 								theStereotypeName, theCandidateEl ) ){
 
 					IRPModelElement theDependsOn = 
@@ -65,7 +71,7 @@ public class DependencySelector {
 				theElsToHighlight, true );
 	}
 		
-	public static void selectDependentElementsFor(
+	public void selectDependentElementsFor(
 			Set<IRPModelElement> theCandidateEls,
 			String theStereotypeName ){
 		
@@ -74,7 +80,7 @@ public class DependencySelector {
 		
 		for( IRPModelElement theCandidateEl : theCandidateEls ){
 			
-			Logger.writeLine( theCandidateEl, "was selected for Dependent analysis" );
+			_context.debug( _context.elInfo( theCandidateEl ) + " was selected for Dependent analysis" );
 	
 			@SuppressWarnings("unchecked")
 			List<IRPModelElement> theReferences = 
@@ -84,7 +90,7 @@ public class DependencySelector {
 
 				if( theReference instanceof IRPDependency &&
 						( theStereotypeName == null || 
-								GeneralHelpers.hasStereotypeCalled(
+								_context.hasStereotypeCalled(
 										theStereotypeName, theReference ) ) ){
 					
 					IRPModelElement theDependent = 
@@ -98,7 +104,7 @@ public class DependencySelector {
 			
 			if( theCandidateEl instanceof IRPDependency &&
 					( theStereotypeName == null || 
-							GeneralHelpers.hasStereotypeCalled(
+							_context.hasStereotypeCalled(
 									theStereotypeName, theCandidateEl ) )){
 
 				IRPModelElement theDependent = 
@@ -114,7 +120,7 @@ public class DependencySelector {
 				theElsToHighlight, true );
 	}
 	
-	private static void multiSelectElementsInBrowser(
+	private void multiSelectElementsInBrowser(
 			Set<IRPModelElement> theEls,
 			boolean withInfoDialog ){
 		
@@ -150,7 +156,7 @@ public class DependencySelector {
 
 					IRPModelElement theEl = (IRPModelElement) iterator.next();
 
-					String theElementInfo = Logger.elementInfo( theEl );
+					String theElementInfo = _context.elInfo( theEl );
 					
 					int length = theElementInfo.length();
 					
@@ -175,7 +181,7 @@ public class DependencySelector {
 								
 				theMsg += "\n";
 				
-				UserInterfaceHelpers.showInformationDialog( theMsg );
+				UserInterfaceHelper.showInformationDialog( theMsg );
 			}
 			
 		} else if( withInfoDialog ) {
@@ -183,17 +189,13 @@ public class DependencySelector {
 			String theMsg = 
 					"There were no elements selected.";
 			
-			UserInterfaceHelpers.showInformationDialog( theMsg );
+			UserInterfaceHelper.showInformationDialog( theMsg );
 		}
 	}
 }
 
 /**
- * Copyright (C) 2017  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #172 02-APR-2017: Added new General Utilities > Select Dependent element(s) option (F.J.Chadburn)
-    #207 25-JUN-2017: Significant bolstering of Select Depends On/Dependent element(s) menus (F.J.Chadburn)
+ * Copyright (C) 2017-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

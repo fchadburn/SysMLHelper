@@ -218,7 +218,7 @@ public class PopulateTransitionRequirementsPanel extends JPanel {
 				
 				JFrame frame = new JFrame(
 						"Populate requirements on " + 
-								Logger.elementInfo( theTransitionGraphEl.getModelObject() ) );
+								Logger.elInfo( theTransitionGraphEl.getModelObject() ) );
 				
 				frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 				

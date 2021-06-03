@@ -10,6 +10,7 @@ import functionalanalysisplugin.PopulateFunctionalAnalysisPkg.SimulationType;
 import designsynthesisplugin.PopulateDesignSynthesisPkg;
 import generalhelpers.*; 
 
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.telelogic.rhapsody.core.*;
 
 public class SysMLHelperPlugin extends RPUserPlugin {
@@ -41,11 +42,24 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 		_rhpApplication = theRhapsodyApp;
 		
 		_configSettings = new ConfigurationSettings(
-				_rhpApplication,
-				_rhpApplication.activeProject(),
-				"SysMLHelper.properties", 
-				"SysMLHelper_MessagesBundle",
-				"SysMLHelper" );
+//				_rhpApplication,
+//				_rhpApplication.activeProject(),
+//				"SysMLHelper.properties", 
+//				"SysMLHelper_MessagesBundle",
+//				"SysMLHelper" );
+		
+				theRhapsodyApp.getApplicationConnectionString(), 
+		"ExecutableMBSEProfile.General.EnableErrorLogging", 
+		"ExecutableMBSEProfile.General.EnableWarningLogging",
+		"ExecutableMBSEProfile.General.EnableInfoLogging", 
+		"ExecutableMBSEProfile.General.EnableDebugLogging",
+		"ExecutableMBSEProfile.General.PluginVersion",
+		"ExecutableMBSEProfile.General.UserDefinedMetaClassesAsSeparateUnit",
+		"ExecutableMBSEProfile.General.AllowPluginToControlUnitGranularity",
+		"SysMLHelper.properties", 
+		"SysMLHelper_MessagesBundle",
+		"SysMLHelper" 
+		);
 		
 		String msg = "The SysMLHelperProfile plugin V" + _configSettings.getProperty("PluginVersion") + " was loaded successfully.\n" + legalNotice +
 				"\nNew right-click 'MBSE Method' commands have been added.";
@@ -153,7 +167,8 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 
 					if (theSelectedEl instanceof IRPProject){
 						try { 
-							PopulateDesignSynthesisPkg.createDesignSynthesisPkg( (IRPProject) theSelectedEl ); 
+							PopulateDesignSynthesisPkg thePopulator = new PopulateDesignSynthesisPkg( _configSettings );
+							thePopulator.createDesignSynthesisPkg(); 
 
 						} catch (Exception e) {
 							Logger.writeLine("Error: Exception in OnMenuItemSelect when invoking PopulateDesignSynthesisPkg.createDesignSynthesisPkg");
@@ -178,7 +193,9 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 								GeneralHelpers.getSetOfElementsFromCombiningThe(
 										theSelectedEls, theGraphEls );
 						
-						DependencySelector.selectDependsOnElementsFor( 
+						DependencySelector theSelector = new DependencySelector( _configSettings );
+						
+						theSelector.selectDependsOnElementsFor( 
 								theCombinedSet, null );
 
 					} catch (Exception e) {
@@ -192,7 +209,9 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 								GeneralHelpers.getSetOfElementsFromCombiningThe(
 										theSelectedEls, theGraphEls );
 
-						DependencySelector.selectDependentElementsFor( 
+						DependencySelector theSelector = new DependencySelector( _configSettings );
+
+						theSelector.selectDependentElementsFor( 
 								theCombinedSet, null );
 
 					} catch (Exception e) {
@@ -206,7 +225,9 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 								GeneralHelpers.getSetOfElementsFromCombiningThe(
 										theSelectedEls, theGraphEls );
 						
-						DependencySelector.selectDependsOnElementsFor( 
+						DependencySelector theSelector = new DependencySelector( _configSettings );
+
+						theSelector.selectDependsOnElementsFor( 
 								theCombinedSet, "derive" );
 
 					} catch (Exception e) {
@@ -220,7 +241,9 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 								GeneralHelpers.getSetOfElementsFromCombiningThe(
 										theSelectedEls, theGraphEls );
 
-						DependencySelector.selectDependentElementsFor( 
+						DependencySelector theSelector = new DependencySelector( _configSettings );
+
+						theSelector.selectDependentElementsFor( 
 								theCombinedSet, "derive" );
 
 					} catch (Exception e) {
@@ -234,7 +257,9 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 								GeneralHelpers.getSetOfElementsFromCombiningThe(
 										theSelectedEls, theGraphEls );
 						
-						DependencySelector.selectDependsOnElementsFor( 
+						DependencySelector theSelector = new DependencySelector( _configSettings );
+
+						theSelector.selectDependsOnElementsFor( 
 								theCombinedSet, "satisfy" );
 
 					} catch (Exception e) {
@@ -248,7 +273,9 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 								GeneralHelpers.getSetOfElementsFromCombiningThe(
 										theSelectedEls, theGraphEls );
 
-						DependencySelector.selectDependentElementsFor( 
+						DependencySelector theSelector = new DependencySelector( _configSettings );
+
+						theSelector.selectDependentElementsFor( 
 								theCombinedSet, "satisfy" );
 
 					} catch (Exception e) {
@@ -262,7 +289,9 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 								GeneralHelpers.getSetOfElementsFromCombiningThe(
 										theSelectedEls, theGraphEls );
 						
-						DependencySelector.selectDependsOnElementsFor( 
+						DependencySelector theSelector = new DependencySelector( _configSettings );
+
+						theSelector.selectDependsOnElementsFor( 
 								theCombinedSet, "verify" );
 
 					} catch (Exception e) {
@@ -276,7 +305,9 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 								GeneralHelpers.getSetOfElementsFromCombiningThe(
 										theSelectedEls, theGraphEls );
 
-						DependencySelector.selectDependentElementsFor( 
+						DependencySelector theSelector = new DependencySelector( _configSettings );
+
+						theSelector.selectDependentElementsFor( 
 								theCombinedSet, "verify" );
 
 					} catch (Exception e) {
@@ -290,7 +321,9 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 								GeneralHelpers.getSetOfElementsFromCombiningThe(
 										theSelectedEls, theGraphEls );
 						
-						DependencySelector.selectDependsOnElementsFor( 
+						DependencySelector theSelector = new DependencySelector( _configSettings );
+
+						theSelector.selectDependsOnElementsFor( 
 								theCombinedSet, "refine" );
 
 					} catch (Exception e) {
@@ -304,7 +337,9 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 								GeneralHelpers.getSetOfElementsFromCombiningThe(
 										theSelectedEls, theGraphEls );
 
-						DependencySelector.selectDependentElementsFor( 
+						DependencySelector theSelector = new DependencySelector( _configSettings );
+
+						theSelector.selectDependentElementsFor( 
 								theCombinedSet, "refine" );
 
 					} catch (Exception e) {
@@ -318,7 +353,9 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 								GeneralHelpers.getSetOfElementsFromCombiningThe(
 										theSelectedEls, theGraphEls );
 						
-						DependencySelector.selectDependsOnElementsFor( 
+						DependencySelector theSelector = new DependencySelector( _configSettings );
+
+						theSelector.selectDependsOnElementsFor( 
 								theCombinedSet, "deriveReqt" );
 
 					} catch (Exception e) {
@@ -332,7 +369,9 @@ public class SysMLHelperPlugin extends RPUserPlugin {
 								GeneralHelpers.getSetOfElementsFromCombiningThe(
 										theSelectedEls, theGraphEls );
 
-						DependencySelector.selectDependentElementsFor( 
+						DependencySelector theSelector = new DependencySelector( _configSettings );
+						
+						theSelector.selectDependentElementsFor( 
 								theCombinedSet, "deriveReqt" );
 
 					} catch (Exception e) {

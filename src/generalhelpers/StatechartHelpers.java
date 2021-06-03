@@ -57,8 +57,8 @@ public class StatechartHelpers {
 			theOwner = theOwner.getOwner();
 		}
 		
-		Logger.writeLine( "The owner for " + Logger.elementInfo( theState ) + 
-				" is " + Logger.elementInfo( theOwner ) );
+		Logger.writeLine( "The owner for " + Logger.elInfo( theState ) + 
+				" is " + Logger.elInfo( theOwner ) );
 			
 		return theOwner;
 	}	
@@ -77,7 +77,7 @@ public class StatechartHelpers {
 		for (IRPStatechartDiagram theStatechartDiagram : theStatechartDiagrams) {
 			
 			Logger.writeLine( theStatechartDiagram, "was found owned by " + 
-					Logger.elementInfo( theClassifier ) );
+					Logger.elInfo( theClassifier ) );
 			
 			@SuppressWarnings("unchecked")
 			List<IRPGraphElement> theGraphEls = 
@@ -95,7 +95,7 @@ public class StatechartHelpers {
 						
 						Logger.writeLine( "Success, found GraphEl called " + 
 								withTheName + " in statechart for " + 
-								Logger.elementInfo( theClassifier ) );
+								Logger.elInfo( theClassifier ) );
 						
 						theFoundGraphEl = theGraphEl;
 						break;

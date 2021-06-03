@@ -2,8 +2,8 @@ package requirementsanalysisplugin;
 
 import functionalanalysisplugin.GraphEdgeInfo;
 import functionalanalysisplugin.RequirementSelectionPanel;
-import generalhelpers.Logger;
-import generalhelpers.TraceabilityHelper;
+import generalhelpers.CreateStructuralElementPanel;
+
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.ComponentOrientation;
@@ -28,7 +28,7 @@ import javax.swing.SwingUtilities;
 
 import com.telelogic.rhapsody.core.*;
 
-public class PopulateRelatedRequirementsPanel extends JPanel {
+public class PopulateRelatedRequirementsPanel extends CreateStructuralElementPanel {
 
 	/**
 	 * 
@@ -40,25 +40,8 @@ public class PopulateRelatedRequirementsPanel extends JPanel {
 	protected Set<IRPRequirement> m_ReqtsForTable;
 	protected JCheckBox m_RemoveFromViewCheckBox;
 
-	@SuppressWarnings("unused")
-	public static void main(String[] args) {
-		
-		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
-		IRPProject theActiveProject = theRhpApp.activeProject();
-		
-		@SuppressWarnings("unchecked")
-		List<IRPGraphElement> theSelectedGraphEls = 
-				theRhpApp.getSelectedGraphElements().toList();
-		
-		IRPModelElement theSelectedEl = theRhpApp.getSelectedElement();
-		
-		// only launch a dialog for non requirement elements
-		PopulateRelatedRequirementsPanel.launchThePanel(
-				(IRPSequenceDiagram) theSelectedEl );		
-	}
-	
 	public static void launchThePanel(
-			final IRPSequenceDiagram theSD ){
+			final String theAppID ){
 	
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 
@@ -68,12 +51,12 @@ public class PopulateRelatedRequirementsPanel extends JPanel {
 				JFrame.setDefaultLookAndFeelDecorated( true );
 				
 				JFrame frame = new JFrame(
-						"Populate requirements on " + Logger.elementInfo( theSD ) );
+						"Populate requirements on diagram" );
 				
 				frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 				
 				PopulateRelatedRequirementsPanel thePanel = 
-						new PopulateRelatedRequirementsPanel( theSD );
+						new PopulateRelatedRequirementsPanel( theAppID );
 
 				frame.setContentPane( thePanel );
 				frame.pack();
@@ -84,9 +67,11 @@ public class PopulateRelatedRequirementsPanel extends JPanel {
 	}
 	
 	public PopulateRelatedRequirementsPanel(
-			IRPSequenceDiagram theSD ) {
+			String theAppID ) {
 		
-		m_SequenceDiagram = theSD;
+		super( theAppID );
+		
+		m_SequenceDiagram = (IRPSequenceDiagram) _context.getSelectedElement();
 		m_ReqtsForTable = getReqtsRelatedToInterfaceItemsOn( m_SequenceDiagram );
 		
 		setLayout( new BorderLayout(10,10) );
@@ -108,7 +93,7 @@ public class PopulateRelatedRequirementsPanel extends JPanel {
 												
 				} catch (Exception e2) {
 					
-					Logger.writeLine("Error, unhandled exception in PopulateRelatedRequirementsPanel " + 
+					_context.error("Error, unhandled exception in PopulateRelatedRequirementsPanel " + 
 							"constructor on Select All button action listener");
 				}
 			}
@@ -127,7 +112,7 @@ public class PopulateRelatedRequirementsPanel extends JPanel {
 												
 				} catch (Exception e2) {
 					
-					Logger.writeLine("Error, unhandled exception in PopulateRelatedRequirementsPanel " + 
+					_context.error("Error, unhandled exception in PopulateRelatedRequirementsPanel " + 
 							"constructor on De-select All button action listener");
 				}
 			}
@@ -147,7 +132,7 @@ public class PopulateRelatedRequirementsPanel extends JPanel {
 												
 				} catch (Exception e2) {
 					
-					Logger.writeLine("Error, unhandled exception in PopulateRelatedRequirementsPanel " + 
+					_context.error("Error, unhandled exception in PopulateRelatedRequirementsPanel " + 
 							"constructor on Add Existing button action listener");
 				}
 			}
@@ -164,7 +149,7 @@ public class PopulateRelatedRequirementsPanel extends JPanel {
 				try {
 					
 					Set<IRPModelElement> theEls = 
-							TraceabilityHelper.getElementsThatHaveStereotypedDependenciesFrom( 
+							_context.getElementsThatHaveStereotypedDependenciesFrom( 
 									m_SequenceDiagram, "verify" );
 					
 					Set<IRPRequirement> theReqts = new HashSet<>();
@@ -180,7 +165,7 @@ public class PopulateRelatedRequirementsPanel extends JPanel {
 												
 				} catch (Exception e2) {
 					
-					Logger.writeLine("Error, unhandled exception in PopulateRelatedRequirementsPanel " + 
+					_context.error("Error, unhandled exception in PopulateRelatedRequirementsPanel " + 
 							"constructor on Add Existing button action listener");
 				}
 			}
@@ -232,7 +217,7 @@ public class PopulateRelatedRequirementsPanel extends JPanel {
 					}		
 												
 				} catch (Exception e2) {
-					Logger.writeLine("Error, unhandled exception in CreateOperationPanel.createOKCancelPanel on OK button action listener");
+					_context.error("Error, unhandled exception in CreateOperationPanel.createOKCancelPanel on OK button action listener");
 				}
 			}
 		});
@@ -250,7 +235,7 @@ public class PopulateRelatedRequirementsPanel extends JPanel {
 					dialog.dispose();
 												
 				} catch (Exception e2) {
-					Logger.writeLine("Error, unhandled exception in CreateOperationPanel.createOKCancelPanel on Cancel button action listener");
+					_context.error("Error, unhandled exception in CreateOperationPanel.createOKCancelPanel on Cancel button action listener");
 				}
 			}	
 		});
@@ -286,10 +271,10 @@ public class PopulateRelatedRequirementsPanel extends JPanel {
 		return theExistingReqtsOnSD;
 	}
 	
-	public static Set<IRPRequirement> getReqtsRelatedToInterfaceItemsOn(
+	public Set<IRPRequirement> getReqtsRelatedToInterfaceItemsOn(
 			IRPSequenceDiagram theSD ){
 		
-		Logger.writeLine("getReqtsRelatedToInterfaceItemsOn invoked for " + Logger.elementInfo( theSD ) );
+		_context.debug("getReqtsRelatedToInterfaceItemsOn invoked for " + _context.elInfo( theSD ) );
 				
 		Set<IRPRequirement> theReqtsRelatedToSD = new HashSet<IRPRequirement>();
 		
@@ -308,7 +293,7 @@ public class PopulateRelatedRequirementsPanel extends JPanel {
 				theInterfaceItem instanceof IRPOperation ){
 				
 				Set<IRPRequirement> theReqtsThatTraceFrom = 
-						TraceabilityHelper.getRequirementsThatTraceFrom( 
+						_context.getRequirementsThatTraceFrom( 
 								theInterfaceItem, true );
 				
 				theReqtsRelatedToSD.addAll( theReqtsThatTraceFrom );
@@ -318,7 +303,7 @@ public class PopulateRelatedRequirementsPanel extends JPanel {
 		return theReqtsRelatedToSD;
 	}
 	
-	private static int getStartXForReqtsOn(
+	private int getStartXForReqtsOn(
 			IRPSequenceDiagram theSD ){
 		
 		int theStartX = 50;
@@ -374,7 +359,7 @@ public class PopulateRelatedRequirementsPanel extends JPanel {
 		int theHeight = Integer.parseInt( theSplit[3] );
 		int theXGap = 10;
 		
-		Logger.writeLine( "Populate requirements invoked for " + Logger.elementInfo( theSD ) );
+		_context.debug( "Populate requirements invoked for " + _context.elInfo( theSD ) );
 		
 		Set<IRPRequirement> theReqtsOnDiagram = getExistingReqtsOn( theSD );
 
@@ -389,8 +374,8 @@ public class PopulateRelatedRequirementsPanel extends JPanel {
 				IRPCollection theGraphElementsToRemove = 
 						theDiagram.getCorrespondingGraphicElements( theReqtOnDiagram );
 				
-				Logger.writeLine("Removing x" + theGraphElementsToRemove.getCount() + " related to " +
-						Logger.elementInfo( theReqtOnDiagram ) + " from " + Logger.elementInfo( theDiagram ) );
+				_context.debug("Removing x" + theGraphElementsToRemove.getCount() + " related to " +
+						_context.elInfo( theReqtOnDiagram ) + " from " + _context.elInfo( theDiagram ) );
 				
 				theDiagram.removeGraphElements( theGraphElementsToRemove );
 			}
@@ -427,7 +412,7 @@ public class PopulateRelatedRequirementsPanel extends JPanel {
 						int x = top_left_x + 100;
 						
 						Set<IRPRequirement> theReqtsThatTraceFrom = 
-								TraceabilityHelper.getRequirementsThatTraceFrom( theInterfaceItem, true );
+								_context.getRequirementsThatTraceFrom( theInterfaceItem, true );
 						
 						for( IRPRequirement theReqt : theReqtsThatTraceFrom ){
 							
@@ -435,7 +420,7 @@ public class PopulateRelatedRequirementsPanel extends JPanel {
 							if( !theReqtsOnDiagram.contains( theReqt ) && 
 								 theReqtsToPopulate.contains( theReqt ) ){
 								
-								Logger.writeLine( "Adding " + Logger.elementInfo( theReqt ) + " to " + Logger.elementInfo( theSD ) );
+								_context.debug( "Adding " + _context.elInfo( theReqt ) + " to " + _context.elInfo( theSD ) );
 								
 								IRPGraphNode grElement = theSD.addNewNodeForElement(
 										theReqt, x, top_left_y-20, 10, 10 );
@@ -469,17 +454,13 @@ public class PopulateRelatedRequirementsPanel extends JPanel {
 			populateRequirementsFor(m_SequenceDiagram, theReqts);
 			
 		} else {
-			Logger.writeLine("Error in PopulateRelatedRequirementsPanel.performAction, checkValidity returned false");
+			_context.error("Error in PopulateRelatedRequirementsPanel.performAction, checkValidity returned false");
 		}	
 	}
 }
 
 /**
- * Copyright (C) 2017-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #209 04-JUL-2017: Populate requirements for SD(s) based on messages now supported with Dialog (F.J.Chadburn)
-    #257 11-SEP-2018: Move populate requirements/update verifications for SD(s) menus to Reqts menu (F.J.Chadb
+ * Copyright (C) 2017-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

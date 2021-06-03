@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.IRPActor;
 import com.telelogic.rhapsody.core.IRPClass;
 import com.telelogic.rhapsody.core.IRPClassifier;
@@ -18,12 +19,19 @@ import com.telelogic.rhapsody.core.IRPPackage;
 import com.telelogic.rhapsody.core.IRPRelation;
 import com.telelogic.rhapsody.core.IRPStructureDiagram;
 
-import functionalanalysisplugin.FunctionalAnalysisPlugin;
 import functionalanalysisplugin.GraphNodeInfo;
 
 public class BlockDiagramHelper {
 
-	public static void createBDDFor(
+	ExecutableMBSE_Context _context;
+	
+	public BlockDiagramHelper(
+			ExecutableMBSE_Context context ) {
+
+		_context = context;
+	}
+	
+	public void createBDDFor(
 			IRPClassifier theAssemblyBlock, 
 			IRPPackage underEl,
 			String withName,
@@ -46,7 +54,7 @@ public class BlockDiagramHelper {
 		int theActorWidth = Integer.parseInt( theActorFormatComponent[2] );
 		int theActorHeight = Integer.parseInt( theActorFormatComponent[3] );
 		
-		IRPCollection theGraphElsToDraw = FunctionalAnalysisPlugin.getRhapsodyApp().createNewCollection();
+		IRPCollection theGraphElsToDraw = _context.get_rhpApp().createNewCollection();
 		
 		@SuppressWarnings("unchecked")
 		List<IRPRelation> theRelations = theAssemblyBlock.getRelations().toList();
@@ -70,7 +78,6 @@ public class BlockDiagramHelper {
 					theBlocks.add( theOtherClass );
 				}
 			}
-
 		}
 		
 		int xPos = 30;
@@ -166,7 +173,7 @@ public class BlockDiagramHelper {
 		theBDD.completeRelations( theGraphElsToDraw, 1 );
 	}
 	
-	public static void createIBDFor(
+	public void createIBDFor(
 			IRPClass theAssemblyBlock, 
 			String withName,
 			String withNewTerm ){
@@ -178,7 +185,7 @@ public class BlockDiagramHelper {
 		theIBD.changeTo( withNewTerm );
 		
 		IRPCollection theGraphElsToDraw = 
-				FunctionalAnalysisPlugin.getRhapsodyApp().createNewCollection();
+				_context.get_rhpApp().createNewCollection();
 		
 		@SuppressWarnings("unchecked")
 		List<IRPInstance> theParts =
@@ -194,7 +201,7 @@ public class BlockDiagramHelper {
 
 			IRPClassifier theType = thePart.getOtherClass();
 	
-			if( GeneralHelpers.hasStereotypeCalled( "TestDriver", thePart ) ){
+			if( _context.hasStereotypeCalled( "TestDriver", thePart ) ){
 				countTestDrivers++;
 			} else if( theType instanceof IRPActor ){
 				countActors++;
@@ -224,7 +231,7 @@ public class BlockDiagramHelper {
 			// Do Test Driver first
 			for( IRPInstance thePart : theParts ) {
 
-				if( GeneralHelpers.hasStereotypeCalled( "TestDriver", thePart ) ){
+				if( _context.hasStereotypeCalled( "TestDriver", thePart ) ){
 					IRPGraphNode theNode = theIBD.addNewNodeForElement( thePart, xPos, yPos, nWidth, nHeight );
 					theGraphElsToDraw.addGraphicalItem( theNode );
 					xPos = xPos + nWidth + xGap;
@@ -261,7 +268,7 @@ public class BlockDiagramHelper {
 
 				IRPClassifier theType = thePart.getOtherClass();
 				
-				if( !GeneralHelpers.hasStereotypeCalled( "TestDriver", thePart ) && !( theType instanceof IRPActor )){	
+				if( !_context.hasStereotypeCalled( "TestDriver", thePart ) && !( theType instanceof IRPActor )){	
 					theIBD.addNewNodeForElement( thePart, xPos, yPos, nWidth, nHeight );
 					xPos = xPos + nWidth + xGap;
 				}
@@ -271,7 +278,7 @@ public class BlockDiagramHelper {
 		theIBD.completeRelations( theGraphElsToDraw, 1 );
 	}
 	
-	private static Set<IRPClassifier> getBaseClassesOf( 
+	private Set<IRPClassifier> getBaseClassesOf( 
 			Set<IRPClassifier> theClassifiers ){
 		
 		Set<IRPClassifier> theBaseClasses = new HashSet<IRPClassifier>();
@@ -295,10 +302,7 @@ public class BlockDiagramHelper {
 }
 
 /**
- * Copyright (C) 2018-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #250 29-MAY-2019: First official version of new FunctionalDesignProfile  (F.J.Chadburn)
+ * Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

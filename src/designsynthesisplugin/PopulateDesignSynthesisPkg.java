@@ -3,22 +3,28 @@ package designsynthesisplugin;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
-import generalhelpers.Logger;
 import generalhelpers.PopulatePkg;
 
 public class PopulateDesignSynthesisPkg extends PopulatePkg {
 
-	public static void createDesignSynthesisPkg(IRPProject forProject){
+	public PopulateDesignSynthesisPkg(
+			ExecutableMBSE_Context context ){
+
+		super( context );
+	}
+
+	public void createDesignSynthesisPkg(){
 		
 		final String rootPackageName = "DesignSynthesisPkg";
 		Boolean ok = true;
 		
-		IRPModelElement theExistingPkg = forProject.findElementsByFullName(rootPackageName, "Package");
+		IRPModelElement theExistingPkg = _context.get_rhpPrj().findElementsByFullName( rootPackageName, "Package" );
 		
 		if (theExistingPkg != null){
-			Logger.writeLine("Doing nothing: " + Logger.elementInfo( forProject ) + " already has package called " + rootPackageName);
+			_context.info("Doing nothing: " + _context.elInfo( _context.get_rhpPrj() ) + " already has package called " + rootPackageName );
 			ok = false;
 		}
 		
@@ -36,55 +42,49 @@ public class PopulateDesignSynthesisPkg extends PopulatePkg {
 		    
 		    if (response == JOptionPane.YES_OPTION) {
 		    	
-		    	browseAndAddByReferenceIfNotPresent("RequirementsAnalysisPkg", forProject, true);
-		    	browseAndAddByReferenceIfNotPresent("FunctionalAnalysisPkg", forProject, true);
-		    	populateDesignSynthesisPkg(forProject);
-		    	removeSimpleMenuStereotypeIfPresent(forProject);
+		    	browseAndAddByReferenceIfNotPresent( "RequirementsAnalysisPkg", true );
+		    	browseAndAddByReferenceIfNotPresent( "FunctionalAnalysisPkg", true );
+		    	populateDesignSynthesisPkg();
+		    	removeSimpleMenuStereotypeIfPresent();
 		    	
-		    	forProject.save();
+		    	_context.get_rhpPrj().save();
 
 		    } else {
-		    	Logger.writeLine("Cancelled by user");
+		    	_context.debug("Cancelled by user");
 		    }
 		}
 	}
 	
-	static void populateDesignSynthesisPkg(IRPProject forProject) {
+	public void populateDesignSynthesisPkg(){
 		
-		addProfileIfNotPresent("SysML", forProject);		
-		addProfileIfNotPresent("GlobalPreferencesProfile", forProject);
-		addProfileIfNotPresent("RequirementsAnalysisProfile", forProject);
-		addProfileIfNotPresent("FunctionalAnalysisProfile", forProject);
-		addProfileIfNotPresent("DesignSynthesisProfile", forProject);
+		addProfileIfNotPresent("SysML");		
+		addProfileIfNotPresent("GlobalPreferencesProfile");
+		addProfileIfNotPresent("RequirementsAnalysisProfile");
+		addProfileIfNotPresent("FunctionalAnalysisProfile");
+		addProfileIfNotPresent("DesignSynthesisProfile");
 		
-		forProject.changeTo("SysML");
+		_context.get_rhpPrj().changeTo("SysML");
 		
 		IRPPackage theDesignSynthesisPkg = 
 				addPackageFromProfileRpyFolder(
-						"DesignSynthesisPkg", forProject, false );
+						"DesignSynthesisPkg", false );
 		
 		if (theDesignSynthesisPkg != null){
 		
-			deleteIfPresent( "Structure1", "StructureDiagram", forProject );
-	    	deleteIfPresent( "Default", "Package", forProject );
+			_context.deleteIfPresent( "Structure1", "StructureDiagram", _context.get_rhpPrj() );
+			_context.deleteIfPresent( "Default", "Package", _context.get_rhpPrj() );
 	    	
-	    	setProperty( forProject, "Browser.Settings.ShowPredefinedPackage", "True" );
-	    	setProperty( forProject, "General.Model.AutoSaveInterval", "5" );
-	    	setProperty( forProject, "General.Model.HighlightElementsInActiveComponentScope", "True" );
-	    	setProperty( forProject, "General.Model.ShowModelTooltipInGE", "Simple" );
-	    	setProperty( forProject, "General.Model.BackUps", "One" );
-	    	
+	    	setProperty( _context.get_rhpPrj(), "Browser.Settings.ShowPredefinedPackage", "True" );
+	    	setProperty( _context.get_rhpPrj(), "General.Model.AutoSaveInterval", "5" );
+	    	setProperty( _context.get_rhpPrj(), "General.Model.HighlightElementsInActiveComponentScope", "True" );
+	    	setProperty( _context.get_rhpPrj(), "General.Model.ShowModelTooltipInGE", "Simple" );
+	    	setProperty( _context.get_rhpPrj(), "General.Model.BackUps", "One" );
 		}
 	}
 }
 
 /**
- * Copyright (C) 2016  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #006 02-MAY-2016: Add FunctionalAnalysisPkg helper support (F.J.Chadburn)
-    #046 06-JUL-2016: Fix external RequirementsAnalysisPkg reference to be created with relative path (F.J.Chadburn)
-    #061 17-JUL-2016: Ensure BasePkg is added by reference from profile to aid future integration (F.J.Chadburn)
+ * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

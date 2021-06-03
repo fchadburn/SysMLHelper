@@ -3,9 +3,9 @@ package functionaldesignplugin;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.telelogic.rhapsody.core.*;
 
-import generalhelpers.ConfigurationSettings;
 import generalhelpers.GeneralHelpers;
 import generalhelpers.Logger;
 import generalhelpers.ProfileVersionManager;
@@ -284,8 +284,8 @@ public class TopLevelSystemDesignCreator {
 			for (IRPModelElement theActorPackage : theActorPackages) {
 				
 				boolean theAnswer = UserInterfaceHelpers.askAQuestion(
-						"Do you want to nest " + Logger.elementInfo( theActorPackage ) + 
-						" underneath " + Logger.elementInfo( theRootPkg ) + "?" );
+						"Do you want to nest " + Logger.elInfo( theActorPackage ) + 
+						" underneath " + Logger.elInfo( theRootPkg ) + "?" );
 				
 				if( theAnswer ){
 					theActorPackage.setOwner( theRootPkg );

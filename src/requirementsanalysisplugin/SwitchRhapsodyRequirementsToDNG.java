@@ -1,9 +1,5 @@
 package requirementsanalysisplugin;
 
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
-import generalhelpers.UserInterfaceHelpers;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -12,56 +8,45 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
 public class SwitchRhapsodyRequirementsToDNG {
 
-	IRPApplication _rhpApp;
-	IRPProject _rhpPrj;
-
-	public static void main(String[] args) {
-		String theAppID = RhapsodyAppServer.getActiveRhapsodyApplication().getApplicationConnectionString();
-		SwitchRhapsodyRequirementsToDNG theSwitcher = new SwitchRhapsodyRequirementsToDNG(theAppID);
-		theSwitcher.SwitchRequirements();
-	}
+	ExecutableMBSE_Context _context;
 
 	public SwitchRhapsodyRequirementsToDNG(
-			String appID ) {
+			ExecutableMBSE_Context context ) {
 
-		_rhpApp = RhapsodyAppServer.getActiveRhapsodyApplicationByID( appID );
-		_rhpPrj = _rhpApp.activeProject();
+		_context = context;
 	}
 
 	public void SwitchRequirements(){
 
-		IRPModelElement theSelectedEl = _rhpApp.getSelectedElement();
+		IRPModelElement theSelectedEl = _context.getSelectedElement();
 
-		//Logger.writeLine( "theSelectedEl is " + Logger.elementInfo(theSelectedEl)  );
+		//Logger.debug( "theSelectedEl is " + Logger.elementInfo(theSelectedEl)  );
 
 		Set<IRPRequirement> theRemoteReqts = getLinkedRemoteRequirements( theSelectedEl );
 
 		if( theRemoteReqts.isEmpty() ){
 
-			UserInterfaceHelpers.showWarningDialog( "I was unable to find any remote requirements under " + 
-					Logger.elementInfo( theSelectedEl ) + "\n" +
+			UserInterfaceHelper.showWarningDialog( "I was unable to find any remote requirements under " + 
+					_context.elInfo( theSelectedEl ) + "\n" +
 					"Did you log into the Remote Artefacts Package? \n"+ 
 					"You also need to establish OSLC links from " + 
-					Logger.elementInfo( theSelectedEl ) + " \n" +
+					_context.elInfo( theSelectedEl ) + " \n" +
 					"to the remote requirements you want to switch to.");
 		} else {
-			Logger.writeLine( "Found " + theRemoteReqts.size() + 
+			_context.debug( "Found " + theRemoteReqts.size() + 
 					" remote requirements related to " + 
-					Logger.elementInfo( theSelectedEl ) );
-
-			//for (IRPRequirement theRemoteReqt : theRemoteReqts) {
-				//				Logger.writeLine( Logger.elementInfo(theRemoteReqt) + 
-				//						" with specification " + theRemoteReqt.getSpecification() );
-			//}
+					_context.elInfo( theSelectedEl ) );
 
 			@SuppressWarnings("unchecked")
 			List<IRPRequirement> theReqts = theSelectedEl.getNestedElementsByMetaClass("Requirement", 1).toList();
 
-			Logger.writeLine( "Found " + theReqts.size() + " Rhapsody-owned requirements under " + Logger.elementInfo( theSelectedEl ) );
+			_context.debug( "Found " + theReqts.size() + " Rhapsody-owned requirements under " + _context.elInfo( theSelectedEl ) );
 
 			List<IRPModelElement> theProcessedReqts = new ArrayList<>();
 			
@@ -85,7 +70,7 @@ public class SwitchRhapsodyRequirementsToDNG {
 			
 			if( theProcessedReqts.size() > 0 ){
 			
-				boolean answer = UserInterfaceHelpers.askAQuestion( 
+				boolean answer = UserInterfaceHelper.askAQuestion( 
 						"Shall I delete the " + theProcessedReqts.size() + 
 						" requirements related to the " + theRemoteDependencies.size() + " remote dependencies " +
 						" that have been switched?" );
@@ -107,8 +92,8 @@ public class SwitchRhapsodyRequirementsToDNG {
 			
 			IRPModelElement theEl = (IRPModelElement) i.next();
 			
-			Logger.writeLine( "Deleting " + Logger.elementInfo( theEl ) + 
-					" owned by " + Logger.elementInfo( theEl.getOwner() ) );
+			_context.debug( "Deleting " + _context.elInfo( theEl ) + 
+					" owned by " + _context.elInfo( theEl.getOwner() ) );
 			
 			theEl.deleteFromProject();
 		}
@@ -121,10 +106,10 @@ public class SwitchRhapsodyRequirementsToDNG {
 		IRPDependency theRemoteDependency = null;
 
 		//IRPModelElement theDependsOn = thePreviousDependency.getDependsOn();
-		//Logger.writeLine( "theDependsOn is " + Logger.elementInfo(theDependsOn));
+		//_context.debug( "theDependsOn is " + _context.elementInfo(theDependsOn));
 
 		IRPModelElement theDependent = thePreviousDependency.getDependent();
-		//Logger.writeLine( "theDependent is " + Logger.elementInfo(theDependent));
+		//_context.debug( "theDependent is " + _context.elementInfo(theDependent));
 
 		//linkType - one of the link types available with the requirement tool that you are using. 
 		// For example, for Doors Next Generation, the possible types are "Derives From", "Refines", "Satisfies", and "Trace".
@@ -144,14 +129,14 @@ public class SwitchRhapsodyRequirementsToDNG {
 			theRemoteDependency = addRemoteDependency(
 					toRemoteReqt, theDependent, "Refines" );
 
-		} else if( GeneralHelpers.hasStereotypeCalled( "trace", thePreviousDependency ) ){
+		} else if( _context.hasStereotypeCalled( "trace", thePreviousDependency ) ){
 
 			theRemoteDependency = addRemoteDependency(
 					toRemoteReqt, theDependent, "Trace" );			
 		} else {
-			Logger.writeLine( "Warning: No stereotype found on " + 
-					Logger.elementInfo( thePreviousDependency ) + " to " + 
-					Logger.elementInfo( toRemoteReqt ) );
+			_context.debug( "Warning: No stereotype found on " + 
+					_context.elInfo( thePreviousDependency ) + " to " + 
+					_context.elInfo( toRemoteReqt ) );
 
 			theRemoteDependency = addRemoteDependency(
 					toRemoteReqt, theDependent, "Trace" );		
@@ -171,14 +156,14 @@ public class SwitchRhapsodyRequirementsToDNG {
 			theRemoteDependency = theDependent.addRemoteDependencyTo( 
 					toRemoteReqt, theType );
 			
-			Logger.writeLine( "Added remote " + theType + " from " + 
-					Logger.elementInfo( theDependent ) + " to " + 
-					Logger.elementInfo( toRemoteReqt ) );
+			_context.debug( "Added remote " + theType + " from " + 
+					_context.elInfo( theDependent ) + " to " + 
+					_context.elInfo( toRemoteReqt ) );
 			
 		} catch( Exception e ){
-			Logger.writeLine( "Unable to add remote " + theType + " from " + 
-					Logger.elementInfo( theDependent ) + " to " + 
-					Logger.elementInfo( toRemoteReqt ) + ", e=" + e.getMessage() );
+			_context.debug( "Unable to add remote " + theType + " from " + 
+					_context.elInfo( theDependent ) + " to " + 
+					_context.elInfo( toRemoteReqt ) + ", e=" + e.getMessage() );
 		}
 
 		return theRemoteDependency;
@@ -206,13 +191,13 @@ public class SwitchRhapsodyRequirementsToDNG {
 			IRPRequirement theReqt,
 			IRPRequirement toRemoteReqt ) {
 
-		//		Logger.writeLine( "switchGraphElsFor from " + Logger.elementInfo( theReqt ) + 
-		//				" to " + Logger.elementInfo ( toRemoteReqt ) );
+		//		_context.debug( "switchGraphElsFor from " + _context.elementInfo( theReqt ) + 
+		//				" to " + _context.elementInfo ( toRemoteReqt ) );
 
 		List<IRPDependency> theExistingDependencies = getDependenciesTo( theReqt );
 
-		Logger.writeLine( "Found " + theExistingDependencies.size() + 
-				" dependencies to " + Logger.elementInfo( theReqt ) );
+		_context.debug( "Found " + theExistingDependencies.size() + 
+				" dependencies to " + _context.elInfo( theReqt ) );
 
 		Map<IRPDependency,IRPDependency> theDependencyMap = new HashMap<>();  
 		List<IRPDependency> unmappedDependencies = new ArrayList<>();  
@@ -240,7 +225,7 @@ public class SwitchRhapsodyRequirementsToDNG {
 				IRPDiagram theDiagram = (IRPDiagram)theReference;
 				theDiagram.openDiagram();
 
-				IRPCollection theGraphElsToRemove = _rhpApp.createNewCollection();
+				IRPCollection theGraphElsToRemove = _context.get_rhpApp().createNewCollection();
 
 				@SuppressWarnings("unchecked")
 				List<IRPGraphElement> theOriginalGraphEls = 
@@ -259,7 +244,7 @@ public class SwitchRhapsodyRequirementsToDNG {
 					List<IRPGraphEdge> theOriginalConnectedEdges = 
 							getGraphEdgesConnectorTo( (IRPGraphNode) theOriginalGraphEl );
 
-					Logger.writeLine( "Found " + theOriginalConnectedEdges.size() + " related graph edges" );
+					_context.debug( "Found " + theOriginalConnectedEdges.size() + " related graph edges" );
 
 					for (IRPGraphEdge theOriginalConnectedEdge : theOriginalConnectedEdges) {
 
@@ -331,9 +316,9 @@ public class SwitchRhapsodyRequirementsToDNG {
 
 		IRPDiagram theDiagram = basedOnGraphNode.getDiagram();
 
-		Logger.writeLine( "Switching graph element on " + 
-				Logger.elementInfo( theDiagram ) + 
-				" to " + Logger.elementInfo( toModelEl ) );
+		_context.debug( "Switching graph element on " + 
+				_context.elInfo( theDiagram ) + 
+				" to " + _context.elInfo( toModelEl ) );
 
 		/*
 		@SuppressWarnings("unchecked")
@@ -345,7 +330,7 @@ public class SwitchRhapsodyRequirementsToDNG {
 			String theKey = theGraphProperty.getKey();
 			String theValue = theGraphProperty.getValue();
 
-			Logger.writeLine( theKey + " = " + theValue );
+			_context.debug( theKey + " = " + theValue );
 		}*/
 
 		String nHeight = basedOnGraphNode.getGraphicalProperty("Height").getValue();
@@ -357,10 +342,10 @@ public class SwitchRhapsodyRequirementsToDNG {
 		String xPosition = split[0];
 		String yPosition = split[1];
 
-		Logger.writeLine( "theHeight = " + nHeight );
-		Logger.writeLine( "theWidth = " + nWidth );
-		Logger.writeLine( "xPos = " + xPosition );
-		Logger.writeLine( "yPos = " + yPosition );
+		_context.debug( "theHeight = " + nHeight );
+		_context.debug( "theWidth = " + nWidth );
+		_context.debug( "xPos = " + xPosition );
+		_context.debug( "yPos = " + yPosition );
 
 		IRPGraphNode theNode = theDiagram.addNewNodeForElement(
 				toModelEl, 
@@ -383,9 +368,9 @@ public class SwitchRhapsodyRequirementsToDNG {
 
 		IRPDiagram theDiagram = basedOnGraphEdge.getDiagram();
 
-		Logger.writeLine( "Switching graph element on " + 
-				Logger.elementInfo( theDiagram ) + 
-				" to " + Logger.elementInfo( theNewDependency ) );
+		_context.debug( "Switching graph element on " + 
+				_context.elInfo( theDiagram ) + 
+				" to " + _context.elInfo( theNewDependency ) );
 
 		/*
 		@SuppressWarnings("unchecked")
@@ -397,7 +382,7 @@ public class SwitchRhapsodyRequirementsToDNG {
 			String theKey = theGraphProperty.getKey();
 			String theValue = theGraphProperty.getValue();
 
-			Logger.writeLine( theKey + " = " + theValue );
+			_context.debug( theKey + " = " + theValue );
 		}*/
 
 		String srcPosition = basedOnGraphEdge.getGraphicalProperty("SourcePosition").getValue();
@@ -412,10 +397,10 @@ public class SwitchRhapsodyRequirementsToDNG {
 		String xTrgPosition = trgSplit[0];
 		String yTrgPosition = trgSplit[1];
 
-		Logger.writeLine( "xSrcPosition = " + xSrcPosition );
-		Logger.writeLine( "ySrcPosition = " + ySrcPosition );
-		Logger.writeLine( "xTrgPosition = " + xTrgPosition );
-		Logger.writeLine( "yTrgPosition = " + yTrgPosition );
+		_context.debug( "xSrcPosition = " + xSrcPosition );
+		_context.debug( "ySrcPosition = " + ySrcPosition );
+		_context.debug( "xTrgPosition = " + xTrgPosition );
+		_context.debug( "yTrgPosition = " + yTrgPosition );
 
 		IRPGraphElement theSourceGraphEl = basedOnGraphEdge.getSource();
 		
@@ -431,17 +416,17 @@ public class SwitchRhapsodyRequirementsToDNG {
 					Integer.parseInt( yTrgPosition ) );
 
 		} else {
-			IRPCollection theGraphElements = _rhpApp.createNewCollection();
+			IRPCollection theGraphElements = _context.get_rhpApp().createNewCollection();
 			
 			theGraphElements.addGraphicalItem(theSourceGraphEl);
 			theGraphElements.addGraphicalItem(andRequirementGraphNode);
 			
-			IRPCollection theRelationsCollection = _rhpApp.createNewCollection();
+			IRPCollection theRelationsCollection = _context.get_rhpApp().createNewCollection();
 			theRelationsCollection.setSize( 1 );
 			theRelationsCollection.setString( 1, "AllRelations" );
 			
-			Logger.writeLine("Attempting to populate relations to " + 
-					Logger.elementInfo( theSourceGraphEl.getModelObject() ) );
+			_context.debug("Attempting to populate relations to " + 
+					_context.elInfo( theSourceGraphEl.getModelObject() ) );
 			
 			theDiagram.populateDiagram( theGraphElements, theRelationsCollection, "among" );
 			
@@ -450,8 +435,8 @@ public class SwitchRhapsodyRequirementsToDNG {
 					theDiagram.getCorrespondingGraphicElements(theNewDependency).toList();
 			
 			if( theCorrespondingGraphEls != null ){
-				Logger.writeLine( "there are " + theCorrespondingGraphEls.size() + " graph elements related to " +
-						Logger.elementInfo( theNewDependency ) );
+				_context.debug( "there are " + theCorrespondingGraphEls.size() + " graph elements related to " +
+						_context.elInfo( theNewDependency ) );
 			}
 		}
 		
@@ -476,17 +461,17 @@ public class SwitchRhapsodyRequirementsToDNG {
 
 			for (IRPDependency theRemoteDependency : theRemoteDependencies) {
 
-				Logger.writeLine( Logger.elementInfo(theRemoteDependency));
+				_context.debug( _context.elInfo(theRemoteDependency));
 
 				IRPModelElement theDependsOn = theRemoteDependency.getDependsOn();
-				Logger.writeLine( "theDependsOn is " + Logger.elementInfo(theDependsOn));
+				_context.debug( "theDependsOn is " + _context.elInfo(theDependsOn));
 
 				if( theDependsOn instanceof IRPRequirement ){
 					theRequirements.add( (IRPRequirement) theDependsOn );
 				}
 
 				IRPModelElement theDependent = theRemoteDependency.getDependent();
-				Logger.writeLine( "theDependent is " + Logger.elementInfo(theDependent));
+				_context.debug( "theDependent is " + _context.elInfo(theDependent));
 			}
 		}
 
@@ -512,11 +497,8 @@ public class SwitchRhapsodyRequirementsToDNG {
 }
 
 /**
- * Copyright (C) 2020  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2020-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
-    Change history:
-    #266 07-DEC-2020: Add initial support for CVS export & switching master of requirements to DOORS NG
-    
     This file is part of SysMLHelperPlugin.
 
     SysMLHelperPlugin is free software: you can redistribute it and/or modify

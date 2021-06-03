@@ -14,10 +14,6 @@ import com.telelogic.rhapsody.core.IRPObjectModelDiagram;
 import com.telelogic.rhapsody.core.IRPPackage;
 import com.telelogic.rhapsody.core.RhapsodyAppServer;
 
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
-import generalhelpers.StereotypeAndPropertySettings;
-
 public class DesignSpecificationPackage {
 	
 	String _packageName = null;
@@ -99,13 +95,13 @@ public class DesignSpecificationPackage {
 	}
 
 	public void dumpPackage(){
-		Logger.writeLine( "_packageName = " + _packageName );
-		Logger.writeLine( "_newTermStereotypeName = " + _newTermStereotypeName );
-		Logger.writeLine( "_shortName = " + _shortName );
-		Logger.writeLine( "_description = " + _description );
-		Logger.writeLine( "_functionName = " + _functionName );
-		Logger.writeLine( "_functionDescription = " + _functionDescription );
-		Logger.writeLine( "_isCreateParametricDiagram = " + _isCreateParametricDiagram );
+		_context.writeLine( "_packageName = " + _packageName );
+		_context.writeLine( "_newTermStereotypeName = " + _newTermStereotypeName );
+		_context.writeLine( "_shortName = " + _shortName );
+		_context.writeLine( "_description = " + _description );
+		_context.writeLine( "_functionName = " + _functionName );
+		_context.writeLine( "_functionDescription = " + _functionDescription );
+		_context.writeLine( "_isCreateParametricDiagram = " + _isCreateParametricDiagram );
 
 	}
 	
@@ -120,13 +116,13 @@ public class DesignSpecificationPackage {
 			
 			errorMsg += "Sorry, " + this._packageName + "Pkg" +
 					" will not be unique and clashes with existing package under " + 
-					Logger.elementInfo( this._rootEl );
+					_context.elInfo( this._rootEl );
 		}
 		
 		String theRegEx = this._rootEl.getPropertyValue( 
 				"General.Model.NamesRegExp" );
 
-		Logger.writeLine("Checking " + this._packageName + " against the NamesRegExp '" + theRegEx + "'");
+		_context.writeLine("Checking " + this._packageName + " against the NamesRegExp '" + theRegEx + "'");
 								
 		if( this._packageName != null && !this._packageName.matches( theRegEx ) ){
 
@@ -140,11 +136,11 @@ public class DesignSpecificationPackage {
 	public void createPackage() {
 		
 		if( _newTermStereotypeName == null ){
-			Logger.error( "createPackage has detected that the _newTermStereotypeName is null" );
+			_context.error( "createPackage has detected that the _newTermStereotypeName is null" );
 		}
 
 		if( _packageName == null ){
-			Logger.error( "createPackage has detected that the _packageName is null" );
+			_context.error( "createPackage has detected that the _packageName is null" );
 		}
 		
 		IRPPackage theFDSPkg = (IRPPackage) this._rootEl.addNewAggr(
@@ -154,7 +150,7 @@ public class DesignSpecificationPackage {
 
 		// Create nested package for requirements		
 		IRPPackage theActorsPkg = 
-				GeneralHelpers.addNewTermPackageAndSetUnitProperties(
+				_context.addNewTermPackageAndSetUnitProperties(
 						"Actors_" + _packageName + "Pkg",
 						theFDSPkg,
 						StereotypeAndPropertySettings.getActorPackageStereotype  ( 

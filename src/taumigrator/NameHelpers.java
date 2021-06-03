@@ -33,7 +33,7 @@ public class NameHelpers {
 			count++;
 			IRPModelElement theEl = (IRPModelElement) iterator.next();
 
-			theString += count + ". " + Logger.elementInfo( theEl ) + " \n";
+			theString += count + ". " + Logger.elInfo( theEl ) + " \n";
 			
 			if( count >= max ){
 				theString += "... (" + theEls.size() + " in list) \n";

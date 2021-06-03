@@ -1,11 +1,23 @@
+Subject ExecutableMBSEProfile
+        Metaclass General
+		Property PluginVersion String "4.0.c.PreRelease"
+		Property EnableInfoLogging Bool "True"
+		Property EnableWarningLogging Bool "True"
+		Property EnableErrorLogging Bool "True"
+		Property EnableDebugLogging Bool "True"
+		Property EnableLogFile Bool "False"
+		Property AllowPluginToControlUnitGranularity Bool "False"
+		Property UserDefinedMetaClassesAsSeparateUnit String ""
+	end
+end
 Subject SysMLHelper
         Metaclass General
 		Property StoreUnitInSeparateDirectoryNewTerms String "12 Reqts Analysis - Use Case Package,21 Funct Analysis - Scenarios Package,23 Funct Analysis - Interfaces Package"
 		Property DontCreateSeparateUnitNewTerms String ""
-		Property ActorPackageStereotype String "ActorPackage"
-		Property UseCasePackageStereotype String "UseCasePackage"
+		Property ActorPackageStereotype String "11 Reqts Analysis - Actor Package"
+		Property UseCasePackageStereotype String "12 Reqts Analysis - Use Case Package"
 		Property UseCasePackageWorkingStereotype String "12 Reqts Analysis - Working Copy Package"
-		Property RequirementPackageStereotype String "RequirementPackage"
+		Property RequirementPackageStereotype String "13 Reqts Analysis - Requirement Package"
 		Property SimulationPackageStereotype String "21 Funct Analysis - Scenarios Package"
 		Property DesignPackageStereotype String "22 Funct Analysis - Design Package"
 		Property InterfacesPackageStereotype String "23 Funct Analysis - Interfaces Package"

@@ -162,7 +162,7 @@ public class ConfirmDiagramUpdatePanel extends CreateStructuralElementPanel {
 				theMatchingGraphEls.add( theGraphElOnDiagram );
 			}
 			
-			Logger.writeLine( theModelObject, " is on " + Logger.elementInfo( onTheDiagram ) );
+			Logger.writeLine( theModelObject, " is on " + Logger.elInfo( onTheDiagram ) );
 		}
 		
 		return theMatchingGraphEls;
@@ -208,7 +208,7 @@ public class ConfirmDiagramUpdatePanel extends CreateStructuralElementPanel {
 		}
 		
 		Logger.writeLine("Completing relations for x" + theGraphEls.getCount() + 
-				" graph elements on " + Logger.elementInfo( theDiagramToUpdate ) );
+				" graph elements on " + Logger.elInfo( theDiagramToUpdate ) );
 		
 		theDiagramToUpdate.completeRelations( theGraphEls, 0);		
 	}

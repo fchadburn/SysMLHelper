@@ -1,12 +1,11 @@
 package requirementsanalysisplugin;
 
-import generalhelpers.Logger;
-
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
 public class DiagramElementList extends HashSet<DiagramElementInfo> {
@@ -16,10 +15,14 @@ public class DiagramElementList extends HashSet<DiagramElementInfo> {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	ExecutableMBSE_Context _context;
 	
 	public DiagramElementList(
 			List<IRPModelElement> theModelEls,
-			List<IRPGraphElement> theGraphEls ) {
+			List<IRPGraphElement> theGraphEls,
+			ExecutableMBSE_Context context ) {
+		
+		_context = context;
 		
 		for( IRPModelElement theModelEl : theModelEls ){
 			
@@ -57,12 +60,12 @@ public class DiagramElementList extends HashSet<DiagramElementInfo> {
 				!(theEl.getOwner() instanceof IRPFlowchart) ) { // it does match but is not owned by an AD
 
 				isMatchFoundForAll = false;
-				Logger.writeLine( theEl.getOwner(), "is the owner of " + Logger.elementInfo( theEl));
+				_context.debug( _context.elInfo( theEl.getOwner() ) + " is the owner of " + _context.elInfo( theEl ) );
 				break;
 			}
 		}
 		
-		Logger.writeLine( "areElementsAllDeriveDependencySources is returning " + isMatchFoundForAll );
+		_context.debug( "areElementsAllDeriveDependencySources is returning " + isMatchFoundForAll );
 		
 		return isMatchFoundForAll;
 	}
@@ -98,12 +101,12 @@ public class DiagramElementList extends HashSet<DiagramElementInfo> {
 					   !(theEl.getOwner() instanceof IRPStatechart) ){
 					
 				isMatchFoundForAll = false;
-				Logger.writeLine( theEl.getOwner(), "is the owner of " + Logger.elementInfo( theEl ));
+				_context.debug( _context.elInfo( theEl.getOwner() ) + " is the owner of " + _context.elInfo( theEl ) );
 				break;
 			}
 		}
 		
-		Logger.writeLine( "areElementsAllSatisfyDependencySources is returning " + isMatchFoundForAll );
+		_context.debug( "areElementsAllSatisfyDependencySources is returning " + isMatchFoundForAll );
 		
 		return isMatchFoundForAll;
 	}
@@ -125,7 +128,7 @@ public class DiagramElementList extends HashSet<DiagramElementInfo> {
 			}
 		}
 		
-		Logger.writeLine( "areElementsAllRefinementDependencySources is returning " + isMatchFoundForAll );
+		_context.debug( "areElementsAllRefinementDependencySources is returning " + isMatchFoundForAll );
 		
 		return isMatchFoundForAll;
 	}
@@ -143,7 +146,7 @@ public class DiagramElementList extends HashSet<DiagramElementInfo> {
 			}
 		}
 		
-		Logger.writeLine( "areElementsAllVerificationDependencySources is returning " + isMatchFoundForAll );
+		_context.debug( "areElementsAllVerificationDependencySources is returning " + isMatchFoundForAll );
 		
 		return isMatchFoundForAll;
 	}
@@ -164,7 +167,7 @@ public class DiagramElementList extends HashSet<DiagramElementInfo> {
 			}
 		}
 		
-		Logger.writeLine( "areElementsAllReqts is returning " + isMatchFoundForAll );
+		_context.debug( "areElementsAllReqts is returning " + isMatchFoundForAll );
 
 		return isMatchFoundForAll;
 		

@@ -1,8 +1,5 @@
 package requirementsanalysisplugin;
 
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -18,72 +15,103 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
- 
+
 public class ActivityDiagramChecker extends JFrame{
- 	
+
 	private ActionList actionsInfos;
 	private JPanel thePanel;
-    private JTable theTable;
-    private JScrollPane theScrollPane;
-    private MouseListener theListener;
-    private List<ActionInfo> theCheckedElements; 
-    
+	private JTable theTable;
+	private JScrollPane theScrollPane;
+	private MouseListener theListener;
+	private List<ActionInfo> theCheckedElements; 
+	private ExecutableMBSE_Context _context;
+	
 	private static final long serialVersionUID = 1L;
 
+	// testing only
 	public static void main(String[] args) {
-	
 		List<IRPModelElement> theEls = new ArrayList<IRPModelElement>();
-		
 		theEls.add( RhapsodyAppServer.getActiveRhapsodyApplication().getSelectedElement() );
-		
-		createActivityDiagramCheckersFor( theEls );
-	}
-	
-	public ActivityDiagramChecker(IRPActivityDiagram theAD){
-
-		try {
-			 
-			IRPFlowchart theFC = (IRPFlowchart) theAD.getOwner();
-			Logger.writeLine("ActivityDiagramChecker was invoked for " + Logger.elementInfo( theFC ));
-			
-			actionsInfos = new ActionList(theAD);
-			
-			if (actionsInfos.isRenamingNeeded()){
-				
-				JDialog.setDefaultLookAndFeelDecorated(true);
-
-				String theMsg = "The checker has detected that " + actionsInfos.getNumberOfRenamesNeeded() + 
-						" elements require renaming. Do you want to rename them before producing the report?";
-
-				int response = JOptionPane.showConfirmDialog(null, 
-						theMsg, "Rename check for " + Logger.elementInfo(theFC),
-						JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
-
-				if (response == JOptionPane.CANCEL_OPTION){
-					Logger.writeLine("Operation was cancelled by user with no changes made.");
-				} else {
-					if (response == JOptionPane.YES_OPTION) {
-						actionsInfos.performRenames();
-					} else if (response == JOptionPane.NO_OPTION){
-						Logger.writeLine("Info: User chose not rename the actions.");
-					} 
-				}
-			}	
-			
-			theCheckedElements = actionsInfos.getListOfActionsCheckedForTraceability();
-			buildFrameUsing(theCheckedElements, "Traceability report for " + theFC.getName());
-			Logger.writeLine(
-					"ActivityDiagramChecker has finished (" + actionsInfos.getNumberOfTraceabilityFailures() + 
-					" out of " + actionsInfos.size() + " elements failed traceability checks)");
-			
-		} catch (Exception e) {
-			Logger.writeLine("Error: Exception handled in ActivityDiagramChecker");
-		}		
+		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
+		ExecutableMBSE_Context context = new ExecutableMBSE_Context( theRhpApp.getApplicationConnectionString() );
+		createActivityDiagramCheckersFor( theEls,context );
 	}
 
-	private void buildFrameUsing(List<ActionInfo> theList, String withTitle) {
+	public static void launchThePanel(
+			final String theAppID,
+			IRPActivityDiagram forAD ){
+
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+
+			@Override
+			public void run() {
+
+				JFrame.setDefaultLookAndFeelDecorated( true );
+
+				JFrame frame = new JFrame( "Create new Actor" );
+
+				frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
+
+				ActivityDiagramChecker thePanel = 
+						new ActivityDiagramChecker( theAppID, forAD.getGUID() );
+
+				frame.setContentPane( thePanel );
+				frame.pack();
+				frame.setLocationRelativeTo( null );
+				frame.setVisible( true );
+			}
+		});
+	}
+
+	public ActivityDiagramChecker(
+			String theAppID,
+			String theActivityDiagramGUID ){
+
+		_context = new ExecutableMBSE_Context( theAppID );
+
+		IRPActivityDiagram theAD = (IRPActivityDiagram) _context.get_rhpPrj().findElementByGUID( theActivityDiagramGUID );
+		IRPFlowchart theFC = (IRPFlowchart) theAD.getOwner();
 		
+		_context.debug( "ActivityDiagramChecker was invoked for " + _context.elInfo( theFC ) );
+
+		actionsInfos = new ActionList( theAD, _context );
+
+		if( actionsInfos.isRenamingNeeded() ){
+
+			JDialog.setDefaultLookAndFeelDecorated(true);
+
+			String theMsg = "The checker has detected that " + actionsInfos.getNumberOfRenamesNeeded() + 
+					" elements require renaming. Do you want to rename them before producing the report?";
+
+			int response = JOptionPane.showConfirmDialog(null, 
+					theMsg, "Rename check for " + _context.elInfo(theFC),
+					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+			if (response == JOptionPane.CANCEL_OPTION){
+				_context.debug("Operation was cancelled by user with no changes made.");
+			} else {
+				if (response == JOptionPane.YES_OPTION) {
+					actionsInfos.performRenames();
+				} else if (response == JOptionPane.NO_OPTION){
+					_context.debug("Info: User chose not rename the actions.");
+				} 
+			}
+		}	
+
+		theCheckedElements = actionsInfos.getListOfActionsCheckedForTraceability();
+		buildFrameUsing( theCheckedElements, "Traceability report for " + theFC.getName() );
+
+		_context.debug(
+				"ActivityDiagramChecker has finished (" + actionsInfos.getNumberOfTraceabilityFailures() + 
+				" out of " + actionsInfos.size() + " elements failed traceability checks)");	
+	}
+
+	private void buildFrameUsing(
+			List<ActionInfo> theList, 
+			String withTitle) {
+
 		// Set the frame characteristics
 		setTitle( withTitle );
 		setSize( 500, 200 );
@@ -101,13 +129,13 @@ public class ActivityDiagramChecker extends JFrame{
 		String dataValues[][] = new String[theList.size()][4];
 
 		for (int i = 0; i < theList.size(); i++) {
-		
+
 			ActionInfo theInfo = theList.get(i);
 			IRPModelElement theEl = theInfo.getTheElement();
-			
+
 			dataValues[i][0] = theEl.getName();
 			dataValues[i][1] = theInfo.getType();
-			
+
 			if (theInfo.isTraceabilityFailure()){
 				dataValues[i][2] = "FAIL";
 				dataValues[i][3] = theInfo.getComment();//"Traceability is missing";
@@ -120,9 +148,9 @@ public class ActivityDiagramChecker extends JFrame{
 		// Create a new table instance
 		theTable = new JTable( dataValues, columnNames ){
 			private static final long serialVersionUID = 1L;
-			
+
 			public boolean isCellEditable(int row, int column) {                
-                return false;               
+				return false;               
 			};
 		};
 
@@ -130,84 +158,82 @@ public class ActivityDiagramChecker extends JFrame{
 		theTable.getColumnModel().getColumn(1).setPreferredWidth(600);
 		theTable.getColumnModel().getColumn(2).setPreferredWidth(300);
 		theTable.getColumnModel().getColumn(3).setPreferredWidth(1500);
-		
+
 		// Add the table to a scrolling pane
 		theScrollPane = new JScrollPane( theTable );
-		
+
 		thePanel.add( theScrollPane, BorderLayout.CENTER );
-		
+
 		int xSize = 600;
 		int ySize = (theList.size()*18)+40;
 		if (ySize > 600) ySize = 600;
-		
+
 		thePanel.setPreferredSize(new Dimension(xSize, ySize));
-		    
+
 		add(thePanel);
 		pack();
-		
+
 		theListener = new MouseListener() {
-			
+
 			@Override
 			public void mouseReleased(MouseEvent e) {
 			}
-			
+
 			@Override
 			public void mousePressed(MouseEvent e) {
 			}
-			
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 			}
-			
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 			}
-			
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+
 				int theRow = theTable.rowAtPoint(e.getPoint());
 				int theColumn = theTable.columnAtPoint(e.getPoint());
-				
+
 				if (theRow >= 0 && theColumn >= 0){
 
 					ActionInfo theInfo = theCheckedElements.get(theRow);
 					IRPModelElement theEl = theInfo.getTheElement();
-					 
-					Logger.writeLine("Highlighting " + Logger.elementInfo(theEl) + " on the diagram.");
+
+					_context.debug("Highlighting " + _context.elInfo(theEl) + " on the diagram.");
 					theEl.highLightElement();
 				}
 			}
 		};
-		
+
 		theTable.addMouseListener(theListener);
 	}
-	
-	static public void createActivityDiagramCheckersFor(List<IRPModelElement> theSelectedEls){
-		
-		List<IRPActivityDiagram> theADs = GeneralHelpers.buildListOfActivityDiagramsFor(theSelectedEls);
-	
-		Logger.writeLine("There are " + theADs.size() + " Activity Diagrams nested under the selected list");
-		
+
+	static public void createActivityDiagramCheckersFor(
+			List<IRPModelElement> theSelectedEls,
+			ExecutableMBSE_Context context ){
+
+		List<IRPActivityDiagram> theADs = context.buildListOfActivityDiagramsFor(theSelectedEls);
+
+		context.debug("There are " + theADs.size() + " Activity Diagrams nested under the selected list");
+
 		for (IRPActivityDiagram theAD : theADs) {
-			
+
 			IRPFlowchart theFC = (IRPFlowchart) theAD.getOwner();
-			Logger.writeLine("Check Activity Diagram was invoked for " + Logger.elementInfo( theFC ));
-			
-			ActivityDiagramChecker theChecker = new ActivityDiagramChecker( theAD );
+			context.debug("Check Activity Diagram was invoked for " + context.elInfo( theFC ));
+
+			ActivityDiagramChecker theChecker = 
+					new ActivityDiagramChecker( context.get_rhpAppID(), theAD.getGUID() );
+
 			theChecker.setVisible( true );
-			
 		}
 	}
 }
 
 /**
- * Copyright (C) 2016-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #004 10-APR-2016: Re-factored projects into single workspace (F.J.Chadburn)
-    #225 25-AUG-2017: Add check that pre-conditions with text must trace to at least one requirement (F.J.Chadburn)
-    #256 29-MAY-2019: Rewrite to Java Swing dialog launching to make thread safe between versions (F.J.Chadburn)
+ * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 
@@ -223,4 +249,4 @@ public class ActivityDiagramChecker extends JFrame{
 
     You should have received a copy of the GNU General Public License
     along with SysMLHelperPlugin.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */

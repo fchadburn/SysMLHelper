@@ -22,6 +22,7 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
 import functionalanalysisplugin.SelectedElementContext;
@@ -33,13 +34,16 @@ public abstract class CreateStructuralElementPanel extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	protected SelectedElementContext m_ElementContext;
+	protected ExecutableMBSE_Context _context;
+	protected SelectedElementContext _selectedContext;
 
 	protected CreateStructuralElementPanel(
 			String theAppID ){
 		
 		super();
-		m_ElementContext = new SelectedElementContext( theAppID );
+		
+		_context = new ExecutableMBSE_Context( theAppID );
+		_selectedContext = new SelectedElementContext( _context );
 	}
 	
 	List<IRPUnit> m_UnitsForReadWrite = new ArrayList<IRPUnit>();
@@ -72,7 +76,7 @@ public abstract class CreateStructuralElementPanel extends JPanel {
 					}
 												
 				} catch (Exception e2) {
-					Logger.writeLine("Unhandled exception in createOKCancelPanel->theOKButton.actionPerformed e2=" + e2.getMessage());
+					_context.error( "Unhandled exception in createOKCancelPanel->theOKButton.actionPerformed e2=" + e2.getMessage() );
 				}
 			}
 		});
@@ -89,7 +93,7 @@ public abstract class CreateStructuralElementPanel extends JPanel {
 					dialog.dispose();
 												
 				} catch (Exception e2) {
-					Logger.writeLine("Unhandled exception in createOKCancelPanel->theCancelButton.actionPerformed");
+					_context.error("Unhandled exception in createOKCancelPanel->theCancelButton.actionPerformed");
 				}		
 			}	
 		});
@@ -127,7 +131,7 @@ public abstract class CreateStructuralElementPanel extends JPanel {
 				
 		IRPUnit theUnit = theEl.getSaveUnit();
 		
-		Logger.writeLine("notifyReadWriteNeededFor has determined that the Unit for " + Logger.elementInfo(theEl) + " is " + Logger.elementInfo(theUnit));
+		_context.debug("notifyReadWriteNeededFor has determined that the Unit for " + _context.elInfo(theEl) + " is " + _context.elInfo(theUnit));
 		
 		if( !m_UnitsForReadWrite.contains( theUnit ) ){
 			m_UnitsForReadWrite.add( theUnit );
@@ -142,16 +146,10 @@ public abstract class CreateStructuralElementPanel extends JPanel {
 			
 			int isReadyOnly = theUnit.isReadOnly();
 			
-//			Logger.writeLine("Checking " + Logger.elementInfo( theUnit ) + 
-//					", isReadyOnly = " + isReadyOnly );
-			
 			if( isReadyOnly==1 ){
 				theLockedUnits.add( theUnit );
 			}
 		}
-		
-//		Logger.writeLine("getLockedUnits detected that " + theLockedUnits.size() + 
-//				" units out of " + m_UnitsForReadWrite.size() + " are locked");
 
 		return theLockedUnits;
 	}
@@ -189,7 +187,7 @@ public abstract class CreateStructuralElementPanel extends JPanel {
 					dialog.dispose();
 												
 				} catch (Exception e2) {
-					Logger.writeLine("Error, unhandled exception in CreateOperationPanel.createOKCancelPanel on Cancel button action listener");
+					_context.error("Error, unhandled exception in CreateOperationPanel.createOKCancelPanel on Cancel button action listener");
 				}
 			}	
 		});
@@ -199,22 +197,10 @@ public abstract class CreateStructuralElementPanel extends JPanel {
 		
 		return thePanel;
 	}
-
-
 }
 
 /**
- * Copyright (C) 2016-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #025 31-MAY-2016: Add new menu and dialog to add a new actor to package under development (F.J.Chadburn)
-    #026 31-MAY-2016: Add dialog to allow user to choose which Activity Diagrams to synch (F.J.Chadburn)
-    #030 01-JUN-2016: Improve legal name checking across helpers (F.J.Chadburn)
-    #035 15-JUN-2016: New panel to configure requirements package naming and gateway set-up (F.J.Chadburn)
-    #106 03-NOV-2016: Ease usage by renaming UsageDomain block to SystemAssembly and moving up one package (F.J.Chadburn)
-    #216 09-JUL-2017: Added a new Add Block/Part command added to the Functional Analysis menus (F.J.Chadburn)
-    #252 29-MAY-2019: Implement generic features for profile/settings loading (F.J.Chadburn)
-    #256 29-MAY-2019: Rewrite to Java Swing dialog launching to make thread safe between versions (F.J.Chadburn)
+ * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

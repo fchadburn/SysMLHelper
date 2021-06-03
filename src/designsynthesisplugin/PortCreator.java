@@ -1,10 +1,6 @@
 package designsynthesisplugin;
 
 import functionalanalysisplugin.FunctionalAnalysisPlugin;
-import generalhelpers.ConfigurationSettings;
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
-import generalhelpers.TraceabilityHelper;
 import generalhelpers.UserInterfaceHelpers;
 
 import java.util.HashSet;
@@ -13,49 +9,38 @@ import java.util.Set;
 
 import javax.swing.JDialog;
 
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
 public class PortCreator {
-
-	// test only
-	public static void main(String[] args) {
-
-		IRPModelElement theSelectedEl = FunctionalAnalysisPlugin.getRhapsodyApp().getSelectedElement();
-		
-		ConfigurationSettings configSettings = new ConfigurationSettings(
-				FunctionalAnalysisPlugin.getRhapsodyApp(),
-				FunctionalAnalysisPlugin.getRhapsodyApp().activeProject(),
-				"SysMLHelper.properties", 
-				"SysMLHelper_MessagesBundle",
-				"SysMLHelper" );
-		
-		if( theSelectedEl instanceof IRPAttribute ){
-			createPublishFlowportFor( (IRPAttribute) theSelectedEl, configSettings );
-		}
+	
+	ExecutableMBSE_Context _context;
+	
+	public PortCreator(
+			ExecutableMBSE_Context context) {
+		_context = context;
 	}
 	
-	public static void createPublishFlowportsFor(
-			List<IRPModelElement> theSelectedEls,
-			ConfigurationSettings theConfigSettings ){
+	public void createPublishFlowportsFor(
+			List<IRPModelElement> theSelectedEls ){
 
 		for (IRPModelElement selectedEl : theSelectedEls) {
 
 			if (selectedEl instanceof IRPAttribute){
 
 				IRPAttribute theAttribute = (IRPAttribute)selectedEl;
-				Logger.writeLine(theAttribute, "is being processed");
+				_context.debug( _context.elInfo( theAttribute ) + " is being processed");
 
-				createPublishFlowportFor(theAttribute, theConfigSettings);
+				createPublishFlowportFor(theAttribute);
 			} else {
-				Logger.writeLine("Doing nothing for " + Logger.elementInfo(selectedEl) 
+				_context.debug("Doing nothing for " + _context.elInfo(selectedEl) 
 						+ " as it is not an Atttribute");
 			}
 		}
 	}
 
-	public static IRPSysMLPort createPublishFlowportFor(
-			IRPAttribute theAttribute,
-			ConfigurationSettings theConfigSettings ){
+	public IRPSysMLPort createPublishFlowportFor(
+			IRPAttribute theAttribute ){
 
 		IRPSysMLPort thePort = getExistingOrCreateNewFlowPortFor( theAttribute );
 
@@ -66,7 +51,7 @@ public class PortCreator {
 			// does port require renaming?
 			if( !thePort.getName().equals( theDesiredPortName ) ){
 				
-				Logger.writeLine( "Renaming " + Logger.elementInfo( thePort ) + " to " + theDesiredPortName );
+				_context.debug( "Renaming " + _context.elInfo( thePort ) + " to " + theDesiredPortName );
 				thePort.setName(theDesiredPortName);
 			}
 			
@@ -74,7 +59,7 @@ public class PortCreator {
 			thePort.setPortDirection( "Out" );
 
 			IRPStereotype existingSubscribeStereotype = 
-					GeneralHelpers.getStereotypeCalled( "subscribe", theAttribute );
+					_context.getStereotypeCalled( "subscribe", theAttribute );
 
 			if( existingSubscribeStereotype != null ){
 				theAttribute.removeStereotype( existingSubscribeStereotype );
@@ -82,30 +67,30 @@ public class PortCreator {
 			
 			cleanUpAutoRippleDependencies( theAttribute );
 			applyStereotypeAndChangeBackToValuePropertyIfNeeded( theAttribute, "publish" );
-			TraceabilityHelper.copyRequirementTraceabilityFrom( theAttribute, thePort );
+			_context.copyRequirementTraceabilityFrom( theAttribute, thePort );
 			thePort.highLightElement();
 			theAttribute.highLightElement();
 			
 			AutoConnectFlowPortsPanel.launchThePanel( theAttribute, theConfigSettings );
 
 		} else {
-			Logger.writeLine("Error in createPublishFlowportFor, no port was created");
+			_context.error("Error in createPublishFlowportFor, no port was created");
 		}
 		
 		return thePort;
 	}
 
-	private static void applyStereotypeAndChangeBackToValuePropertyIfNeeded(
+	private void applyStereotypeAndChangeBackToValuePropertyIfNeeded(
 			IRPAttribute theAttribute,
 			String andStereotype ){
 				
-		Logger.writeLine( "Applying «" + andStereotype + "» stereotype to " + Logger.elementInfo( theAttribute ) );
+		_context.debug( "Applying «" + andStereotype + "» stereotype to " + _context.elInfo( theAttribute ) );
 
-		GeneralHelpers.applyExistingStereotype( andStereotype, theAttribute );
+		_context.applyExistingStereotype( andStereotype, theAttribute );
 		
 		// Switch ValueProeprty back if 8.2+
 		IRPModelElement theValuePropertyStereotype = 
-				GeneralHelpers.findElementWithMetaClassAndName( 
+				_context.findElementWithMetaClassAndName( 
 						"Stereotype", "ValueProperty", theAttribute.getProject() );
 		
 		if( theValuePropertyStereotype != null ){
@@ -113,7 +98,7 @@ public class PortCreator {
 		}
 	}
 	
-	public static IRPSysMLPort createSubscribeFlowportFor(
+	public IRPSysMLPort createSubscribeFlowportFor(
 			IRPAttribute theAttribute ){
 
 		IRPSysMLPort thePort = getExistingOrCreateNewFlowPortFor( theAttribute );
@@ -129,25 +114,25 @@ public class PortCreator {
 				
 				IRPClassifier theClassifier = (IRPClassifier)thePortOwner;
 				
-				String theChangeEventName = "ch" + GeneralHelpers.capitalize(theAttribute.getName());
+				String theChangeEventName = "ch" + _context.capitalize(theAttribute.getName());
 				
-				Logger.writeLine("Ensure there is a change event reception called " + 
-						theChangeEventName + " on " + Logger.elementInfo( theClassifier ) );
+				_context.debug("Ensure there is a change event reception called " + 
+						theChangeEventName + " on " + _context.elInfo( theClassifier ) );
 				
-				IRPModelElement theReception = GeneralHelpers.getExistingOrCreateNewElementWith(
+				IRPModelElement theReception = _context.getExistingOrCreateNewElementWith(
 						theChangeEventName,
 						"Reception",
 						theClassifier );
 				
-				TraceabilityHelper.addAutoRippleDependencyIfOneDoesntExist( 
+				_context.addAutoRippleDependencyIfOneDoesntExist( 
 						theAttribute, theReception );
 				
 			} else {
-				Logger.writeLine("Error in createSubscribeFlowportFor, element is not a classifier");
+				_context.error("Error in createSubscribeFlowportFor, element is not a classifier");
 			}
 			
 			IRPStereotype existingStereotype = 
-					GeneralHelpers.getStereotypeCalled( "publish", theAttribute );
+					_context.getStereotypeCalled( "publish", theAttribute );
 
 			if( existingStereotype != null ){
 				theAttribute.removeStereotype( existingStereotype );
@@ -155,41 +140,41 @@ public class PortCreator {
 
 			cleanUpAutoRippleDependencies( theAttribute );
 			applyStereotypeAndChangeBackToValuePropertyIfNeeded( theAttribute, "subscribe" );
-			TraceabilityHelper.copyRequirementTraceabilityFrom( theAttribute, thePort );
+			_context.copyRequirementTraceabilityFrom( theAttribute, thePort );
 			thePort.highLightElement();
 			theAttribute.highLightElement();
 
 		} else {
-			Logger.writeLine( "Error in createSubscribeFlowportFor, no port was created" );
+			_context.error( "Error in createSubscribeFlowportFor, no port was created" );
 		}
 
 		return thePort;
 	}
 	
-	private static IRPSysMLPort getExistingOrCreateNewFlowPortFor(
+	private IRPSysMLPort getExistingOrCreateNewFlowPortFor(
 			IRPAttribute theAttribute ){
 		
 		String theDesiredPortName = theAttribute.getName();
 		
-		IRPSysMLPort thePort = GeneralHelpers.getExistingFlowPort( theAttribute );
+		IRPSysMLPort thePort = _context.getExistingFlowPort( theAttribute );
 
 		if( thePort == null ){
-			Logger.writeLine( "Creating an flowport for " + Logger.elementInfo( theAttribute ) + " called " + theDesiredPortName );
+			_context.debug( "Creating an flowport for " + _context.elInfo( theAttribute ) + " called " + theDesiredPortName );
 			thePort = (IRPSysMLPort) theAttribute.getOwner().addNewAggr( "FlowPort", theDesiredPortName );
 			
-			TraceabilityHelper.addAutoRippleDependencyIfOneDoesntExist( 
+			_context.addAutoRippleDependencyIfOneDoesntExist( 
 					theAttribute, thePort );
 						
 		} else if( !thePort.getName().equals( theDesiredPortName ) ){ // does port require renaming?
 			
-			Logger.writeLine( "Renaming " + Logger.elementInfo( thePort ) + " to " + theDesiredPortName );
+			_context.debug( "Renaming " + _context.elInfo( thePort ) + " to " + theDesiredPortName );
 			thePort.setName(theDesiredPortName);
 		}
 		
 		return thePort;
 	}
 
-	public static void createSubscribeFlowportsFor(
+	public void createSubscribeFlowportsFor(
 			List<IRPModelElement> theSelectedEls ){
 
 		for( IRPModelElement selectedEl : theSelectedEls ){
@@ -197,17 +182,17 @@ public class PortCreator {
 			if( selectedEl instanceof IRPAttribute ){
 
 				IRPAttribute theAttribute = (IRPAttribute)selectedEl;
-				Logger.writeLine(theAttribute, "is being processed");
+				_context.debug( _context.elInfo( theAttribute ) + "is being processed");
 
 				createSubscribeFlowportFor(theAttribute);
 			} else {
-				Logger.writeLine("Doing nothing for " + Logger.elementInfo(selectedEl) 
+				_context.warning("Doing nothing for " + _context.elInfo(selectedEl) 
 						+ " as it is not an Atttribute");
 			}
 		}
 	}
 
-	public static void deleteFlowPortAndRelatedEls(
+	public void deleteFlowPortAndRelatedEls(
 			IRPSysMLPort theFlowPort ){
 		
 		@SuppressWarnings("unchecked")
@@ -216,7 +201,7 @@ public class PortCreator {
 		for( IRPModelElement theReference : theReferences ){
 			
 			if( theReference instanceof IRPDependency && 
-				GeneralHelpers.hasStereotypeCalled( "AutoRipple", theReference ) ){
+				_context.hasStereotypeCalled( "AutoRipple", theReference ) ){
 				
 				IRPDependency theDependency = (IRPDependency)theReference;
 				IRPModelElement theDependent = theDependency.getDependent();
@@ -225,22 +210,22 @@ public class PortCreator {
 					deleteAttributeAndRelatedEls( (IRPAttribute) theDependent );
 				} else {
 					UserInterfaceHelpers.showWarningDialog( 
-							"Unable to delete as " + Logger.elementInfo( theFlowPort ) + " has no related attribute" );
+							"Unable to delete as " + _context.elInfo( theFlowPort ) + " has no related attribute" );
 				}
 			}
 		}
 	}
 	
-	public static void deleteAttributeAndRelatedEls(
+	public void deleteAttributeAndRelatedEls(
 			IRPAttribute theAttribute ){
 	
 		Set<IRPModelElement> theRelatedEls = 
-				TraceabilityHelper.getElementsThatHaveStereotypedDependenciesFrom(
+				_context.getElementsThatHaveStereotypedDependenciesFrom(
 						theAttribute, "AutoRipple" );
 	
 		JDialog.setDefaultLookAndFeelDecorated(true);
 
-		String infoText = "Do you want to delete:\n" + "1. " + Logger.elementInfo( theAttribute );
+		String infoText = "Do you want to delete:\n" + "1. " + _context.elInfo( theAttribute );
 				
 		if( !theRelatedEls.isEmpty() ){
 			
@@ -252,7 +237,7 @@ public class PortCreator {
 				
 				count++;
 				
-				infoText = infoText + count + ". " + Logger.elementInfo( theRelatedEl ) + 
+				infoText = infoText + count + ". " + _context.elInfo( theRelatedEl ) + 
 						"\n";
 			}			
 		}
@@ -262,29 +247,29 @@ public class PortCreator {
 		if( answer ){
 		
 			for( IRPModelElement theRelatedEl : theRelatedEls ){
-				Logger.writeLine( "Deleting " + Logger.elementInfo( theRelatedEl ) + " from the project" );
+				_context.info( "Deleting " + _context.elInfo( theRelatedEl ) + " from the project" );
 
 				try {
 					theRelatedEl.deleteFromProject();
 
 				} catch (Exception e) {
-					Logger.writeLine("Exception in deleteAttributeAndRelatedEls, trying to delete " + Logger.elementInfo( theRelatedEl ) + " failed");
+					_context.error("Exception in deleteAttributeAndRelatedEls, trying to delete " + _context.elInfo( theRelatedEl ) + " failed");
 				}
 			}
 
-			Logger.writeLine( "Deleting " + Logger.elementInfo( theAttribute ) + " from the project" );
+			_context.info( "Deleting " + _context.elInfo( theAttribute ) + " from the project" );
 			theAttribute.getOwner().highLightElement();
 
 			try {
 				theAttribute.deleteFromProject();
 
 			} catch (Exception e) {
-				Logger.writeLine("Exception in deleteAttributeAndRelatedEls, trying to delete attribute failed");
+				_context.error("Exception in deleteAttributeAndRelatedEls, trying to delete attribute failed");
 			}			
 		}	
 	}
 	
-	private static void cleanUpAutoRippleDependencies(
+	private void cleanUpAutoRippleDependencies(
 			IRPAttribute theAttribute ){
 		
 		@SuppressWarnings("unchecked")
@@ -298,7 +283,7 @@ public class PortCreator {
 
 			if( theDependsOn != null && 
 				theDependsOn instanceof IRPModelElement &&
-				GeneralHelpers.hasStereotypeCalled( "AutoRipple", theDependency ) ){
+				_context.hasStereotypeCalled( "AutoRipple", theDependency ) ){
 
 				IRPModelElement theElementOwner = theDependsOn.getOwner();
 				IRPModelElement theAttributeOwner = theAttribute.getOwner();
@@ -319,14 +304,14 @@ public class PortCreator {
 
 					if( !theElementOwner.equals( theAttributeOwner ) ){
 
-						Logger.writeLine( "Detected a need to delete the «AutoRipple» dependency to " + Logger.elementInfo( theDependsOn ) + 
-								" owned by " + Logger.elementInfo( theElementOwner ) + ", as it is not owned by " + 
-								Logger.elementInfo( theAttributeOwner ) );
+						_context.info( "Detected a need to delete the «AutoRipple» dependency to " + _context.elInfo( theDependsOn ) + 
+								" owned by " + _context.elInfo( theElementOwner ) + ", as it is not owned by " + 
+								_context.elInfo( theAttributeOwner ) );
 
 						dependenciesToDelete.add( theDependency );
 						theDependency.highLightElement();
 					} else {
-						Logger.writeLine( theDependsOn, "was found based on «AutoRipple» dependency");
+						_context.debug( _context.elInfo( theDependsOn ) + " was found based on «AutoRipple» dependency");
 					}
 				}	
 			}
@@ -349,11 +334,11 @@ public class PortCreator {
 				
 				count++;
 				
-				infoText = infoText + count + ". " + Logger.elementInfo( theDependsOn ) + 
-						" owned by " + Logger.elementInfo( theElementOwner ) + " \n";
+				infoText = infoText + count + ". " + _context.elInfo( theDependsOn ) + 
+						" owned by " + _context.elInfo( theElementOwner ) + " \n";
 			}
 
-			Logger.writeLine( infoText );
+			_context.info( infoText );
 			
 			theAttribute.getOwner().highLightElement();
 			

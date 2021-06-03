@@ -1,21 +1,25 @@
 package requirementsanalysisplugin;
 
-import generalhelpers.ConfigurationSettings;
 import generalhelpers.CreateGatewayProjectPanel;
-import generalhelpers.Logger;
 import generalhelpers.PopulatePkg;
-import generalhelpers.UserInterfaceHelpers;
-
 import java.util.List;
 
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
+import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
 public class PopulateRequirementsAnalysisPkg extends PopulatePkg {
-	 
-	public static void displayGraphicalPropertiesFor(IRPGraphElement theGraphEl){
+		
+	public PopulateRequirementsAnalysisPkg(
+			ExecutableMBSE_Context context ) {
+		
+		super(context);
+	}
+	
+	public void displayGraphicalPropertiesFor(IRPGraphElement theGraphEl){
 		
 		@SuppressWarnings("unchecked")
 		List<IRPGraphicalProperty> theGraphProperties = theGraphEl.getAllGraphicalProperties().toList();
@@ -24,21 +28,19 @@ public class PopulateRequirementsAnalysisPkg extends PopulatePkg {
 			String thePropertyname = theGraphicalProperty.getKey();
 			String theValue = theGraphicalProperty.getValue();
 			
-			Logger.writeLine(thePropertyname + "=" + theValue);
+			_context.debug(thePropertyname + "=" + theValue);
 		}
 	}
 	
-	public static void createRequirementsAnalysisPkg(
-			IRPProject forProject,
-			ConfigurationSettings theConfigSettings ){
+	public void createRequirementsAnalysisPkg(){
 		
 		final String rootPackageName = "RequirementsAnalysisPkg";
 		Boolean ok = true;
 		
-		IRPModelElement theExistingPkg = forProject.findElementsByFullName(rootPackageName, "Package");
+		IRPModelElement theExistingPkg = _context.get_rhpPrj().findElementsByFullName(rootPackageName, "Package");
 		
 		if (theExistingPkg != null){
-			Logger.writeLine("Doing nothing: " + Logger.elementInfo( forProject ) + " already has package called " + rootPackageName);
+			_context.info("Doing nothing: " + _context.elInfo( _context.get_rhpPrj() ) + " already has package called " + rootPackageName);
 			ok = false;
 		}
 		
@@ -56,63 +58,62 @@ public class PopulateRequirementsAnalysisPkg extends PopulatePkg {
 		    
 		    if (response == JOptionPane.YES_OPTION) {
 		    			
-				boolean theAnswer = UserInterfaceHelpers.askAQuestion(
+				boolean theAnswer = UserInterfaceHelper.askAQuestion(
 						"Do you initially want to simplify the 'Add New' menu for just\n" + 
 				        "use case and requirements analysis?");
 		    	
-		    	populateRequirementsAnalysisPkg(forProject, theConfigSettings);
+		    	populateRequirementsAnalysisPkg();
 				
 				if (theAnswer==true){
-					applySimpleMenuStereotype(forProject);
+					applySimpleMenuStereotype();
 				}
 				
 				CreateGatewayProjectPanel.launchThePanel( 
-						forProject, "^RequirementsAnalysisPkg.rqtf$", theConfigSettings );
+						_context.get_rhpAppID(),
+						"^RequirementsAnalysisPkg.rqtf$" );
 				
 		    } else {
-		    	Logger.writeLine("Cancelled by user");
+		    	_context.debug("Cancelled by user");
 		    }
 		}
 	}
 	
-	static public IRPPackage populateRequirementsAnalysisPkg(
-			IRPProject forProject,
-			ConfigurationSettings theConfigSettings ) {
+	public IRPPackage populateRequirementsAnalysisPkg() {
 		
-		addProfileIfNotPresent("SysML", forProject);		
-		addProfileIfNotPresent("GlobalPreferencesProfile", forProject);
-		addProfileIfNotPresent("RequirementsAnalysisProfile", forProject);
+		addProfileIfNotPresent("SysML");		
+		addProfileIfNotPresent("GlobalPreferencesProfile");
+		addProfileIfNotPresent("RequirementsAnalysisProfile");
 		
-		forProject.changeTo("SysML");
+		_context.get_rhpPrj().changeTo("SysML");
 		
 		IRPPackage theRequirementsAnalysisPkg = 
 				addPackageFromProfileRpyFolder(
-						"RequirementsAnalysisPkg", forProject, false );
+						"RequirementsAnalysisPkg", false );
 		
 		if( theRequirementsAnalysisPkg != null ){
 			
-			Logger.writeLine( theRequirementsAnalysisPkg, "was successfully copied from the SysMLHelper profile" );
+			_context.info( _context.elInfo( theRequirementsAnalysisPkg ) + " was successfully copied from the SysMLHelper profile" );
 					
-			deleteIfPresent( "Structure1", "StructureDiagram", forProject );
-			deleteIfPresent( "Default", "Package", forProject );
+			_context.deleteIfPresent( "Structure1", "StructureDiagram", _context.get_rhpPrj() );
+			_context.deleteIfPresent( "Default", "Package", _context.get_rhpPrj() );
 				    	
-	    	theConfigSettings.setPropertiesValuesRequestedInConfigFile( 
-	    			forProject,
+	    	_context.setPropertiesValuesRequestedInConfigFile( 
+	    			_context.get_rhpPrj(),
 	    			"setPropertyForRequirementsAnalysisModel" );
 	    			
-			forProject.save();
+	    	_context.get_rhpPrj().save();
 			
 			@SuppressWarnings("unchecked")
 			List<IRPUseCaseDiagram> theUCDs = theRequirementsAnalysisPkg.getNestedElementsByMetaClass("UseCaseDiagram", 1).toList();
 			
 			for (IRPUseCaseDiagram theUCD : theUCDs) {
-				Logger.writeLine(theUCD, "was added to the project");
+				_context.debug( _context.elInfo( theUCD ) + " was added to the project");
 				
 				String oldName = theUCD.getName();
-				String newName = oldName.replaceAll("ProjectName", forProject.getName());
+				String newName = oldName.replaceAll("ProjectName", _context.get_rhpPrj().getName());
 				
 				if (!newName.equals( oldName )){
-					Logger.writeLine("Renaming " + oldName + " to " + newName);
+					_context.debug("Renaming " + oldName + " to " + newName);
 					theUCD.setName( newName );
 				}
 				
@@ -121,7 +122,7 @@ public class PopulateRequirementsAnalysisPkg extends PopulatePkg {
 			}	
 
 		} else {
-			Logger.writeLine("Error in createRequirementsAnalysisPkg, unable to add RequirementsAnalysisPkg package");
+			_context.error("Error in createRequirementsAnalysisPkg, unable to add RequirementsAnalysisPkg package");
 		}
 		
 		return theRequirementsAnalysisPkg;
@@ -129,20 +130,7 @@ public class PopulateRequirementsAnalysisPkg extends PopulatePkg {
 }
 
 /**
- * Copyright (C) 20162-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #002 05-APR-2016: Improved robustness of copying .types file (F.J.Chadburn)
-    #004 10-APR-2016: Re-factored projects into single workspace (F.J.Chadburn)
-    #006 02-MAY-2016: Add FunctionalAnalysisPkg helper support (F.J.Chadburn)
-    #007 05-MAY-2016: Move FileHelper into generalhelpers and remove duplicate class (F.J.Chadburn)
-    #035 15-JUN-2016: New panel to configure requirements package naming and gateway set-up (F.J.Chadburn)
-    #051 06-JUL-2016: Re-factored the GW panel to allow it to incrementally add to previous setup (F.J.Chadburn)
-    #061 17-JUL-2016: Ensure BasePkg is added by reference from profile to aid future integration (F.J.Chadburn)
-    #091 23-AUG-2016: Turn off the Activity::General::AutoSelectControlOrObjectFlow property by default (F.J.Chadburn)
-    #100 14-SEP-2016: Add option to create RequirementsAnalysisPkg if FunctionalAnalysisPkg not possible (F.J.Chadburn)
-    #142 18-DEC-2016: Project properties now set via config.properties, e.g., to easily switch off backups (F.J.Chadburn)
-    #252 29-MAY-2019: Implement generic features for profile/settings loading (F.J.Chadburn)
+ * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

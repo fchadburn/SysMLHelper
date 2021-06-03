@@ -4,12 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-//import generalhelpers.ConfigurationSettings;
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
-import generalhelpers.StereotypeAndPropertySettings;
-import generalhelpers.UserInterfaceHelpers;
-
+import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
 public class FunctionalAnalysisSettings {
@@ -20,13 +16,15 @@ public class FunctionalAnalysisSettings {
 	private static final String tagNameForPackageForBlocks = "packageForBlocks";
 	private static final String tagNameForPackageForWorkingCopies = "packageForWorkingCopies";
 
-	public static void main(String[] args) {
-		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
-		@SuppressWarnings("unused")
-		IRPModelElement theSelectedEl = theRhpApp.getSelectedElement();
+	private ExecutableMBSE_Context _context;
+	
+	public FunctionalAnalysisSettings(
+			ExecutableMBSE_Context context ) {
+
+		_context = context;
 	}
 
-	public static List<IRPModelElement> getNonActorOrTestBlocks(
+	public List<IRPModelElement> getNonActorOrTestBlocks(
 			IRPClass withInstancesUnderTheBlock ){
 
 		@SuppressWarnings("unchecked")
@@ -43,7 +41,7 @@ public class FunctionalAnalysisSettings {
 			// don't add actors or test driver
 			if( theClassifier != null && 
 					theClassifier instanceof IRPClass &&
-					!GeneralHelpers.hasStereotypeCalled( "TestDriver", theClassifier ) &&
+					!_context.hasStereotypeCalled( "TestDriver", theClassifier ) &&
 					!theNonActorOrTestBlocks.contains( theClassifier ) ){
 
 				theNonActorOrTestBlocks.add( theClassifier );
@@ -53,7 +51,7 @@ public class FunctionalAnalysisSettings {
 		return theNonActorOrTestBlocks;
 	}
 
-	public static List<IRPClass> getBuildingBlocks(
+	public List<IRPClass> getBuildingBlocks(
 			IRPPackage underneathThePkg ){
 
 		List<IRPClass> theBuildingBlocks = new ArrayList<IRPClass>();
@@ -80,21 +78,22 @@ public class FunctionalAnalysisSettings {
 		return theBuildingBlocks;
 	}
 
-	public static IRPClass getBuildingBlock( 
+	public IRPClass getBuildingBlock( 
 			IRPModelElement basedOnContextEl ){
 
-		Logger.writeLine("getBuildingBlock was invoked for " + Logger.elementInfo( basedOnContextEl ) );
+		_context.debug("getBuildingBlock was invoked for " + _context.elInfo( basedOnContextEl ) );
+		
 		IRPClass theBuildingBlock =
 				(IRPClass) getElementNamedInFunctionalPackageTag(
 						basedOnContextEl, 
 						tagNameForAssemblyBlockUnderDev );
 
-		Logger.writeLine("... getBuildingBlock completed (" + Logger.elementInfo(theBuildingBlock) + " was found)");
+		_context.debug("... getBuildingBlock completed (" + _context.elInfo(theBuildingBlock) + " was found)");
 
 		return theBuildingBlock;
 	}
 
-	public static IRPPackage getPackageForActorsAndTest(
+	public IRPPackage getPackageForActorsAndTest(
 			IRPModelElement basedOnContextEl ){
 
 		IRPPackage thePackage = getPkgNamedInFunctionalPackageTag(
@@ -104,7 +103,7 @@ public class FunctionalAnalysisSettings {
 		return thePackage;
 	}
 
-	public static IRPModelElement getElementNamedInFunctionalPackageTag(
+	public IRPModelElement getElementNamedInFunctionalPackageTag(
 			IRPModelElement basedOnContextEl,
 			String theTagName ){
 
@@ -143,7 +142,7 @@ public class FunctionalAnalysisSettings {
 		return theEl;
 	}
 
-	public static IRPPackage getPkgNamedInFunctionalPackageTag(
+	public IRPPackage getPkgNamedInFunctionalPackageTag(
 			IRPModelElement basedOnContextEl,
 			String theTagName ){
 
@@ -162,16 +161,16 @@ public class FunctionalAnalysisSettings {
 						thePackageName, "Package");
 
 				if( thePackage == null ){
-					Logger.writeLine( "getPkgNamedInFunctionalPackageTag was unable to find package called " + 
+					_context.debug( "getPkgNamedInFunctionalPackageTag was unable to find package called " + 
 							thePackageName );
 				}
 			} else {
-				Logger.writeLine( "getPkgNamedInFunctionalPackageTag was unable to find tag called " + 
-						theTagName + " underneath " + Logger.elementInfo( theSettingsPkg ) );
+				_context.debug( "getPkgNamedInFunctionalPackageTag was unable to find tag called " + 
+						theTagName + " underneath " + _context.elInfo( theSettingsPkg ) );
 			}
 		} else {
-			Logger.writeLine("getPkgNamedInFunctionalPackageTag was unable to find a functional analysis pkg based on " + 
-					Logger.elementInfo( basedOnContextEl ) );
+			_context.debug("getPkgNamedInFunctionalPackageTag was unable to find a functional analysis pkg based on " + 
+					_context.elInfo( basedOnContextEl ) );
 		}
 
 		if( thePackage == null ){
@@ -186,14 +185,14 @@ public class FunctionalAnalysisSettings {
 			if( theOwner instanceof IRPPackage ){
 				thePackage = (IRPPackage)theOwner;
 			} else {
-				Logger.writeLine( "Error in getPkgThatOwnsEventsAndInterfaces: Can't find event pkg for " + Logger.elementInfo( theLogicalBlock ) );
+				_context.error( "Error in getPkgThatOwnsEventsAndInterfaces: Can't find event pkg for " + _context.elInfo( theLogicalBlock ) );
 			}
 		}
 
 		return thePackage;
 	}
 
-	public static IRPPackage getPkgThatOwnsEventsAndInterfaces(
+	public IRPPackage getPkgThatOwnsEventsAndInterfaces(
 			IRPModelElement basedOnContextEl ){
 
 		IRPPackage thePackage = 
@@ -204,7 +203,7 @@ public class FunctionalAnalysisSettings {
 		return thePackage;
 	}
 
-	public static IRPPackage getWorkingPkgUnderDev(
+	public IRPPackage getWorkingPkgUnderDev(
 			IRPModelElement basedOnContextEl ){
 
 		IRPPackage theWorkingPkg = 
@@ -215,19 +214,19 @@ public class FunctionalAnalysisSettings {
 		return theWorkingPkg;
 	}
 
-	public static IRPClass getBlockUnderDev(
+	public IRPClass getBlockUnderDev(
 			IRPModelElement basedOnContextEl,
 			String theMsg ){
 
 		IRPClass theBlockUnderDev = null;
 
 		IRPClass theBuildingBlock = 
-				FunctionalAnalysisSettings.getBuildingBlock( basedOnContextEl );
+				getBuildingBlock( basedOnContextEl );
 
 		if( theBuildingBlock == null ){
 
-			Logger.writeLine( "Error in getBlockUnderDev, no building block was found underneath " + 
-					Logger.elementInfo( basedOnContextEl ) );
+			_context.error( "Error in getBlockUnderDev, no building block was found underneath " + 
+					_context.elInfo( basedOnContextEl ) );
 
 		} else {
 
@@ -236,13 +235,13 @@ public class FunctionalAnalysisSettings {
 
 			if( theCandidates.isEmpty() ){
 
-				Logger.writeLine("Error in getBlockUnderDev, no parts typed by Blocks were found underneath " + 
-						Logger.elementInfo( theBuildingBlock ) );
+				_context.error("Error in getBlockUnderDev, no parts typed by Blocks were found underneath " + 
+						_context.elInfo( theBuildingBlock ) );
 			} else {
 
 				if( theCandidates.size() > 1 ){
 					final IRPModelElement theChosenBlockEl = 
-							GeneralHelpers.launchDialogToSelectElement(
+							_context.launchDialogToSelectElement(
 									theCandidates, theMsg, true ); 
 
 					if( theChosenBlockEl != null && theChosenBlockEl instanceof IRPClass ){
@@ -257,7 +256,7 @@ public class FunctionalAnalysisSettings {
 		return theBlockUnderDev;
 	}
 
-	public static IRPClass getTestBlock(
+	public IRPClass getTestBlock(
 			IRPClass withInstanceUnderTheBlock ){
 
 		@SuppressWarnings("unchecked")
@@ -271,15 +270,15 @@ public class FunctionalAnalysisSettings {
 			IRPInstance theInstance = (IRPInstance)theCandidatePart;
 			IRPClassifier theClassifier = theInstance.getOtherClass();
 
-			Logger.writeLine( "The instance is " + Logger.elementInfo( theInstance) + 
-					" typed by " + Logger.elementInfo( theClassifier ) );
+			_context.debug( "The instance is " + _context.elInfo( theInstance) + 
+					" typed by " + _context.elInfo( theClassifier ) );
 
 			// don't add actors or test driver
 			if( theClassifier != null && 
 					theClassifier instanceof IRPClass &&
-					GeneralHelpers.hasStereotypeCalled( "TestDriver", theClassifier ) ){
+					_context.hasStereotypeCalled( "TestDriver", theClassifier ) ){
 
-				Logger.writeLine("Found " + Logger.elementInfo( theClassifier ) );
+				_context.debug("Found " + _context.elInfo( theClassifier ) );
 				theTestBlock = (IRPClass) theClassifier;
 			}
 		}
@@ -287,7 +286,7 @@ public class FunctionalAnalysisSettings {
 		return theTestBlock;
 	}
 
-	public static List<IRPActor> getActors(
+	public List<IRPActor> getActors(
 			IRPClass withInstancesUnderTheBlock ){
 
 		@SuppressWarnings("unchecked")
@@ -312,7 +311,7 @@ public class FunctionalAnalysisSettings {
 		return theActors;
 	}
 
-	public static void setupFunctionalAnalysisTagsFor(
+	public void setupFunctionalAnalysisTagsFor(
 			IRPPackage theRootPackage,
 			IRPClass theAssemblyBlockUnderDev,
 			IRPPackage thePackageForEventsAndInterfaces, 
@@ -348,7 +347,7 @@ public class FunctionalAnalysisSettings {
 	}
 
 
-	public static void setupFunctionalAnalysisTagsFor2(
+	public void setupFunctionalAnalysisTagsFor2(
 			IRPPackage theRootPackage,
 			IRPClass theAssemblyBlockUnderDev,
 			IRPPackage thePackageForEventsAndInterfaces, 
@@ -358,7 +357,7 @@ public class FunctionalAnalysisSettings {
 		if( theRootPackage != null ){
 
 			String theStereotypeName = 
-					StereotypeAndPropertySettings.getSimulationPackageStereotype( theRootPackage );
+					_context.getSimulationPackageStereotype( theRootPackage );
 
 			setElementTagValueOn( 
 					theRootPackage, 
@@ -386,7 +385,7 @@ public class FunctionalAnalysisSettings {
 		}	
 	}
 
-	private static void setElementTagValueOn( 
+	private void setElementTagValueOn( 
 			IRPModelElement theOwner, 
 			String theStereotypeName,
 			String theTagName, 
@@ -396,7 +395,7 @@ public class FunctionalAnalysisSettings {
 		// the stereotype(stereotype_0)'s tag(tag_0) as its "base" tag
 
 		IRPStereotype theStereotype = 
-				GeneralHelpers.getExistingStereotype(
+				_context.getExistingStereotype(
 						theStereotypeName, theOwner.getProject() );
 
 		IRPTag baseTag = theStereotype.getTag( theTagName );
@@ -408,7 +407,7 @@ public class FunctionalAnalysisSettings {
 		newTag.addElementDefaultValue( theValue );
 	}
 
-	public static void setModelElementTagValueOn( 
+	public void setModelElementTagValueOn( 
 			IRPModelElement theOwner, 
 			String theTagName, 
 			String theTagTypeDeclaration,
@@ -423,17 +422,19 @@ public class FunctionalAnalysisSettings {
 			theNewTag.setDeclaration( theTagTypeDeclaration );
 			theOwner.setTagElementValue( theNewTag, theValue );
 
-			Logger.writeLine(theOwner, "already has a tag called " + theTagName + ", changing it from '" + theExistingTagValue + "'" + " to '" + theNewTag.getValue() + "'");
+			_context.debug( _context.elInfo( theOwner ) + " already has a tag called " + theTagName + 
+					", changing it from '" + theExistingTagValue + "'" + " to '" + theNewTag.getValue() + "'");
 
 		} else {
 			IRPTag theNewTag = (IRPTag)theOwner.addNewAggr( "Tag", theTagName );
 			theNewTag.setDeclaration( theTagTypeDeclaration );
 			theOwner.setTagElementValue( theNewTag, theValue );
-			Logger.writeLine( theNewTag, "has been added to " + Logger.elementInfo(theOwner) + " and set to '" + theNewTag.getValue() + "'");
+			_context.debug( _context.elInfo( theNewTag ) + " has been added to " + 
+					_context.elInfo(theOwner) + " and set to '" + theNewTag.getValue() + "'");
 		}
 	}
 
-	public static IRPPackage getSimulationSettingsPackageBasedOn(
+	public IRPPackage getSimulationSettingsPackageBasedOn(
 			IRPModelElement theContextEl ){
 
 		IRPPackage theSettingsPkg = null;
@@ -441,9 +442,9 @@ public class FunctionalAnalysisSettings {
 		if( theContextEl instanceof IRPProject ){
 
 			List<IRPModelElement> thePackageEls = 
-					GeneralHelpers.findElementsWithMetaClassAndStereotype(
+					_context.findElementsWithMetaClassAndStereotype(
 							"Package", 
-							StereotypeAndPropertySettings.getSimulationPackageStereotype( theContextEl ), 
+							_context.getSimulationPackageStereotype( theContextEl ), 
 							theContextEl.getProject(), 
 							1 );
 
@@ -453,7 +454,7 @@ public class FunctionalAnalysisSettings {
 						theContextEl.findElementsByFullName( "FunctionalAnalysisPkg", "Package" );
 
 				if( theFunctionalAnalysisPkg == null ){
-					Logger.writeLine( "Warning in getSimulationSettingsPackageBasedOn, unable to find use case settings package");
+					_context.warning( "Warning in getSimulationSettingsPackageBasedOn, unable to find use case settings package");
 
 				} else {
 					theSettingsPkg = (IRPPackage) theFunctionalAnalysisPkg;
@@ -464,10 +465,10 @@ public class FunctionalAnalysisSettings {
 				theSettingsPkg = (IRPPackage) thePackageEls.get(0);
 
 			} else {
-				Logger.writeLine( "Error in getSimulationSettingsPackageBasedOn, unable to find use case settings package");
+				_context.error( "Error in getSimulationSettingsPackageBasedOn, unable to find use case settings package");
 
 				IRPModelElement theUserSelectedPkg = 
-						UserInterfaceHelpers.launchDialogToSelectElement(
+						UserInterfaceHelper.launchDialogToSelectElement(
 								thePackageEls, 
 								"Choose which settings to use", 
 								true );
@@ -478,17 +479,17 @@ public class FunctionalAnalysisSettings {
 			}
 
 		} else if( theContextEl instanceof IRPPackage &&
-				GeneralHelpers.hasStereotypeCalled(
-						StereotypeAndPropertySettings.getSimulationPackageStereotype( theContextEl ), 
+				_context.hasStereotypeCalled(
+						_context.getSimulationPackageStereotype( theContextEl ), 
 						theContextEl ) ){
 
-			Logger.writeLine( "getSimulationSettingsPackageBasedOn, is returning " + Logger.elementInfo( theContextEl ) );
+			_context.debug( "getSimulationSettingsPackageBasedOn, is returning " + _context.elInfo( theContextEl ) );
 
 			theSettingsPkg = (IRPPackage) theContextEl;
 
 		} else if( theContextEl instanceof IRPPackage &&
-				GeneralHelpers.hasStereotypeCalled(
-						StereotypeAndPropertySettings.getUseCasePackageStereotype( theContextEl ), 
+				_context.hasStereotypeCalled(
+						_context.getUseCasePackageStereotype( theContextEl ), 
 						theContextEl ) ){
 
 			@SuppressWarnings("unchecked")
@@ -502,8 +503,8 @@ public class FunctionalAnalysisSettings {
 					IRPModelElement theDependent = theDependency.getDependent();
 
 					if( theDependent instanceof IRPPackage &&
-							GeneralHelpers.hasStereotypeCalled(
-									StereotypeAndPropertySettings.getSimulationPackageStereotype( theContextEl ), 
+							_context.hasStereotypeCalled(
+									_context.getSimulationPackageStereotype( theContextEl ), 
 									theDependent ) ){
 
 						theSettingsPkg = (IRPPackage) theDependent;

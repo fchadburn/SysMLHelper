@@ -1,10 +1,7 @@
 package functionalanalysisplugin;
 
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
-import generalhelpers.StereotypeAndPropertySettings;
-import generalhelpers.TraceabilityHelper;
-
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
@@ -16,14 +13,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import javax.swing.SwingUtilities;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
 public abstract class CreateTracedElementPanel extends JPanel {
@@ -33,74 +36,44 @@ public abstract class CreateTracedElementPanel extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	protected RequirementSelectionPanel m_RequirementsPanel = null;
-	protected IRPModelElement m_TargetOwningElement = null;
 	protected JTextField m_ChosenNameTextField = null;
-	protected IRPGraphElement m_SourceGraphElement = null;
-	protected IRPModelElement m_SourceModelElement = null;
-	protected IRPDiagram m_SourceGraphElementDiagram = null;
-	protected IRPProject m_Project = null;
 	protected final String m_Tbd = "Tbd";
+	protected IRPApplication _rhpApp;
 	
-	SelectedElementContext m_ElementContext;
+	SelectedElementContext _selectionContext;
+	
+	ExecutableMBSE_Context _context;
 
 	public CreateTracedElementPanel(
-			IRPGraphElement forSourceGraphElement, 
-			Set<IRPRequirement> withReqtsAlsoAdded,
-			IRPClassifier onTargetClassifier,
-		    IRPProject inProject ) {
+			String theAppID ){
 		
 		super();
-
-		m_TargetOwningElement = onTargetClassifier;		
-		m_SourceGraphElement = forSourceGraphElement;
-		m_SourceModelElement = m_SourceGraphElement.getModelObject();
-		m_Project = inProject;
 		
-		if( m_SourceModelElement instanceof IRPDiagram ){
-			 
-			m_SourceGraphElementDiagram = (IRPDiagram) m_SourceModelElement;
-		} else {
-			m_SourceGraphElementDiagram = m_SourceGraphElement.getDiagram();
-		}
+		_context = new ExecutableMBSE_Context( theAppID );
+		_selectionContext = new SelectedElementContext( _context );
 		
-		setupRequirementsPanel( withReqtsAlsoAdded );
-	}
-
-	public CreateTracedElementPanel(
-			IRPModelElement forSourceModelElement, 
-			Set<IRPRequirement> withReqtsAlsoAdded,
-			IRPClassifier onTargetClassifier,
-			IRPProject inProject ) {
+		_context.debug( "CreateTracedElementPanel constructor was invoked" );
 		
-		super();
-
-		m_TargetOwningElement = onTargetClassifier;		
-		m_SourceGraphElement = null;
-		m_SourceModelElement = forSourceModelElement;
-		m_Project = inProject;
-
-		if( m_SourceModelElement instanceof IRPDiagram ){
-			m_SourceGraphElementDiagram = (IRPDiagram) m_SourceModelElement;
-		}
-		
-		setupRequirementsPanel( withReqtsAlsoAdded );
+		setupRequirementsPanel();
 	}
 	
 	protected void setupPopulateCheckbox(
 			JCheckBox theCheckbox ) {
 		
+		IRPDiagram theSourceGraphElementDiagram = _selectionContext.getSourceDiagram();
+		
 		// is the diagram an AD or RD?
-		if( m_SourceGraphElementDiagram != null && ( 
-				m_SourceGraphElementDiagram instanceof IRPActivityDiagram ||
-				m_SourceGraphElementDiagram instanceof IRPObjectModelDiagram ) ){
+		if( theSourceGraphElementDiagram != null && ( 
+				theSourceGraphElementDiagram instanceof IRPActivityDiagram ||
+				theSourceGraphElementDiagram instanceof IRPObjectModelDiagram ) ){
 
 			boolean isPopulateOptionHidden = 
-					StereotypeAndPropertySettings.getIsPopulateOptionHidden(
-							m_SourceGraphElementDiagram );
+					_context.getIsPopulateOptionHidden(
+							theSourceGraphElementDiagram );
 			
 			boolean isPopulate = 
-					StereotypeAndPropertySettings.getIsPopulateWantedByDefault(
-							m_SourceGraphElementDiagram );
+					_context.getIsPopulateWantedByDefault(
+							theSourceGraphElementDiagram );
 			
 			theCheckbox.setVisible( !isPopulateOptionHidden );
 			theCheckbox.setSelected( isPopulate );
@@ -113,14 +86,14 @@ public abstract class CreateTracedElementPanel extends JPanel {
 		}
 	}
 	
-	private void setupRequirementsPanel(
-			Set<IRPRequirement> withReqtsAlsoAdded ){
+	private void setupRequirementsPanel(){
 		
 		Set<IRPRequirement> tracedToReqts = 
-				TraceabilityHelper.getRequirementsThatTraceFrom( 
-						m_SourceModelElement, true );
+				_context.getRequirementsThatTraceFrom( 
+						_selectionContext.getSelectedEl(), 
+						true );
 		
-		tracedToReqts.addAll( withReqtsAlsoAdded );
+		tracedToReqts.addAll( _selectionContext.getSelectedReqts() );
 		
 		if (tracedToReqts.isEmpty()){	
 			m_RequirementsPanel = new RequirementSelectionPanel( 
@@ -133,7 +106,6 @@ public abstract class CreateTracedElementPanel extends JPanel {
 					tracedToReqts, 
 					tracedToReqts );
 		}
-		
 	}
 	
 	public JPanel createChosenNamePanelWith(
@@ -166,6 +138,7 @@ public abstract class CreateTracedElementPanel extends JPanel {
 		IRPModelElement theOwner = theAttribute.getOwner();
 		
 		if( theOwner instanceof IRPClassifier ){
+			
 			IRPClassifier theClassifier = (IRPClassifier)theOwner;
 			String theAttributeName = theAttribute.getName();
 			
@@ -173,52 +146,29 @@ public abstract class CreateTracedElementPanel extends JPanel {
 			
 			theOperation.setBody( "OM_RETURN( " + theAttributeName + " );" );
 			
-			TraceabilityHelper.addAutoRippleDependencyIfOneDoesntExist( 
+			_context.addAutoRippleDependencyIfOneDoesntExist( 
 					theAttribute, theOperation );
-
-			IRPClassifier theType = findTypeCalled( "int" );
 			
-			if( theType != null ){
-				theOperation.setReturns( theType );
+			IRPModelElement theType = 
+					_context.findElementWithMetaClassAndName( 
+							"Type", 
+							"int", 
+							theAttribute.getProject() );
+			
+			if( theType != null && 
+					theType instanceof IRPClassifier ){
+				
+				theOperation.setReturns( (IRPClassifier) theType );
+			} else {
+				_context.error( "Error in addCheckOperationFor, unable to find Type called int" );
 			}
 		} else {
-			Logger.writeLine( "Error in addCheckOperationFor, owner of " + 
-					Logger.elementInfo( theAttribute ) + " is not a Classifier" );
+			_context.error( "Error in addCheckOperationFor, owner of " + 
+					_context.elInfo( theAttribute ) + " is not a Classifier" );
 		}
 		
 		return theOperation;
 	}
-	
-	private IRPClassifier findTypeCalled(String theName){
-		
-		IRPClassifier theTypeFound = null;
-		int count = 0;
-		
-		@SuppressWarnings("unchecked")
-		List<IRPModelElement> theTypes = 
-				FunctionalAnalysisPlugin.getActiveProject().getNestedElementsByMetaClass("Type", 1).toList();
-		
-		for (IRPModelElement irpModelElement : theTypes) {			
-			
-			if (irpModelElement.getName().equals(theName) 
-					&& irpModelElement instanceof IRPClassifier){
-				theTypeFound = (IRPClassifier) irpModelElement;
-				Logger.writeLine(irpModelElement, "was found in findTypeCalled");
-				count++;
-			}
-		}
-		
-		if (theTypeFound==null){
-			Logger.writeLine("Error in findTypeCalled, unable to find type called '" + theName + "'");
-		}
-		
-		if (count>1){
-			Logger.writeLine("Warning in findTypeCalled, unexpectedly " + count + " types called '" + theName + "' were found");
-		}
-		
-		return theTypeFound;
-	}
-
 	
 	// implementation specific provided by parent
 	protected abstract boolean checkValidity(boolean isMessageEnabled);
@@ -242,14 +192,14 @@ public abstract class CreateTracedElementPanel extends JPanel {
 				try {
 					boolean isValid = checkValidity( true );
 					
-					if (isValid){
+					if( isValid ){
 						performAction();
 						Window dialog = SwingUtilities.windowForComponent( (Component) e.getSource() );
 						dialog.dispose();
 					}		
 												
 				} catch (Exception e2) {
-					Logger.writeLine("Error, unhandled exception in CreateOperationPanel.createOKCancelPanel on OK button action listener");
+					_context.error("Error, unhandled exception in CopyOfCreateTracedElementPanel.createOKCancelPanel on OK button action listener, e2=" + e2.getMessage());
 				}
 			}
 		});
@@ -267,7 +217,7 @@ public abstract class CreateTracedElementPanel extends JPanel {
 					dialog.dispose();
 												
 				} catch (Exception e2) {
-					Logger.writeLine("Error, unhandled exception in CreateOperationPanel.createOKCancelPanel on Cancel button action listener");
+					_context.error("Error, unhandled exception in CreateOperationPanel.createOKCancelPanel on Cancel button action listener");
 				}
 			}	
 		});
@@ -279,11 +229,77 @@ public abstract class CreateTracedElementPanel extends JPanel {
 		return thePanel;
 	}
 	
+	public JPanel createCancelPanel(){
+		
+		JPanel thePanel = new JPanel();
+		thePanel.setLayout( new FlowLayout() );
+				
+		JButton theCancelButton = new JButton("Cancel");
+		theCancelButton.setPreferredSize(new Dimension(75,25));
+		
+		theCancelButton.addActionListener( new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					Window dialog = SwingUtilities.windowForComponent( (Component) e.getSource() );
+					dialog.dispose();
+												
+				} catch (Exception e2) {
+					_context.error("Error, unhandled exception in CreateOperationPanel.createOKCancelPanel on Cancel button action listener");
+				}
+			}	
+		});
+		
+		thePanel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		thePanel.add( theCancelButton );
+		
+		return thePanel;
+	}
+	
+	protected Component createPanelWithTextCentered(
+			String theText){
+		
+		JTextPane theTextPane = new JTextPane();
+		theTextPane.setBorder( BorderFactory.createEmptyBorder( 10, 10, 10, 10 ) );
+		theTextPane.setBackground( new Color( 238, 238, 238 ) );
+		theTextPane.setEditable( false );
+		theTextPane.setText( theText );
+		
+		StyledDocument theStyledDoc = theTextPane.getStyledDocument();
+		SimpleAttributeSet center = new SimpleAttributeSet();
+		StyleConstants.setAlignment( center, StyleConstants.ALIGN_CENTER );
+
+		theStyledDoc.setParagraphAttributes( 0, theStyledDoc.getLength(), center, false );
+
+		JPanel thePanel = new JPanel();
+		thePanel.add( theTextPane );
+		
+		return thePanel;
+	}
+	
+	protected void buildUnableToRunDialog(
+			String withMsg ){
+		
+		setLayout( new BorderLayout(10,10) );
+		setBorder( BorderFactory.createEmptyBorder( 10, 10, 10, 10 ) );
+
+		JPanel thePageStartPanel = new JPanel();
+		thePageStartPanel.setLayout( new BoxLayout( thePageStartPanel, BoxLayout.X_AXIS ) );
+		thePageStartPanel.add( createPanelWithTextCentered( withMsg ) );
+
+		add( thePageStartPanel, BorderLayout.PAGE_START );
+		
+		add( createCancelPanel(), BorderLayout.PAGE_END );
+
+	}
+	
 	protected void bleedColorToElementsRelatedTo( 
 			IRPGraphElement theGraphEl ){
 		
 		// only bleed on activity diagrams		
-		if (theGraphEl.getDiagram() instanceof IRPActivityDiagram){
+		if( theGraphEl.getDiagram() instanceof IRPActivityDiagram ){
 			
 			String theColorSetting = "255,0,0";
 			IRPDiagram theDiagram = theGraphEl.getDiagram();
@@ -293,7 +309,7 @@ public abstract class CreateTracedElementPanel extends JPanel {
 				
 				List<IRPRequirement> theSelectedReqts = m_RequirementsPanel.getSelectedRequirementsList();
 				
-				Logger.writeLine("Setting color to red for " + theEl.getName());
+				_context.debug("Setting color to red for " + theEl.getName());
 				theGraphEl.setGraphicalProperty("ForegroundColor", theColorSetting);
 				
 				@SuppressWarnings("unchecked")
@@ -315,7 +331,7 @@ public abstract class CreateTracedElementPanel extends JPanel {
 		}
 	}
 
-	private static void bleedColorToGraphElsRelatedTo(
+	private void bleedColorToGraphElsRelatedTo(
 			IRPModelElement theEl, 
 			String theColorSetting, 
 			IRPDiagram onDiagram){
@@ -331,7 +347,7 @@ public abstract class CreateTracedElementPanel extends JPanel {
 			IRPModelElement theModelObject = irpGraphElement.getModelObject();
 			
 			if (theModelObject != null){
-				Logger.writeLine("Setting color to red for " + theModelObject.getName());
+				_context.debug("Setting color to red for " + theModelObject.getName());
 			}
 		}
 	}
@@ -341,24 +357,41 @@ public abstract class CreateTracedElementPanel extends JPanel {
 			List<IRPRequirement> theReqtsToAdd ){
 
 		IRPStereotype theDependencyStereotype =
-				StereotypeAndPropertySettings.getStereotypeToUseForFunctions( m_TargetOwningElement );
+				_context.getStereotypeToUseForFunctions( 
+						_selectionContext.getChosenBlock() );
 				
 		if( theDependencyStereotype != null ){
 			
 			String theStereotypeName = theDependencyStereotype.getName();
 			
 			Set<IRPModelElement> theExistingTracedReqts = 
-					TraceabilityHelper.getElementsThatHaveStereotypedDependenciesFrom( 
+					_context.getElementsThatHaveStereotypedDependenciesFrom( 
 							theElement, theStereotypeName );
 			
 			for( IRPRequirement theReqt : theReqtsToAdd ) {
 				
 				if( theExistingTracedReqts.contains( theReqt ) ){
-					Logger.writeLine( theElement, "already has a «" + theStereotypeName + 
-							"» dependency to " + Logger.elementInfo( theReqt ) + ", so doing nothing" );
+					_context.info( _context.elInfo( theElement ) + " already has a «" + theStereotypeName + 
+							"» dependency to " + _context.elInfo( theReqt ) + 
+							", so doing nothing" );
+					
+				} else if( theReqt.isRemote()== 1 ){
+					
+					_context.info( "Add remote " +
+							_context.elInfo( theDependencyStereotype) + " from " +
+							_context.elInfo(theElement) + " \n" +
+							"to " + _context.elInfo(theReqt) );
+					
+					if( theDependencyStereotype.getName().equals( "satisfy" ) ){
+						
+						// "Derives From", "Refines", "Satisfies", and "Trace".
+						theElement.addRemoteDependencyTo( theReqt, "Satisfies" );
+					}
+					
 				} else {					
-					Logger.writeLine( theElement, "does not have a «" + theStereotypeName + 
-							"» dependency to " + Logger.elementInfo( theReqt ) + ", so adding one" );
+					_context.info( _context.elInfo( theElement ) + " does not have a «" + theStereotypeName + 
+							"» dependency to " + _context.elInfo( theReqt ) + 
+							", so adding one" );
 					
 					IRPDependency theDep = theElement.addDependencyTo( theReqt );
 					theDep.setStereotype( theDependencyStereotype );						
@@ -366,11 +399,11 @@ public abstract class CreateTracedElementPanel extends JPanel {
 			}
 			
 		} else {
-			Logger.writeLine("Error in addTraceabilityDependenciesTo, unable to find stereotype to apply to dependencies");
+			_context.error("Error in addTraceabilityDependenciesTo, unable to find stereotype to apply to dependencies");
 		}
 	}
 
-	protected static List<IRPModelElement> getNonElapsedTimeActorsRelatedTo(
+	protected List<IRPModelElement> getNonElapsedTimeActorsRelatedTo(
 			 IRPClassifier theBuildingBlock ){
 		
 		List<IRPModelElement> theActors = new ArrayList<IRPModelElement>();
@@ -381,7 +414,7 @@ public abstract class CreateTracedElementPanel extends JPanel {
  			theBuildingBlock.getNestedElementsByMetaClass("Part", 0).toList();
 		
 		IRPStereotype theTestbenchStereotype =
-				StereotypeAndPropertySettings.getStereotypeForTestbench(
+				_context.getStereotypeForTestbench(
 						theBuildingBlock );
 
 		for (IRPInstance thePart : theParts) {
@@ -389,8 +422,9 @@ public abstract class CreateTracedElementPanel extends JPanel {
 			IRPClassifier theOtherClass = thePart.getOtherClass();
 			
 			if (theOtherClass instanceof IRPActor && 
-					GeneralHelpers.hasStereotypeCalled( 
-							theTestbenchStereotype.getName(), theOtherClass ) ){
+					_context.hasStereotypeCalled( 
+							theTestbenchStereotype.getName(), 
+							theOtherClass ) ){
 //					!theOtherClass.getName().equals("ElapsedTime") ){
 				
 				theActors.add((IRPActor) theOtherClass);					
@@ -404,15 +438,21 @@ public abstract class CreateTracedElementPanel extends JPanel {
 		
 		int x = 10;
 		
-		if( m_SourceGraphElement != null ){
+		IRPGraphElement theSourceGraphEl = _selectionContext.getSelectedGraphEl();
+		
+		if( theSourceGraphEl != null ){
 
-			if (m_SourceGraphElement instanceof IRPGraphNode){
-				GraphNodeInfo theNodeInfo = new GraphNodeInfo( (IRPGraphNode) m_SourceGraphElement );
+			if( theSourceGraphEl instanceof IRPGraphNode ){
+				
+				GraphNodeInfo theNodeInfo = 
+						new GraphNodeInfo( (IRPGraphNode) theSourceGraphEl );
 				
 				x = theNodeInfo.getTopLeftX() + 20;
 				
-			} else if (m_SourceGraphElement instanceof IRPGraphEdge){
-				GraphEdgeInfo theNodeInfo = new GraphEdgeInfo( (IRPGraphEdge) m_SourceGraphElement );
+			} else if( theSourceGraphEl instanceof IRPGraphEdge ){
+				
+				GraphEdgeInfo theNodeInfo = 
+						new GraphEdgeInfo( (IRPGraphEdge) theSourceGraphEl );
 				
 				x = theNodeInfo.getMidX();
 			}
@@ -426,16 +466,20 @@ public abstract class CreateTracedElementPanel extends JPanel {
 	protected int getSourceElementY(){
 		
 		int y = 10;
-		
-		if( m_SourceGraphElement != null ){
 
-			if (m_SourceGraphElement instanceof IRPGraphNode){
-				GraphNodeInfo theNodeInfo = new GraphNodeInfo( (IRPGraphNode) m_SourceGraphElement );
+		IRPGraphElement theSourceGraphEl = _selectionContext.getSelectedGraphEl();
+
+		if( theSourceGraphEl != null ){
+
+			if( theSourceGraphEl instanceof IRPGraphNode ){
+				GraphNodeInfo theNodeInfo = 
+						new GraphNodeInfo( (IRPGraphNode) theSourceGraphEl );
 				
 				y = theNodeInfo.getTopLeftY() + 20;
 				
-			} else if (m_SourceGraphElement instanceof IRPGraphEdge){
-				GraphEdgeInfo theNodeInfo = new GraphEdgeInfo( (IRPGraphEdge) m_SourceGraphElement );
+			} else if( theSourceGraphEl instanceof IRPGraphEdge ){
+				GraphEdgeInfo theNodeInfo = 
+						new GraphEdgeInfo( (IRPGraphEdge) theSourceGraphEl );
 				
 				y = theNodeInfo.getMidY();
 			}
@@ -452,18 +496,21 @@ public abstract class CreateTracedElementPanel extends JPanel {
 		try {
 			IRPApplication theRhpApp = FunctionalAnalysisPlugin.getRhapsodyApp();
 
-			if( m_SourceGraphElementDiagram != null ){
+			IRPDiagram theDiagram = _selectionContext.getSourceDiagram();
+			IRPGraphElement theGraphEl = _selectionContext.getSelectedGraphEl();
+			
+			if( theDiagram != null ){
 
-				if( m_SourceGraphElementDiagram instanceof IRPActivityDiagram ){
+				if( theDiagram instanceof IRPActivityDiagram ){
 					
-					IRPActivityDiagram theAD = (IRPActivityDiagram)m_SourceGraphElementDiagram;
+					IRPActivityDiagram theAD = (IRPActivityDiagram)theDiagram;
 
 					IRPFlowchart theFlowchart = theAD.getFlowchart();
 
-					if( m_SourceGraphElement != null && 
-						m_SourceGraphElement.getModelObject() instanceof IRPCallOperation ){
+					if( theGraphEl != null && 
+							theGraphEl.getModelObject() instanceof IRPCallOperation ){
 
-						IRPCallOperation theCallOp = (IRPCallOperation) m_SourceGraphElement.getModelObject();
+						IRPCallOperation theCallOp = (IRPCallOperation) theGraphEl.getModelObject();
 						theCallOp.setOperation(theOperation);
 
 					} else {
@@ -479,16 +526,16 @@ public abstract class CreateTracedElementPanel extends JPanel {
 						theCallOp.highLightElement();
 					}
 
-				} else if( m_SourceGraphElementDiagram instanceof IRPObjectModelDiagram ){
+				} else if( theDiagram instanceof IRPObjectModelDiagram ){
 
-					IRPObjectModelDiagram theOMD = (IRPObjectModelDiagram)m_SourceGraphElementDiagram;
+					IRPObjectModelDiagram theOMD = (IRPObjectModelDiagram)theDiagram;
 
 					IRPGraphNode theEventNode = theOMD.addNewNodeForElement( 
 							theOperation, getSourceElementX() + 50, getSourceElementY() + 50, 300, 40 );	
 
-					if( m_SourceGraphElement != null ){
+					if( theGraphEl != null ){
 						IRPCollection theGraphElsToDraw = theRhpApp.createNewCollection();
-						theGraphElsToDraw.addGraphicalItem( m_SourceGraphElement );
+						theGraphElsToDraw.addGraphicalItem( theGraphEl );
 						theGraphElsToDraw.addGraphicalItem( theEventNode );
 
 						theOMD.completeRelations( theGraphElsToDraw, 1 );
@@ -497,20 +544,20 @@ public abstract class CreateTracedElementPanel extends JPanel {
 					theOperation.highLightElement();
 
 				} else {
-					Logger.writeLine( "Error in populateCallOperationActionOnDiagram " + Logger.elementInfo( m_SourceGraphElementDiagram ) + 
+					_context.error( "Error in populateCallOperationActionOnDiagram " + _context.elInfo( theDiagram ) + 
 							" is not supported for populating on");
 				}
 
 			} else {	
-				Logger.writeLine( "Error in populateCallOperationActionOnDiagram, m_SourceGraphElementDiagram is null when value was expected" );
+				_context.error( "Error in populateCallOperationActionOnDiagram, m_SourceGraphElementDiagram is null when value was expected" );
 			}
 
 		} catch (Exception e) {
-			Logger.writeLine( "Error in populateCallOperationActionOnDiagram, unhandled exception was detected ");
+			_context.error( "Error in populateCallOperationActionOnDiagram, unhandled exception was detected ");
 		}
 	}
 	
-	protected static IRPClass getBlock(
+	protected IRPClass getBlock(
 			final IRPGraphElement theSourceGraphElement,
 			final IRPModelElement orTheModelElement, 
 			final String theMsg ){
@@ -524,7 +571,7 @@ public abstract class CreateTracedElementPanel extends JPanel {
 			if( theModelObject != null ){
 
 				if( theModelObject instanceof IRPClass &&
-					!GeneralHelpers.hasStereotypeCalled( "TestDriver", theModelObject ) ){
+					!_context.hasStereotypeCalled( "TestDriver", theModelObject ) ){
 
 					theBlock = (IRPClass) theModelObject;
 
@@ -535,7 +582,7 @@ public abstract class CreateTracedElementPanel extends JPanel {
 					IRPClassifier theOtherClass = thePart.getOtherClass();
 
 					if( theOtherClass instanceof IRPClass &&
-						!GeneralHelpers.hasStereotypeCalled( "TestDriver", theOtherClass ) ){
+						!_context.hasStereotypeCalled( "TestDriver", theOtherClass ) ){
 
 						theBlock = (IRPClass)theOtherClass;
 					}
@@ -544,10 +591,10 @@ public abstract class CreateTracedElementPanel extends JPanel {
 
 		} else if( orTheModelElement != null ){
 
-			Logger.writeLine(orTheModelElement.getMetaClass() + "is the MetaClass");
+			_context.debug(orTheModelElement.getMetaClass() + "is the MetaClass");
 			
 			if( orTheModelElement instanceof IRPClass &&
-				!GeneralHelpers.hasStereotypeCalled( "TestDriver", orTheModelElement ) ){
+				!_context.hasStereotypeCalled( "TestDriver", orTheModelElement ) ){
 
 				theBlock = (IRPClass) orTheModelElement;
 
@@ -558,7 +605,7 @@ public abstract class CreateTracedElementPanel extends JPanel {
 				IRPClassifier theOtherClass = thePart.getOtherClass();
 
 				if( theOtherClass instanceof IRPClass &&
-					!GeneralHelpers.hasStereotypeCalled( "TestDriver", theOtherClass ) ){
+					!_context.hasStereotypeCalled( "TestDriver", theOtherClass ) ){
 					
 					theBlock = (IRPClass)theOtherClass;
 				}
@@ -566,12 +613,12 @@ public abstract class CreateTracedElementPanel extends JPanel {
 			} else if( orTheModelElement.getMetaClass().equals("StatechartDiagram") ){
 		
 				IRPModelElement theOwner = 
-						GeneralHelpers.findOwningClassIfOneExistsFor( orTheModelElement );
+						_context.findOwningClassIfOneExistsFor( orTheModelElement );
 				
-				Logger.writeLine( theOwner, "is the Owner");
+				_context.debug( _context.elInfo( theOwner ) + "is the Owner");
 				
 				if( theOwner instanceof IRPClass &&
-					!GeneralHelpers.hasStereotypeCalled( "TestDriver", theOwner )){
+					!_context.hasStereotypeCalled( "TestDriver", theOwner )){
 					
 					theBlock = (IRPClass) theOwner;
 				}
@@ -593,7 +640,7 @@ public abstract class CreateTracedElementPanel extends JPanel {
 				theBlock = FunctionalAnalysisSettings.getBlockUnderDev( 
 						theContextEl, theMsg );
 			} else {
-				Logger.writeLine("Error in getBlock");
+				_context.error("Error in getBlock");
 			}
 
 		}
@@ -610,13 +657,15 @@ public abstract class CreateTracedElementPanel extends JPanel {
 		IRPAttribute theAttribute = theClassifier.addAttribute( withTheName );				
 		
 		IRPModelElement theValuePropertyStereotype = 
-				GeneralHelpers.findElementWithMetaClassAndName( 
-						"Stereotype", "ValueProperty", m_Project );
+				_context.findElementWithMetaClassAndName( 
+						"Stereotype", 
+						"ValueProperty", 
+						theClassifier.getProject() );
 		
 		if( theValuePropertyStereotype != null ){
 			
-			Logger.writeLine( "Invoking change to from " + Logger.elementInfo( theAttribute ) + 
-					" to " + Logger.elementInfo( theValuePropertyStereotype ) );
+			_context.debug( "Invoking change to from " + _context.elInfo( theAttribute ) + 
+					" to " + _context.elInfo( theValuePropertyStereotype ) );
 			
 			theAttribute.changeTo( "ValueProperty" );
 		}
@@ -631,38 +680,7 @@ public abstract class CreateTracedElementPanel extends JPanel {
 }
 
 /**
- * Copyright (C) 2016-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #022 30-MAY-2016: Improved handling and validation of event/operation creation by adding new forms (F.J.Chadburn) 
-    #032 05-JUN-2016: Populate call operation/event actions on diagram check-box added (F.J.Chadburn)
-    #033 05-JUN-2016: Add support for creation of operations and events from raw requirement selection (F.J.Chadburn)
-    #034 05-JUN-2016: Re-factored design to move static constructors into appropriate panel class (F.J.Chadburn)
-    #040 17-JUN-2016: Extend populate event/ops to work on OMD, i.e., REQ diagrams (F.J.Chadburn)
-    #041 29-JUN-2016: Derive downstream requirement menu added for reqts on diagrams (F.J.Chadburn)
-    #043 03-JUL-2016: Add Derive downstream reqt for CallOps, InterfaceItems and Event Actions (F.J.Chadburn)
-    #058 13-JUL-2016: Dropping CallOp on diagram now gives option to create Op on block (F.J.Chadburn)
-    #069 20-JUL-2016: Fix population of events/ops on diagram when creating from a transition (F.J.Chadburn)
-    #082 09-AUG-2016: Add a check operation check box added to the create attribute dialog (F.J.Chadburn)
-    #083 09-AUG-2016: Add an Update attribute menu option and panel with add check operation option (F.J.Chadburn)
-    #089 15-AUG-2016: Add a pull-down list to select Block when adding events/ops in white box (F.J.Chadburn)
-    #090 15-AUG-2016: Fix check operation name issue introduced in fixes #083 and #084 (F.J.Chadburn)
-    #099 14-SEP-2016: Allow event and operation creation from right-click on AD and RD diagram canvas (F.J.Chadburn)
-    #105 03-NOV-2016: Only bleed to requirements checked for coverage (F.J.Chadburn)
-    #115 13-NOV-2016: Removed use of isEnableBlockSelectionByUser tag and <<LogicalSystem>> by helper (F.J.Chadburn)
-    #125 25-NOV-2016: AutoRipple used in UpdateTracedAttributePanel to keep check and FlowPort name updated (F.J.Chadburn)
-    #129 25-NOV-2016: Fixed addTraceabilityDependenciesTo to avoid creation of duplicate dependencies (F.J.Chadburn)
-    #130 25-NOV-2016: Improved consistency in handling of isPopulateOptionHidden and isPopulateWantedByDefault tags (F.J.Chadburn)
-    #163 05-FEB-2017: Add new menus to Smart link: Start and Smart link: End (F.J.Chadburn)
-    #196 05-JUN-2017: Enhanced create traced element dialogs to be context aware for blocks/parts (F.J.Chadburn)
-    #197 05-JUN-2017: Fix 8.2 issue in Incoming Event panel, create ValueProperty rather than attribute (F.J.Chadburn)
-    #199 05-JUN-2017: Improved create event panel consistency to name event Tbd if no text provided (F.J.Chadburn)
-    #200 05-JUN-2017: Hide Populate on diagram check-boxes if context is not valid (F.J.Chadburn)
-    #209 04-JUL-2017: Populate requirements for SD(s) based on messages now supported with Dialog (F.J.Chadburn)
-    #224 25-AUG-2017: Added new menu to roll up traceability to the transition and populate on STM (F.J.Chadburn)
-    #227 06-SEP-2017: Increased robustness to stop smart link panel using non new term version of <<refine>> (F.J.Chadburn)
-    #252 29-MAY-2019: Implement generic features for profile/settings loading (F.J.Chadburn)
-    #256 29-MAY-2019: Rewrite to Java Swing dialog launching to make thread safe between versions (F.J.Chadburn)
+ * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

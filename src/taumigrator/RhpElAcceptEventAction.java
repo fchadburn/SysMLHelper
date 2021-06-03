@@ -73,7 +73,7 @@ public class RhpElAcceptEventAction extends RhpElGraphNode {
 		_rhpEl = null;
 		
 		Logger.writeLine("createRhpEl invoked for " + getString() + " owned by " + 
-				parent.getString() + " with parent el=" + Logger.elementInfo( parent.get_rhpEl() ) );	
+				parent.getString() + " with parent el=" + Logger.elInfo( parent.get_rhpEl() ) );	
 		
 		IRPFlowchart theActivityDiagram = (IRPFlowchart) parent.get_rhpEl();
 		IRPActivityDiagram theActivityDiagramGE = theActivityDiagram.getFlowchartDiagram();
@@ -105,7 +105,7 @@ public class RhpElAcceptEventAction extends RhpElGraphNode {
 				throw new Exception( "the EventEl is null, I'm expecting all events to havce been created in first pass" );
 			}
 
-			Logger.info( "Using signal " + Logger.elementInfo( theEventEl ) + " for accept event action" );
+			Logger.info( "Using signal " + Logger.elInfo( theEventEl ) + " for accept event action" );
 
 			IRPEvent theEvent = (IRPEvent) theEventEl;
 			
@@ -143,8 +143,8 @@ public class RhpElAcceptEventAction extends RhpElGraphNode {
 					
 					String theArgumentName = m.group( 1 );
 					
-					Logger.info("Found that " + Logger.elementInfo( _rhpEl) + " has " + 
-							Logger.elementInfo( pin ) + " related to " + theArgumentName );
+					Logger.info("Found that " + Logger.elInfo( _rhpEl) + " has " + 
+							Logger.elInfo( pin ) + " related to " + theArgumentName );
 					
 					// condition connector; see also Fork, History, Join, and Termination
 					IRPState setValueAction = theRootState.addState( "" );

@@ -21,10 +21,7 @@ import requirementsanalysisplugin.RequirementsAnalysisPlugin;
 
 import com.telelogic.rhapsody.core.*;
 
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
 import generalhelpers.NamedElementMap;
-import generalhelpers.TraceabilityHelper;
 import generalhelpers.UserInterfaceHelpers;
 
 public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
@@ -41,17 +38,17 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 	private JCheckBox m_PopulateOnDiagramCheckBox; 
 	private JCheckBox m_MoveIntoCheckBox; 
 	
-	public static void deriveDownstreamRequirement(
+	public void deriveDownstreamRequirement(
 			List<IRPGraphElement> theSelectedGraphEls) {
 		
 		int selectedCount = theSelectedGraphEls.size();
 		
 		if (selectedCount > 1){
-			Logger.writeLine("Warning in deriveDownstreamRequirement, operation only works for " +
+			_context.warning("Warning in deriveDownstreamRequirement, operation only works for " +
 					"1 selected element and " + selectedCount + " were selected");
 			
 		} else if (selectedCount == 0){
-			Logger.writeLine("Error in deriveDownstreamRequirement, no elements were selected");	
+			_context.error("Error in deriveDownstreamRequirement, no elements were selected");	
 			
 		} else {		
 			IRPGraphElement theSelectedGraphEl = theSelectedGraphEls.get(0);
@@ -74,7 +71,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 				IRPInterfaceItem theOperation = theCallOp.getOperation();
 				
 				Set<IRPRequirement> theReqts = 
-						TraceabilityHelper.getRequirementsThatTraceFromWithStereotype(
+						_context.getRequirementsThatTraceFromWithStereotype(
 								theOperation, "satisfy");
 
 				CreateDerivedRequirementPanel.launchThePanel( 
@@ -91,7 +88,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 
 				if( theEvent != null ){
 					Set<IRPRequirement> theReqts = 
-							TraceabilityHelper.getRequirementsThatTraceFromWithStereotype(
+							_context.getRequirementsThatTraceFromWithStereotype(
 									theEvent, "satisfy");
 
 					CreateDerivedRequirementPanel.launchThePanel( 
@@ -101,7 +98,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 				} else {
 
 					Set<IRPRequirement> theReqts = 
-							TraceabilityHelper.getRequirementsThatTraceFromWithStereotype(
+							_context.getRequirementsThatTraceFromWithStereotype(
 									theAcceptEvent, "derive");
 
 					CreateDerivedRequirementPanel.launchThePanel( 
@@ -124,7 +121,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 						
 						if (theEvent != null){
 							Set<IRPRequirement> theReqts = 
-									TraceabilityHelper.getRequirementsThatTraceFromWithStereotype(
+									_context.getRequirementsThatTraceFromWithStereotype(
 											theEvent, "satisfy");
 
 							CreateDerivedRequirementPanel.launchThePanel( 
@@ -133,7 +130,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 									RequirementsAnalysisPlugin.getActiveProject() );
 						} else {
 							Set<IRPRequirement> theReqts = 
-									TraceabilityHelper.getRequirementsThatTraceFromWithStereotype(
+									_context.getRequirementsThatTraceFromWithStereotype(
 											theState, "derive");
 
 							CreateDerivedRequirementPanel.launchThePanel( 
@@ -142,13 +139,13 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 									RequirementsAnalysisPlugin.getActiveProject() );
 						}
 					} else {
-						Logger.writeLine("Error in deriveDownstreamRequirement, theSendAction is null");
+						_context.error("Error in deriveDownstreamRequirement, theSendAction is null");
 					}
 					
 				} else if (theStateType.equals("Action")){
 					
 					Set<IRPRequirement> theReqts = 
-							TraceabilityHelper.getRequirementsThatTraceFromWithStereotype(
+							_context.getRequirementsThatTraceFromWithStereotype(
 									theState, "derive");
 
 					CreateDerivedRequirementPanel.launchThePanel( 
@@ -157,7 +154,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 							RequirementsAnalysisPlugin.getActiveProject() );
 					
 				} else {
-					Logger.writeLine("Warning in deriveDownstreamRequirement, this operation is not supported for theState.getStateType()=" + theState.getStateType());
+					_context.warning("Warning in deriveDownstreamRequirement, this operation is not supported for theState.getStateType()=" + theState.getStateType());
 				}
 
 			} else if (theModelObject instanceof IRPOperation || 
@@ -165,7 +162,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 					  (theModelObject instanceof IRPAttribute) ){
 				
 				Set<IRPRequirement> theReqts = 
-						TraceabilityHelper.getRequirementsThatTraceFromWithStereotype(
+						_context.getRequirementsThatTraceFromWithStereotype(
 								theModelObject, "satisfy");
 
 				CreateDerivedRequirementPanel.launchThePanel( 
@@ -175,8 +172,8 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 				
 			} else { 
 
-				Logger.writeLine("Warning in , " + Logger.elementInfo(theModelObject) + 
-						" was not handled as call with this type was not expected");
+				_context.warning( "Warning in , " + _context.elInfo(theModelObject) + 
+						" was not handled as call with this type was not expected" );
 			}
 		}
 	}
@@ -193,7 +190,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 				JFrame.setDefaultLookAndFeelDecorated( true );
 
 				JFrame frame = new JFrame(
-						"Derive a new requirement from " + Logger.elementInfo(theSourceGraphElement.getModelObject()) + "?");
+						"Derive a new requirement from " + _context.elInfo(theSourceGraphElement.getModelObject()) + "?");
 
 				frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 
@@ -216,7 +213,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 		
 		super(theSourceGraphElement, forHigherLevelReqts, null, inTheProject);
 		
-		Logger.writeLine( "Create Derived Reqt panel invoked from " + Logger.elementInfo( m_SourceGraphElement.getModelObject() ) );
+		_context.writeLine( "Create Derived Reqt panel invoked from " + _context.elInfo( m_SourceGraphElement.getModelObject() ) );
 		
 		final String preferredRootPackageName = "FunctionalAnalysisPkg";
 		
@@ -344,7 +341,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 					m_ChosenNameTextField.getText(), "Requirement", m_TargetOwningElement, 1 )){
 
 			errorMsg = "Unable to proceed as the name '" + m_ChosenNameTextField.getText() + 
-					"' is not unique in " + Logger.elementInfo( m_TargetOwningElement );
+					"' is not unique in " + _context.elInfo( m_TargetOwningElement );
 
 			isValid = false;
 
@@ -352,7 +349,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 					m_ChosenNameTextField.getText(), "Requirement", m_Project, 1)){
 
 			errorMsg = "Unable to proceed as the name '" + m_ChosenNameTextField.getText() + 
-					"' is not unique in " + Logger.elementInfo( m_Project );
+					"' is not unique in " + _context.elInfo( m_Project );
 
 			isValid = false;
 		}
@@ -399,8 +396,8 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 								"Requirement", m_ChosenNameTextField.getText()  );
 						
 					} else {
-						Logger.writeLine("Warning in CreateDerivedRequirementPanel.performAction, " +
-								Logger.elementInfo( theDiagram ) + " is not supported");
+						_context.writeLine("Warning in CreateDerivedRequirementPanel.performAction, " +
+								_context.elInfo( theDiagram ) + " is not supported");
 					}
 					
 					if( theRequirement != null ){
@@ -420,7 +417,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 
 						if (theUpstreamReqts.isEmpty()){
 							
-							Logger.writeLine("Warning in performAction, no upstream requirement was selected");
+							_context.writeLine("Warning in performAction, no upstream requirement was selected");
 							
 						} else {
 							IRPStereotype theDeriveReqtStereotype = 
@@ -459,10 +456,10 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 					}
 				}			
 			} else {
-				Logger.writeLine("Error in CreateDerivedRequirementPanel.performAction, checkValidity returned false");
+				_context.writeLine("Error in CreateDerivedRequirementPanel.performAction, checkValidity returned false");
 			}	
 		} catch (Exception e) {
-			Logger.writeLine("Error, unhandled exception detected in CreateDerivedRequirementPanel.performAction");
+			_context.writeLine("Error, unhandled exception detected in CreateDerivedRequirementPanel.performAction");
 		}
 		
 	}
@@ -492,7 +489,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 						theOperation, theRequirement, theDeriveStereotype );
 
 			} else {
-				Logger.writeLine("Skipped adding derive dependencies as no Operation found for the call operation");
+				_context.writeLine("Skipped adding derive dependencies as no Operation found for the call operation");
 			}
 			
 		} else if ( theSourceModelObject instanceof IRPAcceptEventAction ){
@@ -511,7 +508,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 						theEvent, theRequirement, theDeriveStereotype );
 
 			} else {
-				Logger.writeLine("Skipped adding derive dependencies as no Event was found for the accept event action");
+				_context.writeLine("Skipped adding derive dependencies as no Event was found for the accept event action");
 			}
 			
 		} else if ( theSourceModelObject instanceof IRPState ){
@@ -536,11 +533,11 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 									theEvent, theRequirement, theDeriveStereotype );
 
 					} else {
-						Logger.writeLine("Skipped adding derive dependencies as no event found for " + Logger.elementInfo(theState));
+						_context.writeLine("Skipped adding derive dependencies as no event found for " + _context.elInfo(theState));
 					}
 					
 				} else {
-					Logger.writeLine("Error in addDeriveRelationsTo, theSendAction==null for " + Logger.elementInfo(theState)); 
+					_context.writeLine("Error in addDeriveRelationsTo, theSendAction==null for " + _context.elInfo(theState)); 
 				}
 				
 			} else if ( theStateType.equals( "Action") ){ // i.e. just text
@@ -548,7 +545,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 				// don't add 
 				
 			} else {
-				Logger.writeLine("Warning in addDeriveRelationsTo, getStateType=" + theStateType + " is not supported");
+				_context.writeLine("Warning in addDeriveRelationsTo, getStateType=" + theStateType + " is not supported");
 			}
 	
 		} else if ( theSourceModelObject instanceof IRPOperation || 
@@ -559,7 +556,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 					theSourceModelObject, theRequirement, theDeriveStereotype );
 
 		} else {
-			Logger.writeLine("Warning in addDeriveRelationsTo, " + Logger.elementInfo( theSourceModelObject ) + " was not handled");
+			_context.writeLine("Warning in addDeriveRelationsTo, " + _context.elInfo( theSourceModelObject ) + " was not handled");
 			
 		}
 	}
@@ -579,21 +576,21 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 							theRequirement.getName(), "Requirement" );
 				
 			if (alreadyExistingEl != null){
-				Logger.writeLine("Error: Unable to move " + Logger.elementInfo( theRequirement ) 
+				_context.writeLine("Error: Unable to move " + _context.elInfo( theRequirement ) 
 						+ " as requirement of same name already exists under " 
-						+ Logger.elementInfo( theChosenPkg ) + ". Consider renaming it.");
+						+ _context.elInfo( theChosenPkg ) + ". Consider renaming it.");
 			} else {
 				IRPStereotype theStereotypeToApply = 
 						GeneralHelpers.getStereotypeAppliedTo( theChosenPkg, "from.*" );
 					
-				Logger.writeLine(theStereotypeToApply, "is the stereotype to apply");
+				_context.writeLine(theStereotypeToApply, "is the stereotype to apply");
 					
 				if (theStereotypeToApply != null){
 						
 					theRequirement.setStereotype( theStereotypeToApply );
 
-					Logger.writeLine("Moving " + Logger.elementInfo(theRequirement) 
-							+ " into " + Logger.elementInfo(theChosenPkg));
+					_context.writeLine("Moving " + _context.elInfo(theRequirement) 
+							+ " into " + _context.elInfo(theChosenPkg));
 						
 					theRequirement.setOwner(theChosenPkg);
 					
@@ -605,7 +602,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 			}
 				
 		} else {
-			Logger.writeLine("Error in moveAndStereotype, no package was selected for the move");
+			_context.writeLine("Error in moveAndStereotype, no package was selected for the move");
 		}
 	}
 }

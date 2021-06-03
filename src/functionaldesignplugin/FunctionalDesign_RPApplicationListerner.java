@@ -58,7 +58,7 @@ public class FunctionalDesign_RPApplicationListerner extends RPApplicationListen
 					modelElement instanceof IRPClass && 
 					GeneralHelpers.hasStereotypeCalled( "Interface", modelElement )){
 				
-				Logger.writeLine("Interface=" + Logger.elementInfo(modelElement));
+				Logger.writeLine("Interface=" + Logger.elInfo(modelElement));
 				afterAddForInterface( modelElement );
 										
 			} else if (modelElement != null && 
@@ -74,7 +74,7 @@ public class FunctionalDesign_RPApplicationListerner extends RPApplicationListen
 			}
 
 		} catch( Exception e ){
-			Logger.writeLine("Error in SysMLHelperTriggers.afterAddElement, unhandled exception was detected related to " + Logger.elementInfo(modelElement));
+			Logger.writeLine("Error in SysMLHelperTriggers.afterAddElement, unhandled exception was detected related to " + Logger.elInfo(modelElement));
 		}
 
 		return doDefault;
@@ -218,7 +218,7 @@ public class FunctionalDesign_RPApplicationListerner extends RPApplicationListen
 				foundStereotype = theStereotype;
 				
 				if (count > 1){
-					Logger.writeLine("Error in getStereotypeAppliedTo related to " + Logger.elementInfo(theElement) + " count=" + count);
+					Logger.writeLine("Error in getStereotypeAppliedTo related to " + Logger.elInfo(theElement) + " count=" + count);
 				}
 			}		
 		}
@@ -567,7 +567,7 @@ public class FunctionalDesign_RPApplicationListerner extends RPApplicationListen
 						withDesiredName, andMetaClass, pModelElement );
 
 		Logger.writeLine("Creating a new " + andMetaClass + " with the name '" 
-				+ theName + "' underneath " + Logger.elementInfo( pModelElement ) );
+				+ theName + "' underneath " + Logger.elInfo( pModelElement ) );
 
 		IRPDiagram theDiagram = null;
 
@@ -598,7 +598,7 @@ public class FunctionalDesign_RPApplicationListerner extends RPApplicationListen
 						withDesiredName, "Statechart", pModelElement );
 
 		Logger.writeLine("Creating a new " + "Statechart" + " with the name '" 
-				+ theName + "' underneath " + Logger.elementInfo( pModelElement ) );
+				+ theName + "' underneath " + Logger.elInfo( pModelElement ) );
 
 		IRPStatechart theDiagram = null;
 

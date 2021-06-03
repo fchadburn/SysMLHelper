@@ -1,29 +1,36 @@
 package requirementsanalysisplugin;
 
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
-
 import java.util.List;
 
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
  
 public class RenameActions {
  
-	static public void performRenamesFor(List<IRPModelElement> theSelectedEls){
-		 
-		List<IRPActivityDiagram> theADs = GeneralHelpers.buildListOfActivityDiagramsFor(theSelectedEls);
+	ExecutableMBSE_Context _context;
+	
+	public RenameActions( 
+			ExecutableMBSE_Context context ) {
 		
-		Logger.writeLine("There are " + theADs.size() + " Activity Diagrams nested under the selected list");
+		_context = context;
+	}
+	
+	public void performRenamesFor(
+			List<IRPModelElement> theSelectedEls){
+		 
+		List<IRPActivityDiagram> theADs = _context.buildListOfActivityDiagramsFor(theSelectedEls);
+		
+		_context.info("There are " + theADs.size() + " Activity Diagrams nested under the selected list");
 		
 		for (IRPActivityDiagram theAD : theADs) {
 			
 			IRPFlowchart theFC = (IRPFlowchart) theAD.getOwner();
-			Logger.writeLine("Rename actions invoked for " + Logger.elementInfo( theFC ));
+			_context.info("Rename actions invoked for " + _context.elInfo( theFC ));
 			
-			ActionList actionsInfos = new ActionList( theAD );		
+			ActionList actionsInfos = new ActionList( theAD, _context );		
 					
 			if (actionsInfos.isRenamingNeeded()){
 
@@ -33,16 +40,16 @@ public class RenameActions {
 						" elements require renaming. Do you want to rename them?";
 
 				int response = JOptionPane.showConfirmDialog(null, 
-						theMsg, "Rename for " + Logger.elementInfo(theFC),
+						theMsg, "Rename for " + _context.elInfo(theFC),
 						JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
 
 				if (response == JOptionPane.CANCEL_OPTION){
-					Logger.writeLine("Operation was cancelled by user with no changes made.");
+					_context.info("Operation was cancelled by user with no changes made.");
 				} else {
 					if (response == JOptionPane.YES_OPTION) {
 						actionsInfos.performRenames();
 					} else if (response == JOptionPane.NO_OPTION){
-						Logger.writeLine("Info: User chose not rename the actions.");
+						_context.info("Info: User chose not rename the actions.");
 					} 
 				}
 
@@ -52,19 +59,16 @@ public class RenameActions {
 				String theMsg = "No action necessary. The checker has checked " + actionsInfos.size() + 
 						" elements on the diagram.";
 				
-				JOptionPane.showMessageDialog(null, theMsg, "Rename for " + Logger.elementInfo(theFC), JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, theMsg, "Rename for " + _context.elInfo(theFC), JOptionPane.INFORMATION_MESSAGE);
 			}
 			
-			Logger.writeLine("Rename actions has finished (" + actionsInfos.getNumberOfRenamesNeeded() + " out of " + actionsInfos.size() + " elements required renaming)");
+			_context.debug("Rename actions has finished (" + actionsInfos.getNumberOfRenamesNeeded() + " out of " + actionsInfos.size() + " elements required renaming)");
 		}
 	}
 }
 
 /**
- * Copyright (C) 2016  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #004 10-APR-2016: Re-factored projects into single workspace (F.J.Chadburn)
+ * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
         
     This file is part of SysMLHelperPlugin.
 

@@ -11,6 +11,7 @@ import com.telelogic.rhapsody.core.*;
 
 public class UserInterfaceHelpers {
 
+	/*
 	public static void setLookAndFeel(){
 		
 		try {
@@ -38,7 +39,7 @@ public class UserInterfaceHelpers {
 				| UnsupportedLookAndFeelException e) {
 			Logger.writeLine("Unhandled exception while trying to UIManager.setLookAndFeel");
 			e.printStackTrace();
-		}*/
+		}
 	}
 	
 	public static boolean askAQuestion(
@@ -177,7 +178,7 @@ public class UserInterfaceHelpers {
 		}
 		
 		return theAppID;
-	}
+	}*/
 }
 
 /**

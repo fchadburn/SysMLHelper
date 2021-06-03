@@ -1,9 +1,6 @@
 package functionalanalysisplugin;
 
 import generalhelpers.CreateStructuralElementPanel;
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
-import generalhelpers.StereotypeAndPropertySettings;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -83,21 +80,21 @@ public class CopyActivityDiagramsPanel extends CreateStructuralElementPanel {
 		IRPPackage thePkg = null;
 		
 		if( fromSelectedEl instanceof IRPPackage &&
-				GeneralHelpers.hasStereotypeCalled( 
-						StereotypeAndPropertySettings.getUseCasePackageWorkingStereotype( fromSelectedEl ), 
+				_context.hasStereotypeCalled( 
+						_context.getUseCasePackageWorkingStereotype( fromSelectedEl ), 
 						fromSelectedEl )){
 			
 			thePkg = (IRPPackage) fromSelectedEl;
 			
 		} else if( fromSelectedEl instanceof IRPPackage && 
-				GeneralHelpers.hasStereotypeCalled( 
-						StereotypeAndPropertySettings.getSimulationPackageStereotype( fromSelectedEl ),
+				_context.hasStereotypeCalled( 
+						_context.getSimulationPackageStereotype( fromSelectedEl ),
 						fromSelectedEl )){
 			
 			List<IRPModelElement> theWorkingPkgs = 
-					GeneralHelpers.findElementsWithMetaClassAndStereotype(
+					_context.findElementsWithMetaClassAndStereotype(
 							"Package", 
-							StereotypeAndPropertySettings.getUseCasePackageWorkingStereotype( fromSelectedEl ), 
+							_context.getUseCasePackageWorkingStereotype( fromSelectedEl ), 
 							fromSelectedEl, 
 							0 ); // not recursive
 			
@@ -116,7 +113,7 @@ public class CopyActivityDiagramsPanel extends CreateStructuralElementPanel {
 			for( IRPPackage theNestedPkg : theNestedPkgs ){
 
 				List<IRPModelElement> theDependencies = 
-						GeneralHelpers.findElementsWithMetaClassAndStereotype(
+						_context.findElementsWithMetaClassAndStereotype(
 								"Dependency", "AppliedProfile", theNestedPkg, 0 );
 
 				for (IRPModelElement theDependencyElement : theDependencies) {
@@ -133,8 +130,8 @@ public class CopyActivityDiagramsPanel extends CreateStructuralElementPanel {
 			}
 			
 			if( thePkg == null ){
-				Logger.writeLine("Unable to find working package based on " + 
-						Logger.elementInfo( fromSelectedEl ) );
+				_context.warning( "Unable to find working package based on " + 
+						_context.elInfo( fromSelectedEl ) );
 			}
 		}
 		
@@ -153,7 +150,7 @@ public class CopyActivityDiagramsPanel extends CreateStructuralElementPanel {
 		IRPModelElement theSelectedEl = theRhpApp.getSelectedElement();
 		
 		Set<IRPPackage> thePullFromPkgs = 
-				GeneralHelpers.getPullFromPackage( 
+				_context.getPullFromPackage( 
 						theSelectedEl );
 		
 		List<IRPUseCase> theUseCases = new ArrayList<IRPUseCase>();
@@ -229,11 +226,11 @@ public class CopyActivityDiagramsPanel extends CreateStructuralElementPanel {
 		theBox.add( m_OpenDiagramsCheckBox );
 		
 		boolean isConvertToDetailedADOptionEnabled = 
-				StereotypeAndPropertySettings.getIsConvertToDetailedADOptionEnabled(
+				_context.getIsConvertToDetailedADOptionEnabled(
 						m_ToElement.getProject() );
 		
 		boolean isConvertToDetailedADOptionWantedByDefault = 
-				StereotypeAndPropertySettings.getIsConvertToDetailedADOptionWantedByDefault(
+				_context.getIsConvertToDetailedADOptionWantedByDefault(
 						m_ToElement.getProject() );
 		
 		m_ApplyMoreDetailedADCheckBox = new JCheckBox("Switch toolbars and formatting to more detailed AD ready for conversion?");
@@ -271,8 +268,8 @@ public class CopyActivityDiagramsPanel extends CreateStructuralElementPanel {
 				    	
 				    	List<IRPFlowchart> theFlowcharts = theValue.getFlowcharts();
 				    	
-			    		Logger.writeLine("Copying " + theFlowcharts.size() + " nested ADs for " + 
-			    				Logger.elementInfo(theUseCase) );
+			    		_context.debug("Copying " + theFlowcharts.size() + " nested ADs for " + 
+			    				_context.elInfo(theUseCase) );
 
 				    	for( IRPFlowchart theFlowchart : theFlowcharts ){
 				    		
@@ -290,14 +287,14 @@ public class CopyActivityDiagramsPanel extends CreateStructuralElementPanel {
 				    	
 				    } else if( theValue.getCreateNewButton().isSelected() ){
 				    					    	
-			    		Logger.writeLine( "Create new ADs for " + 
-			    				Logger.elementInfo( theUseCase ) );
+			    		_context.debug( "Create new ADs for " + 
+			    				_context.elInfo( theUseCase ) );
 
-			    		String theUniqueName = GeneralHelpers.determineUniqueNameBasedOn(
+			    		String theUniqueName = _context.determineUniqueNameBasedOn(
 			    				"Working - AD - " + theUseCase.getName(), "ActivityDiagram", m_ToElement );
 			    		
-			    		Logger.writeLine("Creating new AD on " + 
-			    				Logger.elementInfo( m_ToElement ) + " with unique name " + theUniqueName );
+			    		_context.debug("Creating new AD on " + 
+			    				_context.elInfo( m_ToElement ) + " with unique name " + theUniqueName );
 			    		
 			    		IRPFlowchart theNewFlowchart = 
 			    				(IRPFlowchart) m_ToElement.addNewAggr( "ActivityDiagram", theUniqueName );
@@ -305,8 +302,8 @@ public class CopyActivityDiagramsPanel extends CreateStructuralElementPanel {
 			    		IRPDependency theDependency = theNewFlowchart.addDependencyTo( theUseCase );
 			    		theDependency.changeTo( "Refinement" );
 			    		
-			    		Logger.writeLine( "A " + Logger.elementInfo( theDependency ) + " from " + Logger.elementInfo( theNewFlowchart ) + 
-			    				" to " + Logger.elementInfo( theUseCase ) + " has been added to the model." );
+			    		_context.debug( "A " + _context.elInfo( theDependency ) + " from " + _context.elInfo( theNewFlowchart ) + 
+			    				" to " + _context.elInfo( theUseCase ) + " has been added to the model." );
 			    		
 			    		AddNoteTo( theNewFlowchart );
 
@@ -338,10 +335,10 @@ public class CopyActivityDiagramsPanel extends CreateStructuralElementPanel {
 					m_ToElement.highLightElement();
 			    }
 			} else {
-				Logger.writeLine("Error in CreateNewActorPanel.performAction, checkValidity returned false");
+				_context.error( "Error in CreateNewActorPanel.performAction, checkValidity returned false" );
 			}	
 		} catch (Exception e) {
-			Logger.writeLine("Error in CopyActivityDiagramsPanel.performAction, unhandled exception was detected, e=" + e.getMessage());
+			_context.error( "Error in CopyActivityDiagramsPanel.performAction, unhandled exception was detected, e=" + e.getMessage() );
 		}
 	}
 	
@@ -404,11 +401,11 @@ public class CopyActivityDiagramsPanel extends CreateStructuralElementPanel {
 			IRPFlowchart theFlowchart,
 			boolean isSwitchToDetailedAD ) {
 		
-		String theUniqueName = GeneralHelpers.determineUniqueNameBasedOn(
+		String theUniqueName = _context.determineUniqueNameBasedOn(
 				"Working - " + theFlowchart.getName(), "ActivityDiagram", toNewOwner);
 		
-		Logger.writeLine("Cloned " + Logger.elementInfo(theFlowchart) + " to " + 
-				Logger.elementInfo(toNewOwner) + " with unique name " + theUniqueName);
+		_context.debug("Cloned " + _context.elInfo(theFlowchart) + " to " + 
+				_context.elInfo(toNewOwner) + " with unique name " + theUniqueName);
 		
 		IRPFlowchart theNewFlowchart = 
 				(IRPFlowchart) theFlowchart.clone( theUniqueName, toNewOwner );
@@ -418,8 +415,8 @@ public class CopyActivityDiagramsPanel extends CreateStructuralElementPanel {
 		
 		theNewFlowchart.setIsAnalysisOnly( 1 ); // to allow call op parameter sync-ing
 		
-		Logger.writeLine(theDependency, "was added between " + Logger.elementInfo( theNewFlowchart ) + 
-				" and " + Logger.elementInfo( theFlowchart ) );
+		_context.debug( _context.elInfo( theDependency ) + " was added between " + 
+				_context.elInfo( theNewFlowchart ) + " and " + _context.elInfo( theFlowchart ) );
 		
 		AddNoteTo( theNewFlowchart );
 		
@@ -445,22 +442,7 @@ public class CopyActivityDiagramsPanel extends CreateStructuralElementPanel {
 }
 
 /**
- * Copyright (C) 2016  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #026 31-MAY-2016: Add dialog to allow user to choose which Activity Diagrams to synch (F.J.Chadburn)
-    #027 31-MAY-2016: Add new menu to launch dialog to copy Activity Diagrams (F.J.Chadburn)
-    #035 15-JUN-2016: New panel to configure requirements package naming and gateway set-up (F.J.Chadburn)
-    #045 03-JUL-2016: Fix CopyActivityDiagramsPanel capability (F.J.Chadburn)
-    #047 06-JUL-2016: Tweaked properties and added options to switch to MoreDetailedAD automatically (F.J.Chadburn)
-    #057 13-JUL-2016: Enhanced Copy AD panel to list use cases and give a create new option (F.J.Chadburn)
-    #093 23-AUG-2016: Added isPopulateOptionHidden tag to allow hiding of the populate check-box on dialogs (F.J.Chadburn)
-    #122 25-NOV-2016: Scroll-bar added to Copy AD dialog to enable it to scale to large number of ADs (F.J.Chadburn)
-    #128 25-NOV-2016: Improved usability/speed of Copy AD dialog by providing user choice to open diagrams (F.J.Chadburn)
-    #143 18-DEC-2016: Add separate tag to enable/disable conversion to detailed option in Copy AD dialog (F.J.Chadburn)
-    #244 11-OCT-2017: Default ADs to Analysis mode to better support call operation parameter sync (F.J.Chadburn)
-    #252 29-MAY-2019: Implement generic features for profile/settings loading (F.J.Chadburn)
-    #256 29-MAY-2019: Rewrite to Java Swing dialog launching to make thread safe between versions (F.J.Chadburn)
+ * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

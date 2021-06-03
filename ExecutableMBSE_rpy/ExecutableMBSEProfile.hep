@@ -1,9 +1,9 @@
 [Helpers]
-numberOfElements=72
+numberOfElements=73
 
 #REM: Definition of the plug-in
 name1=InvokeExecutableMBSEHelper
-JavaMainClass1=executablembse.ExecutableMBSE_RPUserPlugin
+JavaMainClass1=com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_RPUserPlugin
 JavaClassPath1=$OMROOT\Profiles\SysMLHelper\bin
 isPlugin1=1
 isVisible1=0
@@ -560,11 +560,15 @@ applicableTo72=13 Reqts Analysis - Requirement Package,Package
 isVisible72=1
 DLLServerCompatible72=1
 
-#REM Copyright (C) 2018-2020  MBSE Training and Consulting Limited (www.executablembse.com)
-#REM
-#REM Change history:
-#REM #021 30-MAY-2016: Added Copyright/History statements to the hep files (F.J.Chadburn)
-#REM #266 07-DEC-2020: Add initial support for CVS export & switching master of requirements to DOORS NG (F.J.Chadburn)
+#REM: Add pop-up menu
+name73=MBSE Method: General Utilities\Populate parts
+isPluginCommand73=1
+command73=InvokeExecutableMBSEHelper
+applicableTo73=Object,Class,System Context
+isVisible73=1
+DLLServerCompatible73=1
+
+#REM Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 #REM
 #REM This file is part of SysMLHelperPlugin.
 #REM

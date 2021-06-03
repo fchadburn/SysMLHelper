@@ -3,14 +3,11 @@ package functionalanalysisplugin;
 import java.util.ArrayList;
 import java.util.List;
 
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
-import generalhelpers.StereotypeAndPropertySettings;
-import generalhelpers.UserInterfaceHelpers;
-
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 
+import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
 public class ActorMappingInfo {
@@ -21,22 +18,26 @@ public class ActorMappingInfo {
 	private JCheckBox m_ActorCheckBox;
 	private JTextField m_ActorNameTextField;
 	private IRPActor m_SourceActor = null;
-	private IRPProject m_Project = null;
 	
+	private ExecutableMBSE_Context _context;
+	FunctionalAnalysisSettings _settings;
+
 	public ActorMappingInfo(
 			RhapsodyComboBox theRhapsodyComboBox,
 			JCheckBox theActorCheckBox, 
 			JTextField theActorName,
 			IRPActor theSourceActor,
-			IRPProject theProject) {
+			ExecutableMBSE_Context context ) {
 		
 		super();
 		
+		_context = context;
+		_settings = new FunctionalAnalysisSettings(_context);
+
 		this.m_InheritedFromComboBox = theRhapsodyComboBox;
 		this.m_ActorCheckBox = theActorCheckBox;
 		this.m_ActorNameTextField = theActorName;
 		this.m_SourceActor = theSourceActor;
-		this.m_Project = theProject;
 	}
 	
 	public JTextField getTextField(){
@@ -73,21 +74,21 @@ public class ActorMappingInfo {
 		String theDesiredName;
 		
 		if( theBlockName.isEmpty() ){
-			theDesiredName = GeneralHelpers.toLegalClassName( theOriginalActorName );
+			theDesiredName = _context.toLegalClassName( theOriginalActorName );
 		} else {
-			theDesiredName = GeneralHelpers.toLegalClassName( theOriginalActorName ) + "_" + theBlockName;
+			theDesiredName = _context.toLegalClassName( theOriginalActorName ) + "_" + theBlockName;
 		}
 		
-		String theProposedActorName = GeneralHelpers.determineUniqueNameBasedOn( 
+		String theProposedActorName = _context.determineUniqueNameBasedOn( 
 				theDesiredName, 
 				"Actor", 
-				m_Project );
+				_context.get_rhpPrj() );
 		
 		m_ActorNameTextField.setText( theProposedActorName );
 	}
 	
 	@SuppressWarnings("unchecked")
-	static IRPLink getExistingLinkBetweenBaseClassifiersOf(
+	public IRPLink getExistingLinkBetweenBaseClassifiersOf(
 			IRPClassifier theClassifier, 
 			IRPClassifier andTheClassifier ){
 		
@@ -108,13 +109,14 @@ public class ActorMappingInfo {
 			theSourcesBases.add( theClassifier );
 			theSourcesBases.addAll( theClassifier.getBaseClassifiers().toList() );
 			
+			
 			List<IRPClass> theBuildingBlocks = 
-					FunctionalAnalysisSettings.getBuildingBlocks( 
+					_settings.getBuildingBlocks( 
 							(IRPPackage) theFAPackage );
 
 			for( IRPClass theBuildingBlock : theBuildingBlocks ){
 				
-				Logger.writeLine("Found theBuildingBlock: " + Logger.elementInfo( theBuildingBlock ) );
+				_context.debug("Found theBuildingBlock: " + _context.elInfo( theBuildingBlock ) );
 				
 				List<IRPLink> theLinks = theBuildingBlock.getLinks().toList();
 			
@@ -137,8 +139,8 @@ public class ActorMappingInfo {
 							( theSourcesBases.contains( toClassifier ) &&
 							  theOtherEndsBases.contains( fromClassifier ) ) ){
 							
-							Logger.writeLine("Found that " + Logger.elementInfo( fromClassifier ) 
-									+ " is already linked to " + Logger.elementInfo( toClassifier ) );
+							_context.debug("Found that " + _context.elInfo( fromClassifier ) 
+									+ " is already linked to " + _context.elInfo( toClassifier ) );
 							
 							theExistingLink = theLink;
 							isLinkFoundCount++;
@@ -149,7 +151,7 @@ public class ActorMappingInfo {
 		}
 		
 		if( isLinkFoundCount > 1 ){
-			Logger.writeLine("Warning in getExistingLinkBetweenBaseClassifiersOf, there are " + isLinkFoundCount );
+			_context.warning("Warning in getExistingLinkBetweenBaseClassifiersOf, there are " + isLinkFoundCount );
 		}
 		
 		return theExistingLink;
@@ -166,7 +168,7 @@ public class ActorMappingInfo {
 			IRPProject theProject = theAssemblyBlock.getProject();
 			
 			boolean isInheritanceAllowed = 
-					StereotypeAndPropertySettings.getIsAllowInheritanceChoices( 
+					_context.getIsAllowInheritanceChoices( 
 							theAssemblyBlock );
 
 			String theLegalActorName = getName().replaceAll(" ", "");
@@ -189,7 +191,7 @@ public class ActorMappingInfo {
 				if( theOtherClass instanceof IRPClass ){
 					
 					boolean isTestDriver = 
-							GeneralHelpers.hasStereotypeCalled( 
+							_context.hasStereotypeCalled( 
 									"TestDriver", theOtherClass );
 					
 					if( !isTestDriver && 
@@ -198,22 +200,22 @@ public class ActorMappingInfo {
 
 						theConnectedToPart = thePart;
 
-						Logger.writeLine( theConnectedToPart, "was found to connect the actors to, and is typed by " + 
-								Logger.elementInfo( connectedToBlock ) );
+						_context.debug( _context.elInfo( theConnectedToPart ) + " was found to connect the actors to, and is typed by " + 
+								_context.elInfo( connectedToBlock ) );
 
 					} else if ( isTestDriver ){
 
 						theTesterPart = thePart;
 						theTesterBlock = theOtherClass;
 
-						Logger.writeLine( theTesterPart, "was found as the test driver, and is typed by " + 
-								Logger.elementInfo( theTesterBlock ) );
+						_context.debug( _context.elInfo( theTesterPart ) + " was found as the test driver, and is typed by " + 
+								_context.elInfo( theTesterBlock ) );
 					}
 				}				
 			}
 
 			IRPPackage thePackageForActor = 
-					FunctionalAnalysisSettings.getPackageForActorsAndTest(
+					_settings.getPackageForActorsAndTest(
 							theProject );
 
 			IRPActor theActor = thePackageForActor.addActor( theLegalActorName );
@@ -244,14 +246,14 @@ public class ActorMappingInfo {
 					if( theTestbench != null ){
 						theActor.addGeneralization( theTestbench );
 					} else {
-						Logger.writeLine("Error: Unable to find Actor with name Testbench");
+						_context.error("Error: Unable to find Actor with name Testbench");
 					}
 				}
 
 			} else {
 
 				IRPStereotype theTestBenchStereotype =
-						StereotypeAndPropertySettings.getStereotypeForTestbench( 
+						_context.getStereotypeForTestbench( 
 								theActor );
 						
 				if( theTestBenchStereotype != null ){
@@ -269,8 +271,8 @@ public class ActorMappingInfo {
 
 			if( theTesterBlock == null ){
 
-				UserInterfaceHelpers.showWarningDialog(
-						"A new Actor part called " + theActorPart.getName() + " was added to " + Logger.elementInfo( theAssemblyBlock ) + ". \n" +
+				UserInterfaceHelper.showWarningDialog(
+						"A new Actor part called " + theActorPart.getName() + " was added to " + _context.elInfo( theAssemblyBlock ) + ". \n" +
 						"However, no TestDriver part was found hence skipping the creation of links to this. In future, you \n" +
 						"may want to consider using the FullSim structure to get the benefits of test driver creation. " );
 			} else {
@@ -281,10 +283,10 @@ public class ActorMappingInfo {
 						theActorPart );
 			}
 
-			Logger.info( "Finishing adding part connected to actor" );
+			_context.info( "Finishing adding part connected to actor" );
 
 		} else {
-			Logger.info( "Not selected" );
+			_context.info( "Not selected" );
 		}
 		
 		return theActorPart;
@@ -307,9 +309,9 @@ public class ActorMappingInfo {
 		
 		if( existingLinkConnectingTesterToActor != null ){
 			
-			Logger.writeLine( "There are existing ports between " + 
-					Logger.elementInfo( theTesterBlock ) + " and " + 
-					Logger.elementInfo( theActor ) );
+			_context.debug( "There are existing ports between " + 
+					_context.elInfo( theTesterBlock ) + " and " + 
+					_context.elInfo( theActor ) );
 		
 			IRPPort fromPort = existingLinkConnectingTesterToActor.getFromPort();
 			IRPPort toPort = existingLinkConnectingTesterToActor.getToPort();
@@ -324,9 +326,9 @@ public class ActorMappingInfo {
 			
 		} else {
 
-			Logger.writeLine( "Creating a new connector between " + 
-					Logger.elementInfo( theTesterBlock ) + " and " + 
-					Logger.elementInfo( theActor ) );
+			_context.info( "Creating a new connector between " + 
+					_context.elInfo( theTesterBlock ) + " and " + 
+					_context.elInfo( theActor ) );
 
 			try {
 				// and connect actor to the TestDriver block
@@ -337,7 +339,7 @@ public class ActorMappingInfo {
 						(IRPPort) theTesterBlock.addNewAggr(
 								"Port", "p" + theActor.getName() );
 			} catch (Exception e) {
-				Logger.writeLine("Exception while trying to add ports");
+				_context.error("Exception while trying to add ports");
 			}
 		}
 		
@@ -352,7 +354,7 @@ public class ActorMappingInfo {
 		theTesterLink.changeTo("connector");
 	}
 
-	static public void connectActorPartWithBlockPartIn(
+	public void connectActorPartWithBlockPartIn(
 			IRPClass theAssemblyBlock,
 			IRPInstance theConnectedToPart,
 			IRPInstance theActorPart ){
@@ -369,8 +371,8 @@ public class ActorMappingInfo {
 		
 		if( existingLinkConnectingBlockToActor != null ){
 			
-			Logger.writeLine( "There is an existing connector between " + 
-					Logger.elementInfo( connectedToBlock ) + " and " + Logger.elementInfo( theActor ) );
+			_context.debug( "There is an existing connector between " + 
+					_context.elInfo( connectedToBlock ) + " and " + _context.elInfo( theActor ) );
 		
 			IRPPort fromPort = existingLinkConnectingBlockToActor.getFromPort();
 			IRPPort toPort = existingLinkConnectingBlockToActor.getToPort();
@@ -384,16 +386,16 @@ public class ActorMappingInfo {
 			}	
 		} else {
 
-			Logger.writeLine( "Creating a new connector between " + 
-					Logger.elementInfo( connectedToBlock ) + " and " + 
-					Logger.elementInfo( theActor ) );
+			_context.info( "Creating a new connector between " + 
+					_context.elInfo( connectedToBlock ) + " and " + 
+					_context.elInfo( theActor ) );
 
 			String theActorPortName = 
-					GeneralHelpers.determineUniqueNameBasedOn(
+					_context.determineUniqueNameBasedOn(
 							"p" + connectedToBlock.getName() , "Port", theActor);
 
-			Logger.writeLine("Attempting to create port called " + 
-					theActorPortName + " owned by " + Logger.elementInfo( theActor ));
+			_context.debug("Attempting to create port called " + 
+					theActorPortName + " owned by " + _context.elInfo( theActor ));
 
 			// and connect actor to the LogicalSystem block
 			theActorToSystemPort = 
@@ -401,19 +403,19 @@ public class ActorMappingInfo {
 							"Port", theActorPortName);
 
 			String theSystemPortName = 
-					GeneralHelpers.determineUniqueNameBasedOn(
+					_context.determineUniqueNameBasedOn(
 							"p" + theActor.getName() , "Port", connectedToBlock);
 
-			Logger.writeLine( "Attempting to create port called " + 
+			_context.debug( "Attempting to create port called " + 
 					theSystemPortName + " owned by " + 
-					Logger.elementInfo( connectedToBlock ) );
+					_context.elInfo( connectedToBlock ) );
 
 			try {
 				theSystemToActorPort = 
 						(IRPPort) connectedToBlock.addNewAggr(
 								"Port", theSystemPortName );	
 			} catch (Exception e) {
-				Logger.writeLine("Exception while trying to create system to actor port");
+				_context.error("Exception while trying to create system to actor port");
 			}			
 		}
 		
@@ -429,27 +431,13 @@ public class ActorMappingInfo {
 			theLogicalSystemLink.changeTo("connector");
 			
 		} catch (Exception e) {
-			Logger.writeLine("Exception while trying to addLink");
+			_context.error("Exception while trying to addLink");
 		}
 	}
 }
 
 /**
- * Copyright (C) 2016-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #006 02-MAY-2016: Add FunctionalAnalysisPkg helper support (F.J.Chadburn)
-    #023 30-MAY-2016: Added form to support validation checks for analysis block hierarchy creation (F.J.Chadburn) 
-    #025 31-MAY-2016: Add new menu and dialog to add a new actor to package under development (F.J.Chadburn)
-    #106 03-NOV-2016: Ease usage by renaming UsageDomain block to SystemAssembly and moving up one package (F.J.Chadburn)
-    #108 03-NOV-2016: Added tag for packageForActorsAndTest to FunctionalAnalysisPkg settings (F.J.Chadburn)
-    #120 25-NOV-2016: Enable TestDriver inheritance in the FullSim block creation dialog (F.J.Chadburn)
-    #126 25-NOV-2016: Fixes to CreateNewActorPanel to cope better when multiple blocks are in play (F.J.Chadburn)
-    #135 02-DEC-2016: Avoid port proliferation in inheritance tree for actors/system (F.J.Chadburn)
-    #149 18-DEC-2016: Improve robustness to allow actor part creation if no TestDriver is present (F.J.Chadburn)
-    #187 29-MAY-2017: Provide option to re-create «AutoShow» sequence diagram when adding new actor (F.J.Chadburn)
-    #230 20-SEP-2017: Initial alpha trial for create test case script from a sequence diagram (F.J.Chadburn)
-    #252 29-MAY-2019: Implement generic features for profile/settings loading (F.J.Chadburn)
+ * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

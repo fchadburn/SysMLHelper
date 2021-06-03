@@ -3,6 +3,7 @@ package requirementsanalysisplugin;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
  
 public class ActionList extends ArrayList<ActionInfo> {
@@ -11,8 +12,11 @@ public class ActionList extends ArrayList<ActionInfo> {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	ActionList(IRPActivityDiagram theAD){
+		
+	ActionList(
+			IRPActivityDiagram theAD,
+			ExecutableMBSE_Context context ){
+		
 		super();
 				
 		@SuppressWarnings("unchecked")
@@ -20,8 +24,8 @@ public class ActionList extends ArrayList<ActionInfo> {
 		
 		for (IRPModelElement theEl : candidateEls) {
 			
-			if( ActionInfo.isTraceabilityNeededFor( theEl )){
-				this.add( new ActionInfo( theEl ) );
+			if( ActionInfo.isTraceabilityNeededFor( theEl, context )){
+				this.add( new ActionInfo( theEl, context ) );
 			}
 		}
 	}
@@ -144,11 +148,7 @@ public class ActionList extends ArrayList<ActionInfo> {
 }
 
 /**
- * Copyright (C) 2016-2017  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #004 10-APR-2016: Re-factored projects into single workspace (F.J.Chadburn)
-    #225 25-AUG-2017: Add check that pre-conditions with text must trace to at least one requirement (F.J.Chadburn)
+ * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

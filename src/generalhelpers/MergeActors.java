@@ -48,8 +48,8 @@ public class MergeActors {
      		   if( !theAssocRole.getOfClass().equals( ownedByElement ) ){
      			   
      			   Logger.writeLine("Error in getExistingAssociationEnd, expected ofClass to be " + 
-     					   Logger.elementInfo( ownedByElement ) + " not " + 
-     					   Logger.elementInfo( theAssocRole.getOfClass() ) );
+     					   Logger.elInfo( ownedByElement ) + " not " + 
+     					   Logger.elInfo( theAssocRole.getOfClass() ) );
      		   } else {
      			   
      			   IRPClassifier theOtherClass = theAssocRole.getOtherClass();
@@ -134,24 +134,24 @@ public class MergeActors {
 
 				Logger.writeLine( 
 						"start x=" + theEdgeInfo.getEndX() + ", y=" + theEdgeInfo.getEndY() + 
-						" is a " + Logger.elementInfo( theSrcEl ) +
+						" is a " + Logger.elInfo( theSrcEl ) +
 						" end x=" + theEdgeInfo.getEndX() + ", y=" +theEdgeInfo.getEndY() +
-						" is a " + Logger.elementInfo( theTgtEl ) );
+						" is a " + Logger.elInfo( theTgtEl ) );
 									
 				GraphNodeInfo theSrcNodeInfo = new GraphNodeInfo( theSrcGraphNode );
 				GraphNodeInfo theTgtNodeInfo = new GraphNodeInfo( theTgtGraphNode );
 
-				Logger.writeLine("There is a source " + Logger.elementInfo( theSrcEl ) + 
+				Logger.writeLine("There is a source " + Logger.elInfo( theSrcEl ) + 
 						" at x=" + theSrcNodeInfo.getTopLeftX() + ", y=" + theSrcNodeInfo.getTopLeftY() );
 				
-				Logger.writeLine("There is a target " + Logger.elementInfo( theTgtEl ) + 
+				Logger.writeLine("There is a target " + Logger.elInfo( theTgtEl ) + 
 						" at x=" + theTgtNodeInfo.getTopLeftX() + ", y=" + theTgtNodeInfo.getTopLeftY() );
 
 				IRPDiagram theDiagram = theGraphEdge.getDiagram();
 				
 				IRPGraphNode theNewNode = theOldToNewGraphNode.get( theSrcGraphNode );
 				
-				Logger.writeLine("Adding " + Logger.elementInfo( theNewRelation ) + " to " + Logger.elementInfo( theDiagram ) ); 
+				Logger.writeLine("Adding " + Logger.elInfo( theNewRelation ) + " to " + Logger.elInfo( theDiagram ) ); 
 				
 				@SuppressWarnings("unused")
 				IRPGraphEdge theNewEdge = theDiagram.addNewEdgeForElement(
@@ -203,7 +203,7 @@ public class MergeActors {
 						GraphNodeInfo theNodeInfo = new GraphNodeInfo( 
 								theOldGraphNode );
 
-						Logger.writeLine("There is a source " + Logger.elementInfo( theSourceModelObject ) + 
+						Logger.writeLine("There is a source " + Logger.elInfo( theSourceModelObject ) + 
 								" at x=" + theNodeInfo.getTopLeftX() + ", y=" + theNodeInfo.getTopLeftY() +
 								" which will be replaced with a graph node for " + theNewActor.getFullPathName() );
 						
@@ -246,12 +246,12 @@ public class MergeActors {
 
 					if( theOfClass.equals( theNewActor ) ){
 						
-						Logger.writeLine("Error, Ignoring " + Logger.elementInfo( theOldRelation ) + 
+						Logger.writeLine("Error, Ignoring " + Logger.elInfo( theOldRelation ) + 
 								" as it involves the  " + theNewActor.getFullPathName() + " as theOfClass ");
 						
 					} else if( theOtherClass.equals( theNewActor )){
 
-						Logger.writeLine("Error, Ignoring " + Logger.elementInfo( theOldRelation ) + 
+						Logger.writeLine("Error, Ignoring " + Logger.elInfo( theOldRelation ) + 
 								" as it involves the  " + theNewActor.getFullPathName() + " as theOtherClass ");
 
 					} else {
@@ -278,7 +278,7 @@ public class MergeActors {
 			IRPRelation basedOnOldRelation ){
 		
 		Logger.writeLine("getExistingOrCreateNewAssocationEndTo was invoked for actor '" + theNewActor.getFullPathName() + 
-				"' based on " + Logger.elementInfo( basedOnOldRelation ) + " owned by " + 
+				"' based on " + Logger.elInfo( basedOnOldRelation ) + " owned by " + 
 				basedOnOldRelation.getOwner().getFullPathName() );
 
 		IRPRelation theNewAssociationEnd = null;

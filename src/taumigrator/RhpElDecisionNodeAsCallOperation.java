@@ -89,7 +89,7 @@ public class RhpElDecisionNodeAsCallOperation extends RhpElGraphNode {
 		Logger.info("createRhpEl invoked for " + getString() + " owned by " + parent.getString() );
 		Logger.info("DecisionNode _text = " + _text );
 
-		Logger.info( "The parent is " + Logger.elementInfo( parent.get_rhpEl() ) );
+		Logger.info( "The parent is " + Logger.elInfo( parent.get_rhpEl() ) );
 		IRPFlowchart theActivityDiagram = (IRPFlowchart) parent.get_rhpEl();
 		IRPActivityDiagram theActivityDiagramGE = theActivityDiagram.getFlowchartDiagram();
 		IRPState theRootState = theActivityDiagram.getRootState();
@@ -120,7 +120,7 @@ public class RhpElDecisionNodeAsCallOperation extends RhpElGraphNode {
 				theAttributeName, "Attribute" );
 
 		if( existingAttribute != null ){
-			Logger.info("The attribute for '" + _text + " already exists = " + Logger.elementInfo( existingAttribute ) );
+			Logger.info("The attribute for '" + _text + " already exists = " + Logger.elInfo( existingAttribute ) );
 			
 			_attribute = (IRPAttribute) existingAttribute;
 			

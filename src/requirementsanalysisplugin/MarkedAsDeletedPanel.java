@@ -22,9 +22,7 @@ import javax.swing.ScrollPaneConstants;
 import com.telelogic.rhapsody.core.*;
 
 import generalhelpers.CreateStructuralElementPanel;
-import generalhelpers.Logger;
 import generalhelpers.NamedElementMap;
-import generalhelpers.UserInterfaceHelpers;
 
 public class MarkedAsDeletedPanel extends CreateStructuralElementPanel{
 
@@ -35,10 +33,7 @@ public class MarkedAsDeletedPanel extends CreateStructuralElementPanel{
 	private List<IRPModelElement> m_FoundReqts = new ArrayList<IRPModelElement>();
 	
 	public static void launchThePanel(
-			final List<IRPModelElement> theSelectedEls ){
-		
-		final String theAppID = 
-				UserInterfaceHelpers.getAppIDIfSingleRhpRunningAndWarnUserIfNot();
+			final String theAppID ){
 
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 
@@ -47,22 +42,14 @@ public class MarkedAsDeletedPanel extends CreateStructuralElementPanel{
 				
 				JFrame.setDefaultLookAndFeelDecorated( true );
 
-				String theCaption;
-				
-				if( theSelectedEls.size()==1 ){
-					theCaption = "Delete the 'Deleted_At_High_Level' tagged requirements for " + 
-							Logger.elementInfo( theSelectedEls.get( 0 ) );
-				} else {
-					theCaption = "Delete the 'Deleted_At_High_Level' tagged requirements for " + 
-							theSelectedEls.size() + " selected elements";
-				}
+				String theCaption = "Delete the 'Deleted_At_High_Level' tagged requirements";
 				
 				JFrame frame = new JFrame( theCaption );
 				
 				frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 
 				MarkedAsDeletedPanel thePanel = 
-						new MarkedAsDeletedPanel( theSelectedEls, theAppID );
+						new MarkedAsDeletedPanel( theAppID );
 
 				frame.setContentPane( thePanel );
 				frame.pack();
@@ -72,11 +59,12 @@ public class MarkedAsDeletedPanel extends CreateStructuralElementPanel{
 		});
 	}
 	
-	MarkedAsDeletedPanel(
-			List<IRPModelElement> theSelectedEls,
+	public MarkedAsDeletedPanel(
 			String theAppID ){
 		
 		super( theAppID );
+		
+		List<IRPModelElement> theSelectedEls = _context.getSelectedElements();
 		
 		setLayout( new BorderLayout(10,10) );
 		setBorder( BorderFactory.createEmptyBorder( 10, 10, 10, 10 ) );
@@ -129,8 +117,8 @@ public class MarkedAsDeletedPanel extends CreateStructuralElementPanel{
 			            } else {
 			            	theElement.highLightElement();
 			            }   
-			            
-			            Logger.writeLine( theElement, "was double-clicked" );
+			             
+			            _context.debug( _context.elInfo( theElement ) + " was double-clicked" );
 			        }
 			    }
 			});
@@ -140,7 +128,9 @@ public class MarkedAsDeletedPanel extends CreateStructuralElementPanel{
 			
 		    theScrollPane.setVerticalScrollBarPolicy( ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		    
-		    JLabel theStartLabel = new JLabel("The following " + m_FoundReqts.size() + " requirements have the tag '" + "Deleted_At_High_Level" + "' applied:\n");
+		    JLabel theStartLabel = new JLabel("The following " + m_FoundReqts.size() + 
+		    		" requirements have the tag '" + "Deleted_At_High_Level" + "' applied:\n");
+		    
 		    theStartLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 			theBox.add( theStartLabel );
 			theBox.add( theScrollPane );
@@ -154,7 +144,7 @@ public class MarkedAsDeletedPanel extends CreateStructuralElementPanel{
 		add( createOKCancelPanel(), BorderLayout.PAGE_END );
 	}
 	
-	public static Set<IRPModelElement> buildSetOfRequirementsBasedOn(
+	public Set<IRPModelElement> buildSetOfRequirementsBasedOn(
 			List<IRPModelElement> theSelectedEls ) {
 		
 		Set<IRPModelElement> theReqts = new HashSet<IRPModelElement>();
@@ -178,7 +168,7 @@ public class MarkedAsDeletedPanel extends CreateStructuralElementPanel{
 		return theReqts;
 	}
 	
-	public static List<IRPModelElement> filterTaggedRequirementsBasedOn(
+	public List<IRPModelElement> filterTaggedRequirementsBasedOn(
 			Set<IRPModelElement> theCandidateSet,
 			String andTagName ){
 		
@@ -207,23 +197,19 @@ public class MarkedAsDeletedPanel extends CreateStructuralElementPanel{
 		
 			for( IRPModelElement theReqtToDelete : m_FoundReqts ){
 				
-				if( theReqtToDelete != null && theReqtToDelete instanceof IRPModelElement ){
-					Logger.writeLine("Deleting " + Logger.elementInfo( theReqtToDelete ) + " from project");
+				if( theReqtToDelete != null && 
+						theReqtToDelete instanceof IRPModelElement ){
+					
+					_context.info( "Deleting " + _context.elInfo( theReqtToDelete ) + " from project" );
 					theReqtToDelete.deleteFromProject();	
 				}				
 			}
 		}
-		
 	}
-
 }
 
 /**
- * Copyright (C) 2017-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #155 25-JAN-2017: Added new panel to find and delete Gateway Deleted_At_High_Level req'ts with Rhp 8.2 (F.J.Chadburn)
-    #256 29-MAY-2019: Rewrite to Java Swing dialog launching to make thread safe between versions (F.J.Chadburn)
+ * Copyright (C) 2017-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

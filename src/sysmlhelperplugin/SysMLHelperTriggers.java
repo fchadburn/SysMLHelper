@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 
 import requirementsanalysisplugin.NestedActivityDiagram;
 
+import com.mbsetraining.sysmlhelper.executablembse.ElementMover;
 import com.telelogic.rhapsody.core.*;
 
 public class SysMLHelperTriggers extends RPApplicationListener {
@@ -51,7 +52,7 @@ public class SysMLHelperTriggers extends RPApplicationListener {
 					modelElement instanceof IRPClass && 
 					GeneralHelpers.hasStereotypeCalled( "Interface", modelElement )){
 				
-				Logger.writeLine("Interface=" + Logger.elementInfo(modelElement));
+				Logger.writeLine("Interface=" + Logger.elInfo(modelElement));
 				afterAddForInterface( modelElement );
 										
 			} else if (modelElement != null && 
@@ -67,7 +68,7 @@ public class SysMLHelperTriggers extends RPApplicationListener {
 			}
 
 		} catch( Exception e ){
-			Logger.writeLine("Error in SysMLHelperTriggers.afterAddElement, unhandled exception was detected related to " + Logger.elementInfo(modelElement));
+			Logger.writeLine("Error in SysMLHelperTriggers.afterAddElement, unhandled exception was detected related to " + Logger.elInfo(modelElement));
 		}
 
 		return doDefault;

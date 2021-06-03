@@ -43,13 +43,13 @@ public class Logger {
 		String elementInfo = "Error (Null Element)";
 		
 		if (aboutTheEl != null){
-			elementInfo = elementInfo( aboutTheEl );
+			elementInfo = elInfo( aboutTheEl );
 		} 
 		
 		RequirementsAnalysisPlugin.getRhapsodyApp().writeToOutputWindow("SysMLHelper", elementInfo + " " + withMsg + "\n");
 	}
 	
-	public static String elementInfo(IRPModelElement forTheEl){
+	public static String elInfo(IRPModelElement forTheEl){
 		
 		String theInfo = "Error (Null Element)";
 		

@@ -1,42 +1,35 @@
 package requirementsanalysisplugin;
 
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
-import generalhelpers.StereotypeAndPropertySettings;
-import generalhelpers.UserInterfaceHelpers;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.swing.JOptionPane;
 
+import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
  
 public class NestedActivityDiagram {
 
 	private final static String m_Prefix = "AD - ";
 	
-	// for test only
-	public static void main(String[] args) {
-		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
-
-		@SuppressWarnings("unchecked")
-		List<IRPModelElement> theSelectedEls = 
-			theRhpApp.getListOfSelectedElements().toList();
-
-		NestedActivityDiagram.createNestedActivityDiagramsFor( theSelectedEls );
+	ExecutableMBSE_Context _context;
+	
+	public NestedActivityDiagram(
+			ExecutableMBSE_Context context ) {
+		_context = context;
 	}
 	
-	public static void renameNestedActivityDiagramsFor(
+	public void renameNestedActivityDiagramsFor(
 			List<IRPModelElement> theSelectedEls){
 		
 		Map<IRPFlowchart, String> theNewNameMappings = new HashMap<IRPFlowchart, String>(); 
 		
 		List<IRPActivityDiagram> theADs = 
-				GeneralHelpers.buildListOfActivityDiagramsFor( theSelectedEls );
+				_context.buildListOfActivityDiagramsFor( theSelectedEls );
 		
-		Logger.info( "There are " + theADs.size() + 
+		_context.info( "There are " + theADs.size() + 
 				" Activity Diagrams nested under the selected list" );
 
 		for( IRPActivityDiagram theAD : theADs ){
@@ -51,8 +44,8 @@ public class NestedActivityDiagram {
 				String thePreferredName = m_Prefix + theUseCaseName;
 				
 				if( theOwner.getName().equals( thePreferredName ) ){
-					Logger.info( "Determined that " + Logger.elementInfo( theOwner ) + 
-							" already matches " + Logger.elementInfo( theOwnersOwner ) );
+					_context.info( "Determined that " + _context.elInfo( theOwner ) + 
+							" already matches " + _context.elInfo( theOwnersOwner ) );
 				} else {
 					theNewNameMappings.put( (IRPFlowchart) theOwner, thePreferredName );	
 				}
@@ -61,7 +54,7 @@ public class NestedActivityDiagram {
 		
 		if( theNewNameMappings.isEmpty() ){
 	
-			UserInterfaceHelpers.showInformationDialog( 
+			UserInterfaceHelper.showInformationDialog( 
 					"Nothing to do. The checker has determined that the " + 
 					theADs.size() + " activity diagrams are correctly named." );
 			
@@ -79,7 +72,7 @@ public class NestedActivityDiagram {
 				if( count > 10 ){
 					theMsg = theMsg + "...\n";
 				} else {
-					theMsg = theMsg + Logger.elementInfo(entry.getKey()) + "\n";
+					theMsg = theMsg + _context.elInfo(entry.getKey()) + "\n";
 				}
 			}
 			
@@ -93,7 +86,7 @@ public class NestedActivityDiagram {
 					JOptionPane.QUESTION_MESSAGE);
 
 			if (response == JOptionPane.CANCEL_OPTION){
-				Logger.writeLine("Operation was cancelled by user with no changes made.");
+				_context.debug("Operation was cancelled by user with no changes made.");
 			} else {
 				if (response == JOptionPane.YES_OPTION) {
 
@@ -103,29 +96,29 @@ public class NestedActivityDiagram {
 					    
 					    try {
 					    	theAD.setName( entry.getValue() );		
-						    Logger.writeLine("Renamed " + Logger.elementInfo( theAD ) + " to " + entry.getValue() );
+						    _context.debug("Renamed " + _context.elInfo( theAD ) + " to " + entry.getValue() );
 						    
 						} catch (Exception e) {
-							Logger.writeLine("Error: Unable to rename " + Logger.elementInfo( theAD ) + " to " + entry.getValue());
+							_context.debug("Error: Unable to rename " + _context.elInfo( theAD ) + " to " + entry.getValue());
 						}			    
 					}
 
 				} else if (response == JOptionPane.NO_OPTION){
-					Logger.writeLine("Info: User chose not rename the actions.");
+					_context.debug("Info: User chose not rename the actions.");
 				} 
 			}
 		}
 	}
 	
-	public static void createNestedActivityDiagramsFor(
+	public void createNestedActivityDiagramsFor(
 			List<IRPModelElement> theElements ){
 		 
 		for( IRPModelElement theElement : theElements ){
 			
 			if( theElement instanceof IRPUseCase ){
 				
-				Logger.info( "Creating a nested Activity Diagram underneath " + 
-						Logger.elementInfo( theElement ) );
+				_context.info( "Creating a nested Activity Diagram underneath " + 
+						_context.elInfo( theElement ) );
 				
 				createNestedActivityDiagram( 
 						(IRPUseCase)theElement, 
@@ -135,7 +128,7 @@ public class NestedActivityDiagram {
 		}
 	}
 	
-	public static void createNestedActivityDiagram(
+	public void createNestedActivityDiagram(
 			IRPClassifier forClassifier, 
 			String withUnadornedName,
 			String basedOnPropertyKey ){
@@ -151,7 +144,7 @@ public class NestedActivityDiagram {
 		
 		while (theAD != null){
 			
-			Logger.warning( Logger.elementInfo( forClassifier ) + " already has a nested activity diagram called " + theName );
+			_context.warning( _context.elInfo( forClassifier ) + " already has a nested activity diagram called " + theName );
 			count++;
 			theName = withUnadornedName + " " + count;
 			theAD = (IRPFlowchart) forClassifier.findNestedElement( theName , "ActivityDiagram" );
@@ -160,12 +153,10 @@ public class NestedActivityDiagram {
 		IRPModelElement theTemplate = null;
 		
 		try {
-			theTemplate = 
-					StereotypeAndPropertySettings.getTemplateForActivityDiagram( 
-							forClassifier,
-							basedOnPropertyKey );
+			theTemplate = _context.getTemplateForActivityDiagram( forClassifier, basedOnPropertyKey );
+			
 		} catch (Exception e) {
-			Logger.writeLine("Exception trying to find template based on property " + basedOnPropertyKey);
+			_context.error("Exception trying to find template based on property " + basedOnPropertyKey);
 		}
 		
 		IRPFlowchart theFlowchart = null;
@@ -174,14 +165,14 @@ public class NestedActivityDiagram {
 			
 			try {
 				theFlowchart = (IRPFlowchart) theTemplate.clone( theName, forClassifier );
-				Logger.writeLine( "the cloned flowchart is " + Logger.elementInfo( theFlowchart ) );
+				_context.debug( "the cloned flowchart is " + _context.elInfo( theFlowchart ) );
 
 			} catch (Exception e) {
-				Logger.writeLine("Exception while cloning");
+				_context.debug("Exception while cloning");
 			}
 
 		} else {
-			Logger.writeLine("Warning, Could not find template so creating fresh AD");
+			_context.debug("Warning, Could not find template so creating fresh AD");
 			theFlowchart = forClassifier.addActivityDiagram();
 			theFlowchart.setName( theName );
 			
@@ -191,7 +182,7 @@ public class NestedActivityDiagram {
 				theStatechart.createGraphics();
 
 			} catch (Exception e) {
-				Logger.writeLine("Exception creating graphics");
+				_context.debug("Exception creating graphics");
 			}
 		}
 		
@@ -206,15 +197,7 @@ public class NestedActivityDiagram {
 }
 
 /**
- * Copyright (C) 2016-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #004 10-APR-2016: Re-factored projects into single workspace (F.J.Chadburn)
-    #080 28-JUL-2016: Added activity diagram name to the create AD dialog for use cases (F.J.Chadburn)
-    #102 03-NOV-2016: Add right-click menu to auto update names of ADs from UC names (F.J.Chadburn)
-    #244 11-OCT-2017: Default ADs to Analysis mode to better support call operation parameter sync (F.J.Chadburn)
-    #252 29-MAY-2019: Implement generic features for profile/settings loading (F.J.Chadburn)
-    #256 29-MAY-2019: Rewrite to Java Swing dialog launching to make thread safe between versions (F.J.Chadburn)
+ * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

@@ -59,7 +59,7 @@ public class RhpElDiagramConnector extends RhpElGraphNode {
 		_rhpEl = null;
 
 		Logger.info("createRhpEl invoked for " + getString() + " owned by " + parent.getString());
-		Logger.info( "The parent is " + Logger.elementInfo( parent.get_rhpEl() ) );			
+		Logger.info( "The parent is " + Logger.elInfo( parent.get_rhpEl() ) );			
 		IRPFlowchart theActivityDiagram = (IRPFlowchart) parent.get_rhpEl();
 		IRPActivityDiagram theActivityDiagramGE = theActivityDiagram.getFlowchartDiagram();
 		IRPState theRootState = theActivityDiagram.getRootState();

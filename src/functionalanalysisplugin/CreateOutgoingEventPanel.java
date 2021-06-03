@@ -1,11 +1,5 @@
 package functionalanalysisplugin;
 
-import executablembse.PortBasedConnector;
-import generalhelpers.ConfigurationSettings;
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
-import generalhelpers.UserInterfaceHelpers;
-
 import java.awt.BorderLayout;
 import java.util.List;
 import java.util.Set;
@@ -18,9 +12,11 @@ import javax.swing.JPanel;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.executablembse.PortBasedConnector;
 import com.telelogic.rhapsody.core.*;
 
-public class CreateOutgoingEventPanel extends CopyOfCreateTracedElementPanel {
+public class CreateOutgoingEventPanel extends CreateTracedElementPanel {
 
 	/**
 	 * 
@@ -33,30 +29,15 @@ public class CreateOutgoingEventPanel extends CopyOfCreateTracedElementPanel {
 	private IRPPackage m_PackageForEvent;
 	private JCheckBox m_SendOperationIsNeededCheckBox;
 	private JCheckBox m_ActiveAgumentNeededCheckBox;
-
-	private ConfigurationSettings m_ConfigSettings;
 	
 	public static void main(String[] args) {
 
 		IRPApplication rhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
-		
-		ConfigurationSettings configSettings = new ConfigurationSettings(
-				rhpApp,
-				rhpApp.activeProject(),
-				"SysMLHelper.properties", 
-				"SysMLHelper_MessagesBundle",
-				"SysMLHelper" );
-		
-		launchThePanel( configSettings );
+		launchThePanel( rhpApp.getApplicationConnectionString() );
 	}
 
 	public static void launchThePanel(
-			final ConfigurationSettings theConfigSettings ){
-
-		final String theAppID = 
-				UserInterfaceHelpers.getAppIDIfSingleRhpRunningAndWarnUserIfNot();
-
-		Logger.writeLine("launchThePanel was invoked");
+			final String theAppID ){
 
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 
@@ -71,8 +52,7 @@ public class CreateOutgoingEventPanel extends CopyOfCreateTracedElementPanel {
 
 				CreateOutgoingEventPanel thePanel = 
 						new CreateOutgoingEventPanel(
-								theAppID,
-								theConfigSettings );
+								theAppID );
 
 				frame.setContentPane( thePanel );
 
@@ -84,15 +64,12 @@ public class CreateOutgoingEventPanel extends CopyOfCreateTracedElementPanel {
 	}
 
 	public CreateOutgoingEventPanel(
-			String theAppID,
-			ConfigurationSettings theConfigSettings ){
+			String theAppID ){
 
 		super( theAppID );
 		
-		m_ConfigSettings = theConfigSettings;
-
 		IRPClass theBuildingBlock = 
-				m_ElementContext.getBuildingBlock();
+				_selectionContext.getBuildingBlock();
 
 		if( theBuildingBlock == null ){
 			
@@ -103,22 +80,22 @@ public class CreateOutgoingEventPanel extends CopyOfCreateTracedElementPanel {
 			
 		} else { // theBuildingBlock != null
 
-			m_PackageForEvent = m_ElementContext.getPkgThatOwnsEventsAndInterfaces();
+			m_PackageForEvent = _selectionContext.getPkgThatOwnsEventsAndInterfaces();
 
 			List<IRPModelElement> theCandidateActors = 
 					getNonElapsedTimeActorsRelatedTo( theBuildingBlock );
 
 			if( theCandidateActors.isEmpty() ){
 
-				UserInterfaceHelpers.showWarningDialog("There are no actor parts to send events to in the " + 
-						Logger.elementInfo(theBuildingBlock) + ". \n\n" +
+				UserInterfaceHelper.showWarningDialog( "There are no actor parts to send events to in the " + 
+						_context.elInfo( theBuildingBlock ) + ". \n\n" +
 						"If you want to send an event then add an actor to the BDD and connect its part using ports. These steps are automated \n" +
-						"by the '" + m_ConfigSettings.getString( "functionalanalysisplugin.AddNewActorToPackageMenu" ) + "' command. ");
+						"by the '" + _context.getString( "functionalanalysisplugin.AddNewActorToPackageMenu" ) + "' command. ");
 
 			} else {
 
 				final IRPModelElement theActorEl = 
-						GeneralHelpers.launchDialogToSelectElement(
+						_context.launchDialogToSelectElement(
 								theCandidateActors, 
 								"Select Actor to send Event to", 
 								true);
@@ -129,43 +106,43 @@ public class CreateOutgoingEventPanel extends CopyOfCreateTracedElementPanel {
 					IRPActor theActor = (IRPActor)theActorEl;
 
 					List<IRPModelElement> theCandidates = 
-							GeneralHelpers.getNonActorOrTestingClassifiersConnectedTo( 
+							_context.getNonActorOrTestingClassifiersConnectedTo( 
 									theActor, 
 									theBuildingBlock );
 
 					if( theCandidates.isEmpty() ){
 
-						UserInterfaceHelpers.showWarningDialog(
-								"The " + Logger.elementInfo( theBuildingBlock ) + 
-								" does not have any connectors that connect the " + Logger.elementInfo(theActor) + " with Blocks.\n\n" +
-								"Fix this and then try again");
+						UserInterfaceHelper.showWarningDialog(
+								"The " + _context.elInfo( theBuildingBlock ) + 
+								" does not have any connectors that connect the " + _context.elInfo(theActor) + 
+								" with Blocks.\n\n" + "Fix this and then try again");
 
 					} else {
 
 						IRPClass theChosenBlock = 
-								m_ElementContext.getBlockUnderDev( 
+								_selectionContext.getBlockUnderDev( 
 										"Which Block is sending the event?" );
 
 						if( theChosenBlock != null ){
 
-							final IRPPort thePort = GeneralHelpers.getPortThatConnects(
+							final IRPPort thePort = _context.getPortThatConnects(
 									(IRPClassifier)theChosenBlock,
 									theActor, 
 									theBuildingBlock );
 
 							if( thePort == null ){
 
-								UserInterfaceHelpers.showWarningDialog(
-										"Unable to find a port that connects " + Logger.elementInfo( theActor ) + " to the " + 
-												Logger.elementInfo( theChosenBlock ) + ". \n" +
+								UserInterfaceHelper.showWarningDialog(
+										"Unable to find a port that connects " + _context.elInfo( theActor ) + " to the " + 
+												_context.elInfo( theChosenBlock ) + ". \n" +
 												"You may want to add the necessary ports and connector to the IBD under " + 
-												Logger.elementInfo( theBuildingBlock ) + " \nbefore trying this." );
+												_context.elInfo( theBuildingBlock ) + " \nbefore trying this." );
 
 								theBuildingBlock.highLightElement();
 
 							} else { // thePort != null
 
-								String theSourceText = GeneralHelpers.getActionTextFrom( m_ElementContext.getSelectedEl() );		
+								String theSourceText = _context.getActionTextFrom( _selectionContext.getSelectedEl() );		
 
 								if( theSourceText.isEmpty() ){
 									theSourceText = m_Tbd;
@@ -173,8 +150,8 @@ public class CreateOutgoingEventPanel extends CopyOfCreateTracedElementPanel {
 
 								createCommonContent(
 										theSourceText, 
-										m_ElementContext.getChosenBlock(), 
-										m_ElementContext.getSelectedReqts(), 
+										_selectionContext.getChosenBlock(), 
+										_selectionContext.getSelectedReqts(), 
 										theActor, 
 										thePort,
 										m_PackageForEvent );
@@ -185,33 +162,10 @@ public class CreateOutgoingEventPanel extends CopyOfCreateTracedElementPanel {
 			}
 		}
 
-		Logger.writeLine( "CreateOutgoingEventPanel constructor called for " + 
-				Logger.elementInfo( m_ElementContext.getSelectedEl() ) );
+		_context.debug( "CreateOutgoingEventPanel constructor called for " + 
+				_context.elInfo( _selectionContext.getSelectedEl() ) );
 
 	}
-
-	//	public CreateOutgoingEventPanel(
-	//			IRPModelElement forSourceModelElement,
-	//			IRPClassifier onTargetBlock,
-	//			Set<IRPRequirement> withReqtsAlsoAdded,
-	//			IRPActor toDestinationActor,
-	//			IRPPort toDestinationActorPort,
-	//			IRPPackage thePackageForEvent ) {
-	//		
-	//		super( forSourceModelElement, withReqtsAlsoAdded, onTargetBlock, onTargetBlock.getProject() );
-	//		
-	//		String theSourceText = m_Tbd;		
-	//		
-	//		Logger.writeLine("CreateOutgoingEventPanel constructor called for " + Logger.elementInfo( forSourceModelElement ));
-	//		
-	//		createCommonContent(
-	//				theSourceText, 
-	//				onTargetBlock, 
-	//				withReqtsAlsoAdded, 
-	//				toDestinationActor, 
-	//				toDestinationActorPort,
-	//				thePackageForEvent );
-	//	}
 
 	private void createCommonContent(
 			String theSourceText,
@@ -229,10 +183,10 @@ public class CreateOutgoingEventPanel extends CopyOfCreateTracedElementPanel {
 		String theActorName = splitActorName[0];
 		String theSourceMinusActor = theSourceText.replaceFirst( "^" + theActorName, "" );
 
-		Logger.writeLine("The source minus actor is '" + theSourceMinusActor + "'");	
+		_context.debug("The source minus actor is '" + theSourceMinusActor + "'");	
 
-		String theProposedName = GeneralHelpers.determineUniqueNameBasedOn( 
-				GeneralHelpers.toMethodName( "reqInform" + theActorName + theSourceMinusActor, 40 ), 
+		String theProposedName = _context.determineUniqueNameBasedOn( 
+				_context.toMethodName( "reqInform" + theActorName + theSourceMinusActor, 40 ), 
 				"Event", 
 				onTargetBlock.getProject() );	
 
@@ -289,63 +243,20 @@ public class CreateOutgoingEventPanel extends CopyOfCreateTracedElementPanel {
 		add( createOKCancelPanel(), BorderLayout.PAGE_END );
 	}
 
-	//	public static void launchThePanel(
-	//			final IRPGraphElement theSourceGraphElement, 
-	//			final IRPModelElement orTheModelElement,
-	//			final Set<IRPRequirement> withReqtsAlsoAdded,
-	//			final IRPProject inProject){
-	//		
-	//		IRPModelElement theContextEl = null;
-	//		
-	//		if( orTheModelElement != null ){
-	//			theContextEl = orTheModelElement;
-	//		} else if( theSourceGraphElement != null ){
-	//			theContextEl = theSourceGraphElement.getModelObject();
-	//		}
-	//
-	//			IRPClass theBuildingBlock = 
-	//					FunctionalAnalysisSettings.getBuildingBlock( theContextEl );
-	//			
-	//			if( theBuildingBlock != null ){
-	//				
-	//				final IRPPackage thePackageForEvent = 
-	//						FunctionalAnalysisSettings.getPkgThatOwnsEventsAndInterfaces( 
-	//								theContextEl );
-	//				
-	//				List<IRPModelElement> theCandidateActors = 
-	//						getNonElapsedTimeActorsRelatedTo( theBuildingBlock );
-	//				
-	//				if( theCandidateActors.isEmpty() ){
-	//					
-	//					ConfigurationSettings theConfigSettings = ConfigurationSettings.getInstance();
-	//					
-	//					UserInterfaceHelpers.showWarningDialog("There are no actor parts to send events to in the " + 
-	//							Logger.elementInfo(theBuildingBlock) + ". \n\n" +
-	//							"If you want to send an event then add an actor to the BDD and connect its part using ports. These steps are automated \n" +
-	//							"by the '" + theConfigSettings.getString( "functionalanalysisplugin.AddNewActorToPackageMenu" ) + "' command. ");
-	//				} else {
-	//					
-	//						}			
-	//					}
-	//				}
-	//			//}
-	//		}
-	//	}
-
 	private void updateNames(){
 		m_SendOperationIsNeededCheckBox.setText(
 				"Add an '" + determineBestInformNameFor(
-						m_ElementContext.getChosenBlock(), 
+						_selectionContext.getChosenBlock(), 
 						m_ChosenNameTextField.getText() ) 
 						+ "' operation that sends the event");
 	}
 
-	private static String determineBestInformNameFor(
+	private String determineBestInformNameFor(
 			IRPClassifier onTargetBlock,
 			String theEventName){
 
-		String theProposedName = GeneralHelpers.determineUniqueNameBasedOn( 
-				GeneralHelpers.toMethodName( GeneralHelpers.decapitalize( theEventName.replace("req", "") ), 40 ), 
+		String theProposedName = _context.determineUniqueNameBasedOn( 
+				_context.toMethodName( _context.decapitalize( theEventName.replace("req", "") ), 40 ), 
 				"Operation", 
 				onTargetBlock );
 
@@ -357,8 +268,8 @@ public class CreateOutgoingEventPanel extends CopyOfCreateTracedElementPanel {
 
 		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
 
-		IRPDiagram theSourceDiagram = m_ElementContext.getSourceDiagram();
-		IRPGraphElement theGraphEl = m_ElementContext.getSelectedGraphEl();
+		IRPDiagram theSourceDiagram = _selectionContext.getSourceDiagram();
+		IRPGraphElement theGraphEl = _selectionContext.getSelectedGraphEl();
 
 		if( theSourceDiagram != null ){
 
@@ -403,13 +314,13 @@ public class CreateOutgoingEventPanel extends CopyOfCreateTracedElementPanel {
 				theEvent.highLightElement();
 
 			} else {
-				Logger.writeLine( "Error in populateSendActionOnDiagram " + 
-						Logger.elementInfo( theSourceDiagram ) + 
-						" is not supported for populating on");
+				_context.error( "Error in populateSendActionOnDiagram " + 
+						_context.elInfo( theSourceDiagram ) + 
+						" is not supported for populating on" );
 			}
 
 		} else {	
-			Logger.writeLine( "Error in populateSendActionOnDiagram, m_SourceGraphElement is null when value was expected" );
+			_context.error( "Error in populateSendActionOnDiagram, m_SourceGraphElement is null when value was expected" );
 		}
 	}
 
@@ -421,9 +332,9 @@ public class CreateOutgoingEventPanel extends CopyOfCreateTracedElementPanel {
 		boolean isValid = true;
 
 		String theChosenName = m_ChosenNameTextField.getText();
-		IRPClass theChosenBlock = m_ElementContext.getChosenBlock();
+		IRPClass theChosenBlock = _selectionContext.getChosenBlock();
 
-		boolean isLegalName = GeneralHelpers.isLegalName( 
+		boolean isLegalName = _context.isLegalName( 
 				theChosenName, 
 				theChosenBlock );
 
@@ -432,7 +343,7 @@ public class CreateOutgoingEventPanel extends CopyOfCreateTracedElementPanel {
 			errorMessage += theChosenName + " is not legal as an identifier representing an executable event\n";				
 			isValid = false;
 
-		} else if( !GeneralHelpers.isElementNameUnique(
+		} else if( !_context.isElementNameUnique(
 				theChosenName, 
 				"Event", 
 				m_PackageForEvent.getProject(), 
@@ -448,7 +359,7 @@ public class CreateOutgoingEventPanel extends CopyOfCreateTracedElementPanel {
 					theChosenBlock, 
 					theChosenName );
 
-			if( !GeneralHelpers.isElementNameUnique(
+			if( !_context.isElementNameUnique(
 					theProposedName, 
 					"Operation", 
 					theChosenBlock, 
@@ -465,7 +376,7 @@ public class CreateOutgoingEventPanel extends CopyOfCreateTracedElementPanel {
 
 		if( isMessageEnabled && !isValid && errorMessage != null ){
 
-			UserInterfaceHelpers.showWarningDialog( errorMessage );
+			UserInterfaceHelper.showWarningDialog( errorMessage );
 		}
 
 		return isValid;
@@ -474,8 +385,7 @@ public class CreateOutgoingEventPanel extends CopyOfCreateTracedElementPanel {
 	@Override
 	protected void performAction() {
 
-
-		IRPClass theChosenBlock = m_ElementContext.getChosenBlock();
+		IRPClass theChosenBlock = _selectionContext.getChosenBlock();
 
 		String theEventName = m_ChosenNameTextField.getText(); 
 
@@ -496,7 +406,8 @@ public class CreateOutgoingEventPanel extends CopyOfCreateTracedElementPanel {
 			PortBasedConnector theExistingConnector = 
 					new PortBasedConnector( 
 							theChosenBlock, 
-							m_DestinationActor );
+							m_DestinationActor,
+							_context );
 
 			theExistingConnector.addEvent( theEvent );
 
@@ -507,7 +418,7 @@ public class CreateOutgoingEventPanel extends CopyOfCreateTracedElementPanel {
 
 			if (m_SendOperationIsNeededCheckBox.isSelected()){
 
-				Logger.writeLine("Adding an inform Operation");		
+				_context.debug("Adding an inform Operation");		
 
 				IRPOperation informOp =
 						theChosenBlock.addOperation(
@@ -534,42 +445,13 @@ public class CreateOutgoingEventPanel extends CopyOfCreateTracedElementPanel {
 				populateSendActionOnDiagram( theEvent );
 			}
 
-			m_ElementContext.bleedColorToElementsRelatedTo( selectedReqtsList );
+			_selectionContext.bleedColorToElementsRelatedTo( selectedReqtsList );
 		}
 	}
 }
 
 /**
- * Copyright (C) 2016-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #022 30-MAY-2016: Improved handling and validation of event/operation creation by adding new forms (F.J.Chadburn)
-    #029 01-JUN-2016: Add Warning Dialog helper to UserInterfaceHelpers (F.J.Chadburn)
-    #030 01-JUN-2016: Improve legal name checking across helpers (F.J.Chadburn)
-    #032 05-JUN-2016: Populate call operation/event actions on diagram check-box added (F.J.Chadburn)
-    #033 05-JUN-2016: Add support for creation of operations and events from raw requirement selection (F.J.Chadburn)
-    #034 05-JUN-2016: Re-factored design to move static constructors into appropriate panel class (F.J.Chadburn)
-    #038 17-JUN-2016: Populate diagram now populates a SendAction in case of send events (F.J.Chadburn)
-    #040 17-JUN-2016: Extend populate event/ops to work on OMD, i.e., REQ diagrams (F.J.Chadburn)
-    #042 29-JUN-2016: launchThePanel renaming to improve Panel class design consistency (F.J.Chadburn)
-    #043 03-JUL-2016: Add Derive downstream reqt for CallOps, InterfaceItems and Event Actions (F.J.Chadburn)
-    #054 13-JUL-2016: Create a nested BlockPkg package to contain the Block and events (F.J.Chadburn)
-    #062 17-JUL-2016: Create InterfacesPkg and correct build issues by adding a Usage dependency (F.J.Chadburn)
-    #069 20-JUL-2016: Fix population of events/ops on diagram when creating from a transition (F.J.Chadburn)
-    #078 28-JUL-2016: Added isPopulateWantedByDefault tag to FunctionalAnalysisPkg to give user option (F.J.Chadburn)
-    #089 15-AUG-2016: Add a pull-down list to select Block when adding events/ops in white box (F.J.Chadburn)
-    #093 23-AUG-2016: Added isPopulateOptionHidden tag to allow hiding of the populate check-box on dialogs (F.J.Chadburn)
-    #099 14-SEP-2016: Allow event and operation creation from right-click on AD and RD diagram canvas (F.J.Chadburn)
-    #117 13-NOV-2016: Get incoming and outgoing event dialogs to work without actors in the context (F.J.Chadburn)
-    #125 25-NOV-2016: AutoRipple used in UpdateTracedAttributePanel to keep check and FlowPort name updated (F.J.Chadburn)
-    #130 25-NOV-2016: Improved consistency in handling of isPopulateOptionHidden and isPopulateWantedByDefault tags (F.J.Chadburn)
-    #148 18-DEC-2016: Add message if user tries to create an outgoing event when there are no actors (F.J.Chadburn)
-    #186 29-MAY-2017: Add context string to getBlockUnderDev to make it clearer for user when selecting (F.J.Chadburn)
-    #196 05-JUN-2017: Enhanced create traced element dialogs to be context aware for blocks/parts (F.J.Chadburn)
-    #199 05-JUN-2017: Improved create event panel consistency to name event Tbd if no text provided (F.J.Chadburn)
-    #200 05-JUN-2017: Hide Populate on diagram check-boxes if context is not valid (F.J.Chadburn)
-    #252 29-MAY-2019: Implement generic features for profile/settings loading (F.J.Chadburn)
-    #256 29-MAY-2019: Rewrite to Java Swing dialog launching to make thread safe between versions (F.J.Chadburn)
+ * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

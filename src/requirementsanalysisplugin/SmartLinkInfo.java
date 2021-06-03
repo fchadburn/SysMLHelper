@@ -1,97 +1,94 @@
 package requirementsanalysisplugin;
 
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
-import generalhelpers.StereotypeAndPropertySettings;
-import generalhelpers.TraceabilityHelper;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
 public class SmartLinkInfo {
 
-	private DiagramElementList m_StartLinkElements;
-	private DiagramElementList m_EndLinkElements;
-	private IRPStereotype m_RelationType;
-	private boolean m_IsPopulatePossible;	
-	private int m_CountRelationsNeeded;
-	private Set<RelationInfo> m_RelationInfos;
+	private DiagramElementList _startLinkElements;
+	private DiagramElementList _endLinkElements;
+	private IRPStereotype _relationType;
+	private boolean _isPopulatePossible;	
+	private int _countRelationsNeeded;
+	private Set<RelationInfo> _relationInfos;
+	private ExecutableMBSE_Context _context;
 	
 	public SmartLinkInfo(
 			List<IRPModelElement> theStartLinkEls,
 			List<IRPGraphElement> theStartLinkGraphEls,
 			List<IRPModelElement> theEndLinkEls,
-			List<IRPGraphElement> theEndLinkGraphEls ){
+			List<IRPGraphElement> theEndLinkGraphEls,
+			ExecutableMBSE_Context context ){
 		
-		m_RelationInfos = new HashSet<RelationInfo>();
+		_context = context;
 		
-		if( m_StartLinkElements != null ){
-			m_StartLinkElements.clear();			
+		_relationInfos = new HashSet<RelationInfo>();
+		
+		if( _startLinkElements != null ){
+			_startLinkElements.clear();			
 		}
 		
-		m_StartLinkElements = new DiagramElementList( 
-				theStartLinkEls, theStartLinkGraphEls );
+		_startLinkElements = new DiagramElementList( 
+				theStartLinkEls, theStartLinkGraphEls, _context );
 		
-		if( m_EndLinkElements != null ){
-			m_EndLinkElements.clear();			
+		if( _endLinkElements != null ){
+			_endLinkElements.clear();			
 		}
 		
-		m_EndLinkElements = new DiagramElementList( 
-				theEndLinkEls, theEndLinkGraphEls );
+		_endLinkElements = new DiagramElementList( 
+				theEndLinkEls, theEndLinkGraphEls, _context );
 		
-		m_IsPopulatePossible = false;
+		_isPopulatePossible = false;
 		
-		
-		IRPProject theRhpProject = RequirementsAnalysisPlugin.getActiveProject();
-
 		IRPModelElement contextEl = theEndLinkEls.get(0);
 		
-		if( m_StartLinkElements.areElementsAllReqts() ){
+		if( _startLinkElements.areElementsAllReqts() ){
 
-			m_RelationType = GeneralHelpers.getExistingStereotype(
-					"deriveReqt", theRhpProject );
+			_relationType = _context.getExistingStereotype(
+					"deriveReqt", _context.get_rhpPrj() );
 
-		} else if( m_StartLinkElements.areElementsAllDeriveDependencySources() ){
+		} else if( _startLinkElements.areElementsAllDeriveDependencySources() ){
 
-			m_RelationType = StereotypeAndPropertySettings.getStereotypeToUseForActions( 
+			_relationType = _context.getStereotypeToUseForActions( 
 					contextEl );
 
-		} else if( m_StartLinkElements.areElementsAllRefinementDependencySources() ){
+		} else if( _startLinkElements.areElementsAllRefinementDependencySources() ){
 
-			m_RelationType = StereotypeAndPropertySettings.getStereotypeToUseForUseCases( 
+			_relationType = _context.getStereotypeToUseForUseCases( 
 					contextEl );
 
-		} else if( m_StartLinkElements.areElementsAllVerificationDependencySources() ){
+		} else if( _startLinkElements.areElementsAllVerificationDependencySources() ){
 
-			m_RelationType = GeneralHelpers.getExistingStereotype( "verify", theRhpProject );
+			_relationType = _context.getExistingStereotype( "verify", _context.get_rhpPrj() );
 			
-		} else if( m_StartLinkElements.areElementsAllSatisfyDependencySources() ){
+		} else if( _startLinkElements.areElementsAllSatisfyDependencySources() ){
 
-			m_RelationType = StereotypeAndPropertySettings.getStereotypeToUseForFunctions( 
+			_relationType = _context.getStereotypeToUseForFunctions( 
 					contextEl );
 
 		} else {
 
-			m_RelationType = null;
-			Logger.error( "Unable to find relation type" );
+			_relationType = null;
+			_context.error( "Unable to find relation type" );
 		}
 		
-		Logger.info( "SmartLinkInfo: Determined that relation type needed is " + 
-				Logger.elementInfo( m_RelationType ) );
+		_context.debug( "SmartLinkInfo: Determined that relation type needed is " + 
+				_context.elInfo( _relationType ) );
 		
-		if( m_RelationType != null ){
+		if( _relationType != null ){
 			
-			for( DiagramElementInfo theStartLinkEl : m_StartLinkElements ){
+			for( DiagramElementInfo theStartLinkEl : _startLinkElements ){
 				
-				for( DiagramElementInfo theEndLinkEl : m_EndLinkElements ){
+				for( DiagramElementInfo theEndLinkEl : _endLinkElements ){
 					
 					RelationInfo theRelationInfo = new RelationInfo(
-							theStartLinkEl, theEndLinkEl, m_RelationType );
+							theStartLinkEl, theEndLinkEl, _relationType, _context );
 
-					m_RelationInfos.add( theRelationInfo );		
+					_relationInfos.add( theRelationInfo );		
 					
 					boolean isPopulatePossibleForRelation = 
 							performPopulateOnDiagram(
@@ -99,18 +96,18 @@ public class SmartLinkInfo {
 									true );
 					
 					if( isPopulatePossibleForRelation ){
-						m_IsPopulatePossible = true;
+						_isPopulatePossible = true;
 					}
 				}
 			}
 		}
 		
-		m_CountRelationsNeeded = 0;
+		_countRelationsNeeded = 0;
 		
-		for( RelationInfo relationInfo : m_RelationInfos ){
+		for( RelationInfo relationInfo : _relationInfos ){
 			
 			if( relationInfo.getExistingStereotypedDependency() == null ){
-				m_CountRelationsNeeded++;
+				_countRelationsNeeded++;
 			}
 		}		
 	}
@@ -145,17 +142,19 @@ public class SmartLinkInfo {
 
 						if( theExistingGraphEls.isEmpty() ){
 
-							Logger.info( "Determined graphEdge needed for " + 
-									Logger.elementInfo( m_RelationType ) + " from " + 
-									Logger.elementInfo( theStartGraphEl.getModelObject() ) + " to " + 
-									Logger.elementInfo( theEndGraphEl.getModelObject() ) + " on " +
-									Logger.elementInfo( theDiagram ) );
+							_context.debug( "Determined graphEdge needed for " + 
+									_context.elInfo( _relationType ) + " from " + 
+									_context.elInfo( theStartGraphEl.getModelObject() ) + " to " + 
+									_context.elInfo( theEndGraphEl.getModelObject() ) + " on " +
+									_context.elInfo( theDiagram ) );
 
 							isPopulatePossible = true;
 							
 							if( !isJustCheckWithoutDoing ){
 
-								LayoutHelper.drawDependencyToMidPointsFor(
+								LayoutHelper theHelper = new LayoutHelper( _context );
+								
+								theHelper.drawDependencyToMidPointsFor(
 										existingDependency, 
 										theStartGraphEl, 
 										theEndGraphEl,
@@ -164,15 +163,14 @@ public class SmartLinkInfo {
 
 						} else {
 							
-							Logger.info( "Determined graphEdge for " + 
-									Logger.elementInfo( m_RelationType ) + " already exists from " + 
-									Logger.elementInfo( theStartGraphEl.getModelObject() ) + " to " + 
-									Logger.elementInfo( theEndGraphEl.getModelObject() ) + " on " +
-									Logger.elementInfo( theDiagram ) );
+							_context.info( "Determined graphEdge for " + 
+									_context.elInfo( _relationType ) + " already exists from " + 
+									_context.elInfo( theStartGraphEl.getModelObject() ) + " to " + 
+									_context.elInfo( theEndGraphEl.getModelObject() ) + " on " +
+									_context.elInfo( theDiagram ) );
 						}
 					}
 				}
-
 			}
 		}
 		return isPopulatePossible;
@@ -184,15 +182,15 @@ public class SmartLinkInfo {
 		
 		theMsg+= "<p style=\"text-align:center;font-weight:normal\">";
 		
-		if( m_StartLinkElements.size() == 1 && m_EndLinkElements.size()==1 ){
+		if( _startLinkElements.size() == 1 && _endLinkElements.size()==1 ){
 			theMsg+="Create a ";
 		} else {
 			theMsg+="Create ";
 		}
 		
-		theMsg+= "<span style=\"font-weight:bold\">«" +  m_RelationType.getName() + "»</span>";
+		theMsg+= "<span style=\"font-weight:bold\">«" +  _relationType.getName() + "»</span>";
 		
-		if( m_StartLinkElements.size() == 1 && m_EndLinkElements.size()==1 ){
+		if( _startLinkElements.size() == 1 && _endLinkElements.size()==1 ){
 			theMsg+=" dependency from:</p>";
 		} else {
 			theMsg+=" dependencies from:</p>";
@@ -201,32 +199,32 @@ public class SmartLinkInfo {
 		theMsg+="<p></p>";
 		theMsg+="<p style=\"text-align:center;font-weight:normal\">";
 		
-		if( m_StartLinkElements.size() == 1 ){
-			theMsg+= m_StartLinkElements.size() + " element (a ";
+		if( _startLinkElements.size() == 1 ){
+			theMsg+= _startLinkElements.size() + " element (a ";
 		} else {
-			theMsg+= m_StartLinkElements.size() + " elements (a "; 
+			theMsg+= _startLinkElements.size() + " elements (a "; 
 		}
 
-		theMsg+= m_StartLinkElements.getCommaSeparatedListOfElementsHTML( 3 );
+		theMsg+= _startLinkElements.getCommaSeparatedListOfElementsHTML( 3 );
 		theMsg+=")</p>";
 		theMsg+="<p></p>";
 		theMsg+="<p style=\"text-align:center;font-weight:normal\">to:</p>";
 		theMsg+="<p></p>";
 		theMsg+="<p style=\"text-align:center;font-weight:normal\">";
 		
-		if( m_EndLinkElements.size() == 1 ){
-			theMsg+= m_EndLinkElements.size() + " element (a  ";
+		if( _endLinkElements.size() == 1 ){
+			theMsg+= _endLinkElements.size() + " element (a  ";
 		} else {
-			theMsg+= m_EndLinkElements.size() + " elements (a  ";
+			theMsg+= _endLinkElements.size() + " elements (a  ";
 		}
 		
-		theMsg+= m_EndLinkElements.getCommaSeparatedListOfElementsHTML( 3 );						
+		theMsg+= _endLinkElements.getCommaSeparatedListOfElementsHTML( 3 );						
 		theMsg+= ")</p>";
 		theMsg+="<p></p>";
 		
-		if( m_CountRelationsNeeded > 0 ){
+		if( _countRelationsNeeded > 0 ){
 			
-			theMsg+= "<p style=\"text-align:center;font-weight:normal\">" + m_CountRelationsNeeded + " new dependencies will be created" + "</p>";
+			theMsg+= "<p style=\"text-align:center;font-weight:normal\">" + _countRelationsNeeded + " new dependencies will be created" + "</p>";
 			
 		} else if ( getIsPopulatePossible()==false ){
 			
@@ -247,21 +245,21 @@ public class SmartLinkInfo {
 	
 	public boolean getIsPopulatePossible(){
 		
-		return m_IsPopulatePossible;
+		return _isPopulatePossible;
 	}
 	
 	public boolean getAreNewRelationsNeeded(){
 		
-		return ( m_CountRelationsNeeded > 0 );
+		return ( _countRelationsNeeded > 0 );
 	}
 	
 	protected boolean isDeriveDependencyNeeded(){
 		
 		boolean isNeeded = 
-				m_StartLinkElements.areElementsAllDeriveDependencySources() && 
-				m_EndLinkElements.areElementsAllReqts();
+				_startLinkElements.areElementsAllDeriveDependencySources() && 
+				_endLinkElements.areElementsAllReqts();
 		
-		Logger.info( "isDeriveDependencyNeeded is returning " + isNeeded );
+		_context.debug( "isDeriveDependencyNeeded is returning " + isNeeded );
 		
 		return isNeeded;
 	}
@@ -269,17 +267,17 @@ public class SmartLinkInfo {
 	public void createDependencies( 
 			boolean withPopulateOnDiagram ){
 		
-		for( RelationInfo theRelationInfo : m_RelationInfos ){
+		for( RelationInfo theRelationInfo : _relationInfos ){
 			
 			IRPDependency theDependency = 
 					theRelationInfo.getExistingStereotypedDependency();
 			
 			if( theDependency == null ){
 				
-				theDependency = TraceabilityHelper.addStereotypedDependencyIfOneDoesntExist(
+				theDependency = _context.addStereotypedDependencyIfOneDoesntExist(
 						theRelationInfo.getStartElement().getElement(), 
 						theRelationInfo.getEndElement().getElement(), 
-						m_RelationType );
+						_relationType );
 			}
 			
 			performPopulateOnDiagram(
@@ -290,17 +288,7 @@ public class SmartLinkInfo {
 }
 
 /**
- * Copyright (C) 2017-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #163 05-FEB-2017: Add new menus to Smart link: Start and Smart link: End (F.J.Chadburn)
-    #204 18-JUN-2017: Refine menu for invoking Smart Link panel and add FlowPort/EventReceptions support (F.J.Chadburn)
-    #221 12-JUL-2017: Fixed Smart Link dialog to draw from middle of IRPGraphNodes rather than top left (F.J.Chadburn)
-    #224 25-AUG-2017: Added new menu to roll up traceability to the transition and populate on STM (F.J.Chadburn)
-    #227 06-SEP-2017: Increased robustness to stop smart link panel using non new term version of <<refine>> (F.J.Chadburn)
-    #242 04-OCT-2017: Get re-layout dependencies on diagrams(s) menu to centre on graph edges properly (F.J.Chadburn)
-    #243 04-OCT-2017: Added ability to do smart link from a testcase to create a Verification (F.J.Chadburn)
-    #252 29-MAY-2019: Implement generic features for profile/settings loading (F.J.Chadburn)
+ * Copyright (C) 2017-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

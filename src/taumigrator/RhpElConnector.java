@@ -72,7 +72,7 @@ public class RhpElConnector extends RhpElGraphNode {
 
 		if( _connectorType == "DecisionNode" ){
 		
-			Logger.info( "The parent is " + Logger.elementInfo( parent.get_rhpEl() ) );
+			Logger.info( "The parent is " + Logger.elInfo( parent.get_rhpEl() ) );
 			
 			IRPFlowchart theActivityDiagram = (IRPFlowchart) parent.get_rhpEl();
 			IRPActivityDiagram theActivityDiagramGE = theActivityDiagram.getFlowchartDiagram();

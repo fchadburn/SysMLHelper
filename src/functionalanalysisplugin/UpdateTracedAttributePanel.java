@@ -1,9 +1,5 @@
 package functionalanalysisplugin;
 
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
-import generalhelpers.UserInterfaceHelpers;
-
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.util.List;
@@ -19,6 +15,8 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
 public class UpdateTracedAttributePanel extends CreateTracedElementPanel {
@@ -35,15 +33,28 @@ public class UpdateTracedAttributePanel extends CreateTracedElementPanel {
 	private IRPSysMLPort m_ExistingFlowPort = null;
 		
 	private UpdateTracedAttributePanel(
-			IRPAttribute forExistingAttribute, 
+		String theAppID ){
+/*			IRPAttribute forExistingAttribute, 
 			final Set<IRPRequirement> withReqtsAlsoAdded,
 			IRPClassifier onTargetBlock) {
+	*/	
+		//super( forExistingAttribute, withReqtsAlsoAdded, onTargetBlock, onTargetBlock.getProject() );
+		super( theAppID );
+
+		if( !(_context.getSelectedElement() instanceof IRPAttribute) ){
+			_context.error( _context.elInfo(_context.getSelectedElement() ) + " is not an attribut" );
+		}
 		
-		super( forExistingAttribute, withReqtsAlsoAdded, onTargetBlock, onTargetBlock.getProject() );
 		
+		Set<IRPRequirement> theReqts = 
+				_context.getRequirementsThatTraceFrom( 
+						_context.getSelectedElement(), false );
+		
+		IRPAttribute forExistingAttribute = (IRPAttribute)_context.getSelectedElement();
+
 		String theProposedName = forExistingAttribute.getName();
-			
-		Logger.writeLine("The proposed name is '" + theProposedName + "'");
+						
+		_context.debug( "The proposed name is '" + theProposedName + "'" );
 		
 		JPanel thePageStartPanel = new JPanel();
 		thePageStartPanel.setLayout( new BoxLayout( thePageStartPanel, BoxLayout.X_AXIS ) );
@@ -81,8 +92,8 @@ public class UpdateTracedAttributePanel extends CreateTracedElementPanel {
 					}	
 				});
 		
-		m_ExistingCheckOp = GeneralHelpers.getExistingCheckOp( forExistingAttribute );
-		m_ExistingFlowPort = GeneralHelpers.getExistingFlowPort( forExistingAttribute );
+		m_ExistingCheckOp = _context.getExistingCheckOp( forExistingAttribute );
+		m_ExistingFlowPort = _context.getExistingFlowPort( forExistingAttribute );
 		
 		updateNames();
 		
@@ -120,9 +131,8 @@ public class UpdateTracedAttributePanel extends CreateTracedElementPanel {
 	}
 
 	public static void launchThePanel(
-			final IRPAttribute theExistingAttribute, 
-			final Set<IRPRequirement> withReqtsAlsoAdded,
-			final IRPProject inProject){
+			final String theAppID,
+			ExecutableMBSE_Context context ){
 
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 
@@ -131,18 +141,16 @@ public class UpdateTracedAttributePanel extends CreateTracedElementPanel {
 
 				JFrame.setDefaultLookAndFeelDecorated( true );
 				
-				IRPModelElement theBlockEl = theExistingAttribute.getOwner();
+				IRPModelElement theBlockEl = context.getSelectedElement().getOwner();
 
 				JFrame frame = new JFrame(
-						"Update attribute called " + theExistingAttribute.getName() + 
-						" on " + Logger.elementInfo( theBlockEl ) );
+						"Update attribute called " + context.getSelectedElement().getName() + 
+						" on " + context.elInfo( theBlockEl ) );
 
 				frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 
 				UpdateTracedAttributePanel thePanel = new UpdateTracedAttributePanel(
-						theExistingAttribute, 
-						withReqtsAlsoAdded,
-						(IRPClassifier) theBlockEl);
+						theAppID );
 
 				frame.setContentPane( thePanel );
 				frame.pack();
@@ -154,8 +162,8 @@ public class UpdateTracedAttributePanel extends CreateTracedElementPanel {
 	
 	private void updateNames(){
 		
-		m_CheckOpName = GeneralHelpers.determineBestCheckOperationNameFor(
-				(IRPClassifier)m_TargetOwningElement, 
+		m_CheckOpName = _context.determineBestCheckOperationNameFor(
+				(IRPClassifier)_selectionContext.getChosenBlock(), 
 				m_ChosenNameTextField.getText(),
 				40 );
 		
@@ -177,7 +185,7 @@ public class UpdateTracedAttributePanel extends CreateTracedElementPanel {
 		
 		String theChosenName = m_ChosenNameTextField.getText();
 		
-		boolean isLegalName = GeneralHelpers.isLegalName( theChosenName, m_TargetOwningElement );
+		boolean isLegalName = _context.isLegalName( theChosenName, _selectionContext.getChosenBlock() );
 		
 		if (!isLegalName){
 			
@@ -185,10 +193,10 @@ public class UpdateTracedAttributePanel extends CreateTracedElementPanel {
 			isValid = false;
 
 		} else if( m_CheckOperationCheckBox.isSelected() && 
-				   !GeneralHelpers.isElementNameUnique(
+				   !_context.isElementNameUnique(
 						   m_CheckOpName,
 						   "Operation",
-						   m_TargetOwningElement, 
+						   _selectionContext.getChosenBlock(), 
 						   1 ) ){
 
 			errorMessage = "Unable to proceed as the derived check operation name '" + 
@@ -204,7 +212,7 @@ public class UpdateTracedAttributePanel extends CreateTracedElementPanel {
 
 		if (isMessageEnabled && !isValid && errorMessage != null){
 
-			UserInterfaceHelpers.showWarningDialog( errorMessage );
+			UserInterfaceHelper.showWarningDialog( errorMessage );
 		}
 		
 		return isValid;
@@ -230,7 +238,7 @@ public class UpdateTracedAttributePanel extends CreateTracedElementPanel {
 		// do silent check first
 		if( checkValidity( false ) ){
 
-			IRPAttribute theExistingAttribute = (IRPAttribute)m_SourceModelElement;
+			IRPAttribute theExistingAttribute = (IRPAttribute)_context.getSelectedElement();
 
 			theExistingAttribute.setName( m_ChosenNameTextField.getText() );				
 			theExistingAttribute.highLightElement();
@@ -243,12 +251,12 @@ public class UpdateTracedAttributePanel extends CreateTracedElementPanel {
 			
 				if( !m_ExistingFlowPort.getName().equals( theDesiredFlowPortName ) ){
 					
-					Logger.writeLine( "Renaming " + Logger.elementInfo( m_ExistingFlowPort ) + 
+					_context.debug( "Renaming " + _context.elInfo( m_ExistingFlowPort ) + 
 							" to " + theDesiredFlowPortName );
 					
 					m_ExistingFlowPort.setName( theDesiredFlowPortName );
 				} else {
-					Logger.writeLine( "Existing " + Logger.elementInfo( m_ExistingFlowPort ) + 
+					_context.debug( "Existing " + _context.elInfo( m_ExistingFlowPort ) + 
 							" is already correctly named" );					
 				}
 			}
@@ -258,7 +266,7 @@ public class UpdateTracedAttributePanel extends CreateTracedElementPanel {
 				List<IRPRequirement> selectedReqtsList = 
 						m_RequirementsPanel.getSelectedRequirementsList();
 
-				Logger.writeLine(theExistingAttribute, "is the existing attribute");
+				_context.debug( _context.elInfo( theExistingAttribute ) + " is the existing attribute");
 
 				if( m_ExistingCheckOp == null ){
 
@@ -275,7 +283,7 @@ public class UpdateTracedAttributePanel extends CreateTracedElementPanel {
 
 					if( !m_ExistingCheckOp.getName().equals( m_CheckOpName ) ){
 
-						Logger.writeLine( "Changed the name of " + Logger.elementInfo( m_ExistingCheckOp ) + " to " + m_CheckOpName );
+						_context.debug( "Changed the name of " + _context.elInfo( m_ExistingCheckOp ) + " to " + m_CheckOpName );
 						m_ExistingCheckOp.setName( m_CheckOpName );
 						m_ExistingCheckOp.setBody("OM_RETURN( " + m_ChosenNameTextField.getText() + " );");
 					}
@@ -288,12 +296,7 @@ public class UpdateTracedAttributePanel extends CreateTracedElementPanel {
 }
 
 /**
- * Copyright (C) 2016  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #083 09-AUG-2016: (new) Add an Update attribute menu option and panel with add check operation option (F.J.Chadburn)
-    #090 15-AUG-2016: Fix check operation name issue introduced in fixes #083 and #084 (F.J.Chadburn)
-    #125 25-NOV-2016: AutoRipple used in UpdateTracedAttributePanel to keep check and FlowPort name updated (F.J.Chadburn)
+ * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

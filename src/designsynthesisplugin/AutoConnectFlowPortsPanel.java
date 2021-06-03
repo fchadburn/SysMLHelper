@@ -1,7 +1,7 @@
 package designsynthesisplugin;
 
 import functionalanalysisplugin.FunctionalAnalysisSettings;
-import generalhelpers.ConfigurationSettings;
+import functionalanalysisplugin.SelectedElementContext;
 import generalhelpers.CreateStructuralElementPanel;
 import generalhelpers.GeneralHelpers;
 import generalhelpers.Logger;
@@ -26,6 +26,9 @@ import javax.swing.GroupLayout.ParallelGroup;
 import javax.swing.GroupLayout.SequentialGroup;
 import javax.swing.JScrollPane;
 
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
 public class AutoConnectFlowPortsPanel extends CreateStructuralElementPanel {
@@ -41,53 +44,20 @@ public class AutoConnectFlowPortsPanel extends CreateStructuralElementPanel {
 	private IRPAttribute m_PublishingAttribute = null;
 	private IRPInstance m_PublishingPart = null;
 	
-	public static void main(String[] args) {
-		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
-		
-		IRPModelElement theEl = theRhpApp.getSelectedElement();
-		
-		ConfigurationSettings configSettings = new ConfigurationSettings(
-				theRhpApp,
-				theRhpApp.activeProject(),
-				"SysMLHelper.properties", 
-				"SysMLHelper_MessagesBundle",
-				"SysMLHelper" );
-		
-		if( theEl instanceof IRPAttribute ){
-			launchThePanel( (IRPAttribute) theEl, configSettings );
-		}
-	}
-	
 	public static void launchThePanel(
-			final IRPAttribute theAttribute,
-			ConfigurationSettings theConfigSettings ){
+			final ExecutableMBSE_Context context,
+			final IRPAttribute theAttribute ){
+
+		SelectedElementContext selectedContext = new SelectedElementContext( context );
 		
-		UserInterfaceHelpers.setLookAndFeel();
-		
-		final String theAppID = 
-				UserInterfaceHelpers.getAppIDIfSingleRhpRunningAndWarnUserIfNot();
-
-		if( theAppID != null ){
-
-			ProfileVersionManager.checkAndSetProfileVersion( 
-					false, 
-					theConfigSettings,
-					true );
-
-		}
-//		IRPPackage thePackageUnderDev =
-//				FunctionalAnalysisSettings.getPackageUnderDev( theAttribute.getProject() );
-//
-//		if( thePackageUnderDev != null ){
-
 			IRPClass theBuildingBlock = 
-					FunctionalAnalysisSettings.getBuildingBlock( theAttribute );
+					selectedContext.getBuildingBlock( theAttribute );
 			
 			if( theBuildingBlock != null ){
 				
-				final IRPSysMLPort thePort = GeneralHelpers.getExistingFlowPort( theAttribute );
+				final IRPSysMLPort thePort = _context.getExistingFlowPort( theAttribute );
 				
-				if( GeneralHelpers.hasStereotypeCalled( "publish", theAttribute ) &&
+				if( _context.hasStereotypeCalled( "publish", theAttribute ) &&
 					thePort != null ){
 					
 					@SuppressWarnings("unchecked")
@@ -113,7 +83,6 @@ public class AutoConnectFlowPortsPanel extends CreateStructuralElementPanel {
 						theChosenPart = theMatchingParts.get( 0 );
 					}
 					
-
 					if( theChosenPart != null ){
 						
 						final IRPInstance thePart = theChosenPart;
@@ -125,7 +94,7 @@ public class AutoConnectFlowPortsPanel extends CreateStructuralElementPanel {
 								
 								JFrame.setDefaultLookAndFeelDecorated( true );
 
-								JFrame frame = new JFrame("Auto-connect to " + Logger.elementInfo( theAttribute ));
+								JFrame frame = new JFrame("Auto-connect to " + Logger.elInfo( theAttribute ));
 								
 								frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 
@@ -153,11 +122,15 @@ public class AutoConnectFlowPortsPanel extends CreateStructuralElementPanel {
 	@SuppressWarnings("unchecked")
 	public AutoConnectFlowPortsPanel(
 			String theAppID,
-			IRPAttribute thePublishingAttribute,
-			IRPSysMLPort thePublishingFlowPort,
-			IRPInstance thePublishingPart ){
+			String thePublishingAttributeGUID,
+			String thePublishingFlowPortGUID,
+			IRPInstance thePublishingPartGUID ){
 		
 		super( theAppID );
+		
+		IRPAttribute thePublishingAttribute = (IRPAttribute) _context.get_rhpPrj().findElementByGUID(thePublishingAttributeGUID);
+		IRPSysMLPort thePublishingFlowPort = (IRPSysMLPort) _context.get_rhpPrj().findElementByGUID(thePublishingFlowPortGUID);
+		IRPInstance thePublishingPart = (IRPInstance) _context.get_rhpPrj().findElementByGUID(thePublishingFlowPortGUID);
 		
 		m_PublishingAttribute = thePublishingAttribute;
 		m_PublishingPart = thePublishingPart;
@@ -173,14 +146,15 @@ public class AutoConnectFlowPortsPanel extends CreateStructuralElementPanel {
 			IRPClassifier theOtherClass = thePart.getOtherClass();
 
 			if( theOtherClass instanceof IRPClass &&
-				!GeneralHelpers.hasStereotypeCalled( "TestDriver", thePart ) &&
+				!_context.hasStereotypeCalled( "TestDriver", thePart ) &&
 				!thePart.equals( thePublishingPart ) ){
 
 				AutoConnectFlowPortsInfo theFlowPortInfo = 
 						new AutoConnectFlowPortsInfo( 
 								thePublishingAttribute, 
 								thePublishingPart, 
-								thePart );
+								thePart,
+								_context );
 				
 				m_RadioButtonMap.put( 
 						thePart, 
@@ -287,24 +261,24 @@ public class AutoConnectFlowPortsPanel extends CreateStructuralElementPanel {
 			
 			if( theValue.isCreateNewSelected() ){
 				
-				Logger.writeLine("Create new was selected for " + Logger.elementInfo( entry.getKey( ) )); 
+				Logger.writeLine("Create new was selected for " + Logger.elInfo( entry.getKey( ) )); 
 				
 				String theChosenAttributeName = theValue.getM_ChosenNameTextField().getText();
 				
-				Logger.writeLine("Create new was selected for " + Logger.elementInfo( entry.getKey( ) ) +
+				Logger.writeLine("Create new was selected for " + Logger.elInfo( entry.getKey( ) ) +
 						" with value " + theChosenAttributeName); 
 
-				boolean isLegalName = GeneralHelpers.isLegalName( theChosenAttributeName, theValue.getM_SubscribingBlock() );
+				boolean isLegalName = _context.isLegalName( theChosenAttributeName, theValue.getM_SubscribingBlock() );
 				
 				if( !isLegalName ){
 					errorMsg += theChosenAttributeName + " is not a legal name for an executable attribute\n";
 					isValid = false;
 					
-				} else if (!GeneralHelpers.isElementNameUnique(
+				} else if (!_context.isElementNameUnique(
 						theChosenAttributeName, "Attribute", theValue.getM_SubscribingBlock(), 1) ){
 					
 					errorMsg += theChosenAttributeName + " is not unique in " + 
-							Logger.elementInfo( theValue.getM_SubscribingBlock() ) + ", please choose again\n";
+							Logger.elInfo( theValue.getM_SubscribingBlock() ) + ", please choose again\n";
 					
 					isValid = false;
 				}
@@ -313,7 +287,7 @@ public class AutoConnectFlowPortsPanel extends CreateStructuralElementPanel {
 				
 		if( isMessageEnabled && !isValid && errorMsg != null ){
 			
-			UserInterfaceHelpers.showWarningDialog( errorMsg );
+			UserInterfaceHelper.showWarningDialog( errorMsg );
 		}
 		
 		return isValid;

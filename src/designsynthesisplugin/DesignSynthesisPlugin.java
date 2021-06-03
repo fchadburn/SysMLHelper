@@ -1,109 +1,89 @@
 package designsynthesisplugin;
 
-import generalhelpers.ConfigurationSettings;
-import generalhelpers.Logger;
-import generalhelpers.UserInterfaceHelpers;
-
 import java.util.List;
 
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
- 
+
 public class DesignSynthesisPlugin extends RPUserPlugin {
-  
-	protected static IRPApplication m_rhpApplication = null;
-	protected static ConfigurationSettings m_configSettings = null;
-	
-	// plug-in is loaded
-	public void RhpPluginInit(final IRPApplication theRhapsodyApp) {
-		
-		m_rhpApplication = theRhapsodyApp;
-		
-		m_configSettings = new ConfigurationSettings(
-				m_rhpApplication,
-				m_rhpApplication.activeProject(),
-				"SysMLHelper.properties", 
-				"SysMLHelper_MessagesBundle",
-				"SysMLHelper" );
-		
-		String msg = "The DesignSynthesisPlugin component of the SysMLHelperPlugin V" + m_configSettings.getProperty("PluginVersion") + " was loaded successfully. New right-click 'MBSE Method' commands have been added.";		
-		Logger.writeLine(msg); 
+
+	protected ExecutableMBSE_Context _context = null;
+	protected PortCreator _portCreator = null;
+
+	// called when plug-in is loaded
+	public void RhpPluginInit(
+			final IRPApplication theRhapsodyApp ){
+
+		_context = new ExecutableMBSE_Context( theRhapsodyApp.getApplicationConnectionString() );
+
+		String msg = "The ExecutableMBSE component of the SysMLHelperPlugin was loaded successfully.";		
+
+		_context.info( msg );
+
+		_portCreator = new PortCreator(_context);
 	}
 
-	public static IRPApplication getRhapsodyApp(){
-		
-		if (m_rhpApplication==null){
-			m_rhpApplication = RhapsodyAppServer.getActiveRhapsodyApplication();
-		}
-		
-		return m_rhpApplication;
-	}
-	
-	public static IRPProject getActiveProject(){
-		
-		return getRhapsodyApp().activeProject();
-	}
-	
 	// called when the plug-in pop-up menu (if applicable) is selected
-	public void OnMenuItemSelect(String menuItem) {
-	
-		if( UserInterfaceHelpers.checkOKToRunAndWarnUserIfNot() ){
-			IRPModelElement theSelectedEl = getRhapsodyApp().getSelectedElement();
-			
-			@SuppressWarnings("unchecked")
-			List<IRPModelElement> theSelectedEls = getRhapsodyApp().getListOfSelectedElements().toList();
+	public void OnMenuItemSelect(
+			String menuItem ){
 
-			Logger.writeLine("Starting ("+ theSelectedEls.size() + " elements were selected) ...");
-			
-			if( !theSelectedEls.isEmpty() ){
-				//selElemName = theSelectedEl.getName();	
-							
-				if (menuItem.equals(m_configSettings.getString("designsynthesisplugin.MakeAttributeAPublishFlowportMenu"))){
-					
-					if (theSelectedEl instanceof IRPAttribute){
-						try {
-							PortCreator.createPublishFlowportsFor( theSelectedEls, m_configSettings );
-							
-						} catch (Exception e) {
-							Logger.writeLine("Error: Exception in OnMenuItemSelect when invoking createPublishFlowportsFor");
-						}
-					}
-					
-				} else if (menuItem.equals(m_configSettings.getString("designsynthesisplugin.MakeAttributeASubscribeFlowportMenu"))){
-					
-					if (theSelectedEl instanceof IRPAttribute){
-						try {
-							PortCreator.createSubscribeFlowportsFor( theSelectedEls );
-							
-						} catch (Exception e) {
-							Logger.writeLine("Error: Exception in OnMenuItemSelect when invoking createSubscribeFlowportsFor");
-						}
-					}
+		IRPModelElement theSelectedEl = _context.getSelectedElement();			
+		List<IRPModelElement> theSelectedEls = _context.getSelectedElements();
 
-				} else if (menuItem.equals(m_configSettings.getString("designsynthesisplugin.DeleteAttributeAndRelatedElementsMenu"))){
-					
+		_context.info("Starting ("+ theSelectedEls.size() + " elements were selected) ...");
+
+		if( !theSelectedEls.isEmpty() ){
+			//selElemName = theSelectedEl.getName();	
+
+			if (menuItem.equals(_context.getString("designsynthesisplugin.MakeAttributeAPublishFlowportMenu"))){
+
+				if (theSelectedEl instanceof IRPAttribute){
 					try {
-						if( theSelectedEl instanceof IRPAttribute ){
-							PortCreator.deleteAttributeAndRelatedEls( (IRPAttribute) theSelectedEl );
-						} else if ( theSelectedEl instanceof IRPSysMLPort ){
-							PortCreator.deleteFlowPortAndRelatedEls( (IRPSysMLPort) theSelectedEl );
-						}
+						_portCreator.createPublishFlowportsFor( theSelectedEls );
 
 					} catch (Exception e) {
-						Logger.writeLine("Error: Exception in OnMenuItemSelect when invoking designsynthesisplugin.DeleteAttributeAndRelatedElementsMenu");
+						_context.error("Error: Exception in OnMenuItemSelect when invoking createPublishFlowportsFor");
+					}
+				}
+
+			} else if (menuItem.equals(_context.getString("designsynthesisplugin.MakeAttributeASubscribeFlowportMenu"))){
+
+				if (theSelectedEl instanceof IRPAttribute){
+					try {
+						_portCreator.createSubscribeFlowportsFor( theSelectedEls );
+
+					} catch (Exception e) {
+						_context.error("Error: Exception in OnMenuItemSelect when invoking createSubscribeFlowportsFor");
+					}
+				}
+
+			} else if (menuItem.equals(_context.getString("designsynthesisplugin.DeleteAttributeAndRelatedElementsMenu"))){
+
+				try {
+					if( theSelectedEl instanceof IRPAttribute ){
+						_portCreator.deleteAttributeAndRelatedEls( (IRPAttribute) theSelectedEl );
+					} else if ( theSelectedEl instanceof IRPSysMLPort ){
+						_portCreator.deleteFlowPortAndRelatedEls( (IRPSysMLPort) theSelectedEl );
 					}
 
-				} else {
-					Logger.writeLine(theSelectedEl, " was invoked with menuItem='" + menuItem + "'");
+				} catch (Exception e) {
+					_context.error("Error: Exception in OnMenuItemSelect when invoking designsynthesisplugin.DeleteAttributeAndRelatedElementsMenu");
 				}
-			} // else No selected element
 
-			Logger.writeLine("... completed");
-		}
+			} else {
+				_context.warning( _context.elInfo( theSelectedEl ) + " was invoked with menuItem='" + menuItem + "'");
+			}
+		} // else No selected element
+
+		_context.debug("... completed");
 	}
-	
+
+	// if true is returned the plugin will be unloaded
 	public boolean RhpPluginCleanup() {
-		m_rhpApplication = null;
-		return true; // true=unload plugin
+
+		_context = null;
+		_portCreator = null;
+		return true; // plug-in will be unloaded now (on project close)
 	}
 
 	@Override
@@ -111,26 +91,16 @@ public class DesignSynthesisPlugin extends RPUserPlugin {
 	}
 
 	@Override
-	public void RhpPluginFinalCleanup() {		
+	public void OnTrigger(String trigger) {		
 	}
 
 	@Override
-	public void OnTrigger(String trigger) {		
+	public void RhpPluginFinalCleanup() {		
 	}
 }
 
 /**
- * Copyright (C) 2016  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #006 02-MAY-2016: Add FunctionalAnalysisPkg helper support (F.J.Chadburn)
-    #011 08-MAY-2016: Simplify version numbering mechanism (F.J.Chadburn)
-    #016 11-MAY-2016: Add GPL advisory to the Log window (F.J.Chadburn)
-    #109 06-NOV-2016: Added .properties support for localisation of menus (F.J.Chadburn)
-    #110 06-NOV-2016: PluginVersion now comes from Config.properties file, rather than hard wired (F.J.Chadburn)
-    #180 29-MAY-2017: Added new Design Synthesis menu to Delete attribute and related elements (F.J.Chadburn)
-    #192 05-JUN-2017: Widened DeleteAttributeAndRelatedElementsMenu support to work with flow-ports as well (F.J.Chadburn)
-    #239 04-OCT-2017: Improve warning/behaviour if multiple Rhapsodys are open or user switches app (F.J.Chadburn)
+ * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 
@@ -146,5 +116,4 @@ public class DesignSynthesisPlugin extends RPUserPlugin {
 
     You should have received a copy of the GNU General Public License
     along with SysMLHelperPlugin.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
+ */

@@ -1,7 +1,6 @@
 package functionalanalysisplugin;
 
 import functionalanalysisplugin.PopulateFunctionalAnalysisPkg.SimulationType;
-import generalhelpers.ConfigurationSettings;
 import generalhelpers.Logger;
 import generalhelpers.TraceabilityHelper;
 import generalhelpers.UserInterfaceHelpers;
@@ -9,6 +8,7 @@ import generalhelpers.UserInterfaceHelpers;
 import java.util.List;
 import java.util.Set;
 
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.telelogic.rhapsody.core.*;
  
 public class FunctionalAnalysisPlugin extends RPUserPlugin {

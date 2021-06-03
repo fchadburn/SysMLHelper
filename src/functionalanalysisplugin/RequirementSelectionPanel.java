@@ -127,7 +127,7 @@ public class RequirementSelectionPanel extends JPanel {
 				theCheckBox.setSelected( true );
 			} else {
 				Logger.writeLine("Warning in RequirementSelectionPanel.selectedRequirementsIn, " + 
-						Logger.elementInfo( theReqt ) + " is not in table of expected requirements");
+						Logger.elInfo( theReqt ) + " is not in table of expected requirements");
 			}
 		}
 	}
@@ -142,7 +142,7 @@ public class RequirementSelectionPanel extends JPanel {
 				theCheckBox.setSelected( false );
 			} else {
 				Logger.writeLine("Warning in RequirementSelectionPanel.selectedRequirementsIn, " + 
-						Logger.elementInfo( theReqt ) + " is not in table of expected requirements");
+						Logger.elInfo( theReqt ) + " is not in table of expected requirements");
 			}
 		}
 	}

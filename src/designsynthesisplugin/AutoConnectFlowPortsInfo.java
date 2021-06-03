@@ -7,13 +7,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import generalhelpers.ConfigurationSettings;
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
-
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
 public class AutoConnectFlowPortsInfo {
@@ -34,6 +31,8 @@ public class AutoConnectFlowPortsInfo {
 	private IRPInstance m_PublishingPart;
 	private IRPClassifier m_BuildingBlock;
 	private JComboBox<Object> m_BindingChoiceComboBox;
+	
+	private ExecutableMBSE_Context _context;
 
 	private Set<IRPLink> m_Links = new HashSet<IRPLink>();
 	
@@ -45,44 +44,24 @@ public class AutoConnectFlowPortsInfo {
 	    Nothing, Publish, Subscribe
 	}	
 	
-	public static void main(String[] args) {
-	
-		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
-		
-		IRPModelElement theSelectedEl = theRhpApp.getSelectedElement();
-		
-		ConfigurationSettings configSettings = new ConfigurationSettings(
-				theRhpApp,
-				theRhpApp.activeProject(),
-				"SysMLHelper.properties", 
-				"SysMLHelper_MessagesBundle",
-				"SysMLHelper" );
-		
-		if( theSelectedEl instanceof IRPAttribute ){
-			AutoConnectFlowPortsPanel.launchThePanel( (IRPAttribute) theSelectedEl, configSettings );
-		}
-	}
-	
 	public List<IRPAttribute> getExistingAttributesLinkedTo(
 			IRPAttribute theSrcAttribute,
 			IRPInstance inTgtPart ){
 
-		Logger.writeLine("getExistingAttributesLinkedTo invoked for " + 
-				Logger.elementInfo( theSrcAttribute ) + " owned by " + 
-				Logger.elementInfo( theSrcAttribute.getOwner() ) + " to see if there are links to " + 
-				Logger.elementInfo( inTgtPart ) );
+		_context.debug("getExistingAttributesLinkedTo invoked for " + 
+				_context.elInfo( theSrcAttribute ) + " owned by " + 
+				_context.elInfo( theSrcAttribute.getOwner() ) + " to see if there are links to " + 
+				_context.elInfo( inTgtPart ) );
 		
 		List<IRPAttribute> theExistingAttributes = 
 				new ArrayList<IRPAttribute>();
 		
-		IRPSysMLPort theSrcFlowPort = 
-				GeneralHelpers.getExistingFlowPort( 
-						theSrcAttribute );
+		IRPSysMLPort theSrcFlowPort = _context.getExistingFlowPort( theSrcAttribute );
 
 		if( theSrcFlowPort == null ){
 
-			Logger.writeLine("Warning in getExistingFlowPortsLinkedTo, " + 
-					Logger.elementInfo( theSrcAttribute ) + 
+			_context.warning("Warning in getExistingFlowPortsLinkedTo, " + 
+					_context.elInfo( theSrcAttribute ) + 
 					" has no flowport when one is expected");
 			
 		} else { // if( theSrcFlowPort != null ){
@@ -97,12 +76,12 @@ public class AutoConnectFlowPortsInfo {
 			for( IRPAttribute theTgtAttribute : theTgtAttributes ){
 				
 				IRPSysMLPort theTgtFlowPort = 
-						GeneralHelpers.getExistingFlowPort( 
+						_context.getExistingFlowPort( 
 								theTgtAttribute );
 
 				if( theTgtFlowPort != null ){
 					
-					m_Links.addAll( GeneralHelpers.getLinksBetween(
+					m_Links.addAll( _context.getLinksBetween(
 							theSrcFlowPort, 
 							m_PublishingPart,
 							theTgtFlowPort, 
@@ -112,7 +91,7 @@ public class AutoConnectFlowPortsInfo {
 					boolean isExistingLink = m_Links.size() > 0 ;
 							
 					if( isExistingLink ){
-						Logger.writeLine("Found " + Logger.elementInfo( theTgtFlowPort ) );
+						_context.debug("Found " + _context.elInfo( theTgtFlowPort ) );
 						theExistingAttributes.add( theTgtAttribute );
 					}
 				}									
@@ -125,14 +104,17 @@ public class AutoConnectFlowPortsInfo {
 	public AutoConnectFlowPortsInfo(
 			IRPAttribute toPublishingAttribute,
 			IRPInstance toPublishingPart,
-			IRPInstance fromSubscribingPart ) {
+			IRPInstance fromSubscribingPart,
+			ExecutableMBSE_Context context ) {
+		
+		_context = context;
 
-		Logger.writeLine("AutoConnectFlowPortsInfo constructor was invoked for " + 
-				Logger.elementInfo( toPublishingAttribute ) + " to subscriber " +
-				Logger.elementInfo( fromSubscribingPart ) );
+		_context.debug("AutoConnectFlowPortsInfo constructor was invoked for " + 
+				_context.elInfo( toPublishingAttribute ) + " to subscriber " +
+				_context.elInfo( fromSubscribingPart ) );
 		
 		m_PublishingAttribute = toPublishingAttribute;
-		m_PublishingFlowPort = GeneralHelpers.getExistingFlowPort( m_PublishingAttribute );
+		m_PublishingFlowPort = _context.getExistingFlowPort( m_PublishingAttribute );
 		m_PublishingPart = toPublishingPart;
 		
 		m_AttributeName = toPublishingAttribute.getName();
@@ -153,7 +135,7 @@ public class AutoConnectFlowPortsInfo {
 		    		
 		    	} else if( selectedValue.equals( m_CreateNew ) ){
 		    		
-		    		String theProposedName = GeneralHelpers.determineUniqueNameBasedOn( 
+		    		String theProposedName = _context.determineUniqueNameBasedOn( 
 		    				m_PublishingAttribute.getName(), 
 		    				"Attribute", 
 		    				m_SubscribingBlock );
@@ -165,7 +147,7 @@ public class AutoConnectFlowPortsInfo {
 		    		m_ChosenNameTextField.setEnabled( false );		 		    		
 		    	}
 		    	
-		    	Logger.writeLine( selectedValue + " was selected" );
+		    	_context.debug( selectedValue + " was selected" );
 		    }
 		});
 
@@ -230,11 +212,11 @@ public class AutoConnectFlowPortsInfo {
 		if( theEl != null ){
 			
 			m_SubscribingAttribute = (IRPAttribute) theEl;
-			m_SubscribingFlowPort = GeneralHelpers.getExistingFlowPort( m_SubscribingAttribute );
+			m_SubscribingFlowPort = _context.getExistingFlowPort( m_SubscribingAttribute );
 			
 			if( m_SubscribingFlowPort != null ){
 				
-				m_Links.addAll( GeneralHelpers.getLinksBetween(
+				m_Links.addAll( _context.getLinksBetween(
 						m_SubscribingFlowPort, 
 						m_SubscribingPart,
 						m_PublishingFlowPort, 
@@ -248,7 +230,7 @@ public class AutoConnectFlowPortsInfo {
 
 		} else {
 			
-			Logger.writeLine( fromSubscribingPart, "has no attribute called " + m_AttributeName );
+			_context.debug( _context.elInfo( fromSubscribingPart ) + " has no attribute called " + m_AttributeName );
 
 			m_SubscribingAttribute = null;
 			m_SubscribingFlowPort = null;
@@ -259,7 +241,7 @@ public class AutoConnectFlowPortsInfo {
 	
 	public IRPSysMLPort getSubscribingFlowPort() {
 		
-		Logger.writeLine("getSubscribingFlowPort was invoked for " + Logger.elementInfo( m_SubscribingPart ) + " and is returning " + Logger.elementInfo (m_SubscribingFlowPort) + " for attribute " + Logger.elementInfo( m_SubscribingAttribute ));
+		_context.debug("getSubscribingFlowPort was invoked for " + _context.elInfo( m_SubscribingPart ) + " and is returning " + _context.elInfo (m_SubscribingFlowPort) + " for attribute " + _context.elInfo( m_SubscribingAttribute ));
 		return m_SubscribingFlowPort;
 	}
 	
@@ -304,16 +286,17 @@ public class AutoConnectFlowPortsInfo {
 		
 		if( isCreateNewSelected() ){
 
-				Logger.writeLine("Add a new " + Logger.elementInfo( m_PublishingAttribute ) + 
+				_context.info("Add a new " + _context.elInfo( m_PublishingAttribute ) + 
 						" to " + getIDString() );
 				
 				IRPAttribute theAttribute = (IRPAttribute) m_PublishingAttribute.clone( 
 						m_ChosenNameTextField.getText(), 
 						getOwningBlock() );
 				
-				m_SubscribingFlowPort = PortCreator.createSubscribeFlowportFor( theAttribute );
+				PortCreator theCreator = new PortCreator(_context);
+				m_SubscribingFlowPort = theCreator.createSubscribeFlowportFor( theAttribute );
 
-				theLink = GeneralHelpers.addConnectorBetweenSysMLPortsIfOneDoesntExist(
+				theLink = _context.addConnectorBetweenSysMLPortsIfOneDoesntExist(
 						m_PublishingFlowPort,
 						m_PublishingPart, 
 						m_SubscribingFlowPort, 
@@ -324,16 +307,16 @@ public class AutoConnectFlowPortsInfo {
 			
 		} else if( !m_BindingChoiceComboBox.getSelectedItem().equals( m_DoNothing ) ) {
 			
-			m_SubscribingFlowPort = PortCreator.createSubscribeFlowportFor( m_SubscribingAttribute );
+			PortCreator theCreator = new PortCreator(_context);
+			m_SubscribingFlowPort = theCreator.createSubscribeFlowportFor( m_SubscribingAttribute );
 
-			theLink = GeneralHelpers.addConnectorBetweenSysMLPortsIfOneDoesntExist(
+			theLink = _context.addConnectorBetweenSysMLPortsIfOneDoesntExist(
 					m_PublishingFlowPort,
 					m_PublishingPart, 
 					m_SubscribingFlowPort, 
 					m_SubscribingPart );
 
 			m_Links.add( theLink );
-
 		}
 		
 		if( theLink != null ){
@@ -361,9 +344,9 @@ public class AutoConnectFlowPortsInfo {
 				
 				theIBDsWith.add( (IRPStructureDiagram) theReference );
 				
-				Logger.writeLine( theFlowPort, " owned by " + 
-						Logger.elementInfo( theFlowPort.getOwner() ) + 
-						" has a reference to " + Logger.elementInfo( theReference ) );
+				_context.debug( _context.elInfo( theFlowPort ) + " owned by " + 
+						_context.elInfo( theFlowPort.getOwner() ) + 
+						" has a reference to " + _context.elInfo( theReference ) );
 			}
 		}
 		
@@ -393,11 +376,7 @@ public class AutoConnectFlowPortsInfo {
 }
 
 /**
- * Copyright (C) 2017  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #213 09-JUL-2017: Add dialogs to auto-connect «publish»/«subscribe» FlowPorts for white-box simulation (F.J.Chadburn)
-    #252 29-MAY-2019: Implement generic features for profile/settings loading (F.J.Chadburn)
+ * Copyright (C) 2017-2021  MBSE Training and Consulting Limited (www.executablembse.com)
     
     This file is part of SysMLHelperPlugin.
 

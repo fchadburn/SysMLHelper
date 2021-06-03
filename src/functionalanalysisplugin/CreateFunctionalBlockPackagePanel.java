@@ -1,7 +1,6 @@
 package functionalanalysisplugin;
 
 import functionalanalysisplugin.PopulateFunctionalAnalysisPkg.SimulationType;
-import generalhelpers.ConfigurationSettings;
 import generalhelpers.CreateGatewayProjectPanel;
 import generalhelpers.CreateStructuralElementPanel;
 import generalhelpers.GeneralHelpers;
@@ -33,6 +32,7 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.telelogic.rhapsody.core.*;
 
 public class CreateFunctionalBlockPackagePanel extends CreateStructuralElementPanel {

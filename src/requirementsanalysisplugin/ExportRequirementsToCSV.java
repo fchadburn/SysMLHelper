@@ -1,8 +1,5 @@
 package requirementsanalysisplugin;
 
-import generalhelpers.Logger;
-import generalhelpers.StereotypeAndPropertySettings;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.util.List;
@@ -10,24 +7,21 @@ import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
 public class ExportRequirementsToCSV {
 
-	IRPApplication _rhpApp;
-	IRPProject _rhpPrj;
-	IRPModelElement _selectedEl;
-
+	ExecutableMBSE_Context _context;
+	
 	public ExportRequirementsToCSV(
-			String appID ) {
+			ExecutableMBSE_Context context ) {
 
-		_rhpApp = RhapsodyAppServer.getActiveRhapsodyApplicationByID( appID );
-		_rhpPrj = _rhpApp.activeProject();
-		_selectedEl = _rhpApp.getSelectedElement();
+		_context = context;
 	}
 
 	public void exportRequirementsToCSVUnderSelectedEl(){
-		exportRequirementsToCSV( _selectedEl, 1 );
+		exportRequirementsToCSV( _context.getSelectedElement(), 1 );
 	}
 
 	public void exportRequirementsToCSV(
@@ -38,10 +32,10 @@ public class ExportRequirementsToCSV {
 		List<IRPRequirement> theReqts = underEl.getNestedElementsByMetaClass( 
 				"Requirement", recursive ).toList();
 
-		Logger.writeLine( "There are " + theReqts.size() + " requirements under " + Logger.elementInfo( underEl ) );
+		_context.debug( "There are " + theReqts.size() + " requirements under " + _context.elInfo( underEl ) );
 
 		for (IRPRequirement theReqt : theReqts) {
-			Logger.writeLine( Logger.elementInfo( theReqt ) );
+			_context.debug( _context.elInfo( theReqt ) );
 		}
 
 		String theFileName = chooseAFileToImport( underEl.getName() + ".csv" );
@@ -49,12 +43,12 @@ public class ExportRequirementsToCSV {
 		if( theFileName == null ){
 
 		} else {
-			Logger.writeLine( "User chose " + theFileName + " to export " + theReqts.size() + " requirements" );
+			_context.info( "User chose " + theFileName + " to export " + theReqts.size() + " requirements" );
 
 			try {
 
-				String artifactTypeForCSVExport = StereotypeAndPropertySettings.getCSVExportArtifactType( underEl );
-				boolean isNameForCVSExport = StereotypeAndPropertySettings.getCVSExportIncludeArtifactName( underEl );
+				String artifactTypeForCSVExport = _context.getCSVExportArtifactType( underEl );
+				boolean isNameForCVSExport = _context.getCVSExportIncludeArtifactName( underEl );
 
 				FileWriter myWriter = new FileWriter( theFileName );
 
@@ -77,7 +71,7 @@ public class ExportRequirementsToCSV {
 
 			} catch( Exception e ){
 
-				Logger.writeLine( "Exception, e=" + e.getMessage() );
+				_context.error( "Exception, e=" + e.getMessage() );
 				System.out.println( "An error occurred." );
 				e.printStackTrace();
 			}
@@ -99,7 +93,7 @@ public class ExportRequirementsToCSV {
 
 		String path = "";
 
-		path = _rhpPrj.getCurrentDirectory();		
+		path = _context.get_rhpPrj().getCurrentDirectory();		
 
 		File fp = new File( path );
 		fc.setCurrentDirectory( fp );	
@@ -111,7 +105,7 @@ public class ExportRequirementsToCSV {
 			File selFile = fc.getSelectedFile();
 
 			if( selFile == null || selFile.getName().equals("") ){
-				Logger.writeLine( "No file selected" );
+				_context.warning( "No file selected" );
 			} else {
 				theFilename = selFile.getAbsolutePath();
 
@@ -120,7 +114,7 @@ public class ExportRequirementsToCSV {
 				}
 			}
 		} else {
-			Logger.writeLine( "User chose to cancel" );
+			_context.debug( "User chose to cancel" );
 		}
 
 		return theFilename;
@@ -141,24 +135,11 @@ public class ExportRequirementsToCSV {
 			return "*" + fileType;
 		}
 	}
-	
-	public static void main(String[] args) {
-
-		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
-
-		ExportRequirementsToCSV theExporter = new ExportRequirementsToCSV( 
-				theRhpApp.getApplicationConnectionString() );
-
-		theExporter.exportRequirementsToCSVUnderSelectedEl();
-	}
 }
 
 /**
- * Copyright (C) 2020  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2020-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
-    Change history:
-    #266 07-DEC-2020: Add initial support for CVS export & switching master of requirements to DOORS NG
-    
     This file is part of SysMLHelperPlugin.
 
     SysMLHelperPlugin is free software: you can redistribute it and/or modify

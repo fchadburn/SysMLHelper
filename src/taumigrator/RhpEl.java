@@ -26,7 +26,7 @@ public abstract class RhpEl {
 			IRPTransition theElseTransition = 
 					getElseTransitionFrom( (IRPStateVertex) theSelectedEl );
 		} else if( theSelectedEl instanceof IRPTransition ){
-			Logger.writeLine( Logger.elementInfo( theSelectedEl ) );
+			Logger.writeLine( Logger.elInfo( theSelectedEl ) );
 		}
 	}
 	
@@ -271,7 +271,7 @@ public abstract class RhpEl {
 
 				Logger.info( "createNodeElementsAndChildrenForJustEvents " + this.getString() + 
 						" was invoked for theRootOwner " + 
-						Logger.elementInfo( theRootOwner ) );
+						Logger.elInfo( theRootOwner ) );
 
 				this.createRhpEl( treeRoot );
 			}
@@ -302,7 +302,7 @@ public abstract class RhpEl {
 				if( !isFirstPass() ){
 					
 					Logger.info( "createElements " + this.getString() + " was invoked for theRootOwner " + 
-							Logger.elementInfo( theRootOwner ) );
+							Logger.elInfo( theRootOwner ) );
 
 					this.createRhpEl( treeRoot );
 				}
@@ -436,7 +436,7 @@ public abstract class RhpEl {
 				}
 				
 				Logger.info( "addMergeNodes " + this.getString() + 
-						" was invoked, found model object is " + Logger.elementInfo( theDstModelObject ) );
+						" was invoked, found model object is " + Logger.elInfo( theDstModelObject ) );
 			}
 			
 			if( children != null && !children.isEmpty() ){
@@ -462,11 +462,11 @@ public abstract class RhpEl {
 
 		IRPStateVertex theDstStateVertex = (IRPStateVertex)theModelObject;
 
-		Logger.info( Logger.elementInfo( theModelObject ) + " has " + inTransitions.size() + " incoming transitions");
+		Logger.info( Logger.elInfo( theModelObject ) + " has " + inTransitions.size() + " incoming transitions");
 		
 //		theModelObject.highLightElement();
 
-		Logger.info( "The parent is " + Logger.elementInfo( parent.get_rhpEl() ) );
+		Logger.info( "The parent is " + Logger.elInfo( parent.get_rhpEl() ) );
 
 		IRPFlowchart theActivityDiagram = (IRPFlowchart) parent.get_rhpEl();
 		IRPActivityDiagram theActivityDiagramGE = theActivityDiagram.getFlowchartDiagram();
@@ -570,20 +570,20 @@ public abstract class RhpEl {
 				
 				IRPModelElement theModelObject = theGraphEl.getModelObject();
 				
-				Logger.info( "Looking for pins on " + Logger.elementInfo( theModelObject) );
+				Logger.info( "Looking for pins on " + Logger.elInfo( theModelObject) );
 				List<IRPPin> thePins = GeneralHelpers.getPins( (IRPAcceptEventAction) theModelObject );
 				
 				if( thePins.size() == 1 ){
 					
 					IRPPin thePin = thePins.get( 0 );
 					
-					Logger.info("Found an accept event action with a single pin = " + Logger.elementInfo(thePin) );
+					Logger.info("Found an accept event action with a single pin = " + Logger.elInfo(thePin) );
 
 					IRPStateVertex thePinTarget = 
 							GeneralHelpers.getTargetOfOutTransitionIfSingleOneExisting( 
 									thePin );
 					
-					Logger.info("The pin target is " + Logger.elementInfo( thePinTarget ) );
+					Logger.info("The pin target is " + Logger.elInfo( thePinTarget ) );
 
 					@SuppressWarnings("unchecked")
 					List<IRPTransition> theOutTransitions = 
@@ -625,7 +625,7 @@ public abstract class RhpEl {
 				}
 				
 				Logger.info( "reflow " + this.getString() + 
-						" was invoked, found model object is " + Logger.elementInfo( theModelObject ) );
+						" was invoked, found model object is " + Logger.elInfo( theModelObject ) );
 			}
 			
 			if( children != null && !children.isEmpty() ){
@@ -691,10 +691,10 @@ public abstract class RhpEl {
 				
 				if( theElseTransition == null ){
 					
-					Logger.writeLine("Found that " + Logger.elementInfo( theDecisionNodeStateVertex ) + 
+					Logger.writeLine("Found that " + Logger.elInfo( theDecisionNodeStateVertex ) + 
 							" has no outgoing else transition, which violates a Rhapsody executable rule" );
 					
-					Logger.info( "The parent is " + Logger.elementInfo( parent.get_rhpEl() ) );
+					Logger.info( "The parent is " + Logger.elInfo( parent.get_rhpEl() ) );
 					IRPFlowchart theActivityDiagram = (IRPFlowchart) parent.get_rhpEl();
 					IRPActivityDiagram theActivityDiagramGE = theActivityDiagram.getFlowchartDiagram();
 					IRPState theRootState = theActivityDiagram.getRootState();
@@ -732,7 +732,7 @@ public abstract class RhpEl {
 									theDecisionNodeInfo.getBottomLeftY() + 40 );
 
 				} else {
-					Logger.writeLine("Found that " + Logger.elementInfo( theDecisionNodeStateVertex ) + 
+					Logger.writeLine("Found that " + Logger.elInfo( theDecisionNodeStateVertex ) + 
 							" does not need an else transition adding" );
 				}
 			}

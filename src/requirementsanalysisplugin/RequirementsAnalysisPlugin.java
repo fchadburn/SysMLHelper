@@ -1,11 +1,12 @@
 package requirementsanalysisplugin;
 
 import functionalanalysisplugin.SequenceDiagramHelper;
-import generalhelpers.ConfigurationSettings;
 import generalhelpers.Logger;
 import generalhelpers.UserInterfaceHelpers;
+
 import java.util.List;
 
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.telelogic.rhapsody.core.*;
  
 public class RequirementsAnalysisPlugin extends RPUserPlugin {
@@ -112,6 +113,8 @@ public class RequirementsAnalysisPlugin extends RPUserPlugin {
 				if (menuItem.equals(m_configSettings.getString( "requirementsanalysisplugin.CreateNestedADMenu" ))){
 
 					try {
+						NestedActivityDiagram theCreator = new NestedActivityDiagram(context);
+						
 						NestedActivityDiagram.createNestedActivityDiagramsFor( theSelectedEls );
 
 					} catch (Exception e) {
@@ -176,7 +179,7 @@ public class RequirementsAnalysisPlugin extends RPUserPlugin {
 				} else if (menuItem.equals(m_configSettings.getString( "requirementsanalysisplugin.StartLinkMenu" ))){
 
 					try {
-						SmartLinkPanel.selectStartLinkEls( theSelectedEls, theSelectedGraphEls );
+						EndlinkPanel.selectStartLinkEls( theSelectedEls, theSelectedGraphEls );
 
 					} catch (Exception e) {
 						Logger.error("Error: Exception in OnMenuItemSelect when invoking SmartLinkPanel.launchTheStartLinkPanel" );
@@ -184,7 +187,7 @@ public class RequirementsAnalysisPlugin extends RPUserPlugin {
 				} else if (menuItem.equals(m_configSettings.getString( "requirementsanalysisplugin.EndLinkMenu" ))){
 
 					try {				
-						SmartLinkPanel.launchTheEndLinkPanel( theSelectedEls, theSelectedGraphEls );
+						EndlinkPanel.launchThePanel( theSelectedEls, theSelectedGraphEls );
 
 					} catch (Exception e) {
 						Logger.error("Error: Exception in OnMenuItemSelect when invoking SmartLinkPanel.launchTheEndLinkPanel" );
@@ -257,7 +260,9 @@ public class RequirementsAnalysisPlugin extends RPUserPlugin {
 
 					if (!theSelectedEls.isEmpty()){
 						try {
-							SequenceDiagramHelper.updateVerificationsForSequenceDiagramsBasedOn( theSelectedEls );
+							SequenceDiagramHelper theHelper = new SequenceDiagramHelper(context);
+							
+							theHelper.updateVerificationsForSequenceDiagramsBasedOn( theSelectedEls );
 
 						} catch (Exception e) {
 							Logger.error("Error: Exception in OnMenuItemSelect when invoking SequenceDiagramHelper.updateVerificationsForSequenceDiagramsBasedOn" );

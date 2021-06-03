@@ -2,26 +2,21 @@ package requirementsanalysisplugin;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.telelogic.rhapsody.core.*;
 
-import generalhelpers.Logger;
-import generalhelpers.UserInterfaceHelpers;
+import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
+import com.telelogic.rhapsody.core.*;
 
 public class LayoutHelper {
 
-	public static void main(String[] args) {
-
-		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
-
-		IRPModelElement theSelectedEl = theRhpApp.getSelectedElement();
-		
-		if( theSelectedEl instanceof IRPDiagram ){
-			
-			centerDependenciesForTheDiagram( (IRPDiagram) theSelectedEl );
-		}
+	ExecutableMBSE_Context _context;
+	
+	public LayoutHelper(
+			ExecutableMBSE_Context context ) {
+		_context = context;
 	}
 	
-	private static void centerAll( 
+	private void centerAll( 
 			List<IRPGraphEdge> theGraphEdges ){
 				
 		IRPDiagram theDiagram = theGraphEdges.get(0).getDiagram();
@@ -38,8 +33,7 @@ public class LayoutHelper {
 				theModelObject != null &&
 				theModelObject instanceof IRPDependency ){
 				
-				IRPCollection theCollection = 
-						RequirementsAnalysisPlugin.getRhapsodyApp().createNewCollection();
+				IRPCollection theCollection = _context.createNewCollection();
 				theCollection.addGraphicalItem( theEdgeToRedraw );
 				theDiagram.removeGraphElements( theCollection );
 				
@@ -52,7 +46,7 @@ public class LayoutHelper {
 		}
 	}
 	
-	private static List<IRPGraphEdge> getAllDependencyGraphEdges( 
+	private List<IRPGraphEdge> getAllDependencyGraphEdges( 
 			List<IRPGraphElement> inTheGraphEls ){
 		
 		List<IRPGraphEdge> theDependencyGraphEdges = new ArrayList<>();
@@ -74,13 +68,13 @@ public class LayoutHelper {
 		return theDependencyGraphEdges;
 	}
 	
-	public static void centerDependenciesForTheGraphEls( 
+	public void centerDependenciesForTheGraphEls( 
 			List<IRPGraphElement> theGraphEls ){
 		
 		List<IRPGraphEdge> theEdgesToRedraw = 
 				getAllDependencyGraphEdges( theGraphEls );
 		
-		boolean answer = UserInterfaceHelpers.askAQuestion( "There are " + 
+		boolean answer = UserInterfaceHelper.askAQuestion( "There are " + 
 				theEdgesToRedraw.size() + " dependencies selected.\n" +
 				"Do you want to recentre them?");
 		
@@ -90,7 +84,7 @@ public class LayoutHelper {
 		}
 	}
 	
-	public static void centerDependenciesForThePackage( 
+	public void centerDependenciesForThePackage( 
 			IRPPackage thePackage ){
 
 		@SuppressWarnings("unchecked")
@@ -103,7 +97,7 @@ public class LayoutHelper {
 		}
 	}
 	
-	public static void centerDependenciesForTheDiagram( 
+	public void centerDependenciesForTheDiagram( 
 			IRPDiagram theDiagram ){
 				
 		@SuppressWarnings("unchecked")
@@ -115,7 +109,7 @@ public class LayoutHelper {
 		
 		if( theEdgesToRedraw.size()== 0 ){
 			
-			UserInterfaceHelpers.showInformationDialog(
+			UserInterfaceHelper.showInformationDialog(
 					"There are no dependencies on the diagram" );
 		
 		} else {	
@@ -123,12 +117,12 @@ public class LayoutHelper {
 			String theDiagramName;
 			
 			if( theDiagram instanceof IRPActivityDiagram ){
-				theDiagramName = Logger.elementInfo( theDiagram.getOwner() );
+				theDiagramName = _context.elInfo( theDiagram.getOwner() );
 			} else {
-				theDiagramName = Logger.elementInfo( theDiagram );
+				theDiagramName = _context.elInfo( theDiagram );
 			}
 			
-			boolean answer = UserInterfaceHelpers.askAQuestion( 
+			boolean answer = UserInterfaceHelper.askAQuestion( 
 					"There are " + theEdgesToRedraw.size() + 
 					" dependencies on the " + theDiagramName + ".\n" +
 					"Do you want to recentre them?");
@@ -139,7 +133,7 @@ public class LayoutHelper {
 		}
 	}
 	
-	static public void drawDependencyToMidPointsFor(
+	public void drawDependencyToMidPointsFor(
 			IRPDependency existingDependency, 
 			IRPGraphElement theStartGraphEl,
 			IRPGraphElement theEndGraphEl, 
@@ -172,18 +166,13 @@ public class LayoutHelper {
 			theDiagram.completeRelations( theGraphEls, 0);	
 
 		} else {
-			Logger.writeLine("Warning in redrawDependencyToMidPointsFor, the graphEls are not handled types for drawing relations");
+			_context.warning("Warning in redrawDependencyToMidPointsFor, the graphEls are not handled types for drawing relations");
 		}
 	}
 }
 
 /**
- * Copyright (C) 2017-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #229 20-SEP-2017: Add re-layout dependencies on diagram(s) menu to ease beautifying when req't tracing (F.J.Chadburn)
-    #242 04-OCT-2017: Get re-layout dependencies on diagrams(s) menu to centre on graph edges properly (F.J.Chadburn)
-    #256 29-MAY-2019: Rewrite to Java Swing dialog launching to make thread safe between versions (F.J.Chadburn)
+ * Copyright (C) 2017-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

@@ -1,7 +1,6 @@
 package requirementsanalysisplugin;
 
-import generalhelpers.TraceabilityHelper;
-
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
 public class RelationInfo {
@@ -9,13 +8,16 @@ public class RelationInfo {
 	private DiagramElementInfo m_StartElement;
 	private DiagramElementInfo m_EndElement;
 	private IRPStereotype m_RelationType;
+	private ExecutableMBSE_Context _context;
 	
 	public RelationInfo(
 			DiagramElementInfo fromStartElement,
 			DiagramElementInfo toEndElement, 
-			IRPStereotype withRelationType ){
+			IRPStereotype withRelationType,
+			ExecutableMBSE_Context context ){
+				
+		_context = context;
 		
-		super();
 		this.m_StartElement = fromStartElement;
 		this.m_EndElement = toEndElement;
 		this.m_RelationType = withRelationType;
@@ -35,7 +37,7 @@ public class RelationInfo {
 	
 	public int getExistingCount(){
 		
-		return TraceabilityHelper.countStereotypedDependencies(
+		return _context.countStereotypedDependencies(
 				m_StartElement.getElement(),
 				m_EndElement.getElement(),
 				m_RelationType.getName() );
@@ -43,7 +45,7 @@ public class RelationInfo {
 	
 	public IRPDependency getExistingStereotypedDependency(){
 		
-		return TraceabilityHelper.getExistingStereotypedDependency(
+		return _context.getExistingStereotypedDependency(
 				m_StartElement.getElement(),
 				m_EndElement.getElement(),
 				m_RelationType.getName() );
@@ -51,11 +53,8 @@ public class RelationInfo {
 }
 
 /**
- * Copyright (C) 2017  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2017-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
-    Change history:
-    #163 05-FEB-2017: Add new menus to Smart link: Start and Smart link: End (F.J.Chadburn)
-    
     This file is part of SysMLHelperPlugin.
 
     SysMLHelperPlugin is free software: you can redistribute it and/or modify
