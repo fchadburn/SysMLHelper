@@ -1,3 +1,16 @@
+Subject FunctionalDesignProfile
+        Metaclass General
+		Property PluginVersion String "4.0.c.PreRelease"
+		Property EnableInfoLogging Bool "True"
+		Property EnableWarningLogging Bool "True"
+		Property EnableErrorLogging Bool "True"
+		Property EnableDebugLogging Bool "True"
+		Property EnableLogFile Bool "False"
+		Property AllowPluginToControlUnitGranularity Bool "False"
+		Property UserDefinedMetaClassesAsSeparateUnit String ""
+		Property TemplateForActivityDiagram String "template_for_controlflowact"
+	end
+end
 Subject Format
 	Metaclass CallOperation
 		Property DefaultSize String "0,0,408,73"
@@ -28,6 +41,7 @@ Subject ConfigurationManagement
 		Property MoveActivation Enum "Disable,UserConfirmation,Automatic" "Automatic"
 	end
 end
+
 Subject SysMLHelper
         Metaclass General
 		Property StoreUnitInSeparateDirectoryNewTerms String ""
@@ -49,9 +63,6 @@ Subject SysMLHelper
 		Property DesignPackageStereotype String "Not Used"
 		Property InterfacesPackageStereotype String "Not Used"
 		Property TestPackageStereotype String "Not Used"         
-	end
-        Metaclass FunctionalDesign
-		Property TemplateForActivityDiagram String "template_for_controlflowact"
 	end
 end
 Subject ObjectModelGe

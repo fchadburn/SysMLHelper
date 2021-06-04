@@ -29,6 +29,8 @@ public class DesignSpecificationPackage {
 	IRPObjectModelDiagram m_FunctionHierarchyBDD = null;
 	IRPObjectModelDiagram m_SystemContextDiagram = null;
 
+	protected FunctionalDesign_Context _context;
+	
 	public DesignSpecificationPackage(
 			IRPPackage theRootEl,
 			List<IRPActor> theMasterActors,
@@ -38,7 +40,10 @@ public class DesignSpecificationPackage {
 			String _description, 
 			String _functionName,
 			String _functionDescription, 
-			boolean _isCreateParametricDiagram) {
+			boolean _isCreateParametricDiagram,
+			FunctionalDesign_Context context ) {
+		
+		_context = context;
 		
 		this._rootEl = theRootEl;
 		this._masterActors = theMasterActors;
@@ -95,13 +100,13 @@ public class DesignSpecificationPackage {
 	}
 
 	public void dumpPackage(){
-		_context.writeLine( "_packageName = " + _packageName );
-		_context.writeLine( "_newTermStereotypeName = " + _newTermStereotypeName );
-		_context.writeLine( "_shortName = " + _shortName );
-		_context.writeLine( "_description = " + _description );
-		_context.writeLine( "_functionName = " + _functionName );
-		_context.writeLine( "_functionDescription = " + _functionDescription );
-		_context.writeLine( "_isCreateParametricDiagram = " + _isCreateParametricDiagram );
+		_context.debug( "_packageName = " + _packageName );
+		_context.debug( "_newTermStereotypeName = " + _newTermStereotypeName );
+		_context.debug( "_shortName = " + _shortName );
+		_context.debug( "_description = " + _description );
+		_context.debug( "_functionName = " + _functionName );
+		_context.debug( "_functionDescription = " + _functionDescription );
+		_context.debug( "_isCreateParametricDiagram = " + _isCreateParametricDiagram );
 
 	}
 	
@@ -109,7 +114,7 @@ public class DesignSpecificationPackage {
 		
 		String errorMsg = ""; // valid
 				
-		boolean isUnique = GeneralHelpers.isElementNameUnique(
+		boolean isUnique = _context.isElementNameUnique(
 				this._packageName + "Pkg", "Package", this._rootEl, 0 );
 		
 		if( !isUnique ){
@@ -122,7 +127,7 @@ public class DesignSpecificationPackage {
 		String theRegEx = this._rootEl.getPropertyValue( 
 				"General.Model.NamesRegExp" );
 
-		_context.writeLine("Checking " + this._packageName + " against the NamesRegExp '" + theRegEx + "'");
+		_context.debug("Checking " + this._packageName + " against the NamesRegExp '" + theRegEx + "'");
 								
 		if( this._packageName != null && !this._packageName.matches( theRegEx ) ){
 
@@ -153,7 +158,7 @@ public class DesignSpecificationPackage {
 				_context.addNewTermPackageAndSetUnitProperties(
 						"Actors_" + _packageName + "Pkg",
 						theFDSPkg,
-						StereotypeAndPropertySettings.getActorPackageStereotype  ( 
+						_context.getActorPackageStereotype  ( 
 								theFDSPkg ) );
 
 		List<IRPActor> theNewActors = new ArrayList<>();
@@ -172,28 +177,28 @@ public class DesignSpecificationPackage {
 			// Create nested package for parametrics		
 			@SuppressWarnings("unused")
 			IRPPackage theParametricsPkg = 
-					GeneralHelpers.addNewTermPackageAndSetUnitProperties(
+					_context.addNewTermPackageAndSetUnitProperties(
 							"Parametrics_" + _packageName + "Pkg",
 							theFDSPkg,
-							StereotypeAndPropertySettings.getParametricsPackageStereotype( 
+							_context.getParametricsPackageStereotype( 
 									theFDSPkg ) );
 		}
 
 		// Create nested package for requirements		
 		@SuppressWarnings("unused")
 		IRPPackage theReqtsPkg = 
-				GeneralHelpers.addNewTermPackageAndSetUnitProperties(
+				_context.addNewTermPackageAndSetUnitProperties(
 						"Requirements_" + _packageName + "Pkg",
 						theFDSPkg,
-						StereotypeAndPropertySettings.getRequirementPackageStereotype ( 
+						_context.getRequirementPackageStereotype ( 
 								theFDSPkg ) );
 
 		// Create nested package for block		
 		IRPPackage theSystemContextPkg = 
-				GeneralHelpers.addNewTermPackageAndSetUnitProperties(
+				_context.addNewTermPackageAndSetUnitProperties(
 						"SystemContext_" + _packageName + "Pkg",
 						theFDSPkg,
-						StereotypeAndPropertySettings.getSystemContextPackageStereotype( 
+						_context.getSystemContextPackageStereotype( 
 								theFDSPkg ) );
 
 		IRPClass theBlock = theSystemContextPkg.addClass( _shortName );

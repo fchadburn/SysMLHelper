@@ -2,8 +2,6 @@ package taumigrator;
 
 import com.telelogic.rhapsody.core.*;
 
-import generalhelpers.Logger;
-
 public class RhpElDiagramConnector extends RhpElGraphNode {
 
 	String _text = null;
@@ -14,9 +12,10 @@ public class RhpElDiagramConnector extends RhpElGraphNode {
 			String theElementGuid,
 			String theText,
 			String thePosition,
-			String theSize ) throws Exception{
+			String theSize,
+			TauMigrator_Context context ) throws Exception{
 
-		super( theElementName, theElementType, theElementGuid, thePosition, theSize );
+		super( theElementName, theElementType, theElementGuid, thePosition, theSize, context );
 
 		_text = theText;
 
@@ -30,9 +29,10 @@ public class RhpElDiagramConnector extends RhpElGraphNode {
 			RhpEl theParent,
 			String theText,
 			String thePosition,
-			String theSize ) throws Exception {
+			String theSize,
+			TauMigrator_Context context ) throws Exception {
 
-		super( theElementName, theElementType, theElementGuid, theParent, thePosition, theSize );
+		super( theElementName, theElementType, theElementGuid, theParent, thePosition, theSize, context );
 
 		_text = theText;
 
@@ -49,7 +49,7 @@ public class RhpElDiagramConnector extends RhpElGraphNode {
 		theMsg += "_nWidth        = " + _nWidth + "\n";
 		theMsg += "_nHeight       = " + _nHeight + "\n";
 		theMsg += "===================================\n";		
-		Logger.info( theMsg );
+		_context.info( theMsg );
 	}
 
 	@Override
@@ -58,12 +58,11 @@ public class RhpElDiagramConnector extends RhpElGraphNode {
 
 		_rhpEl = null;
 
-		Logger.info("createRhpEl invoked for " + getString() + " owned by " + parent.getString());
-		Logger.info( "The parent is " + Logger.elInfo( parent.get_rhpEl() ) );			
+		_context.info("createRhpEl invoked for " + getString() + " owned by " + parent.getString());
+		_context.info( "The parent is " + _context.elInfo( parent.get_rhpEl() ) );			
 		IRPFlowchart theActivityDiagram = (IRPFlowchart) parent.get_rhpEl();
 		IRPActivityDiagram theActivityDiagramGE = theActivityDiagram.getFlowchartDiagram();
 		IRPState theRootState = theActivityDiagram.getRootState();
-
 
 		// condition connector; see also Fork, History, Join, and Termination
 		IRPConnector theConnector = theRootState.addConnector( "Diagram" );

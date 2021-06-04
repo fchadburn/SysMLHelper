@@ -11,8 +11,9 @@ import java.util.Set;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
-import requirementsanalysisplugin.NestedActivityDiagram;
-
+import com.mbsetraining.sysmlhelper.common.ElementMover;
+import com.mbsetraining.sysmlhelper.common.NestedActivityDiagram;
+import com.mbsetraining.sysmlhelper.common.RequirementMover;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.*;
 
@@ -21,7 +22,6 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 	private ExecutableMBSE_Context _context;
 
 	public ExecutableMBSE_RPApplicationListener( 
-			IRPApplication app,
 			String expectedProfileName,
 			ExecutableMBSE_Context context ) {
 
@@ -347,8 +347,12 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				_context.getIsEnableAutoMoveOfRequirements(
 						modelElement );
 
-		if( isEnabled ){
-			RequirementMover theElementMover = new RequirementMover( modelElement, _context );
+		String theReqtsPkgStereotypeName = _context.getRequirementPackageStereotype( modelElement );
+		
+		if( isEnabled && 
+				theReqtsPkgStereotypeName != null ){
+			
+			RequirementMover theElementMover = new RequirementMover( modelElement, theReqtsPkgStereotypeName, _context );
 			theElementMover.performMove();
 		}
 	}

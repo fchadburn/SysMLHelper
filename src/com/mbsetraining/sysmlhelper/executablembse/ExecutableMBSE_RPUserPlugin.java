@@ -9,7 +9,6 @@ import requirementsanalysisplugin.ExportRequirementsToCSV;
 import requirementsanalysisplugin.LayoutHelper;
 import requirementsanalysisplugin.MarkedAsDeletedPanel;
 import requirementsanalysisplugin.MoveRequirements;
-import requirementsanalysisplugin.NestedActivityDiagram;
 import requirementsanalysisplugin.PopulateRelatedRequirementsPanel;
 import requirementsanalysisplugin.PopulateTransitionRequirementsPanel;
 import requirementsanalysisplugin.RenameActions;
@@ -31,8 +30,8 @@ import functionalanalysisplugin.TestCaseCreator;
 import functionalanalysisplugin.UpdateTracedAttributePanel;
 import functionalanalysisplugin.PopulateFunctionalAnalysisPkg.SimulationType;
 import generalhelpers.CreateGatewayProjectPanel;
-import generalhelpers.RelativeUnitHandler;
 
+import com.mbsetraining.sysmlhelper.common.NestedActivityDiagram;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.CreateFunctionalExecutablePackagePanel;
 import com.mbsetraining.sysmlhelper.executablembse.CreateUseCasesPackagePanel;
@@ -73,7 +72,6 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 		_context.info( msg );
 
 		_listener = new ExecutableMBSE_RPApplicationListener( 
-				theRhapsodyApp, 
 				"ExecutableMBSEProfile",
 				_context );
 
@@ -117,9 +115,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						"executablembseplugin.SetupRAProperties" ) ) ){
 
 					if( theSelectedEl instanceof IRPPackage ){
-
-						checkIfSetupProjectIsNeeded( true );
-
+						_context.checkIfSetupProjectIsNeeded( true );
 					} else {
 						_context.error( menuItem + " invoked out of context and only works for packages" );
 					}
@@ -321,7 +317,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					
 				} else if (menuItem.equals(_context.getString("executablembseplugin.AddRelativeUnitMenu"))){
 
-					RelativeUnitHandler.browseAndAddUnit( theSelectedEl.getProject(), true );
+					_context.browseAndAddUnit( theSelectedEl.getProject(), true );
 
 				} else if( menuItem.equals( _context.getString( 
 						"executablembseplugin.CreateNestedADMenu" ) ) ){
@@ -622,28 +618,6 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 			}
 		} catch( Exception e ){
 			_context.error( "Exception in OnMenuItemSelect, e=" + e.getMessage() );
-		}
-	}
-
-	private void checkIfSetupProjectIsNeeded(
-			boolean isUserDialogEnabled ) {
-
-		boolean isSetupNeeded = _context.checkIfSetupProjectIsNeeded( isUserDialogEnabled, false );
-
-		String theMsg;
-
-		if( isSetupNeeded ){
-
-			theMsg = "An update is needed, do you want to proceed?";
-
-		} else {
-			theMsg = "An update is not needed, do you want to proceed with update anyway?";
-		}
-
-		boolean answer = UserInterfaceHelper.askAQuestion( theMsg );
-
-		if( answer ){
-			_context.setupProjectWithProperties();
 		}
 	}
 

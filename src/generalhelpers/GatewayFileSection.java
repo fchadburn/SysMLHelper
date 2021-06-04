@@ -6,17 +6,21 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map.Entry;
 
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+
 public class GatewayFileSection {
 
 	private String m_SectionName = null;
 	private boolean m_isImmutable = false;
+	protected ConfigurationSettings _context;
 	
 	LinkedHashMap<String, String> m_SettingsMap = new LinkedHashMap<String, String>();
 	
 	public GatewayFileSection(
-			String theDocumentName ) {
+			String theDocumentName,
+			ConfigurationSettings context ) {
 		
-		super();
+		_context = context;
 		this.m_SectionName = theDocumentName;
 	}
 	
@@ -84,7 +88,7 @@ public class GatewayFileSection {
            String newValue = theFullValue.replaceAll( replaceThisString, withThisString );
            
            if( !theFullValue.equals( newValue ) ){
-        	   Logger.writeLine("Updating value for " + theFullKey + " from '" + theFullValue + "' to '" + newValue + "'");
+        	   _context.debug("Updating value for " + theFullKey + " from '" + theFullValue + "' to '" + newValue + "'");
         	   setValueFor( theFullKey, newValue );
            }
         }
@@ -99,7 +103,7 @@ public class GatewayFileSection {
 		if (theKey != null){
 			setValueFor( theKey, toNewValue);
 		} else {
-			Logger.writeLine("Error in setVariableXValue, " + forVariableXName + " was not found");
+			_context.error("Error in setVariableXValue, " + forVariableXName + " was not found");
 		}
 	}
 	
@@ -175,10 +179,10 @@ public class GatewayFileSection {
 			String theCurrentValue = m_SettingsMap.get( theFullKey );
 
 			if( theCurrentValue == null ){
-				Logger.writeLine("Value of " + theFullKey + " needs to be added as not present, the new value is " + theFullValue);
+				_context.debug("Value of " + theFullKey + " needs to be added as not present, the new value is " + theFullValue);
 
 			} else if( !theCurrentValue.equals( theFullValue ) ){
-				Logger.writeLine("Value of " + theFullKey + " needs to change from " + theCurrentValue + " to " + theFullValue );
+				_context.debug("Value of " + theFullKey + " needs to change from " + theCurrentValue + " to " + theFullValue );
 				setValueFor( theFullKey, theFullValue );
 			}
 		}
@@ -186,12 +190,7 @@ public class GatewayFileSection {
 }
 
 /**
- * Copyright (C) 2016  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #035 15-JUN-2016: New panel to configure requirements package naming and gateway set-up (F.J.Chadburn)
-    #039 17-JUN-2016: Minor fixes and improvements to robustness of Gateway project setup (F.J.Chadburn)
-    #051 06-JUL-2016: Re-factored the GW panel to allow it to incrementally add to previous setup (F.J.Chadburn)
+ * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

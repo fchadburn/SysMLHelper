@@ -1,4 +1,4 @@
-package requirementsanalysisplugin;
+package com.mbsetraining.sysmlhelper.common;
 
 import java.util.HashMap;
 import java.util.List;
@@ -6,18 +6,16 @@ import java.util.Map;
 
 import javax.swing.JOptionPane;
 
-import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
-import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
  
 public class NestedActivityDiagram {
 
 	private final static String m_Prefix = "AD - ";
 	
-	ExecutableMBSE_Context _context;
+	ConfigurationSettings _context;
 	
 	public NestedActivityDiagram(
-			ExecutableMBSE_Context context ) {
+			ConfigurationSettings context ) {
 		_context = context;
 	}
 	

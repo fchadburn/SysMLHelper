@@ -2,17 +2,15 @@ package taumigrator;
 
 import com.telelogic.rhapsody.core.IRPModelElement;
 
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
-
 public class RhpElEventArgument extends RhpElElement {
 
 	public RhpElEventArgument(
 			String theElementName, 
 			String theElementType,
-			String theElementGuid ) throws Exception{
+			String theElementGuid,
+			TauMigrator_Context context ) throws Exception{
 		
-		super(theElementName, theElementType, theElementGuid);
+		super(theElementName, theElementType, theElementGuid,context);
 		
 		dumpInfo();
 	}
@@ -22,16 +20,17 @@ public class RhpElEventArgument extends RhpElElement {
 		theMsg += "===================================\n"; 
 		theMsg += "Create " + this.getString() + "\n";
 		theMsg += "===================================\n";		
-		Logger.info( theMsg );
+		_context.info( theMsg );
 	}
 
 	public RhpElEventArgument(
 			String theElementName, 
 			String theElementType,
 			String theElementGuid,
-			RhpEl theParent ) throws Exception {
+			RhpEl theParent,
+			TauMigrator_Context context ) throws Exception {
 		
-		super(theElementName, theElementType, theElementGuid, theParent);
+		super(theElementName, theElementType, theElementGuid, theParent,context);
 		
 		dumpInfo();
 	}
@@ -40,12 +39,12 @@ public class RhpElEventArgument extends RhpElElement {
 	public IRPModelElement createRhpEl(
 			RhpEl treeRoot ) throws Exception {
 
-		Logger.writeLine("createRhpEl invoked for " + getString() + " owned by " + parent.getString());
+		_context.info("createRhpEl invoked for " + getString() + " owned by " + parent.getString());
 
-		String theLegalName = GeneralHelpers.makeLegalName( _elementName );
+		String theLegalName = _context.makeLegalName( _elementName );
 		
 		if( _elementName != theLegalName ){
-			Logger.info("Changed name from " + _elementName + " to " + theLegalName);
+			_context.info("Changed name from " + _elementName + " to " + theLegalName);
 		}
 		
 		IRPModelElement theOwner = parent.get_rhpEl();
@@ -61,10 +60,7 @@ public class RhpElEventArgument extends RhpElElement {
 }
 
 /**
- * Copyright (C) 2018-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #251 29-MAY-2019: First official version of new TauMigratorProfile (F.J.Chadburn)
+ * Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

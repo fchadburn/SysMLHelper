@@ -6,9 +6,6 @@ import java.util.regex.Pattern;
 
 import com.telelogic.rhapsody.core.*;
 
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
-
 public class RhpElAcceptEventAction extends RhpElGraphNode {
 
 	String _text = null;
@@ -23,9 +20,10 @@ public class RhpElAcceptEventAction extends RhpElGraphNode {
 			String theSignalGuid,
 			String theText,
 			String thePosition,
-			String theSize ) throws Exception{
+			String theSize,
+			TauMigrator_Context context ) throws Exception{
 		
-		super( theElementName, theElementType, theElementGuid, thePosition, theSize );
+		super( theElementName, theElementType, theElementGuid, thePosition, theSize, context );
 
 		_text = theText;
 		_signalGuid = theSignalGuid;
@@ -41,9 +39,10 @@ public class RhpElAcceptEventAction extends RhpElGraphNode {
 			RhpEl theParent,
 			String theText,
 			String thePosition,
-			String theSize ) throws Exception {
+			String theSize,
+			TauMigrator_Context context ) throws Exception {
 		
-		super(theElementName, theElementType, theElementGuid, theParent, thePosition, theSize);
+		super(theElementName, theElementType, theElementGuid, theParent, thePosition, theSize, context );
 		
 		_text = theText;
 		_signalGuid = theSignalGuid;
@@ -62,7 +61,7 @@ public class RhpElAcceptEventAction extends RhpElGraphNode {
 		theMsg += "_nHeight       = " + _nHeight + "\n";
 		theMsg += "_signalGuid    = " + _signalGuid + "\n";
 		theMsg += "===================================\n";		
-		Logger.info( theMsg );
+		_context.info( theMsg );
 	}
 
 	
@@ -72,16 +71,16 @@ public class RhpElAcceptEventAction extends RhpElGraphNode {
 
 		_rhpEl = null;
 		
-		Logger.writeLine("createRhpEl invoked for " + getString() + " owned by " + 
-				parent.getString() + " with parent el=" + Logger.elInfo( parent.get_rhpEl() ) );	
+		_context.info("createRhpEl invoked for " + getString() + " owned by " + 
+				parent.getString() + " with parent el=" + _context.elInfo( parent.get_rhpEl() ) );	
 		
 		IRPFlowchart theActivityDiagram = (IRPFlowchart) parent.get_rhpEl();
 		IRPActivityDiagram theActivityDiagramGE = theActivityDiagram.getFlowchartDiagram();
 
-		String theLegalName = GeneralHelpers.makeLegalName(_text.replaceAll("[/(/)]", "") );
+		String theLegalName = _context.makeLegalName(_text.replaceAll("[/(/)]", "") );
 		
 		if( theLegalName != _text ){
-			Logger.info( "Changed name from " + _text + " to " + theLegalName);
+			_context.info( "Changed name from " + _text + " to " + theLegalName);
 		}
 		
 		IRPState theRootState = theActivityDiagram.getRootState();
@@ -105,7 +104,7 @@ public class RhpElAcceptEventAction extends RhpElGraphNode {
 				throw new Exception( "the EventEl is null, I'm expecting all events to havce been created in first pass" );
 			}
 
-			Logger.info( "Using signal " + Logger.elInfo( theEventEl ) + " for accept event action" );
+			_context.info( "Using signal " + _context.elInfo( theEventEl ) + " for accept event action" );
 
 			IRPEvent theEvent = (IRPEvent) theEventEl;
 			
@@ -116,10 +115,10 @@ public class RhpElAcceptEventAction extends RhpElGraphNode {
 			
 			if( theArgs.size() == 1 ){
 				
-				Logger.writeLine("Found that signal has " + theArgs.size() + " args" );
+				_context.info("Found that signal has " + theArgs.size() + " args" );
 			}
 		} else {
-			Logger.info("Odd. I could not find signal with guid " + 
+			_context.info("Odd. I could not find signal with guid " + 
 					_signalGuid + " for accept event action" );
 		}
 		
@@ -135,7 +134,7 @@ public class RhpElAcceptEventAction extends RhpElGraphNode {
 		for (Object o:theAcceptEventAction.getSubStateVertices().toList()){
 			if (o instanceof IRPPin) {
 				IRPPin pin = (IRPPin) o;
-//				Logger.info("Found that " + Logger.elementInfo( _rhpEl) + " has " + Logger.elementInfo( pin ) );
+//				_context.info("Found that " + _context.elementInfo( _rhpEl) + " has " + _context.elementInfo( pin ) );
 				
 				Matcher m = _p.matcher( _text );
 				
@@ -143,8 +142,8 @@ public class RhpElAcceptEventAction extends RhpElGraphNode {
 					
 					String theArgumentName = m.group( 1 );
 					
-					Logger.info("Found that " + Logger.elInfo( _rhpEl) + " has " + 
-							Logger.elInfo( pin ) + " related to " + theArgumentName );
+					_context.info("Found that " + _context.elInfo( _rhpEl) + " has " + 
+							_context.elInfo( pin ) + " related to " + theArgumentName );
 					
 					// condition connector; see also Fork, History, Join, and Termination
 					IRPState setValueAction = theRootState.addState( "" );
@@ -171,7 +170,7 @@ public class RhpElAcceptEventAction extends RhpElGraphNode {
 					
 					theActivityDiagramGE.addNewEdgeForElement(
 							objFlow,
-							(IRPGraphNode)GeneralHelpers.getGraphElement( pin, theActivityDiagram ), 
+							(IRPGraphNode)_context.getGraphElement( pin, theActivityDiagram ), 
 							0, 
 							0, 
 							setValueGraphNode, 
@@ -186,10 +185,7 @@ public class RhpElAcceptEventAction extends RhpElGraphNode {
 }
 
 /**
- * Copyright (C) 2018-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #251 29-MAY-2019: First official version of new TauMigratorProfile (F.J.Chadburn)
+ * Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

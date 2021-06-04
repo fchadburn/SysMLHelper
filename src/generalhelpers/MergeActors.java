@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 
+import com.mbsetraining.sysmlhelper.common.AssociationInfo;
 import com.telelogic.rhapsody.core.*;
 
 import functionalanalysisplugin.GraphEdgeInfo;

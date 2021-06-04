@@ -1,8 +1,5 @@
 package taumigrator;
 
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -11,29 +8,11 @@ import java.util.ListIterator;
 import com.telelogic.rhapsody.core.*;
 
 public abstract class RhpEl {
-
-	public static void main(String[] args) {
-	
-		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
-		@SuppressWarnings("unused")
-		IRPProject theRhpPrj = theRhpApp.activeProject();
-		
-		IRPModelElement theSelectedEl = theRhpApp.getSelectedElement();
-		
-		if( theSelectedEl instanceof IRPStateVertex ){
-			
-			@SuppressWarnings("unused")
-			IRPTransition theElseTransition = 
-					getElseTransitionFrom( (IRPStateVertex) theSelectedEl );
-		} else if( theSelectedEl instanceof IRPTransition ){
-			Logger.writeLine( Logger.elInfo( theSelectedEl ) );
-		}
-	}
 	
 	protected String _elementName;
 	protected String _elementType;
 	protected String _elementGuid;
-
+	protected TauMigrator_Context _context;
 	protected IRPModelElement _rhpEl;
 
 	public IRPModelElement get_rhpEl() {
@@ -72,8 +51,10 @@ public abstract class RhpEl {
 	public RhpEl(
 			String theElementName,
 			String theElementType,
-			String theElementGuid ){
+			String theElementGuid,
+			TauMigrator_Context context){
 
+		_context = context;
 		_elementName = theElementName;
 		_elementType = theElementType;
 		_elementGuid = theElementGuid;
@@ -83,8 +64,10 @@ public abstract class RhpEl {
 			String theElementName,
 			String theElementType,
 			String theElementGuid,
-			RhpEl parent ){
+			RhpEl parent,
+			TauMigrator_Context context ){
 
+		_context = context;
 		_elementName = theElementName;
 		_elementType = theElementType;
 		_elementGuid = theElementGuid;
@@ -150,7 +133,7 @@ public abstract class RhpEl {
 			theMsg += ")";
 		}
 
-		Logger.info( theMsg );
+		_context.info( theMsg );
 	}
 
 	public int getNodeCount(){
@@ -269,9 +252,9 @@ public abstract class RhpEl {
 		try {
 			if( isFirstPass() ){
 
-				Logger.info( "createNodeElementsAndChildrenForJustEvents " + this.getString() + 
+				_context.info( "createNodeElementsAndChildrenForJustEvents " + this.getString() + 
 						" was invoked for theRootOwner " + 
-						Logger.elInfo( theRootOwner ) );
+						_context.elInfo( theRootOwner ) );
 
 				this.createRhpEl( treeRoot );
 			}
@@ -288,7 +271,7 @@ public abstract class RhpEl {
 
 		} catch (Exception e) {
 
-			Logger.info("Unhandled exception in createElementsAndChildren, e=" + e.getMessage());
+			_context.info("Unhandled exception in createElementsAndChildren, e=" + e.getMessage());
 		}
 	}
 	
@@ -301,8 +284,8 @@ public abstract class RhpEl {
 
 				if( !isFirstPass() ){
 					
-					Logger.info( "createElements " + this.getString() + " was invoked for theRootOwner " + 
-							Logger.elInfo( theRootOwner ) );
+					_context.info( "createElements " + this.getString() + " was invoked for theRootOwner " + 
+							_context.elInfo( theRootOwner ) );
 
 					this.createRhpEl( treeRoot );
 				}
@@ -322,7 +305,7 @@ public abstract class RhpEl {
 
 		} catch (Exception e) {
 
-			Logger.info("Unhandled exception in createElementsAndChildren, e=" + e.getMessage());
+			_context.info("Unhandled exception in createElementsAndChildren, e=" + e.getMessage());
 		}
 	}
 
@@ -331,7 +314,7 @@ public abstract class RhpEl {
 
 		RhpEl theElement = null;
 
-//		Logger.info("findNestedElementWith was invoked to see if " + 
+//		_context.info("findNestedElementWith was invoked to see if " + 
 //				this.getString() + " has the Guid = " + theElementGuid );
 
 		try {
@@ -355,7 +338,7 @@ public abstract class RhpEl {
 
 		} catch (Exception e) {
 
-			Logger.info("Unhandled exception in findNestedElementWith, e=" + e.getMessage());
+			_context.info("Unhandled exception in findNestedElementWith, e=" + e.getMessage());
 		}
 
 		return theElement;
@@ -371,7 +354,7 @@ public abstract class RhpEl {
 			for( ModelElement child : children ){
 				
 				if( child instanceof Transition ){
-					Logger.info( child.getString() + " is a child of " + this.getString() );
+					_context.info( child.getString() + " is a child of " + this.getString() );
 				
 					Transition theTransition = (Transition)child;
 					theTransition.g
@@ -390,7 +373,7 @@ public abstract class RhpEl {
 		try {
 			if( this instanceof RhpElRelation  ){
 
-				Logger.info( "createRelationshipsAndChildren " + this.getString() + " was invoked for theRootOwner " );
+				_context.info( "createRelationshipsAndChildren " + this.getString() + " was invoked for theRootOwner " );
 
 				this.createRhpEl( treeRoot );
 			}
@@ -406,7 +389,7 @@ public abstract class RhpEl {
 
 		} catch (Exception e) {
 
-			Logger.info("Unhandled exception in createRelationshipsAndChildren, e=" + e.getMessage());
+			_context.info("Unhandled exception in createRelationshipsAndChildren, e=" + e.getMessage());
 		}
 	}
 	
@@ -435,8 +418,8 @@ public abstract class RhpEl {
 					}
 				}
 				
-				Logger.info( "addMergeNodes " + this.getString() + 
-						" was invoked, found model object is " + Logger.elInfo( theDstModelObject ) );
+				_context.info( "addMergeNodes " + this.getString() + 
+						" was invoked, found model object is " + _context.elInfo( theDstModelObject ) );
 			}
 			
 			if( children != null && !children.isEmpty() ){
@@ -450,7 +433,7 @@ public abstract class RhpEl {
 
 		} catch (Exception e) {
 
-			Logger.info("Unhandled exception in createElementsAndChildren, e=" + e.getMessage());
+			_context.info("Unhandled exception in createElementsAndChildren, e=" + e.getMessage());
 		}
 	}
 
@@ -462,11 +445,11 @@ public abstract class RhpEl {
 
 		IRPStateVertex theDstStateVertex = (IRPStateVertex)theModelObject;
 
-		Logger.info( Logger.elInfo( theModelObject ) + " has " + inTransitions.size() + " incoming transitions");
+		_context.info( _context.elInfo( theModelObject ) + " has " + inTransitions.size() + " incoming transitions");
 		
 //		theModelObject.highLightElement();
 
-		Logger.info( "The parent is " + Logger.elInfo( parent.get_rhpEl() ) );
+		_context.info( "The parent is " + _context.elInfo( parent.get_rhpEl() ) );
 
 		IRPFlowchart theActivityDiagram = (IRPFlowchart) parent.get_rhpEl();
 		IRPActivityDiagram theActivityDiagramGE = theActivityDiagram.getFlowchartDiagram();
@@ -499,7 +482,7 @@ public abstract class RhpEl {
 
 			IRPStateVertex theExistingSrc = theExistingTrans.getItsSource();
 
-			IRPGraphNode theExistingSrcGraphNode = (IRPGraphNode) GeneralHelpers.getCorrespondingGraphElement( 
+			IRPGraphNode theExistingSrcGraphNode = (IRPGraphNode) _context.getCorrespondingGraphElement( 
 					theExistingSrc, theActivityDiagramGE );
 
 			GraphNodeInfo theSrcInfo = new GraphNodeInfo( theExistingSrcGraphNode );
@@ -510,12 +493,12 @@ public abstract class RhpEl {
 
 			if( theExistingGuard != null ){
 
-				Logger.info("Copying over guard as " + theExistingGuard.getBody() + " with Label = " + theExistingTrans.getDisplayName());
+				_context.info("Copying over guard as " + theExistingGuard.getBody() + " with Label = " + theExistingTrans.getDisplayName());
 				theNewTransition.setItsGuard( theExistingGuard.getBody() );
 				theNewTransition.setDisplayName( theExistingTrans.getDisplayName() );
 
 			} else {
-				Logger.info( "The transition has no guard condition" );
+				_context.info( "The transition has no guard condition" );
 			}
 
 			theNewTransition.changeTo( theExistingTrans.getUserDefinedMetaClass() );
@@ -539,7 +522,7 @@ public abstract class RhpEl {
 
 //		GraphNodeInfo theMergeGraphNodeInfo = new GraphNodeInfo( theMergeGraphNode );
 
-		IRPGraphElement theExistingTgtGraphEl = GeneralHelpers.getCorrespondingGraphElement( 
+		IRPGraphElement theExistingTgtGraphEl = _context.getCorrespondingGraphElement( 
 				theDstStateVertex, theActivityDiagramGE );
 
 		GraphNodeInfo theExistingTgtGraphElInfo = 
@@ -570,20 +553,20 @@ public abstract class RhpEl {
 				
 				IRPModelElement theModelObject = theGraphEl.getModelObject();
 				
-				Logger.info( "Looking for pins on " + Logger.elInfo( theModelObject) );
-				List<IRPPin> thePins = GeneralHelpers.getPins( (IRPAcceptEventAction) theModelObject );
+				_context.info( "Looking for pins on " + _context.elInfo( theModelObject) );
+				List<IRPPin> thePins = _context.getPins( (IRPAcceptEventAction) theModelObject );
 				
 				if( thePins.size() == 1 ){
 					
 					IRPPin thePin = thePins.get( 0 );
 					
-					Logger.info("Found an accept event action with a single pin = " + Logger.elInfo(thePin) );
+					_context.info("Found an accept event action with a single pin = " + _context.elInfo(thePin) );
 
 					IRPStateVertex thePinTarget = 
-							GeneralHelpers.getTargetOfOutTransitionIfSingleOneExisting( 
+							_context.getTargetOfOutTransitionIfSingleOneExisting( 
 									thePin );
 					
-					Logger.info("The pin target is " + Logger.elInfo( thePinTarget ) );
+					_context.info("The pin target is " + _context.elInfo( thePinTarget ) );
 
 					@SuppressWarnings("unchecked")
 					List<IRPTransition> theOutTransitions = 
@@ -600,12 +583,12 @@ public abstract class RhpEl {
 						
 						theNewTransition.changeTo( "ControlFlow" );
 						
-						IRPGraphNode theSrcGraphNode = (IRPGraphNode) GeneralHelpers.getCorrespondingGraphElement( 
+						IRPGraphNode theSrcGraphNode = (IRPGraphNode) _context.getCorrespondingGraphElement( 
 								thePinTarget, (IRPActivityDiagram) theGraphEl.getDiagram() );
 						
 						GraphNodeInfo theSrcGraphNodeInfo = new GraphNodeInfo( theSrcGraphNode );
 
-						IRPGraphNode theDstGraphNode = (IRPGraphNode) GeneralHelpers.getCorrespondingGraphElement( 
+						IRPGraphNode theDstGraphNode = (IRPGraphNode) _context.getCorrespondingGraphElement( 
 								theTarget, (IRPActivityDiagram) theGraphEl.getDiagram() );
 						
 						GraphNodeInfo theDstGraphNodeInfo = new GraphNodeInfo( theDstGraphNode );
@@ -624,8 +607,8 @@ public abstract class RhpEl {
 					}
 				}
 				
-				Logger.info( "reflow " + this.getString() + 
-						" was invoked, found model object is " + Logger.elInfo( theModelObject ) );
+				_context.info( "reflow " + this.getString() + 
+						" was invoked, found model object is " + _context.elInfo( theModelObject ) );
 			}
 			
 			if( children != null && !children.isEmpty() ){
@@ -639,7 +622,7 @@ public abstract class RhpEl {
 
 		} catch (Exception e) {
 
-			Logger.info("Unhandled exception in createElementsAndChildren, e=" + e.getMessage());
+			_context.info("Unhandled exception in createElementsAndChildren, e=" + e.getMessage());
 		}
 	}
 	
@@ -691,10 +674,10 @@ public abstract class RhpEl {
 				
 				if( theElseTransition == null ){
 					
-					Logger.writeLine("Found that " + Logger.elInfo( theDecisionNodeStateVertex ) + 
+					_context.info("Found that " + _context.elInfo( theDecisionNodeStateVertex ) + 
 							" has no outgoing else transition, which violates a Rhapsody executable rule" );
 					
-					Logger.info( "The parent is " + Logger.elInfo( parent.get_rhpEl() ) );
+					_context.info( "The parent is " + _context.elInfo( parent.get_rhpEl() ) );
 					IRPFlowchart theActivityDiagram = (IRPFlowchart) parent.get_rhpEl();
 					IRPActivityDiagram theActivityDiagramGE = theActivityDiagram.getFlowchartDiagram();
 					IRPState theRootState = theActivityDiagram.getRootState();
@@ -732,7 +715,7 @@ public abstract class RhpEl {
 									theDecisionNodeInfo.getBottomLeftY() + 40 );
 
 				} else {
-					Logger.writeLine("Found that " + Logger.elInfo( theDecisionNodeStateVertex ) + 
+					_context.info("Found that " + _context.elInfo( theDecisionNodeStateVertex ) + 
 							" does not need an else transition adding" );
 				}
 			}
@@ -748,16 +731,13 @@ public abstract class RhpEl {
 
 		} catch (Exception e) {
 
-			Logger.info("Unhandled exception in createElementsAndChildren, e=" + e.getMessage());
+			_context.error("Unhandled exception in createElementsAndChildren, e=" + e.getMessage());
 		}
 	}
 }
 
 /**
- * Copyright (C) 2018-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #251 29-MAY-2019: First official version of new TauMigratorProfile (F.J.Chadburn)
+ * Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

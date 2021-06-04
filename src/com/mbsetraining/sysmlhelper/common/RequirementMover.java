@@ -1,4 +1,4 @@
-package com.mbsetraining.sysmlhelper.executablembse;
+package com.mbsetraining.sysmlhelper.common;
 
 import java.util.List;
 
@@ -10,9 +10,10 @@ public class RequirementMover extends ElementMover {
 	
 	public RequirementMover(
 			IRPModelElement theElement,
-			ExecutableMBSE_Context context ){
+			String whereMoveToHasStereotype,
+			ConfigurationSettings context ){
 		
-		super( theElement, context.getRequirementPackageStereotype( theElement ), context );
+		super( theElement, whereMoveToHasStereotype, context );
 		
 		_moveToStereotype = getMoveToStereotype( _moveToPkg );
 	}

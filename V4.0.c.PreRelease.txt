@@ -414,3 +414,4 @@ ExecutableMBSEProfile:
 #282 20-MAY-2021: Fix issue with requirement mover caused by renaming of the package new term stereotypes (F.J.Chadburn)
 #283 03-JUN-2021: Initial re-factoring to get context to be taken into account for helper invocation and logging (F.J.Chadburn)
 #284 03-JUN-2021: Improve thread safe support for executable mbse requirements analysis helpers (F.J.Chadburn)
+#285 04-JUN-2021: Further purging of old logger to enable thread safe operation across multiple rhapsody instances (F.J.Chadburn)

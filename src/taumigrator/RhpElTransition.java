@@ -6,9 +6,6 @@ import java.util.regex.Pattern;
 
 import com.telelogic.rhapsody.core.*;
 
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
-
 public class RhpElTransition extends RhpElGraphEdge {
 
 	boolean _isDefaultTransition;
@@ -61,9 +58,10 @@ public class RhpElTransition extends RhpElGraphEdge {
 			String theSrcGuid,
 			String theDstGuid,
 			String theGuard,
-			String theNewTerm ) throws Exception{
+			String theNewTerm,
+			TauMigrator_Context context ) throws Exception{
 		
-		super( theElementName, theElementType, theElementGuid, theSegmentPoints );
+		super( theElementName, theElementType, theElementGuid, theSegmentPoints, context );
 		
 		_isDefaultTransition = isDefaultTransition;
 		_srcGuid = theSrcGuid;
@@ -84,9 +82,10 @@ public class RhpElTransition extends RhpElGraphEdge {
 			String theSrcGuid,
 			String theDstGuid,
 			String theGuard,
-			String theNewTerm ) throws Exception {
+			String theNewTerm,
+			TauMigrator_Context context ) throws Exception {
 		
-		super( theElementName, theElementType, theElementGuid, theParent, theSegmentPoints );
+		super( theElementName, theElementType, theElementGuid, theParent, theSegmentPoints, context );
 	
 		_isDefaultTransition = isDefaultTransition;
 		_srcGuid = theSrcGuid;
@@ -115,7 +114,7 @@ public class RhpElTransition extends RhpElGraphEdge {
 //		theMsg += "_yTrgPosition        = " + _yTrgPosition + "\n";
 		theMsg += "===================================\n";
 		
-		Logger.info( theMsg );
+		_context.info( theMsg );
 	}
 
 	@Override
@@ -124,22 +123,22 @@ public class RhpElTransition extends RhpElGraphEdge {
 
 		_rhpEl = null;
 		
-		Logger.info("createRhpEl invoked for " + getString() + " owned by " + parent.getString());
-		Logger.info("with guard = " + _guard);
+		_context.info("createRhpEl invoked for " + getString() + " owned by " + parent.getString());
+		_context.info("with guard = " + _guard);
 		
 		RhpEl theSrc = treeRoot.findNestedElementWith( _srcGuid );
 		RhpEl theDst = treeRoot.findNestedElementWith( _dstGuid );
 
 		if( theSrc == null ){
-			Logger.info("Sorry, unable to find Src element with guid = " + _srcGuid );
+			_context.info("Sorry, unable to find Src element with guid = " + _srcGuid );
 		} else {
-			Logger.info("Success! findNestedElementWith matched with " + theSrc.getString() );				
+			_context.info("Success! findNestedElementWith matched with " + theSrc.getString() );				
 		}
 		
 		if( theDst == null ){
-			Logger.info("Sorry, unable to find Dst element with guid = " + _dstGuid );
+			_context.info("Sorry, unable to find Dst element with guid = " + _dstGuid );
 		} else {
-			Logger.info("Success! findNestedElementWith matched with " + theDst.getString() );				
+			_context.info("Success! findNestedElementWith matched with " + theDst.getString() );				
 		}
 		
 		if( theSrc != null && 
@@ -148,50 +147,50 @@ public class RhpElTransition extends RhpElGraphEdge {
 				theDst instanceof RhpElGraphNode ){
 			
 			IRPModelElement theSrcModelEl = theSrc.get_rhpEl();
-			Logger.info( "theSrcModelEl = " + Logger.elInfo( theSrcModelEl ) );
+			_context.info( "theSrcModelEl = " + _context.elInfo( theSrcModelEl ) );
 			theSrcModelEl.highLightElement();
 			
 			IRPModelElement theDstModelEl = theDst.get_rhpEl();
-			Logger.info( "theDstModelEl = " + Logger.elInfo( theDstModelEl ) );
+			_context.info( "theDstModelEl = " + _context.elInfo( theDstModelEl ) );
 			theDstModelEl.highLightElement();
 			
 //			RhpElGraphNode theSrcRhlElGraphNode = (RhpElGraphNode)theSrc;
 			
-//			Logger.info( "The parent is " + Logger.elementInfo( parent.get_rhpEl() ) );
+//			_context.info( "The parent is " + _context.elementInfo( parent.get_rhpEl() ) );
 
 			IRPFlowchart theActivityDiagram = (IRPFlowchart) parent.get_rhpEl();
 			IRPActivityDiagram theActivityDiagramGE = theActivityDiagram.getFlowchartDiagram();
 			IRPState theRootState = theActivityDiagram.getRootState();
 
 			IRPGraphElement theSrcGraphNode = 
-					GeneralHelpers.getCorrespondingGraphElement( theSrcModelEl, theActivityDiagramGE ) ;
+					_context.getCorrespondingGraphElement( theSrcModelEl, theActivityDiagramGE ) ;
 			
 			IRPGraphElement theDstGraphNode = 
-					GeneralHelpers.getCorrespondingGraphElement( theDstModelEl, theActivityDiagramGE ) ;
+					_context.getCorrespondingGraphElement( theDstModelEl, theActivityDiagramGE ) ;
 
 			//RhpElGraphNode theDstRhpElGraphNode = (RhpElGraphNode)theDst;
 			
 //			IRPGraphNode theDstGraphNode = theDstRhpElGraphNode.get_graphEl(); 
 
-			Logger.info( "The parent is " + Logger.elInfo( parent.get_rhpEl() ) );
-			Logger.info( "The theSrcModelEl is " + Logger.elInfo( theSrcModelEl ) );
-			Logger.info( "The theDstModelEl is " + Logger.elInfo( theDstModelEl ) );
+			_context.info( "The parent is " + _context.elInfo( parent.get_rhpEl() ) );
+			_context.info( "The theSrcModelEl is " + _context.elInfo( theSrcModelEl ) );
+			_context.info( "The theDstModelEl is " + _context.elInfo( theDstModelEl ) );
 
 			IRPModelElement theParentOfDiagram = parent.getParent().get_rhpEl();
-			//Logger.info("The parent of diagram is " + Logger.elementInfo(theParentOfDiagram));
+			//_context.info("The parent of diagram is " + _context.elementInfo(theParentOfDiagram));
 			
 			
 			String theGuard = "";
 			
 			if( theSrc instanceof RhpElDecisionNodeAsReceiveEvent ){
 				
-				IRPPin thePin = GeneralHelpers.getPin("value", (IRPAcceptEventAction) theSrcModelEl);
+				IRPPin thePin = _context.getPin("value", (IRPAcceptEventAction) theSrcModelEl);
 				
 				if( thePin != null ){
 					
-					Logger.info("Switch object flow to go from the pin");
+					_context.info("Switch object flow to go from the pin");
 					theSrcModelEl = thePin;
-					theSrcGraphNode = (IRPGraphNode) GeneralHelpers.getCorrespondingGraphElement( 
+					theSrcGraphNode = (IRPGraphNode) _context.getCorrespondingGraphElement( 
 							thePin, theActivityDiagramGE );
 				}
 
@@ -219,7 +218,7 @@ public class RhpElTransition extends RhpElGraphEdge {
 				
 				String theAttributeName = ((RhpElDecisionNode) theSrc).get_text();
 				
-				Logger.info( "theAttributeName is " + theAttributeName );
+				_context.info( "theAttributeName is " + theAttributeName );
 				
 				IRPModelElement theAttrEl = 
 						theParentOfDiagram.findNestedElement( 
@@ -227,7 +226,7 @@ public class RhpElTransition extends RhpElGraphEdge {
 				
 				if( theAttrEl != null ){
 					
-					Logger.info( "Successfully found that DecisionNode refers to " + Logger.elInfo( theAttrEl ) );
+					_context.info( "Successfully found that DecisionNode refers to " + _context.elInfo( theAttrEl ) );
 					
 					Matcher m = _p.matcher( _guard );
 					
@@ -242,14 +241,14 @@ public class RhpElTransition extends RhpElGraphEdge {
 						    }
 						}
 						
-						Logger.info( "Changing the guard from " + _guard + " to " + theGuard );						
+						_context.info( "Changing the guard from " + _guard + " to " + theGuard );						
 					}
 				}
 			}
 			
 			if( theSrcModelEl instanceof IRPStateVertex ){
 
-				Logger.info( "theSrcModelEl is " + Logger.elInfo( theSrcModelEl) );
+				_context.info( "theSrcModelEl is " + _context.elInfo( theSrcModelEl) );
 				IRPStateVertex theSrcState = (IRPStateVertex)theSrcModelEl;
 				
 				if( theDstModelEl instanceof IRPStateVertex ){
@@ -259,27 +258,27 @@ public class RhpElTransition extends RhpElGraphEdge {
 					boolean isSrcADecisionNode = ( theSrcState instanceof IRPConnector &&
 							((IRPConnector)theSrcState).getConnectorType().equals("Condition"));
 					
-					Logger.info( "theSrc " + Logger.elInfo( theSrcModelEl ) + " is decision node = " + isSrcADecisionNode );
+					_context.info( "theSrc " + _context.elInfo( theSrcModelEl ) + " is decision node = " + isSrcADecisionNode );
 
 					boolean isDstAFinalFlow = ( theDstState instanceof IRPState &&
 							((IRPState)theDstState).getStateType().equals("FlowFinal"));
 					
-					Logger.info( "theDst " + Logger.elInfo( theDstModelEl ) + " is flow final = " + isDstAFinalFlow );
+					_context.info( "theDst " + _context.elInfo( theDstModelEl ) + " is flow final = " + isDstAFinalFlow );
 					
 					theDstModelEl.highLightElement();
 					
 					if( isSrcADecisionNode && isDstAFinalFlow ){
 						
 						IRPGraphNode theExistingDstGraphNode = 
-								(IRPGraphNode) GeneralHelpers.getCorrespondingGraphElement( 
+								(IRPGraphNode) _context.getCorrespondingGraphElement( 
 										theDstModelEl, theActivityDiagramGE );
 												
-						GeneralHelpers.dumpGraphicalPropertiesFor(theExistingDstGraphNode);
+						_context.dumpGraphicalPropertiesFor(theExistingDstGraphNode);
 						
 						GraphNodeInfo theDstNodeInfo = new GraphNodeInfo( theExistingDstGraphNode );
 
 						IRPGraphNode theExistingSrcGraphNode = 
-								(IRPGraphNode) GeneralHelpers.getCorrespondingGraphElement( 
+								(IRPGraphNode) _context.getCorrespondingGraphElement( 
 										theDstModelEl, theActivityDiagramGE );
 						
 						GraphNodeInfo theSrcNodeInfo = new GraphNodeInfo( theExistingSrcGraphNode );
@@ -349,14 +348,14 @@ public class RhpElTransition extends RhpElGraphEdge {
 								
 								IRPModelElement theMergeEl = theMergeNode.getModelObject();
 								
-								Logger.info( "Switching destination from " + Logger.elInfo( theDstState ) + 
-										" to " + Logger.elInfo( theMergeEl ) );
+								_context.info( "Switching destination from " + _context.elInfo( theDstState ) + 
+										" to " + _context.elInfo( theMergeEl ) );
 								
 								theDstGraphNode = theMergeNode;
 								theDstState = (IRPStateVertex) theMergeEl;
 								
 							} else if( outTransitions.size() > 0){
-								Logger.info( "Error, Unable to add transition due to presence of " + 
+								_context.info( "Error, Unable to add transition due to presence of " + 
 										outTransitions.size() + " existing out transitions" );
 							} else {
 								addTransitionTo(
@@ -387,7 +386,7 @@ public class RhpElTransition extends RhpElGraphEdge {
 										theSrcState,
 										theDstState);
 							} else {
-								Logger.info("Error, unable to add transition from " + Logger.elInfo( theSrcModelEl ) + " owned by " + Logger.elInfo( theActivityDiagram ) + " as the destination " + theDstModelEl + " has " +
+								_context.info("Error, unable to add transition from " + _context.elInfo( theSrcModelEl ) + " owned by " + _context.elInfo( theActivityDiagram ) + " as the destination " + theDstModelEl + " has " +
 										outTransitions.size() + " out transitions and " + inTransitions.size() + 
 										" in transitions, and it is a diagram connector (which can only have 1)");
 							}
@@ -476,7 +475,7 @@ public class RhpElTransition extends RhpElGraphEdge {
 		theTransition.changeTo( _newTerm );
 		
 		if( _guard != null & !_guard.isEmpty() ){
-			Logger.info( "Setting Guard to " + _guard + " with Label = '" + _guard + "'" );
+			_context.info( "Setting Guard to " + _guard + " with Label = '" + _guard + "'" );
 			theTransition.setItsGuard( withTheGuard );
 			theTransition.setDisplayName( _guard );
 		}

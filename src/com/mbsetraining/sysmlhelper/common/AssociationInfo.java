@@ -1,4 +1,4 @@
-package generalhelpers;
+package com.mbsetraining.sysmlhelper.common;
 
 import java.util.HashSet;
 import java.util.List;
@@ -13,11 +13,15 @@ public class AssociationInfo {
 	protected IRPActor m_NewActor = null;
 	protected Set<IRPGraphEdge> m_GraphEdges = new HashSet<>();
 	protected Set<IRPDiagram> m_Diagrams = new HashSet<>();
+	protected ConfigurationSettings _context;
 	
 	public AssociationInfo( 
 			IRPRelation theOldRelation, 
-			IRPRelation theNewRelation ) {
+			IRPRelation theNewRelation,
+			ConfigurationSettings context ) {
 
+		_context = context;
+		
 		IRPProject theProject = theOldRelation.getProject();
 		
 		m_OldRelation = theOldRelation;
@@ -26,7 +30,7 @@ public class AssociationInfo {
 		IRPClassifier theOfClass = m_NewRelation.getOfClass();
 		
 		if( theOfClass == null || !( theOfClass instanceof IRPActor ) ){
-			Logger.writeLine("Error in AssociationInfo constructor, actor not found");
+			_context.error("Error in AssociationInfo constructor, actor not found");
 		}
 		
 		m_NewActor = (IRPActor) theOfClass;

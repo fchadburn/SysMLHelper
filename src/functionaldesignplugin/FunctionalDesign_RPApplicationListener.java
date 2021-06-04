@@ -1,10 +1,6 @@
 package functionaldesignplugin;
 
 import functionalanalysisplugin.CreateOperationPanel;
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
-import generalhelpers.StereotypeAndPropertySettings;
-import generalhelpers.UserInterfaceHelpers;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -18,26 +14,23 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
-import requirementsanalysisplugin.NestedActivityDiagram;
-import sysmlhelperplugin.ElementMover;
-import sysmlhelperplugin.RequirementMover;
-
+import com.mbsetraining.sysmlhelper.common.ElementMover;
+import com.mbsetraining.sysmlhelper.common.NestedActivityDiagram;
+import com.mbsetraining.sysmlhelper.common.RequirementMover;
+import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.*;
 
-public class FunctionalDesign_RPApplicationListerner extends RPApplicationListener {
+public class FunctionalDesign_RPApplicationListener extends RPApplicationListener {
 	
-	public FunctionalDesign_RPApplicationListerner(IRPApplication app) {
-		Logger.writeLine("SysMLHelperPlugin is Loaded - Listening for Events\n"); 
-	}
+	protected FunctionalDesign_Context _context;
+	protected NestedActivityDiagram _nestedActivityDiagramCreator;
 	
-	public static void main(String[] args) {
-		
-		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
-		
-		IRPModelElement theSelectedEl = theRhpApp.getSelectedElement();
-		
-		afterAddForCallOperation( (IRPCallOperation) theSelectedEl );
-		
+	public FunctionalDesign_RPApplicationListener(
+			FunctionalDesign_Context context ){
+
+		_context = context;
+		_nestedActivityDiagramCreator = new NestedActivityDiagram( _context );
+		_context.info( "FunctionalDesign_RPApplicationListener was loaded - Listening for events (double-click etc)" ); 	
 	}
 	
 	public boolean afterAddElement(
@@ -46,7 +39,7 @@ public class FunctionalDesign_RPApplicationListerner extends RPApplicationListen
 		boolean doDefault = false;
 		
 		try {
-			StereotypeAndPropertySettings.setSavedInSeparateDirectoryIfAppropriateFor( 
+			_context.setSavedInSeparateDirectoryIfAppropriateFor( 
 					modelElement );
 			
 			if( modelElement != null && 
@@ -56,9 +49,9 @@ public class FunctionalDesign_RPApplicationListerner extends RPApplicationListen
 				
 			} else if( modelElement != null && 
 					modelElement instanceof IRPClass && 
-					GeneralHelpers.hasStereotypeCalled( "Interface", modelElement )){
+					_context.hasStereotypeCalled( "Interface", modelElement )){
 				
-				Logger.writeLine("Interface=" + Logger.elInfo(modelElement));
+				_context.debug("Interface=" + _context.elInfo(modelElement));
 				afterAddForInterface( modelElement );
 										
 			} else if (modelElement != null && 
@@ -74,31 +67,28 @@ public class FunctionalDesign_RPApplicationListerner extends RPApplicationListen
 			}
 
 		} catch( Exception e ){
-			Logger.writeLine("Error in SysMLHelperTriggers.afterAddElement, unhandled exception was detected related to " + Logger.elInfo(modelElement));
+			_context.error("Error in SysMLHelperTriggers.afterAddElement, unhandled exception was detected related to " + _context.elInfo(modelElement));
 		}
 
 		return doDefault;
 	}
 
-	private static void afterAddForCallOperation(
+	private void afterAddForCallOperation(
 			IRPCallOperation theCallOp ){
 
 		// only do move if property is set
 		boolean isEnabled = 
-				StereotypeAndPropertySettings.getIsCallOperationSupportEnabled(
+				_context.getIsCallOperationSupportEnabled(
 						theCallOp );
 		
-		if( isEnabled && UserInterfaceHelpers.checkOKToRunAndWarnUserIfNot() ){
-
-			IRPApplication theRhpApp = 
-					RhapsodyAppServer.getActiveRhapsodyApplication();
+		if( isEnabled ){
 
 			IRPInterfaceItem theOp = theCallOp.getOperation();
 
-				IRPDiagram theDiagram = theRhpApp.getDiagramOfSelectedElement();
+				IRPDiagram theDiagram = _context.get_rhpApp().getDiagramOfSelectedElement();
 
 				if( theDiagram != null ){ 
-					CreateOperationPanel.launchThePanel();
+					CreateOperationPanel.launchThePanel( _context.get_rhpAppID() );
 				} // else probably drag from browser
 
 			if( theOp != null ){
@@ -106,15 +96,15 @@ public class FunctionalDesign_RPApplicationListerner extends RPApplicationListen
 				// Use the operation name for the COA if possible
 				try {
 					String theProposedName = 
-							GeneralHelpers.determineUniqueNameBasedOn( 
-									GeneralHelpers.toMethodName( theOp.getName(), 40 ), 
+							_context.determineUniqueNameBasedOn( 
+									_context.toMethodName( theOp.getName(), 40 ), 
 									"CallOperation", 
 									theCallOp.getOwner() );
 
 					theCallOp.setName( theProposedName );
 
 				} catch( Exception e ) {
-					Logger.writeLine( theCallOp, "Error: Cannot rename Call Operation to match Operation" );
+					_context.error( _context.elInfo( theCallOp ) + " Error: Cannot rename Call Operation to match Operation" );
 				}
 
 				// If the operation has an Activity Diagram under it, then populate an RTF 
@@ -126,9 +116,9 @@ public class FunctionalDesign_RPApplicationListerner extends RPApplicationListen
 					IRPActivityDiagram theFC = theAD.getFlowchartDiagram();
 
 					if( theFC != null ){
-						Logger.writeLine("Creating Hyperlinks in Description of COA");
+						_context.debug("Creating Hyperlinks in Description of COA");
 
-						IRPCollection targets = theRhpApp.createNewCollection();
+						IRPCollection targets = _context.createNewCollection();
 
 						targets.setSize( 2 );
 						targets.setModelElement( 1, theOp );
@@ -143,7 +133,6 @@ public class FunctionalDesign_RPApplicationListerner extends RPApplicationListen
 				}
 			}
 		}
-
 	}
 
 	private void afterAddForDeriveRequirement(
@@ -168,13 +157,14 @@ public class FunctionalDesign_RPApplicationListerner extends RPApplicationListen
 		
 		// only do move if property is set
 		boolean isEnabled = 
-				StereotypeAndPropertySettings.getIsEnableAutoMoveOfInterfaces(
+				_context.getIsEnableAutoMoveOfInterfaces(
 						modelElement );
 		
 		if( isEnabled ){
 			ElementMover theElementMover = new ElementMover( 
 					modelElement, 
-					StereotypeAndPropertySettings.getInterfacesPackageStereotype( modelElement ) );
+					_context.getInterfacesPackageStereotype( modelElement ),
+					_context );
 			
 			theElementMover.performMove();
 		}
@@ -185,11 +175,15 @@ public class FunctionalDesign_RPApplicationListerner extends RPApplicationListen
 		
 		// only do move if property is set
 		boolean isEnabled = 
-				StereotypeAndPropertySettings.getIsEnableAutoMoveOfRequirements(
+				_context.getIsEnableAutoMoveOfRequirements(
 						modelElement );
 		
-		if( isEnabled ){
-			RequirementMover theElementMover = new RequirementMover( modelElement );
+		String theReqtsPkgStereotypeName = _context.getRequirementPackageStereotype( modelElement );
+
+		if( isEnabled && 
+				theReqtsPkgStereotypeName != null ){
+			
+			RequirementMover theElementMover = new RequirementMover( modelElement, theReqtsPkgStereotypeName, _context );
 			
 			if( theElementMover.isMovePossible() ){
 				theElementMover.performMove();
@@ -197,7 +191,7 @@ public class FunctionalDesign_RPApplicationListerner extends RPApplicationListen
 		}
 	}
 	
-	public static IRPStereotype getStereotypeAppliedTo(
+	public IRPStereotype getStereotypeAppliedTo(
 			IRPModelElement theElement, 
 			String thatMatchesRegEx){
 		
@@ -218,7 +212,7 @@ public class FunctionalDesign_RPApplicationListerner extends RPApplicationListen
 				foundStereotype = theStereotype;
 				
 				if (count > 1){
-					Logger.writeLine("Error in getStereotypeAppliedTo related to " + Logger.elInfo(theElement) + " count=" + count);
+					_context.error("Error in getStereotypeAppliedTo related to " + _context.elInfo(theElement) + " count=" + count);
 				}
 			}		
 		}
@@ -279,7 +273,7 @@ public class FunctionalDesign_RPApplicationListerner extends RPApplicationListen
 
 				Object[] theOptions = { isCreateAD, isCreateSD, isCreateSTM };
 				
-				Logger.writeLine("User chose to create a new activity diagram");
+				_context.debug("User chose to create a new activity diagram");
 				JList<?> list = new JList<Object>( theOptions );
 				
 		        list.setSelectionMode(
@@ -303,14 +297,14 @@ public class FunctionalDesign_RPApplicationListerner extends RPApplicationListen
 		        
 		        for( Object theValue : theValues ){
 		        	
-		        	Logger.writeLine("Value is " + theValue.toString() );
+		        	_context.debug("Value is " + theValue.toString() );
 		        	
 					if( theValue.equals( isCreateAD ) ){
-						
-						NestedActivityDiagram.createNestedActivityDiagram( 
+												
+						_nestedActivityDiagramCreator.createNestedActivityDiagram( 
 								(IRPClassifier)pModelElement, 
 								"AD - " + pModelElement.getName(), 
-								"SysMLHelper.FunctionalDesign.TemplateForActivityDiagram" );
+								"FunctionalDesignProfile.General.TemplateForActivityDiagram" );
 						
 					} else if( theValue.equals( isCreateSD ) ){
 												
@@ -338,14 +332,14 @@ public class FunctionalDesign_RPApplicationListerner extends RPApplicationListen
 				
 				String theUnadornedName = "AD - " + pModelElement.getName();
 				
-				boolean theAnswer = UserInterfaceHelpers.askAQuestion(
+				boolean theAnswer = UserInterfaceHelper.askAQuestion(
 						"This use case has no nested text-based Activity Diagram.\n"+
 						"Do you want to create one called '" + theUnadornedName + "'?");
 
 				if (theAnswer==true){
-					Logger.writeLine("User chose to create a new activity diagram");
+					_context.debug("User chose to create a new activity diagram");
 					
-					NestedActivityDiagram.createNestedActivityDiagram( 
+					_nestedActivityDiagramCreator.createNestedActivityDiagram( 
 							(IRPClassifier)pModelElement, 
 							"AD - " + pModelElement.getName(), 
 							"SysMLHelper.RequirementsAnalysis.TemplateForActivityDiagram" );
@@ -359,7 +353,7 @@ public class FunctionalDesign_RPApplicationListerner extends RPApplicationListen
 			}	
 
 		} catch (Exception e) {
-			Logger.writeLine("Unhandled exception in onDoubleClick()");			
+			_context.error("Unhandled exception in onDoubleClick()");			
 		}
 		
 		return theReturn;
@@ -495,7 +489,7 @@ public class FunctionalDesign_RPApplicationListerner extends RPApplicationListen
 				
 			} else if ( numberOfDiagrams>1 ){
 				
-				IRPModelElement theSelection = UserInterfaceHelpers.launchDialogToSelectElement(
+				IRPModelElement theSelection = UserInterfaceHelper.launchDialogToSelectElement(
 						theListOfDiagrams, 
 						"The " + relatedToModelEl.getUserDefinedMetaClass() + " called '" +
 						relatedToModelEl.getName() + "' has " + numberOfDiagrams + " associated diagrams.\n\n" +
@@ -511,7 +505,7 @@ public class FunctionalDesign_RPApplicationListerner extends RPApplicationListen
 			}
 
 		} catch (Exception e) {
-			Logger.writeLine("Unhandled exception in onDoubleClick()");			
+			_context.error("Unhandled exception in onDoubleClick()");			
 		}
 
 		return theReturn;
@@ -534,8 +528,8 @@ public class FunctionalDesign_RPApplicationListerner extends RPApplicationListen
 		return optionsList;
 	}	
 
-
-	public static int getSelection(JOptionPane optionPane) {
+	public int getSelection(JOptionPane optionPane) {
+		
 		int returnValue = JOptionPane.OK_CANCEL_OPTION;
 
 		Object selectedValue = optionPane.getValue();
@@ -557,17 +551,17 @@ public class FunctionalDesign_RPApplicationListerner extends RPApplicationListen
 		return returnValue;
 	}
 
-	public static IRPDiagram createNestedDiagram(
+	public IRPDiagram createNestedDiagram(
 			IRPClassifier pModelElement, 
 			String withDesiredName,
 			String andMetaClass ){
 
 		String theName = 
-				GeneralHelpers.determineUniqueNameBasedOn(
+				_context.determineUniqueNameBasedOn(
 						withDesiredName, andMetaClass, pModelElement );
 
-		Logger.writeLine("Creating a new " + andMetaClass + " with the name '" 
-				+ theName + "' underneath " + Logger.elInfo( pModelElement ) );
+		_context.debug("Creating a new " + andMetaClass + " with the name '" 
+				+ theName + "' underneath " + _context.elInfo( pModelElement ) );
 
 		IRPDiagram theDiagram = null;
 
@@ -576,36 +570,36 @@ public class FunctionalDesign_RPApplicationListerner extends RPApplicationListen
 					andMetaClass,
 					theName );
 			
-			Logger.writeLine( "Diagram is a " + theDiagram.getUserDefinedMetaClass() );
+			_context.debug( "Diagram is a " + theDiagram.getUserDefinedMetaClass() );
 			
 			theDiagram.openDiagram();
 			theDiagram.highLightElement();
 			
 		} catch (Exception e) {
-			Logger.writeLine("Error trying to create diagram, e=" + e.getLocalizedMessage());
+			_context.error("Error trying to create diagram, e=" + e.getLocalizedMessage());
 		}
 		
 		return theDiagram;
 	}
 
 
-	public static IRPDiagram createNestedStatechartDiagram(
+	public IRPDiagram createNestedStatechartDiagram(
 			IRPClassifier pModelElement, 
 			String withDesiredName ){
 
 		String theName = 
-				GeneralHelpers.determineUniqueNameBasedOn(
+				_context.determineUniqueNameBasedOn(
 						withDesiredName, "Statechart", pModelElement );
 
-		Logger.writeLine("Creating a new " + "Statechart" + " with the name '" 
-				+ theName + "' underneath " + Logger.elInfo( pModelElement ) );
+		_context.info("Creating a new " + "Statechart" + " with the name '" 
+				+ theName + "' underneath " + _context.elInfo( pModelElement ) );
 
 		IRPStatechart theDiagram = null;
 
 		try {
 			theDiagram = pModelElement.addStatechart();
 			
-			Logger.writeLine( "Diagram is a " + theDiagram.getUserDefinedMetaClass() );
+			_context.debug( "Diagram is a " + theDiagram.getUserDefinedMetaClass() );
 			
 			theDiagram.createGraphics();
 			theDiagram.getStatechartDiagram().openDiagram();
@@ -613,7 +607,7 @@ public class FunctionalDesign_RPApplicationListerner extends RPApplicationListen
 			theDiagram.highLightElement();
 
 		} catch (Exception e) {
-			Logger.writeLine("Error trying to create diagram, e=" + e.getLocalizedMessage());
+			_context.error("Error trying to create diagram, e=" + e.getLocalizedMessage());
 		}
 		
 		return theDiagram.getStatechartDiagram();
@@ -621,10 +615,7 @@ public class FunctionalDesign_RPApplicationListerner extends RPApplicationListen
 }
 
 /**
- * Copyright (C) 2018-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #250 29-MAY-2019: First official version of new FunctionalDesignProfile  (F.J.Chadburn)
+ * Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

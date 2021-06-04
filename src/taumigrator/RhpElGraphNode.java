@@ -19,9 +19,10 @@ public abstract class RhpElGraphNode extends RhpElElement {
 			String theElementType,
 			String theElementGuid,
 			String thePosition,
-			String theSize ) throws Exception{
+			String theSize,
+			TauMigrator_Context context ) throws Exception{
 		
-		super( theElementName, theElementType, theElementGuid );
+		super( theElementName, theElementType, theElementGuid, context );
 		
 		extractPosition( thePosition );
 		extractSize( theSize );
@@ -33,9 +34,10 @@ public abstract class RhpElGraphNode extends RhpElElement {
 			String theElementGuid,
 			RhpEl theParent,
 			String thePosition,
-			String theSize ) throws Exception{
+			String theSize,
+			TauMigrator_Context context ) throws Exception{
 		
-		super( theElementName, theElementType, theElementGuid, theParent );
+		super( theElementName, theElementType, theElementGuid, theParent, context );
 		
 		extractPosition( thePosition );
 		extractSize( theSize );

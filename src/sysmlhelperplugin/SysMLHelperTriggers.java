@@ -14,9 +14,8 @@ import java.util.Set;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
-import requirementsanalysisplugin.NestedActivityDiagram;
-
-import com.mbsetraining.sysmlhelper.executablembse.ElementMover;
+import com.mbsetraining.sysmlhelper.common.ElementMover;
+import com.mbsetraining.sysmlhelper.common.NestedActivityDiagram;
 import com.telelogic.rhapsody.core.*;
 
 public class SysMLHelperTriggers extends RPApplicationListener {

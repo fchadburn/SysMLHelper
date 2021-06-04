@@ -1,8 +1,5 @@
 package taumigrator;
 
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
-
 import com.telelogic.rhapsody.core.*;
 
 public class RhpElDecisionNodeAsCallOperation extends RhpElGraphNode {
@@ -40,9 +37,10 @@ public class RhpElDecisionNodeAsCallOperation extends RhpElGraphNode {
 			String theElementGuid,
 			String theText,
 			String thePosition,
-			String theSize ) throws Exception{
+			String theSize,
+			TauMigrator_Context context ) throws Exception{
 
-		super( theElementName, theElementType, theElementGuid, thePosition, theSize );
+		super( theElementName, theElementType, theElementGuid, thePosition, theSize, context );
 
 		_text = theText;
 
@@ -57,9 +55,10 @@ public class RhpElDecisionNodeAsCallOperation extends RhpElGraphNode {
 			String theConnectorType,
 			String theText,
 			String thePosition,
-			String theSize ) throws Exception {
+			String theSize,
+			TauMigrator_Context context ) throws Exception {
 
-		super(theElementName, theElementType, theElementGuid, theParent, thePosition, theSize );
+		super(theElementName, theElementType, theElementGuid, theParent, thePosition, theSize, context );
 
 		_text = theText;
 
@@ -76,7 +75,7 @@ public class RhpElDecisionNodeAsCallOperation extends RhpElGraphNode {
 		theMsg += "_nWidth        = " + _nWidth + "\n";
 		theMsg += "_nHeight       = " + _nHeight + "\n";
 		theMsg += "===================================\n";		
-		Logger.info( theMsg );
+		_context.info( theMsg );
 	}
 
 	@Override
@@ -86,17 +85,17 @@ public class RhpElDecisionNodeAsCallOperation extends RhpElGraphNode {
 		_rhpEl = null;
 		
 
-		Logger.info("createRhpEl invoked for " + getString() + " owned by " + parent.getString() );
-		Logger.info("DecisionNode _text = " + _text );
+		_context.info("createRhpEl invoked for " + getString() + " owned by " + parent.getString() );
+		_context.info("DecisionNode _text = " + _text );
 
-		Logger.info( "The parent is " + Logger.elInfo( parent.get_rhpEl() ) );
+		_context.info( "The parent is " + _context.elInfo( parent.get_rhpEl() ) );
 		IRPFlowchart theActivityDiagram = (IRPFlowchart) parent.get_rhpEl();
 		IRPActivityDiagram theActivityDiagramGE = theActivityDiagram.getFlowchartDiagram();
 		IRPState theRootState = theActivityDiagram.getRootState();
 
 		IRPModelElement theOwner = parent.getParent().get_rhpEl();
 
-//		Logger.info( "The owner is " + Logger.elementInfo( theOwner ) );
+//		_context.info( "The owner is " + _context.elementInfo( theOwner ) );
 		
 		IRPProject theProject = theOwner.getProject();
 
@@ -109,18 +108,18 @@ public class RhpElDecisionNodeAsCallOperation extends RhpElGraphNode {
 		}
 		
 		String theAttributeName = 
-				GeneralHelpers.capitalize( 
-						GeneralHelpers.toMethodName( 
+				_context.capitalize( 
+						_context.toMethodName( 
 								theStringWithoutQuotes, 100 ) );
 		
-//		Logger.info( "The attribute name is " + theCapitalizedName + 
+//		_context.info( "The attribute name is " + theCapitalizedName + 
 //				" with corresponding " + theOperationName + " operation" );
 		
 		IRPModelElement existingAttribute = theOwner.findNestedElement( 
 				theAttributeName, "Attribute" );
 
 		if( existingAttribute != null ){
-			Logger.info("The attribute for '" + _text + " already exists = " + Logger.elInfo( existingAttribute ) );
+			_context.info("The attribute for '" + _text + " already exists = " + _context.elInfo( existingAttribute ) );
 			
 			_attribute = (IRPAttribute) existingAttribute;
 			
@@ -128,12 +127,12 @@ public class RhpElDecisionNodeAsCallOperation extends RhpElGraphNode {
 		
 		} else {
 			
-			Logger.info("The attribute for '" + _text + " does not exist, creating one called = " + theAttributeName );
+			_context.info("The attribute for '" + _text + " does not exist, creating one called = " + theAttributeName );
 
 			_attribute = (IRPAttribute)theOwner.addNewAggr( "Attribute", theAttributeName );			
 
 //			String theAttributeName = 
-//			GeneralHelpers.determineUniqueNameBasedOn( 
+//			_context.determineUniqueNameBasedOn( 
 //					theCapitalizedName, 
 //					"Attribute", 
 //					theOwner );
@@ -219,8 +218,8 @@ public class RhpElDecisionNodeAsCallOperation extends RhpElGraphNode {
 		
 		IRPOperation theCheckOp = null;
 		
-		String theOperationName = GeneralHelpers.toMethodName( 
-				"check" + GeneralHelpers.capitalize( theCapitalizedName ), 100 );
+		String theOperationName = _context.toMethodName( 
+				"check" + _context.capitalize( theCapitalizedName ), 100 );
 		
 		IRPModelElement existingCheckOp = theOwner.findNestedElement( 
 				theOperationName, "Operation" );
@@ -240,10 +239,7 @@ public class RhpElDecisionNodeAsCallOperation extends RhpElGraphNode {
 }
 
 /**
- * Copyright (C) 2018-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #251 29-MAY-2019: First official version of new TauMigratorProfile (F.J.Chadburn)
+ * Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

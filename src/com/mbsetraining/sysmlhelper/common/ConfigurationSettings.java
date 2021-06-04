@@ -10,7 +10,6 @@ import java.util.Locale;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
-import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
 public class ConfigurationSettings extends BaseContext  {
@@ -25,21 +24,6 @@ public class ConfigurationSettings extends BaseContext  {
 	protected IRPTag _profileVersionTag;
 	protected IRPTag _profilePropertyTag;
 	protected Date _profileDate;
-
-	public static void main(String[] args) {
-
-		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
-
-		// set the properties
-		ExecutableMBSE_Context theConfigSettings = 
-				new ExecutableMBSE_Context( theRhpApp.getApplicationConnectionString() );
-
-		boolean isSetupNeeded = theConfigSettings.checkIfSetupProjectIsNeeded( true, false );
-
-		if( isSetupNeeded ){
-			theConfigSettings.setupProjectWithProperties();
-		}
-	}
 
 	public ConfigurationSettings(
 			String theAppID,
@@ -210,6 +194,28 @@ public class ConfigurationSettings extends BaseContext  {
 							" on " + super.elInfo( onTheElement ) );
 				}
 			}
+		}
+	}
+	
+	public void checkIfSetupProjectIsNeeded(
+			boolean isUserDialogEnabled ) {
+
+		boolean isSetupNeeded = checkIfSetupProjectIsNeeded( isUserDialogEnabled, false );
+
+		String theMsg;
+
+		if( isSetupNeeded ){
+
+			theMsg = "An update is needed, do you want to proceed?";
+
+		} else {
+			theMsg = "An update is not needed, do you want to proceed with update anyway?";
+		}
+
+		boolean answer = UserInterfaceHelper.askAQuestion( theMsg );
+
+		if( answer ){
+			setupProjectWithProperties();
 		}
 	}
 	

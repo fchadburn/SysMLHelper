@@ -5,17 +5,19 @@ public abstract class RhpElRelation extends RhpEl {
 	public RhpElRelation(
 			String theElementName, 
 			String theElementType,
-			String theElementGuid ) throws Exception{
+			String theElementGuid,
+			TauMigrator_Context context ) throws Exception{
 		
-		super( theElementName, theElementType, theElementGuid );
+		super( theElementName, theElementType, theElementGuid, context );
 	}
 
 	public RhpElRelation(
 			String theElementName, 
 			String theElementType,
 			String theElementGuid,
-			RhpEl theParent ) throws Exception{
+			RhpEl theParent,
+			TauMigrator_Context context ) throws Exception{
 		
-		super( theElementName, theElementType, theElementGuid, theParent );
+		super( theElementName, theElementType, theElementGuid, theParent, context );
 	}
 }

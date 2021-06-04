@@ -243,34 +243,6 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 		return theMasterActors;
 	}
 	
-	public IRPFlowchart getTemplateForActivityDiagram(
-			IRPModelElement basedOnContext,
-			String basedOnPropertyKey ){
-		
-		IRPFlowchart theTemplate = null;
-		
-		String theTemplateName = 
-				basedOnContext.getPropertyValue( 
-						basedOnPropertyKey );
-		
-		if( theTemplateName != null && 
-			!theTemplateName.trim().isEmpty() ){
-			
-			theTemplate = (IRPFlowchart) basedOnContext.getProject().findNestedElementRecursive(
-							theTemplateName, 
-							"ActivityDiagram" );
-			
-			if( theTemplate == null ){
-				super.warning( "Warning, unable to find template called " + 
-						theTemplateName + " named in TemplateForActivityDiagram property" );
-			}
-		}
-		
-		super.debug( "getTemplateForActivityDiagram, found " + super.elInfo( theTemplate ) );
-		
-		return theTemplate;
-	}
-	
 	public String getDefaultActorPackageName(
 			IRPModelElement basedOnContext ){
 	
@@ -1050,31 +1022,6 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 		return theEntry;
 	}
 	
-	public List<IRPActivityDiagram> buildListOfActivityDiagramsFor(
-			List<IRPModelElement> theSelectedEls) {
-		
-		List<IRPActivityDiagram> theADs = new ArrayList<IRPActivityDiagram>();
-		
-		for (IRPModelElement theSelectedEl : theSelectedEls) {
-			
-			@SuppressWarnings("unchecked")
-			List<IRPActivityDiagram> theCandidates = theSelectedEl.getNestedElementsByMetaClass("ActivityDiagramGE", 1).toList();
-			
-			for (IRPActivityDiagram theCandidate : theCandidates) {
-				if (!theADs.contains(theCandidate)){
-					
-					if (theCandidate.isReadOnly()==0){
-						theADs.add(theCandidate);			
-						super.debug("Adding " + super.elInfo(theCandidate.getOwner()) + " to the list");
-					} else {
-						super.debug("Skipping " + super.elInfo(theCandidate.getOwner()) + " as it is read-only");
-					}
-				}
-			}
-		}
-		return theADs;
-	}
-	
 	public Set<IRPModelElement> findModelElementsIn(
 			List<IRPGraphElement> theGraphElementList, 
 			String withMetaClass){
@@ -1211,52 +1158,6 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 		}
 		
 		return isUnderAProfile;
-	}
-	
-	public boolean isStateUnique(
-			String theProposedName, 
-			IRPState underneathTheEl ){
-				
-		int count = 0;
-		
-		@SuppressWarnings("unchecked")
-		List<IRPState> theExistingEls = 
-				underneathTheEl.getSubStates().toList();
-		
-		for (IRPModelElement theExistingEl : theExistingEls) {
-			
-			if (theExistingEl.getName().equals( theProposedName )){
-				count++;
-				break;
-			}
-		}
-		
-		if (count > 1){
-			super.warning("Warning in isStateUnique, there are " + count + " elements called " + 
-					theProposedName + ". This may cause issues.");
-		}
-				
-		boolean isUnique = (count == 0);
-
-		return isUnique;
-	}
-	
-	public String determineUniqueStateBasedOn(
-			String theProposedName,
-			IRPState underElement ){
-		
-		int count = 0;
-		
-		String theUniqueName = theProposedName;
-		
-		while( !isStateUnique(
-				theUniqueName, underElement ) ){
-			
-			count++;
-			theUniqueName = theProposedName + count;
-		}
-		
-		return theUniqueName;
 	}
 	
 	public List<IRPModelElement> getNonActorOrTestingClassifiersConnectedTo( 
@@ -1747,103 +1648,6 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 			}
 		}
 	}
-	
-	public IRPGraphElement getGraphElement(
-			IRPModelElement element,
-			IRPFlowchart fc) {
-
-		IRPGraphElement ret = null;
-
-		@SuppressWarnings("unchecked")
-		List<IRPGraphElement> gList = fc.getGraphicalElements().toList();
-		
-		if (!gList.isEmpty()) {
-			for (IRPGraphElement g : gList) {
-				if (g.getModelObject() != null) {
-					if(g.getModelObject().getGUID().equals(element.getGUID())) {
-
-						ret = g;
-						break;
-					}
-				}
-			}
-		}
-		
-		return ret;
-	}
-	
-	public IRPGraphElement getCorrespondingGraphElement(
-			IRPModelElement forElement,
-			IRPActivityDiagram theAD ) throws Exception {
-
-		IRPGraphElement ret = null;
-
-		@SuppressWarnings("unchecked")
-		List<IRPGraphElement> theGraphEls = 
-				theAD.getCorrespondingGraphicElements( forElement ).toList();
-		
-		if( theGraphEls.size() > 1 ){
-			throw new Exception("There is more than one graph element for " + super.elInfo(forElement));
-		} else if( theGraphEls.size() == 1 ){
-			ret = theGraphEls.get( 0 );
-		} else {
-			super.warning("Warning, getCorrespondingGraphElement dif not find a graph element corresponding to " + 
-					super.elInfo(forElement) + " on " + super.elInfo(theAD) );
-		}
-		
-		return ret;
-	}
-	
-	
-	public IRPPin getPin(
-			String withName,
-			IRPAcceptEventAction onAcceptEventAction ){
-		
-		IRPPin thePin = null;
-		
-		List<IRPPin> theCandidates = getPins( onAcceptEventAction );
-		
-		for( IRPPin theCandidate : theCandidates ){
-			
-			if( theCandidate.getName().equals( withName ) ){
-				thePin = theCandidate;
-			}
-		}
-		
-		return thePin;
-	}
-	
-	public List<IRPPin> getPins(
-			IRPAcceptEventAction onAcceptEventAction ){
-		
-		List<IRPPin> thePins = new ArrayList<>();
-		
-		for( Object o: onAcceptEventAction.getSubStateVertices().toList()){
-			if( o instanceof IRPPin ){
-			
-				thePins.add( (IRPPin) o );
-			}
-		}
-		
-		return thePins;
-	}
-	
-	public IRPStateVertex getTargetOfOutTransitionIfSingleOneExisting(
-			IRPStateVertex theStateVertex ){
-		
-		IRPStateVertex theTarget = null;
-		
-		@SuppressWarnings("unchecked")
-		List<IRPTransition> theOutTransitions = theStateVertex.getOutTransitions().toList();
-		
-		if( theOutTransitions.size() == 1 ){
-			
-			IRPTransition theTransition = theOutTransitions.get( 0 );
-			theTarget = theTransition.getItsTarget();
-		}
-		
-		return theTarget;
-	}
 
 	public IRPDependency addAutoRippleDependencyIfOneDoesntExist(
 			IRPModelElement fromElement, 
@@ -1873,38 +1677,6 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 		super.debug("The owner for " + super.elInfo(theState) + " is " + super.elInfo(theOwner));
 			
 		return theOwner;
-	}
-	
-	private IRPState getStateCalled(
-			String theName, 
-			IRPStatechart inTheDiagram, 
-			IRPModelElement ownedByEl){
-		
-		@SuppressWarnings("unchecked")
-		List<IRPModelElement> theElsInDiagram = inTheDiagram.getElementsInDiagram().toList();
-		
-		IRPState theState = null;
-		
-		int count = 0;
-		
-		for (IRPModelElement theEl : theElsInDiagram) {
-			
-			if (theEl instanceof IRPState 
-					&& theEl.getName().equals(theName)
-					&& getOwningClassifierFor(theEl).equals(ownedByEl)){
-				
-				super.debug("Found state called " + theEl.getName() + " owned by " + theEl.getOwner().getFullPathName());
-				
-				theState = (IRPState) theEl;
-				count++;
-			}
-		}
-		
-		if (count != 1){
-			super.debug("Warning in getStateCalled (" + count + ") states called " + theName + " were found");
-		}
-		
-		return theState;
 	}
 
 	public IRPOperation createTestCaseFor( IRPClass theTestDriver ){

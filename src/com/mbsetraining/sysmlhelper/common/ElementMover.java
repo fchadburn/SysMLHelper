@@ -1,4 +1,4 @@
-package com.mbsetraining.sysmlhelper.executablembse;
+package com.mbsetraining.sysmlhelper.common;
 
 import java.util.Set;
 
@@ -9,12 +9,12 @@ public class ElementMover {
 	protected IRPModelElement _element;
 	protected IRPPackage _moveToPkg;
 	protected String _whereMoveToHasStereotype;
-	protected ExecutableMBSE_Context _context;
+	protected ConfigurationSettings _context;
 
 	public ElementMover(
 			IRPModelElement theElement,
 			String whereMoveToHasStereotype,
-			ExecutableMBSE_Context context ) {
+			ConfigurationSettings context ) {
 		
 		_context = context;
 		_element = theElement;

@@ -1,24 +1,8 @@
 package taumigrator;
 
-import java.util.List;
-
-import generalhelpers.Logger;
-
 import com.telelogic.rhapsody.core.*;
 
 public class GraphNodeInfo {
-
-	public static void dumpGraphicalProperties(IRPGraphElement theElement) {
-		
-		@SuppressWarnings("unchecked")
-		List<IRPGraphicalProperty> theGraphicalProperties = theElement.getAllGraphicalProperties().toList();
-		
-		for (IRPGraphicalProperty theGraphicalProperty : theGraphicalProperties) {
-
-			System.out.println(theGraphicalProperty.getKey() + "::" + theGraphicalProperty.getValue());
-			Logger.writeLine(theGraphicalProperty.getKey() + "::" + theGraphicalProperty.getValue());
-		}
-	}
 	
 	private IRPGraphNode _graphNode = null;
 	private int _posX;
@@ -123,12 +107,9 @@ public class GraphNodeInfo {
 }
 
 /**
- * Copyright (C) 2018-2019  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
-    Change history:
-    #251 29-MAY-2019: First official version of new TauMigratorProfile (F.J.Chadburn)
-
-    This file is part of SysMLHelperPlugin.
+   This file is part of SysMLHelperPlugin.
 
     SysMLHelperPlugin is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

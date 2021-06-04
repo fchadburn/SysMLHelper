@@ -1,18 +1,16 @@
 package taumigrator;
 
 import com.telelogic.rhapsody.core.IRPModelElement;
-import com.telelogic.rhapsody.core.RhapsodyAppServer;
-
-import generalhelpers.Logger;
 
 public class RhpElProject extends RhpElElement {
 	
 	public RhpElProject(
 			String theElementName, 
 			String theElementType,
-			String theElementGuid ) throws Exception{
+			String theElementGuid,
+			TauMigrator_Context context ) throws Exception{
 		
-		super(theElementName, theElementType, theElementGuid);
+		super(theElementName, theElementType, theElementGuid,context);
 		
 		dumpInfo();
 	}
@@ -22,7 +20,7 @@ public class RhpElProject extends RhpElElement {
 		theMsg += "===================================\n"; 
 		theMsg += "Create " + this.getString() + "\n";
 		theMsg += "===================================\n";		
-		Logger.info( theMsg );
+		_context.info( theMsg );
 	}
 
 	public RhpElProject(
@@ -32,9 +30,10 @@ public class RhpElProject extends RhpElElement {
 			RhpEl theParent,
 			String theText,
 			String thePosition,
-			String theSize ) throws Exception {
+			String theSize,
+			TauMigrator_Context context ) throws Exception {
 		
-		super(theElementName, theElementType, theElementGuid, theParent);
+		super(theElementName, theElementType, theElementGuid, theParent,context);
 		
 		dumpInfo();
 	}
@@ -43,10 +42,9 @@ public class RhpElProject extends RhpElElement {
 	public IRPModelElement createRhpEl( 
 			RhpEl treeRoot ) {
 		
-		Logger.writeLine("createRhpEl invoked for " + getString() );
+		_context.info("createRhpEl invoked for " + getString() );
 
-		IRPModelElement theOwner = RhapsodyAppServer.getActiveRhapsodyApplication().activeProject();
-		
+		IRPModelElement theOwner = _context.get_rhpPrj();
 		_rhpEl = theOwner.addNewAggr("Package", "u2Pkg" );			
 		
 		return _rhpEl;

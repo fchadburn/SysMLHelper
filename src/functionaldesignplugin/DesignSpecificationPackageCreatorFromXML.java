@@ -18,22 +18,6 @@ public class DesignSpecificationPackageCreatorFromXML {
 	IRPObjectModelDiagram m_FunctionHierarchyBDD = null;
 	IRPObjectModelDiagram m_SystemContextDiagram = null;
 
-	// test only
-	public static void main(String[] args) {
-		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
-
-		IRPProject theRhpPrj = theRhpApp.activeProject();
-
-		List<IRPActor> theMasterActors = 
-				StereotypeAndPropertySettings.getMasterActorList( theRhpPrj ); 
-
-		@SuppressWarnings("unused")
-		DesignSpecificationPackageCreatorFromXML theCreator =
-				new DesignSpecificationPackageCreatorFromXML(
-						theRhpPrj, 
-						theMasterActors );
-	}
-
 	public void openFunctionHierarchyBDD (){
 
 		if( m_FunctionHierarchyBDD != null ){

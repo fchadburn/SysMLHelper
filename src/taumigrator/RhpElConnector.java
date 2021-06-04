@@ -2,8 +2,6 @@ package taumigrator;
 
 import com.telelogic.rhapsody.core.*;
 
-import generalhelpers.Logger;
-
 public class RhpElConnector extends RhpElGraphNode {
 
 	protected String _connectorType = null;
@@ -20,9 +18,10 @@ public class RhpElConnector extends RhpElGraphNode {
 			String theConnectorType,
 			String theText,
 			String thePosition,
-			String theSize ) throws Exception{
+			String theSize,
+			TauMigrator_Context context ) throws Exception{
 		
-		super( theElementName, theElementType, theElementGuid, thePosition, theSize );
+		super( theElementName, theElementType, theElementGuid, thePosition, theSize, context );
 
 		_connectorType = theConnectorType;
 		_text = theText;
@@ -38,9 +37,10 @@ public class RhpElConnector extends RhpElGraphNode {
 			String theConnectorType,
 			String theText,
 			String thePosition,
-			String theSize ) throws Exception {
+			String theSize,
+			TauMigrator_Context context ) throws Exception {
 		
-		super(theElementName, theElementType, theElementGuid, theParent, thePosition, theSize );
+		super(theElementName, theElementType, theElementGuid, theParent, thePosition, theSize, context );
 		
 		_connectorType = theConnectorType;
 		_text = theText;
@@ -59,7 +59,7 @@ public class RhpElConnector extends RhpElGraphNode {
 		theMsg += "_nWidth        = " + _nWidth + "\n";
 		theMsg += "_nHeight       = " + _nHeight + "\n";
 		theMsg += "===================================\n";		
-		Logger.info( theMsg );
+		_context.info( theMsg );
 	}
 
 	@Override
@@ -68,11 +68,11 @@ public class RhpElConnector extends RhpElGraphNode {
 
 		_rhpEl = null;
 		
-		Logger.writeLine("createRhpEl invoked for " + getString() + " owned by " + parent.getString());
+		_context.info("createRhpEl invoked for " + getString() + " owned by " + parent.getString());
 
 		if( _connectorType == "DecisionNode" ){
 		
-			Logger.info( "The parent is " + Logger.elInfo( parent.get_rhpEl() ) );
+			_context.info( "The parent is " + _context.elInfo( parent.get_rhpEl() ) );
 			
 			IRPFlowchart theActivityDiagram = (IRPFlowchart) parent.get_rhpEl();
 			IRPActivityDiagram theActivityDiagramGE = theActivityDiagram.getFlowchartDiagram();

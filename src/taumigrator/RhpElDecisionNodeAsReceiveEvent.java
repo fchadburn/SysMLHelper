@@ -2,9 +2,6 @@ package taumigrator;
 
 import com.telelogic.rhapsody.core.*;
 
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
-
 public class RhpElDecisionNodeAsReceiveEvent extends RhpElGraphNode {
 
 	protected String _connectorType = null;
@@ -17,9 +14,10 @@ public class RhpElDecisionNodeAsReceiveEvent extends RhpElGraphNode {
 			String theConnectorType,
 			String theText,
 			String thePosition,
-			String theSize ) throws Exception{
+			String theSize,
+			TauMigrator_Context context ) throws Exception{
 
-		super( theElementName, theElementType, theElementGuid, thePosition, theSize );
+		super( theElementName, theElementType, theElementGuid, thePosition, theSize, context );
 
 		_connectorType = theConnectorType;
 		_text = theText;
@@ -35,9 +33,10 @@ public class RhpElDecisionNodeAsReceiveEvent extends RhpElGraphNode {
 			String theConnectorType,
 			String theText,
 			String thePosition,
-			String theSize ) throws Exception {
+			String theSize,
+			TauMigrator_Context context ) throws Exception {
 
-		super(theElementName, theElementType, theElementGuid, theParent, thePosition, theSize );
+		super(theElementName, theElementType, theElementGuid, theParent, thePosition, theSize, context );
 
 		_connectorType = theConnectorType;
 		_text = theText;
@@ -56,7 +55,7 @@ public class RhpElDecisionNodeAsReceiveEvent extends RhpElGraphNode {
 		theMsg += "_nWidth        = " + _nWidth + "\n";
 		theMsg += "_nHeight       = " + _nHeight + "\n";
 		theMsg += "===================================\n";		
-		Logger.info( theMsg );
+		_context.info( theMsg );
 	}
 
 	@Override
@@ -65,22 +64,22 @@ public class RhpElDecisionNodeAsReceiveEvent extends RhpElGraphNode {
 
 		_rhpEl = null;
 
-		Logger.info("createRhpEl invoked for " + getString() + " owned by " + parent.getString());
+		_context.info("createRhpEl invoked for " + getString() + " owned by " + parent.getString());
 
-		Logger.info("ReceiveEvent DecisionNode _text = " + _text );
+		_context.info("ReceiveEvent DecisionNode _text = " + _text );
 		
-		Logger.info( "The parent is " + Logger.elInfo( parent.get_rhpEl() ) );
+		_context.info( "The parent is " + _context.elInfo( parent.get_rhpEl() ) );
 
 		IRPFlowchart theActivityDiagram = (IRPFlowchart) parent.get_rhpEl();
 		IRPActivityDiagram theActivityDiagramGE = theActivityDiagram.getFlowchartDiagram();
 
 		IRPModelElement theParentOfDiagram = parent.getParent().get_rhpEl();
-		Logger.info("The parent of diagram is " + Logger.elInfo(theParentOfDiagram));
+		_context.info("The parent of diagram is " + _context.elInfo(theParentOfDiagram));
 
 		IRPState theRootState = theActivityDiagram.getRootState();
 
 		String theLegalName = 
-				GeneralHelpers.toMethodName( "ev" + _text, 100 );
+				_context.toMethodName( "ev" + _text, 100 );
 
 		IRPModelElement theEventEl =
 				theParentOfDiagram.getProject().findNestedElementRecursive( 
@@ -121,7 +120,7 @@ public class RhpElDecisionNodeAsReceiveEvent extends RhpElGraphNode {
 			if (o instanceof IRPPin) {
 				IRPPin pin = (IRPPin) o;
 				
-				IRPGraphNode thePinGraphNode = (IRPGraphNode) GeneralHelpers.getCorrespondingGraphElement( 
+				IRPGraphNode thePinGraphNode = (IRPGraphNode) _context.getCorrespondingGraphElement( 
 						pin, theActivityDiagramGE );
 				
 //				GraphNodeInfo thePinGraphNodeInfo = new GraphNodeInfo(thePinGraphNode);

@@ -3,10 +3,9 @@ package designsynthesisplugin;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
+import com.mbsetraining.sysmlhelper.common.PopulatePkg;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
-
-import generalhelpers.PopulatePkg;
 
 public class PopulateDesignSynthesisPkg extends PopulatePkg {
 

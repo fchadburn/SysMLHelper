@@ -7,6 +7,7 @@ import generalhelpers.UserInterfaceHelpers;
 import java.util.List;
 
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.common.NestedActivityDiagram;
 import com.telelogic.rhapsody.core.*;
  
 public class RequirementsAnalysisPlugin extends RPUserPlugin {

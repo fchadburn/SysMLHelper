@@ -5,9 +5,6 @@ import java.util.regex.Pattern;
 
 import com.telelogic.rhapsody.core.*;
 
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
-
 public class RhpElSendAction extends RhpElGraphNode {
 
 	final Pattern _pattern = Pattern.compile( "(\\w*)\\((.*)\\)" );
@@ -21,9 +18,10 @@ public class RhpElSendAction extends RhpElGraphNode {
 			String theSignalGuid,
 			String theText,
 			String thePosition,
-			String theSize ) throws Exception{
+			String theSize,
+			TauMigrator_Context context ) throws Exception{
 
-		super( theElementName, theElementType, theElementGuid, thePosition, theSize );
+		super( theElementName, theElementType, theElementGuid, thePosition, theSize,context );
 
 		_text = theText;
 		_signalGuid = theSignalGuid;
@@ -40,9 +38,10 @@ public class RhpElSendAction extends RhpElGraphNode {
 			String theSignalGuid,
 			String theText,
 			String thePosition,
-			String theSize ) throws Exception {
+			String theSize,
+			TauMigrator_Context context ) throws Exception {
 
-		super( theElementName, theElementType, theElementGuid, theParent, thePosition, theSize );
+		super( theElementName, theElementType, theElementGuid, theParent, thePosition, theSize,context );
 
 		_text = theText;
 		_signalGuid = theSignalGuid;
@@ -61,7 +60,7 @@ public class RhpElSendAction extends RhpElGraphNode {
 		theMsg += "_nHeight       = " + _nHeight + "\n";
 		theMsg += "_signalGuid    = " + _signalGuid + "\n";
 		theMsg += "===================================\n";		
-		Logger.info( theMsg );
+		_context.info( theMsg );
 	}
 
 	@Override
@@ -70,21 +69,21 @@ public class RhpElSendAction extends RhpElGraphNode {
 
 		_rhpEl = null;
 
-		Logger.writeLine("createRhpEl invoked for " + getString() + " owned by " + parent.getString());
+		_context.info("createRhpEl invoked for " + getString() + " owned by " + parent.getString());
 
-		Logger.info( "The parent is " + Logger.elInfo( parent.get_rhpEl() ) );			
+		_context.info( "The parent is " + _context.elInfo( parent.get_rhpEl() ) );			
 		IRPFlowchart theActivityDiagram = (IRPFlowchart) parent.get_rhpEl();
 		IRPActivityDiagram theActivityDiagramGE = theActivityDiagram.getFlowchartDiagram();
 
 		IRPState theRootState = theActivityDiagram.getRootState();
 
 		String theLegalName = 
-				GeneralHelpers.determineUniqueStateBasedOn(
-						GeneralHelpers.makeLegalName( _text.replaceAll("[\\(\\)]", "") ), 
+				_context.determineUniqueStateBasedOn(
+						_context.makeLegalName( _text.replaceAll("[\\(\\)]", "") ), 
 						theRootState );
 
 		if( !_text.equals( theLegalName ) ){
-			Logger.info("Changed name from " + _text + " to " + theLegalName);
+			_context.info("Changed name from " + _text + " to " + theLegalName);
 		}
 
 		// condition connector; see also Fork, History, Join, and Termination
@@ -98,7 +97,7 @@ public class RhpElSendAction extends RhpElGraphNode {
 				treeRoot.findNestedElementWith( _signalGuid );
 		
 		if( theModelEl != null ){
-			Logger.info("Successfully found signal for accept event action");
+			_context.info("Successfully found signal for accept event action");
 		
 			IRPSendAction theSendAction = (IRPSendAction)theState.getSendAction();
 			
@@ -106,7 +105,7 @@ public class RhpElSendAction extends RhpElGraphNode {
 			
 			IRPModelElement theOwner = (IRPClass) theActivityDiagram.getOwner();
 			
-			Logger.info( "The owner is " + theOwner);
+			_context.info( "The owner is " + theOwner);
 			
 			IRPModelElement thePort = theOwner.findNestedElement("p", "Port");
 			
@@ -118,7 +117,7 @@ public class RhpElSendAction extends RhpElGraphNode {
 			
 			if( theMatcher.find() ){
 				String theArg = theMatcher.group( 2 );
-				Logger.info( theArg );
+				_context.info( theArg );
 			}
 			
 			theSendAction.setDisplayName( _text );
@@ -126,7 +125,7 @@ public class RhpElSendAction extends RhpElGraphNode {
 			
 //			theState.setReferenceToActivity( (IRPEvent) theModelEl.get_rhpEl() );
 		} else {
-			Logger.info("Odd. I could not find signal with guid " + 
+			_context.info("Odd. I could not find signal with guid " + 
 					_signalGuid + " for accept event action" );
 		}
 		

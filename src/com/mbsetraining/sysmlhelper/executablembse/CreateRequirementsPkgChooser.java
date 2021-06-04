@@ -133,7 +133,7 @@ public class CreateRequirementsPkgChooser {
 		for( File theFile : theFiles ){
 
 			final GatewayFileParser theSysMLTypesFile = 
-					new GatewayFileParser( theFile );
+					new GatewayFileParser( theFile, _context );
 
 			if( theSysMLTypesFile != null ){
 

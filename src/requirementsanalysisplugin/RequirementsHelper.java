@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import com.mbsetraining.sysmlhelper.common.RequirementMover;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
-import com.mbsetraining.sysmlhelper.executablembse.RequirementMover;
 import com.telelogic.rhapsody.core.*;
    
 public class RequirementsHelper {

@@ -9,9 +9,6 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import generalhelpers.Logger;
-import generalhelpers.UserInterfaceHelpers;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -19,6 +16,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 
 public class ModelBuilder {
 
@@ -33,8 +32,13 @@ public class ModelBuilder {
 
 	Pattern _p = Pattern.compile("\\s*Integer\\s+(\\w+)");
 
-	public ModelBuilder() {
+	TauMigrator_Context _context;
+	
+	public ModelBuilder(
+			TauMigrator_Context context ) {
 
+		_context = context;
+		
 		_includeTypes.add("u2");
 		_includeTypes.add("Package");
 		_includeTypes.add("Class");
@@ -141,7 +145,7 @@ public class ModelBuilder {
 				if( theGuid != null && 
 						!theGuid.isEmpty() ){
 
-					Logger.info( "Adding " + theGuid + " of type " + 
+					_context.info( "Adding " + theGuid + " of type " + 
 							theElement.getNodeName() + " to the cache ");
 
 					_guidToNodeCache.put( theGuid, theElement );
@@ -159,7 +163,7 @@ public class ModelBuilder {
 			Node thePerceivedParent,
 			RhpEl theParentNode ) throws Exception{
 
-		Logger.info( "recurseDownXMLTree invoked for " + thePerceivedParent.getNodeName() );
+		_context.info( "recurseDownXMLTree invoked for " + thePerceivedParent.getNodeName() );
 
 		//Recurse down the DOM tree
 		NodeList nodeList = theRealParent.getChildNodes();
@@ -175,7 +179,7 @@ public class ModelBuilder {
 				try {
 					if( _skipTypes.contains( theNodeName ) ){
 
-						Logger.info( "Recurse underneath " + theNodeName );
+						_context.info( "Recurse underneath " + theNodeName );
 
 						recurseDownXMLTree( 
 								theChild, 
@@ -189,11 +193,11 @@ public class ModelBuilder {
 								theChild );
 
 					} else {
-						Logger.info( "Ignoring " + theNodeName );
+						_context.info( "Ignoring " + theNodeName );
 					}
 
 				} catch (Exception e) {
-					Logger.info("Unhandled exception e=" + e.getMessage());
+					_context.info("Unhandled exception e=" + e.getMessage());
 				}
 			}
 		}
@@ -226,11 +230,11 @@ public class ModelBuilder {
 					String theSrcGuid = getR( dstNode );
 
 					if( theSrcGuid.equals(theGuid) ){
-						Logger.info("A FlowLine match was found!");
+						_context.info("A FlowLine match was found!");
 						doesAFlowLineStartFrom = true;
 						break;
 					} else {
-						Logger.info("A FlowLine match was not found");
+						_context.info("A FlowLine match was not found");
 					}					
 				}
 			}
@@ -247,7 +251,7 @@ public class ModelBuilder {
 
 		String theNodeName = theChild.getNodeName();
 
-		Logger.info("createElementNodeUnderneath " + theParentNode.getString() + " to create a " + theNodeName );
+		_context.info("createElementNodeUnderneath " + theParentNode.getString() + " to create a " + theNodeName );
 
 		Element theChildEl = (Element) theChild;
 		String theGuid = theChildEl.getAttribute( "Guid" );
@@ -259,7 +263,8 @@ public class ModelBuilder {
 			RhpEl theElement = new RhpElPackage(
 					theName, 
 					theNodeName, 
-					theGuid );
+					theGuid,
+					_context );
 
 			theElements.add( theElement );
 
@@ -270,7 +275,8 @@ public class ModelBuilder {
 			RhpEl theElement = new RhpElEvent(
 					theName, 
 					theNodeName, 
-					theGuid );
+					theGuid, 
+					_context );
 
 			theElements.add( theElement );
 
@@ -287,7 +293,8 @@ public class ModelBuilder {
 					theGuid, 
 					theText, 
 					thePosition, 
-					theSize);
+					theSize,
+					_context );
 
 			theElements.add( theElement );
 
@@ -307,7 +314,8 @@ public class ModelBuilder {
 					RhpEl theElement = new RhpElAttribute(
 							theAttributeName, 
 							theNodeName, 
-							theGuid );
+							theGuid, 
+							_context );
 
 					RhpEl theParent = theParentNode.getParent();
 					addChildElementToParent( theElement, theParent);
@@ -320,7 +328,7 @@ public class ModelBuilder {
 
 			if( theName.equals("") ){
 
-				Logger.info( "Parameter with no name" );
+				_context.info( "Parameter with no name" );
 				theName = "value";
 			} else {
 				throw new Exception( "Wow, a parameter with a name" );
@@ -329,7 +337,8 @@ public class ModelBuilder {
 			RhpEl theElement = new RhpElEventArgument(
 					theName, 
 					theNodeName, 
-					theGuid );
+					theGuid,
+					_context  );
 
 			theElements.add( theElement );
 
@@ -341,7 +350,7 @@ public class ModelBuilder {
 			String theSize = theChildEl.getAttribute("Size");
 			String theText = theChildEl.getAttribute("Text");
 
-			Logger.info( "InputSymbol found with the text " + theText );
+			_context.info( "InputSymbol found with the text " + theText );
 			//the
 
 			Node rTriggeredTransition = 
@@ -371,7 +380,8 @@ public class ModelBuilder {
 					theSignalGuid,
 					theText, 
 					thePosition, 
-					theSize);
+					theSize,
+					_context );
 
 			theElements.add( theElement );
 
@@ -382,7 +392,8 @@ public class ModelBuilder {
 			RhpEl theElement = new RhpElClass(
 					theName, 
 					theNodeName, 
-					theGuid );
+					theGuid,
+					_context );
 
 			theElements.add( theElement );
 
@@ -393,7 +404,8 @@ public class ModelBuilder {
 			RhpEl theElement = new RhpElActivityDiagram(
 					theName, 
 					theNodeName, 
-					theGuid );
+					theGuid,
+					_context );
 
 			theElements.add( theElement );
 
@@ -403,7 +415,7 @@ public class ModelBuilder {
 			String theSize = theChildEl.getAttribute("Size");
 			String theText = theChildEl.getAttribute("Text");
 
-			Logger.info( "DecisionSymbol found with the text " + theText );
+			_context.info( "DecisionSymbol found with the text " + theText );
 
 			if( theText.startsWith("\"") ){
 
@@ -422,7 +434,8 @@ public class ModelBuilder {
 						theGuid, 
 						theText, 
 						thePosition, 
-						theSize);
+						theSize,
+						_context );
 
 				theElements.add( theElement );
 
@@ -434,7 +447,8 @@ public class ModelBuilder {
 						theGuid, 
 						theText, 
 						thePosition, 
-						theSize);
+						theSize,
+						_context );
 
 				theElements.add( theElement );
 			}
@@ -453,7 +467,7 @@ public class ModelBuilder {
 			String theDstGuid = null;
 
 
-			Logger.info( "theSrcGuid = " + theSrcGuid );
+			_context.info( "theSrcGuid = " + theSrcGuid );
 
 			Node rDecisionAnswer = 
 					getChildNodeWith( "rDecisionAnswer", theChildEl );
@@ -473,7 +487,8 @@ public class ModelBuilder {
 					theSrcGuid,
 					theDstGuid,
 					theText,
-					ModelBuilder.CONTROL_FLOW ); // theGuard
+					ModelBuilder.CONTROL_FLOW,
+					_context  ); // theGuard
 
 			theElements.add( theElement );
 
@@ -485,7 +500,7 @@ public class ModelBuilder {
 
 			if( doesAFlowLineStartFrom( theGuid, theChildEl.getParentNode() ) ){
 
-				Logger.info("Ignoring the StateSymbol as it is unnecessary for execution");
+				_context.info("Ignoring the StateSymbol as it is unnecessary for execution");
 
 			} else {
 				RhpEl theElement = new RhpElFinalFlow(
@@ -494,7 +509,8 @@ public class ModelBuilder {
 						theGuid, 
 						theText, 
 						thePosition, 
-						theSize);
+						theSize,
+						_context );
 
 				theElements.add( theElement );
 			}
@@ -513,7 +529,8 @@ public class ModelBuilder {
 						theGuid, 
 						theText, 
 						thePosition, 
-						theSize);
+						theSize,
+						_context );
 
 				theElements.add( theElement );
 
@@ -525,7 +542,8 @@ public class ModelBuilder {
 						"Action", 
 						theText, 
 						thePosition, 
-						theSize);		
+						theSize,
+						_context );		
 				theElements.add( theElement );
 			}
 
@@ -563,7 +581,8 @@ public class ModelBuilder {
 							theSignalGuid, 
 							theText, 
 							thePosition, 
-							theSize);
+							theSize,
+							_context );
 
 			theElements.add( theElement );
 
@@ -580,8 +599,8 @@ public class ModelBuilder {
 			Element theSrcNode = (Element) _guidToNodeCache.get(theSrcGuid);
 			Element theDstNode = (Element) _guidToNodeCache.get(theDstGuid);
 
-			Logger.info("the Src node type is " + theSrcNode.getNodeName() + " with Text = " + theSrcNode.getAttribute("Text" ));
-			Logger.info("the Dst node type is " + theDstNode.getNodeName() + " with Text = " + theDstNode.getAttribute("Text" ));
+			_context.info("the Src node type is " + theSrcNode.getNodeName() + " with Text = " + theSrcNode.getAttribute("Text" ));
+			_context.info("the Dst node type is " + theDstNode.getNodeName() + " with Text = " + theDstNode.getAttribute("Text" ));
 
 			if( theSrcNode != null && 
 					theSrcNode.getNodeName() == "StartSymbol" ){
@@ -595,7 +614,8 @@ public class ModelBuilder {
 						theSrcGuid,
 						theDstGuid,
 						"",
-						ModelBuilder.CONTROL_FLOW ); // theGuard
+						ModelBuilder.CONTROL_FLOW,
+						_context  ); // theGuard
 
 				theElements.add( theElement );
 
@@ -615,13 +635,13 @@ public class ModelBuilder {
 
 				if( existingTrans != null ){
 
-					Logger.info("Found existing transition");
+					_context.info("Found existing transition");
 
 					// skip the decision answer symbol to make a single transition
 
 					Node theNewSrc = _guidToNodeCache.get( theSrcGuid );
 
-					Logger.writeLine("Changing srcGuid from " + existingTrans.get_srcGuid() + " to " + theSrcGuid + " which is a " + theNewSrc.getNodeName() );
+					_context.info("Changing srcGuid from " + existingTrans.get_srcGuid() + " to " + theSrcGuid + " which is a " + theNewSrc.getNodeName() );
 					existingTrans.set_srcGuid( theSrcGuid );
 					existingTrans.set_guard( theGuard );
 					existingTrans.appendSegmentPoints( theSegmentPoints );
@@ -639,7 +659,8 @@ public class ModelBuilder {
 							theSrcGuid,
 							theDstGuid,
 							theGuard,
-							ModelBuilder.CONTROL_FLOW ); // theGuard
+							ModelBuilder.CONTROL_FLOW,
+							_context  ); // theGuard
 
 					theElements.add( theElement );
 				}
@@ -657,10 +678,10 @@ public class ModelBuilder {
 
 				if( existingTrans != null ){
 
-					Logger.info("Found existing transition");
+					_context.info("Found existing transition");
 					Node theNewDst = _guidToNodeCache.get( theDstGuid );
 
-					Logger.info("Changing dstGuid from " + existingTrans.get_srcGuid() + " to " + theSrcGuid + " which is a " + theNewDst.getNodeName() );
+					_context.info("Changing dstGuid from " + existingTrans.get_srcGuid() + " to " + theSrcGuid + " which is a " + theNewDst.getNodeName() );
 
 					// skip the decision answer symbol to make a single transition
 					existingTrans.set_dstGuid( theDstGuid );
@@ -682,7 +703,8 @@ public class ModelBuilder {
 							theSrcGuid,
 							theDstGuid,
 							"", // theGuard
-							ModelBuilder.CONTROL_FLOW ); 
+							ModelBuilder.CONTROL_FLOW,
+							_context  ); 
 
 					theElements.add( theElement );
 				}
@@ -698,7 +720,8 @@ public class ModelBuilder {
 						theSrcGuid,
 						theDstGuid,
 						"", // theGuard
-						ModelBuilder.CONTROL_FLOW ); 
+						ModelBuilder.CONTROL_FLOW,
+						_context  ); 
 
 				theElements.add( theElement );
 			}
@@ -709,7 +732,7 @@ public class ModelBuilder {
 		}
 
 		if( !theElements.isEmpty() ){
-			Logger.info( theParentNode.getString() + " has " + theElements.size() + " child elements:" );
+			_context.info( theParentNode.getString() + " has " + theElements.size() + " child elements:" );
 
 			for (RhpEl rhpEl : theElements) {
 
@@ -724,7 +747,7 @@ public class ModelBuilder {
 	}
 
 	private void addChildElementToParent(RhpEl theElement, RhpEl theParent) {
-		Logger.info("Adding " + theElement.getString() + " to parent " + theParent.getString() );
+		_context.info("Adding " + theElement.getString() + " to parent " + theParent.getString() );
 		theParent.addChild( theElement );
 	}
 
@@ -743,7 +766,7 @@ public class ModelBuilder {
 				String theTransSrcGuid = theCandidate.get_srcGuid();
 
 				if( theTransSrcGuid.equals( theGuid ) ){
-					Logger.info( "Found a transition" );
+					_context.info( "Found a transition" );
 					existingTrans = theCandidate;
 					break;
 				}
@@ -768,7 +791,7 @@ public class ModelBuilder {
 				String theTransDstGuid = theCandidate.get_dstGuid();
 
 				if( theTransDstGuid.equals( theGuid ) ){
-					Logger.info( "Found a transition" );
+					_context.info( "Found a transition" );
 					existingTrans = theCandidate;
 					break;
 				}
@@ -785,7 +808,7 @@ public class ModelBuilder {
 
 		//		String theRGuid = ((Element) rDecisionAnswer).getAttribute("R");
 
-		//		Logger.info( theRGuid );
+		//		_context.info( theRGuid );
 
 		if( rDecisionAnswer != null ){
 
@@ -820,12 +843,12 @@ public class ModelBuilder {
 					((Element) dstNode).getAttribute(
 							"R" ).replaceFirst( "uid:", "" );
 
-			Logger.info("theSignalGuid=" + theSignalGuid);
+			_context.info("theSignalGuid=" + theSignalGuid);
 
 			Node theSignalNode = _guidToNodeCache.get( theSignalGuid );
 
 			if( theSignalNode != null ){
-				Logger.info("Success, found signal node");
+				_context.info("Success, found signal node");
 			}
 		}
 
@@ -859,10 +882,10 @@ public class ModelBuilder {
 				String theElementName = theElement.getAttribute("Name");
 				String theType = theElement.getNodeName();
 
-				Logger.info("theGuid=" + theGuid);
-				Logger.info("theElementName=" + theElementName);
-				Logger.info("theType=" + theType);
-				Logger.info( "Found a root " + parentNode.getString() );
+				_context.info("theGuid=" + theGuid);
+				_context.info("theElementName=" + theElementName);
+				_context.info("theType=" + theType);
+				_context.info( "Found a root " + parentNode.getString() );
 
 				buildGuidCache( theXMLNode );
 
@@ -870,12 +893,12 @@ public class ModelBuilder {
 				recurseDownXMLTree( theXMLNode, theXMLNode, parentNode );//, isIncludeSubElements );
 			} else {
 
-				UserInterfaceHelpers.showWarningDialog( "The file " + theFilename + 
+				UserInterfaceHelper.showWarningDialog( "The file " + theFilename + 
 						" is not valid as it doesn't start with an ELEMENT_NODE" );
 			}
 
 		} catch( Exception e ) {
-			Logger.info( "The file is not valid XML. Error=" + e.getMessage() );
+			_context.info( "The file is not valid XML. Error=" + e.getMessage() );
 		}
 
 		return parentNode;
@@ -883,10 +906,7 @@ public class ModelBuilder {
 }
 
 /**
- * Copyright (C) 2018-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #251 29-MAY-2019: First official version of new TauMigratorProfile (F.J.Chadburn)
+ * Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

@@ -1,37 +1,18 @@
 package taumigrator;
 
-import generalhelpers.Logger;
-import generalhelpers.UserInterfaceHelpers;
-
 import java.io.File;
 import java.util.List;
 
 import javax.swing.UIManager;
 
-import com.telelogic.rhapsody.core.*;
-
 public class CreateRhapsodyModelElementsFromXML {
 
-	static IRPApplication m_RhpApp;
-
-	IRPProject m_RhpPrj;
-	IRPModelElement m_SelectedEl = null;
-
-	static CreateRhapsodyModelElementsFromXML m_App;
-
-	public static void main(String[] args) {
-
-		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
-		m_App = new CreateRhapsodyModelElementsFromXML( theRhpApp );
-		m_App.go();
-	}
+	protected TauMigrator_Context _context;
 
 	public CreateRhapsodyModelElementsFromXML( 
-			IRPApplication app ) {
+			TauMigrator_Context context ) {
 
-		m_RhpApp = app;
-		m_RhpPrj = m_RhpApp.activeProject();
-		m_SelectedEl = m_RhpApp.getSelectedElement();
+		_context = context;
 	}
 
 	public void go(){
@@ -39,36 +20,27 @@ public class CreateRhapsodyModelElementsFromXML {
 		try {
 			setLookAndFeel();
 
-			if( UserInterfaceHelpers.checkOKToRunAndWarnUserIfNot() ){
+			_context.info("CreateRhapsodyModelElementsFromXML.go was invoked");
 
-				Logger.info("CreateRhapsodyModelElementsFromXML.go was invoked");
+			String thePath = "C:\\Users\\frase\\Documents\\XXX\\";
 
-				String thePath = "C:\\Users\\frase\\Documents\\XXX\\";
+			RhpEl parentNode = new RhpElProject( _context.get_rhpPrj().getName(), "Project", "xxxxx", _context );
 
-				RhpEl parentNode = new RhpElProject( m_RhpPrj.getName(), "Project", "xxxxx" );
+			ModelBuilder theElementStructure = new ModelBuilder( _context );
 
-				ModelBuilder theElementStructure = new ModelBuilder();
+			theElementStructure.parseXmlFile( thePath + "File1.u2", parentNode );
 
-				theElementStructure.parseXmlFile( thePath + "File1.u2", parentNode );
-
-				performXMLImportFrom( parentNode );
-
-			}		
+			performXMLImportFrom( parentNode );	
 
 		} catch (Exception e) {
-			Logger.info( "Exception in Go, e=" + e.getMessage() );
+			_context.info( "Exception in Go, e=" + e.getMessage() );
 		}		
 	}
 
 	private void performXMLImportFrom(
-			//			String filename,
 			RhpEl parentNode ){
 
-		Logger.info( "Importing from: " );//+ filename );
-
-		//		ElementStructure theElementStructure = new ElementStructure();
-
-		//		theElementStructure.parseXmlFile( filename, parentNode );
+		_context.info( "Importing from: " );//+ filename );
 
 		@SuppressWarnings("unused")
 		int nodeCount  = parentNode.getNodeCount();
@@ -79,23 +51,23 @@ public class CreateRhapsodyModelElementsFromXML {
 		List<String> theInfos = 
 				parentNode.getInfos();
 
-		Logger.info("+=================================================");
+		_context.info("+=================================================");
 
-		Logger.info("The tree contains " + theInfos.size() + " elements:");
+		_context.info("The tree contains " + theInfos.size() + " elements:");
 		for (String theInfo : theInfos) {
-			Logger.info( theInfo );
+			_context.info( theInfo );
 		}
-		Logger.info("... end of tree (" + theInfos.size() + ")");
-		Logger.info("+=================================================");
+		_context.info("... end of tree (" + theInfos.size() + ")");
+		_context.info("+=================================================");
 
 		// pass parent node so that element can search full tree
 		parentNode.createNodeElementsAndChildrenForJustEvents(
-				m_SelectedEl,
+				_context.getSelectedElement(),
 				parentNode );
 
 		// pass parent node so that element can search full tree
 		parentNode.createNodeElementsAndChildren(
-				m_SelectedEl,
+				_context.getSelectedElement(),
 				parentNode );
 
 		// pass parent node so that element can search full tree
@@ -106,11 +78,10 @@ public class CreateRhapsodyModelElementsFromXML {
 		parentNode.reflowControlNodesFromReceiveEvents(parentNode);
 		parentNode.addElseTransitionsIfNeeded(parentNode);
 
+		_context.info( "Saving" );
+		_context.get_rhpApp().saveAll();
 
-		Logger.info( "Saving" );
-		m_RhpApp.saveAll();
-
-		Logger.info( "Import Complete");
+		_context.info( "Import Complete");
 	}
 
 
@@ -126,22 +97,19 @@ public class CreateRhapsodyModelElementsFromXML {
 		return true;
 	}
 
-	public static void setLookAndFeel(){
+	public void setLookAndFeel(){
 		try{
 			UIManager.setLookAndFeel(
 					"com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 
 		} catch (Exception e){
-			Logger.info("Unhandled exception invoking UIManager.setLookAndFeel");
+			_context.info("Unhandled exception invoking UIManager.setLookAndFeel");
 		}
 	}
 }
 
 /**
- * Copyright (C) 2018-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #251 29-MAY-2019: First official version of new TauMigratorProfile (F.J.Chadburn)
+ * Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

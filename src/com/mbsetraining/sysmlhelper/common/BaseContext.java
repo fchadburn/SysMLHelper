@@ -1,13 +1,21 @@
 package com.mbsetraining.sysmlhelper.common;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
 import javax.swing.JDialog;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+import sysmlhelperplugin.SysMLHelperPlugin;
 
 import com.telelogic.rhapsody.core.*;
 
@@ -1434,5 +1442,440 @@ public class BaseContext extends RhpLog {
 		}
 
 		return theFiles;
+	}
+	
+	public List<IRPActivityDiagram> buildListOfActivityDiagramsFor(
+			List<IRPModelElement> theSelectedEls) {
+		
+		List<IRPActivityDiagram> theADs = new ArrayList<IRPActivityDiagram>();
+		
+		for (IRPModelElement theSelectedEl : theSelectedEls) {
+			
+			@SuppressWarnings("unchecked")
+			List<IRPActivityDiagram> theCandidates = theSelectedEl.getNestedElementsByMetaClass("ActivityDiagramGE", 1).toList();
+			
+			for (IRPActivityDiagram theCandidate : theCandidates) {
+				if (!theADs.contains(theCandidate)){
+					
+					if (theCandidate.isReadOnly()==0){
+						theADs.add(theCandidate);			
+						super.debug("Adding " + super.elInfo(theCandidate.getOwner()) + " to the list");
+					} else {
+						super.debug("Skipping " + super.elInfo(theCandidate.getOwner()) + " as it is read-only");
+					}
+				}
+			}
+		}
+		
+		return theADs;
+	}
+	
+	public IRPFlowchart getTemplateForActivityDiagram(
+			IRPModelElement basedOnContext,
+			String basedOnPropertyKey ){
+		
+		IRPFlowchart theTemplate = null;
+		
+		String theTemplateName = 
+				basedOnContext.getPropertyValue( 
+						basedOnPropertyKey );
+		
+		if( theTemplateName != null && 
+			!theTemplateName.trim().isEmpty() ){
+			
+			theTemplate = (IRPFlowchart) basedOnContext.getProject().findNestedElementRecursive(
+							theTemplateName, 
+							"ActivityDiagram" );
+			
+			if( theTemplate == null ){
+				super.warning( "Warning, unable to find template called " + 
+						theTemplateName + " named in TemplateForActivityDiagram property" );
+			}
+		}
+		
+		super.debug( "getTemplateForActivityDiagram, found " + super.elInfo( theTemplate ) );
+		
+		return theTemplate;
+	}
+	
+	public IRPGraphElement getCorrespondingGraphElement(
+			IRPModelElement forElement,
+			IRPActivityDiagram theAD ) throws Exception {
+
+		IRPGraphElement ret = null;
+
+		@SuppressWarnings("unchecked")
+		List<IRPGraphElement> theGraphEls = 
+				theAD.getCorrespondingGraphicElements( forElement ).toList();
+		
+		if( theGraphEls.size() > 1 ){
+			throw new Exception("There is more than one graph element for " + super.elInfo(forElement));
+		} else if( theGraphEls.size() == 1 ){
+			ret = theGraphEls.get( 0 );
+		} else {
+			super.warning("Warning, getCorrespondingGraphElement dif not find a graph element corresponding to " + 
+					super.elInfo(forElement) + " on " + super.elInfo(theAD) );
+		}
+		
+		return ret;
+	}
+	
+	public IRPGraphElement getGraphElement(
+			IRPModelElement element,
+			IRPFlowchart fc) {
+
+		IRPGraphElement ret = null;
+
+		@SuppressWarnings("unchecked")
+		List<IRPGraphElement> gList = fc.getGraphicalElements().toList();
+		
+		if (!gList.isEmpty()) {
+			for (IRPGraphElement g : gList) {
+				if (g.getModelObject() != null) {
+					if(g.getModelObject().getGUID().equals(element.getGUID())) {
+
+						ret = g;
+						break;
+					}
+				}
+			}
+		}
+		
+		return ret;
+	}
+	
+	public IRPPin getPin(
+			String withName,
+			IRPAcceptEventAction onAcceptEventAction ){
+		
+		IRPPin thePin = null;
+		
+		List<IRPPin> theCandidates = getPins( onAcceptEventAction );
+		
+		for( IRPPin theCandidate : theCandidates ){
+			
+			if( theCandidate.getName().equals( withName ) ){
+				thePin = theCandidate;
+			}
+		}
+		
+		return thePin;
+	}
+	
+	public List<IRPPin> getPins(
+			IRPAcceptEventAction onAcceptEventAction ){
+		
+		List<IRPPin> thePins = new ArrayList<>();
+		
+		for( Object o: onAcceptEventAction.getSubStateVertices().toList()){
+			if( o instanceof IRPPin ){
+			
+				thePins.add( (IRPPin) o );
+			}
+		}
+		
+		return thePins;
+	}
+	
+	public IRPStateVertex getTargetOfOutTransitionIfSingleOneExisting(
+			IRPStateVertex theStateVertex ){
+		
+		IRPStateVertex theTarget = null;
+		
+		@SuppressWarnings("unchecked")
+		List<IRPTransition> theOutTransitions = theStateVertex.getOutTransitions().toList();
+		
+		if( theOutTransitions.size() == 1 ){
+			
+			IRPTransition theTransition = theOutTransitions.get( 0 );
+			theTarget = theTransition.getItsTarget();
+		}
+		
+		return theTarget;
+	}
+	
+	public String determineUniqueStateBasedOn(
+			String theProposedName,
+			IRPState underElement ){
+		
+		int count = 0;
+		
+		String theUniqueName = theProposedName;
+		
+		while( !isStateUnique(
+				theUniqueName, underElement ) ){
+			
+			count++;
+			theUniqueName = theProposedName + count;
+		}
+		
+		return theUniqueName;
+	}
+	
+	public boolean isStateUnique(
+			String theProposedName, 
+			IRPState underneathTheEl ){
+				
+		int count = 0;
+		
+		@SuppressWarnings("unchecked")
+		List<IRPState> theExistingEls = 
+				underneathTheEl.getSubStates().toList();
+		
+		for (IRPModelElement theExistingEl : theExistingEls) {
+			
+			if (theExistingEl.getName().equals( theProposedName )){
+				count++;
+				break;
+			}
+		}
+		
+		if (count > 1){
+			super.warning("Warning in isStateUnique, there are " + count + " elements called " + 
+					theProposedName + ". This may cause issues.");
+		}
+				
+		boolean isUnique = (count == 0);
+
+		return isUnique;
+	}
+	
+	public void dumpGraphicalPropertiesFor(
+			IRPGraphElement theGraphEl){
+	 
+		@SuppressWarnings("unchecked")
+		List<IRPGraphicalProperty> theGraphProperties = theGraphEl.getAllGraphicalProperties().toList();
+		
+		super.info("---------------------------");
+		for (IRPGraphicalProperty theGraphicalProperty : theGraphProperties) {
+			
+			super.info(theGraphicalProperty.getKey() + "=" + theGraphicalProperty.getValue());
+		}
+		super.info("---------------------------"); 
+	}
+	
+	public String buildStringFromModelEls(
+			List<? extends IRPModelElement> theEls,
+			int max ){
+		
+		String theString = "";
+
+		int count = 0;
+		
+		for( Iterator<? extends IRPModelElement> iterator = theEls.iterator(); iterator.hasNext(); ) {
+			
+			count++;
+			IRPModelElement theEl = (IRPModelElement) iterator.next();
+
+			theString += count + ". " + super.elInfo( theEl ) + " \n";
+			
+			if( count >= max ){
+				theString += "... (" + theEls.size() + " in list) \n";
+				break;
+			}
+		}
+		
+		return theString;
+	}
+	
+	public String buildStringFrom(
+			List<String> theList, 
+			int max ){
+		
+		String theString = "";
+		
+		int count = 0;
+		
+		for( Iterator<String> iterator = theList.iterator(); iterator.hasNext(); ) {
+			
+			count++;
+			String string = (String) iterator.next();
+
+			theString += string + " \n";
+			
+			if( count >= max ){
+				theString += "... ( " + theList.size() + ") \n";
+				break;
+			}
+		}
+		
+		return theString;
+	}
+	
+	public void browseAndAddUnit(
+			IRPProject inProject, 
+			boolean relative ){
+
+		JFileChooser theFileChooser = new JFileChooser( System.getProperty("user.dir") );
+		theFileChooser.setFileFilter( new FileNameExtensionFilter( "Package", "sbs" ) );
+
+		int choice = theFileChooser.showDialog( null, "Choose Unit (.sbs)" );
+
+		if( choice==JFileChooser.CANCEL_OPTION ){
+			super.info("Operation cancelled by user when trying to choose Unit (.sbs)");
+
+		} else if( choice==JFileChooser.APPROVE_OPTION ){
+
+			File theFile = theFileChooser.getSelectedFile();
+
+			super.debug("theFile.getAbsolutePath = " + theFile.getAbsolutePath() );
+			super.debug("theFile.getName = " + theFile.getName() );
+			super.debug("theFile.getParent = " + theFile.getParent() );
+			super.debug("theFile.getPath = " + theFile.getPath() );
+			super.debug("theFile.getParentFile().getName() = " + theFile.getParentFile().getName() );
+			
+			String theTargetPath;
+
+			try {
+				theTargetPath = theFile.getCanonicalPath();
+
+				super.debug( "theTargetPath=" + theTargetPath );
+				
+				SysMLHelperPlugin.getRhapsodyApp().addToModelByReference( theTargetPath );
+
+				if( relative ){
+
+					String theFileNameIncludingExtension = theFile.getName();
+					
+					String theName = theFileNameIncludingExtension.substring(0, theFileNameIncludingExtension.length()-3);
+
+					int trimSize = theName.length()+5;
+					
+					Path targetPath = Paths.get( theTargetPath.substring(0, theTargetPath.length()-trimSize) );
+					Path targetRoot = targetPath.getRoot();
+					
+					super.debug( "targetRoot.toString()=" + targetRoot.toString() );
+
+					Path sourcePath = Paths.get( 
+							inProject.getCurrentDirectory().replaceAll(
+									inProject.getName()+"$", "") );
+
+					Path sourceRoot = sourcePath.getRoot();
+
+					super.debug( "sourceRoot.toString()=" + sourceRoot.toString() );
+					
+					if( !targetRoot.equals( sourceRoot ) ){
+						super.debug("Unable to set Unit called " + theName + " to relative, as the drive letters are different");
+						super.debug("theTargetDir root =" + targetPath.getRoot());
+						super.debug("theTargetDir=" + targetPath);
+						super.debug("theSourceDir root =" + sourcePath.getRoot());
+						super.debug("theSourceDir=" + sourcePath);
+					} else {
+						Path theRelativePath = sourcePath.relativize(targetPath);
+
+						IRPModelElement theCandidate = inProject.findAllByName( theName, "Package" );
+
+						if( theCandidate != null && theCandidate instanceof IRPPackage ){
+
+							IRPPackage theAddedPackage = (IRPPackage)theCandidate;
+
+							theAddedPackage.setUnitPath( "..\\..\\" + theRelativePath.toString() );
+
+							super.info( "Unit called " + theName + 
+									".sbs was changed from absolute path='" + theTargetPath + 
+									"' to relative path='" + theRelativePath + "'" );
+						}
+					}
+				}
+			} catch( IOException e ){
+				super.error( "Error, unhandled IOException in RelativeUnitHandler.browseAndAddUnit");
+			}
+		}
+	}
+	
+	public IRPState getStateCalled(
+			String theName, 
+			IRPStatechart inTheDiagram, 
+			IRPModelElement ownedByEl ){
+		
+		@SuppressWarnings("unchecked")
+		List<IRPModelElement> theElsInDiagram = 
+			inTheDiagram.getElementsInDiagram().toList();
+		
+		IRPState theState = null;
+		
+		int count = 0;
+		
+		for( IRPModelElement theEl : theElsInDiagram ){
+			
+			if( theEl instanceof IRPState 
+					&& theEl.getName().equals( theName )
+					&& getOwningClassifierFor( theEl ).equals( ownedByEl ) ){
+				
+				super.debug( "Found state called " + theEl.getName() + 
+						" owned by " + theEl.getOwner().getFullPathName() );
+				
+				theState = (IRPState) theEl;
+				count++;
+			}
+		}
+		
+		if (count != 1){
+			super.warning( "Warning in getStateCalled (" + count + 
+					") states called " + theName + " were found" );
+		}
+		
+		return theState;
+	}
+	
+	private IRPModelElement getOwningClassifierFor(
+			IRPModelElement theState ){
+		
+		IRPModelElement theOwner = theState.getOwner();
+		
+		while( theOwner.getMetaClass().equals( "State" ) || 
+			   theOwner.getMetaClass().equals( "Statechart" ) ){
+			
+			theOwner = theOwner.getOwner();
+		}
+		
+		super.debug( "The owner for " + super.elInfo( theState ) + 
+				" is " + super.elInfo( theOwner ) );
+			
+		return theOwner;
+	}	
+
+	public IRPGraphElement findGraphEl(
+			IRPClassifier theClassifier, 
+			String withTheName ){
+		
+		IRPGraphElement theFoundGraphEl = null;
+		
+		@SuppressWarnings("unchecked")
+		List<IRPStatechartDiagram> theStatechartDiagrams = 
+				theClassifier.getStatechart().getNestedElementsByMetaClass(
+						"StatechartDiagram", 1 ).toList();
+		
+		for (IRPStatechartDiagram theStatechartDiagram : theStatechartDiagrams) {
+			
+			super.debug( super.elInfo(theStatechartDiagram) + " was found owned by " + 
+					super.elInfo( theClassifier ) );
+			
+			@SuppressWarnings("unchecked")
+			List<IRPGraphElement> theGraphEls = 
+				theStatechartDiagram.getGraphicalElements().toList();
+			
+			for( IRPGraphElement theGraphEl : theGraphEls ){
+				
+				IRPModelElement theEl = theGraphEl.getModelObject();
+				
+				if( theEl != null ){
+					super.debug( "Found " + theEl.getMetaClass() + 
+							" called " + theEl.getName() );
+					
+					if( theEl.getName().equals( withTheName ) ){
+						
+						super.debug( "Success, found GraphEl called " + 
+								withTheName + " in statechart for " + 
+								super.elInfo( theClassifier ) );
+						
+						theFoundGraphEl = theGraphEl;
+						break;
+					}
+				}
+			}
+		}
+		
+		return theFoundGraphEl;
 	}
 }

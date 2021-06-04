@@ -5,26 +5,25 @@ public abstract class RhpElElement extends RhpEl {
 	public RhpElElement(
 			String theElementName, 
 			String theElementType,
-			String theElementGuid ) throws Exception{
+			String theElementGuid,
+			TauMigrator_Context context ) throws Exception{
 		
-		super( theElementName, theElementType, theElementGuid );
+		super( theElementName, theElementType, theElementGuid, context );
 	}
 
 	public RhpElElement(
 			String theElementName, 
 			String theElementType,
 			String theElementGuid,
-			RhpEl theParent ) throws Exception{
+			RhpEl theParent,
+			TauMigrator_Context context ) throws Exception{
 		
-		super( theElementName, theElementType, theElementGuid, theParent );
+		super( theElementName, theElementType, theElementGuid, theParent, context );
 	}
 }
 
 /**
- * Copyright (C) 2018-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #251 29-MAY-2019: First official version of new TauMigratorProfile (F.J.Chadburn)
+ * Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

@@ -10,16 +10,21 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+
 public class GatewayFileParser {
 
 	File m_File = null;
 
 	List<String> m_SectionNames;
 	List<GatewayFileSection> m_SectionContents;
+	ConfigurationSettings _context;
 
 	public GatewayFileParser(
-			File theFile ) {
+			File theFile,
+			ConfigurationSettings context ) {
 	
+		_context = context;
 		m_File = theFile;
 		m_SectionNames = new ArrayList<String>();
 		m_SectionContents = new ArrayList<GatewayFileSection>();
@@ -51,7 +56,7 @@ public class GatewayFileParser {
 					}
 					
 					String theDocName = theDocNameMatcher.group( 1 );
-					theFileSection = new GatewayFileSection( theDocName );
+					theFileSection = new GatewayFileSection( theDocName, _context );
 					
 				} else if (theFileSection != null){
 					
@@ -61,7 +66,7 @@ public class GatewayFileParser {
 						theFileSection.setValueFor("Names", theNamesValue);
 						
 						String theSubstring = theLine.substring(6, theLine.length());
-						Logger.writeLine( theSubstring + " was found");
+						_context.debug( theSubstring + " was found");
 						
 						String[] split = theSubstring.split(",");
 						
@@ -150,7 +155,7 @@ public class GatewayFileParser {
     				theFileSection.renameStringInAllValues( withTheName, toNewName );
     			}
 			} else {
-				Logger.writeLine("Error in renameFileSection, no 'Files' section was found when trying to change the Names value");
+				_context.error("Error in renameFileSection, no 'Files' section was found when trying to change the Names value");
 			}
 			
 			success = true;
@@ -174,7 +179,7 @@ public class GatewayFileParser {
 
 	public void dumpRqtfFileToOutputWindow() {
 
-		Logger.writeLine("dumpRqtfFileToOutputWindow invoked");
+		_context.debug("dumpRqtfFileToOutputWindow invoked");
 
 		for (GatewayFileSection gatewayDoc : m_SectionContents) {
 
@@ -182,7 +187,7 @@ public class GatewayFileParser {
 
 			for (String theDocLine : theDocContents) {	
 
-				Logger.writeLine("Contains:" + theDocLine );
+				_context.debug("Contains:" + theDocLine );
 			}
 		}
 
@@ -191,7 +196,7 @@ public class GatewayFileParser {
 	
 	public void writeGatewayFileTo(String theFileName) {
 		try {
-			Logger.writeLine("Building file called " + theFileName);
+			_context.info("Building file called " + theFileName);
 			
 			PrintWriter printWriter;
 			
@@ -204,7 +209,7 @@ public class GatewayFileParser {
 				for (String theDocLine : theDocContents) {	
 			        
 					printWriter.println ( theDocLine );
-					Logger.writeLine("Output:" + theDocLine );
+					_context.debug("Output:" + theDocLine );
 				}
 			}
 			
@@ -212,19 +217,13 @@ public class GatewayFileParser {
 			
 		} catch (FileNotFoundException e) {
 			
-			Logger.writeLine("Error in writeGatewayFileTo, unhandled FileNotFoundException detected");
+			_context.error("Error in writeGatewayFileTo, unhandled FileNotFoundException detected");
 		}
 	}
 }
 
 /**
- * Copyright (C) 2016-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #035 15-JUN-2016: New panel to configure requirements package naming and gateway set-up (F.J.Chadburn)
-    #051 06-JUL-2016: Re-factored the GW panel to allow it to incrementally add to previous setup (F.J.Chadburn)
-    #063 17-JUL-2016: Gateway project creator now mimics GatewayProjectFiles pkg creation if necessary (F.J.Chadburn)
-    #256 29-MAY-2019: Rewrite to Java Swing dialog launching to make thread safe between versions (F.J.Chadburn)
+ * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

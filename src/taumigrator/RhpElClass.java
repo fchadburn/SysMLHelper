@@ -4,17 +4,16 @@ import com.telelogic.rhapsody.core.*;
 
 import functionalanalysisplugin.CreateFunctionalBlockPackagePanel;
 import functionalanalysisplugin.SequenceDiagramHelper;
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
 
 public class RhpElClass extends RhpElElement {
 
 	public RhpElClass(
 			String theElementName, 
 			String theElementType,
-			String theElementGuid ) throws Exception{
+			String theElementGuid,
+			TauMigrator_Context context ) throws Exception{
 		
-		super(theElementName, theElementType, theElementGuid);
+		super(theElementName, theElementType, theElementGuid, context );
 		
 		dumpInfo();
 	}
@@ -24,16 +23,17 @@ public class RhpElClass extends RhpElElement {
 		theMsg += "===================================\n"; 
 		theMsg += "Create " + this.getString() + "\n";
 		theMsg += "===================================\n";		
-		Logger.info( theMsg );
+		_context.info( theMsg );
 	}
 
 	public RhpElClass(
 			String theElementName, 
 			String theElementType,
 			String theElementGuid,
-			RhpEl theParent ) throws Exception {
+			RhpEl theParent,
+			TauMigrator_Context context ) throws Exception {
 		
-		super(theElementName, theElementType, theElementGuid, theParent);
+		super(theElementName, theElementType, theElementGuid, theParent, context);
 		
 		dumpInfo();
 	}
@@ -42,12 +42,12 @@ public class RhpElClass extends RhpElElement {
 	public IRPModelElement createRhpEl( 
 			RhpEl treeRoot ) throws Exception {
 
-		Logger.writeLine("createRhpEl invoked for " + getString() + " owned by " + parent.getString());
+		_context.info("createRhpEl invoked for " + getString() + " owned by " + parent.getString());
 
-		String theLegalName = GeneralHelpers.makeLegalName( _elementName );
+		String theLegalName = _context.makeLegalName( _elementName );
 		
 		if( _elementName != theLegalName ){
-			Logger.info("Changed name from " + _elementName + " to " + theLegalName);
+			_context.info("Changed name from " + _elementName + " to " + theLegalName);
 		}
 		
 		IRPModelElement theOwner = parent.get_rhpEl();
@@ -104,6 +104,8 @@ public class RhpElClass extends RhpElElement {
 				"TokenOriented" );
 		
 		// Add a sequence diagram
+		SequenceDiagramHelper theHelper = new SequenceDiagramHelper(context);
+		
 		SequenceDiagramHelper.createSequenceDiagramFor(
 				theBuilder, 
 				theTestPackage, 

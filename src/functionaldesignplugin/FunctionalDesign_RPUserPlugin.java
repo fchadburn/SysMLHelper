@@ -6,51 +6,54 @@ import java.util.List;
 import generalhelpers.*; 
 
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.common.PopulatePkg;
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_RPApplicationListener;
 import com.telelogic.rhapsody.core.*;
 
 public class FunctionalDesign_RPUserPlugin extends RPUserPlugin {
 
-	static protected IRPApplication m_rhpApplication = null;
-	static protected ConfigurationSettings m_configSettings = null;
-	
-	final String legalNotice = 
-			"Copyright (C) 2015-2019  MBSE Training and Consulting Limited (www.executablembse.com)"
-			+ "\n"
-			+ "SysMLHelperPlugin is free software: you can redistribute it and/or modify "
-			+ "it under the terms of the GNU General Public License as published by "
-			+ "the Free Software Foundation, either version 3 of the License, or "
-			+ "(at your option) any later version."
-			+ "\n"
-			+ "SysMLHelperPlugin is distributed in the hope that it will be useful, "
-			+ "but WITHOUT ANY WARRANTY; without even the implied warranty of "
-			+ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the "
-			+ "GNU General Public License for more details."
-			+ "You should have received a copy of the GNU General Public License "
-			+ "along with SysMLHelperPlugin. If not, see <http://www.gnu.org/licenses/>. "
-			+ "Source code is made available on https://github.com/fchadburn/mbsetraining";
-                                                                                                                                                                                      
+	protected FunctionalDesign_Context _context;
+	protected FunctionalDesign_RPApplicationListener _listener = null;
+                                                                                                                                                                       
 	// called when plug-in is loaded
 	public void RhpPluginInit(
 			final IRPApplication theRhapsodyApp ){
 		 
-		// keep the application interface for later use
-		m_rhpApplication = theRhapsodyApp;
-		
-		m_configSettings = new ConfigurationSettings(
-				m_rhpApplication,
-				m_rhpApplication.activeProject(),
-				"FunctionalDesign.properties", 
-				"FunctionalDesign_MessagesBundle",
-				"FunctionalDesign" );
-		
-		String msg = "The FunctionalDesignPlugin component of the SysMLHelperPlugin V" + m_configSettings.getProperty("PluginVersion") + " was loaded successfully.\n" + legalNotice +
-				"\nNew right-click 'MBSE Method' commands have been added.";
-		
-		Logger.writeLine(msg);
-		
-		// Added by F.J.Chadburn #001
-		FunctionalDesign_RPApplicationListerner listener = new FunctionalDesign_RPApplicationListerner(theRhapsodyApp);
-		listener.connect( theRhapsodyApp );
+		_context = new FunctionalDesign_Context( theRhapsodyApp.getApplicationConnectionString() );
+
+		final String legalNotice = 
+				"Copyright (C) 2015-2021  MBSE Training and Consulting Limited (www.executablembse.com)"
+						+ "\n"
+						+ "SysMLHelperPlugin is free software: you can redistribute it and/or modify "
+						+ "it under the terms of the GNU General Public License as published by "
+						+ "the Free Software Foundation, either version 3 of the License, or "
+						+ "(at your option) any later version."
+						+ "\n"
+						+ "SysMLHelperPlugin is distributed in the hope that it will be useful, "
+						+ "but WITHOUT ANY WARRANTY; without even the implied warranty of "
+						+ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the "
+						+ "GNU General Public License for more details."
+						+ "You should have received a copy of the GNU General Public License "
+						+ "along with SysMLHelperPlugin. If not, see <http://www.gnu.org/licenses/>. "
+						+ "Source code is made available on https://github.com/fchadburn/mbsetraining";
+
+		String msg = "The FunctionalDesign component of the SysMLHelperPlugin was loaded successfully.\n" +
+				legalNotice +
+				"\nNew right-click 'MBSE Method' commands have been added.";		
+
+		_context.info( msg );
+
+		_listener = new FunctionalDesign_RPApplicationListener( 
+				theRhapsodyApp, 
+				"FunctionalDesignProfile",
+				_context );
+
+		_listener.connect( theRhapsodyApp );
+
+		_context.info( "The ExecutableMBSE profile version is " + _context.getProperty( "PluginVersion" ) );
+
+		_context.checkIfSetupProjectIsNeeded( false, true );
 	}
 	
 	public static IRPApplication getRhapsodyApp(){
@@ -91,19 +94,19 @@ public class FunctionalDesign_RPUserPlugin extends RPUserPlugin {
 
 			if( !theSelectedEls.isEmpty() ){
 
-				if( menuItem.equals( m_configSettings.getString(
+				if( menuItem.equals( _context.getString(
 						"functionaldesignplugin.CreateFunctionalDesignPkgStructure" ) ) ){
 					
 					if( theSelectedEl instanceof IRPPackage ){
 										
 						try { 
-							CreateFunctionalDesignSpecificationPackage.launchTheDialog( m_configSettings );
+							CreateFunctionalDesignSpecificationPackage.launchTheDialog( _context );
 
 						} catch (Exception e) {
 							Logger.writeLine("Error: Exception in OnMenuItemSelect when invoking PopulateRequirementsAnalysisPkg.createRequirementsAnalysisPkg");
 						}
 					}
-				} else if( menuItem.equals( m_configSettings.getString( 
+				} else if( menuItem.equals( _context.getString( 
 						"functionaldesignplugin.CreateSampleProjectStructure" ) ) ){
 
 						if( theSelectedEl instanceof IRPPackage ){
@@ -125,7 +128,7 @@ public class FunctionalDesign_RPUserPlugin extends RPUserPlugin {
 								TopLevelSystemDesignCreator.createSampleModel(
 										theRhpPrj, 
 										theMasterActors,
-										m_configSettings );
+										_context );
 								
 								PopulatePkg.deleteIfPresent( "Structure1", "StructureDiagram", theRhpPrj );
 								PopulatePkg.deleteIfPresent( "Model1", "ObjectModelDiagram", theRhpPrj );
@@ -140,14 +143,14 @@ public class FunctionalDesign_RPUserPlugin extends RPUserPlugin {
 								Logger.writeLine("Error: Exception in OnMenuItemSelect when invoking PopulateRequirementsAnalysisPkg.createRequirementsAnalysisPkg");
 							}
 						}					
-				} else if (menuItem.equals(m_configSettings.getString("functionaldesignplugin.SetupFunctionalDesignProjectProperties"))){
+				} else if (menuItem.equals(_context.getString("functionaldesignplugin.SetupFunctionalDesignProjectProperties"))){
 
 						if (theSelectedEl instanceof IRPPackage){
 							
 							try {
 								ProfileVersionManager.checkAndSetProfileVersion( 
 										true, 
-										m_configSettings, 
+										_context, 
 										true );
 
 							} catch (Exception e) {

@@ -1,7 +1,5 @@
 package taumigrator;
 
-import generalhelpers.Logger;
-
 import com.telelogic.rhapsody.core.IRPGraphEdge;
 
 public abstract class RhpElGraphEdge extends RhpElRelation {
@@ -21,16 +19,17 @@ public abstract class RhpElGraphEdge extends RhpElRelation {
 			String theSegmentPoints ){
 		
 		_segmentPoints += " " + theSegmentPoints;
-		Logger.info( "_segmentPoints = " + _segmentPoints );	
+		_context.info( "_segmentPoints = " + _segmentPoints );	
 	}
 	
 	public RhpElGraphEdge(
 			String theElementName, 
 			String theElementType,
 			String theElementGuid,
-			String theSegmentPoints ) throws Exception{
+			String theSegmentPoints,
+			TauMigrator_Context context ) throws Exception{
 		
-		super( theElementName, theElementType, theElementGuid );
+		super( theElementName, theElementType, theElementGuid, context );
 		
 		_segmentPoints = theSegmentPoints;
 		
@@ -42,9 +41,10 @@ public abstract class RhpElGraphEdge extends RhpElRelation {
 			String theElementType,
 			String theElementGuid,
 			RhpEl theParent,
-			String theSegmentPoints ) throws Exception{
+			String theSegmentPoints,
+			TauMigrator_Context context ) throws Exception{
 		
-		super( theElementName, theElementType, theElementGuid, theParent );
+		super( theElementName, theElementType, theElementGuid, theParent, context );
 		
 		_segmentPoints = theSegmentPoints;
 
@@ -57,7 +57,7 @@ public abstract class RhpElGraphEdge extends RhpElRelation {
 				
 		int xSrcPosition = Settings.scaleInX( Integer.parseInt( points[0] ) );
 		
-		Logger.info("get_xSrcPosition is returning " + xSrcPosition + 
+		_context.info("get_xSrcPosition is returning " + xSrcPosition + 
 				" based on segmentpoints = " + _segmentPoints );
 		
 		return xSrcPosition;
@@ -69,7 +69,7 @@ public abstract class RhpElGraphEdge extends RhpElRelation {
 				
 		int ySrcPosition = Settings.scaleInY( Integer.parseInt( points[1] ) );
 		
-		Logger.info("get_xSrcPosition is returning " + ySrcPosition + 
+		_context.info("get_xSrcPosition is returning " + ySrcPosition + 
 				" based on segmentpoints = " + _segmentPoints );
 		
 		return ySrcPosition;
@@ -83,7 +83,7 @@ public abstract class RhpElGraphEdge extends RhpElRelation {
 		
 		int xDstPosition = Settings.scaleInX( Integer.parseInt( points[ count-2 ] ) );
 		
-		Logger.info("get_xDstPosition is returning " + xDstPosition + 
+		_context.info("get_xDstPosition is returning " + xDstPosition + 
 				" based on segmentpoints = " + _segmentPoints );
 		
 		return xDstPosition;
@@ -97,7 +97,7 @@ public abstract class RhpElGraphEdge extends RhpElRelation {
 		
 		int yDstPosition = Settings.scaleInY( Integer.parseInt( points[ count-1 ] ) );
 		
-		Logger.info("get_xDstPosition is returning " + yDstPosition + 
+		_context.info("get_xDstPosition is returning " + yDstPosition + 
 				" based on segmentpoints = " + _segmentPoints );
 		
 		return yDstPosition;

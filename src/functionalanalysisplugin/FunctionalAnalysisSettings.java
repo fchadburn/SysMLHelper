@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
@@ -16,7 +17,7 @@ public class FunctionalAnalysisSettings {
 	private static final String tagNameForPackageForBlocks = "packageForBlocks";
 	private static final String tagNameForPackageForWorkingCopies = "packageForWorkingCopies";
 
-	private ExecutableMBSE_Context _context;
+	private ConfigurationSettings _context;
 	
 	public FunctionalAnalysisSettings(
 			ExecutableMBSE_Context context ) {
