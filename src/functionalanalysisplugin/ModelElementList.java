@@ -1,12 +1,11 @@
 package functionalanalysisplugin;
 
-import generalhelpers.Logger;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.telelogic.rhapsody.core.*;
 
 public class ModelElementList extends ArrayList<IRPModelElement>{
@@ -16,21 +15,31 @@ public class ModelElementList extends ArrayList<IRPModelElement>{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public ModelElementList() {
+	protected ConfigurationSettings _context;
+	
+	public ModelElementList(
+			ConfigurationSettings context ) {
 		super();
+		_context = context;
 	}
 
-	public ModelElementList(Collection<? extends IRPModelElement> c) {
+	public ModelElementList(
+			Collection<? extends IRPModelElement> c,
+			ConfigurationSettings context ) {
 		super(c);
+		_context = context;
 	}
 
-	public ModelElementList(int initialCapacity) {
+	public ModelElementList(
+			int initialCapacity,
+			ConfigurationSettings context ) {
 		super(initialCapacity);
+		_context = context;
 	}
 
 	public ModelElementList getListFilteredBy(String theMetaClass){
 		
-		ModelElementList theList = new ModelElementList();
+		ModelElementList theList = new ModelElementList( _context );
 		
 		for (IRPModelElement theEl : this) {
 			if (theEl.getMetaClass().equals(theMetaClass)){
@@ -44,7 +53,7 @@ public class ModelElementList extends ArrayList<IRPModelElement>{
 	
 	public ModelElementList getListFilteredBy(IRPModelElement theElement){
 		
-		ModelElementList theList = new ModelElementList();
+		ModelElementList theList = new ModelElementList( _context );
 		
 		for (IRPModelElement theEl : this) {
 			if (theEl.equals(theElement)){
@@ -73,11 +82,10 @@ public class ModelElementList extends ArrayList<IRPModelElement>{
 		this.removeDuplicates();
 		
 		for (IRPModelElement theEl : this) {
-			Logger.writeLine("Deleting " + Logger.elInfo(theEl) + " from the project");
+			_context.info("Deleting " + _context.elInfo(theEl) + " from the project");
 			theEl.deleteFromProject();
 		}
 	}
-	
 	
 	public void removeDuplicates(){
 		
@@ -88,10 +96,7 @@ public class ModelElementList extends ArrayList<IRPModelElement>{
 }
 
 /**
- * Copyright (C) 2016  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #006 02-MAY-2016: Add FunctionalAnalysisPkg helper support (F.J.Chadburn)
+ * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
     
     This file is part of SysMLHelperPlugin.
 

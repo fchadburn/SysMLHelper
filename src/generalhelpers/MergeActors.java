@@ -8,10 +8,9 @@ import java.util.Set;
 import java.util.Map.Entry;
 
 import com.mbsetraining.sysmlhelper.common.AssociationInfo;
+import com.mbsetraining.sysmlhelper.common.GraphEdgeInfo;
+import com.mbsetraining.sysmlhelper.common.GraphNodeInfo;
 import com.telelogic.rhapsody.core.*;
-
-import functionalanalysisplugin.GraphEdgeInfo;
-import functionalanalysisplugin.GraphNodeInfo;
 
 public class MergeActors {
 

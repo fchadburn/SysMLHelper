@@ -22,6 +22,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import com.mbsetraining.sysmlhelper.common.GraphElInfo;
 import com.telelogic.rhapsody.core.*;
 
 import functionalanalysisplugin.RequirementSelectionPanel;

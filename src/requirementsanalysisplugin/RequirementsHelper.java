@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import com.mbsetraining.sysmlhelper.common.GraphElInfo;
 import com.mbsetraining.sysmlhelper.common.RequirementMover;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
@@ -87,8 +88,9 @@ public class RequirementsHelper {
 
 				IRPRequirement theReqt = (IRPRequirement) theDependency.getDependsOn();
 
-				int x = GraphElInfo.getMidX( theGraphEl );
-				int y = GraphElInfo.getMidY( theGraphEl );
+				GraphElInfo theInfo = new GraphElInfo(theGraphEl, _context);
+				int x = theInfo.getMidX();
+				int y = theInfo.getMidY();
 
 				IRPGraphNode theGraphNode = theDiagram.addNewNodeForElement(
 						theReqt, x+100, y+70, 300, 100 );
@@ -97,14 +99,16 @@ public class RequirementsHelper {
 
 					IRPGraphNode theStartNode = (IRPGraphNode)theGraphEl;
 
+					GraphElInfo theGraphNodeInfo = new GraphElInfo(theGraphNode, _context);
+					
 					theDiagram.addNewEdgeForElement(
 							theDependency, 
 							theStartNode, 
 							x, 
 							y, 
 							theGraphNode, 
-							GraphElInfo.getMidX( theGraphNode ), 
-							GraphElInfo.getMidY( theGraphNode ));
+							theGraphNodeInfo.getMidX(), 
+							theGraphNodeInfo.getMidY() );
 
 				} else if( theGraphEl instanceof IRPGraphEdge ){
 
@@ -121,7 +125,11 @@ public class RequirementsHelper {
 							"the graphEls are not handled types for drawing relations" );
 				}
 				
-				RequirementMover theElementMover = new RequirementMover( theReqt, _context );
+				RequirementMover theElementMover = new RequirementMover( 
+						theReqt, 
+						_context.getRequirementPackageStereotype(_context.get_rhpPrj()), 
+						_context );
+				
 				theElementMover.performMove();
 
 			} // theActionText == null

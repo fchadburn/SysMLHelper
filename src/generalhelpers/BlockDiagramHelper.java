@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.mbsetraining.sysmlhelper.common.GraphNodeInfo;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.IRPActor;
 import com.telelogic.rhapsody.core.IRPClass;
@@ -18,8 +19,6 @@ import com.telelogic.rhapsody.core.IRPObjectModelDiagram;
 import com.telelogic.rhapsody.core.IRPPackage;
 import com.telelogic.rhapsody.core.IRPRelation;
 import com.telelogic.rhapsody.core.IRPStructureDiagram;
-
-import functionalanalysisplugin.GraphNodeInfo;
 
 public class BlockDiagramHelper {
 

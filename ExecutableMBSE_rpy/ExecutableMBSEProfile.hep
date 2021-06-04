@@ -115,7 +115,7 @@ isVisible12=1
 DLLServerCompatible12=1
 
 #REM: Add pop-up menu 
-name15=MBSE Method: General Utilities\Setup Gateway project based on rqtf template
+name15=MBSE Method: Gateway Helpers\Setup Gateway project based on rqtf template
 isPluginCommand15=1
 command15=InvokeExecutableMBSEHelper
 applicableTo15=Project,SysML,Package
@@ -265,7 +265,7 @@ isVisible33=1
 DLLServerCompatibl33=1
 
 #REM: Add pop-up menu
-name34=MBSE Method: Requirements Analysis\Move unclaimed requirements ready for Gateway sync back to DOORS
+name34=MBSE Method: Gateway Helpers\Move unclaimed requirements ready for Gateway sync back to DOORS
 isPluginCommand34=1
 command34=InvokeExecutableMBSEHelper
 applicableTo34=UseCase,12 Reqts Analysis - Use Case Package,21 Funct Analysis - Scenarios Package,Package,ActivityDiagram,Textual Activity,Call Operation Activity,Requirement,UseCaseDiagram,Enhanced Use Case Diagram
@@ -305,7 +305,7 @@ isVisible38=1
 DLLServerCompatible38=1
 
 #REM: Add pop-up menu
-name39=MBSE Method: Requirements Analysis\Delete the Gateway tagged as Deleted_At_High_Level requirements
+name39=MBSE Method: Gateway Helpers\Delete the Gateway tagged as Deleted_At_High_Level requirements
 isPluginCommand39=1
 command39=InvokeExecutableMBSEHelper
 applicableTo39=UseCase,12 Reqts Analysis - Use Case Package,13 Reqts Analysis - Requirement Package,Package,ActivityDiagram,Textual Activity,Call Operation Activity,Requirement,UseCaseDiagram,Enhanced Use Case Diagram

@@ -15,7 +15,6 @@ import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.IRPAcceptEventAction;
 import com.telelogic.rhapsody.core.IRPAcceptTimeEvent;
-import com.telelogic.rhapsody.core.IRPActivityDiagram;
 import com.telelogic.rhapsody.core.IRPActor;
 import com.telelogic.rhapsody.core.IRPAttribute;
 import com.telelogic.rhapsody.core.IRPClass;
@@ -25,7 +24,6 @@ import com.telelogic.rhapsody.core.IRPConstraint;
 import com.telelogic.rhapsody.core.IRPDependency;
 import com.telelogic.rhapsody.core.IRPEvent;
 import com.telelogic.rhapsody.core.IRPEventReception;
-import com.telelogic.rhapsody.core.IRPFlowchart;
 import com.telelogic.rhapsody.core.IRPGraphElement;
 import com.telelogic.rhapsody.core.IRPGuard;
 import com.telelogic.rhapsody.core.IRPInstance;
@@ -33,15 +31,12 @@ import com.telelogic.rhapsody.core.IRPLink;
 import com.telelogic.rhapsody.core.IRPModelElement;
 import com.telelogic.rhapsody.core.IRPOperation;
 import com.telelogic.rhapsody.core.IRPPackage;
-import com.telelogic.rhapsody.core.IRPPin;
 import com.telelogic.rhapsody.core.IRPPort;
 import com.telelogic.rhapsody.core.IRPProfile;
 import com.telelogic.rhapsody.core.IRPProject;
 import com.telelogic.rhapsody.core.IRPRequirement;
 import com.telelogic.rhapsody.core.IRPSendAction;
 import com.telelogic.rhapsody.core.IRPState;
-import com.telelogic.rhapsody.core.IRPStateVertex;
-import com.telelogic.rhapsody.core.IRPStatechart;
 import com.telelogic.rhapsody.core.IRPStereotype;
 import com.telelogic.rhapsody.core.IRPSysMLPort;
 import com.telelogic.rhapsody.core.IRPTag;
@@ -1666,7 +1661,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 		return theDependency;
 	}
 	
-	private IRPModelElement getOwningClassifierFor(IRPModelElement theState){
+	public IRPModelElement getOwningClassifierFor(IRPModelElement theState){
 		
 		IRPModelElement theOwner = theState.getOwner();
 		

@@ -19,6 +19,7 @@ import javax.swing.JTextArea;
 
 import requirementsanalysisplugin.RequirementsAnalysisPlugin;
 
+import com.mbsetraining.sysmlhelper.common.GraphNodeInfo;
 import com.telelogic.rhapsody.core.*;
 
 import generalhelpers.NamedElementMap;

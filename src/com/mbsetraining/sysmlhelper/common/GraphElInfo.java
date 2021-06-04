@@ -1,27 +1,35 @@
-package requirementsanalysisplugin;
+package com.mbsetraining.sysmlhelper.common;
 
 import com.telelogic.rhapsody.core.IRPGraphEdge;
 import com.telelogic.rhapsody.core.IRPGraphElement;
 import com.telelogic.rhapsody.core.IRPGraphNode;
 
-import functionalanalysisplugin.GraphEdgeInfo;
-import functionalanalysisplugin.GraphNodeInfo;
-
 public class GraphElInfo {
 
-	public static int getMidX( IRPGraphElement theGraphEl ){
+	ConfigurationSettings _context;
+	IRPGraphElement _graphEl;
+	
+	public GraphElInfo(
+			IRPGraphElement theGraphEl,
+			ConfigurationSettings context ) {
+		
+		_context = context;
+		_graphEl = theGraphEl;
+	}
+	
+	public int getMidX(){
 		
 		int x = 10;
 		
-		if( theGraphEl != null ){
+		if( _graphEl != null ){
 
-			if (theGraphEl instanceof IRPGraphNode){
-				GraphNodeInfo theNodeInfo = new GraphNodeInfo( (IRPGraphNode) theGraphEl );
+			if (_graphEl instanceof IRPGraphNode){
+				GraphNodeInfo theNodeInfo = new GraphNodeInfo( (IRPGraphNode) _graphEl, _context );
 				
 				x = theNodeInfo.getMiddleX();
 				
-			} else if (theGraphEl instanceof IRPGraphEdge){
-				GraphEdgeInfo theNodeInfo = new GraphEdgeInfo( (IRPGraphEdge) theGraphEl );
+			} else if (_graphEl instanceof IRPGraphEdge){
+				GraphEdgeInfo theNodeInfo = new GraphEdgeInfo( (IRPGraphEdge) _graphEl, _context );
 				
 				x = theNodeInfo.getMidX();
 			}
@@ -32,19 +40,19 @@ public class GraphElInfo {
 		return x;
 	}
 	
-	public static int getMidY( IRPGraphElement theGraphEl ){
+	public int getMidY( ){
 		
 		int y = 10;
 		
-		if( theGraphEl != null ){
+		if( _graphEl != null ){
 
-			if (theGraphEl instanceof IRPGraphNode){
-				GraphNodeInfo theNodeInfo = new GraphNodeInfo( (IRPGraphNode) theGraphEl );
+			if (_graphEl instanceof IRPGraphNode){
+				GraphNodeInfo theNodeInfo = new GraphNodeInfo( (IRPGraphNode) _graphEl, _context );
 				
 				y = theNodeInfo.getMiddleY();
 				
-			} else if (theGraphEl instanceof IRPGraphEdge){
-				GraphEdgeInfo theNodeInfo = new GraphEdgeInfo( (IRPGraphEdge) theGraphEl );
+			} else if (_graphEl instanceof IRPGraphEdge){
+				GraphEdgeInfo theNodeInfo = new GraphEdgeInfo( (IRPGraphEdge) _graphEl, _context );
 				
 				y = theNodeInfo.getMidY();
 			}
@@ -57,10 +65,7 @@ public class GraphElInfo {
 }
 
 /**
- * Copyright (C) 2017  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #224 25-AUG-2017: Added new menu to roll up traceability to the transition and populate on STM (F.J.Chadburn)
+ * Copyright (C) 2017-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

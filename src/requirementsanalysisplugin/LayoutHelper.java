@@ -3,6 +3,7 @@ package requirementsanalysisplugin;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mbsetraining.sysmlhelper.common.GraphElInfo;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
@@ -145,14 +146,17 @@ public class LayoutHelper {
 			IRPGraphNode theStartNode = (IRPGraphNode)theStartGraphEl;
 			IRPGraphNode theEndNode = (IRPGraphNode)theEndGraphEl;
 
+			GraphElInfo theStartNodeInfo = new GraphElInfo( theStartNode, _context );
+			GraphElInfo theEndNodeInfo = new GraphElInfo( theEndNode, _context );
+			
 			theDiagram.addNewEdgeForElement(
 					existingDependency, 
 					theStartNode, 
-					GraphElInfo.getMidX( theStartNode ), 
-					GraphElInfo.getMidY( theStartNode ), 
+					theStartNodeInfo.getMidX(), 
+					theStartNodeInfo.getMidY(), 
 					theEndNode, 
-					GraphElInfo.getMidX( theEndNode ), 
-					GraphElInfo.getMidY( theEndNode ));
+					theEndNodeInfo.getMidX(), 
+					theEndNodeInfo.getMidY());
 
 		} else if( theStartGraphEl instanceof IRPGraphEdge || 
 				   theEndGraphEl instanceof IRPGraphEdge ){

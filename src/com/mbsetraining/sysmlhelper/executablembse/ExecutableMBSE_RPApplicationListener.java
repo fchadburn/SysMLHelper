@@ -1,7 +1,6 @@
 package com.mbsetraining.sysmlhelper.executablembse;
 
 import functionalanalysisplugin.CreateOperationPanel;
-import functionalanalysisplugin.GraphNodeInfo;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -12,6 +11,7 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 import com.mbsetraining.sysmlhelper.common.ElementMover;
+import com.mbsetraining.sysmlhelper.common.GraphNodeInfo;
 import com.mbsetraining.sysmlhelper.common.NestedActivityDiagram;
 import com.mbsetraining.sysmlhelper.common.RequirementMover;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
@@ -217,7 +217,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 					GraphNodeInfo theNodeInfo;
 
 					try {
-						theNodeInfo = new GraphNodeInfo( (IRPGraphNode) theGraphEl );
+						theNodeInfo = new GraphNodeInfo( (IRPGraphNode) theGraphEl, _context );
 
 						theNewNode = theDiagram.addNewNodeForElement(
 								theSelectedElement, 

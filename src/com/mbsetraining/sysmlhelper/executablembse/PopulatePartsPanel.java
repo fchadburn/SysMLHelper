@@ -1,6 +1,5 @@
 package com.mbsetraining.sysmlhelper.executablembse;
 
-import functionalanalysisplugin.GraphNodeInfo;
 import generalhelpers.CreateStructuralElementPanel;
 
 import java.awt.BorderLayout;
@@ -20,6 +19,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
 
+import com.mbsetraining.sysmlhelper.common.GraphNodeInfo;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.*;
 
@@ -332,7 +332,7 @@ public class PopulatePartsPanel extends CreateStructuralElementPanel {
 
 			if( theGraphNode != null ){
 
-				GraphNodeInfo theParentNodeInfo = new GraphNodeInfo( theGraphNode );
+				GraphNodeInfo theParentNodeInfo = new GraphNodeInfo( theGraphNode, _context );
 
 				x += theParentNodeInfo.getTopLeftX();
 				y += theParentNodeInfo.getTopLeftY();			

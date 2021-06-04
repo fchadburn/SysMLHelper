@@ -1,24 +1,26 @@
 package functionalanalysisplugin;
 
-import generalhelpers.Logger;
-
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.telelogic.rhapsody.core.*;
 
 public class PolygonInfo {
 
-	private IRPGraphElement m_GraphElement = null;
-	private String[] component; 
+	private IRPGraphElement _graphElement;
+	private String[] _component; 
+	ConfigurationSettings _context;
 	
 	public PolygonInfo( 
-			IRPGraphElement theGraphEl ){
+			IRPGraphElement theGraphEl,
+			ConfigurationSettings context ){
 		
-		m_GraphElement = theGraphEl;
+		_context = context;
+		_graphElement = theGraphEl;
 		
 		IRPGraphicalProperty theGraphicalProperty = 
-				m_GraphElement.getGraphicalProperty( "Polygon" );
+				_graphElement.getGraphicalProperty( "Polygon" );
 		
 		String theValue = theGraphicalProperty.getValue();		
-		component = theValue.split(",");		
+		_component = theValue.split(",");		
 	}
 	
 	public int getValueAt( int theIndex ){
@@ -26,10 +28,10 @@ public class PolygonInfo {
 		int theResult = -999;
 		
 		try {
-			theResult = Integer.parseInt( component[ theIndex ] );
+			theResult = Integer.parseInt( _component[ theIndex ] );
 			
 		} catch( Exception e ){
-			Logger.writeLine( "Warning, unable to find polgyon value for getValueAt(" + theIndex + ")" );
+			_context.error( "Warning, unable to find polgyon value for getValueAt(" + theIndex + ")" );
 		}	
 		
 		return theResult;
@@ -37,13 +39,7 @@ public class PolygonInfo {
 }
 
 /**
- * Copyright (C) 2016-2017  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #019 15-MAY-2016: (new) Improvements to Functional Analysis Block default naming approach (F.J.Chadburn)
-    #069 20-JUL-2016: Fix population of events/ops on diagram when creating from a transition (F.J.Chadburn)
-    #204 18-JUN-2017: Refine menu for invoking Smart Link panel and add FlowPort/EventReceptions support (F.J.Chadburn)
-    #229 20-SEP-2017: Add re-layout dependencies on diagram(s) menu to ease beautifying when req't tracing (F.J.Chadburn)
+ * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

@@ -100,8 +100,8 @@ public class CreateGatewayProjectPanel extends CreateStructuralElementPanel {
 
 				if( theChosenTypesFile != null ){
 
-					final GatewayFileParser theTemplateProjectFile = new GatewayFileParser( theChosenRqtfFile );
-					final GatewayFileParser theTemplateTypesFile = new GatewayFileParser( theChosenTypesFile );
+					final GatewayFileParser theTemplateProjectFile = new GatewayFileParser( theChosenRqtfFile, _context );
+					final GatewayFileParser theTemplateTypesFile = new GatewayFileParser( theChosenTypesFile, _context );
 
 					File theExistingRqtfFile = getFile(
 							"^" + _context.get_rhpPrj().getName() + ".rqtf$",
@@ -124,7 +124,7 @@ public class CreateGatewayProjectPanel extends CreateStructuralElementPanel {
 						if( answer == JOptionPane.YES_OPTION  ){
 
 							final GatewayFileParser theExistingProjectFile = 
-									new GatewayFileParser( theExistingRqtfFile );
+									new GatewayFileParser( theExistingRqtfFile, _context );
 
 							updateTheRqtfFile(
 									theTemplateProjectFile,
@@ -176,7 +176,7 @@ public class CreateGatewayProjectPanel extends CreateStructuralElementPanel {
 									if( answer == JOptionPane.YES_OPTION  ){
 
 										final GatewayFileParser theExistingProjectFile = 
-												new GatewayFileParser( theExistingRqtfFile );
+												new GatewayFileParser( theExistingRqtfFile, _context );
 
 										updateTheRqtfFile(
 												theTemplateProjectFile,

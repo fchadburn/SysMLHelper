@@ -1,6 +1,5 @@
 package requirementsanalysisplugin;
 
-import functionalanalysisplugin.GraphEdgeInfo;
 import functionalanalysisplugin.RequirementSelectionPanel;
 import generalhelpers.CreateStructuralElementPanel;
 
@@ -26,6 +25,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import com.mbsetraining.sysmlhelper.common.GraphEdgeInfo;
 import com.telelogic.rhapsody.core.*;
 
 public class PopulateRelatedRequirementsPanel extends CreateStructuralElementPanel {
