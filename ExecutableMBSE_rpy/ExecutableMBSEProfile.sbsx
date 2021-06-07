@@ -1658,8 +1658,8 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">5.11.2021::20:8:10</_modifiedTime>
-			<_lastID type="a">16</_lastID>
+			<_modifiedTime type="a">6.7.2021::8:30:21</_modifiedTime>
+			<_lastID type="a">17</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
@@ -1708,6 +1708,7 @@
 				<value>GUID 47f804ea-8363-4da9-96ce-cd278c9f4f13</value>
 				<value>GUID 4cab28b8-28b8-4e00-9ec8-5e71cca4a766</value>
 				<value>GUID 5df2b3b3-e0d0-4595-a39f-c823d2925305</value>
+				<value>GUID c7a4593d-9dda-4d3b-88fb-057272d02dd2</value>
 				<value>GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</value>
 				<value>GUID b1dcb194-973c-4c44-b648-904d65f95b78</value>
 				<value>GUID b0846ece-08df-40a0-a656-ae66832296f6</value>
@@ -4565,7 +4566,7 @@ Tips:\par%0D
 			<_event type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IEvent</_hm2Class>
-					<_hfilename type="a">.\BasePkg.sbs</_hfilename>
+					<_hfilename type="a">.\BasePkg.sbsx</_hfilename>
 					<_hsubsystem type="a">BasePkg</_hsubsystem>
 					<_hname type="a">chElapsedTime()</_hname>
 					<_hid type="a">GUID 7ce0e62f-17f8-46bb-9791-943cd48ac4c2</_hid>
@@ -9066,7 +9067,7 @@ sleep(2);</_bodyData>
 			<_id type="a">GUID 4cab28b8-28b8-4e00-9ec8-5e71cca4a766</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ContextDiagran</_name>
-			<_modifiedTime type="a">5.10.2021::8:39:31</_modifiedTime>
+			<_modifiedTime type="a">6.7.2021::8:30:21</_modifiedTime>
 			<_lastID type="a">7</_lastID>
 			<_defaultComposite type="s">GUID 126b210a-965a-424f-b9ef-c617f59fa371</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -9124,7 +9125,7 @@ sleep(2);</_bodyData>
 												<size type="a">4</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Query,Event,Diagram View,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,System Context Diagram,TableV - Context Diagram Flows,Actor Usage,System Context,Flow,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
+													<_Value type="a">Query,Event,Diagram View,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,System Context Diagram,TableV - Context Diagram Flows,14 Reqts Analysis - External Signals Package,Actor Usage,System Context,Flow,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -9159,7 +9160,7 @@ sleep(2);</_bodyData>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ContextDiagramPackage</_name>
-			<_modifiedTime type="a">5.10.2021::8:39:31</_modifiedTime>
+			<_modifiedTime type="a">6.7.2021::8:30:21</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -9818,7 +9819,7 @@ sleep(2);</_bodyData>
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">AddNewMenuStructure</_Name>
-													<_Value type="a">MBSE Diagram/Enhanced Use Case Diagram,MBSE Diagram/System Context Diagram,MBSE Diagram/TableV - Context Diagram Flows,MBSE Diagram/Textual Activity,MBSE Element/10 Reqts Analysis - Context Diagram Package,MBSE Element/11 Reqts Analysis - Actor Package,MBSE Element/12 Reqts Analysis - Use Case Package,MBSE Element/13 Reqts Analysis - Requirement Package,MBSE Element/Actor Usage,MBSE Element/System Context,MBSE Element/System Feature,Diagrams/Requirements Diagram,%0D
+													<_Value type="a">MBSE Diagram/Enhanced Use Case Diagram,MBSE Diagram/System Context Diagram,MBSE Diagram/TableV - Context Diagram Flows,MBSE Diagram/Textual Activity,MBSE Element/10 Reqts Analysis - Context Diagram Package,MBSE Element/11 Reqts Analysis - Actor Package,MBSE Element/12 Reqts Analysis - Use Case Package,MBSE Element/13 Reqts Analysis - Requirement Package,MBSE Element/14 Reqts Analysis - External Signals Package,MBSE Element/Actor Usage,MBSE Element/System Context,MBSE Element/System Feature,Diagrams/Requirements Diagram,%0D
 Diagrams/UseCaseDiagram,%0D
 Diagrams/Package Diagram,%0D
 Diagrams/Block Definition Diagram,%0D
@@ -10001,7 +10002,7 @@ Query</_Value>
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Textual Activity,10 Reqts Analysis - Context Diagram Package,11 Reqts Analysis - Actor Package,12 Reqts Analysis - Use Case Package,13 Reqts Analysis - Requirement Package</_Value>
+													<_Value type="a">Textual Activity,10 Reqts Analysis - Context Diagram Package,11 Reqts Analysis - Actor Package,12 Reqts Analysis - Use Case Package,13 Reqts Analysis - Requirement Package,14 Reqts Analysis - External Signals Package</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -10018,13 +10019,76 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSE</_name>
-			<_modifiedTime type="a">5.11.2021::13:34:25</_modifiedTime>
+			<_modifiedTime type="a">6.7.2021::8:4:56</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
 					<value>Project</value>
 				</IRPYRawContainer>
 			</_m2Classes>
+		</IStereotype>
+		<IStereotype type="e">
+			<_id type="a">GUID c7a4593d-9dda-4d3b-88fb-057272d02dd2</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Stereotype</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">4</size>
+												<IProperty type="e">
+													<_Name type="a">Aggregates</_Name>
+													<_Value type="a">Query,Event,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">BrowserGroupIcon</_Name>
+													<_Value type="a">IconsPkg\ExternalSignalsPackages.ico</_Value>
+													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">BrowserIcon</_Name>
+													<_Value type="a">IconsPkg\ExternalSignalsPackage.ico</_Value>
+													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">Name</_Name>
+													<_Value type="a">14 Reqts Analysis - External Signals Package</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">ExternalSignalsPackage</_name>
+			<_modifiedTime type="a">6.7.2021::8:4:8</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>Package</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+			<_newTerm type="a">1</_newTerm>
 		</IStereotype>
 		<IClass type="e">
 			<_id type="a">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_id>
@@ -10151,7 +10215,7 @@ Query</_Value>
 			<_event type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IEvent</_hm2Class>
-					<_hfilename type="a">.\BasePkg.sbs</_hfilename>
+					<_hfilename type="a">.\BasePkg.sbsx</_hfilename>
 					<_hsubsystem type="a">BasePkg</_hsubsystem>
 					<_hname type="a">send_ElapsedTimeTick()</_hname>
 					<_hid type="a">GUID 49ee3864-d6e5-4a75-939e-57545b33b5b7</_hid>
@@ -10171,7 +10235,7 @@ Query</_Value>
 			<_event type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IEvent</_hm2Class>
-					<_hfilename type="a">.\BasePkg.sbs</_hfilename>
+					<_hfilename type="a">.\BasePkg.sbsx</_hfilename>
 					<_hsubsystem type="a">BasePkg</_hsubsystem>
 					<_hname type="a">reqElapsedTimeIsContinuous(int)</_hname>
 					<_hid type="a">GUID 22018b60-ae20-4a5c-a1f2-840a6b75d995</_hid>
@@ -10191,7 +10255,7 @@ Query</_Value>
 			<_event type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IEvent</_hm2Class>
-					<_hfilename type="a">.\BasePkg.sbs</_hfilename>
+					<_hfilename type="a">.\BasePkg.sbsx</_hfilename>
 					<_hsubsystem type="a">BasePkg</_hsubsystem>
 					<_hname type="a">reqElapsedTimeToggleMode()</_hname>
 					<_hid type="a">GUID d62c6dca-e07e-48de-a469-bc8e32d5e7b0</_hid>
@@ -10211,7 +10275,7 @@ Query</_Value>
 			<_event type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IEvent</_hm2Class>
-					<_hfilename type="a">.\BasePkg.sbs</_hfilename>
+					<_hfilename type="a">.\BasePkg.sbsx</_hfilename>
 					<_hsubsystem type="a">BasePkg</_hsubsystem>
 					<_hname type="a">send_ElapsedTime(int)</_hname>
 					<_hid type="a">GUID 74f2e436-02cb-4371-ae57-469fc55bf819</_hid>
@@ -10463,7 +10527,7 @@ setElapsedTime( elapsedTime + 1 );</_body>
 			<_itsInterfaceItem type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IEvent</_hm2Class>
-					<_hfilename type="a">.\BasePkg.sbs</_hfilename>
+					<_hfilename type="a">.\BasePkg.sbsx</_hfilename>
 					<_hsubsystem type="a">BasePkg</_hsubsystem>
 					<_hname type="a">send_ElapsedTimeTick()</_hname>
 					<_hid type="a">GUID 49ee3864-d6e5-4a75-939e-57545b33b5b7</_hid>
@@ -10573,7 +10637,7 @@ setElapsedTime( elapsedTime + 1 );</_body>
 				<_itsInterfaceItem type="r">
 					<IHandle type="e">
 						<_hm2Class type="a">IEvent</_hm2Class>
-						<_hfilename type="a">.\BasePkg.sbs</_hfilename>
+						<_hfilename type="a">.\BasePkg.sbsx</_hfilename>
 						<_hsubsystem type="a">BasePkg</_hsubsystem>
 						<_hname type="a">reqElapsedTimeIsContinuous(int)</_hname>
 						<_hid type="a">GUID 22018b60-ae20-4a5c-a1f2-840a6b75d995</_hid>
@@ -10614,7 +10678,7 @@ setIsContinuous( params-&gt;value );</_body>
 				<_itsInterfaceItem type="r">
 					<IHandle type="e">
 						<_hm2Class type="a">IEvent</_hm2Class>
-						<_hfilename type="a">.\BasePkg.sbs</_hfilename>
+						<_hfilename type="a">.\BasePkg.sbsx</_hfilename>
 						<_hsubsystem type="a">BasePkg</_hsubsystem>
 						<_hname type="a">reqElapsedTimeToggleMode()</_hname>
 						<_hid type="a">GUID d62c6dca-e07e-48de-a469-bc8e32d5e7b0</_hid>
@@ -10713,7 +10777,7 @@ setIsContinuous( 0 );</_body>
 				<_itsInterfaceItem type="r">
 					<IHandle type="e">
 						<_hm2Class type="a">IEvent</_hm2Class>
-						<_hfilename type="a">.\BasePkg.sbs</_hfilename>
+						<_hfilename type="a">.\BasePkg.sbsx</_hfilename>
 						<_hsubsystem type="a">BasePkg</_hsubsystem>
 						<_hname type="a">send_ElapsedTime(int)</_hname>
 						<_hid type="a">GUID 74f2e436-02cb-4371-ae57-469fc55bf819</_hid>

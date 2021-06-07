@@ -17,10 +17,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.mbsetraining.sysmlhelper.common.RequirementMover;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.*;
 
-public class CreateEventForFlow extends CreateStructuralElementPanel {
+public class CreateEventForFlowPanel extends CreateStructuralElementPanel {
 
 	/**
 	 * 
@@ -47,8 +48,8 @@ public class CreateEventForFlow extends CreateStructuralElementPanel {
 				
 				frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 
-				CreateEventForFlow thePanel = 
-						new CreateEventForFlow( theAppID );
+				CreateEventForFlowPanel thePanel = 
+						new CreateEventForFlowPanel( theAppID );
 
 				frame.setContentPane( thePanel );
 				frame.pack();
@@ -58,7 +59,7 @@ public class CreateEventForFlow extends CreateStructuralElementPanel {
 		});
 	}
 	
-	public CreateEventForFlow( String theAppID ){
+	public CreateEventForFlowPanel( String theAppID ){
 		
 		super( theAppID );
 		
@@ -153,12 +154,15 @@ public class CreateEventForFlow extends CreateStructuralElementPanel {
 	
 			if( _createEventCheckBox.isSelected() ){
 				
+				IRPEvent theEvent;
+				
 				 IRPModelElement theExistingEvent = _selectEventComboBox.getSelectedRhapsodyItem(); 
 				 
 				if( theExistingEvent instanceof IRPEvent ){
 					
+					theEvent = (IRPEvent) theExistingEvent;
 					_flow.addConveyed( theExistingEvent );
-				
+					
 				} else {
 					
 					String theChosenName = _nameTextField.getText();
@@ -166,15 +170,29 @@ public class CreateEventForFlow extends CreateStructuralElementPanel {
 					_context.debug( "Creating event with name " + theChosenName + 
 							" under " + _context.elInfo( _eventCreationPackage ) );
 					
-					IRPEvent theEvent = (IRPEvent) _eventCreationPackage.addNewAggr( "Event", theChosenName );
-										
-					_flow.addConveyed( theEvent );
+					theEvent = (IRPEvent) _eventCreationPackage.addNewAggr( "Event", theChosenName );
+				}
+				
+				_flow.addConveyed( theEvent );
 
-					theEvent.highLightElement();
+				theEvent.highLightElement();
+				
+				// only do move if property is set
+				boolean isEnabled = 
+						_context.getIsEnableAutoMoveOfEvents(
+								theEvent );
+				
+				if( isEnabled ){
+					RequirementMover theElementMover = new RequirementMover( 
+							theEvent, 
+							_context.getExternalSignalsPackageStereotype(_context.get_rhpPrj()), 
+							_context );
+					
+					theElementMover.performMove();					
 				}
 			}
 		} else {
-			_context.error("Error in CreateNewActorPanel.performAction, checkValidity returned false");
+			_context.error("Error in CreateEventForFlowPanel.performAction, checkValidity returned false");
 		}		
 	}
 	
@@ -182,8 +200,6 @@ public class CreateEventForFlow extends CreateStructuralElementPanel {
 
 /**
  * Copyright (C) 2021  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
 
     This file is part of SysMLHelperPlugin.
 

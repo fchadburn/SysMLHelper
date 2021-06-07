@@ -416,6 +416,7 @@ ExecutableMBSEProfile:
 #284 03-JUN-2021: Improve thread safe support for executable mbse requirements analysis helpers (F.J.Chadburn)
 #285 04-JUN-2021: Further purging of old logger to enable thread safe operation across multiple rhapsody instances (F.J.Chadburn)
 #286 04-JUN-2021: Moved Gateway right-click menus into separate Gateway Helper sub-menu to remove clutter (F.J.Chadburn)
+#287 07-JUN-2021: Add initial profile support for External Signals Package with auto-flow of events (F.J.Chadburn)
 
 Back-log/Known issues
 

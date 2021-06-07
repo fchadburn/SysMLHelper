@@ -18,6 +18,7 @@ Subject SysMLHelper
 		Property UseCasePackageStereotype String "12 Reqts Analysis - Use Case Package"
 		Property UseCasePackageWorkingStereotype String "12 Reqts Analysis - Working Copy Package"
 		Property RequirementPackageStereotype String "13 Reqts Analysis - Requirement Package"
+		Property ExternalSignalsPackageStereotype String "14 Reqts Analysis - External Signals Package"
 		Property SimulationPackageStereotype String "21 Funct Analysis - Scenarios Package"
 		Property DesignPackageStereotype String "22 Funct Analysis - Design Package"
 		Property InterfacesPackageStereotype String "23 Funct Analysis - Interfaces Package"
@@ -38,6 +39,7 @@ Subject SysMLHelper
 		Property DefaultActorPackageName String "ActorPkg"
 		Property DefaultUseCasePackageName String "FeatureA"
 		Property IsEnableAutoMoveOfRequirements Bool "True"
+		Property IsEnableAutoMoveOfEvents Bool "True"
 		Property IsEnableGatewayTypes Bool "False"
 		Property UseCaseNoteText String "Draw use cases and actors.
 

@@ -965,9 +965,9 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 		return theTracedReqts;
 	}
 
+	/*
 	public void onApplyPluginMethodForSystemFlows( String guid ){
 
-		@SuppressWarnings("unchecked")
 		List<IRPGraphElement> theSelectedGraphEls = _context.getSelectedGraphElements();
 
 		if( theSelectedGraphEls.size()>0 ){
@@ -984,7 +984,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 		IRPModelElement theSelectedEl = _context.getSelectedElement();
 		_context.debug( "onApplyPluginMethodForSystemFlows invoked for " + _context.elInfo( theSelectedEl ) + " with " + theSelectedGraphEls.size() );
 		theSelectedEl.highLightElement();
-	}
+	}*/
 }
 
 /**

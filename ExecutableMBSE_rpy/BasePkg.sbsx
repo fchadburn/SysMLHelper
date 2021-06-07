@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RhapsodyArchive>
+	<MagicNumber></MagicNumber>
+	<CODE-PAGE>1252</CODE-PAGE>
+	<version>100.831.0</version>
+	<lang>C++</lang>
+	<BuildNo>9835718</BuildNo>
+	
+	<RHAPSODY-MODEL>
+	<ISubsystem type="e">
+			<_id type="a">GUID c44ec7cb-7a75-45aa-92db-122629461c4b</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Activity</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">General</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">SimulationMode</_Name>
+													<_Value type="a">StateOriented</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">StateOriented, TokenOriented</_ExtraTypeInfo>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">BasePkg</_name>
+			<_modifiedTime type="a">10.13.2018::12:41:2</_modifiedTime>
+			<_lastID type="a">2</_lastID>
+			<_defaultComposite type="s">GUID ffd36ddc-ce50-4ff6-9a88-d2bda093b1b2</_defaultComposite>
+			<_eventsBaseID type="a">10601</_eventsBaseID>
+			<AggregatesList type="e">
+				<value>GUID ffd36ddc-ce50-4ff6-9a88-d2bda093b1b2</value>
+				<value>GUID 7ce0e62f-17f8-46bb-9791-943cd48ac4c2</value>
+				<value>GUID 22018b60-ae20-4a5c-a1f2-840a6b75d995</value>
+				<value>GUID d62c6dca-e07e-48de-a469-bc8e32d5e7b0</value>
+				<value>GUID 74f2e436-02cb-4371-ae57-469fc55bf819</value>
+				<value>GUID 49ee3864-d6e5-4a75-939e-57545b33b5b7</value>
+			</AggregatesList>
+		</ISubsystem>
+		<IClass type="e">
+			<_id type="a">GUID ffd36ddc-ce50-4ff6-9a88-d2bda093b1b2</_id>
+			<_myState type="a">40960</_myState>
+			<_name type="a">TopLevel</_name>
+			<_modifiedTime type="a">10.13.2018::12:41:2</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IEvent type="e">
+			<_id type="a">GUID 7ce0e62f-17f8-46bb-9791-943cd48ac4c2</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">chElapsedTime</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+							<_hname type="a">Web Managed</_hname>
+							<_hid type="a">GUID 8c262ab8-d5e1-45d1-bc5b-8a4ccd78870c</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.13.2018::12:41:2</_modifiedTime>
+			<_virtual type="a">0</_virtual>
+			<Args type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</Args>
+		</IEvent>
+		<IEvent type="e">
+			<_id type="a">GUID 22018b60-ae20-4a5c-a1f2-840a6b75d995</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">reqElapsedTimeIsContinuous</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+							<_hname type="a">Web Managed</_hname>
+							<_hid type="a">GUID 8c262ab8-d5e1-45d1-bc5b-8a4ccd78870c</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.13.2018::12:41:2</_modifiedTime>
+			<_lastID type="a">1</_lastID>
+			<_virtual type="a">0</_virtual>
+			<AggregatesList type="e">
+				<value>GUID 3627d77e-08e2-4485-a2a6-30f974ef1f32</value>
+			</AggregatesList>
+		</IEvent>
+		<IArgument type="e">
+			<_id type="a">GUID 3627d77e-08e2-4485-a2a6-30f974ef1f32</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">value</_name>
+			<_modifiedTime type="a">8.9.2016::13:5:21</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">int</_hname>
+					<_hid type="a">GUID 6024c6ab-fe9e-402e-954f-27aca6d3b5e4</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_argumentDirection type="a">In</_argumentDirection>
+		</IArgument>
+		<IEvent type="e">
+			<_id type="a">GUID d62c6dca-e07e-48de-a469-bc8e32d5e7b0</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">reqElapsedTimeToggleMode</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+							<_hname type="a">Web Managed</_hname>
+							<_hid type="a">GUID 8c262ab8-d5e1-45d1-bc5b-8a4ccd78870c</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.13.2018::12:41:2</_modifiedTime>
+			<_virtual type="a">0</_virtual>
+			<Args type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</Args>
+		</IEvent>
+		<IEvent type="e">
+			<_id type="a">GUID 74f2e436-02cb-4371-ae57-469fc55bf819</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">send_ElapsedTime</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+							<_hname type="a">Web Managed</_hname>
+							<_hid type="a">GUID 8c262ab8-d5e1-45d1-bc5b-8a4ccd78870c</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.13.2018::12:41:2</_modifiedTime>
+			<_lastID type="a">1</_lastID>
+			<_virtual type="a">0</_virtual>
+			<AggregatesList type="e">
+				<value>GUID 3293c35b-71ce-41b6-94b4-f615558414e4</value>
+			</AggregatesList>
+		</IEvent>
+		<IArgument type="e">
+			<_id type="a">GUID 3293c35b-71ce-41b6-94b4-f615558414e4</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">value</_name>
+			<_modifiedTime type="a">8.22.2016::10:7:33</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">int</_hname>
+					<_hid type="a">GUID 6024c6ab-fe9e-402e-954f-27aca6d3b5e4</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_argumentDirection type="a">In</_argumentDirection>
+		</IArgument>
+		<IEvent type="e">
+			<_id type="a">GUID 49ee3864-d6e5-4a75-939e-57545b33b5b7</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">send_ElapsedTimeTick</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+							<_hname type="a">Web Managed</_hname>
+							<_hid type="a">GUID 8c262ab8-d5e1-45d1-bc5b-8a4ccd78870c</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.13.2018::12:41:2</_modifiedTime>
+			<_virtual type="a">0</_virtual>
+			<Args type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</Args>
+		</IEvent>
+		
+	</RHAPSODY-MODEL>
+	<OslcLinks type="c">
+		<IRPYRawContainer type="e">
+			<size type="a">0</size>
+		</IRPYRawContainer>
+	</OslcLinks>
+
+<INCLUDES-RHAPSODY-INDEX>false</INCLUDES-RHAPSODY-INDEX>
+</RhapsodyArchive>
+

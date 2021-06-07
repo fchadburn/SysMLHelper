@@ -1780,6 +1780,7 @@ public class FunctionalDesign_Context extends ConfigurationSettings {
 		return theOwner;
 	}
 	
+	/*
 	private IRPState getStateCalled(
 			String theName, 
 			IRPStatechart inTheDiagram, 
@@ -1810,7 +1811,7 @@ public class FunctionalDesign_Context extends ConfigurationSettings {
 		}
 		
 		return theState;
-	}
+	}*/
 
 	public IRPOperation createTestCaseFor( IRPClass theTestDriver ){
 		

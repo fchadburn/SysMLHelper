@@ -370,8 +370,8 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSE</_name>
-			<_modifiedTime type="a">5.10.2021::8:58:14</_modifiedTime>
-			<_lastID type="a">10040</_lastID>
+			<_modifiedTime type="a">6.7.2021::6:56:13</_modifiedTime>
+			<_lastID type="a">10041</_lastID>
 			<_UserColors type="w">
 				<IRPYRawContainer type="e">
 					<size type="a">16</size>
@@ -453,13 +453,11 @@
 				<value>GUID d9689b73-885e-44c4-896b-de43defa0a33</value>
 				<value>GUID c3e7e210-b993-496d-bb8e-c1dec61ab214</value>
 				<value>GUID c44ec7cb-7a75-45aa-92db-122629461c4b</value>
-				<value>GUID 00b0140e-6d06-4d19-ba99-8a8e40131db7</value>
-				<value>GUID 0a931094-5e7d-4d59-83e8-247a645b1176</value>
-				<value>GUID 393f0af9-b382-4c3e-aa31-ad304f2ac38c</value>
 				<value>GUID d2ddb420-4d4b-4832-bf58-e291ae395548</value>
 				<value>GUID f8b67f96-eafa-4a97-be48-b36f7a3e4821</value>
 				<value>GUID ce846f97-9032-4155-a0dd-743e218d9376</value>
 				<value>GUID 4f2b6707-5798-4c1e-aa4b-c08bda2216fb</value>
+				<value>GUID 801c8dc2-1109-41eb-8815-e3fb68b9a344</value>
 				<value>GUID 15e00bf1-6846-47dc-acb4-6a0add0593b4</value>
 			</AggregatesList>
 		</IProject>
@@ -482,18 +480,6 @@
 			<_id type="a">GUID c44ec7cb-7a75-45aa-92db-122629461c4b</_id>
 		</ISubsystem>
 		<IProfile type="e">
-			<fileName type="a">CGCompatibilityPre821Cpp</fileName>
-			<_id type="a">GUID 00b0140e-6d06-4d19-ba99-8a8e40131db7</_id>
-		</IProfile>
-		<IProfile type="e">
-			<fileName type="a">GECompatibilityPre831</fileName>
-			<_id type="a">GUID 0a931094-5e7d-4d59-83e8-247a645b1176</_id>
-		</IProfile>
-		<IProfile type="e">
-			<fileName type="a">CGCompatibilityPre831Cpp</fileName>
-			<_id type="a">GUID 393f0af9-b382-4c3e-aa31-ad304f2ac38c</_id>
-		</IProfile>
-		<IProfile type="e">
 			<fileName type="a">MetamodelProfile</fileName>
 			<_persistAs type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy</_persistAs>
 			<_id type="a">GUID d2ddb420-4d4b-4832-bf58-e291ae395548</_id>
@@ -511,6 +497,11 @@
 			<fileName type="a">MetamodelProfileExtensionsProfile</fileName>
 			<_id type="a">GUID 4f2b6707-5798-4c1e-aa4b-c08bda2216fb</_id>
 		</IProfile>
+		<ISubsystem type="e">
+			<fileName type="a">IconsPkg</fileName>
+			<_persistAs type="a">IconsPkg</_persistAs>
+			<_id type="a">GUID 801c8dc2-1109-41eb-8815-e3fb68b9a344</_id>
+		</ISubsystem>
 		<IComponent type="e">
 			<fileName type="a">NotUsedCmp</fileName>
 			<_id type="a">GUID 15e00bf1-6846-47dc-acb4-6a0add0593b4</_id>

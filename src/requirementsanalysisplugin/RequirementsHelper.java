@@ -125,12 +125,19 @@ public class RequirementsHelper {
 							"the graphEls are not handled types for drawing relations" );
 				}
 				
-				RequirementMover theElementMover = new RequirementMover( 
-						theReqt, 
-						_context.getRequirementPackageStereotype(_context.get_rhpPrj()), 
-						_context );
+				// only do move if property is set
+				boolean isEnabled = 
+						_context.getIsEnableAutoMoveOfRequirements(
+								theReqt );
 				
-				theElementMover.performMove();
+				if( isEnabled ){
+					RequirementMover theElementMover = new RequirementMover( 
+							theReqt, 
+							_context.getRequirementPackageStereotype(_context.get_rhpPrj()), 
+							_context );
+					
+					theElementMover.performMove();					
+				}
 
 			} // theActionText == null
 		} else { // theModelObject == null

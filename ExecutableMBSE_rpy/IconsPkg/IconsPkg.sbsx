@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RhapsodyArchive>
+	<MagicNumber></MagicNumber>
+	<CODE-PAGE>1252</CODE-PAGE>
+	<version>100.831.0</version>
+	<lang>C++</lang>
+	<BuildNo>9835718</BuildNo>
+	
+	<RHAPSODY-MODEL>
+	<ISubsystem type="e">
+			<_id type="a">GUID 801c8dc2-1109-41eb-8815-e3fb68b9a344</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">IconsPkg</_name>
+			<_modifiedTime type="a">6.7.2021::7:5:58</_modifiedTime>
+			<_defaultComposite type="s">GUID 64eceb80-328e-445f-90f1-4b11f0a04bea</_defaultComposite>
+			<_eventsBaseID type="a">-1</_eventsBaseID>
+			<AggregatesList type="e">
+				<value>GUID b620f6ca-17f0-4012-8be8-eec3f5b1561d</value>
+				<value>GUID 383d5831-932c-4062-8803-0acf46e5fe33</value>
+				<value>GUID 64eceb80-328e-445f-90f1-4b11f0a04bea</value>
+			</AggregatesList>
+		</ISubsystem>
+		<IEmbededFile type="e">
+			<_id type="a">GUID b620f6ca-17f0-4012-8be8-eec3f5b1561d</_id>
+			<_name type="a">ExternalSignalsPackage.ico</_name>
+			<_modifiedTime type="a">6.7.2021::7:5:49</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\ExternalSignalsPackage.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID 383d5831-932c-4062-8803-0acf46e5fe33</_id>
+			<_name type="a">ExternalSignalsPackages.ico</_name>
+			<_modifiedTime type="a">6.7.2021::7:5:58</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\ExternalSignalsPackages.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IClass type="e">
+			<_id type="a">GUID 64eceb80-328e-445f-90f1-4b11f0a04bea</_id>
+			<_myState type="a">40960</_myState>
+			<_name type="a">TopLevel</_name>
+			<_modifiedTime type="a">1.1.1970::0:0:0</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		
+	</RHAPSODY-MODEL>
+	<OslcLinks type="c">
+		<IRPYRawContainer type="e">
+			<size type="a">0</size>
+		</IRPYRawContainer>
+	</OslcLinks>
+
+<INCLUDES-RHAPSODY-INDEX>false</INCLUDES-RHAPSODY-INDEX>
+</RhapsodyArchive>
+

@@ -50,6 +50,11 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				afterAddForInterface( modelElement );
 
 			} else if( modelElement != null && 
+					modelElement instanceof IRPEvent ){
+
+				afterAddForEvent( modelElement );
+				
+			} else if( modelElement != null && 
 					modelElement instanceof IRPDependency && 
 					modelElement.getUserDefinedMetaClass().equals(
 							"Derive Requirement" ) ){
@@ -177,6 +182,22 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			ElementMover theElementMover = new ElementMover( 
 					modelElement, 
 					_context.getInterfacesPackageStereotype( modelElement ),
+					_context );
+
+			theElementMover.performMove();
+		}
+	}
+	
+	private void afterAddForEvent(
+			IRPModelElement modelElement ){
+
+		// only do move if property is set
+		boolean isEnabled = _context.getIsEnableAutoMoveOfEvents( modelElement );
+
+		if( isEnabled ){
+			ElementMover theElementMover = new ElementMover( 
+					modelElement, 
+					_context.getExternalSignalsPackageStereotype( modelElement ),
 					_context );
 
 			theElementMover.performMove();
@@ -375,7 +396,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			}
 		}
 
-		CreateEventForFlow.launchThePanel( _context.get_rhpAppID() );
+		CreateEventForFlowPanel.launchThePanel( _context.get_rhpAppID() );
 	}
 
 	private IRPPackage getOwningPackageFor(

@@ -583,6 +583,16 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 		return thePropertyValue;
 	}
 
+	public String getExternalSignalsPackageStereotype(
+		IRPModelElement basedOnContextEl ) {
+				
+		String thePropertyValue = 
+				basedOnContextEl.getPropertyValue( 
+						"SysMLHelper.General.ExternalSignalsPackageStereotype" );
+
+		return thePropertyValue;
+	}
+	
 	public String getDesignPackageStereotype(
 			IRPModelElement basedOnContextEl ) {
 		
@@ -711,6 +721,16 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 		boolean result = getBooleanPropertyValue(
 				forContextEl,
 				"SysMLHelper.FunctionalAnalysis.IsEnableAutoMoveOfInterfaces" );
+		
+		return result;
+	}
+	
+	public boolean getIsEnableAutoMoveOfEvents(
+			IRPModelElement forContextEl ){
+		
+		boolean result = getBooleanPropertyValue(
+				forContextEl,
+				"SysMLHelper.RequirementsAnalysis.IsEnableAutoMoveOfEvents" );
 		
 		return result;
 	}
