@@ -414,12 +414,14 @@ ExecutableMBSEProfile:
 #282 20-MAY-2021: Fix issue with requirement mover caused by renaming of the package new term stereotypes (F.J.Chadburn)
 #283 03-JUN-2021: Initial re-factoring to get context to be taken into account for helper invocation and logging (F.J.Chadburn)
 #284 03-JUN-2021: Improve thread safe support for executable mbse requirements analysis helpers (F.J.Chadburn)
-#285 04-JUN-2021: Further purging of old logger to enable thread safe operation across multiple rhapsody instances (F.J.Chadburn)
+#285 04-JUN-2021: Further purging of old logger to enable thread safe operation across multiple Rhapsody instances (F.J.Chadburn)
 #286 04-JUN-2021: Moved Gateway right-click menus into separate Gateway Helper sub-menu to remove clutter (F.J.Chadburn)
 #287 07-JUN-2021: Add initial profile support for External Signals Package with auto-flow of events (F.J.Chadburn)
+#288 09-JUN-2021: Add new MBSE menu to create a context diagram structure including auto-populate from actor list (F.J.Chadburn)
+#289 09-JUN-2021: Refinement of profile property setting checks to autoset properties when populating package structure (F.J.Chadburn)
+#290 09-JUN-2021: Move the setup project command to the root right-click menu rather than the requirements analysis menu (F.J.Chadburn)
 
-Back-log/Known issues
+Backlog/Known issues
 
 - Add ability to create context diagram package at same time as creating the use case package
-- Add an external signals package for events and interfaces
 - Add an internal signals package for events and interfaces

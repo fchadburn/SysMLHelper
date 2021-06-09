@@ -17,7 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.mbsetraining.sysmlhelper.common.RequirementMover;
+import com.mbsetraining.sysmlhelper.common.ElementMover;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.*;
 
@@ -178,14 +178,12 @@ public class CreateEventForFlowPanel extends CreateStructuralElementPanel {
 				theEvent.highLightElement();
 				
 				// only do move if property is set
-				boolean isEnabled = 
-						_context.getIsEnableAutoMoveOfEvents(
-								theEvent );
+				boolean isEnabled = _context.getIsEnableAutoMoveOfEvents();
 				
 				if( isEnabled ){
-					RequirementMover theElementMover = new RequirementMover( 
+					ElementMover theElementMover = new ElementMover( 
 							theEvent, 
-							_context.getExternalSignalsPackageStereotype(_context.get_rhpPrj()), 
+							_context.getExternalSignalsPackageStereotype(), 
 							_context );
 					
 					theElementMover.performMove();					

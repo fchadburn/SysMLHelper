@@ -1,5 +1,5 @@
 [Helpers]
-numberOfElements=73
+numberOfElements=74
 
 #REM: Definition of the plug-in
 name1=InvokeExecutableMBSEHelper
@@ -73,6 +73,8 @@ command7=InvokeExecutableMBSEHelper
 applicableTo7=Project,SysML
 isVisible7=1
 DLLServerCompatible7=1
+
+Create a Context Diagram Package structure
 
 #REM: Add pop-up menu
 name8=MBSE Method: Functional Analysis\Create Simulation Block package structure
@@ -249,7 +251,7 @@ isVisible31=1
 helperTriggers31=
 
 #REM: Add pop-up menu
-name32=MBSE Method: Requirements Analysis\Setup project properties
+name32=MBSE Method: Setup project properties
 isPluginCommand32=1
 command32=InvokeExecutableMBSEHelper
 applicableTo32=Project,SysML
@@ -567,6 +569,14 @@ command73=InvokeExecutableMBSEHelper
 applicableTo73=Object,Class,System Context
 isVisible73=1
 DLLServerCompatible73=1
+
+#REM: Add pop-up menu
+name74=MBSE Method: Requirements Analysis\Create a Context Diagram Package structure
+isPluginCommand74=1
+command74=InvokeExecutableMBSEHelper
+applicableTo74=Project,SysML
+isVisible74=1
+DLLServerCompatible74=1
 
 #REM Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 #REM

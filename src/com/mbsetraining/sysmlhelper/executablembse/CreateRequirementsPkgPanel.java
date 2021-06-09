@@ -106,6 +106,7 @@ public class CreateRequirementsPkgPanel extends CreateStructuralElementPanel {
 		_createRequirementsPkgChooser = new CreateRequirementsPkgChooser( 
 				_ownerPkg, 
 				theName,
+				true,
 				_context );
 
 		theColumn1ParallelGroup.addComponent( _createRequirementsPkgChooser.getM_UserChoiceComboBox() ); 

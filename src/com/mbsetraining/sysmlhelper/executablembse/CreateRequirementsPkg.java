@@ -80,15 +80,15 @@ public class CreateRequirementsPkg {
 	}
 
 	private IRPPackage createReqtsPackageWithDependencyTo(
-			IRPPackage theUseCasePkg, 
+			IRPPackage theFlowFromPkg, 
 			String theName,
 			IRPPackage theReqtsPackageOwner ){
 
 		IRPPackage theReqtsPkg;
 		theReqtsPkg = theReqtsPackageOwner.addNestedPackage( theName );
-		theReqtsPkg.changeTo( _context.getRequirementPackageStereotype( theReqtsPackageOwner ) );	
+		theReqtsPkg.changeTo( _context.getRequirementPackageStereotype() );	
 		_context.setSavedInSeparateDirectoryIfAppropriateFor( theReqtsPkg );
-		theUseCasePkg.addDependencyTo( theReqtsPkg );
+		theFlowFromPkg.addDependencyTo( theReqtsPkg );
 
 		return theReqtsPkg;
 	}

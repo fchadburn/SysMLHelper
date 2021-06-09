@@ -1,0 +1,203 @@
+package com.mbsetraining.sysmlhelper.executablembse;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.telelogic.rhapsody.core.*;
+
+public class CreateContextDiagramPackage {
+
+	protected ExecutableMBSE_Context _context;
+	
+	public CreateContextDiagramPackage(
+			String theContextDiagramPackageName,
+			IRPPackage theOwningPkg,
+			CreateRequirementsPkg.CreateRequirementsPkgOption theReqtsPkgChoice,
+			String theReqtsPkgOptionalName,
+			IRPPackage theExistingReqtsPkgIfChosen,
+			CreateActorPkg.CreateActorPkgOption theActorPkgChoice,
+			String theActorsPkgNameOption,
+			List<IRPPackage> theExistingActorsPkgOption,
+			String theActorPkgPrefixOption,
+			CreateExternalSignalsPkg.CreateExternalSignalsPkgOption theExternalSignalsPkgChoice,
+			String theExternalSignalsPkgOptionalName,
+			IRPPackage theExistingExternalSignalsPkgIfChosen,
+			ExecutableMBSE_Context theContext ){
+		
+		_context = theContext;
+		
+		String thePkgName = _context.determineUniqueNameBasedOn( 
+				theContextDiagramPackageName.replace(" ", "") + "Pkg", "Package", theOwningPkg );
+		
+		IRPProject theProject = _context.get_rhpPrj();
+				
+		_context.debug( "The thePkgName is " + thePkgName );
+		
+		IRPPackage theContextDiagramPkg = theOwningPkg.addNestedPackage( thePkgName );
+		theContextDiagramPkg.changeTo( _context.getContextDiagramPackageStereotype() );
+		_context.setSavedInSeparateDirectoryIfAppropriateFor( theContextDiagramPkg );
+		
+		@SuppressWarnings("unused")
+		CreateRequirementsPkg theCreateRequirementsPkg = new CreateRequirementsPkg( 
+				theReqtsPkgChoice, 
+				theContextDiagramPkg, 
+				theReqtsPkgOptionalName, 
+				theExistingReqtsPkgIfChosen,
+				_context );
+
+		CreateActorPkg theActorPkg = new CreateActorPkg( 
+				theActorPkgChoice,
+				theProject,
+				theActorsPkgNameOption,
+				theContextDiagramPkg,
+				theExistingActorsPkgOption,
+				theActorPkgPrefixOption,
+				_context );
+		
+		CreateExternalSignalsPkg theExternalSignalsPkg = new CreateExternalSignalsPkg( 
+				theExternalSignalsPkgChoice,
+				theProject,
+				theExternalSignalsPkgOptionalName,
+				theContextDiagramPkg,
+				theExistingExternalSignalsPkgIfChosen,
+				_context );
+		
+		List<IRPActor> theActors = theActorPkg.getActors();
+		List<IRPRelation> theActorUsages = new ArrayList<>();
+		
+		for( IRPActor theActor : theActors ){
+
+			_context.debug( "Adding usage for " + _context.elInfo( theActor ) + 
+					" in " + _context.elInfo( theActor.getOwner() ) );
+			
+			IRPRelation theObject = theContextDiagramPkg.addImplicitObject( "" );
+			theObject.setOtherClass( theActor );
+			theObject.setStereotype( _context.getNewTermForActorUsage() );
+			
+			theActorUsages.add( theObject );
+		}
+
+		createContextDiagram( theActorUsages, theContextDiagramPackageName, theContextDiagramPkg );
+		
+		_context.deleteIfPresent( "Structure1", "StructureDiagram", theProject );
+		_context.deleteIfPresent( "Model1", "ObjectModelDiagram", theProject );
+		_context.deleteIfPresent( "Default", "Package", theProject );
+		
+		if( _context.getIsAutoPopulatePackageDiagram( theProject ) ){
+			AutoPackageDiagram theAPD = new AutoPackageDiagram( _context );
+			theAPD.drawDiagram();
+		}
+			    			
+		theProject.save();
+	}
+	
+	private void createContextDiagram(
+			List<IRPRelation> theActorUsages, 
+			String theName,
+			IRPPackage theOwningPkg ) {
+		
+		IRPStructureDiagram theDiagram = 
+				(IRPStructureDiagram) theOwningPkg.addNewAggr( "StructureDiagram", "CTX - " + theName );
+		
+		IRPStereotype theStereotype = _context.getNewTermForSystemContextDiagram();
+		
+		if( theStereotype != null ){
+			
+			_context.debug( "Applying " + _context.elInfo( theStereotype ) + 
+					" to " + _context.elInfo( theDiagram ) );
+			
+			theDiagram.setStereotype( theStereotype );
+		}
+		
+		IRPCollection theCollection = _context.get_rhpApp().createNewCollection();
+
+		IRPRelation theSystemContextEl = theOwningPkg.addImplicitObject( theName );
+		theSystemContextEl.setStereotype( _context.getNewTermForSystemContext() );
+		
+		/*
+		
+		IRPGraphNode theNote =
+				theDiagram.addNewNodeByType( "Note", 21, 42, 156, 845 );
+		
+		String theUseCaseNoteText = _context.getUseCaseNoteText( theDiagram );
+		
+		theNote.setGraphicalProperty(
+				"Text",
+				theUseCaseNoteText );*/
+		
+		String theDefaultSystemContectSize = theDiagram.getPropertyValue( 
+				"Format." + _context.getNewTermForActorUsage().getName() + ".DefaultSize");
+		
+		String[] theSystemContextSizeSplit = theDefaultSystemContectSize.split(",");
+		int theSystemContextWidth = Integer.parseInt( theSystemContextSizeSplit[2] );
+		int theSystemContextHeight = Integer.parseInt( theSystemContextSizeSplit[3] );
+		
+		int x0 = 420;
+		int y0 = 270;
+		int r = 190;
+		
+		IRPGraphNode theUCGraphNode = 
+	    		theDiagram.addNewNodeForElement( 
+	    				theSystemContextEl, 
+	    				x0-(theSystemContextWidth/2), 
+	    				y0-(theSystemContextHeight/2), 
+	    				theSystemContextWidth, 
+	    				theSystemContextHeight );
+
+		theDiagram.setPropertyValue( "General.Graphics.DefaultBoxView", "Structured" );
+	    theCollection.addGraphicalItem( theUCGraphNode );
+		
+		if( !theActorUsages.isEmpty() ){
+
+			int items = theActorUsages.size();
+			
+			String theDefaultActorSize = theDiagram.getPropertyValue( 
+					"Format." + _context.getNewTermForActorUsage().getName() + ".DefaultSize" );
+			
+			String[] theActorSplit = theDefaultActorSize.split(",");
+			int actorWidth = Integer.parseInt( theActorSplit[2] );
+			int actorHeight = Integer.parseInt( theActorSplit[3] );
+		    
+			for(int i = 0; i < items; i++) {
+
+			    int x = (int) (x0 + r * Math.cos(2 * Math.PI * i / items));
+			    int y = (int) (y0 + r * Math.sin(2 * Math.PI * i / items));   
+			    
+			    IRPGraphNode theActorGN = theDiagram.addNewNodeForElement( 
+			    		theActorUsages.get(i), 
+			    		x-(actorWidth/2), 
+			    		y-(actorHeight/2), 
+			    		actorWidth, 
+			    		actorHeight );
+			    
+			    theCollection.addGraphicalItem( theActorGN );
+			}
+						
+			theDiagram.completeRelations(
+					theCollection, 
+					1);
+
+		}
+				
+		theDiagram.highLightElement();
+	}
+}
+
+/**
+ * Copyright (C) 2021  MBSE Training and Consulting Limited (www.executablembse.com)
+
+    This file is part of SysMLHelperPlugin.
+
+    SysMLHelperPlugin is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    SysMLHelperPlugin is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with SysMLHelperPlugin.  If not, see <http://www.gnu.org/licenses/>.
+ */

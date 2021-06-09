@@ -18,7 +18,7 @@ public class CreateUseCasesPackage {
 	
 	public CreateUseCasesPackage(
 			String theUseCasesPackageName,
-			IRPPackage theUseCasesOwnerPkg,
+			IRPPackage theOwningPkg,
 			CreateRequirementsPkg.CreateRequirementsPkgOption theReqtsPkgChoice,
 			String theReqtsPkgOptionalName,
 			IRPPackage theExistingReqtsPkgIfChosen,
@@ -36,8 +36,8 @@ public class CreateUseCasesPackage {
 		
 		_context.debug( "The name is " + theAdornedName );
 		
-		IRPPackage theUseCasePkg = theUseCasesOwnerPkg.addNestedPackage( theAdornedName );
-		theUseCasePkg.changeTo( _context.getUseCasePackageStereotype( theUseCasesOwnerPkg ) );
+		IRPPackage theUseCasePkg = theOwningPkg.addNestedPackage( theAdornedName );
+		theUseCasePkg.changeTo( _context.getUseCasePackageStereotype( theOwningPkg ) );
 		_context.setSavedInSeparateDirectoryIfAppropriateFor( theUseCasePkg );
 		
 		@SuppressWarnings("unused")
@@ -81,7 +81,7 @@ public class CreateUseCasesPackage {
 		IRPUseCaseDiagram theUCD = 
 				theUseCasePkg.addUseCaseDiagram( "UCD - " + theName );
 		
-		IRPStereotype theStereotype = _context.getStereotypeForUseCaseDiagram( theUseCasePkg );
+		IRPStereotype theStereotype = _context.getNewTermForUseCaseDiagram();
 		
 		if( theStereotype != null ){
 			

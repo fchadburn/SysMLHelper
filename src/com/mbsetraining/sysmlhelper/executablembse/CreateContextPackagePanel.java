@@ -6,7 +6,6 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-
 import javax.swing.BoxLayout;
 import javax.swing.GroupLayout;
 import javax.swing.JFrame;
@@ -16,12 +15,9 @@ import javax.swing.JTextField;
 import javax.swing.GroupLayout.ParallelGroup;
 import javax.swing.GroupLayout.SequentialGroup;
 import javax.swing.border.EmptyBorder;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-
 import com.telelogic.rhapsody.core.*;
 
-public class CreateUseCasesPackagePanel extends CreateStructuralElementPanel {
+public class CreateContextPackagePanel extends CreateStructuralElementPanel {
 
 	/**
 	 * 
@@ -31,6 +27,7 @@ public class CreateUseCasesPackagePanel extends CreateStructuralElementPanel {
 	private IRPPackage _ownerPkg;
 	private CreateActorPkgChooser _createActorChooser;
 	private CreateRequirementsPkgChooser _createRequirementsPkgChooser;
+	private CreateExternalSignalsPkgChooser _createExternalSignalsPkgChooser;
 	private JTextField _nameTextField;
 
 	public static void launchTheDialog(
@@ -43,12 +40,12 @@ public class CreateUseCasesPackagePanel extends CreateStructuralElementPanel {
 
 				JFrame.setDefaultLookAndFeelDecorated( true );
 
-				JFrame frame = new JFrame( "Populate use case package structure" );
+				JFrame frame = new JFrame( "Populate context diagram package structure" );
 
 				frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 
-				CreateUseCasesPackagePanel thePanel = 
-						new CreateUseCasesPackagePanel(
+				CreateContextPackagePanel thePanel = 
+						new CreateContextPackagePanel(
 								theAppID );
 
 				frame.setContentPane( thePanel );
@@ -59,7 +56,7 @@ public class CreateUseCasesPackagePanel extends CreateStructuralElementPanel {
 		});
 	}
 
-	public CreateUseCasesPackagePanel( 
+	public CreateContextPackagePanel( 
 			String theAppID ){
 
 		super( theAppID );
@@ -71,16 +68,16 @@ public class CreateUseCasesPackagePanel extends CreateStructuralElementPanel {
 
 		String theUniqueName = 
 				_context.determineUniqueNameForPackageBasedOn(
-						_context.getDefaultUseCasePackageName( _ownerPkg ),
+						_context.getDefaultContextDiagramPackageName(),
 						_ownerPkg );
 
-		JPanel theReqtsAnalysisPanel = createContent( theUniqueName );
-		theReqtsAnalysisPanel.setAlignmentX( Component.LEFT_ALIGNMENT );
+		JPanel theMainPanel = createContent();
+		theMainPanel.setAlignmentX( Component.LEFT_ALIGNMENT );
 
 		String introText = 
-				"This helper will create a package hierarchy for simple activity-based use case analysis underneath the " + 
+				"This helper will create a package hierarchy for simple system context diagrams underneath the " + 
 						_context.elInfo( _ownerPkg ) + ". \n" +
-						"It creates a nested package structure and use case diagram, imports the appropriate profiles if not present, and sets default \n" +
+						"It creates a nested package structure and context diagram, imports the appropriate profiles if not present, and sets default \n" +
 						"display and other options to appropriate values for this using Rhapsody profile and property settings.\n";
 
 		JPanel theStartPanel = new JPanel();
@@ -91,12 +88,11 @@ public class CreateUseCasesPackagePanel extends CreateStructuralElementPanel {
 		theStartPanel.add( createPanelWithTextCentered( introText ) );
 
 		add( theStartPanel, BorderLayout.PAGE_START );
-		add( theReqtsAnalysisPanel, BorderLayout.CENTER );
+		add( theMainPanel, BorderLayout.CENTER );
 		add( createOKCancelPanel(), BorderLayout.PAGE_END );		
 	}
 
-	private JPanel createContent(
-			String theName ){
+	private JPanel createContent(){
 
 		JPanel thePanel = new JPanel();
 
@@ -119,12 +115,18 @@ public class CreateUseCasesPackagePanel extends CreateStructuralElementPanel {
 
 		_createRequirementsPkgChooser = new CreateRequirementsPkgChooser( 
 				_ownerPkg, 
-				theName, 
-				true,
+				_context.getDefaultRequirementsPackageName(), 
+				false,
 				_context );
 
+		_createExternalSignalsPkgChooser = new CreateExternalSignalsPkgChooser( 
+				_ownerPkg, 
+				_context );
+		
+		theColumn1ParallelGroup.addComponent( _createExternalSignalsPkgChooser.getM_UserChoiceComboBox() ); 
 		theColumn1ParallelGroup.addComponent( _createActorChooser.getM_UserChoiceComboBox() );    
 		theColumn1ParallelGroup.addComponent( _createRequirementsPkgChooser.getM_UserChoiceComboBox() ); 
+		theColumn2ParallelGroup.addComponent( _createExternalSignalsPkgChooser.getM_NameTextField() );   
 		theColumn2ParallelGroup.addComponent( _createActorChooser.getM_NameTextField() );   
 		theColumn2ParallelGroup.addComponent( _createRequirementsPkgChooser.getM_NameTextField() );   
 
@@ -140,19 +142,21 @@ public class CreateUseCasesPackagePanel extends CreateStructuralElementPanel {
 		theVertical2ParallelGroup.addComponent( _createRequirementsPkgChooser.getM_UserChoiceComboBox() );
 		theVertical2ParallelGroup.addComponent( _createRequirementsPkgChooser.getM_NameTextField() );
 
+		ParallelGroup theVertical3ParallelGroup = 
+				theGroupLayout.createParallelGroup( GroupLayout.Alignment.BASELINE );
+
+		theVertical3ParallelGroup.addComponent( _createExternalSignalsPkgChooser.getM_UserChoiceComboBox() );
+		theVertical3ParallelGroup.addComponent( _createExternalSignalsPkgChooser.getM_NameTextField() );
+
+		
 		theVerticalSequenceGroup.addGroup( theVertical1ParallelGroup );		
 		theVerticalSequenceGroup.addGroup( theVertical2ParallelGroup );		
+		theVerticalSequenceGroup.addGroup( theVertical3ParallelGroup );		
 
 		theGroupLayout.setHorizontalGroup( theHorizSequenceGroup );
 		theGroupLayout.setVerticalGroup( theVerticalSequenceGroup );
 
 		return thePanel;
-	}
-
-	private void updateRelatedElementNames(){
-
-		_createRequirementsPkgChooser.updateRequirementsPkgNameBasedOn( 
-				_nameTextField.getText() );
 	}
 
 	private JPanel createTheNameThePackagePanel(
@@ -164,25 +168,6 @@ public class CreateUseCasesPackagePanel extends CreateStructuralElementPanel {
 
 		_nameTextField = new JTextField( theUniqueName );
 		_nameTextField.setPreferredSize( new Dimension( 200, 20 ));
-
-		_nameTextField.getDocument().addDocumentListener(
-				new DocumentListener() {
-
-					@Override
-					public void changedUpdate( DocumentEvent arg0 ){
-						updateRelatedElementNames();					
-					}
-
-					@Override
-					public void insertUpdate( DocumentEvent arg0 ){
-						updateRelatedElementNames();
-					}
-
-					@Override
-					public void removeUpdate( DocumentEvent arg0 ){
-						updateRelatedElementNames();
-					}	
-				});
 
 		thePanel.add( new JLabel( "Choose a unique name:" ) );
 		thePanel.add( _nameTextField );	
@@ -206,25 +191,26 @@ public class CreateUseCasesPackagePanel extends CreateStructuralElementPanel {
 			String theUnadornedName = _nameTextField.getText(); 
 
 			@SuppressWarnings("unused")
-			CreateUseCasesPackage theCreateUseCasesPackage = new CreateUseCasesPackage(
-					theUnadornedName, 
-					_ownerPkg, 
-					_createRequirementsPkgChooser.getReqtsPkgChoice(), 
-					_createRequirementsPkgChooser.getReqtsPkgOptionalName(), 
-					_createRequirementsPkgChooser.getExistingReqtsPkgIfChosen(), 
-					_createActorChooser.getCreateActorPkgOption(), 
-					_createActorChooser.getActorsPkgNameIfChosen(), 
-					_createActorChooser.getExistingActorPkgIfChosen(), 
-					theUnadornedName,
+			CreateContextDiagramPackage theCreator = new CreateContextDiagramPackage(
+					theUnadornedName, // theContextDiagramPackageName
+					_ownerPkg, // theOwningPkg
+					_createRequirementsPkgChooser.getReqtsPkgChoice(), // theReqtsPkgChoice
+					_createRequirementsPkgChooser.getReqtsPkgOptionalName(), // theReqtsPkgOptionalName
+					_createRequirementsPkgChooser.getExistingReqtsPkgIfChosen(), // theExistingReqtsPkgIfChosen
+					_createActorChooser.getCreateActorPkgOption(), // theActorPkgChoice
+					_createActorChooser.getActorsPkgNameIfChosen(), // theActorsPkgNameOption
+					_createActorChooser.getExistingActorPkgIfChosen(), // theExistingActorsPkgOption
+					theUnadornedName, // theActorPkgPrefixOption
+					_createExternalSignalsPkgChooser.getCreateExternalSignalsPkgOption(),
+					_createExternalSignalsPkgChooser.getExternalSignalsPkgNameIfChosen(),
+					_createExternalSignalsPkgChooser.getExistingExternalSignalsPkgIfChosen(),
 					_context );
 		}
 	}
-
-
 }
 
 /**
- * Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

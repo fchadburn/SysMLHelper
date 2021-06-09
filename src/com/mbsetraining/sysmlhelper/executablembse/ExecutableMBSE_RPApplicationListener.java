@@ -192,12 +192,12 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			IRPModelElement modelElement ){
 
 		// only do move if property is set
-		boolean isEnabled = _context.getIsEnableAutoMoveOfEvents( modelElement );
+		boolean isEnabled = _context.getIsEnableAutoMoveOfEvents();
 
 		if( isEnabled ){
 			ElementMover theElementMover = new ElementMover( 
 					modelElement, 
-					_context.getExternalSignalsPackageStereotype( modelElement ),
+					_context.getExternalSignalsPackageStereotype(),
 					_context );
 
 			theElementMover.performMove();
@@ -368,7 +368,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				_context.getIsEnableAutoMoveOfRequirements(
 						modelElement );
 
-		String theReqtsPkgStereotypeName = _context.getRequirementPackageStereotype( modelElement );
+		String theReqtsPkgStereotypeName = _context.getRequirementPackageStereotype();
 		
 		if( isEnabled && 
 				theReqtsPkgStereotypeName != null ){

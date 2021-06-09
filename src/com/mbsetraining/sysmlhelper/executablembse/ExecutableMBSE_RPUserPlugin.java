@@ -99,13 +99,30 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 			if( !theSelectedEls.isEmpty() ){
 
 				if( menuItem.equals( _context.getString(
+						"executablembseplugin.CreateContextPackageMenu" ) ) ){
+
+					if( theSelectedEl instanceof IRPPackage ){
+						
+						boolean isContinue = checkAndPerformProfileSetupIfNeeded();
+
+						if( isContinue ){
+							CreateContextPackagePanel.launchTheDialog( theAppID );
+						}
+						
+					} else {
+						_context.error( menuItem + " invoked out of context and only works for packages" );
+					}
+					
+				} else if( menuItem.equals( _context.getString(
 						"executablembseplugin.CreateRAStructureMenu" ) ) ){
 
 					if( theSelectedEl instanceof IRPPackage ){
 
-						boolean isShowInfoDialog = _context.getIsShowProfileVersionCheckDialogs();
-						_context.checkIfSetupProjectIsNeeded( isShowInfoDialog, true );
-						CreateUseCasesPackagePanel.launchTheDialog( theAppID );
+						boolean isContinue = checkAndPerformProfileSetupIfNeeded();
+
+						if( isContinue ){
+							CreateUseCasesPackagePanel.launchTheDialog( theAppID );
+						}	
 						
 					} else {
 						_context.error( menuItem + " invoked out of context and only works for packages" );
@@ -643,7 +660,6 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 	@Override
 	public void RhpPluginInvokeItem() {
-
 	}
 
 	public static List<IRPRequirement> getRequirementsThatTraceFrom(
@@ -965,26 +981,26 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 		return theTracedReqts;
 	}
 
-	/*
-	public void onApplyPluginMethodForSystemFlows( String guid ){
+	private boolean checkAndPerformProfileSetupIfNeeded() {
+		
+		boolean isContinue = true;
 
-		List<IRPGraphElement> theSelectedGraphEls = _context.getSelectedGraphElements();
+		boolean isShowInfoDialog = _context.getIsShowProfileVersionCheckDialogs();
+		boolean isSetupNeeded = _context.checkIfSetupProjectIsNeeded( isShowInfoDialog, false );
 
-		if( theSelectedGraphEls.size()>0 ){
+		if( isSetupNeeded ){
 
-			IRPGraphElement theGraphEl = theSelectedGraphEls.get( 0 );
-			IRPModelElement theModelObject = theGraphEl.getModelObject();
-			if( theModelObject != null ){
-				_context.debug( "theModelObject = " + _context.elInfo( theModelObject ) );
-			} else {
-				_context.debug( "theModelObject is null ");
+			String theMsg = "The project needs 'Executable MBSE' profile-based properties and tags values to be applied.\n" + 
+					"Do you want me to set these properties and tags on the project in order to continue?";
+
+			isContinue = UserInterfaceHelper.askAQuestion( theMsg );
+			
+			if( isContinue ){
+				_context.setupProjectWithProperties();
 			}
 		}
-
-		IRPModelElement theSelectedEl = _context.getSelectedElement();
-		_context.debug( "onApplyPluginMethodForSystemFlows invoked for " + _context.elInfo( theSelectedEl ) + " with " + theSelectedGraphEls.size() );
-		theSelectedEl.highLightElement();
-	}*/
+		return isContinue;
+	}
 }
 
 /**

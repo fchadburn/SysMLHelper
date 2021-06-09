@@ -14,6 +14,7 @@ Subject SysMLHelper
         Metaclass General
 		Property StoreUnitInSeparateDirectoryNewTerms String "12 Reqts Analysis - Use Case Package,21 Funct Analysis - Scenarios Package,23 Funct Analysis - Interfaces Package"
 		Property DontCreateSeparateUnitNewTerms String ""
+		Property ContextDiagramPackageStereotype String "10 Reqts Analysis - Context Diagram Package"
 		Property ActorPackageStereotype String "11 Reqts Analysis - Actor Package"
 		Property UseCasePackageStereotype String "12 Reqts Analysis - Use Case Package"
 		Property UseCasePackageWorkingStereotype String "12 Reqts Analysis - Working Copy Package"
@@ -27,17 +28,23 @@ Subject SysMLHelper
 		Property ElapsedTimeActorStereotype String "ElapsedTimeGenerator"
 		Property TestbenchStereotype String "Testbench"          
 		Property IsAutoPopulatePackageDiagram Bool "True"          
-		Property IsShowProfileVersionCheckDialogs Bool "True"          
+		Property IsShowProfileVersionCheckDialogs Bool "True"
 	end
 	Metaclass RequirementsAnalysis
 		Property CreateRequirementTextForPrefixing String "The feature shall allow the"
 		Property NewTermForUseCaseDiagram String "EnhancedUseCaseDiagram"
+		Property NewTermForSystemContextDiagram String "SystemContextDiagram"
+		Property NewTermForActorUsage String "ActorUsage"
+		Property NewTermForSystemContext String "SystemContext"
 		Property TemplateForActivityDiagram String "template_for_act"
 		Property TraceabilityTypeToUseForActions String "derive"
 		Property TraceabilityTypeToUseForUseCases String "refine"
 		Property DefaultActorsForUseCaseDiagram String "Driver,Environment"
 		Property DefaultActorPackageName String "ActorPkg"
 		Property DefaultUseCasePackageName String "FeatureA"
+		Property DefaultExternalSignalsPackageName String "ExternalSignalsPkg"
+		Property DefaultContextDiagramPackageName String "SystemX"
+		Property DefaultRequirementsPackageName String "RequirementsPkg"
 		Property IsEnableAutoMoveOfRequirements Bool "True"
 		Property IsEnableAutoMoveOfEvents Bool "True"
 		Property IsEnableGatewayTypes Bool "False"
@@ -83,5 +90,32 @@ Subject General
 		Property IsSendEventViaPanelWantedByDefault Bool "False"
 		Property IsCallOperationSupportEnabled Bool "True"
 	end
+end
+Subject Format
+	Metaclass ActorUsage
+		Property DefaultSize String "0,34,148,148"
+	end
+	Metaclass SystemContext
+		Property DefaultSize String "0,34,184,148"
+	end
+end
+Subject ObjectModelGe
+	Metaclass ActorUsage
+		Property ShowAttributes Enum "All,None,Public,Explicit" "None"
+		Property ShowOperations Enum "All,None,Public,Explicit" "None"
+		Property ShowStereotype Enum "Label,Bitmap,None" "Label"
+		Property ShowStereotypeOfClass Bool "True"
+		Property ShowName Enum  "Full_path,Relative,Name_only,Type,Label" "Type"
+		Property ShowType Bool "True"
+		Property ShowPorts Bool "False"
+		Property ShowPortsInterfaces Bool "False"
+		Property PortsSingleLabelLayout Enum "Off,Internal,External" "Off"
+		Property MultilineNameCompartment Bool "False"
+		Property Compartments MultiLine ""
+		Property ShowInheritedAttributes Bool "False"
+		Property ShowInheritedOperations Bool "False"
+		Property ShowRedefinesLabel Bool "True"
+		Property QuickNavigationCategories String "MainBehavior,MainDiagram,Hyperlinks,Diagrams"
+	end	
 end
 end

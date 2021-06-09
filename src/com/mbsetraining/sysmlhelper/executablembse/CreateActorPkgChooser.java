@@ -34,7 +34,7 @@ public class CreateActorPkgChooser {
 		
 		_context = context;
 		
-		final String theDefaultName = _context.getDefaultActorPackageName( theOwnerPkg );
+		final String theDefaultName = _context.getDefaultActorPackageName();
 		
 		_ownerPkg = theOwnerPkg;
 		_project = theOwnerPkg.getProject();

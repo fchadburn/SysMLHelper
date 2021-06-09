@@ -45,6 +45,20 @@ import com.telelogic.rhapsody.core.IRPUnit;
 
 public class ExecutableMBSE_Context extends ConfigurationSettings {
 	
+	protected String _defaultExternalSignalsPackageName = "Missing DefaultExternalSignalsPackageName Property";
+	protected String _defaultContextDiagramPackageName = "Missing DefaultContextDiagramPackageName property";
+	protected String _defaultActorPackageName = "Missing _defaultActorPackageName property";
+	protected String _defaultRequirementsPackageName = "Missing _defaultRequirementsPackageName property";
+	protected String _externalSignalsPackageStereotype = "Missing ExternalSignalsPackageStereotype Property";
+	protected String _contextDiagramPackageStereotype = "Missing ContextDiagramPackageStereotype property";
+	protected String _requirementPackageStereotype = "Missing _requirementPackageStereotype property";
+	protected IRPStereotype _newTermForSystemContextDiagram;	
+	protected IRPStereotype _newTermForUseCaseDiagram;
+	protected IRPStereotype _newTermForActorUsage;
+	protected IRPStereotype _newTermForSystemContext;
+
+	protected boolean _isEnableAutoMoveOfEvents = false;
+	
 	public ExecutableMBSE_Context(
 			String theAppID ){
 		
@@ -60,6 +74,54 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 				"ExecutableMBSE_MessagesBundle",
 				"ExecutableMBSE" 
 				);
+		
+		try {
+			
+			_defaultExternalSignalsPackageName = _rhpPrj.getPropertyValue(
+					"SysMLHelper.RequirementsAnalysis.DefaultExternalSignalsPackageName" );
+			
+			_defaultContextDiagramPackageName = _rhpPrj.getPropertyValue(
+					"SysMLHelper.RequirementsAnalysis.DefaultContextDiagramPackageName" );
+			
+			_defaultActorPackageName = _rhpPrj.getPropertyValue(
+					"SysMLHelper.RequirementsAnalysis.DefaultActorPackageName" );
+			
+			_defaultRequirementsPackageName = _rhpPrj.getPropertyValue(
+					"SysMLHelper.RequirementsAnalysis.DefaultRequirementsPackageName" );
+			
+			_externalSignalsPackageStereotype = _rhpPrj.getPropertyValue(
+					"SysMLHelper.General.ExternalSignalsPackageStereotype" );
+			
+			
+			_isEnableAutoMoveOfEvents = getBooleanPropertyValue(
+					_rhpPrj,
+						"SysMLHelper.RequirementsAnalysis.IsEnableAutoMoveOfEvents" );
+			
+			_contextDiagramPackageStereotype = _rhpPrj.getPropertyValue(
+					"SysMLHelper.General.ContextDiagramPackageStereotype" );
+			
+			_requirementPackageStereotype = _rhpPrj.getPropertyValue(
+					"SysMLHelper.General.RequirementPackageStereotype" );
+			
+			_newTermForSystemContextDiagram = getStereotypeBasedOn(
+					_rhpPrj, 
+					"SysMLHelper.RequirementsAnalysis.NewTermForSystemContextDiagram" );
+			
+			_newTermForUseCaseDiagram = getStereotypeBasedOn(
+					_rhpPrj, 
+					"SysMLHelper.RequirementsAnalysis.NewTermForUseCaseDiagram" );
+			
+			_newTermForActorUsage = getStereotypeBasedOn(
+					_rhpPrj, 
+					"SysMLHelper.RequirementsAnalysis.NewTermForActorUsage" );
+			
+			_newTermForSystemContext = getStereotypeBasedOn(
+					_rhpPrj, 
+					"SysMLHelper.RequirementsAnalysis.NewTermForSystemContext" );
+			
+		} catch( Exception e ){
+			super.error( "Exception in ExecutableMBSE_Context constructor, e=" + e.getMessage() );
+		}
 	}
 	
 	public boolean getIsShowProfileVersionCheckDialogs(){
@@ -152,18 +214,20 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 		return theStereotype;
 	}
 	
-	public IRPStereotype getStereotypeForUseCaseDiagram(
-			IRPModelElement basedOnContext ){
-		
-		IRPStereotype theStereotype = getStereotypeBasedOn(
-				basedOnContext, 
-				"SysMLHelper.RequirementsAnalysis.NewTermForUseCaseDiagram" );
-		
-		if( theStereotype == null ){
-			super.warning( "Warning, no stereotype was set for NewTermForUseCaseDiagram" );
-		}
-		
-		return theStereotype;
+	public IRPStereotype getNewTermForUseCaseDiagram(){
+		return _newTermForUseCaseDiagram;
+	}
+	
+	public IRPStereotype getNewTermForSystemContextDiagram(){
+		return _newTermForSystemContextDiagram;
+	}
+	
+	public IRPStereotype getNewTermForActorUsage(){
+		return _newTermForActorUsage;
+	}
+	
+	public IRPStereotype getNewTermForSystemContext(){
+		return _newTermForSystemContext;
 	}
 	
 	public List<IRPActor> getMasterActorList(
@@ -238,17 +302,16 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 		return theMasterActors;
 	}
 	
-	public String getDefaultActorPackageName(
-			IRPModelElement basedOnContext ){
+	public String getDefaultActorPackageName(){
+		return _defaultActorPackageName;
+	}
 	
-		String theValue = basedOnContext.getPropertyValue(
-				"SysMLHelper.RequirementsAnalysis.DefaultActorPackageName");
-		
-		if( theValue == null || theValue.isEmpty() ){
-			theValue = "Error";
-		}
-		
-		return theValue;
+	public String getDefaultRequirementsPackageName(){
+		return _defaultRequirementsPackageName;
+	}
+	
+	public String getDefaultExternalSignalsPackageName(){
+		return _defaultExternalSignalsPackageName;
 	}
 	
 	public String getDefaultUseCasePackageName(
@@ -262,6 +325,11 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 		}
 		
 		return theValue;
+	}
+	
+	public String getDefaultContextDiagramPackageName(){
+		
+		return _defaultContextDiagramPackageName;
 	}
 	
 	public boolean getIsAutoPopulatePackageDiagram(
@@ -553,14 +621,8 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 			return thePropertyValue;
 		}
 	
-	public String getRequirementPackageStereotype(
-			IRPModelElement basedOnContextEl ) {
-		
-			String thePropertyValue = 
-					basedOnContextEl.getPropertyValue( 
-							"SysMLHelper.General.RequirementPackageStereotype" );
-
-			return thePropertyValue;
+	public String getRequirementPackageStereotype() {
+		return _requirementPackageStereotype;
 	}
 	
 	public String getSimulationPackageStereotype(
@@ -583,14 +645,9 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 		return thePropertyValue;
 	}
 
-	public String getExternalSignalsPackageStereotype(
-		IRPModelElement basedOnContextEl ) {
+	public String getExternalSignalsPackageStereotype() {
 				
-		String thePropertyValue = 
-				basedOnContextEl.getPropertyValue( 
-						"SysMLHelper.General.ExternalSignalsPackageStereotype" );
-
-		return thePropertyValue;
+		return _externalSignalsPackageStereotype;
 	}
 	
 	public String getDesignPackageStereotype(
@@ -613,14 +670,8 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 		return thePropertyValue;
 	}
 	
-	public String getSystemContextPackageStereotype(
-			IRPModelElement basedOnContextEl ) {
-		
-		String thePropertyValue = 
-				basedOnContextEl.getPropertyValue( 
-						"SysMLHelper.General.SystemContextPackageStereotype" );
-		
-		return thePropertyValue;
+	public String getContextDiagramPackageStereotype() {
+		return _contextDiagramPackageStereotype;
 	}
 	
 	public String getParametricsPackageStereotype(
@@ -725,14 +776,8 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 		return result;
 	}
 	
-	public boolean getIsEnableAutoMoveOfEvents(
-			IRPModelElement forContextEl ){
-		
-		boolean result = getBooleanPropertyValue(
-				forContextEl,
-				"SysMLHelper.RequirementsAnalysis.IsEnableAutoMoveOfEvents" );
-		
-		return result;
+	public boolean getIsEnableAutoMoveOfEvents(){
+		return _isEnableAutoMoveOfEvents;
 	}
 	
 	public boolean getIsEnableGatewayTypes(
@@ -1749,3 +1794,22 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 		return theOp;
 	}
 }
+
+/**
+ * Copyright (C) 2021  MBSE Training and Consulting Limited (www.executablembse.com)
+
+    This file is part of SysMLHelperPlugin.
+
+    SysMLHelperPlugin is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    SysMLHelperPlugin is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with SysMLHelperPlugin.  If not, see <http://www.gnu.org/licenses/>.
+ */

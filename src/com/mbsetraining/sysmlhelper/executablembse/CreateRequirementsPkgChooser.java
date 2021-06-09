@@ -20,33 +20,32 @@ public class CreateRequirementsPkgChooser {
 	private JComboBox<Object> _userChoiceComboBox = new JComboBox<Object>();
 	private List<GatewayFileSection> _availableTypeTemplates = new ArrayList<GatewayFileSection>();
 	private JTextField _nameTextField = new JTextField();
-	private IRPProject _project = null;
 	private final String _doNothingOption = "Skip creation of a requirements package";
 	private final String _createNewUnderProjectOption = "Create new requirements package under project";
 	private final String _createNewUnderProjectWithStereotypeOption = "Create new stereotyped requirements package under project (based on ";
 	private final String _createNewUnderUseCasePkgOption = "Create new requirements package under use case package";
 	private final String _createNewUnderUseCasePkgWithStereotypeOption = "Create new stereotyped requirements package under use case package (based on ";
-	private final String _existingRequirementsPkgPrefix = "Flow requirements to existing package called ";
+	private final String _existingPkgPrefix = "Flow requirements to existing package called ";
 	private final String _cone = "<None>";
-	private String m_Name;
-	private List<IRPModelElement> m_ExistingPkgs;
+	private String _name;
+	private List<IRPModelElement> _existingPkgs;
 	
 	private ExecutableMBSE_Context _context;
 
 	public CreateRequirementsPkgChooser(
 			IRPPackage theOwnerPkg,
 			String theName,
+			boolean isDefaultToNewUnderProject,
 			ExecutableMBSE_Context context ){
 
 		_context = context;
-		_project = theOwnerPkg.getProject();
-		m_Name = theName;
+		_name = theName;
 
-		m_ExistingPkgs = 
+		_existingPkgs = 
 				_context.findElementsWithMetaClassAndStereotype(
 						"Package", 
-						_context.getRequirementPackageStereotype( theOwnerPkg ), 
-						_project, 
+						_context.getRequirementPackageStereotype(), 
+						_context.get_rhpPrj(), 
 						1 );
 
 		String theSysMLHelperProfilePath =
@@ -74,21 +73,32 @@ public class CreateRequirementsPkgChooser {
 					theAvailableTypeTemplate.getSectionName() + " type)" );
 		}
 
-		for( IRPModelElement theExistingReqtsPkg : m_ExistingPkgs ){
+		for( IRPModelElement theExistingReqtsPkg : _existingPkgs ){
 			_userChoiceComboBox.addItem( 
-					_existingRequirementsPkgPrefix + theExistingReqtsPkg.getName() );
+					_existingPkgPrefix + theExistingReqtsPkg.getName() );
 		}
-
-
-		_userChoiceComboBox.setSelectedItem( 
-				_createNewUnderProjectOption );
-
-		String theUniqueName = 
-				_context.determineUniqueNameBasedOn( 
-						theName, "Package", theOwnerPkg );
-
-		_nameTextField.setText( theUniqueName );
-		_nameTextField.setEnabled( true );	
+		
+		if( _existingPkgs.isEmpty() || isDefaultToNewUnderProject ){	
+			
+			// set default to create new package
+			_userChoiceComboBox.setSelectedItem( _createNewUnderProjectOption );
+    		
+			String theUniqueName = 
+					_context.determineUniqueNameBasedOn( 
+							_name, "Package", theOwnerPkg );
+			
+    		_nameTextField.setText( theUniqueName );
+    		_nameTextField.setEnabled( true );	
+    		
+		} else { // !m_ExistingPkgs.isEmpty()
+			
+			String thePackageName = _existingPkgs.get(0).getName();
+			 
+			/// set default to first in list
+			_userChoiceComboBox.setSelectedItem( _existingPkgPrefix + thePackageName );
+    		_nameTextField.setText( thePackageName );
+			_nameTextField.setEnabled( false );	
+		}
 
 		_userChoiceComboBox.addActionListener( new ActionListener(){
 			public void actionPerformed( ActionEvent e ){
@@ -105,12 +115,12 @@ public class CreateRequirementsPkgChooser {
 						selectedValue.equals( _createNewUnderUseCasePkgOption ) ||
 						selectedValue.startsWith( _createNewUnderUseCasePkgWithStereotypeOption ) ){
 
-					updateRequirementsPkgNameBasedOn( m_Name );
+					updateRequirementsPkgNameBasedOn( _context.getDefaultRequirementsPackageName() );
 					_nameTextField.setEnabled( true );		
 
-				} else if( selectedValue.startsWith( _existingRequirementsPkgPrefix ) ){
+				} else if( selectedValue.startsWith( _existingPkgPrefix ) ){
 
-					String theName = selectedValue.replaceFirst( _existingRequirementsPkgPrefix, "" );
+					String theName = selectedValue.replaceFirst( _existingPkgPrefix, "" );
 
 					_nameTextField.setText( theName );
 					_nameTextField.setEnabled( false );
@@ -207,7 +217,7 @@ public class CreateRequirementsPkgChooser {
 			theOption = CreateRequirementsPkgOption.CreateUnderUseCasePkg;
 		} else if( theUserChoice.startsWith( _createNewUnderUseCasePkgWithStereotypeOption ) ){
 			theOption = CreateRequirementsPkgOption.CreateUnderUseCasePkgWithStereotype;
-		} else if( theUserChoice.startsWith( _existingRequirementsPkgPrefix ) ){
+		} else if( theUserChoice.startsWith( _existingPkgPrefix ) ){
 			theOption = CreateRequirementsPkgOption.UseExistingReqtsPkg;
 		} else if( theUserChoice.contains( _doNothingOption ) ){
 			theOption = CreateRequirementsPkgOption.DoNothing;
@@ -229,11 +239,11 @@ public class CreateRequirementsPkgChooser {
 		if( getReqtsPkgChoice()== CreateRequirementsPkgOption.UseExistingReqtsPkg ){
 
 			String theUserChoice = (String) _userChoiceComboBox.getSelectedItem();
-			String thePackageName = theUserChoice.replaceFirst( _existingRequirementsPkgPrefix, "" );
+			String thePackageName = theUserChoice.replaceFirst( _existingPkgPrefix, "" );
 
 			int count = 0;
 
-			for( IRPModelElement theExistingPkg : m_ExistingPkgs ){
+			for( IRPModelElement theExistingPkg : _existingPkgs ){
 
 				if( theExistingPkg instanceof IRPPackage &&
 						theExistingPkg.getName().equals( thePackageName ) ){
@@ -263,12 +273,12 @@ public class CreateRequirementsPkgChooser {
 		if( selectedValue.equals( _createNewUnderProjectOption ) ||
 				selectedValue.startsWith( _createNewUnderProjectWithStereotypeOption ) ){
 
-			m_Name = _context.determineUniqueNameBasedOn(
+			_name = _context.determineUniqueNameBasedOn(
 					theName,
 					"Package",
-					_project );
+					_context.get_rhpPrj() );
 		} else {
-			m_Name = theName;
+			_name = theName;
 		}
 
 		if( selectedValue.equals( _createNewUnderProjectOption ) ||
@@ -276,16 +286,13 @@ public class CreateRequirementsPkgChooser {
 				selectedValue.equals( _createNewUnderUseCasePkgOption ) ||
 				selectedValue.startsWith( _createNewUnderUseCasePkgWithStereotypeOption ) ){
 
-			_nameTextField.setText( m_Name );
+			_nameTextField.setText( _name );
 		}
 	}
 }
 
 /**
- * Copyright (C) 2018-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #249 29-MAY-2019: First official version of new ExecutableMBSEProfile  (F.J.Chadburn)
+ * Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 
