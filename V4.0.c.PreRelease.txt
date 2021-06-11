@@ -420,8 +420,13 @@ ExecutableMBSEProfile:
 #288 09-JUN-2021: Add new MBSE menu to create a context diagram structure including auto-populate from actor list (F.J.Chadburn)
 #289 09-JUN-2021: Refinement of profile property setting checks to autoset properties when populating package structure (F.J.Chadburn)
 #290 09-JUN-2021: Move the setup project command to the root right-click menu rather than the requirements analysis menu (F.J.Chadburn)
+#291 11-JUN-2021: Add robustness to the auto-moving of Events plus a differentiated property to turn on/off (F.J.Chadburn)
 
 Backlog/Known issues
 
 - Add ability to create context diagram package at same time as creating the use case package
 - Add an internal signals package for events and interfaces
+- Fix up the populate helper to work with implicit classes
+- Add architecture package structure
+- Add reference sequence diagram capability to add new menus
+- Get events to be picked from dependent external signals package 

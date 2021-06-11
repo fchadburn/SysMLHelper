@@ -46,7 +46,8 @@ Subject SysMLHelper
 		Property DefaultContextDiagramPackageName String "SystemX"
 		Property DefaultRequirementsPackageName String "RequirementsPkg"
 		Property IsEnableAutoMoveOfRequirements Bool "True"
-		Property IsEnableAutoMoveOfEvents Bool "True"
+		Property IsEnableAutoMoveOfEventsOnFlowCreation Bool "True"
+		Property IsEnableAutoMoveOfEventsOnAddNewElement Bool "True"
 		Property IsEnableGatewayTypes Bool "False"
 		Property UseCaseNoteText String "Draw use cases and actors.
 

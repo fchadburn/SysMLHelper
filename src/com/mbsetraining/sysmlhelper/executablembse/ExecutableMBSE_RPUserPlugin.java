@@ -47,7 +47,9 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 	public void RhpPluginInit(
 			final IRPApplication theRhapsodyApp ){
 
-		_context = new ExecutableMBSE_Context( theRhapsodyApp.getApplicationConnectionString() );
+		String theAppID = theRhapsodyApp.getApplicationConnectionString();
+		
+		_context = new ExecutableMBSE_Context( theAppID );
 
 		final String legalNotice = 
 				"Copyright (C) 2015-2021  MBSE Training and Consulting Limited (www.executablembse.com)"

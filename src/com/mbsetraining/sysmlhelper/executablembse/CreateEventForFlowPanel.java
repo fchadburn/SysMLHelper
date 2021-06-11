@@ -178,7 +178,7 @@ public class CreateEventForFlowPanel extends CreateStructuralElementPanel {
 				theEvent.highLightElement();
 				
 				// only do move if property is set
-				boolean isEnabled = _context.getIsEnableAutoMoveOfEvents();
+				boolean isEnabled = _context.getIsEnableAutoMoveOfEventsOnFlowCreation();
 				
 				if( isEnabled ){
 					ElementMover theElementMover = new ElementMover( 

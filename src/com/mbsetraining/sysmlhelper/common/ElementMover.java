@@ -6,10 +6,10 @@ import com.telelogic.rhapsody.core.*;
 
 public class ElementMover {
 
-	protected IRPModelElement _element;
-	protected IRPPackage _moveToPkg;
-	protected String _whereMoveToHasStereotype;
-	protected ConfigurationSettings _context;
+	final protected IRPModelElement _element;
+	final protected IRPPackage _moveToPkg;
+	final protected String _whereMoveToHasStereotype;
+	final protected ConfigurationSettings _context;
 
 	public ElementMover(
 			IRPModelElement theElement,
@@ -58,15 +58,31 @@ public class ElementMover {
 			}
 		}
 		
+		// Don't move to itself
+		if( theMoveToPkg != null &&
+				theMoveToPkg.equals( basedOnEl.getOwner() ) ){
+			
+			theMoveToPkg = null;
+		}
+		
 		return theMoveToPkg;
+	}
+	
+	public boolean isMovePossible(){
+	
+		return _moveToPkg != null;
+	}
+	
+	public IRPModelElement get_moveToPkg(){
+		
+		return _moveToPkg;
 	}
 	
 	public boolean performMove(){
 
 		boolean isSuccess = false;
 
-		if( _moveToPkg != null && 
-			!_moveToPkg.equals( _element.getOwner() ) ){
+		if( _moveToPkg != null ){
 
 			// check if already element of same name
 			IRPModelElement alreadyExistingEl = 

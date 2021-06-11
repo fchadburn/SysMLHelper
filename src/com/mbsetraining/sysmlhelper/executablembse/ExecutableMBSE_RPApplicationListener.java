@@ -38,43 +38,36 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			_context.setSavedInSeparateDirectoryIfAppropriateFor( 
 					modelElement );
 
-			if( modelElement != null && 
-					modelElement instanceof IRPRequirement ){
+			if( modelElement instanceof IRPRequirement ){
 
 				afterAddForRequirement( modelElement );
 
-			} else if( modelElement != null && 
-					modelElement instanceof IRPClass && 
+			} else if( modelElement instanceof IRPClass && 
 					_context.hasStereotypeCalled( "Interface", modelElement )){
 
 				afterAddForInterface( modelElement );
 
-			} else if( modelElement != null && 
-					modelElement instanceof IRPEvent ){
+			} else if( modelElement instanceof IRPEvent ){
 
 				afterAddForEvent( modelElement );
 				
-			} else if( modelElement != null && 
-					modelElement instanceof IRPDependency && 
+			} else if( modelElement instanceof IRPDependency && 
 					modelElement.getUserDefinedMetaClass().equals(
 							"Derive Requirement" ) ){
 
 				afterAddForDeriveRequirement( (IRPDependency) modelElement );
 
-			} else if( modelElement != null && 
-					modelElement instanceof IRPCallOperation ){
+			} else if( modelElement instanceof IRPCallOperation ){
 
 				afterAddForCallOperation( 
 						(IRPCallOperation) modelElement );
 
-			} else if( modelElement != null && 
-					modelElement instanceof IRPInstance && 
+			} else if( modelElement instanceof IRPInstance && 
 					_context.hasStereotypeCalled( "ActorUsage", modelElement )){
 
 				afterAddForActorUsage( (IRPInstance) modelElement );
 
-			} else if( modelElement != null && 
-					modelElement instanceof IRPFlow ){
+			} else if( modelElement instanceof IRPFlow ){
 
 				afterAddForFlow( (IRPFlow) modelElement );
 			}
@@ -191,16 +184,39 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 	private void afterAddForEvent(
 			IRPModelElement modelElement ){
 
+		_context.debug( "afterAddForEvent invoked for " + _context.elInfo( modelElement ) );
+		
 		// only do move if property is set
-		boolean isEnabled = _context.getIsEnableAutoMoveOfEvents();
+		boolean isEnabled = _context.getIsEnableAutoMoveOfEventsOnAddNewElement();
 
 		if( isEnabled ){
+						
 			ElementMover theElementMover = new ElementMover( 
 					modelElement, 
 					_context.getExternalSignalsPackageStereotype(),
 					_context );
 
-			theElementMover.performMove();
+			if( theElementMover.isMovePossible() ){
+				
+				IRPModelElement moveToPkg = theElementMover.get_moveToPkg();
+
+				// This delay + the save should mean that Event won't crash Rhapsody
+				boolean isContinue = UserInterfaceHelper.askAQuestion( 
+						"Move " + modelElement.getUserDefinedMetaClass() + " to " + 
+						moveToPkg.getName() + "?" );
+				
+				if( isContinue ){
+					
+					theElementMover.performMove();
+										
+					try {
+						_context.get_rhpPrj().save();
+
+					} catch( Exception e ){
+						_context.error( "Exception on save in afterAddForEvent, e=" + e.getMessage() );
+					}
+				}
+			}
 		}
 	}
 
