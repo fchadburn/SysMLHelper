@@ -97,7 +97,7 @@ Subject Format
 		Property DefaultSize String "0,34,148,148"
 	end
 	Metaclass SystemContext
-		Property DefaultSize String "0,34,184,148"
+		Property DefaultSize String "0,34,248,148"
 	end
 end
 Subject ObjectModelGe

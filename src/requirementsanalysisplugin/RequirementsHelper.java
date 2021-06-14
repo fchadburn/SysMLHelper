@@ -133,7 +133,7 @@ public class RequirementsHelper {
 				if( isEnabled ){
 					RequirementMover theElementMover = new RequirementMover( 
 							theReqt, 
-							_context.getRequirementPackageStereotype(_context.get_rhpPrj()), 
+							_context.getRequirementPackageStereotype(), 
 							_context );
 					
 					theElementMover.performMove();					

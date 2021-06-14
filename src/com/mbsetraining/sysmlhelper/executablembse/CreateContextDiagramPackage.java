@@ -125,18 +125,18 @@ public class CreateContextDiagramPackage {
 				"Text",
 				theUseCaseNoteText );*/
 		
-		String theDefaultSystemContectSize = theDiagram.getPropertyValue( 
-				"Format." + _context.getNewTermForActorUsage().getName() + ".DefaultSize");
+		String theDefaultSystemContextSize = theDiagram.getPropertyValue( 
+				"Format." + _context.getNewTermForSystemContext().getName() + ".DefaultSize");
 		
-		String[] theSystemContextSizeSplit = theDefaultSystemContectSize.split(",");
+		String[] theSystemContextSizeSplit = theDefaultSystemContextSize.split(",");
 		int theSystemContextWidth = Integer.parseInt( theSystemContextSizeSplit[2] );
 		int theSystemContextHeight = Integer.parseInt( theSystemContextSizeSplit[3] );
 		
 		int x0 = 420;
-		int y0 = 270;
-		int r = 190;
+		int y0 = 380;
+		int r = 270;
 		
-		IRPGraphNode theUCGraphNode = 
+		IRPGraphNode theSystemGraphNode = 
 	    		theDiagram.addNewNodeForElement( 
 	    				theSystemContextEl, 
 	    				x0-(theSystemContextWidth/2), 
@@ -144,8 +144,9 @@ public class CreateContextDiagramPackage {
 	    				theSystemContextWidth, 
 	    				theSystemContextHeight );
 
-		theDiagram.setPropertyValue( "General.Graphics.DefaultBoxView", "Structured" );
-	    theCollection.addGraphicalItem( theUCGraphNode );
+		theSystemGraphNode.setGraphicalProperty( "StructureView", "True" );
+		
+	    theCollection.addGraphicalItem( theSystemGraphNode );
 		
 		if( !theActorUsages.isEmpty() ){
 
@@ -169,14 +170,15 @@ public class CreateContextDiagramPackage {
 			    		y-(actorHeight/2), 
 			    		actorWidth, 
 			    		actorHeight );
-			    
-			    theCollection.addGraphicalItem( theActorGN );
+
+			    theActorGN.setGraphicalProperty( "StructureView", "True" );
+				
+				theCollection.addGraphicalItem( theActorGN );
 			}
 						
 			theDiagram.completeRelations(
 					theCollection, 
 					1);
-
 		}
 				
 		theDiagram.highLightElement();
