@@ -408,7 +408,7 @@ ExecutableMBSEProfile:
 
 ----------------------------------------------------------------------------------
 
-4.0.c.PRERELEASE (XX-XXX-XXXX):
+4.0.c.PRERELEASE (14-JUN-2021):
 
 ExecutableMBSEProfile:
 #282 20-MAY-2021: Fix issue with requirement mover caused by renaming of the package new term stereotypes (F.J.Chadburn)
