@@ -423,6 +423,7 @@ ExecutableMBSEProfile:
 #291 11-JUN-2021: Add robustness to the auto-moving of Events plus a differentiated property to turn on/off (F.J.Chadburn)
 #292 11-JUN-2021: Get context diagram auto creation to set graph nodes to structured rather than specification view (F.J.Chadburn)
 #293 14-JUN-2021: Fix so that create requirement on an action still works (F.J.Chadburn)
+#294 14-JUN-2021: Update profile version number and profile date stamp (F.J.Chadburn)
 
 Backlog/Known issues
 
