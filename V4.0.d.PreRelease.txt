@@ -425,6 +425,13 @@ ExecutableMBSEProfile:
 #293 14-JUN-2021: Fix so that create requirement on an action still works (F.J.Chadburn)
 #294 14-JUN-2021: Update profile version number and profile date stamp (F.J.Chadburn)
 
+----------------------------------------------------------------------------------
+
+4.0.d.PRERELEASE (XX-XXX-2021):
+
+ExecutableMBSEProfile:
+#295 15-JUN-2021: Initial metamodel support for design package with simplified bdd (F.J.Chadburn)
+
 Backlog/Known issues
 
 - Add ability to create context diagram package at same time as creating the use case package

@@ -11,12 +11,22 @@
 			<_id type="a">GUID 801c8dc2-1109-41eb-8815-e3fb68b9a344</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">IconsPkg</_name>
-			<_modifiedTime type="a">6.7.2021::7:5:58</_modifiedTime>
+			<_modifiedTime type="a">6.15.2021::8:42:13</_modifiedTime>
 			<_defaultComposite type="s">GUID 64eceb80-328e-445f-90f1-4b11f0a04bea</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
 				<value>GUID b620f6ca-17f0-4012-8be8-eec3f5b1561d</value>
 				<value>GUID 383d5831-932c-4062-8803-0acf46e5fe33</value>
+				<value>GUID 25527551-3bce-4500-9f74-bdae24829a75</value>
+				<value>GUID 8cd6b349-d9ea-45f4-9bb9-5fe450191494</value>
+				<value>GUID e5dcd70e-e13c-434b-86e2-544af9e25e5d</value>
+				<value>GUID 2937ea2f-6aba-4be9-999e-1dd63913929d</value>
+				<value>GUID ac36218d-e0cc-4de2-970e-7f5cdf935ce6</value>
+				<value>GUID ebd44236-1341-4b6d-8d91-dfe89d035277</value>
+				<value>GUID 57c46004-8175-48b2-b985-6b1befa92310</value>
+				<value>GUID b9b8fe11-8ad1-4e61-8129-be64a266cf07</value>
+				<value>GUID 2ef19053-6007-4704-b72f-c420bf9b454c</value>
+				<value>GUID e248cddc-3f99-4b99-ac54-07d57b10a174</value>
 				<value>GUID 64eceb80-328e-445f-90f1-4b11f0a04bea</value>
 			</AggregatesList>
 		</ISubsystem>
@@ -34,11 +44,81 @@
 			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
 			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\ExternalSignalsPackages.ico</_LastKnownFullPath>
 		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID 25527551-3bce-4500-9f74-bdae24829a75</_id>
+			<_name type="a">LogicalSystemPackage.ico</_name>
+			<_modifiedTime type="a">6.14.2021::16:3:2</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\LogicalSystemPackage.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID 8cd6b349-d9ea-45f4-9bb9-5fe450191494</_id>
+			<_name type="a">LogicalSystemPackages.ico</_name>
+			<_modifiedTime type="a">6.14.2021::16:3:16</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\LogicalSystemPackages.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID e5dcd70e-e13c-434b-86e2-544af9e25e5d</_id>
+			<_name type="a">SubsystemUsage.ico</_name>
+			<_modifiedTime type="a">6.15.2021::8:42:13</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\SubsystemUsage.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID 2937ea2f-6aba-4be9-999e-1dd63913929d</_id>
+			<_name type="a">SubsystemUsages.ico</_name>
+			<_modifiedTime type="a">6.15.2021::8:42:13</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\SubsystemUsages.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID ac36218d-e0cc-4de2-970e-7f5cdf935ce6</_id>
+			<_name type="a">SubsystemBlock.ico</_name>
+			<_modifiedTime type="a">6.15.2021::8:42:13</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\SubsystemBlock.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID ebd44236-1341-4b6d-8d91-dfe89d035277</_id>
+			<_name type="a">SubsystemBlocks.ico</_name>
+			<_modifiedTime type="a">6.15.2021::8:42:13</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\SubsystemBlocks.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID 57c46004-8175-48b2-b985-6b1befa92310</_id>
+			<_name type="a">SystemBlock.ico</_name>
+			<_modifiedTime type="a">6.15.2021::8:42:13</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\SystemBlock.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID b9b8fe11-8ad1-4e61-8129-be64a266cf07</_id>
+			<_name type="a">SystemBlocks.ico</_name>
+			<_modifiedTime type="a">6.15.2021::8:42:13</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\SystemBlocks.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID 2ef19053-6007-4704-b72f-c420bf9b454c</_id>
+			<_name type="a">SystemUsage.ico</_name>
+			<_modifiedTime type="a">6.15.2021::8:42:13</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\SystemUsage.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID e248cddc-3f99-4b99-ac54-07d57b10a174</_id>
+			<_name type="a">SystemUsages.ico</_name>
+			<_modifiedTime type="a">6.15.2021::8:42:13</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\SystemUsages.ico</_LastKnownFullPath>
+		</IEmbededFile>
 		<IClass type="e">
 			<_id type="a">GUID 64eceb80-328e-445f-90f1-4b11f0a04bea</_id>
 			<_myState type="a">40960</_myState>
 			<_name type="a">TopLevel</_name>
-			<_modifiedTime type="a">1.1.1970::0:0:0</_modifiedTime>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
