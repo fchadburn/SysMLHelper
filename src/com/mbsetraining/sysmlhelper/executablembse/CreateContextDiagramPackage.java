@@ -60,10 +60,14 @@ public class CreateContextDiagramPackage {
 			
 			theActorPkgCreator.instantiateFromExisting( 
 					theContextDiagramPkg, 
-					theActorPkgName, 
+					theActorPkgName + thePkgName, 
 					theContextDiagramPkg, 
 					theExistingActorPkg, 
 					theActorPkgPrefixOption );
+			
+		} else if( theActorPkgChoice == CreateActorPkgOption.UseExisting ){
+			
+			theActorPkgCreator.useExisting( theExistingActorPkg );
 		}
 		
 		CreateExternalSignalsPkg theExternalSignalsPkg = new CreateExternalSignalsPkg( 
