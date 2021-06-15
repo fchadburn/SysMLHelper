@@ -23,7 +23,7 @@ import functionalanalysisplugin.CreateNewBlockPartPanel;
 import functionalanalysisplugin.CreateOperationPanel;
 import functionalanalysisplugin.CreateOutgoingEventPanel;
 import functionalanalysisplugin.CreateTracedAttributePanel;
-import functionalanalysisplugin.EventDeletion;
+import functionalanalysisplugin.EventDeletor;
 import functionalanalysisplugin.PopulateFunctionalAnalysisPkg;
 import functionalanalysisplugin.SequenceDiagramHelper;
 import functionalanalysisplugin.TestCaseCreator;
@@ -578,29 +578,8 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 				} else if (menuItem.equals(_context.getString("executablembseplugin.DeleteEventsAndRelatedElementsMenu"))){
 
-					EventDeletion.deleteEventAndRelatedElementsFor( theSelectedEls );
-
-
-					//					} else if (menuItem.equals(m_configSettings.getString("functionalanalysisplugin.SwitchMenusToMoreDetailedADMenu"))){
-					//
-					//						try {
-					//							if( theSelectedEl instanceof IRPActivityDiagram ){
-					//								
-					//								IRPActivityDiagram theAD = (IRPActivityDiagram)theSelectedEl;
-					//								
-					//								int isOpen = theAD.isOpen();
-					//								
-					//								PopulateFunctionalAnalysisPkg.switchToMoreDetailedAD( 
-					//										(IRPActivityDiagram)theSelectedEl );
-					//								
-					//								if( isOpen==1 ){
-					//									theAD.highLightElement();
-					//								}
-					//							}
-					//							
-					//						} catch (Exception e) {
-					//							Logger.writeLine("Error: Exception in OnMenuItemSelect when invoking MBSE Method: Functional Analysis\\Switch menus to «MoreDetailedAD»");
-					//						}
+					EventDeletor theDeletor = new EventDeletor( _context );
+					theDeletor.deleteEventAndRelatedElementsFor( theSelectedEls );
 
 				} else if (menuItem.equals(_context.getString("executablembseplugin.SwitchMenusToFullSim"))){
 

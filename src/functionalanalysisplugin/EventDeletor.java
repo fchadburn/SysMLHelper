@@ -1,18 +1,25 @@
 package functionalanalysisplugin;
 
-import generalhelpers.Logger;
-
 import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.telelogic.rhapsody.core.*;
 
-public class EventDeletion {
+public class EventDeletor {
+	
+	protected ConfigurationSettings _context;
+	
+	public EventDeletor(
+			ConfigurationSettings context ) {
+		_context = context;
+	}
 
-	public static void deleteEventAndRelatedElementsFor(List<IRPModelElement> theEls){
+	public void deleteEventAndRelatedElementsFor(
+			List<IRPModelElement> theEls ){
 		
-		ModelElementList justEvents = new ModelElementList();
+		ModelElementList justEvents = new ModelElementList( _context );
 		
 		for (IRPModelElement theEl : theEls) {
 			
@@ -35,11 +42,12 @@ public class EventDeletion {
 		
 		if (numberOfEventsToDelete > 1){
 			
-			String deleteMessage = "Do you want to delete the following " + numberOfEventsToDelete + " Events from the\n"
-					+ "model together with related usages and receptions?\n\n";
+			String deleteMessage = "Do you want to delete the following " + 
+					numberOfEventsToDelete + " Events from the\n" + 
+					"model together with related usages and receptions?\n\n";
 			
 			for (IRPModelElement theEl : justEvents) {
-				deleteMessage += Logger.elInfo(theEl) + "\n";
+				deleteMessage += _context.elInfo(theEl) + "\n";
 			}
 			
 			deleteMessage += "\n";
@@ -52,8 +60,6 @@ public class EventDeletion {
 				for (IRPModelElement theEl : justEvents) {
 					IRPEvent theEventToDelete = (IRPEvent) theEl;			
 					deleteEventAndRelatedElementsFor(theEventToDelete, false);
-					
-					
 				}
 			}
 
@@ -62,7 +68,7 @@ public class EventDeletion {
 			IRPEvent theEventToDelete = (IRPEvent) justEvents.get(0);
 			deleteEventAndRelatedElementsFor( theEventToDelete, true );
 		} else {
-			Logger.writeLine("Unexpected error in deleteEventAndRelatedElementsFor, there were no events in the selected list" );
+			_context.error( "Unexpected error in deleteEventAndRelatedElementsFor, there were no events in the selected list" );
 		}
 		
 		RhapsodyAppServer.getActiveRhapsodyApplication().refreshAllViews();
@@ -70,24 +76,27 @@ public class EventDeletion {
 
 	}
 	
-	private static void deleteTheList(ModelElementList theList){
+	private void deleteTheList(
+			ModelElementList theList ){
 		
-		ModelElementList theTransitions = theList.getListFilteredBy("Transition");
+		ModelElementList theTransitions = theList.getListFilteredBy( "Transition" );
 		theTransitions.deleteFromProject();
 
-		ModelElementList theMessages = theList.getListFilteredBy("Message");
+		ModelElementList theMessages = theList.getListFilteredBy( "Message" );
 		theMessages.deleteFromProject();
 		
-		ModelElementList theEventReceptions = theList.getListFilteredBy("EventReception");
+		ModelElementList theEventReceptions = theList.getListFilteredBy( "EventReception" );
 		theEventReceptions.deleteFromProject();
 		
-		ModelElementList theEvents = theList.getListFilteredBy("Event");
+		ModelElementList theEvents = theList.getListFilteredBy( "Event" );
 		theEvents.deleteFromProject();
 	}
 	
-	private static void deleteEventAndRelatedElementsFor(IRPEvent theEvent, boolean withPrompt){
+	private void deleteEventAndRelatedElementsFor(
+			IRPEvent theEvent, 
+			boolean withPrompt ){
 	
-		ModelElementList toDeleteList = new ModelElementList();
+		ModelElementList toDeleteList = new ModelElementList( _context );
 	
 		boolean isUnexpectedElement = false;
 		
@@ -96,16 +105,17 @@ public class EventDeletion {
 		
 		for (IRPModelElement theRef : theRefs) {
 			if ( theRef instanceof IRPEventReception ){
-				Logger.writeLine(theRef, "was added to list to delete");
+				_context.debug( _context.elInfo( theRef ) + " was added to list to delete");
 				toDeleteList.add( theRef );
 			} else if ( theRef instanceof IRPTransition ){
-				Logger.writeLine(theRef, "was added to list to delete");
+				_context.debug( _context.elInfo( theRef ) + "was added to list to delete");
 				toDeleteList.add( theRef );
 			} else if ( theRef instanceof IRPMessage ){
-				Logger.writeLine(theRef, "was added to list to delete");
+				_context.debug( _context.elInfo( theRef ) + "was added to list to delete");
 				toDeleteList.add( theRef );
 			} else {
-				Logger.writeLine("Error in deleteEventAndRelatedElementsFor, as " + Logger.elInfo(theRef) + " was not considered");
+				_context.error("Error in deleteEventAndRelatedElementsFor, as " + _context.elInfo(theRef) + 
+						" was not considered" );
 				isUnexpectedElement = true;
 			}
 		}
@@ -114,7 +124,7 @@ public class EventDeletion {
 			if (!withPrompt){
 				deleteTheList(toDeleteList);
 				
-				Logger.writeLine("Deleting " + Logger.elInfo(theEvent) + " from the project");
+				_context.info( "Deleting " + _context.elInfo(theEvent) + " from the project" );
 				theEvent.deleteFromProject();
 				
 			} else { // withPrompt
@@ -122,13 +132,13 @@ public class EventDeletion {
 				String deleteMessage = "";
 				
 				if (toDeleteList.isEmpty()){
-					deleteMessage = "Do you want to delete " + Logger.elInfo( theEvent ) + "\n";
+					deleteMessage = "Do you want to delete " + _context.elInfo( theEvent ) + "\n";
 				} else {
-					deleteMessage = "Do you want to delete " + Logger.elInfo( theEvent ) + " and its following references:\n";
+					deleteMessage = "Do you want to delete " + _context.elInfo( theEvent ) + " and its following references:\n";
 				}
 				
 				for (IRPModelElement theEl : toDeleteList) {
-					deleteMessage += Logger.elInfo(theEl) + "\n";
+					deleteMessage += _context.elInfo(theEl) + "\n";
 				}
 				
 				int chosenOption = JOptionPane.showConfirmDialog(
@@ -138,7 +148,7 @@ public class EventDeletion {
 				
 					deleteTheList(toDeleteList);
 					
-					Logger.writeLine("Deleting " + Logger.elInfo(theEvent) + " from the project");
+					_context.info("Deleting " + _context.elInfo(theEvent) + " from the project");
 					theEvent.deleteFromProject();					
 				}
 			}		
@@ -149,10 +159,7 @@ public class EventDeletion {
 }
 
 /**
- * Copyright (C) 2016  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #006 02-MAY-2016: Add FunctionalAnalysisPkg helper support (F.J.Chadburn)
+ * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
     
     This file is part of SysMLHelperPlugin.
 

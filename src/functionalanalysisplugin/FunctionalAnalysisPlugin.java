@@ -256,7 +256,7 @@ public class FunctionalAnalysisPlugin extends RPUserPlugin {
 				} else if (menuItem.equals(m_configSettings.getString("functionalanalysisplugin.DeleteEventsAndRelatedElementsMenu"))){
 
 					try {
-						EventDeletion.deleteEventAndRelatedElementsFor( theSelectedEls );
+						EventDeletor.deleteEventAndRelatedElementsFor( theSelectedEls );
 						
 					} catch (Exception e) {
 						Logger.writeLine("Error: Exception in OnMenuItemSelect when invoking EventDeletion.deleteEventAndRelatedElementsFor");
