@@ -2,6 +2,7 @@ package com.mbsetraining.sysmlhelper.executablembse;
 
 import java.util.List;
 
+import com.mbsetraining.sysmlhelper.executablembse.CreateActorPkg.CreateActorPkgOption;
 import com.telelogic.rhapsody.core.IRPActor;
 import com.telelogic.rhapsody.core.IRPClassifier;
 import com.telelogic.rhapsody.core.IRPCollection;
@@ -23,8 +24,8 @@ public class CreateUseCasesPackage {
 			String theReqtsPkgOptionalName,
 			IRPPackage theExistingReqtsPkgIfChosen,
 			CreateActorPkg.CreateActorPkgOption theActorPkgChoice,
-			String theActorsPkgNameOption,
-			List<IRPPackage> theExistingActorsPkgOption,
+			String theActorPkgName,
+			IRPPackage theExistingActorPkg,
 			String theActorPkgPrefixOption,
 			ExecutableMBSE_Context theContext ){
 		
@@ -48,16 +49,31 @@ public class CreateUseCasesPackage {
 				theExistingReqtsPkgIfChosen,
 				_context );
 
-		CreateActorPkg theActorPkg = new CreateActorPkg( 
-				theActorPkgChoice,
-				theProject,
-				theActorsPkgNameOption,
-				theUseCasePkg,
-				theExistingActorsPkgOption,
-				theActorPkgPrefixOption,
-				_context );
+		CreateActorPkg theActorPkgCreator = new CreateActorPkg( _context );
 		
-		List<IRPActor> theActors = theActorPkg.getActors();
+		if( theActorPkgChoice == CreateActorPkgOption.CreateNew ){
+			
+			theActorPkgCreator.createNew( theProject, theActorPkgName, theUseCasePkg );
+		
+		} else if( theActorPkgChoice == CreateActorPkgOption.CreateNewButEmpty ){
+			
+			theActorPkgCreator.createNewButEmpty( theProject, theActorPkgName, theUseCasePkg );
+			
+		} else if( theActorPkgChoice == CreateActorPkgOption.InstantiateFromExisting ){
+			
+			theActorPkgCreator.instantiateFromExisting( 
+					theUseCasePkg, 
+					theActorPkgName + theAdornedName, 
+					theUseCasePkg, 
+					theExistingActorPkg, 
+					theActorPkgPrefixOption );
+			
+		} else if( theActorPkgChoice == CreateActorPkgOption.UseExisting ){
+			
+			theActorPkgCreator.useExisting( theExistingActorPkg );
+		}
+		
+		List<IRPActor> theActors = theActorPkgCreator.getActors();
 
 		createUseCaseDiagram( theActors, theAdornedName, theUseCasePkg );
 		

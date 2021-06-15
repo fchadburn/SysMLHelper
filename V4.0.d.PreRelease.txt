@@ -431,6 +431,8 @@ ExecutableMBSEProfile:
 
 ExecutableMBSEProfile:
 #295 15-JUN-2021: Initial metamodel support for design package with simplified bdd (F.J.Chadburn)
+#296 15-JUN-2021: Ensure option that actor packages can be children of use case packages (F.J.Chadburn)
+#297 15-JUN-2021: Get create sub-package option to work for use case package structure creation (F.J.Chadburn)
 
 Backlog/Known issues
 

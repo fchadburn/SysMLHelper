@@ -2,7 +2,6 @@ package com.mbsetraining.sysmlhelper.executablembse;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JComboBox;
@@ -12,7 +11,7 @@ import com.mbsetraining.sysmlhelper.executablembse.CreateActorPkg.CreateActorPkg
 import com.telelogic.rhapsody.core.*;
 
 public class CreateActorPkgChooser {
-
+	
 	private JComboBox<Object> _userChoiceComboBox = new JComboBox<Object>();
 	private JTextField _nameTextField = new JTextField();
 	private IRPPackage _ownerPkg = null;
@@ -21,11 +20,9 @@ public class CreateActorPkgChooser {
 	private final String _createNewOption = "Create new shared actor package using default actor names";
 	private final String _createNewButEmptyOption = "Create new empty shared actor package";
 	private final String _existingActorPkgPrefix = "Use actors from existing package called ";
-	private final String _instantiateActorPkgPrefix = "Create a sub-package for copies of actors from package";
-
+	private final String _instantiateActorPkgPrefix = "Create a sub-package for copies of actors from package ";
 	private final String m_None = "<None>";
-	private List<IRPModelElement> m_ExistingPkgs;
-	
+	private List<IRPModelElement> _existingPkgs;
 	private ExecutableMBSE_Context _context;
 	
 	public CreateActorPkgChooser(
@@ -39,7 +36,7 @@ public class CreateActorPkgChooser {
 		_ownerPkg = theOwnerPkg;
 		_project = theOwnerPkg.getProject();
 		
-		m_ExistingPkgs = 
+		_existingPkgs = 
 				_context.findElementsWithMetaClassAndStereotype(
 						"Package", 
 						_context.getActorPackageStereotype( theOwnerPkg ), 
@@ -49,9 +46,8 @@ public class CreateActorPkgChooser {
 		_userChoiceComboBox.addItem( _doNothingOption );	
 		_userChoiceComboBox.addItem( _createNewOption );
 		_userChoiceComboBox.addItem( _createNewButEmptyOption );
-		_userChoiceComboBox.addItem( _instantiateActorPkgPrefix );
 		
-		if( m_ExistingPkgs.isEmpty() ){	
+		if( _existingPkgs.isEmpty() ){	
 			
 			// set default to create new package
 			_userChoiceComboBox.setSelectedItem( _createNewOption );
@@ -65,15 +61,15 @@ public class CreateActorPkgChooser {
     		
 		} else { // !m_ExistingPkgs.isEmpty()
 			
-			for( IRPModelElement theExistingReqtsPkg : m_ExistingPkgs ){
-				_userChoiceComboBox.addItem( _existingActorPkgPrefix + theExistingReqtsPkg.getName() );
+			for( IRPModelElement existingPkg : _existingPkgs ){
+				_userChoiceComboBox.addItem( _existingActorPkgPrefix + existingPkg.getName() );
 			}
 
-			for( IRPModelElement theExistingReqtsPkg : m_ExistingPkgs ){
-				_userChoiceComboBox.addItem( _instantiateActorPkgPrefix + theExistingReqtsPkg.getName() );
+			for( IRPModelElement existingPkg : _existingPkgs ){
+				_userChoiceComboBox.addItem( _instantiateActorPkgPrefix + existingPkg.getName() );
 			}
 			
-			String thePackageName = m_ExistingPkgs.get(0).getName();
+			String thePackageName = _existingPkgs.get(0).getName();
 			 
 			/// set default to first in list
 			_userChoiceComboBox.setSelectedItem( _existingActorPkgPrefix + thePackageName );
@@ -103,7 +99,8 @@ public class CreateActorPkgChooser {
 		    		
 		    	} else if( selectedValue.contains( _instantiateActorPkgPrefix ) ){
 		    	
-		    		_nameTextField.setText( "Requirements_" + theOwnerPkg.getName() );
+		    		_nameTextField.setText( "Actors_<OwningPkg>" );
+		    		_nameTextField.setEnabled( true );	
 		    	}
 		    	
 		    	_context.debug( selectedValue + " was selected" );
@@ -119,9 +116,9 @@ public class CreateActorPkgChooser {
 		return _userChoiceComboBox;
 	}
 	
-	public List<IRPPackage> getExistingActorPkgIfChosen(){
+	public IRPPackage getExistingActorPkgIfChosen(){
 		
-		List<IRPPackage> theActorPkgs = new ArrayList<IRPPackage>();
+		IRPPackage theActorPkg = null;
 
 		String theUserChoice = (String) _userChoiceComboBox.getSelectedItem();
 		
@@ -131,12 +128,13 @@ public class CreateActorPkgChooser {
 			String theChosenPkg = theUserChoice.replace( 
 					_existingActorPkgPrefix, "" );
 
-			for( IRPModelElement theExistingPkg : m_ExistingPkgs ){
+			for( IRPModelElement theExistingPkg : _existingPkgs ){
 				
 				if( theExistingPkg instanceof IRPPackage &&
 					theExistingPkg.getName().equals( theChosenPkg ) ){
 					
-					theActorPkgs.add((IRPPackage) theExistingPkg );
+					theActorPkg = (IRPPackage) theExistingPkg;
+					break;
 				}
 			}	
 			
@@ -146,17 +144,18 @@ public class CreateActorPkgChooser {
 			String theChosenPkg = theUserChoice.replace( 
 					_instantiateActorPkgPrefix, "" );
 
-			for( IRPModelElement theExistingPkg : m_ExistingPkgs ){
+			for( IRPModelElement theExistingPkg : _existingPkgs ){
 				
 				if( theExistingPkg instanceof IRPPackage &&
 					theExistingPkg.getName().equals( theChosenPkg ) ){
 					
-					theActorPkgs.add((IRPPackage) theExistingPkg );
+					theActorPkg = (IRPPackage) theExistingPkg;
+					break;
 				}
 			}	
 		}
 
-		return theActorPkgs;
+		return theActorPkg;
 	}
 	
 	public CreateActorPkg.CreateActorPkgOption getCreateActorPkgOption(){
@@ -193,7 +192,7 @@ public class CreateActorPkgChooser {
 			String theChosenPkg = theUserChoice.replace( 
 					_instantiateActorPkgPrefix, "" );
 
-			for( IRPModelElement theExistingPkg : m_ExistingPkgs ){
+			for( IRPModelElement theExistingPkg : _existingPkgs ){
 				
 				if( theExistingPkg instanceof IRPPackage &&
 					theExistingPkg.getName().equals( theChosenPkg ) ){
@@ -207,7 +206,9 @@ public class CreateActorPkgChooser {
 	}
 	
 	public String getActorsPkgNameIfChosen(){
-		return _nameTextField.getText();
+		
+		String theName = _nameTextField.getText().replaceAll( "\\<OwningPkg\\>", "" );
+		return theName;
 	}
 }
 

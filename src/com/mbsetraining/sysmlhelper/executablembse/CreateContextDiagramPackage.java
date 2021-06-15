@@ -3,6 +3,7 @@ package com.mbsetraining.sysmlhelper.executablembse;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mbsetraining.sysmlhelper.executablembse.CreateActorPkg.CreateActorPkgOption;
 import com.telelogic.rhapsody.core.*;
 
 public class CreateContextDiagramPackage {
@@ -16,8 +17,8 @@ public class CreateContextDiagramPackage {
 			String theReqtsPkgOptionalName,
 			IRPPackage theExistingReqtsPkgIfChosen,
 			CreateActorPkg.CreateActorPkgOption theActorPkgChoice,
-			String theActorsPkgNameOption,
-			List<IRPPackage> theExistingActorsPkgOption,
+			String theActorPkgName,
+			IRPPackage theExistingActorPkg,
 			String theActorPkgPrefixOption,
 			CreateExternalSignalsPkg.CreateExternalSignalsPkgOption theExternalSignalsPkgChoice,
 			String theExternalSignalsPkgOptionalName,
@@ -44,15 +45,26 @@ public class CreateContextDiagramPackage {
 				theReqtsPkgOptionalName, 
 				theExistingReqtsPkgIfChosen,
 				_context );
-
-		CreateActorPkg theActorPkg = new CreateActorPkg( 
-				theActorPkgChoice,
-				theProject,
-				theActorsPkgNameOption,
-				theContextDiagramPkg,
-				theExistingActorsPkgOption,
-				theActorPkgPrefixOption,
-				_context );
+		
+		CreateActorPkg theActorPkgCreator = new CreateActorPkg( _context );
+		
+		if( theActorPkgChoice == CreateActorPkgOption.CreateNew ){
+			
+			theActorPkgCreator.createNew( theProject, theActorPkgName, theContextDiagramPkg );
+		
+		} else if( theActorPkgChoice == CreateActorPkgOption.CreateNewButEmpty ){
+			
+			theActorPkgCreator.createNewButEmpty( theProject, theActorPkgName, theContextDiagramPkg );
+			
+		} else if( theActorPkgChoice == CreateActorPkgOption.InstantiateFromExisting ){
+			
+			theActorPkgCreator.instantiateFromExisting( 
+					theContextDiagramPkg, 
+					theActorPkgName, 
+					theContextDiagramPkg, 
+					theExistingActorPkg, 
+					theActorPkgPrefixOption );
+		}
 		
 		CreateExternalSignalsPkg theExternalSignalsPkg = new CreateExternalSignalsPkg( 
 				theExternalSignalsPkgChoice,
@@ -62,7 +74,7 @@ public class CreateContextDiagramPackage {
 				theExistingExternalSignalsPkgIfChosen,
 				_context );
 		
-		List<IRPActor> theActors = theActorPkg.getActors();
+		List<IRPActor> theActors = theActorPkgCreator.getActors();
 		List<IRPRelation> theActorUsages = new ArrayList<>();
 		
 		for( IRPActor theActor : theActors ){
