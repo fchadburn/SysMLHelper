@@ -1,7 +1,5 @@
 package functionalanalysisplugin;
 
-import generalhelpers.StatechartHelpers;
-
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -409,7 +407,7 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 		if (theStatechart != null){
 
 			IRPState theReadyState = 
-					StatechartHelpers.getStateCalled(
+					_context.getStateCalled(
 							"Ready", 
 							theStatechart, 
 							onTheActor );
@@ -472,7 +470,7 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 		if (theStatechart != null){
 
 			IRPState theReadyState = 
-					StatechartHelpers.getStateCalled(
+					_context.getStateCalled(
 							"Ready", 
 							theStatechart, 
 							onTheActor );
@@ -529,7 +527,7 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 		IRPStatechart theStatechart = theOwnerOfStatechart.getStatechart();
 
 		IRPState theMonitoringState = 
-				StatechartHelpers.getStateCalled("MonitoringConditions", theStatechart, theOwnerOfStatechart);
+				_context.getStateCalled("MonitoringConditions", theStatechart, theOwnerOfStatechart);
 
 		if (theMonitoringState != null){
 			_context.debug( _context.elInfo( theMonitoringState ) + "found");
@@ -542,7 +540,7 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 			_context.debug( _context.elInfo( theTransition ) + " was added");	
 
 			IRPGraphElement theGraphEl = 
-					StatechartHelpers.findGraphEl(
+					_context.findGraphEl(
 							theOwnerOfStatechart, 
 							"MonitoringConditions" );
 
@@ -555,7 +553,7 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 
 				IRPGraphNode theGraphNode = (IRPGraphNode)theGraphEl;
 
-				GraphNodeInfo theNodeInfo = new GraphNodeInfo( theGraphNode );
+				GraphNodeInfo theNodeInfo = new GraphNodeInfo( theGraphNode, _context );
 
 				IRPGraphEdge theEdge = theGraphElDiagram.addNewEdgeForElement(
 						theTransition, 
@@ -616,7 +614,7 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 
 			if (theStatechart != null){
 				IRPState theMonitoringState = 
-						StatechartHelpers.getStateCalled( 
+						_context.getStateCalled( 
 								"MonitoringConditions", 
 								theStatechart, 
 								theClassifier );

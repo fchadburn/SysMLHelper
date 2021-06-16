@@ -401,7 +401,8 @@ public class CreateFunctionalDesignSpecificationPackage extends CreateStructural
 							m_BlockDescriptionTextField.getText(), 
 							m_FunctionNameTextField.getText(), 
 							m_FunctionBlockDescriptionTextField.getText(), 
-							m_CreateParametricCheckBox.isSelected() );
+							m_CreateParametricCheckBox.isSelected(),
+							_context );
 
 			thePackage.createPackage();
 			thePackage.openSystemContextDiagram();

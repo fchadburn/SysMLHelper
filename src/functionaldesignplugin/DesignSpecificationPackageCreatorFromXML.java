@@ -6,18 +6,16 @@ import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.*;
-
-import generalhelpers.Logger;
-import generalhelpers.NameHelpers;
-import generalhelpers.StereotypeAndPropertySettings;
-import generalhelpers.UserInterfaceHelpers;
 
 public class DesignSpecificationPackageCreatorFromXML {
 
 	IRPObjectModelDiagram m_FunctionHierarchyBDD = null;
 	IRPObjectModelDiagram m_SystemContextDiagram = null;
 
+	FunctionalDesign_Context _context;
+	
 	public void openFunctionHierarchyBDD (){
 
 		if( m_FunctionHierarchyBDD != null ){
@@ -34,8 +32,11 @@ public class DesignSpecificationPackageCreatorFromXML {
 
 	public DesignSpecificationPackageCreatorFromXML(
 			IRPProject theRhpPrj,
-			List<IRPActor> theMasterActors ){
+			List<IRPActor> theMasterActors,
+			FunctionalDesign_Context context ){
 
+		_context = context;
+		
 		String explainStr = 
 				"This 'Import from XML' " +
 						" helper creates a nested UML model structure " +
@@ -43,22 +44,23 @@ public class DesignSpecificationPackageCreatorFromXML {
 						"and the following " + theMasterActors.size() + 
 						" actors defined in the master actor list:\n";
 		
-		explainStr += NameHelpers.buildStringFromModelEls( theMasterActors, 5 );
+		explainStr += _context.buildStringFromModelEls( theMasterActors, 5 );
 		explainStr += "\nDo you want to continue with selecting a .xml file?\n\n";
 
-		boolean theAnswer = UserInterfaceHelpers.askAQuestion( explainStr );
+		boolean theAnswer = UserInterfaceHelper.askAQuestion( explainStr );
 
 		if( theAnswer ){
 
 			String theFilename = chooseAFileToImport( theRhpPrj );
 
-			Logger.writeLine( "theFilename is " + theFilename );
+			_context.debug( "theFilename is " + theFilename );
 			
 			DesignSpecificationPackages thePackages =
 					new DesignSpecificationPackages( 
 							theFilename, 
 							theRhpPrj, 
-							theMasterActors );
+							theMasterActors,
+							_context );
 			
 			thePackages.dumpPackages();
 			
@@ -69,13 +71,13 @@ public class DesignSpecificationPackageCreatorFromXML {
 				String theMsg = "There are " + thePackages.size() + 
 						" design package specifications defined in " + theFilename + ":\n";
 				
-				theMsg += NameHelpers.buildStringFrom( 
+				theMsg += _context.buildStringFrom( 
 						thePackages.getPackageNames(), 5 );
 				
 				theMsg += "\nDo you want to create their corresponding package structures under " + 
-						Logger.elInfo(theRhpPrj) + "?";
+						_context.elInfo(theRhpPrj) + "?";
 				
-				boolean isContinue = UserInterfaceHelpers.askAQuestion( theMsg );
+				boolean isContinue = UserInterfaceHelper.askAQuestion( theMsg );
 				
 				if( isContinue ){
 					thePackages.createPackages();
@@ -83,9 +85,9 @@ public class DesignSpecificationPackageCreatorFromXML {
 			} else {
 				String theMsg = "Sorry, unable to proceed as there are at least " + errorMsgs.size() + " problems found with " + theFilename + "\n\n";
 				
-				theMsg += NameHelpers.buildStringFrom( errorMsgs, 5 );
+				theMsg += _context.buildStringFrom( errorMsgs, 5 );
 			
-				UserInterfaceHelpers.showWarningDialog( theMsg );
+				UserInterfaceHelper.showWarningDialog( theMsg );
 			}
 		}
 	}
@@ -117,7 +119,7 @@ public class DesignSpecificationPackageCreatorFromXML {
 			File selFile = fc.getSelectedFile();
 			
 			if( selFile == null || selFile.getName().equals("") ){
-				Logger.writeLine( "No file selected" );
+				_context.warning( "No file selected" );
 			} else {
 				theFilename = selFile.getAbsolutePath();
 
@@ -146,10 +148,7 @@ public class DesignSpecificationPackageCreatorFromXML {
 }
 
 /**
- * Copyright (C) 2018-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #250 29-MAY-2019: First official version of new FunctionalDesignProfile  (F.J.Chadburn)
+ * Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

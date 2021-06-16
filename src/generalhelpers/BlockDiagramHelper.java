@@ -138,7 +138,7 @@ public class BlockDiagramHelper {
 		int maxX = 1000;
 		
 		if( theLastEl != null && theLastEl instanceof IRPGraphNode ){
-			GraphNodeInfo theNodeInfo = new GraphNodeInfo( (IRPGraphNode) theLastEl );
+			GraphNodeInfo theNodeInfo = new GraphNodeInfo( (IRPGraphNode) theLastEl, _context );
 			maxX = theNodeInfo.getBottomRightX();
 		}
 

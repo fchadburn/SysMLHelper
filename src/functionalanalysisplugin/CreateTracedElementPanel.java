@@ -101,12 +101,14 @@ public abstract class CreateTracedElementPanel extends JPanel {
 			m_RequirementsPanel = new RequirementSelectionPanel( 
 					"There are no requirements to establish «satisfy» dependencies to",
 					tracedToReqts, 
-					tracedToReqts );
+					tracedToReqts,
+					_context );
 		} else {
 			m_RequirementsPanel = new RequirementSelectionPanel( 
 					"With «satisfy» dependencies to:",
 					tracedToReqts, 
-					tracedToReqts );
+					tracedToReqts,
+					_context );
 		}
 	}
 	
@@ -447,14 +449,14 @@ public abstract class CreateTracedElementPanel extends JPanel {
 			if( theSourceGraphEl instanceof IRPGraphNode ){
 				
 				GraphNodeInfo theNodeInfo = 
-						new GraphNodeInfo( (IRPGraphNode) theSourceGraphEl );
+						new GraphNodeInfo( (IRPGraphNode) theSourceGraphEl, _context );
 				
 				x = theNodeInfo.getTopLeftX() + 20;
 				
 			} else if( theSourceGraphEl instanceof IRPGraphEdge ){
 				
 				GraphEdgeInfo theNodeInfo = 
-						new GraphEdgeInfo( (IRPGraphEdge) theSourceGraphEl );
+						new GraphEdgeInfo( (IRPGraphEdge) theSourceGraphEl, _context );
 				
 				x = theNodeInfo.getMidX();
 			}
@@ -475,13 +477,13 @@ public abstract class CreateTracedElementPanel extends JPanel {
 
 			if( theSourceGraphEl instanceof IRPGraphNode ){
 				GraphNodeInfo theNodeInfo = 
-						new GraphNodeInfo( (IRPGraphNode) theSourceGraphEl );
+						new GraphNodeInfo( (IRPGraphNode) theSourceGraphEl, _context );
 				
 				y = theNodeInfo.getTopLeftY() + 20;
 				
 			} else if( theSourceGraphEl instanceof IRPGraphEdge ){
 				GraphEdgeInfo theNodeInfo = 
-						new GraphEdgeInfo( (IRPGraphEdge) theSourceGraphEl );
+						new GraphEdgeInfo( (IRPGraphEdge) theSourceGraphEl, _context );
 				
 				y = theNodeInfo.getMidY();
 			}

@@ -71,7 +71,7 @@ public class CreateFunctionalExecutablePackagePanel extends CreateStructuralElem
 
 				//JFrame.setDefaultLookAndFeelDecorated( true );
 
-				JFrame frame = new JFrame("Populate a 'system' block package hierarchy");
+				JFrame frame = new JFrame( "Populate a 'system' block package hierarchy" );
 
 				frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 

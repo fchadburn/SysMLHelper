@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.telelogic.rhapsody.core.*;
 
 public class GatewayDocumentPanel extends JPanel {
@@ -31,6 +32,7 @@ public class GatewayDocumentPanel extends JPanel {
 	private String m_OriginalBaseline = null;
 	private JComboBox<Object> m_RequirementsPkgComboBox = null;
 	private NamedElementMap m_NamedElementMap = null;
+	protected ConfigurationSettings _context;
 	
 	public GatewayDocumentPanel(
 			String theOriginalName,
@@ -41,9 +43,11 @@ public class GatewayDocumentPanel extends JPanel {
 			List<IRPModelElement> thePackagesToImportInto,
 			IRPModelElement theDefaultPackage,
 			boolean isImmutable,
-			IRPProject theProject) throws FileNotFoundException {
+			ConfigurationSettings context ) throws FileNotFoundException {
 		
 		super();
+		
+		_context = context;
 		
 		m_OriginalName = theOriginalName;
 		m_OriginalAnalysisType = theSelectedAnalysisType;
@@ -127,11 +131,11 @@ public class GatewayDocumentPanel extends JPanel {
 		IRPModelElement theEl = m_NamedElementMap.getElementUsingFullName( theSelectedItem );
 		
 		if (theEl==null){
-			Logger.writeLine("Error in getRootPackage, null element in list detected");
+			_context.error("Error in getRootPackage, null element in list detected");
 		}
 		
 		if (!(theEl instanceof IRPPackage)){
-			Logger.writeLine("Error in getRootPackage, theEl is not an IRPPackage");
+			_context.error("Error in getRootPackage, theEl is not an IRPPackage");
 		}
 		
 		return (IRPPackage)theEl;
@@ -157,13 +161,7 @@ public class GatewayDocumentPanel extends JPanel {
 }
 
 /**
- * Copyright (C) 2016  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #035 15-JUN-2016: New panel to configure requirements package naming and gateway set-up (F.J.Chadburn)
-    #039 17-JUN-2016: Minor fixes and improvements to robustness of Gateway project setup (F.J.Chadburn)
-    #051 06-JUL-2016: Re-factored the GW panel to allow it to incrementally add to previous setup (F.J.Chadburn)
-    #066 19-JUL-2016: Added optional baseline box to the fast Gateway setup panel (F.J.Chadburn)
+ * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

@@ -1,7 +1,5 @@
 package functionalanalysisplugin;
 
-import generalhelpers.Logger;
-
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -24,6 +22,7 @@ import javax.swing.JTextArea;
 import javax.swing.GroupLayout.ParallelGroup;
 import javax.swing.GroupLayout.SequentialGroup;
 
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.telelogic.rhapsody.core.*;
 
 public class RequirementSelectionPanel extends JPanel {
@@ -35,12 +34,17 @@ public class RequirementSelectionPanel extends JPanel {
 	
 	private Map<IRPRequirement, JCheckBox> m_CheckBoxMap = new HashMap<IRPRequirement, JCheckBox>();
 
+	protected ConfigurationSettings _context;
+	
 	public RequirementSelectionPanel(
 			String theLabelText,
 			Set<IRPRequirement> theReqtsInTable,
-			Set<IRPRequirement> theReqtsSelected ){
+			Set<IRPRequirement> theReqtsSelected,
+			ConfigurationSettings context ){
 		
 		super();
+		
+		_context = context;
 
 		GridLayout theLayout = new GridLayout(0, 1);
 		
@@ -126,8 +130,8 @@ public class RequirementSelectionPanel extends JPanel {
 			if( theCheckBox != null ){
 				theCheckBox.setSelected( true );
 			} else {
-				Logger.writeLine("Warning in RequirementSelectionPanel.selectedRequirementsIn, " + 
-						Logger.elInfo( theReqt ) + " is not in table of expected requirements");
+				_context.warning("Warning in RequirementSelectionPanel.selectedRequirementsIn, " + 
+						_context.elInfo( theReqt ) + " is not in table of expected requirements");
 			}
 		}
 	}
@@ -141,8 +145,8 @@ public class RequirementSelectionPanel extends JPanel {
 			if( theCheckBox != null ){
 				theCheckBox.setSelected( false );
 			} else {
-				Logger.writeLine("Warning in RequirementSelectionPanel.selectedRequirementsIn, " + 
-						Logger.elInfo( theReqt ) + " is not in table of expected requirements");
+				_context.warning("Warning in RequirementSelectionPanel.selectedRequirementsIn, " + 
+						_context.elInfo( theReqt ) + " is not in table of expected requirements");
 			}
 		}
 	}
@@ -157,12 +161,12 @@ public class RequirementSelectionPanel extends JPanel {
 		    if (theCheckBox.isSelected()){
 		    	IRPRequirement theRequirement = entry.getKey();
 		    	
-		    	Logger.writeLine( theRequirement, "was selected");
+		    	_context.debug( _context.elInfo( theRequirement ) + " was selected");
 		    	theFilteredReqts.add( theRequirement );
 		    } else {
 		    	IRPRequirement theRequirement = entry.getKey();
 		    	
-		    	Logger.writeLine( theRequirement, "was not selected");
+		    	_context.debug( _context.elInfo( theRequirement ) + " was not selected");
 		    }
 		}
 		
@@ -171,17 +175,7 @@ public class RequirementSelectionPanel extends JPanel {
 }
 
 /**
- * Copyright (C) 2016-2017  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #022 30-MAY-2016: Improved handling and validation of event/operation creation by adding new forms (F.J.Chadburn)
-    #031 01-JUN-2016: Scroll pane added for readability of requirement text on panels (F.J.Chadburn)
-    #033 05-JUN-2016: Add support for creation of operations and events from raw requirement selection (F.J.Chadburn)
-    #041 29-JUN-2016: Derive downstream requirement menu added for reqts on diagrams (F.J.Chadburn)
-    #051 06-JUL-2016: Re-factored the GW panel to allow it to incrementally add to previous setup (F.J.Chadburn)
-    #056 13-JUL-2016: Minor fixes to RequirementsSelectionPanel to make it clearer (F.J.Chadburn)
-    #058 13-JUL-2016: Dropping CallOp on diagram now gives option to create Op on block (F.J.Chadburn)
-    #209 04-JUL-2017: Populate requirements for SD(s) based on messages now supported with Dialog (F.J.Chadburn)
+ * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

@@ -613,7 +613,7 @@
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">AutoReferences</_Name>
-													<_Value type="a">$OMROOT\Profiles\SysML\SysMLProfile_rpy\SysML.sbs,$OMROOT\Profiles\SysMLHelper\ExecutableMBSE_rpy\BasePkg.sbs</_Value>
+													<_Value type="a">$OMROOT\Profiles\SysML\SysMLProfile_rpy\SysML.sbs,$OMROOT\Profiles\SysMLHelper\ExecutableMBSE_rpy\BasePkg.sbsx</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -1658,7 +1658,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">6.15.2021::13:4:6</_modifiedTime>
+			<_modifiedTime type="a">6.16.2021::7:16:15</_modifiedTime>
 			<_lastID type="a">22</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>

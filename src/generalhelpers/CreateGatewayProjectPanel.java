@@ -313,7 +313,7 @@ public class CreateGatewayProjectPanel extends CreateStructuralElementPanel {
 									forSelectablePackages,
 									theSelectedPkg,
 									gatewayDoc.isImmutable(),
-									_context.get_rhpPrj() );
+									_context );
 
 					m_GatewayDocumentPanel.add( theGatewayDocumentPanel );
 

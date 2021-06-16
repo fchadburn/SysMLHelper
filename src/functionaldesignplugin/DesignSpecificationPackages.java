@@ -15,8 +15,6 @@ import com.telelogic.rhapsody.core.IRPActor;
 import com.telelogic.rhapsody.core.IRPPackage;
 import com.telelogic.rhapsody.core.IRPProject;
 
-import generalhelpers.Logger;
-
 public class DesignSpecificationPackages extends ArrayList<DesignSpecificationPackage>{
 
 	/**
@@ -27,11 +25,15 @@ public class DesignSpecificationPackages extends ArrayList<DesignSpecificationPa
 	IRPPackage m_OwnerPkg = null;
 	IRPProject m_RhpPrj = null;
 	List<IRPActor> m_MasterActors = null;
+	FunctionalDesign_Context _context;
 	
 	DesignSpecificationPackages(
 			String theFilename,
 			IRPPackage theOwnerPkg,
-			List<IRPActor> theMasterActors ){
+			List<IRPActor> theMasterActors,
+			FunctionalDesign_Context context ){
+		
+		_context = context;
 		
 		m_OwnerPkg = theOwnerPkg;
 		m_RhpPrj = m_OwnerPkg.getProject();
@@ -55,14 +57,14 @@ public class DesignSpecificationPackages extends ArrayList<DesignSpecificationPa
 			//parse using builder to get DOM representation of the XML file
 			doc = db.parse( theFilename );
 			doc.getDocumentElement().normalize();
-			Logger.writeLine( "Root element :" + doc.getDocumentElement().getNodeName() );
+			_context.debug( "Root element :" + doc.getDocumentElement().getNodeName() );
 			NodeList nList = doc.getElementsByTagName( "package_structure" );
-			Logger.writeLine( "----------------------------" );
+			_context.debug( "----------------------------" );
 
 			for( int i = 0; i < nList.getLength(); i++ ){
 				
 				Node nNode = nList.item(i);
-				Logger.writeLine("\nCurrent Element :" + nNode.getNodeName());
+				_context.debug("\nCurrent Element :" + nNode.getNodeName());
 
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 					
@@ -116,28 +118,29 @@ public class DesignSpecificationPackages extends ArrayList<DesignSpecificationPa
 									theDescription, 
 									theFunctionName, 
 									theFunctionDescription, 
-									isCreateParametricPackage );
+									isCreateParametricPackage,
+									_context );
 					
 					this.add( thePackage );
 				}
 			}
 		} catch( Exception e ){
-			Logger.writeLine( "Exception in parseXmlFile, e=" + e.getMessage() );
+			_context.error( "Exception in parseXmlFile, e=" + e.getMessage() );
 			e.printStackTrace();
 		}
 	}
 	
 	public void dumpPackages(){
 		
-		Logger.writeLine("---------------------------------------------------------");
-		Logger.writeLine("There are " + this.size() + " design package definitions:");
+		_context.debug("---------------------------------------------------------");
+		_context.debug("There are " + this.size() + " design package definitions:");
 		
 		for( DesignSpecificationPackage thePackage : this ){
-			Logger.writeLine("---------------------------------------------------------");
+			_context.debug("---------------------------------------------------------");
 			thePackage.dumpPackage();
 		}
 		
-		Logger.writeLine("---------------------------------------------------------");
+		_context.debug("---------------------------------------------------------");
 	}
 	
 	public List<String> getPackageNames(){
@@ -176,10 +179,7 @@ public class DesignSpecificationPackages extends ArrayList<DesignSpecificationPa
 }
 
 /**
- * Copyright (C) 2018-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #250 29-MAY-2019: First official version of new FunctionalDesignProfile  (F.J.Chadburn)
+ * Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 
