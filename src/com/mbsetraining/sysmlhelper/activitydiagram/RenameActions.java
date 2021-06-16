@@ -1,4 +1,4 @@
-package requirementsanalysisplugin;
+package com.mbsetraining.sysmlhelper.activitydiagram;
 
 import java.util.List;
 

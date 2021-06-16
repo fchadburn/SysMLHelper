@@ -1,7 +1,6 @@
-package requirementsanalysisplugin;
+package com.mbsetraining.sysmlhelper.smartlink;
 
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
-import com.mbsetraining.sysmlhelper.smartlink.DiagramElementInfo;
 import com.telelogic.rhapsody.core.*;
 
 public class RelationInfo {

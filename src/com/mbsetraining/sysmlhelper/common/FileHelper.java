@@ -1,4 +1,4 @@
-package generalhelpers;
+package com.mbsetraining.sysmlhelper.common;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,7 +7,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.telelogic.rhapsody.core.IRPProject;
 
 public class FileHelper {

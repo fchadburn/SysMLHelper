@@ -1,14 +1,12 @@
 package designsynthesisplugin;
 
-import functionalanalysisplugin.FunctionalAnalysisPlugin;
-import generalhelpers.UserInterfaceHelpers;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import javax.swing.JDialog;
 
+import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
@@ -71,7 +69,7 @@ public class PortCreator {
 			thePort.highLightElement();
 			theAttribute.highLightElement();
 			
-			AutoConnectFlowPortsPanel.launchThePanel( theAttribute, theConfigSettings );
+			AutoConnectFlowPortsPanel.launchThePanel( theAttribute, _context );
 
 		} else {
 			_context.error("Error in createPublishFlowportFor, no port was created");
@@ -209,7 +207,7 @@ public class PortCreator {
 				if( theDependent instanceof IRPAttribute ){
 					deleteAttributeAndRelatedEls( (IRPAttribute) theDependent );
 				} else {
-					UserInterfaceHelpers.showWarningDialog( 
+					UserInterfaceHelper.showWarningDialog( 
 							"Unable to delete as " + _context.elInfo( theFlowPort ) + " has no related attribute" );
 				}
 			}
@@ -242,7 +240,7 @@ public class PortCreator {
 			}			
 		}
 
-		boolean answer = UserInterfaceHelpers.askAQuestion( infoText );
+		boolean answer = UserInterfaceHelper.askAQuestion( infoText );
 		
 		if( answer ){
 		

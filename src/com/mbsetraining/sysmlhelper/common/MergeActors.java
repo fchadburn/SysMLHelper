@@ -1,4 +1,4 @@
-package generalhelpers;
+package com.mbsetraining.sysmlhelper.common;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -7,10 +7,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 
-import com.mbsetraining.sysmlhelper.common.AssociationInfo;
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
-import com.mbsetraining.sysmlhelper.common.GraphEdgeInfo;
-import com.mbsetraining.sysmlhelper.common.GraphNodeInfo;
 import com.telelogic.rhapsody.core.*;
 
 public class MergeActors {

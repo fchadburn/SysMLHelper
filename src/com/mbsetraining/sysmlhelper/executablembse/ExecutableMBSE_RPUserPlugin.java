@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import requirementsanalysisplugin.ActivityDiagramChecker;
 import requirementsanalysisplugin.PopulateRelatedRequirementsPanel;
 import requirementsanalysisplugin.RollUpTraceabilityToTheTransitionPanel;
-import requirementsanalysisplugin.RenameActions;
 import requirementsanalysisplugin.RequirementsHelper;
 import sysmlhelperplugin.DependencySelector;
 import functionalanalysisplugin.CreateIncomingEventPanel;
@@ -24,6 +22,8 @@ import functionalanalysisplugin.TestCaseCreator;
 import functionalanalysisplugin.UpdateTracedAttributePanel;
 import functionalanalysisplugin.PopulateFunctionalAnalysisPkg.SimulationType;
 
+import com.mbsetraining.sysmlhelper.activitydiagram.ActivityDiagramChecker;
+import com.mbsetraining.sysmlhelper.activitydiagram.RenameActions;
 import com.mbsetraining.sysmlhelper.common.LayoutHelper;
 import com.mbsetraining.sysmlhelper.common.NestedActivityDiagram;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;

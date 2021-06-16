@@ -45,8 +45,8 @@ public class AutoConnectFlowPortsPanel extends CreateStructuralElementPanel {
 	private IRPInstance m_PublishingPart = null;
 	
 	public static void launchThePanel(
-			final ExecutableMBSE_Context context,
-			final IRPAttribute theAttribute ){
+			final IRPAttribute theAttribute,
+			final ExecutableMBSE_Context context ){
 
 		SelectedElementContext selectedContext = new SelectedElementContext( context );
 		

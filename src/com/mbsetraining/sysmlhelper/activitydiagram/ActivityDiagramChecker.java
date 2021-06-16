@@ -1,4 +1,4 @@
-package requirementsanalysisplugin;
+package com.mbsetraining.sysmlhelper.activitydiagram;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -20,12 +20,12 @@ import com.telelogic.rhapsody.core.*;
 
 public class ActivityDiagramChecker extends JFrame{
 
-	private ActionList actionsInfos;
-	private JPanel thePanel;
-	private JTable theTable;
-	private JScrollPane theScrollPane;
-	private MouseListener theListener;
-	private List<ActionInfo> theCheckedElements; 
+	private ActionList _actionsInfos;
+	private JPanel _panel;
+	private JTable _table;
+	private JScrollPane _scrollPane;
+	private MouseListener _listener;
+	private List<ActionInfo> _checkedElements; 
 	private ExecutableMBSE_Context _context;
 	
 	private static final long serialVersionUID = 1L;
@@ -76,13 +76,13 @@ public class ActivityDiagramChecker extends JFrame{
 		
 		_context.debug( "ActivityDiagramChecker was invoked for " + _context.elInfo( theFC ) );
 
-		actionsInfos = new ActionList( theAD, _context );
+		_actionsInfos = new ActionList( theAD, _context );
 
-		if( actionsInfos.isRenamingNeeded() ){
+		if( _actionsInfos.isRenamingNeeded() ){
 
 			JDialog.setDefaultLookAndFeelDecorated(true);
 
-			String theMsg = "The checker has detected that " + actionsInfos.getNumberOfRenamesNeeded() + 
+			String theMsg = "The checker has detected that " + _actionsInfos.getNumberOfRenamesNeeded() + 
 					" elements require renaming. Do you want to rename them before producing the report?";
 
 			int response = JOptionPane.showConfirmDialog(null, 
@@ -93,19 +93,19 @@ public class ActivityDiagramChecker extends JFrame{
 				_context.debug("Operation was cancelled by user with no changes made.");
 			} else {
 				if (response == JOptionPane.YES_OPTION) {
-					actionsInfos.performRenames();
+					_actionsInfos.performRenames();
 				} else if (response == JOptionPane.NO_OPTION){
 					_context.debug("Info: User chose not rename the actions.");
 				} 
 			}
 		}	
 
-		theCheckedElements = actionsInfos.getListOfActionsCheckedForTraceability();
-		buildFrameUsing( theCheckedElements, "Traceability report for " + theFC.getName() );
+		_checkedElements = _actionsInfos.getListOfActionsCheckedForTraceability();
+		buildFrameUsing( _checkedElements, "Traceability report for " + theFC.getName() );
 
 		_context.debug(
-				"ActivityDiagramChecker has finished (" + actionsInfos.getNumberOfTraceabilityFailures() + 
-				" out of " + actionsInfos.size() + " elements failed traceability checks)");	
+				"ActivityDiagramChecker has finished (" + _actionsInfos.getNumberOfTraceabilityFailures() + 
+				" out of " + _actionsInfos.size() + " elements failed traceability checks)");	
 	}
 
 	private void buildFrameUsing(
@@ -118,9 +118,9 @@ public class ActivityDiagramChecker extends JFrame{
 		setBackground( Color.gray );
 
 		// Create a panel to hold all other components
-		thePanel = new JPanel();
-		thePanel.setLayout( new BorderLayout() );
-		getContentPane().add( thePanel );
+		_panel = new JPanel();
+		_panel.setLayout( new BorderLayout() );
+		getContentPane().add( _panel );
 
 		// Create columns names
 		String columnNames[] = { "Name", "Type", "Status", "Comment" };
@@ -146,7 +146,7 @@ public class ActivityDiagramChecker extends JFrame{
 		}
 
 		// Create a new table instance
-		theTable = new JTable( dataValues, columnNames ){
+		_table = new JTable( dataValues, columnNames ){
 			private static final long serialVersionUID = 1L;
 
 			public boolean isCellEditable(int row, int column) {                
@@ -154,26 +154,26 @@ public class ActivityDiagramChecker extends JFrame{
 			};
 		};
 
-		theTable.getColumnModel().getColumn(0).setPreferredWidth(1000);
-		theTable.getColumnModel().getColumn(1).setPreferredWidth(600);
-		theTable.getColumnModel().getColumn(2).setPreferredWidth(300);
-		theTable.getColumnModel().getColumn(3).setPreferredWidth(1500);
+		_table.getColumnModel().getColumn(0).setPreferredWidth(1000);
+		_table.getColumnModel().getColumn(1).setPreferredWidth(600);
+		_table.getColumnModel().getColumn(2).setPreferredWidth(300);
+		_table.getColumnModel().getColumn(3).setPreferredWidth(1500);
 
 		// Add the table to a scrolling pane
-		theScrollPane = new JScrollPane( theTable );
+		_scrollPane = new JScrollPane( _table );
 
-		thePanel.add( theScrollPane, BorderLayout.CENTER );
+		_panel.add( _scrollPane, BorderLayout.CENTER );
 
 		int xSize = 600;
 		int ySize = (theList.size()*18)+40;
 		if (ySize > 600) ySize = 600;
 
-		thePanel.setPreferredSize(new Dimension(xSize, ySize));
+		_panel.setPreferredSize(new Dimension(xSize, ySize));
 
-		add(thePanel);
+		add(_panel);
 		pack();
 
-		theListener = new MouseListener() {
+		_listener = new MouseListener() {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -194,12 +194,12 @@ public class ActivityDiagramChecker extends JFrame{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				int theRow = theTable.rowAtPoint(e.getPoint());
-				int theColumn = theTable.columnAtPoint(e.getPoint());
+				int theRow = _table.rowAtPoint(e.getPoint());
+				int theColumn = _table.columnAtPoint(e.getPoint());
 
 				if (theRow >= 0 && theColumn >= 0){
 
-					ActionInfo theInfo = theCheckedElements.get(theRow);
+					ActionInfo theInfo = _checkedElements.get(theRow);
 					IRPModelElement theEl = theInfo.getTheElement();
 
 					_context.debug("Highlighting " + _context.elInfo(theEl) + " on the diagram.");
@@ -208,7 +208,7 @@ public class ActivityDiagramChecker extends JFrame{
 			}
 		};
 
-		theTable.addMouseListener(theListener);
+		_table.addMouseListener(_listener);
 	}
 
 	static public void createActivityDiagramCheckersFor(
