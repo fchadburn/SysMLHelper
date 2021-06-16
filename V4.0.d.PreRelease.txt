@@ -438,6 +438,7 @@ ExecutableMBSEProfile:
 #300 16-JUN-2021: Fixes to get Simulation package creation to work with thread safe context for helper invocation and logging (F.J.Chadburn)
 #301 16-JUN-2021: Further fixes to work with thread safe context for helper invocation and logging (F.J.Chadburn) 
 #302 16-JUN-2021: Allow events to be picked from dependent external signals package when creating flows (F.J.Chadburn)
+#303 16-JUN-2021: Get roll-up trace-ability on transition panel to work with thread safe context for helper logging (F.J.Chadburn)
 
 Backlog/Known issues
 

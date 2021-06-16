@@ -2,10 +2,7 @@ package requirementsanalysisplugin;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.ComponentOrientation;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -20,72 +17,75 @@ import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-
 import com.mbsetraining.sysmlhelper.common.GraphElInfo;
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
 import functionalanalysisplugin.RequirementSelectionPanel;
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
-import generalhelpers.StereotypeAndPropertySettings;
-import generalhelpers.TraceabilityHelper;
+import generalhelpers.CreateStructuralElementPanel;
 
-public class PopulateTransitionRequirementsPanel extends JPanel {
-
+public class RollUpTraceabilityToTheTransitionPanel extends CreateStructuralElementPanel {
+	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	protected RequirementSelectionPanel m_RequirementsPanel = null;
-	protected IRPTransition m_Transition = null;
-	protected IRPGraphElement m_TransitionGE = null;
-	protected IRPStatechartDiagram m_StatechartDiagram = null;
-	protected Set<IRPRequirement> m_ReqtsForTable;
-	protected JCheckBox m_RemoveFromViewCheckBox;
-
-	@SuppressWarnings("unused")
-	public static void main(String[] args) {
-		
-		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
-		IRPProject theActiveProject = theRhpApp.activeProject();
-		
-		@SuppressWarnings("unchecked")
-		List<IRPGraphElement> theSelectedGraphEls = 
-				theRhpApp.getSelectedGraphElements().toList();
-		
-		IRPModelElement theSelectedEl = theRhpApp.getSelectedElement();
-		
-		@SuppressWarnings("unchecked")
-		List<IRPGraphElement> theGraphEls = 
-			theRhpApp.getSelectedGraphElements().toList();
-		
-		for (IRPGraphElement theGraphEl : theGraphEls) {
-			
-			PopulateTransitionRequirementsPanel.launchThePanel(
-					theGraphEl );	
-		}
+	protected RequirementSelectionPanel _requirementsPanel = null;
+	protected IRPTransition _transition = null;
+	protected IRPGraphElement _transitionGE = null;
+	protected IRPStatechartDiagram _statechartDiagram = null;
+	protected Set<IRPRequirement> _reqtsForTable;
+	protected JCheckBox _removeFromViewCheckBox;
 	
+	public static void launchThePanel(
+			final IRPGraphElement theTransitionGraphEl,
+			ExecutableMBSE_Context theContext ){
+	
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+
+			@Override
+			public void run() {
+				
+				JFrame.setDefaultLookAndFeelDecorated( true );
+				
+				JFrame frame = new JFrame(
+						"Populate requirements on " + 
+								theContext.elInfo( theTransitionGraphEl.getModelObject() ) );
+				
+				frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
+				
+				RollUpTraceabilityToTheTransitionPanel thePanel = 
+						new RollUpTraceabilityToTheTransitionPanel( theContext.get_rhpAppID() );
+
+				frame.setContentPane( thePanel );
+				frame.pack();
+				frame.setLocationRelativeTo( null );
+				frame.setVisible( true );
+			}
+		});
 	}
 	
-	public PopulateTransitionRequirementsPanel(
-			IRPGraphElement theGraphEl ){
+	public RollUpTraceabilityToTheTransitionPanel(
+			String theAppID ){
 		
+		super( theAppID );
+		
+		IRPGraphElement theGraphEl = _context.getSelectedGraphEl();
 		IRPModelElement theModelObject = theGraphEl.getModelObject();
 		
 		if( theModelObject instanceof IRPTransition ){
 			
-			m_Transition = (IRPTransition)theModelObject;
-			m_TransitionGE = theGraphEl;
-			m_StatechartDiagram = (IRPStatechartDiagram) m_TransitionGE.getDiagram();
+			_transition = (IRPTransition)theModelObject;
+			_transitionGE = theGraphEl;
+			_statechartDiagram = (IRPStatechartDiagram) _transitionGE.getDiagram();
 			
-			m_ReqtsForTable = getRequirementsRelatedTo( m_Transition );
+			_reqtsForTable = getRequirementsRelatedTo( _transition );
 			
-			m_RequirementsPanel = new RequirementSelectionPanel( 
+			_requirementsPanel = new RequirementSelectionPanel( 
 					"Requirements related to trigger/guard/actions are:",
-					m_ReqtsForTable, 
-					m_ReqtsForTable,
+					_reqtsForTable, 
+					_reqtsForTable,
 					_context );
 			
 			setLayout( new BorderLayout(10,10) );
@@ -94,13 +94,11 @@ public class PopulateTransitionRequirementsPanel extends JPanel {
 			JPanel thePageStartPanel = new JPanel();
 			thePageStartPanel.setLayout( new BoxLayout( thePageStartPanel, BoxLayout.X_AXIS ) );
 			
-			if( m_ReqtsForTable.isEmpty() ){
+			if( _reqtsForTable.isEmpty() ){
 				
 				JLabel theLabel = new JLabel( "There are no requirements to roll up" );
 				theLabel.setAlignmentX( Component.LEFT_ALIGNMENT );
 				thePageStartPanel.add( theLabel );
-			
-				
 				
 			} else {
 				
@@ -113,12 +111,12 @@ public class PopulateTransitionRequirementsPanel extends JPanel {
 					public void actionPerformed( ActionEvent e ) {
 						
 						try {
-							m_RequirementsPanel.selectedRequirementsIn( m_ReqtsForTable );
+							_requirementsPanel.selectedRequirementsIn( _reqtsForTable );
 														
 						} catch (Exception e2) {
 							
-							Logger.writeLine("Error, unhandled exception in PopulateRelatedRequirementsPanel " + 
-									"constructor on Select All button action listener");
+							_context.error( "Error, unhandled exception in PopulateRelatedRequirementsPanel " + 
+									"constructor on Select All button action listener" );
 						}
 					}
 				});
@@ -132,12 +130,12 @@ public class PopulateTransitionRequirementsPanel extends JPanel {
 					public void actionPerformed( ActionEvent e ) {
 						
 						try {
-							m_RequirementsPanel.deselectedRequirementsIn( m_ReqtsForTable );
+							_requirementsPanel.deselectedRequirementsIn( _reqtsForTable );
 														
 						} catch (Exception e2) {
 							
-							Logger.writeLine("Error, unhandled exception in PopulateRelatedRequirementsPanel " + 
-									"constructor on De-select All button action listener");
+							_context.error( "Error, unhandled exception in PopulateRelatedRequirementsPanel " + 
+									"constructor on De-select All button action listener" );
 						}
 					}
 				});
@@ -146,105 +144,26 @@ public class PopulateTransitionRequirementsPanel extends JPanel {
 				thePageStartPanel.add( new JLabel("  ") );
 				thePageStartPanel.add( theDeselectAllButton );
 				
-				add( m_RequirementsPanel, BorderLayout.WEST );
+				add( _requirementsPanel, BorderLayout.WEST );
 			}
 			
 			add( thePageStartPanel, BorderLayout.PAGE_START );
 			add( createOKCancelPanel(), BorderLayout.PAGE_END );
 		}
-
-	}
-		
-	public JPanel createOKCancelPanel(){
-		
-		JPanel thePanel = new JPanel();
-		thePanel.setLayout( new FlowLayout() );
-		
-		JButton theOKButton = new JButton("OK");
-		theOKButton.setPreferredSize(new Dimension(75,25));
-
-		theOKButton.addActionListener( new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				try {
-					boolean isValid = checkValidity( true );
-					
-					if (isValid){
-						performAction();
-						Window dialog = SwingUtilities.windowForComponent( (Component) e.getSource() );
-						dialog.dispose();
-					}		
-												
-				} catch (Exception e2) {
-					Logger.writeLine("Error, unhandled exception in CreateOperationPanel.createOKCancelPanel on OK button action listener");
-				}
-			}
-		});
-		
-		JButton theCancelButton = new JButton("Cancel");
-		theCancelButton.setPreferredSize(new Dimension(75,25));
-		
-		theCancelButton.addActionListener( new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				try {
-					Window dialog = SwingUtilities.windowForComponent( (Component) e.getSource() );
-					dialog.dispose();
-												
-				} catch (Exception e2) {
-					Logger.writeLine("Error, unhandled exception in CreateOperationPanel.createOKCancelPanel on Cancel button action listener");
-				}
-			}	
-		});
-		
-		thePanel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		thePanel.add( theOKButton );
-		thePanel.add( theCancelButton );
-		
-		return thePanel;
 	}
 	
-	public static void launchThePanel(
-			final IRPGraphElement theTransitionGraphEl ){
-	
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 
-			@Override
-			public void run() {
-				
-				JFrame.setDefaultLookAndFeelDecorated( true );
-				
-				JFrame frame = new JFrame(
-						"Populate requirements on " + 
-								Logger.elInfo( theTransitionGraphEl.getModelObject() ) );
-				
-				frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
-				
-				PopulateTransitionRequirementsPanel thePanel = 
-						new PopulateTransitionRequirementsPanel( theTransitionGraphEl );
-
-				frame.setContentPane( thePanel );
-				frame.pack();
-				frame.setLocationRelativeTo( null );
-				frame.setVisible( true );
-			}
-		});
-	}
 	
-	public static Set<IRPRequirement> getRequirementsRelatedTo(
+	public Set<IRPRequirement> getRequirementsRelatedTo(
 			IRPTransition theTransition ){
 		
 		Set<IRPRequirement> theDependsOns = new HashSet<>();
 		
 		IRPStereotype theDependencyStereotype = 
-				StereotypeAndPropertySettings.getStereotypeToUseForFunctions( theTransition );
+				_context.getStereotypeToUseForFunctions( theTransition );
 				
 		IRPModelElement theOwner = 
-				GeneralHelpers.findOwningClassIfOneExistsFor( 
+				_context.findOwningClassIfOneExistsFor( 
 						theTransition );
 		
 		// Look for matches related to the trigger
@@ -258,12 +177,11 @@ public class PopulateTransitionRequirementsPanel extends JPanel {
 			if( theInterfaceItem != null ){
 				
 				theDependsOns.addAll(
-						TraceabilityHelper.getRequirementsThatTraceFromWithStereotype(
+						_context.getRequirementsThatTraceFromWithStereotype(
 								theInterfaceItem, 
 								theDependencyStereotype.getName() ) );
 			}	
 		}
-
 		
 		// Look for matches related to the guard
 
@@ -281,7 +199,6 @@ public class PopulateTransitionRequirementsPanel extends JPanel {
 								(IRPClassifier) theOwner,
 								theDependencyStereotype ) );
 			}
-
 		}
 		
 		// Look for matches related to the actions
@@ -300,13 +217,12 @@ public class PopulateTransitionRequirementsPanel extends JPanel {
 								(IRPClassifier) theOwner,
 								theDependencyStereotype ) );
 			}
-			
 		}
 		
 		return theDependsOns;
 	}
 
-	private static Set<IRPRequirement> getReqtsThatTraceFromRelatedToElsMentionedIn(
+	private Set<IRPRequirement> getReqtsThatTraceFromRelatedToElsMentionedIn(
 			String theText,
 			IRPClassifier relatedToTheOwner, 
 			IRPStereotype theDependencyStereotype ){
@@ -320,7 +236,7 @@ public class PopulateTransitionRequirementsPanel extends JPanel {
 		for( IRPOperation theOp : theOps ){
 			
 			theReqts.addAll(
-					TraceabilityHelper.getRequirementsThatTraceFromWithStereotype(
+					_context.getRequirementsThatTraceFromWithStereotype(
 							theOp, 
 							theDependencyStereotype.getName() ) );							
 		}
@@ -332,7 +248,7 @@ public class PopulateTransitionRequirementsPanel extends JPanel {
 		for( IRPAttribute theAttribute : theAttributes ){
 			
 			theReqts.addAll(
-					TraceabilityHelper.getRequirementsThatTraceFromWithStereotype(
+					_context.getRequirementsThatTraceFromWithStereotype(
 							theAttribute, 
 							theDependencyStereotype.getName() ) );							
 		}
@@ -340,7 +256,7 @@ public class PopulateTransitionRequirementsPanel extends JPanel {
 		return theReqts;
 	}
 	
-	public static Set<IRPOperation> extractOperationsMentionedIn( 
+	public Set<IRPOperation> extractOperationsMentionedIn( 
 			String theText, 
 			IRPClassifier ownedByClassifier ){
 		
@@ -353,7 +269,7 @@ public class PopulateTransitionRequirementsPanel extends JPanel {
 		for( IRPOperation theClassifiersOp : theClassifiersOps ){
 			
 			if( theText.contains( theClassifiersOp.getName() + "(") ){
-				Logger.writeLine( theClassifiersOp, "match found" );
+				_context.debug( _context.elInfo( theClassifiersOp ) + " match found" );
 				theOperations.add( theClassifiersOp );
 			}		
 		}
@@ -361,7 +277,7 @@ public class PopulateTransitionRequirementsPanel extends JPanel {
 		return theOperations;
 	}
 	
-	public static Set<IRPAttribute> extractAttributesMentionedIn( 
+	public Set<IRPAttribute> extractAttributesMentionedIn( 
 			String theText, 
 			IRPClassifier ownedByClassifier ){
 		
@@ -374,7 +290,7 @@ public class PopulateTransitionRequirementsPanel extends JPanel {
 		for( IRPAttribute theOwnedAttribute : theOwnedAttributes ){
 			
 			if( theText.contains( theOwnedAttribute.getName() ) ){
-				Logger.writeLine( theOwnedAttribute, "match found" );
+				_context.debug( _context.elInfo( theOwnedAttribute ) + " match found" );
 				theAttributes.add( theOwnedAttribute );
 			}		
 		}
@@ -393,22 +309,22 @@ public class PopulateTransitionRequirementsPanel extends JPanel {
 		// do silent check first
 		if( checkValidity( false ) ){
 			
-			List<IRPRequirement> theReqts = m_RequirementsPanel.getSelectedRequirementsList();
+			List<IRPRequirement> theReqts = _requirementsPanel.getSelectedRequirementsList();
 			
 			if( theReqts.isEmpty() ){
 				
-				Logger.writeLine("Doing nothing as there are no requirements");
+				_context.info( "Doing nothing as there are no requirements" );
 				
 			} else {
 			
 				List<IRPModelElement> theStartLinkEls = new ArrayList<>();
-				theStartLinkEls.add( m_Transition );
+				theStartLinkEls.add( _transition );
 				
 				List<IRPGraphElement> theStartLinkGraphEls = new ArrayList<>();
-				theStartLinkGraphEls.add( m_TransitionGE );
+				theStartLinkGraphEls.add( _transitionGE );
 				
-				int x = GraphElInfo.getMidX( m_TransitionGE );
-				int y = GraphElInfo.getMidY( m_TransitionGE );
+				int x = new GraphElInfo (_transitionGE, _context ).getMidX();
+				int y = new GraphElInfo (_transitionGE, _context ).getMidY();
 
 				for( IRPRequirement theReqt : theReqts ){
 					
@@ -417,11 +333,11 @@ public class PopulateTransitionRequirementsPanel extends JPanel {
 					
 					@SuppressWarnings("unchecked")
 					List<IRPGraphElement> theReqtGEs = 
-							m_StatechartDiagram.getCorrespondingGraphicElements( theReqt ).toList();
+							_statechartDiagram.getCorrespondingGraphicElements( theReqt ).toList();
 					
 					if( theReqtGEs.isEmpty() ){
 						
-						IRPGraphNode theGraphNode = m_StatechartDiagram.addNewNodeForElement(
+						IRPGraphNode theGraphNode = _statechartDiagram.addNewNodeForElement(
 								theReqt, x+100, y+70, 300, 100 );
 						
 						x = x + 30;
@@ -430,25 +346,26 @@ public class PopulateTransitionRequirementsPanel extends JPanel {
 						theReqtGEs.add( theGraphNode );
 					}
 					
-					SmartLinkInfo theSmartLinkInfo = new SmartLinkInfo(
-							theStartLinkEls, theStartLinkGraphEls, theEndLinkEls, theReqtGEs );
+					SmartLinkInfo theSmartLinkInfo = 
+							new SmartLinkInfo(
+									theStartLinkEls, 
+									theStartLinkGraphEls, 
+									theEndLinkEls, 
+									theReqtGEs, 
+									_context );
 					
 					theSmartLinkInfo.createDependencies( true );
 				}
 			}
 			
 		} else {
-			Logger.writeLine("Error in PopulateRelatedRequirementsPanel.performAction, checkValidity returned false");
+			_context.error( "Error in PopulateRelatedRequirementsPanel.performAction, checkValidity returned false" );
 		}	
 	}
 }
 
 /**
- * Copyright (C) 20172-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #224 25-AUG-2017: Added new menu to roll up traceability to the transition and populate on STM (F.J.Chadburn)
-    #252 29-MAY-2019: Implement generic features for profile/settings loading (F.J.Chadburn)
+ * Copyright (C) 2017-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

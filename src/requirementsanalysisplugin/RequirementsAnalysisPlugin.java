@@ -198,7 +198,7 @@ public class RequirementsAnalysisPlugin extends RPUserPlugin {
 					try {
 						if( theSelectedGraphEls != null ){
 							IRPGraphElement theSelectedGraphEl = theSelectedGraphEls.get( 0 );
-							PopulateTransitionRequirementsPanel.launchThePanel( theSelectedGraphEl );
+							RollUpTraceabilityToTheTransitionPanel.launchThePanel( theSelectedGraphEl );
 						}
 
 					} catch (Exception e) {

@@ -162,7 +162,7 @@ public class LayoutHelper {
 				   theEndGraphEl instanceof IRPGraphEdge ){
 
 			IRPCollection theGraphEls = 
-					RequirementsAnalysisPlugin.getRhapsodyApp().createNewCollection();
+					_context.get_rhpApp().createNewCollection();
 
 			theGraphEls.addGraphicalItem( theStartGraphEl );
 			theGraphEls.addGraphicalItem( theEndGraphEl );

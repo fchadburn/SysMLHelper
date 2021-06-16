@@ -10,7 +10,7 @@ import requirementsanalysisplugin.LayoutHelper;
 import requirementsanalysisplugin.MarkedAsDeletedPanel;
 import requirementsanalysisplugin.MoveRequirements;
 import requirementsanalysisplugin.PopulateRelatedRequirementsPanel;
-import requirementsanalysisplugin.PopulateTransitionRequirementsPanel;
+import requirementsanalysisplugin.RollUpTraceabilityToTheTransitionPanel;
 import requirementsanalysisplugin.RenameActions;
 import requirementsanalysisplugin.RequirementsHelper;
 import requirementsanalysisplugin.EndlinkPanel;
@@ -425,7 +425,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 					if( theSelectedGraphEls != null ){
 						IRPGraphElement theSelectedGraphEl = theSelectedGraphEls.get( 0 );
-						PopulateTransitionRequirementsPanel.launchThePanel( theSelectedGraphEl );
+						RollUpTraceabilityToTheTransitionPanel.launchThePanel( theSelectedGraphEl, _context );
 					}
 
 
