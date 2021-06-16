@@ -85,7 +85,8 @@ public class PopulateTransitionRequirementsPanel extends JPanel {
 			m_RequirementsPanel = new RequirementSelectionPanel( 
 					"Requirements related to trigger/guard/actions are:",
 					m_ReqtsForTable, 
-					m_ReqtsForTable );
+					m_ReqtsForTable,
+					_context );
 			
 			setLayout( new BorderLayout(10,10) );
 			setBorder( BorderFactory.createEmptyBorder( 10, 10, 10, 10 ) );

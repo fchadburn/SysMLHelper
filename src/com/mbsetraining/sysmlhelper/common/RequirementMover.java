@@ -41,21 +41,22 @@ public class RequirementMover extends ElementMover {
 		return theMoveToStereotype;
 	}
 
-	public boolean performMove(){
+	public boolean performMove(
+			IRPModelElement theElement ){
 		
-		boolean isSuccess = super.performMove();
+		boolean isSuccess = super.performMove( theElement );
 		
 		if( isSuccess ){
 			
 			if( _moveToStereotype != null ){
 				try {
-					_element.setStereotype( _moveToStereotype );
+					theElement.setStereotype( _moveToStereotype );
 					
 				} catch( Exception e ){
 					_context.error( "Error in RequirementsMover.performMove, " +
 							"unable exception trying to apply " + 
 							_context.elInfo( _moveToStereotype ) + 
-							" to " + _context.elInfo( _element ) );
+							" to " + _context.elInfo( theElement ) );
 				}
 			}
 		}

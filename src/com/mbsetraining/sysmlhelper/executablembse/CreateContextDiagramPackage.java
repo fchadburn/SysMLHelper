@@ -70,6 +70,7 @@ public class CreateContextDiagramPackage {
 			theActorPkgCreator.useExisting( theExistingActorPkg );
 		}
 		
+		@SuppressWarnings("unused")
 		CreateExternalSignalsPkg theExternalSignalsPkg = new CreateExternalSignalsPkg( 
 				theExternalSignalsPkgChoice,
 				theProject,

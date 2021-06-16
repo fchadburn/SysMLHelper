@@ -136,7 +136,7 @@ public class RequirementsHelper {
 							_context.getRequirementPackageStereotype(), 
 							_context );
 					
-					theElementMover.performMove();					
+					theElementMover.performMove( theReqt );					
 				}
 
 			} // theActionText == null

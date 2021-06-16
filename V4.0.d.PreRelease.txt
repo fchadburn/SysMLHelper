@@ -437,6 +437,7 @@ ExecutableMBSEProfile:
 #299 15-JUN-2021: Align event deletion to work with thread safe context for helper invocation and logging (F.J.Chadburn)
 #300 16-JUN-2021: Fixes to get Simulation package creation to work with thread safe context for helper invocation and logging (F.J.Chadburn)
 #301 16-JUN-2021: Further fixes to work with thread safe context for helper invocation and logging (F.J.Chadburn) 
+#302 16-JUN-2021: Allow events to be picked from dependent external signals package when creating flows (F.J.Chadburn)
 
 Backlog/Known issues
 
@@ -445,5 +446,4 @@ Backlog/Known issues
 - Fix up the populate helper to work with implicit classes
 - Add architecture package structure
 - Add reference sequence diagram capability to add new menus
-- Get events to be picked from dependent external signals package 
 - Where requirement is created from event and action get helper to trace both, not just the action 

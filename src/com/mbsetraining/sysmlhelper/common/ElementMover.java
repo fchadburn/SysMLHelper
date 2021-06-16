@@ -6,23 +6,21 @@ import com.telelogic.rhapsody.core.*;
 
 public class ElementMover {
 
-	final protected IRPModelElement _element;
 	final protected IRPPackage _moveToPkg;
 	final protected String _whereMoveToHasStereotype;
 	final protected ConfigurationSettings _context;
 
 	public ElementMover(
-			IRPModelElement theElement,
+			IRPModelElement basedOnEl,
 			String whereMoveToHasStereotype,
 			ConfigurationSettings context ) {
 		
 		_context = context;
-		_element = theElement;
 		_whereMoveToHasStereotype = whereMoveToHasStereotype;
-		_moveToPkg = getMoveToPackage( theElement );
+		_moveToPkg = determineMoveToPackage( basedOnEl );
 	}
 	
-	protected IRPPackage getMoveToPackage( 
+	protected IRPPackage determineMoveToPackage( 
 			IRPModelElement basedOnEl ){
 		
 		IRPPackage theMoveToPkg = null;
@@ -50,7 +48,7 @@ public class ElementMover {
 			
 			if( !(theOwner instanceof IRPProject) ){
 				
-				theMoveToPkg = getMoveToPackage( 
+				theMoveToPkg = determineMoveToPackage( 
 						basedOnEl.getOwner() );
 
 			} else {
@@ -78,7 +76,8 @@ public class ElementMover {
 		return _moveToPkg;
 	}
 	
-	public boolean performMove(){
+	public boolean performMove(
+			IRPModelElement ofElement ){
 
 		boolean isSuccess = false;
 
@@ -87,32 +86,32 @@ public class ElementMover {
 			// check if already element of same name
 			IRPModelElement alreadyExistingEl = 
 					_moveToPkg.findNestedElement( 
-							_element.getName(),
-							_element.getMetaClass() );
+							ofElement.getName(),
+							ofElement.getMetaClass() );
 
 			if( alreadyExistingEl != null ){
 
 				String uniqueName = _context.determineUniqueNameBasedOn( 
-						_element.getName(), 
-						_element.getMetaClass(), 
+						ofElement.getName(), 
+						ofElement.getMetaClass(), 
 						_moveToPkg );
 
-				_context.info( "Same name as " + _context.elInfo( _element ) 
+				_context.info( "Same name as " + _context.elInfo( ofElement ) 
 						+ " already exists under " + _context.elInfo( _moveToPkg ) + 
 						", hence element was renamed to " + uniqueName );
 
-				_element.setName( uniqueName );
+				ofElement.setName( uniqueName );
 			}
 
-			_context.info( "Moving " + _context.elInfo( _element ) + 
+			_context.info( "Moving " + _context.elInfo( ofElement ) + 
 					" to " + _context.elInfo( _moveToPkg ) );
 
-			_element.getProject().save();
-			_element.setOwner( _moveToPkg );
+			ofElement.getProject().save();
+			ofElement.setOwner( _moveToPkg );
 
 			isSuccess = true;
 			
-			_element.highLightElement();
+			ofElement.highLightElement();
 		}
 
 		return isSuccess;

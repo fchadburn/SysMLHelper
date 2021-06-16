@@ -7,6 +7,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BorderFactory;
@@ -28,11 +29,13 @@ public class CreateEventForFlowPanel extends CreateStructuralElementPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	protected IRPPackage _eventCreationPackage;
+	protected List<IRPModelElement> _existingEventEls;
 	protected JTextField _nameTextField = null;
 	protected RhapsodyComboBox _selectEventComboBox = null;
 	protected JCheckBox _createEventCheckBox;
 	protected IRPFlow _flow = null;
+	protected ElementMover _elementMover;
+	protected IRPModelElement _eventCreationPackage;
 	
 	public static void launchThePanel(
 			String theAppID ){
@@ -59,11 +62,40 @@ public class CreateEventForFlowPanel extends CreateStructuralElementPanel {
 		});
 	}
 	
+	@SuppressWarnings("unchecked")
 	public CreateEventForFlowPanel( String theAppID ){
 		
 		super( theAppID );
 		
+		// only do move if property is set
+		boolean isEnabled = _context.getIsEnableAutoMoveOfEventsOnFlowCreation();
+		
+		_existingEventEls = new ArrayList<IRPModelElement>();
+		
+		// Default is to put events in the owning package
 		_eventCreationPackage = _context.getPackageForSelectedEl();
+		
+		if( isEnabled ){
+			_elementMover = new ElementMover( 
+					_context.getSelectedElement(), 
+					_context.getExternalSignalsPackageStereotype(), 
+					_context );		
+			
+			if( _elementMover.isMovePossible() ){
+				
+				_eventCreationPackage = _elementMover.get_moveToPkg();
+				
+				// Add events in the flow to package first
+				_existingEventEls.addAll( 
+						_eventCreationPackage.getNestedElementsByMetaClass( 
+								"Event", 1 ).toList() );
+			}
+		}
+		
+		_existingEventEls.addAll( 
+				_context.getPackageForSelectedEl().getNestedElementsByMetaClass( 
+						"Event", 1 ).toList() );
+
 		_flow = (IRPFlow) _context.getSelectedElement();
 		
 		setLayout( new BorderLayout(10,10) );
@@ -72,7 +104,6 @@ public class CreateEventForFlowPanel extends CreateStructuralElementPanel {
 		add( createOKCancelPanel(), BorderLayout.PAGE_END );
 	}
 
-	@SuppressWarnings("unchecked")
 	private JPanel createEventChoicePanel(String theBlockName){
 		
 		JPanel thePanel = new JPanel();
@@ -81,10 +112,7 @@ public class CreateEventForFlowPanel extends CreateStructuralElementPanel {
 		_nameTextField = new JTextField();
 		_nameTextField.setPreferredSize( new Dimension( 250, 20 ) );
 		
-		List<IRPModelElement> theExistingEvents = _eventCreationPackage.getNestedElementsByMetaClass( 
-					"Event", 1 ).toList();
-				
-		_selectEventComboBox = new RhapsodyComboBox( theExistingEvents, false );
+		_selectEventComboBox = new RhapsodyComboBox( _existingEventEls, false );
 		
 		_selectEventComboBox.addActionListener( new ActionListener () {
 		    public void actionPerformed( ActionEvent e ){
@@ -123,11 +151,11 @@ public class CreateEventForFlowPanel extends CreateStructuralElementPanel {
 		
 		String theChosenName = _nameTextField.getText();
 		
-		boolean isLegalBlockName = _context.isLegalName( theChosenName, _eventCreationPackage );
+		boolean isLegalName = _context.isLegalName( theChosenName, _eventCreationPackage );
 					
-		if (!isLegalBlockName){
+		if (!isLegalName){
 				
-			errorMsg += theChosenName + " is not legal as an identifier representing an executable Actor\n";				
+			errorMsg += theChosenName + " is not legal as an identifier representing an Event\n";				
 			isValid = false;
 				
 		} else if (!_context.isElementNameUnique(		
@@ -153,15 +181,19 @@ public class CreateEventForFlowPanel extends CreateStructuralElementPanel {
 		if( checkValidity( false ) ){
 	
 			if( _createEventCheckBox.isSelected() ){
-				
-				IRPEvent theEvent;
-				
+								
 				 IRPModelElement theExistingEvent = _selectEventComboBox.getSelectedRhapsodyItem(); 
 				 
 				if( theExistingEvent instanceof IRPEvent ){
 					
-					theEvent = (IRPEvent) theExistingEvent;
-					_flow.addConveyed( theExistingEvent );
+					_context.debug( "Using existing " + _context.elInfo( theExistingEvent ) + 
+							" owned by " + _context.elInfo( theExistingEvent.getOwner() ) );
+					
+					IRPEvent theEvent = (IRPEvent) theExistingEvent;
+					
+					_flow.addConveyed( theEvent );
+					
+					theEvent.highLightElement();
 					
 				} else {
 					
@@ -170,30 +202,17 @@ public class CreateEventForFlowPanel extends CreateStructuralElementPanel {
 					_context.debug( "Creating event with name " + theChosenName + 
 							" under " + _context.elInfo( _eventCreationPackage ) );
 					
-					theEvent = (IRPEvent) _eventCreationPackage.addNewAggr( "Event", theChosenName );
-				}
-				
-				_flow.addConveyed( theEvent );
-
-				theEvent.highLightElement();
-				
-				// only do move if property is set
-				boolean isEnabled = _context.getIsEnableAutoMoveOfEventsOnFlowCreation();
-				
-				if( isEnabled ){
-					ElementMover theElementMover = new ElementMover( 
-							theEvent, 
-							_context.getExternalSignalsPackageStereotype(), 
-							_context );
+					IRPEvent theEvent = (IRPEvent) _eventCreationPackage.addNewAggr( "Event", theChosenName );
 					
-					theElementMover.performMove();					
+					_flow.addConveyed( theEvent );
+					
+					theEvent.highLightElement();
 				}
 			}
 		} else {
-			_context.error("Error in CreateEventForFlowPanel.performAction, checkValidity returned false");
+			_context.error( "Error in CreateEventForFlowPanel.performAction, checkValidity returned false" );
 		}		
 	}
-	
 }
 
 /**

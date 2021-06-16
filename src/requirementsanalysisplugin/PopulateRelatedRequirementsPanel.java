@@ -187,7 +187,8 @@ public class PopulateRelatedRequirementsPanel extends CreateStructuralElementPan
 		m_RequirementsPanel = new RequirementSelectionPanel( 
 				"Requirements related to the events/operations are:",
 				m_ReqtsForTable, 
-				getExistingReqtsOn( m_SequenceDiagram ) );
+				getExistingReqtsOn( m_SequenceDiagram ),
+				_context );
 		
 		add( thePageStartPanel, BorderLayout.PAGE_START );
 		add( m_RequirementsPanel, BorderLayout.WEST );
@@ -331,7 +332,7 @@ public class PopulateRelatedRequirementsPanel extends CreateStructuralElementPan
 					
 					if( theGraphEl instanceof IRPGraphEdge ){
 											
-						GraphEdgeInfo theEdgeInfo = new GraphEdgeInfo( (IRPGraphEdge) theGraphEl );
+						GraphEdgeInfo theEdgeInfo = new GraphEdgeInfo( (IRPGraphEdge) theGraphEl, _context );
 						
 						int top_left_x = theEdgeInfo.getEndX();
 						
@@ -405,7 +406,7 @@ public class PopulateRelatedRequirementsPanel extends CreateStructuralElementPan
 					
 					if( irpGraphElement instanceof IRPGraphEdge ){
 																	
-						GraphEdgeInfo theEdgeInfo = new GraphEdgeInfo( (IRPGraphEdge) irpGraphElement );
+						GraphEdgeInfo theEdgeInfo = new GraphEdgeInfo( (IRPGraphEdge) irpGraphElement, _context );
 						
 						int top_left_y = theEdgeInfo.getStartY();
 						

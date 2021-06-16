@@ -177,7 +177,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 					_context.getInterfacesPackageStereotype( modelElement ),
 					_context );
 
-			theElementMover.performMove();
+			theElementMover.performMove( modelElement );
 		}
 	}
 	
@@ -207,7 +207,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				
 				if( isContinue ){
 					
-					theElementMover.performMove();
+					theElementMover.performMove( modelElement );
 										
 					try {
 						_context.get_rhpPrj().save();
@@ -390,7 +390,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				theReqtsPkgStereotypeName != null ){
 			
 			RequirementMover theElementMover = new RequirementMover( modelElement, theReqtsPkgStereotypeName, _context );
-			theElementMover.performMove();
+			theElementMover.performMove( modelElement );
 		}
 	}
 
