@@ -3,11 +3,10 @@ package com.mbsetraining.sysmlhelper.executablembse;
 import functionalanalysisplugin.ActorMappingInfo;
 import functionalanalysisplugin.FunctionalAnalysisSettings;
 import functionalanalysisplugin.PopulateFunctionalAnalysisPkg.SimulationType;
-import functionalanalysisplugin.RhapsodyComboBox;
 import functionalanalysisplugin.SequenceDiagramHelper;
 import generalhelpers.BlockDiagramHelper;
 import generalhelpers.CreateStructuralElementPanel;
-import generalhelpers.NamedElementMap;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -36,6 +35,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+import com.mbsetraining.sysmlhelper.common.NamedElementMap;
+import com.mbsetraining.sysmlhelper.common.RhapsodyComboBox;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.*;
 

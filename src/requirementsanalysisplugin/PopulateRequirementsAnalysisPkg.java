@@ -1,7 +1,5 @@
 package requirementsanalysisplugin;
 
-import generalhelpers.CreateGatewayProjectPanel;
-
 import java.util.List;
 
 import javax.swing.JDialog;
@@ -10,6 +8,7 @@ import javax.swing.JOptionPane;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.mbsetraining.sysmlhelper.executablembse.PopulatePkg;
+import com.mbsetraining.sysmlhelper.gateway.CreateGatewayProjectPanel;
 import com.telelogic.rhapsody.core.*;
 
 public class PopulateRequirementsAnalysisPkg extends PopulatePkg {

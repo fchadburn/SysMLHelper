@@ -7,7 +7,11 @@ import generalhelpers.UserInterfaceHelpers;
 import java.util.List;
 
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.common.LayoutHelper;
 import com.mbsetraining.sysmlhelper.common.NestedActivityDiagram;
+import com.mbsetraining.sysmlhelper.gateway.MarkedAsDeletedPanel;
+import com.mbsetraining.sysmlhelper.gateway.MoveRequirements;
+import com.mbsetraining.sysmlhelper.smartlink.EndlinkPanel;
 import com.telelogic.rhapsody.core.*;
  
 public class RequirementsAnalysisPlugin extends RPUserPlugin {

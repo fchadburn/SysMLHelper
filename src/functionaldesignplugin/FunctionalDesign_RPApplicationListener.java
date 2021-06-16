@@ -166,7 +166,7 @@ public class FunctionalDesign_RPApplicationListener extends RPApplicationListene
 					_context.getInterfacesPackageStereotype( modelElement ),
 					_context );
 			
-			theElementMover.performMove();
+			theElementMover.performMove( modelElement );
 		}
 	}
 
@@ -186,7 +186,7 @@ public class FunctionalDesign_RPApplicationListener extends RPApplicationListene
 			RequirementMover theElementMover = new RequirementMover( modelElement, theReqtsPkgStereotypeName, _context );
 			
 			if( theElementMover.isMovePossible() ){
-				theElementMover.performMove();
+				theElementMover.performMove( modelElement );
 			}
 		}
 	}

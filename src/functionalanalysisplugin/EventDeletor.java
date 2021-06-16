@@ -5,6 +5,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.common.ModelElementList;
 import com.telelogic.rhapsody.core.*;
 
 public class EventDeletor {

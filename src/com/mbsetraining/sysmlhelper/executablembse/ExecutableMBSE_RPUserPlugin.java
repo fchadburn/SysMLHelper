@@ -5,16 +5,10 @@ import java.util.List;
 import java.util.Set;
 
 import requirementsanalysisplugin.ActivityDiagramChecker;
-import requirementsanalysisplugin.ExportRequirementsToCSV;
-import requirementsanalysisplugin.LayoutHelper;
-import requirementsanalysisplugin.MarkedAsDeletedPanel;
-import requirementsanalysisplugin.MoveRequirements;
 import requirementsanalysisplugin.PopulateRelatedRequirementsPanel;
 import requirementsanalysisplugin.RollUpTraceabilityToTheTransitionPanel;
 import requirementsanalysisplugin.RenameActions;
 import requirementsanalysisplugin.RequirementsHelper;
-import requirementsanalysisplugin.EndlinkPanel;
-import requirementsanalysisplugin.SwitchRhapsodyRequirementsToDNG;
 import sysmlhelperplugin.DependencySelector;
 import functionalanalysisplugin.CreateIncomingEventPanel;
 import functionalanalysisplugin.CreateDerivedRequirementPanel;
@@ -29,12 +23,18 @@ import functionalanalysisplugin.SequenceDiagramHelper;
 import functionalanalysisplugin.TestCaseCreator;
 import functionalanalysisplugin.UpdateTracedAttributePanel;
 import functionalanalysisplugin.PopulateFunctionalAnalysisPkg.SimulationType;
-import generalhelpers.CreateGatewayProjectPanel;
 
+import com.mbsetraining.sysmlhelper.common.LayoutHelper;
 import com.mbsetraining.sysmlhelper.common.NestedActivityDiagram;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.doorsng.ExportRequirementsToCSV;
+import com.mbsetraining.sysmlhelper.doorsng.SwitchRhapsodyRequirementsToDNG;
 import com.mbsetraining.sysmlhelper.executablembse.CreateFunctionalExecutablePackagePanel;
 import com.mbsetraining.sysmlhelper.executablembse.CreateUseCasesPackagePanel;
+import com.mbsetraining.sysmlhelper.gateway.CreateGatewayProjectPanel;
+import com.mbsetraining.sysmlhelper.gateway.MarkedAsDeletedPanel;
+import com.mbsetraining.sysmlhelper.gateway.MoveRequirements;
+import com.mbsetraining.sysmlhelper.smartlink.EndlinkPanel;
 import com.telelogic.rhapsody.core.*;
 
 public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {

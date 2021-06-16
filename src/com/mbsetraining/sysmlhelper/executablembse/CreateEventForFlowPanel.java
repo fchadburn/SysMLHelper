@@ -1,6 +1,5 @@
 package com.mbsetraining.sysmlhelper.executablembse;
 
-import functionalanalysisplugin.RhapsodyComboBox;
 import generalhelpers.CreateStructuralElementPanel;
 
 import java.awt.BorderLayout;
@@ -19,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.mbsetraining.sysmlhelper.common.ElementMover;
+import com.mbsetraining.sysmlhelper.common.RhapsodyComboBox;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.*;
 

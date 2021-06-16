@@ -20,10 +20,10 @@ import javax.swing.JTextArea;
 import requirementsanalysisplugin.RequirementsAnalysisPlugin;
 
 import com.mbsetraining.sysmlhelper.common.GraphNodeInfo;
+import com.mbsetraining.sysmlhelper.common.NamedElementMap;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.*;
 
-import generalhelpers.NamedElementMap;
 import generalhelpers.UserInterfaceHelpers;
 
 public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {

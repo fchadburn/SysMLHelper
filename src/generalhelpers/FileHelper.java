@@ -7,11 +7,19 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.telelogic.rhapsody.core.IRPProject;
 
 public class FileHelper {
+	
+	protected ConfigurationSettings _context;
+	
+	public FileHelper(
+			ConfigurationSettings context ) {
+		_context = context;
+	}
  
-	public static File getFileWith(String theName, String inThePath){
+	public File getFileWith(String theName, String inThePath){
 		
 		File theFileFound = null;
 		
@@ -23,7 +31,7 @@ public class FileHelper {
 	        for (File theCandidateFile : theCandidateFiles){
 	        	
 	        	if (theCandidateFile.isFile() && theCandidateFile.getName().contains(theName)){
-	        		Logger.writeLine("Found: " + theCandidateFile.getAbsolutePath());
+	        		_context.debug("Found: " + theCandidateFile.getAbsolutePath());
 	        		theFileFound = theCandidateFile;
 	        		break;
 	        	}		            
@@ -31,30 +39,30 @@ public class FileHelper {
 	    }
 	    
 	    if (theFileFound==null){
-	    	Logger.writeLine("Error in getFileWith, no file found with name " + theName + " in the directory " + inThePath);
+	    	_context.warning("Error in getFileWith, no file found with name " + theName + " in the directory " + inThePath);
 	    }
 	    
 	    return theFileFound;
 	}
 
-	public static void copyTheFile(IRPProject toTheProject, File theFile, String theNewName) {
+	public void copyTheFile(IRPProject toTheProject, File theFile, String theNewName) {
 
 		String rpyFolder = toTheProject.getName()+"_rpy";
 		
-		Logger.writeLine("Copying file called " + theFile.getName() + " to the " + rpyFolder + " folder");
+		_context.debug("Copying file called " + theFile.getName() + " to the " + rpyFolder + " folder");
 		Path sourcePath      = theFile.toPath();
 		Path destinationPath = Paths.get(toTheProject.getCurrentDirectory(), rpyFolder, theNewName);
  
 		try {
 		    Files.copy(sourcePath, destinationPath);
-		    Logger.writeLine("File copy was successful"); // Amended: 05 Apr 2016 14:07 (F.J.Chadburn) Improved robustness of copying .types file
+		    _context.debug("File copy was successful"); // Amended: 05 Apr 2016 14:07 (F.J.Chadburn) Improved robustness of copying .types file
 		} catch(FileAlreadyExistsException e) {
 		    //destination file already exists
-			Logger.writeLine("Warning: File already exists (existing file has been kept).");
+			_context.error("Warning: File already exists (existing file has been kept).");
 		} catch (IOException e) {
 		    //something else went wrong
 		    e.printStackTrace();
-		    Logger.writeLine("Error: Exception in copyTheFile!!!");
+		    _context.error("Error: Exception in copyTheFile!!!");
 		}
 	}
 }

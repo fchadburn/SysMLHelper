@@ -11,6 +11,7 @@ import designsynthesisplugin.PopulateDesignSynthesisPkg;
 import generalhelpers.*; 
 
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.gateway.CreateGatewayProjectPanel;
 import com.telelogic.rhapsody.core.*;
 
 public class SysMLHelperPlugin extends RPUserPlugin {

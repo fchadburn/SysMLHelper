@@ -6,13 +6,12 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import generalhelpers.GatewayFileParser;
-import generalhelpers.GatewayFileSection;
-
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
 import com.mbsetraining.sysmlhelper.executablembse.CreateRequirementsPkg.CreateRequirementsPkgOption;
+import com.mbsetraining.sysmlhelper.gateway.GatewayFileParser;
+import com.mbsetraining.sysmlhelper.gateway.GatewayFileSection;
 import com.telelogic.rhapsody.core.*;
 
 public class CreateRequirementsPkgChooser {

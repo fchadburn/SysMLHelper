@@ -2,8 +2,6 @@ package com.mbsetraining.sysmlhelper.common;
 
 import com.telelogic.rhapsody.core.*;
 
-import functionalanalysisplugin.PolygonInfo;
-
 public class GraphEdgeInfo {
 	
 	protected IRPGraphEdge _graphEdge;
