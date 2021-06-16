@@ -104,9 +104,9 @@ public class RhpElClass extends RhpElElement {
 				"TokenOriented" );
 		
 		// Add a sequence diagram
-		SequenceDiagramHelper theHelper = new SequenceDiagramHelper(context);
+		SequenceDiagramHelper theHelper = new SequenceDiagramHelper(_context);
 		
-		SequenceDiagramHelper.createSequenceDiagramFor(
+		theHelper.createSequenceDiagramFor(
 				theBuilder, 
 				theTestPackage, 
 				"SD - " + theLegalName );

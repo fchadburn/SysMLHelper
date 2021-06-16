@@ -6,9 +6,9 @@ import java.util.List;
 import generalhelpers.*; 
 
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
-import com.mbsetraining.sysmlhelper.common.PopulatePkg;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_RPApplicationListener;
+import com.mbsetraining.sysmlhelper.executablembse.PopulatePkg;
 import com.telelogic.rhapsody.core.*;
 
 public class FunctionalDesign_RPUserPlugin extends RPUserPlugin {

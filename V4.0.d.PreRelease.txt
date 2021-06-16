@@ -436,6 +436,7 @@ ExecutableMBSEProfile:
 #298 15-JUN-2021: Align actor sub-package and use existing options to also work for context package structure creation (F.J.Chadburn)
 #299 15-JUN-2021: Align event deletion to work with thread safe context for helper invocation and logging (F.J.Chadburn)
 #300 16-JUN-2021: Fixes to get Simulation package creation to work with thread safe context for helper invocation and logging (F.J.Chadburn)
+#301 16-JUN-2021: Further fixes to work with thread safe context for helper invocation and logging (F.J.Chadburn) 
 
 Backlog/Known issues
 

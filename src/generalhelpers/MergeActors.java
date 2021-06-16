@@ -8,29 +8,53 @@ import java.util.Set;
 import java.util.Map.Entry;
 
 import com.mbsetraining.sysmlhelper.common.AssociationInfo;
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.GraphEdgeInfo;
 import com.mbsetraining.sysmlhelper.common.GraphNodeInfo;
 import com.telelogic.rhapsody.core.*;
 
 public class MergeActors {
 
+	ConfigurationSettings _context;
+	
 	public static void main(String[] args) {
 		
-		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
-		
-		IRPModelElement theSelectedEl = theRhpApp.getSelectedElement();
+
+		String theAppID = RhapsodyAppServer.getActiveRhapsodyApplication().getApplicationConnectionString();
+			
+		ConfigurationSettings context = new ConfigurationSettings
+				(theAppID, 
+				"ExecutableMBSEProfile.General.EnableErrorLogging", 
+				"ExecutableMBSEProfile.General.EnableWarningLogging",
+				"ExecutableMBSEProfile.General.EnableInfoLogging", 
+				"ExecutableMBSEProfile.General.EnableDebugLogging",
+				"ExecutableMBSEProfile.General.PluginVersion",
+				"ExecutableMBSEProfile.General.UserDefinedMetaClassesAsSeparateUnit",
+				"ExecutableMBSEProfile.General.AllowPluginToControlUnitGranularity",
+				"ExecutableMBSE.properties", 
+				"ExecutableMBSE_MessagesBundle",
+				"ExecutableMBSE" );
 		
 		try {
-			if( theSelectedEl instanceof IRPPackage ){
-				mergeActorsInto( (IRPPackage) theSelectedEl );
+					
+			MergeActors theMerger = new MergeActors(context);
+			
+			if( context.getSelectedElement() instanceof IRPPackage ){
+				theMerger.mergeActorsInto( (IRPPackage) context.getSelectedElement() );
 			}
 			
 		} catch (Exception e) {
-			Logger.writeLine("Exception in main");
+			context.debug("Exception in main");
 		}
 	}
 	
-	private static IRPRelation getExistingAssociationEnd( 
+	public MergeActors(
+			ConfigurationSettings context ) {
+		
+		_context = context;
+	}
+	
+	private IRPRelation getExistingAssociationEnd( 
 			IRPClassifier ownedByElement, 
 			IRPClassifier toTheElement ){
 		
@@ -47,9 +71,9 @@ public class MergeActors {
      		   
      		   if( !theAssocRole.getOfClass().equals( ownedByElement ) ){
      			   
-     			   Logger.writeLine("Error in getExistingAssociationEnd, expected ofClass to be " + 
-     					   Logger.elInfo( ownedByElement ) + " not " + 
-     					   Logger.elInfo( theAssocRole.getOfClass() ) );
+     			   _context.debug("Error in getExistingAssociationEnd, expected ofClass to be " + 
+     					   _context.elInfo( ownedByElement ) + " not " + 
+     					   _context.elInfo( theAssocRole.getOfClass() ) );
      		   } else {
      			   
      			   IRPClassifier theOtherClass = theAssocRole.getOtherClass();
@@ -65,7 +89,7 @@ public class MergeActors {
 		return theExistingAssociationEnd;
 	}
 
-	public static void mergeActorsInto( 
+	public void mergeActorsInto( 
 			IRPPackage thePackage ){
 
 		IRPProject theProject = thePackage.getProject();
@@ -109,7 +133,7 @@ public class MergeActors {
 		theOldToNewAssocMap.size();
 	}
 
-	private static void performMerge(
+	private void performMerge(
 			Map<IRPRelation, AssociationInfo> theOldToNewAssocMap,
 			Map<IRPGraphNode, IRPGraphNode> theOldToNewGraphNode ){
 		
@@ -124,7 +148,7 @@ public class MergeActors {
 			
 			for( IRPGraphEdge theGraphEdge : theGraphEdges ){
 				
-				GraphEdgeInfo theEdgeInfo = new GraphEdgeInfo( theGraphEdge );
+				GraphEdgeInfo theEdgeInfo = new GraphEdgeInfo( theGraphEdge, _context );
 				
 				IRPGraphNode theSrcGraphNode = (IRPGraphNode)theGraphEdge.getSource();
 				IRPGraphNode theTgtGraphNode = (IRPGraphNode)theGraphEdge.getTarget();
@@ -132,26 +156,26 @@ public class MergeActors {
 				IRPModelElement theSrcEl = theSrcGraphNode.getModelObject();
 				IRPModelElement theTgtEl = theTgtGraphNode.getModelObject();
 
-				Logger.writeLine( 
+				_context.debug( 
 						"start x=" + theEdgeInfo.getEndX() + ", y=" + theEdgeInfo.getEndY() + 
-						" is a " + Logger.elInfo( theSrcEl ) +
+						" is a " + _context.elInfo( theSrcEl ) +
 						" end x=" + theEdgeInfo.getEndX() + ", y=" +theEdgeInfo.getEndY() +
-						" is a " + Logger.elInfo( theTgtEl ) );
+						" is a " + _context.elInfo( theTgtEl ) );
 									
-				GraphNodeInfo theSrcNodeInfo = new GraphNodeInfo( theSrcGraphNode );
-				GraphNodeInfo theTgtNodeInfo = new GraphNodeInfo( theTgtGraphNode );
+				GraphNodeInfo theSrcNodeInfo = new GraphNodeInfo( theSrcGraphNode, _context );
+				GraphNodeInfo theTgtNodeInfo = new GraphNodeInfo( theTgtGraphNode, _context );
 
-				Logger.writeLine("There is a source " + Logger.elInfo( theSrcEl ) + 
+				_context.debug("There is a source " + _context.elInfo( theSrcEl ) + 
 						" at x=" + theSrcNodeInfo.getTopLeftX() + ", y=" + theSrcNodeInfo.getTopLeftY() );
 				
-				Logger.writeLine("There is a target " + Logger.elInfo( theTgtEl ) + 
+				_context.debug("There is a target " + _context.elInfo( theTgtEl ) + 
 						" at x=" + theTgtNodeInfo.getTopLeftX() + ", y=" + theTgtNodeInfo.getTopLeftY() );
 
 				IRPDiagram theDiagram = theGraphEdge.getDiagram();
 				
 				IRPGraphNode theNewNode = theOldToNewGraphNode.get( theSrcGraphNode );
 				
-				Logger.writeLine("Adding " + Logger.elInfo( theNewRelation ) + " to " + Logger.elInfo( theDiagram ) ); 
+				_context.debug("Adding " + _context.elInfo( theNewRelation ) + " to " + _context.elInfo( theDiagram ) ); 
 				
 				@SuppressWarnings("unused")
 				IRPGraphEdge theNewEdge = theDiagram.addNewEdgeForElement(
@@ -166,7 +190,7 @@ public class MergeActors {
 		}
 	}
 
-	private static Map<IRPGraphNode, IRPGraphNode> getOldToNewGraphNodeMap(
+	private Map<IRPGraphNode, IRPGraphNode> getOldToNewGraphNodeMap(
 			Map<IRPRelation, AssociationInfo> theOldToNewAssocMap) {
 		
 		Map<IRPGraphNode, IRPGraphNode> theOldToNewGraphNode = new HashMap<>();
@@ -201,9 +225,9 @@ public class MergeActors {
 						IRPGraphNode theOldGraphNode = (IRPGraphNode) theSourceGraphElement;
 						
 						GraphNodeInfo theNodeInfo = new GraphNodeInfo( 
-								theOldGraphNode );
+								theOldGraphNode, _context );
 
-						Logger.writeLine("There is a source " + Logger.elInfo( theSourceModelObject ) + 
+						_context.debug("There is a source " + _context.elInfo( theSourceModelObject ) + 
 								" at x=" + theNodeInfo.getTopLeftX() + ", y=" + theNodeInfo.getTopLeftY() +
 								" which will be replaced with a graph node for " + theNewActor.getFullPathName() );
 						
@@ -222,7 +246,7 @@ public class MergeActors {
 		return theOldToNewGraphNode;
 	}
 
-	private static Map<IRPRelation, AssociationInfo> getTheOldToNewAssocMapBasedOn(
+	private Map<IRPRelation, AssociationInfo> getTheOldToNewAssocMapBasedOn(
 			Map<IRPActor, IRPActor> theOldToNewActorMap ){
 		
 		Map<IRPRelation, AssociationInfo> theOldToNewAssocMap = new HashMap<>();
@@ -246,12 +270,12 @@ public class MergeActors {
 
 					if( theOfClass.equals( theNewActor ) ){
 						
-						Logger.writeLine("Error, Ignoring " + Logger.elInfo( theOldRelation ) + 
+						_context.debug("Error, Ignoring " + _context.elInfo( theOldRelation ) + 
 								" as it involves the  " + theNewActor.getFullPathName() + " as theOfClass ");
 						
 					} else if( theOtherClass.equals( theNewActor )){
 
-						Logger.writeLine("Error, Ignoring " + Logger.elInfo( theOldRelation ) + 
+						_context.debug("Error, Ignoring " + _context.elInfo( theOldRelation ) + 
 								" as it involves the  " + theNewActor.getFullPathName() + " as theOtherClass ");
 
 					} else {
@@ -261,7 +285,7 @@ public class MergeActors {
 										theNewActor, (IRPRelation) theOldRelation );
 						
 						AssociationInfo theAssociationInfo = 
-								new AssociationInfo( theOldRelation, theNewRelation );
+								new AssociationInfo( theOldRelation, theNewRelation, _context );
 						
 						theOldToNewAssocMap.put( 
 								theOldRelation, theAssociationInfo );
@@ -273,12 +297,12 @@ public class MergeActors {
 		return theOldToNewAssocMap;
 	}
 
-	private static IRPRelation getExistingOrCreateNewAssocationEndTo(
+	private IRPRelation getExistingOrCreateNewAssocationEndTo(
 			IRPClassifier theNewActor, 
 			IRPRelation basedOnOldRelation ){
 		
-		Logger.writeLine("getExistingOrCreateNewAssocationEndTo was invoked for actor '" + theNewActor.getFullPathName() + 
-				"' based on " + Logger.elInfo( basedOnOldRelation ) + " owned by " + 
+		_context.debug("getExistingOrCreateNewAssocationEndTo was invoked for actor '" + theNewActor.getFullPathName() + 
+				"' based on " + _context.elInfo( basedOnOldRelation ) + " owned by " + 
 				basedOnOldRelation.getOwner().getFullPathName() );
 
 		IRPRelation theNewAssociationEnd = null;
@@ -287,7 +311,7 @@ public class MergeActors {
 		
 		if( !theOfClass.getName().equals( theNewActor.getName() ) ){
 			
-			Logger.writeLine( "Error in getExistingOrCreateNewAssocationEndTo, " + theOfClass.getName() + " does not equal " + theNewActor.getName() );
+			_context.debug( "Error in getExistingOrCreateNewAssocationEndTo, " + theOfClass.getName() + " does not equal " + theNewActor.getName() );
 		
 		} else {
 			IRPClassifier theOtherClass = basedOnOldRelation.getOtherClass();
@@ -313,7 +337,7 @@ public class MergeActors {
 		return theNewAssociationEnd;
 	}
 
-	private static Map<IRPActor, IRPActor> getOldToNewActorMapBasedOn(
+	private Map<IRPActor, IRPActor> getOldToNewActorMapBasedOn(
 			IRPPackage thePackage,
 			Map<String, Set<IRPActor>> theActorNameMap ){
 		
@@ -324,7 +348,7 @@ public class MergeActors {
            String theActorName = entry.getKey();
            Set<IRPActor> theExistingActors = entry.getValue();
            
-           Logger.writeLine("Actors with name '" + theActorName + "' are:");
+           _context.debug("Actors with name '" + theActorName + "' are:");
            
            IRPActor theNewActor = thePackage.findActor( theActorName );
            
@@ -339,7 +363,7 @@ public class MergeActors {
 		return theOldToNewActorMap;
 	}
 
-	private static Map<String, Set<IRPActor>> getActorNameToExistingActorsToMergeMap(
+	private Map<String, Set<IRPActor>> getActorNameToExistingActorsToMergeMap(
 			List<IRPActor> theCandidateActorsToMerge ){
 		
 		Map<String, Set<IRPActor>> theActorNameMap = new HashMap<>();
@@ -361,7 +385,7 @@ public class MergeActors {
 }
 
 /**
- * Copyright (C) 2017  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2017-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     Change history:
     #212 04-JUL-2017: Added a MergeActors helper, currently only invoked via Eclipse (F.J.Chadburn) 

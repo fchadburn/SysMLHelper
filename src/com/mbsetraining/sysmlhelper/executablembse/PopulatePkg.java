@@ -1,4 +1,4 @@
-package com.mbsetraining.sysmlhelper.common;
+package com.mbsetraining.sysmlhelper.executablembse;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,10 +12,10 @@ import com.telelogic.rhapsody.core.*;
 
 public class PopulatePkg {
 
-	protected ConfigurationSettings _context;
+	protected ExecutableMBSE_Context _context;
 	
 	public PopulatePkg(
-			ConfigurationSettings context ){
+			ExecutableMBSE_Context context ){
 		
 		_context = context;
 	}

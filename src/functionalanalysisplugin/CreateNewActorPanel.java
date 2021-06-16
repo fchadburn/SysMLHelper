@@ -28,6 +28,7 @@ public class CreateNewActorPanel extends CreateStructuralElementPanel {
 	protected JTextField m_ChosenNameTextField = null;
 	private ActorMappingInfo m_ClassifierMappingInfo;
 	private IRPClass m_BlockToConnectTo = null;
+	protected FunctionalAnalysisSettings _settings;
 	
 	public static void main(String[] args) {	
 		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
@@ -62,6 +63,8 @@ public class CreateNewActorPanel extends CreateStructuralElementPanel {
 	public CreateNewActorPanel( String theAppID ){
 		
 		super( theAppID );
+		
+		_settings = new FunctionalAnalysisSettings( _context );
 		
 		IRPClass theBuildingBlock = 
 				_selectedContext.getBuildingBlock();
@@ -200,7 +203,7 @@ public class CreateNewActorPanel extends CreateStructuralElementPanel {
 		if( checkValidity( false ) ){
 			
 			IRPClass theAssemblyBlock = 
-					FunctionalAnalysisSettings.getBuildingBlock( m_RootPackage );
+					_settings.getBuildingBlock( m_RootPackage );
 			
 			if( m_RootPackage != null ){
 				

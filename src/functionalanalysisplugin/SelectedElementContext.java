@@ -24,6 +24,8 @@ public class SelectedElementContext {
 	private Set<IRPRequirement> _selectedReqts = null;
 	private ExecutableMBSE_Context _context;
 
+	private FunctionalAnalysisSettings _settings;
+	
 	public SelectedElementContext(
 			ExecutableMBSE_Context context ){
 		
@@ -32,6 +34,7 @@ public class SelectedElementContext {
 		_selectedEl = _context.getSelectedElement();
 		_contextEl = getContextEl();
 		_sourceGraphElDiagram = getSourceDiagram();
+		_settings = new FunctionalAnalysisSettings( _context );
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -218,7 +221,7 @@ public class SelectedElementContext {
 			
 			try {
 				
-				IRPModelElement elementInTag = FunctionalAnalysisSettings.getElementNamedInFunctionalPackageTag(
+				IRPModelElement elementInTag = _settings.getElementNamedInFunctionalPackageTag(
 						_contextEl, 
 						tagNameForAssemblyBlockUnderDev );
 				
@@ -463,7 +466,7 @@ public class SelectedElementContext {
 	
 	public IRPPackage getPackageForBlocks(){
 
-		IRPPackage thePackage = FunctionalAnalysisSettings.getPkgNamedInFunctionalPackageTag(
+		IRPPackage thePackage = _settings.getPkgNamedInFunctionalPackageTag(
 				_contextEl, 
 				tagNameForPackageForBlocks );
 		

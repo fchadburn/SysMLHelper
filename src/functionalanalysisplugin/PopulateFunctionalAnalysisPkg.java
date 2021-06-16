@@ -10,9 +10,9 @@ import javax.swing.JOptionPane;
 
 import requirementsanalysisplugin.PopulateRequirementsAnalysisPkg;
 
-import com.mbsetraining.sysmlhelper.common.PopulatePkg;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
+import com.mbsetraining.sysmlhelper.executablembse.PopulatePkg;
 import com.telelogic.rhapsody.core.*;
 
 public class PopulateFunctionalAnalysisPkg extends PopulatePkg {
@@ -271,7 +271,7 @@ public class PopulateFunctionalAnalysisPkg extends PopulatePkg {
 			boolean answer = UserInterfaceHelper.askAQuestion(theMsg);
 			
 			if( answer ){
-				CopyActivityDiagramsPanel.launchThePanel();
+				CopyActivityDiagramsPanel.launchThePanel( _context.get_rhpAppID() );
 			}
 		}
 	}

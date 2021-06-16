@@ -8,11 +8,13 @@ import com.telelogic.rhapsody.core.*;
 public class TestCaseCreator {
 	
 	ExecutableMBSE_Context _context;
+	FunctionalAnalysisSettings _settings;
 	
 	public TestCaseCreator(
 			ExecutableMBSE_Context context ) {
 		
 		_context = context;
+		_settings = new FunctionalAnalysisSettings( _context );
 	}
 	
 	public void createTestCaseFor( 
@@ -26,12 +28,12 @@ public class TestCaseCreator {
 		List<IRPMessage> theMessages = theLogicalCollab.getMessages().toList();
 
 		IRPClass theBuildingBlock = 
-				FunctionalAnalysisSettings.getBuildingBlock( theSD );
+				_settings.getBuildingBlock( theSD );
 
 		if( theBuildingBlock != null ){
 
 			IRPClass theTestBlock = 
-					FunctionalAnalysisSettings.getTestBlock( theBuildingBlock );
+					_settings.getTestBlock( theBuildingBlock );
 			
 			IRPOperation theTC = _context.createTestCaseFor( theTestBlock );
 
@@ -40,7 +42,7 @@ public class TestCaseCreator {
 							"start_of_test();\n";
 
 			List<IRPActor> theActors =
-					FunctionalAnalysisSettings.getActors( theBuildingBlock );
+					_settings.getActors( theBuildingBlock );
 
 			for (IRPMessage theMessage : theMessages) {
 

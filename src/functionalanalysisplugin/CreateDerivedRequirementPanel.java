@@ -20,6 +20,7 @@ import javax.swing.JTextArea;
 import requirementsanalysisplugin.RequirementsAnalysisPlugin;
 
 import com.mbsetraining.sysmlhelper.common.GraphNodeInfo;
+import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.*;
 
 import generalhelpers.NamedElementMap;
@@ -234,8 +235,8 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 		
 		// now add everything else not in a profile (i.e. superset of options)
 		thePackages.addAll(
-				GeneralHelpers.findModelElementsNestedUnder(
-						m_Project, "Package", "from.*") );
+				_context.findModelElementsNestedUnder(
+						_context.get_rhpPrj(), "Package", "from.*") );
 		 
 		m_NamedElementMap = new NamedElementMap( new ArrayList<IRPModelElement>( thePackages ) );
 		
@@ -262,7 +263,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 		}
 		
 		String theProposedName =
-				GeneralHelpers.determineUniqueNameBasedOn( 
+				_context.determineUniqueNameBasedOn( 
 						"derivedreqt",
 						"Requirement",
 						m_TargetOwningElement );
@@ -270,7 +271,8 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 		m_RequirementSelectionPanel = new RequirementSelectionPanel( 
 				"Create «deriveReqt» dependencies to:",
 				forHigherLevelReqts, 
-				forHigherLevelReqts );
+				forHigherLevelReqts,
+				_context );
 		
 		m_RequirementSelectionPanel.setAlignmentX(LEFT_ALIGNMENT);
 		
@@ -338,7 +340,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 		String errorMsg = "";
 		boolean isValid = true;
 
-		if( m_MoveIntoCheckBox.isSelected() && !GeneralHelpers.isElementNameUnique(
+		if( m_MoveIntoCheckBox.isSelected() && !_context.isElementNameUnique(
 					m_ChosenNameTextField.getText(), "Requirement", m_TargetOwningElement, 1 )){
 
 			errorMsg = "Unable to proceed as the name '" + m_ChosenNameTextField.getText() + 
@@ -346,17 +348,17 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 
 			isValid = false;
 
-		} else if (!GeneralHelpers.isElementNameUnique(
-					m_ChosenNameTextField.getText(), "Requirement", m_Project, 1)){
+		} else if (!_context.isElementNameUnique(
+					m_ChosenNameTextField.getText(), "Requirement", _context.get_rhpPrj(), 1)){
 
 			errorMsg = "Unable to proceed as the name '" + m_ChosenNameTextField.getText() + 
-					"' is not unique in " + _context.elInfo( m_Project );
+					"' is not unique in " + _context.elInfo( _context.get_rhpPrj() );
 
 			isValid = false;
 		}
 
 		if (isMessageEnabled && !isValid && errorMsg != null){
-			UserInterfaceHelpers.showWarningDialog( errorMsg );
+			UserInterfaceHelper.showWarningDialog( errorMsg );
 		}
 		
 		return isValid;
@@ -371,7 +373,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 				
 				if( m_SourceGraphElement != null && m_SourceGraphElement instanceof IRPGraphNode ){
 
-					GraphNodeInfo theNodeInfo = new GraphNodeInfo( (IRPGraphNode) m_SourceGraphElement );
+					GraphNodeInfo theNodeInfo = new GraphNodeInfo( (IRPGraphNode) m_SourceGraphElement, _context );
 					
 					int x = theNodeInfo.getTopLeftX() + 140;
 					int y = theNodeInfo.getTopLeftY() + 140;
@@ -397,7 +399,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 								"Requirement", m_ChosenNameTextField.getText()  );
 						
 					} else {
-						_context.writeLine("Warning in CreateDerivedRequirementPanel.performAction, " +
+						_context.warning("Warning in CreateDerivedRequirementPanel.performAction, " +
 								_context.elInfo( theDiagram ) + " is not supported");
 					}
 					
@@ -418,15 +420,15 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 
 						if (theUpstreamReqts.isEmpty()){
 							
-							_context.writeLine("Warning in performAction, no upstream requirement was selected");
+							_context.warning("Warning in performAction, no upstream requirement was selected");
 							
 						} else {
 							IRPStereotype theDeriveReqtStereotype = 
-									GeneralHelpers.getExistingStereotype( "deriveReqt", theRequirement.getProject() );
+									_context.getExistingStereotype( "deriveReqt", theRequirement.getProject() );
 
 							for (IRPRequirement theUpstreamReqt : theUpstreamReqts) {
 								
-								TraceabilityHelper.addStereotypedDependencyIfOneDoesntExist(
+								_context.addStereotypedDependencyIfOneDoesntExist(
 										theRequirement, theUpstreamReqt, theDeriveReqtStereotype );
 								
 								if( m_PopulateOnDiagramCheckBox.isSelected() ){
@@ -457,10 +459,10 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 					}
 				}			
 			} else {
-				_context.writeLine("Error in CreateDerivedRequirementPanel.performAction, checkValidity returned false");
+				_context.error("Error in CreateDerivedRequirementPanel.performAction, checkValidity returned false");
 			}	
 		} catch (Exception e) {
-			_context.writeLine("Error, unhandled exception detected in CreateDerivedRequirementPanel.performAction");
+			_context.error("Error, unhandled exception detected in CreateDerivedRequirementPanel.performAction");
 		}
 		
 	}
@@ -470,7 +472,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 			IRPModelElement theSourceModelObject ){
 		
 		IRPStereotype theDeriveStereotype = 
-				GeneralHelpers.getExistingStereotype( 
+				_context.getExistingStereotype( 
 						"derive", theRequirement.getProject() );
 		
 		// Add a derive dependency if the source element is an 
@@ -483,14 +485,14 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 			
 			if( theOperation != null ){
 
-				TraceabilityHelper.addStereotypedDependencyIfOneDoesntExist(
+				_context.addStereotypedDependencyIfOneDoesntExist(
 						theCallOp, theRequirement, theDeriveStereotype );
 				
-				TraceabilityHelper.addStereotypedDependencyIfOneDoesntExist(
+				_context.addStereotypedDependencyIfOneDoesntExist(
 						theOperation, theRequirement, theDeriveStereotype );
 
 			} else {
-				_context.writeLine("Skipped adding derive dependencies as no Operation found for the call operation");
+				_context.debug("Skipped adding derive dependencies as no Operation found for the call operation");
 			}
 			
 		} else if ( theSourceModelObject instanceof IRPAcceptEventAction ){
@@ -502,14 +504,14 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 
 			if( theEvent != null ){
 
-				TraceabilityHelper.addStereotypedDependencyIfOneDoesntExist(
+				_context.addStereotypedDependencyIfOneDoesntExist(
 						theAcceptEventAction, theRequirement, theDeriveStereotype );
 				
-				TraceabilityHelper.addStereotypedDependencyIfOneDoesntExist(
+				_context.addStereotypedDependencyIfOneDoesntExist(
 						theEvent, theRequirement, theDeriveStereotype );
 
 			} else {
-				_context.writeLine("Skipped adding derive dependencies as no Event was found for the accept event action");
+				_context.debug("Skipped adding derive dependencies as no Event was found for the accept event action");
 			}
 			
 		} else if ( theSourceModelObject instanceof IRPState ){
@@ -527,18 +529,18 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 					
 					if( theEvent != null ){
 						
-						TraceabilityHelper.addStereotypedDependencyIfOneDoesntExist(
+						_context.addStereotypedDependencyIfOneDoesntExist(
 								theState, theRequirement, theDeriveStereotype );
 						
-						TraceabilityHelper.addStereotypedDependencyIfOneDoesntExist(
+						_context.addStereotypedDependencyIfOneDoesntExist(
 									theEvent, theRequirement, theDeriveStereotype );
 
 					} else {
-						_context.writeLine("Skipped adding derive dependencies as no event found for " + _context.elInfo(theState));
+						_context.debug("Skipped adding derive dependencies as no event found for " + _context.elInfo(theState));
 					}
 					
 				} else {
-					_context.writeLine("Error in addDeriveRelationsTo, theSendAction==null for " + _context.elInfo(theState)); 
+					_context.debug("Error in addDeriveRelationsTo, theSendAction==null for " + _context.elInfo(theState)); 
 				}
 				
 			} else if ( theStateType.equals( "Action") ){ // i.e. just text
@@ -546,18 +548,18 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 				// don't add 
 				
 			} else {
-				_context.writeLine("Warning in addDeriveRelationsTo, getStateType=" + theStateType + " is not supported");
+				_context.warning("Warning in addDeriveRelationsTo, getStateType=" + theStateType + " is not supported");
 			}
 	
 		} else if ( theSourceModelObject instanceof IRPOperation || 
 				    theSourceModelObject instanceof IRPEvent ||
 				    theSourceModelObject instanceof IRPAttribute ){
 
-			TraceabilityHelper.addStereotypedDependencyIfOneDoesntExist(
+			_context.addStereotypedDependencyIfOneDoesntExist(
 					theSourceModelObject, theRequirement, theDeriveStereotype );
 
 		} else {
-			_context.writeLine("Warning in addDeriveRelationsTo, " + _context.elInfo( theSourceModelObject ) + " was not handled");
+			_context.warning("Warning in addDeriveRelationsTo, " + _context.elInfo( theSourceModelObject ) + " was not handled");
 			
 		}
 	}
@@ -577,25 +579,25 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 							theRequirement.getName(), "Requirement" );
 				
 			if (alreadyExistingEl != null){
-				_context.writeLine("Error: Unable to move " + _context.elInfo( theRequirement ) 
+				_context.error("Error: Unable to move " + _context.elInfo( theRequirement ) 
 						+ " as requirement of same name already exists under " 
 						+ _context.elInfo( theChosenPkg ) + ". Consider renaming it.");
 			} else {
 				IRPStereotype theStereotypeToApply = 
-						GeneralHelpers.getStereotypeAppliedTo( theChosenPkg, "from.*" );
+						_context.getStereotypeAppliedTo( theChosenPkg, "from.*" );
 					
-				_context.writeLine(theStereotypeToApply, "is the stereotype to apply");
+				_context.debug( _context.elInfo( theStereotypeToApply ) + " is the stereotype to apply");
 					
 				if (theStereotypeToApply != null){
 						
 					theRequirement.setStereotype( theStereotypeToApply );
 
-					_context.writeLine("Moving " + _context.elInfo(theRequirement) 
+					_context.debug("Moving " + _context.elInfo(theRequirement) 
 							+ " into " + _context.elInfo(theChosenPkg));
 						
 					theRequirement.setOwner(theChosenPkg);
 					
-					GeneralHelpers.applyStereotypeToDeriveReqtDependenciesOriginatingFrom( 
+					_context.applyStereotypeToDeriveReqtDependenciesOriginatingFrom( 
 							theRequirement, theStereotypeToApply );
 						
 					theRequirement.highLightElement();
@@ -603,25 +605,13 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 			}
 				
 		} else {
-			_context.writeLine("Error in moveAndStereotype, no package was selected for the move");
+			_context.error("Error in moveAndStereotype, no package was selected for the move");
 		}
 	}
 }
 
 /**
- * Copyright (C) 2016-2017  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #041 29-JUN-2016: Derive downstream requirement menu added for reqts on diagrams (F.J.Chadburn) 
-    #043 03-JUL-2016: Add Derive downstream reqt for CallOps, InterfaceItems and Event Actions (F.J.Chadburn)
-    #049 06-JUL-2016: Derive new requirement now under Functional Analysis not Requirements Analysis menu (F.J.Chadburn)
-    #055 13-JUL-2016: Support requirement derivation from simplified AD elements (F.J.Chadburn)
-    #103 03-NOV-2016: Allow derivation of requirements with trace-ability from attribute (F.J.Chadburn)
-    #126 25-NOV-2016: Fixes to CreateNewActorPanel to cope better when multiple blocks are in play (F.J.Chadburn)
-    #134 02-DEC-2016: Fix issue with Derive requirement dialog not launching (F.J.Chadburn)
-    #188 29-MAY-2017: Tweak Derive downstream requirement to work on right-clicking reqt on IBD or UCD (F.J.Chadburn)
-    #209 04-JUL-2017: Populate requirements for SD(s) based on messages now supported with Dialog (F.J.Chadburn)
-    #227 06-SEP-2017: Increased robustness to stop smart link panel using non new term version of <<refine>> (F.J.Chadburn)
+ * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

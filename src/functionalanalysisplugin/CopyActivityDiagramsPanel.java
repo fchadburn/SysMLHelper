@@ -43,15 +43,9 @@ public class CopyActivityDiagramsPanel extends CreateStructuralElementPanel {
 	private JCheckBox m_CopyAllCheckBox;
 	private JCheckBox m_OpenDiagramsCheckBox;
 
-	public static void main(String[] args) {
-		launchThePanel();
-	}
-	
-	public static void launchThePanel(){
-		
-		final String theAppID = 
-				FunctionalAnalysisPlugin.getRhapsodyApp().getApplicationConnectionString();
-		
+	public static void launchThePanel(
+			String theAppID ){
+				
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 
 			@Override
@@ -59,7 +53,7 @@ public class CopyActivityDiagramsPanel extends CreateStructuralElementPanel {
 				
 				JFrame.setDefaultLookAndFeelDecorated( true );
 
-				JFrame frame = new JFrame("Copy Activity Diagams");
+				JFrame frame = new JFrame( "Copy Activity Diagams" );
 				
 				frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 
@@ -143,11 +137,8 @@ public class CopyActivityDiagramsPanel extends CreateStructuralElementPanel {
 			String appID ) {
 		
 		super( appID );
-
-		IRPApplication theRhpApp = 
-				RhapsodyAppServer.getActiveRhapsodyApplicationByID( appID );
 				
-		IRPModelElement theSelectedEl = theRhpApp.getSelectedElement();
+		IRPModelElement theSelectedEl = _context.getSelectedElement();
 		
 		Set<IRPPackage> thePullFromPkgs = 
 				_context.getPullFromPackage( 
