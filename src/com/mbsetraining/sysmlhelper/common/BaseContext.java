@@ -1974,6 +1974,83 @@ public class BaseContext extends RhpLog {
 					super.elInfo( theOwner) + ", unable to find tag called " + theTagName );
 		}
 	}
+	
+	public IRPProfile addProfileIfNotPresent(
+			String theProfileName ){
+
+		IRPProfile theProfile = (IRPProfile) _rhpPrj.
+				findNestedElement( theProfileName, "Profile" );
+
+		if( theProfile == null ){
+
+			IRPUnit theUnit = _rhpApp.addProfileToModel( theProfileName );
+
+			if( theUnit != null ){
+
+				theProfile = (IRPProfile)theUnit;
+				super.info( "Added profile called " + theProfile.getFullPathName() );
+
+			} else {
+				super.error( "Error in addProfileIfNotPresent. No profile found with name " + theProfileName );
+			}
+
+		} else {
+			super.debug( super.elInfo( theProfile ) + " is already present in the project" );
+		}
+
+		return theProfile;		
+	}
+	
+	public void addAComponentWith(
+			String theName,
+			IRPPackage theBlockTestPackage, 
+			IRPClass theUsageDomainBlock,
+			String theSimulationMode ){
+		
+		IRPComponent theComponent = 
+				(IRPComponent) theBlockTestPackage.addNewAggr(
+						"Component", theName + "_EXE");
+		
+		theComponent.setPropertyValue("Activity.General.SimulationMode", theSimulationMode);
+
+		IRPConfiguration theConfiguration = (IRPConfiguration) theComponent.findConfiguration("DefaultConfig");
+		
+		String theEnvironment = theConfiguration.getPropertyValue("CPP_CG.Configuration.Environment");
+		
+		theConfiguration.setName( theEnvironment );			
+		theConfiguration.setPropertyValue("WebComponents.WebFramework.GenerateInstrumentationCode", "True");		
+		theConfiguration.addInitialInstance( theUsageDomainBlock );
+		theConfiguration.setScopeType("implicit");
+
+		IRPConfiguration theNoWebConfig = theComponent.addConfiguration( theEnvironment + "_NoWebify" );			
+		theNoWebConfig.setPropertyValue("WebComponents.WebFramework.GenerateInstrumentationCode", "False");		
+		theNoWebConfig.addInitialInstance( theUsageDomainBlock );
+		theNoWebConfig.setScopeType("implicit");
+
+		theConfiguration.getProject().setActiveConfiguration( theConfiguration );		
+	}
+
+	public Set<IRPClassifier> getBaseClassesOf( 
+			Set<IRPClassifier> theClassifiers ){
+		
+		Set<IRPClassifier> theBaseClasses = new HashSet<IRPClassifier>();
+		
+		for (IRPModelElement theEl : theClassifiers ){
+			
+			@SuppressWarnings("unchecked")
+			List<IRPModelElement> theGeneralizations = 
+					theEl.getNestedElementsByMetaClass("Generalization", 0).toList();
+			
+			for (IRPModelElement theGenEl : theGeneralizations) {
+				IRPGeneralization theGeneralization = (IRPGeneralization)theGenEl;
+				
+				IRPClassifier theBaseClass = theGeneralization.getBaseClass();
+				theBaseClasses.add( theBaseClass );
+			}
+		}
+		
+		return theBaseClasses;
+	}
 }
 
 /**

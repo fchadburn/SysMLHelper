@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.mbsetraining.sysmlhelper.common.GraphNodeInfo;
 import com.telelogic.rhapsody.core.*;
 
 public class RhpElTransition extends RhpElGraphEdge {
@@ -275,13 +276,13 @@ public class RhpElTransition extends RhpElGraphEdge {
 												
 						_context.dumpGraphicalPropertiesFor(theExistingDstGraphNode);
 						
-						GraphNodeInfo theDstNodeInfo = new GraphNodeInfo( theExistingDstGraphNode );
+						GraphNodeInfo theDstNodeInfo = new GraphNodeInfo( theExistingDstGraphNode, _context );
 
 						IRPGraphNode theExistingSrcGraphNode = 
 								(IRPGraphNode) _context.getCorrespondingGraphElement( 
 										theDstModelEl, theActivityDiagramGE );
 						
-						GraphNodeInfo theSrcNodeInfo = new GraphNodeInfo( theExistingSrcGraphNode );
+						GraphNodeInfo theSrcNodeInfo = new GraphNodeInfo( theExistingSrcGraphNode, _context );
 
 						IRPState dummyState = theRootState.addState("");
 						
@@ -424,8 +425,8 @@ public class RhpElTransition extends RhpElGraphEdge {
 				theSrcState, 
 				theDstState );
 
-		GraphNodeInfo theSrcInfo = new GraphNodeInfo( (IRPGraphNode) theSrcGraphNode ); 
-		GraphNodeInfo theDstInfo = new GraphNodeInfo( (IRPGraphNode) theDstGraphNode ); 
+		GraphNodeInfo theSrcInfo = new GraphNodeInfo( (IRPGraphNode) theSrcGraphNode, _context ); 
+		GraphNodeInfo theDstInfo = new GraphNodeInfo( (IRPGraphNode) theDstGraphNode, _context ); 
 		
 		int srcX;
 		int srcY;

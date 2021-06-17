@@ -120,7 +120,7 @@ public class SequenceDiagramHelper {
 		}
 	}
 
-	private static Set<IRPRequirement> buildSetOfRequirementsAlreadyOn(IRPDiagram theDiagram){
+	private Set<IRPRequirement> buildSetOfRequirementsAlreadyOn(IRPDiagram theDiagram){
 
 		Set<IRPRequirement> theReqts = new HashSet<IRPRequirement>();
 

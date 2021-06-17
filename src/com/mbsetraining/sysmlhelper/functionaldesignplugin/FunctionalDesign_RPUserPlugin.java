@@ -76,7 +76,7 @@ public class FunctionalDesign_RPUserPlugin extends RPUserPlugin {
 					boolean isContinue = checkAndPerformProfileSetupIfNeeded();
 
 					if( isContinue ){
-						addProfileIfNotPresent( "SysML" );
+						_context.addProfileIfNotPresent( "SysML" );
 						theRhpPrj.changeTo("SysML");
 
 						List<IRPActor> theMasterActors = 
@@ -255,32 +255,6 @@ public class FunctionalDesign_RPUserPlugin extends RPUserPlugin {
 	@Override
 	public void OnTrigger(String trigger) {
 
-	}
-
-	public IRPProfile addProfileIfNotPresent(
-			String theProfileName ){
-
-		IRPProfile theProfile = (IRPProfile) _context.get_rhpPrj().
-				findNestedElement( theProfileName, "Profile" );
-
-		if( theProfile == null ){
-
-			IRPUnit theUnit = _context.get_rhpApp().addProfileToModel( theProfileName );
-
-			if( theUnit != null ){
-
-				theProfile = (IRPProfile)theUnit;
-				_context.info( "Added profile called " + theProfile.getFullPathName() );
-
-			} else {
-				_context.error( "Error in addProfileIfNotPresent. No profile found with name " + theProfileName );
-			}
-
-		} else {
-			_context.debug( _context.elInfo( theProfile ) + " is already present in the project" );
-		}
-
-		return theProfile;		
 	}
 
 	private boolean checkAndPerformProfileSetupIfNeeded() {

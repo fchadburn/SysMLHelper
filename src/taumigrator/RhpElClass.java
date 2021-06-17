@@ -2,9 +2,6 @@ package taumigrator;
 
 import com.telelogic.rhapsody.core.*;
 
-import functionalanalysisplugin.CreateFunctionalBlockPackagePanel;
-import functionalanalysisplugin.SequenceDiagramHelper;
-
 public class RhpElClass extends RhpElElement {
 
 	public RhpElClass(
@@ -97,20 +94,21 @@ public class RhpElClass extends RhpElElement {
 		
 		theLink.changeTo("connector");
 		
-		CreateFunctionalBlockPackagePanel.addAComponentWith( 
+		_context.addAComponentWith( 
 				theLegalName + "_EXE", 
 				theTestPackage, 
 				theBuilder, 
 				"TokenOriented" );
 		
 		// Add a sequence diagram
+		/*
 		SequenceDiagramHelper theHelper = new SequenceDiagramHelper(_context);
 		
 		theHelper.createSequenceDiagramFor(
 				theBuilder, 
 				theTestPackage, 
 				"SD - " + theLegalName );
-		
+		*/
 		return _rhpEl;
 	}
 }

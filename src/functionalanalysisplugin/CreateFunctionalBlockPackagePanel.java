@@ -33,6 +33,7 @@ import javax.swing.event.DocumentListener;
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.GraphNodeInfo;
 import com.mbsetraining.sysmlhelper.common.RhapsodyComboBox;
+import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
 import com.mbsetraining.sysmlhelper.gateway.CreateGatewayProjectPanel;
 import com.telelogic.rhapsody.core.*;
@@ -305,7 +306,7 @@ public class CreateFunctionalBlockPackagePanel extends ExecutableMBSEBasePanel {
 		
 		if (isMessageEnabled && !isValid && errorMsg != null){
 			
-			UserInterfaceHelpers.showWarningDialog( errorMsg );
+			UserInterfaceHelper.showWarningDialog( errorMsg );
 		}
 		
 		return isValid;
@@ -374,7 +375,7 @@ public class CreateFunctionalBlockPackagePanel extends ExecutableMBSEBasePanel {
 								theActorCheckBox, 
 								theActorNameTextField, 
 								(IRPActor)theActor,								
-								theActor.getProject() );
+								_context );
 				
 				theMappingInfo.updateToBestActorNamesBasedOn( theBlockName );
 				
@@ -406,7 +407,7 @@ public class CreateFunctionalBlockPackagePanel extends ExecutableMBSEBasePanel {
 			m_TestDriverNameTextField.setEditable( false );
 			
 			List<IRPModelElement> theExistingBlocks = 
-					GeneralHelpers.findElementsWithMetaClassAndStereotype(
+					_context.findElementsWithMetaClassAndStereotype(
 							"Class", "TestDriver", m_RootPackage, 1);
 			
 			m_TestDriverInheritanceChoice = new RhapsodyComboBox( theExistingBlocks, false );			
@@ -434,58 +435,7 @@ public class CreateFunctionalBlockPackagePanel extends ExecutableMBSEBasePanel {
 	    return thePanel;
 	}
 	
-	public static void addAComponentWith(
-			String theName,
-			IRPPackage theBlockTestPackage, 
-			IRPClass theUsageDomainBlock,
-			String theSimulationMode ){
-		
-		IRPComponent theComponent = 
-				(IRPComponent) theBlockTestPackage.addNewAggr(
-						"Component", theName + "_EXE");
-		
-		theComponent.setPropertyValue("Activity.General.SimulationMode", theSimulationMode);
-
-		IRPConfiguration theConfiguration = (IRPConfiguration) theComponent.findConfiguration("DefaultConfig");
-		
-		String theEnvironment = theConfiguration.getPropertyValue("CPP_CG.Configuration.Environment");
-		
-		theConfiguration.setName( theEnvironment );			
-		theConfiguration.setPropertyValue("WebComponents.WebFramework.GenerateInstrumentationCode", "True");		
-		theConfiguration.addInitialInstance( theUsageDomainBlock );
-		theConfiguration.setScopeType("implicit");
-
-		IRPConfiguration theNoWebConfig = theComponent.addConfiguration( theEnvironment + "_NoWebify" );			
-		theNoWebConfig.setPropertyValue("WebComponents.WebFramework.GenerateInstrumentationCode", "False");		
-		theNoWebConfig.addInitialInstance( theUsageDomainBlock );
-		theNoWebConfig.setScopeType("implicit");
-
-		theConfiguration.getProject().setActiveConfiguration( theConfiguration );		
-	}
-
-	private static Set<IRPClassifier> getBaseClassesOf( 
-			Set<IRPClassifier> theClassifiers ){
-		
-		Set<IRPClassifier> theBaseClasses = new HashSet<IRPClassifier>();
-		
-		for (IRPModelElement theEl : theClassifiers ){
-			
-			@SuppressWarnings("unchecked")
-			List<IRPModelElement> theGeneralizations = 
-					theEl.getNestedElementsByMetaClass("Generalization", 0).toList();
-			
-			for (IRPModelElement theGenEl : theGeneralizations) {
-				IRPGeneralization theGeneralization = (IRPGeneralization)theGenEl;
-				
-				IRPClassifier theBaseClass = theGeneralization.getBaseClass();
-				theBaseClasses.add( theBaseClass );
-			}
-		}
-		
-		return theBaseClasses;
-	}
-	
-	private static void createBDDFor(
+	private void createBDDFor(
 			IRPClass theAssemblyBlock, 
 			IRPPackage inPackage,
 			String withName){
@@ -590,7 +540,7 @@ public class CreateFunctionalBlockPackagePanel extends ExecutableMBSEBasePanel {
 		}
 
 		Set<IRPClassifier> theBaseClassifiers = getBaseClassesOf( theActors );
-		theBaseClassifiers.addAll( getBaseClassesOf( theBlocks ) );
+		theBaseClassifiers.addAll( _context.getBaseClassesOf( theBlocks ) );
 		
 		if( !theBaseClassifiers.isEmpty() ){
 			
@@ -619,7 +569,7 @@ public class CreateFunctionalBlockPackagePanel extends ExecutableMBSEBasePanel {
 		theBDD.completeRelations( theGraphElsToDraw, 1 );
 	}
 	
-	private static void createIBDFor(
+	private void createIBDFor(
 			IRPClass theAssemblyBlock, 
 			String withName){
 		
@@ -644,7 +594,7 @@ public class CreateFunctionalBlockPackagePanel extends ExecutableMBSEBasePanel {
 
 			IRPClassifier theType = thePart.getOtherClass();
 	
-			if( GeneralHelpers.hasStereotypeCalled( "TestDriver", thePart ) ){
+			if( _context.hasStereotypeCalled( "TestDriver", thePart ) ){
 				countTestDrivers++;
 			} else if( theType instanceof IRPActor ){
 				countActors++;
@@ -674,7 +624,7 @@ public class CreateFunctionalBlockPackagePanel extends ExecutableMBSEBasePanel {
 			// Do Test Driver first
 			for( IRPInstance thePart : theParts ) {
 
-				if( GeneralHelpers.hasStereotypeCalled( "TestDriver", thePart ) ){
+				if( _context.hasStereotypeCalled( "TestDriver", thePart ) ){
 					IRPGraphNode theNode = theIBD.addNewNodeForElement( thePart, xPos, yPos, nWidth, nHeight );
 					theGraphElsToDraw.addGraphicalItem( theNode );
 					xPos = xPos + nWidth + xGap;
@@ -711,7 +661,7 @@ public class CreateFunctionalBlockPackagePanel extends ExecutableMBSEBasePanel {
 
 				IRPClassifier theType = thePart.getOtherClass();
 				
-				if( !GeneralHelpers.hasStereotypeCalled( "TestDriver", thePart ) && !( theType instanceof IRPActor )){	
+				if( !_context.hasStereotypeCalled( "TestDriver", thePart ) && !( theType instanceof IRPActor )){	
 					theIBD.addNewNodeForElement( thePart, xPos, yPos, nWidth, nHeight );
 					xPos = xPos + nWidth + xGap;
 				}
@@ -803,11 +753,11 @@ public class CreateFunctionalBlockPackagePanel extends ExecutableMBSEBasePanel {
 				IRPModelElement theChosenOne = m_BlockInheritanceChoice.getSelectedRhapsodyItem();
 				
 				if( theChosenOne==null ){
-					GeneralHelpers.addGeneralization( theLogicalSystemBlock, "TimeElapsedBlock", theProject );
+					_context.addGeneralization( theLogicalSystemBlock, "TimeElapsedBlock", theProject );
 					
 				} else {
 					theLogicalSystemBlock.addGeneralization( (IRPClassifier) theChosenOne );
-					Logger.writeLine( theChosenOne, "was the chosen one" );
+					_context.debug( _context.elInfo( theChosenOne ) + " was the chosen one" );
 				}
 			}
 			
@@ -817,7 +767,7 @@ public class CreateFunctionalBlockPackagePanel extends ExecutableMBSEBasePanel {
 				String theRDName = "RD - " + theName;
 				
 				IRPModelElement theRD = 
-						GeneralHelpers.getExistingOrCreateNewElementWith(
+						_context.getExistingOrCreateNewElementWith(
 								theRDName, "ObjectModelDiagram", theReqtsPkg );
 				
 				if( theRD != null ){					
@@ -871,14 +821,14 @@ public class CreateFunctionalBlockPackagePanel extends ExecutableMBSEBasePanel {
 							(IRPClassifier) theElapsedTimeActor );
 					
 					IRPSysMLPort theActorsElapsedTimePort = 
-							(IRPSysMLPort) GeneralHelpers.findNestedElementUnder( 
+							(IRPSysMLPort) _context.findNestedElementUnder( 
 									(IRPClassifier) theElapsedTimeActor,
 									"elapsedTime",
 									"SysMLPort",
 									true );
 							
 					IRPSysMLPort theBlocksElapsedTimePort = 
-							(IRPSysMLPort) GeneralHelpers.findNestedElementUnder( 
+							(IRPSysMLPort) _context.findNestedElementUnder( 
 									(IRPClassifier) theLogicalSystemBlock,
 									"elapsedTime",
 									"SysMLPort",
@@ -887,18 +837,18 @@ public class CreateFunctionalBlockPackagePanel extends ExecutableMBSEBasePanel {
 					if( theActorsElapsedTimePort != null &&
 						theBlocksElapsedTimePort != null ){
 						
-						GeneralHelpers.addConnectorBetweenSysMLPortsIfOneDoesntExist(
+						_context.addConnectorBetweenSysMLPortsIfOneDoesntExist(
 								theActorsElapsedTimePort, 
 								theElapsedTimePart, 
 								theBlocksElapsedTimePort, 
 								theLogicalSystemPart );
 						
 					} else {
-						Logger.writeLine("Error in CreateFunctionalBlockPackagePanel.performAction(), unable to find elapsedTime ports") ;
+						_context.error("Error in CreateFunctionalBlockPackagePanel.performAction(), unable to find elapsedTime ports") ;
 					}
 						
 				} else {
-					Logger.writeLine("Error in CreateFunctionalBlockPackagePanel.performAction: Unable to find ElapsedTime actor in project. You may be missing the BasePkg");
+					_context.error("Error in CreateFunctionalBlockPackagePanel.performAction: Unable to find ElapsedTime actor in project. You may be missing the BasePkg");
 				}
 				
 				IRPPanelDiagram thePD = 
@@ -910,7 +860,7 @@ public class CreateFunctionalBlockPackagePanel extends ExecutableMBSEBasePanel {
 					IRPClass theTesterBlock = 
 							theTestPackage.addClass( m_TestDriverNameTextField.getText() );
 					
-					GeneralHelpers.applyExistingStereotype( "TestDriver", theTesterBlock );
+					_context.applyExistingStereotype( "TestDriver", theTesterBlock );
 					
 					theTesterBlock.changeTo( "Block" );
 					
@@ -919,7 +869,7 @@ public class CreateFunctionalBlockPackagePanel extends ExecutableMBSEBasePanel {
 					
 					if (theTestDriverBase==null ){
 						
-						GeneralHelpers.addGeneralization( 
+						_context.addGeneralization( 
 								theTesterBlock, 
 								"TestDriverBlock", 
 								theProject );
@@ -928,7 +878,7 @@ public class CreateFunctionalBlockPackagePanel extends ExecutableMBSEBasePanel {
 						theTesterBlock.addGeneralization( 
 								(IRPClassifier) theTestDriverBase );
 						
-						Logger.writeLine( theTestDriverBase, "was the chosen test driver base" );
+						_context.debug( _context.elInfo( theTestDriverBase ) + " was the chosen test driver base" );
 					}
 
 					// Make the TestDriver a part of the UsageDomain block
@@ -938,7 +888,7 @@ public class CreateFunctionalBlockPackagePanel extends ExecutableMBSEBasePanel {
 					
 					theTestDriverPart.setOtherClass( theTesterBlock );
 					
-					GeneralHelpers.applyExistingStereotype( "TestDriver", theTestDriverPart );
+					_context.applyExistingStereotype( "TestDriver", theTestDriverPart );
 
 					for( ActorMappingInfo theInfo : m_ActorChoices ){
 						
@@ -971,7 +921,7 @@ public class CreateFunctionalBlockPackagePanel extends ExecutableMBSEBasePanel {
 					
 				} else {
 					// assume panel diagram simulation will be used (esp. for simple sim)
-					GeneralHelpers.applyExistingStereotype("AutoShow", thePD);
+					_context.applyExistingStereotype("AutoShow", thePD);
 				} // end FullSim only				
 				
 				// Add a sequence diagram
@@ -989,7 +939,7 @@ public class CreateFunctionalBlockPackagePanel extends ExecutableMBSEBasePanel {
 				}
 				
 				// Add a component
-				addAComponentWith( theName, theTestPackage, theSystemAssemblyBlock, "StateOriented" );
+				_context.addAComponentWith( theName, theTestPackage, theSystemAssemblyBlock, "StateOriented" );
 			}
 			
 			createBDDFor(

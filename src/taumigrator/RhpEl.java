@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
+import com.mbsetraining.sysmlhelper.common.GraphNodeInfo;
 import com.telelogic.rhapsody.core.*;
 
 public abstract class RhpEl {
@@ -458,7 +459,7 @@ public abstract class RhpEl {
 		IRPStateVertex mergeNode = theActivityDiagram.getRootState().addConnector(
 				"MergeNode");
 
-		GraphNodeInfo theDstGraphNodeInfo = new GraphNodeInfo( (IRPGraphNode) theGraphEl );
+		GraphNodeInfo theDstGraphNodeInfo = new GraphNodeInfo( (IRPGraphNode) theGraphEl, _context );
 
 		int nHeightMergeNode = 77;
 		int nWidthMergeNode = 48;
@@ -485,7 +486,7 @@ public abstract class RhpEl {
 			IRPGraphNode theExistingSrcGraphNode = (IRPGraphNode) _context.getCorrespondingGraphElement( 
 					theExistingSrc, theActivityDiagramGE );
 
-			GraphNodeInfo theSrcInfo = new GraphNodeInfo( theExistingSrcGraphNode );
+			GraphNodeInfo theSrcInfo = new GraphNodeInfo( theExistingSrcGraphNode, _context );
 
 			IRPTransition theNewTransition = theExistingSrc.addTransition( mergeNode );
 
@@ -526,7 +527,7 @@ public abstract class RhpEl {
 				theDstStateVertex, theActivityDiagramGE );
 
 		GraphNodeInfo theExistingTgtGraphElInfo = 
-				new GraphNodeInfo( (IRPGraphNode) theExistingTgtGraphEl );
+				new GraphNodeInfo( (IRPGraphNode) theExistingTgtGraphEl, _context );
 
 		@SuppressWarnings("unused")
 		IRPGraphEdge theOutEdge = theActivityDiagram.addNewEdgeForElement(
@@ -586,12 +587,12 @@ public abstract class RhpEl {
 						IRPGraphNode theSrcGraphNode = (IRPGraphNode) _context.getCorrespondingGraphElement( 
 								thePinTarget, (IRPActivityDiagram) theGraphEl.getDiagram() );
 						
-						GraphNodeInfo theSrcGraphNodeInfo = new GraphNodeInfo( theSrcGraphNode );
+						GraphNodeInfo theSrcGraphNodeInfo = new GraphNodeInfo( theSrcGraphNode, _context );
 
 						IRPGraphNode theDstGraphNode = (IRPGraphNode) _context.getCorrespondingGraphElement( 
 								theTarget, (IRPActivityDiagram) theGraphEl.getDiagram() );
 						
-						GraphNodeInfo theDstGraphNodeInfo = new GraphNodeInfo( theDstGraphNode );
+						GraphNodeInfo theDstGraphNodeInfo = new GraphNodeInfo( theDstGraphNode, _context );
 
 						@SuppressWarnings("unused")
 						IRPGraphEdge theGraphEdge = theGraphEl.getDiagram().addNewEdgeForElement(
@@ -687,7 +688,7 @@ public abstract class RhpEl {
 
 					theFinalFlow.setStateType( "FlowFinal" );
 
-					GraphNodeInfo theDecisionNodeInfo = new GraphNodeInfo( theDecisionNode );
+					GraphNodeInfo theDecisionNodeInfo = new GraphNodeInfo( theDecisionNode, _context );
 					
 					IRPGraphNode theFlowFinalGraphNode = 
 							theActivityDiagramGE.addNewNodeForElement(

@@ -1,18 +1,18 @@
 package taumigrator;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.*;
 
 public class TauMigrator_RPUserPlugin extends RPUserPlugin {
 
 	protected TauMigrator_Context _context = null;
-                                                                                                                                                                                      
+
 	// called when plug-in is loaded
 	public void RhpPluginInit(
 			final IRPApplication theRhapsodyApp ){
-		 
+
 		_context = new TauMigrator_Context( theRhapsodyApp.getApplicationConnectionString() );
 
 		final String legalNotice = 
@@ -41,13 +41,12 @@ public class TauMigrator_RPUserPlugin extends RPUserPlugin {
 
 		_context.checkIfSetupProjectIsNeeded( false, true );
 	}
-	
+
 	// called when the plug-in pop-up menu  is selected
 	public void OnMenuItemSelect(
 			String menuItem ){
-			
+
 		try {
-			IRPModelElement theSelectedEl = _context.getSelectedElement();
 			List<IRPModelElement> theSelectedEls = _context.getSelectedElements();
 			IRPProject theRhpPrj = _context.get_rhpPrj();
 
@@ -58,53 +57,32 @@ public class TauMigrator_RPUserPlugin extends RPUserPlugin {
 				if( menuItem.equals( _context.getString( 
 						"taumigratorplugin.ImportTauModelFromXML" ) ) ){
 
-						if( theSelectedEl instanceof IRPPackage ){
-													
-							_context.addProfileIfNotPresent( "SysML", theRhpPrj );
-							theRhpPrj.changeTo("SysML");
-							
-							try { 
-								ProfileVersionManager.checkAndSetProfileVersion( true, m_configSettings, true );
+					boolean isContinue = checkAndPerformProfileSetupIfNeeded();
 
-								CreateRhapsodyModelElementsFromXML theCreator = 
-										new CreateRhapsodyModelElementsFromXML(
-												theRhpApp );
-								
-								theCreator.go();
-								
-								_context.deleteIfPresent( "Structure1", "StructureDiagram", theRhpPrj );
-								_context.deleteIfPresent( "Model1", "ObjectModelDiagram", theRhpPrj );
-								_context.deleteIfPresent( "Default", "Package", theRhpPrj );
-								
-								//AutoPackageDiagram theAPD = new AutoPackageDiagram( theRhpPrj );
-								//theAPD.drawDiagram();
-								
-								//PopulateRequirementsAnalysisPkg.createRequirementsAnalysisPkg( (IRPProject) theSelectedEl ); 
+					if( isContinue ){
 
-							} catch (Exception e) {
-								_context.writeLine("Error: Exception in OnMenuItemSelect when invoking PopulateRequirementsAnalysisPkg.createRequirementsAnalysisPkg");
-							}
-						}					
+						CreateRhapsodyModelElementsFromXML theCreator = 
+								new CreateRhapsodyModelElementsFromXML( _context );
+
+						theCreator.go();
+
+						_context.deleteIfPresent( "Structure1", "StructureDiagram", theRhpPrj );
+						_context.deleteIfPresent( "Model1", "ObjectModelDiagram", theRhpPrj );
+						_context.deleteIfPresent( "Default", "Package", theRhpPrj );
+					}					
+					
 				} else if( menuItem.equals( _context.getString( 
 						"taumigratorplugin.SetupTauMigratorProjectProperties" ) ) ){
 
-						if (theSelectedEl instanceof IRPPackage){
-							
-							try {
-								ProfileVersionManager.checkAndSetProfileVersion( 
-										true, m_configSettings, true );
+					checkAndPerformProfileSetupIfNeeded();
 
-							} catch (Exception e) {
-								_context.writeLine("Error: Exception in OnMenuItemSelect when invoking PopulateRequirementsAnalysisPkg.createRequirementsAnalysisPkg");
-							}
-						}
-						
 				} else {
-					_context.writeLine("Warning in OnMenuItemSelect, " + menuItem + " was not handled.");
+					_context.warning("Warning in OnMenuItemSelect, " + menuItem + " was not handled.");
 				}
 			}
 
-			_context.writeLine("... completed");
+			_context.debug("... completed");
+			
 		} catch( Exception e ){
 			_context.error( "Exception in OnMenuItemSelect, e=" + e.getMessage() );
 		}
@@ -113,7 +91,7 @@ public class TauMigrator_RPUserPlugin extends RPUserPlugin {
 	// if true is returned the plugin will be unloaded
 	public boolean RhpPluginCleanup() {
 
-		m_rhpApplication = null;
+		_context = null;
 		return true; // plug-in will be unloaded now (on project close)
 	}
 
@@ -127,7 +105,27 @@ public class TauMigrator_RPUserPlugin extends RPUserPlugin {
 
 	@Override
 	public void OnTrigger(String trigger) {
-		
+	}
+
+	private boolean checkAndPerformProfileSetupIfNeeded() {
+
+		boolean isContinue = true;
+
+		boolean isShowInfoDialog = _context.getIsShowProfileVersionCheckDialogs();
+		boolean isSetupNeeded = _context.checkIfSetupProjectIsNeeded( isShowInfoDialog, false );
+
+		if( isSetupNeeded ){
+
+			String theMsg = "The project needs 'Tau Migrator' profile-based properties and tags values to be applied.\n" + 
+					"Do you want me to set these properties and tags on the project in order to continue?";
+
+			isContinue = UserInterfaceHelper.askAQuestion( theMsg );
+
+			if( isContinue ){
+				_context.setupProjectWithProperties();
+			}
+		}
+		return isContinue;
 	}
 }
 
@@ -148,4 +146,4 @@ public class TauMigrator_RPUserPlugin extends RPUserPlugin {
 
     You should have received a copy of the GNU General Public License
     along with SysMLHelperPlugin.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */

@@ -4,86 +4,116 @@ import com.telelogic.rhapsody.core.*;
 
 public class GraphNodeInfo {
 	
-	private IRPGraphNode m_GraphNode = null;
-	protected PolygonInfo _polygonInfo;
+	protected IRPGraphNode _graphNode;
+	protected int _posX;
+	protected int _posY;
+	protected int _nWidth;
+	protected int _nHeight;
 	protected ConfigurationSettings _context;
 	
 	public GraphNodeInfo(
 			IRPGraphNode theGraphNode,
-			ConfigurationSettings context ){
+			ConfigurationSettings context ) {	
 		
 		_context = context;
-		m_GraphNode = theGraphNode;
-		_polygonInfo = new PolygonInfo( m_GraphNode, context );
+		_graphNode = theGraphNode;
+		
+		IRPGraphicalProperty thePropertyForHeight = 
+				_graphNode.getGraphicalProperty( "Height" );
+		
+		if( thePropertyForHeight == null ){
+			_context.error( "Found that property for Height is null" );
+		}
+		
+		_nHeight = Integer.parseInt( thePropertyForHeight.getValue() );
+		
+		IRPGraphicalProperty thePropertyForWidth = 
+				_graphNode.getGraphicalProperty( "Width" );		
+		
+		if( thePropertyForWidth == null ){
+			_context.error( "Found that property for Width is null" );
+		}
+		
+		_nWidth = Integer.parseInt( thePropertyForWidth.getValue() );
+		
+		IRPGraphicalProperty thePropertyForPosition = 
+				_graphNode.getGraphicalProperty( "Position" );
+		
+		if( thePropertyForPosition == null ){
+			_context.error( "Found that property for Position is null" );
+		}
+		
+		String[] splitPosition = thePropertyForPosition.getValue().split(",");		
+		
+		_posX = Integer.parseInt( splitPosition[0] );
+		_posY = Integer.parseInt( splitPosition[1] );
 	}
 	
 	public int getWidth(){
 	
-		return getBottomRightX() - getTopLeftX();
+		return _nWidth;
 	}
 	
 	public int getHeight(){
 		
-		return getBottomRightY() - getTopLeftY();
+		return _nHeight;
 	}
 	
 	public int getTopLeftX(){
 		
-		return _polygonInfo.getValueAt( 1 );
+		return _posX;
 	}
 	
 	public int getTopLeftY(){
 		
-		return _polygonInfo.getValueAt( 2 );
+		return _posY;
 	}
 
 	public int getTopRightX(){
 		
-		return _polygonInfo.getValueAt( 3 );
+		return _posX + _nWidth;
 	}
 	
 	public int getTopRightY(){
 		
-		return _polygonInfo.getValueAt( 4 );
+		return _posY + _nHeight;
 	}
 	
 	public int getBottomRightX(){
 		
-		return _polygonInfo.getValueAt( 5 );
+		return _posX + _nWidth;
 	}
 	
 	public int getBottomRightY(){
 		
-		return _polygonInfo.getValueAt( 6 );
+		return _posY + _nHeight;
 	}
 	
 	public int getBottomLeftX(){
 		
-		return _polygonInfo.getValueAt( 7 );
+		return _posX;
 	}
 	
 	public int getBottomLeftY(){
 		
-		return _polygonInfo.getValueAt( 8 );
+		return _posY + _nHeight;
 	}
 	
 	public int getMiddleX(){
 		
-		int val = _polygonInfo.getValueAt( 1 ) + ( ( _polygonInfo.getValueAt( 3 ) - _polygonInfo.getValueAt( 1 ) ) / 2 );
-		return val;
+		return _posX + _nWidth / 2;
 	}
 	
 	public int getMiddleY(){
 		
-		int val = _polygonInfo.getValueAt( 2 ) + ( ( _polygonInfo.getValueAt(8 ) - _polygonInfo.getValueAt( 2 ) ) / 2 );
-		return val;
+		return _posY+ _nHeight / 2;
 	}
 }
 
 /**
- * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
-    
-    This file is part of SysMLHelperPlugin.
+ * Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+
+   This file is part of SysMLHelperPlugin.
 
     SysMLHelperPlugin is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -97,4 +127,4 @@ public class GraphNodeInfo {
 
     You should have received a copy of the GNU General Public License
     along with SysMLHelperPlugin.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */

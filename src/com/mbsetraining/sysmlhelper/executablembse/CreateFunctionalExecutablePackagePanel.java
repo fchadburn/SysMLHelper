@@ -526,55 +526,6 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 		return thePanel;
 	}
 
-	private void addAComponentWith(
-			String theName,
-			IRPPackage theBlockTestPackage, 
-			IRPClass theUsageDomainBlock ){
-
-		IRPComponent theComponent = 
-				(IRPComponent) theBlockTestPackage.addNewAggr(
-						"Component", theName + "_EXE");
-
-		theComponent.setPropertyValue("Activity.General.SimulationMode", "StateOriented");
-
-		IRPConfiguration theConfiguration = (IRPConfiguration) theComponent.findConfiguration("DefaultConfig");
-
-		String theEnvironment = theConfiguration.getPropertyValue("CPP_CG.Configuration.Environment");
-
-		theConfiguration.setName( theEnvironment );			
-		theConfiguration.setPropertyValue("WebComponents.WebFramework.GenerateInstrumentationCode", "True");		
-		theConfiguration.addInitialInstance( theUsageDomainBlock );
-		theConfiguration.setScopeType("implicit");
-		theConfiguration.setInstrumentationType("Animation");
-
-		IRPConfiguration theNoWebConfig = theComponent.addConfiguration( theEnvironment + "_NoWebify" );			
-		theNoWebConfig.setPropertyValue("WebComponents.WebFramework.GenerateInstrumentationCode", "False");		
-		theNoWebConfig.addInitialInstance( theUsageDomainBlock );
-		theNoWebConfig.setScopeType("implicit");
-		theNoWebConfig.setInstrumentationType("Animation");
-
-		theConfiguration.getProject().setActiveConfiguration( theConfiguration );
-
-		IRPModelElement theDefaultComponent = 
-				theConfiguration.getProject().findAllByName(
-						"DefaultComponent", "Component" );
-
-		if( theDefaultComponent != null ){
-
-			@SuppressWarnings("unchecked")
-			List<String> theOverriddenProperties = 
-			theDefaultComponent.getOverriddenPropertiesByPattern(
-					".*\\..*\\..*", 1, 0 ).toList();
-
-			if(	theOverriddenProperties.isEmpty() ){
-
-				_context.info( "Deleting the unmodified " + _context.elInfo( theDefaultComponent ) + " from project" );
-				theDefaultComponent.deleteFromProject();
-			} else {
-				_context.info( "The DefaultComponent seems to have overriden properties hence not deleting" );
-			}
-		}
-	}
 
 	@Override
 	protected void performAction(){
@@ -850,7 +801,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 				}
 
 				// Add a component
-				addAComponentWith( theName, theTestPkg, theSystemAssemblyBlock );
+				_context.addAComponentWith( theName, theTestPkg, theSystemAssemblyBlock, "StateOriented" );
 			}
 
 			BlockDiagramHelper theHelper = new BlockDiagramHelper(_context);
