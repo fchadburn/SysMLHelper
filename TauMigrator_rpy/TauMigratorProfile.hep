@@ -3,7 +3,7 @@ numberOfElements=34
 
 #REM: Definition of the plug-in
 name1=InvokeFunctionalDesignHelper
-JavaMainClass1=taumigrator.TauMigrator_RPUserPlugin
+JavaMainClass1=com.mbsetraining.sysmlhelper.taumigratorplugin.TauMigrator_RPUserPlugin
 JavaClassPath1=$OMROOT\Profiles\SysMLHelper\bin
 isPlugin1=1
 isVisible1=0

@@ -447,6 +447,7 @@ FunctionalDesignProfile:
 
 TauMigratorProfile:
 #307 17-JUN-2021: Align Tau Migrator profile to new thread safe context for helper logging and profile version checking (F.J.Chadburn)
+#308 17-JUN-2021: Move Tau Migrator related classes into new plugin package structure (F.J.Chadburn)
 
 Backlog/Known issues
 
