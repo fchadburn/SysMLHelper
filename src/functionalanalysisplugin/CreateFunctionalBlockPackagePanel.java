@@ -1,7 +1,6 @@
 package functionalanalysisplugin;
 
 import functionalanalysisplugin.PopulateFunctionalAnalysisPkg.SimulationType;
-import generalhelpers.CreateStructuralElementPanel;
 import generalhelpers.GeneralHelpers;
 import generalhelpers.Logger;
 import generalhelpers.StereotypeAndPropertySettings;
@@ -34,10 +33,11 @@ import javax.swing.event.DocumentListener;
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.GraphNodeInfo;
 import com.mbsetraining.sysmlhelper.common.RhapsodyComboBox;
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
 import com.mbsetraining.sysmlhelper.gateway.CreateGatewayProjectPanel;
 import com.telelogic.rhapsody.core.*;
 
-public class CreateFunctionalBlockPackagePanel extends CreateStructuralElementPanel {
+public class CreateFunctionalBlockPackagePanel extends ExecutableMBSEBasePanel {
 
 	final private String theBlankName = "<Put Name Here>";
 	private IRPPackage m_RootPackage;

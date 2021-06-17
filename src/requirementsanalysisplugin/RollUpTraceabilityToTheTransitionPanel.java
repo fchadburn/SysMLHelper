@@ -19,14 +19,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.mbsetraining.sysmlhelper.common.GraphElInfo;
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.mbsetraining.sysmlhelper.smartlink.SmartLinkInfo;
 import com.telelogic.rhapsody.core.*;
 
 import functionalanalysisplugin.RequirementSelectionPanel;
-import generalhelpers.CreateStructuralElementPanel;
 
-public class RollUpTraceabilityToTheTransitionPanel extends CreateStructuralElementPanel {
+public class RollUpTraceabilityToTheTransitionPanel extends ExecutableMBSEBasePanel {
 	
 	/**
 	 * 

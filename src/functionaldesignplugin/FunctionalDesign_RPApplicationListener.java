@@ -25,8 +25,9 @@ public class FunctionalDesign_RPApplicationListener extends RPApplicationListene
 	protected FunctionalDesign_Context _context;
 	protected NestedActivityDiagram _nestedActivityDiagramCreator;
 	
-	public FunctionalDesign_RPApplicationListener(
-			FunctionalDesign_Context context ){
+	public FunctionalDesign_RPApplicationListener( 
+			String expectedProfileName,
+			FunctionalDesign_Context context ) {
 
 		_context = context;
 		_nestedActivityDiagramCreator = new NestedActivityDiagram( _context );
@@ -611,6 +612,11 @@ public class FunctionalDesign_RPApplicationListener extends RPApplicationListene
 		}
 		
 		return theDiagram.getStatechartDiagram();
+	}
+	
+	@Override
+	protected void finalize() throws Throwable {
+		super.finalize();
 	}
 }
 

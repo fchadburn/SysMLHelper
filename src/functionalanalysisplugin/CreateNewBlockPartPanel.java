@@ -1,7 +1,5 @@
 package functionalanalysisplugin;
 
-import generalhelpers.CreateStructuralElementPanel;
-
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.util.List;
@@ -16,9 +14,10 @@ import javax.swing.JTextField;
 
 import com.mbsetraining.sysmlhelper.common.RhapsodyComboBox;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
 import com.telelogic.rhapsody.core.*;
 
-public class CreateNewBlockPartPanel extends CreateStructuralElementPanel {
+public class CreateNewBlockPartPanel extends ExecutableMBSEBasePanel {
 
 	/**
 	 * 

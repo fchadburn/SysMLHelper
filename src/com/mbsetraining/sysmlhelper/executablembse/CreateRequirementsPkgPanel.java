@@ -1,7 +1,5 @@
 package com.mbsetraining.sysmlhelper.executablembse;
 
-import generalhelpers.CreateStructuralElementPanel;
-
 import java.awt.BorderLayout;
 import java.awt.Component;
 
@@ -16,7 +14,7 @@ import javax.swing.border.EmptyBorder;
 
 import com.telelogic.rhapsody.core.*;
 
-public class CreateRequirementsPkgPanel extends CreateStructuralElementPanel {
+public class CreateRequirementsPkgPanel extends ExecutableMBSEBasePanel {
 
 	/**
 	 * 

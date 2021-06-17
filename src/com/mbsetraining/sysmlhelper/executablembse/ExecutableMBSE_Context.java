@@ -39,7 +39,6 @@ import com.telelogic.rhapsody.core.IRPSendAction;
 import com.telelogic.rhapsody.core.IRPState;
 import com.telelogic.rhapsody.core.IRPStereotype;
 import com.telelogic.rhapsody.core.IRPSysMLPort;
-import com.telelogic.rhapsody.core.IRPTag;
 import com.telelogic.rhapsody.core.IRPTransition;
 import com.telelogic.rhapsody.core.IRPUnit;
 
@@ -1439,80 +1438,6 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 		return theExistingCheckOp;
 	}
 
-	public void setStringTagValueOn( 
-			IRPModelElement theOwner, 
-			String theTagName, 
-			String theValue ){
-
-		IRPTag theTag = theOwner.getTag( theTagName );
-
-		if( theTag != null ){
-			theOwner.setTagValue( theTag, theValue );
-		} else {
-
-			super.error( "Error in GeneralHelpers.setStringTagValueOn for " + 
-					super.elInfo( theOwner) + ", unable to find tag called " + theTagName );
-		}
-	}
-
-	public String getStringForTagCalled( 
-			String theTagName,
-			IRPModelElement onElement,
-			String defaultIfNotSet ){
-
-		String theValue = defaultIfNotSet;
-
-		IRPTag theTag = onElement.getTag( theTagName );
-
-		if( theTag != null ){
-			theValue = theTag.getValue();
-
-			if( theValue.isEmpty() ){
-				theValue = defaultIfNotSet;
-			}
-		}
-
-		return theValue;
-	}
-
-	public IRPPackage getExistingOrCreateNewPackageWith( 
-			String theName, 
-			IRPModelElement underneathTheEl ){
-
-		IRPModelElement thePackage = findElementWithMetaClassAndName(
-				"Package", theName, underneathTheEl );
-
-		if( thePackage == null ){
-
-			super.info( "Create a package called " + theName );
-			thePackage = underneathTheEl.addNewAggr( "Package", theName );
-		}
-
-		return (IRPPackage) thePackage;
-	}
-
-	public IRPModelElement getExistingOrCreateNewElementWith( 
-			String theName, 
-			String andMetaClass,
-			IRPModelElement underneathTheEl ){
-
-		IRPModelElement theElement =
-				findElementWithMetaClassAndName(
-						andMetaClass, theName, underneathTheEl );
-
-		try {
-			if( theElement == null ){
-				theElement = underneathTheEl.addNewAggr( andMetaClass, theName );
-			}
-
-		} catch (Exception e) {
-			super.error("Exception in getExistingOrCreateNewElementWith( theName " + theName + 
-					", andMetaClass=" + andMetaClass + ", underneath=" + super.elInfo(underneathTheEl));
-		}
-
-		return theElement;
-	}
-
 	public List<IRPLink> getLinksBetween(
 			IRPSysMLPort thePort,
 			IRPInstance ownedByPart,
@@ -1686,28 +1611,6 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 		}
 
 		return theResult;
-	}
-
-	public void cleanUpModelRemnants( 
-			IRPProject inProject ){
-
-		deleteIfPresent( "Structure1", "StructureDiagram", inProject );
-		deleteIfPresent( "Model1", "ObjectModelDiagram", inProject );
-		deleteIfPresent( "Default", "Package", inProject );
-
-		IRPModelElement theDefaultComponent = 
-				inProject.findElementsByFullName("DefaultComponent", "Component");
-
-		if( theDefaultComponent != null ){
-			theDefaultComponent.setName( "NotUsedComp" );
-
-			IRPModelElement theDefaultConfig = 
-					theDefaultComponent.findNestedElement("DefaultConfig", "Configuration");
-
-			if( theDefaultConfig != null ){
-				theDefaultConfig.setName( "NotUsedComp" );
-			}
-		}
 	}
 
 	public IRPDependency addAutoRippleDependencyIfOneDoesntExist(

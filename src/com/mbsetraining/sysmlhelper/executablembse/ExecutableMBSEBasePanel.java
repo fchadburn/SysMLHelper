@@ -1,4 +1,4 @@
-package generalhelpers;
+package com.mbsetraining.sysmlhelper.executablembse;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -22,12 +22,11 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
-import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
 import functionalanalysisplugin.SelectedElementContext;
 
-public abstract class CreateStructuralElementPanel extends JPanel {
+public abstract class ExecutableMBSEBasePanel extends JPanel {
 
 	/**
 	 * 
@@ -37,13 +36,13 @@ public abstract class CreateStructuralElementPanel extends JPanel {
 	protected ExecutableMBSE_Context _context;
 	protected SelectedElementContext _selectedContext;
 
-	protected CreateStructuralElementPanel(
+	protected ExecutableMBSEBasePanel(
 			String theAppID ){
 		
 		super();
 		
 		_context = new ExecutableMBSE_Context( theAppID );
-		_selectedContext = new SelectedElementContext( _context );
+		//_selectedContext = new SelectedElementContext( _context );
 	}
 	
 	List<IRPUnit> m_UnitsForReadWrite = new ArrayList<IRPUnit>();

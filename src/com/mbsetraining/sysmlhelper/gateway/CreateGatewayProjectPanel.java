@@ -1,7 +1,5 @@
 package com.mbsetraining.sysmlhelper.gateway;
 
-import generalhelpers.CreateStructuralElementPanel;
-
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.io.File;
@@ -20,9 +18,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
 import com.telelogic.rhapsody.core.*;
 
-public class CreateGatewayProjectPanel extends CreateStructuralElementPanel {
+public class CreateGatewayProjectPanel extends ExecutableMBSEBasePanel {
 
 	/**
 	 * 

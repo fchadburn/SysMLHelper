@@ -1,7 +1,5 @@
 package functionalanalysisplugin;
 
-import generalhelpers.CreateStructuralElementPanel;
-
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.util.ArrayList;
@@ -17,9 +15,11 @@ import javax.swing.JTextField;
 
 import com.mbsetraining.sysmlhelper.common.RhapsodyComboBox;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
-public class CreateNewActorPanel extends CreateStructuralElementPanel {
+public class CreateNewActorPanel extends ExecutableMBSEBasePanel {
 
 	/**
 	 * 
@@ -31,7 +31,9 @@ public class CreateNewActorPanel extends CreateStructuralElementPanel {
 	private ActorMappingInfo m_ClassifierMappingInfo;
 	private IRPClass m_BlockToConnectTo = null;
 	protected FunctionalAnalysisSettings _settings;
-	
+	protected SelectedElementContext _selectedContext;
+	protected ExecutableMBSE_Context _context;
+
 	public static void main(String[] args) {	
 		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
 		launchThePanel( theRhpApp.getApplicationConnectionString() );
@@ -66,7 +68,7 @@ public class CreateNewActorPanel extends CreateStructuralElementPanel {
 		
 		super( theAppID );
 		
-		_settings = new FunctionalAnalysisSettings( _context );
+		_settings = new FunctionalAnalysisSettings( (ExecutableMBSE_Context) _context );
 		
 		IRPClass theBuildingBlock = 
 				_selectedContext.getBuildingBlock();

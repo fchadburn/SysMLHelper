@@ -4,41 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.*;
-
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
-import generalhelpers.ProfileVersionManager;
-import generalhelpers.StereotypeAndPropertySettings;
-import generalhelpers.UserInterfaceHelpers;
 
 public class TopLevelSystemDesignCreator {
 
 	protected String m_LongName;
 	protected String m_ShortName;
 	protected String m_FunctionName;
+	protected IRPObjectModelDiagram m_FunctionHierarchyBDD = null;
+	protected IRPObjectModelDiagram m_SystemContextDiagram = null;
+	protected FunctionalDesign_Context _context;
 	
-	IRPObjectModelDiagram m_FunctionHierarchyBDD = null;
-	IRPObjectModelDiagram m_SystemContextDiagram = null;
-
-	// test only
-	public static void main(String[] args) {
+	public TopLevelSystemDesignCreator(
+			FunctionalDesign_Context context) {
 		
-		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
-		
-		IRPProject theRhpPrj = theRhpApp.activeProject();
-		
-		List<IRPActor> theMasterActors = 
-				StereotypeAndPropertySettings.getMasterActorList( theRhpPrj ); 
-		
-		ConfigurationSettings configSettings = new ConfigurationSettings(
-				theRhpApp,
-				theRhpPrj,
-				"FunctionalDesign.properties", 
-				"FunctionalDesign_MessagesBundle",
-				"FunctionalDesign" );
-		
-		createSampleModel( theRhpPrj, theMasterActors, configSettings );
+		_context = context;
 	}
 	
 	public void openFunctionHierarchyBDD (){
@@ -55,15 +36,10 @@ public class TopLevelSystemDesignCreator {
 		}
 	}
 
-	public static void createSampleModel(
+	public void createSampleModel(
 			IRPPackage theRhpPrj,
 			List<IRPActor> theMasterActors,
 			ConfigurationSettings theConfigSettings ){
-
-		ProfileVersionManager.checkAndSetProfileVersion( 
-				false, 
-				theConfigSettings, 
-				true );
 
 		String theNewTerm = "1.1 System-Level Design";
 
@@ -240,7 +216,7 @@ public class TopLevelSystemDesignCreator {
 		theHyperLink.setTarget( m_FunctionHierarchyBDD );
 		
 		List<IRPModelElement> theCandidateFunctions = 
-				GeneralHelpers.findElementsWithMetaClassAndStereotype(
+				_context.findElementsWithMetaClassAndStereotype(
 						"Class", 
 						"Function Block", 
 						theProject, 
@@ -269,13 +245,13 @@ public class TopLevelSystemDesignCreator {
 		}
 		
 		List<IRPModelElement> theMasterActorStereotypes =
-				StereotypeAndPropertySettings.getStereotypesForMasterActorPackage( 
+				_context.getStereotypesForMasterActorPackage( 
 						theProject );
 		
 		for( IRPModelElement theMasterActorStereotype : theMasterActorStereotypes ){
 			
 			List<IRPModelElement> theActorPackages = 
-					GeneralHelpers.findElementsWithMetaClassAndStereotype(
+					_context.findElementsWithMetaClassAndStereotype(
 							"Package", 
 							theMasterActorStereotype.getName(), 
 							theProject, 
@@ -283,9 +259,9 @@ public class TopLevelSystemDesignCreator {
 
 			for (IRPModelElement theActorPackage : theActorPackages) {
 				
-				boolean theAnswer = UserInterfaceHelpers.askAQuestion(
-						"Do you want to nest " + Logger.elInfo( theActorPackage ) + 
-						" underneath " + Logger.elInfo( theRootPkg ) + "?" );
+				boolean theAnswer = UserInterfaceHelper.askAQuestion(
+						"Do you want to nest " + _context.elInfo( theActorPackage ) + 
+						" underneath " + _context.elInfo( theRootPkg ) + "?" );
 				
 				if( theAnswer ){
 					theActorPackage.setOwner( theRootPkg );
@@ -296,7 +272,7 @@ public class TopLevelSystemDesignCreator {
 }
 
 /**
- * Copyright (C) 2018-2019  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     Change history:
     #250 29-MAY-2019: First official version of new FunctionalDesignProfile  (F.J.Chadburn)

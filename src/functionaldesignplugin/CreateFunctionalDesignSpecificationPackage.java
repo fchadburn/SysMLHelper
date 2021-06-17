@@ -1,7 +1,5 @@
 package functionaldesignplugin;
 
-import generalhelpers.CreateStructuralElementPanel;
-
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -24,7 +22,7 @@ import com.mbsetraining.sysmlhelper.common.RhapsodyComboBox;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.*;
 
-public class CreateFunctionalDesignSpecificationPackage extends CreateStructuralElementPanel {
+public class CreateFunctionalDesignSpecificationPackage extends FunctionalDesignBasePanel {
 
 	/**
 	 * 
@@ -393,18 +391,19 @@ public class CreateFunctionalDesignSpecificationPackage extends CreateStructural
 							m_RhpPrj );
 
 			DesignSpecificationPackage thePackage =
-					new DesignSpecificationPackage(
+					new  DesignSpecificationPackage(
 							m_OwnerPkg,
 							theMasterActors,
-							m_FullNameTextField.getText(), 
+							m_FullNameTextField.getText(),
 							m_ChosenStereotype.getSelectedRhapsodyItem().getName(), 
-							m_ShortNameTextField.getText(), 
+							m_ShortNameTextField.getText(),
 							m_BlockDescriptionTextField.getText(), 
 							m_FunctionNameTextField.getText(), 
 							m_FunctionBlockDescriptionTextField.getText(), 
 							m_CreateParametricCheckBox.isSelected(),
 							_context );
-
+		
+				
 			thePackage.createPackage();
 			thePackage.openSystemContextDiagram();
 
@@ -434,10 +433,7 @@ public class CreateFunctionalDesignSpecificationPackage extends CreateStructural
 }
 
 /**
- * Copyright (C) 2018-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #250 29-MAY-2019: First official version of new FunctionalDesignProfile  (F.J.Chadburn)
+ * Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

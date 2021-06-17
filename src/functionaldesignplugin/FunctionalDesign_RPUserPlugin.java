@@ -3,23 +3,18 @@ package functionaldesignplugin;
 import java.util.ArrayList;
 import java.util.List;
 
-import generalhelpers.*; 
-
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
-import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
-import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_RPApplicationListener;
-import com.mbsetraining.sysmlhelper.executablembse.PopulatePkg;
+import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.*;
 
 public class FunctionalDesign_RPUserPlugin extends RPUserPlugin {
 
 	protected FunctionalDesign_Context _context;
 	protected FunctionalDesign_RPApplicationListener _listener = null;
-                                                                                                                                                                       
+
 	// called when plug-in is loaded
 	public void RhpPluginInit(
 			final IRPApplication theRhapsodyApp ){
-		 
+
 		_context = new FunctionalDesign_Context( theRhapsodyApp.getApplicationConnectionString() );
 
 		final String legalNotice = 
@@ -45,125 +40,86 @@ public class FunctionalDesign_RPUserPlugin extends RPUserPlugin {
 		_context.info( msg );
 
 		_listener = new FunctionalDesign_RPApplicationListener( 
-				theRhapsodyApp, 
 				"FunctionalDesignProfile",
 				_context );
 
 		_listener.connect( theRhapsodyApp );
 
-		_context.info( "The ExecutableMBSE profile version is " + _context.getProperty( "PluginVersion" ) );
+		_context.info( "The FunctionalDesign profile version is " + _context.getProperty( "PluginVersion" ) );
 
 		_context.checkIfSetupProjectIsNeeded( false, true );
 	}
-	
-	public static IRPApplication getRhapsodyApp(){
-		
-		if( m_rhpApplication == null ){
-			m_rhpApplication = RhapsodyAppServer.getActiveRhapsodyApplication();
-		}
-		
-		return m_rhpApplication;
-	}
-	
-	public static IRPProject getActiveProject(){
-	 	
-		return getRhapsodyApp().activeProject();
-	} 
-	
+
 	// called when the plug-in pop-up menu  is selected
 	public void OnMenuItemSelect(
 			String menuItem ){
-		
-		if( UserInterfaceHelpers.checkOKToRunAndWarnUserIfNot() ){
-			
-			IRPApplication theRhpApp = FunctionalDesign_RPUserPlugin.getRhapsodyApp();
-			
-			IRPModelElement theSelectedEl = theRhpApp.getSelectedElement();
 
-			IRPProject theRhpPrj = theRhpApp.activeProject();
+		try { 
+			IRPModelElement theSelectedEl = _context.getSelectedElement();
+			IRPProject theRhpPrj = _context.get_rhpPrj();
+			List<IRPModelElement> theSelectedEls = _context.getSelectedElements();
 
-			@SuppressWarnings("unchecked")
-			List<IRPModelElement> theSelectedEls = 
-					theRhpApp.getListOfSelectedElements().toList();
-
-			@SuppressWarnings({ "unchecked", "unused" })
-			List<IRPGraphElement> theGraphEls = 
-					theRhpApp.getSelectedGraphElements().toList();
-
-			Logger.writeLine("Starting ("+ theSelectedEls.size() + " elements were selected) ...");
+			_context.debug( "Starting ("+ theSelectedEls.size() + " elements were selected) ..." );
 
 			if( !theSelectedEls.isEmpty() ){
 
 				if( menuItem.equals( _context.getString(
 						"functionaldesignplugin.CreateFunctionalDesignPkgStructure" ) ) ){
-					
-					if( theSelectedEl instanceof IRPPackage ){
-										
-						try { 
-							CreateFunctionalDesignSpecificationPackage.launchTheDialog( _context );
 
-						} catch (Exception e) {
-							Logger.writeLine("Error: Exception in OnMenuItemSelect when invoking PopulateRequirementsAnalysisPkg.createRequirementsAnalysisPkg");
-						}
+					if( theSelectedEl instanceof IRPPackage ){
+						CreateFunctionalDesignSpecificationPackage.launchTheDialog( _context.get_rhpAppID() );
 					}
+
 				} else if( menuItem.equals( _context.getString( 
 						"functionaldesignplugin.CreateSampleProjectStructure" ) ) ){
 
-						if( theSelectedEl instanceof IRPPackage ){
-													
-							PopulatePkg.addProfileIfNotPresent( "SysML", theRhpPrj );
-							theRhpPrj.changeTo("SysML");
-							
-							try { 
-								List<IRPActor> theMasterActors = 
-										StereotypeAndPropertySettings.getMasterActorList( 
-												theRhpPrj );
+					boolean isContinue = checkAndPerformProfileSetupIfNeeded();
 
-								@SuppressWarnings("unused")
-								DesignSpecificationPackageCreatorFromXML theCreator = 
-										new DesignSpecificationPackageCreatorFromXML(
-												theRhpPrj, 
-												theMasterActors );
-								
-								TopLevelSystemDesignCreator.createSampleModel(
-										theRhpPrj, 
-										theMasterActors,
-										_context );
-								
-								PopulatePkg.deleteIfPresent( "Structure1", "StructureDiagram", theRhpPrj );
-								PopulatePkg.deleteIfPresent( "Model1", "ObjectModelDiagram", theRhpPrj );
-								PopulatePkg.deleteIfPresent( "Default", "Package", theRhpPrj );
-								
-								//AutoPackageDiagram theAPD = new AutoPackageDiagram( theRhpPrj );
-								//theAPD.drawDiagram();
-								
-								//PopulateRequirementsAnalysisPkg.createRequirementsAnalysisPkg( (IRPProject) theSelectedEl ); 
+					if( isContinue ){
+						addProfileIfNotPresent( "SysML" );
+						theRhpPrj.changeTo("SysML");
 
-							} catch (Exception e) {
-								Logger.writeLine("Error: Exception in OnMenuItemSelect when invoking PopulateRequirementsAnalysisPkg.createRequirementsAnalysisPkg");
-							}
-						}					
+						List<IRPActor> theMasterActors = 
+								_context.getMasterActorList( 
+										theRhpPrj );
+
+						@SuppressWarnings("unused")
+						DesignSpecificationPackageCreatorFromXML theDesignSpecCreator = 
+						new DesignSpecificationPackageCreatorFromXML(
+								theRhpPrj, 
+								theMasterActors,
+								_context );
+
+						TopLevelSystemDesignCreator theTopLevelCreator = new TopLevelSystemDesignCreator( _context );
+
+						theTopLevelCreator.createSampleModel(
+								theRhpPrj, 
+								theMasterActors,
+								_context );
+
+						_context.deleteIfPresent( "Structure1", "StructureDiagram", theRhpPrj );
+						_context.deleteIfPresent( "Model1", "ObjectModelDiagram", theRhpPrj );
+						_context.deleteIfPresent( "Default", "Package", theRhpPrj );
+
+						//AutoPackageDiagram theAPD = new AutoPackageDiagram( theRhpPrj );
+						//theAPD.drawDiagram();
+
+						//PopulateRequirementsAnalysisPkg.createRequirementsAnalysisPkg( (IRPProject) theSelectedEl ); 
+					}
+
 				} else if (menuItem.equals(_context.getString("functionaldesignplugin.SetupFunctionalDesignProjectProperties"))){
 
-						if (theSelectedEl instanceof IRPPackage){
-							
-							try {
-								ProfileVersionManager.checkAndSetProfileVersion( 
-										true, 
-										_context, 
-										true );
-
-							} catch (Exception e) {
-								Logger.writeLine("Error: Exception in OnMenuItemSelect when invoking PopulateRequirementsAnalysisPkg.createRequirementsAnalysisPkg");
-							}
-						}
+					checkAndPerformProfileSetupIfNeeded();
 
 				} else {
-					Logger.writeLine("Warning in OnMenuItemSelect, " + menuItem + " was not handled.");
+					_context.warning("Warning in OnMenuItemSelect, " + menuItem + " was not handled.");
 				}
+
+				_context.debug("... completed");
 			}
 
-			Logger.writeLine("... completed");
+		} catch (Exception e) {
+			_context.error("Error: Exception in OnMenuItemSelect when invoking PopulateRequirementsAnalysisPkg.createRequirementsAnalysisPkg");
 		}
 
 	}
@@ -171,55 +127,63 @@ public class FunctionalDesign_RPUserPlugin extends RPUserPlugin {
 	// if true is returned the plugin will be unloaded
 	public boolean RhpPluginCleanup() {
 
-		m_rhpApplication = null;
+		_context = null;
+
 		return true; // plug-in will be unloaded now (on project close)
 	}
 
 	@Override
 	public void RhpPluginFinalCleanup() {
+
+		try {
+			_listener.finalize();
+			_listener = null;
+
+		} catch( Throwable e ){
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void RhpPluginInvokeItem() {
-
 	}
-	
+
 	public static List<IRPRequirement> getRequirementsThatTraceFrom(
 			IRPModelElement theElement){
-		
+
 		List<IRPRequirement> theReqts = new ArrayList<IRPRequirement>();
-		
+
 		@SuppressWarnings("unchecked")
 		List<IRPDependency> theExistingDeps = theElement.getDependencies().toList();
-		
+
 		for (IRPDependency theDependency : theExistingDeps) {
-			
+
 			IRPModelElement theDependsOn = theDependency.getDependsOn();
-			
+
 			if (theDependsOn != null && theDependsOn instanceof IRPRequirement){
 				theReqts.add( (IRPRequirement) theDependsOn );
 			}
 		}
-		
+
 		return theReqts;
 	}
-	
+
 	public String traceabilityReportHtml( IRPModelElement theModelEl ) {
-		
+
 		String retval = "";
 
 		if( theModelEl != null ){
-			
+
 			List<IRPRequirement> theTracedReqts;
-			
+
 			if( theModelEl instanceof IRPDependency ){
-				
+
 				IRPDependency theDep = (IRPDependency) theModelEl;
 				IRPModelElement theDependsOn = theDep.getDependsOn();
-				
+
 				if( theDependsOn != null && 
-					theDependsOn instanceof IRPRequirement ){
-					
+						theDependsOn instanceof IRPRequirement ){
+
 					// Display text of the requirement that the dependency traces to
 					theTracedReqts = new ArrayList<>();
 					theTracedReqts.add( (IRPRequirement) theDependsOn );
@@ -248,41 +212,41 @@ public class FunctionalDesign_RPUserPlugin extends RPUserPlugin {
 
 		return retval;
 	}
-	
+
 	public String InvokeTooltipFormatter(String html) {
 
 		String theOutput = html;
-		
+
 		try{
 			@SuppressWarnings("rawtypes")
 			List theAppIDs = RhapsodyAppServer.getActiveRhapsodyApplicationIDList();
-			
+
 			if( theAppIDs.size() == 1 ){
-	
+
 				IRPProject theRhpProject = RhapsodyAppServer.getActiveRhapsodyApplication().activeProject();
-				
+
 				String guidStr = html.substring(1, html.indexOf(']'));
-				
+
 				IRPModelElement theModelEl = theRhpProject.findElementByGUID( guidStr );
-				
+
 				if( theModelEl != null ){
 					guidStr = theModelEl.getGUID();
 				}
 
 				html = html.substring(html.indexOf(']') + 1);
-				
+
 				String thePart1 =  html.substring(
 						0,
 						html.indexOf("[[<b>Dependencies:</b>"));
-				
+
 				String thePart2 = traceabilityReportHtml( theModelEl );
 				String thePart3 = html.substring(html.lastIndexOf("[[<b>Dependencies:</b>") - 1);
-			
+
 				theOutput = thePart1 + thePart2 + thePart3;
 			}
-			
+
 		} catch (Exception e) {
-			Logger.writeLine("Unhandled exception in InvokeTooltipFormatter");
+			_context.error("Unhandled exception in InvokeTooltipFormatter");
 		}
 
 		return theOutput;
@@ -290,15 +254,59 @@ public class FunctionalDesign_RPUserPlugin extends RPUserPlugin {
 
 	@Override
 	public void OnTrigger(String trigger) {
-		
+
+	}
+
+	public IRPProfile addProfileIfNotPresent(
+			String theProfileName ){
+
+		IRPProfile theProfile = (IRPProfile) _context.get_rhpPrj().
+				findNestedElement( theProfileName, "Profile" );
+
+		if( theProfile == null ){
+
+			IRPUnit theUnit = _context.get_rhpApp().addProfileToModel( theProfileName );
+
+			if( theUnit != null ){
+
+				theProfile = (IRPProfile)theUnit;
+				_context.info( "Added profile called " + theProfile.getFullPathName() );
+
+			} else {
+				_context.error( "Error in addProfileIfNotPresent. No profile found with name " + theProfileName );
+			}
+
+		} else {
+			_context.debug( _context.elInfo( theProfile ) + " is already present in the project" );
+		}
+
+		return theProfile;		
+	}
+
+	private boolean checkAndPerformProfileSetupIfNeeded() {
+
+		boolean isContinue = true;
+
+		boolean isShowInfoDialog = _context.getIsShowProfileVersionCheckDialogs();
+		boolean isSetupNeeded = _context.checkIfSetupProjectIsNeeded( isShowInfoDialog, false );
+
+		if( isSetupNeeded ){
+
+			String theMsg = "The project needs 'Functional Design' profile-based properties and tags values to be applied.\n" + 
+					"Do you want me to set these properties and tags on the project in order to continue?";
+
+			isContinue = UserInterfaceHelper.askAQuestion( theMsg );
+
+			if( isContinue ){
+				_context.setupProjectWithProperties();
+			}
+		}
+		return isContinue;
 	}
 }
 
 /**
- * Copyright (C) 2018-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #250 29-MAY-2019: First official version of new FunctionalDesignProfile  (F.J.Chadburn)
+ * Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

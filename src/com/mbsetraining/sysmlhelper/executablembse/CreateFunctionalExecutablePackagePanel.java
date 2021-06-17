@@ -5,7 +5,6 @@ import functionalanalysisplugin.FunctionalAnalysisSettings;
 import functionalanalysisplugin.PopulateFunctionalAnalysisPkg.SimulationType;
 import functionalanalysisplugin.SequenceDiagramHelper;
 import generalhelpers.BlockDiagramHelper;
-import generalhelpers.CreateStructuralElementPanel;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -40,7 +39,7 @@ import com.mbsetraining.sysmlhelper.common.RhapsodyComboBox;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.*;
 
-public class CreateFunctionalExecutablePackagePanel extends CreateStructuralElementPanel {
+public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePanel {
 
 	final private String _blankName = "<Put Name Here>";
 	private IRPPackage _rootPackage;

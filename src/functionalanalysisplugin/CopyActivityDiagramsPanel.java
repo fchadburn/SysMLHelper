@@ -1,6 +1,5 @@
 package functionalanalysisplugin;
 
-import generalhelpers.CreateStructuralElementPanel;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -27,9 +26,10 @@ import javax.swing.GroupLayout.ParallelGroup;
 import javax.swing.GroupLayout.SequentialGroup;
 import javax.swing.JScrollPane;
 
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
 import com.telelogic.rhapsody.core.*;
 
-public class CopyActivityDiagramsPanel extends CreateStructuralElementPanel {
+public class CopyActivityDiagramsPanel extends ExecutableMBSEBasePanel {
 
 	/**
 	 * 

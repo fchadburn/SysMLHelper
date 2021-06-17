@@ -1,6 +1,5 @@
 package designsynthesisplugin;
 
-import generalhelpers.CreateStructuralElementPanel;
 import generalhelpers.Logger;
 import generalhelpers.UserInterfaceHelpers;
 
@@ -25,9 +24,10 @@ import javax.swing.JScrollPane;
 import javax.swing.GroupLayout.ParallelGroup;
 import javax.swing.GroupLayout.SequentialGroup;
 
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
 import com.telelogic.rhapsody.core.*;
 
-public class ConfirmDiagramUpdatePanel extends CreateStructuralElementPanel {
+public class ConfirmDiagramUpdatePanel extends ExecutableMBSEBasePanel {
 
 	/**
 	 * 

@@ -1,7 +1,5 @@
 package com.mbsetraining.sysmlhelper.executablembse;
 
-import generalhelpers.CreateStructuralElementPanel;
-
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -23,7 +21,7 @@ import com.mbsetraining.sysmlhelper.common.GraphNodeInfo;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.*;
 
-public class PopulatePartsPanel extends CreateStructuralElementPanel {
+public class PopulatePartsPanel extends ExecutableMBSEBasePanel {
 
 	/**
 	 * 

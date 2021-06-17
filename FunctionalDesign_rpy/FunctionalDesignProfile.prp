@@ -1,6 +1,6 @@
 Subject FunctionalDesignProfile
         Metaclass General
-		Property PluginVersion String "4.0.c.PreRelease"
+		Property PluginVersion String "V4.0.d.Rhp831.PreRelease"
 		Property EnableInfoLogging Bool "True"
 		Property EnableWarningLogging Bool "True"
 		Property EnableErrorLogging Bool "True"
@@ -62,7 +62,8 @@ Subject SysMLHelper
 		Property SimulationPackageStereotype String "Not Used"
 		Property DesignPackageStereotype String "Not Used"
 		Property InterfacesPackageStereotype String "Not Used"
-		Property TestPackageStereotype String "Not Used"         
+		Property TestPackageStereotype String "Not Used"   
+		Property IsShowProfileVersionCheckDialogs Bool "True"      
 	end
 end
 Subject ObjectModelGe

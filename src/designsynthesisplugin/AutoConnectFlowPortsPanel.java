@@ -2,7 +2,6 @@ package designsynthesisplugin;
 
 import functionalanalysisplugin.FunctionalAnalysisSettings;
 import functionalanalysisplugin.SelectedElementContext;
-import generalhelpers.CreateStructuralElementPanel;
 import generalhelpers.GeneralHelpers;
 import generalhelpers.Logger;
 import generalhelpers.ProfileVersionManager;
@@ -28,10 +27,11 @@ import javax.swing.JScrollPane;
 
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
-public class AutoConnectFlowPortsPanel extends CreateStructuralElementPanel {
+public class AutoConnectFlowPortsPanel extends ExecutableMBSEBasePanel {
 
 	/**
 	 * 

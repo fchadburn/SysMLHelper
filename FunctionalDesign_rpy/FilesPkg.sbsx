@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RhapsodyArchive>
+	<MagicNumber></MagicNumber>
+	<CODE-PAGE>1252</CODE-PAGE>
+	<version>100.831.0</version>
+	<lang>C++</lang>
+	<BuildNo>9835718</BuildNo>
+	
+	<RHAPSODY-MODEL>
+	<ISubsystem type="e">
+			<_id type="a">GUID 4d6e223f-7b84-4bea-b091-0d5246a401bf</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">FilesPkg</_name>
+			<_modifiedTimeWeak type="a">6.17.2021::8:51:1</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.17.2021::8:51:1</_modifiedTime>
+			<weakCGTime type="a">6.17.2021::8:51:1</weakCGTime>
+			<strongCGTime type="a">6.17.2021::8:50:20</strongCGTime>
+			<_defaultComposite type="s">GUID ec1ae275-4da9-4256-b027-4149e95173e4</_defaultComposite>
+			<_eventsBaseID type="a">-1</_eventsBaseID>
+			<_configurationRelatedTime type="a">1.2.1990::0:0:0</_configurationRelatedTime>
+			<AggregatesList type="e">
+				<value>GUID d2ed24fb-07f1-4c16-98da-eba34f09ebc3</value>
+				<value>GUID 6ff6fcf0-b395-45b0-940c-f77535cd2b65</value>
+				<value>GUID 7e6854fd-7ace-48ad-b510-aa3c3345fd29</value>
+				<value>GUID fd85b93c-8828-4bd8-bf8e-2c5a58ad568f</value>
+				<value>GUID ec1ae275-4da9-4256-b027-4149e95173e4</value>
+			</AggregatesList>
+		</ISubsystem>
+		<IEmbededFile type="e">
+			<_id type="a">GUID d2ed24fb-07f1-4c16-98da-eba34f09ebc3</_id>
+			<_name type="a">FunctionalDesignProfile.hep</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.17.2021::8:50:38</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\FunctionalDesign_rpy\FunctionalDesignProfile.hep</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID 6ff6fcf0-b395-45b0-940c-f77535cd2b65</_id>
+			<_name type="a">FunctionalDesignProfile.prp</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.17.2021::8:50:46</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\FunctionalDesign_rpy\FunctionalDesignProfile.prp</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID 7e6854fd-7ace-48ad-b510-aa3c3345fd29</_id>
+			<_name type="a">FunctionalDesignProfile.txt</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.17.2021::8:50:53</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\FunctionalDesign_rpy\FunctionalDesignProfile.txt</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID fd85b93c-8828-4bd8-bf8e-2c5a58ad568f</_id>
+			<_name type="a">FunctionalDesign_NewMenuAndAggregates.xlsx</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.17.2021::8:51:1</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\FunctionalDesign_rpy\FunctionalDesign_NewMenuAndAggregates.xlsx</_LastKnownFullPath>
+		</IEmbededFile>
+		<IClass type="e">
+			<_id type="a">GUID ec1ae275-4da9-4256-b027-4149e95173e4</_id>
+			<_myState type="a">40960</_myState>
+			<_name type="a">TopLevel</_name>
+			<_modifiedTimeWeak type="a">6.17.2021::8:48:33</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.1.1970::0:0:0</_modifiedTime>
+			<weakCGTime type="a">6.17.2021::8:48:33</weakCGTime>
+			<strongCGTime type="a">6.17.2021::8:48:33</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		
+	</RHAPSODY-MODEL>
+	<OslcLinks type="c">
+		<IRPYRawContainer type="e">
+			<size type="a">0</size>
+		</IRPYRawContainer>
+	</OslcLinks>
+
+<INCLUDES-RHAPSODY-INDEX>false</INCLUDES-RHAPSODY-INDEX>
+</RhapsodyArchive>
+

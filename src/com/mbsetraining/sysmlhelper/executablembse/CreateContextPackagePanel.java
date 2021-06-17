@@ -1,11 +1,10 @@
 package com.mbsetraining.sysmlhelper.executablembse;
 
-import generalhelpers.CreateStructuralElementPanel;
-
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+
 import javax.swing.BoxLayout;
 import javax.swing.GroupLayout;
 import javax.swing.JFrame;
@@ -15,9 +14,10 @@ import javax.swing.JTextField;
 import javax.swing.GroupLayout.ParallelGroup;
 import javax.swing.GroupLayout.SequentialGroup;
 import javax.swing.border.EmptyBorder;
+
 import com.telelogic.rhapsody.core.*;
 
-public class CreateContextPackagePanel extends CreateStructuralElementPanel {
+public class CreateContextPackagePanel extends ExecutableMBSEBasePanel {
 
 	/**
 	 * 

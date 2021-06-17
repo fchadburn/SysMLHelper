@@ -10,11 +10,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
 import com.telelogic.rhapsody.core.*;
 
-import generalhelpers.CreateStructuralElementPanel;
-
-public class EndlinkPanel extends CreateStructuralElementPanel {
+public class EndlinkPanel extends ExecutableMBSEBasePanel {
 
 	/**
 	 * 

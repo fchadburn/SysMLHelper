@@ -21,11 +21,10 @@ import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 
 import com.mbsetraining.sysmlhelper.common.NamedElementMap;
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
 import com.telelogic.rhapsody.core.*;
 
-import generalhelpers.CreateStructuralElementPanel;
-
-public class MarkedAsDeletedPanel extends CreateStructuralElementPanel{
+public class MarkedAsDeletedPanel extends ExecutableMBSEBasePanel{
 
 	/**
 	 * 
