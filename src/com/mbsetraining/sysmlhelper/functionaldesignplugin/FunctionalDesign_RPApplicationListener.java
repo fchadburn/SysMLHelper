@@ -1,4 +1,4 @@
-package functionaldesignplugin;
+package com.mbsetraining.sysmlhelper.functionaldesignplugin;
 
 import functionalanalysisplugin.CreateOperationPanel;
 

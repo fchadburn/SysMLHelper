@@ -443,6 +443,7 @@ ExecutableMBSEProfile:
 
 FunctionalDesignProfile:
 #305 17-JUN-2021: Align to new thread safe context for helper logging and profile version checking (F.J.Chadburn)
+#306 17-JUN-2021: Move function design related classes into new plugin package structure (F.J.Chadburn)
 
 Backlog/Known issues
 

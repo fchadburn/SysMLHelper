@@ -1,4 +1,4 @@
-package functionaldesignplugin;
+package com.mbsetraining.sysmlhelper.functionaldesignplugin;
 
 import java.util.ArrayList;
 import java.util.HashSet;

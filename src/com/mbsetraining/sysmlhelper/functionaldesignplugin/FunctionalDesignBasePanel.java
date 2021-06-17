@@ -1,4 +1,4 @@
-package functionaldesignplugin;
+package com.mbsetraining.sysmlhelper.functionaldesignplugin;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
