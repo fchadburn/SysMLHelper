@@ -3,7 +3,7 @@ package com.mbsetraining.sysmlhelper.activitydiagram;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.telelogic.rhapsody.core.*;
  
 public class ActionList extends ArrayList<ActionInfo> {
@@ -15,7 +15,7 @@ public class ActionList extends ArrayList<ActionInfo> {
 		
 	ActionList(
 			IRPActivityDiagram theAD,
-			ExecutableMBSE_Context context ){
+			ConfigurationSettings context ){
 		
 		super();
 				

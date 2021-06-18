@@ -142,11 +142,11 @@ public class PopulatePkg {
 				
 		if( byReference ){
 			_context.get_rhpApp().addToModelByReference(
-					"$OMROOT\\Profiles\\SysMLHelper\\SysMLHelper_rpy\\" + withTheName + ".sbs" );				
+					"$OMROOT\\Profiles\\SysMLHelper\\SysMLHelper_rpy\\" + withTheName + ".sbsx" );				
 			
 		} else {
 			_context.get_rhpApp().addToModel(
-					"$OMROOT\\Profiles\\SysMLHelper\\SysMLHelper_rpy\\" + withTheName + ".sbs", 1);				
+					"$OMROOT\\Profiles\\SysMLHelper\\SysMLHelper_rpy\\" + withTheName + ".sbsx", 1);				
 		}
 		
 		IRPPackage thePackage = (IRPPackage) _context.get_rhpPrj().findElementsByFullName( withTheName, "Package" );

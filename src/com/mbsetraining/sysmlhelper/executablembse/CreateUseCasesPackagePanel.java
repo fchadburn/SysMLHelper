@@ -69,7 +69,7 @@ public class CreateUseCasesPackagePanel extends ExecutableMBSEBasePanel {
 
 		String theUniqueName = 
 				_context.determineUniqueNameForPackageBasedOn(
-						_context.getDefaultUseCasePackageName( _ownerPkg ),
+						((ExecutableMBSE_Context) _context).getDefaultUseCasePackageName( _ownerPkg ),
 						_ownerPkg );
 
 		JPanel theReqtsAnalysisPanel = createContent( theUniqueName );
@@ -113,13 +113,13 @@ public class CreateUseCasesPackagePanel extends ExecutableMBSEBasePanel {
 
 		_createActorChooser = new CreateActorPkgChooser( 
 				_ownerPkg, 
-				_context );
+				((ExecutableMBSE_Context) _context) );
 
 		_createRequirementsPkgChooser = new CreateRequirementsPkgChooser( 
 				_ownerPkg, 
 				theName, 
 				true,
-				_context );
+				((ExecutableMBSE_Context) _context) );
 
 		theColumn1ParallelGroup.addComponent( _createActorChooser.getM_UserChoiceComboBox() );    
 		theColumn1ParallelGroup.addComponent( _createRequirementsPkgChooser.getM_UserChoiceComboBox() ); 
@@ -214,7 +214,7 @@ public class CreateUseCasesPackagePanel extends ExecutableMBSEBasePanel {
 					_createActorChooser.getActorsPkgNameIfChosen(), 
 					_createActorChooser.getExistingActorPkgIfChosen(), 
 					theUnadornedName,
-					_context );
+					((ExecutableMBSE_Context) _context) );
 		}
 	}
 

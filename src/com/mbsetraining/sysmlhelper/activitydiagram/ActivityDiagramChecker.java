@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JDialog;
@@ -15,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
@@ -26,19 +26,30 @@ public class ActivityDiagramChecker extends JFrame{
 	private JScrollPane _scrollPane;
 	private MouseListener _listener;
 	private List<ActionInfo> _checkedElements; 
-	private ExecutableMBSE_Context _context;
+	private ConfigurationSettings _context;
 	
 	private static final long serialVersionUID = 1L;
 
-	// testing only
-	public static void main(String[] args) {
-		List<IRPModelElement> theEls = new ArrayList<IRPModelElement>();
-		theEls.add( RhapsodyAppServer.getActiveRhapsodyApplication().getSelectedElement() );
-		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
-		ExecutableMBSE_Context context = new ExecutableMBSE_Context( theRhpApp.getApplicationConnectionString() );
-		createActivityDiagramCheckersFor( theEls,context );
-	}
+	public static void launchPanelsFor(
+			List<IRPModelElement> theSelectedEls,
+			ConfigurationSettings context ){
 
+		List<IRPActivityDiagram> theADs = context.buildListOfActivityDiagramsFor(theSelectedEls);
+
+		context.debug("There are " + theADs.size() + " Activity Diagrams nested under the selected list");
+
+		for (IRPActivityDiagram theAD : theADs) {
+
+			IRPFlowchart theFC = (IRPFlowchart) theAD.getOwner();
+			context.debug("Check Activity Diagram was invoked for " + context.elInfo( theFC ));
+
+			ActivityDiagramChecker theChecker = 
+					new ActivityDiagramChecker( context.get_rhpAppID(), theAD.getGUID() );
+
+			theChecker.setVisible( true );
+		}
+	}
+	
 	public static void launchThePanel(
 			final String theAppID,
 			IRPActivityDiagram forAD ){
@@ -50,7 +61,7 @@ public class ActivityDiagramChecker extends JFrame{
 
 				JFrame.setDefaultLookAndFeelDecorated( true );
 
-				JFrame frame = new JFrame( "Create new Actor" );
+				JFrame frame = new JFrame( "Activity diagram checker" );
 
 				frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 
@@ -209,26 +220,6 @@ public class ActivityDiagramChecker extends JFrame{
 		};
 
 		_table.addMouseListener(_listener);
-	}
-
-	static public void createActivityDiagramCheckersFor(
-			List<IRPModelElement> theSelectedEls,
-			ExecutableMBSE_Context context ){
-
-		List<IRPActivityDiagram> theADs = context.buildListOfActivityDiagramsFor(theSelectedEls);
-
-		context.debug("There are " + theADs.size() + " Activity Diagrams nested under the selected list");
-
-		for (IRPActivityDiagram theAD : theADs) {
-
-			IRPFlowchart theFC = (IRPFlowchart) theAD.getOwner();
-			context.debug("Check Activity Diagram was invoked for " + context.elInfo( theFC ));
-
-			ActivityDiagramChecker theChecker = 
-					new ActivityDiagramChecker( context.get_rhpAppID(), theAD.getGUID() );
-
-			theChecker.setVisible( true );
-		}
 	}
 }
 

@@ -8,16 +8,17 @@ import java.util.Set;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
  
 public class MoveRequirements {
 	
-	ExecutableMBSE_Context _context;
+	ConfigurationSettings _context;
 	
 	public MoveRequirements(
-			ExecutableMBSE_Context context ) {
+			ConfigurationSettings context ) {
 		_context = context;
 	}
 	

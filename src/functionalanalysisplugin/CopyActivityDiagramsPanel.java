@@ -27,6 +27,7 @@ import javax.swing.GroupLayout.SequentialGroup;
 import javax.swing.JScrollPane;
 
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
 public class CopyActivityDiagramsPanel extends ExecutableMBSEBasePanel {
@@ -75,20 +76,20 @@ public class CopyActivityDiagramsPanel extends ExecutableMBSEBasePanel {
 		
 		if( fromSelectedEl instanceof IRPPackage &&
 				_context.hasStereotypeCalled( 
-						_context.getUseCasePackageWorkingStereotype( fromSelectedEl ), 
+						((ExecutableMBSE_Context) _context).getUseCasePackageWorkingStereotype( fromSelectedEl ), 
 						fromSelectedEl )){
 			
 			thePkg = (IRPPackage) fromSelectedEl;
 			
 		} else if( fromSelectedEl instanceof IRPPackage && 
 				_context.hasStereotypeCalled( 
-						_context.getSimulationPackageStereotype( fromSelectedEl ),
+						((ExecutableMBSE_Context) _context).getSimulationPackageStereotype( fromSelectedEl ),
 						fromSelectedEl )){
 			
 			List<IRPModelElement> theWorkingPkgs = 
 					_context.findElementsWithMetaClassAndStereotype(
 							"Package", 
-							_context.getUseCasePackageWorkingStereotype( fromSelectedEl ), 
+							((ExecutableMBSE_Context) _context).getUseCasePackageWorkingStereotype( fromSelectedEl ), 
 							fromSelectedEl, 
 							0 ); // not recursive
 			
@@ -141,7 +142,7 @@ public class CopyActivityDiagramsPanel extends ExecutableMBSEBasePanel {
 		IRPModelElement theSelectedEl = _context.getSelectedElement();
 		
 		Set<IRPPackage> thePullFromPkgs = 
-				_context.getPullFromPackage( 
+				((ExecutableMBSE_Context) _context).getPullFromPackage( 
 						theSelectedEl );
 		
 		List<IRPUseCase> theUseCases = new ArrayList<IRPUseCase>();
@@ -217,11 +218,11 @@ public class CopyActivityDiagramsPanel extends ExecutableMBSEBasePanel {
 		theBox.add( m_OpenDiagramsCheckBox );
 		
 		boolean isConvertToDetailedADOptionEnabled = 
-				_context.getIsConvertToDetailedADOptionEnabled(
+				((ExecutableMBSE_Context) _context).getIsConvertToDetailedADOptionEnabled(
 						m_ToElement.getProject() );
 		
 		boolean isConvertToDetailedADOptionWantedByDefault = 
-				_context.getIsConvertToDetailedADOptionWantedByDefault(
+				((ExecutableMBSE_Context) _context).getIsConvertToDetailedADOptionWantedByDefault(
 						m_ToElement.getProject() );
 		
 		m_ApplyMoreDetailedADCheckBox = new JCheckBox("Switch toolbars and formatting to more detailed AD ready for conversion?");

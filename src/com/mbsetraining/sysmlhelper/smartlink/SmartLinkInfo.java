@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.LayoutHelper;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
@@ -16,14 +17,14 @@ public class SmartLinkInfo {
 	private boolean _isPopulatePossible;	
 	private int _countRelationsNeeded;
 	private Set<RelationInfo> _relationInfos;
-	private ExecutableMBSE_Context _context;
+	private ConfigurationSettings _context;
 	
 	public SmartLinkInfo(
 			List<IRPModelElement> theStartLinkEls,
 			List<IRPGraphElement> theStartLinkGraphEls,
 			List<IRPModelElement> theEndLinkEls,
 			List<IRPGraphElement> theEndLinkGraphEls,
-			ExecutableMBSE_Context context ){
+			ConfigurationSettings context ){
 		
 		_context = context;
 		

@@ -4,22 +4,20 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
-import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.telelogic.rhapsody.core.*;
 
 public class FunctionalAnalysisSettings {
 
-	private static final String tagNameForAssemblyBlockUnderDev = "assemblyBlockUnderDev";
-	private static final String tagNameForPackageForEventsAndInterfaces = "packageForEventsAndInterfaces";
-	private static final String tagNameForPackageForActorsAndTest = "packageForActorsAndTest";
-	private static final String tagNameForPackageForBlocks = "packageForBlocks";
-	private static final String tagNameForPackageForWorkingCopies = "packageForWorkingCopies";
-
-	private ExecutableMBSE_Context _context;
+	protected static final String tagNameForAssemblyBlockUnderDev = "assemblyBlockUnderDev";
+	protected static final String tagNameForPackageForEventsAndInterfaces = "packageForEventsAndInterfaces";
+	protected static final String tagNameForPackageForActorsAndTest = "packageForActorsAndTest";
+	protected static final String tagNameForPackageForBlocks = "packageForBlocks";
+	protected static final String tagNameForPackageForWorkingCopies = "packageForWorkingCopies";
+	protected ConfigurationSettings _context;
 	
 	public FunctionalAnalysisSettings(
-			ExecutableMBSE_Context context ) {
+			ConfigurationSettings context ) {
 
 		_context = context;
 	}
@@ -192,17 +190,6 @@ public class FunctionalAnalysisSettings {
 		return thePackage;
 	}
 
-	public IRPPackage getPkgThatOwnsEventsAndInterfaces(
-			IRPModelElement basedOnContextEl ){
-
-		IRPPackage thePackage = 
-				(IRPPackage) getElementNamedInFunctionalPackageTag(
-						basedOnContextEl, 
-						tagNameForPackageForEventsAndInterfaces );
-
-		return thePackage;
-	}
-
 	public IRPPackage getWorkingPkgUnderDev(
 			IRPModelElement basedOnContextEl ){
 
@@ -347,45 +334,7 @@ public class FunctionalAnalysisSettings {
 	}
 
 
-	public void setupFunctionalAnalysisTagsFor2(
-			IRPPackage theRootPackage,
-			IRPClass theAssemblyBlockUnderDev,
-			IRPPackage thePackageForEventsAndInterfaces, 
-			IRPPackage thePackageForActorsAndTest,
-			IRPPackage thePackageForBlocks ){
-
-		if( theRootPackage != null ){
-
-			String theStereotypeName = 
-					_context.getSimulationPackageStereotype( theRootPackage );
-
-			setElementTagValueOn( 
-					theRootPackage, 
-					theStereotypeName, 
-					tagNameForAssemblyBlockUnderDev, 
-					theAssemblyBlockUnderDev );
-
-			setElementTagValueOn( 
-					theRootPackage, 
-					theStereotypeName, 
-					tagNameForPackageForActorsAndTest, 
-					thePackageForActorsAndTest );
-
-			setElementTagValueOn( 
-					theRootPackage, 
-					theStereotypeName, 
-					tagNameForPackageForEventsAndInterfaces, 
-					thePackageForEventsAndInterfaces );
-
-			setElementTagValueOn( 
-					theRootPackage, 
-					theStereotypeName, 
-					tagNameForPackageForBlocks, 
-					thePackageForBlocks );	
-		}	
-	}
-
-	private void setElementTagValueOn( 
+	protected void setElementTagValueOn( 
 			IRPModelElement theOwner, 
 			String theStereotypeName,
 			String theTagName, 
@@ -441,15 +390,6 @@ public class FunctionalAnalysisSettings {
 
 		if( theContextEl instanceof IRPProject ){
 
-			List<IRPModelElement> thePackageEls = 
-					_context.findElementsWithMetaClassAndStereotype(
-							"Package", 
-							_context.getSimulationPackageStereotype( theContextEl ), 
-							theContextEl.getProject(), 
-							1 );
-
-			if( thePackageEls.isEmpty() ){
-
 				IRPModelElement theFunctionalAnalysisPkg = 
 						theContextEl.findElementsByFullName( "FunctionalAnalysisPkg", "Package" );
 
@@ -460,58 +400,6 @@ public class FunctionalAnalysisSettings {
 					theSettingsPkg = (IRPPackage) theFunctionalAnalysisPkg;
 				}
 
-			} else if( thePackageEls.size()==1){
-
-				theSettingsPkg = (IRPPackage) thePackageEls.get(0);
-
-			} else {
-				_context.error( "Error in getSimulationSettingsPackageBasedOn, unable to find use case settings package");
-
-				IRPModelElement theUserSelectedPkg = 
-						UserInterfaceHelper.launchDialogToSelectElement(
-								thePackageEls, 
-								"Choose which settings to use", 
-								true );
-
-				if( theUserSelectedPkg != null ){
-					theSettingsPkg = (IRPPackage) theUserSelectedPkg;
-				}
-			}
-
-		} else if( theContextEl instanceof IRPPackage &&
-				_context.hasStereotypeCalled(
-						_context.getSimulationPackageStereotype( theContextEl ), 
-						theContextEl ) ){
-
-			_context.debug( "getSimulationSettingsPackageBasedOn, is returning " + _context.elInfo( theContextEl ) );
-
-			theSettingsPkg = (IRPPackage) theContextEl;
-
-		} else if( theContextEl instanceof IRPPackage &&
-				_context.hasStereotypeCalled(
-						_context.getUseCasePackageStereotype( theContextEl ), 
-						theContextEl ) ){
-
-			@SuppressWarnings("unchecked")
-			List<IRPModelElement> theReferences = theContextEl.getReferences().toList();
-
-			for( IRPModelElement theReference : theReferences ){
-
-				if( theReference instanceof IRPDependency ){
-
-					IRPDependency theDependency = (IRPDependency)theReference;
-					IRPModelElement theDependent = theDependency.getDependent();
-
-					if( theDependent instanceof IRPPackage &&
-							_context.hasStereotypeCalled(
-									_context.getSimulationPackageStereotype( theContextEl ), 
-									theDependent ) ){
-
-						theSettingsPkg = (IRPPackage) theDependent;
-					}
-				}
-			}
-
 		} else {
 
 			// recurse
@@ -520,6 +408,17 @@ public class FunctionalAnalysisSettings {
 		}
 
 		return theSettingsPkg;
+	}
+	
+	public IRPPackage getPkgThatOwnsEventsAndInterfaces(
+			IRPModelElement basedOnContextEl ){
+
+		IRPPackage thePackage = 
+				(IRPPackage) getElementNamedInFunctionalPackageTag(
+						basedOnContextEl, 
+						tagNameForPackageForEventsAndInterfaces );
+
+		return thePackage;
 	}
 }
 

@@ -5,16 +5,17 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
 public class SequenceDiagramHelper {	
 
-	protected ExecutableMBSE_Context _context;
+	protected ConfigurationSettings _context;
 
 	public SequenceDiagramHelper(
-			ExecutableMBSE_Context context ) {
+			ConfigurationSettings context ) {
 
 		_context = context;
 	}

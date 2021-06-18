@@ -424,6 +424,14 @@ public class ConfigurationSettings extends BaseContext  {
 
 		return date;
 	}
+
+	@Override
+	public IRPPackage addNewTermPackageAndSetUnitProperties(
+			String theName,
+			IRPPackage theOwner, String theNewTermName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
 
 /**

@@ -5,15 +5,15 @@ import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
-import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.telelogic.rhapsody.core.*;
  
 public class RenameActions {
  
-	ExecutableMBSE_Context _context;
+	ConfigurationSettings _context;
 	
 	public RenameActions( 
-			ExecutableMBSE_Context context ) {
+			ConfigurationSettings context ) {
 		
 		_context = context;
 	}

@@ -68,7 +68,7 @@ public class CreateContextPackagePanel extends ExecutableMBSEBasePanel {
 
 		String theUniqueName = 
 				_context.determineUniqueNameForPackageBasedOn(
-						_context.getDefaultContextDiagramPackageName(),
+						((ExecutableMBSE_Context) _context).getDefaultContextDiagramPackageName(),
 						_ownerPkg );
 
 		JPanel theMainPanel = createContent();
@@ -111,17 +111,17 @@ public class CreateContextPackagePanel extends ExecutableMBSEBasePanel {
 
 		_createActorChooser = new CreateActorPkgChooser( 
 				_ownerPkg, 
-				_context );
+				((ExecutableMBSE_Context) _context) );
 
 		_createRequirementsPkgChooser = new CreateRequirementsPkgChooser( 
 				_ownerPkg, 
-				_context.getDefaultRequirementsPackageName(), 
+				((ExecutableMBSE_Context) _context).getDefaultRequirementsPackageName(), 
 				false,
-				_context );
+				((ExecutableMBSE_Context) _context) );
 
 		_createExternalSignalsPkgChooser = new CreateExternalSignalsPkgChooser( 
 				_ownerPkg, 
-				_context );
+				((ExecutableMBSE_Context) _context) );
 		
 		theColumn1ParallelGroup.addComponent( _createExternalSignalsPkgChooser.getM_UserChoiceComboBox() ); 
 		theColumn1ParallelGroup.addComponent( _createActorChooser.getM_UserChoiceComboBox() );    
@@ -204,7 +204,7 @@ public class CreateContextPackagePanel extends ExecutableMBSEBasePanel {
 					_createExternalSignalsPkgChooser.getCreateExternalSignalsPkgOption(),
 					_createExternalSignalsPkgChooser.getExternalSignalsPkgNameIfChosen(),
 					_createExternalSignalsPkgChooser.getExistingExternalSignalsPkgIfChosen(),
-					_context );
+					((ExecutableMBSE_Context) _context) );
 		}
 	}
 }

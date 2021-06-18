@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.telelogic.rhapsody.core.*;
  
 public class ActionInfo {
@@ -23,14 +23,14 @@ public class ActionInfo {
 	private IRPModelElement theElement = null;
 	private String currentUnadornedName = "Unspecified";
 	
-	private ExecutableMBSE_Context _context;
+	private ConfigurationSettings _context;
 	
 	private final List<String> elementTypesNeedingTraceability = 
 			Arrays.asList("Action", "AcceptEventAction", "EventState", "TimeEvent", "Transition", "Constraint");
 	
 	public ActionInfo(
 			IRPModelElement theElement, 
-			ExecutableMBSE_Context context) {
+			ConfigurationSettings context) {
 		
 		_context = context;
 		
@@ -101,7 +101,7 @@ public class ActionInfo {
 	
 	public static boolean isTraceabilityNeededFor( 
 			IRPModelElement theEl,
-			ExecutableMBSE_Context context ){
+			ConfigurationSettings context ){
 	
 		boolean isTraceabilityNeeded = false;
 		

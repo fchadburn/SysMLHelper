@@ -6,7 +6,6 @@ import java.util.Set;
 
 import requirementsanalysisplugin.PopulateRelatedRequirementsPanel;
 import requirementsanalysisplugin.RollUpTraceabilityToTheTransitionPanel;
-import requirementsanalysisplugin.RequirementsHelper;
 import functionalanalysisplugin.CopyActivityDiagramsPanel;
 import functionalanalysisplugin.CreateIncomingEventPanel;
 import functionalanalysisplugin.CreateNewActorPanel;
@@ -25,6 +24,7 @@ import com.mbsetraining.sysmlhelper.activitydiagram.RenameActions;
 import com.mbsetraining.sysmlhelper.common.DependencySelector;
 import com.mbsetraining.sysmlhelper.common.LayoutHelper;
 import com.mbsetraining.sysmlhelper.common.NestedActivityDiagram;
+import com.mbsetraining.sysmlhelper.common.RequirementsHelper;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.doorsng.ExportRequirementsToCSV;
 import com.mbsetraining.sysmlhelper.doorsng.SwitchRhapsodyRequirementsToDNG;
@@ -346,7 +346,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 				} else if( menuItem.equals( _context.getString( 
 						"executablembseplugin.ReportOnNamingAndTraceabilityMenu" ) ) ){
 
-					ActivityDiagramChecker.createActivityDiagramCheckersFor( theSelectedEls, _context );
+					ActivityDiagramChecker.launchPanelsFor( theSelectedEls, _context );
 
 				} else if( menuItem.equals( _context.getString( 
 						"executablembseplugin.MoveUnclaimedReqtsMenu" ) ) ){
@@ -382,7 +382,6 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 					MarkedAsDeletedPanel.launchThePanel( theAppID );
 
-
 				} else if( menuItem.equals( _context.getString( 
 						"executablembseplugin.ExportRequirementsToCsvForImportIntoDOORSNG" ))){
 
@@ -397,7 +396,6 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 							new SwitchRhapsodyRequirementsToDNG( _context );
 
 					theSwitcher.SwitchRequirements();
-
 
 				} else if( menuItem.equals( _context.getString( 
 						"executablembseplugin.StartLinkMenu" ) ) ){

@@ -23,12 +23,14 @@ import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+
 public class JCheckBoxTree extends JTree {
 
 	private static final long serialVersionUID = -4194122328392241790L;
 
 	JCheckBoxTree _selfPointer = this;
-	ExecutableMBSE_Context _context;
+	ConfigurationSettings _context;
 
 	// Defining data structure that will enable to fast check-indicate the state of each node
 	// It totally replaces the "selection" mechanism of the JTree
@@ -184,7 +186,9 @@ public class JCheckBoxTree extends JTree {
 		}       
 	}
 
-	public JCheckBoxTree( ExecutableMBSE_Context context ) {
+	public JCheckBoxTree( 
+			ConfigurationSettings context ) {
+		
 		super();
 		
 		_context = context;

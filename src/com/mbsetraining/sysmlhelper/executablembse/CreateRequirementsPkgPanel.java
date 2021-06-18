@@ -62,7 +62,7 @@ public class CreateRequirementsPkgPanel extends ExecutableMBSEBasePanel {
 
 		String theUniqueName = 
 				_context.determineUniqueNameForPackageBasedOn(
-						_context.getDefaultUseCasePackageName( _ownerPkg ),
+						((ExecutableMBSE_Context) _context).getDefaultUseCasePackageName( _ownerPkg ),
 						_ownerPkg );
 
 		JPanel theReqtsAnalysisPanel = createContent( theUniqueName );
@@ -105,7 +105,7 @@ public class CreateRequirementsPkgPanel extends ExecutableMBSEBasePanel {
 				_ownerPkg, 
 				theName,
 				true,
-				_context );
+				((ExecutableMBSE_Context) _context) );
 
 		theColumn1ParallelGroup.addComponent( _createRequirementsPkgChooser.getM_UserChoiceComboBox() ); 
 		theColumn2ParallelGroup.addComponent( _createRequirementsPkgChooser.getM_NameTextField() );   
@@ -145,8 +145,8 @@ public class CreateRequirementsPkgPanel extends ExecutableMBSEBasePanel {
 			_context.deleteIfPresent( "Model1", "ObjectModelDiagram", _context.get_rhpPrj() );
 			_context.deleteIfPresent( "Default", "Package", _context.get_rhpPrj() );
 
-			if( _context.getIsAutoPopulatePackageDiagram( _context.get_rhpPrj() ) ){
-				AutoPackageDiagram theAPD = new AutoPackageDiagram( _context );
+			if( ((ExecutableMBSE_Context) _context).getIsAutoPopulatePackageDiagram( _context.get_rhpPrj() ) ){
+				AutoPackageDiagram theAPD = new AutoPackageDiagram( ((ExecutableMBSE_Context) _context) );
 				theAPD.drawDiagram();
 			}
 		}

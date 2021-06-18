@@ -66,7 +66,7 @@ public class CreateEventForFlowPanel extends ExecutableMBSEBasePanel {
 		super( theAppID );
 		
 		// only do move if property is set
-		boolean isEnabled = _context.getIsEnableAutoMoveOfEventsOnFlowCreation();
+		boolean isEnabled = ((ExecutableMBSE_Context) _context).getIsEnableAutoMoveOfEventsOnFlowCreation();
 		
 		_existingEventEls = new ArrayList<IRPModelElement>();
 		
@@ -76,7 +76,7 @@ public class CreateEventForFlowPanel extends ExecutableMBSEBasePanel {
 		if( isEnabled ){
 			_elementMover = new ElementMover( 
 					_context.getSelectedElement(), 
-					_context.getExternalSignalsPackageStereotype(), 
+					((ExecutableMBSE_Context) _context).getExternalSignalsPackageStereotype(), 
 					_context );		
 			
 			if( _elementMover.isMovePossible() ){

@@ -18,6 +18,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.GraphElInfo;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
@@ -42,7 +43,7 @@ public class RollUpTraceabilityToTheTransitionPanel extends ExecutableMBSEBasePa
 	
 	public static void launchThePanel(
 			final IRPGraphElement theTransitionGraphEl,
-			ExecutableMBSE_Context theContext ){
+			ConfigurationSettings theContext ){
 	
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 
@@ -162,7 +163,7 @@ public class RollUpTraceabilityToTheTransitionPanel extends ExecutableMBSEBasePa
 		Set<IRPRequirement> theDependsOns = new HashSet<>();
 		
 		IRPStereotype theDependencyStereotype = 
-				_context.getStereotypeToUseForFunctions( theTransition );
+				((ExecutableMBSE_Context) _context).getStereotypeToUseForFunctions( theTransition );
 				
 		IRPModelElement theOwner = 
 				_context.findOwningClassIfOneExistsFor( 

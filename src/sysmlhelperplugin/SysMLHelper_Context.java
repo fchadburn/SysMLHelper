@@ -2,40 +2,24 @@ package sysmlhelperplugin;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
-import com.telelogic.rhapsody.core.IRPAcceptEventAction;
-import com.telelogic.rhapsody.core.IRPAcceptTimeEvent;
 import com.telelogic.rhapsody.core.IRPActor;
 import com.telelogic.rhapsody.core.IRPAttribute;
 import com.telelogic.rhapsody.core.IRPClass;
 import com.telelogic.rhapsody.core.IRPClassifier;
-import com.telelogic.rhapsody.core.IRPComment;
-import com.telelogic.rhapsody.core.IRPConstraint;
 import com.telelogic.rhapsody.core.IRPDependency;
 import com.telelogic.rhapsody.core.IRPEvent;
 import com.telelogic.rhapsody.core.IRPEventReception;
-import com.telelogic.rhapsody.core.IRPGraphElement;
-import com.telelogic.rhapsody.core.IRPGuard;
-import com.telelogic.rhapsody.core.IRPInstance;
 import com.telelogic.rhapsody.core.IRPLink;
 import com.telelogic.rhapsody.core.IRPModelElement;
 import com.telelogic.rhapsody.core.IRPOperation;
 import com.telelogic.rhapsody.core.IRPPackage;
 import com.telelogic.rhapsody.core.IRPPort;
-import com.telelogic.rhapsody.core.IRPProfile;
 import com.telelogic.rhapsody.core.IRPProject;
-import com.telelogic.rhapsody.core.IRPRequirement;
-import com.telelogic.rhapsody.core.IRPSendAction;
 import com.telelogic.rhapsody.core.IRPState;
 import com.telelogic.rhapsody.core.IRPStereotype;
 import com.telelogic.rhapsody.core.IRPSysMLPort;
@@ -156,36 +140,6 @@ public class SysMLHelper_Context extends ConfigurationSettings {
 			super.error( "Error in getStereotypeForTimeElapsedBlock, no Stereotyped called " + 
 					theElapsedTimeBlockStereotype + " was found" );
 		}	
-
-		return theStereotype;
-	}
-
-	public IRPStereotype getStereotypeToUseForFunctions(
-			IRPModelElement basedOnContextEl ){
-
-		IRPStereotype theStereotype = getStereotypeBasedOn(
-				basedOnContextEl, 
-				"ExecutableMBSEProfile.FunctionalAnalysis.TraceabilityTypeToUseForFunctions" );
-
-		return theStereotype;
-	}
-
-	public IRPStereotype getStereotypeToUseForActions(
-			IRPModelElement basedOnContext ){
-
-		IRPStereotype theStereotype = getStereotypeBasedOn(
-				basedOnContext, 
-				"ExecutableMBSEProfile.RequirementsAnalysis.TraceabilityTypeToUseForActions" );
-
-		return theStereotype;
-	}
-
-	public IRPStereotype getStereotypeToUseForUseCases(
-			IRPModelElement basedOnContext ){
-
-		IRPStereotype theStereotype = getStereotypeBasedOn(
-				basedOnContext, 
-				"ExecutableMBSEProfile.RequirementsAnalysis.TraceabilityTypeToUseForUseCases" );
 
 		return theStereotype;
 	}
@@ -519,36 +473,6 @@ public class SysMLHelper_Context extends ConfigurationSettings {
 		return theStereotypes;
 	}
 
-	private IRPStereotype getStereotypeBasedOn(
-			IRPModelElement theContextEl,
-			String andPropertyValue ){
-
-		IRPStereotype theStereotype = null;
-
-		String theStereotypeName = 
-				theContextEl.getPropertyValue( 
-						andPropertyValue );
-
-		if( theStereotypeName != null && 
-				!theStereotypeName.trim().isEmpty() ){
-
-			theStereotype = getExistingStereotype( 
-					theStereotypeName, 
-					theContextEl.getProject() );
-
-			if( theStereotype == null ){
-				super.error( "Error in getStereotypeBasedOn, no Stereotyped called " + theStereotypeName + " was found" );
-
-				//theStereotype = selectAndPersistStereotype( basedOnContext.getProject(), thePkg, theTag );
-
-			} else {				
-				super.debug( "Using " + super.elInfo( theStereotype ) + " for " + andPropertyValue );
-			}		
-		}
-
-		return theStereotype;
-	}
-
 	public String getElapsedTimeBlockStereotype(
 			IRPModelElement basedOnContextEl ) {
 
@@ -700,24 +624,6 @@ public class SysMLHelper_Context extends ConfigurationSettings {
 		if( thePropertyValue == null ){
 			thePropertyValue = "Error in getUseCaseNoteText";
 		}
-
-		return thePropertyValue;
-	}
-
-	public String getCreateRequirementTextForPrefixing(
-			IRPModelElement basedOnContextEl ){
-
-		String thePropertyValue = 
-				basedOnContextEl.getPropertyValue( 
-						"ExecutableMBSEProfile.RequirementsAnalysis.CreateRequirementTextForPrefixing" );
-
-		if( thePropertyValue == null ){
-			thePropertyValue = "Error in getCreateRequirementTextForPrefixing";
-		}
-
-		//#005 10-APR-2016: Support ProductName substitution in reqt text tag (F.J.Chadburn)
-		thePropertyValue = thePropertyValue.replaceAll(
-				"ProjectName", basedOnContextEl.getProject().getName() );
 
 		return thePropertyValue;
 	}
@@ -945,144 +851,6 @@ public class SysMLHelper_Context extends ConfigurationSettings {
 		return thePullFromPkgs;
 	}
 
-	public Set<IRPModelElement> findModelElementsIn(
-			List<IRPGraphElement> theGraphElementList, 
-			String withMetaClass){
-
-		Set<IRPModelElement> theFilteredSet = new HashSet<IRPModelElement>();
-
-		for (IRPGraphElement theGraphEl : theGraphElementList) {
-
-			IRPModelElement theEl = theGraphEl.getModelObject();
-
-			if (theEl != null && theEl.getMetaClass().equals( withMetaClass )){
-				theFilteredSet.add( theEl );
-			}
-		}
-
-		return theFilteredSet;
-	}
-
-	public List<IRPModelElement> findElementsIn(
-			List<IRPModelElement> theModelElementList, 
-			String withMetaClass){
-
-		List<IRPModelElement> theFilteredList = new ArrayList<IRPModelElement>();
-
-		for (IRPModelElement theEl : theModelElementList) {
-
-			if (theEl.getMetaClass().equals( withMetaClass )){
-				theFilteredList.add( theEl );
-			}
-		}
-
-		return theFilteredList;
-	}
-
-	public boolean doUnderlyingModelElementsIn(
-			List<IRPGraphElement> theGraphElementList, 
-			String haveTheMetaClass){
-
-		boolean result = true;
-
-		for (IRPGraphElement theGraphEl : theGraphElementList) {
-			IRPModelElement theEl = theGraphEl.getModelObject();
-
-			if (theEl != null && !theEl.getMetaClass().equals( haveTheMetaClass )){
-				result = false;
-			}
-		}
-
-		return result;
-	}
-
-	public Set<IRPModelElement> findModelElementsNestedUnder(
-			IRPModelElement rootEl, 
-			String ofMetaClass, 
-			String withStereotypeMatchingRegEx){
-
-		@SuppressWarnings("unchecked")
-		List<IRPModelElement> theCandidateEls = rootEl.getNestedElementsByMetaClass(ofMetaClass, 1).toList();
-
-		Set<IRPModelElement> theFound = new LinkedHashSet<IRPModelElement>();
-
-		for (IRPModelElement theEl : theCandidateEls) {
-
-			IRPStereotype theStereotype = getStereotypeAppliedTo( theEl, withStereotypeMatchingRegEx );
-
-			if( theStereotype != null ){
-				// don't add if element is under the profile.
-				if (!checkIsNestedUnderAProfile( theEl )){
-					theFound.add( theEl );
-				}
-			}			
-		}
-
-		return theFound;
-	}
-
-	public List<IRPModelElement> findModelElementsWithoutStereotypeNestedUnder(
-			IRPModelElement rootEl, 
-			String ofMetaClass, 
-			String withStereotypeMatchingRegEx){
-
-		@SuppressWarnings("unchecked")
-		List<IRPModelElement> theCandidateEls = rootEl.getNestedElementsByMetaClass(ofMetaClass, 1).toList();
-		List<IRPModelElement> theFound = new ArrayList<IRPModelElement>();
-
-		for (IRPModelElement theEl : theCandidateEls) {
-
-			IRPStereotype theStereotype = getStereotypeAppliedTo(theEl, withStereotypeMatchingRegEx);
-
-			if (theStereotype==null){
-				theFound.add(theEl);
-			}			
-		}
-
-		return theFound;
-	}
-
-	public void applyStereotypeToDeriveReqtDependenciesOriginatingFrom( 
-			IRPModelElement theReqt, 
-			IRPStereotype theStereotypeToApply ) {
-
-		@SuppressWarnings("unchecked")
-		List<IRPDependency> theDependencies = theReqt.getDependencies().toList();
-
-		for (IRPDependency theDependency : theDependencies) {
-
-			IRPStereotype theExistingGatewayStereotype = 
-					getStereotypeAppliedTo( theDependency, "from.*" );
-
-			if (theExistingGatewayStereotype == null && 
-					hasStereotypeCalled("deriveReqt", theDependency)){
-
-				super.debug("Applying " + super.elInfo(theStereotypeToApply) + " to " + super.elInfo(theDependency));
-				theDependency.setStereotype(theStereotypeToApply);
-				theDependency.changeTo("Derive Requirement");
-			}
-		}
-	}
-
-	public boolean checkIsNestedUnderAProfile(
-			IRPModelElement theElementToCheck){
-
-		boolean isUnderAProfile = false;
-
-		IRPModelElement theOwner = theElementToCheck.getOwner();
-
-		if (theOwner!=null){
-
-			if (theOwner instanceof IRPProfile){
-				isUnderAProfile = true;
-			} else {
-				isUnderAProfile = checkIsNestedUnderAProfile( theOwner );
-			}
-		}
-
-		return isUnderAProfile;
-	}
-
 	public List<IRPModelElement> getNonActorOrTestingClassifiersConnectedTo( 
 			IRPClassifier theClassifier,
 			IRPClass inTheBuildingBlock ){
@@ -1301,181 +1069,6 @@ public class SysMLHelper_Context extends ConfigurationSettings {
 		return theExistingCheckOp;
 	}
 
-	public List<IRPLink> getLinksBetween(
-			IRPSysMLPort thePort,
-			IRPInstance ownedByPart,
-			IRPSysMLPort andThePort,
-			IRPInstance whichIsOwnedByPart,
-			IRPClassifier inBuildingBlock ){
-
-		List<IRPLink> theLinksBetween = 
-				new ArrayList<IRPLink>();
-
-		@SuppressWarnings("unchecked")
-		List<IRPLink> theExistingLinks = 
-		inBuildingBlock.getLinks().toList();
-
-		for( IRPLink theExistingLink : theExistingLinks ){
-
-			IRPSysMLPort fromSysMLPort = theExistingLink.getFromSysMLPort();
-			IRPModelElement fromSysMLElement = theExistingLink.getFromElement();
-
-			IRPSysMLPort toSysMLPort = theExistingLink.getToSysMLPort();
-			IRPModelElement toSysMLElement = theExistingLink.getToElement();
-
-			if( fromSysMLPort != null && 
-					fromSysMLElement != null && fromSysMLElement instanceof IRPInstance &&
-					toSysMLPort != null &&
-					toSysMLElement != null && toSysMLElement instanceof IRPInstance ){
-
-				if( thePort.equals( fromSysMLPort ) && 
-						ownedByPart.equals( fromSysMLElement ) &&
-						andThePort.equals( toSysMLPort ) &&
-						whichIsOwnedByPart.equals( toSysMLElement ) ){
-
-					super.debug("Check for links between " + super.elInfo(fromSysMLPort) + " and " + 
-							super.elInfo( toSysMLPort ) + " successfully found " + 
-							super.elInfo( theExistingLink ) );
-
-					theLinksBetween.add( theExistingLink );
-
-				} else if( thePort.equals( toSysMLPort ) && 
-						ownedByPart.equals( fromSysMLElement ) &&
-						andThePort.equals( fromSysMLPort ) &&
-						whichIsOwnedByPart.equals( toSysMLElement ) ){
-
-					super.debug("Check for links between " + super.elInfo(toSysMLPort) + " and " + 
-							super.elInfo( fromSysMLPort ) + " successfully found " + 
-							super.elInfo( theExistingLink ) );
-
-					theLinksBetween.add( theExistingLink );
-
-				} else {
-					//					Logger.writeLine("Check for links between " + Logger.elementInfo(toSysMLPort) + " and " + 
-					//							Logger.elementInfo( fromSysMLPort ) + " found no match to " + 
-					//							Logger.elementInfo( theExistingLink ) );
-				}
-
-			} else {
-				// we're only interested in flow ports
-			}
-		}
-
-		super.debug("getLinksBetween " + super.elInfo( thePort ) + " and " +
-				super.elInfo( andThePort ) + " has found " + 
-				theLinksBetween.size() + " matches");
-
-		return theLinksBetween;
-	}
-
-	public IRPLink addConnectorBetweenSysMLPortsIfOneDoesntExist(
-			IRPSysMLPort theSrcPort,
-			IRPInstance theSrcPart, 
-			IRPSysMLPort theTgtPort,
-			IRPInstance theTgtPart) {
-
-		IRPLink theLink = null;
-
-		IRPClass theAssemblyBlock = (IRPClass) theSrcPart.getOwner();
-
-		super.debug( "addConnectorBetweenSysMLPortsIfOneDoesntExist has determined that " + 
-				super.elInfo( theAssemblyBlock ) + " is the assembly block" );
-
-		List<IRPLink> theLinks = getLinksBetween(
-				theSrcPort, 
-				theSrcPart,
-				theTgtPort, 
-				theTgtPart,
-				theAssemblyBlock );
-
-		// only add if one does not already exist
-		if( theLinks.size() == 0 ){
-
-			super.debug( "Adding a new connector between " + super.elInfo( theSrcPort ) + 
-					" and " + super.elInfo( theTgtPort ) + " as one does not exist" ); 
-
-			IRPPackage thePkg = (IRPPackage) theAssemblyBlock.getOwner();
-
-			theLink = thePkg.addLinkBetweenSYSMLPorts(
-					theSrcPart, 
-					theTgtPart, 
-					null, 
-					theSrcPort, 
-					theTgtPort );
-
-			theLink.changeTo("connector");
-
-			String theUniqueName = determineUniqueNameBasedOn(
-					theSrcPart.getName() + "_" + theSrcPort.getName() + "__" + 
-							theTgtPart.getName() + "_" + theTgtPort.getName(), 
-							"Link", 
-							theAssemblyBlock );
-
-			theLink.setName( theUniqueName );		
-			theLink.setOwner( theAssemblyBlock );
-
-			super.debug("Added " + super.elInfo( theLink ) + 
-					" to " + super.elInfo( theAssemblyBlock ));
-		}
-
-		return theLink;
-	}
-
-	public Set<IRPModelElement> getSetOfElementsFromCombiningThe(
-			List<IRPModelElement> theSelectedEls,
-			List<IRPGraphElement> theSelectedGraphEls ){
-
-		Set<IRPModelElement> theSetOfElements = 
-				new HashSet<IRPModelElement>( theSelectedEls );
-
-		for( IRPGraphElement theGraphEl : theSelectedGraphEls ){
-
-			IRPModelElement theEl = theGraphEl.getModelObject();
-
-			if( theEl != null ){
-				theSetOfElements.add( theEl );
-			}
-		}
-
-		return theSetOfElements;
-	}
-
-	public void addGeneralization(
-			IRPClassifier fromElement, 
-			String toBlockWithName, 
-			IRPPackage underneathTheRootPackage ){
-
-		IRPModelElement theBlock = 
-				underneathTheRootPackage.findNestedElementRecursive( 
-						toBlockWithName, "Block" );
-
-		if( theBlock != null ){
-			fromElement.addGeneralization( (IRPClassifier) theBlock );
-		} else {
-			super.error( "Error: Unable to find element with name " + toBlockWithName );
-		}
-	}
-
-	public IRPClass findOwningClassIfOneExistsFor( 
-			IRPModelElement theModelEl ){
-
-		IRPModelElement theOwner = theModelEl.getOwner();
-		IRPClass theResult = null;
-
-		if( ( theOwner != null ) &&
-				!( theOwner instanceof IRPProject ) ){
-
-			if( theOwner.getMetaClass().equals("Class") ){
-
-				theResult = (IRPClass) theOwner;
-			} else {
-				theResult = findOwningClassIfOneExistsFor( theOwner );
-			}
-		}
-
-		return theResult;
-	}
-
 	public IRPDependency addAutoRippleDependencyIfOneDoesntExist(
 			IRPModelElement fromElement, 
 			IRPModelElement toElement ){
@@ -1491,19 +1084,6 @@ public class SysMLHelper_Context extends ConfigurationSettings {
 						theAutoRippleStereotype );
 
 		return theDependency;
-	}
-
-	public IRPModelElement getOwningClassifierFor(IRPModelElement theState){
-
-		IRPModelElement theOwner = theState.getOwner();
-
-		while (theOwner.getMetaClass().equals("State") || theOwner.getMetaClass().equals("Statechart")){
-			theOwner = theOwner.getOwner();
-		}
-
-		super.debug("The owner for " + super.elInfo(theState) + " is " + super.elInfo(theOwner));
-
-		return theOwner;
 	}
 
 	public IRPOperation createTestCaseFor( IRPClass theTestDriver ){

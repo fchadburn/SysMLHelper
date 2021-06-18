@@ -4,12 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import requirementsanalysisplugin.PopulateRelatedRequirementsPanel;
 import requirementsanalysisplugin.PopulateRequirementsAnalysisPkg;
+import requirementsanalysisplugin.RollUpTraceabilityToTheTransitionPanel;
 import functionalanalysisplugin.PopulateFunctionalAnalysisPkg;
+import functionalanalysisplugin.SequenceDiagramHelper;
 import functionalanalysisplugin.PopulateFunctionalAnalysisPkg.SimulationType;
 import designsynthesisplugin.PopulateDesignSynthesisPkg;
+
+import com.mbsetraining.sysmlhelper.activitydiagram.ActivityDiagramChecker;
+import com.mbsetraining.sysmlhelper.activitydiagram.RenameActions;
 import com.mbsetraining.sysmlhelper.common.DependencySelector;
+import com.mbsetraining.sysmlhelper.common.LayoutHelper;
+import com.mbsetraining.sysmlhelper.common.NestedActivityDiagram;
+import com.mbsetraining.sysmlhelper.common.RequirementsHelper;
+import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.gateway.CreateGatewayProjectPanel;
+import com.mbsetraining.sysmlhelper.gateway.MarkedAsDeletedPanel;
+import com.mbsetraining.sysmlhelper.gateway.MoveRequirements;
+import com.mbsetraining.sysmlhelper.smartlink.EndlinkPanel;
 import com.telelogic.rhapsody.core.*;
 
 public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
@@ -63,18 +76,12 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 	public void OnMenuItemSelect(String menuItem) {
 
 		try { 
-			IRPApplication theRhpApp = _context.get_rhpApp();
+			String theAppID = _context.get_rhpAppID();
+			
 			IRPProject theRhpPrj = _context.get_rhpPrj();
-
-			IRPModelElement theSelectedEl = theRhpApp.getSelectedElement();
-
-			@SuppressWarnings("unchecked")
-			List<IRPModelElement> theSelectedEls = 
-			theRhpApp.getListOfSelectedElements().toList();
-
-			@SuppressWarnings("unchecked")
-			List<IRPGraphElement> theGraphEls = 
-			theRhpApp.getSelectedGraphElements().toList();
+			IRPModelElement theSelectedEl = _context.getSelectedElement();
+			List<IRPModelElement> theSelectedEls = _context.getSelectedElements();
+			List<IRPGraphElement> theSelectedGraphEls = _context.getSelectedGraphElements();
 
 			_context.debug("Starting ("+ theSelectedEls.size() + " elements were selected) ...");
 
@@ -140,7 +147,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 
 					Set<IRPModelElement> theCombinedSet = 
 							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theGraphEls );
+									theSelectedEls, theSelectedGraphEls );
 
 					DependencySelector theSelector = new DependencySelector( _context );
 
@@ -151,7 +158,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 
 					Set<IRPModelElement> theCombinedSet = 
 							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theGraphEls );
+									theSelectedEls, theSelectedGraphEls );
 
 					DependencySelector theSelector = new DependencySelector( _context );
 
@@ -162,7 +169,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 
 					Set<IRPModelElement> theCombinedSet = 
 							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theGraphEls );
+									theSelectedEls, theSelectedGraphEls );
 
 					DependencySelector theSelector = new DependencySelector( _context );
 
@@ -173,7 +180,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 
 					Set<IRPModelElement> theCombinedSet = 
 							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theGraphEls );
+									theSelectedEls, theSelectedGraphEls );
 
 					DependencySelector theSelector = new DependencySelector( _context );
 
@@ -184,7 +191,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 
 					Set<IRPModelElement> theCombinedSet = 
 							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theGraphEls );
+									theSelectedEls, theSelectedGraphEls );
 
 					DependencySelector theSelector = new DependencySelector( _context );
 
@@ -195,7 +202,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 
 					Set<IRPModelElement> theCombinedSet = 
 							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theGraphEls );
+									theSelectedEls, theSelectedGraphEls );
 
 					DependencySelector theSelector = new DependencySelector( _context );
 
@@ -206,7 +213,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 
 					Set<IRPModelElement> theCombinedSet = 
 							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theGraphEls );
+									theSelectedEls, theSelectedGraphEls );
 
 					DependencySelector theSelector = new DependencySelector( _context );
 
@@ -217,7 +224,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 
 					Set<IRPModelElement> theCombinedSet = 
 							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theGraphEls );
+									theSelectedEls, theSelectedGraphEls );
 
 					DependencySelector theSelector = new DependencySelector( _context );
 
@@ -228,7 +235,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 
 					Set<IRPModelElement> theCombinedSet = 
 							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theGraphEls );
+									theSelectedEls, theSelectedGraphEls );
 
 					DependencySelector theSelector = new DependencySelector( _context );
 
@@ -239,7 +246,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 
 					Set<IRPModelElement> theCombinedSet = 
 							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theGraphEls );
+									theSelectedEls, theSelectedGraphEls );
 
 					DependencySelector theSelector = new DependencySelector( _context );
 
@@ -250,7 +257,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 
 					Set<IRPModelElement> theCombinedSet = 
 							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theGraphEls );
+									theSelectedEls, theSelectedGraphEls );
 
 					DependencySelector theSelector = new DependencySelector( _context );
 
@@ -261,7 +268,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 
 					Set<IRPModelElement> theCombinedSet = 
 							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theGraphEls );
+									theSelectedEls, theSelectedGraphEls );
 
 					DependencySelector theSelector = new DependencySelector( _context );
 
@@ -277,7 +284,136 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.AddRelativeUnitMenu"))){
 
 					_context.browseAndAddUnit( theSelectedEl.getProject(), true );								
-				}					
+				
+					// Requirements Analysis
+				} else if (menuItem.equals(_context.getString( "requirementsanalysisplugin.CreateNestedADMenu" ))){
+
+					NestedActivityDiagram theHelper = new NestedActivityDiagram(_context);
+					theHelper.createNestedActivityDiagramsFor( theSelectedEls );
+
+				} else if (menuItem.equals(_context.getString( "requirementsanalysisplugin.ReportOnNamingAndTraceabilityMenu" ))){
+
+					ActivityDiagramChecker.launchPanelsFor( theSelectedEls, _context );
+					
+				} else if (menuItem.equals(_context.getString( "requirementsanalysisplugin.MoveUnclaimedReqtsMenu" ))){
+
+					MoveRequirements theMover = new MoveRequirements( _context );
+
+					theMover.moveUnclaimedRequirementsReadyForGatewaySync( 
+							theSelectedEls, 
+							_context.get_rhpPrj() );
+					
+				} else if (menuItem.equals(_context.getString( "requirementsanalysisplugin.CreateNewRequirementMenu" ))){
+
+					RequirementsHelper theHelper = new RequirementsHelper( _context );
+					theHelper.createNewRequirementsFor( theSelectedGraphEls );
+
+				} else if (menuItem.equals(_context.getString( "requirementsanalysisplugin.PerformRenameInBrowserMenu" ))){
+
+					RenameActions theRenamer = new RenameActions(_context);
+					theRenamer.performRenamesFor( theSelectedEls );
+					
+				} else if (menuItem.equals(_context.getString( "requirementsanalysisplugin.UpdateNestedADNamesMenu" ))){
+
+					NestedActivityDiagram theHelper = new NestedActivityDiagram(_context);
+
+					theHelper.renameNestedActivityDiagramsFor( 
+							theSelectedEls );
+
+				} else if (menuItem.equals(_context.getString( "requirementsanalysisplugin.DeleteTaggedAsDeletedAtHighLevelMenu" ))){
+
+					MarkedAsDeletedPanel.launchThePanel( theAppID );
+
+				} else if (menuItem.equals(_context.getString( "requirementsanalysisplugin.StartLinkMenu" ))){
+
+					_startLinkGuids.clear();
+
+					for( IRPModelElement theEl : theSelectedEls ){
+						_startLinkGuids.add( theEl.getGUID() );
+					}
+					
+				} else if (menuItem.equals(_context.getString( "requirementsanalysisplugin.EndLinkMenu" ))){
+
+					if( _startLinkGuids.isEmpty() ){
+
+						UserInterfaceHelper.showWarningDialog( "You need to Start a link before you can end it" );
+					} else {
+						EndlinkPanel.launchThePanel( 
+								theAppID, 
+								_startLinkGuids );
+					}
+					
+				} else if (menuItem.equals(_context.getString( "requirementsanalysisplugin.RollUpTraceabilityUpToTransitionLevel" ))){
+
+					if( theSelectedGraphEls != null ){
+						IRPGraphElement theSelectedGraphEl = theSelectedGraphEls.get( 0 );
+						RollUpTraceabilityToTheTransitionPanel.launchThePanel( theSelectedGraphEl, _context );
+					}
+
+				} else if (menuItem.equals(_context.getString( "requirementsanalysisplugin.layoutDependencies" ))){
+
+					if( theSelectedGraphEls.size() > 0 ){
+
+						LayoutHelper theHelper = new LayoutHelper( _context );
+
+						theHelper.centerDependenciesForTheGraphEls( 
+								theSelectedGraphEls );
+
+					} else if( theSelectedEl.getMetaClass().equals( "ActivityDiagramGE" ) ){
+
+						LayoutHelper theHelper = new LayoutHelper( _context );
+
+						theHelper.centerDependenciesForTheDiagram( 
+								(IRPDiagram) theSelectedEl );
+
+					} else if( theSelectedEl.getMetaClass().equals( "ActivityDiagram" ) ){
+
+						@SuppressWarnings("unchecked")
+						List<IRPModelElement> theDiagrams = 
+						theSelectedEl.getNestedElementsByMetaClass( 
+								"ActivityDiagramGE", 0 ).toList();
+
+						if( theDiagrams.size()==1 ){
+
+							LayoutHelper theHelper = new LayoutHelper( _context );
+
+							theHelper.centerDependenciesForTheDiagram( 
+									(IRPDiagram) theDiagrams.get( 0 ) );
+						} else {
+							_context.error( "Error in OnMenuItemSelect, unable to find an ActivityDiagramGE" );
+						}
+
+					} else if( theSelectedEl instanceof IRPDiagram ){
+
+						LayoutHelper theHelper = new LayoutHelper( _context );
+
+						theHelper.centerDependenciesForTheDiagram( 
+								(IRPDiagram) theSelectedEl );
+
+					} else if( theSelectedEl instanceof IRPPackage ){
+
+						LayoutHelper theHelper = new LayoutHelper( _context );
+
+						theHelper.centerDependenciesForThePackage( 
+								(IRPPackage) theSelectedEl );
+					}				
+	
+				} else if (menuItem.equals(_context.getString("requirementsanalysisplugin.PopulateRequirementsForSDsMenu"))){
+					
+					if (theSelectedEl instanceof IRPSequenceDiagram){
+						PopulateRelatedRequirementsPanel.launchThePanel( theAppID );
+					}
+					
+				} else if (menuItem.equals(_context.getString("requirementsanalysisplugin.UpdateVerificationDependenciesForSDsMenu"))){		
+					
+					if (!theSelectedEls.isEmpty()){
+						SequenceDiagramHelper theHelper = new SequenceDiagramHelper(_context);
+						theHelper.updateVerificationsForSequenceDiagramsBasedOn( theSelectedEls );
+					}			
+
+				} else {
+					_context.error( _context.elInfo( theSelectedEl ) + " was invoked with menuItem='" + menuItem + "'");
+				}
 			}
 
 			_context.debug("... completed");
@@ -419,6 +555,52 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 	@Override
 	public void OnTrigger(String trigger) {
 
+	}
+	
+	// For use with Tables
+	public String getRequirementSpecificationText(String guid) {
+	
+		//Logger.writeLine("Was invoked with guid " + guid);
+		String theSpec = "Not found";
+		
+		try {
+			@SuppressWarnings("rawtypes")
+			List theAppIDs = RhapsodyAppServer.getActiveRhapsodyApplicationIDList();
+			
+			if( theAppIDs.size() == 1 ){
+	
+				IRPProject theRhpProject = RhapsodyAppServer.getActiveRhapsodyApplication().activeProject();
+				IRPModelElement theEl = theRhpProject.findElementByGUID(guid);
+				
+				if (theEl != null){
+					
+					if (theEl instanceof IRPRequirement){
+						
+						IRPRequirement theReq = (IRPRequirement)theEl;
+						theSpec = theReq.getSpecification();
+						
+					} else if (theEl instanceof IRPDependency){
+						
+						IRPDependency theDep = (IRPDependency)theEl;
+						IRPModelElement theDependsOn = theDep.getDependsOn();
+						
+						if (theDependsOn instanceof IRPRequirement){
+							
+							IRPRequirement theReq = (IRPRequirement)theDependsOn;
+							theSpec = theReq.getSpecification();
+							
+							_context.debug(_context.elInfo( theDependsOn )+ "is the depends on with the text '" + theSpec + "'");
+						}
+					}
+				} else {
+					_context.error("Error: getRequirementSpecificationText unable to find element with guid=" + guid );
+				}
+			}
+		} catch (Exception e) {
+			_context.error("Unhandled exception in getRequirementSpecificationText" );
+		}
+
+		return theSpec;
 	}
 }
 

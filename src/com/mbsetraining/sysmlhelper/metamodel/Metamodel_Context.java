@@ -1,6 +1,7 @@
 package com.mbsetraining.sysmlhelper.metamodel;
 
 import com.mbsetraining.sysmlhelper.common.BaseContext;
+import com.telelogic.rhapsody.core.IRPPackage;
 
 public class Metamodel_Context extends BaseContext {
 
@@ -23,5 +24,12 @@ public class Metamodel_Context extends BaseContext {
 				_pluginVersionProperty,
 				_userDefinedMetaClassesAsSeparateUnitProperty,
 				_allowPluginToControlUnitGranularityProperty );
+	}
+
+	@Override
+	public IRPPackage addNewTermPackageAndSetUnitProperties(String theName,
+			IRPPackage theOwner, String theNewTermName) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -227,7 +227,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 		
 		if( thePreferredRootPkg != null ){
 			thePreferredPackages.addAll(
-					GeneralHelpers.findModelElementsNestedUnder(
+					_context.findModelElementsNestedUnder(
 							thePreferredRootPkg, "Package", "from.*") );
 		}
 		

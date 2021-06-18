@@ -1,13 +1,9 @@
-package requirementsanalysisplugin;
+package com.mbsetraining.sysmlhelper.common;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
-import com.mbsetraining.sysmlhelper.common.GraphElInfo;
-import com.mbsetraining.sysmlhelper.common.RequirementMover;
-import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
    
 public class RequirementsHelper {
@@ -45,8 +41,11 @@ public class RequirementsHelper {
 				
 				if( theRelations.isEmpty() ){
 						
-					theText = _context.getCreateRequirementTextForPrefixing( 
-							theModelObject ) + theActionText;				
+					String preFix = _context.getCreateRequirementTextForPrefixing( 
+							theModelObject,
+							"ExecutableMBSEProfile.RequirementsAnalysis.CreateRequirementTextForPrefixing" );
+					
+					theText = preFix + theActionText;				
 					
 				} else {
 					
@@ -114,7 +113,7 @@ public class RequirementsHelper {
 				} else if( theGraphEl instanceof IRPGraphEdge ){
 
 					IRPCollection theGraphEls = 
-							RequirementsAnalysisPlugin.getRhapsodyApp().createNewCollection();
+							_context.get_rhpApp().createNewCollection();
 
 					theGraphEls.addGraphicalItem( theGraphEl );
 					theGraphEls.addGraphicalItem( theGraphNode );
@@ -126,26 +125,13 @@ public class RequirementsHelper {
 							"the graphEls are not handled types for drawing relations" );
 				}
 				
-				// only do move if property is set
-				boolean isEnabled = 
-						_context.getIsEnableAutoMoveOfRequirements(
-								theReqt );
-				
-				if( isEnabled ){
-					RequirementMover theElementMover = new RequirementMover( 
-							theReqt, 
-							_context.getRequirementPackageStereotype(), 
-							_context );
-					
-					theElementMover.performMove( theReqt );					
-				}
+				_context.moveRequirementIfNeeded( theReqt );
 
 			} // theActionText == null
 		} else { // theModelObject == null
 			_context.error( "theModelObject == null" );
 		}
 	}
-
 	
 	private List<IRPModelElement> getElementsThatFlowInto(
 			IRPModelElement theElement, 

@@ -5,6 +5,7 @@ import java.util.List;
 
 import functionalanalysisplugin.FunctionalAnalysisSettings;
 
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.*;
 
@@ -15,12 +16,12 @@ public class PortBasedConnector {
 	private IRPClassifier _targetClassifier = null;
 	private IRPPort _targetPort = null;
 	private IRPLink _link = null;
-	private ExecutableMBSE_Context _context;
+	private ConfigurationSettings _context;
 	
 	public PortBasedConnector(
 			IRPClassifier theSourceClassifier ,
 			IRPClassifier theTargetClassifier,
-			ExecutableMBSE_Context context ){
+			ConfigurationSettings context ){
 	
 		_context = context;
 		
@@ -42,7 +43,7 @@ public class PortBasedConnector {
 	public PortBasedConnector(
 			IRPInstance theSourcePart,
 			IRPInstance theTargetPart,
-			ExecutableMBSE_Context context ){
+			ConfigurationSettings context ){
 
 		_context = context;
 

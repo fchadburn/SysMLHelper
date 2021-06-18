@@ -4,8 +4,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.GraphNodeInfo;
-import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.IRPActor;
 import com.telelogic.rhapsody.core.IRPClass;
 import com.telelogic.rhapsody.core.IRPClassifier;
@@ -22,10 +22,10 @@ import com.telelogic.rhapsody.core.IRPStructureDiagram;
 
 public class BlockDiagramHelper {
 
-	ExecutableMBSE_Context _context;
+	ConfigurationSettings _context;
 	
 	public BlockDiagramHelper(
-			ExecutableMBSE_Context context ) {
+			ConfigurationSettings context ) {
 
 		_context = context;
 	}
