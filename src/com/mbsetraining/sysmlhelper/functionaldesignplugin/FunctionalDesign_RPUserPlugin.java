@@ -117,11 +117,9 @@ public class FunctionalDesign_RPUserPlugin extends RPUserPlugin {
 
 				_context.debug("... completed");
 			}
-
-		} catch (Exception e) {
-			_context.error("Error: Exception in OnMenuItemSelect when invoking PopulateRequirementsAnalysisPkg.createRequirementsAnalysisPkg");
+		} catch( Exception e ){
+			_context.error( "Exception in OnMenuItemSelect, e=" + e.getMessage() );
 		}
-
 	}
 
 	// if true is returned the plugin will be unloaded

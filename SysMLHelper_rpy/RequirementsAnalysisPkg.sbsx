@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RhapsodyArchive>
+	<MagicNumber></MagicNumber>
+	<CODE-PAGE>1252</CODE-PAGE>
+	<version>100.831.0</version>
+	<lang>C++</lang>
+	<BuildNo>9835718</BuildNo>
+	
+	<RHAPSODY-MODEL>
+	<ISubsystem type="e">
+			<_id type="a">GUID a225e158-d38b-4900-b98e-97d73f017e2a</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Profile</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">GloballyApplied</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">RequirementsAnalysisPkg</_name>
+			<_modifiedTimeWeak type="a">2.15.2017::22:3:17</_modifiedTimeWeak>
+			<_modifiedTime type="a">2.15.2017::22:3:17</_modifiedTime>
+			<_lastID type="a">3</_lastID>
+			<weakCGTime type="a">2.15.2017::22:3:17</weakCGTime>
+			<strongCGTime type="a">2.15.2017::22:3:17</strongCGTime>
+			<_defaultComposite type="s">GUID 33122e50-b01a-434c-ae29-f0a9c54785a9</_defaultComposite>
+			<_eventsBaseID type="a">-1</_eventsBaseID>
+			<_configurationRelatedTime type="a">3.29.2016::13:1:5</_configurationRelatedTime>
+			<AggregatesList type="e">
+				<value>GUID dc479104-66cd-4e0e-8a72-e5b06b4c589c</value>
+				<value>GUID 4008d7bf-3951-4d15-94e6-8780899d5810</value>
+				<value>GUID 4e68ed8c-3024-48e4-bab6-9c06a1f21f34</value>
+				<value>GUID 2dfde3ab-5a9f-49f9-a2f0-e578f457aa4e</value>
+				<value>GUID ca6b33bc-c2d2-466c-abc1-de271487bbd0</value>
+				<value>GUID 3c0801dd-4e35-4dc6-9467-38e2e272f19c</value>
+				<value>GUID 33122e50-b01a-434c-ae29-f0a9c54785a9</value>
+			</AggregatesList>
+		</ISubsystem>
+		<IDependency type="e">
+			<_id type="a">GUID dc479104-66cd-4e0e-8a72-e5b06b4c589c</_id>
+			<_myState type="a">2048</_myState>
+			<_name type="a">RequirementsAnalysisProfile</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+							<_hname type="a">AppliedProfile</_hname>
+							<_hid type="a">GUID d2eca2c1-e5a5-4296-9453-29283c4ed8bc</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">2.15.2017::22:3:17</_modifiedTimeWeak>
+			<_modifiedTime type="a">2.15.2017::22:3:17</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IProfile</_hm2Class>
+					<_hfilename type="a">.\RequirementsAnalysisProfile.sbs</_hfilename>
+					<_hname type="a">RequirementsAnalysisProfile</_hname>
+					<_hid type="a">GUID ee68d643-007f-404c-89e5-7c61c7008170</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_dependent type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">ISubsystem</_hm2Class>
+					<_hid type="a">GUID a225e158-d38b-4900-b98e-97d73f017e2a</_hid>
+				</INObjectHandle>
+			</_dependent>
+		</IDependency>
+		<ITag type="e">
+			<_id type="a">GUID 4008d7bf-3951-4d15-94e6-8780899d5810</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">traceabilityTypeToUseForActions</_name>
+			<_modifiedTimeWeak type="a">3.29.2016::13:1:5</_modifiedTimeWeak>
+			<_modifiedTime type="a">3.29.2016::13:1:5</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">RhpString</_hname>
+					<_hid type="a">GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<AggregatesList type="e">
+				<value>GUID 34432f5a-a9d8-43e3-8ef4-343236c6c1f3</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 34432f5a-a9d8-43e3-8ef4-343236c6c1f3</_id>
+			<_modifiedTimeWeak type="a">3.10.2016::7:59:53</_modifiedTimeWeak>
+			<_modifiedTime type="a">3.10.2016::7:59:53</_modifiedTime>
+			<_value type="a">derive</_value>
+		</ILiteralSpecification>
+		<ITag type="e">
+			<_id type="a">GUID 4e68ed8c-3024-48e4-bab6-9c06a1f21f34</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">traceabilityTypeToUseForUseCases</_name>
+			<_modifiedTimeWeak type="a">3.29.2016::13:1:5</_modifiedTimeWeak>
+			<_modifiedTime type="a">3.29.2016::13:1:5</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">RhpString</_hname>
+					<_hid type="a">GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<AggregatesList type="e">
+				<value>GUID d96bd6d6-1fe4-406e-9ad7-d60a487481ae</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID d96bd6d6-1fe4-406e-9ad7-d60a487481ae</_id>
+			<_modifiedTimeWeak type="a">3.29.2016::12:57:33</_modifiedTimeWeak>
+			<_modifiedTime type="a">3.29.2016::12:57:33</_modifiedTime>
+			<_value type="a">refine</_value>
+		</ILiteralSpecification>
+		<ITag type="e">
+			<_id type="a">GUID 2dfde3ab-5a9f-49f9-a2f0-e578f457aa4e</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">createRequirementTextForPrefixing</_name>
+			<_modifiedTimeWeak type="a">6.15.2016::18:21:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.15.2016::18:21:0</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">RhpString</_hname>
+					<_hid type="a">GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<AggregatesList type="e">
+				<value>GUID a4308812-7940-4503-9fb9-49a50b397522</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID a4308812-7940-4503-9fb9-49a50b397522</_id>
+			<_modifiedTimeWeak type="a">6.15.2016::18:21:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.15.2016::18:21:0</_modifiedTime>
+			<_value type="a">The feature shall allow the </_value>
+		</ILiteralSpecification>
+		<ISubsystem type="e">
+			<fileName type="a">RequirementsPkg</fileName>
+			<_id type="a">GUID ca6b33bc-c2d2-466c-abc1-de271487bbd0</_id>
+		</ISubsystem>
+		<ISubsystem type="e">
+			<fileName type="a">UseCaseDiagramsPkg</fileName>
+			<_id type="a">GUID 3c0801dd-4e35-4dc6-9467-38e2e272f19c</_id>
+		</ISubsystem>
+		<IClass type="e">
+			<_id type="a">GUID 33122e50-b01a-434c-ae29-f0a9c54785a9</_id>
+			<_myState type="a">40960</_myState>
+			<_name type="a">TopLevel</_name>
+			<_modifiedTimeWeak type="a">2.15.2017::22:3:17</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.15.2016::18:21:0</_modifiedTime>
+			<weakCGTime type="a">2.15.2017::22:3:17</weakCGTime>
+			<strongCGTime type="a">2.15.2017::22:3:17</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		
+	</RHAPSODY-MODEL>
+	<OslcLinks type="c">
+		<IRPYRawContainer type="e">
+			<size type="a">0</size>
+		</IRPYRawContainer>
+	</OslcLinks>
+
+<INCLUDES-RHAPSODY-INDEX>false</INCLUDES-RHAPSODY-INDEX>
+</RhapsodyArchive>
+

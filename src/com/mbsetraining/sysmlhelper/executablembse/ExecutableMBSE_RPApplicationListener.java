@@ -223,7 +223,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 	private void afterAddForActorUsage(
 			IRPInstance modelElement ){
 
-		IRPPackage theOwningPackage = getOwningPackageFor( modelElement );
+		IRPPackage theOwningPackage = _context.getOwningPackageFor( modelElement );
 
 		List<IRPModelElement> existingActors = getExistingActorsBasedOn( theOwningPackage );
 
@@ -397,7 +397,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 	private void afterAddForFlow(
 			IRPFlow modelElement ){
 
-		IRPPackage theOwningPkg = getOwningPackageFor( modelElement );
+		IRPPackage theOwningPkg = _context.getOwningPackageFor( modelElement );
 
 		if( theOwningPkg != null &&
 				!modelElement.getOwner().equals( theOwningPkg ) ){
@@ -413,28 +413,6 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		}
 
 		CreateEventForFlowPanel.launchThePanel( _context.get_rhpAppID() );
-	}
-
-	private IRPPackage getOwningPackageFor(
-			IRPModelElement theElement ){
-
-		IRPPackage theOwningPackage = null;
-
-		if( theElement == null ){
-
-			_context.warning( "getOwningPackage for was invoked for a null element" );
-
-		} else if( theElement instanceof IRPPackage ){
-			theOwningPackage = (RPPackage)theElement;
-
-		} else if( theElement instanceof IRPProject ){
-			_context.warning( "Unable to find an owning package for " + theElement.getFullPathNameIn() + " as I reached project" );
-
-		} else {
-			theOwningPackage = getOwningPackageFor( theElement.getOwner() );
-		}
-
-		return theOwningPackage;
 	}
 
 	@Override
@@ -505,7 +483,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 					theHelper.createNestedActivityDiagram( 
 							(IRPClassifier) pModelElement, 
 							"AD - " + pModelElement.getName(),
-							"SysMLHelper.RequirementsAnalysis.TemplateForActivityDiagram" );
+							"ExecutableMBSEProfile.RequirementsAnalysis.TemplateForActivityDiagram" );
 				}
 
 				theReturn = true; // don't launch the Features  window									
@@ -691,7 +669,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 	}
 
 	@Override
-	protected void finalize() throws Throwable {
+	public void finalize() throws Throwable {
 		super.finalize();
 	}
 }

@@ -7,6 +7,7 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 import requirementsanalysisplugin.PopulateRequirementsAnalysisPkg;
+import sysmlhelperplugin.SysMLHelper_Context;
 
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
@@ -21,17 +22,18 @@ public class PopulateFunctionalAnalysisPkg extends PopulatePkg {
 	}
 	
 	public PopulateFunctionalAnalysisPkg(
-			ExecutableMBSE_Context context ){
+			SysMLHelper_Context context ){
 		
 		super( context );
 	}
 	
 	public void createFunctionalAnalysisPkg(
-			IRPProject forProject, 
 			final SimulationType withSimulationType ){
 		 
 		final String rootPackageName = "FunctionalAnalysisPkg";
 		Boolean ok = true;
+		
+		IRPProject forProject = _context.get_rhpPrj();
 		
 		IRPModelElement theExistingPkg = forProject.findElementsByFullName(rootPackageName, "Package");
 		
@@ -122,7 +124,7 @@ public class PopulateFunctionalAnalysisPkg extends PopulatePkg {
 				    	
 				    } else if (confirm == JOptionPane.NO_OPTION){
 					    
-				    	PopulateRequirementsAnalysisPkg thePopulator = new PopulateRequirementsAnalysisPkg( _context );
+				    	PopulateRequirementsAnalysisPkg thePopulator = new PopulateRequirementsAnalysisPkg( (SysMLHelper_Context) _context );
 				    	thePopulator.populateRequirementsAnalysisPkg();		
 						CreateGatewayProjectPanel.launchThePanel( _context.get_rhpAppID(), "^RequirementsAnalysisPkg.rqtf$" );
 							    
@@ -225,53 +227,6 @@ public class PopulateFunctionalAnalysisPkg extends PopulatePkg {
 		
 		if( theRootPackage != null ){
 			CreateNewActorPanel.launchThePanel( _context.get_rhpAppID() );
-		}
-	}
-	
-	public void copyActivityDiagrams(
-			IRPPackage theSelectedPkg ){
-		
-		Set<IRPPackage> theSourceUseCasePkgs = 
-				_context.getPullFromPackage( theSelectedPkg );
-					
-		if( theSourceUseCasePkgs.isEmpty() ){
-			
-			List<IRPModelElement> theUseCasePkgsInProject = 
-					_context.findElementsWithMetaClassAndStereotype(
-							"Package", 
-							_context.getUseCasePackageStereotype( theSelectedPkg ), 
-							theSelectedPkg.getProject(), 
-							1 );
-			
-			IRPModelElement theSelectedEl =
-					UserInterfaceHelper.launchDialogToSelectElement(
-							theUseCasePkgsInProject, 
-							"Select a Use Cases package to establish dependency to", 
-							true );
-			
-			if( theSelectedEl != null && 
-					theSelectedEl instanceof IRPPackage ){
-				
-				theSelectedPkg.addDependencyTo( theSelectedEl );
-				theSourceUseCasePkgs.add( (IRPPackage) theSelectedEl );
-			}
-		}
-		
-		if( theSourceUseCasePkgs != null ){
-			String theMsg = "This helper has detected that " + _context.elInfo(theSelectedPkg) + " is \n" +
-					"pulling from the following packages: \n";
-			
-			for (IRPModelElement theSourceUseCasePkg : theSourceUseCasePkgs) {
-				theMsg += _context.elInfo(theSourceUseCasePkg) + "\n";
-			}
-			
-			theMsg += "\nDo you want to proceed with launching the copy dialog?\n\n";
-			
-			boolean answer = UserInterfaceHelper.askAQuestion(theMsg);
-			
-			if( answer ){
-				CopyActivityDiagramsPanel.launchThePanel( _context.get_rhpAppID() );
-			}
 		}
 	}
 	

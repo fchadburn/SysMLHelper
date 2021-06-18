@@ -121,7 +121,7 @@ public class NestedActivityDiagram {
 				createNestedActivityDiagram( 
 						(IRPUseCase)theElement, 
 						m_Prefix + theElement.getName(), 
-						"SysMLHelper.RequirementsAnalysis.TemplateForActivityDiagram" );
+						"ExecutableMBSEProfile.RequirementsAnalysis.TemplateForActivityDiagram" );
 			} 
 		}
 	}

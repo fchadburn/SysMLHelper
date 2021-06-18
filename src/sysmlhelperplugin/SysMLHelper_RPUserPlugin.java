@@ -1,0 +1,442 @@
+package sysmlhelperplugin;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import requirementsanalysisplugin.PopulateRequirementsAnalysisPkg;
+import functionalanalysisplugin.PopulateFunctionalAnalysisPkg;
+import functionalanalysisplugin.PopulateFunctionalAnalysisPkg.SimulationType;
+import designsynthesisplugin.PopulateDesignSynthesisPkg;
+import com.mbsetraining.sysmlhelper.common.DependencySelector;
+import com.mbsetraining.sysmlhelper.gateway.CreateGatewayProjectPanel;
+import com.telelogic.rhapsody.core.*;
+
+public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
+
+	protected SysMLHelper_Context _context;
+	protected SysMLHelper_RPApplicationListener _listener = null;
+	protected List<String> _startLinkGuids = new ArrayList<>();
+
+	// called when plug-in is loaded
+	public void RhpPluginInit(
+			final IRPApplication theRhapsodyApp ){
+
+		String theAppID = theRhapsodyApp.getApplicationConnectionString();
+
+		_context = new SysMLHelper_Context( theAppID );
+
+		final String legalNotice = 
+				"Copyright (C) 2015-2021  MBSE Training and Consulting Limited (www.executablembse.com)"
+						+ "\n"
+						+ "SysMLHelperPlugin is free software: you can redistribute it and/or modify "
+						+ "it under the terms of the GNU General Public License as published by "
+						+ "the Free Software Foundation, either version 3 of the License, or "
+						+ "(at your option) any later version."
+						+ "\n"
+						+ "SysMLHelperPlugin is distributed in the hope that it will be useful, "
+						+ "but WITHOUT ANY WARRANTY; without even the implied warranty of "
+						+ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the "
+						+ "GNU General Public License for more details."
+						+ "You should have received a copy of the GNU General Public License "
+						+ "along with SysMLHelperPlugin. If not, see <http://www.gnu.org/licenses/>. "
+						+ "Source code is made available on https://github.com/fchadburn/mbsetraining";
+
+		String msg = "The SysMLHelper component of the SysMLHelperPlugin was loaded successfully.\n" +
+				legalNotice +
+				"\nNew right-click 'MBSE Method' commands have been added.";		
+
+		_context.info( msg );
+
+		_listener = new SysMLHelper_RPApplicationListener( 
+				"SysMLHelperProfile",
+				_context );
+
+		_listener.connect( theRhapsodyApp );
+
+		_context.info( "The SysMLHelper profile version is " + _context.getProperty( "PluginVersion" ) );
+
+		_context.checkIfSetupProjectIsNeeded( false, true );
+	}
+
+	// called when the plug-in pop-up menu  is selected
+	public void OnMenuItemSelect(String menuItem) {
+
+		try { 
+			IRPApplication theRhpApp = _context.get_rhpApp();
+			IRPProject theRhpPrj = _context.get_rhpPrj();
+
+			IRPModelElement theSelectedEl = theRhpApp.getSelectedElement();
+
+			@SuppressWarnings("unchecked")
+			List<IRPModelElement> theSelectedEls = 
+			theRhpApp.getListOfSelectedElements().toList();
+
+			@SuppressWarnings("unchecked")
+			List<IRPGraphElement> theGraphEls = 
+			theRhpApp.getSelectedGraphElements().toList();
+
+			_context.debug("Starting ("+ theSelectedEls.size() + " elements were selected) ...");
+
+			if( !theSelectedEls.isEmpty() ){
+
+				if (menuItem.equals(_context.getString("sysmlhelperplugin.CreateRAStructureMenu"))){
+
+					if (theSelectedEl instanceof IRPProject){
+						
+						PopulateRequirementsAnalysisPkg thePopulator = new PopulateRequirementsAnalysisPkg( _context );
+						thePopulator.createRequirementsAnalysisPkg(); 
+					}
+					
+				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.SetupRAProperties"))){
+
+					if (theSelectedEl instanceof IRPPackage){
+						
+						_context.setPropertiesValuesRequestedInConfigFile( 
+								theRhpPrj,
+								"setPropertyForRequirementsAnalysisModel" ); 
+					}
+					
+				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.CreateFullSimFAStructureMenu"))){
+
+					if (theSelectedEl instanceof IRPProject){
+						
+						PopulateFunctionalAnalysisPkg thePopulator = new PopulateFunctionalAnalysisPkg( _context );
+						thePopulator.createFunctionalAnalysisPkg( SimulationType.FullSim ); 
+					}
+					
+				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.CreateSimpleSimFAStructureMenu"))){
+
+					if (theSelectedEl instanceof IRPProject){
+						
+						PopulateFunctionalAnalysisPkg thePopulator = new PopulateFunctionalAnalysisPkg( _context );
+						thePopulator.createFunctionalAnalysisPkg( SimulationType.SimpleSim ); 
+					}
+					
+				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.CreateNoSimFAStructureMenu"))){
+
+					if (theSelectedEl instanceof IRPProject){
+						
+						PopulateFunctionalAnalysisPkg thePopulator = new PopulateFunctionalAnalysisPkg( _context );
+						thePopulator.createFunctionalAnalysisPkg( SimulationType.NoSim ); 
+					}
+					
+				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.CreateDSStructureMenu"))){
+
+					if (theSelectedEl instanceof IRPProject){
+						
+						PopulateDesignSynthesisPkg thePopulator = new PopulateDesignSynthesisPkg( _context );
+						thePopulator.createDesignSynthesisPkg(); 
+					}
+					
+				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.QuickHyperlinkMenu"))){
+
+					IRPHyperLink theHyperLink = (IRPHyperLink) theSelectedEl.addNewAggr("HyperLink", "");
+					theHyperLink.setDisplayOption(HYPNameType.RP_HYP_NAMETEXT, "");
+					theHyperLink.highLightElement();
+					theHyperLink.openFeaturesDialog(0);
+
+				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.SelectDependsOnElementsMenu"))){
+
+					Set<IRPModelElement> theCombinedSet = 
+							_context.getSetOfElementsFromCombiningThe(
+									theSelectedEls, theGraphEls );
+
+					DependencySelector theSelector = new DependencySelector( _context );
+
+					theSelector.selectDependsOnElementsFor( 
+							theCombinedSet, null );
+
+				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.SelectDependentElementsMenu"))){
+
+					Set<IRPModelElement> theCombinedSet = 
+							_context.getSetOfElementsFromCombiningThe(
+									theSelectedEls, theGraphEls );
+
+					DependencySelector theSelector = new DependencySelector( _context );
+
+					theSelector.selectDependentElementsFor( 
+							theCombinedSet, null );
+
+				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.SelectDependsOnDeriveOnlyElementsMenu"))){
+
+					Set<IRPModelElement> theCombinedSet = 
+							_context.getSetOfElementsFromCombiningThe(
+									theSelectedEls, theGraphEls );
+
+					DependencySelector theSelector = new DependencySelector( _context );
+
+					theSelector.selectDependsOnElementsFor( 
+							theCombinedSet, "derive" );
+
+				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.SelectDependentDeriveOnlyElementsMenu"))){
+
+					Set<IRPModelElement> theCombinedSet = 
+							_context.getSetOfElementsFromCombiningThe(
+									theSelectedEls, theGraphEls );
+
+					DependencySelector theSelector = new DependencySelector( _context );
+
+					theSelector.selectDependentElementsFor( 
+							theCombinedSet, "derive" );
+
+				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.SelectDependsOnSatisfyOnlyElementsMenu"))){
+
+					Set<IRPModelElement> theCombinedSet = 
+							_context.getSetOfElementsFromCombiningThe(
+									theSelectedEls, theGraphEls );
+
+					DependencySelector theSelector = new DependencySelector( _context );
+
+					theSelector.selectDependsOnElementsFor( 
+							theCombinedSet, "satisfy" );
+
+				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.SelectDependentSatisfyOnlyElementsMenu"))){
+
+					Set<IRPModelElement> theCombinedSet = 
+							_context.getSetOfElementsFromCombiningThe(
+									theSelectedEls, theGraphEls );
+
+					DependencySelector theSelector = new DependencySelector( _context );
+
+					theSelector.selectDependentElementsFor( 
+							theCombinedSet, "satisfy" );
+
+				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.SelectDependsOnVerifyOnlyElementsMenu"))){
+
+					Set<IRPModelElement> theCombinedSet = 
+							_context.getSetOfElementsFromCombiningThe(
+									theSelectedEls, theGraphEls );
+
+					DependencySelector theSelector = new DependencySelector( _context );
+
+					theSelector.selectDependsOnElementsFor( 
+							theCombinedSet, "verify" );
+
+				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.SelectDependentVerifyOnlyElementsMenu"))){
+
+					Set<IRPModelElement> theCombinedSet = 
+							_context.getSetOfElementsFromCombiningThe(
+									theSelectedEls, theGraphEls );
+
+					DependencySelector theSelector = new DependencySelector( _context );
+
+					theSelector.selectDependentElementsFor( 
+							theCombinedSet, "verify" );
+
+				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.SelectDependsOnRefineOnlyElementsMenu"))){
+
+					Set<IRPModelElement> theCombinedSet = 
+							_context.getSetOfElementsFromCombiningThe(
+									theSelectedEls, theGraphEls );
+
+					DependencySelector theSelector = new DependencySelector( _context );
+
+					theSelector.selectDependsOnElementsFor( 
+							theCombinedSet, "refine" );
+
+				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.SelectDependentRefineOnlyElementsMenu"))){
+
+					Set<IRPModelElement> theCombinedSet = 
+							_context.getSetOfElementsFromCombiningThe(
+									theSelectedEls, theGraphEls );
+
+					DependencySelector theSelector = new DependencySelector( _context );
+
+					theSelector.selectDependentElementsFor( 
+							theCombinedSet, "refine" );
+
+				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.SelectDependsOnDeriveReqtOnlyElementsMenu"))){
+
+					Set<IRPModelElement> theCombinedSet = 
+							_context.getSetOfElementsFromCombiningThe(
+									theSelectedEls, theGraphEls );
+
+					DependencySelector theSelector = new DependencySelector( _context );
+
+					theSelector.selectDependsOnElementsFor( 
+							theCombinedSet, "deriveReqt" );
+
+				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.SelectDependentDeriveReqtOnlyElementsMenu"))){
+
+					Set<IRPModelElement> theCombinedSet = 
+							_context.getSetOfElementsFromCombiningThe(
+									theSelectedEls, theGraphEls );
+
+					DependencySelector theSelector = new DependencySelector( _context );
+
+					theSelector.selectDependentElementsFor( 
+							theCombinedSet, "deriveReqt" );
+
+				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.SetupGatewayProjectMenu"))){
+
+					if (theSelectedEl instanceof IRPProject){
+						CreateGatewayProjectPanel.launchThePanel( _context.get_rhpAppID(), ".*.rqtf$" );				
+					}
+					
+				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.AddRelativeUnitMenu"))){
+
+					_context.browseAndAddUnit( theSelectedEl.getProject(), true );								
+				}					
+			}
+
+			_context.debug("... completed");
+
+
+		} catch (Exception e) {
+			_context.error("Error: Exception in OnMenuItemSelect, e=" + e.getMessage() );
+		}
+	}
+
+	// if true is returned the plugin will be unloaded
+	public boolean RhpPluginCleanup() {
+
+		_context = null;
+
+		return true; // plug-in will be unloaded now (on project close)
+	}
+
+	@Override
+	public void RhpPluginFinalCleanup() {
+
+		try {
+			_listener.finalize();
+			_listener = null;
+
+		} catch( Throwable e ){
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void RhpPluginInvokeItem() {
+	}
+
+	public static List<IRPRequirement> getRequirementsThatTraceFrom(
+			IRPModelElement theElement){
+
+		List<IRPRequirement> theReqts = new ArrayList<IRPRequirement>();
+
+		@SuppressWarnings("unchecked")
+		List<IRPDependency> theExistingDeps = theElement.getDependencies().toList();
+
+		for (IRPDependency theDependency : theExistingDeps) {
+
+			IRPModelElement theDependsOn = theDependency.getDependsOn();
+
+			if (theDependsOn != null && theDependsOn instanceof IRPRequirement){
+				theReqts.add( (IRPRequirement) theDependsOn );
+			}
+		}
+
+		return theReqts;
+	}
+
+	public String traceabilityReportHtml( IRPModelElement theModelEl ) {
+
+		String retval = "";
+
+		if( theModelEl != null ){
+
+			List<IRPRequirement> theTracedReqts;
+
+			if( theModelEl instanceof IRPDependency ){
+
+				IRPDependency theDep = (IRPDependency) theModelEl;
+				IRPModelElement theDependsOn = theDep.getDependsOn();
+
+				if( theDependsOn != null && 
+						theDependsOn instanceof IRPRequirement ){
+
+					// Display text of the requirement that the dependency traces to
+					theTracedReqts = new ArrayList<>();
+					theTracedReqts.add( (IRPRequirement) theDependsOn );
+				} else {
+					theTracedReqts = getRequirementsThatTraceFrom( theModelEl );
+				}
+			} else {
+				theTracedReqts = getRequirementsThatTraceFrom( theModelEl );
+			}
+
+			if( theTracedReqts.isEmpty() ){
+
+				retval = "<br>This element has no traceability to requirements<br><br>";
+			} else {
+				retval = "<br><b>Requirements:</b>";				
+				retval += "<table border=\"1\">";			
+				retval += "<tr><td><b>ID</b></td><td><b>Specification</b></td></tr>";
+
+				for( IRPRequirement theReqt : theTracedReqts ){
+					retval += "<tr><td>" + theReqt.getName() + "</td><td>"+ theReqt.getSpecification() +"</tr>";
+				}
+
+				retval += "</table><br>";
+			}				
+		}
+
+		return retval;
+	}
+
+	public String InvokeTooltipFormatter(String html) {
+
+		String theOutput = html;
+
+		try{
+			@SuppressWarnings("rawtypes")
+			List theAppIDs = RhapsodyAppServer.getActiveRhapsodyApplicationIDList();
+
+			if( theAppIDs.size() == 1 ){
+
+				IRPProject theRhpProject = RhapsodyAppServer.getActiveRhapsodyApplication().activeProject();
+
+				String guidStr = html.substring(1, html.indexOf(']'));
+
+				IRPModelElement theModelEl = theRhpProject.findElementByGUID( guidStr );
+
+				if( theModelEl != null ){
+					guidStr = theModelEl.getGUID();
+				}
+
+				html = html.substring(html.indexOf(']') + 1);
+
+				String thePart1 =  html.substring(
+						0,
+						html.indexOf("[[<b>Dependencies:</b>"));
+
+				String thePart2 = traceabilityReportHtml( theModelEl );
+				String thePart3 = html.substring(html.lastIndexOf("[[<b>Dependencies:</b>") - 1);
+
+				theOutput = thePart1 + thePart2 + thePart3;
+			}
+
+		} catch (Exception e) {
+			_context.error("Unhandled exception in InvokeTooltipFormatter");
+		}
+
+		return theOutput;
+	}
+
+	@Override
+	public void OnTrigger(String trigger) {
+
+	}
+}
+
+/**
+ * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+
+    This file is part of SysMLHelperPlugin.
+
+    SysMLHelperPlugin is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    SysMLHelperPlugin is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with SysMLHelperPlugin.  If not, see <http://www.gnu.org/licenses/>.
+ */

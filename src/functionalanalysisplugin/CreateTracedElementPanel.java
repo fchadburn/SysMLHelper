@@ -499,7 +499,7 @@ public abstract class CreateTracedElementPanel extends JPanel {
 			IRPOperation theOperation ){
 
 		try {
-			IRPApplication theRhpApp = FunctionalAnalysisPlugin.getRhapsodyApp();
+			IRPApplication theRhpApp = _context.get_rhpApp();
 
 			IRPDiagram theDiagram = _selectionContext.getSourceDiagram();
 			IRPGraphElement theGraphEl = _selectionContext.getSelectedGraphEl();

@@ -3,7 +3,10 @@ package com.mbsetraining.sysmlhelper.common;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -100,5 +103,43 @@ public class UserInterfaceHelper {
 		}
 		
 		return theEl;
+	}
+	
+	public String promptUserForTextEntry(
+			String withTitle, 
+			String andQuestion, 
+			String andDefault, 
+			int size,
+			ConfigurationSettings context ){
+
+		String theEntry = andDefault;
+
+		JPanel panel = new JPanel();
+
+		panel.add( new JLabel( andQuestion ) );
+
+		JTextField theTextField = new JTextField( size );
+		panel.add( theTextField );
+
+		if (!andDefault.isEmpty())
+			theTextField.setText(andDefault);
+
+		int choice = JOptionPane.showConfirmDialog(
+				null, 
+				panel, 
+				withTitle, 
+				JOptionPane.OK_CANCEL_OPTION );
+
+		if( choice==JOptionPane.OK_OPTION ){
+			String theTextEntered = theTextField.getText(); 
+
+			if (!theTextEntered.isEmpty()){
+				theEntry = theTextField.getText();
+			} else {
+				context.debug("No text was entered, using default response of '" + andDefault + "'");
+			}
+		}
+
+		return theEntry;
 	}
 }

@@ -51,10 +51,6 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 	final protected String _externalSignalsPackageStereotype;
 	final protected String _contextDiagramPackageStereotype;
 	final protected String _requirementPackageStereotype;
-	final protected IRPStereotype _newTermForSystemContextDiagram;	
-	final protected IRPStereotype _newTermForUseCaseDiagram;
-	final protected IRPStereotype _newTermForActorUsage;
-	final protected IRPStereotype _newTermForSystemContext;
 	final protected boolean _isEnableAutoMoveOfEventsOnAddNewElement;
 	final protected boolean _isEnableAutoMoveOfEventsOnFlowCreation;
 
@@ -75,56 +71,40 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 				);
 
 		_defaultExternalSignalsPackageName = _rhpPrj.getPropertyValue(
-				"SysMLHelper.RequirementsAnalysis.DefaultExternalSignalsPackageName" );
+				"ExecutableMBSEProfile.RequirementsAnalysis.DefaultExternalSignalsPackageName" );
 
 		_defaultContextDiagramPackageName = _rhpPrj.getPropertyValue(
-				"SysMLHelper.RequirementsAnalysis.DefaultContextDiagramPackageName" );
+				"ExecutableMBSEProfile.RequirementsAnalysis.DefaultContextDiagramPackageName" );
 
 		_defaultActorPackageName = _rhpPrj.getPropertyValue(
-				"SysMLHelper.RequirementsAnalysis.DefaultActorPackageName" );
+				"ExecutableMBSEProfile.RequirementsAnalysis.DefaultActorPackageName" );
 
 		_defaultRequirementsPackageName = _rhpPrj.getPropertyValue(
-				"SysMLHelper.RequirementsAnalysis.DefaultRequirementsPackageName" );
+				"ExecutableMBSEProfile.RequirementsAnalysis.DefaultRequirementsPackageName" );
 
 		_externalSignalsPackageStereotype = _rhpPrj.getPropertyValue(
-				"SysMLHelper.General.ExternalSignalsPackageStereotype" );
+				"ExecutableMBSEProfile.General.ExternalSignalsPackageStereotype" );
 
 		_isEnableAutoMoveOfEventsOnFlowCreation = getBooleanPropertyValue(
 				_rhpPrj,
-				"SysMLHelper.RequirementsAnalysis.IsEnableAutoMoveOfEventsOnFlowCreation" );
+				"ExecutableMBSEProfile.RequirementsAnalysis.IsEnableAutoMoveOfEventsOnFlowCreation" );
 
 		_isEnableAutoMoveOfEventsOnAddNewElement  = getBooleanPropertyValue(
 				_rhpPrj,
-				"SysMLHelper.RequirementsAnalysis.IsEnableAutoMoveOfEventsOnAddNewElement" );
+				"ExecutableMBSEProfile.RequirementsAnalysis.IsEnableAutoMoveOfEventsOnAddNewElement" );
 
 		_contextDiagramPackageStereotype = _rhpPrj.getPropertyValue(
-				"SysMLHelper.General.ContextDiagramPackageStereotype" );
+				"ExecutableMBSEProfile.General.ContextDiagramPackageStereotype" );
 
 		_requirementPackageStereotype = _rhpPrj.getPropertyValue(
-				"SysMLHelper.General.RequirementPackageStereotype" );
-
-		_newTermForSystemContextDiagram = getStereotypeBasedOn(
-				_rhpPrj, 
-				"SysMLHelper.RequirementsAnalysis.NewTermForSystemContextDiagram" );
-
-		_newTermForUseCaseDiagram = getStereotypeBasedOn(
-				_rhpPrj, 
-				"SysMLHelper.RequirementsAnalysis.NewTermForUseCaseDiagram" );
-
-		_newTermForActorUsage = getStereotypeBasedOn(
-				_rhpPrj, 
-				"SysMLHelper.RequirementsAnalysis.NewTermForActorUsage" );
-
-		_newTermForSystemContext = getStereotypeBasedOn(
-				_rhpPrj, 
-				"SysMLHelper.RequirementsAnalysis.NewTermForSystemContext" );
+				"ExecutableMBSEProfile.General.RequirementPackageStereotype" );
 	}
 
 	public boolean getIsShowProfileVersionCheckDialogs(){
 
 		boolean result = getBooleanPropertyValue(
 				_rhpPrj,
-				"SysMLHelper.General.IsShowProfileVersionCheckDialogs" );
+				"ExecutableMBSEProfile.General.IsShowProfileVersionCheckDialogs" );
 
 		return result;
 	}
@@ -185,7 +165,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		IRPStereotype theStereotype = getStereotypeBasedOn(
 				basedOnContextEl, 
-				"SysMLHelper.FunctionalAnalysis.TraceabilityTypeToUseForFunctions" );
+				"ExecutableMBSEProfile.FunctionalAnalysis.TraceabilityTypeToUseForFunctions" );
 
 		return theStereotype;
 	}
@@ -195,7 +175,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		IRPStereotype theStereotype = getStereotypeBasedOn(
 				basedOnContext, 
-				"SysMLHelper.RequirementsAnalysis.TraceabilityTypeToUseForActions" );
+				"ExecutableMBSEProfile.RequirementsAnalysis.TraceabilityTypeToUseForActions" );
 
 		return theStereotype;
 	}
@@ -205,25 +185,45 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		IRPStereotype theStereotype = getStereotypeBasedOn(
 				basedOnContext, 
-				"SysMLHelper.RequirementsAnalysis.TraceabilityTypeToUseForUseCases" );
+				"ExecutableMBSEProfile.RequirementsAnalysis.TraceabilityTypeToUseForUseCases" );
 
 		return theStereotype;
 	}
 
 	public IRPStereotype getNewTermForUseCaseDiagram(){
-		return _newTermForUseCaseDiagram;
+		
+		IRPStereotype newTermForUseCaseDiagram = getStereotypeBasedOn(
+				_rhpPrj, 
+				"ExecutableMBSEProfile.RequirementsAnalysis.NewTermForUseCaseDiagram" );
+		
+		return newTermForUseCaseDiagram;
 	}
 
 	public IRPStereotype getNewTermForSystemContextDiagram(){
-		return _newTermForSystemContextDiagram;
+		
+		IRPStereotype newTermForSystemContextDiagram = getStereotypeBasedOn(
+				_rhpPrj, 
+				"ExecutableMBSEProfile.RequirementsAnalysis.NewTermForSystemContextDiagram" );
+		
+		return newTermForSystemContextDiagram;
 	}
 
 	public IRPStereotype getNewTermForActorUsage(){
-		return _newTermForActorUsage;
+		
+		IRPStereotype newTermForActorUsage = getStereotypeBasedOn(
+				_rhpPrj, 
+				"ExecutableMBSEProfile.RequirementsAnalysis.NewTermForActorUsage" );
+		
+		return newTermForActorUsage;
 	}
 
 	public IRPStereotype getNewTermForSystemContext(){
-		return _newTermForSystemContext;
+		
+		IRPStereotype newTermForSystemContext = getStereotypeBasedOn(
+				_rhpPrj, 
+				"ExecutableMBSEProfile.RequirementsAnalysis.NewTermForSystemContext" );
+		
+		return newTermForSystemContext;
 	}
 
 	public List<IRPActor> getMasterActorList(
@@ -314,7 +314,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 			IRPModelElement basedOnContext ){
 
 		String theValue = basedOnContext.getPropertyValue(
-				"SysMLHelper.RequirementsAnalysis.DefaultUseCasePackageName" );
+				"ExecutableMBSEProfile.RequirementsAnalysis.DefaultUseCasePackageName" );
 
 		if( theValue == null || theValue.isEmpty() ){
 			theValue = "Error";
@@ -333,7 +333,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		boolean result = getBooleanPropertyValue(
 				basedOnContext,
-				"SysMLHelper.General.IsAutoPopulatePackageDiagram" );
+				"ExecutableMBSEProfile.General.IsAutoPopulatePackageDiagram" );
 
 		return result;		
 	}
@@ -342,7 +342,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 			IRPModelElement basedOnContext ){
 
 		String theValue = basedOnContext.getPropertyValue(
-				"SysMLHelper.RequirementsAnalysis.CSVExportArtifactType" );
+				"ExecutableMBSEProfile.RequirementsAnalysis.CSVExportArtifactType" );
 
 		if( theValue == null || theValue.isEmpty() ){
 			theValue = "Error";
@@ -356,7 +356,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		boolean result = getBooleanPropertyValue(
 				basedOnContext,
-				"SysMLHelper.RequirementsAnalysis.CVSExportIncludeArtifactName" );
+				"ExecutableMBSEProfile.RequirementsAnalysis.CVSExportIncludeArtifactName" );
 
 		return result;		
 	}
@@ -366,7 +366,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		return getListFromCommaSeparatedString(
 				theContextEl, 
-				"SysMLHelper.General.StoreUnitInSeparateDirectoryNewTerms" );
+				"ExecutableMBSEProfile.General.StoreUnitInSeparateDirectoryNewTerms" );
 	}
 
 	public List<String> getDontCreateSeparateUnitNewTerms(
@@ -374,7 +374,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		return getListFromCommaSeparatedString(
 				theContextEl, 
-				"SysMLHelper.General.DontCreateSeparateUnitNewTerms" );
+				"ExecutableMBSEProfile.General.DontCreateSeparateUnitNewTerms" );
 	}
 
 	public List<String> getDefaultActorsForMasterActorsPackage(
@@ -382,7 +382,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		return getDefaultLegalActorNamesFor(
 				theContextEl, 
-				"SysMLHelper.General.DefaultActorsForMasterActorsPackage");
+				"ExecutableMBSEProfile.General.DefaultActorsForMasterActorsPackage");
 	}
 
 	public List<String> getDefaultActorsForUseCaseDiagram(
@@ -390,7 +390,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		return getDefaultLegalActorNamesFor(
 				theContextEl, 
-				"SysMLHelper.RequirementsAnalysis.DefaultActorsForUseCaseDiagram");
+				"ExecutableMBSEProfile.RequirementsAnalysis.DefaultActorsForUseCaseDiagram");
 	}
 
 	private List<String> getDefaultLegalActorNamesFor(
@@ -461,7 +461,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		return getStereotypesBasedOnProperty(
 				forContextEl, 
-				"SysMLHelper.General.RootPackageStereotypes" );
+				"ExecutableMBSEProfile.General.RootPackageStereotypes" );
 	}
 
 	public List<IRPModelElement> getStereotypesForMasterActorPackage(
@@ -469,7 +469,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		return getStereotypesBasedOnProperty(
 				forContextEl, 
-				"SysMLHelper.General.MasterActorPackageStereotypes" );
+				"ExecutableMBSEProfile.General.MasterActorPackageStereotypes" );
 	}
 
 	public List<IRPModelElement> getStereotypesForSystemDesignPackage(
@@ -477,7 +477,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		return getStereotypesBasedOnProperty(
 				forContextEl, 
-				"SysMLHelper.General.SystemLevelPackageStereotypes" );
+				"ExecutableMBSEProfile.General.SystemLevelPackageStereotypes" );
 	}
 
 	public List<IRPModelElement> getStereotypesForBlockPartCreation(
@@ -485,7 +485,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		return getStereotypesBasedOnProperty(
 				forContextEl, 
-				"SysMLHelper.FunctionalAnalysis.StereotypesForBlockCreation" );
+				"ExecutableMBSEProfile.FunctionalAnalysis.StereotypesForBlockCreation" );
 	}
 
 	public List<IRPModelElement> getStereotypesBasedOnProperty(
@@ -554,7 +554,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		String thePropertyValue = 
 				basedOnContextEl.getPropertyValue( 
-						"SysMLHelper.General.ElapsedTimeBlockStereotype" );
+						"ExecutableMBSEProfile.General.ElapsedTimeBlockStereotype" );
 
 		return thePropertyValue;
 	}
@@ -564,7 +564,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		String thePropertyValue = 
 				basedOnContextEl.getPropertyValue( 
-						"SysMLHelper.General.ElapsedTimeActorStereotype" );
+						"ExecutableMBSEProfile.General.ElapsedTimeActorStereotype" );
 
 		return thePropertyValue;
 	}
@@ -574,7 +574,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		String thePropertyValue = 
 				basedOnContextEl.getPropertyValue( 
-						"SysMLHelper.General.TestbenchStereotype" );
+						"ExecutableMBSEProfile.General.TestbenchStereotype" );
 
 		return thePropertyValue;
 	}
@@ -583,7 +583,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 			IRPModelElement basedOnContextEl ) {
 
 		return basedOnContextEl.getPropertyValue( 
-				"SysMLHelper.General.MasterActorPackageStereotype" );
+				"ExecutableMBSEProfile.General.MasterActorPackageStereotype" );
 
 	}
 
@@ -592,7 +592,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		String thePropertyValue = 
 				basedOnContextEl.getPropertyValue( 
-						"SysMLHelper.General.ActorPackageStereotype" );
+						"ExecutableMBSEProfile.General.ActorPackageStereotype" );
 
 		return thePropertyValue;
 	}
@@ -602,7 +602,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		String thePropertyValue = 
 				basedOnContextEl.getPropertyValue( 
-						"SysMLHelper.General.UseCasePackageStereotype" );
+						"ExecutableMBSEProfile.General.UseCasePackageStereotype" );
 
 		return thePropertyValue;
 	}
@@ -612,7 +612,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		String thePropertyValue = 
 				basedOnContextEl.getPropertyValue( 
-						"SysMLHelper.General.UseCasePackageWorkingStereotype" );
+						"ExecutableMBSEProfile.General.UseCasePackageWorkingStereotype" );
 
 		return thePropertyValue;
 	}
@@ -626,7 +626,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		String thePropertyValue = 
 				basedOnContextEl.getPropertyValue( 
-						"SysMLHelper.General.SimulationPackageStereotype" );
+						"ExecutableMBSEProfile.General.SimulationPackageStereotype" );
 
 		return thePropertyValue;
 	}
@@ -636,7 +636,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		String thePropertyValue = 
 				basedOnContextEl.getPropertyValue( 
-						"SysMLHelper.General.InterfacesPackageStereotype" );
+						"ExecutableMBSEProfile.General.InterfacesPackageStereotype" );
 
 		return thePropertyValue;
 	}
@@ -651,7 +651,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		String thePropertyValue = 
 				basedOnContextEl.getPropertyValue( 
-						"SysMLHelper.General.DesignPackageStereotype" );
+						"ExecutableMBSEProfile.General.DesignPackageStereotype" );
 
 		return thePropertyValue;
 	}
@@ -661,7 +661,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		String thePropertyValue = 
 				basedOnContextEl.getPropertyValue( 
-						"SysMLHelper.General.FunctionsPackageStereotype" );
+						"ExecutableMBSEProfile.General.FunctionsPackageStereotype" );
 
 		return thePropertyValue;
 	}
@@ -675,7 +675,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		String thePropertyValue = 
 				basedOnContextEl.getPropertyValue( 
-						"SysMLHelper.General.ParametricsPackageStereotype" );
+						"ExecutableMBSEProfile.General.ParametricsPackageStereotype" );
 
 		return thePropertyValue;
 	}
@@ -685,7 +685,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		String thePropertyValue = 
 				basedOnContextEl.getPropertyValue( 
-						"SysMLHelper.General.TestPackageStereotype" );
+						"ExecutableMBSEProfile.General.TestPackageStereotype" );
 
 		return thePropertyValue;
 	}
@@ -695,7 +695,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		String thePropertyValue = 
 				basedOnContextEl.getPropertyValue( 
-						"SysMLHelper.RequirementsAnalysis.UseCaseNoteText" );
+						"ExecutableMBSEProfile.RequirementsAnalysis.UseCaseNoteText" );
 
 		if( thePropertyValue == null ){
 			thePropertyValue = "Error in getUseCaseNoteText";
@@ -709,7 +709,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		String thePropertyValue = 
 				basedOnContextEl.getPropertyValue( 
-						"SysMLHelper.RequirementsAnalysis.CreateRequirementTextForPrefixing" );
+						"ExecutableMBSEProfile.RequirementsAnalysis.CreateRequirementTextForPrefixing" );
 
 		if( thePropertyValue == null ){
 			thePropertyValue = "Error in getCreateRequirementTextForPrefixing";
@@ -727,7 +727,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		boolean result = getBooleanPropertyValue(
 				forContextEl,
-				"SysMLHelper.RequirementsAnalysis.IsEnableAutoMoveOfRequirements" );
+				"ExecutableMBSEProfile.RequirementsAnalysis.IsEnableAutoMoveOfRequirements" );
 
 		return result;
 	}
@@ -737,7 +737,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		boolean result = getBooleanPropertyValue(
 				forContextEl,
-				"SysMLHelper.FunctionalAnalysis.IsApplyAutoShowToSequenceDiagramTemplate" );
+				"ExecutableMBSEProfile.FunctionalAnalysis.IsApplyAutoShowToSequenceDiagramTemplate" );
 
 		return result;
 	}
@@ -747,7 +747,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		boolean result = getBooleanPropertyValue(
 				forContextEl,
-				"SysMLHelper.FunctionalAnalysis.IsCreateSDWithAutoShowApplied" );
+				"ExecutableMBSEProfile.FunctionalAnalysis.IsCreateSDWithAutoShowApplied" );
 
 		return result;
 	}
@@ -757,7 +757,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		boolean result = getBooleanPropertyValue(
 				forContextEl,
-				"SysMLHelper.FunctionalAnalysis.IsCreateSDWithTestDriverLifeline" );
+				"ExecutableMBSEProfile.FunctionalAnalysis.IsCreateSDWithTestDriverLifeline" );
 
 		return result;
 	}
@@ -767,7 +767,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		boolean result = getBooleanPropertyValue(
 				forContextEl,
-				"SysMLHelper.FunctionalAnalysis.IsEnableAutoMoveOfInterfaces" );
+				"ExecutableMBSEProfile.FunctionalAnalysis.IsEnableAutoMoveOfInterfaces" );
 
 		return result;
 	}
@@ -785,7 +785,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		boolean result = getBooleanPropertyValue(
 				forContextEl,
-				"SysMLHelper.RequirementsAnalysis.IsEnableGatewayTypes" );
+				"ExecutableMBSEProfile.RequirementsAnalysis.IsEnableGatewayTypes" );
 
 		return result;
 	}
@@ -835,7 +835,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		boolean result = getBooleanPropertyValue(
 				forContextEl,
-				"SysMLHelper.General.IsCreateParametricSubpackageSelected" );
+				"ExecutableMBSEProfile.General.IsCreateParametricSubpackageSelected" );
 
 		return result;
 	}
@@ -855,7 +855,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		boolean result = getBooleanPropertyValue(
 				forContextEl, 
-				"SysMLHelper.FunctionalAnalysis.IsConvertToDetailedADOptionEnabled" );
+				"ExecutableMBSEProfile.FunctionalAnalysis.IsConvertToDetailedADOptionEnabled" );
 
 		return result;
 	}
@@ -865,7 +865,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		boolean result = getBooleanPropertyValue(
 				forContextEl,
-				"SysMLHelper.FunctionalAnalysis.IsConvertToDetailedADOptionWantedByDefault" );
+				"ExecutableMBSEProfile.FunctionalAnalysis.IsConvertToDetailedADOptionWantedByDefault" );
 
 		return result;
 	}
@@ -875,7 +875,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		boolean result = getBooleanPropertyValue(
 				forContextEl,
-				"SysMLHelper.FunctionalAnalysis.IsAllowInheritanceChoices" );
+				"ExecutableMBSEProfile.FunctionalAnalysis.IsAllowInheritanceChoices" );
 
 		return result;
 	}
@@ -885,7 +885,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		boolean result = getBooleanPropertyValue(
 				forContextEl,
-				"SysMLHelper.General.IsShowProfileVersionCheckDialogs" );
+				"ExecutableMBSEProfile.General.IsShowProfileVersionCheckDialogs" );
 
 		return result;
 	}
@@ -943,143 +943,6 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 		}
 
 		return thePullFromPkgs;
-	}
-
-	public String getActionTextFrom(
-			IRPModelElement theEl) {
-
-		String theSourceInfo = null;
-
-		if (theEl instanceof IRPState){
-			IRPState theState = (IRPState)theEl;
-			String theStateType = theState.getStateType();
-
-			if (theStateType.equals("Action")){
-				theSourceInfo = theState.getEntryAction();
-
-			} else if (theStateType.equals("AcceptEventAction")){ // receive event
-
-				IRPAcceptEventAction theAcceptEventAction = (IRPAcceptEventAction)theEl;
-				IRPEvent theEvent = theAcceptEventAction.getEvent();
-
-				if (theEvent==null){
-					super.debug( "Event has no name so using Name" );
-					theSourceInfo = theState.getName();
-				} else {
-					theSourceInfo = theEvent.getName();
-				}
-
-			} else if (theStateType.equals("EventState")){ // send event
-
-				IRPSendAction theSendAction = theState.getSendAction();
-
-				if (theSendAction != null){
-					IRPEvent theEvent = theSendAction.getEvent();
-
-					if (theEvent != null){
-						theSourceInfo = theEvent.getName();
-					} else {
-						super.debug("SendAction has no Event so using Name of action");
-						theSourceInfo = theState.getName();
-					}
-				} else {
-					super.warning( "Warning in deriveDownstreamRequirement, theSendAction is null" );
-				}	
-
-			} else if (theStateType.equals("TimeEvent")){
-
-				IRPAcceptTimeEvent theAcceptTimeEvent = (IRPAcceptTimeEvent)theEl;
-				String theDuration = theAcceptTimeEvent.getDurationTime();
-
-				if (theDuration.isEmpty()){
-					theSourceInfo = theAcceptTimeEvent.getName();
-				} else {
-					theSourceInfo = theDuration;
-				}
-
-			} else {
-				super.warning("Warning in getActionTextFrom, " + theStateType + " was not handled");
-			}
-
-		} else if (theEl instanceof IRPTransition){
-
-			IRPTransition theTrans = (IRPTransition)theEl;
-			IRPGuard theGuard = theTrans.getItsGuard();
-
-			// check that transition has a guard before trying to use it
-			if( theGuard != null ){
-				theSourceInfo = ((IRPTransition) theEl).getItsGuard().getBody();
-			} else {
-				theSourceInfo = "TBD"; // no source info available
-			}
-
-		} else if (theEl instanceof IRPComment){
-
-			theSourceInfo = theEl.getDescription();
-
-		} else if (theEl instanceof IRPRequirement){
-
-			IRPRequirement theReqt = (IRPRequirement)theEl;
-			theSourceInfo = theReqt.getSpecification();
-
-		} else if (theEl instanceof IRPConstraint){
-
-			IRPConstraint theConstraint = (IRPConstraint)theEl;
-			theSourceInfo = theConstraint.getSpecification();		
-
-		} else {
-			super.error("Error in getActionTextFrom, " + super.elInfo(theEl) + " was not handled as of an unexpected type");
-			theSourceInfo = ""; // default
-		}
-
-		if( theSourceInfo != null ){
-
-			if( theSourceInfo.isEmpty() ){
-
-				super.warning( "Warning, " + super.elInfo( theEl ) + " has no text" );
-			} else {
-				theSourceInfo = decapitalize( theSourceInfo );
-			}
-		}
-
-		return theSourceInfo;
-	}
-
-	public String promptUserForTextEntry(
-			String withTitle, 
-			String andQuestion, 
-			String andDefault, 
-			int size ){
-
-		String theEntry = andDefault;
-
-		JPanel panel = new JPanel();
-
-		panel.add( new JLabel( andQuestion ) );
-
-		JTextField theTextField = new JTextField( size );
-		panel.add( theTextField );
-
-		if (!andDefault.isEmpty())
-			theTextField.setText(andDefault);
-
-		int choice = JOptionPane.showConfirmDialog(
-				null, 
-				panel, 
-				withTitle, 
-				JOptionPane.OK_CANCEL_OPTION );
-
-		if( choice==JOptionPane.OK_OPTION ){
-			String theTextEntered = theTextField.getText(); 
-
-			if (!theTextEntered.isEmpty()){
-				theEntry = theTextField.getText();
-			} else {
-				super.debug("No text was entered, using default response of '" + andDefault + "'");
-			}
-		}
-
-		return theEntry;
 	}
 
 	public Set<IRPModelElement> findModelElementsIn(

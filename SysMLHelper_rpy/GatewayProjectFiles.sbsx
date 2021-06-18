@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RhapsodyArchive>
+	<MagicNumber></MagicNumber>
+	<CODE-PAGE>1252</CODE-PAGE>
+	<version>100.831.0</version>
+	<lang>C++</lang>
+	<BuildNo>9835718</BuildNo>
+	
+	<RHAPSODY-MODEL>
+	<ISubsystem type="e">
+			<_id type="a">GUID a6ca3a64-92a1-4a2b-b824-1cdb9f5661f0</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">GatewayProjectFiles</_name>
+			<_modifiedTimeWeak type="a">2.15.2017::22:2:26</_modifiedTimeWeak>
+			<_modifiedTime type="a">2.15.2017::22:2:26</_modifiedTime>
+			<weakCGTime type="a">2.15.2017::22:2:26</weakCGTime>
+			<strongCGTime type="a">2.15.2017::22:2:26</strongCGTime>
+			<_defaultComposite type="s">GUID 1d50103a-59c4-4c9b-8240-bd002e7b4f66</_defaultComposite>
+			<_eventsBaseID type="a">-1</_eventsBaseID>
+			<_configurationRelatedTime type="a">1.2.1990::0:0:0</_configurationRelatedTime>
+			<AggregatesList type="e">
+				<value>GUID 658cd831-7901-41ab-84b0-c03c9b6939e2</value>
+				<value>GUID 1145baea-1361-411a-98db-3976f0dc689d</value>
+				<value>GUID 1d50103a-59c4-4c9b-8240-bd002e7b4f66</value>
+			</AggregatesList>
+		</ISubsystem>
+		<IEmbededFile type="e">
+			<_id type="a">GUID 658cd831-7901-41ab-84b0-c03c9b6939e2</_id>
+			<_name type="a">SysMLHelper.rqtf</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\SysMLHelper_rpy\SysMLHelper.rqtf</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID 1145baea-1361-411a-98db-3976f0dc689d</_id>
+			<_name type="a">SysMLHelper.types</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\SysMLHelper_rpy\SysMLHelper.types</_LastKnownFullPath>
+		</IEmbededFile>
+		<IClass type="e">
+			<_id type="a">GUID 1d50103a-59c4-4c9b-8240-bd002e7b4f66</_id>
+			<_myState type="a">40960</_myState>
+			<_name type="a">TopLevel</_name>
+			<_modifiedTimeWeak type="a">2.15.2017::22:2:26</_modifiedTimeWeak>
+			<_modifiedTime type="a">3.30.2016::18:42:24</_modifiedTime>
+			<weakCGTime type="a">2.15.2017::22:2:26</weakCGTime>
+			<strongCGTime type="a">2.15.2017::22:2:26</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		
+	</RHAPSODY-MODEL>
+	<OslcLinks type="c">
+		<IRPYRawContainer type="e">
+			<size type="a">0</size>
+		</IRPYRawContainer>
+	</OslcLinks>
+
+<INCLUDES-RHAPSODY-INDEX>false</INCLUDES-RHAPSODY-INDEX>
+</RhapsodyArchive>
+

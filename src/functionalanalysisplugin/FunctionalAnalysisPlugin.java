@@ -33,20 +33,6 @@ public class FunctionalAnalysisPlugin extends RPUserPlugin {
 		
 		Logger.writeLine(msg); 
 	}
-
-	public static IRPApplication getRhapsodyApp(){
-		
-		if (m_rhpApplication==null){
-			m_rhpApplication = RhapsodyAppServer.getActiveRhapsodyApplication();
-		}
-		
-		return m_rhpApplication;
-	}
-	
-	public static IRPProject getActiveProject(){
-		
-		return getRhapsodyApp().activeProject();
-	}
 	
 	// called when the plug-in pop-up menu (if applicable) is selected
 	public void OnMenuItemSelect(String menuItem) {

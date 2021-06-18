@@ -15,8 +15,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import sysmlhelperplugin.SysMLHelperPlugin;
-
 import com.telelogic.rhapsody.core.*;
 
 public class BaseContext extends RhpLog {
@@ -632,7 +630,7 @@ public class BaseContext extends RhpLog {
 		return theNewTerms;
 	}
 	
-	protected IRPPackage getOwningPackageFor(
+	public IRPPackage getOwningPackageFor(
 			IRPModelElement theElement ){
 
 		IRPPackage theOwningPackage = null;
@@ -1731,7 +1729,7 @@ public class BaseContext extends RhpLog {
 
 				super.debug( "theTargetPath=" + theTargetPath );
 				
-				SysMLHelperPlugin.getRhapsodyApp().addToModelByReference( theTargetPath );
+				super._rhpApp.addToModelByReference( theTargetPath );
 
 				if( relative ){
 
@@ -2050,6 +2048,106 @@ public class BaseContext extends RhpLog {
 		}
 		
 		return theBaseClasses;
+	}
+	
+	public String getActionTextFrom(
+			IRPModelElement theEl) {
+
+		String theSourceInfo = null;
+
+		if (theEl instanceof IRPState){
+			IRPState theState = (IRPState)theEl;
+			String theStateType = theState.getStateType();
+
+			if (theStateType.equals("Action")){
+				theSourceInfo = theState.getEntryAction();
+
+			} else if (theStateType.equals("AcceptEventAction")){ // receive event
+
+				IRPAcceptEventAction theAcceptEventAction = (IRPAcceptEventAction)theEl;
+				IRPEvent theEvent = theAcceptEventAction.getEvent();
+
+				if (theEvent==null){
+					super.debug( "Event has no name so using Name" );
+					theSourceInfo = theState.getName();
+				} else {
+					theSourceInfo = theEvent.getName();
+				}
+
+			} else if (theStateType.equals("EventState")){ // send event
+
+				IRPSendAction theSendAction = theState.getSendAction();
+
+				if (theSendAction != null){
+					IRPEvent theEvent = theSendAction.getEvent();
+
+					if (theEvent != null){
+						theSourceInfo = theEvent.getName();
+					} else {
+						super.debug("SendAction has no Event so using Name of action");
+						theSourceInfo = theState.getName();
+					}
+				} else {
+					super.warning( "Warning in deriveDownstreamRequirement, theSendAction is null" );
+				}	
+
+			} else if (theStateType.equals("TimeEvent")){
+
+				IRPAcceptTimeEvent theAcceptTimeEvent = (IRPAcceptTimeEvent)theEl;
+				String theDuration = theAcceptTimeEvent.getDurationTime();
+
+				if (theDuration.isEmpty()){
+					theSourceInfo = theAcceptTimeEvent.getName();
+				} else {
+					theSourceInfo = theDuration;
+				}
+
+			} else {
+				super.warning("Warning in getActionTextFrom, " + theStateType + " was not handled");
+			}
+
+		} else if (theEl instanceof IRPTransition){
+
+			IRPTransition theTrans = (IRPTransition)theEl;
+			IRPGuard theGuard = theTrans.getItsGuard();
+
+			// check that transition has a guard before trying to use it
+			if( theGuard != null ){
+				theSourceInfo = ((IRPTransition) theEl).getItsGuard().getBody();
+			} else {
+				theSourceInfo = "TBD"; // no source info available
+			}
+
+		} else if (theEl instanceof IRPComment){
+
+			theSourceInfo = theEl.getDescription();
+
+		} else if (theEl instanceof IRPRequirement){
+
+			IRPRequirement theReqt = (IRPRequirement)theEl;
+			theSourceInfo = theReqt.getSpecification();
+
+		} else if (theEl instanceof IRPConstraint){
+
+			IRPConstraint theConstraint = (IRPConstraint)theEl;
+			theSourceInfo = theConstraint.getSpecification();		
+
+		} else {
+			super.error("Error in getActionTextFrom, " + super.elInfo(theEl) + " was not handled as of an unexpected type");
+			theSourceInfo = ""; // default
+		}
+
+		if( theSourceInfo != null ){
+
+			if( theSourceInfo.isEmpty() ){
+
+				super.warning( "Warning, " + super.elInfo( theEl ) + " has no text" );
+			} else {
+				theSourceInfo = decapitalize( theSourceInfo );
+			}
+		}
+
+		return theSourceInfo;
 	}
 }
 

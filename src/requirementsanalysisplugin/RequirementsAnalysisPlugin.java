@@ -1,8 +1,6 @@
 package requirementsanalysisplugin;
 
 import functionalanalysisplugin.SequenceDiagramHelper;
-import generalhelpers.Logger;
-import generalhelpers.UserInterfaceHelpers;
 
 import java.util.List;
 
@@ -40,7 +38,7 @@ public class RequirementsAnalysisPlugin extends RPUserPlugin {
 	public static IRPApplication getRhapsodyApp(){
 		
 		if (m_rhpApplication==null){
-			m_rhpApplication = RhapsodyAppServer.getActiveRhapsodyApplication();
+		m_rhpApplication = RhapsodyAppServer.getActiveRhapsodyApplication();
 		}
 		
 		return m_rhpApplication;

@@ -5,11 +5,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.IRPActivityDiagram;
@@ -752,44 +747,6 @@ public class FunctionalDesign_Context extends ConfigurationSettings {
 		setDontSaveAsSeparateUnitIfAppropriateFor( thePackage );
 		
 		return thePackage;
-	}
-	
-	
-	public String promptUserForTextEntry(
-			String withTitle, 
-			String andQuestion, 
-			String andDefault, 
-			int size ){
-		
-		String theEntry = andDefault;
-		
-		JPanel panel = new JPanel();
-		
-		panel.add( new JLabel( andQuestion ) );
-		
-		JTextField theTextField = new JTextField( size );
-		panel.add( theTextField );
-		
-		if (!andDefault.isEmpty())
-			theTextField.setText(andDefault);
-		
-		int choice = JOptionPane.showConfirmDialog(
-				null, 
-				panel, 
-				withTitle, 
-				JOptionPane.OK_CANCEL_OPTION );
-		
-		if( choice==JOptionPane.OK_OPTION ){
-			String theTextEntered = theTextField.getText(); 
-			
-			if (!theTextEntered.isEmpty()){
-				theEntry = theTextField.getText();
-			} else {
-				super.debug("No text was entered, using default response of '" + andDefault + "'");
-			}
-		}
-		
-		return theEntry;
 	}
 	
 	public List<IRPActivityDiagram> buildListOfActivityDiagramsFor(

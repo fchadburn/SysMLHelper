@@ -1,12 +1,10 @@
-package sysmlhelperplugin;
+package com.mbsetraining.sysmlhelper.common;
 
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
-import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.*;
 
 public class DependencySelector {
@@ -124,7 +122,7 @@ public class DependencySelector {
 			Set<IRPModelElement> theEls,
 			boolean withInfoDialog ){
 		
-		IRPApplication theRhpApp = SysMLHelperPlugin.getRhapsodyApp();
+		IRPApplication theRhpApp = _context.get_rhpApp();
 		theRhpApp.refreshAllViews();
 					
 		IRPCollection theEmptyCollection = theRhpApp.createNewCollection();
