@@ -1,8 +1,5 @@
 package functionalanalysisplugin;
 
-import java.util.List;
-import java.util.Set;
-
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
@@ -10,7 +7,6 @@ import requirementsanalysisplugin.PopulateRequirementsAnalysisPkg;
 import sysmlhelperplugin.SysMLHelper_Context;
 
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
-import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.mbsetraining.sysmlhelper.executablembse.PopulatePkg;
 import com.mbsetraining.sysmlhelper.gateway.CreateGatewayProjectPanel;
 import com.telelogic.rhapsody.core.*;

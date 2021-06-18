@@ -21,7 +21,7 @@ public class ActorMappingInfo {
 	private IRPActor m_SourceActor = null;
 	
 	private ExecutableMBSE_Context _context;
-	FunctionalAnalysisSettings _settings;
+	FunctionalAnalysisSettings_ExecutableMBSE _settings;
 
 	public ActorMappingInfo(
 			RhapsodyComboBox theRhapsodyComboBox,
@@ -33,7 +33,7 @@ public class ActorMappingInfo {
 		super();
 		
 		_context = context;
-		_settings = new FunctionalAnalysisSettings(_context);
+		_settings = new FunctionalAnalysisSettings_ExecutableMBSE(_context);
 
 		this.m_InheritedFromComboBox = theRhapsodyComboBox;
 		this.m_ActorCheckBox = theActorCheckBox;
