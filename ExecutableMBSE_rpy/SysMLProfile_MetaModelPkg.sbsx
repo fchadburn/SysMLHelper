@@ -25,8 +25,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">7.5.2021::10:50:33</_modifiedTime>
-			<_lastID type="a">96</_lastID>
+			<_modifiedTime type="a">7.5.2021::12:5:30</_modifiedTime>
+			<_lastID type="a">97</_lastID>
 			<_defaultComposite type="s">GUID 17d534c9-e8e2-45c6-8b29-5c81cb4d7dea</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
@@ -120,6 +120,7 @@
 				<value>GUID 5177bf00-ea33-41b3-b04c-707a2ac5b42e</value>
 				<value>GUID 5d09ffd6-60ec-4598-b226-d608a7a7f22e</value>
 				<value>GUID 55d89f1f-c8c9-40e3-bd58-1e3319cb4ebf</value>
+				<value>GUID 0cdc6a98-41d7-4de4-aaa0-b5c001ff998a</value>
 			</AggregatesList>
 		</ISubsystem>
 		<IClass type="e">
@@ -7630,6 +7631,27 @@
 				</IHandle>
 			</_theMainDiagram>
 			<_modifiedTime type="a">6.14.2021::16:17:11</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 0cdc6a98-41d7-4de4-aaa0-b5c001ff998a</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Object</_name>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\ExecutableMBSEProfile_MetaModelPkg.sbsx</_hfilename>
+					<_hsubsystem type="a">ExecutableMBSEProfile_MetaModelPkg</_hsubsystem>
+					<_hclass type="a">DomainBlock</_hclass>
+					<_hname type="a">MMD - DomainBlock</_hname>
+					<_hid type="a">GUID c4c33698-d8e0-4303-b142-96559bf9d211</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.5.2021::12:5:36</_modifiedTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
