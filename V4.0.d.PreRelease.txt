@@ -446,6 +446,7 @@ ExecutableMBSEProfile:
 #308 05-JUL-2021: Add initial browser icons to differentiate DomainBlocks (F.J.Chadburn)
 #309 05-JUL-2021: Ensure that DomainBlocks can own Objects, e.g., parts typed by Actors (F.J.Chadburn)
 #310 05-JUL-2021: Update profile version number and date to V4.0.d.Rhp831.PreRelease (F.J.Chadburn)
+#311 05-JUL-2021: Ensure Logical System Architecture packages can contain sequence diagrams (F.J.Chadburn)
 
 FunctionalDesignProfile:
 #305 17-JUN-2021: Align Function Design profile to new thread safe context for helper logging and profile version checking (F.J.Chadburn)
