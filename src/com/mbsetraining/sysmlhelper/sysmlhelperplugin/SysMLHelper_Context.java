@@ -1,4 +1,4 @@
-package sysmlhelperplugin;
+package com.mbsetraining.sysmlhelper.sysmlhelperplugin;
 
 import java.util.ArrayList;
 import java.util.HashSet;

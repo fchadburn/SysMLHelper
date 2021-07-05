@@ -191,14 +191,37 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 		if( isEnabled ){
 						
-			ElementMover theElementMover = new ElementMover( 
+			ElementMover theExternalSignalsPackageMover = new ElementMover( 
 					modelElement, 
 					_context.getExternalSignalsPackageStereotype(),
 					_context );
 
-			if( theElementMover.isMovePossible() ){
+			ElementMover theSubsystemInterfacesPackageMover = new ElementMover( 
+					modelElement, 
+					_context.getSubsystemInterfacesPackageStereotype(),
+					_context );
+			
+			ElementMover theChosenMover = null;
+			
+			if( theExternalSignalsPackageMover.isMovePossible() &&
+					!theSubsystemInterfacesPackageMover.isMovePossible() ){
 				
-				IRPModelElement moveToPkg = theElementMover.get_moveToPkg();
+				theChosenMover = theExternalSignalsPackageMover;
+			
+			} else if( !theExternalSignalsPackageMover.isMovePossible() &&
+					theSubsystemInterfacesPackageMover.isMovePossible() ){
+				
+				theChosenMover = theSubsystemInterfacesPackageMover;
+				
+			} else if( theExternalSignalsPackageMover.isMovePossible() &&
+					theSubsystemInterfacesPackageMover.isMovePossible() ){
+				
+				_context.warning( "Package hierarchy has dependencies on both an external signals package and a subsystem interfaces package hence cannot decide. It is recommended to delete one of the dependencies in the hierarchy");
+			}	
+		
+			if( theChosenMover != null ){
+				
+				IRPModelElement moveToPkg = theChosenMover.get_moveToPkg();
 
 				// This delay + the save should mean that Event won't crash Rhapsody
 				boolean isContinue = UserInterfaceHelper.askAQuestion( 
@@ -207,7 +230,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				
 				if( isContinue ){
 					
-					theElementMover.performMove( modelElement );
+					theChosenMover.performMove( modelElement );
 										
 					try {
 						_context.get_rhpPrj().save();

@@ -18,6 +18,8 @@ public class ElementMover {
 		_context = context;
 		_whereMoveToHasStereotype = whereMoveToHasStereotype;
 		_moveToPkg = determineMoveToPackage( basedOnEl );
+		
+		_context.debug( "_moveToPkg for " + whereMoveToHasStereotype + " is " + _context.elInfo( _moveToPkg ) );
 	}
 	
 	protected IRPPackage determineMoveToPackage( 

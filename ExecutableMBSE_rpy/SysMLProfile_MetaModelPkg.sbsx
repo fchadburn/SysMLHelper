@@ -25,7 +25,7 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">6.15.2021::8:21:59</_modifiedTime>
+			<_modifiedTime type="a">7.5.2021::10:50:33</_modifiedTime>
 			<_lastID type="a">96</_lastID>
 			<_defaultComposite type="s">GUID 17d534c9-e8e2-45c6-8b29-5c81cb4d7dea</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -386,7 +386,17 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">4.29.2021::12:7:35</_modifiedTime>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\ExecutableMBSEProfile_MetaModelPkg.sbsx</_hfilename>
+					<_hsubsystem type="a">ExecutableMBSEProfile_MetaModelPkg</_hsubsystem>
+					<_hclass type="a">SubsystemBlock</_hclass>
+					<_hname type="a">MMD - SubsystemBlock</_hname>
+					<_hid type="a">GUID 299fc4d8-748d-4885-a0e3-5f9635edb981</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.5.2021::10:50:33</_modifiedTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -4499,17 +4509,7 @@
 			<m_polygon type="a">4 0 0  0 132  216 132  216 0  </m_polygon>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
-			<AggregatesList type="e">
-				<value>GUID d1896c5d-a715-49f0-a7b9-28c18c37f255</value>
-			</AggregatesList>
 		</CGIDiagramFrame>
-		<CGICompartment type="e">
-			<_id type="a">GUID d1896c5d-a715-49f0-a7b9-28c18c37f255</_id>
-			<m_name type="a">HyperLinkShortCut</m_name>
-			<m_displayOption type="a">All</m_displayOption>
-			<m_bShowInherited type="a">0</m_bShowInherited>
-			<m_bOrdered type="a">0</m_bOrdered>
-		</CGICompartment>
 		<CGIClass type="e">
 			<_id type="a">GUID ffe4e832-5e78-44c9-ad40-daa7477e36af</_id>
 			<_properties type="p"><IPropertyContainer type="e">
@@ -4604,17 +4604,9 @@
 				</IRPYRawContainer>
 			</Operations>
 			<AggregatesList type="e">
-				<value>GUID e992d6f6-a300-4740-b56a-ad50b8788120</value>
 				<value>GUID 79987466-778c-4e4e-837a-a558b7a61538</value>
 			</AggregatesList>
 		</CGIClass>
-		<CGICompartment type="e">
-			<_id type="a">GUID e992d6f6-a300-4740-b56a-ad50b8788120</_id>
-			<m_name type="a">HyperLinkShortCut</m_name>
-			<m_displayOption type="a">All</m_displayOption>
-			<m_bShowInherited type="a">0</m_bShowInherited>
-			<m_bOrdered type="a">0</m_bOrdered>
-		</CGICompartment>
 		<CGICompartment type="e">
 			<_id type="a">GUID 79987466-778c-4e4e-837a-a558b7a61538</_id>
 			<m_name type="a">Description</m_name>
@@ -4684,17 +4676,9 @@
 				</IRPYRawContainer>
 			</Operations>
 			<AggregatesList type="e">
-				<value>GUID 67addede-9f19-449c-9703-de6be167dff9</value>
 				<value>GUID 3ee6144c-d308-4c1b-ab7b-80e7045ccafc</value>
 			</AggregatesList>
 		</CGIClass>
-		<CGICompartment type="e">
-			<_id type="a">GUID 67addede-9f19-449c-9703-de6be167dff9</_id>
-			<m_name type="a">HyperLinkShortCut</m_name>
-			<m_displayOption type="a">All</m_displayOption>
-			<m_bShowInherited type="a">0</m_bShowInherited>
-			<m_bOrdered type="a">0</m_bOrdered>
-		</CGICompartment>
 		<CGICompartment type="e">
 			<_id type="a">GUID 3ee6144c-d308-4c1b-ab7b-80e7045ccafc</_id>
 			<m_name type="a">Description</m_name>
@@ -4821,17 +4805,9 @@
 				</IRPYRawContainer>
 			</Operations>
 			<AggregatesList type="e">
-				<value>GUID 6ff1a8ce-f472-46ac-9dcb-aa49463db9fa</value>
 				<value>GUID bdf9e7c0-0b56-49a5-a726-ce2ac53fc5a3</value>
 			</AggregatesList>
 		</CGIClass>
-		<CGICompartment type="e">
-			<_id type="a">GUID 6ff1a8ce-f472-46ac-9dcb-aa49463db9fa</_id>
-			<m_name type="a">HyperLinkShortCut</m_name>
-			<m_displayOption type="a">All</m_displayOption>
-			<m_bShowInherited type="a">0</m_bShowInherited>
-			<m_bOrdered type="a">0</m_bOrdered>
-		</CGICompartment>
 		<CGICompartment type="e">
 			<_id type="a">GUID bdf9e7c0-0b56-49a5-a726-ce2ac53fc5a3</_id>
 			<m_name type="a">Description</m_name>
@@ -5016,7 +4992,7 @@
 		</CGIAssociationEnd>
 		<IGeneralization type="e">
 			<_id type="a">GUID feb96a42-e12b-480f-9411-8a20b056e9f8</_id>
-			<_modifiedTime type="a">1.1.1970::0:0:0</_modifiedTime>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
 					<_hm2Class type="a">IClass</_hm2Class>
@@ -5465,17 +5441,7 @@
 			<m_polygon type="a">4 0 0  0 132  216 132  216 0  </m_polygon>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
-			<AggregatesList type="e">
-				<value>GUID cbcf352e-dcfa-4ace-a7b5-0543f8f6274b</value>
-			</AggregatesList>
 		</CGIDiagramFrame>
-		<CGICompartment type="e">
-			<_id type="a">GUID cbcf352e-dcfa-4ace-a7b5-0543f8f6274b</_id>
-			<m_name type="a">HyperLinkShortCut</m_name>
-			<m_displayOption type="a">All</m_displayOption>
-			<m_bShowInherited type="a">0</m_bShowInherited>
-			<m_bOrdered type="a">0</m_bOrdered>
-		</CGICompartment>
 		<CGIClass type="e">
 			<_id type="a">GUID e01fbfe0-5933-47f2-aba9-5542801c4e88</_id>
 			<m_type type="a">87</m_type>
@@ -5538,17 +5504,9 @@
 				</IRPYRawContainer>
 			</Operations>
 			<AggregatesList type="e">
-				<value>GUID 1cd8ec48-49d9-485e-8b46-62f6f3882b32</value>
 				<value>GUID c8697259-ccf7-400d-b104-0a92ba9385cf</value>
 			</AggregatesList>
 		</CGIClass>
-		<CGICompartment type="e">
-			<_id type="a">GUID 1cd8ec48-49d9-485e-8b46-62f6f3882b32</_id>
-			<m_name type="a">HyperLinkShortCut</m_name>
-			<m_displayOption type="a">All</m_displayOption>
-			<m_bShowInherited type="a">0</m_bShowInherited>
-			<m_bOrdered type="a">0</m_bOrdered>
-		</CGICompartment>
 		<CGICompartment type="e">
 			<_id type="a">GUID c8697259-ccf7-400d-b104-0a92ba9385cf</_id>
 			<m_name type="a">Description</m_name>
@@ -5618,17 +5576,9 @@
 				</IRPYRawContainer>
 			</Operations>
 			<AggregatesList type="e">
-				<value>GUID 5f54659a-3804-42cf-a83f-0f3a42b33ac0</value>
 				<value>GUID fd8bf3eb-551a-47d4-8e35-06f435b78a9e</value>
 			</AggregatesList>
 		</CGIClass>
-		<CGICompartment type="e">
-			<_id type="a">GUID 5f54659a-3804-42cf-a83f-0f3a42b33ac0</_id>
-			<m_name type="a">HyperLinkShortCut</m_name>
-			<m_displayOption type="a">All</m_displayOption>
-			<m_bShowInherited type="a">0</m_bShowInherited>
-			<m_bOrdered type="a">0</m_bOrdered>
-		</CGICompartment>
 		<CGICompartment type="e">
 			<_id type="a">GUID fd8bf3eb-551a-47d4-8e35-06f435b78a9e</_id>
 			<m_name type="a">Description</m_name>
@@ -5695,7 +5645,7 @@
 		</CGIInheritance>
 		<IGeneralization type="e">
 			<_id type="a">GUID a572c126-0b66-4a3c-89c7-85f4e2d3505a</_id>
-			<_modifiedTime type="a">1.1.1970::0:0:0</_modifiedTime>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
 					<_hm2Class type="a">IClass</_hm2Class>
@@ -5943,7 +5893,17 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">4.29.2021::12:45:33</_modifiedTime>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\ExecutableMBSEProfile_MetaModelPkg.sbsx</_hfilename>
+					<_hsubsystem type="a">ExecutableMBSEProfile_MetaModelPkg</_hsubsystem>
+					<_hclass type="a">SubsystemBlock</_hclass>
+					<_hname type="a">MMD - SubsystemBlock</_hname>
+					<_hid type="a">GUID 299fc4d8-748d-4885-a0e3-5f9635edb981</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.5.2021::7:39:5</_modifiedTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -5968,7 +5928,17 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">4.29.2021::12:45:33</_modifiedTime>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\ExecutableMBSEProfile_MetaModelPkg.sbsx</_hfilename>
+					<_hsubsystem type="a">ExecutableMBSEProfile_MetaModelPkg</_hsubsystem>
+					<_hclass type="a">SubsystemBlock</_hclass>
+					<_hname type="a">MMD - SubsystemBlock</_hname>
+					<_hid type="a">GUID 299fc4d8-748d-4885-a0e3-5f9635edb981</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.5.2021::7:38:57</_modifiedTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>

@@ -3,12 +3,11 @@ package functionalanalysisplugin;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
-import requirementsanalysisplugin.PopulateRequirementsAnalysisPkg;
-import sysmlhelperplugin.SysMLHelper_Context;
-
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.PopulatePkg;
 import com.mbsetraining.sysmlhelper.gateway.CreateGatewayProjectPanel;
+import com.mbsetraining.sysmlhelper.sysmlhelperplugin.PopulateRequirementsAnalysisPkg;
+import com.mbsetraining.sysmlhelper.sysmlhelperplugin.SysMLHelper_Context;
 import com.telelogic.rhapsody.core.*;
 
 public class PopulateFunctionalAnalysisPkg extends PopulatePkg {

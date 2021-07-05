@@ -1,11 +1,9 @@
-package generalhelpers;
+package com.mbsetraining.sysmlhelper.common;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
-import com.mbsetraining.sysmlhelper.common.GraphNodeInfo;
 import com.telelogic.rhapsody.core.IRPActor;
 import com.telelogic.rhapsody.core.IRPClass;
 import com.telelogic.rhapsody.core.IRPClassifier;

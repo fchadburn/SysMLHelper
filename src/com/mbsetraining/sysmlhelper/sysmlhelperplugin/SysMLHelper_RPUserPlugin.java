@@ -1,11 +1,10 @@
-package sysmlhelperplugin;
+package com.mbsetraining.sysmlhelper.sysmlhelperplugin;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 import requirementsanalysisplugin.PopulateRelatedRequirementsPanel;
-import requirementsanalysisplugin.PopulateRequirementsAnalysisPkg;
 import requirementsanalysisplugin.RollUpTraceabilityToTheTransitionPanel;
 import functionalanalysisplugin.PopulateFunctionalAnalysisPkg;
 import functionalanalysisplugin.SequenceDiagramHelper;

@@ -37,6 +37,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 	final protected String _externalSignalsPackageStereotype;
 	final protected String _contextDiagramPackageStereotype;
 	final protected String _requirementPackageStereotype;
+	final protected String _subsystemInterfacesPackageStereotype;
 	final protected boolean _isEnableAutoMoveOfEventsOnAddNewElement;
 	final protected boolean _isEnableAutoMoveOfEventsOnFlowCreation;
 
@@ -84,6 +85,9 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		_requirementPackageStereotype = _rhpPrj.getPropertyValue(
 				"ExecutableMBSEProfile.General.RequirementPackageStereotype" );
+		
+		_subsystemInterfacesPackageStereotype = _rhpPrj.getPropertyValue(
+				"ExecutableMBSEProfile.General.SubsystemInterfacesPackageStereotype" );
 	}
 
 	public boolean getIsShowProfileVersionCheckDialogs(){
@@ -571,6 +575,12 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		return _externalSignalsPackageStereotype;
 	}
+	
+	public String getSubsystemInterfacesPackageStereotype() {
+
+		return _subsystemInterfacesPackageStereotype;
+	}
+
 
 	public String getDesignPackageStereotype(
 			IRPModelElement basedOnContextEl ) {

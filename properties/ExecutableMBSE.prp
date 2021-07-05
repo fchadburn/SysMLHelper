@@ -16,6 +16,7 @@ Subject ExecutableMBSEProfile
 		Property UseCasePackageWorkingStereotype String "12 Reqts Analysis - Working Copy Package"
 		Property RequirementPackageStereotype String "13 Reqts Analysis - Requirement Package"
 		Property ExternalSignalsPackageStereotype String "14 Reqts Analysis - External Signals Package"
+		Property SubsystemInterfacesPackageStereotype String "33 Design - Subsystem Interfaces Package"
 		Property SimulationPackageStereotype String "21 Funct Analysis - Scenarios Package"
 		Property DesignPackageStereotype String "22 Funct Analysis - Design Package"
 		Property InterfacesPackageStereotype String "23 Funct Analysis - Interfaces Package"

@@ -5,7 +5,6 @@ import functionalanalysisplugin.FunctionalAnalysisSettings;
 import functionalanalysisplugin.FunctionalAnalysisSettings_ExecutableMBSE;
 import functionalanalysisplugin.PopulateFunctionalAnalysisPkg.SimulationType;
 import functionalanalysisplugin.SequenceDiagramHelper;
-import generalhelpers.BlockDiagramHelper;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -35,6 +34,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+import com.mbsetraining.sysmlhelper.common.BlockDiagramHelper;
 import com.mbsetraining.sysmlhelper.common.NamedElementMap;
 import com.mbsetraining.sysmlhelper.common.RhapsodyComboBox;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;

@@ -1,11 +1,9 @@
-package requirementsanalysisplugin;
+package com.mbsetraining.sysmlhelper.sysmlhelperplugin;
 
 import java.util.List;
 
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
-
-import sysmlhelperplugin.SysMLHelper_Context;
 
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.PopulatePkg;
