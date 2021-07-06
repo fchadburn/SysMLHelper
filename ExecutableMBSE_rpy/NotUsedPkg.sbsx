@@ -11,19 +11,10 @@
 			<_id type="a">GUID c3e7e210-b993-496d-bb8e-c1dec61ab214</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">NotUsedPkg</_name>
-			<_modifiedTimeWeak type="a">5.2.2021::11:30:41</_modifiedTimeWeak>
-			<_modifiedTime type="a">5.2.2021::11:30:41</_modifiedTime>
+			<_modifiedTime type="a">7.6.2021::14:21:37</_modifiedTime>
 			<_lastID type="a">10004</_lastID>
-			<weakCGTime type="a">5.2.2021::11:30:49</weakCGTime>
-			<strongCGTime type="a">4.28.2021::12:24:0</strongCGTime>
 			<_defaultComposite type="s">GUID 870695f4-704a-4952-926d-6c52a4e3ec6c</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
-			<Actors type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">0</size>
-				</IRPYRawContainer>
-			</Actors>
-			<_configurationRelatedTime type="a">5.2.2021::11:30:49</_configurationRelatedTime>
 			<AggregatesList type="e">
 				<value>GUID 5b4ff6d6-95f5-47c0-a5db-d51a388a1e7a</value>
 				<value>GUID 870695f4-704a-4952-926d-6c52a4e3ec6c</value>
@@ -32,7 +23,6 @@
 		<IEmbededFile type="e">
 			<_id type="a">GUID 5b4ff6d6-95f5-47c0-a5db-d51a388a1e7a</_id>
 			<_name type="a">ExecutableMBSEProfile.hep</_name>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
 			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\ExecutableMBSEProfile.hep</_LastKnownFullPath>
@@ -41,20 +31,12 @@
 			<_id type="a">GUID 870695f4-704a-4952-926d-6c52a4e3ec6c</_id>
 			<_myState type="a">40960</_myState>
 			<_name type="a">TopLevel</_name>
-			<_modifiedTimeWeak type="a">5.2.2021::11:30:49</_modifiedTimeWeak>
 			<_modifiedTime type="a">5.2.2021::11:30:49</_modifiedTime>
 			<_lastID type="a">6</_lastID>
-			<weakCGTime type="a">5.2.2021::11:30:49</weakCGTime>
-			<strongCGTime type="a">4.28.2021::12:24:0</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
 			</_itsStateChart>
-			<Associations type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">0</size>
-				</IRPYRawContainer>
-			</Associations>
 			<_classModifier type="a">Unspecified</_classModifier>
 		</IClass>
 		

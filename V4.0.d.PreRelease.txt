@@ -451,6 +451,7 @@ ExecutableMBSEProfile:
 #313 06-JUL-2021: Get logger to separate out logging calls with newlines over separate lines each with a prefix (F.J.Chadburn)
 #314 06-JUL-2021: Refine the diagram abbreviations for simple ibd & bdd (F.J.Chadburn)
 #315 06-JUL-2021: Get populate parts helper to work on Internal Block Diagram - Simple right-click (F.J.Chadburn)
+#316 06-JUL-2021: Removed unnecessary unit file for the NotUsedCmp component (F.J.Chadburn)
 
 FunctionalDesignProfile:
 #305 17-JUN-2021: Align Function Design profile to new thread safe context for helper logging and profile version checking (F.J.Chadburn)
