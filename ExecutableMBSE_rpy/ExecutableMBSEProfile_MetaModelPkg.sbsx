@@ -25,7 +25,7 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">7.5.2021::13:24:38</_modifiedTime>
+			<_modifiedTime type="a">7.6.2021::13:2:52</_modifiedTime>
 			<_lastID type="a">10034</_lastID>
 			<_defaultComposite type="s">GUID 26d06e57-7121-4d5e-a0d6-98804dd35601</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -31344,6 +31344,38 @@
 		<IClass type="e">
 			<_id type="a">GUID a9f05310-42d1-424a-b7be-028a1f1c2d87</_id>
 			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">CG</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Class</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">RelationsAutoArrange</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
 			<_name type="a">BlockDefinitionDiagramSimple</_name>
 			<Stereotypes type="c">
 				<IRPYRawContainer type="e">
@@ -31374,7 +31406,7 @@
 					<_hid type="a">GUID ff5629a3-242e-4c13-8efc-ae5ec8769ea7</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">7.5.2021::12:52:26</_modifiedTime>
+			<_modifiedTime type="a">7.6.2021::13:2:53</_modifiedTime>
 			<_lastID type="a">2</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -31385,13 +31417,13 @@
 				<value>GUID ce2d2307-7c89-4ac6-acff-346c624664ed</value>
 				<value>GUID ff5629a3-242e-4c13-8efc-ae5ec8769ea7</value>
 				<value>GUID 82008a18-8c3c-42c2-a665-c1fda8487c73</value>
-				<value>GUID 3a32cc5f-884a-4329-a674-a4f2b042bbda</value>
 				<value>GUID fa31ec6b-60c6-4036-875d-acc01962d1b4</value>
 				<value>GUID 57b5c9a0-a36d-49dd-b34c-38eba0895df6</value>
 				<value>GUID 135de404-1d15-483d-ab93-56a2a02f3e02</value>
 				<value>GUID a7a8ec11-9138-474d-9e05-baa1f5e29e40</value>
 				<value>GUID 36bed3ef-4759-4283-81ea-330bceff0b91</value>
 				<value>GUID 4132a483-58d5-42bd-9f76-63cc22f0feca</value>
+				<value>GUID 3a32cc5f-884a-4329-a674-a4f2b042bbda</value>
 				<value>GUID 8dca4324-8a5a-4ebd-97a6-6c230ca154c7</value>
 			</AggregatesList>
 		</IClass>
@@ -35537,28 +35569,6 @@
 			<_isVirtual type="a">0</_isVirtual>
 		</IGeneralization>
 		<IAssociationEnd type="e">
-			<_id type="a">GUID 3a32cc5f-884a-4329-a674-a4f2b042bbda</_id>
-			<_myState type="a">10240</_myState>
-			<_name type="a">itsBlock</_name>
-			<_modifiedTime type="a">6.14.2021::16:14:17</_modifiedTime>
-			<_multiplicity type="a">1</_multiplicity>
-			<_otherClass type="r">
-				<IClassifierHandle type="e">
-					<_hm2Class type="a">IClass</_hm2Class>
-					<_hfilename type="a">.\SysMLProfile_MetaModelPkg.sbsx</_hfilename>
-					<_hsubsystem type="a">SysMLProfile_MetaModelPkg</_hsubsystem>
-					<_hname type="a">Block</_hname>
-					<_hid type="a">GUID f4d53c08-0aad-4d75-900d-a98d345569b8</_hid>
-				</IClassifierHandle>
-			</_otherClass>
-			<_inverse type="r">
-				<IHandle type="e">
-				</IHandle>
-			</_inverse>
-			<_linkType type="a">Aggreg</_linkType>
-			<_navigability type="a">Navigable</_navigability>
-		</IAssociationEnd>
-		<IAssociationEnd type="e">
 			<_id type="a">GUID fa31ec6b-60c6-4036-875d-acc01962d1b4</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">itsDependency</_name>
@@ -35672,6 +35682,28 @@
 				<IClassifierHandle type="e">
 					<_hm2Class type="a">IClass</_hm2Class>
 					<_hid type="a">GUID 909d386e-dc89-42c1-9106-a9152daaab59</_hid>
+				</IClassifierHandle>
+			</_otherClass>
+			<_inverse type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_inverse>
+			<_linkType type="a">Aggreg</_linkType>
+			<_navigability type="a">Navigable</_navigability>
+		</IAssociationEnd>
+		<IAssociationEnd type="e">
+			<_id type="a">GUID 3a32cc5f-884a-4329-a674-a4f2b042bbda</_id>
+			<_myState type="a">10240</_myState>
+			<_name type="a">itsBlock</_name>
+			<_modifiedTime type="a">6.14.2021::16:14:17</_modifiedTime>
+			<_multiplicity type="a">1</_multiplicity>
+			<_otherClass type="r">
+				<IClassifierHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hfilename type="a">.\SysMLProfile_MetaModelPkg.sbsx</_hfilename>
+					<_hsubsystem type="a">SysMLProfile_MetaModelPkg</_hsubsystem>
+					<_hname type="a">Block</_hname>
+					<_hid type="a">GUID f4d53c08-0aad-4d75-900d-a98d345569b8</_hid>
 				</IClassifierHandle>
 			</_otherClass>
 			<_inverse type="r">
@@ -47911,17 +47943,9 @@
 				</IRPYRawContainer>
 			</Operations>
 			<AggregatesList type="e">
-				<value>GUID 887ffd74-4ca7-474e-8110-5181901830d9</value>
 				<value>GUID f896a2e1-582d-415a-a49e-9faaf1b1737a</value>
 			</AggregatesList>
 		</CGIClass>
-		<CGICompartment type="e">
-			<_id type="a">GUID 887ffd74-4ca7-474e-8110-5181901830d9</_id>
-			<m_name type="a">HyperLinkShortCut</m_name>
-			<m_displayOption type="a">All</m_displayOption>
-			<m_bShowInherited type="a">0</m_bShowInherited>
-			<m_bOrdered type="a">0</m_bOrdered>
-		</CGICompartment>
 		<CGICompartment type="e">
 			<_id type="a">GUID f896a2e1-582d-415a-a49e-9faaf1b1737a</_id>
 			<m_name type="a">Description</m_name>
