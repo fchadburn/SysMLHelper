@@ -1,4 +1,4 @@
-package com.mbsetraining.sysmlhelper.executablembse;
+package com.mbsetraining.sysmlhelper.populateparts;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -19,6 +19,7 @@ import javax.swing.tree.TreeModel;
 
 import com.mbsetraining.sysmlhelper.common.GraphNodeInfo;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
 import com.telelogic.rhapsody.core.*;
 
 public class PopulatePartsPanel extends ExecutableMBSEBasePanel {
@@ -151,7 +152,7 @@ public class PopulatePartsPanel extends ExecutableMBSEBasePanel {
 		//Create the nodes.
 		DefaultMutableTreeNode top =
 				new DefaultMutableTreeNode( 
-						new ModelElInfo( theClassifier, thePart, false ) );
+						new ModelElInfo( theClassifier, thePart, false, _context ) );
 
 		createNodes( top );
 
@@ -251,7 +252,7 @@ public class PopulatePartsPanel extends ExecutableMBSEBasePanel {
 					theDefaultSize = _diagram.getPropertyValue( 
 							"Format." + theNewTerm.getName() + ".DefaultSize" );
 				} else {
-					_context.warning( "calculateDimensionOf for " + theUserObject.toString() + 
+					_context.debug( "calculateDimensionOf for " + theUserObject.toString() + 
 							" is using default size as " + _context.elInfo( theUserObject._part ) + 
 							" did not have a new term stereotype" );
 
@@ -267,7 +268,7 @@ public class PopulatePartsPanel extends ExecutableMBSEBasePanel {
 					theDefaultSize = _diagram.getPropertyValue( 
 							"Format." + theNewTerm.getName() + ".DefaultSize" );
 				} else {
-					_context.warning( "calculateDimensionOf for " + theUserObject.toString() + 
+					_context.debug( "calculateDimensionOf for " + theUserObject.toString() + 
 							" is using default size as " + _context.elInfo( theUserObject._part ) + 
 							" did not have a new term stereotype" );
 

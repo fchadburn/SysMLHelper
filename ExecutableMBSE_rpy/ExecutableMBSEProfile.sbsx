@@ -1658,7 +1658,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">7.6.2021::13:7:57</_modifiedTime>
+			<_modifiedTime type="a">7.6.2021::13:50:1</_modifiedTime>
 			<_lastID type="a">22</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -10540,7 +10540,7 @@ Query</_Value>
 			<_id type="a">GUID ec717f1d-0b3e-427a-89fd-8b516b2337c8</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Elements</_name>
-			<_modifiedTime type="a">7.5.2021::13:17:40</_modifiedTime>
+			<_modifiedTime type="a">7.6.2021::13:50:8</_modifiedTime>
 			<_lastID type="a">6</_lastID>
 			<_defaultComposite type="s">GUID d51fb0a3-38d7-4d7a-9f45-35fd12f6ff2a</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -10772,9 +10772,10 @@ Query</_Value>
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">5</size>
+												<size type="a">6</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
+													<_Value type="a">ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -10788,6 +10789,13 @@ Query</_Value>
 													<_Name type="a">BrowserIcon</_Name>
 													<_Value type="a">IconsPkg/FunctionBlock.ico</_Value>
 													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">DrawingShape</_Name>
+													<_Value type="a">RoundedBox</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">Default,BasicBox,RoundedBox</_ExtraTypeInfo>
 												</IProperty>
 												
 												<IProperty type="e">
@@ -10815,7 +10823,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">FunctionBlock</_name>
-			<_modifiedTime type="a">6.15.2021::12:42:18</_modifiedTime>
+			<_modifiedTime type="a">7.6.2021::13:50:1</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -10966,11 +10974,18 @@ Query</_Value>
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">2</size>
+												<size type="a">3</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
 													<_Value type="a">ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale</_Value>
 													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">DrawingShape</_Name>
+													<_Value type="a">RoundedBox</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">Default,BasicBox,RoundedBox</_ExtraTypeInfo>
 												</IProperty>
 												
 												<IProperty type="e">
@@ -10992,7 +11007,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">FunctionUsage</_name>
-			<_modifiedTime type="a">6.15.2021::12:48:13</_modifiedTime>
+			<_modifiedTime type="a">7.6.2021::13:50:8</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>

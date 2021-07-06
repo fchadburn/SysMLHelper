@@ -33,6 +33,7 @@ import com.mbsetraining.sysmlhelper.executablembse.CreateUseCasesPackagePanel;
 import com.mbsetraining.sysmlhelper.gateway.CreateGatewayProjectPanel;
 import com.mbsetraining.sysmlhelper.gateway.MarkedAsDeletedPanel;
 import com.mbsetraining.sysmlhelper.gateway.MoveRequirements;
+import com.mbsetraining.sysmlhelper.populateparts.PopulatePartsPanel;
 import com.mbsetraining.sysmlhelper.smartlink.EndlinkPanel;
 import com.telelogic.rhapsody.core.*;
 
@@ -142,12 +143,13 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						"executablembseplugin.PopulatePartsMenu" ) ) ){
 
 					if( theSelectedEl instanceof IRPClassifier || 
-							theSelectedEl instanceof IRPInstance ){
+							theSelectedEl instanceof IRPInstance ||
+							theSelectedEl instanceof IRPStructureDiagram ){
 
 						PopulatePartsPanel.launchTheDialog( theAppID );
 
 					} else {
-						_context.error( menuItem + " invoked out of context and only works for classes or objects" );
+						_context.error( menuItem + " invoked out of context and only works for classes, objects, or structure diagrams/ibds" );
 					}
 
 				} else if( menuItem.equals( _context.getString(

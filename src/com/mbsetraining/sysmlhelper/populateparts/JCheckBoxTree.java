@@ -1,4 +1,4 @@
-package com.mbsetraining.sysmlhelper.executablembse;
+package com.mbsetraining.sysmlhelper.populateparts;
 
 import java.awt.BorderLayout;
 import java.awt.Component;

@@ -1,8 +1,9 @@
-package com.mbsetraining.sysmlhelper.executablembse;
+package com.mbsetraining.sysmlhelper.populateparts;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.telelogic.rhapsody.core.*;
 
 public class ModelElInfo {
@@ -10,12 +11,15 @@ public class ModelElInfo {
 	public IRPClassifier _classifier;
 	public IRPInstance _part;
 	public boolean _isSilent;
+	private ConfigurationSettings _context;
 	
 	public ModelElInfo(
 			IRPClassifier theClassifier,
 			IRPInstance thePart,
-			boolean isSilent ){
+			boolean isSilent,
+			ConfigurationSettings context ){
 	
+		_context = context;
 		_classifier = theClassifier;
 		_part = thePart;
 		_isSilent = isSilent;
@@ -57,7 +61,7 @@ public class ModelElInfo {
 		
 		for (IRPGeneralization theGeneralization : theGeneralizations) {
 			IRPClassifier theClassifier = theGeneralization.getBaseClass();
-			theChildren.add( new ModelElInfo( theClassifier, null, true ) );
+			theChildren.add( new ModelElInfo( theClassifier, null, true, _context ) );
 		}
 		
 		return theChildren;
@@ -73,11 +77,14 @@ public class ModelElInfo {
 
 		for( IRPModelElement theObjectEl : theObjectEls ){
 			
-			IRPInstance theObject = (IRPInstance)theObjectEl;
-
+			if( !( theObjectEl instanceof IRPPort ) &&
+					!( theObjectEl instanceof IRPSysMLPort ) ){
+			
+				IRPInstance theObject = (IRPInstance)theObjectEl;
 				IRPClassifier theOtherClass = theObject.getOtherClass();
-				ModelElInfo theChild = new ModelElInfo( theOtherClass, theObject, false );
+				ModelElInfo theChild = new ModelElInfo( theOtherClass, theObject, false, _context );
 				theChildren.add( theChild );
+			}
 		}
 		
 		return theChildren;
