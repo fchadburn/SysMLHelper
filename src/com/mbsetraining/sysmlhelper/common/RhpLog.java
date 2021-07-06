@@ -14,25 +14,25 @@ public class RhpLog {
 	private String _enableWarningLoggingProperty;
 	private String _enableInfoLoggingProperty;
 	private String _enableDebugLoggingProperty;
-	
+
 	protected IRPApplication _rhpApp = null;
 	protected IRPProject _rhpPrj = null;
-	
+
 	private Path _file = null;
-	
+
 	RhpLog( String theAppID,
 			String enableErrorLoggingProperty,
 			String enableWarningLoggingProperty,
 			String enableInfoLoggingProperty,
 			String enableDebugLoggingProperty ){
-		
+
 		_rhpApp = RhapsodyAppServer.getActiveRhapsodyApplicationByID( theAppID );
 		_rhpPrj = _rhpApp.activeProject();
 		_enableErrorLoggingProperty = enableErrorLoggingProperty;
 		_enableWarningLoggingProperty = enableWarningLoggingProperty;
 		_enableInfoLoggingProperty = enableInfoLoggingProperty;
 		_enableDebugLoggingProperty = enableDebugLoggingProperty;
-		
+
 		debug( "RhpLog constructor was invoked for " + theAppID );
 	}
 
@@ -40,60 +40,71 @@ public class RhpLog {
 			String theStr ){
 
 		writeIfPropertyEnabled( 
-				"Info   : " + theStr, 
-				_enableInfoLoggingProperty );		
+				theStr, 
+				_enableInfoLoggingProperty,
+				"Info   : " );		
 	}
 
 	public void debug( 
 			String theStr ){
 
 		writeIfPropertyEnabled( 
-				"Debug  : " + theStr, 
-				_enableDebugLoggingProperty );
+				theStr, 
+				_enableDebugLoggingProperty,
+				"Debug  : " );
 	}
-	
+
 	public void error( 
 			String theStr ){
 
 		writeIfPropertyEnabled( 
-				"Error  : " + theStr, 
-				_enableErrorLoggingProperty );  
+				theStr, 
+				_enableErrorLoggingProperty,
+				"Error  : " );  
 	}
 
 	public void warning( 
 			String theStr ){
 
 		writeIfPropertyEnabled( 
-				"Warning: " + theStr, 
-				_enableWarningLoggingProperty );
+				 theStr, 
+				_enableWarningLoggingProperty,
+				"Warning: " );
 	}
-	
+
 	protected void writeIfPropertyEnabled( 
 			String theStr,
-			String theProperty ){
-
-		String msg = theStr + "\n";
-
-		writeToFileIfEnabled( msg, StandardOpenOption.APPEND );
+			String theProperty,
+			String thePrefix ){
 
 		try {
-			if( _rhpPrj != null ){
+			String[] lines = theStr.split( "\\n" );
+			
+			for( String line : lines ){
 
-				boolean isEnabled = 
-						getBoolPropertyValueFromRhp(
-								theProperty,
-								true );
+				String msg = thePrefix + line + "\n";
 
-				if( isEnabled ){
-					System.out.println( theStr );
-					_rhpApp.writeToOutputWindow( "", msg );
+				writeToFileIfEnabled( msg, StandardOpenOption.APPEND );
+
+				if( _rhpPrj != null ){
+
+					boolean isEnabled = 
+							getBoolPropertyValueFromRhp(
+									theProperty,
+									true );
+
+					if( isEnabled ){
+						System.out.println( theStr );
+						_rhpApp.writeToOutputWindow( "", msg );
+					}
 				}
 			}
+
 		} catch( Exception e ){
 			// fail gracefully
 		}
 	}
-	
+
 	public void startWritingToFile(
 			String thePath,
 			String theMsg ){
@@ -101,21 +112,21 @@ public class RhpLog {
 		_file = Paths.get( thePath );
 
 		if( !Files.exists( _file ) ){
-			
+
 			try {
 				Files.createFile( _file );
-				
+
 			} catch( Exception e ){
 				System.out.println( "Exception in startWritingToFile, e=" + e.getMessage() );
 				error( "Exception while trying to create file: " + thePath  + " e=" + e.getMessage() );
 			}
 		}
-		
+
 		if( Files.isWritable( _file ) ){
-			
+
 			try {
 				Files.write( _file, ( theMsg + "\n").getBytes() );
-				
+
 			} catch( Exception e ){
 				System.out.println( "Exception, e=" + e.getMessage() );
 				error( "Exception while trying to write to file: " + thePath  + " e=" + e.getMessage() );
