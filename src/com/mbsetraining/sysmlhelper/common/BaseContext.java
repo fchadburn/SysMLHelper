@@ -373,7 +373,6 @@ public abstract class BaseContext extends RhpLog {
 			theStereotype = (IRPStereotype)theModelEl;
 		} else {
 			error( "Unable to find stereotype with name " + theName + " in project");
-
 		}
 
 		return theStereotype;

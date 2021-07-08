@@ -427,7 +427,7 @@ ExecutableMBSEProfile:
 
 ----------------------------------------------------------------------------------
 
-V4.0.d.Rhp831.PreRelease (XX-XXX-2021):
+V4.0.d.Rhp831.PreRelease (06-JUL-2021):
 
 ExecutableMBSEProfile:
 #295 15-JUN-2021: Initial metamodel support for design package with simplified bdd (F.J.Chadburn)
@@ -464,6 +464,12 @@ TauMigratorProfile:
 SysMLHelperProfile:
 #309 18-JUN-2021: Initial work to get SysMLHelper plugin to load successfully using the executable mbse properties (F.J.Chadburn)
 #310 18-JUN-2021: Initial refactoring to get the requirements analysis commands in the SysMLHelper to work (F.J.Chadburn)
+
+----------------------------------------------------------------------------------
+
+V4.0.e.Rhp831.PreRelease (XX-XXX-2021):
+
+#317 08-JUL-2021: ExecutableMBSEProfile: Initial checkpoint of sequence diagram helper for realizing interface blocks (F.J.Chadburn)
 
 Backlog/Known issues
 
