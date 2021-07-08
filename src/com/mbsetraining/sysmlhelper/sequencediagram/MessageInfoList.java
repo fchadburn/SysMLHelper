@@ -38,6 +38,19 @@ public class MessageInfoList extends ArrayList<MessageInfo>{
 		}		
 	}
 	
+	public MessageInfoList(
+			IRPMessage theMessage,
+			InterfaceInfoList theCandidateInterfaces,
+			ConfigurationSettings theContext ){
+		
+		_context = theContext;
+		
+		_context.info( "MessageInfoList constructor invoked for " + _context.elInfo( theMessage ) );
+		
+		MessageInfo theMessageInfo = new MessageInfo( theMessage, theCandidateInterfaces, _context );
+		add( theMessageInfo );
+	}
+	
 	protected void dumpInfo(){
 		
 		for (MessageInfo theMessageInfo : this) {

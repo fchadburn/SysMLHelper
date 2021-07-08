@@ -137,8 +137,6 @@ public class MessageInfo {
 			}
 		}
 		
-		_isAddToInterfaceBlockNeeded = false;
-
 		if( _matchingInterfaceBlock != null &&
 				_interfaceItem != null &&
 				!_isNewEventNeeded ){
@@ -324,9 +322,9 @@ public class MessageInfo {
 				IRPTag baseTag = _directedFeatureStereotype.getTag( "direction" );
 				
 				if( _isInterfaceBlockReversed ){
-					theEventReception.setTagValue(baseTag, "required");
-				} else {
 					theEventReception.setTagValue(baseTag, "provided");
+				} else {
+					theEventReception.setTagValue(baseTag, "required");
 				}
 			}
 		}

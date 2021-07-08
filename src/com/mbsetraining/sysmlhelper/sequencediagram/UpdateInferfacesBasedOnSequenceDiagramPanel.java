@@ -31,18 +31,13 @@ public class UpdateInferfacesBasedOnSequenceDiagramPanel extends ExecutableMBSEB
 		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
 		
 		IRPModelElement theSelectedEl = theRhpApp.getSelectedElement();
-		
-		if( theSelectedEl instanceof IRPSequenceDiagram ){
-			
-			IRPSequenceDiagram theSD = (IRPSequenceDiagram)theSelectedEl;
-			
-			launchTheDialog( theRhpApp.getApplicationConnectionString(), theSD.getGUID() );
-		}
+					
+		launchTheDialog( theRhpApp.getApplicationConnectionString(), theSelectedEl.getGUID() );
 	}
 	
 	public static void launchTheDialog(
 			String theAppID,
-			String theSequenceDiagramGUID ){
+			String theSelectedGUID ){
 
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 
@@ -58,7 +53,7 @@ public class UpdateInferfacesBasedOnSequenceDiagramPanel extends ExecutableMBSEB
 				UpdateInferfacesBasedOnSequenceDiagramPanel thePanel = 
 						new UpdateInferfacesBasedOnSequenceDiagramPanel(
 								theAppID,
-								theSequenceDiagramGUID );
+								theSelectedGUID );
 
 				frame.setContentPane( thePanel );
 				frame.pack();
@@ -70,18 +65,30 @@ public class UpdateInferfacesBasedOnSequenceDiagramPanel extends ExecutableMBSEB
 
 	public UpdateInferfacesBasedOnSequenceDiagramPanel( 
 			String theAppID,
-			String theSequenceDiagramGUID ){
+			String theSelectedGUID ){
 
 		super( theAppID );
 
-		_diagram = (IRPSequenceDiagram) _context.get_rhpPrj().findElementByGUID( theSequenceDiagramGUID );
+		IRPModelElement theSelectedEl = _context.get_rhpPrj().findElementByGUID( theSelectedGUID );
 		
-		_context.debug( "UpdateInferfacesBasedOnSequenceDiagramPanel was invoked for " + _context.elInfo( _diagram ) );
+		_context.debug( "UpdateInferfacesBasedOnSequenceDiagramPanel was invoked for " + _context.elInfo( theSelectedEl ) );
 		
 		_interfaceInfoList = new InterfaceInfoList( _context );
 		_interfaceInfoList.dumpInfo();
 		
-		_messageInfoList = new MessageInfoList( _diagram, _interfaceInfoList, _context );
+		if( theSelectedEl instanceof IRPSequenceDiagram ){
+			
+			_diagram = (IRPSequenceDiagram) theSelectedEl;
+			_messageInfoList = new MessageInfoList( _diagram, _interfaceInfoList, _context );
+		
+		} else if( theSelectedEl instanceof IRPMessage ) {
+			
+			IRPMessage theMessage = (IRPMessage) theSelectedEl;
+			_diagram = (IRPSequenceDiagram) theMessage.getMainDiagram();
+			_messageInfoList = new MessageInfoList( theMessage, _interfaceInfoList, _context );
+		} else {
+			_context.error( "UpdateInferfacesBasedOnSequenceDiagramPanel is not supported for " + _context.elInfo( theSelectedEl ) );
+		}
 		
 		setLayout( new BorderLayout() );
 		setBorder( new EmptyBorder(0, 10, 10, 10) );
