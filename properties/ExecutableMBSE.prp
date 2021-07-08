@@ -1,10 +1,10 @@
 Subject ExecutableMBSEProfile
         Metaclass General
-		Property PluginVersion String "V4.0.d.Rhp831.PreRelease"
+		Property PluginVersion String "V4.0.e.Rhp831.PreRelease"
 		Property EnableInfoLogging Bool "True"
 		Property EnableWarningLogging Bool "True"
 		Property EnableErrorLogging Bool "True"
-		Property EnableDebugLogging Bool "True"
+		Property EnableDebugLogging Bool "False"
 		Property EnableLogFile Bool "False"
 		Property AllowPluginToControlUnitGranularity Bool "False"
 		Property UserDefinedMetaClassesAsSeparateUnit String ""

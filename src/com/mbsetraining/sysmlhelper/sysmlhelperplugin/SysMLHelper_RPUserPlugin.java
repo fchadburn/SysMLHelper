@@ -96,11 +96,10 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 					
 				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.SetupRAProperties"))){
 
-					if (theSelectedEl instanceof IRPPackage){
-						
-						_context.setPropertiesValuesRequestedInConfigFile( 
-								theRhpPrj,
-								"setPropertyForRequirementsAnalysisModel" ); 
+					if( theSelectedEl instanceof IRPPackage ){
+						_context.checkIfSetupProjectIsNeeded( true );
+					} else {
+						_context.error( menuItem + " invoked out of context and only works for packages" );
 					}
 					
 				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.CreateFullSimFAStructureMenu"))){
