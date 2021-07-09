@@ -469,10 +469,11 @@ SysMLHelperProfile:
 
 V4.0.e.Rhp831.PreRelease (XX-XXX-2021):
 
-#317 08-JUL-2021: ExecutableMBSEProfile: Initial checkpoint of sequence diagram helper for realizing interface blocks (F.J.Chadburn)
-#318 08-JUL-2021: SysMLHelperProfile: Update menus so that it's possible to setup project properties (F.J.Chadburn)
-#319 09-JUL-2021: ExecutableMBSEProfile: Clean up unnecessary model remnants when initially setting up model properties (F.J.Chadburn)
-
+#317 08-JUL-2021: ExecutableMBSE: Initial checkpoint of sequence diagram helper for realizing interface blocks (F.J.Chadburn)
+#318 08-JUL-2021: SysMLHelper: Update menus so that it's possible to setup project properties (F.J.Chadburn)
+#319 09-JUL-2021: ExecutableMBSE: Clean up unnecessary model remnants when initially setting up model properties (F.J.Chadburn)
+#320 09-JUL-2021: ExecutableMBSE: Initial implementation of proxy port creation automation when drawing connectors (F.J.Chadburn)
+ 
 Backlog/Known issues
 
 - Add ability to create context diagram package at same time as creating the use case package

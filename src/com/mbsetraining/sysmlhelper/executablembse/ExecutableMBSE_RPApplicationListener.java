@@ -11,6 +11,7 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 import com.mbsetraining.sysmlhelper.common.ElementMover;
+import com.mbsetraining.sysmlhelper.common.GraphEdgeInfo;
 import com.mbsetraining.sysmlhelper.common.GraphNodeInfo;
 import com.mbsetraining.sysmlhelper.common.NestedActivityDiagram;
 import com.mbsetraining.sysmlhelper.common.RequirementMover;
@@ -50,7 +51,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			} else if( modelElement instanceof IRPEvent ){
 
 				afterAddForEvent( modelElement );
-				
+
 			} else if( modelElement instanceof IRPDependency && 
 					modelElement.getUserDefinedMetaClass().equals(
 							"Derive Requirement" ) ){
@@ -70,6 +71,10 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			} else if( modelElement instanceof IRPFlow ){
 
 				afterAddForFlow( (IRPFlow) modelElement );
+
+			} else if( modelElement instanceof IRPLink ){
+
+				afterAddForLink( (IRPLink) modelElement );
 			}
 
 		} catch( Exception e ){
@@ -96,7 +101,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			IRPDiagram theDiagram = _context.get_rhpApp().getDiagramOfSelectedElement();
 
 			if( theDiagram != null ){ 
-				
+
 				CreateOperationPanel.launchThePanel( _context.get_rhpAppID() );
 
 			} // else probably drag from browser
@@ -180,17 +185,17 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			theElementMover.performMove( modelElement );
 		}
 	}
-	
+
 	private void afterAddForEvent(
 			IRPModelElement modelElement ){
 
 		_context.debug( "afterAddForEvent invoked for " + _context.elInfo( modelElement ) );
-		
+
 		// only do move if property is set
 		boolean isEnabled = _context.getIsEnableAutoMoveOfEventsOnAddNewElement();
 
 		if( isEnabled ){
-						
+
 			ElementMover theExternalSignalsPackageMover = new ElementMover( 
 					modelElement, 
 					_context.getExternalSignalsPackageStereotype(),
@@ -200,38 +205,38 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 					modelElement, 
 					_context.getSubsystemInterfacesPackageStereotype(),
 					_context );
-			
+
 			ElementMover theChosenMover = null;
-			
+
 			if( theExternalSignalsPackageMover.isMovePossible() &&
 					!theSubsystemInterfacesPackageMover.isMovePossible() ){
-				
+
 				theChosenMover = theExternalSignalsPackageMover;
-			
+
 			} else if( !theExternalSignalsPackageMover.isMovePossible() &&
 					theSubsystemInterfacesPackageMover.isMovePossible() ){
-				
+
 				theChosenMover = theSubsystemInterfacesPackageMover;
-				
+
 			} else if( theExternalSignalsPackageMover.isMovePossible() &&
 					theSubsystemInterfacesPackageMover.isMovePossible() ){
-				
+
 				_context.warning( "Package hierarchy has dependencies on both an external signals package and a subsystem interfaces package hence cannot decide. It is recommended to delete one of the dependencies in the hierarchy");
 			}	
-		
+
 			if( theChosenMover != null ){
-				
+
 				IRPModelElement moveToPkg = theChosenMover.get_moveToPkg();
 
 				// This delay + the save should mean that Event won't crash Rhapsody
 				boolean isContinue = UserInterfaceHelper.askAQuestion( 
 						"Move " + modelElement.getUserDefinedMetaClass() + " to " + 
-						moveToPkg.getName() + "?" );
-				
+								moveToPkg.getName() + "?" );
+
 				if( isContinue ){
-					
+
 					theChosenMover.performMove( modelElement );
-										
+
 					try {
 						_context.get_rhpPrj().save();
 
@@ -408,10 +413,10 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 						modelElement );
 
 		String theReqtsPkgStereotypeName = _context.getRequirementPackageStereotype();
-		
+
 		if( isEnabled && 
 				theReqtsPkgStereotypeName != null ){
-			
+
 			RequirementMover theElementMover = new RequirementMover( modelElement, theReqtsPkgStereotypeName, _context );
 			theElementMover.performMove( modelElement );
 		}
@@ -436,6 +441,155 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		}
 
 		CreateEventForFlowPanel.launchThePanel( _context.get_rhpAppID() );
+	}
+
+	private IRPGraphEdge getCorrespondingGraphEdgeFor( 
+			IRPLink theLink ){
+
+		IRPGraphEdge theGraphEdge = null;
+
+		@SuppressWarnings("unchecked")
+		List<IRPModelElement> theReferences = theLink.getReferences().toList();
+
+		if( theReferences.size() == 1 ){
+			IRPModelElement theReference = theReferences.get( 0 );	
+
+			_context.debug( "theReference is " + _context.elInfo( theReference ) );
+
+			if( theReference instanceof IRPStructureDiagram ){
+
+				IRPStructureDiagram theDiagram = (IRPStructureDiagram)theReference;
+
+				@SuppressWarnings("unchecked")
+				List<IRPGraphElement> theGraphEls = theDiagram.getCorrespondingGraphicElements( theLink ).toList();
+
+				if( theGraphEls.size() == 1 ){
+					IRPGraphElement theGraphEl = theGraphEls.get( 0 );
+
+					if( theGraphEl instanceof IRPGraphEdge ){
+						theGraphEdge = (IRPGraphEdge) theGraphEl;
+					}
+				}
+			}
+		}
+
+		return theGraphEdge;
+	}
+
+	private void afterAddForLink(
+			IRPLink theLink ){
+
+		_context.debug( "afterAddForLink invoked for " + _context.elInfo( theLink ) );
+
+		// Only do something if the link is between parts (without ports)
+		if( theLink.getFromPort() == null && 
+				theLink.getFromSysMLPort() == null &&
+				theLink.getToPort() == null &&
+				theLink.getToSysMLPort() == null ){
+
+			IRPGraphEdge theGraphEdge = getCorrespondingGraphEdgeFor( theLink );
+
+			if( theGraphEdge != null ){
+
+				IRPDiagram theDiagram = theGraphEdge.getDiagram();
+				
+				IRPModelElement fromClassifierEl = theLink.getFrom().getOtherClass();
+				IRPModelElement toClassifierEl = theLink.getTo().getOtherClass();
+
+				_context.debug( "theLink.getFrom() = " + _context.elInfo( theLink.getFrom() ) );
+
+				if( fromClassifierEl instanceof IRPClassifier && 
+						toClassifierEl instanceof IRPClassifier ){
+
+					_context.debug( "fromClassifierEl = " + _context.elInfo( fromClassifierEl ) );
+					_context.debug( "toClassifierEl = " + _context.elInfo( toClassifierEl ) );
+
+					String toClassifierName = _context.capitalize( toClassifierEl.getName().replace( " ", "" ) );
+					String fromClassifierName = _context.capitalize( fromClassifierEl.getName().replace( " ", "" ) );
+					
+					String fromPortName = _context.determineUniqueNameBasedOn( 
+							"p" + toClassifierName, 
+							"Port", 
+							fromClassifierEl );
+
+					String toPortName = _context.determineUniqueNameBasedOn( 
+							"p" + fromClassifierName, 
+							"Port", 
+							toClassifierEl );
+
+					GraphEdgeInfo theGraphEdgeInfo = new GraphEdgeInfo( theGraphEdge, _context ); 
+					
+					IRPPackage theOwningPkg = _context.getOwningPackageFor( theDiagram );
+
+					String theInterfaceBlockName =
+							_context.determineUniqueNameBasedOn( 
+									fromClassifierName + "_To_" + toClassifierName, 
+									"Class", 
+									theOwningPkg );
+						
+					IRPClass theInterfaceBlock = theOwningPkg.addClass( theInterfaceBlockName );
+					theInterfaceBlock.changeTo( "InterfaceBlock" );
+					
+					IRPPort fromPort = (IRPPort) fromClassifierEl.addNewAggr( "Port", fromPortName );
+					_context.debug( "Created fromPort as " + _context.elInfo( fromPort ) );
+					fromPort.changeTo( "ProxyPort" );
+					fromPort.setOtherClass( theInterfaceBlock );
+					
+					IRPGraphNode fromPortNode = addGraphNodeFor( 
+							fromPort, theDiagram, theGraphEdgeInfo.getStartX(), theGraphEdgeInfo.getStartY() );
+					
+					IRPPort toPort = (IRPPort) toClassifierEl.addNewAggr( "Port", toPortName );		
+					_context.debug( "Created toPort as " + _context.elInfo( toPort ) );
+					toPort.changeTo( "ProxyPort" );
+					toPort.setOtherClass( theInterfaceBlock );
+					toPort.setIsReversed( 1 );
+
+					IRPGraphNode toPortNode = 
+							addGraphNodeFor( toPort, theDiagram, theGraphEdgeInfo.getEndX(), theGraphEdgeInfo.getEndY() );					
+					
+					IRPLink newLink = theLink.getFrom().addLinkToElement( theLink.getTo(), null, fromPort, toPort );
+					_context.debug( "Created " + _context.elInfo( newLink ) );
+
+					theDiagram.addNewEdgeForElement( 
+							newLink, 
+							fromPortNode, 
+							theGraphEdgeInfo.getStartX(), 
+							theGraphEdgeInfo.getStartY(), 
+							toPortNode, 
+							theGraphEdgeInfo.getEndX(), 
+							theGraphEdgeInfo.getEndY() );
+					
+					theLink.deleteFromProject();
+				}
+			}
+		}
+	}
+	
+	private IRPGraphNode addGraphNodeFor(
+			IRPPort thePort,
+			IRPDiagram toDiagram,
+			int x,
+			int y ){
+		
+		IRPGraphNode thePortNode = null;
+		
+		@SuppressWarnings("unchecked")
+		List<IRPGraphNode> fromPortNodes = 
+				toDiagram.getCorrespondingGraphicElements( thePort ).toList();
+		
+		if( fromPortNodes.size() == 1 ){
+			
+			thePortNode = fromPortNodes.get( 0 );
+			
+			String thePosition = x + "," + y;
+			thePortNode.setGraphicalProperty( "Position", thePosition );
+			
+		} else {
+			
+			thePortNode = toDiagram.addNewNodeForElement( thePort, x, y, 12, 12 );
+		}
+		
+		return thePortNode;
 	}
 
 	@Override
@@ -502,7 +656,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 					_context.debug( "User chose to create a new activity diagram" );
 
 					NestedActivityDiagram theHelper = new NestedActivityDiagram(_context);
-					
+
 					theHelper.createNestedActivityDiagram( 
 							(IRPClassifier) pModelElement, 
 							"AD - " + pModelElement.getName(),
