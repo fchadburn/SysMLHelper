@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import com.mbsetraining.sysmlhelper.common.RhapsodyComboBox;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
+import com.mbsetraining.sysmlhelper.sequencediagram.SequenceDiagramCreator;
 import com.telelogic.rhapsody.core.*;
 
 public class CreateNewBlockPartPanel extends ExecutableMBSEBasePanel {
@@ -330,7 +331,7 @@ public class CreateNewBlockPartPanel extends ExecutableMBSEBasePanel {
 					_context.error("Error in CreateNewBlockPartPanel.performAction: Unable to find ElapsedTime actor in project. You may be missing the BasePkg");
 				}
 
-				SequenceDiagramHelper theHelper = new SequenceDiagramHelper(_context);
+				SequenceDiagramCreator theHelper = new SequenceDiagramCreator(_context);
 
 				theHelper.updateAutoShowSequenceDiagramFor( 
 						m_AssemblyBlock );

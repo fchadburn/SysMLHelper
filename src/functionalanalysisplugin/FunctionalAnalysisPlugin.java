@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.sequencediagram.SequenceDiagramCreator;
 import com.telelogic.rhapsody.core.*;
  
 public class FunctionalAnalysisPlugin extends RPUserPlugin {
@@ -294,7 +295,7 @@ public class FunctionalAnalysisPlugin extends RPUserPlugin {
 					try {
 						if( theSelectedEl instanceof IRPSequenceDiagram ){
 
-							SequenceDiagramHelper.updateLifelinesToMatchPartsInActiveBuildingBlock(
+							SequenceDiagramCreator.updateLifelinesToMatchPartsInActiveBuildingBlock(
 									(IRPSequenceDiagram) theSelectedEl );
 							
 						}	

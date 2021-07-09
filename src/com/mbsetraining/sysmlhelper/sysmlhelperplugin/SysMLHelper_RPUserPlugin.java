@@ -7,7 +7,6 @@ import java.util.Set;
 import requirementsanalysisplugin.PopulateRelatedRequirementsPanel;
 import requirementsanalysisplugin.RollUpTraceabilityToTheTransitionPanel;
 import functionalanalysisplugin.PopulateFunctionalAnalysisPkg;
-import functionalanalysisplugin.SequenceDiagramHelper;
 import functionalanalysisplugin.PopulateFunctionalAnalysisPkg.SimulationType;
 import designsynthesisplugin.PopulateDesignSynthesisPkg;
 
@@ -21,6 +20,7 @@ import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.gateway.CreateGatewayProjectPanel;
 import com.mbsetraining.sysmlhelper.gateway.MarkedAsDeletedPanel;
 import com.mbsetraining.sysmlhelper.gateway.MoveRequirements;
+import com.mbsetraining.sysmlhelper.sequencediagram.VerificationDependencyUpdater;
 import com.mbsetraining.sysmlhelper.smartlink.EndlinkPanel;
 import com.telelogic.rhapsody.core.*;
 
@@ -76,8 +76,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 
 		try { 
 			String theAppID = _context.get_rhpAppID();
-			
-			IRPProject theRhpPrj = _context.get_rhpPrj();
+
 			IRPModelElement theSelectedEl = _context.getSelectedElement();
 			List<IRPModelElement> theSelectedEls = _context.getSelectedElements();
 			List<IRPGraphElement> theSelectedGraphEls = _context.getSelectedGraphElements();
@@ -89,11 +88,11 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 				if (menuItem.equals(_context.getString("sysmlhelperplugin.CreateRAStructureMenu"))){
 
 					if (theSelectedEl instanceof IRPProject){
-						
+
 						PopulateRequirementsAnalysisPkg thePopulator = new PopulateRequirementsAnalysisPkg( _context );
 						thePopulator.createRequirementsAnalysisPkg(); 
 					}
-					
+
 				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.SetupRAProperties"))){
 
 					if( theSelectedEl instanceof IRPPackage ){
@@ -101,39 +100,39 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 					} else {
 						_context.error( menuItem + " invoked out of context and only works for packages" );
 					}
-					
+
 				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.CreateFullSimFAStructureMenu"))){
 
 					if (theSelectedEl instanceof IRPProject){
-						
+
 						PopulateFunctionalAnalysisPkg thePopulator = new PopulateFunctionalAnalysisPkg( _context );
 						thePopulator.createFunctionalAnalysisPkg( SimulationType.FullSim ); 
 					}
-					
+
 				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.CreateSimpleSimFAStructureMenu"))){
 
 					if (theSelectedEl instanceof IRPProject){
-						
+
 						PopulateFunctionalAnalysisPkg thePopulator = new PopulateFunctionalAnalysisPkg( _context );
 						thePopulator.createFunctionalAnalysisPkg( SimulationType.SimpleSim ); 
 					}
-					
+
 				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.CreateNoSimFAStructureMenu"))){
 
 					if (theSelectedEl instanceof IRPProject){
-						
+
 						PopulateFunctionalAnalysisPkg thePopulator = new PopulateFunctionalAnalysisPkg( _context );
 						thePopulator.createFunctionalAnalysisPkg( SimulationType.NoSim ); 
 					}
-					
+
 				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.CreateDSStructureMenu"))){
 
 					if (theSelectedEl instanceof IRPProject){
-						
+
 						PopulateDesignSynthesisPkg thePopulator = new PopulateDesignSynthesisPkg( _context );
 						thePopulator.createDesignSynthesisPkg(); 
 					}
-					
+
 				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.QuickHyperlinkMenu"))){
 
 					IRPHyperLink theHyperLink = (IRPHyperLink) theSelectedEl.addNewAggr("HyperLink", "");
@@ -278,11 +277,11 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 					if (theSelectedEl instanceof IRPProject){
 						CreateGatewayProjectPanel.launchThePanel( _context.get_rhpAppID(), ".*.rqtf$" );				
 					}
-					
+
 				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.AddRelativeUnitMenu"))){
 
 					_context.browseAndAddUnit( theSelectedEl.getProject(), true );								
-				
+
 					// Requirements Analysis
 				} else if (menuItem.equals(_context.getString( "requirementsanalysisplugin.CreateNestedADMenu" ))){
 
@@ -292,7 +291,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 				} else if (menuItem.equals(_context.getString( "requirementsanalysisplugin.ReportOnNamingAndTraceabilityMenu" ))){
 
 					ActivityDiagramChecker.launchPanelsFor( theSelectedEls, _context );
-					
+
 				} else if (menuItem.equals(_context.getString( "requirementsanalysisplugin.MoveUnclaimedReqtsMenu" ))){
 
 					MoveRequirements theMover = new MoveRequirements( _context );
@@ -300,7 +299,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 					theMover.moveUnclaimedRequirementsReadyForGatewaySync( 
 							theSelectedEls, 
 							_context.get_rhpPrj() );
-					
+
 				} else if (menuItem.equals(_context.getString( "requirementsanalysisplugin.CreateNewRequirementMenu" ))){
 
 					RequirementsHelper theHelper = new RequirementsHelper( _context );
@@ -310,7 +309,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 
 					RenameActions theRenamer = new RenameActions(_context);
 					theRenamer.performRenamesFor( theSelectedEls );
-					
+
 				} else if (menuItem.equals(_context.getString( "requirementsanalysisplugin.UpdateNestedADNamesMenu" ))){
 
 					NestedActivityDiagram theHelper = new NestedActivityDiagram(_context);
@@ -329,7 +328,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 					for( IRPModelElement theEl : theSelectedEls ){
 						_startLinkGuids.add( theEl.getGUID() );
 					}
-					
+
 				} else if (menuItem.equals(_context.getString( "requirementsanalysisplugin.EndLinkMenu" ))){
 
 					if( _startLinkGuids.isEmpty() ){
@@ -340,7 +339,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 								theAppID, 
 								_startLinkGuids );
 					}
-					
+
 				} else if (menuItem.equals(_context.getString( "requirementsanalysisplugin.RollUpTraceabilityUpToTransitionLevel" ))){
 
 					if( theSelectedGraphEls != null ){
@@ -395,17 +394,20 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 						theHelper.centerDependenciesForThePackage( 
 								(IRPPackage) theSelectedEl );
 					}				
-	
+
 				} else if (menuItem.equals(_context.getString("requirementsanalysisplugin.PopulateRequirementsForSDsMenu"))){
-					
+
 					if (theSelectedEl instanceof IRPSequenceDiagram){
 						PopulateRelatedRequirementsPanel.launchThePanel( theAppID );
 					}
-					
+
 				} else if (menuItem.equals(_context.getString("requirementsanalysisplugin.UpdateVerificationDependenciesForSDsMenu"))){		
-					
-					if (!theSelectedEls.isEmpty()){
-						SequenceDiagramHelper theHelper = new SequenceDiagramHelper(_context);
+
+					if( !theSelectedEls.isEmpty() ){
+
+						VerificationDependencyUpdater theHelper = 
+								new VerificationDependencyUpdater( _context );
+
 						theHelper.updateVerificationsForSequenceDiagramsBasedOn( theSelectedEls );
 					}			
 
@@ -554,39 +556,39 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 	public void OnTrigger(String trigger) {
 
 	}
-	
+
 	// For use with Tables
 	public String getRequirementSpecificationText(String guid) {
-	
+
 		//Logger.writeLine("Was invoked with guid " + guid);
 		String theSpec = "Not found";
-		
+
 		try {
 			@SuppressWarnings("rawtypes")
 			List theAppIDs = RhapsodyAppServer.getActiveRhapsodyApplicationIDList();
-			
+
 			if( theAppIDs.size() == 1 ){
-	
+
 				IRPProject theRhpProject = RhapsodyAppServer.getActiveRhapsodyApplication().activeProject();
 				IRPModelElement theEl = theRhpProject.findElementByGUID(guid);
-				
+
 				if (theEl != null){
-					
+
 					if (theEl instanceof IRPRequirement){
-						
+
 						IRPRequirement theReq = (IRPRequirement)theEl;
 						theSpec = theReq.getSpecification();
-						
+
 					} else if (theEl instanceof IRPDependency){
-						
+
 						IRPDependency theDep = (IRPDependency)theEl;
 						IRPModelElement theDependsOn = theDep.getDependsOn();
-						
+
 						if (theDependsOn instanceof IRPRequirement){
-							
+
 							IRPRequirement theReq = (IRPRequirement)theDependsOn;
 							theSpec = theReq.getSpecification();
-							
+
 							_context.debug(_context.elInfo( theDependsOn )+ "is the depends on with the text '" + theSpec + "'");
 						}
 					}

@@ -36,6 +36,7 @@ import com.mbsetraining.sysmlhelper.common.RhapsodyComboBox;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
 import com.mbsetraining.sysmlhelper.gateway.CreateGatewayProjectPanel;
+import com.mbsetraining.sysmlhelper.sequencediagram.SequenceDiagramCreator;
 import com.telelogic.rhapsody.core.*;
 
 public class CreateFunctionalBlockPackagePanel extends ExecutableMBSEBasePanel {
@@ -151,7 +152,7 @@ public class CreateFunctionalBlockPackagePanel extends ExecutableMBSEBasePanel {
 		
 		setLayout( new BorderLayout() );
 		
-		String theBlockName = GeneralHelpers.determineUniqueNameBasedOn(
+		String theBlockName = _context.determineUniqueNameBasedOn(
 				theBlankName, "Class", m_RootPackage.getProject() );
 		
 		add( createTheNameTheBlockPanel( theBlockName ), BorderLayout.PAGE_START );
@@ -925,7 +926,7 @@ public class CreateFunctionalBlockPackagePanel extends ExecutableMBSEBasePanel {
 				} // end FullSim only				
 				
 				// Add a sequence diagram
-				SequenceDiagramHelper.createSequenceDiagramFor(
+				SequenceDiagramCreator.createSequenceDiagramFor(
 						theSystemAssemblyBlock, 
 						theTestPackage, 
 						"SD - " + theName );

@@ -1,147 +1,44 @@
-package functionalanalysisplugin;
+package com.mbsetraining.sysmlhelper.sequencediagram;
 
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
-
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
-public class SequenceDiagramHelper {	
+import functionalanalysisplugin.FunctionalAnalysisSettings;
+
+public class SequenceDiagramCreator {	
 
 	protected ConfigurationSettings _context;
 
-	public SequenceDiagramHelper(
+	public static void main(String[] args) {
+		
+		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
+		
+		IRPModelElement theSelectedEl = theRhpApp.getSelectedElement();
+
+		if( theSelectedEl instanceof IRPClass ){
+			
+			ExecutableMBSE_Context theContext = new ExecutableMBSE_Context( theRhpApp.getApplicationConnectionString() );
+			SequenceDiagramCreator theHelper = new SequenceDiagramCreator( theContext );
+			
+			IRPPackage theOwningPkg = theContext.getOwningPackageFor( theSelectedEl );
+			
+			theHelper.createSequenceDiagramFor( 
+					(IRPClass) theSelectedEl, 
+					theOwningPkg, 
+					"SD - " + theSelectedEl.getName(),
+					false,
+					true );
+		}
+	}
+	
+	public SequenceDiagramCreator(
 			ConfigurationSettings context ) {
 
 		_context = context;
-	}
-
-	public void updateVerificationsForSequenceDiagramsBasedOn(
-			List<IRPModelElement> theSelectedEls){
-
-		Set<IRPModelElement> theEls = buildSetOfElementsFor(theSelectedEls, "SequenceDiagram", true);
-
-		for (IRPModelElement theEl : theEls) {
-			updateVerificationsFor( (IRPSequenceDiagram)theEl );
-		}
-	}
-
-	private Set<IRPModelElement> buildSetOfElementsFor(
-			List<IRPModelElement> theSelectedEls, 
-			String withMetaClass, boolean isRecursive) {
-
-		Set<IRPModelElement> theMatchingEls = new HashSet<IRPModelElement>();
-
-		for (IRPModelElement theSelectedEl : theSelectedEls) {
-
-			addElementIfItMatches(withMetaClass, theMatchingEls, theSelectedEl);
-
-			if (isRecursive){
-
-				@SuppressWarnings("unchecked")
-				List<IRPModelElement> theCandidates = theSelectedEl.getNestedElementsByMetaClass(withMetaClass, 1).toList();
-
-				for (IRPModelElement theCandidate : theCandidates) {				
-					addElementIfItMatches(withMetaClass, theMatchingEls, theCandidate);
-				}
-			}
-		}
-
-		return theMatchingEls;
-	}
-
-	private void addElementIfItMatches(
-			String withMetaClass,
-			Set<IRPModelElement> theMatchingEls, 
-			IRPModelElement elementToAdd) {
-
-		if (elementToAdd.getMetaClass().equals( withMetaClass )){
-
-			if (elementToAdd instanceof IRPUnit){
-
-				IRPUnit theUnit = (IRPUnit) elementToAdd;
-
-				if (theUnit.isReadOnly()==0){
-					theMatchingEls.add( elementToAdd );
-				}
-			} else {
-				theMatchingEls.add( elementToAdd );
-			}
-		}
-	}
-
-	private void updateVerificationsFor(IRPDiagram theDiagram){
-
-		Set<IRPRequirement> theReqtsOnDiagram = buildSetOfRequirementsAlreadyOn(theDiagram);
-
-		Set<IRPRequirement> theReqtsWithVerificationRelationsToDiagram = 
-				_context.getRequirementsThatTraceFromWithStereotype(
-						theDiagram, "verify");
-
-		Set<IRPRequirement> theRequirementsToRemove= new HashSet<IRPRequirement>( theReqtsWithVerificationRelationsToDiagram );
-		theRequirementsToRemove.removeAll( theReqtsOnDiagram );
-
-		if (!theRequirementsToRemove.isEmpty()){
-
-			@SuppressWarnings("unchecked")
-			List<IRPDependency> theDependencies = theDiagram.getNestedElementsByMetaClass("Dependency", 0).toList();
-
-			for (IRPDependency theDependency : theDependencies) {
-
-				String userDefinedMetaClass = theDependency.getUserDefinedMetaClass();
-
-				if (userDefinedMetaClass.equals("Verification")){
-
-					IRPModelElement dependsOn = theDependency.getDependsOn();
-
-					if (dependsOn instanceof IRPRequirement &&
-							theRequirementsToRemove.contains(dependsOn)){
-
-						_context.debug( _context.elInfo( dependsOn ) + " removed verification link");
-						theDependency.deleteFromProject();
-					}
-
-				}
-			}
-		}
-
-		Set<IRPRequirement> theRequirementsToAdd = new HashSet<IRPRequirement>( theReqtsOnDiagram );
-		theRequirementsToAdd.removeAll( theReqtsWithVerificationRelationsToDiagram );
-
-		theDiagram.highLightElement();
-
-		for (IRPRequirement theReq : theRequirementsToAdd) {
-			IRPDependency theDep = theDiagram.addDependencyTo( theReq );
-			theDep.changeTo("Verification");
-			_context.debug( _context.elInfo( theReq ) + " added verification link");
-		}
-	}
-
-	private Set<IRPRequirement> buildSetOfRequirementsAlreadyOn(IRPDiagram theDiagram){
-
-		Set<IRPRequirement> theReqts = new HashSet<IRPRequirement>();
-
-		@SuppressWarnings("unchecked")
-		List<IRPGraphElement> theGraphEls = theDiagram.getGraphicalElements().toList();
-
-		for (IRPGraphElement theGraphEl : theGraphEls) {
-
-			if (theGraphEl instanceof IRPGraphNode){
-
-				IRPModelElement theModelObject = theGraphEl.getModelObject();
-
-				if (theModelObject instanceof IRPRequirement){
-
-					IRPRequirement theReqt = (IRPRequirement)theModelObject;
-					theReqts.add( theReqt );
-				}
-			}
-		}
-
-		return theReqts;
 	}
 
 	public void updateLifelinesToMatchPartsInActiveBuildingBlock(
@@ -157,7 +54,9 @@ public class SequenceDiagramHelper {
 			createSequenceDiagramFor(
 					theBuildingBlock, 
 					(IRPPackage) theSequenceDiagram.getOwner(), 
-					theSequenceDiagram.getName() );
+					theSequenceDiagram.getName(),
+					_context.getIsCreateSDWithAutoShowApplied( theSequenceDiagram ),
+					false );
 
 		} else {
 			_context.error("Error, unable to find building block or tester pkg");
@@ -189,7 +88,9 @@ public class SequenceDiagramHelper {
 				createSequenceDiagramFor(
 						theAssemblyBlock, 
 						thePackageForSD, 
-						theSD.getName() );
+						theSD.getName(),
+						_context.getIsCreateSDWithAutoShowApplied( theSD ),
+						false );
 			}
 		}
 	}
@@ -197,7 +98,9 @@ public class SequenceDiagramHelper {
 	public void createSequenceDiagramFor(
 			IRPClass theAssemblyBlock, 
 			IRPPackage inPackage,
-			String withName ){
+			String withName,
+			boolean isAutoShow,
+			boolean isOpenDiagram ){
 
 		boolean isCreateSD = true;
 
@@ -257,7 +160,14 @@ public class SequenceDiagramHelper {
 				IRPClassifier theType = thePart.getOtherClass();
 
 				if( theType instanceof IRPActor ){
-					theSD.addNewNodeForElement( thePart, xPos, yPos, nWidth, nHeight );
+					
+					if( isPartTheOnlyOneOfItsTypeUnder( theAssemblyBlock, thePart ) ){
+						
+						theSD.addNewNodeForElement( theType, xPos, yPos, nWidth, nHeight );
+					} else {
+						theSD.addNewNodeForElement( thePart, xPos, yPos, nWidth, nHeight );
+					}
+					
 					xPos = xPos + nWidth + xGap;
 				}
 			}
@@ -270,15 +180,60 @@ public class SequenceDiagramHelper {
 				if( !( theType instanceof IRPActor ) &&
 						!_context.hasStereotypeCalled( "TestDriver", theType ) ){
 
-					theSD.addNewNodeForElement( thePart, xPos, yPos, nWidth, nHeight );
+					if( isPartTheOnlyOneOfItsTypeUnder( theAssemblyBlock, thePart ) ){
+						
+						theSD.addNewNodeForElement( theType, xPos, yPos, nWidth, nHeight );
+					} else {
+						theSD.addNewNodeForElement( thePart, xPos, yPos, nWidth, nHeight );
+					}
+					
 					xPos = xPos + nWidth + xGap;
 				}
 			}
 
-			if( _context.getIsCreateSDWithAutoShowApplied( theSD ) ){
+			if( isAutoShow ){
 				_context.applyExistingStereotype( "AutoShow", theSD );
 			}
+			
+			if( isOpenDiagram ){
+				theSD.highLightElement();
+				theSD.openDiagram();
+			}
 		}
+	}
+	
+	private boolean isPartTheOnlyOneOfItsTypeUnder(
+			IRPClassifier theClassifier,
+			IRPInstance thePart ){
+		
+		boolean isPartTheOnlyOneOfItsType = true;
+		
+		if( thePart.isTypelessObject() == 0 ){
+			
+			IRPClassifier theType = thePart.getOtherClass();
+			
+			@SuppressWarnings("unchecked")
+			List<IRPInstance> theCandidates =
+					theClassifier.getNestedElementsByMetaClass( "Part", 0 ).toList();
+			
+			for (IRPInstance theCandidate : theCandidates) {
+				
+				if( !theCandidate.equals( thePart ) &&
+						theCandidate.isTypelessObject()==0 ){
+					
+					IRPClassifier theCandidateType = theCandidate.getOtherClass();
+					
+					if( theCandidateType.equals( theType ) ){
+						_context.debug( "Found that " + _context.elInfo( theCandidate ) + 
+								" has same type as " + _context.elInfo( thePart ) );
+						isPartTheOnlyOneOfItsType = false;
+						break;
+					}
+				}
+			}
+		}
+		
+		return isPartTheOnlyOneOfItsType;
 	}
 }
 

@@ -14,7 +14,6 @@ import functionalanalysisplugin.CreateOperationPanel;
 import functionalanalysisplugin.CreateOutgoingEventPanel;
 import functionalanalysisplugin.CreateTracedAttributePanel;
 import functionalanalysisplugin.EventDeletor;
-import functionalanalysisplugin.SequenceDiagramHelper;
 import functionalanalysisplugin.TestCaseCreator;
 import functionalanalysisplugin.UpdateTracedAttributePanel;
 import functionalanalysisplugin.PopulateFunctionalAnalysisPkg.SimulationType;
@@ -34,7 +33,9 @@ import com.mbsetraining.sysmlhelper.gateway.CreateGatewayProjectPanel;
 import com.mbsetraining.sysmlhelper.gateway.MarkedAsDeletedPanel;
 import com.mbsetraining.sysmlhelper.gateway.MoveRequirements;
 import com.mbsetraining.sysmlhelper.populateparts.PopulatePartsPanel;
+import com.mbsetraining.sysmlhelper.sequencediagram.SequenceDiagramCreator;
 import com.mbsetraining.sysmlhelper.sequencediagram.UpdateInferfacesBasedOnSequenceDiagramPanel;
+import com.mbsetraining.sysmlhelper.sequencediagram.VerificationDependencyUpdater;
 import com.mbsetraining.sysmlhelper.smartlink.EndlinkPanel;
 import com.telelogic.rhapsody.core.*;
 
@@ -486,8 +487,11 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 				} else if (menuItem.equals(_context.getString("executablembseplugin.UpdateVerificationDependenciesForSDsMenu"))){
 
-					if (!theSelectedEls.isEmpty()){
-						SequenceDiagramHelper theHelper = new SequenceDiagramHelper(_context);
+					if( !theSelectedEls.isEmpty() ){
+						
+						VerificationDependencyUpdater theHelper = 
+								new VerificationDependencyUpdater( _context );
+						
 						theHelper.updateVerificationsForSequenceDiagramsBasedOn( theSelectedEls );
 					}				
 
@@ -635,7 +639,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 					if( theSelectedEl instanceof IRPSequenceDiagram ){
 
-						SequenceDiagramHelper theHelper = new SequenceDiagramHelper( _context );
+						SequenceDiagramCreator theHelper = new SequenceDiagramCreator( _context );
 
 						theHelper.updateLifelinesToMatchPartsInActiveBuildingBlock(
 								(IRPSequenceDiagram) theSelectedEl );

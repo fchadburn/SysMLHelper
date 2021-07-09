@@ -4,7 +4,6 @@ import functionalanalysisplugin.ActorMappingInfo;
 import functionalanalysisplugin.FunctionalAnalysisSettings;
 import functionalanalysisplugin.FunctionalAnalysisSettings_ExecutableMBSE;
 import functionalanalysisplugin.PopulateFunctionalAnalysisPkg.SimulationType;
-import functionalanalysisplugin.SequenceDiagramHelper;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -38,6 +37,7 @@ import com.mbsetraining.sysmlhelper.common.BlockDiagramHelper;
 import com.mbsetraining.sysmlhelper.common.NamedElementMap;
 import com.mbsetraining.sysmlhelper.common.RhapsodyComboBox;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.sequencediagram.SequenceDiagramCreator;
 import com.telelogic.rhapsody.core.*;
 
 public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePanel {
@@ -785,12 +785,14 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 				} // end FullSim only				
 
 				// Add a sequence diagram
-				SequenceDiagramHelper theHelper = new SequenceDiagramHelper(_context);
+				SequenceDiagramCreator theHelper = new SequenceDiagramCreator( _context );
 				
 				theHelper.createSequenceDiagramFor(
 						theSystemAssemblyBlock, 
 						theRootPkg, 
-						"SD - " + theName );
+						"SD - " + theName,
+						_context.getIsCreateSDWithAutoShowApplied( theRootPkg ),
+						false );
 
 				IRPStatechartDiagram theStatechart = 
 						theLogicalSystemBlock.getStatechart().getStatechartDiagram();
