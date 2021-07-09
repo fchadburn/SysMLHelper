@@ -34,6 +34,7 @@ import com.mbsetraining.sysmlhelper.gateway.CreateGatewayProjectPanel;
 import com.mbsetraining.sysmlhelper.gateway.MarkedAsDeletedPanel;
 import com.mbsetraining.sysmlhelper.gateway.MoveRequirements;
 import com.mbsetraining.sysmlhelper.populateparts.PopulatePartsPanel;
+import com.mbsetraining.sysmlhelper.sequencediagram.UpdateInferfacesBasedOnSequenceDiagramPanel;
 import com.mbsetraining.sysmlhelper.smartlink.EndlinkPanel;
 import com.telelogic.rhapsody.core.*;
 
@@ -564,6 +565,15 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						CreateNewBlockPartPanel.launchThePanel( theAppID );
 					}
 
+				} else if (menuItem.equals(_context.getString("executablembseplugin.UpdatePortsAndInterfacesMenu"))){
+
+					if( theSelectedEl instanceof IRPSequenceDiagram ||
+							theSelectedEl instanceof IRPMessage ){
+						
+						UpdateInferfacesBasedOnSequenceDiagramPanel.launchThePanel( 
+								theAppID, theSelectedEl.getGUID() );
+					}
+					
 				} else if( menuItem.equals( _context.getString(
 						"executablembseplugin.CopyActivityDiagramsMenu" ) ) ){
 

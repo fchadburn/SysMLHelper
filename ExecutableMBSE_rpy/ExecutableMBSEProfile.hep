@@ -1,5 +1,5 @@
 [Helpers]
-numberOfElements=74
+numberOfElements=75
 
 #REM: Definition of the plug-in
 name1=InvokeExecutableMBSEHelper
@@ -577,6 +577,14 @@ command74=InvokeExecutableMBSEHelper
 applicableTo74=Project,SysML
 isVisible74=1
 DLLServerCompatible74=1
+
+#REM: Add pop-up menu
+name75=MBSE Method: Design Synthesis\Update Ports and Interfaces
+isPluginCommand75=1
+command75=InvokeExecutableMBSEHelper
+applicableTo75=SequenceDiagram,Message
+isVisible75=1
+DLLServerCompatible75=1
 
 #REM Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 #REM

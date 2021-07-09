@@ -25,7 +25,7 @@ public class InterfaceInfo {
 	
 	public void dumpInfo(){
 		
-		_context.info( _context.elInfo( _interfaceClass ) + 
+		_context.debug( _context.elInfo( _interfaceClass ) + 
 				" is an interface contracted from " + 
 				_context.elInfo( _fromClassifier ) + " to " + 
 				_context.elInfo( _toClassifier ) );
@@ -42,5 +42,23 @@ public class InterfaceInfo {
 	public IRPClassifier get_toClassifier() {
 		return _toClassifier;
 	}
-	
 }
+
+/**
+ * Copyright (C) 2021  MBSE Training and Consulting Limited (www.executablembse.com)
+
+    This file is part of SysMLHelperPlugin.
+
+    SysMLHelperPlugin is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    SysMLHelperPlugin is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with SysMLHelperPlugin.  If not, see <http://www.gnu.org/licenses/>.
+ */

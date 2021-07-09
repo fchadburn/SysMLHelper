@@ -91,7 +91,7 @@ public class MessageInfo {
 		_targetClassifier = getTargetClassifierFrom( _message );
 		_sourceClassifier = getSourceClassifierFrom( _message );
 		
-		_context.info( _context.elInfo( _message ) + " is a message from " + 
+		_context.debug( _context.elInfo( _message ) + " is a message from " + 
 				_context.elInfo( _targetClassifier ) + " to " + 
 				_context.elInfo( _sourceClassifier ) );
 		
@@ -114,7 +114,7 @@ public class MessageInfo {
 		
 		if( _matchingInterfaceBlock != null ){
 			
-			_context.info( _context.elInfo( _matchingInterfaceBlock ) + 
+			_context.debug( _context.elInfo( _matchingInterfaceBlock ) + 
 					" is the InterfaceBlock for " + _context.elInfo( _message ) );
 			
 			_isInterfaceBlockReversed = false;
@@ -127,10 +127,12 @@ public class MessageInfo {
 							_sourceClassifier );
 			
 			if( _matchingInterfaceBlock == null ){
-				_context.info( "No InterfaceBlock was found for " + _context.elInfo( _message ) );
+				
+				_context.debug( "No InterfaceBlock was found for " + _context.elInfo( _message ) );
+				
 			} else {
 				
-				_context.info( _context.elInfo( _matchingInterfaceBlock ) + 
+				_context.debug( _context.elInfo( _matchingInterfaceBlock ) + 
 						" is the reversed InterfaceBlock for " + _context.elInfo( _message ) );
 				
 				_isInterfaceBlockReversed = true;
@@ -145,14 +147,12 @@ public class MessageInfo {
 					!isInterfaceItemAlreadyIn( _matchingInterfaceBlock, _interfaceItem );
 			
 			if( _isAddToInterfaceBlockNeeded ){
-				_context.info( "Found that " + _context.elInfo( _interfaceItem ) + 
+				_context.debug( "Found that " + _context.elInfo( _interfaceItem ) + 
 						" requires adding to " + _context.elInfo( _matchingInterfaceBlock ) );			
 			}
+		} else {
+			_isAddToInterfaceBlockNeeded = true;
 		}
-		
-		dumpInfo();
-		
-		_context.debug( "---" );
 	}
 
 	private IRPClassifier getTargetClassifierFrom(
@@ -194,7 +194,7 @@ public class MessageInfo {
 		
 		for( IRPModelElement existingInterfaceItem : existingInterfaceItems ){
 			
-			_context.info( "Found " + _context.elInfo( existingInterfaceItem ) );
+			_context.debug( "Found " + _context.elInfo( existingInterfaceItem ) );
 
 			if( existingInterfaceItem instanceof IRPEventReception ){
 				
@@ -203,7 +203,7 @@ public class MessageInfo {
 				
 				if( theEvent.equals( theInterfaceItem ) ){
 					
-					_context.info( "Found that " + _context.elInfo( _interfaceItem ) + 
+					_context.debug( "Found that " + _context.elInfo( _interfaceItem ) + 
 							" is in " + _context.elInfo( _matchingInterfaceBlock ) );
 					
 					isInterfaceItemAlreadyIn = true;
@@ -245,18 +245,18 @@ public class MessageInfo {
 		
 		if( _isRealizationNeeded ){	
 			
-			theMsg += "Requires realization";
+			theMsg += "Realization needed. ";
 			
 			if( _matchingInterfaceBlock != null ){
 				
 				if( _isInterfaceBlockReversed ){					
-					theMsg += " and adding to " + _context.elInfo( _matchingInterfaceBlock ) + " as provided";
+					theMsg += " Add to " + _context.elInfo( _matchingInterfaceBlock ) + " as provided. ";
 				} else {
-					theMsg += " and adding to " + _context.elInfo( _matchingInterfaceBlock ) + " as required";
+					theMsg += " Add to " + _context.elInfo( _matchingInterfaceBlock ) + " as required. ";
 				}
 				
 			} else {
-				theMsg += " (no InterfaceBlock was found)";
+				theMsg += " No InterfaceBlock found. ";
 			}
 			
 		} else {
@@ -266,38 +266,56 @@ public class MessageInfo {
 				if( _isAddToInterfaceBlockNeeded ){
 					
 					if( _isInterfaceBlockReversed ){					
-						theMsg += "Requires adding to " + _context.elInfo( _matchingInterfaceBlock ) + " as provided";
+						theMsg += "Add to " + _context.elInfo( _matchingInterfaceBlock ) + " as provided. ";
 					} else {
-						theMsg += "Requires adding to " + _context.elInfo( _matchingInterfaceBlock ) + " as required";
+						theMsg += "Add to " + _context.elInfo( _matchingInterfaceBlock ) + " as required. ";
 					}
 				}
 				
 			} else {
-				theMsg += ", but no InterfaceBlock was found";
+				theMsg += "No InterfaceBlock found.";
 			}
 		}
 		
 		return theMsg;	
 	}
 	
+	public boolean isUpToDate(){
+	
+		boolean isUpToDate = 	
+				!_isRealizationNeeded &&
+				!_isNewEventNeeded &&
+				!_isAddToInterfaceBlockNeeded &&
+				!_isAddToTargetClassiferNeeded;
+		
+		_context.debug( "isUpToDate for " + _context.elInfo( _message ) + " is returning " + isUpToDate );
+		
+		return isUpToDate;
+	}
+	
 	public void performAction(){
 				
-		_context.info( "performAction is invoked for " + _context.elInfo( _message ) );
+		_context.debug( "performAction invoked for " + _context.elInfo( _message ) );
 		
 		if( _isRealizationNeeded ){	
 			
 			if( _isNewEventNeeded ){
 				
 				IRPPackage thePkg = _context.getOwningPackageFor( _message );
+				_context.debug( "Adding event called " + getName() + " to " + _context.elInfo( thePkg ) );
 				_interfaceItem = thePkg.addEvent( getName() );
 			}	
 			
 			if( _isAddToTargetClassiferNeeded ){
 				
 				if( _messageType.equals( "EVENT" ) ){
+					_context.debug( "Adding reception called " + getName() + " to " + _context.elInfo( _targetClassifier ) );
 					_targetClassifier.addNewAggr( "Reception", getName() );
 				}
 			}
+			
+			_context.debug( "Setting formal interface item for " + _context.elInfo( _message ) + 
+					" to " + _context.elInfo( _interfaceItem ) );
 			
 			_message.setFormalInterfaceItem( _interfaceItem );
 		
@@ -306,6 +324,7 @@ public class MessageInfo {
 			if( _isAddToTargetClassiferNeeded ){
 				
 				if( _messageType.equals( "EVENT" ) ){
+					_context.debug( "Adding reception called " + getName() + " to " + _context.elInfo( _targetClassifier ) );
 					_targetClassifier.addNewAggr( "Reception", getName() );
 				}
 			}
@@ -313,75 +332,63 @@ public class MessageInfo {
 		
 		if( _isAddToInterfaceBlockNeeded ){
 			
-			if( _messageType.equals( "EVENT" ) ){		
+			if( _matchingInterfaceBlock == null ){
+				_context.warning( "No InterfaceBlock was found between " + 
+						_context.elInfo( _sourceClassifier ) + " and " + 
+						_context.elInfo( _targetClassifier ) + " for which to add " + 
+						_context.elInfo( _interfaceItem ) );
 				
-				IRPEventReception theEventReception = _matchingInterfaceBlock.addEventReception( getName() );
+			} else {
 				
-				theEventReception.setStereotype( _directedFeatureStereotype );
+				if( _messageType.equals( "EVENT" ) ){		
+					
+					IRPEventReception theEventReception = _matchingInterfaceBlock.addEventReception( getName() );
+					
+					_context.debug( "Stereotyping " + _context.elInfo( theEventReception ) + 
+							" with " + _context.elInfo( _directedFeatureStereotype ) );
+					
+					theEventReception.setStereotype( _directedFeatureStereotype );
 
-				IRPTag baseTag = _directedFeatureStereotype.getTag( "direction" );
-				
-				if( _isInterfaceBlockReversed ){
-					theEventReception.setTagValue(baseTag, "provided");
-				} else {
-					theEventReception.setTagValue(baseTag, "required");
+					IRPTag baseTag = _directedFeatureStereotype.getTag( "direction" );
+					
+					if( _isInterfaceBlockReversed ){
+						
+						_context.debug( "Setting " + _context.elInfo( baseTag ) + 
+								" on " + _context.elInfo( theEventReception ) + " to provided" );
+						
+						theEventReception.setTagValue(baseTag, "provided");
+						
+
+					} else {
+						
+						_context.debug( "Setting " + _context.elInfo( baseTag ) + 
+								" on " + _context.elInfo( theEventReception ) + " to required" );
+						
+						theEventReception.setTagValue(baseTag, "required");
+					}
+					
+					theEventReception.highLightElement();
 				}
 			}
 		}
-		
-		/*
-		if( _isAddToInterfaceBlockNeeded ){
-			
-			if( _matchingInterfaceBlock != null ){
-									}
-				if( _isInterfaceBlockReversed ){	
-					
-					if( _messageType.equals( "EVENT" ) ){
-						
-						_context.info( "Adding " + _context.elInfo( _message ) + 
-								" to " + _context.elInfo( _matchingInterfaceBlock ) + " as provided" );
-						
-						_matchingInterfaceBlock.addReception( getName() );
-					}
-					
-				} else {
-					
-					if( _messageType.equals( "EVENT" ) ){
-						
-						_context.info( "Adding " + _context.elInfo( _message ) + 
-								" to " + _context.elInfo( _matchingInterfaceBlock ) + " as required" );
-						
-						_matchingInterfaceBlock.addReception( getName() );
-					}
-				}
-				
-			} else {
-				_context.info( "Unable to add " + _message + " to an InterfaceBlock as none were found" );
-			}
-			
-		} else {
-			
-			if( _matchingInterfaceBlock != null ){
-				
-				if( _isAddToInterfaceBlockNeeded ){
-					
-					if( _isInterfaceBlockReversed ){					
-						_context.info("Add " + _context.elInfo( _interfaceItem ) + " to " + 
-								_context.elInfo( _matchingInterfaceBlock ) + " as provided" );
-						
-						_matchingInterfaceBlock.addEventReception( _interfaceItem.getName() );
-						
-					} else {
-						_context.info( "Add " + _context.elInfo( _interfaceItem ) + " to " +
-								_context.elInfo( _matchingInterfaceBlock ) + " as required" );
-						
-						_matchingInterfaceBlock.addEventReception( _interfaceItem.getName() );
-					}
-				}
-				
-			} else {
-				_context.info( "Unable to add " + _message + " to an InterfaceBlock as none were found" );
-			}
-		}	*/	
 	}
 }
+
+/**
+ * Copyright (C) 2021  MBSE Training and Consulting Limited (www.executablembse.com)
+
+    This file is part of SysMLHelperPlugin.
+
+    SysMLHelperPlugin is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    SysMLHelperPlugin is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with SysMLHelperPlugin.  If not, see <http://www.gnu.org/licenses/>.
+ */

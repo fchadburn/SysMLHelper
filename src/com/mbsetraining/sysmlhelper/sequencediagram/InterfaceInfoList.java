@@ -44,7 +44,7 @@ public class InterfaceInfoList extends ArrayList<InterfaceInfo>{
 				boolean isConjugated = thePort.getIsReversed()==1;
 
 				if( !isConjugated ){
-					_context.info( _context.elInfo( thePort ) + " is a non-congugated port for " + _context.elInfo( theEl ) );
+					_context.debug( _context.elInfo( thePort ) + " is a non-congugated port for " + _context.elInfo( theEl ) );
 					thePorts.add( thePort );
 				}
 			}
@@ -72,7 +72,7 @@ public class InterfaceInfoList extends ArrayList<InterfaceInfo>{
 				if( toPort != null && 
 						!toPort.equals( thePort ) ){
 					
-					_context.info( _context.elInfo( toPort ) + " is a connected port for " + _context.elInfo( thePort ) );
+					_context.debug( _context.elInfo( toPort ) + " is a connected port for " + _context.elInfo( thePort ) );
 					thePortsAtOtherEnd.add( toPort );
 					
 				} else {
@@ -82,7 +82,7 @@ public class InterfaceInfoList extends ArrayList<InterfaceInfo>{
 					if( fromPort != null && 
 							!fromPort.equals( thePort ) ){
 						
-						_context.info( _context.elInfo( fromPort ) + " is a connected port for " + _context.elInfo( thePort ) );
+						_context.debug( _context.elInfo( fromPort ) + " is a connected port for " + _context.elInfo( thePort ) );
 						thePortsAtOtherEnd.add( fromPort );
 					}
 				}
@@ -121,11 +121,11 @@ public class InterfaceInfoList extends ArrayList<InterfaceInfo>{
 
 		List<IRPClass> theCandidates = getInterfaceBlocksUnder( _context.get_rhpPrj() );
 
-		_context.info( "There are " + theCandidates.size() + " candidates in " + _context.elInfo( _context.get_rhpPrj() ) );
+		_context.debug( "There are " + theCandidates.size() + " candidates in " + _context.elInfo( _context.get_rhpPrj() ) );
 
 		for( IRPClass theCandidate : theCandidates ){
 
-			_context.info( _context.elInfo( theCandidate ) + " is a candidate" );
+			_context.debug( _context.elInfo( theCandidate ) + " is a candidate" );
 
 			List<IRPPort> theNonConjugatedPorts = getNonCongugatedPortsFor( theCandidate );
 
@@ -139,16 +139,16 @@ public class InterfaceInfoList extends ArrayList<InterfaceInfo>{
 
 					if( theOtherEndContract == null ){
 
-						_context.info( _context.elInfo( theOtherEndPort ) + " does not have a contract set" );
+						_context.debug( _context.elInfo( theOtherEndPort ) + " does not have a contract set" );
 
 					} else if( !theOtherEndContract.equals( theCandidate ) ){
 
-						_context.info( _context.elInfo( theOtherEndPort ) + " is contracted with " + 
+						_context.debug( _context.elInfo( theOtherEndPort ) + " is contracted with " + 
 								_context.elInfo( theOtherEndContract ) + 
 								" rather than " + _context.elInfo( theCandidate ) );;
 
 					} else if( theOtherEndPort.getIsReversed()==0 ){
-						_context.info( _context.elInfo( theOtherEndPort ) + " is contracted with " + 
+						_context.debug( _context.elInfo( theOtherEndPort ) + " is contracted with " + 
 								_context.elInfo( theCandidate ) + " but is not set as conjugated" );
 
 					} else {
@@ -190,3 +190,22 @@ public class InterfaceInfoList extends ArrayList<InterfaceInfo>{
 		return theInterfaceBlock;
 	}
 }
+
+/**
+ * Copyright (C) 2021  MBSE Training and Consulting Limited (www.executablembse.com)
+
+    This file is part of SysMLHelperPlugin.
+
+    SysMLHelperPlugin is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    SysMLHelperPlugin is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with SysMLHelperPlugin.  If not, see <http://www.gnu.org/licenses/>.
+ */

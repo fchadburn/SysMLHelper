@@ -6,7 +6,6 @@ import java.awt.Component;
 import javax.swing.BoxLayout;
 import javax.swing.GroupLayout;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.GroupLayout.ParallelGroup;
@@ -32,10 +31,10 @@ public class UpdateInferfacesBasedOnSequenceDiagramPanel extends ExecutableMBSEB
 		
 		IRPModelElement theSelectedEl = theRhpApp.getSelectedElement();
 					
-		launchTheDialog( theRhpApp.getApplicationConnectionString(), theSelectedEl.getGUID() );
+		launchThePanel( theRhpApp.getApplicationConnectionString(), theSelectedEl.getGUID() );
 	}
 	
-	public static void launchTheDialog(
+	public static void launchThePanel(
 			String theAppID,
 			String theSelectedGUID ){
 
@@ -74,7 +73,7 @@ public class UpdateInferfacesBasedOnSequenceDiagramPanel extends ExecutableMBSEB
 		_context.debug( "UpdateInferfacesBasedOnSequenceDiagramPanel was invoked for " + _context.elInfo( theSelectedEl ) );
 		
 		_interfaceInfoList = new InterfaceInfoList( _context );
-		_interfaceInfoList.dumpInfo();
+		//_interfaceInfoList.dumpInfo();
 		
 		if( theSelectedEl instanceof IRPSequenceDiagram ){
 			
@@ -93,21 +92,32 @@ public class UpdateInferfacesBasedOnSequenceDiagramPanel extends ExecutableMBSEB
 		setLayout( new BorderLayout() );
 		setBorder( new EmptyBorder(0, 10, 10, 10) );
 
-		JPanel theReqtsAnalysisPanel = createContent();
-		theReqtsAnalysisPanel.setAlignmentX( Component.LEFT_ALIGNMENT );
-
 		String introText = 
 				"This helper will realize events and operations on " + 
-						_context.elInfo( _diagram ) + " and add them to the interfaces. \n";
+						_context.elInfo( _diagram ) + " and add them to the interfaces.";
 
 		JPanel theStartPanel = new JPanel();
 
 		theStartPanel.setLayout( new BoxLayout( theStartPanel, BoxLayout.PAGE_AXIS ) );
-		theStartPanel.add( new JLabel( " " ) );
+		//theStartPanel.add( new JLabel( " " ) );
+		
 		theStartPanel.add( createPanelWithTextCentered( introText ) );
 
 		add( theStartPanel, BorderLayout.PAGE_START );
-		add( theReqtsAnalysisPanel, BorderLayout.CENTER );
+		
+		if( !_messageInfoList.isEmpty() ){
+			
+			JPanel theMainPanel = createContent();
+			theMainPanel.setAlignmentX( Component.LEFT_ALIGNMENT );
+			add( theMainPanel, BorderLayout.CENTER );
+
+		} else {
+			add( createPanelWithTextCentered( 
+					_messageInfoList.get_upToDateCount() + 
+					" messages were checked. No action necessary." ), 
+					BorderLayout.CENTER );
+		}
+		
 		add( createOKCancelPanel(), BorderLayout.PAGE_END );		
 	}
 

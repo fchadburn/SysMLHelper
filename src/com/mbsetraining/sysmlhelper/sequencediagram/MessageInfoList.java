@@ -14,6 +14,9 @@ public class MessageInfoList extends ArrayList<MessageInfo>{
 	private static final long serialVersionUID = -7379143084838550398L;
 	
 	ConfigurationSettings _context;
+	InterfaceInfoList _candidateInterfaces;
+	
+	int _upToDateCount = 0;
 	
 	public MessageInfoList(
 			IRPSequenceDiagram theSD,
@@ -21,34 +24,54 @@ public class MessageInfoList extends ArrayList<MessageInfo>{
 			ConfigurationSettings theContext ){
 		
 		_context = theContext;
+		_candidateInterfaces = theCandidateInterfaces;
 		
 		IRPCollaboration theCollab = theSD.getLogicalCollaboration();
 		
 		@SuppressWarnings("unchecked")
 		List<IRPModelElement> theMessages = theCollab.getMessages().toList();
 		
-		_context.info( "There are " + theMessages.size() + " messages on " + _context.elInfo( theSD ) );
+		_context.debug( "MessageInfoList constructor determined that there are " + theMessages.size() + " messages on " + _context.elInfo( theSD ) );
 		
 		for( IRPModelElement theMessage : theMessages ){
 			
 			if( theMessage instanceof IRPMessage ){
-				MessageInfo theMessageInfo = new MessageInfo( (IRPMessage) theMessage, theCandidateInterfaces, _context );
-				add( theMessageInfo );
+				addOrUpdateCount( (IRPMessage) theMessage );
 			}
 		}		
+		
+		_context.debug( "The MessageInfoList constructor completed (" + _upToDateCount + 
+				" messages on " + _context.elInfo( theSD ) + " are up to date, and " + this.size() + " are not)");
+
+	}
+
+	private void addOrUpdateCount(
+			IRPMessage theMessage ){
+		
+		MessageInfo theMessageInfo = new MessageInfo( theMessage, _candidateInterfaces, _context );
+		
+		if( theMessageInfo.isUpToDate() ){
+			_upToDateCount++;
+		} else {					
+			add( theMessageInfo );
+		}
 	}
 	
+	public int get_upToDateCount() {
+		return _upToDateCount;
+	}
+
 	public MessageInfoList(
 			IRPMessage theMessage,
 			InterfaceInfoList theCandidateInterfaces,
 			ConfigurationSettings theContext ){
 		
 		_context = theContext;
+		_candidateInterfaces = theCandidateInterfaces;
+
+		_context.debug( "MessageInfoList constructor invoked for " + _context.elInfo( theMessage ) );
 		
-		_context.info( "MessageInfoList constructor invoked for " + _context.elInfo( theMessage ) );
-		
-		MessageInfo theMessageInfo = new MessageInfo( theMessage, theCandidateInterfaces, _context );
-		add( theMessageInfo );
+		addOrUpdateCount( theMessage );
 	}
 	
 	protected void dumpInfo(){
@@ -58,3 +81,22 @@ public class MessageInfoList extends ArrayList<MessageInfo>{
 		}
 	}
 }
+
+/**
+ * Copyright (C) 2021  MBSE Training and Consulting Limited (www.executablembse.com)
+
+    This file is part of SysMLHelperPlugin.
+
+    SysMLHelperPlugin is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    SysMLHelperPlugin is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with SysMLHelperPlugin.  If not, see <http://www.gnu.org/licenses/>.
+ */
