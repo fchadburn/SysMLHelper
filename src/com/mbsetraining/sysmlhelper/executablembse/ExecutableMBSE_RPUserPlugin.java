@@ -135,6 +135,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 					if( theSelectedEl instanceof IRPPackage ){
 						_context.checkIfSetupProjectIsNeeded( true );
+						_context.cleanUpModelRemnants();
 					} else {
 						_context.error( menuItem + " invoked out of context and only works for packages" );
 					}

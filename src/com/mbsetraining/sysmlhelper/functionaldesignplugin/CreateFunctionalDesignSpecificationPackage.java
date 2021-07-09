@@ -407,7 +407,7 @@ public class CreateFunctionalDesignSpecificationPackage extends FunctionalDesign
 			thePackage.createPackage();
 			thePackage.openSystemContextDiagram();
 
-			_context.cleanUpModelRemnants( m_RhpPrj );
+			_context.cleanUpModelRemnants();
 
 			m_RhpPrj.save();
 		}

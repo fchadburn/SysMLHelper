@@ -1877,15 +1877,14 @@ public abstract class BaseContext extends RhpLog {
 		return theFoundGraphEl;
 	}
 	
-	public void cleanUpModelRemnants( 
-			IRPProject inProject ){
+	public void cleanUpModelRemnants(){
 		
-		deleteIfPresent( "Structure1", "StructureDiagram", inProject );
-		deleteIfPresent( "Model1", "ObjectModelDiagram", inProject );
-		deleteIfPresent( "Default", "Package", inProject );
+		deleteIfPresent( "Structure1", "StructureDiagram", _rhpPrj );
+		deleteIfPresent( "Model1", "ObjectModelDiagram", _rhpPrj );
+		deleteIfPresent( "Default", "Package", _rhpPrj );
 		
 		IRPModelElement theDefaultComponent = 
-				inProject.findElementsByFullName("DefaultComponent", "Component");
+				_rhpPrj.findElementsByFullName("DefaultComponent", "Component");
 		
 		if( theDefaultComponent != null ){
 			theDefaultComponent.setName( "NotUsedComp" );
