@@ -467,7 +467,7 @@ SysMLHelperProfile:
 
 ----------------------------------------------------------------------------------
 
-V4.0.e.Rhp831.PreRelease (XX-XXX-2021):
+V4.0.e.Rhp831.PreRelease (11-JUL-2021):
 
 #317 08-JUL-2021: ExecutableMBSE: Initial checkpoint of sequence diagram helper for realizing interface blocks (F.J.Chadburn)
 #318 08-JUL-2021: SysMLHelper: Update menus so that it's possible to setup project properties (F.J.Chadburn)
@@ -476,6 +476,11 @@ V4.0.e.Rhp831.PreRelease (XX-XXX-2021):
 #321 09-JUL-2021: ExecutableMBSE: Added 'Update Ports and Interfaces' to the right-click menu for sequence diagrams and messages (F.J.Chadburn) 
 #322 09-JUL-2021: ExecutableMBSE: Changed automatic SD creation to use classifier rather than part, if there's only one instance (F.J.Chadburn)
 #323 11-JUL-2021: ExecutableMBSE: Update version numbering to 4.0.e (F.J.Chadburn)
+
+----------------------------------------------------------------------------------
+
+V4.0.f.Rhp831.PreRelease (XX-JUL-2021):
+#324 12-JUL-2021: ExecutableMBSE: Ensure Subsystem Blocks and System Blocks can own Generalization relations (F.J.Chadburn)
  
 Backlog/Known issues
 

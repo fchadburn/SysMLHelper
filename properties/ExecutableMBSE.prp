@@ -1,6 +1,6 @@
 Subject ExecutableMBSEProfile
         Metaclass General
-		Property PluginVersion String "V4.0.e.Rhp831.PreRelease"
+		Property PluginVersion String "V4.0.f.Rhp831.PreRelease"
 		Property EnableInfoLogging Bool "True"
 		Property EnableWarningLogging Bool "True"
 		Property EnableErrorLogging Bool "True"
@@ -134,6 +134,17 @@ Subject Format
 		Property Font.Size Int "8"
 		Property Font.Weight@Child.NameCompartment@Name Int "700"
 		Property Line.LineColor Color "128,128,0"
+		Property Line.LineStyle Int "0"
+		Property Line.LineWidth Int "1"
+	end
+	Metaclass SubsystemBlock
+		Property DefaultSize String "0,0,219,114"
+		Property Fill.FillColor Color "255,255,255"
+		Property Font.Font String "Tahoma"
+		Property Font.Size Int "8"
+		Property Font.Weight@Child.NameCompartment@Name Int "700"
+		Property Font.Italic@Child.NameCompartment@Name Int "0"
+		Property Line.LineColor Color "109,163,217"
 		Property Line.LineStyle Int "0"
 		Property Line.LineWidth Int "1"
 	end
