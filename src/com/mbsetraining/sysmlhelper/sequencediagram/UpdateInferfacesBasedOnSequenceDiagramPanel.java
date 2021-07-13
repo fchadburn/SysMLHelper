@@ -2,9 +2,9 @@ package com.mbsetraining.sysmlhelper.sequencediagram;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
-
 import javax.swing.BoxLayout;
 import javax.swing.GroupLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -140,9 +140,11 @@ public class UpdateInferfacesBasedOnSequenceDiagramPanel extends ExecutableMBSEB
 
 		for( MessageInfo messageInfo : _messageInfoList ){
 			
-			JTextField comp1 = new JTextField( messageInfo.getName() );
-			JTextField comp2 = new JTextField( messageInfo.getActionDescription() );
+			JButton comp1 = new HighlightModelElementButton( messageInfo.getName(), messageInfo.get_message() );
 			
+			JTextField comp2 = new JTextField( messageInfo.getActionDescription() );
+			comp2.setEditable( false );
+
 			theColumn1ParallelGroup.addComponent( comp1 ); 
 			theColumn2ParallelGroup.addComponent( comp2 );   
 

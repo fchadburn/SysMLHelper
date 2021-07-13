@@ -8,8 +8,10 @@ import com.telelogic.rhapsody.core.*;
 
 public class MessageInfo {
 
-	static IRPStereotype _directedFeatureStereotype;
-	
+	private static final String OPERATION = "OPERATION";
+	private static final String EVENT = "EVENT";
+
+	protected static IRPStereotype _directedFeatureStereotype;
 	protected IRPMessage _message;
 	protected String _messageType;
 	protected IRPInterfaceItem _interfaceItem;
@@ -22,6 +24,7 @@ public class MessageInfo {
 	protected InterfaceInfoList _candidateInterfaces;
 	protected boolean _isAddToInterfaceBlockNeeded;
 	protected boolean _isAddToTargetClassiferNeeded;
+	protected boolean _isDirectedFeatureSettingNeeded;
 
 	protected ConfigurationSettings _context;
 
@@ -62,14 +65,12 @@ public class MessageInfo {
 		_candidateInterfaces = candidateInterfaces;
 		_interfaceItem = _message.getFormalInterfaceItem();
 		_isRealizationNeeded = _interfaceItem == null;
-		
-		if( _directedFeatureStereotype == null ){
-			_directedFeatureStereotype = _context.getStereotypeWith( "directedFeature" );
-		}
+		_targetClassifier = getTargetClassifierFrom( _message );
+		_sourceClassifier = getSourceClassifierFrom( _message );
 		
 		if( _isRealizationNeeded ){
 			
-			if( _messageType.equals( "EVENT" ) ){
+			if( _messageType.equals( EVENT ) ){
 				
 				IRPModelElement theEvent = _context.get_rhpPrj().findAllByName( getName(), "Event" );
 				
@@ -79,21 +80,14 @@ public class MessageInfo {
 				} else {
 					_isNewEventNeeded = true;
 				}
-			}
-			
-			_isAddToTargetClassiferNeeded = true;
-			_isAddToInterfaceBlockNeeded = true;
-			
+			} else if( _messageType.equals( OPERATION ) ){
+				
+				_isNewEventNeeded = false;
+			}	
+						
 		} else {
 			_isNewEventNeeded = false;
 		}
-		
-		_targetClassifier = getTargetClassifierFrom( _message );
-		_sourceClassifier = getSourceClassifierFrom( _message );
-		
-		_context.debug( _context.elInfo( _message ) + " is a message from " + 
-				_context.elInfo( _targetClassifier ) + " to " + 
-				_context.elInfo( _sourceClassifier ) );
 		
 		_isAddToTargetClassiferNeeded = false;
 		
@@ -101,57 +95,95 @@ public class MessageInfo {
 			
 			_isAddToTargetClassiferNeeded = true;			
 
-		} else if( _isRealizationNeeded &&
-			_interfaceItem != null &&
-			!isInterfaceItemAlreadyIn( _targetClassifier, _interfaceItem ) ){
+		} else if( _isRealizationNeeded ){
 			
-			_isAddToTargetClassiferNeeded = true;			
+			_interfaceItem = 
+					getInterfaceItemAlreadyIn( 
+							_targetClassifier, _message.getName() );
+			
+			if( _interfaceItem == null ){
+				_isAddToTargetClassiferNeeded = true;			
+			}
 		}
 		
-		_matchingInterfaceBlock = 
-				_candidateInterfaces.getMatchingInterfaceBlockFrom( 
-						_sourceClassifier, _targetClassifier );
+		_isDirectedFeatureSettingNeeded = false;
+
+		if( _targetClassifier == null ||
+			_sourceClassifier == null ||
+			_targetClassifier.equals( _sourceClassifier ) ){
 		
-		if( _matchingInterfaceBlock != null ){
+			_context.debug( _context.elInfo( _message ) + " is a self-message and hence no interfaces are needed" );
 			
-			_context.debug( _context.elInfo( _matchingInterfaceBlock ) + 
-					" is the InterfaceBlock for " + _context.elInfo( _message ) );
+			_isAddToInterfaceBlockNeeded = false;
 			
-			_isInterfaceBlockReversed = false;
-		
 		} else {
+			
+			_context.debug( _context.elInfo( _message ) + " is a message from " + 
+					_context.elInfo( _targetClassifier ) + " to " + 
+					_context.elInfo( _sourceClassifier ) );
+			
+			if( _directedFeatureStereotype == null ){
+				_directedFeatureStereotype = _context.getStereotypeWith( "directedFeature" );
+			}
 			
 			_matchingInterfaceBlock = 
 					_candidateInterfaces.getMatchingInterfaceBlockFrom( 
-							_targetClassifier, 
-							_sourceClassifier );
+							_sourceClassifier, _targetClassifier );
 			
-			if( _matchingInterfaceBlock == null ){
-				
-				_context.debug( "No InterfaceBlock was found for " + _context.elInfo( _message ) );
-				
-			} else {
+			if( _matchingInterfaceBlock != null ){
 				
 				_context.debug( _context.elInfo( _matchingInterfaceBlock ) + 
-						" is the reversed InterfaceBlock for " + _context.elInfo( _message ) );
+						" is the InterfaceBlock for " + _context.elInfo( _message ) );
 				
-				_isInterfaceBlockReversed = true;
-			}
-		}
-		
-		if( _matchingInterfaceBlock != null &&
-				_interfaceItem != null &&
-				!_isNewEventNeeded ){
+				_isInterfaceBlockReversed = false;
 			
-			_isAddToInterfaceBlockNeeded = 
-					!isInterfaceItemAlreadyIn( _matchingInterfaceBlock, _interfaceItem );
-			
-			if( _isAddToInterfaceBlockNeeded ){
-				_context.debug( "Found that " + _context.elInfo( _interfaceItem ) + 
-						" requires adding to " + _context.elInfo( _matchingInterfaceBlock ) );			
+			} else {
+				
+				_matchingInterfaceBlock = 
+						_candidateInterfaces.getMatchingInterfaceBlockFrom( 
+								_targetClassifier, 
+								_sourceClassifier );
+				
+				if( _matchingInterfaceBlock == null ){
+					
+					_context.debug( "No InterfaceBlock was found for " + _context.elInfo( _message ) );
+					
+				} else {
+					
+					_context.debug( _context.elInfo( _matchingInterfaceBlock ) + 
+							" is the reversed InterfaceBlock for " + _context.elInfo( _message ) );
+					
+					_isInterfaceBlockReversed = true;
+				}
 			}
-		} else {
-			_isAddToInterfaceBlockNeeded = true;
+			
+			if( _matchingInterfaceBlock != null &&
+					_interfaceItem != null &&
+					!_isNewEventNeeded ){
+				
+				IRPInterfaceItem theInterfaceItem = 
+						getInterfaceItemAlreadyIn( 
+								_matchingInterfaceBlock, _message.getName() );
+				
+				if( theInterfaceItem == null ){
+					
+					_context.debug( "Found that " + _context.elInfo( _interfaceItem ) + 
+							" requires adding to " + _context.elInfo( _matchingInterfaceBlock ) );		
+					
+					_isAddToInterfaceBlockNeeded = true;
+					_isDirectedFeatureSettingNeeded = true;
+
+				} else {
+					_context.debug( _context.elInfo( _interfaceItem ) + 
+							" is already in" + _context.elInfo( _matchingInterfaceBlock ) );
+					
+					_isAddToInterfaceBlockNeeded = false;
+				}
+
+			} else {
+				_isAddToInterfaceBlockNeeded = true;
+				_isDirectedFeatureSettingNeeded = true;
+			}
 		}
 	}
 
@@ -183,37 +215,34 @@ public class MessageInfo {
 		return theTargetClassifier;
 	}
 
-	private boolean isInterfaceItemAlreadyIn(
+	private IRPInterfaceItem getInterfaceItemAlreadyIn(
 			IRPClassifier theClassifier,
-			IRPInterfaceItem theInterfaceItem ) {
+			String theName ) {
 		
-		boolean isInterfaceItemAlreadyIn = false;
+		IRPInterfaceItem theInterfaceItem = null;
 
 		@SuppressWarnings("unchecked")
 		List<IRPModelElement> existingInterfaceItems = theClassifier.getInterfaceItems().toList();
 		
 		for( IRPModelElement existingInterfaceItem : existingInterfaceItems ){
 			
-			_context.debug( "Found " + _context.elInfo( existingInterfaceItem ) );
+			//_context.debug( "Found " + _context.elInfo( existingInterfaceItem ) );
 
-			if( existingInterfaceItem instanceof IRPEventReception ){
+			if( existingInterfaceItem instanceof IRPEventReception ||
+					existingInterfaceItem instanceof IRPOperation ){
 				
-				IRPEventReception theEventReception = (IRPEventReception)existingInterfaceItem;
-				IRPEvent theEvent = theEventReception.getEvent();
-				
-				if( theEvent.equals( theInterfaceItem ) ){
+				if( existingInterfaceItem.getName().equals( theName ) ){
 					
-					_context.debug( "Found that " + _context.elInfo( _interfaceItem ) + 
-							" is in " + _context.elInfo( _matchingInterfaceBlock ) );
+					_context.debug( "Found that " + theName + 
+							" is in " + _context.elInfo( theClassifier ) );
 					
-					isInterfaceItemAlreadyIn = true;
+					theInterfaceItem = (IRPInterfaceItem) existingInterfaceItem;
 					break;
 				}
-				
 			}
 		}
 		
-		return isInterfaceItemAlreadyIn;
+		return theInterfaceItem;
 	}
 	
 	public boolean get_isRealizationNeeded() {
@@ -237,6 +266,7 @@ public class MessageInfo {
 		_context.debug( "_targetClassifier = " + _context.elInfo( _targetClassifier ) );
 		_context.debug( "_sourceClassifier = " + _context.elInfo( _sourceClassifier ) );
 		_context.debug( "_isAddToTargetClassiferNeeded = " + _isAddToTargetClassiferNeeded );
+		_context.debug( "_isDirectedFeatureSettingNeeded = " + _isDirectedFeatureSettingNeeded );
 	}
 	
 	public String getActionDescription(){
@@ -244,37 +274,24 @@ public class MessageInfo {
 		String theMsg = "";
 		
 		if( _isRealizationNeeded ){	
-			
 			theMsg += "Realization needed. ";
+		}
+		
+		if( _matchingInterfaceBlock != null ){
 			
-			if( _matchingInterfaceBlock != null ){
-				
-				if( _isInterfaceBlockReversed ){					
-					theMsg += " Add to " + _context.elInfo( _matchingInterfaceBlock ) + " as provided. ";
-				} else {
-					theMsg += " Add to " + _context.elInfo( _matchingInterfaceBlock ) + " as required. ";
-				}
-				
+			theMsg += " Add to " + _context.elInfo( _matchingInterfaceBlock ) + ".";
+			
+			if( _isInterfaceBlockReversed ){					
+				theMsg += " direction='provided'. ";
 			} else {
-				theMsg += " No InterfaceBlock found. ";
+				theMsg += " direction='required'. ";
 			}
 			
+		} else if( _targetClassifier.equals( _sourceClassifier ) ) {
+		
+			theMsg += " Self call. ";
 		} else {
-			
-			if( _matchingInterfaceBlock != null ){
-				
-				if( _isAddToInterfaceBlockNeeded ){
-					
-					if( _isInterfaceBlockReversed ){					
-						theMsg += "Add to " + _context.elInfo( _matchingInterfaceBlock ) + " as provided. ";
-					} else {
-						theMsg += "Add to " + _context.elInfo( _matchingInterfaceBlock ) + " as required. ";
-					}
-				}
-				
-			} else {
-				theMsg += "No InterfaceBlock found.";
-			}
+			theMsg += " No InterfaceBlock found. ";
 		}
 		
 		return theMsg;	
@@ -286,7 +303,8 @@ public class MessageInfo {
 				!_isRealizationNeeded &&
 				!_isNewEventNeeded &&
 				!_isAddToInterfaceBlockNeeded &&
-				!_isAddToTargetClassiferNeeded;
+				!_isAddToTargetClassiferNeeded &&
+				!_isDirectedFeatureSettingNeeded;
 		
 		_context.debug( "isUpToDate for " + _context.elInfo( _message ) + " is returning " + isUpToDate );
 		
@@ -308,9 +326,13 @@ public class MessageInfo {
 			
 			if( _isAddToTargetClassiferNeeded ){
 				
-				if( _messageType.equals( "EVENT" ) ){
+				if( _messageType.equals( EVENT ) ){
 					_context.debug( "Adding reception called " + getName() + " to " + _context.elInfo( _targetClassifier ) );
 					_targetClassifier.addNewAggr( "Reception", getName() );
+				
+				} else if( _messageType.equals( OPERATION ) ){
+					_context.debug( "Adding operation called " + getName() + " to " + _context.elInfo( _targetClassifier ) );
+					_interfaceItem = _targetClassifier.addOperation( getName() );
 				}
 			}
 			
@@ -323,7 +345,7 @@ public class MessageInfo {
 			
 			if( _isAddToTargetClassiferNeeded ){
 				
-				if( _messageType.equals( "EVENT" ) ){
+				if( _messageType.equals( EVENT ) ){
 					_context.debug( "Adding reception called " + getName() + " to " + _context.elInfo( _targetClassifier ) );
 					_targetClassifier.addNewAggr( "Reception", getName() );
 				}
@@ -339,38 +361,50 @@ public class MessageInfo {
 						_context.elInfo( _interfaceItem ) );
 				
 			} else {
+				IRPInterfaceItem theInterfaceItem = null;
 				
-				if( _messageType.equals( "EVENT" ) ){		
+				if( _messageType.equals( EVENT ) ){		
 					
-					IRPEventReception theEventReception = _matchingInterfaceBlock.addEventReception( getName() );
+					theInterfaceItem = _matchingInterfaceBlock.addEventReception( getName() );
 					
-					_context.debug( "Stereotyping " + _context.elInfo( theEventReception ) + 
+				} else if( _messageType.equals( OPERATION ) ){
+					
+					theInterfaceItem = _matchingInterfaceBlock.addOperation( getName() );
+				}
+				
+				if( theInterfaceItem != null ){
+				
+					_context.debug( "Stereotyping " + _context.elInfo( theInterfaceItem ) + 
 							" with " + _context.elInfo( _directedFeatureStereotype ) );
 					
-					theEventReception.setStereotype( _directedFeatureStereotype );
+					theInterfaceItem.setStereotype( _directedFeatureStereotype );
 
 					IRPTag baseTag = _directedFeatureStereotype.getTag( "direction" );
 					
 					if( _isInterfaceBlockReversed ){
 						
 						_context.debug( "Setting " + _context.elInfo( baseTag ) + 
-								" on " + _context.elInfo( theEventReception ) + " to provided" );
+								" on " + _context.elInfo( theInterfaceItem ) + " to provided" );
 						
-						theEventReception.setTagValue(baseTag, "provided");
+						theInterfaceItem.setTagValue(baseTag, "provided");
 						
 
 					} else {
 						
 						_context.debug( "Setting " + _context.elInfo( baseTag ) + 
-								" on " + _context.elInfo( theEventReception ) + " to required" );
+								" on " + _context.elInfo( theInterfaceItem ) + " to required" );
 						
-						theEventReception.setTagValue(baseTag, "required");
+						theInterfaceItem.setTagValue(baseTag, "required");
 					}
 					
-					theEventReception.highLightElement();
+					theInterfaceItem.highLightElement();
 				}
 			}
 		}
+	}
+	
+	public IRPMessage get_message() {
+		return _message;
 	}
 }
 
