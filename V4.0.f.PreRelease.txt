@@ -484,6 +484,7 @@ V4.0.f.Rhp831.PreRelease (XX-JUL-2021):
 #325 13-JUL-2021: ExecutableMBSE: Get 'Update Ports and Interfaces' to add Operations as well as Events (F.J.Chadburn)
 #326 13-JUL-2021: ExecutableMBSE: Get 'Update Ports and Interfaces' dialog to have buttons that highlight associated elements (F.J.Chadburn)
 #327 13-JUL-2021: ExecutableMBSE: Simplified tabs of DomainBlocks by removing unnecessary ports/value/flow properties tabs (F.J.Chadburn)
+#328 13-JUL-2021: ExecutableMBSE: Add 'Generate Sequence Diagram' to create a sequence diagram based on the parts of the selected block (F.J.Chadburn)
  
 Backlog/Known issues
 

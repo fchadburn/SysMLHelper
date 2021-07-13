@@ -1,5 +1,5 @@
 [Helpers]
-numberOfElements=75
+numberOfElements=76
 
 #REM: Definition of the plug-in
 name1=InvokeExecutableMBSEHelper
@@ -585,6 +585,14 @@ command75=InvokeExecutableMBSEHelper
 applicableTo75=SequenceDiagram,Message
 isVisible75=1
 DLLServerCompatible75=1
+
+#REM: Add pop-up menu
+name76=MBSE Method: Design Synthesis\Generate Sequence Diagram
+isPluginCommand76=1
+command76=InvokeExecutableMBSEHelper
+applicableTo76=Block,System Block,Domain Block
+isVisible76=1
+DLLServerCompatible76=1
 
 #REM Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 #REM

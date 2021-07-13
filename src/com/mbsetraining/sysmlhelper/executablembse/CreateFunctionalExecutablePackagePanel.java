@@ -792,6 +792,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 						theRootPkg, 
 						"SD - " + theName,
 						_context.getIsCreateSDWithAutoShowApplied( theRootPkg ),
+						false,
 						false );
 
 				IRPStatechartDiagram theStatechart = 

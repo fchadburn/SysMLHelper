@@ -1,7 +1,9 @@
 package com.mbsetraining.sysmlhelper.sequencediagram;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
@@ -31,7 +33,8 @@ public class SequenceDiagramCreator {
 					theOwningPkg, 
 					"SD - " + theSelectedEl.getName(),
 					false,
-					true );
+					true,
+					false );
 		}
 	}
 	
@@ -56,7 +59,8 @@ public class SequenceDiagramCreator {
 					(IRPPackage) theSequenceDiagram.getOwner(), 
 					theSequenceDiagram.getName(),
 					_context.getIsCreateSDWithAutoShowApplied( theSequenceDiagram ),
-					false );
+					false,
+					true );
 
 		} else {
 			_context.error("Error, unable to find building block or tester pkg");
@@ -90,46 +94,129 @@ public class SequenceDiagramCreator {
 						thePackageForSD, 
 						theSD.getName(),
 						_context.getIsCreateSDWithAutoShowApplied( theSD ),
-						false );
+						false,
+						true );
 			}
 		}
 	}
 
+	protected List<IRPInstance> getActorPartsFromLevelAbove(
+			IRPClass theAssemblyBlock ){
+	
+		List<IRPInstance> theActorParts = new ArrayList<IRPInstance>();
+		
+		IRPClass theDomainBlock = getDomainBlockAbove( theAssemblyBlock );
+		
+		if( theDomainBlock != null ){			
+			_context.debug( "The DomainBlock for " + _context.elInfo( theAssemblyBlock ) + 
+					" is " + _context.elInfo( theDomainBlock ) );
+			
+			@SuppressWarnings("unchecked")
+			List<IRPInstance> theCandidates = theDomainBlock.getNestedElementsByMetaClass( "Part", 0 ).toList();
+			
+			for( IRPInstance theCandidate : theCandidates ){
+			
+				IRPClassifier theType = theCandidate.getOtherClass();
+
+				if( theType instanceof IRPActor ){
+					theActorParts.add( theCandidate );
+				}
+			}
+		}
+		
+		return theActorParts;
+	}
+
+	private IRPClass getDomainBlockAbove(
+			IRPClass theAssemblyBlock ){
+		
+		IRPClass theDomainBlock = null;
+		
+		@SuppressWarnings("unchecked")
+		List<IRPModelElement> theReferences = theAssemblyBlock.getReferences().toList();
+		
+		List<IRPClass> theDomainBlockCandidates = new ArrayList<>();
+		
+		for( IRPModelElement theReference : theReferences ){
+			
+			_context.debug( _context.elInfo( theReference ) + " is a candidate" );
+			
+			if( theReference instanceof IRPInstance ){
+				
+				IRPInstance theInstance = (IRPInstance)theReference;
+				IRPModelElement theInstanceOwner = theInstance.getOwner();
+				
+				IRPClassifier theOtherClass = theInstance.getOtherClass();
+				
+				if( theOtherClass instanceof IRPClass && 
+						theOtherClass.equals( theAssemblyBlock ) &&
+						theInstanceOwner instanceof IRPClass ){
+					
+					_context.debug( "getDomainBlockAbove found " + 
+							_context.elInfo( theInstanceOwner ) + " for " + 
+							_context.elInfo( theAssemblyBlock ) );
+					
+					theDomainBlockCandidates.add( (IRPClass) theInstanceOwner );
+				}
+			}
+		}
+		
+		int size = theDomainBlockCandidates.size();
+		
+		if( size == 1 ){
+			theDomainBlock = theDomainBlockCandidates.get( 0 );
+		} else if( size > 1 ){
+			_context.debug( "Unable to determine DomainBlock for " + _context.elInfo( theAssemblyBlock ) + 
+					" as there are " + size + " candidates not 1" );
+		}
+		
+		return theDomainBlock;
+	}
+	
 	public void createSequenceDiagramFor(
 			IRPClass theAssemblyBlock, 
 			IRPPackage inPackage,
 			String withName,
 			boolean isAutoShow,
-			boolean isOpenDiagram ){
+			boolean isOpenDiagram,
+			boolean isRecreateExisting ){
 
 		boolean isCreateSD = true;
 
-		IRPModelElement theExistingDiagram = 
-				inPackage.findNestedElement( withName, "SequenceDiagram" );
-
 		@SuppressWarnings("unchecked")
-		List<IRPInstance> theParts =
-		theAssemblyBlock.getNestedElementsByMetaClass( "Part", 0 ).toList();
+		List<IRPInstance> theParts = theAssemblyBlock.getNestedElementsByMetaClass( "Part", 0 ).toList();
+		
+		theParts.addAll( getActorPartsFromLevelAbove( theAssemblyBlock ) );
 
-		if( theExistingDiagram != null ){
+		if( isRecreateExisting ){
 
-			String theMsg = _context.elInfo( theExistingDiagram ) + " already exists in " + 
-					_context.elInfo( inPackage ) + "\nDo you want to recreate it with x" + 
-					theParts.size() + " lifelines for:\n";
+			IRPModelElement theExistingDiagram = 
+					inPackage.findNestedElement( withName, "SequenceDiagram" );
 
-			for( Iterator<IRPInstance> iterator = theParts.iterator(); iterator.hasNext(); ){
+			if( theExistingDiagram != null ){
 
-				IRPInstance thePart = (IRPInstance) iterator.next();
-				IRPClassifier theType = thePart.getOtherClass();
-				theMsg += thePart.getName() + "." + theType.getName() + 
-						" (" + theType.getUserDefinedMetaClass() + ")\n"; 
+				String theMsg = _context.elInfo( theExistingDiagram ) + " already exists in " + 
+						_context.elInfo( inPackage ) + "\nDo you want to recreate it with x" + 
+						theParts.size() + " lifelines for:\n";
+
+				for( Iterator<IRPInstance> iterator = theParts.iterator(); iterator.hasNext(); ){
+
+					IRPInstance thePart = (IRPInstance) iterator.next();
+					IRPClassifier theType = thePart.getOtherClass();
+					theMsg += thePart.getName() + "." + theType.getName() + 
+							" (" + theType.getUserDefinedMetaClass() + ")\n"; 
+				}
+
+				isCreateSD = UserInterfaceHelper.askAQuestion( theMsg );
+
+				if( isCreateSD ){
+					theExistingDiagram.deleteFromProject();
+				}
 			}
 
-			isCreateSD = UserInterfaceHelper.askAQuestion( theMsg );
-
-			if( isCreateSD ){
-				theExistingDiagram.deleteFromProject();
-			}
+		} else {
+			
+			withName = _context.determineUniqueNameBasedOn( withName, "SequenceDiagram", inPackage );
 		}
 
 		if( isCreateSD ){

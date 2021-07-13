@@ -154,7 +154,26 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					} else {
 						_context.error( menuItem + " invoked out of context and only works for classes, objects, or structure diagrams/ibds" );
 					}
+					
+				} else if( menuItem.equals( _context.getString(
+						"executablembseplugin.GenerateSequenceDiagramMenu" ) ) ){
 
+					if( theSelectedEl instanceof IRPClass ){
+
+						SequenceDiagramCreator theCreator = new SequenceDiagramCreator( _context );
+						
+						theCreator.createSequenceDiagramFor( 
+								(IRPClass)theSelectedEl, 
+								_context.getOwningPackageFor(theSelectedEl), 
+								"SD - " + theSelectedEl.getName(), 
+								false, 
+								true,
+								false );
+
+					} else {
+						_context.error( menuItem + " invoked out of context and only works for classes" );
+					}
+					
 				} else if( menuItem.equals( _context.getString(
 						"executablembseplugin.CreateFullSimFAStructureMenu" ) ) ){
 
