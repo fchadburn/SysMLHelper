@@ -249,7 +249,7 @@ public class ConfigurationSettings extends BaseContext  {
 						" (" + theProfileDateValue + ") \n";
 				
 				if( isProvideFixingAdvice ){
-					theMsg += "It is recommended to right-click and run MBSE Method > Set-up project properties command \n" +
+					theMsg += "It is recommended to right-click and run MBSE Method > Setup project properties command \n" +
 							"to update the project to the latest profile before proceeding \n";
 				}
 

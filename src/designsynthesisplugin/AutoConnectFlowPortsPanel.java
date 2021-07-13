@@ -2,10 +2,6 @@ package designsynthesisplugin;
 
 import functionalanalysisplugin.FunctionalAnalysisSettings;
 import functionalanalysisplugin.SelectedElementContext;
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
-import generalhelpers.ProfileVersionManager;
-import generalhelpers.UserInterfaceHelpers;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -260,13 +256,11 @@ public class AutoConnectFlowPortsPanel extends ExecutableMBSEBasePanel {
 			AutoConnectFlowPortsInfo theValue = entry.getValue();
 			
 			if( theValue.isCreateNewSelected() ){
-				
-				Logger.writeLine("Create new was selected for " + Logger.elInfo( entry.getKey( ) )); 
-				
+								
 				String theChosenAttributeName = theValue.getM_ChosenNameTextField().getText();
 				
-				Logger.writeLine("Create new was selected for " + Logger.elInfo( entry.getKey( ) ) +
-						" with value " + theChosenAttributeName); 
+				_context.debug( "Create new was selected for " + _context.elInfo( entry.getKey( ) ) +
+						" with value " + theChosenAttributeName ); 
 
 				boolean isLegalName = _context.isLegalName( theChosenAttributeName, theValue.getM_SubscribingBlock() );
 				
@@ -278,7 +272,7 @@ public class AutoConnectFlowPortsPanel extends ExecutableMBSEBasePanel {
 						theChosenAttributeName, "Attribute", theValue.getM_SubscribingBlock(), 1) ){
 					
 					errorMsg += theChosenAttributeName + " is not unique in " + 
-							Logger.elInfo( theValue.getM_SubscribingBlock() ) + ", please choose again\n";
+							_context.elInfo( theValue.getM_SubscribingBlock() ) + ", please choose again\n";
 					
 					isValid = false;
 				}
@@ -308,22 +302,19 @@ public class AutoConnectFlowPortsPanel extends ExecutableMBSEBasePanel {
 				ConfirmDiagramUpdatePanel.launchThePanel( m_RadioButtonMap );
 				
 			} else {
-				Logger.writeLine("Error in CreateNewActorPanel.performAction, checkValidity returned false");
+				_context.error("Error in CreateNewActorPanel.performAction, checkValidity returned false");
 			}	
 			
-		} catch (Exception e) {
-			Logger.writeLine("Error in CopyActivityDiagramsPanel.performAction, unhandled exception was detected");
+		} catch( Exception e ){
+			_context.error("Error in CopyActivityDiagramsPanel.performAction, unhandled exception was detected");
 		}
 
 	}
 }
 
 /**
- * Copyright (C) 2017  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2017-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
-    Change history:
-    #213 09-JUL-2017: Add dialogs to auto-connect «publish»/«subscribe» FlowPorts for white-box simulation (F.J.Chadburn)
-        
     This file is part of SysMLHelperPlugin.
 
     SysMLHelperPlugin is free software: you can redistribute it and/or modify

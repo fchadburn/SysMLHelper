@@ -1,8 +1,5 @@
 package designsynthesisplugin;
 
-import generalhelpers.Logger;
-import generalhelpers.UserInterfaceHelpers;
-
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -24,6 +21,7 @@ import javax.swing.JScrollPane;
 import javax.swing.GroupLayout.ParallelGroup;
 import javax.swing.GroupLayout.SequentialGroup;
 
+import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
 import com.telelogic.rhapsody.core.*;
 
@@ -44,7 +42,7 @@ public class ConfirmDiagramUpdatePanel extends ExecutableMBSEBasePanel {
 			final AutoConnectFlowPortsMap theAutoConnectFlowPortsMap ){
 
 		final String theAppID = 
-				UserInterfaceHelpers.getAppIDIfSingleRhpRunningAndWarnUserIfNot();
+				UserInterfaceHelper.getAppIDIfSingleRhpRunningAndWarnUserIfNot();
 
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 
@@ -162,7 +160,7 @@ public class ConfirmDiagramUpdatePanel extends ExecutableMBSEBasePanel {
 				theMatchingGraphEls.add( theGraphElOnDiagram );
 			}
 			
-			Logger.writeLine( theModelObject, " is on " + Logger.elInfo( onTheDiagram ) );
+			_context.debug( _context.elInfo( theModelObject ) + " is on " + _context.elInfo( onTheDiagram ) );
 		}
 		
 		return theMatchingGraphEls;
@@ -200,15 +198,14 @@ public class ConfirmDiagramUpdatePanel extends ExecutableMBSEBasePanel {
 			}
 		}
 		
-		IRPCollection theGraphEls = 
-				DesignSynthesisPlugin.getRhapsodyApp().createNewCollection();
+		IRPCollection theGraphEls = _context.createNewCollection();
 
 		for( IRPGraphElement theGraphEl : theSetOfGraphEls ){
 			theGraphEls.addGraphicalItem( theGraphEl );
 		}
 		
-		Logger.writeLine("Completing relations for x" + theGraphEls.getCount() + 
-				" graph elements on " + Logger.elInfo( theDiagramToUpdate ) );
+		_context.debug("Completing relations for x" + theGraphEls.getCount() + 
+				" graph elements on " + _context.elInfo( theDiagramToUpdate ) );
 		
 		theDiagramToUpdate.completeRelations( theGraphEls, 0);		
 	}
@@ -267,7 +264,7 @@ public class ConfirmDiagramUpdatePanel extends ExecutableMBSEBasePanel {
 				
 		if( isMessageEnabled && !isValid && errorMsg != null ){
 			
-			UserInterfaceHelpers.showWarningDialog( errorMsg );
+			UserInterfaceHelper.showWarningDialog( errorMsg );
 		}
 		
 		return isValid;
@@ -293,11 +290,11 @@ public class ConfirmDiagramUpdatePanel extends ExecutableMBSEBasePanel {
 				}
 				
 			} else {
-				Logger.writeLine("Error in ConfirmDiagramUpdatePanel.performAction, checkValidity returned false");
+				_context.error("Error in ConfirmDiagramUpdatePanel.performAction, checkValidity returned false");
 			}	
 			
 		} catch (Exception e) {
-			Logger.writeLine("Error in ConfirmDiagramUpdatePanel.performAction, unhandled exception was detected");
+			_context.error("Error in ConfirmDiagramUpdatePanel.performAction, unhandled exception was detected");
 		}
 	}
 }

@@ -284,10 +284,10 @@ public class ActorMappingInfo {
 						theActorPart );
 			}
 
-			_context.info( "Finishing adding part connected to actor" );
+			_context.debug( "Finishing adding part connected to actor" );
 
 		} else {
-			_context.info( "Not selected" );
+			_context.debug( "Not selected" );
 		}
 		
 		return theActorPart;
@@ -327,7 +327,7 @@ public class ActorMappingInfo {
 			
 		} else {
 
-			_context.info( "Creating a new connector between " + 
+			_context.debug( "Creating a new connector between " + 
 					_context.elInfo( theTesterBlock ) + " and " + 
 					_context.elInfo( theActor ) );
 
@@ -339,8 +339,9 @@ public class ActorMappingInfo {
 				theTesterToActorPort = 
 						(IRPPort) theTesterBlock.addNewAggr(
 								"Port", "p" + theActor.getName() );
-			} catch (Exception e) {
-				_context.error("Exception while trying to add ports");
+			
+			} catch( Exception e ){
+				_context.error( "Exception while trying to add ports" );
 			}
 		}
 		
@@ -352,7 +353,7 @@ public class ActorMappingInfo {
 						theActorToTesterPort, 
 						theTesterToActorPort );
 		
-		theTesterLink.changeTo("connector");
+		theTesterLink.changeTo( "connector" );
 	}
 
 	public void connectActorPartWithBlockPartIn(
@@ -387,7 +388,7 @@ public class ActorMappingInfo {
 			}	
 		} else {
 
-			_context.info( "Creating a new connector between " + 
+			_context.debug( "Creating a new connector between " + 
 					_context.elInfo( connectedToBlock ) + " and " + 
 					_context.elInfo( theActor ) );
 
@@ -415,7 +416,7 @@ public class ActorMappingInfo {
 				theSystemToActorPort = 
 						(IRPPort) connectedToBlock.addNewAggr(
 								"Port", theSystemPortName );	
-			} catch (Exception e) {
+			} catch( Exception e ){
 				_context.error("Exception while trying to create system to actor port");
 			}			
 		}
@@ -429,9 +430,9 @@ public class ActorMappingInfo {
 							theActorToSystemPort, 
 							theSystemToActorPort );
 			
-			theLogicalSystemLink.changeTo("connector");
+			theLogicalSystemLink.changeTo( "connector" );
 			
-		} catch (Exception e) {
+		} catch( Exception e ){
 			_context.error("Exception while trying to addLink");
 		}
 	}
