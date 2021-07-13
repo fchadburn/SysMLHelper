@@ -523,7 +523,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 					String theInterfaceBlockName =
 							_context.determineUniqueNameBasedOn( 
-									fromClassifierName + "_To_" + toClassifierName, 
+									"IB_" + fromClassifierName + "_To_" + toClassifierName, 
 									"Class", 
 									theOwningPkg );
 						

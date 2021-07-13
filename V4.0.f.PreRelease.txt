@@ -485,6 +485,7 @@ V4.0.f.Rhp831.PreRelease (XX-JUL-2021):
 #326 13-JUL-2021: ExecutableMBSE: Get 'Update Ports and Interfaces' dialog to have buttons that highlight associated elements (F.J.Chadburn)
 #327 13-JUL-2021: ExecutableMBSE: Simplified tabs of DomainBlocks by removing unnecessary ports/value/flow properties tabs (F.J.Chadburn)
 #328 13-JUL-2021: ExecutableMBSE: Add 'Generate Sequence Diagram' to create a sequence diagram based on the parts of the selected block (F.J.Chadburn)
+#329 13-JUL-2021: ExecutableMBSE: Add "IB_" pre-fix to auto-generated InterfaceBlocks created when drawing connectors (F.J.Chadburn)
  
 Backlog/Known issues
 
@@ -498,3 +499,7 @@ Backlog/Known issues
 - Auto-move for InterfaceBlock?
 - Hide TriggeredOperations/Constructor/Destructor perhaps?
 - Remove unnecessary tabs from SystemBlock,SubsystemBlock
+- Move icons into the Icon package and ensure they're all controlled files so that Save As works cleanly
+- Remove need for parallel region to have ch events/check this?
+- Move projects into separate root folders for cleaness of plug-and-play
+- SysMLHelper deprecate functional analysis menus to go with ExecutableMBSE profile instead
