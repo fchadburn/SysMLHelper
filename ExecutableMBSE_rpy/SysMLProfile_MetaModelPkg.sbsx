@@ -25,8 +25,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">7.12.2021::11:13:52</_modifiedTime>
-			<_lastID type="a">98</_lastID>
+			<_modifiedTime type="a">7.13.2021::11:18:5</_modifiedTime>
+			<_lastID type="a">99</_lastID>
 			<_defaultComposite type="s">GUID 17d534c9-e8e2-45c6-8b29-5c81cb4d7dea</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
@@ -122,6 +122,7 @@
 				<value>GUID 55d89f1f-c8c9-40e3-bd58-1e3319cb4ebf</value>
 				<value>GUID 0cdc6a98-41d7-4de4-aaa0-b5c001ff998a</value>
 				<value>GUID bac96c76-b055-41b8-8d93-489a0ffe9492</value>
+				<value>GUID 3d25081e-3331-4e4c-9323-6930b175c1ef</value>
 			</AggregatesList>
 		</ISubsystem>
 		<IClass type="e">
@@ -7714,6 +7715,41 @@
 				</IHandle>
 			</_theMainDiagram>
 			<_modifiedTime type="a">7.5.2021::13:14:20</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 3d25081e-3331-4e4c-9323-6930b175c1ef</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Ports</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">Tab</_hname>
+							<_hid type="a">GUID cc48c921-e212-4b46-b047-5021611568ed</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\ExecutableMBSEProfile_MetaModelPkg.sbsx</_hfilename>
+					<_hsubsystem type="a">ExecutableMBSEProfile_MetaModelPkg</_hsubsystem>
+					<_hclass type="a">DomainBlock</_hclass>
+					<_hname type="a">MMD - DomainBlock</_hname>
+					<_hid type="a">GUID c4c33698-d8e0-4303-b142-96559bf9d211</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.13.2021::11:18:47</_modifiedTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
