@@ -91,6 +91,9 @@ public class EventDeletor {
 		
 		ModelElementList theEvents = theList.getListFilteredBy( "Event" );
 		theEvents.deleteFromProject();
+		
+		ModelElementList theSendActions = theList.getListFilteredBy( "SendAction" );
+		theSendActions.deleteFromProject();
 	}
 	
 	private void deleteEventAndRelatedElementsFor(
@@ -109,10 +112,13 @@ public class EventDeletor {
 				_context.debug( _context.elInfo( theRef ) + " was added to list to delete");
 				toDeleteList.add( theRef );
 			} else if ( theRef instanceof IRPTransition ){
-				_context.debug( _context.elInfo( theRef ) + "was added to list to delete");
+				_context.debug( _context.elInfo( theRef ) + " was added to list to delete");
 				toDeleteList.add( theRef );
 			} else if ( theRef instanceof IRPMessage ){
-				_context.debug( _context.elInfo( theRef ) + "was added to list to delete");
+				_context.debug( _context.elInfo( theRef ) + " was added to list to delete");
+				toDeleteList.add( theRef );
+			} else if ( theRef instanceof IRPSendAction ){
+				_context.debug( _context.elInfo( theRef ) + " was added to list to delete");
 				toDeleteList.add( theRef );
 			} else {
 				_context.error("Error in deleteEventAndRelatedElementsFor, as " + _context.elInfo(theRef) + 
