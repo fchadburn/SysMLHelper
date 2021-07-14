@@ -487,7 +487,9 @@ V4.0.f.Rhp831.PreRelease (XX-JUL-2021):
 #328 13-JUL-2021: ExecutableMBSE: Add 'Generate Sequence Diagram' to create a sequence diagram based on the parts of the selected block (F.J.Chadburn)
 #329 13-JUL-2021: ExecutableMBSE: Add "IB_" pre-fix to auto-generated InterfaceBlocks created when drawing connectors (F.J.Chadburn)
 #330 13-JUL-2021: ExecutableMBSE: Clean-up some of the logging, including getting rid of unnecessary infos (F.J.Chadburn)
-#331 13-JUL-2021: ExecutableMBSE: Fix 'Delete Event and related elements from Model' so that it purges SendActions (F.J.Chadburn)
+#331 14-JUL-2021: ExecutableMBSE: Fix 'Delete Event and related elements from Model' so that it purges SendActions (F.J.Chadburn)
+#332 14-JUL-2021: ExecutableMBSE: Get 'Update Ports and Interfaces' to set behavioral flag on ports if missing (F.J.Chadburn)
+#333 14-JUL-2021: ExecutableMBSE: Get 'Update Ports and Interfaces' to check for sds that are not saved before proceeding (F.J.Chadburn)
  
 Backlog/Known issues
 

@@ -36,7 +36,7 @@ public class MessageInfoList extends ArrayList<MessageInfo>{
 		for( IRPModelElement theMessage : theMessages ){
 			
 			if( theMessage instanceof IRPMessage ){
-				addOrUpdateCount( (IRPMessage) theMessage );
+				addOrUpdateCount( (IRPMessage) theMessage, theSD );
 			}
 		}		
 		
@@ -46,14 +46,23 @@ public class MessageInfoList extends ArrayList<MessageInfo>{
 	}
 
 	private void addOrUpdateCount(
-			IRPMessage theMessage ){
+			IRPMessage theMessage,
+			IRPSequenceDiagram onDiagram ){
 		
-		MessageInfo theMessageInfo = new MessageInfo( theMessage, _candidateInterfaces, _context );
+		String theMessageType = theMessage.getMessageType();
 		
-		if( theMessageInfo.isUpToDate() ){
-			_upToDateCount++;
-		} else {					
-			add( theMessageInfo );
+		boolean isMessage = theMessageType.equals( "EVENT" ) || theMessageType.equals( "OPERATION" );
+		
+		if( isMessage ){
+			MessageInfo theMessageInfo = new MessageInfo( theMessage, onDiagram, _candidateInterfaces, _context );
+			
+			if( theMessageInfo.isUpToDate() ){
+				_upToDateCount++;
+			} else {					
+				add( theMessageInfo );
+			}			
+		} else {
+			_context.debug( "addOrUpdateCount is ignoring " + _context.elInfo( theMessage ) + " as it's not an event or operation" );
 		}
 	}
 	
@@ -63,6 +72,7 @@ public class MessageInfoList extends ArrayList<MessageInfo>{
 
 	public MessageInfoList(
 			IRPMessage theMessage,
+			IRPSequenceDiagram onDiagram,
 			InterfaceInfoList theCandidateInterfaces,
 			ConfigurationSettings theContext ){
 		
@@ -71,7 +81,7 @@ public class MessageInfoList extends ArrayList<MessageInfo>{
 
 		_context.debug( "MessageInfoList constructor invoked for " + _context.elInfo( theMessage ) );
 		
-		addOrUpdateCount( theMessage );
+		addOrUpdateCount( theMessage, onDiagram );
 	}
 	
 	protected void dumpInfo(){

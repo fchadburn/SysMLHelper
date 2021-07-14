@@ -154,9 +154,9 @@ public class InterfaceInfoList extends ArrayList<InterfaceInfo>{
 					} else {
 						InterfaceInfo theInfo = new InterfaceInfo( 
 								(IRPClass) theCandidate, 
-								(IRPClassifier)thePort.getOwner(), 
-								(IRPClassifier)theOtherEndPort.getOwner(), 
-								_context);
+								thePort, 
+								theOtherEndPort, 
+								_context );
 
 						add( theInfo );
 					}
@@ -172,22 +172,23 @@ public class InterfaceInfoList extends ArrayList<InterfaceInfo>{
 		}
 	}
 	
-	public IRPClass getMatchingInterfaceBlockFrom(
+	public InterfaceInfo getMatchingInterfaceInfoFrom(
 			IRPClassifier fromClassifier,
 			IRPClassifier toClassifier ){
 		
-		IRPClass theInterfaceBlock = null;
+		InterfaceInfo theInterfaceInfo = null;
 		
 		for( InterfaceInfo theInfo : this ){
 			
 			if( theInfo.get_fromClassifier().equals( fromClassifier ) &&
 					theInfo.get_toClassifier().equals( toClassifier )	){
 				
-				theInterfaceBlock = theInfo.get_interfaceClass();
+				theInterfaceInfo = theInfo;
+				break;
 			}
 		}
 
-		return theInterfaceBlock;
+		return theInterfaceInfo;
 	}
 }
 

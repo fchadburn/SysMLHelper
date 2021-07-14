@@ -2,6 +2,7 @@ package com.mbsetraining.sysmlhelper.sequencediagram;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+
 import javax.swing.BoxLayout;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -12,6 +13,7 @@ import javax.swing.GroupLayout.ParallelGroup;
 import javax.swing.GroupLayout.SequentialGroup;
 import javax.swing.border.EmptyBorder;
 
+import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
 import com.telelogic.rhapsody.core.*;
 
@@ -84,7 +86,8 @@ public class UpdateInferfacesBasedOnSequenceDiagramPanel extends ExecutableMBSEB
 			
 			IRPMessage theMessage = (IRPMessage) theSelectedEl;
 			_diagram = (IRPSequenceDiagram) theMessage.getMainDiagram();
-			_messageInfoList = new MessageInfoList( theMessage, _interfaceInfoList, _context );
+			_messageInfoList = new MessageInfoList( theMessage, _diagram, _interfaceInfoList, _context );
+			
 		} else {
 			_context.error( "UpdateInferfacesBasedOnSequenceDiagramPanel is not supported for " + _context.elInfo( theSelectedEl ) );
 		}
@@ -161,8 +164,6 @@ public class UpdateInferfacesBasedOnSequenceDiagramPanel extends ExecutableMBSEB
 			theVerticalSequenceGroup.addGroup( theVertical2ParallelGroup );		
 		}
 		
-
-
 		theGroupLayout.setHorizontalGroup( theHorizSequenceGroup );
 		theGroupLayout.setVerticalGroup( theVerticalSequenceGroup );
 
@@ -173,7 +174,23 @@ public class UpdateInferfacesBasedOnSequenceDiagramPanel extends ExecutableMBSEB
 	protected boolean checkValidity(
 			boolean isMessageEnabled ){
 		
-		return true;
+		boolean isValid = true;
+		
+		String theMsg = "";
+		
+		boolean isDiagramOwner = _diagram.getOwner() != null;
+		
+		if( !isDiagramOwner ){
+			theMsg += _context.elInfo( _diagram ) + " does not appear to be saved. " + 
+					"Please save the diagram and try again. ";
+			isValid = false;
+		}
+		
+		if( isMessageEnabled && !isValid ){
+			UserInterfaceHelper.showWarningDialog( theMsg );
+		}
+		
+		return isValid;
 	}
 
 	@Override

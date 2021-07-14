@@ -8,18 +8,23 @@ public class InterfaceInfo {
 	protected IRPClass _interfaceClass;
 	protected IRPClassifier _fromClassifier;
 	protected IRPClassifier _toClassifier;
+	protected IRPPort _fromPort;
+	protected IRPPort _toPort;
+	protected boolean _isFromPortNeedsToBeBehavioural;
+	protected boolean _isToPortNeedsToBeBehavioural;
 	protected ConfigurationSettings _context;
 
 	public InterfaceInfo(
 		IRPClass interfaceClass,
-		IRPClassifier fromClassifier,
-		IRPClassifier toClassifier,
-		ConfigurationSettings context
-			) {
+		IRPPort fromPort,
+		IRPPort toPort,
+		ConfigurationSettings context ){
 
 		_interfaceClass = interfaceClass;
-		_fromClassifier = fromClassifier;
-		_toClassifier = toClassifier;
+		_fromPort = fromPort;
+		_toPort = toPort;
+		_fromClassifier = (IRPClassifier) _fromPort.getOwner();
+		_toClassifier = (IRPClassifier) _toPort.getOwner();
 		_context = context;
 	}
 	
@@ -41,6 +46,43 @@ public class InterfaceInfo {
 
 	public IRPClassifier get_toClassifier() {
 		return _toClassifier;
+	}
+	
+	public void set_isToPortNeedsToBeBehavioural(
+			boolean _isToPortNeedsToBeBehavioural ){
+		
+		this._isToPortNeedsToBeBehavioural = _isToPortNeedsToBeBehavioural;
+	}
+	
+	public void set_isFromPortNeedsToBeBehavioural(
+			boolean _isFromPortNeedsToBeBehavioural ){
+		
+		this._isFromPortNeedsToBeBehavioural = _isFromPortNeedsToBeBehavioural;
+	}
+	
+	public void setPortsAsBehaviouralIfNeeded(){
+		
+		if( _isFromPortNeedsToBeBehavioural && 
+				_fromPort.getIsBehavioral() != 1 ){
+			
+			_context.debug( "Setting " + _context.elInfo( _fromPort ) + " as behavioural" );
+			_fromPort.setIsBehavioral( 1 );
+		}
+		
+		if( _isToPortNeedsToBeBehavioural && 
+				_toPort.getIsBehavioral() != 1 ){
+			
+			_context.debug( "Setting " + _context.elInfo( _toPort ) + " as behavioural" );
+			_toPort.setIsBehavioral( 1 );
+		}
+	}
+	
+	public IRPPort get_fromPort() {
+		return _fromPort;
+	}
+
+	public IRPPort get_toPort() {
+		return _toPort;
 	}
 }
 

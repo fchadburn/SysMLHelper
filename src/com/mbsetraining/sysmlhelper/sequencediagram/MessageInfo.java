@@ -13,18 +13,21 @@ public class MessageInfo {
 
 	protected static IRPStereotype _directedFeatureStereotype;
 	protected IRPMessage _message;
+	protected IRPSequenceDiagram _diagram;
 	protected String _messageType;
 	protected IRPInterfaceItem _interfaceItem;
 	protected boolean _isRealizationNeeded;
 	protected IRPClassifier _targetClassifier;
 	protected IRPClassifier _sourceClassifier;
 	protected boolean _isNewEventNeeded;
-	protected IRPClass _matchingInterfaceBlock;
+	protected InterfaceInfo _matchingInterfaceBlock;
 	protected boolean _isInterfaceBlockReversed;
 	protected InterfaceInfoList _candidateInterfaces;
 	protected boolean _isAddToInterfaceBlockNeeded;
 	protected boolean _isAddToTargetClassiferNeeded;
 	protected boolean _isDirectedFeatureSettingNeeded;
+	protected boolean _isSetAsBehaviouralPortNeededForToPort;
+	protected boolean _isSetAsBehaviouralPortNeededForFromPort;
 
 	protected ConfigurationSettings _context;
 
@@ -36,11 +39,17 @@ public class MessageInfo {
 		IRPModelElement theSelectedEl = theRhpApp.getSelectedElement();
 		
 		InterfaceInfoList theCandidateInterfaces = new InterfaceInfoList( theContext );
+		
 		if( theSelectedEl instanceof IRPMessage ){
+			
+			IRPGraphElement theSelectedGraphEl = theContext.getSelectedGraphEl();
 			
 			MessageInfo theMessageInfo = 
 					new MessageInfo( 
-							(IRPMessage) theSelectedEl, theCandidateInterfaces, theContext );
+							(IRPMessage) theSelectedEl, 
+							(IRPSequenceDiagram) theSelectedGraphEl.getDiagram(), 
+							theCandidateInterfaces, 
+							theContext );
 			
 			theMessageInfo.dumpInfo();
 			
@@ -56,17 +65,25 @@ public class MessageInfo {
 	
 	public MessageInfo(
 			IRPMessage theMessage,
+			IRPSequenceDiagram theDiagram,
 			InterfaceInfoList candidateInterfaces,
 			ConfigurationSettings context ) {
 		
 		_context = context;
 		_message = theMessage;
+		_diagram = theDiagram;
 		_messageType = _message.getMessageType();
 		_candidateInterfaces = candidateInterfaces;
 		_interfaceItem = _message.getFormalInterfaceItem();
 		_isRealizationNeeded = _interfaceItem == null;
 		_targetClassifier = getTargetClassifierFrom( _message );
 		_sourceClassifier = getSourceClassifierFrom( _message );
+		_isSetAsBehaviouralPortNeededForToPort = false;
+		_isSetAsBehaviouralPortNeededForFromPort = false;
+		
+		if( _diagram.getOwner() == null ){
+			_context.warning( "No owner found for " + _context.elInfo( _diagram ) + ", save to model and diagram is needed");
+		}
 		
 		if( _isRealizationNeeded ){
 			
@@ -118,29 +135,33 @@ public class MessageInfo {
 			
 		} else {
 			
-			_context.debug( _context.elInfo( _message ) + " is a message from " + 
-					_context.elInfo( _targetClassifier ) + " to " + 
-					_context.elInfo( _sourceClassifier ) );
+			_context.debug( _context.elInfo( _message ) + " is " + _messageType + 
+					" from " + _context.elInfo( _targetClassifier ) + 
+					" to " + _context.elInfo( _sourceClassifier ) );
 			
 			if( _directedFeatureStereotype == null ){
 				_directedFeatureStereotype = _context.getStereotypeWith( "directedFeature" );
 			}
 			
 			_matchingInterfaceBlock = 
-					_candidateInterfaces.getMatchingInterfaceBlockFrom( 
+					_candidateInterfaces.getMatchingInterfaceInfoFrom( 
 							_sourceClassifier, _targetClassifier );
 			
 			if( _matchingInterfaceBlock != null ){
 				
-				_context.debug( _context.elInfo( _matchingInterfaceBlock ) + 
+				_context.debug( _context.elInfo( _matchingInterfaceBlock.get_interfaceClass() ) + 
 						" is the InterfaceBlock for " + _context.elInfo( _message ) );
 				
 				_isInterfaceBlockReversed = false;
+				
+				if( _matchingInterfaceBlock._toPort.getIsBehavioral() != 1 ){
+					_isSetAsBehaviouralPortNeededForToPort = true;
+				}
 			
 			} else {
 				
 				_matchingInterfaceBlock = 
-						_candidateInterfaces.getMatchingInterfaceBlockFrom( 
+						_candidateInterfaces.getMatchingInterfaceInfoFrom( 
 								_targetClassifier, 
 								_sourceClassifier );
 				
@@ -150,10 +171,14 @@ public class MessageInfo {
 					
 				} else {
 					
-					_context.debug( _context.elInfo( _matchingInterfaceBlock ) + 
+					_context.debug( _context.elInfo( _matchingInterfaceBlock.get_interfaceClass() ) + 
 							" is the reversed InterfaceBlock for " + _context.elInfo( _message ) );
 					
 					_isInterfaceBlockReversed = true;
+					
+					if( _matchingInterfaceBlock._fromPort.getIsBehavioral() != 1 ){
+						_isSetAsBehaviouralPortNeededForFromPort = true;
+					}
 				}
 			}
 			
@@ -163,19 +188,19 @@ public class MessageInfo {
 				
 				IRPInterfaceItem theInterfaceItem = 
 						getInterfaceItemAlreadyIn( 
-								_matchingInterfaceBlock, _message.getName() );
+								_matchingInterfaceBlock.get_interfaceClass(), _message.getName() );
 				
 				if( theInterfaceItem == null ){
 					
 					_context.debug( "Found that " + _context.elInfo( _interfaceItem ) + 
-							" requires adding to " + _context.elInfo( _matchingInterfaceBlock ) );		
+							" requires adding to " + _context.elInfo( _matchingInterfaceBlock.get_interfaceClass() ) );		
 					
 					_isAddToInterfaceBlockNeeded = true;
 					_isDirectedFeatureSettingNeeded = true;
 
 				} else {
 					_context.debug( _context.elInfo( _interfaceItem ) + 
-							" is already in" + _context.elInfo( _matchingInterfaceBlock ) );
+							" is already in " + _context.elInfo( _matchingInterfaceBlock.get_interfaceClass() ) );
 					
 					_isAddToInterfaceBlockNeeded = false;
 				}
@@ -260,7 +285,7 @@ public class MessageInfo {
 		_context.debug( "_interfaceItem is " + _context.elInfo( _interfaceItem ) );
 		_context.debug( "_isRealizationNeeded = " + _isRealizationNeeded );
 		_context.debug( "_isNewEventNeeded = " + _isNewEventNeeded );
-		_context.debug( "_matchingInterfaceBlock is " + _context.elInfo( _matchingInterfaceBlock ) );
+		_context.debug( "_matchingInterfaceBlock is " + _context.elInfo( _matchingInterfaceBlock.get_interfaceClass() ) );
 		_context.debug( "_isInterfaceBlockReversed = " + _isInterfaceBlockReversed );
 		_context.debug( "_isAddToInterfaceBlockNeeded = " + _isAddToInterfaceBlockNeeded );
 		_context.debug( "_targetClassifier = " + _context.elInfo( _targetClassifier ) );
@@ -277,9 +302,9 @@ public class MessageInfo {
 			theMsg += "Realization needed. ";
 		}
 		
-		if( _matchingInterfaceBlock != null ){
+		if( _isAddToInterfaceBlockNeeded ){
 			
-			theMsg += " Add to " + _context.elInfo( _matchingInterfaceBlock ) + ".";
+			theMsg += " Add to " + _context.elInfo( _matchingInterfaceBlock.get_interfaceClass() ) + ".";
 			
 			if( _isInterfaceBlockReversed ){					
 				theMsg += " direction='provided'. ";
@@ -290,8 +315,17 @@ public class MessageInfo {
 		} else if( _targetClassifier.equals( _sourceClassifier ) ) {
 		
 			theMsg += " Self call. ";
-		} else {
+			
+		} else if( _matchingInterfaceBlock == null ){
 			theMsg += " No InterfaceBlock found. ";
+		}
+		
+		if( _isSetAsBehaviouralPortNeededForFromPort ){
+			theMsg += " Set " + _matchingInterfaceBlock.get_fromPort().getName() + " as a behavior port.";
+		}
+		
+		if( _isSetAsBehaviouralPortNeededForToPort ){
+			theMsg += " Set " + _matchingInterfaceBlock.get_toPort().getName() + " as a behavior port.";
 		}
 		
 		return theMsg;	
@@ -304,7 +338,9 @@ public class MessageInfo {
 				!_isNewEventNeeded &&
 				!_isAddToInterfaceBlockNeeded &&
 				!_isAddToTargetClassiferNeeded &&
-				!_isDirectedFeatureSettingNeeded;
+				!_isDirectedFeatureSettingNeeded &&
+				!_isSetAsBehaviouralPortNeededForToPort &&
+				!_isSetAsBehaviouralPortNeededForFromPort;
 		
 		_context.debug( "isUpToDate for " + _context.elInfo( _message ) + " is returning " + isUpToDate );
 		
@@ -319,8 +355,12 @@ public class MessageInfo {
 			
 			if( _isNewEventNeeded ){
 				
-				IRPPackage thePkg = _context.getOwningPackageFor( _message );
-				_context.debug( "Adding event called " + getName() + " to " + _context.elInfo( thePkg ) );
+				if( _diagram.getOwner() == null ){
+					_context.warning( "No owner found for " + _context.elInfo( _diagram ) + ", save to model and diagram is needed");
+				}
+				
+				IRPPackage thePkg = _context.getOwningPackageFor( _diagram );
+				_context.debug( "Adding event called  " + getName() + " to" + _context.elInfo( thePkg ) );
 				_interfaceItem = thePkg.addEvent( getName() );
 			}	
 			
@@ -355,6 +395,7 @@ public class MessageInfo {
 		if( _isAddToInterfaceBlockNeeded ){
 			
 			if( _matchingInterfaceBlock == null ){
+				
 				_context.warning( "No InterfaceBlock was found between " + 
 						_context.elInfo( _sourceClassifier ) + " and " + 
 						_context.elInfo( _targetClassifier ) + " for which to add " + 
@@ -365,11 +406,11 @@ public class MessageInfo {
 				
 				if( _messageType.equals( EVENT ) ){		
 					
-					theInterfaceItem = _matchingInterfaceBlock.addEventReception( getName() );
+					theInterfaceItem = _matchingInterfaceBlock.get_interfaceClass().addEventReception( getName() );
 					
 				} else if( _messageType.equals( OPERATION ) ){
 					
-					theInterfaceItem = _matchingInterfaceBlock.addOperation( getName() );
+					theInterfaceItem = _matchingInterfaceBlock.get_interfaceClass().addOperation( getName() );
 				}
 				
 				if( theInterfaceItem != null ){
@@ -400,6 +441,20 @@ public class MessageInfo {
 					theInterfaceItem.highLightElement();
 				}
 			}
+		}
+		
+		if( _isSetAsBehaviouralPortNeededForFromPort ){
+			
+			_context.debug( _matchingInterfaceBlock.get_fromPort().getName() + " is behavior port" );
+			
+			_matchingInterfaceBlock.get_fromPort().setIsBehavioral( 1 );
+		}
+		
+		if( _isSetAsBehaviouralPortNeededForToPort ){
+			
+			_context.debug( _matchingInterfaceBlock.get_toPort().getName() + " is behavior port" );
+			
+			_matchingInterfaceBlock.get_toPort().setIsBehavioral( 1 );
 		}
 	}
 	
