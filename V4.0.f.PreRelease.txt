@@ -489,8 +489,9 @@ V4.0.f.Rhp831.PreRelease (XX-JUL-2021):
 #330 13-JUL-2021: ExecutableMBSE: Clean-up some of the logging, including getting rid of unnecessary infos (F.J.Chadburn)
 #331 14-JUL-2021: ExecutableMBSE: Fix 'Delete Event and related elements from Model' so that it purges SendActions (F.J.Chadburn)
 #332 14-JUL-2021: ExecutableMBSE: Get 'Update Ports and Interfaces' to set behavioral flag on ports if missing (F.J.Chadburn)
-#333 14-JUL-2021: ExecutableMBSE: Get 'Update Ports and Interfaces' to check for sds that are not saved before proceeding (F.J.Chadburn)
- 
+#333 14-JUL-2021: ExecutableMBSE: Get 'Update Ports and Interfaces' to check for sds that are saved before proceeding (F.J.Chadburn)
+#334 15-JUL-2021: ExecutableMBSE: Get default display option properties for subsystem/system/function usages on IBDs show ports (F.J.Chadburn) 
+
 Backlog/Known issues
 
 - Add ability to create context diagram package at same time as creating the use case package
@@ -507,3 +508,5 @@ Backlog/Known issues
 - Remove need for parallel region to have ch events/check this?
 - Move projects into separate root folders for cleanliness of plug-and-play
 - SysMLHelper deprecate functional analysis menus to go with ExecutableMBSE profile instead
+- Get the auto-generate ports/interfaces for connector to determine if there is a subsystem interfaces package in the model for events etc?
+- Incorporate short-hand names with subsystems
