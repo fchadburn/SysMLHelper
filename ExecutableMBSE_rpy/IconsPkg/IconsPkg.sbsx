@@ -11,7 +11,7 @@
 			<_id type="a">GUID 801c8dc2-1109-41eb-8815-e3fb68b9a344</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">IconsPkg</_name>
-			<_modifiedTime type="a">6.15.2021::8:42:13</_modifiedTime>
+			<_modifiedTime type="a">7.15.2021::14:50:23</_modifiedTime>
 			<_defaultComposite type="s">GUID 64eceb80-328e-445f-90f1-4b11f0a04bea</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
@@ -27,6 +27,8 @@
 				<value>GUID b9b8fe11-8ad1-4e61-8129-be64a266cf07</value>
 				<value>GUID 2ef19053-6007-4704-b72f-c420bf9b454c</value>
 				<value>GUID e248cddc-3f99-4b99-ac54-07d57b10a174</value>
+				<value>GUID d46d0019-1ba3-465c-b5f5-60200fc6ff6d</value>
+				<value>GUID 4615c549-a2e6-4b64-b1f0-8296582f470a</value>
 				<value>GUID 64eceb80-328e-445f-90f1-4b11f0a04bea</value>
 			</AggregatesList>
 		</ISubsystem>
@@ -113,6 +115,20 @@
 			<_modifiedTime type="a">6.15.2021::8:42:13</_modifiedTime>
 			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
 			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\SystemUsages.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID d46d0019-1ba3-465c-b5f5-60200fc6ff6d</_id>
+			<_name type="a">FlowInput.ico</_name>
+			<_modifiedTime type="a">7.15.2021::14:50:11</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\FlowInput.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID 4615c549-a2e6-4b64-b1f0-8296582f470a</_id>
+			<_name type="a">FlowOutput.ico</_name>
+			<_modifiedTime type="a">7.15.2021::14:50:23</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\FlowOutput.ico</_LastKnownFullPath>
 		</IEmbededFile>
 		<IClass type="e">
 			<_id type="a">GUID 64eceb80-328e-445f-90f1-4b11f0a04bea</_id>

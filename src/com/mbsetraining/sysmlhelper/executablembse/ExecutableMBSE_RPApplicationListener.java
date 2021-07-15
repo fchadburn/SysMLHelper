@@ -39,6 +39,8 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			_context.setSavedInSeparateDirectoryIfAppropriateFor( 
 					modelElement );
 
+			String theUserDefinedMetaClass = modelElement.getUserDefinedMetaClass();
+			
 			if( modelElement instanceof IRPRequirement ){
 
 				afterAddForRequirement( modelElement );
@@ -75,6 +77,14 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			} else if( modelElement instanceof IRPLink ){
 
 				afterAddForLink( (IRPLink) modelElement );
+				
+			} else if( theUserDefinedMetaClass.equals( "Flow Input" ) ){
+
+				afterAddForFlowInput( (IRPSysMLPort) modelElement );
+
+			} else if( theUserDefinedMetaClass.equals( "Flow Output" ) ){
+
+				afterAddForFlowOutput( (IRPSysMLPort) modelElement );
 			}
 
 		} catch( Exception e ){
@@ -86,6 +96,38 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		return doDefault;
 	}
 
+
+	private void afterAddForFlowOutput(
+			IRPSysMLPort theSysMLPort ){
+
+		setPortDirectionFor( theSysMLPort, "Out", "Untyped" );
+	}
+	
+	private void afterAddForFlowInput(
+			IRPSysMLPort theSysMLPort ){
+
+		setPortDirectionFor( theSysMLPort, "In", "Untyped" );
+	}
+
+	private void setPortDirectionFor(
+			IRPSysMLPort theSysMLPort,
+			String theDirection,
+			String theTypeName ){
+
+		IRPType theType = _context.get_rhpPrj().findType( theTypeName );
+
+		if( theType == null ){
+
+			_context.error( "pluginMethodForInputPort was unable to find the '" + 
+					theTypeName + "' type to use for " + _context.elInfo( theSysMLPort ) );
+
+		} else {
+
+			theSysMLPort.setType( theType );
+			theSysMLPort.setPortDirection( theDirection );
+		}
+	}
+	
 	private void afterAddForCallOperation(
 			IRPCallOperation theCallOp ){
 
@@ -479,7 +521,8 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 	private void afterAddForLink(
 			IRPLink theLink ){
 
-		_context.debug( "afterAddForLink invoked for " + _context.elInfo( theLink ) );
+		_context.debug( "afterAddForLink invoked for " + _context.elInfo( theLink ) + 
+				" owned by " + _context.elInfo( theLink.getOwner() ) );
 
 		// Only do something if the link is between parts (without ports)
 		if( theLink.getFromPort() == null && 
