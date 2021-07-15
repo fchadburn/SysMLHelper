@@ -1658,7 +1658,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">7.15.2021::16:20:0</_modifiedTime>
+			<_modifiedTime type="a">7.15.2021::16:50:16</_modifiedTime>
 			<_lastID type="a">22</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -10426,7 +10426,7 @@ Query</_Value>
 			<_id type="a">GUID ec717f1d-0b3e-427a-89fd-8b516b2337c8</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Elements</_name>
-			<_modifiedTime type="a">7.15.2021::16:19:20</_modifiedTime>
+			<_modifiedTime type="a">7.15.2021::16:50:16</_modifiedTime>
 			<_lastID type="a">9</_lastID>
 			<_defaultComposite type="s">GUID d51fb0a3-38d7-4d7a-9f45-35fd12f6ff2a</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -10462,7 +10462,7 @@ Query</_Value>
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">5</size>
+												<size type="a">6</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
 													<_Value type="a">Connector,Generalization,Operation,Reception,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale,Block Definition Diagram - Simple,Internal Block Diagram - Simple,Feature Usage,Subsystem Usage,Flow</_Value>
@@ -10479,6 +10479,12 @@ Query</_Value>
 													<_Name type="a">BrowserIcon</_Name>
 													<_Value type="a">IconsPkg/SystemBlock.ico</_Value>
 													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">HideTabsInFeaturesDialog</_Name>
+													<_Value type="a">Flow Ports,Full Ports,Ports</_Value>
+													<_Type type="a">String</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
@@ -10506,7 +10512,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SystemBlock</_name>
-			<_modifiedTime type="a">7.15.2021::16:19:10</_modifiedTime>
+			<_modifiedTime type="a">7.15.2021::16:42:29</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -10531,7 +10537,7 @@ Query</_Value>
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">5</size>
+												<size type="a">6</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
 													<_Value type="a">Generalization,Operation,Reception,Statechart,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale,Function Usage,ProxyPort</_Value>
@@ -10548,6 +10554,12 @@ Query</_Value>
 													<_Name type="a">BrowserIcon</_Name>
 													<_Value type="a">IconsPkg/SubsystemBlock.ico</_Value>
 													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">HideTabsInFeaturesDialog</_Name>
+													<_Value type="a">Ports,Flow Ports,Full Ports</_Value>
+													<_Type type="a">String</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
@@ -10575,7 +10587,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SubsystemBlock</_name>
-			<_modifiedTime type="a">7.12.2021::11:15:43</_modifiedTime>
+			<_modifiedTime type="a">7.15.2021::16:42:33</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -10669,7 +10681,7 @@ Query</_Value>
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">6</size>
+												<size type="a">7</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
 													<_Value type="a">ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale,Flow Input,Flow Output</_Value>
@@ -10693,6 +10705,12 @@ Query</_Value>
 													<_Value type="a">RoundedBox</_Value>
 													<_Type type="a">Enum</_Type>
 													<_ExtraTypeInfo type="a">Default,BasicBox,RoundedBox</_ExtraTypeInfo>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">HideTabsInFeaturesDialog</_Name>
+													<_Value type="a">Ports,Proxy Ports,Full Ports</_Value>
+													<_Type type="a">String</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
@@ -10720,7 +10738,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">FunctionBlock</_name>
-			<_modifiedTime type="a">7.15.2021::15:20:10</_modifiedTime>
+			<_modifiedTime type="a">7.15.2021::16:50:16</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>

@@ -25,7 +25,7 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">7.15.2021::12:13:18</_modifiedTime>
+			<_modifiedTime type="a">7.15.2021::16:39:32</_modifiedTime>
 			<_lastID type="a">99</_lastID>
 			<_defaultComposite type="s">GUID 17d534c9-e8e2-45c6-8b29-5c81cb4d7dea</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -123,6 +123,12 @@
 				<value>GUID 0cdc6a98-41d7-4de4-aaa0-b5c001ff998a</value>
 				<value>GUID bac96c76-b055-41b8-8d93-489a0ffe9492</value>
 				<value>GUID 3d25081e-3331-4e4c-9323-6930b175c1ef</value>
+				<value>GUID 7b30cff6-8478-4202-9c8c-33c900dabf84</value>
+				<value>GUID ac0044d6-961e-49c4-ad98-986a5e4ce3f3</value>
+				<value>GUID 0df97e08-77e9-4294-a893-b05bbd285b35</value>
+				<value>GUID 4f82df31-63aa-4d79-aeb9-66daad37ce7b</value>
+				<value>GUID 8a5fe3c9-c59c-4dcb-93f0-090f54d3011f</value>
+				<value>GUID 7ff61927-ab62-4d54-be99-562715383dcd</value>
 			</AggregatesList>
 		</ISubsystem>
 		<IClass type="e">
@@ -7740,6 +7746,216 @@
 				</IHandle>
 			</_theMainDiagram>
 			<_modifiedTime type="a">7.13.2021::11:18:47</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 7b30cff6-8478-4202-9c8c-33c900dabf84</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Value Properties</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">Tab</_hname>
+							<_hid type="a">GUID cc48c921-e212-4b46-b047-5021611568ed</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\ExecutableMBSEProfile_MetaModelPkg.sbsx</_hfilename>
+					<_hsubsystem type="a">ExecutableMBSEProfile_MetaModelPkg</_hsubsystem>
+					<_hclass type="a">DomainBlock</_hclass>
+					<_hname type="a">MMD - DomainBlock</_hname>
+					<_hid type="a">GUID c4c33698-d8e0-4303-b142-96559bf9d211</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.15.2021::16:39:32</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID ac0044d6-961e-49c4-ad98-986a5e4ce3f3</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Flow Ports</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">Tab</_hname>
+							<_hid type="a">GUID cc48c921-e212-4b46-b047-5021611568ed</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\ExecutableMBSEProfile_MetaModelPkg.sbsx</_hfilename>
+					<_hsubsystem type="a">ExecutableMBSEProfile_MetaModelPkg</_hsubsystem>
+					<_hclass type="a">DomainBlock</_hclass>
+					<_hname type="a">MMD - DomainBlock</_hname>
+					<_hid type="a">GUID c4c33698-d8e0-4303-b142-96559bf9d211</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.15.2021::16:39:32</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 0df97e08-77e9-4294-a893-b05bbd285b35</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Proxy Ports</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">Tab</_hname>
+							<_hid type="a">GUID cc48c921-e212-4b46-b047-5021611568ed</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\ExecutableMBSEProfile_MetaModelPkg.sbsx</_hfilename>
+					<_hsubsystem type="a">ExecutableMBSEProfile_MetaModelPkg</_hsubsystem>
+					<_hclass type="a">DomainBlock</_hclass>
+					<_hname type="a">MMD - DomainBlock</_hname>
+					<_hid type="a">GUID c4c33698-d8e0-4303-b142-96559bf9d211</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.15.2021::16:39:32</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 4f82df31-63aa-4d79-aeb9-66daad37ce7b</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Full Ports</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">Tab</_hname>
+							<_hid type="a">GUID cc48c921-e212-4b46-b047-5021611568ed</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\ExecutableMBSEProfile_MetaModelPkg.sbsx</_hfilename>
+					<_hsubsystem type="a">ExecutableMBSEProfile_MetaModelPkg</_hsubsystem>
+					<_hclass type="a">DomainBlock</_hclass>
+					<_hname type="a">MMD - DomainBlock</_hname>
+					<_hid type="a">GUID c4c33698-d8e0-4303-b142-96559bf9d211</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.15.2021::16:39:32</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 8a5fe3c9-c59c-4dcb-93f0-090f54d3011f</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Flow Properties</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">Tab</_hname>
+							<_hid type="a">GUID cc48c921-e212-4b46-b047-5021611568ed</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\ExecutableMBSEProfile_MetaModelPkg.sbsx</_hfilename>
+					<_hsubsystem type="a">ExecutableMBSEProfile_MetaModelPkg</_hsubsystem>
+					<_hclass type="a">DomainBlock</_hclass>
+					<_hname type="a">MMD - DomainBlock</_hname>
+					<_hid type="a">GUID c4c33698-d8e0-4303-b142-96559bf9d211</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.15.2021::16:39:32</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 7ff61927-ab62-4d54-be99-562715383dcd</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Operations</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">Tab</_hname>
+							<_hid type="a">GUID cc48c921-e212-4b46-b047-5021611568ed</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\ExecutableMBSEProfile_MetaModelPkg.sbsx</_hfilename>
+					<_hsubsystem type="a">ExecutableMBSEProfile_MetaModelPkg</_hsubsystem>
+					<_hclass type="a">DomainBlock</_hclass>
+					<_hname type="a">MMD - DomainBlock</_hname>
+					<_hid type="a">GUID c4c33698-d8e0-4303-b142-96559bf9d211</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.15.2021::16:39:32</_modifiedTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
