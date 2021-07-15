@@ -302,7 +302,8 @@ public class MessageInfo {
 			theMsg += "Realization needed. ";
 		}
 		
-		if( _isAddToInterfaceBlockNeeded ){
+		if( _isAddToInterfaceBlockNeeded &&
+				_matchingInterfaceBlock != null ){
 			
 			theMsg += " Add to " + _context.elInfo( _matchingInterfaceBlock.get_interfaceClass() ) + ".";
 			

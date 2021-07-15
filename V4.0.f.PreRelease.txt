@@ -491,6 +491,7 @@ V4.0.f.Rhp831.PreRelease (XX-JUL-2021):
 #332 14-JUL-2021: ExecutableMBSE: Get 'Update Ports and Interfaces' to set behavioral flag on ports if missing (F.J.Chadburn)
 #333 14-JUL-2021: ExecutableMBSE: Get 'Update Ports and Interfaces' to check for sds that are saved before proceeding (F.J.Chadburn)
 #334 15-JUL-2021: ExecutableMBSE: Get default display option properties for subsystem/system/function usages on IBDs show ports (F.J.Chadburn) 
+#335 15-JUL-2021: ExecutableMBSE: Fix issue with 'Update Ports and Interfaces' not launching if no matching IB (F.J.Chadburn)
 
 Backlog/Known issues
 
@@ -510,3 +511,4 @@ Backlog/Known issues
 - SysMLHelper deprecate functional analysis menus to go with ExecutableMBSE profile instead
 - Get the auto-generate ports/interfaces for connector to determine if there is a subsystem interfaces package in the model for events etc?
 - Incorporate short-hand names with subsystems
+- Add a decent ICD-like table for showing messages carried on Interface Blocks with direction etc
