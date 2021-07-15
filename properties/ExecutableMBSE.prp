@@ -32,7 +32,7 @@ Subject ExecutableMBSEProfile
 		Property NewTermForUseCaseDiagram String "EnhancedUseCaseDiagram"
 		Property NewTermForSystemContextDiagram String "SystemContextDiagram"
 		Property NewTermForActorUsage String "ActorUsage"
-		Property NewTermForSystemContext String "SystemContext"
+		Property NewTermForSystemContext String "SystemUsage"
 		Property TemplateForActivityDiagram String "template_for_act"
 		Property TraceabilityTypeToUseForActions String "derive"
 		Property TraceabilityTypeToUseForUseCases String "refine"
@@ -93,9 +93,6 @@ Subject Format
 	Metaclass ActorUsage
 		Property DefaultSize String "0,34,148,148"
 	end
-	Metaclass SystemContext
-		Property DefaultSize String "0,34,248,148"
-	end
 	Metaclass CallOperation
 		Property DefaultSize String "0,0,408,73"
 		Property Fill.FillColor Color "225,235,245"
@@ -108,7 +105,7 @@ Subject Format
 		Property DefaultSize String "0,0,300,100"
 	end
 	Metaclass SubsystemUsage
-		Property DefaultSize String "0,0,390,62"
+		Property DefaultSize String "0,34,390,62"
 		Property Fill.FillColor Color "255,255,255"
 		Property Font.Font String "Tahoma"
 		Property Font.Size Int "8"
@@ -118,7 +115,7 @@ Subject Format
 		Property Line.LineWidth Int "1"
 	end
 	Metaclass SystemUsage
-		Property DefaultSize String "0,0,390,62"
+		Property DefaultSize String "0,34,220,148"
 		Property Fill.FillColor Color "255,255,255"
 		Property Font.Font String "Tahoma"
 		Property Font.Size Int "8"
@@ -144,6 +141,16 @@ Subject Format
 		Property Font.Size Int "8"
 		Property Font.Weight@Child.NameCompartment@Name Int "700"
 		Property Font.Italic@Child.NameCompartment@Name Int "0"
+		Property Line.LineColor Color "109,163,217"
+		Property Line.LineStyle Int "0"
+		Property Line.LineWidth Int "1"
+	end
+	Metaclass SystemFeature
+		Property DefaultSize String "0,34,296,39"
+		Property Fill.FillColor Color "255,255,255"
+		Property Font.Font String "Tahoma"
+		Property Font.Size Int "8"
+		Property Font.Weight@Child.NameCompartment@Name Int "700"
 		Property Line.LineColor Color "109,163,217"
 		Property Line.LineStyle Int "0"
 		Property Line.LineWidth Int "1"
