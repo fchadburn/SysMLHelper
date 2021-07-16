@@ -130,7 +130,7 @@ Subject Format
 		Property Font.Font String "Tahoma"
 		Property Font.Size Int "8"
 		Property Font.Weight@Child.NameCompartment@Name Int "700"
-		Property Line.LineColor Color "128,128,0"
+		Property Line.LineColor Color "0,128,0"
 		Property Line.LineStyle Int "0"
 		Property Line.LineWidth Int "1"
 	end
@@ -145,13 +145,36 @@ Subject Format
 		Property Line.LineStyle Int "0"
 		Property Line.LineWidth Int "1"
 	end
-	Metaclass SystemFeature
+	Metaclass FunctionBlock
+		Property DefaultSize String "0,0,219,114"
+		Property Fill.FillColor Color "255,255,255"
+		Property Font.Font String "Tahoma"
+		Property Font.Size Int "8"
+		Property Font.Weight@Child.NameCompartment@Name Int "700"
+		Property Font.Italic@Child.NameCompartment@Name Int "0"
+		Property Line.LineColor Color "0,128,0"
+		Property Line.LineStyle Int "0"
+		Property Line.LineWidth Int "1"
+	end
+	Metaclass SystemBlock
+		Property DefaultSize String "0,34,84,148"
+		Property Fill.FillColor Color "255,255,255"
+		Property Font.Font String "Tahoma"
+		Property Font.Size Int "8"
+		Property Font.Weight@Child.NameCompartment@Name Int "700"
+		Property Font.Italic@Child.NameCompartment@Name Int "1"
+		Property Line.LineColor Color "109,163,217"
+		Property Line.LineStyle Int "0"
+		Property Line.LineWidth Int "1"
+	end
+	Metaclass FeatureUsage
 		Property DefaultSize String "0,34,296,39"
 		Property Fill.FillColor Color "255,255,255"
 		Property Font.Font String "Tahoma"
 		Property Font.Size Int "8"
 		Property Font.Weight@Child.NameCompartment@Name Int "700"
-		Property Line.LineColor Color "109,163,217"
+		Property Font.Italic@Child.NameCompartment@Name Int "1"
+		Property Line.LineColor Color "0,128,0"
 		Property Line.LineStyle Int "0"
 		Property Line.LineWidth Int "1"
 	end
@@ -217,13 +240,55 @@ Subject ObjectModelGe
 		Property ShowType Bool "True"
 		Property ShowPorts Bool "True"
 		Property ShowPortsInterfaces Bool "False"
-		Property PortsSingleLabelLayout Enum "Off,Internal,External" "Off"
+		Property PortsSingleLabelLayout Enum "Off,Internal,External" "Internal"
 		Property MultilineNameCompartment Bool "False"
 		Property Compartments MultiLine ""
 		Property ShowInheritedAttributes Bool "False"
 		Property ShowInheritedOperations Bool "False"
 		Property ShowRedefinesLabel Bool "True"
 		Property QuickNavigationCategories String "MainBehavior,MainDiagram,Hyperlinks,Diagrams"
+	end
+	Metaclass FeatureUsage
+		Property ShowAttributes Enum "All,None,Public,Explicit" "None"
+		Property ShowOperations Enum "All,None,Public,Explicit" "None"
+		Property ShowStereotype Enum "Label,Bitmap,None" "Label"
+		Property ShowStereotypeOfClass Bool "True"
+		Property ShowName Enum  "Full_path,Relative,Name_only,Type,Label" "Type"
+		Property ShowType Bool "True"
+		Property ShowPorts Bool "True"
+		Property ShowPortsInterfaces Bool "False"
+		Property PortsSingleLabelLayout Enum "Off,Internal,External" "Internal"
+		Property MultilineNameCompartment Bool "False"
+		Property Compartments MultiLine "Parts"
+		Property ShowInheritedAttributes Bool "False"
+		Property ShowInheritedOperations Bool "False"
+		Property ShowRedefinesLabel Bool "True"
+		Property QuickNavigationCategories String "MainBehavior,MainDiagram,Hyperlinks,Diagrams"
+	end
+	Metaclass FunctionBlock
+		Property ShowAttributes Enum "All,None,Public,Explicit" "None"
+		Property ShowOperations Enum "All,None,Public,Explicit" "None"
+		Property ShowStereotype Enum "Label,Bitmap,None" "Label"
+		Property ShowName Enum  "Full_path,Relative,Name_only,Label" "Name_only"
+		Property ShowPorts Bool "False"
+		Property ShowPortsInterfaces Bool "True"
+		Property PortsSingleLabelLayout Enum "Off,Internal,External" "Off"
+		Property Compartments MultiLine "Description"
+		Property ShowInheritedAttributes Bool "False"
+		Property ShowInheritedOperations Bool "False"
+		Property QuickNavigationCategories String "MainBehavior,MainDiagram,Hyperlinks,Diagrams"
+	end
+	Metaclass FlowInput
+		Property ShowName Enum  "Name,NameAndType,Type,Label,None" "Type"
+		Property ShowStereotype Enum "Label,None" "None"
+		Property ShowRedefinesLabel Bool "True"
+		Property SingleLabelFormat String "$Stereotype $Name $Interface"
+	end
+	Metaclass FlowOutput
+		Property ShowName Enum  "Name,NameAndType,Type,Label,None" "Type"
+		Property ShowStereotype Enum "Label,None" "None"
+		Property ShowRedefinesLabel Bool "True"
+		Property SingleLabelFormat String "$Stereotype $Name $Interface"
 	end
 end
 Subject TestConductor

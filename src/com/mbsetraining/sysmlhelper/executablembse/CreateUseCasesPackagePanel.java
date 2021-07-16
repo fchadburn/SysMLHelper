@@ -31,6 +31,11 @@ public class CreateUseCasesPackagePanel extends ExecutableMBSEBasePanel {
 	private CreateRequirementsPkgChooser _createRequirementsPkgChooser;
 	private JTextField _nameTextField;
 
+	public static void main(String[] args) {
+		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
+		String theRhpAppID = theRhpApp.getApplicationConnectionString();
+		launchTheDialog(theRhpAppID);
+	}
 	public static void launchTheDialog(
 			final String theAppID ){
 
