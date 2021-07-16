@@ -2546,6 +2546,43 @@ public abstract class BaseContext extends RhpLog {
 		}
 	}
 	
+	public List<IRPModelElement> getExistingElementsBasedOn(
+			IRPPackage theOwningPackage,
+			String theRelatedPackageStereotype,
+			String withMetaClass ){
+
+		List<IRPModelElement> existingEls = new ArrayList<>();
+
+		if( theOwningPackage != null ){
+
+			@SuppressWarnings("unchecked")
+			List<IRPModelElement> theElsInOwningPackage =
+			theOwningPackage.getNestedElementsByMetaClass( withMetaClass, 0 ).toList();
+
+			existingEls.addAll( theElsInOwningPackage );
+
+			@SuppressWarnings("unchecked")
+			List<IRPDependency> theDependencies = theOwningPackage.getDependencies().toList();
+
+			for (IRPDependency theDependency : theDependencies) {
+
+				IRPModelElement theDependsOn = theDependency.getDependsOn();
+
+				if( theDependsOn instanceof IRPPackage &&
+						hasStereotypeCalled( theRelatedPackageStereotype, theDependsOn ) ){
+
+					@SuppressWarnings("unchecked")
+					List<IRPModelElement> theActorsInDependsOnActorPackage =
+					theDependsOn.getNestedElementsByMetaClass( withMetaClass, 0 ).toList();
+
+					existingEls.addAll( theActorsInDependsOnActorPackage );
+				}
+			}
+		}
+
+		return existingEls;
+	}
+	
 	public void moveRequirementIfNeeded(
 			IRPRequirement theReqt) {
 	}

@@ -497,6 +497,7 @@ V4.0.f.Rhp831.PreRelease (XX-JUL-2021):
 #338 15-JUL-2021: ExecutableMBSE: Renamed System Feature to Feature Usage to unify the way that design and context diagram work together (F.J.Chadburn)
 #339 15-JUL-2021: ExecutableMBSE: Removed unnecessary tabs from SystemBlock, SubsystemBlock and FunctionBlock to simplify user experience (F.J.Chadburn)
 #340 16-JUL-2021: ExecutableMBSE: Refinement of display options and metamodel to improve internal block diagram - functional usage (F.J.Chadburn)
+#341 16-JUL-2021: ExecutableMBSE: Add callback to allow user to select function block to type function usage with, when dropping on diagram (F.J.Chadburn)
 
 Backlog/Known issues
 

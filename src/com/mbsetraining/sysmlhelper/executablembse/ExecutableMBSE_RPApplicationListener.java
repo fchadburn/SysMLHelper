@@ -70,6 +70,11 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 				afterAddForActorUsage( (IRPInstance) modelElement );
 
+			} else if( modelElement instanceof IRPInstance && 
+					_context.hasStereotypeCalled( "FunctionUsage", modelElement )){
+
+				afterAddForFunctionUsage( (IRPInstance) modelElement );
+				
 			} else if( modelElement instanceof IRPFlow ){
 
 				afterAddForFlow( (IRPFlow) modelElement );
@@ -295,7 +300,8 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 		IRPPackage theOwningPackage = _context.getOwningPackageFor( modelElement );
 
-		List<IRPModelElement> existingActors = getExistingActorsBasedOn( theOwningPackage );
+		List<IRPModelElement> existingActors = _context.getExistingElementsBasedOn( 
+				theOwningPackage, "ActorPackage", "Actor" );
 
 		if( !existingActors.isEmpty() ){
 
@@ -313,47 +319,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 			if( theSelectedElement instanceof IRPInstance ){
 
-				IRPGraphElement theGraphEl = getGraphElFor( modelElement );
-
-				if( theGraphEl instanceof IRPGraphNode ){
-
-					IRPDiagram theDiagram = theGraphEl.getDiagram();
-
-					IRPGraphNode theNewNode = null;
-
-					GraphNodeInfo theNodeInfo;
-
-					try {
-						theNodeInfo = new GraphNodeInfo( (IRPGraphNode) theGraphEl, _context );
-
-						theNewNode = theDiagram.addNewNodeForElement(
-								theSelectedElement, 
-								theNodeInfo.getTopLeftX(), 
-								theNodeInfo.getTopLeftY(), 
-								theNodeInfo.getWidth(), 
-								theNodeInfo.getHeight() );
-
-						String theStructuredViewPropertyValue =
-								theGraphEl.getGraphicalProperty( "StructureView" ).getValue();
-
-						theNewNode.setGraphicalProperty( "StructureView", theStructuredViewPropertyValue );
-
-					} catch( Exception e ){
-
-						_context.error( "Exception in afterAddForActorUsage when switching " + 
-								_context.elInfo( theGraphEl.getModelObject() ) + 
-								" to " + _context.elInfo( theSelectedElement ) );
-
-						e.printStackTrace();
-					}
-
-					//dumpGraphicalProperties(theGraphEl);
-
-					if( theNewNode instanceof IRPGraphNode ){
-						modelElement.deleteFromProject();
-						theSelectedElement.highLightElement();
-					}
-				}
+				switchGraphNodeFor( modelElement, (IRPInstance) theSelectedElement );
 
 			} else if( theSelectedElement instanceof IRPClassifier ){
 
@@ -362,6 +328,126 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		}		
 	}
 
+
+	private void afterAddForFunctionUsage(
+			IRPInstance theInstance ){
+
+		IRPGraphElement theGraphEl = getGraphElFor( theInstance );
+
+		// Only do this for parts, not directed compositions
+		if( theGraphEl instanceof IRPGraphNode ){
+			
+			_context.debug( "afterAddForFunctionUsage found a graphNode for " + _context.elInfo( theGraphEl.getModelObject() ) );
+			
+			IRPPackage theOwningPackage = _context.getOwningPackageFor( theInstance );
+
+			List<IRPModelElement> elsToChooseFrom = _context.findElementsWithMetaClassAndStereotype( 
+					"Class", "FunctionBlock", theOwningPackage, 1 );
+			
+			if( !elsToChooseFrom.isEmpty() ){
+
+				IRPModelElement theSelectedElement =
+						UserInterfaceHelper.launchDialogToSelectElement( 
+								elsToChooseFrom, "Select existing function block to type the function usage with", true );
+
+				if( theSelectedElement instanceof IRPClassifier ){
+					
+					IRPModelElement theOwner = theInstance.getOwner();
+					
+					IRPInstance theExistingInstance = null;
+					
+					@SuppressWarnings("unchecked")
+					List<IRPInstance> theCandidates = 
+						theOwner.getNestedElementsByMetaClass( "Instance", 0 ).toList();
+					
+					for( IRPInstance theCandidate : theCandidates ){
+						
+						IRPClassifier theClassifier = theCandidate.getOtherClass();
+						
+						if( theClassifier != null && 
+								theClassifier.equals( theSelectedElement ) ){
+							
+							theExistingInstance = theCandidate;
+							break;
+						}
+					}
+					
+					if( theExistingInstance instanceof IRPInstance ){
+						
+						boolean isContinue = UserInterfaceHelper.askAQuestion( 
+								"There is a FunctionUsage for " + 
+								_context.elInfo( theSelectedElement ) + " already.\n" +
+								"Do you want to populate this one, rather than create a new one?" );
+						
+						if( isContinue ){						
+							
+							switchGraphNodeFor( theInstance, theExistingInstance );
+						
+						} else {
+							theInstance.setOtherClass( (IRPClassifier) theSelectedElement );
+						}
+						
+					} else {
+						
+						theInstance.setOtherClass( (IRPClassifier) theSelectedElement );
+					}			
+				}
+			}		
+		}
+	}
+	
+
+	private void switchGraphNodeFor(
+			IRPInstance modelElement,
+			IRPInstance toTheElement ) {
+		
+		IRPGraphElement theGraphEl = getGraphElFor( modelElement );
+
+		if( theGraphEl instanceof IRPGraphNode ){
+
+			IRPDiagram theDiagram = theGraphEl.getDiagram();
+			
+			_context.debug( "switchGraphNodeFor " + _context.elInfo( modelElement ) + 
+					" to " + _context.elInfo( toTheElement ) + " on " + _context.elInfo( theDiagram ) );
+
+			IRPGraphNode theNewNode = null;
+
+			GraphNodeInfo theNodeInfo;
+
+			try {
+				theNodeInfo = new GraphNodeInfo( (IRPGraphNode) theGraphEl, _context );
+
+				_context.debug( "Adding node for " + _context.elInfo( toTheElement ) ); 
+				
+				theNewNode = theDiagram.addNewNodeForElement(
+						toTheElement, 
+						theNodeInfo.getTopLeftX()+5, 
+						theNodeInfo.getTopLeftY()+5, 
+						theNodeInfo.getWidth(), 
+						theNodeInfo.getHeight() );
+
+				String theStructuredViewPropertyValue =
+						theGraphEl.getGraphicalProperty( "StructureView" ).getValue();
+
+				theNewNode.setGraphicalProperty( "StructureView", theStructuredViewPropertyValue );
+
+			} catch( Exception e ){
+
+				_context.error( "Exception in switchGraphNodeFor when switching " + 
+						_context.elInfo( theGraphEl.getModelObject() ) + 
+						" to " + _context.elInfo( toTheElement ) );
+
+				e.printStackTrace();
+			}
+
+			if( theNewNode instanceof IRPGraphNode ){
+				
+				modelElement.deleteFromProject();
+				toTheElement.highLightElement();
+			}
+		}
+	}
+	
 	private IRPGraphElement getGraphElFor( 
 			IRPInstance modelElement ){
 
@@ -387,41 +473,6 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		}
 
 		return theGraphEl;
-	}
-
-	private List<IRPModelElement> getExistingActorsBasedOn(
-			IRPPackage theOwningPackage ){
-
-		List<IRPModelElement> existingActors = new ArrayList<>();
-
-		if( theOwningPackage != null ){
-
-			@SuppressWarnings("unchecked")
-			List<IRPModelElement> theActorsInOwningPackage =
-			theOwningPackage.getNestedElementsByMetaClass( "Actor", 0 ).toList();
-
-			existingActors.addAll( theActorsInOwningPackage );
-
-			@SuppressWarnings("unchecked")
-			List<IRPDependency> theDependencies = theOwningPackage.getDependencies().toList();
-
-			for (IRPDependency theDependency : theDependencies) {
-
-				IRPModelElement theDependsOn = theDependency.getDependsOn();
-
-				if( theDependsOn instanceof IRPPackage &&
-						_context.hasStereotypeCalled( "ActorPackage", theDependsOn ) ){
-
-					@SuppressWarnings("unchecked")
-					List<IRPModelElement> theActorsInDependsOnActorPackage =
-					theDependsOn.getNestedElementsByMetaClass( "Actor", 0 ).toList();
-
-					existingActors.addAll( theActorsInDependsOnActorPackage );
-				}
-			}
-		}
-
-		return existingActors;
 	}
 
 	private List<IRPModelElement> getExistingActorUsagesBasedOn(

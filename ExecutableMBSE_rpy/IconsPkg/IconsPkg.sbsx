@@ -11,7 +11,7 @@
 			<_id type="a">GUID 801c8dc2-1109-41eb-8815-e3fb68b9a344</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">IconsPkg</_name>
-			<_modifiedTime type="a">7.15.2021::14:50:23</_modifiedTime>
+			<_modifiedTime type="a">7.16.2021::10:25:7</_modifiedTime>
 			<_defaultComposite type="s">GUID 64eceb80-328e-445f-90f1-4b11f0a04bea</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
@@ -29,6 +29,8 @@
 				<value>GUID e248cddc-3f99-4b99-ac54-07d57b10a174</value>
 				<value>GUID d46d0019-1ba3-465c-b5f5-60200fc6ff6d</value>
 				<value>GUID 4615c549-a2e6-4b64-b1f0-8296582f470a</value>
+				<value>GUID 8bf3ce9d-017e-4c83-ae46-c155cd502d1d</value>
+				<value>GUID f0184d24-10bd-43bf-be16-08cd0a509bb9</value>
 				<value>GUID 64eceb80-328e-445f-90f1-4b11f0a04bea</value>
 			</AggregatesList>
 		</ISubsystem>
@@ -129,6 +131,20 @@
 			<_modifiedTime type="a">7.15.2021::14:50:23</_modifiedTime>
 			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
 			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\FlowOutput.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID 8bf3ce9d-017e-4c83-ae46-c155cd502d1d</_id>
+			<_name type="a">FunctionUsage.ico</_name>
+			<_modifiedTime type="a">7.16.2021::10:25:1</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\FunctionUsage.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID f0184d24-10bd-43bf-be16-08cd0a509bb9</_id>
+			<_name type="a">FunctionUsages.ico</_name>
+			<_modifiedTime type="a">7.16.2021::10:25:7</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\FunctionUsages.ico</_LastKnownFullPath>
 		</IEmbededFile>
 		<IClass type="e">
 			<_id type="a">GUID 64eceb80-328e-445f-90f1-4b11f0a04bea</_id>
