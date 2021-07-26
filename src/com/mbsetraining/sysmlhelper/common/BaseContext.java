@@ -342,7 +342,7 @@ public abstract class BaseContext extends RhpLog {
 		return isSet;
 	}
 
-	private String getStringPropertyValueFromRhp(
+	protected String getStringPropertyValueFromRhp(
 			IRPModelElement theEl,
 			String propertyKey,
 			String defaultIfNotSet ) {

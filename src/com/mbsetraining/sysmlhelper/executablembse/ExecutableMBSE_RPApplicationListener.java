@@ -575,86 +575,121 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		_context.debug( "afterAddForLink invoked for " + _context.elInfo( theLink ) + 
 				" owned by " + _context.elInfo( theLink.getOwner() ) );
 
+		
+
+		if( theLink.getUserDefinedMetaClass().equals( 
+				ExecutableMBSE_ProfileConstants.FLOW_CONNECTOR ) ){
+			
+		} else if( theLink.getFrom() instanceof IRPInstance && 
+				theLink.getFrom().getUserDefinedMetaClass().equals( 
+						ExecutableMBSE_ProfileConstants.SUBSYSTEM_USAGE ) &&
+				theLink.getTo() instanceof IRPInstance &&
+				theLink.getTo().getUserDefinedMetaClass().equals( 
+						ExecutableMBSE_ProfileConstants.SUBSYSTEM_USAGE ) ){
+			
+			boolean isContinue = false;
+			
+			String autoGenPolicy = _context.getAutoGenerationOfProxyPortsForLinksPolicy( 
+					_context.get_rhpPrj() );
+					
+			if( autoGenPolicy.equals( "Always" ) ){
+				
+				isContinue = true;
+				
+			} else if( autoGenPolicy.equals( "UserDialog" ) ){
+				
+				isContinue = UserInterfaceHelper.askAQuestion(
+						"You have drawn a connector between two parts.\n"+
+								"Do you want to automatically create proxy ports?");
+			}
+			
+			if( isContinue ){
+				autoCreateProxyPortsFor( theLink );
+			}
+		}
 		// Only do something if the link is between parts (without ports)
 		if( theLink.getFromPort() == null && 
 				theLink.getFromSysMLPort() == null &&
 				theLink.getToPort() == null &&
 				theLink.getToSysMLPort() == null ){
 
-			IRPGraphEdge theGraphEdge = getCorrespondingGraphEdgeFor( theLink );
+		}
+	}
 
-			if( theGraphEdge != null ){
+	private void autoCreateProxyPortsFor(IRPLink theLink) {
+		IRPGraphEdge theGraphEdge = getCorrespondingGraphEdgeFor( theLink );
 
-				IRPDiagram theDiagram = theGraphEdge.getDiagram();
+		if( theGraphEdge != null ){
+
+			IRPDiagram theDiagram = theGraphEdge.getDiagram();
+			
+			IRPModelElement fromClassifierEl = theLink.getFrom().getOtherClass();
+			IRPModelElement toClassifierEl = theLink.getTo().getOtherClass();
+
+			_context.debug( "theLink.getFrom() = " + _context.elInfo( theLink.getFrom() ) );
+
+			if( fromClassifierEl instanceof IRPClassifier && 
+					toClassifierEl instanceof IRPClassifier ){
+
+				_context.debug( "fromClassifierEl = " + _context.elInfo( fromClassifierEl ) );
+				_context.debug( "toClassifierEl = " + _context.elInfo( toClassifierEl ) );
+
+				String toClassifierName = _context.capitalize( toClassifierEl.getName().replace( " ", "" ) );
+				String fromClassifierName = _context.capitalize( fromClassifierEl.getName().replace( " ", "" ) );
 				
-				IRPModelElement fromClassifierEl = theLink.getFrom().getOtherClass();
-				IRPModelElement toClassifierEl = theLink.getTo().getOtherClass();
+				String fromPortName = _context.determineUniqueNameBasedOn( 
+						"p" + toClassifierName, 
+						"Port", 
+						fromClassifierEl );
 
-				_context.debug( "theLink.getFrom() = " + _context.elInfo( theLink.getFrom() ) );
+				String toPortName = _context.determineUniqueNameBasedOn( 
+						"p" + fromClassifierName, 
+						"Port", 
+						toClassifierEl );
 
-				if( fromClassifierEl instanceof IRPClassifier && 
-						toClassifierEl instanceof IRPClassifier ){
+				GraphEdgeInfo theGraphEdgeInfo = new GraphEdgeInfo( theGraphEdge, _context ); 
+				
+				IRPPackage theOwningPkg = _context.getOwningPackageFor( theDiagram );
 
-					_context.debug( "fromClassifierEl = " + _context.elInfo( fromClassifierEl ) );
-					_context.debug( "toClassifierEl = " + _context.elInfo( toClassifierEl ) );
-
-					String toClassifierName = _context.capitalize( toClassifierEl.getName().replace( " ", "" ) );
-					String fromClassifierName = _context.capitalize( fromClassifierEl.getName().replace( " ", "" ) );
+				String theInterfaceBlockName =
+						_context.determineUniqueNameBasedOn( 
+								"IB_" + fromClassifierName + "_To_" + toClassifierName, 
+								"Class", 
+								theOwningPkg );
 					
-					String fromPortName = _context.determineUniqueNameBasedOn( 
-							"p" + toClassifierName, 
-							"Port", 
-							fromClassifierEl );
+				IRPClass theInterfaceBlock = theOwningPkg.addClass( theInterfaceBlockName );
+				theInterfaceBlock.changeTo( "InterfaceBlock" );
+				
+				IRPPort fromPort = (IRPPort) fromClassifierEl.addNewAggr( "Port", fromPortName );
+				_context.debug( "Created fromPort as " + _context.elInfo( fromPort ) );
+				fromPort.changeTo( "ProxyPort" );
+				fromPort.setOtherClass( theInterfaceBlock );
+				
+				IRPGraphNode fromPortNode = addGraphNodeFor( 
+						fromPort, theDiagram, theGraphEdgeInfo.getStartX(), theGraphEdgeInfo.getStartY() );
+				
+				IRPPort toPort = (IRPPort) toClassifierEl.addNewAggr( "Port", toPortName );		
+				_context.debug( "Created toPort as " + _context.elInfo( toPort ) );
+				toPort.changeTo( "ProxyPort" );
+				toPort.setOtherClass( theInterfaceBlock );
+				toPort.setIsReversed( 1 );
 
-					String toPortName = _context.determineUniqueNameBasedOn( 
-							"p" + fromClassifierName, 
-							"Port", 
-							toClassifierEl );
+				IRPGraphNode toPortNode = 
+						addGraphNodeFor( toPort, theDiagram, theGraphEdgeInfo.getEndX(), theGraphEdgeInfo.getEndY() );					
+				
+				IRPLink newLink = theLink.getFrom().addLinkToElement( theLink.getTo(), null, fromPort, toPort );
+				_context.debug( "Created " + _context.elInfo( newLink ) );
 
-					GraphEdgeInfo theGraphEdgeInfo = new GraphEdgeInfo( theGraphEdge, _context ); 
-					
-					IRPPackage theOwningPkg = _context.getOwningPackageFor( theDiagram );
-
-					String theInterfaceBlockName =
-							_context.determineUniqueNameBasedOn( 
-									"IB_" + fromClassifierName + "_To_" + toClassifierName, 
-									"Class", 
-									theOwningPkg );
-						
-					IRPClass theInterfaceBlock = theOwningPkg.addClass( theInterfaceBlockName );
-					theInterfaceBlock.changeTo( "InterfaceBlock" );
-					
-					IRPPort fromPort = (IRPPort) fromClassifierEl.addNewAggr( "Port", fromPortName );
-					_context.debug( "Created fromPort as " + _context.elInfo( fromPort ) );
-					fromPort.changeTo( "ProxyPort" );
-					fromPort.setOtherClass( theInterfaceBlock );
-					
-					IRPGraphNode fromPortNode = addGraphNodeFor( 
-							fromPort, theDiagram, theGraphEdgeInfo.getStartX(), theGraphEdgeInfo.getStartY() );
-					
-					IRPPort toPort = (IRPPort) toClassifierEl.addNewAggr( "Port", toPortName );		
-					_context.debug( "Created toPort as " + _context.elInfo( toPort ) );
-					toPort.changeTo( "ProxyPort" );
-					toPort.setOtherClass( theInterfaceBlock );
-					toPort.setIsReversed( 1 );
-
-					IRPGraphNode toPortNode = 
-							addGraphNodeFor( toPort, theDiagram, theGraphEdgeInfo.getEndX(), theGraphEdgeInfo.getEndY() );					
-					
-					IRPLink newLink = theLink.getFrom().addLinkToElement( theLink.getTo(), null, fromPort, toPort );
-					_context.debug( "Created " + _context.elInfo( newLink ) );
-
-					theDiagram.addNewEdgeForElement( 
-							newLink, 
-							fromPortNode, 
-							theGraphEdgeInfo.getStartX(), 
-							theGraphEdgeInfo.getStartY(), 
-							toPortNode, 
-							theGraphEdgeInfo.getEndX(), 
-							theGraphEdgeInfo.getEndY() );
-					
-					theLink.deleteFromProject();
-				}
+				theDiagram.addNewEdgeForElement( 
+						newLink, 
+						fromPortNode, 
+						theGraphEdgeInfo.getStartX(), 
+						theGraphEdgeInfo.getStartY(), 
+						toPortNode, 
+						theGraphEdgeInfo.getEndX(), 
+						theGraphEdgeInfo.getEndY() );
+				
+				theLink.deleteFromProject();
 			}
 		}
 	}

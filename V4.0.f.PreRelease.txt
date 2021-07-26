@@ -499,6 +499,7 @@ V4.0.f.Rhp831.PreRelease (XX-JUL-2021):
 #340 16-JUL-2021: ExecutableMBSE: Refinement of display options and metamodel to improve internal block diagram - functional usage (F.J.Chadburn)
 #341 16-JUL-2021: ExecutableMBSE: Add callback to allow user to select function block to type function usage with, when dropping on diagram (F.J.Chadburn)
 #342 26-JUN-2021: ExecutableMBSE: Allow function usage to own flow inputs/outputs so that implicit function chain without classes is possible (F.J.Chadburn)
+#343 26-JUN-2021: ExecutableMBSE: Added AutoGenerationOfProxyPortsForLinksPolicy and dialog to enable user to better control auto proxy port creation (F.J.Chadburn) 
 
 Backlog/Known issues
 

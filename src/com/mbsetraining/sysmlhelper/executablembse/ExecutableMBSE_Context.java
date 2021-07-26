@@ -788,6 +788,17 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 		return result;
 	}
 
+	public String getAutoGenerationOfProxyPortsForLinksPolicy(
+			IRPModelElement forContextEl ){
+
+		String result = getStringPropertyValueFromRhp(
+				forContextEl,
+				"ExecutableMBSEProfile.DesignSynthesis.AutoGenerationOfProxyPortsForLinksPolicy",
+				"Never" );
+
+		return result;
+	}
+	
 	@Override
 	public IRPPackage addNewTermPackageAndSetUnitProperties( 
 			String theName,

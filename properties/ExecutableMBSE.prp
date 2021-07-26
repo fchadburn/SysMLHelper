@@ -79,6 +79,9 @@ Subject ExecutableMBSEProfile
 		Property IsCreateSDWithTestDriverLifeline Bool "False"
 		Property IsAllowInheritanceChoices Bool "False"
 	end
+	Metaclass DesignSynthesis
+		Property AutoGenerationOfProxyPortsForLinksPolicy Enum "Never,Always,UserDialog" "UserDialog"
+	end
 end
 Subject General
 	Metaclass Graphics
