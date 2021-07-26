@@ -16,7 +16,7 @@ Subject ExecutableMBSEProfile
 		Property UseCasePackageWorkingStereotype String "12 Reqts Analysis - Working Copy Package"
 		Property RequirementPackageStereotype String "13 Reqts Analysis - Requirement Package"
 		Property ExternalSignalsPackageStereotype String "14 Reqts Analysis - External Signals Package"
-		Property SubsystemInterfacesPackageStereotype String "33 Design - Subsystem Interfaces Package"
+		Property SubsystemInterfacesPackageStereotype String "33 Design Synthesis - Subsystem Interfaces Package"
 		Property SimulationPackageStereotype String "21 Funct Analysis - Scenarios Package"
 		Property DesignPackageStereotype String "22 Funct Analysis - Design Package"
 		Property InterfacesPackageStereotype String "23 Funct Analysis - Interfaces Package"
@@ -78,10 +78,11 @@ Subject ExecutableMBSEProfile
 		Property IsCreateSDWithAutoShowApplied Bool "True"
 		Property IsCreateSDWithTestDriverLifeline Bool "False"
 		Property IsAllowInheritanceChoices Bool "False"
+		Property AutoGenerationOfFlowPortsForLinksPolicy Enum "Never,Always,UserDialog" "UserDialog"
+		Property IsEnableAutoMoveOfEventsOnFlowConnectorCreation Bool "True"
 	end
 	Metaclass DesignSynthesis
 		Property AutoGenerationOfProxyPortsForLinksPolicy Enum "Never,Always,UserDialog" "UserDialog"
-		Property AutoGenerationOfFlowPortsForLinksPolicy Enum "Never,Always,UserDialog" "UserDialog"
 	end
 end
 Subject General

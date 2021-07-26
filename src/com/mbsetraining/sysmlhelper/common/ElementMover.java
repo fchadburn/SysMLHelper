@@ -1,5 +1,6 @@
 package com.mbsetraining.sysmlhelper.common;
 
+import java.util.List;
 import java.util.Set;
 
 import com.telelogic.rhapsody.core.*;
@@ -9,7 +10,7 @@ public class ElementMover {
 	final protected IRPPackage _moveToPkg;
 	final protected String _whereMoveToHasStereotype;
 	final protected ConfigurationSettings _context;
-
+	
 	public ElementMover(
 			IRPModelElement basedOnEl,
 			String whereMoveToHasStereotype,
@@ -32,11 +33,13 @@ public class ElementMover {
 						basedOnEl, 
 						_whereMoveToHasStereotype );
 		
+		_context.debug( theCandidateEls.size() + " theCandidateEls were found for " + _context.elInfo( basedOnEl ) );
+
 		if( theCandidateEls.size()==1 ){
 			
 			IRPModelElement theCandidate = null;
 			
-			for (IRPModelElement theCandidateEl : theCandidateEls) {
+			for( IRPModelElement theCandidateEl : theCandidateEls ){
 				theCandidate = theCandidateEl;
 			}
 			
@@ -47,11 +50,31 @@ public class ElementMover {
 		} else if( theCandidateEls.size()==0 ){
 			
 			IRPModelElement theOwner = basedOnEl.getOwner();
-			
-			if( !(theOwner instanceof IRPProject) ){
 				
-				theMoveToPkg = determineMoveToPackage( 
-						basedOnEl.getOwner() );
+			if( theOwner instanceof IRPClassifier &&
+					theOwner.getName().equals( "TopLevel" ) ){
+					
+				_context.debug( "TopLevel is " + _context.elInfo( theOwner ) );
+				
+				@SuppressWarnings("unchecked")
+				List<IRPPackage> thePkgs = _context.get_rhpPrj().getNestedElementsByMetaClass( "Package", 1 ).toList();
+				
+				for( IRPPackage thePkg : thePkgs ){
+					
+					@SuppressWarnings("unchecked")
+					List<IRPInstance> theGlobalObjects = thePkg.getGlobalObjects().toList();
+					
+					if( theGlobalObjects.contains( basedOnEl ) ){
+						
+						_context.debug( "The global object is in " + _context.elInfo( thePkg ) );
+						theOwner = thePkg;
+					}
+				}
+			}
+						
+			if( !( theOwner instanceof IRPProject ) ){
+				
+				theMoveToPkg = determineMoveToPackage( theOwner );
 
 			} else {
 				// Unable to find a matching package in corresponding ownership tree

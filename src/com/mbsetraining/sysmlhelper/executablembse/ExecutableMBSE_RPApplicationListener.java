@@ -674,8 +674,6 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 				GraphEdgeInfo theGraphEdgeInfo = new GraphEdgeInfo( theGraphEdge, _context ); 
 
-				IRPPackage theOwningPkg = _context.getOwningPackageFor( theDiagram );
-
 				IRPSysMLPort fromPort = (IRPSysMLPort) fromClassifierEl.addNewAggr( "SysMLPort", fromPortName );
 				_context.debug( "Created fromPort as " + _context.elInfo( fromPort ) );
 				setPortDirectionFor( fromPort, "Out", "Untyped" );
@@ -705,6 +703,11 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 						theGraphEdgeInfo.getEndY() );
 
 				theLink.deleteFromProject();
+				
+				CreateEventForFlowConnectorPanel.launchThePanel( 
+						_context.get_rhpAppID(), 
+						newLink.getGUID(),
+						theDiagram.getGUID() );
 			}
 		}
 	}

@@ -40,6 +40,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 	final protected String _subsystemInterfacesPackageStereotype;
 	final protected boolean _isEnableAutoMoveOfEventsOnAddNewElement;
 	final protected boolean _isEnableAutoMoveOfEventsOnFlowCreation;
+	final protected boolean _isEnableAutoMoveOfEventsOnFlowConnectorCreation;
 
 	public ExecutableMBSE_Context(
 			String theAppID ){
@@ -76,6 +77,10 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 				_rhpPrj,
 				"ExecutableMBSEProfile.RequirementsAnalysis.IsEnableAutoMoveOfEventsOnFlowCreation" );
 
+		_isEnableAutoMoveOfEventsOnFlowConnectorCreation = getBooleanPropertyValue(
+				_rhpPrj,
+				"ExecutableMBSEProfile.FunctionalAnalysis.IsEnableAutoMoveOfEventsOnFlowConnectorCreation" );
+		
 		_isEnableAutoMoveOfEventsOnAddNewElement  = getBooleanPropertyValue(
 				_rhpPrj,
 				"ExecutableMBSEProfile.RequirementsAnalysis.IsEnableAutoMoveOfEventsOnAddNewElement" );
@@ -677,6 +682,10 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 	public boolean getIsEnableAutoMoveOfEventsOnFlowCreation(){
 		return _isEnableAutoMoveOfEventsOnFlowCreation;
 	}
+	
+	public boolean getIsEnableAutoMoveOfEventsOnFlowConnectorCreation(){
+		return _isEnableAutoMoveOfEventsOnFlowConnectorCreation;
+	}
 
 	public boolean getIsEnableGatewayTypes(
 			IRPModelElement forContextEl ){
@@ -804,7 +813,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		String result = getStringPropertyValueFromRhp(
 				forContextEl,
-				"ExecutableMBSEProfile.DesignSynthesis.AutoGenerationOfFlowPortsForLinksPolicy",
+				"ExecutableMBSEProfile.FunctionalAnalysis.AutoGenerationOfFlowPortsForLinksPolicy",
 				"Never" );
 
 		return result;
