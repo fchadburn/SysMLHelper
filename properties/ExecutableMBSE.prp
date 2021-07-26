@@ -81,6 +81,7 @@ Subject ExecutableMBSEProfile
 	end
 	Metaclass DesignSynthesis
 		Property AutoGenerationOfProxyPortsForLinksPolicy Enum "Never,Always,UserDialog" "UserDialog"
+		Property AutoGenerationOfFlowPortsForLinksPolicy Enum "Never,Always,UserDialog" "UserDialog"
 	end
 end
 Subject General

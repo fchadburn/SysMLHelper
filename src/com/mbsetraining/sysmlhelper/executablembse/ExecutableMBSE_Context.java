@@ -798,6 +798,17 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		return result;
 	}
+
+	public String getAutoGenerationOfFlowPortsForLinksPolicy(
+			IRPModelElement forContextEl ){
+
+		String result = getStringPropertyValueFromRhp(
+				forContextEl,
+				"ExecutableMBSEProfile.DesignSynthesis.AutoGenerationOfFlowPortsForLinksPolicy",
+				"Never" );
+
+		return result;
+	}
 	
 	@Override
 	public IRPPackage addNewTermPackageAndSetUnitProperties( 

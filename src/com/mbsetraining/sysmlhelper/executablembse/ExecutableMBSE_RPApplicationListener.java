@@ -40,7 +40,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 					modelElement );
 
 			String theUserDefinedMetaClass = modelElement.getUserDefinedMetaClass();
-			
+
 			if( modelElement instanceof IRPRequirement ){
 
 				afterAddForRequirement( modelElement );
@@ -74,7 +74,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 					_context.hasStereotypeCalled( "FunctionUsage", modelElement )){
 
 				afterAddForFunctionUsage( (IRPInstance) modelElement );
-				
+
 			} else if( modelElement instanceof IRPFlow ){
 
 				afterAddForFlow( (IRPFlow) modelElement );
@@ -82,12 +82,12 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			} else if( modelElement instanceof IRPLink ){
 
 				afterAddForLink( (IRPLink) modelElement );
-				
-			} else if( theUserDefinedMetaClass.equals( "Flow Input" ) ){
+
+			} else if( theUserDefinedMetaClass.equals( ExecutableMBSE_ProfileConstants.FLOW_INPUT ) ){
 
 				afterAddForFlowInput( (IRPSysMLPort) modelElement );
 
-			} else if( theUserDefinedMetaClass.equals( "Flow Output" ) ){
+			} else if( theUserDefinedMetaClass.equals( ExecutableMBSE_ProfileConstants.FLOW_OUTPUT ) ){
 
 				afterAddForFlowOutput( (IRPSysMLPort) modelElement );
 			}
@@ -107,7 +107,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 		setPortDirectionFor( theSysMLPort, "Out", "Untyped" );
 	}
-	
+
 	private void afterAddForFlowInput(
 			IRPSysMLPort theSysMLPort ){
 
@@ -132,7 +132,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			theSysMLPort.setPortDirection( theDirection );
 		}
 	}
-	
+
 	private void afterAddForCallOperation(
 			IRPCallOperation theCallOp ){
 
@@ -336,14 +336,14 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 		// Only do this for parts, not directed compositions
 		if( theGraphEl instanceof IRPGraphNode ){
-			
+
 			_context.debug( "afterAddForFunctionUsage found a graphNode for " + _context.elInfo( theGraphEl.getModelObject() ) );
-			
+
 			IRPPackage theOwningPackage = _context.getOwningPackageFor( theInstance );
 
 			List<IRPModelElement> elsToChooseFrom = _context.findElementsWithMetaClassAndStereotype( 
 					"Class", "FunctionBlock", theOwningPackage, 1 );
-			
+
 			if( !elsToChooseFrom.isEmpty() ){
 
 				IRPModelElement theSelectedElement =
@@ -351,62 +351,62 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 								elsToChooseFrom, "Select existing function block to type the function usage with", true );
 
 				if( theSelectedElement instanceof IRPClassifier ){
-					
+
 					IRPModelElement theOwner = theInstance.getOwner();
-					
+
 					IRPInstance theExistingInstance = null;
-					
+
 					@SuppressWarnings("unchecked")
 					List<IRPInstance> theCandidates = 
-						theOwner.getNestedElementsByMetaClass( "Instance", 0 ).toList();
-					
+					theOwner.getNestedElementsByMetaClass( "Instance", 0 ).toList();
+
 					for( IRPInstance theCandidate : theCandidates ){
-						
+
 						IRPClassifier theClassifier = theCandidate.getOtherClass();
-						
+
 						if( theClassifier != null && 
 								theClassifier.equals( theSelectedElement ) ){
-							
+
 							theExistingInstance = theCandidate;
 							break;
 						}
 					}
-					
+
 					if( theExistingInstance instanceof IRPInstance ){
-						
+
 						boolean isContinue = UserInterfaceHelper.askAQuestion( 
 								"There is a FunctionUsage for " + 
-								_context.elInfo( theSelectedElement ) + " already.\n" +
+										_context.elInfo( theSelectedElement ) + " already.\n" +
 								"Do you want to populate this one, rather than create a new one?" );
-						
+
 						if( isContinue ){						
-							
+
 							switchGraphNodeFor( theInstance, theExistingInstance );
-						
+
 						} else {
 							theInstance.setOtherClass( (IRPClassifier) theSelectedElement );
 						}
-						
+
 					} else {
-						
+
 						theInstance.setOtherClass( (IRPClassifier) theSelectedElement );
 					}			
 				}
 			}		
 		}
 	}
-	
+
 
 	private void switchGraphNodeFor(
 			IRPInstance modelElement,
 			IRPInstance toTheElement ) {
-		
+
 		IRPGraphElement theGraphEl = getGraphElFor( modelElement );
 
 		if( theGraphEl instanceof IRPGraphNode ){
 
 			IRPDiagram theDiagram = theGraphEl.getDiagram();
-			
+
 			_context.debug( "switchGraphNodeFor " + _context.elInfo( modelElement ) + 
 					" to " + _context.elInfo( toTheElement ) + " on " + _context.elInfo( theDiagram ) );
 
@@ -418,7 +418,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				theNodeInfo = new GraphNodeInfo( (IRPGraphNode) theGraphEl, _context );
 
 				_context.debug( "Adding node for " + _context.elInfo( toTheElement ) ); 
-				
+
 				theNewNode = theDiagram.addNewNodeForElement(
 						toTheElement, 
 						theNodeInfo.getTopLeftX()+5, 
@@ -441,13 +441,13 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			}
 
 			if( theNewNode instanceof IRPGraphNode ){
-				
+
 				modelElement.deleteFromProject();
 				toTheElement.highLightElement();
 			}
 		}
 	}
-	
+
 	private IRPGraphElement getGraphElFor( 
 			IRPInstance modelElement ){
 
@@ -575,54 +575,149 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		_context.debug( "afterAddForLink invoked for " + _context.elInfo( theLink ) + 
 				" owned by " + _context.elInfo( theLink.getOwner() ) );
 
-		
+		String fromUserDefinedMetaClass = ( ( theLink.getFrom() == null ) ? "null from" : theLink.getFrom().getUserDefinedMetaClass() );
+		String toUserDefinedMetaClass = ( ( theLink.getTo() == null ) ? "null to" : theLink.getTo().getUserDefinedMetaClass() );
+
+		_context.debug( "fromUserDefinedMetaClass is " + fromUserDefinedMetaClass );
+		_context.debug( "toUserDefinedMetaClass is " + toUserDefinedMetaClass );
 
 		if( theLink.getUserDefinedMetaClass().equals( 
-				ExecutableMBSE_ProfileConstants.FLOW_CONNECTOR ) ){
-			
-		} else if( theLink.getFrom() instanceof IRPInstance && 
-				theLink.getFrom().getUserDefinedMetaClass().equals( 
-						ExecutableMBSE_ProfileConstants.SUBSYSTEM_USAGE ) &&
-				theLink.getTo() instanceof IRPInstance &&
-				theLink.getTo().getUserDefinedMetaClass().equals( 
-						ExecutableMBSE_ProfileConstants.SUBSYSTEM_USAGE ) ){
-			
+				ExecutableMBSE_ProfileConstants.FLOW_CONNECTOR ) &&
+				fromUserDefinedMetaClass.equals( 
+						ExecutableMBSE_ProfileConstants.FUNCTION_USAGE ) &&
+						toUserDefinedMetaClass.equals( 
+								ExecutableMBSE_ProfileConstants.FUNCTION_USAGE ) ){
+
 			boolean isContinue = false;
-			
-			String autoGenPolicy = _context.getAutoGenerationOfProxyPortsForLinksPolicy( 
+
+			String autoGenPolicy = _context.getAutoGenerationOfFlowPortsForLinksPolicy( 
 					_context.get_rhpPrj() );
-					
+
 			if( autoGenPolicy.equals( "Always" ) ){
-				
+
 				isContinue = true;
-				
+
 			} else if( autoGenPolicy.equals( "UserDialog" ) ){
-				
+
 				isContinue = UserInterfaceHelper.askAQuestion(
-						"You have drawn a connector between two parts.\n"+
-								"Do you want to automatically create proxy ports?");
+						"You have drawn a connector between two " + 
+						ExecutableMBSE_ProfileConstants.FUNCTION_USAGE + "s.\n"+
+						"Do you want to automatically create " + ExecutableMBSE_ProfileConstants.FLOW_OUTPUT + " and " +
+						ExecutableMBSE_ProfileConstants.FLOW_INPUT + " ports?");
+			}
+
+			if( isContinue ){
+				autoCreateFlowPortsFor( theLink );
 			}
 			
+		} else if( fromUserDefinedMetaClass.equals( 
+				ExecutableMBSE_ProfileConstants.SUBSYSTEM_USAGE ) &&
+				toUserDefinedMetaClass.equals( 
+						ExecutableMBSE_ProfileConstants.SUBSYSTEM_USAGE ) ){
+
+			boolean isContinue = false;
+
+			String autoGenPolicy = _context.getAutoGenerationOfProxyPortsForLinksPolicy( 
+					_context.get_rhpPrj() );
+
+			if( autoGenPolicy.equals( "Always" ) ){
+
+				isContinue = true;
+
+			} else if( autoGenPolicy.equals( "UserDialog" ) ){
+
+				isContinue = UserInterfaceHelper.askAQuestion(
+						"You have drawn a connector between two " + 
+						ExecutableMBSE_ProfileConstants.SUBSYSTEM_USAGE + "s.\n"+
+						"Do you want to automatically create proxy ports?");
+			}
+
 			if( isContinue ){
 				autoCreateProxyPortsFor( theLink );
 			}
 		}
-		// Only do something if the link is between parts (without ports)
-		if( theLink.getFromPort() == null && 
-				theLink.getFromSysMLPort() == null &&
-				theLink.getToPort() == null &&
-				theLink.getToSysMLPort() == null ){
-
-		}
 	}
 
-	private void autoCreateProxyPortsFor(IRPLink theLink) {
+	private void autoCreateFlowPortsFor(
+			IRPLink theLink ){
+
 		IRPGraphEdge theGraphEdge = getCorrespondingGraphEdgeFor( theLink );
 
 		if( theGraphEdge != null ){
 
 			IRPDiagram theDiagram = theGraphEdge.getDiagram();
-			
+
+			IRPModelElement fromClassifierEl = theLink.getFrom().getOtherClass();
+			IRPModelElement toClassifierEl = theLink.getTo().getOtherClass();
+
+			_context.debug( "theLink.getFrom() = " + _context.elInfo( theLink.getFrom() ) );
+
+			if( fromClassifierEl instanceof IRPClassifier && 
+					toClassifierEl instanceof IRPClassifier ){
+
+				_context.debug( "fromClassifierEl = " + _context.elInfo( fromClassifierEl ) );
+				_context.debug( "toClassifierEl = " + _context.elInfo( toClassifierEl ) );
+
+				String fromPortName = _context.determineUniqueNameBasedOn( 
+						"out", 
+						"SysMLPort", 
+						fromClassifierEl );
+
+				_context.debug( "fromPortName is " + fromPortName );
+				
+				String toPortName = _context.determineUniqueNameBasedOn( 
+						"in",
+						"SysMLPort", 
+						toClassifierEl );
+
+				_context.debug( "toPortName is " + toPortName );
+
+				GraphEdgeInfo theGraphEdgeInfo = new GraphEdgeInfo( theGraphEdge, _context ); 
+
+				IRPPackage theOwningPkg = _context.getOwningPackageFor( theDiagram );
+
+				IRPSysMLPort fromPort = (IRPSysMLPort) fromClassifierEl.addNewAggr( "SysMLPort", fromPortName );
+				_context.debug( "Created fromPort as " + _context.elInfo( fromPort ) );
+				setPortDirectionFor( fromPort, "Out", "Untyped" );
+				fromPort.changeTo( ExecutableMBSE_ProfileConstants.FLOW_OUTPUT );
+
+				IRPGraphNode fromPortNode = addGraphNodeFor( 
+						fromPort, theDiagram, theGraphEdgeInfo.getStartX(), theGraphEdgeInfo.getStartY() );
+
+				IRPSysMLPort toPort = (IRPSysMLPort) toClassifierEl.addNewAggr( "SysMLPort", toPortName );		
+				_context.debug( "Created toPort as " + _context.elInfo( toPort ) );
+				setPortDirectionFor( toPort, "In", "Untyped" );
+				toPort.changeTo( ExecutableMBSE_ProfileConstants.FLOW_INPUT );
+
+				IRPGraphNode toPortNode = addGraphNodeFor( 
+						toPort, theDiagram, theGraphEdgeInfo.getEndX(), theGraphEdgeInfo.getEndY() );					
+
+				IRPLink newLink = theLink.getFrom().addLinkToElement( theLink.getTo(), null, fromPort, toPort );
+				_context.debug( "Created " + _context.elInfo( newLink ) );
+
+				theDiagram.addNewEdgeForElement( 
+						newLink, 
+						fromPortNode, 
+						theGraphEdgeInfo.getStartX(), 
+						theGraphEdgeInfo.getStartY(), 
+						toPortNode, 
+						theGraphEdgeInfo.getEndX(), 
+						theGraphEdgeInfo.getEndY() );
+
+				theLink.deleteFromProject();
+			}
+		}
+	}
+
+	private void autoCreateProxyPortsFor(
+			IRPLink theLink ){
+
+		IRPGraphEdge theGraphEdge = getCorrespondingGraphEdgeFor( theLink );
+
+		if( theGraphEdge != null ){
+
+			IRPDiagram theDiagram = theGraphEdge.getDiagram();
+
 			IRPModelElement fromClassifierEl = theLink.getFrom().getOtherClass();
 			IRPModelElement toClassifierEl = theLink.getTo().getOtherClass();
 
@@ -636,7 +731,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 				String toClassifierName = _context.capitalize( toClassifierEl.getName().replace( " ", "" ) );
 				String fromClassifierName = _context.capitalize( fromClassifierEl.getName().replace( " ", "" ) );
-				
+
 				String fromPortName = _context.determineUniqueNameBasedOn( 
 						"p" + toClassifierName, 
 						"Port", 
@@ -648,7 +743,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 						toClassifierEl );
 
 				GraphEdgeInfo theGraphEdgeInfo = new GraphEdgeInfo( theGraphEdge, _context ); 
-				
+
 				IRPPackage theOwningPkg = _context.getOwningPackageFor( theDiagram );
 
 				String theInterfaceBlockName =
@@ -656,18 +751,18 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 								"IB_" + fromClassifierName + "_To_" + toClassifierName, 
 								"Class", 
 								theOwningPkg );
-					
+
 				IRPClass theInterfaceBlock = theOwningPkg.addClass( theInterfaceBlockName );
 				theInterfaceBlock.changeTo( "InterfaceBlock" );
-				
+
 				IRPPort fromPort = (IRPPort) fromClassifierEl.addNewAggr( "Port", fromPortName );
 				_context.debug( "Created fromPort as " + _context.elInfo( fromPort ) );
 				fromPort.changeTo( "ProxyPort" );
 				fromPort.setOtherClass( theInterfaceBlock );
-				
+
 				IRPGraphNode fromPortNode = addGraphNodeFor( 
 						fromPort, theDiagram, theGraphEdgeInfo.getStartX(), theGraphEdgeInfo.getStartY() );
-				
+
 				IRPPort toPort = (IRPPort) toClassifierEl.addNewAggr( "Port", toPortName );		
 				_context.debug( "Created toPort as " + _context.elInfo( toPort ) );
 				toPort.changeTo( "ProxyPort" );
@@ -676,7 +771,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 				IRPGraphNode toPortNode = 
 						addGraphNodeFor( toPort, theDiagram, theGraphEdgeInfo.getEndX(), theGraphEdgeInfo.getEndY() );					
-				
+
 				IRPLink newLink = theLink.getFrom().addLinkToElement( theLink.getTo(), null, fromPort, toPort );
 				_context.debug( "Created " + _context.elInfo( newLink ) );
 
@@ -688,36 +783,38 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 						toPortNode, 
 						theGraphEdgeInfo.getEndX(), 
 						theGraphEdgeInfo.getEndY() );
-				
+
 				theLink.deleteFromProject();
 			}
 		}
 	}
-	
+
 	private IRPGraphNode addGraphNodeFor(
-			IRPPort thePort,
+			IRPModelElement thePortEl,
 			IRPDiagram toDiagram,
 			int x,
 			int y ){
-		
+
 		IRPGraphNode thePortNode = null;
-		
+
 		@SuppressWarnings("unchecked")
-		List<IRPGraphNode> fromPortNodes = 
-				toDiagram.getCorrespondingGraphicElements( thePort ).toList();
-		
-		if( fromPortNodes.size() == 1 ){
-			
-			thePortNode = fromPortNodes.get( 0 );
-			
+		List<IRPGraphNode> theGraphNodes = 
+		toDiagram.getCorrespondingGraphicElements( thePortEl ).toList();
+
+		if( theGraphNodes.size() == 1 ){
+
+			thePortNode = theGraphNodes.get( 0 );
+
 			String thePosition = x + "," + y;
+			
+			_context.debug( "Setting Position of existing " + _context.elInfo( thePortEl ) + " to " + thePosition );
 			thePortNode.setGraphicalProperty( "Position", thePosition );
-			
+
 		} else {
-			
-			thePortNode = toDiagram.addNewNodeForElement( thePort, x, y, 12, 12 );
+
+			thePortNode = toDiagram.addNewNodeForElement( thePortEl, x, y, 12, 12 );
 		}
-		
+
 		return thePortNode;
 	}
 

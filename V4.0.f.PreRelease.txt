@@ -498,8 +498,9 @@ V4.0.f.Rhp831.PreRelease (XX-JUL-2021):
 #339 15-JUL-2021: ExecutableMBSE: Removed unnecessary tabs from SystemBlock, SubsystemBlock and FunctionBlock to simplify user experience (F.J.Chadburn)
 #340 16-JUL-2021: ExecutableMBSE: Refinement of display options and metamodel to improve internal block diagram - functional usage (F.J.Chadburn)
 #341 16-JUL-2021: ExecutableMBSE: Add callback to allow user to select function block to type function usage with, when dropping on diagram (F.J.Chadburn)
-#342 26-JUN-2021: ExecutableMBSE: Allow function usage to own flow inputs/outputs so that implicit function chain without classes is possible (F.J.Chadburn)
-#343 26-JUN-2021: ExecutableMBSE: Added AutoGenerationOfProxyPortsForLinksPolicy and dialog to enable user to better control auto proxy port creation (F.J.Chadburn) 
+#342 26-JUL-2021: ExecutableMBSE: Allow function usage to own flow inputs/outputs so that implicit function chain without classes is possible (F.J.Chadburn)
+#343 26-JUL-2021: ExecutableMBSE: Added AutoGenerationOfProxyPortsForLinksPolicy and dialog to enable user to better control auto proxy port creation (F.J.Chadburn) 
+#344 26-JUL-2021: ExecutableMBSE: Add auto generation of flow input and flow output ports when flow connector is drawn between function usage (F.J.Chadburn) 
 
 Backlog/Known issues
 
@@ -522,3 +523,4 @@ Backlog/Known issues
 - Ensure that hep file allows for right-click of System Block, System Usage etc for some of the general features.
 - Allow functional deposition of function blocks/usages to any level
 - Add ability to select a system block when creating system usage for context diagram
+- Add ability to select or create an event to speed up drawing a flow connector between function usages
