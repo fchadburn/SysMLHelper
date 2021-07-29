@@ -601,19 +601,29 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 				isContinue = UserInterfaceHelper.askAQuestion(
 						"You have drawn a connector between two " + 
-						ExecutableMBSE_ProfileConstants.FUNCTION_USAGE + "s.\n"+
-						"Do you want to automatically create " + ExecutableMBSE_ProfileConstants.FLOW_OUTPUT + " and " +
-						ExecutableMBSE_ProfileConstants.FLOW_INPUT + " ports?");
+								ExecutableMBSE_ProfileConstants.FUNCTION_USAGE + "s.\n"+
+								"Do you want to automatically create " + ExecutableMBSE_ProfileConstants.FLOW_OUTPUT + " and " +
+								ExecutableMBSE_ProfileConstants.FLOW_INPUT + " ports?");
 			}
 
 			if( isContinue ){
 				autoCreateFlowPortsFor( theLink );
 			}
-			
-		} else if( fromUserDefinedMetaClass.equals( 
+
+			// Allow to work for subsystem => subsystem or actor (object) => system or 
+			// system => actor (object)
+		} else if( ( fromUserDefinedMetaClass.equals( 
 				ExecutableMBSE_ProfileConstants.SUBSYSTEM_USAGE ) &&
 				toUserDefinedMetaClass.equals( 
-						ExecutableMBSE_ProfileConstants.SUBSYSTEM_USAGE ) ){
+						ExecutableMBSE_ProfileConstants.SUBSYSTEM_USAGE ) ) ||
+						( fromUserDefinedMetaClass.equals( 
+								ExecutableMBSE_ProfileConstants.SYSTEM_USAGE ) &&
+								toUserDefinedMetaClass.equals( 
+										ExecutableMBSE_ProfileConstants.OBJECT ) ) ||
+										( toUserDefinedMetaClass.equals( 
+												ExecutableMBSE_ProfileConstants.SYSTEM_USAGE ) &&
+												fromUserDefinedMetaClass.equals( 
+														ExecutableMBSE_ProfileConstants.OBJECT ) )){
 
 			boolean isContinue = false;
 
@@ -627,8 +637,8 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			} else if( autoGenPolicy.equals( "UserDialog" ) ){
 
 				isContinue = UserInterfaceHelper.askAQuestion(
-						"You have drawn a connector between two " + 
-						ExecutableMBSE_ProfileConstants.SUBSYSTEM_USAGE + "s.\n"+
+						"You have drawn a connector from " + fromUserDefinedMetaClass + 
+						" => " + toUserDefinedMetaClass + ".\n"+
 						"Do you want to automatically create proxy ports?");
 			}
 
@@ -664,7 +674,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 						fromClassifierEl );
 
 				_context.debug( "fromPortName is " + fromPortName );
-				
+
 				String toPortName = _context.determineUniqueNameBasedOn( 
 						"in",
 						"SysMLPort", 
@@ -703,7 +713,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 						theGraphEdgeInfo.getEndY() );
 
 				theLink.deleteFromProject();
-				
+
 				CreateEventForFlowConnectorPanel.launchThePanel( 
 						_context.get_rhpAppID(), 
 						newLink.getGUID(),
@@ -809,7 +819,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			thePortNode = theGraphNodes.get( 0 );
 
 			String thePosition = x + "," + y;
-			
+
 			_context.debug( "Setting Position of existing " + _context.elInfo( thePortEl ) + " to " + thePosition );
 			thePortNode.setGraphicalProperty( "Position", thePosition );
 

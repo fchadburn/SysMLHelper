@@ -501,7 +501,8 @@ V4.0.f.Rhp831.PreRelease (XX-JUL-2021):
 #342 26-JUL-2021: ExecutableMBSE: Allow function usage to own flow inputs/outputs so that implicit function chain without classes is possible (F.J.Chadburn)
 #343 26-JUL-2021: ExecutableMBSE: Added AutoGenerationOfProxyPortsForLinksPolicy and dialog to enable user to better control auto proxy port creation (F.J.Chadburn) 
 #344 26-JUL-2021: ExecutableMBSE: Add auto generation of flow input and flow output ports when flow connector is drawn between function usage (F.J.Chadburn) 
-#345 29-JUL-2021: ExecutableMBSE: Allow system blocks to have a state machine (F.J.Chadburn) 
+#345 29-JUL-2021: ExecutableMBSE: Allow system blocks to have a state machine (F.J.Chadburn)
+#346 29-JUL-2021: ExecutableMBSE: Support auto-generation of proxy ports for connectors between system usages and actor objects (F.J.Chadburn)
 
 Backlog/Known issues
 
