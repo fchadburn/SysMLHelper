@@ -36,6 +36,7 @@ public class CreateUseCasesPackagePanel extends ExecutableMBSEBasePanel {
 		String theRhpAppID = theRhpApp.getApplicationConnectionString();
 		launchTheDialog(theRhpAppID);
 	}
+	
 	public static void launchTheDialog(
 			final String theAppID ){
 

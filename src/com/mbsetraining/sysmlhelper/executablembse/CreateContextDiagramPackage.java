@@ -12,6 +12,7 @@ public class CreateContextDiagramPackage {
 	
 	public CreateContextDiagramPackage(
 			String theContextDiagramPackageName,
+			IRPModelElement theSystemBlock,
 			IRPPackage theOwningPkg,
 			CreateRequirementsPkg.CreateRequirementsPkgOption theReqtsPkgChoice,
 			String theReqtsPkgOptionalName,
@@ -28,7 +29,7 @@ public class CreateContextDiagramPackage {
 		_context = theContext;
 		
 		String thePkgName = _context.determineUniqueNameBasedOn( 
-				theContextDiagramPackageName.replace(" ", "") + "Pkg", "Package", theOwningPkg );
+				theContextDiagramPackageName.replace(" ", "") + "_ContextPkg", "Package", theOwningPkg );
 		
 		IRPProject theProject = _context.get_rhpPrj();
 				
@@ -93,8 +94,8 @@ public class CreateContextDiagramPackage {
 			
 			theActorUsages.add( theObject );
 		}
-
-		createContextDiagram( theActorUsages, theContextDiagramPackageName, theContextDiagramPkg );
+		
+		createContextDiagram( theActorUsages, theContextDiagramPackageName, theSystemBlock, theContextDiagramPkg );
 		
 		_context.deleteIfPresent( "Structure1", "StructureDiagram", theProject );
 		_context.deleteIfPresent( "Model1", "ObjectModelDiagram", theProject );
@@ -111,10 +112,29 @@ public class CreateContextDiagramPackage {
 	private void createContextDiagram(
 			List<IRPRelation> theActorUsages, 
 			String theName,
+			IRPModelElement theSystemBlock,
 			IRPPackage theOwningPkg ) {
 		
-		IRPStructureDiagram theDiagram = 
-				(IRPStructureDiagram) theOwningPkg.addNewAggr( "StructureDiagram", "CTX - " + theName );
+		IRPCollection theCollection = _context.get_rhpApp().createNewCollection();
+
+		IRPStructureDiagram theDiagram;
+		
+		IRPRelation theSystemContextEl;
+		
+		if( theSystemBlock instanceof IRPClassifier ){
+			
+			theDiagram = (IRPStructureDiagram) theOwningPkg.addNewAggr( 
+					"StructureDiagram", "CTX - " + theSystemBlock.getName() );
+			
+			theSystemContextEl = theOwningPkg.addImplicitObject( "" );
+			theSystemContextEl.setOtherClass( (IRPClassifier) theSystemBlock );
+		} else {
+			
+			theDiagram = (IRPStructureDiagram) theOwningPkg.addNewAggr( 
+					"StructureDiagram", "CTX - " + theName );
+			
+			theSystemContextEl = theOwningPkg.addImplicitObject( theName );
+		}
 		
 		IRPStereotype theStereotype = _context.getNewTermForSystemContextDiagram();
 		
@@ -126,13 +146,9 @@ public class CreateContextDiagramPackage {
 			theDiagram.setStereotype( theStereotype );
 		}
 		
-		IRPCollection theCollection = _context.get_rhpApp().createNewCollection();
-
-		IRPRelation theSystemContextEl = theOwningPkg.addImplicitObject( theName );
 		theSystemContextEl.setStereotype( _context.getNewTermForSystemContext() );
-		
+
 		/*
-		
 		IRPGraphNode theNote =
 				theDiagram.addNewNodeByType( "Note", 21, 42, 156, 845 );
 		

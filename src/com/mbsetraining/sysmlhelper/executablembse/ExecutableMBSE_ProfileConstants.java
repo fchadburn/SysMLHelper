@@ -9,4 +9,5 @@ public class ExecutableMBSE_ProfileConstants {
 	public static final String FLOW_OUTPUT = "Flow Output";
 	public static final String FLOW_INPUT = "Flow Input";
 	public static final String OBJECT = "Object";
+	public static final String SYSTEM_BLOCK = "System Block";
 }

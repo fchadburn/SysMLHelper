@@ -504,6 +504,9 @@ V4.0.f.Rhp831.PreRelease (29-JUL-2021):
 #345 29-JUL-2021: ExecutableMBSE: Allow system blocks to have a state machine (F.J.Chadburn)
 #346 29-JUL-2021: ExecutableMBSE: Support auto-generation of proxy ports for connectors between system usages and actor objects (F.J.Chadburn)
 
+V4.0.g.Rhp831.PreRelease (XX-XXX-XXXX):
+#347 30-JUL-2021: ExecutableMBSE: Add ability to select a system block when creating system usage for context diagram (F.J.Chadburn)
+
 Backlog/Known issues
 
 - Add ability to create context diagram package at same time as creating the use case package
@@ -524,4 +527,4 @@ Backlog/Known issues
 - Do you need to generate menus with a version later than V8.3.1 to ensure compatibility?
 - Ensure that hep file allows for right-click of System Block, System Usage etc for some of the general features.
 - Allow functional deposition of function blocks/usages to any level
-- Add ability to select a system block when creating system usage for context diagram
+- Allow a logical architecture block to have a Component?

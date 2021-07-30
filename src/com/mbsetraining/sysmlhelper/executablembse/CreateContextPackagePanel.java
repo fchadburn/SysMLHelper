@@ -3,7 +3,9 @@ package com.mbsetraining.sysmlhelper.executablembse;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.BoxLayout;
 import javax.swing.GroupLayout;
@@ -15,6 +17,7 @@ import javax.swing.GroupLayout.ParallelGroup;
 import javax.swing.GroupLayout.SequentialGroup;
 import javax.swing.border.EmptyBorder;
 
+import com.mbsetraining.sysmlhelper.common.RhapsodyComboBox;
 import com.telelogic.rhapsody.core.*;
 
 public class CreateContextPackagePanel extends ExecutableMBSEBasePanel {
@@ -29,7 +32,15 @@ public class CreateContextPackagePanel extends ExecutableMBSEBasePanel {
 	private CreateRequirementsPkgChooser _createRequirementsPkgChooser;
 	private CreateExternalSignalsPkgChooser _createExternalSignalsPkgChooser;
 	private JTextField _nameTextField;
+	protected RhapsodyComboBox _selectClassComboBox = null;
 
+	public static void main(String[] args) {
+	
+		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
+		
+		launchTheDialog( theRhpApp.getApplicationConnectionString() );
+	}
+	
 	public static void launchTheDialog(
 			final String theAppID ){
 
@@ -84,7 +95,7 @@ public class CreateContextPackagePanel extends ExecutableMBSEBasePanel {
 
 		theStartPanel.setLayout( new BoxLayout( theStartPanel, BoxLayout.PAGE_AXIS ) );
 		theStartPanel.add( new JLabel( " " ) );
-		theStartPanel.add( createTheNameThePackagePanel( _ownerPkg, theUniqueName ) );
+		theStartPanel.add( createContextNameChoicePanel( theUniqueName ) );
 		theStartPanel.add( createPanelWithTextCentered( introText ) );
 
 		add( theStartPanel, BorderLayout.PAGE_START );
@@ -158,21 +169,47 @@ public class CreateContextPackagePanel extends ExecutableMBSEBasePanel {
 
 		return thePanel;
 	}
-
-	private JPanel createTheNameThePackagePanel(
-			IRPModelElement basedOnContext,
+	
+	private JPanel createContextNameChoicePanel(
 			String theUniqueName ){
-
+		
 		JPanel thePanel = new JPanel();
-		thePanel.setLayout( new FlowLayout( FlowLayout.LEFT ) );
-
+		thePanel.setLayout( new BoxLayout(thePanel, BoxLayout.X_AXIS ) );	
+		
 		_nameTextField = new JTextField( theUniqueName );
-		_nameTextField.setPreferredSize( new Dimension( 200, 20 ));
-
-		thePanel.add( new JLabel( "Choose a unique name:" ) );
-		thePanel.add( _nameTextField );	
-		thePanel.add( new JLabel( " (package post-fixed with Pkg will created under " + _context.elInfo(basedOnContext) + ")" ) );
-
+		_nameTextField.setPreferredSize( new Dimension( 200, 20 ) );
+		
+		List<IRPModelElement> theSystemBlocks = 
+				_context.findElementsWithMetaClassAndStereotype( 
+						"Class", 
+						ExecutableMBSE_ProfileConstants.SYSTEM_BLOCK, 
+						_context.get_rhpPrj(), 
+						1 );
+		
+		_selectClassComboBox = new RhapsodyComboBox( theSystemBlocks, false );
+		
+		_selectClassComboBox.addActionListener( new ActionListener () {
+		    public void actionPerformed( ActionEvent e ){
+		        
+		    	IRPModelElement theItem = _selectClassComboBox.getSelectedRhapsodyItem();
+		    	
+		    	if( theItem instanceof IRPClass ){
+		    		_nameTextField.setEnabled( false );
+		    	} else {
+		    		_nameTextField.setEnabled( true );
+		    	}
+		    }
+		});
+		
+		thePanel.add( new JLabel( "Choose a unique name: " ) );
+	    thePanel.add( _nameTextField );
+	    
+		JLabel theLabel = new JLabel( "  or select existing " + ExecutableMBSE_ProfileConstants.SYSTEM_BLOCK + ":  " );
+		thePanel.add( theLabel );
+		thePanel.add( _selectClassComboBox );	    	
+	    
+		_nameTextField.requestFocusInWindow();
+		
 		return thePanel;
 	}
 
@@ -188,11 +225,21 @@ public class CreateContextPackagePanel extends ExecutableMBSEBasePanel {
 
 		if( checkValidity( false ) ){
 
-			String theUnadornedName = _nameTextField.getText(); 
-
+			IRPModelElement theSystemBlock = _selectClassComboBox.getSelectedRhapsodyItem();
+			
+			String theUnadornedName;
+			
+			if( theSystemBlock instanceof IRPClassifier ){
+				
+				theUnadornedName = theSystemBlock.getName();
+			} else {
+				theUnadornedName = _nameTextField.getText(); 
+			}
+			
 			@SuppressWarnings("unused")
 			CreateContextDiagramPackage theCreator = new CreateContextDiagramPackage(
 					theUnadornedName, // theContextDiagramPackageName
+					theSystemBlock,
 					_ownerPkg, // theOwningPkg
 					_createRequirementsPkgChooser.getReqtsPkgChoice(), // theReqtsPkgChoice
 					_createRequirementsPkgChooser.getReqtsPkgOptionalName(), // theReqtsPkgOptionalName
