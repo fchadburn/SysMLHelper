@@ -25,8 +25,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">8.9.2021::7:34:12</_modifiedTime>
-			<_lastID type="a">99</_lastID>
+			<_modifiedTime type="a">8.10.2021::15:8:5</_modifiedTime>
+			<_lastID type="a">100</_lastID>
 			<_defaultComposite type="s">GUID 17d534c9-e8e2-45c6-8b29-5c81cb4d7dea</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
@@ -5702,7 +5702,17 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">4.29.2021::12:45:33</_modifiedTime>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\ExecutableMBSEProfile_MetaModelPkg.sbsx</_hfilename>
+					<_hsubsystem type="a">ExecutableMBSEProfile_MetaModelPkg</_hsubsystem>
+					<_hclass type="a">LogicalSystemPackage</_hclass>
+					<_hname type="a">MMD - LogicalSystemPackage</_hname>
+					<_hid type="a">GUID e18e8d62-cdb0-4ba4-809b-248a88c29a60</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">8.10.2021::12:52:41</_modifiedTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -5967,7 +5977,7 @@
 					<_hid type="a">GUID 299fc4d8-748d-4885-a0e3-5f9635edb981</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">7.5.2021::7:38:57</_modifiedTime>
+			<_modifiedTime type="a">8.10.2021::8:8:30</_modifiedTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -6017,7 +6027,17 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">4.29.2021::12:45:33</_modifiedTime>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\ExecutableMBSEProfile_MetaModelPkg.sbsx</_hfilename>
+					<_hsubsystem type="a">ExecutableMBSEProfile_MetaModelPkg</_hsubsystem>
+					<_hclass type="a">CppClass</_hclass>
+					<_hname type="a">MMD - CppClass</_hname>
+					<_hid type="a">GUID ef6f44dc-c8dd-4881-9f0c-7c4b1711c648</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">8.10.2021::12:35:6</_modifiedTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -6042,7 +6062,17 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">4.29.2021::12:45:33</_modifiedTime>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\ExecutableMBSEProfile_MetaModelPkg.sbsx</_hfilename>
+					<_hsubsystem type="a">ExecutableMBSEProfile_MetaModelPkg</_hsubsystem>
+					<_hclass type="a">CppClass</_hclass>
+					<_hname type="a">MMD - CppClass</_hname>
+					<_hid type="a">GUID ef6f44dc-c8dd-4881-9f0c-7c4b1711c648</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">8.10.2021::12:35:12</_modifiedTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -6067,7 +6097,17 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">4.29.2021::12:45:33</_modifiedTime>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\ExecutableMBSEProfile_MetaModelPkg.sbsx</_hfilename>
+					<_hsubsystem type="a">ExecutableMBSEProfile_MetaModelPkg</_hsubsystem>
+					<_hclass type="a">CppClass</_hclass>
+					<_hname type="a">MMD - CppClass</_hname>
+					<_hid type="a">GUID ef6f44dc-c8dd-4881-9f0c-7c4b1711c648</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">8.10.2021::12:35:17</_modifiedTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>

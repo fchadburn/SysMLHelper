@@ -370,8 +370,8 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSE</_name>
-			<_modifiedTime type="a">7.6.2021::14:21:37</_modifiedTime>
-			<_lastID type="a">10042</_lastID>
+			<_modifiedTime type="a">8.10.2021::8:15:55</_modifiedTime>
+			<_lastID type="a">20042</_lastID>
 			<_UserColors type="w">
 				<IRPYRawContainer type="e">
 					<size type="a">16</size>
@@ -457,6 +457,7 @@
 				<value>GUID ce846f97-9032-4155-a0dd-743e218d9376</value>
 				<value>GUID 4f2b6707-5798-4c1e-aa4b-c08bda2216fb</value>
 				<value>GUID 801c8dc2-1109-41eb-8815-e3fb68b9a344</value>
+				<value>GUID 33b123cb-e503-42ee-9388-7968a19e3c79</value>
 				<value>GUID 15e00bf1-6846-47dc-acb4-6a0add0593b4</value>
 			</AggregatesList>
 		</IProject>
@@ -501,6 +502,10 @@
 			<_persistAs type="a">IconsPkg</_persistAs>
 			<_id type="a">GUID 801c8dc2-1109-41eb-8815-e3fb68b9a344</_id>
 		</ISubsystem>
+		<ISubsystem type="e">
+			<fileName type="a">UML_MetaModelPkg</fileName>
+			<_id type="a">GUID 33b123cb-e503-42ee-9388-7968a19e3c79</_id>
+		</ISubsystem>
 		<IComponent type="e">
 			<_id type="a">GUID 15e00bf1-6846-47dc-acb4-6a0add0593b4</_id>
 			<_myState type="a">139264</_myState>
@@ -516,7 +521,7 @@
 			</m_configActive>
 			<HandlesInMe type="c">
 				<IRPYRawContainer type="e">
-					<size type="a">11</size>
+					<size type="a">12</size>
 					
 						<IHandle type="e">
 							<_hm2Class type="a">IProfile</_hm2Class>
@@ -594,6 +599,13 @@
 							<_hm2Class type="a">ISubsystem</_hm2Class>
 							<_hname type="a">IconsPkg</_hname>
 							<_hid type="a">GUID 801c8dc2-1109-41eb-8815-e3fb68b9a344</_hid>
+						</IHandle>
+					
+					
+						<IHandle type="e">
+							<_hm2Class type="a">ISubsystem</_hm2Class>
+							<_hname type="a">UML_MetaModelPkg</_hname>
+							<_hid type="a">GUID 33b123cb-e503-42ee-9388-7968a19e3c79</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>

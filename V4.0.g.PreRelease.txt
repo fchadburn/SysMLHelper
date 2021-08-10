@@ -508,6 +508,7 @@ V4.0.g.Rhp831.PreRelease (XX-XXX-XXXX):
 #347 30-JUL-2021: ExecutableMBSE: Add ability to select a system block when creating system usage for context diagram (F.J.Chadburn)
 #348 10-AUG-2021: ExecutableMBSE: Allow System Block and Subsystem Blocks to own Value Properties (F.J.Chadburn)
 #349 10-AUG-2021: ExecutableMBSE: Make animation more compact by turning off animation of chElapsedTime events in BasePkg (F.J.Chadburn)
+#350 10-AUG-2021: ExecutableMBSE: Initial enhancement to meta-model to support richer software design concepts, e.g., C++ class and a software bdd (F.J.Chadburn)
 
 Backlog/Known issues
 

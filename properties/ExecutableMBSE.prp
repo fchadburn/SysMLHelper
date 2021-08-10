@@ -167,7 +167,7 @@ Subject Format
 		Property Font.Font String "Tahoma"
 		Property Font.Size Int "8"
 		Property Font.Weight@Child.NameCompartment@Name Int "700"
-		Property Font.Italic@Child.NameCompartment@Name Int "1"
+		Property Font.Italic@Child.NameCompartment@Name Int "0"
 		Property Line.LineColor Color "109,163,217"
 		Property Line.LineStyle Int "0"
 		Property Line.LineWidth Int "1"
