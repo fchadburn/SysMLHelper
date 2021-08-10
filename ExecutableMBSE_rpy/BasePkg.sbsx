@@ -44,7 +44,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">BasePkg</_name>
-			<_modifiedTime type="a">10.13.2018::12:41:2</_modifiedTime>
+			<_modifiedTime type="a">8.10.2021::7:16:45</_modifiedTime>
 			<_lastID type="a">2</_lastID>
 			<_defaultComposite type="s">GUID ffd36ddc-ce50-4ff6-9a88-d2bda093b1b2</_defaultComposite>
 			<_eventsBaseID type="a">10601</_eventsBaseID>
@@ -71,6 +71,38 @@
 		<IEvent type="e">
 			<_id type="a">GUID 7ce0e62f-17f8-46bb-9791-943cd48ac4c2</_id>
 			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">CG</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Event</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">Animate</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
 			<_name type="a">chElapsedTime</_name>
 			<Stereotypes type="c">
 				<IRPYRawContainer type="e">
@@ -85,7 +117,7 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">10.13.2018::12:41:2</_modifiedTime>
+			<_modifiedTime type="a">8.10.2021::7:16:45</_modifiedTime>
 			<_virtual type="a">0</_virtual>
 			<Args type="c">
 				<IRPYRawContainer type="e">
