@@ -1658,7 +1658,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">7.29.2021::14:46:31</_modifiedTime>
+			<_modifiedTime type="a">8.9.2021::7:41:31</_modifiedTime>
 			<_lastID type="a">23</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -10427,7 +10427,7 @@ Query</_Value>
 			<_id type="a">GUID ec717f1d-0b3e-427a-89fd-8b516b2337c8</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Elements</_name>
-			<_modifiedTime type="a">7.29.2021::14:46:31</_modifiedTime>
+			<_modifiedTime type="a">8.9.2021::7:37:52</_modifiedTime>
 			<_lastID type="a">9</_lastID>
 			<_defaultComposite type="s">GUID d51fb0a3-38d7-4d7a-9f45-35fd12f6ff2a</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -10465,7 +10465,7 @@ Query</_Value>
 												<size type="a">6</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Connector,Generalization,Operation,Reception,Statechart,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale,Block Definition Diagram - Simple,Internal Block Diagram - Simple,Feature Usage,Subsystem Usage,Flow,ProxyPort</_Value>
+													<_Value type="a">Connector,Generalization,Operation,Reception,ValueProperty,Statechart,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale,Block Definition Diagram - Simple,Internal Block Diagram - Simple,Feature Usage,Subsystem Usage,Flow,ProxyPort</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -10512,7 +10512,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SystemBlock</_name>
-			<_modifiedTime type="a">7.29.2021::14:46:31</_modifiedTime>
+			<_modifiedTime type="a">8.9.2021::7:37:49</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -10540,7 +10540,7 @@ Query</_Value>
 												<size type="a">6</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Generalization,Operation,Reception,Statechart,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale,Function Usage,ProxyPort</_Value>
+													<_Value type="a">Generalization,Operation,Reception,ValueProperty,Statechart,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale,Function Usage,ProxyPort</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -10587,7 +10587,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SubsystemBlock</_name>
-			<_modifiedTime type="a">7.15.2021::16:42:33</_modifiedTime>
+			<_modifiedTime type="a">8.9.2021::7:37:52</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
