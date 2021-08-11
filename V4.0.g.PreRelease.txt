@@ -512,6 +512,7 @@ V4.0.g.Rhp831.PreRelease (XX-XXX-XXXX):
 #351 11-AUG-2021: ExecutableMBSE: Turn off hovering toolbar by default when setting up the project properties (F.J.Chadburn)
 #352 11-AUG-2021: ExecutableMBSE: Allow containment of Rhapsody components by software design and logical system packages (F.J.Chadburn) 
 #353 11-AUG-2021: ExecutableMBSE: Resolve some tab issues with C++ classes and allow them to own value properties (F.J.Chadburn)
+#354 11-AUG-2021: ExecutableMBSE: Add Satisfaction, Problem and Rationale to toolbar for the software design and logical system bdds (F.J.Chadburn)
 
 Backlog/Known issues
 
@@ -533,4 +534,3 @@ Backlog/Known issues
 - Do you need to generate menus with a version later than V8.3.1 to ensure compatibility?
 - Ensure that hep file allows for right-click of System Block, System Usage etc for some of the general features.
 - Allow functional deposition of function blocks/usages to any level
-- Allow a logical architecture block to have a Component?
