@@ -510,6 +510,8 @@ V4.0.g.Rhp831.PreRelease (XX-XXX-XXXX):
 #349 10-AUG-2021: ExecutableMBSE: Make animation more compact by turning off animation of chElapsedTime events in BasePkg (F.J.Chadburn)
 #350 10-AUG-2021: ExecutableMBSE: Initial enhancement to meta-model to support richer software design concepts, e.g., C++ class and a software bdd (F.J.Chadburn)
 #351 11-AUG-2021: ExecutableMBSE: Turn off hovering toolbar by default when setting up the project properties (F.J.Chadburn)
+#352 11-AUG-2021: ExecutableMBSE: Allow containment of Rhapsody components by software design and logical system packages (F.J.Chadburn) 
+#353 11-AUG-2021: ExecutableMBSE: Resolve some tab issues with C++ classes and allow them to own value properties (F.J.Chadburn)
 
 Backlog/Known issues
 
