@@ -566,7 +566,7 @@ DLLServerCompatible72=1
 name73=MBSE Method: General Utilities\Populate parts
 isPluginCommand73=1
 command73=InvokeExecutableMBSEHelper
-applicableTo73=Object,Class,Internal Block Diagram,Internal Block Diagram - Simple,Internal Block Diagram - Functional,Subsystem Usage,System Usage
+applicableTo73=Object,Class,Internal Block Diagram,Internal Block Diagram - Simple,Internal Block Diagram - Functional,Internal Block Diagram - Software,Subsystem Usage,System Usage
 isVisible73=1
 DLLServerCompatible73=1
 

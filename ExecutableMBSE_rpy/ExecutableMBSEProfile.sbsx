@@ -1658,7 +1658,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">8.11.2021::14:24:39</_modifiedTime>
+			<_modifiedTime type="a">8.11.2021::15:47:16</_modifiedTime>
 			<_lastID type="a">23</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -8732,7 +8732,7 @@ sleep(2);</_bodyData>
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">AddNewMenuStructure</_Name>
-													<_Value type="a">Attribute,MBSE Diagram/Block Definition Diagram - Simple,MBSE Diagram/Block Definition Diagram - Software,MBSE Diagram/Enhanced Use Case Diagram,MBSE Diagram/Internal Block Diagram - Functional,MBSE Diagram/Internal Block Diagram - Simple,MBSE Diagram/System Context Diagram,MBSE Diagram/TableV - Context Diagram Flows,MBSE Diagram/Textual Activity,MBSE Element/10 Reqts Analysis - Context Diagram Package,MBSE Element/11 Reqts Analysis - Actor Package,MBSE Element/12 Reqts Analysis - Use Case Package,MBSE Element/13 Reqts Analysis - Requirement Package,MBSE Element/14 Reqts Analysis - External Signals Package,MBSE Element/31 Design Synthesis - Logical System Package,MBSE Element/33 Design Synthesis - Software Design Package,MBSE Element/33 Design Synthesis - Subsystem Interfaces Package,MBSE Element/Actor Usage,MBSE Element/C++ Class,MBSE Element/Component Usage,MBSE Element/Domain Block,MBSE Element/Feature Usage,MBSE Element/Flow Input,MBSE Element/Flow Output,MBSE Element/Function Block,MBSE Element/Function Usage,MBSE Element/Software Component,MBSE Element/Subsystem Block,MBSE Element/Subsystem Usage,MBSE Element/System Block,MBSE Element/System Usage,MBSE Relation/Flow Connector,Diagrams/Requirements Diagram,%0D
+													<_Value type="a">Attribute,Structure Diagram,MBSE Diagram/Block Definition Diagram - Simple,MBSE Diagram/Block Definition Diagram - Software,MBSE Diagram/Enhanced Use Case Diagram,MBSE Diagram/Internal Block Diagram - Functional,MBSE Diagram/Internal Block Diagram - Simple,MBSE Diagram/Internal Block Diagram - Software,MBSE Diagram/System Context Diagram,MBSE Diagram/TableV - Context Diagram Flows,MBSE Diagram/Textual Activity,MBSE Element/10 Reqts Analysis - Context Diagram Package,MBSE Element/11 Reqts Analysis - Actor Package,MBSE Element/12 Reqts Analysis - Use Case Package,MBSE Element/13 Reqts Analysis - Requirement Package,MBSE Element/14 Reqts Analysis - External Signals Package,MBSE Element/31 Design Synthesis - Logical System Package,MBSE Element/33 Design Synthesis - Software Design Package,MBSE Element/33 Design Synthesis - Subsystem Interfaces Package,MBSE Element/Actor Usage,MBSE Element/C++ Class,MBSE Element/Component Usage,MBSE Element/Domain Block,MBSE Element/Feature Usage,MBSE Element/Flow Input,MBSE Element/Flow Output,MBSE Element/Function Block,MBSE Element/Function Usage,MBSE Element/Software Component,MBSE Element/Subsystem Block,MBSE Element/Subsystem Usage,MBSE Element/System Block,MBSE Element/System Usage,MBSE Relation/Flow Connector,Diagrams/Requirements Diagram,%0D
 Diagrams/UseCaseDiagram,%0D
 Diagrams/Package Diagram,%0D
 Diagrams/Block Definition Diagram,%0D
@@ -8932,7 +8932,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSE</_name>
-			<_modifiedTime type="a">8.11.2021::7:57:15</_modifiedTime>
+			<_modifiedTime type="a">8.11.2021::14:54:10</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -8944,7 +8944,7 @@ Query</_Value>
 			<_id type="a">GUID 3307dbc4-6282-4d53-88b2-50e3de5ff8c2</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Diagrams</_name>
-			<_modifiedTime type="a">8.11.2021::14:24:39</_modifiedTime>
+			<_modifiedTime type="a">8.11.2021::14:55:4</_modifiedTime>
 			<_lastID type="a">4</_lastID>
 			<_defaultComposite type="s">GUID af3ccc20-8ac1-47a2-8c5f-be1a84c1550e</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -8955,6 +8955,7 @@ Query</_Value>
 				<value>GUID da018c48-fbae-40b6-a92c-85510daea10b</value>
 				<value>GUID 784fe11c-75c7-4ba6-8472-fd090d566149</value>
 				<value>GUID b76441f2-dd3a-455c-a436-5f0db83e489f</value>
+				<value>GUID 5b0bedd4-499b-473d-9c40-1c0b09edff8d</value>
 				<value>GUID 55ce15ee-70de-4fb9-9c5d-0d06f914e082</value>
 				<value>GUID af3ccc20-8ac1-47a2-8c5f-be1a84c1550e</value>
 				<value>GUID 44328a1d-efc3-421d-b594-fc026ac720ed</value>
@@ -9652,6 +9653,118 @@ Query</_Value>
 			<_newTerm type="a">1</_newTerm>
 		</IStereotype>
 		<IStereotype type="e">
+			<_id type="a">GUID 5b0bedd4-499b-473d-9c40-1c0b09edff8d</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">3</size>
+						<IPropertySubject type="e">
+							<_Name type="a">General</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Graphics</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">DefaultBoxView</_Name>
+													<_Value type="a">Structured</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">Specification,Structured,Default</_ExtraTypeInfo>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Stereotype</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">4</size>
+												<IProperty type="e">
+													<_Name type="a">Aggregates</_Name>
+													<_Value type="a">ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">DrawingToolbar</_Name>
+													<_Value type="a">Connector,Dependency</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">Name</_Name>
+													<_Value type="a">Internal Block Diagram - Software</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">PluralName</_Name>
+													<_Value type="a">Internal Block Diagrams - Software</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+						<IPropertySubject type="e">
+							<_Name type="a">ObjectModelGe</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">General</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">SysMLDiagramKindTitle</_Name>
+													<_Value type="a">ibd</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">InternalBlockDiagramSoftware</_name>
+			<_modifiedTime type="a">8.11.2021::14:55:4</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>StructureDiagram</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+			<_newTerm type="a">1</_newTerm>
+		</IStereotype>
+		<IStereotype type="e">
 			<_id type="a">GUID 55ce15ee-70de-4fb9-9c5d-0d06f914e082</_id>
 			<_myState type="a">8192</_myState>
 			<_properties type="p"><IPropertyContainer type="e">
@@ -9716,7 +9829,7 @@ Query</_Value>
 							<_Name type="a">ObjectModelGe</_Name>
 							<Metaclasses type="c">
 								<IRPYRawContainer type="e">
-									<size type="a">2</size>
+									<size type="a">3</size>
 									<IPropertyMetaclass type="e">
 										<_Name type="a">Composition</_Name>
 										<Properties type="c">
@@ -9726,6 +9839,21 @@ Query</_Value>
 													<_Name type="a">RepresentParts</_Name>
 													<_Value type="a">True</_Value>
 													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+									<IPropertyMetaclass type="e">
+										<_Name type="a">General</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">SysMLDiagramKindTitle</_Name>
+													<_Value type="a">bdd</_Value>
+													<_Type type="a">String</_Type>
 												</IProperty>
 												
 											</IRPYRawContainer>
@@ -9757,7 +9885,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">BlockDefinitionDiagramSoftware</_name>
-			<_modifiedTime type="a">8.11.2021::14:20:18</_modifiedTime>
+			<_modifiedTime type="a">8.11.2021::14:51:8</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -9947,7 +10075,7 @@ Query</_Value>
 			<_id type="a">GUID d213ea00-7590-48aa-8f30-a0a61f8fcd08</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Packages</_name>
-			<_modifiedTime type="a">8.11.2021::8:40:49</_modifiedTime>
+			<_modifiedTime type="a">8.11.2021::15:39:46</_modifiedTime>
 			<_defaultComposite type="s">GUID 26c8a3f9-6aee-4dff-a42f-bf1cc2880009</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
@@ -10548,7 +10676,7 @@ Query</_Value>
 												<size type="a">4</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Query,Block,Event,Interface,SequenceDiagram,Component,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Block Definition Diagram - Software,33 Design Synthesis - Subsystem Interfaces Package,C++ Class,Function Block,Software Component,Flow Connector,InterfaceBlock,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
+													<_Value type="a">Query,Event,Interface,SequenceDiagram,Component,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Block Definition Diagram - Software,C++ Class,Software Component,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -10583,7 +10711,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SoftwareDesignPackage</_name>
-			<_modifiedTime type="a">8.11.2021::8:40:49</_modifiedTime>
+			<_modifiedTime type="a">8.11.2021::15:39:46</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -10607,7 +10735,7 @@ Query</_Value>
 			<_id type="a">GUID ec717f1d-0b3e-427a-89fd-8b516b2337c8</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Elements</_name>
-			<_modifiedTime type="a">8.11.2021::12:17:9</_modifiedTime>
+			<_modifiedTime type="a">8.11.2021::14:55:26</_modifiedTime>
 			<_lastID type="a">11</_lastID>
 			<_defaultComposite type="s">GUID d51fb0a3-38d7-4d7a-9f45-35fd12f6ff2a</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -11585,7 +11713,7 @@ Query</_Value>
 												<size type="a">3</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Object,AssociationEnd,Constructor,Destructor,Generalization,Operation,Reception,ValueProperty,Statechart,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale,Realization</_Value>
+													<_Value type="a">Object,Structure Diagram,AssociationEnd,Constructor,Destructor,Generalization,Operation,Reception,ValueProperty,Statechart,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale,Realization,Internal Block Diagram - Software</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -11614,7 +11742,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">CppClass</_name>
-			<_modifiedTime type="a">8.11.2021::12:17:9</_modifiedTime>
+			<_modifiedTime type="a">8.11.2021::14:55:26</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
