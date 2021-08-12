@@ -131,11 +131,12 @@ public class FunctionalAnalysisSettings {
 			}
 		}
 
-		//		if( theEl == null ){
-		//			Logger.writeLine( "Error in getElementNamedInFunctionalPackageTag, " + 
-		//					"unable to find value for tag called " + theTagName + " under " + 
-		//					Logger.elementInfo( basedOnContextEl ) );
-		//		}
+		if( theEl == null ){
+			_context.error( "Error  in getElementNamedInFunctionalPackageTag, " + 
+			"unable to find value for tag called " + theTagName + " under " + 
+			_context.elInfo( basedOnContextEl ) );
+			
+		}
 
 		return theEl;
 	}

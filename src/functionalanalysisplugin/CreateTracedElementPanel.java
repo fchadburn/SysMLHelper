@@ -53,7 +53,7 @@ public abstract class CreateTracedElementPanel extends JPanel {
 		
 		_context = new ExecutableMBSE_Context( theAppID );
 		_selectionContext = new SelectedElementContext( _context );
-		_settings = new FunctionalAnalysisSettings( _context );
+		_settings = new FunctionalAnalysisSettings_ExecutableMBSE( _context );
 		
 		_context.debug( "CreateTracedElementPanel constructor was invoked" );
 		

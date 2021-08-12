@@ -24,7 +24,7 @@ public class SelectedElementContext {
 	private Set<IRPRequirement> _selectedReqts = null;
 	private ExecutableMBSE_Context _context;
 
-	private FunctionalAnalysisSettings _settings;
+	private FunctionalAnalysisSettings_ExecutableMBSE _settings;
 	
 	public SelectedElementContext(
 			ExecutableMBSE_Context context ){
@@ -34,7 +34,7 @@ public class SelectedElementContext {
 		_selectedEl = _context.getSelectedElement();
 		_contextEl = getContextEl();
 		_sourceGraphElDiagram = getSourceDiagram();
-		_settings = new FunctionalAnalysisSettings( _context );
+		_settings = new FunctionalAnalysisSettings_ExecutableMBSE( _context );
 	}
 	
 	@SuppressWarnings("unchecked")
