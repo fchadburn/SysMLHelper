@@ -23,8 +23,7 @@ public class SelectedElementContext {
 	private IRPDiagram _sourceGraphElDiagram = null;
 	private Set<IRPRequirement> _selectedReqts = null;
 	private ExecutableMBSE_Context _context;
-
-	private FunctionalAnalysisSettings_ExecutableMBSE _settings;
+	private FunctionalAnalysisSettings _settings;
 	
 	public SelectedElementContext(
 			ExecutableMBSE_Context context ){
@@ -34,7 +33,7 @@ public class SelectedElementContext {
 		_selectedEl = _context.getSelectedElement();
 		_contextEl = getContextEl();
 		_sourceGraphElDiagram = getSourceDiagram();
-		_settings = new FunctionalAnalysisSettings_ExecutableMBSE( _context );
+		_settings = new FunctionalAnalysisSettings( _context );
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -217,7 +216,8 @@ public class SelectedElementContext {
 	
 	public IRPClass getBuildingBlock(){
 		
-		if( _buildingBlock == null && _contextEl != null ){
+		if( _buildingBlock == null && 
+				_contextEl != null ){
 			
 			try {
 				
@@ -227,11 +227,12 @@ public class SelectedElementContext {
 				
 				_context.info( "Element named in " + tagNameForAssemblyBlockUnderDev + " is " + _context.elInfo( elementInTag ) );
 
-				if( elementInTag != null && elementInTag instanceof IRPClass ){
+				if( elementInTag != null && 
+						elementInTag instanceof IRPClass ){
 					_buildingBlock = (IRPClass)elementInTag;
 				}
 
-			} catch (Exception e) {
+			} catch( Exception e ){
 				_context.error( "Exception in getBuildingBlock, " +
 						"while trying to get " + tagNameForAssemblyBlockUnderDev );
 			}

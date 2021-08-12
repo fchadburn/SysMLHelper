@@ -1,22 +1,14 @@
 package com.mbsetraining.sysmlhelper.functionaldesignplugin;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
-import com.telelogic.rhapsody.core.IRPActivityDiagram;
 import com.telelogic.rhapsody.core.IRPActor;
-import com.telelogic.rhapsody.core.IRPDependency;
 import com.telelogic.rhapsody.core.IRPFlowchart;
-import com.telelogic.rhapsody.core.IRPGraphElement;
 import com.telelogic.rhapsody.core.IRPModelElement;
 import com.telelogic.rhapsody.core.IRPPackage;
-import com.telelogic.rhapsody.core.IRPProfile;
 import com.telelogic.rhapsody.core.IRPProject;
-import com.telelogic.rhapsody.core.IRPStereotype;
 import com.telelogic.rhapsody.core.IRPUnit;
 
 public class FunctionalDesign_Context extends ConfigurationSettings {

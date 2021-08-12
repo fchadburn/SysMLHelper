@@ -22,10 +22,7 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.telelogic.rhapsody.core.*;
-
-import functionalanalysisplugin.SelectedElementContext;
 
 public abstract class ExecutableMBSEBasePanel extends JPanel {
 
@@ -34,8 +31,8 @@ public abstract class ExecutableMBSEBasePanel extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	protected ConfigurationSettings _context;
-	protected SelectedElementContext _selectedContext;
+	protected ExecutableMBSE_Context _context;
+	//protected SelectedElementContext _selectedContext;
 
 	protected ExecutableMBSEBasePanel(
 			String theAppID ){

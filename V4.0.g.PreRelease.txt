@@ -515,6 +515,7 @@ V4.0.g.Rhp831.PreRelease (XX-XXX-XXXX):
 #354 11-AUG-2021: ExecutableMBSE: Add Satisfaction, Problem and Rationale to toolbar for the software design and logical system bdds (F.J.Chadburn)
 #355 11-AUG-2021: ExecutableMBSE: Add an Internal Block Diagram - Software diagram to support modeling a structured C++ class (F.J.Chadburn)
 #356 11-AUG-2021: ExecutableMBSE: Fix to use FunctionalAnalysisSettings_ExecutableMBSE to get traced element panels to find correct assembly block (F.J.Chadburn) 
+#357 11-AUG-2021: ExecutableMBSE: Some general refactoring to simplify, ease debugging, and improve performance (F.J.Chadburn)
 
 Backlog/Known issues
 

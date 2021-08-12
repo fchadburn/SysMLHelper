@@ -2,7 +2,6 @@ package com.mbsetraining.sysmlhelper.executablembse;
 
 import functionalanalysisplugin.ActorMappingInfo;
 import functionalanalysisplugin.FunctionalAnalysisSettings;
-import functionalanalysisplugin.FunctionalAnalysisSettings_ExecutableMBSE;
 import functionalanalysisplugin.PopulateFunctionalAnalysisPkg.SimulationType;
 
 import java.awt.BorderLayout;
@@ -211,7 +210,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 		List<IRPModelElement> theUseCasePackages =
 				_context.findElementsWithMetaClassAndStereotype(
 						"Package", 
-						((ExecutableMBSE_Context) _context).getUseCasePackageStereotype( _rootPackage ), 
+						_context.getUseCasePackageStereotype( _rootPackage ), 
 						_context.get_rhpPrj(), 
 						1 );
 
@@ -349,7 +348,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 		thePanel.add( _blockNameTextField );			
 
 		List<IRPModelElement> theStereotypes = 
-				((ExecutableMBSE_Context) _context).getStereotypesForBlockPartCreation( 
+				_context.getStereotypesForBlockPartCreation( 
 						_rootPackage.getProject() );
 
 		_chosenStereotype = new RhapsodyComboBox( theStereotypes, false );
@@ -479,7 +478,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 								theActorCheckBox, 
 								theActorNameTextField, 
 								(IRPActor)theActor,								
-								((ExecutableMBSE_Context) _context) );
+								_context );
 
 				theMappingInfo.updateToBestActorNamesBasedOn( theBlockName );
 
@@ -540,8 +539,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 					_context.addNewTermPackageAndSetUnitProperties(
 							theName + "Pkg",
 							_rootPackage,
-							((ExecutableMBSE_Context) _context).getSimulationPackageStereotype( 
-									_rootPackage ) );
+							_context.getSimulationPackageStereotype( _rootPackage ) );
 
 			for( IRPPackage theUseCasePkg : _useCasePkgs ){
 				theRootPkg.addDependencyTo( theUseCasePkg );
@@ -551,24 +549,21 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 			IRPPackage theBlockPkg = _context.addNewTermPackageAndSetUnitProperties(
 					"Blocks_" + theName + "Pkg",
 					theRootPkg,
-					((ExecutableMBSE_Context) _context).getDesignPackageStereotype( 
-							theRootPkg ) );
+					_context.getDesignPackageStereotype( theRootPkg ) );
 
 			// Create nested package for events and interfaces
 			IRPPackage theInterfacesPkg = 
 					_context.addNewTermPackageAndSetUnitProperties(
 							"Interfaces_" + theName + "Pkg",
 							theRootPkg,
-							((ExecutableMBSE_Context) _context).getInterfacesPackageStereotype( 
-									theRootPkg ) );
+							_context.getInterfacesPackageStereotype( theRootPkg ) );
 
 			// Create nested TestPkg package with components necessary for wiring up a simulation
 			IRPPackage theTestPkg = 
 					_context.addNewTermPackageAndSetUnitProperties(
 							"Test_" + theName  + "Pkg",
 							theRootPkg,
-							((ExecutableMBSE_Context) _context).getTestPackageStereotype( 
-									theRootPkg ) );
+							_context.getTestPackageStereotype( theRootPkg ) );
 
 			// Create nested package for housing the ADs
 			@SuppressWarnings("unused")
@@ -576,8 +571,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 					_context.addNewTermPackageAndSetUnitProperties(
 					"Working_" + theName + "Pkg",
 					theRootPkg,
-					((ExecutableMBSE_Context) _context).getUseCasePackageWorkingStereotype( 
-							theRootPkg ) );
+					_context.getUseCasePackageWorkingStereotype( theRootPkg ) );
 
 			// Populate content for the BlockPkg
 			IRPClass theLogicalSystemBlock = theBlockPkg.addClass( theName );
@@ -595,7 +589,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 			theLogicalSystemPart.setOtherClass( theLogicalSystemBlock );
 
 			FunctionalAnalysisSettings theSettings = 
-					new FunctionalAnalysisSettings_ExecutableMBSE(((ExecutableMBSE_Context) _context));
+					new FunctionalAnalysisSettings( _context );
 			
 			theSettings.setupFunctionalAnalysisTagsFor( 
 					theRootPkg,
@@ -625,7 +619,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 				if( theChosenOne==null ){
 
 					IRPStereotype theTimeElapsedBlockStereotype = 
-							((ExecutableMBSE_Context) _context).getStereotypeForTimeElapsedBlock( 
+							_context.getStereotypeForTimeElapsedBlock( 
 									theLogicalSystemBlock );
 
 					theLogicalSystemBlock.setStereotype( theTimeElapsedBlockStereotype );					
@@ -677,7 +671,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 						theTestPkg.addActor( "ElapsedTime_" + theName );
 
 				theElapsedTimeActor.setStereotype( 
-						((ExecutableMBSE_Context) _context).getStereotypeForTimeElapsedActor(
+						_context.getStereotypeForTimeElapsedActor(
 								theElapsedTimeActor ) );
 
 				IRPInstance theElapsedTimePart = null;

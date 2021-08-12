@@ -389,7 +389,6 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 			if( theDependsOn != null && 
 					theDependsOn instanceof IRPRequirement ){
 
-				_context.info("Deleting " + _context.elInfo( theDependency ) );
 				theDependency.deleteFromProject();
 			}
 		}
@@ -414,8 +413,8 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 
 			if (theReadyState != null){
 
-				_context.debug("Creating event called " + withSendEventName 
-						+ " on actor called " + onTheActor.getName());
+				_context.debug( "Creating event called " + withSendEventName 
+						+ " on actor called " + onTheActor.getName() );
 
 				sendEvent = (IRPEvent) theEvent.clone(withSendEventName, onTheActor.getOwner());
 

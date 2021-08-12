@@ -94,7 +94,7 @@ public class CreateEventForFlowConnectorPanel extends ExecutableMBSEBasePanel {
 		}
 		
 		// only do move if property is set
-		boolean isEnabled = ((ExecutableMBSE_Context) _context).getIsEnableAutoMoveOfEventsOnFlowConnectorCreation();
+		boolean isEnabled = _context.getIsEnableAutoMoveOfEventsOnFlowConnectorCreation();
 		
 		_existingEventEls = new ArrayList<IRPModelElement>();
 		
@@ -104,7 +104,7 @@ public class CreateEventForFlowConnectorPanel extends ExecutableMBSEBasePanel {
 		if( isEnabled ){
 			_elementMover = new ElementMover( 
 					theDiagram, 
-					((ExecutableMBSE_Context) _context).getSubsystemInterfacesPackageStereotype(), 
+					_context.getSubsystemInterfacesPackageStereotype(), 
 					_context );		
 			
 			if( _elementMover.isMovePossible() ){

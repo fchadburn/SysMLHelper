@@ -18,15 +18,21 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import com.telelogic.rhapsody.core.*;
 
-public abstract class BaseContext extends RhpLog {
+public abstract class BaseContext {
 
 	private String _pluginVersionProperty;
 	private String _userDefinedMetaClassesAsSeparateUnitProperty;
 	private String _allowPluginToControlUnitGranularityProperty;
+	private String _enableWarningLoggingProperty;
+	private String _enableErrorLoggingProperty;
+	private String _enableDebugLoggingProperty;
+	private String _enableInfoLoggingProperty;
 	
-	protected RhpLog _rhpLog;
 	protected String _namesRegEx;
-
+	protected RhpLog _rhpLog;
+	protected IRPApplication _rhpApp;
+	protected IRPProject _rhpPrj;
+	
 	public BaseContext(
 			String theAppID,
 			String enableErrorLoggingProperty,
@@ -37,15 +43,57 @@ public abstract class BaseContext extends RhpLog {
 			String userDefinedMetaClassesAsSeparateUnitProperty,
 			String allowPluginToControlUnitGranularityProperty ) {
 
-		super( theAppID,
-				enableErrorLoggingProperty,
-				enableWarningLoggingProperty,
-				enableInfoLoggingProperty,
-				enableDebugLoggingProperty );
+		_rhpApp = RhapsodyAppServer.getActiveRhapsodyApplicationByID( theAppID );
+		_rhpPrj = _rhpApp.activeProject();
+
+		_enableWarningLoggingProperty = enableWarningLoggingProperty;
+		_enableErrorLoggingProperty = enableErrorLoggingProperty;
+		_enableDebugLoggingProperty = enableDebugLoggingProperty;
+		_enableInfoLoggingProperty = enableInfoLoggingProperty;
+		
+		_rhpLog = new RhpLog( 
+				_rhpApp, 
+				_rhpPrj, 
+				isEnableWarningLogging(), 
+				isEnableErrorLogging(), 
+				isEnableDebugLogging(), 
+				isEnableInfoLogging() );
 		
 		_pluginVersionProperty = pluginVersionProperty;
 		_userDefinedMetaClassesAsSeparateUnitProperty = userDefinedMetaClassesAsSeparateUnitProperty;
 		_allowPluginToControlUnitGranularityProperty = allowPluginToControlUnitGranularityProperty;
+	}
+	
+	public boolean isEnableWarningLogging(){
+
+		return getBoolPropertyValueFromRhp(
+				_rhpPrj, 
+				_enableWarningLoggingProperty, 
+				true );
+	}
+
+	public boolean isEnableErrorLogging(){
+
+		return getBoolPropertyValueFromRhp(
+				_rhpPrj, 
+				_enableErrorLoggingProperty, 
+				true );
+	}
+
+	public boolean isEnableDebugLogging(){
+
+		return getBoolPropertyValueFromRhp(
+				_rhpPrj, 
+				_enableDebugLoggingProperty, 
+				true );
+	}
+
+	public boolean isEnableInfoLogging(){
+
+		return getBoolPropertyValueFromRhp(
+				_rhpPrj, 
+				_enableInfoLoggingProperty, 
+				true );
 	}
 	
 	public IRPModelElement findElementByGUID( 
@@ -118,7 +166,7 @@ public abstract class BaseContext extends RhpLog {
 			theGraphNode = theGraphNodes.get( 0 );
 		}
 
-		debug( "getGraphNodeIfOnlyOneIsSelected found " + theGraphNodes.size() + " elements" );
+		_rhpLog.debug( "getGraphNodeIfOnlyOneIsSelected found " + theGraphNodes.size() + " elements" );
 
 		return theGraphNode;
 	}
@@ -133,7 +181,7 @@ public abstract class BaseContext extends RhpLog {
 		if( theSelectedGraphEls.size() == 1 ){
 			theGraphEl = theSelectedGraphEls.get( 0 );
 		} else {
-			this.debug( "getSelectedGraphEl was invoked, " + theSelectedGraphEls.size() + " were found when expecting one" );
+			_rhpLog.debug( "getSelectedGraphEl was invoked, " + theSelectedGraphEls.size() + " were found when expecting one" );
 		}
 
 		return theGraphEl;
@@ -216,7 +264,7 @@ public abstract class BaseContext extends RhpLog {
 		if( matches.size()==1 ){
 			matchingEl = matches.get( 0 ); 
 		} else if( matches.size() > 1 ){
-			warning( "getElementInProjectThatMatches found " + matches.size() + " elements with name " + 
+			_rhpLog.warning( "getElementInProjectThatMatches found " + matches.size() + " elements with name " + 
 					andName + " and type " + theUserDefinedMetaClass + ", when expecting one " +
 					"(hence is returning the first one found)" );
 			matchingEl = matches.get( 0 ); 
@@ -262,22 +310,22 @@ public abstract class BaseContext extends RhpLog {
 //						"Unable to setBoolPropertyValueInRhp because project is read-only");
 				
 				// just give a warning as this may occur when using stereotypes in the SysML profile
-				super.warning( "Unable to setStringPropertyValueInRhp for " + elInfo( theEl) + " because unit is read-only" );
+				_rhpLog.warning( "Unable to setStringPropertyValueInRhp for " + _rhpLog.elInfo( theEl) + " because unit is read-only" );
 			} else {
 
 				try {
 					String previousValue = theEl.getPropertyValue(withKey);
 
 					if( previousValue.equals( toValue ) ){
-						super.debug( "Skipping " + withKey + " property on " + elInfo( theEl ) + " as it's already set to " + toValue);
+						_rhpLog.debug( "Skipping " + withKey + " property on " + _rhpLog.elInfo( theEl ) + " as it's already set to " + toValue);
 
 					} else {						
-						super.debug( "Setting " + withKey + " property on " + elInfo( theEl ) + " to " + toValue);
+						_rhpLog.debug( "Setting " + withKey + " property on " + _rhpLog.elInfo( theEl ) + " to " + toValue);
 						theEl.setPropertyValue(withKey, toValue);
 					}
 
 				} catch( Exception e ){
-					super.warning( e.getMessage() + " has occurred which suggests a problem setting a property in the profile." );
+					_rhpLog.warning( e.getMessage() + " has occurred which suggests a problem setting a property in the profile." );
 					e.printStackTrace();
 				}
 			}
@@ -297,7 +345,7 @@ public abstract class BaseContext extends RhpLog {
 //						"Unable to setBoolPropertyValueInRhp because project is read-only" );
 				
 				// just give a warning as this may occur when using stereotypes in the SysML profile
-				warning( "Unable to setBoolPropertyValueInRhp for " + elInfo( theEl) + " because unit is read-only" );
+				_rhpLog.warning( "Unable to setBoolPropertyValueInRhp for " + _rhpLog.elInfo( theEl) + " because unit is read-only" );
 			} else {
 
 				try {
@@ -307,11 +355,11 @@ public abstract class BaseContext extends RhpLog {
 						theValue = "True";
 					}
 
-					debug( "Setting " + withKey + " property on " + elInfo( theEl ) + " to " + theValue);
+					_rhpLog.debug( "Setting " + withKey + " property on " + _rhpLog.elInfo( theEl ) + " to " + theValue);
 					theEl.setPropertyValue(withKey, theValue);
 
 				} catch( Exception e ){
-					warning( e.getMessage() + " has occurred which suggests a problem setting a property in the profile.");
+					_rhpLog.warning( e.getMessage() + " has occurred which suggests a problem setting a property in the profile.");
 					e.printStackTrace();
 				}
 			}
@@ -335,7 +383,7 @@ public abstract class BaseContext extends RhpLog {
 				}
 
 			} catch (Exception e) {
-				warning( e.getMessage() + " has occurred which suggests a problem finding property in the profile." );
+				_rhpLog.warning( e.getMessage() + " has occurred which suggests a problem finding property in the profile." );
 				e.printStackTrace();}
 		}
 
@@ -355,7 +403,7 @@ public abstract class BaseContext extends RhpLog {
 						propertyKey );
 
 			} catch (Exception e) {
-				warning( "'" + e.getMessage() + "' has occurred which suggests a problem finding property in the profile." );
+				_rhpLog.warning( "'" + e.getMessage() + "' has occurred which suggests a problem finding property in the profile." );
 				e.printStackTrace();
 			}
 		}
@@ -372,7 +420,7 @@ public abstract class BaseContext extends RhpLog {
 		if( theModelEl != null && theModelEl instanceof IRPStereotype ){
 			theStereotype = (IRPStereotype)theModelEl;
 		} else {
-			error( "Unable to find stereotype with name " + theName + " in project");
+			_rhpLog.error( "Unable to find stereotype with name " + theName + " in project");
 		}
 
 		return theStereotype;
@@ -386,7 +434,7 @@ public abstract class BaseContext extends RhpLog {
 
 		if( theTag == null ){
 			
-			error( "setTagValue for " + elInfo( appliedToModelEl ) + 
+			_rhpLog.error( "setTagValue for " + _rhpLog.elInfo( appliedToModelEl ) + 
 					" was unable to find tag called " + withTagName );
 		}
 
@@ -408,9 +456,9 @@ public abstract class BaseContext extends RhpLog {
 			theTagValue = theTag.getValue();
 			
 		} else {
-			error( "getTagValueOnNewTermStereotype for " + elInfo( appliedToModelEl ) + 
+			_rhpLog.error( "getTagValueOnNewTermStereotype for " + _rhpLog.elInfo( appliedToModelEl ) + 
 					" was unable to find tag called " + withTagName + 
-					" related to stereotype called " + elInfo( theStereotype )  );
+					" related to stereotype called " + _rhpLog.elInfo( theStereotype )  );
 		}
 
 		return theTagValue;
@@ -430,15 +478,15 @@ public abstract class BaseContext extends RhpLog {
 
 			if( !theTag.getValue().equals( theValue ) ){
 
-				debug( "setTagValue is setting tag " + elInfo( theTag ) + " on " + elInfo( onStereotype ) + " to " + theValue );
+				_rhpLog.debug( "setTagValue is setting tag " + _rhpLog.elInfo( theTag ) + " on " + _rhpLog.elInfo( onStereotype ) + " to " + theValue );
 				
 				appliedToModelEl.setTagValue( theTag, theValue );
 				wasValueChanged = true;
 			}
 		} else {
-			error( "setTagValue for " + elInfo( appliedToModelEl ) + 
+			_rhpLog.error( "setTagValue for " + _rhpLog.elInfo( appliedToModelEl ) + 
 					" was unable to find tag called " + withTagName + 
-					" related to stereotype called " + elInfo( onStereotype )  );
+					" related to stereotype called " + _rhpLog.elInfo( onStereotype )  );
 		}
 
 		return wasValueChanged;
@@ -502,15 +550,15 @@ public abstract class BaseContext extends RhpLog {
 					thePropertyKey );
 			
 		} catch( Exception e ){
-			super.error( "Exception in getBooleanPropertyValue, e=" + e.getMessage() );
+			_rhpLog.error( "Exception in getBooleanPropertyValue, e=" + e.getMessage() );
 		}
 				
 		if( theValue != null ){
 			result = theValue.equals( "True" );
 		} else {
-			super.error( "Error in getBooleanPropertyValue, " +
+			_rhpLog.error( "Error in getBooleanPropertyValue, " +
 					"unable to get thePropertyKey property value from " + 
-					super.elInfo( forContextEl ) );
+					_rhpLog.elInfo( forContextEl ) );
 		}
 		
 		return result;
@@ -539,7 +587,7 @@ public abstract class BaseContext extends RhpLog {
 		}
 		
 		if (count > 1){
-			super.warning( "Warning in isElementNameUnique, there are " + count + " elements called " + 
+			_rhpLog.warning( "Warning in isElementNameUnique, there are " + count + " elements called " + 
 					theProposedName + " of type " + ofMetaClass + " in the project. This may cause issues.");
 		}
 				
@@ -599,10 +647,10 @@ public abstract class BaseContext extends RhpLog {
 			int count = theNestedEls.getCount();
 			
 			if( count > 1 ){
-				super.warning( "Decided against deleting " + super.elInfo( theEl ) + 
+				_rhpLog.warning( "Decided against deleting " + _rhpLog.elInfo( theEl ) + 
 						" as there are " + count + " of them" );
 			} else {
-				super.info( super.elInfo( theEl ) + " was deleted from " + super.elInfo( nestedUnderEl ) );
+				_rhpLog.info( _rhpLog.elInfo( theEl ) + " was deleted from " + _rhpLog.elInfo( nestedUnderEl ) );
 				theEl.deleteFromProject();
 			}
 		}
@@ -637,13 +685,13 @@ public abstract class BaseContext extends RhpLog {
 
 		if( theElement == null ){
 
-			super.warning( "getOwningPackage for was invoked for a null element" );
+			_rhpLog.warning( "getOwningPackage for was invoked for a null element" );
 
 		} else if( theElement instanceof IRPPackage ){
 			theOwningPackage = (RPPackage)theElement;
 
 		} else if( theElement instanceof IRPProject ){
-			super.warning( "Unable to find an owning package for " + theElement.getFullPathNameIn() + " as I reached project" );
+			_rhpLog.warning( "Unable to find an owning package for " + theElement.getFullPathNameIn() + " as I reached project" );
 
 		} else {
 			theOwningPackage = getOwningPackageFor( theElement.getOwner() );
@@ -668,7 +716,7 @@ public abstract class BaseContext extends RhpLog {
 		boolean isLegal = theName.matches( theRegEx );
 		
 		if( !isLegal ){
-			super.warning( "Warning, detected that " + theName 
+			_rhpLog.warning( "Warning, detected that " + theName 
 					+ " is not a legal name as it does not conform to the regex=" + theRegEx );
 		}
 		
@@ -833,10 +881,10 @@ public abstract class BaseContext extends RhpLog {
 
 			int index = nameList.indexOf(selectedElementName);
 			theEl = inList.get(index);
-			super.debug( super.elInfo( theEl ) + "was chosen");
+			_rhpLog.debug( _rhpLog.elInfo( theEl ) + "was chosen");
 
 		} else {
-			super.debug("'Nothing' was chosen by user");
+			_rhpLog.debug("'Nothing' was chosen by user");
 			theEl = null;
 		}
 
@@ -853,8 +901,8 @@ public abstract class BaseContext extends RhpLog {
 		if( theChosenStereotype != null ){
 			toTheEl.setStereotype( theChosenStereotype );
 		} else {
-			super.error("Warning in applyExistingStereotype, unable to find stereotype <<" + 
-					withTheName + ">> underneath " + super.elInfo( toTheEl.getProject() ) );
+			_rhpLog.error("Warning in applyExistingStereotype, unable to find stereotype <<" + 
+					withTheName + ">> underneath " + _rhpLog.elInfo( toTheEl.getProject() ) );
 		}
 		
 		return theChosenStereotype;
@@ -882,7 +930,7 @@ public abstract class BaseContext extends RhpLog {
 				
 				if( theStereotypeEls.size() > 1 ){
 					
-					super.warning("getExistingStereotype has chosen " + super.elInfo( theStereotype ) + 
+					_rhpLog.warning("getExistingStereotype has chosen " + _rhpLog.elInfo( theStereotype ) + 
 							" as it is a new term (there were x" + 
 							theStereotypeEls.size() + " stereotypes with the same name)");
 				}
@@ -913,7 +961,7 @@ public abstract class BaseContext extends RhpLog {
 		}
 		
 		if (count > 1){
-			super.warning("Warning in getStereotypeCalled, found " + count 
+			_rhpLog.warning("Warning in getStereotypeCalled, found " + count 
 					+ " elements that are called " + theName);
 		}
 		
@@ -981,9 +1029,9 @@ public abstract class BaseContext extends RhpLog {
 			
 		} else if( count > 1 ){
 			
-			super.warning(
+			_rhpLog.warning(
 					"Warning in getStereotypeAppliedTo, there are multiple stereotypes related to " + 
-					super.elInfo(theElement) + " size=" + theMatchingStereotypes.size() + 
+					_rhpLog.elInfo(theElement) + " size=" + theMatchingStereotypes.size() + 
 					"matching regex=" + thatMatchesRegEx );
 			
 			foundStereotype = theMatchingStereotypes.get( 0 );
@@ -1008,8 +1056,8 @@ public abstract class BaseContext extends RhpLog {
 		
 		} else if (theMatches.size()>1){
 			
-			super.warning("Warning in findElementWithMetaClassAndName(" + theMetaClass + "," + 
-					andName + ","+super.elInfo(underneathTheEl)+"), " + theMatches.size() + 
+			_rhpLog.warning("Warning in findElementWithMetaClassAndName(" + theMetaClass + "," + 
+					andName + ","+_rhpLog.elInfo(underneathTheEl)+"), " + theMatches.size() + 
 					" elements were found when I was expecting only one");
 			
 			theElement = theMatches.get(0);
@@ -1200,9 +1248,9 @@ public abstract class BaseContext extends RhpLog {
 
 			if( theExistingDependencies.size() > 1 ){
 
-				super.warning( "Duplicate «" + stereotypeName + 
-						"» dependencies to " + elInfo( toElement ) + 
-						" were found on " + elInfo( fromElement ) );
+				_rhpLog.warning( "Duplicate «" + stereotypeName + 
+						"» dependencies to " + _rhpLog.elInfo( toElement ) + 
+						" were found on " + _rhpLog.elInfo( fromElement ) );
 			}
 
 			theExistingDependency = theExistingDependencies.get( 0 );
@@ -1219,9 +1267,9 @@ public abstract class BaseContext extends RhpLog {
 
 		List<IRPDependency> existingDeps = new ArrayList<>();
 
-		super.debug( "getExistingStereotypedDependencies invoked to find " + stereotypeName + 
-				" from " + super.elInfo( fromElement ) + " to " +
-				super.elInfo( toElement ) );
+		_rhpLog.debug( "getExistingStereotypedDependencies invoked to find " + stereotypeName + 
+				" from " + _rhpLog.elInfo( fromElement ) + " to " +
+				_rhpLog.elInfo( toElement ) );
 
 		if( fromElement instanceof IRPInstance ){
 			IRPInstance theInstance = (IRPInstance)fromElement;
@@ -1297,12 +1345,12 @@ public abstract class BaseContext extends RhpLog {
 			theDependency = fromElement.addDependencyTo( toElement );
 			theDependency.setStereotype( theStereotype );
 
-			super.info( "Added a «" + theStereotype.getName() + "» dependency to " + 
-					super.elInfo( fromElement ) + 
-					" (to " + super.elInfo( toElement ) + ")" );				
+			_rhpLog.info( "Added a «" + theStereotype.getName() + "» dependency to " + 
+					_rhpLog.elInfo( fromElement ) + 
+					" (to " + _rhpLog.elInfo( toElement ) + ")" );				
 		} else {
-			super.info( "Skipped adding a «" + theStereotype.getName() + "» dependency to " + super.elInfo( fromElement ) + 
-					" (to " + super.elInfo( toElement ) + 
+			_rhpLog.info( "Skipped adding a «" + theStereotype.getName() + "» dependency to " + _rhpLog.elInfo( fromElement ) + 
+					" (to " + _rhpLog.elInfo( toElement ) + 
 					") as " + isExistingFoundCount + " already exists" );
 		}
 
@@ -1331,8 +1379,8 @@ public abstract class BaseContext extends RhpLog {
 
 				} else if (withWarning){
 
-					super.warning( "Duplicate dependency to " + super.elInfo( theDependsOn ) + 
-							" was found on " + super.elInfo( theElement ));
+					_rhpLog.warning( "Duplicate dependency to " + _rhpLog.elInfo( theDependsOn ) + 
+							" was found on " + _rhpLog.elInfo( theElement ));
 				} 			
 			}
 		}
@@ -1433,7 +1481,7 @@ public abstract class BaseContext extends RhpLog {
 				if (theCandidateFile.isFile() && 
 						theCandidateFile.getName().matches( theRegEx )){
 
-					super.debug("getFilesMatching found: " + theCandidateFile.getAbsolutePath());
+					_rhpLog.debug("getFilesMatching found: " + theCandidateFile.getAbsolutePath());
 					theFiles.add( theCandidateFile );
 				}		            
 			}		    		        
@@ -1457,9 +1505,9 @@ public abstract class BaseContext extends RhpLog {
 					
 					if (theCandidate.isReadOnly()==0){
 						theADs.add(theCandidate);			
-						super.debug("Adding " + super.elInfo(theCandidate.getOwner()) + " to the list");
+						_rhpLog.debug("Adding " + _rhpLog.elInfo(theCandidate.getOwner()) + " to the list");
 					} else {
-						super.debug("Skipping " + super.elInfo(theCandidate.getOwner()) + " as it is read-only");
+						_rhpLog.debug("Skipping " + _rhpLog.elInfo(theCandidate.getOwner()) + " as it is read-only");
 					}
 				}
 			}
@@ -1486,12 +1534,12 @@ public abstract class BaseContext extends RhpLog {
 							"ActivityDiagram" );
 			
 			if( theTemplate == null ){
-				super.warning( "Warning, unable to find template called " + 
+				_rhpLog.warning( "Warning, unable to find template called " + 
 						theTemplateName + " named in TemplateForActivityDiagram property" );
 			}
 		}
 		
-		super.debug( "getTemplateForActivityDiagram, found " + super.elInfo( theTemplate ) );
+		_rhpLog.debug( "getTemplateForActivityDiagram, found " + _rhpLog.elInfo( theTemplate ) );
 		
 		return theTemplate;
 	}
@@ -1507,12 +1555,12 @@ public abstract class BaseContext extends RhpLog {
 				theAD.getCorrespondingGraphicElements( forElement ).toList();
 		
 		if( theGraphEls.size() > 1 ){
-			throw new Exception("There is more than one graph element for " + super.elInfo(forElement));
+			throw new Exception("There is more than one graph element for " + _rhpLog.elInfo(forElement));
 		} else if( theGraphEls.size() == 1 ){
 			ret = theGraphEls.get( 0 );
 		} else {
-			super.warning("Warning, getCorrespondingGraphElement dif not find a graph element corresponding to " + 
-					super.elInfo(forElement) + " on " + super.elInfo(theAD) );
+			_rhpLog.warning("Warning, getCorrespondingGraphElement dif not find a graph element corresponding to " + 
+					_rhpLog.elInfo(forElement) + " on " + _rhpLog.elInfo(theAD) );
 		}
 		
 		return ret;
@@ -1629,7 +1677,7 @@ public abstract class BaseContext extends RhpLog {
 		}
 		
 		if (count > 1){
-			super.warning("Warning in isStateUnique, there are " + count + " elements called " + 
+			_rhpLog.warning("Warning in isStateUnique, there are " + count + " elements called " + 
 					theProposedName + ". This may cause issues.");
 		}
 				
@@ -1644,12 +1692,12 @@ public abstract class BaseContext extends RhpLog {
 		@SuppressWarnings("unchecked")
 		List<IRPGraphicalProperty> theGraphProperties = theGraphEl.getAllGraphicalProperties().toList();
 		
-		super.info("---------------------------");
+		_rhpLog.info("---------------------------");
 		for (IRPGraphicalProperty theGraphicalProperty : theGraphProperties) {
 			
-			super.info(theGraphicalProperty.getKey() + "=" + theGraphicalProperty.getValue());
+			_rhpLog.info(theGraphicalProperty.getKey() + "=" + theGraphicalProperty.getValue());
 		}
-		super.info("---------------------------"); 
+		_rhpLog.info("---------------------------"); 
 	}
 	
 	public String buildStringFromModelEls(
@@ -1665,7 +1713,7 @@ public abstract class BaseContext extends RhpLog {
 			count++;
 			IRPModelElement theEl = (IRPModelElement) iterator.next();
 
-			theString += count + ". " + super.elInfo( theEl ) + " \n";
+			theString += count + ". " + _rhpLog.elInfo( theEl ) + " \n";
 			
 			if( count >= max ){
 				theString += "... (" + theEls.size() + " in list) \n";
@@ -1710,26 +1758,26 @@ public abstract class BaseContext extends RhpLog {
 		int choice = theFileChooser.showDialog( null, "Choose Unit (.sbs)" );
 
 		if( choice==JFileChooser.CANCEL_OPTION ){
-			super.info("Operation cancelled by user when trying to choose Unit (.sbs)");
+			_rhpLog.info("Operation cancelled by user when trying to choose Unit (.sbs)");
 
 		} else if( choice==JFileChooser.APPROVE_OPTION ){
 
 			File theFile = theFileChooser.getSelectedFile();
 
-			super.debug("theFile.getAbsolutePath = " + theFile.getAbsolutePath() );
-			super.debug("theFile.getName = " + theFile.getName() );
-			super.debug("theFile.getParent = " + theFile.getParent() );
-			super.debug("theFile.getPath = " + theFile.getPath() );
-			super.debug("theFile.getParentFile().getName() = " + theFile.getParentFile().getName() );
+			_rhpLog.debug("theFile.getAbsolutePath = " + theFile.getAbsolutePath() );
+			_rhpLog.debug("theFile.getName = " + theFile.getName() );
+			_rhpLog.debug("theFile.getParent = " + theFile.getParent() );
+			_rhpLog.debug("theFile.getPath = " + theFile.getPath() );
+			_rhpLog.debug("theFile.getParentFile().getName() = " + theFile.getParentFile().getName() );
 			
 			String theTargetPath;
 
 			try {
 				theTargetPath = theFile.getCanonicalPath();
 
-				super.debug( "theTargetPath=" + theTargetPath );
+				_rhpLog.debug( "theTargetPath=" + theTargetPath );
 				
-				super._rhpApp.addToModelByReference( theTargetPath );
+				_rhpApp.addToModelByReference( theTargetPath );
 
 				if( relative ){
 
@@ -1742,7 +1790,7 @@ public abstract class BaseContext extends RhpLog {
 					Path targetPath = Paths.get( theTargetPath.substring(0, theTargetPath.length()-trimSize) );
 					Path targetRoot = targetPath.getRoot();
 					
-					super.debug( "targetRoot.toString()=" + targetRoot.toString() );
+					_rhpLog.debug( "targetRoot.toString()=" + targetRoot.toString() );
 
 					Path sourcePath = Paths.get( 
 							inProject.getCurrentDirectory().replaceAll(
@@ -1750,14 +1798,14 @@ public abstract class BaseContext extends RhpLog {
 
 					Path sourceRoot = sourcePath.getRoot();
 
-					super.debug( "sourceRoot.toString()=" + sourceRoot.toString() );
+					_rhpLog.debug( "sourceRoot.toString()=" + sourceRoot.toString() );
 					
 					if( !targetRoot.equals( sourceRoot ) ){
-						super.debug("Unable to set Unit called " + theName + " to relative, as the drive letters are different");
-						super.debug("theTargetDir root =" + targetPath.getRoot());
-						super.debug("theTargetDir=" + targetPath);
-						super.debug("theSourceDir root =" + sourcePath.getRoot());
-						super.debug("theSourceDir=" + sourcePath);
+						_rhpLog.debug("Unable to set Unit called " + theName + " to relative, as the drive letters are different");
+						_rhpLog.debug("theTargetDir root =" + targetPath.getRoot());
+						_rhpLog.debug("theTargetDir=" + targetPath);
+						_rhpLog.debug("theSourceDir root =" + sourcePath.getRoot());
+						_rhpLog.debug("theSourceDir=" + sourcePath);
 					} else {
 						Path theRelativePath = sourcePath.relativize(targetPath);
 
@@ -1769,14 +1817,14 @@ public abstract class BaseContext extends RhpLog {
 
 							theAddedPackage.setUnitPath( "..\\..\\" + theRelativePath.toString() );
 
-							super.info( "Unit called " + theName + 
+							_rhpLog.info( "Unit called " + theName + 
 									".sbs was changed from absolute path='" + theTargetPath + 
 									"' to relative path='" + theRelativePath + "'" );
 						}
 					}
 				}
 			} catch( IOException e ){
-				super.error( "Error, unhandled IOException in RelativeUnitHandler.browseAndAddUnit");
+				_rhpLog.error( "Error, unhandled IOException in RelativeUnitHandler.browseAndAddUnit");
 			}
 		}
 	}
@@ -1800,7 +1848,7 @@ public abstract class BaseContext extends RhpLog {
 					&& theEl.getName().equals( theName )
 					&& getOwningClassifierFor( theEl ).equals( ownedByEl ) ){
 				
-				super.debug( "Found state called " + theEl.getName() + 
+				_rhpLog.debug( "Found state called " + theEl.getName() + 
 						" owned by " + theEl.getOwner().getFullPathName() );
 				
 				theState = (IRPState) theEl;
@@ -1809,7 +1857,7 @@ public abstract class BaseContext extends RhpLog {
 		}
 		
 		if (count != 1){
-			super.warning( "Warning in getStateCalled (" + count + 
+			_rhpLog.warning( "Warning in getStateCalled (" + count + 
 					") states called " + theName + " were found" );
 		}
 		
@@ -1827,8 +1875,8 @@ public abstract class BaseContext extends RhpLog {
 			theOwner = theOwner.getOwner();
 		}
 		
-		super.debug( "The owner for " + super.elInfo( theState ) + 
-				" is " + super.elInfo( theOwner ) );
+		_rhpLog.debug( "The owner for " + _rhpLog.elInfo( theState ) + 
+				" is " + _rhpLog.elInfo( theOwner ) );
 			
 		return theOwner;
 	}	
@@ -1846,8 +1894,8 @@ public abstract class BaseContext extends RhpLog {
 		
 		for (IRPStatechartDiagram theStatechartDiagram : theStatechartDiagrams) {
 			
-			super.debug( super.elInfo(theStatechartDiagram) + " was found owned by " + 
-					super.elInfo( theClassifier ) );
+			_rhpLog.debug( _rhpLog.elInfo(theStatechartDiagram) + " was found owned by " + 
+					_rhpLog.elInfo( theClassifier ) );
 			
 			@SuppressWarnings("unchecked")
 			List<IRPGraphElement> theGraphEls = 
@@ -1858,14 +1906,14 @@ public abstract class BaseContext extends RhpLog {
 				IRPModelElement theEl = theGraphEl.getModelObject();
 				
 				if( theEl != null ){
-					super.debug( "Found " + theEl.getMetaClass() + 
+					_rhpLog.debug( "Found " + theEl.getMetaClass() + 
 							" called " + theEl.getName() );
 					
 					if( theEl.getName().equals( withTheName ) ){
 						
-						super.debug( "Success, found GraphEl called " + 
+						_rhpLog.debug( "Success, found GraphEl called " + 
 								withTheName + " in statechart for " + 
-								super.elInfo( theClassifier ) );
+								_rhpLog.elInfo( theClassifier ) );
 						
 						theFoundGraphEl = theGraphEl;
 						break;
@@ -1927,7 +1975,7 @@ public abstract class BaseContext extends RhpLog {
 
 		if( thePackage == null ){
 
-			super.info( "Create a package called " + theName );
+			_rhpLog.info( "Create a package called " + theName );
 			thePackage = underneathTheEl.addNewAggr( "Package", theName );
 		}
 
@@ -1949,8 +1997,8 @@ public abstract class BaseContext extends RhpLog {
 			}
 
 		} catch (Exception e) {
-			super.error("Exception in getExistingOrCreateNewElementWith( theName " + theName + 
-					", andMetaClass=" + andMetaClass + ", underneath=" + super.elInfo(underneathTheEl));
+			_rhpLog.error("Exception in getExistingOrCreateNewElementWith( theName " + theName + 
+					", andMetaClass=" + andMetaClass + ", underneath=" + _rhpLog.elInfo(underneathTheEl));
 		}
 
 		return theElement;
@@ -1967,8 +2015,8 @@ public abstract class BaseContext extends RhpLog {
 			theOwner.setTagValue( theTag, theValue );
 		} else {
 			
-			super.error( "Error in GeneralHelpers.setStringTagValueOn for " + 
-					super.elInfo( theOwner) + ", unable to find tag called " + theTagName );
+			_rhpLog.error( "Error in GeneralHelpers.setStringTagValueOn for " + 
+					_rhpLog.elInfo( theOwner) + ", unable to find tag called " + theTagName );
 		}
 	}
 	
@@ -1985,14 +2033,14 @@ public abstract class BaseContext extends RhpLog {
 			if( theUnit != null ){
 
 				theProfile = (IRPProfile)theUnit;
-				super.info( "Added profile called " + theProfile.getFullPathName() );
+				_rhpLog.info( "Added profile called " + theProfile.getFullPathName() );
 
 			} else {
-				super.error( "Error in addProfileIfNotPresent. No profile found with name " + theProfileName );
+				_rhpLog.error( "Error in addProfileIfNotPresent. No profile found with name " + theProfileName );
 			}
 
 		} else {
-			super.debug( super.elInfo( theProfile ) + " is already present in the project" );
+			_rhpLog.debug( _rhpLog.elInfo( theProfile ) + " is already present in the project" );
 		}
 
 		return theProfile;		
@@ -2067,7 +2115,7 @@ public abstract class BaseContext extends RhpLog {
 				IRPEvent theEvent = theAcceptEventAction.getEvent();
 
 				if (theEvent==null){
-					super.debug( "Event has no name so using Name" );
+					_rhpLog.debug( "Event has no name so using Name" );
 					theSourceInfo = theState.getName();
 				} else {
 					theSourceInfo = theEvent.getName();
@@ -2083,11 +2131,11 @@ public abstract class BaseContext extends RhpLog {
 					if (theEvent != null){
 						theSourceInfo = theEvent.getName();
 					} else {
-						super.debug("SendAction has no Event so using Name of action");
+						_rhpLog.debug("SendAction has no Event so using Name of action");
 						theSourceInfo = theState.getName();
 					}
 				} else {
-					super.warning( "Warning in deriveDownstreamRequirement, theSendAction is null" );
+					_rhpLog.warning( "Warning in deriveDownstreamRequirement, theSendAction is null" );
 				}	
 
 			} else if (theStateType.equals("TimeEvent")){
@@ -2102,7 +2150,7 @@ public abstract class BaseContext extends RhpLog {
 				}
 
 			} else {
-				super.warning("Warning in getActionTextFrom, " + theStateType + " was not handled");
+				_rhpLog.warning("Warning in getActionTextFrom, " + theStateType + " was not handled");
 			}
 
 		} else if (theEl instanceof IRPTransition){
@@ -2132,7 +2180,7 @@ public abstract class BaseContext extends RhpLog {
 			theSourceInfo = theConstraint.getSpecification();		
 
 		} else {
-			super.error("Error in getActionTextFrom, " + super.elInfo(theEl) + " was not handled as of an unexpected type");
+			_rhpLog.error("Error in getActionTextFrom, " + _rhpLog.elInfo(theEl) + " was not handled as of an unexpected type");
 			theSourceInfo = ""; // default
 		}
 
@@ -2140,7 +2188,7 @@ public abstract class BaseContext extends RhpLog {
 
 			if( theSourceInfo.isEmpty() ){
 
-				super.warning( "Warning, " + super.elInfo( theEl ) + " has no text" );
+				_rhpLog.warning( "Warning, " + _rhpLog.elInfo( theEl ) + " has no text" );
 			} else {
 				theSourceInfo = decapitalize( theSourceInfo );
 			}
@@ -2280,7 +2328,7 @@ public abstract class BaseContext extends RhpLog {
 			if (theExistingGatewayStereotype == null && 
 					hasStereotypeCalled("deriveReqt", theDependency)){
 
-				super.debug("Applying " + super.elInfo(theStereotypeToApply) + " to " + super.elInfo(theDependency));
+				_rhpLog.debug("Applying " + _rhpLog.elInfo(theStereotypeToApply) + " to " + _rhpLog.elInfo(theDependency));
 				theDependency.setStereotype(theStereotypeToApply);
 				theDependency.changeTo("Derive Requirement");
 			}
@@ -2339,9 +2387,9 @@ public abstract class BaseContext extends RhpLog {
 						andThePort.equals( toSysMLPort ) &&
 						whichIsOwnedByPart.equals( toSysMLElement ) ){
 
-					super.debug("Check for links between " + super.elInfo(fromSysMLPort) + " and " + 
-							super.elInfo( toSysMLPort ) + " successfully found " + 
-							super.elInfo( theExistingLink ) );
+					_rhpLog.debug("Check for links between " + _rhpLog.elInfo(fromSysMLPort) + " and " + 
+							_rhpLog.elInfo( toSysMLPort ) + " successfully found " + 
+							_rhpLog.elInfo( theExistingLink ) );
 
 					theLinksBetween.add( theExistingLink );
 
@@ -2350,9 +2398,9 @@ public abstract class BaseContext extends RhpLog {
 						andThePort.equals( fromSysMLPort ) &&
 						whichIsOwnedByPart.equals( toSysMLElement ) ){
 
-					super.debug("Check for links between " + super.elInfo(toSysMLPort) + " and " + 
-							super.elInfo( fromSysMLPort ) + " successfully found " + 
-							super.elInfo( theExistingLink ) );
+					_rhpLog.debug("Check for links between " + _rhpLog.elInfo(toSysMLPort) + " and " + 
+							_rhpLog.elInfo( fromSysMLPort ) + " successfully found " + 
+							_rhpLog.elInfo( theExistingLink ) );
 
 					theLinksBetween.add( theExistingLink );
 
@@ -2367,8 +2415,8 @@ public abstract class BaseContext extends RhpLog {
 			}
 		}
 
-		super.debug("getLinksBetween " + super.elInfo( thePort ) + " and " +
-				super.elInfo( andThePort ) + " has found " + 
+		_rhpLog.debug("getLinksBetween " + _rhpLog.elInfo( thePort ) + " and " +
+				_rhpLog.elInfo( andThePort ) + " has found " + 
 				theLinksBetween.size() + " matches");
 
 		return theLinksBetween;
@@ -2446,12 +2494,12 @@ public abstract class BaseContext extends RhpLog {
 					theContextEl.getProject() );
 
 			if( theStereotype == null ){
-				super.error( "Error in getStereotypeBasedOn, no Stereotyped called " + theStereotypeName + " was found" );
+				_rhpLog.error( "Error in getStereotypeBasedOn, no Stereotyped called " + theStereotypeName + " was found" );
 
 				//theStereotype = selectAndPersistStereotype( basedOnContext.getProject(), thePkg, theTag );
 
 			} else {				
-				super.debug( "Using " + super.elInfo( theStereotype ) + " for " + andPropertyValue );
+				_rhpLog.debug( "Using " + _rhpLog.elInfo( theStereotype ) + " for " + andPropertyValue );
 			}		
 		}
 
@@ -2468,8 +2516,8 @@ public abstract class BaseContext extends RhpLog {
 
 		IRPClass theAssemblyBlock = (IRPClass) theSrcPart.getOwner();
 
-		super.debug( "addConnectorBetweenSysMLPortsIfOneDoesntExist has determined that " + 
-				super.elInfo( theAssemblyBlock ) + " is the assembly block" );
+		_rhpLog.debug( "addConnectorBetweenSysMLPortsIfOneDoesntExist has determined that " + 
+				_rhpLog.elInfo( theAssemblyBlock ) + " is the assembly block" );
 
 		List<IRPLink> theLinks = getLinksBetween(
 				theSrcPort, 
@@ -2481,8 +2529,8 @@ public abstract class BaseContext extends RhpLog {
 		// only add if one does not already exist
 		if( theLinks.size() == 0 ){
 
-			super.debug( "Adding a new connector between " + super.elInfo( theSrcPort ) + 
-					" and " + super.elInfo( theTgtPort ) + " as one does not exist" ); 
+			_rhpLog.debug( "Adding a new connector between " + _rhpLog.elInfo( theSrcPort ) + 
+					" and " + _rhpLog.elInfo( theTgtPort ) + " as one does not exist" ); 
 
 			IRPPackage thePkg = (IRPPackage) theAssemblyBlock.getOwner();
 
@@ -2504,8 +2552,8 @@ public abstract class BaseContext extends RhpLog {
 			theLink.setName( theUniqueName );		
 			theLink.setOwner( theAssemblyBlock );
 
-			super.debug("Added " + super.elInfo( theLink ) + 
-					" to " + super.elInfo( theAssemblyBlock ));
+			_rhpLog.debug("Added " + _rhpLog.elInfo( theLink ) + 
+					" to " + _rhpLog.elInfo( theAssemblyBlock ));
 		}
 
 		return theLink;
@@ -2542,7 +2590,7 @@ public abstract class BaseContext extends RhpLog {
 		if( theBlock != null ){
 			fromElement.addGeneralization( (IRPClassifier) theBlock );
 		} else {
-			super.error( "Error: Unable to find element with name " + toBlockWithName );
+			_rhpLog.error( "Error: Unable to find element with name " + toBlockWithName );
 		}
 	}
 	
@@ -2608,6 +2656,36 @@ public abstract class BaseContext extends RhpLog {
 				"ExecutableMBSEProfile.FunctionalAnalysis.IsCreateSDWithTestDriverLifeline" );
 
 		return result;
+	}
+	
+	public void info( 
+			String theStr ){
+
+		_rhpLog.info( theStr );
+	}
+
+	public void debug( 
+			String theStr ){
+
+		_rhpLog.debug( theStr );
+	}
+
+	public void error( 
+			String theStr ){
+
+		_rhpLog.error( theStr );
+	}
+
+	public void warning( 
+			String theStr ){
+
+		_rhpLog.warning( theStr );
+	}
+
+	public String elInfo( 
+			IRPModelElement theEl ){
+
+		return _rhpLog.elInfo( theEl );		
 	}
 }
 

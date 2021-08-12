@@ -40,10 +40,7 @@ public class ConfirmDiagramUpdatePanel extends ExecutableMBSEBasePanel {
 	
 	public static void launchThePanel(
 			final AutoConnectFlowPortsMap theAutoConnectFlowPortsMap ){
-
-		final String theAppID = 
-				UserInterfaceHelper.getAppIDIfSingleRhpRunningAndWarnUserIfNot();
-
+		
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 
 			@Override

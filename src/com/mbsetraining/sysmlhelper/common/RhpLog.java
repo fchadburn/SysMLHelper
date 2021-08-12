@@ -9,102 +9,112 @@ import java.nio.file.StandardOpenOption;
 import com.telelogic.rhapsody.core.*;
 
 public class RhpLog {
-
-	private String _enableErrorLoggingProperty;
-	private String _enableWarningLoggingProperty;
-	private String _enableInfoLoggingProperty;
-	private String _enableDebugLoggingProperty;
+	
+	private boolean _isEnableWarningLogging = false;
+	private boolean _isEnableErrorLogging = false;
+	private boolean _isEnableDebugLogging = false;
+	private boolean _isEnableInfoLogging = false;
 
 	protected IRPApplication _rhpApp = null;
 	protected IRPProject _rhpPrj = null;
-
+	
 	private Path _file = null;
+	
+	RhpLog( IRPApplication theRhpApp,
+			IRPProject theRhpPrj,
+			boolean isEnableWarningLogging,
+			boolean isEnableErrorLogging,
+			boolean isEnableDebugLogging,
+			boolean isEnableInfoLogging ){
+		
+		_rhpApp = theRhpApp;
+		_rhpPrj = theRhpPrj;
+		_isEnableWarningLogging = isEnableWarningLogging;
+		_isEnableErrorLogging = isEnableErrorLogging;
+		_isEnableDebugLogging = isEnableDebugLogging;
+		_isEnableInfoLogging = isEnableInfoLogging;
+		
+		
+		String msg = "RhpLog constructor was invoked for " + 
+				_rhpApp.getApplicationConnectionString() +
+				"(";
+		
+		if( _isEnableWarningLogging ){
+			msg += "Warning logging is enabled | ";
+		} else {
+			msg += " | ";
+		}
+		
+		if( _isEnableInfoLogging ){
+			msg += "Info logging is enabled | ";
+		} else {
+			msg += " | ";
+		}	
+		
+		if( _isEnableErrorLogging ){
+			msg += "Error logging is enabled | ";
+		} else {
+			msg += " | ";
+		}
+		
+		if( _isEnableDebugLogging ){
+			msg += "Debug logging is enabled";
+		} else {
 
-	RhpLog( String theAppID,
-			String enableErrorLoggingProperty,
-			String enableWarningLoggingProperty,
-			String enableInfoLoggingProperty,
-			String enableDebugLoggingProperty ){
-
-		_rhpApp = RhapsodyAppServer.getActiveRhapsodyApplicationByID( theAppID );
-		_rhpPrj = _rhpApp.activeProject();
-		_enableErrorLoggingProperty = enableErrorLoggingProperty;
-		_enableWarningLoggingProperty = enableWarningLoggingProperty;
-		_enableInfoLoggingProperty = enableInfoLoggingProperty;
-		_enableDebugLoggingProperty = enableDebugLoggingProperty;
-
-		debug( "RhpLog constructor was invoked for " + theAppID );
+		}
+		
+		debug( "RhpLog constructor was invoked for " + 
+				_rhpApp.getApplicationConnectionString() +
+				msg + ")" );
 	}
 
 	public void info( 
 			String theStr ){
 
-		writeIfPropertyEnabled( 
-				theStr, 
-				_enableInfoLoggingProperty,
-				"Info   : " );		
+		if( _isEnableInfoLogging ){
+			writeLine( "Info   : " + theStr );
+		}		
 	}
 
 	public void debug( 
 			String theStr ){
 
-		writeIfPropertyEnabled( 
-				theStr, 
-				_enableDebugLoggingProperty,
-				"Debug  : " );
+		if( _isEnableDebugLogging ){
+			writeLine( "Debug  : " + theStr );
+		}
 	}
-
+	
 	public void error( 
 			String theStr ){
 
-		writeIfPropertyEnabled( 
-				theStr, 
-				_enableErrorLoggingProperty,
-				"Error  : " );  
+		if( _isEnableErrorLogging ){
+			writeLine( "Error  : " + theStr );  
+		}
 	}
 
 	public void warning( 
 			String theStr ){
 
-		writeIfPropertyEnabled( 
-				 theStr, 
-				_enableWarningLoggingProperty,
-				"Warning: " );
+		if( _isEnableWarningLogging ){
+			writeLine( "Warning: " + theStr );
+		}
 	}
+	
+	protected void writeLine( 
+			String theStr ){
 
-	protected void writeIfPropertyEnabled( 
-			String theStr,
-			String theProperty,
-			String thePrefix ){
+		String msg = theStr + "\n";		
 
 		try {
-			String[] lines = theStr.split( "\\n" );
+			System.out.println( theStr );
+			_rhpApp.writeToOutputWindow( "", msg );
+			writeToFileIfEnabled( msg, StandardOpenOption.APPEND );
 			
-			for( String line : lines ){
-
-				String msg = thePrefix + line + "\n";
-
-				writeToFileIfEnabled( msg, StandardOpenOption.APPEND );
-
-				if( _rhpPrj != null ){
-
-					boolean isEnabled = 
-							getBoolPropertyValueFromRhp(
-									theProperty,
-									true );
-
-					if( isEnabled ){
-						System.out.println( theStr );
-						_rhpApp.writeToOutputWindow( "", msg );
-					}
-				}
-			}
-
-		} catch( Exception e ){
+		} catch (Exception e) {
 			// fail gracefully
 		}
 	}
-
+	
 	public void startWritingToFile(
 			String thePath,
 			String theMsg ){
@@ -112,21 +122,21 @@ public class RhpLog {
 		_file = Paths.get( thePath );
 
 		if( !Files.exists( _file ) ){
-
+			
 			try {
 				Files.createFile( _file );
-
+				
 			} catch( Exception e ){
 				System.out.println( "Exception in startWritingToFile, e=" + e.getMessage() );
 				error( "Exception while trying to create file: " + thePath  + " e=" + e.getMessage() );
 			}
 		}
-
+		
 		if( Files.isWritable( _file ) ){
-
+			
 			try {
 				Files.write( _file, ( theMsg + "\n").getBytes() );
-
+				
 			} catch( Exception e ){
 				System.out.println( "Exception, e=" + e.getMessage() );
 				error( "Exception while trying to write to file: " + thePath  + " e=" + e.getMessage() );
@@ -140,31 +150,38 @@ public class RhpLog {
 		_file = null;
 	}
 
-	private boolean getBoolPropertyValueFromRhp(
-			String propertyKey,
-			boolean defaultIfNotSet ) {
-
-		boolean isSet = defaultIfNotSet;
-
-		if( _rhpPrj != null ){
-
-			try {
-				String theValue = _rhpPrj.getPropertyValue(
-						propertyKey );
-
-				if( theValue != null ){
-					isSet = theValue.equals( "True" );
-				}
-
-			} catch( Exception e ){
-				_rhpApp.writeToOutputWindow( "", e.getMessage() + 
-						" has occurred which suggests a problem finding property in the Smartfacts Profile." );
-			}
-		}
-
-		return isSet;
+	public boolean is_isEnableWarningLogging() {
+		return _isEnableWarningLogging;
 	}
 
+	public void set_isEnableWarningLogging(boolean _isEnableWarningLogging) {
+		this._isEnableWarningLogging = _isEnableWarningLogging;
+	}
+
+	public boolean is_isEnableErrorLogging() {
+		return _isEnableErrorLogging;
+	}
+
+	public void set_isEnableErrorLogging(boolean _isEnableErrorLogging) {
+		this._isEnableErrorLogging = _isEnableErrorLogging;
+	}
+
+	public boolean is_isEnableDebugLogging() {
+		return _isEnableDebugLogging;
+	}
+
+	public void set_isEnableDebugLogging(boolean _isEnableDebugLogging) {
+		this._isEnableDebugLogging = _isEnableDebugLogging;
+	}
+
+	public boolean is_isEnableInfoLogging() {
+		return _isEnableInfoLogging;
+	}
+
+	public void set_isEnableInfoLogging(boolean _isEnableInfoLogging) {
+		this._isEnableInfoLogging = _isEnableInfoLogging;
+	}
+	
 	protected void writeToFileIfEnabled(
 			String theStr,
 			StandardOpenOption theOpenOption ){
