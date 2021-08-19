@@ -71,8 +71,8 @@ Subject ExecutableMBSEProfile
 	Metaclass FunctionalAnalysis
 		Property TraceabilityTypeToUseForFunctions String "satisfy"
 		Property StereotypesForBlockCreation String ""
-		Property IsConvertToDetailedADOptionEnabled Bool "True"
-		Property IsConvertToDetailedADOptionWantedByDefault Bool "True"
+		Property IsConvertToDetailedADOptionEnabled Bool "False"
+		Property IsConvertToDetailedADOptionWantedByDefault Bool "False"
 		Property IsEnableAutoMoveOfInterfaces Bool "True"
 		Property IsMaintainProvidedAndRequiredInterfaces Bool "True"
 		Property IsCreateSDWithAutoShowApplied Bool "True"
