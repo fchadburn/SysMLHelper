@@ -1658,7 +1658,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">8.13.2021::19:13:10</_modifiedTime>
+			<_modifiedTime type="a">8.19.2021::7:21:36</_modifiedTime>
 			<_lastID type="a">23</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -1745,7 +1745,7 @@
 			<_id type="a">GUID f825da1e-3d3d-409d-927a-c62820d97e7c</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Templates</_name>
-			<_modifiedTime type="a">10.13.2018::12:29:22</_modifiedTime>
+			<_modifiedTime type="a">8.19.2021::7:21:36</_modifiedTime>
 			<_defaultComposite type="s">GUID fa08a209-d10e-4b0d-bee3-3c7ebad1e988</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
@@ -4502,7 +4502,7 @@ Tips:\par%0D
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">6.8.2018::17:1:4</_modifiedTime>
+			<_modifiedTime type="a">8.19.2021::7:21:22</_modifiedTime>
 			<_lastID type="a">3</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -4575,7 +4575,21 @@ Tips:\par%0D
 			<_id type="a">GUID 6a8d632f-2b8d-4c2d-a25d-47aa167662a7</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">elapsedTime</_name>
-			<_modifiedTime type="a">12.18.2016::9:27:14</_modifiedTime>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysML\SysMLProfile_rpy\SysML.sbs</_hfilename>
+							<_hsubsystem type="a">SysML::Blocks</_hsubsystem>
+							<_hname type="a">ValueProperty</_hname>
+							<_hid type="a">GUID 04164f8c-01a3-4eab-b4a4-c37aae7a46e9</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">8.19.2021::7:21:22</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IType</_hm2Class>
@@ -5940,7 +5954,7 @@ Tips:\par%0D
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">5.23.2018::14:28:57</_modifiedTime>
+			<_modifiedTime type="a">8.19.2021::7:21:36</_modifiedTime>
 			<_lastID type="a">7</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -6067,7 +6081,21 @@ sleep(2);</_bodyData>
 			<_id type="a">GUID efbac4bc-b8ed-49f1-b15d-fcd7872c6c35</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">message</_name>
-			<_modifiedTime type="a">8.23.2016::19:5:52</_modifiedTime>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysML\SysMLProfile_rpy\SysML.sbs</_hfilename>
+							<_hsubsystem type="a">SysML::Blocks</_hsubsystem>
+							<_hname type="a">ValueProperty</_hname>
+							<_hid type="a">GUID 04164f8c-01a3-4eab-b4a4-c37aae7a46e9</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">8.19.2021::7:21:36</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IType</_hm2Class>
