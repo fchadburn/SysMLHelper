@@ -516,8 +516,19 @@ V4.0.g.Rhp831.PreRelease (XX-XXX-XXXX):
 #355 11-AUG-2021: ExecutableMBSE: Add an Internal Block Diagram - Software diagram to support modeling a structured C++ class (F.J.Chadburn)
 #356 11-AUG-2021: ExecutableMBSE: Fix to use FunctionalAnalysisSettings_ExecutableMBSE to get traced element panels to find correct assembly block (F.J.Chadburn) 
 #357 11-AUG-2021: ExecutableMBSE: Some general refactoring to simplify, ease debugging, and improve performance (F.J.Chadburn)
+#358 19-AUG-2021: ExecutableMBSE: Allow for panel diagrams in the software design package structure menus (F.J.Chadburn)
 
 Backlog/Known issues
+
+- It would be useful to have a way to specify a different bleed colour
+- When creating the Functional Analysis package a dependency to the actor package causes elements that don't compile to be brought into the build
+- Get the pnael diagram population of test bench to be auto set
+- Ensure that copying of activity diagrams retains the textual activity diagram stereotype
+- If SysML stereotype is not applied on project then an error occurs in the transition roll up of requirements, hence need to add check/warning
+- Elapsed Time Block comes up with an attribute rather than a value property
+- When drawing IBD the TestDriver not being drawn in correct location 
+- When drawing IBD the parts ought to be drawn in structured rather than specification view
+- Double word on event creation dialog could be improved, reqTestBedOperatorOperatorPowersOnController
 
 - Add ability to create context diagram package at same time as creating the use case package
 - Add reference sequence diagram capability to add new menus

@@ -41,6 +41,22 @@ public class RollUpTraceabilityToTheTransitionPanel extends ExecutableMBSEBasePa
 	protected Set<IRPRequirement> _reqtsForTable;
 	protected JCheckBox _removeFromViewCheckBox;
 	
+	public static void main(String[] args) {
+	
+		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
+		String theAppID = theRhpApp.getApplicationConnectionString();
+		
+		ExecutableMBSE_Context theContext = new ExecutableMBSE_Context( theAppID );
+		
+		IRPModelElement theSelectedEl = theContext.getSelectedElement();
+		
+		if( theSelectedEl instanceof IRPTransition ){
+
+			IRPGraphElement theSelectedGraphEl = theContext.getSelectedGraphEl();
+			launchThePanel( theSelectedGraphEl, theContext );
+		}
+	}
+	
 	public static void launchThePanel(
 			final IRPGraphElement theTransitionGraphEl,
 			ConfigurationSettings theContext ){
@@ -339,25 +355,44 @@ public class RollUpTraceabilityToTheTransitionPanel extends ExecutableMBSEBasePa
 							_statechartDiagram.getCorrespondingGraphicElements( theReqt ).toList();
 					
 					if( theReqtGEs.isEmpty() ){
-						
-						IRPGraphNode theGraphNode = _statechartDiagram.addNewNodeForElement(
-								theReqt, x+100, y+70, 300, 100 );
-						
-						x = x + 30;
-						y = y + 30;
-						
-						theReqtGEs.add( theGraphNode );
+												
+						try {
+							IRPGraphNode theGraphNode = _statechartDiagram.addNewNodeForElement(
+									theReqt, x+100, y+70, 300, 100 );
+							
+							x = x + 30;
+							y = y + 30;
+							
+							theReqtGEs.add( theGraphNode );
+							
+						} catch (Exception e) {
+							_context.error( "Exception trying to add new node to " + _context.elInfo( _statechartDiagram ) + 
+									" for " + _context.elInfo( theReqt ) + ", e=" + e.getMessage() );
+							
+							String theErrorMsg = _context.get_rhpApp().getErrorMessage();
+							if( theErrorMsg != null ){
+								_context.error( "getErrorMessage() = " + theErrorMsg );
+
+							}
+						}
+
 					}
 					
-					SmartLinkInfo theSmartLinkInfo = 
-							new SmartLinkInfo(
-									theStartLinkEls, 
-									theStartLinkGraphEls, 
-									theEndLinkEls, 
-									theReqtGEs, 
-									_context );
-					
-					theSmartLinkInfo.createDependencies( true );
+					if( theReqtGEs.isEmpty() ){
+						_context.warning( "No graphical elements for requirements were drawn hence cannot populate dependencies" );
+						
+					} else {
+						SmartLinkInfo theSmartLinkInfo = 
+								new SmartLinkInfo(
+										theStartLinkEls, 
+										theStartLinkGraphEls, 
+										theEndLinkEls, 
+										theReqtGEs, 
+										_context );
+						
+						theSmartLinkInfo.createDependencies( true );
+
+					}
 				}
 			}
 			
