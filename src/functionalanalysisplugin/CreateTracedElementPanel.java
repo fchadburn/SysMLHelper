@@ -37,9 +37,9 @@ public abstract class CreateTracedElementPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	protected RequirementSelectionPanel m_RequirementsPanel = null;
-	protected JTextField m_ChosenNameTextField = null;
-	protected final String m_Tbd = "Tbd";
+	protected RequirementSelectionPanel _requirementSelectionPanel = null;
+	protected JTextField _chosenNameTextField = null;
+	protected final String _tbd = "Tbd";
 	protected IRPApplication _rhpApp;
 	
 	SelectedElementContext _selectionContext;
@@ -99,13 +99,13 @@ public abstract class CreateTracedElementPanel extends JPanel {
 		tracedToReqts.addAll( _selectionContext.getSelectedReqts() );
 		
 		if (tracedToReqts.isEmpty()){	
-			m_RequirementsPanel = new RequirementSelectionPanel( 
+			_requirementSelectionPanel = new RequirementSelectionPanel( 
 					"There are no requirements to establish «satisfy» dependencies to",
 					tracedToReqts, 
 					tracedToReqts,
 					_context );
 		} else {
-			m_RequirementsPanel = new RequirementSelectionPanel( 
+			_requirementSelectionPanel = new RequirementSelectionPanel( 
 					"With «satisfy» dependencies to:",
 					tracedToReqts, 
 					tracedToReqts,
@@ -123,13 +123,13 @@ public abstract class CreateTracedElementPanel extends JPanel {
 		JLabel theLabel =  new JLabel( theLabelText );
 		thePanel.add( theLabel );
 		
-		m_ChosenNameTextField = new JTextField();
-		m_ChosenNameTextField.setText( andInitialChosenName );
-		m_ChosenNameTextField.setMinimumSize( new Dimension( 350,20 ) );
-		m_ChosenNameTextField.setPreferredSize( new Dimension( 350,20 ) );
-		m_ChosenNameTextField.setMaximumSize( new Dimension( 350,20 ) );
+		_chosenNameTextField = new JTextField();
+		_chosenNameTextField.setText( andInitialChosenName );
+		_chosenNameTextField.setMinimumSize( new Dimension( 350,20 ) );
+		_chosenNameTextField.setPreferredSize( new Dimension( 350,20 ) );
+		_chosenNameTextField.setMaximumSize( new Dimension( 350,20 ) );
 		
-		thePanel.add( m_ChosenNameTextField );
+		thePanel.add( _chosenNameTextField );
 		
 		return thePanel;
 	}
@@ -192,7 +192,7 @@ public abstract class CreateTracedElementPanel extends JPanel {
 		theOKButton.addActionListener( new ActionListener() {
 			
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed( ActionEvent e ) {
 				
 				try {
 					boolean isValid = checkValidity( true );
@@ -203,26 +203,26 @@ public abstract class CreateTracedElementPanel extends JPanel {
 						dialog.dispose();
 					}		
 												
-				} catch (Exception e2) {
-					_context.error("Error, unhandled exception in CopyOfCreateTracedElementPanel.createOKCancelPanel on OK button action listener, e2=" + e2.getMessage());
+				} catch( Exception e2 ){
+					_context.error( "Unhandled exception in CreateTracedElementPanel.createOKCancelPanel on OK button action listener, e2=" + e2.getMessage() );
 				}
 			}
 		});
 		
-		JButton theCancelButton = new JButton("Cancel");
+		JButton theCancelButton = new JButton( "Cancel" );
 		theCancelButton.setPreferredSize(new Dimension(75,25));
 		
 		theCancelButton.addActionListener( new ActionListener() {
 			
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed( ActionEvent e ) {
 				
 				try {
 					Window dialog = SwingUtilities.windowForComponent( (Component) e.getSource() );
 					dialog.dispose();
 												
-				} catch (Exception e2) {
-					_context.error("Error, unhandled exception in CreateOperationPanel.createOKCancelPanel on Cancel button action listener");
+				} catch( Exception e2 ){
+					_context.error( "Unhandled exception in CreateTracedElementPanel.createOKCancelPanel on Cancel button action listener, e2=" + e2.getMessage() );
 				}
 			}	
 		});
@@ -239,7 +239,7 @@ public abstract class CreateTracedElementPanel extends JPanel {
 		JPanel thePanel = new JPanel();
 		thePanel.setLayout( new FlowLayout() );
 				
-		JButton theCancelButton = new JButton("Cancel");
+		JButton theCancelButton = new JButton( "Cancel" );
 		theCancelButton.setPreferredSize(new Dimension(75,25));
 		
 		theCancelButton.addActionListener( new ActionListener() {
@@ -312,7 +312,7 @@ public abstract class CreateTracedElementPanel extends JPanel {
 			
 			if (theEl != null){
 				
-				List<IRPRequirement> theSelectedReqts = m_RequirementsPanel.getSelectedRequirementsList();
+				List<IRPRequirement> theSelectedReqts = _requirementSelectionPanel.getSelectedRequirementsList();
 				
 				_context.debug("Setting color to red for " + theEl.getName());
 				theGraphEl.setGraphicalProperty("ForegroundColor", theColorSetting);

@@ -519,6 +519,7 @@ V4.0.g.Rhp831.PreRelease (XX-XXX-XXXX):
 #358 19-AUG-2021: ExecutableMBSE: Allow for panel diagrams in the software design package structure menus (F.J.Chadburn)
 #359 19-AUG-2021: ExecutableMBSE: Make ElapsedTimeBlock::elapsedTime attribute a value property rather than an attribute to reflect newer SysML profile (F.J.Chadburn)
 #360 19-AUG-2021: ExecutableMBSE: Ensure that copying of activity diagrams retains the textual activity diagram stereotype (F.J.Chadburn)
+#361 23-AUG-2021: ExecutableMBSE: Fix the CreateIncomingEventPanel so that it works in white box modeling when no actors are chosen (F.J.Chadburn)
 
 Backlog/Known issues
 

@@ -73,7 +73,7 @@ public class UpdateTracedAttributePanel extends CreateTracedElementPanel {
 		m_CheckOperationCheckBox = new JCheckBox();
 		m_CheckOperationCheckBox.setBorder( BorderFactory.createEmptyBorder( 0, 0, 10, 0 ) );
 
-		m_ChosenNameTextField.getDocument().addDocumentListener(
+		_chosenNameTextField.getDocument().addDocumentListener(
 				new DocumentListener() {
 
 					@Override
@@ -105,8 +105,8 @@ public class UpdateTracedAttributePanel extends CreateTracedElementPanel {
 		setBorder( BorderFactory.createEmptyBorder( 10, 10, 10, 10 ) );
 		
 		add( theCenterPanel, BorderLayout.WEST );
-		m_RequirementsPanel.setAlignmentX(LEFT_ALIGNMENT);
-		theCenterPanel.add( m_RequirementsPanel );
+		_requirementSelectionPanel.setAlignmentX(LEFT_ALIGNMENT);
+		theCenterPanel.add( _requirementSelectionPanel );
 				
 		add( thePageStartPanel, BorderLayout.PAGE_START );
 		add( theCenterPanel, BorderLayout.WEST );
@@ -164,7 +164,7 @@ public class UpdateTracedAttributePanel extends CreateTracedElementPanel {
 		
 		m_CheckOpName = _context.determineBestCheckOperationNameFor(
 				(IRPClassifier)_selectionContext.getChosenBlock(), 
-				m_ChosenNameTextField.getText(),
+				_chosenNameTextField.getText(),
 				40 );
 		
 		if( m_ExistingCheckOp==null ){
@@ -183,7 +183,7 @@ public class UpdateTracedAttributePanel extends CreateTracedElementPanel {
 		String errorMessage = "";
 		boolean isValid = true;
 		
-		String theChosenName = m_ChosenNameTextField.getText();
+		String theChosenName = _chosenNameTextField.getText();
 		
 		boolean isLegalName = _context.isLegalName( theChosenName, _selectionContext.getChosenBlock() );
 		
@@ -206,7 +206,7 @@ public class UpdateTracedAttributePanel extends CreateTracedElementPanel {
 			
 		} else if (!isInteger( m_InitialValueTextField.getText() )){
 			
-			errorMessage = "Unable to proceed as the initial value '" + m_ChosenNameTextField.getText() + "' is not an integer";
+			errorMessage = "Unable to proceed as the initial value '" + _chosenNameTextField.getText() + "' is not an integer";
 			isValid = false;
 		}
 
@@ -240,7 +240,7 @@ public class UpdateTracedAttributePanel extends CreateTracedElementPanel {
 
 			IRPAttribute theExistingAttribute = (IRPAttribute)_context.getSelectedElement();
 
-			theExistingAttribute.setName( m_ChosenNameTextField.getText() );				
+			theExistingAttribute.setName( _chosenNameTextField.getText() );				
 			theExistingAttribute.highLightElement();
 			theExistingAttribute.setDefaultValue( m_InitialValueTextField.getText() );
 
@@ -264,7 +264,7 @@ public class UpdateTracedAttributePanel extends CreateTracedElementPanel {
 			if( m_CheckOperationCheckBox.isSelected() ){
 
 				List<IRPRequirement> selectedReqtsList = 
-						m_RequirementsPanel.getSelectedRequirementsList();
+						_requirementSelectionPanel.getSelectedRequirementsList();
 
 				_context.debug( _context.elInfo( theExistingAttribute ) + " is the existing attribute");
 
@@ -285,7 +285,7 @@ public class UpdateTracedAttributePanel extends CreateTracedElementPanel {
 
 						_context.debug( "Changed the name of " + _context.elInfo( m_ExistingCheckOp ) + " to " + m_CheckOpName );
 						m_ExistingCheckOp.setName( m_CheckOpName );
-						m_ExistingCheckOp.setBody("OM_RETURN( " + m_ChosenNameTextField.getText() + " );");
+						m_ExistingCheckOp.setBody("OM_RETURN( " + _chosenNameTextField.getText() + " );");
 					}
 
 					addTraceabilityDependenciesTo( m_ExistingCheckOp, selectedReqtsList );

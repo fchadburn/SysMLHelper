@@ -30,25 +30,32 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private JCheckBox m_EventActionIsNeededCheckBox;
-	private JCheckBox m_CreateSendEvent;
-	private JCheckBox m_CreateSendEventViaPanel;
-	private JCheckBox m_AttributeCheckBox;
-	private JCheckBox m_CheckOperationCheckBox;
-	private String m_CheckOpName;
-	private JTextField m_AttributeNameTextField;
-	private JPanel m_AttributeNamePanel;
-	private JLabel m_CreateAttributeLabel;
-	private IRPPackage m_PackageForEvent;
-	private IRPActor m_SourceActor;
-	private IRPPort m_SourceActorPort;
+	private JCheckBox _eventActionIsNeededCheckBox;
+	private JCheckBox _createSendEventCheckBox;
+	private JCheckBox _createSendEventViaPanelCheckBox;
+	private JCheckBox _creatAttributeCheckBox;
+	private JCheckBox _createCheckOperationCheckBox;
+	private String _nameForCheckOperation;
+	private JTextField _nameForAttributeTextField;
+	private JPanel _attributeNamePanel;
+	private JLabel _createAttributeLabel;
+	private IRPPackage _packageForEvent;
+	private IRPActor _sourceActor;
+	private IRPPort _sourceActorPort;
 
+	// for testing only
+	public static void main(String[] args) {
+		
+		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
+		launchThePanel( theRhpApp.getApplicationConnectionString() );	
+	}
+	
 	public CreateIncomingEventPanel(
 			String theAppID ){
 		
 		super( theAppID );
 		
-		_context.debug("CreateIncomingEventPanel invoked");
+		_context.debug( "CreateIncomingEventPanel invoked" );
 		
 		IRPClass theBuildingBlock = 
 				_selectionContext.getBuildingBlock();
@@ -62,7 +69,7 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 			
 		} else { // theBuildingBlock != null 
 
-			m_PackageForEvent = _selectionContext.getPkgThatOwnsEventsAndInterfaces();
+			_packageForEvent = _selectionContext.getPkgThatOwnsEventsAndInterfaces();
 
 			List<IRPModelElement> theCandidateActors = 
 					getNonElapsedTimeActorsRelatedTo( theBuildingBlock );
@@ -73,7 +80,7 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 						_context.launchDialogToSelectElement(
 								theCandidateActors, "Select Actor", true );
 
-				if( theActor != null && theActor instanceof IRPActor ){
+				if( theActor instanceof IRPActor ){
 
 					IRPClass theBlock = _selectionContext.getBlockUnderDev(
 							"Which Block do you want to add the Event to?" );
@@ -99,13 +106,21 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 
 						} else { // Port != null
 
-							m_SourceActorPort = thePort;
-							m_SourceActor = (IRPActor) theActor;
+							_sourceActorPort = thePort;
+							_sourceActor = (IRPActor) theActor;
 							
 							buildContent();
 							commonPanelSetup();
 						}
 					}
+				} else { // No actor chosen/available
+					
+					// This caches the chosen block
+					_selectionContext.getBlockUnderDev(
+							"Which Block do you want to add the Event to?" );
+					
+					buildContent();
+					commonPanelSetup();
 				}
 			}
 		}
@@ -117,44 +132,46 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 				_selectionContext.getSelectedEl() );	
 
 		if( theSourceText.isEmpty() ){
-			theSourceText = m_Tbd;
+			theSourceText = _tbd;
 		}
 
-		_context.debug("CreateIncomingEventPanel constructor (1) called with text '" + theSourceText + "'");
+		_context.debug( "CreateIncomingEventPanel constructor (1) called with text '" + theSourceText + "'" );
 
 		String theProposedName = determineBestEventName( 
 				_selectionContext.getChosenBlock(), 
 				theSourceText );									
 
-		_context.debug("The proposed name is '" + theProposedName + "'");
+		_context.debug( "The proposed name is '" + theProposedName + "'" );
 
 		setLayout( new BorderLayout(10,10) );
 		setBorder( BorderFactory.createEmptyBorder( 10, 10, 10, 10 ) );
 
-		m_EventActionIsNeededCheckBox = new JCheckBox("Populate on diagram?");
-		setupPopulateCheckbox( m_EventActionIsNeededCheckBox );
+		_eventActionIsNeededCheckBox = new JCheckBox( "Populate on diagram?" );
+		setupPopulateCheckbox( _eventActionIsNeededCheckBox );
 
 		JPanel thePageStartPanel = new JPanel();
 		thePageStartPanel.setLayout( new BoxLayout( thePageStartPanel, BoxLayout.X_AXIS ) );
 		thePageStartPanel.add( createChosenNamePanelWith( "Create an event called:  ", theProposedName ) );
-		thePageStartPanel.add( m_EventActionIsNeededCheckBox );
+		thePageStartPanel.add( _eventActionIsNeededCheckBox );
 
 		add( thePageStartPanel, BorderLayout.PAGE_START );
 
 		JPanel theCenterPanel = new JPanel();
 		theCenterPanel.setLayout( new BoxLayout( theCenterPanel, BoxLayout.Y_AXIS ) );
 
-		m_RequirementsPanel.setAlignmentX(LEFT_ALIGNMENT);
-		theCenterPanel.add( m_RequirementsPanel );
+		_requirementSelectionPanel.setAlignmentX( LEFT_ALIGNMENT );
+		theCenterPanel.add( _requirementSelectionPanel );
 
-		m_CreateSendEvent = new JCheckBox();
-		m_CreateSendEvent.setSelected( m_SourceActor != null );
-		theCenterPanel.add( m_CreateSendEvent );
+		_createSendEventCheckBox = new JCheckBox();
+		_createSendEventCheckBox.setSelected( _sourceActor != null );
+		_createSendEventCheckBox.setEnabled( _sourceActor != null );
+		_createSendEventCheckBox.setVisible( _sourceActor != null );
+		theCenterPanel.add( _createSendEventCheckBox );
 
-		m_AttributeCheckBox = new JCheckBox(
+		_creatAttributeCheckBox = new JCheckBox(
 				"Add a value argument to change a corresponding attribute on the block");
 
-		m_AttributeCheckBox.addActionListener( new ActionListener() {
+		_creatAttributeCheckBox.addActionListener( new ActionListener() {
 
 			public void actionPerformed(ActionEvent actionEvent) {
 
@@ -162,43 +179,43 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 
 				boolean selected = abstractButton.getModel().isSelected();
 
-				m_CheckOperationCheckBox.setEnabled(selected);
-				m_CreateAttributeLabel.setEnabled(selected);
-				m_AttributeNameTextField.setEnabled(selected);
+				_createCheckOperationCheckBox.setEnabled( selected );
+				_createAttributeLabel.setEnabled( selected);
+				_nameForAttributeTextField.setEnabled( selected );
 
-				setupSendEventViaPanelCheckbox( m_SourceActor );
+				setupSendEventViaPanelCheckbox( _sourceActor );
 
-				m_CheckOperationCheckBox.setSelected(selected);
+				_createCheckOperationCheckBox.setSelected( selected );
 
 				if( selected==false ){
-					m_CreateSendEventViaPanel.setSelected(false);			        	
+					_createSendEventViaPanelCheckBox.setSelected( false );			        	
 				}
 
 				updateNames();
 
 			}} );
 
-		theCenterPanel.add( m_AttributeCheckBox );
+		theCenterPanel.add( _creatAttributeCheckBox );
 
-		m_AttributeNamePanel = createAttributeNamePanel( 
+		_attributeNamePanel = createAttributeNamePanel( 
 				_context.determineUniqueNameBasedOn( 
 						_context.toMethodName( theSourceText, 40 ), 
 						"Attribute", 
 						_selectionContext.getChosenBlock() ) );
 
-		m_AttributeNamePanel.setAlignmentX( LEFT_ALIGNMENT );
+		_attributeNamePanel.setAlignmentX( LEFT_ALIGNMENT );
 
-		theCenterPanel.add( m_AttributeNamePanel );
+		theCenterPanel.add( _attributeNamePanel );
 
-		m_CheckOperationCheckBox = new JCheckBox();
-		m_CheckOperationCheckBox.setSelected(false);
-		m_CheckOperationCheckBox.setEnabled(false);
-		theCenterPanel.add( m_CheckOperationCheckBox );
+		_createCheckOperationCheckBox = new JCheckBox();
+		_createCheckOperationCheckBox.setSelected( false );
+		_createCheckOperationCheckBox.setEnabled( false );
+		theCenterPanel.add( _createCheckOperationCheckBox );
 
-		m_CreateSendEventViaPanel = new JCheckBox();
-		setupSendEventViaPanelCheckbox( m_SourceActor );
+		_createSendEventViaPanelCheckBox = new JCheckBox();
+		setupSendEventViaPanelCheckbox( _sourceActor );
 
-		theCenterPanel.add( m_CreateSendEventViaPanel );	
+		theCenterPanel.add( _createSendEventViaPanelCheckBox );	
 
 		add( theCenterPanel, BorderLayout.WEST );
 	}
@@ -206,36 +223,45 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 	private void setupSendEventViaPanelCheckbox(
 			IRPActor theSourceActor ) {
 
-		boolean isAttributeForEvent = 
-				m_AttributeCheckBox.isSelected();
+		if( theSourceActor != null ){
 
-		boolean isSendEventViaPanelOptionEnabled = 
-				_context.getIsSendEventViaPanelOptionEnabled(
-						_selectionContext.getSelectedEl() );
+			boolean isAttributeForEvent = 
+					_creatAttributeCheckBox.isSelected();
 
-		boolean isSendEventViaPanelWantedByDefault = 
-				_context.getIsSendEventViaPanelWantedByDefault(
-						_selectionContext.getSelectedEl() );
+			boolean isSendEventViaPanelOptionEnabled = 
+					_context.getIsSendEventViaPanelOptionEnabled(
+							_selectionContext.getSelectedEl() );
 
-		m_CreateSendEventViaPanel.setSelected( 
-				isAttributeForEvent && 
-				isSendEventViaPanelWantedByDefault &&
-				theSourceActor != null );
+			boolean isSendEventViaPanelWantedByDefault = 
+					_context.getIsSendEventViaPanelWantedByDefault(
+							_selectionContext.getSelectedEl() );
 
-		m_CreateSendEventViaPanel.setEnabled( 
-				isAttributeForEvent && 
-				isSendEventViaPanelOptionEnabled &&
-				theSourceActor != null );
+			_createSendEventViaPanelCheckBox.setSelected( 
+					isAttributeForEvent && 
+					isSendEventViaPanelWantedByDefault &&
+					theSourceActor != null );
 
-		m_CreateSendEventViaPanel.setVisible( 
-				isSendEventViaPanelOptionEnabled &&
-				theSourceActor != null );
+			_createSendEventViaPanelCheckBox.setEnabled( 
+					isAttributeForEvent && 
+					isSendEventViaPanelOptionEnabled &&
+					theSourceActor != null );
+
+			_createSendEventViaPanelCheckBox.setVisible( 
+					isSendEventViaPanelOptionEnabled &&
+					theSourceActor != null );
+
+		} else {
+			
+			_createSendEventViaPanelCheckBox.setSelected( false );
+			_createSendEventViaPanelCheckBox.setEnabled( false );
+			_createSendEventViaPanelCheckBox.setVisible( false );
+		}
 	}
 
 	private void commonPanelSetup(){
 		add( createOKCancelPanel(), BorderLayout.PAGE_END );
 
-		m_ChosenNameTextField.getDocument().addDocumentListener(
+		_chosenNameTextField.getDocument().addDocumentListener(
 				new DocumentListener() {
 
 					@Override
@@ -290,22 +316,22 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 
 		String theProposedName = null;
 
-		if( m_SourceActor != null ){
-			String[] splitActorName = m_SourceActor.getName().split("_");
+		if( _sourceActor != null ){
+			String[] splitActorName = _sourceActor.getName().split("_");
 			String theActorName = splitActorName[0];
 			String theSourceMinusActor = theSourceText.replaceFirst( "^" + theActorName, "" );
 
 			theProposedName = _context.determineUniqueNameBasedOn( 
 					_context.toMethodName(
-							"req" + theActorName + _context.capitalize(theSourceMinusActor), 40 ), 
+							"req" + theActorName + _context.capitalize( theSourceMinusActor ), 40 ), 
 					"Event", 
-					onTargetBlock.getProject());
+					onTargetBlock.getProject() );
 		} else {
 			theProposedName = _context.determineUniqueNameBasedOn( 
 					_context.toMethodName( 
-							"req" + _context.capitalize( theSourceText ), 40 ), 
+							"ev" + _context.capitalize( theSourceText ), 40 ), 
 					"Event", 
-					onTargetBlock.getProject());
+					onTargetBlock.getProject() );
 		}
 
 		return theProposedName;
@@ -313,27 +339,27 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 
 	private void updateNames(){
 
-		if( m_AttributeCheckBox.isSelected() ){
-			m_CreateSendEvent.setText(
-					"Add a '" + determineSendEventNameFor( m_ChosenNameTextField.getText() ) 
-					+ "' event with 'value' argument to the actor for webify/test creation usage");
+		if( _creatAttributeCheckBox.isSelected() ){
+			_createSendEventCheckBox.setText(
+					"Add a '" + determineSendEventNameFor( _chosenNameTextField.getText() ) 
+					+ "' event with 'value' argument to the actor for webify/test creation usage" );
 		} else {
-			m_CreateSendEvent.setText(
-					"Add a '" + determineSendEventNameFor( m_ChosenNameTextField.getText() ) 
-					+ "' event to the actor");
+			_createSendEventCheckBox.setText(
+					"Add a '" + determineSendEventNameFor( _chosenNameTextField.getText() ) 
+					+ "' event to the actor" );
 		}
 
-		m_CreateSendEventViaPanel.setText(
-				"Add a '" + determineSendEventViaPanelNameFor( m_ChosenNameTextField.getText() ) 
-				+ "' event and '" + m_AttributeNameTextField.getText() + "' attribute to the actor to ease panel creation");
+		_createSendEventViaPanelCheckBox.setText(
+				"Add a '" + determineSendEventViaPanelNameFor( _chosenNameTextField.getText() ) 
+				+ "' event and '" + _nameForAttributeTextField.getText() + "' attribute to the actor to ease panel creation" );
 
-		m_CheckOpName = _context.determineBestCheckOperationNameFor(
+		_nameForCheckOperation = _context.determineBestCheckOperationNameFor(
 				_selectionContext.getChosenBlock(), 
-				m_AttributeNameTextField.getText(),
+				_nameForAttributeTextField.getText(),
 				40 );
 
-		m_CheckOperationCheckBox.setText(
-				"Add a '" + m_CheckOpName + "' operation to the block that returns the attribute value");
+		_createCheckOperationCheckBox.setText(
+				"Add a '" + _nameForCheckOperation + "' operation to the block that returns the attribute value" );
 	}
 
 	private JPanel createAttributeNamePanel(
@@ -342,15 +368,15 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 		JPanel thePanel = new JPanel();
 		thePanel.setLayout( new BoxLayout(thePanel, BoxLayout.X_AXIS ) );	
 
-		m_CreateAttributeLabel = new JLabel("Create an attribute called:  ");
-		m_CreateAttributeLabel.setEnabled(false);
-		thePanel.add( m_CreateAttributeLabel );
+		_createAttributeLabel = new JLabel("Create an attribute called:  ");
+		_createAttributeLabel.setEnabled(false);
+		thePanel.add( _createAttributeLabel );
 
-		m_AttributeNameTextField = new JTextField( theProposedName );
-		m_AttributeNameTextField.setMaximumSize( new Dimension( 300,20 ) );
-		m_AttributeNameTextField.setEnabled(false);
+		_nameForAttributeTextField = new JTextField( theProposedName );
+		_nameForAttributeTextField.setMaximumSize( new Dimension( 300,20 ) );
+		_nameForAttributeTextField.setEnabled(false);
 
-		m_AttributeNameTextField.getDocument().addDocumentListener(
+		_nameForAttributeTextField.getDocument().addDocumentListener(
 				new DocumentListener() {
 
 					@Override
@@ -369,7 +395,7 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 					}	
 				});
 
-		thePanel.add( m_AttributeNameTextField );
+		thePanel.add( _nameForAttributeTextField );
 
 		return thePanel;
 	}
@@ -425,7 +451,7 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 
 				IRPTransition theTransition = theReadyState.addInternalTransition( sendEvent );
 
-				String actionText = "OPORT( " + m_SourceActorPort.getName() + 
+				String actionText = "OPORT( " + _sourceActorPort.getName() + 
 						" )->GEN(" + theEvent.getName() + "(";
 
 				@SuppressWarnings("unchecked")
@@ -445,12 +471,12 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 				sendEvent.addStereotype("Web Managed", "Event");
 
 			} else {
-				_context.error("Error in createTestBenchSendFor, the actor called " 
-						+ onTheActor.getFullPathName() + "'s statechart does not have a Ready state");
+				_context.error( "Error in createTestBenchSendFor, the actor called " 
+						+ onTheActor.getFullPathName() + "'s statechart does not have a Ready state" );
 			}
 		} else {
-			_context.error("Unable to proceed as actor called " 
-					+ onTheActor.getFullPathName() + " does not have a statechart");
+			_context.error( "Unable to proceed as actor called " 
+					+ onTheActor.getFullPathName() + " does not have a statechart" );
 		}
 
 		return sendEvent;
@@ -501,18 +527,18 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 									theAttribute.getName(), onTheActor );
 				}
 
-				String actionText = "OPORT( " + m_SourceActorPort.getName() + " )->GEN( " + 
+				String actionText = "OPORT( " + _sourceActorPort.getName() + " )->GEN( " + 
 						theEvent.getName() + "( " + theAttributeOwnedByActor.getName() + " ) );" ;
 
 				theTransition.setItsAction(actionText);
 
 			} else {
-				_context.error("Error in createTestBenchSendViaPanelFor, the actor called " 
-						+ onTheActor.getFullPathName() + "'s statechart does not have a Ready state");
+				_context.error( "Error in createTestBenchSendViaPanelFor, the actor called " 
+						+ onTheActor.getFullPathName() + "'s statechart does not have a Ready state" );
 			}
 		} else {
-			_context.error("Unable to proceed as actor called " 
-					+ onTheActor.getFullPathName() + " does not have a statechart");
+			_context.error( "Unable to proceed as actor called " 
+					+ onTheActor.getFullPathName() + " does not have a statechart" );
 		}
 
 		return sendEvent;
@@ -581,8 +607,8 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 		String errorMessage = null;
 		boolean isValid = true;
 
-		String theChosenName = m_ChosenNameTextField.getText();
-		String theAttributeName = m_AttributeNameTextField.getText();
+		String theChosenName = _chosenNameTextField.getText();
+		String theAttributeName = _nameForAttributeTextField.getText();
 
 		
 		IRPClassifier theClassifier = (IRPClassifier)_selectionContext.getChosenBlock();
@@ -598,13 +624,13 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 		} else if( !_context.isElementNameUnique(
 				theChosenName, 
 				"Event", 
-				m_PackageForEvent.getProject(), 
+				_packageForEvent.getProject(), 
 				1 ) ){
 
 			errorMessage = "Unable to proceed as the event name '" + theChosenName + "' is not unique";
 			isValid = false;
 
-		} else if( m_AttributeCheckBox.isSelected() ){
+		} else if( _creatAttributeCheckBox.isSelected() ){
 
 			_context.debug("An attribute is needed, chosen name was " + theAttributeName);			
 			_context.debug( _context.elInfo( theClassifier ) + " is the target owning element" );
@@ -622,8 +648,8 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 					errorMessage = "You selected to update an attribute with an event. The Block has a statechart but for this to work the owning block needs to have a statechart with a MonitoringConditions \n" +
 							"state. To do this make sure the chosen Block has a generalization to the BasePkg.TimeElapsedBlock";
 					isValid = false;
-					m_AttributeCheckBox.setSelected( false );
-					m_CheckOperationCheckBox.setSelected( false );
+					_creatAttributeCheckBox.setSelected( false );
+					_createCheckOperationCheckBox.setSelected( false );
 				}
 			}
 
@@ -633,8 +659,8 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 						"state. To do this make sure the chosen Block has a generalization to the BasePkg.TimeElapsedBlock";
 				isValid = false;	
 
-				m_AttributeCheckBox.setSelected( false );
-				m_CheckOperationCheckBox.setSelected( false );
+				_creatAttributeCheckBox.setSelected( false );
+				_createCheckOperationCheckBox.setSelected( false );
 
 			} else if( !_context.isLegalName( theAttributeName, theClassifier ) ){
 
@@ -653,14 +679,14 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 				isValid = false;
 			}
 			
-		} else if( m_CheckOperationCheckBox.isSelected() && 
+		} else if( _createCheckOperationCheckBox.isSelected() && 
 				!_context.isElementNameUnique(
-						m_CheckOpName,
+						_nameForCheckOperation,
 						"Operation",
 						theClassifier, 
 						1 ) ){
 
-			errorMessage = "Unable to proceed as the check operation name '" + m_CheckOpName + "' is not unique";
+			errorMessage = "Unable to proceed as the check operation name '" + _nameForCheckOperation + "' is not unique";
 			isValid = false;
 		}
 
@@ -689,37 +715,41 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 
 		// checkValidity is assumed to return true
 
-		IRPEvent theEvent = m_PackageForEvent.addEvent( m_ChosenNameTextField.getText() );
+		IRPEvent theEvent = _packageForEvent.addEvent( _chosenNameTextField.getText() );
 
 		IRPClassifier theClassifier = (IRPClassifier)_selectionContext.getChosenBlock();
 		IRPModelElement theSourceModelEl = _selectionContext.getSelectedEl();
 
 		// add value argument before cloning the event to create the test-bench send
-		if( m_AttributeCheckBox.isSelected() ){
+		if( _creatAttributeCheckBox.isSelected() ){
 			theEvent.addArgument( "value" );
 		}
 
 		List<IRPRequirement> selectedReqtsList = 
-				m_RequirementsPanel.getSelectedRequirementsList();
+				_requirementSelectionPanel.getSelectedRequirementsList();
 
 		addTraceabilityDependenciesTo( theEvent, selectedReqtsList );
 
-		PortBasedConnector theExistingConnector = 
-				new PortBasedConnector( 
-						m_SourceActor, 
-						theClassifier,
-						_context );
+		// was an actor selected?
+		if( _sourceActor instanceof IRPClassifier ){
+			
+			PortBasedConnector theExistingConnector = 
+					new PortBasedConnector( 
+							_sourceActor, 
+							theClassifier,
+							_context );
 
-		theExistingConnector.addEvent( theEvent );
+			theExistingConnector.addEvent( theEvent );
+		}
 
 		IRPModelElement theReception = 
 				theClassifier.addNewAggr( 
 						"Reception", 
-						m_ChosenNameTextField.getText() );
+						_chosenNameTextField.getText() );
 
 		addTraceabilityDependenciesTo( theReception, selectedReqtsList );
 
-		if ( m_CreateSendEvent.isSelected() ) {
+		if ( _createSendEventCheckBox.isSelected() ) {
 
 			String theSendEventName = determineSendEventNameFor( theEvent.getName() );
 
@@ -729,7 +759,7 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 			IRPModelElement theTestbenchReception = 
 					createTestBenchSendFor( 
 							theEvent, 
-							(IRPActor) m_SourceActor, 
+							(IRPActor) _sourceActor, 
 							theSendEventName );
 
 			theTestbenchReception.highLightElement();
@@ -740,14 +770,14 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 			theReception.highLightElement();
 
 			// If no send event and no actor then assume you want to webify the event directly on the block
-			if( m_SourceActor == null ){
+			if( _sourceActor == null ){
 				theEvent.addStereotype( "Web Managed", "Event" );
 			}
 		}
 
 		IRPAttribute theAttribute = null;
 
-		if( m_AttributeCheckBox.isSelected() && 
+		if( _creatAttributeCheckBox.isSelected() && 
 				theClassifier instanceof IRPClassifier ){
 
 			if( theSourceModelEl != null && 
@@ -758,7 +788,7 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 			} else {
 				theAttribute = addAttributeTo(
 						theClassifier, 
-						m_AttributeNameTextField.getText(), 
+						_nameForAttributeTextField.getText(), 
 						"0", 
 						selectedReqtsList );
 			}
@@ -766,7 +796,7 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 			_context.addAutoRippleDependencyIfOneDoesntExist(
 					theAttribute, theReception );
 
-			if( m_CreateSendEventViaPanel.isSelected() ){
+			if( _createSendEventViaPanelCheckBox.isSelected() ){
 
 				String theSendEventViaPanelName = 
 						determineSendEventViaPanelNameFor( theEvent.getName() );
@@ -779,16 +809,16 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 				IRPModelElement theTestbenchReceptionViaPanel = createTestBenchSendViaPanelFor( 
 						theEvent, 
 						theAttribute,
-						(IRPActor) m_SourceActor, 
+						(IRPActor) _sourceActor, 
 						theSendEventViaPanelName );
 
 				theTestbenchReceptionViaPanel.highLightElement();
 			}
 
-			if ( m_CheckOperationCheckBox.isSelected() ){
+			if ( _createCheckOperationCheckBox.isSelected() ){
 
 				IRPOperation theCheckOp = 
-						addCheckOperationFor( theAttribute, m_CheckOpName );
+						addCheckOperationFor( theAttribute, _nameForCheckOperation );
 				
 				addTraceabilityDependenciesTo( theCheckOp, selectedReqtsList );	
 				theCheckOp.highLightElement();
@@ -802,7 +832,7 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 
 		_selectionContext.bleedColorToElementsRelatedTo( selectedReqtsList );
 
-		if( m_EventActionIsNeededCheckBox.isSelected() ){
+		if( _eventActionIsNeededCheckBox.isSelected() ){
 			populateReceiveEventActionOnDiagram( theEvent );
 		}
 
@@ -881,45 +911,7 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 }
 
 /**
- * Copyright (C) 2016-2019  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #022 30-MAY-2016: Improved handling and validation of event/operation creation by adding new forms (F.J.Chadburn)
-    #024 30-MAY-2016: Check box to allow user to choose whether to add the check operation (F.J.Chadburn) 
-    #029 01-JUN-2016: Add Warning Dialog helper to UserInterfaceHelpers (F.J.Chadburn)
-    #030 01-JUN-2016: Improve legal name checking across helpers (F.J.Chadburn)
-    #032 05-JUN-2016: Populate call operation/event actions on diagram check-box added (F.J.Chadburn)
-    #033 05-JUN-2016: Add support for creation of operations and events from raw requirement selection (F.J.Chadburn)
-    #034 05-JUN-2016: Re-factored design to move static constructors into appropriate panel class (F.J.Chadburn)
-    #040 17-JUN-2016: Extend populate event/ops to work on OMD, i.e., REQ diagrams (F.J.Chadburn)
-    #042 29-JUN-2016: launchThePanel renaming to improve Panel class design consistency (F.J.Chadburn)
-    #043 03-JUL-2016: Add Derive downstream reqt for CallOps, InterfaceItems and Event Actions (F.J.Chadburn)
-    #044 03-JUL-2016: Minor re-factoring/code corrections (F.J.Chadburn)
-    #054 13-JUL-2016: Create a nested BlockPkg package to contain the Block and events (F.J.Chadburn)
-    #062 17-JUL-2016: Create InterfacesPkg and correct build issues by adding a Usage dependency (F.J.Chadburn)
-    #069 20-JUL-2016: Fix population of events/ops on diagram when creating from a transition (F.J.Chadburn)
-    #078 28-JUL-2016: Added isPopulateWantedByDefault tag to FunctionalAnalysisPkg to give user option (F.J.Chadburn)
-    #082 09-AUG-2016: Add a check operation check box added to the create attribute dialog (F.J.Chadburn)
-    #088 09-AUG-2016: Added a create send event via Panel to the incoming event dialog (F.J.Chadburn)
-    #089 15-AUG-2016: Add a pull-down list to select Block when adding events/ops in white box (F.J.Chadburn)
-    #090 15-AUG-2016: Fix check operation name issue introduced in fixes #083 and #084 (F.J.Chadburn)
-    #093 23-AUG-2016: Added isPopulateOptionHidden tag to allow hiding of the populate check-box on dialogs (F.J.Chadburn)
-    #099 14-SEP-2016: Allow event and operation creation from right-click on AD and RD diagram canvas (F.J.Chadburn)
-    #117 13-NOV-2016: Get incoming and outgoing event dialogs to work without actors in the context (F.J.Chadburn)
-    #125 25-NOV-2016: AutoRipple used in UpdateTracedAttributePanel to keep check and FlowPort name updated (F.J.Chadburn)
-    #127 25-NOV-2016: Improved usability of ViaPanel event creation by enabling default selection via tags (F.J.Chadburn)
-    #132 25-NOV-2016: Added "Unable to find a port that connects" warning to CreateIncomingEventPanel (F.J.Chadburn)
-    #186 29-MAY-2017: Add context string to getBlockUnderDev to make it clearer for user when selecting (F.J.Chadburn)
-    #196 05-JUN-2017: Enhanced create traced element dialogs to be context aware for blocks/parts (F.J.Chadburn)
-    #197 05-JUN-2017: Fix 8.2 issue in Incoming Event panel, create ValueProperty rather than attribute (F.J.Chadburn)
-    #198 05-JUN-2017: Support for adding MonitoringConditions transitions moved into shared StatechartHelpers (F.J.Chadburn)
-    #199 05-JUN-2017: Improved create event panel consistency to name event Tbd if no text provided (F.J.Chadburn)
-    #200 05-JUN-2017: Hide Populate on diagram check-boxes if context is not valid (F.J.Chadburn)
-    #201 05-JUN-2017: Highlight attribute post-event creation to ease potential for flow-port creation (F.J.Chadburn)
-    #210 04-JUL-2017: Fixed a bug stopping event creation dialog launching when populate check-box shown (F.J.Chadburn)
-    #227 06-SEP-2017: Increased robustness to stop smart link panel using non new term version of <<refine>> (F.J.Chadburn)
-    #252 29-MAY-2019: Implement generic features for profile/settings loading (F.J.Chadburn)
-    #256 29-MAY-2019: Rewrite to Java Swing dialog launching to make thread safe between versions (F.J.Chadburn)
+ * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

@@ -341,17 +341,17 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 		boolean isValid = true;
 
 		if( m_MoveIntoCheckBox.isSelected() && !_context.isElementNameUnique(
-					m_ChosenNameTextField.getText(), "Requirement", m_TargetOwningElement, 1 )){
+					_chosenNameTextField.getText(), "Requirement", m_TargetOwningElement, 1 )){
 
-			errorMsg = "Unable to proceed as the name '" + m_ChosenNameTextField.getText() + 
+			errorMsg = "Unable to proceed as the name '" + _chosenNameTextField.getText() + 
 					"' is not unique in " + _context.elInfo( m_TargetOwningElement );
 
 			isValid = false;
 
 		} else if (!_context.isElementNameUnique(
-					m_ChosenNameTextField.getText(), "Requirement", _context.get_rhpPrj(), 1)){
+					_chosenNameTextField.getText(), "Requirement", _context.get_rhpPrj(), 1)){
 
-			errorMsg = "Unable to proceed as the name '" + m_ChosenNameTextField.getText() + 
+			errorMsg = "Unable to proceed as the name '" + _chosenNameTextField.getText() + 
 					"' is not unique in " + _context.elInfo( _context.get_rhpPrj() );
 
 			isValid = false;
@@ -388,7 +388,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 						IRPFlowchart theFC = (IRPFlowchart) theAD.getFlowchart();
 						
 						theRequirement = (IRPRequirement) theFC.addNewAggr(
-								"Requirement", m_ChosenNameTextField.getText() );
+								"Requirement", _chosenNameTextField.getText() );
 						
 					} else if( theDiagram instanceof IRPObjectModelDiagram ||
 							   theDiagram instanceof IRPStatechartDiagram ||
@@ -396,7 +396,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 							   theDiagram instanceof IRPUseCaseDiagram ){
 					
 						theRequirement = (IRPRequirement) theDiagram.addNewAggr(
-								"Requirement", m_ChosenNameTextField.getText()  );
+								"Requirement", _chosenNameTextField.getText()  );
 						
 					} else {
 						_context.warning("Warning in CreateDerivedRequirementPanel.performAction, " +

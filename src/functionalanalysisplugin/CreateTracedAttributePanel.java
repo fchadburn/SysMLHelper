@@ -163,7 +163,7 @@ public class CreateTracedAttributePanel extends CreateTracedElementPanel {
 			        			        
 			      }} );
 		
-		m_ChosenNameTextField.getDocument().addDocumentListener(
+		_chosenNameTextField.getDocument().addDocumentListener(
 				new DocumentListener() {
 
 					@Override
@@ -217,8 +217,8 @@ public class CreateTracedAttributePanel extends CreateTracedElementPanel {
 		setBorder( BorderFactory.createEmptyBorder( 10, 10, 10, 10 ) );
 		
 		add( theCenterPanel, BorderLayout.WEST );
-		m_RequirementsPanel.setAlignmentX(LEFT_ALIGNMENT);
-		theCenterPanel.add( m_RequirementsPanel );
+		_requirementSelectionPanel.setAlignmentX(LEFT_ALIGNMENT);
+		theCenterPanel.add( _requirementSelectionPanel );
 				
 		add( thePageStartPanel, BorderLayout.PAGE_START );
 		add( theCenterPanel, BorderLayout.WEST );
@@ -298,7 +298,7 @@ public class CreateTracedAttributePanel extends CreateTracedElementPanel {
 		
 		m_CheckOpName = _context.determineBestCheckOperationNameFor(
 				_selectionContext.getChosenBlock(),
-				m_ChosenNameTextField.getText(),
+				_chosenNameTextField.getText(),
 				40 );
 		
 		m_CheckOperationCheckBox.setText(
@@ -316,7 +316,7 @@ public class CreateTracedAttributePanel extends CreateTracedElementPanel {
 		String errorMessage = "";
 		boolean isValid = true;
 		
-		String theChosenName = m_ChosenNameTextField.getText();
+		String theChosenName = _chosenNameTextField.getText();
 		
 		boolean isLegalName = _context.isLegalName( theChosenName, _selectionContext.getChosenBlock() );
 		
@@ -326,12 +326,12 @@ public class CreateTracedAttributePanel extends CreateTracedElementPanel {
 			isValid = false;
 			
 		} else if( !_context.isElementNameUnique(
-				m_ChosenNameTextField.getText(), 
+				_chosenNameTextField.getText(), 
 				"Attribute", 
 				_selectionContext.getChosenBlock(), 
 				1 ) ){
 
-			errorMessage = "Unable to proceed as the name '" + m_ChosenNameTextField.getText() + "' is not unique";
+			errorMessage = "Unable to proceed as the name '" + _chosenNameTextField.getText() + "' is not unique";
 			isValid = false;
 
 		} else if( m_CheckOperationCheckBox.isSelected() && 
@@ -348,7 +348,7 @@ public class CreateTracedAttributePanel extends CreateTracedElementPanel {
 			
 		} else if (!isInteger( m_InitialValueTextField.getText() )){
 			
-			errorMessage = "Unable to proceed as the initial value '" + m_ChosenNameTextField.getText() + "' is not an integer";
+			errorMessage = "Unable to proceed as the initial value '" + _chosenNameTextField.getText() + "' is not an integer";
 			isValid = false;
 		}
 
@@ -381,11 +381,11 @@ public class CreateTracedAttributePanel extends CreateTracedElementPanel {
 		// do silent check first
 		if (checkValidity( false )){
 
-			List<IRPRequirement> selectedReqtsList = m_RequirementsPanel.getSelectedRequirementsList();
+			List<IRPRequirement> selectedReqtsList = _requirementSelectionPanel.getSelectedRequirementsList();
 
 			IRPAttribute theAttribute = addAttributeTo( 
 					_selectionContext.getChosenBlock(), 
-					m_ChosenNameTextField.getText(), 
+					_chosenNameTextField.getText(), 
 					m_InitialValueTextField.getText(),
 					selectedReqtsList );
 												

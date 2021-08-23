@@ -114,7 +114,7 @@ public class CreateOperationPanel extends CreateTracedElementPanel {
 		setLayout( new BorderLayout(10,10) );
 		setBorder( BorderFactory.createEmptyBorder( 10, 10, 10, 10 ) );
 
-		m_RequirementsPanel.setAlignmentX( LEFT_ALIGNMENT );
+		_requirementSelectionPanel.setAlignmentX( LEFT_ALIGNMENT );
 		
 		JPanel theNamePanel = createChosenNamePanelWith( "Create an operation called:  ", theProposedName );
 		theNamePanel.setAlignmentX(LEFT_ALIGNMENT);
@@ -128,7 +128,7 @@ public class CreateOperationPanel extends CreateTracedElementPanel {
 		thePageStartPanel.add( m_CallOperationIsNeededCheckBox );
 		
 		add( thePageStartPanel, BorderLayout.PAGE_START );
-		add( m_RequirementsPanel, BorderLayout.WEST );
+		add( _requirementSelectionPanel, BorderLayout.WEST );
 		add( createOKCancelPanel(), BorderLayout.PAGE_END );
 	}
 	
@@ -139,7 +139,7 @@ public class CreateOperationPanel extends CreateTracedElementPanel {
 		String errorMessage = null;
 		boolean isValid = true;
 		
-		String theChosenName = m_ChosenNameTextField.getText();
+		String theChosenName = _chosenNameTextField.getText();
 		IRPClass theChosenBlock = _selectionContext.getChosenBlock();
 		
 		boolean isLegalName = _context.isLegalName( theChosenName, theChosenBlock );
@@ -174,7 +174,7 @@ public class CreateOperationPanel extends CreateTracedElementPanel {
 
 		IRPOperation theOperation = 
 				_selectionContext.getChosenBlock().addOperation(
-						m_ChosenNameTextField.getText() );	
+						_chosenNameTextField.getText() );	
 
 		IRPGraphElement theSourceGraphElement = _selectionContext.getSelectedGraphEl();
 
@@ -202,7 +202,7 @@ public class CreateOperationPanel extends CreateTracedElementPanel {
 					theCallOp.setName( theProposedName );
 				}
 			} else {
-				List<IRPRequirement> theSelectedReqtsList = m_RequirementsPanel.getSelectedRequirementsList();
+				List<IRPRequirement> theSelectedReqtsList = _requirementSelectionPanel.getSelectedRequirementsList();
 				addTraceabilityDependenciesTo( theOperation, theSelectedReqtsList );
 				_selectionContext.bleedColorToElementsRelatedTo( theSelectedReqtsList );
 			}

@@ -145,7 +145,7 @@ public class CreateOutgoingEventPanel extends CreateTracedElementPanel {
 								String theSourceText = _context.getActionTextFrom( _selectionContext.getSelectedEl() );		
 
 								if( theSourceText.isEmpty() ){
-									theSourceText = m_Tbd;
+									theSourceText = _tbd;
 								}
 
 								createCommonContent(
@@ -209,15 +209,15 @@ public class CreateOutgoingEventPanel extends CreateTracedElementPanel {
 		thePageStartPanel.add( createChosenNamePanelWith( "Create an event called:  ", theProposedName ) );
 		thePageStartPanel.add( m_ActionOnDiagramIsNeededCheckBox );
 
-		m_RequirementsPanel.setAlignmentX(LEFT_ALIGNMENT);
+		_requirementSelectionPanel.setAlignmentX(LEFT_ALIGNMENT);
 
 		JPanel theCenterPanel = new JPanel();
 		theCenterPanel.setLayout( new BoxLayout( theCenterPanel, BoxLayout.Y_AXIS ) );
-		theCenterPanel.add( m_RequirementsPanel );
+		theCenterPanel.add( _requirementSelectionPanel );
 		theCenterPanel.add( m_SendOperationIsNeededCheckBox );
 		theCenterPanel.add( m_ActiveAgumentNeededCheckBox );
 
-		m_ChosenNameTextField.getDocument().addDocumentListener(
+		_chosenNameTextField.getDocument().addDocumentListener(
 				new DocumentListener() {
 
 					@Override
@@ -247,7 +247,7 @@ public class CreateOutgoingEventPanel extends CreateTracedElementPanel {
 		m_SendOperationIsNeededCheckBox.setText(
 				"Add an '" + determineBestInformNameFor(
 						_selectionContext.getChosenBlock(), 
-						m_ChosenNameTextField.getText() ) 
+						_chosenNameTextField.getText() ) 
 						+ "' operation that sends the event");
 	}
 
@@ -331,7 +331,7 @@ public class CreateOutgoingEventPanel extends CreateTracedElementPanel {
 		String errorMessage = null;
 		boolean isValid = true;
 
-		String theChosenName = m_ChosenNameTextField.getText();
+		String theChosenName = _chosenNameTextField.getText();
 		IRPClass theChosenBlock = _selectionContext.getChosenBlock();
 
 		boolean isLegalName = _context.isLegalName( 
@@ -387,13 +387,13 @@ public class CreateOutgoingEventPanel extends CreateTracedElementPanel {
 
 		IRPClass theChosenBlock = _selectionContext.getChosenBlock();
 
-		String theEventName = m_ChosenNameTextField.getText(); 
+		String theEventName = _chosenNameTextField.getText(); 
 
 		if( !theEventName.isEmpty() ){
 
 			IRPEvent theEvent = m_PackageForEvent.addEvent( theEventName );
 
-			List<IRPRequirement> selectedReqtsList = m_RequirementsPanel.getSelectedRequirementsList();
+			List<IRPRequirement> selectedReqtsList = _requirementSelectionPanel.getSelectedRequirementsList();
 
 			addTraceabilityDependenciesTo( theEvent, selectedReqtsList );
 
