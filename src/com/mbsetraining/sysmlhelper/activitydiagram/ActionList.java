@@ -1,7 +1,11 @@
 package com.mbsetraining.sysmlhelper.activitydiagram;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.telelogic.rhapsody.core.*;
@@ -11,25 +15,80 @@ public class ActionList extends ArrayList<ActionInfo> {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-		
+	private static final long serialVersionUID = -2124165730546915443L;
+	
 	ActionList(
 			IRPActivityDiagram theAD,
 			ConfigurationSettings context ){
 		
 		super();
-				
+						
 		@SuppressWarnings("unchecked")
 		List<IRPModelElement> candidateEls = theAD.getElementsInDiagram().toList();
 		
 		for (IRPModelElement theEl : candidateEls) {
 			
 			if( ActionInfo.isTraceabilityNeededFor( theEl, context )){
-				this.add( new ActionInfo( theEl, context ) );
+				
+				ActionInfo theInfo = new ActionInfo( theEl, context ); 
+				this.add( theInfo );
 			}
 		}
+		
+		ensureUniqueReferenceActivityNames();
 	}
+	
+	public void ensureUniqueReferenceActivityNames(){
+		
+		Map<String, List<ActionInfo>> theNameMap = new HashMap<>();
+		
+		for (ActionInfo theCandidate : this) {
+		
+			if( theCandidate.getType().equals( "ReferenceActivity" ) ){
+				
+				String theName = theCandidate.getDesiredName();
+				
+				List<ActionInfo> existingInfos = 
+						theNameMap.getOrDefault( theName, new ArrayList<>() );
+				
+				existingInfos.add( theCandidate );
+				
+				theNameMap.put( theName, existingInfos );
+			}
+		}
+		
+		for( Entry<String, List<ActionInfo>>  entryForId : theNameMap.entrySet() ){
 
+			List<ActionInfo> value = entryForId.getValue();
+			
+			if( value.size() > 1 ){
+				
+				int count = 1;
+				
+				Iterator<ActionInfo> iterator = value.iterator();
+				
+				// skip first one
+				iterator.next();
+				
+				while (iterator.hasNext() ) {
+					
+					ActionInfo actionInfo = iterator.next();
+											
+					String newName;
+						
+					do {
+						newName =  actionInfo.getDesiredName() + "_" + count;
+						count++;
+
+					} while ( theNameMap.containsKey( newName ) );
+						
+					actionInfo.setDesiredName( newName );
+					actionInfo.setChosenNameToDesiredName();							
+				}
+			}				
+		}
+	}
+	
 	public boolean isRenamingNeeded(){
 		boolean isNeeded = false;
 		

@@ -64,12 +64,17 @@ public class ActionInfo {
 					
 					this.desiredName = theState.getDisplayName().trim().replaceAll("\\.", "_");
 					
+				} else if (theType.equals("ReferenceActivity")){
+			
+					this.desiredName = this.oldName;
+					
 				} else {
 					_context.debug("Ignoring " + theType + " called " + this.oldName);
 					this.desiredName = null;
 				}
 				
-			} else if (theElement instanceof IRPTransition || theElement instanceof IRPConstraint){
+			} else if (theElement instanceof IRPTransition || 
+					theElement instanceof IRPConstraint){
 				
 				this.theType = theElement.getMetaClass();
 				this.desiredName = null; 
@@ -236,6 +241,10 @@ public class ActionInfo {
 	public String getDesiredName() {
 		return desiredName;
 	}
+
+	public void setDesiredName(String desiredName) {
+		this.desiredName = desiredName;
+	}
 	
 	public String getChosenName() {
 		return chosenName;
@@ -283,11 +292,7 @@ public class ActionInfo {
 }
 
 /**
- * Copyright (C) 2016-2017  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #004 10-APR-2016: Re-factored projects into single workspace (F.J.Chadburn)
-    #225 25-AUG-2017: Add check that pre-conditions with text must trace to at least one requirement (F.J.Chadburn)
+ * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

@@ -30,6 +30,14 @@ public class ActivityDiagramChecker extends JFrame{
 	
 	private static final long serialVersionUID = 1L;
 
+	@SuppressWarnings("unchecked")
+	public static void main(String[] args) {
+		
+		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
+		ExecutableMBSE_Context context = new ExecutableMBSE_Context(theRhpApp.getApplicationConnectionString());
+		ActivityDiagramChecker.launchPanelsFor( theRhpApp.getListOfSelectedElements().toList(), context );
+
+	}
 	public static void launchPanelsFor(
 			List<IRPModelElement> theSelectedEls,
 			ConfigurationSettings context ){

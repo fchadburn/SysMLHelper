@@ -504,7 +504,7 @@ V4.0.f.Rhp831.PreRelease (29-JUL-2021):
 #345 29-JUL-2021: ExecutableMBSE: Allow system blocks to have a state machine (F.J.Chadburn)
 #346 29-JUL-2021: ExecutableMBSE: Support auto-generation of proxy ports for connectors between system usages and actor objects (F.J.Chadburn)
 
-V4.0.g.Rhp831.PreRelease (XX-XXX-XXXX):
+V4.0.g.Rhp831.PreRelease (23-AUG-2021):
 #347 30-JUL-2021: ExecutableMBSE: Add ability to select a system block when creating system usage for context diagram (F.J.Chadburn)
 #348 10-AUG-2021: ExecutableMBSE: Allow System Block and Subsystem Blocks to own Value Properties (F.J.Chadburn)
 #349 10-AUG-2021: ExecutableMBSE: Make animation more compact by turning off animation of chElapsedTime events in BasePkg (F.J.Chadburn)
@@ -520,6 +520,9 @@ V4.0.g.Rhp831.PreRelease (XX-XXX-XXXX):
 #359 19-AUG-2021: ExecutableMBSE: Make ElapsedTimeBlock::elapsedTime attribute a value property rather than an attribute to reflect newer SysML profile (F.J.Chadburn)
 #360 19-AUG-2021: ExecutableMBSE: Ensure that copying of activity diagrams retains the textual activity diagram stereotype (F.J.Chadburn)
 #361 23-AUG-2021: ExecutableMBSE: Fix the CreateIncomingEventPanel so that it works in white box modeling when no actors are chosen (F.J.Chadburn)
+
+V4.0.h.Rhp831.PreRelease (XX-XXX-XXXX):
+#362 14-OCT-2021: ExecutableMBSE: Get rename action names command to uniquely name call behaviours to avoid ownership issues with interruptible regions (F.J.Chadburn) 
 
 Backlog/Known issues
 
@@ -548,3 +551,4 @@ Backlog/Known issues
 - Do you need to generate menus with a version later than V8.3.1 to ensure compatibility?
 - Ensure that hep file allows for right-click of System Block, System Usage etc for some of the general features.
 - Allow functional deposition of function blocks/usages to any level
+- Add a query and custom view that filters out requirements
