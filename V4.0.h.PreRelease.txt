@@ -521,7 +521,7 @@ V4.0.g.Rhp831.PreRelease (23-AUG-2021):
 #360 19-AUG-2021: ExecutableMBSE: Ensure that copying of activity diagrams retains the textual activity diagram stereotype (F.J.Chadburn)
 #361 23-AUG-2021: ExecutableMBSE: Fix the CreateIncomingEventPanel so that it works in white box modeling when no actors are chosen (F.J.Chadburn)
 
-V4.0.h.Rhp831.PreRelease (XX-XXX-XXXX):
+V4.0.h.Rhp831.PreRelease (18-OCT-2021):
 #362 14-OCT-2021: ExecutableMBSE: Get rename action names command to uniquely name call behaviours to avoid ownership issues with interruptible regions (F.J.Chadburn) 
 #363 18-OCT-2021: ExecutableMBSE: Add Auto-Rename Actions as a separately invoke-able menu command, including a don't show again check-box to ease mass update (F.J.Chadburn)
 #364 18-OCT-2021: ExecutableMBSE: Fix to prevent actor package being pulled into simulation package build by moving pull-from dependency to the working package (F.J.Chadburn)
@@ -554,3 +554,4 @@ Backlog/Known issues
 - Ensure that hep file allows for right-click of System Block, System Usage etc for some of the general features.
 - Allow functional deposition of function blocks/usages to any level
 - Add a query and custom view that filters out requirements
+- Fixes needed to allow models to work when multiple scenario packages are created (prevent dialog pull-ups from not knowing context)
