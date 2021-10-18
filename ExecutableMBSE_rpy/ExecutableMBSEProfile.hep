@@ -414,7 +414,7 @@ DLLServerCompatible53=1
 name54=MBSE Method: Functional Analysis\Copy activity diagrams to package under development
 isPluginCommand54=1
 command54=InvokeExecutableMBSEHelper
-applicableTo54=Package,21 Funct Analysis - Scenarios Package,12 Reqts Analysis - Working Copy Package
+applicableTo54=12 Reqts Analysis - Working Copy Package
 isVisible54=1
 DLLServerCompatible54=1
 

@@ -60,6 +60,12 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 	 */
 	private static final long serialVersionUID = 1L;
 
+	public static void main(String[] args) {
+	
+		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
+		launchThePanel( SimulationType.FullSim, theRhpApp.getApplicationConnectionString() );
+	}
+	
 	public static void launchThePanel(
 			final SimulationType withSimulationType,
 			String theAppID ) {
@@ -87,48 +93,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 			}
 		});
 	}
-
-	//	@SuppressWarnings("unchecked")
-	//	private List<IRPActor> getSimulationActors(
-	//			IRPModelElement underneathTheEl ){
-	//	
-	//		List<IRPActor> theActors = new ArrayList<>();
-	//		
-	//		// This is for legacy support
-	//		IRPPackage theFunctionalAnalysisPkg = 
-	//				(IRPPackage) underneathTheEl.getProject().findElementsByFullName( 
-	//						"FunctionalAnalysisPkg", 
-	//						"Package" );
-	//		
-	//		if( theFunctionalAnalysisPkg != null ){
-	//			
-	//			// This is for legacy support
-	//			theActors = 
-	//					theFunctionalAnalysisPkg.getNestedElementsByMetaClass( 
-	//							"Actor", 1 ).toList();
-	//		} else {
-	//			List<IRPModelElement> theSimPkgs = 
-	//					GeneralHelpers.findElementsWithMetaClassAndStereotype(
-	//							"Package", 
-	//							StereotypeAndPropertySettings.getSimulationPackageStereotype(), 
-	//							underneathTheEl, 
-	//							1 );
-	//			
-	//			for( IRPModelElement theSimPkg : theSimPkgs ){
-	//				
-	//				List<IRPModelElement> theCandidates = 
-	//						theSimPkg.getNestedElementsByMetaClass(
-	//								"Actor", 1 ).toList();
-	//				
-	//				for (IRPModelElement theCandidate : theCandidates) {
-	//					theActors.add( (IRPActor) theCandidate );
-	//				}
-	//			}
-	//		}
-	//		
-	//		return theActors;
-	//	}
-	//	
+	
 	private List<IRPActor> getActorsAssociatedToUseCases(
 			IRPModelElement underneathTheEl ){
 
@@ -541,10 +506,6 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 							_rootPackage,
 							_context.getSimulationPackageStereotype( _rootPackage ) );
 
-			for( IRPPackage theUseCasePkg : _useCasePkgs ){
-				theRootPkg.addDependencyTo( theUseCasePkg );
-			}
-
 			// Create nested package for block		
 			IRPPackage theBlockPkg = _context.addNewTermPackageAndSetUnitProperties(
 					"Blocks_" + theName + "Pkg",
@@ -573,6 +534,11 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 					theRootPkg,
 					_context.getUseCasePackageWorkingStereotype( theRootPkg ) );
 
+			// Add dependency to the use case package to enable drawing of activity diagram copies into the working package
+			for( IRPPackage theUseCasePkg : _useCasePkgs ){
+				theWorkingPackage.addDependencyTo( theUseCasePkg );
+			}
+			
 			// Populate content for the BlockPkg
 			IRPClass theLogicalSystemBlock = theBlockPkg.addClass( theName );
 

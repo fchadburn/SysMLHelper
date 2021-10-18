@@ -1,4 +1,4 @@
-package functionalanalysisplugin;
+package com.mbsetraining.sysmlhelper.eventdeletor;
 
 import java.util.List;
 

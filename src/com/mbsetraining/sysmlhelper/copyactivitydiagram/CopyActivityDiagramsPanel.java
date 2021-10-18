@@ -1,4 +1,4 @@
-package functionalanalysisplugin;
+package com.mbsetraining.sysmlhelper.copyactivitydiagram;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -35,8 +35,8 @@ public class CopyActivityDiagramsPanel extends ExecutableMBSEBasePanel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-
+	private static final long serialVersionUID = -5634296009352088660L;
+	
 	private Map<IRPUseCase, CopyActivityDiagramsInfo> m_RadioButtonMap = new HashMap<IRPUseCase, CopyActivityDiagramsInfo>();
 	private IRPModelElement m_ToElement = null;
 	//private IRPModelElement m_UnderneathTheEl = null;
@@ -44,6 +44,12 @@ public class CopyActivityDiagramsPanel extends ExecutableMBSEBasePanel {
 	private JCheckBox m_CopyAllCheckBox;
 	private JCheckBox m_OpenDiagramsCheckBox;
 
+	public static void main(String[] args) {
+		
+		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
+		launchThePanel( theRhpApp.getApplicationConnectionString() );
+	}
+	
 	public static void launchThePanel(
 			String theAppID ){
 				
