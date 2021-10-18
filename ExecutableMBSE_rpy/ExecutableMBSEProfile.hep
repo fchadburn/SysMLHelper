@@ -278,7 +278,7 @@ DLLServerCompatible34=1
 name35=MBSE Method: Requirements Analysis\Report on naming and traceability checks for elements on Activity Diagram
 isPluginCommand35=1
 command35=InvokeExecutableMBSEHelper
-applicableTo35=UseCase,12 Reqts Analysis - Use Case Package,Package,ActivityDiagram,Textual Activity,Call Operation Activity,UseCaseDiagram,Enhanced Use Case Diagram
+applicableTo35=UseCase,12 Reqts Analysis - Use Case Package,Package,ActivityDiagram,Textual Activity,Call Operation Activity
 isVisible35=1
 DLLServerCompatible35=1
 
@@ -291,11 +291,11 @@ isVisible36=1
 DLLServerCompatible36=1
 
 #REM: Add pop-up menu
-name37=MBSE Method: Requirements Analysis\Perform rename in browser for elements on Activity Diagrams
+name37=MBSE Method: Requirements Analysis\Auto-Rename Actions
 isPluginCommand37=1
 command37=InvokeExecutableMBSEHelper
-applicableTo37=UseCase,12 Reqts Analysis - Use Case Package,Package,ActivityDiagram,Textual Activity,Call Operation Activity,UseCaseDiagram,Enhanced Use Case Diagram
-isVisible37=0
+applicableTo37=UseCase,12 Reqts Analysis - Use Case Package,Package,ActivityDiagram,Textual Activity,Call Operation Activity
+isVisible37=1
 DLLServerCompatible37=1
 
 #REM: Add pop-up menu

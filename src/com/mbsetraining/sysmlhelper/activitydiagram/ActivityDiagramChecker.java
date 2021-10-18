@@ -38,6 +38,7 @@ public class ActivityDiagramChecker extends JFrame{
 		ActivityDiagramChecker.launchPanelsFor( theRhpApp.getListOfSelectedElements().toList(), context );
 
 	}
+	
 	public static void launchPanelsFor(
 			List<IRPModelElement> theSelectedEls,
 			ConfigurationSettings context ){

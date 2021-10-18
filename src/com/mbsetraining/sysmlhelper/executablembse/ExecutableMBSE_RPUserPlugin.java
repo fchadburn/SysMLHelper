@@ -373,6 +373,12 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					ActivityDiagramChecker.launchPanelsFor( theSelectedEls, _context );
 
 				} else if( menuItem.equals( _context.getString( 
+						"executablembseplugin.AutoRenameActions" ) ) ){
+
+					RenameActions theRenamer = new RenameActions( _context );
+					theRenamer.performRenamesFor( theSelectedEls );
+										
+				} else if( menuItem.equals( _context.getString( 
 						"executablembseplugin.MoveUnclaimedReqtsMenu" ) ) ){
 
 					MoveRequirements theMover = new MoveRequirements( _context );
