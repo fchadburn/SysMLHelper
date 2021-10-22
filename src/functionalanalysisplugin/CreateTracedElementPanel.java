@@ -43,7 +43,6 @@ public abstract class CreateTracedElementPanel extends JPanel {
 	protected IRPApplication _rhpApp;
 	
 	SelectedElementContext _selectionContext;
-	FunctionalAnalysisSettings _settings;
 	ExecutableMBSE_Context _context;
 
 	public CreateTracedElementPanel(
@@ -53,7 +52,6 @@ public abstract class CreateTracedElementPanel extends JPanel {
 		
 		_context = new ExecutableMBSE_Context( theAppID );
 		_selectionContext = new SelectedElementContext( _context );
-		_settings = new FunctionalAnalysisSettings( _context );
 		
 		_context.debug( "CreateTracedElementPanel constructor was invoked" );
 		
@@ -642,7 +640,7 @@ public abstract class CreateTracedElementPanel extends JPanel {
 			
 			if( theContextEl != null ){
 				
-				theBlock = _settings.getBlockUnderDev( 
+				theBlock = _selectionContext.getBlockUnderDev( 
 						theContextEl, theMsg );
 			} else {
 				_context.error("Error in getBlock");

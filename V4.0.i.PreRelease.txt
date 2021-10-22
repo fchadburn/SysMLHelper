@@ -526,6 +526,9 @@ V4.0.h.Rhp831.PreRelease (18-OCT-2021):
 #363 18-OCT-2021: ExecutableMBSE: Add Auto-Rename Actions as a separately invoke-able menu command, including a don't show again check-box to ease mass update (F.J.Chadburn)
 #364 18-OCT-2021: ExecutableMBSE: Fix to prevent actor package being pulled into simulation package build by moving pull-from dependency to the working package (F.J.Chadburn)
 
+V4.0.i.Rhp831.PreRelease (22-OCT-2021):
+#365 22-OCT-2021: ExecutableMBSE: Fix to enable SelectedElementContext to cope with moving pull-from dependency to the working package (F.J.Chadburn)
+
 Backlog/Known issues
 
 - It would be useful to have a way to specify a different bleed colour

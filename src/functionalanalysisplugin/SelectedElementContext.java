@@ -11,34 +11,58 @@ import com.telelogic.rhapsody.core.*;
 
 public class SelectedElementContext {
 
+	private static final String FUNCT_ANALYSIS_SCENARIOS_PACKAGE = "21 Funct Analysis - Scenarios Package";
+	private static final String REQTS_ANALYSIS_USE_CASE_PACKAGE = "12 Reqts Analysis - Use Case Package";
+	private static final String REQTS_ANALYSIS_WORKING_COPY_PACKAGE = "12 Reqts Analysis - Working Copy Package";
+
 	private static final String tagNameForAssemblyBlockUnderDev = "assemblyBlockUnderDev";
 	private static final String tagNameForPackageForEventsAndInterfaces = "packageForEventsAndInterfaces";
 	private static final String tagNameForPackageForBlocks = "packageForBlocks";
 
 	private List<IRPGraphElement> _selectedGraphEls;
-	private IRPModelElement _selectedEl = null;
-	private IRPModelElement _contextEl = null;
-	private IRPClass _buildingBlock = null;
-	private IRPClass _chosenBlock = null;
-	private IRPDiagram _sourceGraphElDiagram = null;
-	private Set<IRPRequirement> _selectedReqts = null;
+	private IRPModelElement _selectedEl;
+	private IRPPackage _contextEl;
+	private IRPClass _buildingBlock;
+	private IRPClass _chosenBlock;
+	private IRPDiagram _sourceGraphElDiagram;
+	private Set<IRPRequirement> _selectedReqts;
 	private ExecutableMBSE_Context _context;
 	private FunctionalAnalysisSettings _settings;
-	
+
 	public SelectedElementContext(
 			ExecutableMBSE_Context context ){
-		
+
 		_context = context;
 		_selectedGraphEls = _context.getSelectedGraphElements();
+		
 		_selectedEl = _context.getSelectedElement();
-		_contextEl = getContextEl();
+		
+		if( _selectedGraphEls != null && 
+				!_selectedGraphEls.isEmpty() ){
+
+			IRPGraphElement selectedGraphEl = _selectedGraphEls.get( 0 );
+			
+			IRPModelElement theModelObject = selectedGraphEl.getModelObject();
+			
+			if( theModelObject != null ){				
+				_selectedEl = theModelObject;
+			}
+		}
+		
+		_contextEl = getSimulationSettingsPackageBasedOn( _selectedEl );
 		_sourceGraphElDiagram = getSourceDiagram();
 		_settings = new FunctionalAnalysisSettings( _context );
 	}
-	
+
+	public IRPClass getBlockUnderDev( 
+			IRPModelElement basedOnContextEl, String theMsg ){
+		
+		return _settings.getBlockUnderDev( basedOnContextEl, theMsg );
+	}
+			
 	@SuppressWarnings("unchecked")
 	public Set<IRPRequirement> getSelectedReqts(){
-		
+
 		if( _selectedReqts == null ){
 
 			Set<IRPModelElement> theMatchingEls = 
@@ -48,31 +72,31 @@ public class SelectedElementContext {
 
 			// cast to IRPRequirement
 			_selectedReqts = 
-				(Set<IRPRequirement>)(Set<?>) theMatchingEls;
+					(Set<IRPRequirement>)(Set<?>) theMatchingEls;
 		}
-		
+
 		return _selectedReqts;
 	}
 
 	public IRPModelElement getSelectedEl(){
 		return _selectedEl;
 	}
-	
+
 	public IRPGraphElement getSelectedGraphEl(){
-		
+
 		IRPGraphElement theGraphEl = null;
-		
+
 		if( _selectedGraphEls != null &&
 				!_selectedGraphEls.isEmpty() ){
-			
+
 			theGraphEl = _selectedGraphEls.get( 0 );
 		} else {
 			_context.warning( "getSelectedGraphEl is returning null");
 		}
-		
+
 		return theGraphEl;
 	}
-	
+
 	private IRPPackage getOwningPackageFor(
 			IRPModelElement theElement ){
 
@@ -86,7 +110,8 @@ public class SelectedElementContext {
 			theOwningPackage = (RPPackage)theElement;
 
 		} else if( theElement instanceof IRPProject ){
-			_context.warning( "Unable to find an owning package for " + theElement.getFullPathNameIn() + " as I reached project" );
+			_context.warning( "Unable to find an owning package for " + 
+					theElement.getFullPathNameIn() + " as I reached project" );
 
 		} else {
 			theOwningPackage = getOwningPackageFor( theElement.getOwner() );
@@ -94,20 +119,20 @@ public class SelectedElementContext {
 
 		return theOwningPackage;
 	}
-	
+
 	public IRPPackage getPackageForSelectedEl(){
-		
+
 		return getOwningPackageFor( _selectedEl );
 	}
-	
+
 	public IRPClass getChosenBlock(){
 		return _chosenBlock;
 	}
-	
+
 	public IRPDiagram getSourceDiagram(){
 
 		if( _sourceGraphElDiagram == null ){
-			
+
 			if( _selectedEl instanceof IRPDiagram ){
 
 				_sourceGraphElDiagram = (IRPDiagram) _selectedEl;
@@ -115,24 +140,8 @@ public class SelectedElementContext {
 				_sourceGraphElDiagram = _selectedGraphEls.get( 0 ).getDiagram();
 			}
 		}
-		
+
 		return _sourceGraphElDiagram;
-	}
-	
-	private IRPModelElement getContextEl(){
-
-		IRPModelElement theContextEl = _selectedEl;
-
-		if( theContextEl == null ){
-
-			if( _selectedGraphEls != null && !_selectedGraphEls.isEmpty() ){
-
-				IRPGraphElement selectedGraphEl = _selectedGraphEls.get( 0 );
-				theContextEl = selectedGraphEl.getModelObject();
-			}
-		}
-
-		return theContextEl;
 	}
 
 	public IRPClass getBlockUnderDev(
@@ -213,19 +222,20 @@ public class SelectedElementContext {
 
 		return _chosenBlock;
 	}
-	
+
 	public IRPClass getBuildingBlock(){
-		
+
 		if( _buildingBlock == null && 
 				_contextEl != null ){
-			
+
 			try {
-				
+
 				IRPModelElement elementInTag = _settings.getElementNamedInFunctionalPackageTag(
 						_contextEl, 
 						tagNameForAssemblyBlockUnderDev );
-				
-				_context.info( "Element named in " + tagNameForAssemblyBlockUnderDev + " is " + _context.elInfo( elementInTag ) );
+
+				_context.info( "Element named in " + tagNameForAssemblyBlockUnderDev + 
+						" is " + _context.elInfo( elementInTag ) );
 
 				if( elementInTag != null && 
 						elementInTag instanceof IRPClass ){
@@ -320,6 +330,8 @@ public class SelectedElementContext {
 	public IRPPackage getSimulationSettingsPackageBasedOn(
 			IRPModelElement theContextEl ){
 
+		_context.debug( "getSimulationSettingsPackageBasedOn invoked for " + _context.elInfo( theContextEl ) );
+		
 		IRPPackage theSettingsPkg = null;
 
 		if( theContextEl instanceof IRPProject ){
@@ -327,7 +339,7 @@ public class SelectedElementContext {
 			List<IRPModelElement> thePackageEls = 
 					_context.findElementsWithMetaClassAndStereotype(
 							"Package", 
-							_context.getSimulationPackageStereotype( theContextEl ), 
+							FUNCT_ANALYSIS_SCENARIOS_PACKAGE, 
 							theContextEl.getProject(), 
 							1 );
 
@@ -354,7 +366,7 @@ public class SelectedElementContext {
 
 		} else if( theContextEl instanceof IRPPackage &&
 				_context.hasStereotypeCalled(
-						_context.getSimulationPackageStereotype( theContextEl ), 
+						FUNCT_ANALYSIS_SCENARIOS_PACKAGE, 
 						theContextEl ) ){
 
 			_context.debug( "getSimulationSettingsPackageBasedOn, is returning " + _context.elInfo( theContextEl ) );
@@ -363,7 +375,7 @@ public class SelectedElementContext {
 
 		} else if( theContextEl instanceof IRPPackage &&
 				_context.hasStereotypeCalled(
-						_context.getUseCasePackageStereotype( theContextEl ), 
+						REQTS_ANALYSIS_USE_CASE_PACKAGE, 
 						theContextEl ) ){
 
 			@SuppressWarnings("unchecked")
@@ -378,11 +390,18 @@ public class SelectedElementContext {
 
 					if( theDependent instanceof IRPPackage &&
 							_context.hasStereotypeCalled(
-									_context.getSimulationPackageStereotype( theContextEl ), 
+									FUNCT_ANALYSIS_SCENARIOS_PACKAGE, 
 									theDependent ) ){
 
 						theSettingsPkg = (IRPPackage) theDependent;
-					}
+					
+					} else if( theDependent instanceof IRPPackage &&
+							_context.hasStereotypeCalled(
+									REQTS_ANALYSIS_WORKING_COPY_PACKAGE, 
+									theDependent ) ){
+						
+						theSettingsPkg = getSimulationSettingsPackageBasedOn( theDependent );
+					}	
 				}
 			}
 
@@ -397,16 +416,16 @@ public class SelectedElementContext {
 
 		return theSettingsPkg;
 	}
-	
+
 	public void bleedColorToElementsRelatedTo(
 			List<IRPRequirement> theSelectedReqts ){
-		
+
 		IRPGraphElement theSelectedGraphEl = getSelectedGraphEl();
-		
+
 		// only bleed on activity diagrams		
 		if( theSelectedGraphEl != null &&
 				theSelectedGraphEl.getDiagram() instanceof IRPActivityDiagram ){
-			
+
 			for( IRPGraphElement theGraphEl : _selectedGraphEls ) {
 				bleedColorToElementsRelatedTo( theGraphEl, theSelectedReqts );
 			}
@@ -416,27 +435,27 @@ public class SelectedElementContext {
 	private void bleedColorToElementsRelatedTo(
 			IRPGraphElement theGraphEl,
 			List<IRPRequirement> theSelectedReqts ){
-		
+
 		String theColorSetting = "255,0,0";
 		IRPDiagram theDiagram = theGraphEl.getDiagram();
 		IRPModelElement theEl = theGraphEl.getModelObject();
-		
+
 		if( theEl != null ){
-								
+
 			_context.debug("Setting color to red for " + theEl.getName());
 			theGraphEl.setGraphicalProperty("ForegroundColor", theColorSetting);
-			
+
 			@SuppressWarnings("unchecked")
 			List<IRPDependency> theExistingDeps = theEl.getDependencies().toList();
-			
+
 			for (IRPDependency theDependency : theExistingDeps) {
-				
+
 				IRPModelElement theDependsOn = theDependency.getDependsOn();
-				
+
 				if (theDependsOn != null && 
-					theDependsOn instanceof IRPRequirement && 
-					theSelectedReqts.contains( theDependsOn )){	
-					
+						theDependsOn instanceof IRPRequirement && 
+						theSelectedReqts.contains( theDependsOn )){	
+
 					bleedColorToGraphElsRelatedTo( theDependsOn, theColorSetting, theDiagram );
 					bleedColorToGraphElsRelatedTo( theDependency, theColorSetting, theDiagram );
 				}
@@ -451,26 +470,26 @@ public class SelectedElementContext {
 
 		@SuppressWarnings("unchecked")
 		List<IRPGraphElement> theGraphElsRelatedToElement = 
-				onDiagram.getCorrespondingGraphicElements( theEl ).toList();
-		
+		onDiagram.getCorrespondingGraphicElements( theEl ).toList();
+
 		for (IRPGraphElement irpGraphElement : theGraphElsRelatedToElement) {
-			
+
 			irpGraphElement.setGraphicalProperty("ForegroundColor", theColorSetting);
-			
+
 			IRPModelElement theModelObject = irpGraphElement.getModelObject();
-			
+
 			if (theModelObject != null){
 				_context.debug("Setting color to red for " + theModelObject.getName());
 			}
 		}
 	}
-	
+
 	public IRPPackage getPackageForBlocks(){
 
 		IRPPackage thePackage = _settings.getPkgNamedInFunctionalPackageTag(
 				_contextEl, 
 				tagNameForPackageForBlocks );
-		
+
 		return thePackage;
 	}
 }
@@ -492,4 +511,4 @@ public class SelectedElementContext {
 
     You should have received a copy of the GNU General Public License
     along with SysMLHelperPlugin.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
