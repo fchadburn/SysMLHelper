@@ -529,6 +529,9 @@ V4.0.h.Rhp831.PreRelease (18-OCT-2021):
 V4.0.i.Rhp831.PreRelease (22-OCT-2021):
 #365 22-OCT-2021: ExecutableMBSE: Fix to enable SelectedElementContext to cope with moving pull-from dependency to the working package (F.J.Chadburn)
 
+V4.0.j.Rhp831.PreRelease (XX-XXX-XXXX):
+#366 22-OCT-2021: ExecutableMBSE: Comment out use of sleep(2) in the TestDriverBlock template to avoid compiler errors when not using Cygwin gcc (F.J.Chadburn)
+
 Backlog/Known issues
 
 - It would be useful to have a way to specify a different bleed colour
