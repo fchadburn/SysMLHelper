@@ -10,7 +10,6 @@ import javax.swing.JOptionPane;
 
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
-import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
  
 public class MoveRequirements {

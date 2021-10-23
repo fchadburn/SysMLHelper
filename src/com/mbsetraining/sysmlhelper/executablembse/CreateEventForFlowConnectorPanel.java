@@ -104,7 +104,7 @@ public class CreateEventForFlowConnectorPanel extends ExecutableMBSEBasePanel {
 		if( isEnabled ){
 			_elementMover = new ElementMover( 
 					theDiagram, 
-					_context.getSubsystemInterfacesPackageStereotype(), 
+					_context.DESIGN_SYNTHESIS_SUBSYSTEM_INTERFACES_PACKAGE, 
 					_context );		
 			
 			if( _elementMover.isMovePossible() ){

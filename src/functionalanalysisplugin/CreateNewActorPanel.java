@@ -17,6 +17,7 @@ import com.mbsetraining.sysmlhelper.common.RhapsodyComboBox;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
+import com.mbsetraining.sysmlhelper.executablembse.SelectedElementContext;
 import com.mbsetraining.sysmlhelper.sequencediagram.SequenceDiagramCreator;
 import com.telelogic.rhapsody.core.*;
 
@@ -208,7 +209,7 @@ public class CreateNewActorPanel extends ExecutableMBSEBasePanel {
 		if( checkValidity( false ) ){
 			
 			IRPClass theAssemblyBlock = 
-					_settings.getBuildingBlock( m_RootPackage );
+					_context.get_selectedContext().getBuildingBlock( m_RootPackage );
 			
 			if( m_RootPackage != null ){
 				

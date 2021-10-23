@@ -21,7 +21,6 @@ public class ActorMappingInfo {
 	private IRPActor m_SourceActor = null;
 	
 	private ExecutableMBSE_Context _context;
-	FunctionalAnalysisSettings _settings;
 
 	public ActorMappingInfo(
 			RhapsodyComboBox theRhapsodyComboBox,
@@ -33,7 +32,6 @@ public class ActorMappingInfo {
 		super();
 		
 		_context = context;
-		_settings = new FunctionalAnalysisSettings(_context);
 
 		this.m_InheritedFromComboBox = theRhapsodyComboBox;
 		this.m_ActorCheckBox = theActorCheckBox;
@@ -80,10 +78,11 @@ public class ActorMappingInfo {
 			theDesiredName = _context.toLegalClassName( theOriginalActorName ) + "_" + theBlockName;
 		}
 		
-		String theProposedActorName = _context.determineUniqueNameBasedOn( 
-				theDesiredName, 
-				"Actor", 
-				_context.get_rhpPrj() );
+		String theProposedActorName = theDesiredName;
+		//_context.determineUniqueNameBasedOn( 
+		//		theDesiredName, 
+		//		"Actor", 
+		//		_context.get_rhpPrj() );
 		
 		m_ActorNameTextField.setText( theProposedActorName );
 	}
@@ -110,9 +109,8 @@ public class ActorMappingInfo {
 			theSourcesBases.add( theClassifier );
 			theSourcesBases.addAll( theClassifier.getBaseClassifiers().toList() );
 			
-			
 			List<IRPClass> theBuildingBlocks = 
-					_settings.getBuildingBlocks( 
+					_context.get_selectedContext().getBuildingBlocks( 
 							(IRPPackage) theFAPackage );
 
 			for( IRPClass theBuildingBlock : theBuildingBlocks ){
@@ -216,7 +214,7 @@ public class ActorMappingInfo {
 			}
 
 			IRPPackage thePackageForActor = 
-					_settings.getPackageForActorsAndTest(
+					_context.get_selectedContext().getPackageForActorsAndTest(
 							theProject );
 
 			IRPActor theActor = thePackageForActor.addActor( theLegalActorName );

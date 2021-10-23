@@ -1,7 +1,5 @@
 package requirementsanalysisplugin;
 
-import functionalanalysisplugin.RequirementSelectionPanel;
-
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.ComponentOrientation;
@@ -26,6 +24,7 @@ import javax.swing.SwingUtilities;
 
 import com.mbsetraining.sysmlhelper.common.GraphEdgeInfo;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
+import com.mbsetraining.sysmlhelper.tracedelementpanels.RequirementSelectionPanel;
 import com.telelogic.rhapsody.core.*;
 
 public class PopulateRelatedRequirementsPanel extends ExecutableMBSEBasePanel {

@@ -6,14 +6,9 @@ import java.util.Set;
 
 import requirementsanalysisplugin.PopulateRelatedRequirementsPanel;
 import requirementsanalysisplugin.RollUpTraceabilityToTheTransitionPanel;
-import functionalanalysisplugin.CreateIncomingEventPanel;
 import functionalanalysisplugin.CreateNewActorPanel;
 import functionalanalysisplugin.CreateNewBlockPartPanel;
-import functionalanalysisplugin.CreateOperationPanel;
-import functionalanalysisplugin.CreateOutgoingEventPanel;
-import functionalanalysisplugin.CreateTracedAttributePanel;
 import functionalanalysisplugin.TestCaseCreator;
-import functionalanalysisplugin.UpdateTracedAttributePanel;
 import functionalanalysisplugin.PopulateFunctionalAnalysisPkg.SimulationType;
 
 import com.mbsetraining.sysmlhelper.activitydiagram.ActivityDiagramChecker;
@@ -23,12 +18,12 @@ import com.mbsetraining.sysmlhelper.common.LayoutHelper;
 import com.mbsetraining.sysmlhelper.common.NestedActivityDiagram;
 import com.mbsetraining.sysmlhelper.common.RequirementsHelper;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.contextdiagram.CreateContextPackagePanel;
 import com.mbsetraining.sysmlhelper.copyactivitydiagram.CopyActivityDiagramsPanel;
 import com.mbsetraining.sysmlhelper.doorsng.ExportRequirementsToCSV;
 import com.mbsetraining.sysmlhelper.doorsng.SwitchRhapsodyRequirementsToDNG;
 import com.mbsetraining.sysmlhelper.eventdeletor.EventDeletor;
 import com.mbsetraining.sysmlhelper.executablembse.CreateFunctionalExecutablePackagePanel;
-import com.mbsetraining.sysmlhelper.executablembse.CreateUseCasesPackagePanel;
 import com.mbsetraining.sysmlhelper.gateway.CreateGatewayProjectPanel;
 import com.mbsetraining.sysmlhelper.gateway.MarkedAsDeletedPanel;
 import com.mbsetraining.sysmlhelper.gateway.MoveRequirements;
@@ -37,6 +32,12 @@ import com.mbsetraining.sysmlhelper.sequencediagram.SequenceDiagramCreator;
 import com.mbsetraining.sysmlhelper.sequencediagram.UpdateInferfacesBasedOnSequenceDiagramPanel;
 import com.mbsetraining.sysmlhelper.sequencediagram.VerificationDependencyUpdater;
 import com.mbsetraining.sysmlhelper.smartlink.EndlinkPanel;
+import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateIncomingEventPanel;
+import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateOperationPanel;
+import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateOutgoingEventPanel;
+import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateTracedAttributePanel;
+import com.mbsetraining.sysmlhelper.tracedelementpanels.UpdateTracedAttributePanel;
+import com.mbsetraining.sysmlhelper.usecasepackage.CreateUseCasesPackagePanel;
 import com.telelogic.rhapsody.core.*;
 
 public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
@@ -618,7 +619,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 							List<IRPModelElement> theUseCasePkgsInProject = 
 									_context.findElementsWithMetaClassAndStereotype(
 											"Package", 
-											_context.getUseCasePackageStereotype( theSelectedPkg ), 
+											_context.REQTS_ANALYSIS_USE_CASE_PACKAGE, 
 											theSelectedPkg.getProject(), 
 											1 );
 

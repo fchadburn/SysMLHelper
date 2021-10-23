@@ -17,14 +17,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import requirementsanalysisplugin.RequirementsAnalysisPlugin;
-
 import com.mbsetraining.sysmlhelper.common.GraphNodeInfo;
 import com.mbsetraining.sysmlhelper.common.NamedElementMap;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateTracedElementPanel;
+import com.mbsetraining.sysmlhelper.tracedelementpanels.RequirementSelectionPanel;
 import com.telelogic.rhapsody.core.*;
-
-import generalhelpers.UserInterfaceHelpers;
 
 public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 
@@ -65,7 +63,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 				CreateDerivedRequirementPanel.launchThePanel( 
 						theSelectedGraphEls.get(0), 
 						theReqts, 
-						RequirementsAnalysisPlugin.getActiveProject() );
+						_context.get_rhpPrj() );
 
 			} else if (theModelObject instanceof IRPCallOperation){
 				
@@ -79,7 +77,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 				CreateDerivedRequirementPanel.launchThePanel( 
 						theSelectedGraphEls.get(0), 
 						theReqts, 
-						RequirementsAnalysisPlugin.getActiveProject() );
+						_context.get_rhpPrj() );
 			
 			} else if (theModelObject instanceof IRPAcceptEventAction){
 			
@@ -96,7 +94,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 					CreateDerivedRequirementPanel.launchThePanel( 
 							theSelectedGraphEls.get(0), 
 							theReqts, 
-							RequirementsAnalysisPlugin.getActiveProject() );			
+							_context.get_rhpPrj() );			
 				} else {
 
 					Set<IRPRequirement> theReqts = 
@@ -106,7 +104,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 					CreateDerivedRequirementPanel.launchThePanel( 
 							theSelectedGraphEls.get(0), 
 							theReqts, 
-							RequirementsAnalysisPlugin.getActiveProject() );
+							_context.get_rhpPrj() );
 				}
 
 			} else if (theModelObject instanceof IRPState) { // SendAction
@@ -129,7 +127,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 							CreateDerivedRequirementPanel.launchThePanel( 
 									theSelectedGraphEls.get(0), 
 									theReqts, 
-									RequirementsAnalysisPlugin.getActiveProject() );
+									_context.get_rhpPrj() );
 						} else {
 							Set<IRPRequirement> theReqts = 
 									_context.getRequirementsThatTraceFromWithStereotype(
@@ -138,7 +136,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 							CreateDerivedRequirementPanel.launchThePanel( 
 									theSelectedGraphEls.get(0), 
 									theReqts, 
-									RequirementsAnalysisPlugin.getActiveProject() );
+									_context.get_rhpPrj() );
 						}
 					} else {
 						_context.error("Error in deriveDownstreamRequirement, theSendAction is null");
@@ -153,7 +151,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 					CreateDerivedRequirementPanel.launchThePanel( 
 							theSelectedGraphEls.get(0), 
 							theReqts, 
-							RequirementsAnalysisPlugin.getActiveProject() );
+							_context.get_rhpPrj() );
 					
 				} else {
 					_context.warning("Warning in deriveDownstreamRequirement, this operation is not supported for theState.getStateType()=" + theState.getStateType());
@@ -170,7 +168,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 				CreateDerivedRequirementPanel.launchThePanel( 
 						theSelectedGraphEls.get(0), 
 						theReqts, 
-						RequirementsAnalysisPlugin.getActiveProject() );
+						_context.get_rhpPrj() );
 				
 			} else { 
 

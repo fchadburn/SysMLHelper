@@ -1,7 +1,6 @@
 package com.mbsetraining.sysmlhelper.executablembse;
 
 import functionalanalysisplugin.ActorMappingInfo;
-import functionalanalysisplugin.FunctionalAnalysisSettings;
 import functionalanalysisplugin.PopulateFunctionalAnalysisPkg.SimulationType;
 
 import java.awt.BorderLayout;
@@ -53,7 +52,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 	private JCheckBox _testDriverCheckBox;
 	private SimulationType _simulationType;
 	private RhapsodyComboBox _chosenStereotype;
-	Set<String> _excludeMetaClasses = new HashSet<>( Arrays.asList( "Actor" ) );
+	private Set<String> _excludeMetaClasses = new HashSet<>( Arrays.asList( "Actor" ) );
 
 	/**
 	 * 
@@ -175,7 +174,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 		List<IRPModelElement> theUseCasePackages =
 				_context.findElementsWithMetaClassAndStereotype(
 						"Package", 
-						_context.getUseCasePackageStereotype( _rootPackage ), 
+						_context.REQTS_ANALYSIS_USE_CASE_PACKAGE, 
 						_context.get_rhpPrj(), 
 						1 );
 
@@ -411,7 +410,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 
 		if( _simulationType==SimulationType.FullSim ){
 
-			_context.debug("There are " + _originalActors.size() );
+			_context.debug( "There are " + _originalActors.size() );
 
 			for( IRPModelElement theActor : _originalActors ){
 
@@ -430,7 +429,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 				});
 
 				JTextField theActorNameTextField = new JTextField();
-				theActorNameTextField.setPreferredSize( new Dimension( 200, 20 ));
+				theActorNameTextField.setPreferredSize( new Dimension( 200, 20 ) );
 
 				List<IRPModelElement> theBlankList = new ArrayList<>();
 
@@ -504,35 +503,34 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 					_context.addNewTermPackageAndSetUnitProperties(
 							theName + "Pkg",
 							_rootPackage,
-							_context.getSimulationPackageStereotype( _rootPackage ) );
+							_context.FUNCT_ANALYSIS_SCENARIOS_PACKAGE );
 
 			// Create nested package for block		
 			IRPPackage theBlockPkg = _context.addNewTermPackageAndSetUnitProperties(
 					"Blocks_" + theName + "Pkg",
 					theRootPkg,
-					_context.getDesignPackageStereotype( theRootPkg ) );
+					_context.FUNCT_ANALYSIS_DESIGN_PACKAGE );
 
 			// Create nested package for events and interfaces
 			IRPPackage theInterfacesPkg = 
 					_context.addNewTermPackageAndSetUnitProperties(
 							"Interfaces_" + theName + "Pkg",
 							theRootPkg,
-							_context.getInterfacesPackageStereotype( theRootPkg ) );
+							_context.FUNCT_ANALYSIS_INTERFACES_PACKAGE );
 
 			// Create nested TestPkg package with components necessary for wiring up a simulation
 			IRPPackage theTestPkg = 
 					_context.addNewTermPackageAndSetUnitProperties(
 							"Test_" + theName  + "Pkg",
 							theRootPkg,
-							_context.getTestPackageStereotype( theRootPkg ) );
+							_context.FUNCT_ANALYSIS_TEST_PACKAGE );
 
 			// Create nested package for housing the ADs
-			@SuppressWarnings("unused")
 			IRPPackage theWorkingPackage = 
 					_context.addNewTermPackageAndSetUnitProperties(
 					"Working_" + theName + "Pkg",
 					theRootPkg,
-					_context.getUseCasePackageWorkingStereotype( theRootPkg ) );
+					_context.REQTS_ANALYSIS_WORKING_COPY_PACKAGE );
 
 			// Add dependency to the use case package to enable drawing of activity diagram copies into the working package
 			for( IRPPackage theUseCasePkg : _useCasePkgs ){
@@ -553,11 +551,8 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 							"Part", "" );
 
 			theLogicalSystemPart.setOtherClass( theLogicalSystemBlock );
-
-			FunctionalAnalysisSettings theSettings = 
-					new FunctionalAnalysisSettings( _context );
 			
-			theSettings.setupFunctionalAnalysisTagsFor( 
+			_context.get_selectedContext().setupFunctionalAnalysisTagsFor( 
 					theRootPkg,
 					theSystemAssemblyBlock,
 					theInterfacesPkg,
@@ -782,6 +777,8 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 					"Internal Block Diagram" );
 
 			_context.autoPopulateProjectPackageDiagramIfNeeded();
+			
+			_context.info( "Package structure construction of " + _context.elInfo( theRootPkg ) + " has completed");
 		} else {
 			_context.error("Error in CreateFunctionalBlockPackagePanel.performAction, checkValidity returned false");
 		}	

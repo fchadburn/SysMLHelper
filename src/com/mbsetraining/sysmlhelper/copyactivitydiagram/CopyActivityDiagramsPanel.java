@@ -82,20 +82,20 @@ public class CopyActivityDiagramsPanel extends ExecutableMBSEBasePanel {
 		
 		if( fromSelectedEl instanceof IRPPackage &&
 				_context.hasStereotypeCalled( 
-						((ExecutableMBSE_Context) _context).getUseCasePackageWorkingStereotype( fromSelectedEl ), 
+						_context.REQTS_ANALYSIS_WORKING_COPY_PACKAGE, 
 						fromSelectedEl )){
 			
 			thePkg = (IRPPackage) fromSelectedEl;
 			
 		} else if( fromSelectedEl instanceof IRPPackage && 
 				_context.hasStereotypeCalled( 
-						((ExecutableMBSE_Context) _context).getSimulationPackageStereotype( fromSelectedEl ),
+						_context.FUNCT_ANALYSIS_SCENARIOS_PACKAGE,
 						fromSelectedEl )){
 			
 			List<IRPModelElement> theWorkingPkgs = 
 					_context.findElementsWithMetaClassAndStereotype(
 							"Package", 
-							((ExecutableMBSE_Context) _context).getUseCasePackageWorkingStereotype( fromSelectedEl ), 
+							_context.REQTS_ANALYSIS_WORKING_COPY_PACKAGE, 
 							fromSelectedEl, 
 							0 ); // not recursive
 			

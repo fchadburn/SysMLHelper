@@ -28,12 +28,12 @@ public class TestCaseCreator {
 		List<IRPMessage> theMessages = theLogicalCollab.getMessages().toList();
 
 		IRPClass theBuildingBlock = 
-				_settings.getBuildingBlock( theSD );
+				_context.get_selectedContext().getBuildingBlock( theSD );
 
 		if( theBuildingBlock != null ){
 
 			IRPClass theTestBlock = 
-					_settings.getTestBlock( theBuildingBlock );
+					_context.get_selectedContext().getTestBlock( theBuildingBlock );
 			
 			IRPOperation theTC = _context.createTestCaseFor( theTestBlock );
 
@@ -42,7 +42,7 @@ public class TestCaseCreator {
 							"start_of_test();\n";
 
 			List<IRPActor> theActors =
-					_settings.getActors( theBuildingBlock );
+					_context.get_selectedContext().getActors( theBuildingBlock );
 
 			for (IRPMessage theMessage : theMessages) {
 

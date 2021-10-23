@@ -6,7 +6,6 @@ import java.util.Set;
 
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.LayoutHelper;
-import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
 public class SmartLinkInfo {

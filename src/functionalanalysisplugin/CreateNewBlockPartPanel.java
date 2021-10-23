@@ -70,7 +70,7 @@ public class CreateNewBlockPartPanel extends ExecutableMBSEBasePanel {
 		super( theAppID );
 
 		IRPClass theBuildingBlock = 
-				_selectedContext.getBuildingBlock();
+				_context.get_selectedContext().getBuildingBlock();
 
 		if( theBuildingBlock == null ){
 
@@ -81,8 +81,8 @@ public class CreateNewBlockPartPanel extends ExecutableMBSEBasePanel {
 
 		} else { // theBuildingBlock != null
 
-			m_RootPackage = _selectedContext.getPackageForBlocks();
-			m_AssemblyBlock = _selectedContext.getBuildingBlock();
+			m_RootPackage = _context.get_selectedContext().getPackageForBlocks();
+			m_AssemblyBlock = _context.get_selectedContext().getBuildingBlock();
 
 			setLayout( new BorderLayout(10,10) );
 			setBorder( BorderFactory.createEmptyBorder( 10, 10, 10, 10 ) );
@@ -90,8 +90,6 @@ public class CreateNewBlockPartPanel extends ExecutableMBSEBasePanel {
 			add( createBlockChoicePanel( "" ), BorderLayout.PAGE_START );
 			add( createStereotypePanel(), BorderLayout.CENTER );	    
 			add( createOKCancelPanel(), BorderLayout.PAGE_END );
-
-
 		}
 	}
 

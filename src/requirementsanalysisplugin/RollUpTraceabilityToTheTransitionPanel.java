@@ -23,9 +23,8 @@ import com.mbsetraining.sysmlhelper.common.GraphElInfo;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.mbsetraining.sysmlhelper.smartlink.SmartLinkInfo;
+import com.mbsetraining.sysmlhelper.tracedelementpanels.RequirementSelectionPanel;
 import com.telelogic.rhapsody.core.*;
-
-import functionalanalysisplugin.RequirementSelectionPanel;
 
 public class RollUpTraceabilityToTheTransitionPanel extends ExecutableMBSEBasePanel {
 	

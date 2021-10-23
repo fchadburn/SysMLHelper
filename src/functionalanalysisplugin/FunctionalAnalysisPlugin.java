@@ -11,6 +11,11 @@ import java.util.Set;
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.eventdeletor.EventDeletor;
 import com.mbsetraining.sysmlhelper.sequencediagram.SequenceDiagramCreator;
+import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateIncomingEventPanel;
+import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateOperationPanel;
+import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateOutgoingEventPanel;
+import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateTracedAttributePanel;
+import com.mbsetraining.sysmlhelper.tracedelementpanels.UpdateTracedAttributePanel;
 import com.telelogic.rhapsody.core.*;
  
 public class FunctionalAnalysisPlugin extends RPUserPlugin {

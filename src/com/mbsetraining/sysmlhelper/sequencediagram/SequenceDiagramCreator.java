@@ -4,16 +4,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
-import functionalanalysisplugin.FunctionalAnalysisSettings;
-
 public class SequenceDiagramCreator {	
 
-	protected ConfigurationSettings _context;
+	protected ExecutableMBSE_Context _context;
 
 	public static void main(String[] args) {
 		
@@ -39,18 +36,16 @@ public class SequenceDiagramCreator {
 	}
 	
 	public SequenceDiagramCreator(
-			ConfigurationSettings context ) {
+			ExecutableMBSE_Context context ) {
 
 		_context = context;
 	}
 
 	public void updateLifelinesToMatchPartsInActiveBuildingBlock(
 			IRPSequenceDiagram theSequenceDiagram ){
-
-		FunctionalAnalysisSettings theSettings = new FunctionalAnalysisSettings(_context);
 		
 		IRPClass theBuildingBlock = 
-				theSettings.getBuildingBlock( theSequenceDiagram );
+				_context.get_selectedContext().getBuildingBlock( theSequenceDiagram );
 
 		if( theBuildingBlock != null ){
 
@@ -70,10 +65,8 @@ public class SequenceDiagramCreator {
 	public void updateAutoShowSequenceDiagramFor(
 			IRPClass theAssemblyBlock) {
 
-		FunctionalAnalysisSettings theSettings = new FunctionalAnalysisSettings(_context);
-
 		IRPPackage thePackageForSD = 
-				theSettings.getPackageForActorsAndTest(
+				_context.get_selectedContext().getPackageForActorsAndTest(
 						theAssemblyBlock.getProject() );
 
 		if( thePackageForSD != null ){

@@ -3,9 +3,6 @@ package com.mbsetraining.sysmlhelper.executablembse;
 import java.util.ArrayList;
 import java.util.List;
 
-import functionalanalysisplugin.FunctionalAnalysisSettings;
-
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.*;
 
@@ -16,12 +13,12 @@ public class PortBasedConnector {
 	private IRPClassifier _targetClassifier = null;
 	private IRPPort _targetPort = null;
 	private IRPLink _link = null;
-	private ConfigurationSettings _context;
+	private ExecutableMBSE_Context _context;
 	
 	public PortBasedConnector(
 			IRPClassifier theSourceClassifier ,
 			IRPClassifier theTargetClassifier,
-			ConfigurationSettings context ){
+			ExecutableMBSE_Context context ){
 	
 		_context = context;
 		
@@ -43,7 +40,7 @@ public class PortBasedConnector {
 	public PortBasedConnector(
 			IRPInstance theSourcePart,
 			IRPInstance theTargetPart,
-			ConfigurationSettings context ){
+			ExecutableMBSE_Context context ){
 
 		_context = context;
 
@@ -130,10 +127,9 @@ public class PortBasedConnector {
 			_context.error( "Error, unable to add " + _context.elInfo( theEvent ) + 
 					" as no link exists" );
 		} else {
-			FunctionalAnalysisSettings theSettings = new FunctionalAnalysisSettings(_context);
 			
 			IRPPackage theInterfacesPkg = 
-					theSettings.getPkgThatOwnsEventsAndInterfaces( 
+					_context.get_selectedContext().getPkgThatOwnsEventsAndInterfaces( 
 							theEvent );
 			
 			IRPClass theProvidedInterface = getExistingOrCreateNewProvidedInterfaceOnTargetPort( theInterfacesPkg );

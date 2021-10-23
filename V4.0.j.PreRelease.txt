@@ -531,9 +531,12 @@ V4.0.i.Rhp831.PreRelease (22-OCT-2021):
 
 V4.0.j.Rhp831.PreRelease (XX-XXX-XXXX):
 #366 22-OCT-2021: ExecutableMBSE: Comment out use of sleep(2) in the TestDriverBlock template to avoid compiler errors when not using Cygwin gcc (F.J.Chadburn)
+#367 23-OCT-2021: ExecutableMBSE: General simplification to improve performance including less use of Rhapsody properties for stereotype names (F.J.Chadburn)
 
 Backlog/Known issues
 
+- Get configuration to be automatically set to Animation so that it works with Developer Edition better
+- Get configuration to be automatically set to MSVN if that's the default so that it works with configured environment
 - It would be useful to have a way to specify a different bleed colour
 - When creating the Functional Analysis package a dependency to the actor package causes elements that don't compile to be brought into the build
 - Get the panel diagram population of test bench to be auto set

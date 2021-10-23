@@ -1,7 +1,5 @@
 package com.mbsetraining.sysmlhelper.executablembse;
 
-import functionalanalysisplugin.CreateOperationPanel;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -16,6 +14,8 @@ import com.mbsetraining.sysmlhelper.common.GraphNodeInfo;
 import com.mbsetraining.sysmlhelper.common.NestedActivityDiagram;
 import com.mbsetraining.sysmlhelper.common.RequirementMover;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.contextdiagram.CreateEventForFlowPanel;
+import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateOperationPanel;
 import com.telelogic.rhapsody.core.*;
 
 public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener {
@@ -83,11 +83,11 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 				afterAddForLink( (IRPLink) modelElement );
 
-			} else if( theUserDefinedMetaClass.equals( ExecutableMBSE_ProfileConstants.FLOW_INPUT ) ){
+			} else if( theUserDefinedMetaClass.equals( _context.FLOW_INPUT ) ){
 
 				afterAddForFlowInput( (IRPSysMLPort) modelElement );
 
-			} else if( theUserDefinedMetaClass.equals( ExecutableMBSE_ProfileConstants.FLOW_OUTPUT ) ){
+			} else if( theUserDefinedMetaClass.equals( _context.FLOW_OUTPUT ) ){
 
 				afterAddForFlowOutput( (IRPSysMLPort) modelElement );
 			}
@@ -245,12 +245,12 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 			ElementMover theExternalSignalsPackageMover = new ElementMover( 
 					modelElement, 
-					_context.getExternalSignalsPackageStereotype(),
+					_context.REQTS_ANALYSIS_EXTERNAL_SIGNALS_PACKAGE,
 					_context );
 
 			ElementMover theSubsystemInterfacesPackageMover = new ElementMover( 
 					modelElement, 
-					_context.getSubsystemInterfacesPackageStereotype(),
+					_context.DESIGN_SYNTHESIS_SUBSYSTEM_INTERFACES_PACKAGE,
 					_context );
 
 			ElementMover theChosenMover = null;
@@ -505,7 +505,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				_context.getIsEnableAutoMoveOfRequirements(
 						modelElement );
 
-		String theReqtsPkgStereotypeName = _context.getRequirementPackageStereotype();
+		String theReqtsPkgStereotypeName = _context.REQTS_ANALYSIS_REQUIREMENT_PACKAGE;
 
 		if( isEnabled && 
 				theReqtsPkgStereotypeName != null ){
@@ -582,11 +582,11 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		_context.debug( "toUserDefinedMetaClass is " + toUserDefinedMetaClass );
 
 		if( theLink.getUserDefinedMetaClass().equals( 
-				ExecutableMBSE_ProfileConstants.FLOW_CONNECTOR ) &&
+				_context.FLOW_CONNECTOR ) &&
 				fromUserDefinedMetaClass.equals( 
-						ExecutableMBSE_ProfileConstants.FUNCTION_USAGE ) &&
+						_context.FUNCTION_USAGE ) &&
 						toUserDefinedMetaClass.equals( 
-								ExecutableMBSE_ProfileConstants.FUNCTION_USAGE ) ){
+								_context.FUNCTION_USAGE ) ){
 
 			boolean isContinue = false;
 
@@ -601,9 +601,9 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 				isContinue = UserInterfaceHelper.askAQuestion(
 						"You have drawn a connector between two " + 
-								ExecutableMBSE_ProfileConstants.FUNCTION_USAGE + "s.\n"+
-								"Do you want to automatically create " + ExecutableMBSE_ProfileConstants.FLOW_OUTPUT + " and " +
-								ExecutableMBSE_ProfileConstants.FLOW_INPUT + " ports?");
+								_context.FUNCTION_USAGE + "s.\n"+
+								"Do you want to automatically create " + _context.FLOW_OUTPUT + " and " +
+								_context.FLOW_INPUT + " ports?");
 			}
 
 			if( isContinue ){
@@ -613,17 +613,17 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			// Allow to work for subsystem => subsystem or actor (object) => system or 
 			// system => actor (object)
 		} else if( ( fromUserDefinedMetaClass.equals( 
-				ExecutableMBSE_ProfileConstants.SUBSYSTEM_USAGE ) &&
+				_context.SUBSYSTEM_USAGE ) &&
 				toUserDefinedMetaClass.equals( 
-						ExecutableMBSE_ProfileConstants.SUBSYSTEM_USAGE ) ) ||
+						_context.SUBSYSTEM_USAGE ) ) ||
 						( fromUserDefinedMetaClass.equals( 
-								ExecutableMBSE_ProfileConstants.SYSTEM_USAGE ) &&
+								_context.SYSTEM_USAGE ) &&
 								toUserDefinedMetaClass.equals( 
-										ExecutableMBSE_ProfileConstants.OBJECT ) ) ||
+										_context.OBJECT ) ) ||
 										( toUserDefinedMetaClass.equals( 
-												ExecutableMBSE_ProfileConstants.SYSTEM_USAGE ) &&
+												_context.SYSTEM_USAGE ) &&
 												fromUserDefinedMetaClass.equals( 
-														ExecutableMBSE_ProfileConstants.OBJECT ) )){
+														_context.OBJECT ) )){
 
 			boolean isContinue = false;
 
@@ -687,7 +687,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				IRPSysMLPort fromPort = (IRPSysMLPort) fromClassifierEl.addNewAggr( "SysMLPort", fromPortName );
 				_context.debug( "Created fromPort as " + _context.elInfo( fromPort ) );
 				setPortDirectionFor( fromPort, "Out", "Untyped" );
-				fromPort.changeTo( ExecutableMBSE_ProfileConstants.FLOW_OUTPUT );
+				fromPort.changeTo( _context.FLOW_OUTPUT );
 
 				IRPGraphNode fromPortNode = addGraphNodeFor( 
 						fromPort, theDiagram, theGraphEdgeInfo.getStartX(), theGraphEdgeInfo.getStartY() );
@@ -695,7 +695,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				IRPSysMLPort toPort = (IRPSysMLPort) toClassifierEl.addNewAggr( "SysMLPort", toPortName );		
 				_context.debug( "Created toPort as " + _context.elInfo( toPort ) );
 				setPortDirectionFor( toPort, "In", "Untyped" );
-				toPort.changeTo( ExecutableMBSE_ProfileConstants.FLOW_INPUT );
+				toPort.changeTo( _context.FLOW_INPUT );
 
 				IRPGraphNode toPortNode = addGraphNodeFor( 
 						toPort, theDiagram, theGraphEdgeInfo.getEndX(), theGraphEdgeInfo.getEndY() );					

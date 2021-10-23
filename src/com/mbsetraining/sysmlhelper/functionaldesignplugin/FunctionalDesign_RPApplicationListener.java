@@ -1,7 +1,5 @@
 package com.mbsetraining.sysmlhelper.functionaldesignplugin;
 
-import functionalanalysisplugin.CreateOperationPanel;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -18,6 +16,7 @@ import com.mbsetraining.sysmlhelper.common.ElementMover;
 import com.mbsetraining.sysmlhelper.common.NestedActivityDiagram;
 import com.mbsetraining.sysmlhelper.common.RequirementMover;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateOperationPanel;
 import com.telelogic.rhapsody.core.*;
 
 public class FunctionalDesign_RPApplicationListener extends RPApplicationListener {

@@ -30,14 +30,37 @@ import com.telelogic.rhapsody.core.IRPUnit;
 
 public class ExecutableMBSE_Context extends ConfigurationSettings {
 
+	public final String FLOW_CONNECTOR = "Flow Connector";
+	public final String SUBSYSTEM_USAGE = "Subsystem Usage";
+	public final String SYSTEM_USAGE = "System Usage";
+	public final String FUNCTION_USAGE = "Function Usage";
+	public final String FLOW_OUTPUT = "Flow Output";
+	public final String FLOW_INPUT = "Flow Input";
+	public final String OBJECT = "Object";
+	public final String SYSTEM_BLOCK = "System Block";
+	
+	public final String REQTS_ANALYSIS_CONTEXT_DIAGRAM_PACKAGE = "10 Reqts Analysis - Context Diagram Package";
+	public final String REQTS_ANALYSIS_ACTOR_PACKAGE = "11 Reqts Analysis - Actor Package";
+	public final String REQTS_ANALYSIS_USE_CASE_PACKAGE = "12 Reqts Analysis - Use Case Package";
+	public final String REQTS_ANALYSIS_WORKING_COPY_PACKAGE = "12 Reqts Analysis - Working Copy Package";
+	public final String REQTS_ANALYSIS_REQUIREMENT_PACKAGE = "13 Reqts Analysis - Requirement Package";
+	public final String REQTS_ANALYSIS_EXTERNAL_SIGNALS_PACKAGE = "14 Reqts Analysis - External Signals Package";
+	public final String FUNCT_ANALYSIS_SCENARIOS_PACKAGE = "21 Funct Analysis - Scenarios Package";
+	public final String FUNCT_ANALYSIS_DESIGN_PACKAGE = "22 Funct Analysis - Design Package";
+	public final String FUNCT_ANALYSIS_INTERFACES_PACKAGE = "23 Funct Analysis - Interfaces Package";
+	public final String FUNCT_ANALYSIS_TEST_PACKAGE = "24 Funct Analysis - Test Package";
+	public final String DESIGN_SYNTHESIS_SUBSYSTEM_INTERFACES_PACKAGE = "33 Design Synthesis - Subsystem Interfaces Package";
+	public final String TIME_ELAPSED_BLOCK_STEREOTYPE = "ElapsedTimeBlock";
+	public final String ELAPSED_TIME_GENERATOR_STEREOTYPE = "ElapsedTimeGenerator";
+	public final String TESTBENCH_STEREOTYPE = "Testbench";
+	
+	protected SelectedElementContext _selectionContext;
+
 	final protected String _defaultExternalSignalsPackageName;
 	final protected String _defaultContextDiagramPackageName;
 	final protected String _defaultActorPackageName;
 	final protected String _defaultRequirementsPackageName;
-	final protected String _externalSignalsPackageStereotype;
-	final protected String _contextDiagramPackageStereotype;
-	final protected String _requirementPackageStereotype;
-	final protected String _subsystemInterfacesPackageStereotype;
+
 	final protected boolean _isEnableAutoMoveOfEventsOnAddNewElement;
 	final protected boolean _isEnableAutoMoveOfEventsOnFlowCreation;
 	final protected boolean _isEnableAutoMoveOfEventsOnFlowConnectorCreation;
@@ -70,9 +93,6 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 		_defaultRequirementsPackageName = _rhpPrj.getPropertyValue(
 				"ExecutableMBSEProfile.RequirementsAnalysis.DefaultRequirementsPackageName" );
 
-		_externalSignalsPackageStereotype = _rhpPrj.getPropertyValue(
-				"ExecutableMBSEProfile.General.ExternalSignalsPackageStereotype" );
-
 		_isEnableAutoMoveOfEventsOnFlowCreation = getBooleanPropertyValue(
 				_rhpPrj,
 				"ExecutableMBSEProfile.RequirementsAnalysis.IsEnableAutoMoveOfEventsOnFlowCreation" );
@@ -84,15 +104,6 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 		_isEnableAutoMoveOfEventsOnAddNewElement  = getBooleanPropertyValue(
 				_rhpPrj,
 				"ExecutableMBSEProfile.RequirementsAnalysis.IsEnableAutoMoveOfEventsOnAddNewElement" );
-
-		_contextDiagramPackageStereotype = _rhpPrj.getPropertyValue(
-				"ExecutableMBSEProfile.General.ContextDiagramPackageStereotype" );
-
-		_requirementPackageStereotype = _rhpPrj.getPropertyValue(
-				"ExecutableMBSEProfile.General.RequirementPackageStereotype" );
-		
-		_subsystemInterfacesPackageStereotype = _rhpPrj.getPropertyValue(
-				"ExecutableMBSEProfile.General.SubsystemInterfacesPackageStereotype" );
 	}
 
 	public boolean getIsShowProfileVersionCheckDialogs(){
@@ -107,15 +118,13 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 	public IRPStereotype getStereotypeForTestbench(
 			IRPModelElement basedOnContextEl ){
 
-		String theTestbenchSterotype = getTestbenchStereotype( basedOnContextEl );
-
 		IRPStereotype theStereotype = getExistingStereotype( 
-				theTestbenchSterotype, 
+				TESTBENCH_STEREOTYPE, 
 				basedOnContextEl.getProject() );
 
 		if( theStereotype == null ){
 			super.error( "Error in getStereotypeForTestbench, no Stereotyped called " + 
-					theTestbenchSterotype + " was found" );
+					TESTBENCH_STEREOTYPE + " was found" );
 		}	
 
 		return theStereotype;
@@ -124,15 +133,13 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 	public IRPStereotype getStereotypeForTimeElapsedActor(
 			IRPModelElement basedOnContextEl ){
 
-		String theElapsedTimeActorStereotype = getElapsedTimeActorStereotype( basedOnContextEl );
-
 		IRPStereotype theStereotype = getExistingStereotype( 
-				theElapsedTimeActorStereotype, 
+				ELAPSED_TIME_GENERATOR_STEREOTYPE, 
 				basedOnContextEl.getProject() );
 
 		if( theStereotype == null ){
 			super.error( "Error in getStereotypeForTimeElapsedActor, no Stereotyped called " + 
-					theElapsedTimeActorStereotype + " was found" );
+					ELAPSED_TIME_GENERATOR_STEREOTYPE + " was found" );
 		}	
 
 		return theStereotype;
@@ -141,15 +148,13 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 	public IRPStereotype getStereotypeForTimeElapsedBlock(
 			IRPModelElement basedOnContextEl ){
 
-		String theElapsedTimeBlockStereotype = getElapsedTimeBlockStereotype( basedOnContextEl );
-
 		IRPStereotype theStereotype = getExistingStereotype( 
-				theElapsedTimeBlockStereotype, 
+				TIME_ELAPSED_BLOCK_STEREOTYPE, 
 				basedOnContextEl.getProject() );
 
 		if( theStereotype == null ){
 			super.error( "Error in getStereotypeForTimeElapsedBlock, no Stereotyped called " + 
-					theElapsedTimeBlockStereotype + " was found" );
+					TIME_ELAPSED_BLOCK_STEREOTYPE + " was found" );
 		}	
 
 		return theStereotype;
@@ -484,149 +489,12 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 		return theStereotypes;
 	}
 
-	public String getElapsedTimeBlockStereotype(
-			IRPModelElement basedOnContextEl ) {
-
-		String thePropertyValue = 
-				basedOnContextEl.getPropertyValue( 
-						"ExecutableMBSEProfile.General.ElapsedTimeBlockStereotype" );
-
-		return thePropertyValue;
-	}
-
-	public String getElapsedTimeActorStereotype(
-			IRPModelElement basedOnContextEl ) {
-
-		String thePropertyValue = 
-				basedOnContextEl.getPropertyValue( 
-						"ExecutableMBSEProfile.General.ElapsedTimeActorStereotype" );
-
-		return thePropertyValue;
-	}
-
-	public String getTestbenchStereotype(
-			IRPModelElement basedOnContextEl ) {
-
-		String thePropertyValue = 
-				basedOnContextEl.getPropertyValue( 
-						"ExecutableMBSEProfile.General.TestbenchStereotype" );
-
-		return thePropertyValue;
-	}
-
-	public String getMasterActorPackageStereotype(
-			IRPModelElement basedOnContextEl ) {
-
-		return basedOnContextEl.getPropertyValue( 
-				"ExecutableMBSEProfile.General.MasterActorPackageStereotype" );
-
-	}
-
-	public String getActorPackageStereotype(
-			IRPModelElement basedOnContextEl ) {
-
-		String thePropertyValue = 
-				basedOnContextEl.getPropertyValue( 
-						"ExecutableMBSEProfile.General.ActorPackageStereotype" );
-
-		return thePropertyValue;
-	}
-
-	public String getUseCasePackageStereotype(
-			IRPModelElement basedOnContextEl ) {
-
-		String thePropertyValue = 
-				basedOnContextEl.getPropertyValue( 
-						"ExecutableMBSEProfile.General.UseCasePackageStereotype" );
-
-		return thePropertyValue;
-	}
-
-	public String getUseCasePackageWorkingStereotype(
-			IRPModelElement basedOnContextEl ) {
-
-		String thePropertyValue = 
-				basedOnContextEl.getPropertyValue( 
-						"ExecutableMBSEProfile.General.UseCasePackageWorkingStereotype" );
-
-		return thePropertyValue;
-	}
-
-	public String getRequirementPackageStereotype() {
-		return _requirementPackageStereotype;
-	}
-
-	public String getSimulationPackageStereotype(
-			IRPModelElement basedOnContextEl ) {
-
-		String thePropertyValue = 
-				basedOnContextEl.getPropertyValue( 
-						"ExecutableMBSEProfile.General.SimulationPackageStereotype" );
-
-		return thePropertyValue;
-	}
-
 	public String getInterfacesPackageStereotype(
 			IRPModelElement basedOnContextEl ) {
 
 		String thePropertyValue = 
 				basedOnContextEl.getPropertyValue( 
 						"ExecutableMBSEProfile.General.InterfacesPackageStereotype" );
-
-		return thePropertyValue;
-	}
-
-	public String getExternalSignalsPackageStereotype() {
-
-		return _externalSignalsPackageStereotype;
-	}
-	
-	public String getSubsystemInterfacesPackageStereotype() {
-
-		return _subsystemInterfacesPackageStereotype;
-	}
-
-
-	public String getDesignPackageStereotype(
-			IRPModelElement basedOnContextEl ) {
-
-		String thePropertyValue = 
-				basedOnContextEl.getPropertyValue( 
-						"ExecutableMBSEProfile.General.DesignPackageStereotype" );
-
-		return thePropertyValue;
-	}
-
-	public String getFunctionsPackageStereotype(
-			IRPModelElement basedOnContextEl ) {
-
-		String thePropertyValue = 
-				basedOnContextEl.getPropertyValue( 
-						"ExecutableMBSEProfile.General.FunctionsPackageStereotype" );
-
-		return thePropertyValue;
-	}
-
-	public String getContextDiagramPackageStereotype() {
-		return _contextDiagramPackageStereotype;
-	}
-
-	public String getParametricsPackageStereotype(
-			IRPModelElement basedOnContextEl ) {
-
-		String thePropertyValue = 
-				basedOnContextEl.getPropertyValue( 
-						"ExecutableMBSEProfile.General.ParametricsPackageStereotype" );
-
-		return thePropertyValue;
-	}
-
-	public String getTestPackageStereotype(
-			IRPModelElement basedOnContextEl ) {
-
-		String thePropertyValue = 
-				basedOnContextEl.getPropertyValue( 
-						"ExecutableMBSEProfile.General.TestPackageStereotype" );
 
 		return thePropertyValue;
 	}
@@ -843,7 +711,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 		Set<IRPModelElement> theCandidateEls =
 				super.getStereotypedElementsThatHaveDependenciesFrom( 
 						basedOnEl, 
-						getUseCasePackageStereotype( basedOnEl ) );
+						REQTS_ANALYSIS_USE_CASE_PACKAGE );
 
 		if( theCandidateEls.size()>0 ){
 
@@ -1177,7 +1045,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 		if( isEnabled ){
 			RequirementMover theElementMover = new RequirementMover( 
 					theReqt, 
-					getRequirementPackageStereotype(), 
+					REQTS_ANALYSIS_REQUIREMENT_PACKAGE, 
 					this );
 			
 			theElementMover.performMove( theReqt );					
@@ -1191,6 +1059,15 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 			AutoPackageDiagram theAPD = new AutoPackageDiagram( this );
 			theAPD.drawDiagram();
 		}
+	}
+	
+	public SelectedElementContext get_selectedContext(){
+		
+		if( _selectionContext == null ){
+			_selectionContext = new SelectedElementContext( this );
+		}
+		
+		return _selectionContext;
 	}
 }
 
