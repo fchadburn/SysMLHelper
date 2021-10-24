@@ -51,6 +51,8 @@ public abstract class CreateTracedElementPanel extends JPanel {
 		
 		_context = new ExecutableMBSE_Context( theAppID );
 		
+		_context.get_selectedContext().setContextTo( _context.getSelectedElement( true ) );
+		
 		_context.debug( "CreateTracedElementPanel constructor was invoked" );
 		
 		setupRequirementsPanel();
@@ -414,9 +416,7 @@ public abstract class CreateTracedElementPanel extends JPanel {
 		List<IRPInstance> theParts = 
  			theBuildingBlock.getNestedElementsByMetaClass("Part", 0).toList();
 		
-		IRPStereotype theTestbenchStereotype =
-				_context.getStereotypeForTestbench(
-						theBuildingBlock );
+		IRPStereotype theTestbenchStereotype = _context.getStereotypeForTestbench();
 
 		for (IRPInstance thePart : theParts) {
 			
@@ -426,7 +426,6 @@ public abstract class CreateTracedElementPanel extends JPanel {
 					_context.hasStereotypeCalled( 
 							theTestbenchStereotype.getName(), 
 							theOtherClass ) ){
-//					!theOtherClass.getName().equals("ElapsedTime") ){
 				
 				theActors.add((IRPActor) theOtherClass);					
 			}

@@ -35,11 +35,13 @@ public class UpdateTracedAttributePanel extends CreateTracedElementPanel {
 
 		super( theAppID );
 
-		if( !(_context.getSelectedElement() instanceof IRPAttribute) ){
-			_context.error( _context.elInfo(_context.getSelectedElement() ) + " is not an attribut" );
+		IRPModelElement theSelectedEl = _context.getSelectedElement( false );
+		
+		if( !(theSelectedEl instanceof IRPAttribute) ){
+			_context.error( _context.elInfo( theSelectedEl ) + " is not an attribut" );
 		}
 		
-		IRPAttribute forExistingAttribute = (IRPAttribute)_context.getSelectedElement();
+		IRPAttribute forExistingAttribute = (IRPAttribute)theSelectedEl;
 
 		String theProposedName = forExistingAttribute.getName();
 						
@@ -130,10 +132,10 @@ public class UpdateTracedAttributePanel extends CreateTracedElementPanel {
 
 				JFrame.setDefaultLookAndFeelDecorated( true );
 				
-				IRPModelElement theBlockEl = context.getSelectedElement().getOwner();
+				IRPModelElement theBlockEl = context.getSelectedElement( false ).getOwner();
 
 				JFrame frame = new JFrame(
-						"Update attribute called " + context.getSelectedElement().getName() + 
+						"Update attribute called " + context.getSelectedElement( false ).getName() + 
 						" on " + context.elInfo( theBlockEl ) );
 
 				frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
@@ -229,7 +231,7 @@ public class UpdateTracedAttributePanel extends CreateTracedElementPanel {
 		// do silent check first
 		if( checkValidity( false ) ){
 
-			IRPAttribute theExistingAttribute = (IRPAttribute)_context.getSelectedElement();
+			IRPAttribute theExistingAttribute = (IRPAttribute)_context.getSelectedElement( false );
 
 			theExistingAttribute.setName( _chosenNameTextField.getText() );				
 			theExistingAttribute.highLightElement();

@@ -38,7 +38,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 	public final String FLOW_INPUT = "Flow Input";
 	public final String OBJECT = "Object";
 	public final String SYSTEM_BLOCK = "System Block";
-	
+
 	public final String REQTS_ANALYSIS_CONTEXT_DIAGRAM_PACKAGE = "10 Reqts Analysis - Context Diagram Package";
 	public final String REQTS_ANALYSIS_ACTOR_PACKAGE = "11 Reqts Analysis - Actor Package";
 	public final String REQTS_ANALYSIS_USE_CASE_PACKAGE = "12 Reqts Analysis - Use Case Package";
@@ -53,7 +53,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 	public final String TIME_ELAPSED_BLOCK_STEREOTYPE = "ElapsedTimeBlock";
 	public final String ELAPSED_TIME_GENERATOR_STEREOTYPE = "ElapsedTimeGenerator";
 	public final String TESTBENCH_STEREOTYPE = "Testbench";
-	
+
 	protected SelectedElementContext _selectionContext;
 
 	final protected String _defaultExternalSignalsPackageName;
@@ -100,10 +100,12 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 		_isEnableAutoMoveOfEventsOnFlowConnectorCreation = getBooleanPropertyValue(
 				_rhpPrj,
 				"ExecutableMBSEProfile.FunctionalAnalysis.IsEnableAutoMoveOfEventsOnFlowConnectorCreation" );
-		
+
 		_isEnableAutoMoveOfEventsOnAddNewElement  = getBooleanPropertyValue(
 				_rhpPrj,
 				"ExecutableMBSEProfile.RequirementsAnalysis.IsEnableAutoMoveOfEventsOnAddNewElement" );
+		
+		_selectionContext = new SelectedElementContext( this );
 	}
 
 	public boolean getIsShowProfileVersionCheckDialogs(){
@@ -115,12 +117,11 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 		return result;
 	}
 
-	public IRPStereotype getStereotypeForTestbench(
-			IRPModelElement basedOnContextEl ){
+	public IRPStereotype getStereotypeForTestbench(){
 
 		IRPStereotype theStereotype = getExistingStereotype( 
 				TESTBENCH_STEREOTYPE, 
-				basedOnContextEl.getProject() );
+				_rhpPrj );
 
 		if( theStereotype == null ){
 			super.error( "Error in getStereotypeForTestbench, no Stereotyped called " + 
@@ -130,12 +131,11 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 		return theStereotype;
 	}
 
-	public IRPStereotype getStereotypeForTimeElapsedActor(
-			IRPModelElement basedOnContextEl ){
+	public IRPStereotype getStereotypeForTimeElapsedActor(){
 
 		IRPStereotype theStereotype = getExistingStereotype( 
 				ELAPSED_TIME_GENERATOR_STEREOTYPE, 
-				basedOnContextEl.getProject() );
+				_rhpPrj );
 
 		if( theStereotype == null ){
 			super.error( "Error in getStereotypeForTimeElapsedActor, no Stereotyped called " + 
@@ -145,12 +145,11 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 		return theStereotype;
 	}
 
-	public IRPStereotype getStereotypeForTimeElapsedBlock(
-			IRPModelElement basedOnContextEl ){
+	public IRPStereotype getStereotypeForTimeElapsedBlock(){
 
 		IRPStereotype theStereotype = getExistingStereotype( 
 				TIME_ELAPSED_BLOCK_STEREOTYPE, 
-				basedOnContextEl.getProject() );
+				_rhpPrj );
 
 		if( theStereotype == null ){
 			super.error( "Error in getStereotypeForTimeElapsedBlock, no Stereotyped called " + 
@@ -161,38 +160,38 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 	}
 
 	public IRPStereotype getNewTermForUseCaseDiagram(){
-		
+
 		IRPStereotype newTermForUseCaseDiagram = getStereotypeBasedOn(
 				_rhpPrj, 
 				"ExecutableMBSEProfile.RequirementsAnalysis.NewTermForUseCaseDiagram" );
-		
+
 		return newTermForUseCaseDiagram;
 	}
 
 	public IRPStereotype getNewTermForSystemContextDiagram(){
-		
+
 		IRPStereotype newTermForSystemContextDiagram = getStereotypeBasedOn(
 				_rhpPrj, 
 				"ExecutableMBSEProfile.RequirementsAnalysis.NewTermForSystemContextDiagram" );
-		
+
 		return newTermForSystemContextDiagram;
 	}
 
 	public IRPStereotype getNewTermForActorUsage(){
-		
+
 		IRPStereotype newTermForActorUsage = getStereotypeBasedOn(
 				_rhpPrj, 
 				"ExecutableMBSEProfile.RequirementsAnalysis.NewTermForActorUsage" );
-		
+
 		return newTermForActorUsage;
 	}
 
 	public IRPStereotype getNewTermForSystemContext(){
-		
+
 		IRPStereotype newTermForSystemContext = getStereotypeBasedOn(
 				_rhpPrj, 
 				"ExecutableMBSEProfile.RequirementsAnalysis.NewTermForSystemContext" );
-		
+
 		return newTermForSystemContext;
 	}
 
@@ -550,7 +549,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 	public boolean getIsEnableAutoMoveOfEventsOnFlowCreation(){
 		return _isEnableAutoMoveOfEventsOnFlowCreation;
 	}
-	
+
 	public boolean getIsEnableAutoMoveOfEventsOnFlowConnectorCreation(){
 		return _isEnableAutoMoveOfEventsOnFlowConnectorCreation;
 	}
@@ -686,7 +685,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		return result;
 	}
-	
+
 	@Override
 	public IRPPackage addNewTermPackageAndSetUnitProperties( 
 			String theName,
@@ -1032,41 +1031,41 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		return theOp;
 	}
-	
+
 	@Override
 	public void moveRequirementIfNeeded(
 			IRPRequirement theReqt) {
-		
+
 		// only do move if property is set
 		boolean isEnabled = 
 				getIsEnableAutoMoveOfRequirements(
 						theReqt );
-		
+
 		if( isEnabled ){
 			RequirementMover theElementMover = new RequirementMover( 
 					theReqt, 
 					REQTS_ANALYSIS_REQUIREMENT_PACKAGE, 
 					this );
-			
+
 			theElementMover.performMove( theReqt );					
 		}
 	}
-	
+
 	@Override
 	public void autoPopulateProjectPackageDiagramIfNeeded() {
-		
+
 		if( getIsAutoPopulatePackageDiagram( _rhpPrj ) ){
 			AutoPackageDiagram theAPD = new AutoPackageDiagram( this );
 			theAPD.drawDiagram();
 		}
 	}
-	
+
 	public SelectedElementContext get_selectedContext(){
-		
+
 		if( _selectionContext == null ){
 			_selectionContext = new SelectedElementContext( this );
 		}
-		
+
 		return _selectionContext;
 	}
 }

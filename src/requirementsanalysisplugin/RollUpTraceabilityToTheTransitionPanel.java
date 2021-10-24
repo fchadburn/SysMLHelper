@@ -47,7 +47,7 @@ public class RollUpTraceabilityToTheTransitionPanel extends ExecutableMBSEBasePa
 		
 		ExecutableMBSE_Context theContext = new ExecutableMBSE_Context( theAppID );
 		
-		IRPModelElement theSelectedEl = theContext.getSelectedElement();
+		IRPModelElement theSelectedEl = theContext.getSelectedElement( true );
 		
 		if( theSelectedEl instanceof IRPTransition ){
 

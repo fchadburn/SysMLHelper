@@ -145,7 +145,7 @@ public class CopyActivityDiagramsPanel extends ExecutableMBSEBasePanel {
 		
 		super( appID );
 				
-		IRPModelElement theSelectedEl = _context.getSelectedElement();
+		IRPModelElement theSelectedEl = _context.getSelectedElement( false );
 		
 		Set<IRPPackage> thePullFromPkgs = 
 				((ExecutableMBSE_Context) _context).getPullFromPackage( 

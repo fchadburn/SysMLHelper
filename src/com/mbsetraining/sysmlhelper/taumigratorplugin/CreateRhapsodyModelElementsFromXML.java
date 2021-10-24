@@ -62,12 +62,12 @@ public class CreateRhapsodyModelElementsFromXML {
 
 		// pass parent node so that element can search full tree
 		parentNode.createNodeElementsAndChildrenForJustEvents(
-				_context.getSelectedElement(),
+				_context.getSelectedElement( false ),
 				parentNode );
 
 		// pass parent node so that element can search full tree
 		parentNode.createNodeElementsAndChildren(
-				_context.getSelectedElement(),
+				_context.getSelectedElement( false ),
 				parentNode );
 
 		// pass parent node so that element can search full tree

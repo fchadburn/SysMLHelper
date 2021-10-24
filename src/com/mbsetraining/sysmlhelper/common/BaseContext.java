@@ -32,7 +32,7 @@ public abstract class BaseContext {
 	protected RhpLog _rhpLog;
 	protected IRPApplication _rhpApp;
 	protected IRPProject _rhpPrj;
-	
+
 	public BaseContext(
 			String theAppID,
 			String enableErrorLoggingProperty,
@@ -106,8 +106,31 @@ public abstract class BaseContext {
 		return _rhpApp.createNewCollection();
 	}
 
-	public IRPModelElement getSelectedElement(){
-		return _rhpApp.getSelectedElement();
+	public IRPModelElement getSelectedElement(
+			boolean isFavourDiagramElement ){
+		
+		IRPModelElement theSelectedEl = _rhpApp.getSelectedElement();
+		
+		if( isFavourDiagramElement ){
+			
+			@SuppressWarnings("unchecked")
+			List<IRPGraphElement> theSelectedGraphEls = _rhpApp.getSelectedGraphElements().toList();
+
+			if( !theSelectedGraphEls.isEmpty() ){
+
+				IRPGraphElement selectedGraphEl = theSelectedGraphEls.get( 0 );
+
+				IRPModelElement theModelObject = selectedGraphEl.getModelObject();
+
+				if( theModelObject != null ){				
+					theSelectedEl = theModelObject;
+				}
+			}
+		}
+		
+		debug( "getSelectedElement is returning " + elInfo( theSelectedEl ) );
+		
+		return theSelectedEl;
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -698,10 +721,6 @@ public abstract class BaseContext {
 		}
 
 		return theOwningPackage;
-	}
-	
-	public IRPPackage getPackageForSelectedEl(){
-		return getOwningPackageFor( getSelectedElement() );
 	}
 	
 	public boolean isLegalName(

@@ -504,6 +504,8 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 							theName + "Pkg",
 							_rootPackage,
 							_context.FUNCT_ANALYSIS_SCENARIOS_PACKAGE );
+			
+			_context.info( "Starting construction of " + _context.elInfo( theRootPkg ) );
 
 			// Create nested package for block		
 			IRPPackage theBlockPkg = _context.addNewTermPackageAndSetUnitProperties(
@@ -559,6 +561,8 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 					theTestPkg,
 					theBlockPkg );
 
+			_context.get_selectedContext().setContextTo( theRootPkg );
+
 			//IRPModelElement theChosenStereotype = m_ChosenStereotype.getSelectedRhapsodyItem();
 			//
 			//if( theChosenStereotype != null && 
@@ -580,8 +584,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 				if( theChosenOne==null ){
 
 					IRPStereotype theTimeElapsedBlockStereotype = 
-							_context.getStereotypeForTimeElapsedBlock( 
-									theLogicalSystemBlock );
+							_context.getStereotypeForTimeElapsedBlock();
 
 					theLogicalSystemBlock.setStereotype( theTimeElapsedBlockStereotype );					
 
@@ -632,8 +635,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 						theTestPkg.addActor( "ElapsedTime_" + theName );
 
 				theElapsedTimeActor.setStereotype( 
-						_context.getStereotypeForTimeElapsedActor(
-								theElapsedTimeActor ) );
+						_context.getStereotypeForTimeElapsedActor() );
 
 				IRPInstance theElapsedTimePart = null;
 

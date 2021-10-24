@@ -532,6 +532,7 @@ V4.0.i.Rhp831.PreRelease (22-OCT-2021):
 V4.0.j.Rhp831.PreRelease (XX-XXX-XXXX):
 #366 22-OCT-2021: ExecutableMBSE: Comment out use of sleep(2) in the TestDriverBlock template to avoid compiler errors when not using Cygwin gcc (F.J.Chadburn)
 #367 23-OCT-2021: ExecutableMBSE: General simplification to improve performance including less use of Rhapsody properties for stereotype names (F.J.Chadburn)
+#368 24-OCT-2021: ExecutableMBSE: Fixes to get selected context to work when creating multiple scenario packages in same project (F.J.Chadburn)
 
 Backlog/Known issues
 

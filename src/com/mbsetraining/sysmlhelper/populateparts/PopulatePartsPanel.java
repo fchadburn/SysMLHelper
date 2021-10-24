@@ -100,7 +100,7 @@ public class PopulatePartsPanel extends ExecutableMBSEBasePanel {
 						_context.elInfo( _diagram ) );
 			}
 		} else {
-			IRPModelElement theSelectedEl = _context.getSelectedElement();
+			IRPModelElement theSelectedEl = _context.getSelectedElement( false );
 
 			if( theSelectedEl instanceof IRPStructureDiagram ){
 

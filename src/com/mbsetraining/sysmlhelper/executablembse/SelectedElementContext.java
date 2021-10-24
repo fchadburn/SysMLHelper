@@ -14,8 +14,7 @@ public class SelectedElementContext {
 	private static final String tagNameForPackageForEventsAndInterfaces = "packageForEventsAndInterfaces";
 	private static final String tagNameForPackageForBlocks = "packageForBlocks";
 	private static final String tagNameForPackageForActorsAndTest = "packageForActorsAndTest";
-	private static final String tagNameForPackageForWorkingCopies = "packageForWorkingCopies";
-	
+
 	private List<IRPGraphElement> _selectedGraphEls;
 	private IRPModelElement _selectedEl;
 	private IRPPackage _contextEl;
@@ -24,31 +23,56 @@ public class SelectedElementContext {
 	private IRPDiagram _sourceGraphElDiagram;
 	private Set<IRPRequirement> _selectedReqts;
 	private ExecutableMBSE_Context _context;
+	private IRPPackage _packageForActorsAndTest;
+	private IRPPackage _packageForEventsAndInterfaces;
+	private IRPPackage _packageForBlocks;
 
 	public SelectedElementContext(
 			ExecutableMBSE_Context context ){
 
 		_context = context;
+	}
+
+	public void setContextTo( 
+			IRPModelElement theElement ){
+
 		_selectedGraphEls = _context.getSelectedGraphElements();
-		
-		_selectedEl = _context.getSelectedElement();
-		
+
+		_selectedEl = theElement;
+
 		if( _selectedGraphEls != null && 
 				!_selectedGraphEls.isEmpty() ){
 
 			IRPGraphElement selectedGraphEl = _selectedGraphEls.get( 0 );
-			
+
 			IRPModelElement theModelObject = selectedGraphEl.getModelObject();
-			
+
 			if( theModelObject != null ){				
 				_selectedEl = theModelObject;
 			}
 		}
-		
+
 		_contextEl = getSimulationSettingsPackageBasedOn( _selectedEl );
+
+		_packageForActorsAndTest = getPkgNamedInFunctionalPackageTag(
+				_contextEl, 
+				tagNameForPackageForActorsAndTest );
+
+		_buildingBlock = (IRPClass) getElementNamedInFunctionalPackageTag(
+				_contextEl, 
+				tagNameForAssemblyBlockUnderDev );
+
+		_packageForEventsAndInterfaces = getPkgNamedInFunctionalPackageTag(
+				_contextEl, 
+				tagNameForPackageForEventsAndInterfaces );
+
+		_packageForBlocks = getPkgNamedInFunctionalPackageTag(
+				_contextEl, 
+				tagNameForPackageForBlocks );
+
 		_sourceGraphElDiagram = getSourceDiagram();
 	}
-			
+
 	@SuppressWarnings("unchecked")
 	public Set<IRPRequirement> getSelectedReqts(){
 
@@ -218,7 +242,6 @@ public class SelectedElementContext {
 				_contextEl != null ){
 
 			try {
-
 				IRPModelElement elementInTag = getElementNamedInFunctionalPackageTag(
 						_contextEl, 
 						tagNameForAssemblyBlockUnderDev );
@@ -267,43 +290,29 @@ public class SelectedElementContext {
 		return theNonActorOrTestBlocks;
 	}
 
-	public IRPPackage getPkgThatOwnsEventsAndInterfaces(){
-
-		IRPPackage thePackage = 
-				(IRPPackage) getElementNamedInFunctionalPackageTag(
-						tagNameForPackageForEventsAndInterfaces );
-
-		return thePackage;
-	}
-
 	public IRPModelElement getElementNamedInFunctionalPackageTag(
 			String theTagName ){
 
 		IRPModelElement theEl = null;
 
-		IRPModelElement theSettingsPkg = 
-				getSimulationSettingsPackageBasedOn( _contextEl );
+		IRPTag theTag = _contextEl.getTag( theTagName );
 
-		if( theSettingsPkg != null ){
-			IRPTag theTag = theSettingsPkg.getTag( theTagName );
+		if( theTag != null ){
 
-			if( theTag != null ){
+			//call getValueSpecifications() to retrieve tag value collection
 
-				//call getValueSpecifications() to retrieve tag value collection
+			IRPCollection valSpecs = theTag.getValueSpecifications();
 
-				IRPCollection valSpecs = theTag.getValueSpecifications();
+			@SuppressWarnings("rawtypes")
+			Iterator looper = valSpecs.toList().iterator();
 
-				@SuppressWarnings("rawtypes")
-				Iterator looper = valSpecs.toList().iterator();
+			//call getValue() to retrieve each element instance set as the tag value
 
-				//call getValue() to retrieve each element instance set as the tag value
+			while( looper.hasNext() ){
 
-				while( looper.hasNext() ){
-
-					IRPInstanceValue ins = (IRPInstanceValue)looper.next();
-					theEl = ins.getValue();
-					break;
-				}
+				IRPInstanceValue ins = (IRPInstanceValue)looper.next();
+				theEl = ins.getValue();
+				break;
 			}
 		}
 
@@ -320,7 +329,7 @@ public class SelectedElementContext {
 			IRPModelElement theContextEl ){
 
 		_context.debug( "getSimulationSettingsPackageBasedOn invoked for " + _context.elInfo( theContextEl ) );
-		
+
 		IRPPackage theSettingsPkg = null;
 
 		if( theContextEl instanceof IRPProject ){
@@ -383,12 +392,12 @@ public class SelectedElementContext {
 									theDependent ) ){
 
 						theSettingsPkg = (IRPPackage) theDependent;
-					
+
 					} else if( theDependent instanceof IRPPackage &&
 							_context.hasStereotypeCalled(
 									_context.REQTS_ANALYSIS_WORKING_COPY_PACKAGE, 
 									theDependent ) ){
-						
+
 						theSettingsPkg = getSimulationSettingsPackageBasedOn( theDependent );
 					}	
 				}
@@ -475,11 +484,7 @@ public class SelectedElementContext {
 
 	public IRPPackage getPackageForBlocks(){
 
-		IRPPackage thePackage = getPkgNamedInFunctionalPackageTag(
-				_contextEl, 
-				tagNameForPackageForBlocks );
-
-		return thePackage;
+		return _packageForBlocks;
 	}
 
 	public List<IRPClass> getBuildingBlocks(
@@ -512,103 +517,74 @@ public class SelectedElementContext {
 	public IRPClass getBuildingBlock( 
 			IRPModelElement basedOnContextEl ){
 
-		_context.debug("getBuildingBlock was invoked for " + _context.elInfo( basedOnContextEl ) );
-		
-		IRPClass theBuildingBlock =
-				(IRPClass) getElementNamedInFunctionalPackageTag(
-						basedOnContextEl, 
-						tagNameForAssemblyBlockUnderDev );
-
-		_context.debug("... getBuildingBlock completed (" + _context.elInfo(theBuildingBlock) + " was found)");
-
-		return theBuildingBlock;
+		return _buildingBlock;
 	}
 
-	public IRPPackage getPackageForActorsAndTest(
-			IRPModelElement basedOnContextEl ){
-
-		IRPPackage thePackage = getPkgNamedInFunctionalPackageTag(
-				basedOnContextEl, 
-				tagNameForPackageForActorsAndTest );
-
-		return thePackage;
+	public IRPPackage getPackageForActorsAndTest(){
+		return _packageForActorsAndTest;
 	}
 
 	public IRPModelElement getElementNamedInFunctionalPackageTag(
-			IRPModelElement basedOnContextEl,
+			IRPPackage theSettingsPkg,
 			String theTagName ){
 
 		IRPModelElement theEl = null;
 
-		IRPModelElement theSettingsPkg = 
-				getSimulationSettingsPackageBasedOn( basedOnContextEl );
+		IRPTag theTag = theSettingsPkg.getTag( theTagName );
 
-		if( theSettingsPkg != null ){
-			IRPTag theTag = theSettingsPkg.getTag( theTagName );
+		if( theTag != null ){
 
-			if( theTag != null ){
+			// retrieve tag value collection
+			IRPCollection valSpecs = theTag.getValueSpecifications();
 
-				// retrieve tag value collection
-				IRPCollection valSpecs = theTag.getValueSpecifications();
+			@SuppressWarnings("rawtypes")
+			Iterator looper = valSpecs.toList().iterator();
 
-				@SuppressWarnings("rawtypes")
-				Iterator looper = valSpecs.toList().iterator();
+			// retrieve each element instance set as the tag value
+			while( looper.hasNext() ){
 
-				// retrieve each element instance set as the tag value
-				while( looper.hasNext() ){
-
-					IRPInstanceValue ins = (IRPInstanceValue)looper.next();
-					theEl = ins.getValue();
-					break;
-				}
+				IRPInstanceValue ins = (IRPInstanceValue)looper.next();
+				theEl = ins.getValue();
+				break;
 			}
 		}
 
 		if( theEl == null ){
-			_context.error( "Error  in getElementNamedInFunctionalPackageTag, " + 
-			"unable to find value for tag called " + theTagName + " under " + 
-			_context.elInfo( basedOnContextEl ) );
-			
+			_context.error( "Error in getElementNamedInFunctionalPackageTag, " + 
+					"unable to find value for tag called " + theTagName + " under " + 
+					_context.elInfo( theSettingsPkg ) );
 		}
 
 		return theEl;
 	}
 
 	public IRPPackage getPkgNamedInFunctionalPackageTag(
-			IRPModelElement basedOnContextEl,
+			IRPPackage theSettingsPkg,
 			String theTagName ){
 
 		IRPPackage thePackage = null;
 
-		IRPModelElement theSettingsPkg = 
-				getSimulationSettingsPackageBasedOn( basedOnContextEl );
+		IRPTag theTag = theSettingsPkg.getTag( theTagName );
 
-		if( theSettingsPkg != null ){
-			IRPTag theTag = theSettingsPkg.getTag( theTagName );
+		if( theTag != null ){
+			String thePackageName = theTag.getValue();
 
-			if( theTag != null ){
-				String thePackageName = theTag.getValue();
+			thePackage = (IRPPackage) _contextEl.getProject().findNestedElementRecursive(
+					thePackageName, "Package");
 
-				thePackage = (IRPPackage) basedOnContextEl.getProject().findNestedElementRecursive(
-						thePackageName, "Package");
-
-				if( thePackage == null ){
-					_context.debug( "getPkgNamedInFunctionalPackageTag was unable to find package called " + 
-							thePackageName );
-				}
-			} else {
-				_context.debug( "getPkgNamedInFunctionalPackageTag was unable to find tag called " + 
-						theTagName + " underneath " + _context.elInfo( theSettingsPkg ) );
+			if( thePackage == null ){
+				_context.debug( "getPkgNamedInFunctionalPackageTag was unable to find package called " + 
+						thePackageName );
 			}
 		} else {
-			_context.debug("getPkgNamedInFunctionalPackageTag was unable to find a functional analysis pkg based on " + 
-					_context.elInfo( basedOnContextEl ) );
+			_context.debug( "getPkgNamedInFunctionalPackageTag was unable to find tag called " + 
+					theTagName + " underneath " + _context.elInfo( theSettingsPkg ) );
 		}
 
 		if( thePackage == null ){
 
 			IRPClass theLogicalBlock = getBlockUnderDev( 
-					basedOnContextEl, 
+					theSettingsPkg, 
 					"Unable to determine Logical Block, please pick one" );
 
 			// old projects may not have an InterfacesPkg hence use the package the block is in
@@ -624,27 +600,13 @@ public class SelectedElementContext {
 		return thePackage;
 	}
 
-	public IRPPackage getWorkingPkgUnderDev(
-			IRPModelElement basedOnContextEl ){
-
-		IRPPackage theWorkingPkg = 
-				(IRPPackage) getElementNamedInFunctionalPackageTag(
-						basedOnContextEl, 
-						tagNameForPackageForWorkingCopies );
-
-		return theWorkingPkg;
-	}
-
 	public IRPClass getBlockUnderDev(
 			IRPModelElement basedOnContextEl,
 			String theMsg ){
 
 		IRPClass theBlockUnderDev = null;
 
-		IRPClass theBuildingBlock = 
-				getBuildingBlock( basedOnContextEl );
-
-		if( theBuildingBlock == null ){
+		if( _buildingBlock == null ){
 
 			_context.error( "Error in getBlockUnderDev, no building block was found underneath " + 
 					_context.elInfo( basedOnContextEl ) );
@@ -652,12 +614,12 @@ public class SelectedElementContext {
 		} else {
 
 			List<IRPModelElement> theCandidates = 
-					getNonActorOrTestBlocks( theBuildingBlock );
+					getNonActorOrTestBlocks( _buildingBlock );
 
 			if( theCandidates.isEmpty() ){
 
 				_context.error("Error in getBlockUnderDev, no parts typed by Blocks were found underneath " + 
-						_context.elInfo( theBuildingBlock ) );
+						_context.elInfo( _buildingBlock ) );
 			} else {
 
 				if( theCandidates.size() > 1 ){
@@ -732,7 +694,11 @@ public class SelectedElementContext {
 		return theActors;
 	}
 
-	/*
+	public IRPPackage getPkgThatOwnsEventsAndInterfaces(){
+
+		return _packageForEventsAndInterfaces;
+	}
+
 	public void setupFunctionalAnalysisTagsFor(
 			IRPPackage theRootPackage,
 			IRPClass theAssemblyBlockUnderDev,
@@ -742,31 +708,31 @@ public class SelectedElementContext {
 
 		if( theRootPackage != null ){
 
-			setModelElementTagValueOn( 
+			setElementTagValueOn( 
 					theRootPackage, 
+					_context.FUNCT_ANALYSIS_SCENARIOS_PACKAGE, 
 					tagNameForAssemblyBlockUnderDev, 
-					"Class",
 					theAssemblyBlockUnderDev );
 
-			setModelElementTagValueOn( 
+			setElementTagValueOn( 
 					theRootPackage, 
-					tagNameForPackageForActorsAndTest,
-					"Package",
+					_context.FUNCT_ANALYSIS_SCENARIOS_PACKAGE, 
+					tagNameForPackageForActorsAndTest, 
 					thePackageForActorsAndTest );
 
-			setModelElementTagValueOn( 
+			setElementTagValueOn( 
 					theRootPackage, 
+					_context.FUNCT_ANALYSIS_SCENARIOS_PACKAGE, 
 					tagNameForPackageForEventsAndInterfaces, 
-					"Package",
 					thePackageForEventsAndInterfaces );
 
-			setModelElementTagValueOn( 
+			setElementTagValueOn( 
 					theRootPackage, 
+					_context.FUNCT_ANALYSIS_SCENARIOS_PACKAGE, 
 					tagNameForPackageForBlocks, 
-					"Package",
 					thePackageForBlocks );	
-		}
-	}*/
+		}	
+	}
 
 	protected void setElementTagValueOn( 
 			IRPModelElement theOwner, 
@@ -788,110 +754,6 @@ public class SelectedElementContext {
 
 		// Add other tags with different value to class_0, if the multiplicity > 1
 		newTag.addElementDefaultValue( theValue );
-	}
-
-	public void setModelElementTagValueOn( 
-			IRPModelElement theOwner, 
-			String theTagName, 
-			String theTagTypeDeclaration,
-			IRPModelElement theValue ){
-
-		IRPTag theTag = theOwner.getTag( theTagName );
-
-		if( theTag != null ){
-			String theExistingTagValue = theTag.getValue();
-			theTag.deleteFromProject();
-			IRPTag theNewTag = (IRPTag)theOwner.addNewAggr( "Tag", theTagName );
-			theNewTag.setDeclaration( theTagTypeDeclaration );
-			theOwner.setTagElementValue( theNewTag, theValue );
-
-			_context.debug( _context.elInfo( theOwner ) + " already has a tag called " + theTagName + 
-					", changing it from '" + theExistingTagValue + "'" + " to '" + theNewTag.getValue() + "'");
-
-		} else {
-			IRPTag theNewTag = (IRPTag)theOwner.addNewAggr( "Tag", theTagName );
-			theNewTag.setDeclaration( theTagTypeDeclaration );
-			theOwner.setTagElementValue( theNewTag, theValue );
-			_context.debug( _context.elInfo( theNewTag ) + " has been added to " + 
-					_context.elInfo(theOwner) + " and set to '" + theNewTag.getValue() + "'");
-		}
-	}
-
-	/*
-	public IRPPackage getSimulationSettingsPackageBasedOn(
-			IRPModelElement theContextEl ){
-
-		IRPPackage theSettingsPkg = null;
-
-		if( theContextEl instanceof IRPProject ){
-
-				IRPModelElement theFunctionalAnalysisPkg = 
-						theContextEl.findElementsByFullName( "FunctionalAnalysisPkg", "Package" );
-
-				if( theFunctionalAnalysisPkg == null ){
-					_context.warning( "Warning in getSimulationSettingsPackageBasedOn, unable to find use case settings package");
-
-				} else {
-					theSettingsPkg = (IRPPackage) theFunctionalAnalysisPkg;
-				}
-
-		} else {
-
-			// recurse
-			theSettingsPkg = getSimulationSettingsPackageBasedOn(
-					theContextEl.getOwner() );
-		}
-
-		return theSettingsPkg;
-	}*/
-	
-	public IRPPackage getPkgThatOwnsEventsAndInterfaces(
-			IRPModelElement basedOnContextEl ){
-
-		IRPPackage thePackage = 
-				(IRPPackage) getElementNamedInFunctionalPackageTag(
-						basedOnContextEl, 
-						tagNameForPackageForEventsAndInterfaces );
-
-		return thePackage;
-	}
-	
-	public void setupFunctionalAnalysisTagsFor(
-			IRPPackage theRootPackage,
-			IRPClass theAssemblyBlockUnderDev,
-			IRPPackage thePackageForEventsAndInterfaces, 
-			IRPPackage thePackageForActorsAndTest,
-			IRPPackage thePackageForBlocks ){
-
-		if( theRootPackage != null ){
-
-			String theStereotypeName = 
-					_context.FUNCT_ANALYSIS_SCENARIOS_PACKAGE;
-
-			setElementTagValueOn( 
-					theRootPackage, 
-					theStereotypeName, 
-					tagNameForAssemblyBlockUnderDev, 
-					theAssemblyBlockUnderDev );
-
-			setElementTagValueOn( 
-					theRootPackage, 
-					theStereotypeName, 
-					tagNameForPackageForActorsAndTest, 
-					thePackageForActorsAndTest );
-
-			setElementTagValueOn( 
-					theRootPackage, 
-					theStereotypeName, 
-					tagNameForPackageForEventsAndInterfaces, 
-					thePackageForEventsAndInterfaces );
-
-			setElementTagValueOn( 
-					theRootPackage, 
-					theStereotypeName, 
-					tagNameForPackageForBlocks, 
-					thePackageForBlocks );	
-		}	
 	}
 }
 

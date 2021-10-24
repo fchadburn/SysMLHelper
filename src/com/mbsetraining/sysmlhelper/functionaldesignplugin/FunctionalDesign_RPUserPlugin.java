@@ -55,7 +55,7 @@ public class FunctionalDesign_RPUserPlugin extends RPUserPlugin {
 			String menuItem ){
 
 		try { 
-			IRPModelElement theSelectedEl = _context.getSelectedElement();
+			IRPModelElement theSelectedEl = _context.getSelectedElement( false );
 			IRPProject theRhpPrj = _context.get_rhpPrj();
 			List<IRPModelElement> theSelectedEls = _context.getSelectedElements();
 

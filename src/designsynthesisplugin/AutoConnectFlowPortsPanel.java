@@ -1,7 +1,5 @@
 package designsynthesisplugin;
 
-import functionalanalysisplugin.FunctionalAnalysisSettings;
-
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -24,7 +22,6 @@ import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
-import com.mbsetraining.sysmlhelper.executablembse.SelectedElementContext;
 import com.telelogic.rhapsody.core.*;
 
 public class AutoConnectFlowPortsPanel extends ExecutableMBSEBasePanel {
@@ -43,11 +40,9 @@ public class AutoConnectFlowPortsPanel extends ExecutableMBSEBasePanel {
 	public static void launchThePanel(
 			final IRPAttribute theAttribute,
 			final ExecutableMBSE_Context context ){
-
-		SelectedElementContext selectedContext = new SelectedElementContext( context );
 		
 			IRPClass theBuildingBlock = 
-					selectedContext.getBuildingBlock( theAttribute );
+					_context.getBuildingBlock( theAttribute );
 			
 			if( theBuildingBlock != null ){
 				

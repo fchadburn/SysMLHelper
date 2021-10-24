@@ -70,7 +70,7 @@ public class PopulateRelatedRequirementsPanel extends ExecutableMBSEBasePanel {
 		
 		super( theAppID );
 		
-		m_SequenceDiagram = (IRPSequenceDiagram) _context.getSelectedElement();
+		m_SequenceDiagram = (IRPSequenceDiagram) _context.getSelectedElement( false );
 		m_ReqtsForTable = getReqtsRelatedToInterfaceItemsOn( m_SequenceDiagram );
 		
 		setLayout( new BorderLayout(10,10) );

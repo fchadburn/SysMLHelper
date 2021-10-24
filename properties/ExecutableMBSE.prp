@@ -9,7 +9,7 @@ Subject ExecutableMBSEProfile
 		Property AllowPluginToControlUnitGranularity Bool "False"
 		Property UserDefinedMetaClassesAsSeparateUnit String ""
 		Property StoreUnitInSeparateDirectoryNewTerms String "12 Reqts Analysis - Use Case Package,21 Funct Analysis - Scenarios Package,23 Funct Analysis - Interfaces Package"
-		Property DontCreateSeparateUnitNewTerms String ""
+		Property DontCreateSeparateUnitNewTerms String ""        
 		Property IsAutoPopulatePackageDiagram Bool "True"          
 		Property IsShowProfileVersionCheckDialogs Bool "True"
 	end

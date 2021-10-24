@@ -35,8 +35,10 @@ public class MergeActors {
 					
 			MergeActors theMerger = new MergeActors(context);
 			
-			if( context.getSelectedElement() instanceof IRPPackage ){
-				theMerger.mergeActorsInto( (IRPPackage) context.getSelectedElement() );
+			IRPModelElement theSelectedEl = context.getSelectedElement( false );
+			
+			if( theSelectedEl instanceof IRPPackage ){
+				theMerger.mergeActorsInto( (IRPPackage) theSelectedEl );
 			}
 			
 		} catch (Exception e) {

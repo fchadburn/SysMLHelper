@@ -66,8 +66,7 @@ public class SequenceDiagramCreator {
 			IRPClass theAssemblyBlock) {
 
 		IRPPackage thePackageForSD = 
-				_context.get_selectedContext().getPackageForActorsAndTest(
-						theAssemblyBlock.getProject() );
+				_context.get_selectedContext().getPackageForActorsAndTest();
 
 		if( thePackageForSD != null ){
 

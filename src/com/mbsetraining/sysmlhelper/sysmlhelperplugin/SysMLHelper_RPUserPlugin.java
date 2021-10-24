@@ -77,7 +77,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 		try { 
 			String theAppID = _context.get_rhpAppID();
 
-			IRPModelElement theSelectedEl = _context.getSelectedElement();
+			IRPModelElement theSelectedEl = _context.getSelectedElement( false );
 			List<IRPModelElement> theSelectedEls = _context.getSelectedElements();
 			List<IRPGraphElement> theSelectedGraphEls = _context.getSelectedGraphElements();
 

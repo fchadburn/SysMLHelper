@@ -118,8 +118,11 @@ public class CreateEventForFlowConnectorPanel extends ExecutableMBSEBasePanel {
 			}
 		}
 		
+		IRPModelElement thePackageForSelectedEl = 
+				_context.getOwningPackageFor( _context.getSelectedElement( false ) );
+		
 		_existingEventEls.addAll( 
-				_context.getPackageForSelectedEl().getNestedElementsByMetaClass( 
+				thePackageForSelectedEl.getNestedElementsByMetaClass( 
 						"Event", 1 ).toList() );
 
 

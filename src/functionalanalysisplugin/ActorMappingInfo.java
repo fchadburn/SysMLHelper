@@ -214,8 +214,7 @@ public class ActorMappingInfo {
 			}
 
 			IRPPackage thePackageForActor = 
-					_context.get_selectedContext().getPackageForActorsAndTest(
-							theProject );
+					_context.get_selectedContext().getPackageForActorsAndTest();
 
 			IRPActor theActor = thePackageForActor.addActor( theLegalActorName );
 			theActor.highLightElement();
@@ -252,8 +251,7 @@ public class ActorMappingInfo {
 			} else {
 
 				IRPStereotype theTestBenchStereotype =
-						_context.getStereotypeForTestbench( 
-								theActor );
+						_context.getStereotypeForTestbench();
 						
 				if( theTestBenchStereotype != null ){
 					theActor.setStereotype( theTestBenchStereotype );

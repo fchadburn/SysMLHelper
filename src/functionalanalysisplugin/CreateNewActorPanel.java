@@ -17,7 +17,6 @@ import com.mbsetraining.sysmlhelper.common.RhapsodyComboBox;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
-import com.mbsetraining.sysmlhelper.executablembse.SelectedElementContext;
 import com.mbsetraining.sysmlhelper.sequencediagram.SequenceDiagramCreator;
 import com.telelogic.rhapsody.core.*;
 
@@ -32,8 +31,6 @@ public class CreateNewActorPanel extends ExecutableMBSEBasePanel {
 	protected JTextField m_ChosenNameTextField = null;
 	private ActorMappingInfo m_ClassifierMappingInfo;
 	private IRPClass m_BlockToConnectTo = null;
-	protected FunctionalAnalysisSettings _settings;
-	protected SelectedElementContext _selectedContext;
 	protected ExecutableMBSE_Context _context;
 
 	public static void main(String[] args) {	
@@ -70,10 +67,11 @@ public class CreateNewActorPanel extends ExecutableMBSEBasePanel {
 		
 		super( theAppID );
 		
-		_settings = new FunctionalAnalysisSettings( (ExecutableMBSE_Context) _context );
-		
+		_context.get_selectedContext().setContextTo( 
+				_context.getSelectedElement( false ) );
+				
 		IRPClass theBuildingBlock = 
-				_selectedContext.getBuildingBlock();
+				_context.get_selectedContext().getBuildingBlock();
 
 		if( theBuildingBlock == null ){
 			
@@ -84,7 +82,7 @@ public class CreateNewActorPanel extends ExecutableMBSEBasePanel {
 			
 		} else { // theBuildingBlock != null
 			
-			IRPClass theBlock = _selectedContext.getBlockUnderDev(
+			IRPClass theBlock = _context.get_selectedContext().getBlockUnderDev(
 					"Which Block/Part do you want to wire the Actor to?" );
 			
 			if( theBlock == null ){
@@ -93,8 +91,8 @@ public class CreateNewActorPanel extends ExecutableMBSEBasePanel {
 						"there was no execution context or block found in the model. \n " +
 						"You need to add the relevant package structure first." );
 			} else {
-				m_RootPackage = _selectedContext.getSimulationSettingsPackageBasedOn( theBlock );
-				m_BlockToConnectTo = _selectedContext.getChosenBlock();
+				m_RootPackage = _context.get_selectedContext().getSimulationSettingsPackageBasedOn( theBlock );
+				m_BlockToConnectTo = _context.get_selectedContext().getChosenBlock();
 				
 				setLayout( new BorderLayout(10,10) );
 				setBorder( BorderFactory.createEmptyBorder( 10, 10, 10, 10 ) );

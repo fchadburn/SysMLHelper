@@ -71,12 +71,15 @@ public class CreateEventForFlowPanel extends ExecutableMBSEBasePanel {
 		
 		_existingEventEls = new ArrayList<IRPModelElement>();
 		
+		IRPPackage thePackageForSelectedEl = 
+				_context.getOwningPackageFor( _context.getSelectedElement( false ) );
+		
 		// Default is to put events in the owning package
-		_eventCreationPackage = _context.getPackageForSelectedEl();
+		_eventCreationPackage = thePackageForSelectedEl;
 		
 		if( isEnabled ){
 			_elementMover = new ElementMover( 
-					_context.getSelectedElement(), 
+					_context.getSelectedElement( false ), 
 					_context.REQTS_ANALYSIS_EXTERNAL_SIGNALS_PACKAGE, 
 					_context );		
 			
@@ -92,10 +95,10 @@ public class CreateEventForFlowPanel extends ExecutableMBSEBasePanel {
 		}
 		
 		_existingEventEls.addAll( 
-				_context.getPackageForSelectedEl().getNestedElementsByMetaClass( 
+				thePackageForSelectedEl.getNestedElementsByMetaClass( 
 						"Event", 1 ).toList() );
 
-		_flow = (IRPFlow) _context.getSelectedElement();
+		_flow = (IRPFlow) _context.getSelectedElement( false );
 		
 		setLayout( new BorderLayout(10,10) );
 		setBorder( BorderFactory.createEmptyBorder( 10, 10, 10, 10 ) );

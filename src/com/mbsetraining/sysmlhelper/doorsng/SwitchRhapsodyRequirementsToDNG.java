@@ -24,7 +24,7 @@ public class SwitchRhapsodyRequirementsToDNG {
 
 	public void SwitchRequirements(){
 
-		IRPModelElement theSelectedEl = _context.getSelectedElement();
+		IRPModelElement theSelectedEl = _context.getSelectedElement( false );
 
 		//Logger.debug( "theSelectedEl is " + Logger.elementInfo(theSelectedEl)  );
 

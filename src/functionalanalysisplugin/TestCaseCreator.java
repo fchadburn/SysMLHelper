@@ -8,13 +8,11 @@ import com.telelogic.rhapsody.core.*;
 public class TestCaseCreator {
 	
 	ExecutableMBSE_Context _context;
-	FunctionalAnalysisSettings _settings;
 	
 	public TestCaseCreator(
 			ExecutableMBSE_Context context ) {
 		
 		_context = context;
-		_settings = new FunctionalAnalysisSettings( _context );
 	}
 	
 	public void createTestCaseFor( 

@@ -21,7 +21,7 @@ public class ExportRequirementsToCSV {
 	}
 
 	public void exportRequirementsToCSVUnderSelectedEl(){
-		exportRequirementsToCSV( _context.getSelectedElement(), 1 );
+		exportRequirementsToCSV( _context.getSelectedElement( false ), 1 );
 	}
 
 	public void exportRequirementsToCSV(

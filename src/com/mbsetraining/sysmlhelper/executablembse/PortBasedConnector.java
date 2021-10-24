@@ -129,8 +129,7 @@ public class PortBasedConnector {
 		} else {
 			
 			IRPPackage theInterfacesPkg = 
-					_context.get_selectedContext().getPkgThatOwnsEventsAndInterfaces( 
-							theEvent );
+					_context.get_selectedContext().getPkgThatOwnsEventsAndInterfaces();
 			
 			IRPClass theProvidedInterface = getExistingOrCreateNewProvidedInterfaceOnTargetPort( theInterfacesPkg );
 			theProvidedInterface.addReception( theEvent.getName() );
