@@ -69,10 +69,17 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 	protected Boolean _isEnableAutoMoveOfEventsOnFlowCreation;
 	protected Boolean _isEnableAutoMoveOfEventsOnFlowConnectorCreation;
 	protected Boolean _isEnableAutoMoveOfRequirements;
-	
+	protected Boolean _isSendEventViaPanelOptionEnabled;
+	protected Boolean _isSendEventViaPanelWantedByDefault;
+	protected Boolean _isPopulateWantedByDefault;
+	protected Boolean _isPopulateOptionHidden;
+	protected Boolean _isCreateParametricSubpackageSelected;
+	protected Boolean _isCallOperationSupportEnabled;
+
 	protected List<String> _storeUnitInSeparateDirectoryNewTerms;
 	protected List<String> _dontCreateSeparateUnitNewTerms;
 	protected List<IRPModelElement> _stereotypesForBlockPartCreation;
+	protected String _autoGenerationOfFlowPortsForLinksPolicy;
 
 	public ExecutableMBSE_Context(
 			String theAppID ){
@@ -92,19 +99,19 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		_selectionContext = new SelectedElementContext( this );
 	}
-	
+
 	// Generally single call per session, so use lazy load
 	public String getDefaultExternalSignalsPackageName(){
 
 		if( _defaultExternalSignalsPackageName == null ){
-			
+
 			_defaultExternalSignalsPackageName = _rhpPrj.getPropertyValue(
-						"ExecutableMBSEProfile.RequirementsAnalysis.DefaultExternalSignalsPackageName" );
+					"ExecutableMBSEProfile.RequirementsAnalysis.DefaultExternalSignalsPackageName" );
 		}
-		
+
 		return _defaultExternalSignalsPackageName;
 	}
-	
+
 	// Generally single call per session, so use lazy load
 	public String getDefaultContextDiagramPackageName(){
 
@@ -112,10 +119,10 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 			_defaultContextDiagramPackageName = _rhpPrj.getPropertyValue(
 					"ExecutableMBSEProfile.RequirementsAnalysis.DefaultContextDiagramPackageName" );
 		}
-		
+
 		return _defaultContextDiagramPackageName;
 	}
-	
+
 	// Generally single call per session, so use lazy load
 	public String getDefaultActorPackageName(){
 
@@ -123,10 +130,10 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 			_defaultActorPackageName = _rhpPrj.getPropertyValue(
 					"ExecutableMBSEProfile.RequirementsAnalysis.DefaultActorPackageName" );
 		}
-		
+
 		return _defaultActorPackageName;
 	}
-	
+
 	// Generally single call per session, so use lazy load
 	public String getDefaultRequirementsPackageName(){
 
@@ -134,10 +141,10 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 			_defaultRequirementsPackageName = _rhpPrj.getPropertyValue(
 					"ExecutableMBSEProfile.RequirementsAnalysis.DefaultRequirementsPackageName" );
 		}
-		
+
 		return _defaultRequirementsPackageName;
 	}
-	
+
 	// Multiple calls per session, so use lazy load
 	public Boolean getIsEnableAutoMoveOfEventsOnFlowCreation(){
 
@@ -146,10 +153,10 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 					_rhpPrj,
 					"ExecutableMBSEProfile.RequirementsAnalysis.IsEnableAutoMoveOfEventsOnFlowCreation" );
 		}
-		
+
 		return _isEnableAutoMoveOfEventsOnFlowCreation;
 	}
-	
+
 	// Multiple calls per session, so use lazy load
 	public Boolean getIsEnableAutoMoveOfEventsOnFlowConnectorCreation(){
 
@@ -159,10 +166,10 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 					_rhpPrj,
 					"ExecutableMBSEProfile.FunctionalAnalysis.IsEnableAutoMoveOfEventsOnFlowConnectorCreation" );
 		}
-		
+
 		return _isEnableAutoMoveOfEventsOnFlowConnectorCreation;
 	}
-	
+
 	// Multiple calls per session, so use lazy load
 	public Boolean getIsEnableAutoMoveOfEventsOnAddNewElement(){
 
@@ -172,10 +179,10 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 					_rhpPrj,
 					"ExecutableMBSEProfile.RequirementsAnalysis.IsEnableAutoMoveOfEventsOnAddNewElement" );
 		}
-		
+
 		return _isEnableAutoMoveOfEventsOnAddNewElement;
 	}
-	
+
 	// Multiple calls per session, so use lazy load
 	public List<String> getStoreUnitInSeparateDirectoryNewTerms(){
 
@@ -184,36 +191,36 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 					_rhpPrj, 
 					"ExecutableMBSEProfile.General.StoreUnitInSeparateDirectoryNewTerms" );			
 		}
-		
+
 		return _storeUnitInSeparateDirectoryNewTerms;
 	}
-	
+
 	// Multiple calls per session, so use lazy load
 	public List<String> getDontCreateSeparateUnitNewTerms(){
-	
+
 		if( _dontCreateSeparateUnitNewTerms == null ){
 
 			_dontCreateSeparateUnitNewTerms = getListFromCommaSeparatedString(
 					_rhpPrj, 
 					"ExecutableMBSEProfile.General.DontCreateSeparateUnitNewTerms" );
 		}
-		
+
 		return _dontCreateSeparateUnitNewTerms;
 	}
-	
+
 	// Multiple calls per session, so use lazy load
 	public Boolean getIsEnableAutoMoveOfRequirements(){
 
 		if( _isEnableAutoMoveOfRequirements == null ){
-			
+
 			_isEnableAutoMoveOfRequirements = getBooleanPropertyValue(
 					_rhpPrj,
 					"ExecutableMBSEProfile.RequirementsAnalysis.IsEnableAutoMoveOfRequirements" );
 		}
-		
+
 		return _isEnableAutoMoveOfRequirements;
 	}
-	
+
 	// Single call per session, but use lazy load
 	public List<IRPModelElement> getStereotypesForBlockPartCreation(){
 
@@ -222,7 +229,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 					_rhpPrj, 
 					"ExecutableMBSEProfile.FunctionalAnalysis.StereotypesForBlockCreation" );		
 		}
-		
+
 		return _stereotypesForBlockPartCreation;
 	}
 
@@ -298,7 +305,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 				_rhpPrj );
 
 		if( theStereotype == null ){
-			
+
 			super.error( "Error in getNewTermForSystemContextDiagram, no Stereotyped called " + 
 					NEW_TERM_FOR_SYSTEM_CONTEXT_DIAGRAM + " was found" );
 		}	
@@ -313,7 +320,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 				_rhpPrj );
 
 		if( theStereotype == null ){
-			
+
 			super.error( "Error in getNewTermForActorUsage, no Stereotyped called " + 
 					NEW_TERM_FOR_ACTOR_USAGE + " was found" );
 		}	
@@ -452,7 +459,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		return result;		
 	}
-	
+
 	public List<String> getDefaultActorsForMasterActorsPackage(
 			IRPPackage theContextEl ){
 
@@ -522,7 +529,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 			if( getDontCreateSeparateUnitNewTerms().contains( 
 					modelElement.getUserDefinedMetaClass() ) ){
-				
+
 				((IRPUnit) modelElement).setSeparateSaveUnit( 0 );		
 			}
 		}
@@ -642,64 +649,74 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 		return result;
 	}
 
-	public boolean getIsSendEventViaPanelOptionEnabled(
-			IRPModelElement forContextEl ){
+	public boolean getIsSendEventViaPanelOptionEnabled(){
 
-		boolean result = getBooleanPropertyValue(
-				forContextEl,
-				"General.Graphics.IsSendEventViaPanelOptionEnabled" );
+		if( _isSendEventViaPanelOptionEnabled == null ){
 
-		return result;
+			_isSendEventViaPanelOptionEnabled = getBooleanPropertyValue(
+					_rhpPrj,
+					"ExecutableMBSEProfile.FunctionalAnalysis.IsSendEventViaPanelOptionEnabled" );
+		}
+
+		return _isSendEventViaPanelOptionEnabled;
 	}
 
-	public boolean getIsSendEventViaPanelWantedByDefault(
-			IRPModelElement forContextEl ){
+	public boolean getIsSendEventViaPanelWantedByDefault(){
 
-		boolean result = getBooleanPropertyValue(
-				forContextEl,
-				"General.Graphics.IsSendEventViaPanelWantedByDefault" );
+		if( _isSendEventViaPanelWantedByDefault == null ){
 
-		return result;
+			_isSendEventViaPanelWantedByDefault = getBooleanPropertyValue(
+					_rhpPrj,
+					"ExecutableMBSEProfile.FunctionalAnalysis.IsSendEventViaPanelWantedByDefault" );
+		}
+
+		return _isSendEventViaPanelWantedByDefault;
 	}
 
-	public boolean getIsPopulateWantedByDefault(
-			IRPModelElement forContextEl ){
+	public boolean getIsPopulateWantedByDefault(){
 
-		boolean result = getBooleanPropertyValue(
-				forContextEl, 
-				"General.Graphics.IsPopulateWantedByDefault" );
+		if( _isPopulateWantedByDefault == null ){
+			_isPopulateWantedByDefault = getBooleanPropertyValue(
+					_rhpPrj, 
+					"ExecutableMBSEProfile.FunctionalAnalysis.IsPopulateWantedByDefault" );
+		}
 
-		return result;
+		return _isPopulateWantedByDefault;
 	}
 
-	public boolean getIsPopulateOptionHidden(
-			IRPModelElement forContextEl ){
+	public boolean getIsPopulateOptionHidden(){
 
-		boolean result = getBooleanPropertyValue(
-				forContextEl,
-				"General.Graphics.IsPopulateOptionHidden" );
+		if( _isPopulateOptionHidden == null ){			
+			_isPopulateOptionHidden = getBooleanPropertyValue(
+					_rhpPrj,
+					"ExecutableMBSEProfile.FunctionalAnalysis.IsPopulateOptionHidden" );
+		}
 
-		return result;
+		return _isPopulateOptionHidden;
 	}
 
-	public boolean getIsCreateParametricSubpackageSelected(
-			IRPModelElement forContextEl ){
+	public boolean getIsCreateParametricSubpackageSelected(){
 
-		boolean result = getBooleanPropertyValue(
-				forContextEl,
-				"ExecutableMBSEProfile.General.IsCreateParametricSubpackageSelected" );
+		if( _isCreateParametricSubpackageSelected == null ){			
 
-		return result;
+			_isCreateParametricSubpackageSelected = getBooleanPropertyValue(
+					_rhpPrj,
+					"ExecutableMBSEProfile.General.IsCreateParametricSubpackageSelected" );
+		}
+		
+		return _isCreateParametricSubpackageSelected;
 	}
 
-	public boolean getIsCallOperationSupportEnabled(
-			IRPModelElement forContextEl ){
+	public boolean getIsCallOperationSupportEnabled(){
 
-		boolean result = getBooleanPropertyValue(
-				forContextEl,
-				"General.Graphics.IsCallOperationSupportEnabled" );
+		if( _isCallOperationSupportEnabled == null ){
+			
+			_isCallOperationSupportEnabled = getBooleanPropertyValue(
+					_rhpPrj,
+					"ExecutableMBSEProfile.FunctionalAnalysis.IsCallOperationSupportEnabled" );
+		}
 
-		return result;
+		return _isCallOperationSupportEnabled;
 	}
 
 	public boolean getIsConvertToDetailedADOptionEnabled(
@@ -756,12 +773,15 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 	public String getAutoGenerationOfFlowPortsForLinksPolicy(
 			IRPModelElement forContextEl ){
 
-		String result = getStringPropertyValueFromRhp(
-				forContextEl,
-				"ExecutableMBSEProfile.FunctionalAnalysis.AutoGenerationOfFlowPortsForLinksPolicy",
-				"Never" );
+		if( _autoGenerationOfFlowPortsForLinksPolicy == null ){
 
-		return result;
+			_autoGenerationOfFlowPortsForLinksPolicy = getStringPropertyValueFromRhp(
+					forContextEl,
+					"ExecutableMBSEProfile.FunctionalAnalysis.AutoGenerationOfFlowPortsForLinksPolicy",
+					"Never" );
+		}
+
+		return _autoGenerationOfFlowPortsForLinksPolicy;
 	}
 
 	@Override

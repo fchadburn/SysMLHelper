@@ -137,9 +137,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			IRPCallOperation theCallOp ){
 
 		// only do move if property is set
-		boolean isEnabled = 
-				_context.getIsCallOperationSupportEnabled(
-						theCallOp );
+		boolean isEnabled = _context.getIsCallOperationSupportEnabled();
 
 		if( isEnabled ){
 

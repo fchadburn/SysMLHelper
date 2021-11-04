@@ -99,8 +99,7 @@ public class CreateNewBlockPartPanel extends ExecutableMBSEBasePanel {
 		thePanel.setLayout( new BoxLayout(thePanel, BoxLayout.X_AXIS ) );	
 
 		List<IRPModelElement> theStereotypes = 
-				_context.getStereotypesForBlockPartCreation( 
-						m_RootPackage.getProject() );
+				_context.getStereotypesForBlockPartCreation();
 
 		m_ChosenStereotype = new RhapsodyComboBox( theStereotypes, false );
 		m_ChosenStereotype.setMaximumSize( new Dimension( 250, 20 ) );

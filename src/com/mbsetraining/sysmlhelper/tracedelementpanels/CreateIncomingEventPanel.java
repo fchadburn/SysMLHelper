@@ -55,7 +55,7 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 		
 		super( theAppID );
 		
-		_context.debug( "CreateIncomingEventPanel invoked" );
+		//_context.debug( "CreateIncomingEventPanel invoked" );
 		
 		IRPClass theBuildingBlock = 
 				_context.get_selectedContext().getBuildingBlock();
@@ -135,13 +135,13 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 			theSourceText = _tbd;
 		}
 
-		_context.debug( "CreateIncomingEventPanel constructor (1) called with text '" + theSourceText + "'" );
+		//_context.debug( "CreateIncomingEventPanel constructor (1) called with text '" + theSourceText + "'" );
 
 		String theProposedName = determineBestEventName( 
 				_context.get_selectedContext().getChosenBlock(), 
 				theSourceText );									
 
-		_context.debug( "The proposed name is '" + theProposedName + "'" );
+		//_context.debug( "The proposed name is '" + theProposedName + "'" );
 
 		setLayout( new BorderLayout(10,10) );
 		setBorder( BorderFactory.createEmptyBorder( 10, 10, 10, 10 ) );
@@ -229,12 +229,10 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 					_creatAttributeCheckBox.isSelected();
 
 			boolean isSendEventViaPanelOptionEnabled = 
-					_context.getIsSendEventViaPanelOptionEnabled(
-							_context.get_selectedContext().getSelectedEl() );
+					_context.getIsSendEventViaPanelOptionEnabled();
 
 			boolean isSendEventViaPanelWantedByDefault = 
-					_context.getIsSendEventViaPanelWantedByDefault(
-							_context.get_selectedContext().getSelectedEl() );
+					_context.getIsSendEventViaPanelWantedByDefault( );
 
 			_createSendEventViaPanelCheckBox.setSelected( 
 					isAttributeForEvent && 
@@ -555,14 +553,14 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 				_context.getStateCalled("MonitoringConditions", theStatechart, theOwnerOfStatechart);
 
 		if (theMonitoringState != null){
-			_context.debug( _context.elInfo( theMonitoringState ) + "found");
+			//_context.debug( _context.elInfo( theMonitoringState ) + "found");
 
 			IRPTransition theTransition = theMonitoringState.addTransition(theMonitoringState);
 
 			theTransition.setItsTrigger(triggeredByTheEventName);
 			theTransition.setItsAction("set" + _context.capitalize(theAttribute.getName()) + "(params->value);");
 
-			_context.debug( _context.elInfo( theTransition ) + " was added");	
+			//_context.debug( _context.elInfo( theTransition ) + " was added");	
 
 			IRPGraphElement theGraphEl = 
 					_context.findGraphEl(
@@ -572,15 +570,15 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 			if (theGraphEl != null){
 				IRPDiagram theGraphElDiagram = theGraphEl.getDiagram();
 				
-				_context.debug( _context.elInfo( theGraphElDiagram ) + "related to " 
-						+ _context.elInfo(theGraphEl.getModelObject()) 
-						+ " is the diagram for the GraphEl");
+				//_context.debug( _context.elInfo( theGraphElDiagram ) + "related to " 
+				//		+ _context.elInfo(theGraphEl.getModelObject()) 
+				//		+ " is the diagram for the GraphEl");
 
 				IRPGraphNode theGraphNode = (IRPGraphNode)theGraphEl;
 
 				GraphNodeInfo theNodeInfo = new GraphNodeInfo( theGraphNode, _context );
 
-				IRPGraphEdge theEdge = theGraphElDiagram.addNewEdgeForElement(
+				theGraphElDiagram.addNewEdgeForElement(
 						theTransition, 
 						theGraphNode, 
 						theNodeInfo.getTopRightX(), 
@@ -589,7 +587,7 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 						theNodeInfo.getMiddleX(), 
 						theNodeInfo.getBottomLeftY());
 
-				_context.debug( "Added edge to " + theEdge.getModelObject().getFullPathName() );
+				//_context.debug( "Added edge to " + theEdge.getModelObject().getFullPathName() );
 			} else {
 				_context.error( "Error in addAnAttributeToMonitoringStateWith, " +
 						"unable to find the MonitoringConditions state" );
@@ -753,8 +751,8 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 
 			String theSendEventName = determineSendEventNameFor( theEvent.getName() );
 
-			_context.debug( "Send event option was enabled, create event called " + 
-					theSendEventName );
+			//_context.debug( "Send event option was enabled, create event called " + 
+			//		theSendEventName );
 
 			IRPModelElement theTestbenchReception = 
 					createTestBenchSendFor( 
@@ -766,7 +764,7 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 
 		} else {
 
-			_context.debug( "Send event option was not enabled, so skipping this" );
+			//_context.debug( "Send event option was not enabled, so skipping this" );
 			theReception.highLightElement();
 
 			// If no send event and no actor then assume you want to webify the event directly on the block
@@ -801,10 +799,10 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 				String theSendEventViaPanelName = 
 						determineSendEventViaPanelNameFor( theEvent.getName() );
 
-				String theSendEventName = 
-						determineSendEventNameFor( theEvent.getName() );
+				//String theSendEventName = 
+				//		determineSendEventNameFor( theEvent.getName() );
 
-				_context.debug( "Send event option was enabled, create event called " + theSendEventName );
+				//_context.debug( "Send event option was enabled, create event called " + theSendEventName );
 
 				IRPModelElement theTestbenchReceptionViaPanel = createTestBenchSendViaPanelFor( 
 						theEvent, 

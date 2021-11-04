@@ -1376,13 +1376,13 @@ public abstract class BaseContext {
 			theDependency = fromElement.addDependencyTo( toElement );
 			theDependency.setStereotype( theStereotype );
 
-			_rhpLog.info( "Added a «" + theStereotype.getName() + "» dependency to " + 
-					_rhpLog.elInfo( fromElement ) + 
-					" (to " + _rhpLog.elInfo( toElement ) + ")" );				
+			//_rhpLog.debug( "Added a «" + theStereotype.getName() + "» dependency to " + 
+			//		_rhpLog.elInfo( fromElement ) + 
+			//		" (to " + _rhpLog.elInfo( toElement ) + ")" );				
 		} else {
-			_rhpLog.info( "Skipped adding a «" + theStereotype.getName() + "» dependency to " + _rhpLog.elInfo( fromElement ) + 
-					" (to " + _rhpLog.elInfo( toElement ) + 
-					") as " + isExistingFoundCount + " already exists" );
+			//_rhpLog.debug( "Skipped adding a «" + theStereotype.getName() + "» dependency to " + _rhpLog.elInfo( fromElement ) + 
+			//		" (to " + _rhpLog.elInfo( toElement ) + 
+			//		") as " + isExistingFoundCount + " already exists" );
 		}
 
 		return theDependency;
@@ -1887,7 +1887,7 @@ public abstract class BaseContext {
 			}
 		}
 
-		if (count != 1){
+		if( count != 1 ){
 			_rhpLog.warning( "Warning in getStateCalled (" + count + 
 					") states called " + theName + " were found" );
 		}

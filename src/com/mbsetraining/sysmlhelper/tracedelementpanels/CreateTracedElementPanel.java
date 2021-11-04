@@ -53,7 +53,7 @@ public abstract class CreateTracedElementPanel extends JPanel {
 		
 		_context.get_selectedContext().setContextTo( _context.getSelectedElement( true ) );
 		
-		_context.debug( "CreateTracedElementPanel constructor was invoked" );
+		//_context.debug( "CreateTracedElementPanel constructor was invoked" );
 		
 		setupRequirementsPanel();
 	}
@@ -68,13 +68,8 @@ public abstract class CreateTracedElementPanel extends JPanel {
 				theSourceGraphElementDiagram instanceof IRPActivityDiagram ||
 				theSourceGraphElementDiagram instanceof IRPObjectModelDiagram ) ){
 
-			boolean isPopulateOptionHidden = 
-					_context.getIsPopulateOptionHidden(
-							theSourceGraphElementDiagram );
-			
-			boolean isPopulate = 
-					_context.getIsPopulateWantedByDefault(
-							theSourceGraphElementDiagram );
+			boolean isPopulateOptionHidden = _context.getIsPopulateOptionHidden();
+			boolean isPopulate = _context.getIsPopulateWantedByDefault();
 			
 			theCheckbox.setVisible( !isPopulateOptionHidden );
 			theCheckbox.setSelected( isPopulate );
@@ -373,16 +368,16 @@ public abstract class CreateTracedElementPanel extends JPanel {
 			for( IRPRequirement theReqt : theReqtsToAdd ) {
 				
 				if( theExistingTracedReqts.contains( theReqt ) ){
-					_context.info( _context.elInfo( theElement ) + " already has a «" + theStereotypeName + 
-							"» dependency to " + _context.elInfo( theReqt ) + 
-							", so doing nothing" );
+					//_context.debug( _context.elInfo( theElement ) + " already has a «" + theStereotypeName + 
+					//		"» dependency to " + _context.elInfo( theReqt ) + 
+					//		", so doing nothing" );
 					
 				} else if( theReqt.isRemote()== 1 ){
 					
-					_context.info( "Add remote " +
-							_context.elInfo( theDependencyStereotype) + " from " +
-							_context.elInfo(theElement) + " \n" +
-							"to " + _context.elInfo(theReqt) );
+					//_context.debug( "Add remote " +
+					//		_context.elInfo( theDependencyStereotype) + " from " +
+					//		_context.elInfo( theElement ) + " \n" +
+					//		"to " + _context.elInfo( theReqt ) );
 					
 					if( theDependencyStereotype.getName().equals( "satisfy" ) ){
 						
@@ -391,9 +386,9 @@ public abstract class CreateTracedElementPanel extends JPanel {
 					}
 					
 				} else {					
-					_context.info( _context.elInfo( theElement ) + " does not have a «" + theStereotypeName + 
-							"» dependency to " + _context.elInfo( theReqt ) + 
-							", so adding one" );
+					//_context.debug( _context.elInfo( theElement ) + " does not have a «" + theStereotypeName + 
+					//		"» dependency to " + _context.elInfo( theReqt ) + 
+					//		", so adding one" );
 					
 					IRPDependency theDep = theElement.addDependencyTo( theReqt );
 					theDep.setStereotype( theDependencyStereotype );						
@@ -401,7 +396,7 @@ public abstract class CreateTracedElementPanel extends JPanel {
 			}
 			
 		} else {
-			_context.error("Error in addTraceabilityDependenciesTo, unable to find stereotype to apply to dependencies");
+			_context.error( "Error in addTraceabilityDependenciesTo, unable to find stereotype to apply to dependencies" );
 		}
 	}
 

@@ -154,8 +154,7 @@ public class CreateTracedAttributePanel extends CreateTracedElementPanel {
 					
 					if( theSourceDiagram != null ){
 						
-						isPopulate = _context.getIsPopulateWantedByDefault(
-								theSourceDiagram );
+						isPopulate = _context.getIsPopulateWantedByDefault();
 					}
 					
 			        m_CallOperationIsNeededCheckBox.setEnabled( selected );

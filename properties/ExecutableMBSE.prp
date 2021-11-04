@@ -62,18 +62,14 @@ Subject ExecutableMBSEProfile
 		Property IsAllowInheritanceChoices Bool "False"
 		Property AutoGenerationOfFlowPortsForLinksPolicy Enum "Never,Always,UserDialog" "UserDialog"
 		Property IsEnableAutoMoveOfEventsOnFlowConnectorCreation Bool "True"
-	end
-	Metaclass DesignSynthesis
-		Property AutoGenerationOfProxyPortsForLinksPolicy Enum "Never,Always,UserDialog" "UserDialog"
-	end
-end
-Subject General
-	Metaclass Graphics
 		Property IsPopulateOptionHidden Bool "True"
 		Property IsPopulateWantedByDefault Bool "False"
 		Property IsSendEventViaPanelOptionEnabled Bool "True"
-		Property IsSendEventViaPanelWantedByDefault Bool "False"
+		Property IsSendEventViaPanelWantedByDefault Bool "True"
 		Property IsCallOperationSupportEnabled Bool "True"
+	end
+	Metaclass DesignSynthesis
+		Property AutoGenerationOfProxyPortsForLinksPolicy Enum "Never,Always,UserDialog" "UserDialog"
 	end
 end
 Subject Format

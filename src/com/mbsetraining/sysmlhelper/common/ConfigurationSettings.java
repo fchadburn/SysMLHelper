@@ -281,7 +281,7 @@ public class ConfigurationSettings extends BaseContext  {
 
 				} else if( theProjectsProfileDate.equals( _profileDate ) ){
 
-					theMsg = "The project's profile date and version check was successfully completed. \n";
+					theMsg = "The project's profile date and version check was successfully completed. ";
 					isProfileNeedsUpdate = false;
 
 				} else if( theProjectsProfileDate.before( _profileDate ) ){
