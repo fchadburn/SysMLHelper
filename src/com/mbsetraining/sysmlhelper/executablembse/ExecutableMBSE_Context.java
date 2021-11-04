@@ -52,18 +52,27 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 	public final String DESIGN_SYNTHESIS_SUBSYSTEM_INTERFACES_PACKAGE = "33 Design Synthesis - Subsystem Interfaces Package";
 	public final String TIME_ELAPSED_BLOCK_STEREOTYPE = "ElapsedTimeBlock";
 	public final String ELAPSED_TIME_GENERATOR_STEREOTYPE = "ElapsedTimeGenerator";
+	public final String NEW_TERM_FOR_USE_CASE_DIAGRAM = "EnhancedUseCaseDiagram";
+	public final String NEW_TERM_FOR_SYSTEM_CONTEXT_DIAGRAM = "SystemContextDiagram";
+	public final String NEW_TERM_FOR_ACTOR_USAGE = "ActorUsage";
+	public final String NEW_TERM_FOR_SYSTEM_CONTEXT = "SystemUsage";
 	public final String TESTBENCH_STEREOTYPE = "Testbench";
 
 	protected SelectedElementContext _selectionContext;
 
-	final protected String _defaultExternalSignalsPackageName;
-	final protected String _defaultContextDiagramPackageName;
-	final protected String _defaultActorPackageName;
-	final protected String _defaultRequirementsPackageName;
+	protected String _defaultExternalSignalsPackageName;
+	protected String _defaultContextDiagramPackageName;
+	protected String _defaultActorPackageName;
+	protected String _defaultRequirementsPackageName;
 
-	final protected boolean _isEnableAutoMoveOfEventsOnAddNewElement;
-	final protected boolean _isEnableAutoMoveOfEventsOnFlowCreation;
-	final protected boolean _isEnableAutoMoveOfEventsOnFlowConnectorCreation;
+	protected Boolean _isEnableAutoMoveOfEventsOnAddNewElement;
+	protected Boolean _isEnableAutoMoveOfEventsOnFlowCreation;
+	protected Boolean _isEnableAutoMoveOfEventsOnFlowConnectorCreation;
+	protected Boolean _isEnableAutoMoveOfRequirements;
+	
+	protected List<String> _storeUnitInSeparateDirectoryNewTerms;
+	protected List<String> _dontCreateSeparateUnitNewTerms;
+	protected List<IRPModelElement> _stereotypesForBlockPartCreation;
 
 	public ExecutableMBSE_Context(
 			String theAppID ){
@@ -81,31 +90,140 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 				"ExecutableMBSE" 
 				);
 
-		_defaultExternalSignalsPackageName = _rhpPrj.getPropertyValue(
-				"ExecutableMBSEProfile.RequirementsAnalysis.DefaultExternalSignalsPackageName" );
-
-		_defaultContextDiagramPackageName = _rhpPrj.getPropertyValue(
-				"ExecutableMBSEProfile.RequirementsAnalysis.DefaultContextDiagramPackageName" );
-
-		_defaultActorPackageName = _rhpPrj.getPropertyValue(
-				"ExecutableMBSEProfile.RequirementsAnalysis.DefaultActorPackageName" );
-
-		_defaultRequirementsPackageName = _rhpPrj.getPropertyValue(
-				"ExecutableMBSEProfile.RequirementsAnalysis.DefaultRequirementsPackageName" );
-
-		_isEnableAutoMoveOfEventsOnFlowCreation = getBooleanPropertyValue(
-				_rhpPrj,
-				"ExecutableMBSEProfile.RequirementsAnalysis.IsEnableAutoMoveOfEventsOnFlowCreation" );
-
-		_isEnableAutoMoveOfEventsOnFlowConnectorCreation = getBooleanPropertyValue(
-				_rhpPrj,
-				"ExecutableMBSEProfile.FunctionalAnalysis.IsEnableAutoMoveOfEventsOnFlowConnectorCreation" );
-
-		_isEnableAutoMoveOfEventsOnAddNewElement  = getBooleanPropertyValue(
-				_rhpPrj,
-				"ExecutableMBSEProfile.RequirementsAnalysis.IsEnableAutoMoveOfEventsOnAddNewElement" );
-		
 		_selectionContext = new SelectedElementContext( this );
+	}
+	
+	// Generally single call per session, so use lazy load
+	public String getDefaultExternalSignalsPackageName(){
+
+		if( _defaultExternalSignalsPackageName == null ){
+			
+			_defaultExternalSignalsPackageName = _rhpPrj.getPropertyValue(
+						"ExecutableMBSEProfile.RequirementsAnalysis.DefaultExternalSignalsPackageName" );
+		}
+		
+		return _defaultExternalSignalsPackageName;
+	}
+	
+	// Generally single call per session, so use lazy load
+	public String getDefaultContextDiagramPackageName(){
+
+		if( _defaultContextDiagramPackageName == null ){
+			_defaultContextDiagramPackageName = _rhpPrj.getPropertyValue(
+					"ExecutableMBSEProfile.RequirementsAnalysis.DefaultContextDiagramPackageName" );
+		}
+		
+		return _defaultContextDiagramPackageName;
+	}
+	
+	// Generally single call per session, so use lazy load
+	public String getDefaultActorPackageName(){
+
+		if( _defaultActorPackageName == null ){
+			_defaultActorPackageName = _rhpPrj.getPropertyValue(
+					"ExecutableMBSEProfile.RequirementsAnalysis.DefaultActorPackageName" );
+		}
+		
+		return _defaultActorPackageName;
+	}
+	
+	// Generally single call per session, so use lazy load
+	public String getDefaultRequirementsPackageName(){
+
+		if( _defaultRequirementsPackageName == null ){
+			_defaultRequirementsPackageName = _rhpPrj.getPropertyValue(
+					"ExecutableMBSEProfile.RequirementsAnalysis.DefaultRequirementsPackageName" );
+		}
+		
+		return _defaultRequirementsPackageName;
+	}
+	
+	// Multiple calls per session, so use lazy load
+	public Boolean getIsEnableAutoMoveOfEventsOnFlowCreation(){
+
+		if( _isEnableAutoMoveOfEventsOnFlowCreation == null ){
+			_isEnableAutoMoveOfEventsOnFlowCreation = getBooleanPropertyValue(
+					_rhpPrj,
+					"ExecutableMBSEProfile.RequirementsAnalysis.IsEnableAutoMoveOfEventsOnFlowCreation" );
+		}
+		
+		return _isEnableAutoMoveOfEventsOnFlowCreation;
+	}
+	
+	// Multiple calls per session, so use lazy load
+	public Boolean getIsEnableAutoMoveOfEventsOnFlowConnectorCreation(){
+
+		if( _isEnableAutoMoveOfEventsOnFlowConnectorCreation == null ){
+
+			_isEnableAutoMoveOfEventsOnFlowConnectorCreation = getBooleanPropertyValue(
+					_rhpPrj,
+					"ExecutableMBSEProfile.FunctionalAnalysis.IsEnableAutoMoveOfEventsOnFlowConnectorCreation" );
+		}
+		
+		return _isEnableAutoMoveOfEventsOnFlowConnectorCreation;
+	}
+	
+	// Multiple calls per session, so use lazy load
+	public Boolean getIsEnableAutoMoveOfEventsOnAddNewElement(){
+
+		if( _isEnableAutoMoveOfEventsOnAddNewElement == null ){
+
+			_isEnableAutoMoveOfEventsOnAddNewElement  = getBooleanPropertyValue(
+					_rhpPrj,
+					"ExecutableMBSEProfile.RequirementsAnalysis.IsEnableAutoMoveOfEventsOnAddNewElement" );
+		}
+		
+		return _isEnableAutoMoveOfEventsOnAddNewElement;
+	}
+	
+	// Multiple calls per session, so use lazy load
+	public List<String> getStoreUnitInSeparateDirectoryNewTerms(){
+
+		if( _storeUnitInSeparateDirectoryNewTerms == null ){
+			_storeUnitInSeparateDirectoryNewTerms = getListFromCommaSeparatedString(
+					_rhpPrj, 
+					"ExecutableMBSEProfile.General.StoreUnitInSeparateDirectoryNewTerms" );			
+		}
+		
+		return _storeUnitInSeparateDirectoryNewTerms;
+	}
+	
+	// Multiple calls per session, so use lazy load
+	public List<String> getDontCreateSeparateUnitNewTerms(){
+	
+		if( _dontCreateSeparateUnitNewTerms == null ){
+
+			_dontCreateSeparateUnitNewTerms = getListFromCommaSeparatedString(
+					_rhpPrj, 
+					"ExecutableMBSEProfile.General.DontCreateSeparateUnitNewTerms" );
+		}
+		
+		return _dontCreateSeparateUnitNewTerms;
+	}
+	
+	// Multiple calls per session, so use lazy load
+	public Boolean getIsEnableAutoMoveOfRequirements(){
+
+		if( _isEnableAutoMoveOfRequirements == null ){
+			
+			_isEnableAutoMoveOfRequirements = getBooleanPropertyValue(
+					_rhpPrj,
+					"ExecutableMBSEProfile.RequirementsAnalysis.IsEnableAutoMoveOfRequirements" );
+		}
+		
+		return _isEnableAutoMoveOfRequirements;
+	}
+	
+	// Single call per session, but use lazy load
+	public List<IRPModelElement> getStereotypesForBlockPartCreation(){
+
+		if( _stereotypesForBlockPartCreation == null ){			
+			_stereotypesForBlockPartCreation = getStereotypesBasedOnProperty(
+					_rhpPrj, 
+					"ExecutableMBSEProfile.FunctionalAnalysis.StereotypesForBlockCreation" );		
+		}
+		
+		return _stereotypesForBlockPartCreation;
 	}
 
 	public boolean getIsShowProfileVersionCheckDialogs(){
@@ -161,38 +279,60 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 	public IRPStereotype getNewTermForUseCaseDiagram(){
 
-		IRPStereotype newTermForUseCaseDiagram = getStereotypeBasedOn(
-				_rhpPrj, 
-				"ExecutableMBSEProfile.RequirementsAnalysis.NewTermForUseCaseDiagram" );
+		IRPStereotype theStereotype = getExistingStereotype( 
+				NEW_TERM_FOR_USE_CASE_DIAGRAM, 
+				_rhpPrj );
 
-		return newTermForUseCaseDiagram;
+		if( theStereotype == null ){
+			super.error( "Error in getNewTermForUseCaseDiagram, no Stereotyped called " + 
+					NEW_TERM_FOR_USE_CASE_DIAGRAM + " was found" );
+		}	
+
+		return theStereotype;
 	}
 
 	public IRPStereotype getNewTermForSystemContextDiagram(){
 
-		IRPStereotype newTermForSystemContextDiagram = getStereotypeBasedOn(
-				_rhpPrj, 
-				"ExecutableMBSEProfile.RequirementsAnalysis.NewTermForSystemContextDiagram" );
+		IRPStereotype theStereotype = getExistingStereotype( 
+				NEW_TERM_FOR_SYSTEM_CONTEXT_DIAGRAM, 
+				_rhpPrj );
 
-		return newTermForSystemContextDiagram;
+		if( theStereotype == null ){
+			
+			super.error( "Error in getNewTermForSystemContextDiagram, no Stereotyped called " + 
+					NEW_TERM_FOR_SYSTEM_CONTEXT_DIAGRAM + " was found" );
+		}	
+
+		return theStereotype;
 	}
 
 	public IRPStereotype getNewTermForActorUsage(){
 
-		IRPStereotype newTermForActorUsage = getStereotypeBasedOn(
-				_rhpPrj, 
-				"ExecutableMBSEProfile.RequirementsAnalysis.NewTermForActorUsage" );
+		IRPStereotype theStereotype = getExistingStereotype( 
+				NEW_TERM_FOR_ACTOR_USAGE, 
+				_rhpPrj );
 
-		return newTermForActorUsage;
+		if( theStereotype == null ){
+			
+			super.error( "Error in getNewTermForActorUsage, no Stereotyped called " + 
+					NEW_TERM_FOR_ACTOR_USAGE + " was found" );
+		}	
+
+		return theStereotype;
 	}
 
 	public IRPStereotype getNewTermForSystemContext(){
 
-		IRPStereotype newTermForSystemContext = getStereotypeBasedOn(
-				_rhpPrj, 
-				"ExecutableMBSEProfile.RequirementsAnalysis.NewTermForSystemContext" );
+		IRPStereotype theStereotype = getExistingStereotype( 
+				NEW_TERM_FOR_SYSTEM_CONTEXT, 
+				_rhpPrj );
 
-		return newTermForSystemContext;
+		if( theStereotype == null ){			
+			super.error( "Error in getNewTermForSystemContext, no Stereotyped called " + 
+					NEW_TERM_FOR_SYSTEM_CONTEXT + " was found" );
+		}	
+
+		return theStereotype;
 	}
 
 	public List<IRPActor> getMasterActorList(
@@ -213,8 +353,8 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 							forProject, 
 							1 );
 
-			super.debug( "Looking for packages with metaclass " + 
-					theMasterActorStereotype.getName() + ", found " + theActorPackages.size() );
+			//super.debug( "Looking for packages with metaclass " + 
+			//		theMasterActorStereotype.getName() + ", found " + theActorPackages.size() );
 
 			for( IRPModelElement theActorPackage : theActorPackages ){
 
@@ -267,18 +407,6 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 		return theMasterActors;
 	}
 
-	public String getDefaultActorPackageName(){
-		return _defaultActorPackageName;
-	}
-
-	public String getDefaultRequirementsPackageName(){
-		return _defaultRequirementsPackageName;
-	}
-
-	public String getDefaultExternalSignalsPackageName(){
-		return _defaultExternalSignalsPackageName;
-	}
-
 	public String getDefaultUseCasePackageName(
 			IRPModelElement basedOnContext ){
 
@@ -290,11 +418,6 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 		}
 
 		return theValue;
-	}
-
-	public String getDefaultContextDiagramPackageName(){
-
-		return _defaultContextDiagramPackageName;
 	}
 
 	public boolean getIsAutoPopulatePackageDiagram(
@@ -329,23 +452,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		return result;		
 	}
-
-	public List<String> getStoreUnitInSeparateDirectoryNewTerms(
-			IRPModelElement theContextEl ){
-
-		return getListFromCommaSeparatedString(
-				theContextEl, 
-				"ExecutableMBSEProfile.General.StoreUnitInSeparateDirectoryNewTerms" );
-	}
-
-	public List<String> getDontCreateSeparateUnitNewTerms(
-			IRPModelElement theContextEl ){
-
-		return getListFromCommaSeparatedString(
-				theContextEl, 
-				"ExecutableMBSEProfile.General.DontCreateSeparateUnitNewTerms" );
-	}
-
+	
 	public List<String> getDefaultActorsForMasterActorsPackage(
 			IRPPackage theContextEl ){
 
@@ -393,16 +500,12 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 	public void setSavedInSeparateDirectoryIfAppropriateFor(
 			IRPModelElement modelElement) {
 
-		//		Logger.info("setSavedInSeparateDirectoryIfAppropriateFor was invoked for " + Logger.elementInfo(modelElement) );
+		//super.debug("setSavedInSeparateDirectoryIfAppropriateFor was invoked for " + Logger.elementInfo(modelElement) );
 
-		if( modelElement != null && 
-				modelElement instanceof IRPPackage ){
+		if( modelElement instanceof IRPPackage ){
 
-			List<String> theNewTerms = 
-					getStoreUnitInSeparateDirectoryNewTerms( 
-							modelElement );
-
-			if( theNewTerms.contains( modelElement.getUserDefinedMetaClass() ) ){
+			if( getStoreUnitInSeparateDirectoryNewTerms().contains( 
+					modelElement.getUserDefinedMetaClass() ) ){
 
 				IRPPackage thePackage = (IRPPackage) modelElement;
 				thePackage.setSavedInSeperateDirectory( 1 );
@@ -413,13 +516,13 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 	public void setDontSaveAsSeparateUnitIfAppropriateFor(
 			IRPModelElement modelElement ){
 
-		super.debug( "setDontSaveAsSeparateUnitIfAppropriateFor was invoked for " + super.elInfo( modelElement ) );
+		//super.debug( "setDontSaveAsSeparateUnitIfAppropriateFor was invoked for " + super.elInfo( modelElement ) );
 
 		if( modelElement != null ){
 
-			List<String> theNewTerms = getDontCreateSeparateUnitNewTerms( modelElement );
-
-			if( theNewTerms.contains( modelElement.getUserDefinedMetaClass() ) ){
+			if( getDontCreateSeparateUnitNewTerms().contains( 
+					modelElement.getUserDefinedMetaClass() ) ){
+				
 				((IRPUnit) modelElement).setSeparateSaveUnit( 0 );		
 			}
 		}
@@ -449,13 +552,6 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 				"ExecutableMBSEProfile.General.SystemLevelPackageStereotypes" );
 	}
 
-	public List<IRPModelElement> getStereotypesForBlockPartCreation(
-			IRPModelElement forContextEl ){
-
-		return getStereotypesBasedOnProperty(
-				forContextEl, 
-				"ExecutableMBSEProfile.FunctionalAnalysis.StereotypesForBlockCreation" );
-	}
 
 	public List<IRPModelElement> getStereotypesBasedOnProperty(
 			IRPModelElement forContextEl,
@@ -463,26 +559,30 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 
 		List<IRPModelElement> theStereotypes = new ArrayList<>();
 
-		String theStereotypeList = forContextEl.getPropertyValue(
-				thePropertyKey );
+		try {
+			String theStereotypeList = forContextEl.getPropertyValue(
+					thePropertyKey );
 
-		if( theStereotypeList != null){
+			if( theStereotypeList != null){
 
-			String[] split = theStereotypeList.split(",");
+				String[] split = theStereotypeList.split(",");
 
-			for( String theString : split ){
+				for( String theString : split ){
 
-				IRPModelElement theStereotypeElement = 
-						findElementWithMetaClassAndName( 
-								"Stereotype", theString.trim(), forContextEl );
+					IRPModelElement theStereotypeElement = 
+							findElementWithMetaClassAndName( 
+									"Stereotype", theString.trim(), forContextEl );
 
-				if( theStereotypeElement != null ){
-					theStereotypes.add( theStereotypeElement );
+					if( theStereotypeElement != null ){
+						theStereotypes.add( theStereotypeElement );
+					}
 				}
-			}
 
-			super.debug( "getStereotypesForBlockPartCreation was invoked and found " + theStereotypeList + 
-					", it is returning a list of x" + theStereotypes.size() + " stereotypes" );
+				super.debug( "getStereotypesForBlockPartCreation was invoked and found " + theStereotypeList + 
+						", it is returning a list of x" + theStereotypes.size() + " stereotypes" );
+			}
+		} catch( Exception e ){
+			super.error( "Exception in getStereotypesBasedOnProperty, e=" + e.getMessage() );
 		}
 
 		return theStereotypes;
@@ -512,16 +612,6 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 		return thePropertyValue;
 	}
 
-	public boolean getIsEnableAutoMoveOfRequirements(
-			IRPModelElement forContextEl ){
-
-		boolean result = getBooleanPropertyValue(
-				forContextEl,
-				"ExecutableMBSEProfile.RequirementsAnalysis.IsEnableAutoMoveOfRequirements" );
-
-		return result;
-	}
-
 	public boolean getIsApplyAutoShowToSequenceDiagramTemplate(
 			IRPModelElement forContextEl ){
 
@@ -540,18 +630,6 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 				"ExecutableMBSEProfile.FunctionalAnalysis.IsEnableAutoMoveOfInterfaces" );
 
 		return result;
-	}
-
-	public boolean getIsEnableAutoMoveOfEventsOnAddNewElement(){
-		return _isEnableAutoMoveOfEventsOnAddNewElement;
-	}
-
-	public boolean getIsEnableAutoMoveOfEventsOnFlowCreation(){
-		return _isEnableAutoMoveOfEventsOnFlowCreation;
-	}
-
-	public boolean getIsEnableAutoMoveOfEventsOnFlowConnectorCreation(){
-		return _isEnableAutoMoveOfEventsOnFlowConnectorCreation;
 	}
 
 	public boolean getIsEnableGatewayTypes(
@@ -1037,11 +1115,7 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 			IRPRequirement theReqt) {
 
 		// only do move if property is set
-		boolean isEnabled = 
-				getIsEnableAutoMoveOfRequirements(
-						theReqt );
-
-		if( isEnabled ){
+		if( getIsEnableAutoMoveOfRequirements() ){
 			RequirementMover theElementMover = new RequirementMover( 
 					theReqt, 
 					REQTS_ANALYSIS_REQUIREMENT_PACKAGE, 

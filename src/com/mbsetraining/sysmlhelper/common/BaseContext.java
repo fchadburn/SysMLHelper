@@ -22,12 +22,17 @@ public abstract class BaseContext {
 
 	private String _pluginVersionProperty;
 	private String _userDefinedMetaClassesAsSeparateUnitProperty;
-	private String _allowPluginToControlUnitGranularityProperty;
+	//private String _allowPluginToControlUnitGranularityProperty;
 	private String _enableWarningLoggingProperty;
 	private String _enableErrorLoggingProperty;
 	private String _enableDebugLoggingProperty;
 	private String _enableInfoLoggingProperty;
-	
+
+	protected List<String> _userDefinedMetaClassesAsSeparateUnit;
+	protected IRPStereotype _stereotypeToUseForFunctions;
+	protected IRPStereotype _stereotypeToUseForActions;
+	protected IRPStereotype _stereotypeToUseForUseCases;
+
 	protected String _namesRegEx;
 	protected RhpLog _rhpLog;
 	protected IRPApplication _rhpApp;
@@ -50,7 +55,7 @@ public abstract class BaseContext {
 		_enableErrorLoggingProperty = enableErrorLoggingProperty;
 		_enableDebugLoggingProperty = enableDebugLoggingProperty;
 		_enableInfoLoggingProperty = enableInfoLoggingProperty;
-		
+
 		_rhpLog = new RhpLog( 
 				_rhpApp, 
 				_rhpPrj, 
@@ -58,13 +63,13 @@ public abstract class BaseContext {
 				isEnableErrorLogging(), 
 				isEnableDebugLogging(), 
 				isEnableInfoLogging() );
-		
+
 		_pluginVersionProperty = pluginVersionProperty;
 		_userDefinedMetaClassesAsSeparateUnitProperty = userDefinedMetaClassesAsSeparateUnitProperty;
-		_allowPluginToControlUnitGranularityProperty = allowPluginToControlUnitGranularityProperty;
+		//_allowPluginToControlUnitGranularityProperty = allowPluginToControlUnitGranularityProperty;
 	}
-	
-	public boolean isEnableWarningLogging(){
+
+	private boolean isEnableWarningLogging(){
 
 		return getBoolPropertyValueFromRhp(
 				_rhpPrj, 
@@ -72,7 +77,7 @@ public abstract class BaseContext {
 				true );
 	}
 
-	public boolean isEnableErrorLogging(){
+	private boolean isEnableErrorLogging(){
 
 		return getBoolPropertyValueFromRhp(
 				_rhpPrj, 
@@ -80,7 +85,7 @@ public abstract class BaseContext {
 				true );
 	}
 
-	public boolean isEnableDebugLogging(){
+	private boolean isEnableDebugLogging(){
 
 		return getBoolPropertyValueFromRhp(
 				_rhpPrj, 
@@ -88,31 +93,31 @@ public abstract class BaseContext {
 				true );
 	}
 
-	public boolean isEnableInfoLogging(){
+	private boolean isEnableInfoLogging(){
 
 		return getBoolPropertyValueFromRhp(
 				_rhpPrj, 
 				_enableInfoLoggingProperty, 
 				true );
 	}
-	
+
 	public IRPModelElement findElementByGUID( 
 			String guid ){
-		
+
 		return _rhpPrj.findElementByGUID( guid );
 	}
-	
+
 	public IRPCollection createNewCollection(){
 		return _rhpApp.createNewCollection();
 	}
 
 	public IRPModelElement getSelectedElement(
 			boolean isFavourDiagramElement ){
-		
+
 		IRPModelElement theSelectedEl = _rhpApp.getSelectedElement();
-		
+
 		if( isFavourDiagramElement ){
-			
+
 			@SuppressWarnings("unchecked")
 			List<IRPGraphElement> theSelectedGraphEls = _rhpApp.getSelectedGraphElements().toList();
 
@@ -127,17 +132,17 @@ public abstract class BaseContext {
 				}
 			}
 		}
-		
-		debug( "getSelectedElement is returning " + elInfo( theSelectedEl ) );
-		
+
+		//debug( "getSelectedElement is returning " + elInfo( theSelectedEl ) );
+
 		return theSelectedEl;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<IRPModelElement> getSelectedElements(){
 		return _rhpApp.getListOfSelectedElements().toList();
 	}
-	
+
 	public List<IRPGraphNode> getSelectedGraphNodes(){
 
 		List<IRPGraphNode> theGraphNodes = new ArrayList<>();
@@ -154,7 +159,7 @@ public abstract class BaseContext {
 
 		return theGraphNodes;
 	}
-	
+
 	public List<IRPGraphEdge> getSelectedGraphEdges(){
 
 		List<IRPGraphEdge> theGraphEdges = new ArrayList<>();
@@ -171,14 +176,14 @@ public abstract class BaseContext {
 
 		return theGraphEdges;
 	}
-	
+
 	public List<IRPGraphElement> getSelectedGraphElements(){
 
 		@SuppressWarnings("unchecked")
 		List<IRPGraphElement> theSelectedGraphEls = _rhpApp.getSelectedGraphElements().toList();
 		return theSelectedGraphEls;
 	}
-			
+
 	public IRPGraphNode getGraphNodeIfOnlyOneIsSelected(){
 
 		IRPGraphNode theGraphNode = null;
@@ -189,7 +194,7 @@ public abstract class BaseContext {
 			theGraphNode = theGraphNodes.get( 0 );
 		}
 
-		_rhpLog.debug( "getGraphNodeIfOnlyOneIsSelected found " + theGraphNodes.size() + " elements" );
+		//_rhpLog.debug( "getGraphNodeIfOnlyOneIsSelected found " + theGraphNodes.size() + " elements" );
 
 		return theGraphNode;
 	}
@@ -229,24 +234,27 @@ public abstract class BaseContext {
 
 		return matches;
 	}
-	
+
 	public List<String> getUserDefinedMetaClassesAsSeparateUnit(){
 
-		List<String> theMetaClasses = new ArrayList<>();
+		if( _userDefinedMetaClassesAsSeparateUnit == null ){
+			_userDefinedMetaClassesAsSeparateUnit = new ArrayList<>();
 
-		String theUserDefinedMetaClassPropertyValue =
-				getStringPropertyValueFromRhp(
-						_rhpPrj,
-						_userDefinedMetaClassesAsSeparateUnitProperty,
-						"" );
-		
-		String[] theCandidates = theUserDefinedMetaClassPropertyValue.split( "," );
-		
-		for( String theCandidate : theCandidates ){
-			theMetaClasses.add( theCandidate.trim() );
+			String theUserDefinedMetaClassPropertyValue =
+					getStringPropertyValueFromRhp(
+							_rhpPrj,
+							_userDefinedMetaClassesAsSeparateUnitProperty,
+							"" );
+
+			String[] theCandidates = theUserDefinedMetaClassPropertyValue.split( "," );
+
+			for( String theCandidate : theCandidates ){
+				_userDefinedMetaClassesAsSeparateUnit.add( theCandidate.trim() );
+			}
 		}
 
-		return theMetaClasses;
+		return _userDefinedMetaClassesAsSeparateUnit;
+
 	}
 
 	public List<IRPModelElement> getElementsInProjectThatMatch(
@@ -329,9 +337,9 @@ public abstract class BaseContext {
 			IRPUnit theUnit = theEl.getSaveUnit();
 
 			if( theUnit.isReadOnly()==1 ){
-//				UserInterfaceHelper.showWarningDialog(
-//						"Unable to setBoolPropertyValueInRhp because project is read-only");
-				
+				//				UserInterfaceHelper.showWarningDialog(
+				//						"Unable to setBoolPropertyValueInRhp because project is read-only");
+
 				// just give a warning as this may occur when using stereotypes in the SysML profile
 				_rhpLog.warning( "Unable to setStringPropertyValueInRhp for " + _rhpLog.elInfo( theEl) + " because unit is read-only" );
 			} else {
@@ -354,6 +362,7 @@ public abstract class BaseContext {
 			}
 		}
 	}
+
 	public void setBoolPropertyValueInRhp(
 			IRPModelElement theEl,
 			String withKey, 
@@ -363,12 +372,10 @@ public abstract class BaseContext {
 
 			IRPUnit theUnit = theEl.getSaveUnit();
 
-			if( theUnit.isReadOnly()==1 ){
-//				UserInterfaceHelper.showWarningDialog(
-//						"Unable to setBoolPropertyValueInRhp because project is read-only" );
-				
+			if( theUnit.isReadOnly()==1 ){	
 				// just give a warning as this may occur when using stereotypes in the SysML profile
 				_rhpLog.warning( "Unable to setBoolPropertyValueInRhp for " + _rhpLog.elInfo( theEl) + " because unit is read-only" );
+
 			} else {
 
 				try {
@@ -378,7 +385,7 @@ public abstract class BaseContext {
 						theValue = "True";
 					}
 
-					_rhpLog.debug( "Setting " + withKey + " property on " + _rhpLog.elInfo( theEl ) + " to " + theValue);
+					//_rhpLog.debug( "Setting " + withKey + " property on " + _rhpLog.elInfo( theEl ) + " to " + theValue);
 					theEl.setPropertyValue(withKey, theValue);
 
 				} catch( Exception e ){
@@ -405,7 +412,7 @@ public abstract class BaseContext {
 					isSet = theValue.equals( "True" );
 				}
 
-			} catch (Exception e) {
+			} catch( Exception e ){
 				_rhpLog.warning( e.getMessage() + " has occurred which suggests a problem finding property in the profile." );
 				e.printStackTrace();}
 		}
@@ -425,7 +432,7 @@ public abstract class BaseContext {
 				theValue = theEl.getPropertyValue(
 						propertyKey );
 
-			} catch (Exception e) {
+			} catch( Exception e ){
 				_rhpLog.warning( "'" + e.getMessage() + "' has occurred which suggests a problem finding property in the profile." );
 				e.printStackTrace();
 			}
@@ -452,32 +459,32 @@ public abstract class BaseContext {
 	public IRPTag getTag( 
 			IRPModelElement appliedToModelEl,
 			String withTagName ){
-		
+
 		IRPTag theTag = appliedToModelEl.getTag( withTagName );
 
 		if( theTag == null ){
-			
+
 			_rhpLog.error( "setTagValue for " + _rhpLog.elInfo( appliedToModelEl ) + 
 					" was unable to find tag called " + withTagName );
 		}
 
 		return theTag;
 	}
-	
+
 	public String getTagValueOnNewTermStereotype( 
 			IRPModelElement appliedToModelEl,
 			String withTagName ){
-		
+
 		String theTagValue = null;
-		
+
 		IRPStereotype theStereotype = appliedToModelEl.getNewTermStereotype();
 
 		IRPTag theTag = theStereotype.getTag( withTagName );
 
 		if( theTag != null ){
-			
+
 			theTagValue = theTag.getValue();
-			
+
 		} else {
 			_rhpLog.error( "getTagValueOnNewTermStereotype for " + _rhpLog.elInfo( appliedToModelEl ) + 
 					" was unable to find tag called " + withTagName + 
@@ -486,7 +493,7 @@ public abstract class BaseContext {
 
 		return theTagValue;
 	}
-	
+
 	public boolean setTagValue( 
 			IRPStereotype onStereotype, 
 			IRPModelElement appliedToModelEl,
@@ -494,15 +501,15 @@ public abstract class BaseContext {
 			String theValue ){
 
 		boolean wasValueChanged = false;
-		
+
 		IRPTag theTag = onStereotype.getTag( withTagName );
 
 		if( theTag != null ){
 
 			if( !theTag.getValue().equals( theValue ) ){
 
-				_rhpLog.debug( "setTagValue is setting tag " + _rhpLog.elInfo( theTag ) + " on " + _rhpLog.elInfo( onStereotype ) + " to " + theValue );
-				
+				//_rhpLog.debug( "setTagValue is setting tag " + _rhpLog.elInfo( theTag ) + " on " + _rhpLog.elInfo( onStereotype ) + " to " + theValue );
+
 				appliedToModelEl.setTagValue( theTag, theValue );
 				wasValueChanged = true;
 			}
@@ -526,7 +533,7 @@ public abstract class BaseContext {
 		IRPStereotype theStereotype = getStereotypeWith( onStereotypeName );
 
 		if( theStereotype != null ){
-			
+
 			wasValueChanged = setTagValue(
 					theStereotype, appliedToModelEl, withTagName, theValue );
 		}
@@ -537,11 +544,11 @@ public abstract class BaseContext {
 	public IRPApplication get_rhpApp() {
 		return _rhpApp;
 	}
-	
+
 	public String get_rhpAppID() {
 		return _rhpApp.getApplicationConnectionString();
 	}
-		
+
 	public String getPluginVersion(){
 
 		String isEnabled = getStringPropertyValueFromRhp(
@@ -552,30 +559,31 @@ public abstract class BaseContext {
 		return isEnabled;
 	}
 
+	/*
 	public boolean isAllowPluginToGetUnitGranularity(){
 
 		return getBoolPropertyValueFromRhp(
 				_rhpPrj, 
 				_allowPluginToControlUnitGranularityProperty, 
 				false );
-	}
-	
+	}*/
+
 	public boolean getBooleanPropertyValue(
 			IRPModelElement forContextEl,
 			String thePropertyKey ){
-		
+
 		boolean result = false;
-		
+
 		String theValue = null;
-		
+
 		try {
 			theValue = forContextEl.getPropertyValue(
 					thePropertyKey );
-			
+
 		} catch( Exception e ){
 			_rhpLog.error( "Exception in getBooleanPropertyValue, e=" + e.getMessage() );
 		}
-				
+
 		if( theValue != null ){
 			result = theValue.equals( "True" );
 		} else {
@@ -583,92 +591,92 @@ public abstract class BaseContext {
 					"unable to get thePropertyKey property value from " + 
 					_rhpLog.elInfo( forContextEl ) );
 		}
-		
+
 		return result;
 	}
-	
+
 	public boolean isElementNameUnique(
 			String theProposedName, 
 			String ofMetaClass, 
 			IRPModelElement underneathTheEl,
 			int recursive ){
-				
+
 		int count = 0;
-		
+
 		@SuppressWarnings("unchecked")
 		List<IRPModelElement> theExistingEls = 
-				underneathTheEl.getNestedElementsByMetaClass(
-						ofMetaClass, 
-						recursive ).toList();
-		
+		underneathTheEl.getNestedElementsByMetaClass(
+				ofMetaClass, 
+				recursive ).toList();
+
 		for (IRPModelElement theExistingEl : theExistingEls) {
-			
+
 			if (theExistingEl.getName().equals( theProposedName )){
 				count++;
 				break;
 			}
 		}
-		
+
 		if (count > 1){
 			_rhpLog.warning( "Warning in isElementNameUnique, there are " + count + " elements called " + 
 					theProposedName + " of type " + ofMetaClass + " in the project. This may cause issues.");
 		}
-				
+
 		boolean isUnique = (count == 0);
 
 		return isUnique;
 	}
-	
+
 	public String determineUniqueNameForPackageBasedOn(
 			String theProposedNameWithoutPkg,
 			IRPModelElement underElement ){
-		
+
 		int count = 0;
-		
+
 		String theUniqueName = theProposedNameWithoutPkg;
-		
+
 		while( !isElementNameUnique(
 				theUniqueName + "Pkg", "Package", underElement, 1 ) ){
-			
+
 			count++;
 			theUniqueName = theProposedNameWithoutPkg + count;
 		}
-		
+
 		return theUniqueName;
 	}
-	
+
 	public String determineUniqueNameBasedOn(
 			String theProposedName,
 			String ofMetaClass,
 			IRPModelElement underElement){
-		
+
 		int count = 0;
-		
+
 		String theUniqueName = theProposedName;
-		
+
 		while( !isElementNameUnique(
 				theUniqueName, ofMetaClass, underElement, 1 ) ){
-			
+
 			count++;
 			theUniqueName = theProposedName + count;
 		}
-		
+
 		return theUniqueName;
 	}
-	
+
 	public void deleteIfPresent(
 			String theElementWithName, 
 			String andMetaClass, 
 			IRPModelElement nestedUnderEl ){
-		
+
 		IRPModelElement theEl = nestedUnderEl.findNestedElementRecursive( theElementWithName, andMetaClass );
-		
+
 		if( theEl != null ){
-			
+
 			IRPCollection theNestedEls = theEl.getNestedElementsRecursive();
-			
+
 			int count = theNestedEls.getCount();
-			
+
 			if( count > 1 ){
 				_rhpLog.warning( "Decided against deleting " + _rhpLog.elInfo( theEl ) + 
 						" as there are " + count + " of them" );
@@ -678,29 +686,34 @@ public abstract class BaseContext {
 			}
 		}
 	}
-	
+
 	public List<String> getListFromCommaSeparatedString(
 			IRPModelElement theContextEl,
 			String thePropertyKey ){
-		
+
 		List<String> theNewTerms = new ArrayList<>();
-		
-		String theValue = theContextEl.getPropertyValue( 
-				thePropertyKey );
-		
-		if( theValue != null && !theValue.isEmpty() ){
-			
-			String[] split = theValue.split(",");
-			
-			for (int i = 0; i < split.length; i++) {
-				String theNewTerm = split[ i ].trim();
-				theNewTerms.add( theNewTerm );
+
+		try {
+			String theValue = theContextEl.getPropertyValue( 
+					thePropertyKey );
+
+			if( theValue != null && !theValue.isEmpty() ){
+
+				String[] split = theValue.split( "," );
+
+				for( int i = 0; i < split.length; i++ ){
+					String theNewTerm = split[ i ].trim();
+					theNewTerms.add( theNewTerm );
+				}
 			}
+		} catch( Exception e ){
+			error( "Exception in getListFromCommaSeparatedString, e=" + e.getMessage() );
 		}
-		
+
+
 		return theNewTerms;
 	}
-	
+
 	public IRPPackage getOwningPackageFor(
 			IRPModelElement theElement ){
 
@@ -722,35 +735,35 @@ public abstract class BaseContext {
 
 		return theOwningPackage;
 	}
-	
+
 	public boolean isLegalName(
 			String theName, 
 			IRPModelElement basedOnContext ){
-		
+
 		//String regEx = "^(([a-zA-Z_][a-zA-Z0-9_]*)|(operator.+))$";
-		
+
 		String theRegEx = basedOnContext.getPropertyValue( 
 				"General.Model.NamesRegExp" );
-		
+
 		boolean isLegal = theName.matches( theRegEx );
-		
+
 		if( !isLegal ){
 			_rhpLog.warning( "Warning, detected that " + theName 
 					+ " is not a legal name as it does not conform to the regex=" + theRegEx );
 		}
-		
+
 		return isLegal;
 	}
-	
+
 	public String toLegalClassName(String theInput) {
-		
+
 		StringBuilder nameBuilder = new StringBuilder(theInput.length());    
 
 		boolean capitalizeNextChar = true;
 
 		int n = 1;
 		final int max = 40;
-		
+
 		for (char c:theInput.toCharArray()) {
 			if (Character.isJavaIdentifierPart(c)){
 				if (capitalizeNextChar) {
@@ -765,7 +778,7 @@ public abstract class BaseContext {
 				}
 				capitalizeNextChar = false;
 			} else if (Character.isSpaceChar(c)){
-				
+
 				if (n<max){
 					capitalizeNextChar = true;
 					continue;
@@ -775,38 +788,38 @@ public abstract class BaseContext {
 			}
 			n++;
 		}
-		
+
 		return nameBuilder.toString();
 	}
-	
+
 	public String makeLegalName(
 			String theInput ){
-		
+
 		StringBuilder nameBuilder = new StringBuilder(theInput.length());    
-		
+
 		for (char c:theInput.toCharArray()) {
 			if (Character.isJavaIdentifierPart(c)){
 				nameBuilder.append(c);
 
 			} else { //if (Character.isSpaceChar(c)){
-				
+
 				nameBuilder.append("_");
 			}
 		}
-		
+
 		return nameBuilder.toString();
 	}
 
 	public String toMethodName(
 			String theInput,
 			int max ) {
-		
+
 		StringBuilder nameBuilder = new StringBuilder(theInput.length());    
 
 		boolean capitalizeNextChar = false;
 
 		int n = 1;
-		
+
 		for (char c:theInput.toCharArray()) {
 			if (Character.isJavaIdentifierPart(c)){
 				if (capitalizeNextChar) {
@@ -821,7 +834,7 @@ public abstract class BaseContext {
 				}
 				capitalizeNextChar = false;
 			} else if (Character.isSpaceChar(c)){
-				
+
 				if (n<max){
 					capitalizeNextChar = true;
 					continue;
@@ -831,43 +844,43 @@ public abstract class BaseContext {
 			}
 			n++;
 		}
-		
+
 		return nameBuilder.toString();
 	}
 
 	public String decapitalize(final String line){
 		String theResult = null;
-		
+
 		if (line.length() > 1){
 			theResult = Character.toLowerCase(line.charAt(0)) + line.substring(1);
 		} else {
 			theResult = line;
 		}
-		
+
 		return theResult;	
 	}
-	
+
 	public String capitalize(
 			final String line ){
-		
+
 		String theResult = null;
-		
+
 		if( line.length() > 0 ){
 			theResult = Character.toUpperCase(
 					line.charAt(0) ) + line.substring( 1 );
 		} else {
 			theResult = line;
 		}
-		
+
 		return theResult;
 	}
-	
-	
+
+
 	public IRPModelElement launchDialogToSelectElement(
 			List<IRPModelElement> inList, 
 			String messageToDisplay, 
-			Boolean isFullPathRequested){
-		
+			Boolean isFullPathRequested ){
+
 		IRPModelElement theEl = null;
 
 		List<String> nameList = new ArrayList<String>();
@@ -896,11 +909,11 @@ public abstract class BaseContext {
 				options[0]);
 
 		if( selectedElementName != null && 
-			!selectedElementName.equals("Nothing") ){
+				!selectedElementName.equals("Nothing") ){
 
 			int index = nameList.indexOf(selectedElementName);
 			theEl = inList.get(index);
-			_rhpLog.debug( _rhpLog.elInfo( theEl ) + "was chosen");
+			//_rhpLog.debug( _rhpLog.elInfo( theEl ) + "was chosen");
 
 		} else {
 			_rhpLog.debug("'Nothing' was chosen by user");
@@ -909,24 +922,24 @@ public abstract class BaseContext {
 
 		return theEl;
 	}
-	
+
 	public IRPStereotype applyExistingStereotype(
 			String withTheName, 
 			IRPModelElement toTheEl ){
-		
+
 		IRPStereotype theChosenStereotype = 
 				getExistingStereotype( withTheName, toTheEl.getProject() );
-		
+
 		if( theChosenStereotype != null ){
 			toTheEl.setStereotype( theChosenStereotype );
 		} else {
 			_rhpLog.error("Warning in applyExistingStereotype, unable to find stereotype <<" + 
 					withTheName + ">> underneath " + _rhpLog.elInfo( toTheEl.getProject() ) );
 		}
-		
+
 		return theChosenStereotype;
 	}
-	
+
 	public IRPStereotype getExistingStereotype(
 			String withTheName,
 			IRPModelElement underneathTheEl ){
@@ -934,22 +947,22 @@ public abstract class BaseContext {
 		List<IRPModelElement> theStereotypeEls = 
 				findElementsWithMetaClassAndName(
 						"Stereotype", withTheName, underneathTheEl );
-		
+
 		IRPStereotype theChosenStereotype = null;
 		boolean isNewTermFound = false;
-		
+
 		for( IRPModelElement theStereotypeEl : theStereotypeEls ){
-			
+
 			IRPStereotype theStereotype = (IRPStereotype)theStereotypeEl;
-			
+
 			// Favour new term stereotypes
 			if( theStereotype.getIsNewTerm()==1 ){
 				isNewTermFound = true;
 				theChosenStereotype = theStereotype;
-				
+
 				if( theStereotypeEls.size() > 1 ){
-					
-					_rhpLog.warning("getExistingStereotype has chosen " + _rhpLog.elInfo( theStereotype ) + 
+
+					_rhpLog.debug("getExistingStereotype has chosen " + _rhpLog.elInfo( theStereotype ) + 
 							" as it is a new term (there were x" + 
 							theStereotypeEls.size() + " stereotypes with the same name)");
 				}
@@ -957,58 +970,58 @@ public abstract class BaseContext {
 				theChosenStereotype = theStereotype;
 			}
 		}
-		
+
 		return theChosenStereotype;
 	}
-	
+
 	public IRPStereotype getStereotypeCalled(
 			String theName, 
 			IRPModelElement onTheEl){
-		
+
 		int count = 0;
 		IRPStereotype theFoundStereotype = null;
-		
+
 		@SuppressWarnings("unchecked")
 		List <IRPStereotype> theStereotypes = onTheEl.getStereotypes().toList();
-		
+
 		for (IRPStereotype theStereotype : theStereotypes) {
 			if (theStereotype.getName().equals(theName)){
-				
+
 				theFoundStereotype = theStereotype;
 				count++;
 			}
 		}
-		
+
 		if (count > 1){
 			_rhpLog.warning("Warning in getStereotypeCalled, found " + count 
 					+ " elements that are called " + theName);
 		}
-		
+
 		return theFoundStereotype;
 	}
-	
+
 	public Boolean hasStereotypeCalled(
 			String theName, 
 			IRPModelElement onTheEl){
-		
+
 		Boolean isFound = false;
-		
+
 		@SuppressWarnings("unchecked")
 		List <IRPStereotype> theStereotypes = onTheEl.getStereotypes().toList();
-		
+
 		for (IRPStereotype theStereotype : theStereotypes) {
-			
+
 			String theStereotypeName = theStereotype.getName();
-			
+
 			if( theStereotypeName.equals( theName ) ){
 				isFound = true;
 			} else if( theStereotype.getIsNewTerm()==1 ){
-				
+
 				try {
 					// This copes with situation whereby the actual name of stereotype 
 					// differs from it's name set via a property
 					theStereotypeName = theStereotype.getPropertyValueExplicit( "Model.Stereotype.Name" );
-					
+
 					if( theStereotypeName.equals( theName ) ){
 						isFound = true;
 					}
@@ -1017,71 +1030,71 @@ public abstract class BaseContext {
 				}
 			}
 		}
-		
+
 		return isFound;
 	}
-	
+
 	public IRPStereotype getStereotypeAppliedTo(
 			IRPModelElement theElement, 
 			String thatMatchesRegEx ){
-				
+
 		IRPStereotype foundStereotype = null;
-		
+
 		@SuppressWarnings("unchecked")
 		List<IRPStereotype> theCandidateStereotypes = theElement.getStereotypes().toList();
 		List<IRPStereotype> theMatchingStereotypes = new ArrayList<IRPStereotype>();
-		
+
 		for( IRPStereotype theCandidateStereotype : theCandidateStereotypes ){
-			
+
 			String theName = theCandidateStereotype.getName();
-			
+
 			if( theName.matches( thatMatchesRegEx ) ){
 				theMatchingStereotypes.add( theCandidateStereotype );
 			}		
 		}
-		
+
 		int count = theMatchingStereotypes.size();
-		
+
 		if( count == 1 ){
-			
+
 			foundStereotype = theMatchingStereotypes.get( 0 );
-			
+
 		} else if( count > 1 ){
-			
+
 			_rhpLog.warning(
 					"Warning in getStereotypeAppliedTo, there are multiple stereotypes related to " + 
-					_rhpLog.elInfo(theElement) + " size=" + theMatchingStereotypes.size() + 
-					"matching regex=" + thatMatchesRegEx );
-			
+							_rhpLog.elInfo(theElement) + " size=" + theMatchingStereotypes.size() + 
+							"matching regex=" + thatMatchesRegEx );
+
 			foundStereotype = theMatchingStereotypes.get( 0 );
 		} 
-		
+
 		return foundStereotype;
 	}
-	
+
 	public IRPModelElement findElementWithMetaClassAndName(
 			String theMetaClass, 
 			String andName, 
 			IRPModelElement underneathTheEl){
-		
+
 		IRPModelElement theElement = null;
-		
+
 		List <IRPModelElement> theMatches = findElementsWithMetaClassAndName(
 				theMetaClass, andName, underneathTheEl);
 
 		if (theMatches.size()==1){
-		
+
 			theElement = theMatches.get(0);
-		
+
 		} else if (theMatches.size()>1){
-			
+
 			_rhpLog.warning("Warning in findElementWithMetaClassAndName(" + theMetaClass + "," + 
 					andName + ","+_rhpLog.elInfo(underneathTheEl)+"), " + theMatches.size() + 
 					" elements were found when I was expecting only one");
-			
+
 			theElement = theMatches.get(0);
 		}
-		
+
 		return theElement;
 	}
 
@@ -1090,86 +1103,86 @@ public abstract class BaseContext {
 			String withName,
 			String andMetaClass,
 			boolean isIncludeBases ){
-		
+
 		IRPModelElement theNestedElement = 
 				theElement.findNestedElement( withName, andMetaClass );
-		
+
 		if( theNestedElement == null && isIncludeBases ){
-			
+
 			@SuppressWarnings("unchecked")
 			List<IRPModelElement> theBaseClassifiers = 
-					theElement.getBaseClassifiers().toList();
-		
+			theElement.getBaseClassifiers().toList();
+
 			for( IRPModelElement theBaseClassifier : theBaseClassifiers ) {
-				
+
 				theNestedElement = findNestedElementUnder( 
 						(IRPClassifier) theBaseClassifier, 
 						withName, 
 						andMetaClass, 
 						isIncludeBases );
-				
+
 				if( theNestedElement != null ){
 					break;
 				}
 			}
 		}
-		
+
 		return theNestedElement;
 	}
-		
+
 	public List<IRPModelElement> findElementsWithMetaClassAndName(
 			String theMetaClass, 
 			String andName, 
 			IRPModelElement underneathTheEl ){
-		
+
 		List<IRPModelElement> theElements = new ArrayList<IRPModelElement>();
-		
+
 		@SuppressWarnings("unchecked")
 		List <IRPModelElement> theCandidates = 
-				underneathTheEl.getNestedElementsByMetaClass( 
-						theMetaClass, 
-						1 ).toList();
-		
+		underneathTheEl.getNestedElementsByMetaClass( 
+				theMetaClass, 
+				1 ).toList();
+
 		for( IRPModelElement theCandidate : theCandidates ){
 			if( theCandidate.getName().equals( andName ) ){
 				theElements.add( theCandidate );
 			}
 		}
-				
+
 		return theElements;
 	}
-	
+
 	public List<IRPModelElement> findElementsWithMetaClassAndStereotype(
 			String theMetaClass, 
 			String andStereotype, 
 			IRPModelElement underneathTheEl,
 			int recursive ){
-		
+
 		List<IRPModelElement> theFilteredList = new ArrayList<IRPModelElement>();
-		
+
 		@SuppressWarnings("unchecked")
 		List<IRPModelElement> theCandidates = 
-				underneathTheEl.getNestedElementsByMetaClass(
-						theMetaClass, recursive ).toList();
+		underneathTheEl.getNestedElementsByMetaClass(
+				theMetaClass, recursive ).toList();
 
 		for( IRPModelElement theCandidate : theCandidates ){
-			
+
 			if( hasStereotypeCalled( andStereotype, theCandidate ) ){
 				theFilteredList.add( theCandidate );
 			}
 		}
-		
+
 		return theFilteredList;
 	}
-	
+
 	public List<IRPModelElement> findElementsWithMetaClassStereotypeAndName(
 			String theMetaClass, 
 			String andStereotype, 
 			String andName, 
 			IRPModelElement underneathTheEl ){
-		
+
 		List <IRPModelElement> theFilteredList = new ArrayList<IRPModelElement>();
-		
+
 		List <IRPModelElement> theCandidates = 
 				findElementsWithMetaClassAndName(
 						theMetaClass, 
@@ -1177,15 +1190,15 @@ public abstract class BaseContext {
 						underneathTheEl );
 
 		for( IRPModelElement theCandidate : theCandidates) {
-			
+
 			if( hasStereotypeCalled( andStereotype, theCandidate ) ){
 				theFilteredList.add( theCandidate );
 			}
 		}
-		
+
 		return theFilteredList;
 	}
-	
+
 	public void copyRequirementTraceabilityFrom(
 			IRPModelElement theElement,
 			IRPModelElement toTheElement ){
@@ -1207,7 +1220,6 @@ public abstract class BaseContext {
 					addStereotypedDependencyIfOneDoesntExist(
 							toTheElement, theDependsOn, theStereotype );
 				}
-
 			}
 		}
 	}
@@ -1246,17 +1258,17 @@ public abstract class BaseContext {
 		if( fromElement instanceof IRPInstance ){
 			IRPInstance theInstance = (IRPInstance)fromElement;
 			IRPClassifier theClassifier = theInstance.getOtherClass();
-			
+
 			fromElement = theClassifier;
 		}
-		
+
 		if( toElement instanceof IRPInstance ){
 			IRPInstance theInstance = (IRPInstance)toElement;
 			IRPClassifier theClassifier = theInstance.getOtherClass();
-			
+
 			toElement = theClassifier;
 		}
-		
+
 		List<IRPDependency> theExistingDependencies = 
 				getExistingStereotypedDependencies(
 						fromElement, 
@@ -1286,24 +1298,24 @@ public abstract class BaseContext {
 
 		List<IRPDependency> existingDeps = new ArrayList<>();
 
-		_rhpLog.debug( "getExistingStereotypedDependencies invoked to find " + stereotypeName + 
-				" from " + _rhpLog.elInfo( fromElement ) + " to " +
-				_rhpLog.elInfo( toElement ) );
+		//_rhpLog.debug( "getExistingStereotypedDependencies invoked to find " + stereotypeName + 
+		//		" from " + _rhpLog.elInfo( fromElement ) + " to " +
+		//		_rhpLog.elInfo( toElement ) );
 
 		if( fromElement instanceof IRPInstance ){
 			IRPInstance theInstance = (IRPInstance)fromElement;
 			IRPClassifier theClassifier = theInstance.getOtherClass();
-			
+
 			fromElement = theClassifier;
 		}
-		
+
 		if( toElement instanceof IRPInstance ){
 			IRPInstance theInstance = (IRPInstance)toElement;
 			IRPClassifier theClassifier = theInstance.getOtherClass();
-			
+
 			toElement = theClassifier;
 		}
-				
+
 		List<IRPGeneralization> theGeneralizations = new ArrayList<>();
 
 		if( fromElement instanceof IRPClassifier ){
@@ -1445,7 +1457,7 @@ public abstract class BaseContext {
 
 			if( theDependsOn != null && 
 					theDependsOn instanceof IRPModelElement ){
-				
+
 				if( hasStereotypeCalled( 
 						whereDependsOnHasStereotype, theDependsOn ) ){
 
@@ -1456,7 +1468,7 @@ public abstract class BaseContext {
 
 		return theEls;
 	}
-	
+
 	public Set<IRPModelElement> getElementsThatHaveStereotypedDependenciesFrom(
 			IRPModelElement theElement, 
 			String withDependencyStereotype ){
@@ -1482,7 +1494,7 @@ public abstract class BaseContext {
 
 		return theEls;
 	}
-	
+
 
 	public List<File> getFilesMatching(
 			String theRegEx, 
@@ -1508,20 +1520,20 @@ public abstract class BaseContext {
 
 		return theFiles;
 	}
-	
+
 	public List<IRPActivityDiagram> buildListOfActivityDiagramsFor(
 			List<IRPModelElement> theSelectedEls) {
-		
+
 		List<IRPActivityDiagram> theADs = new ArrayList<IRPActivityDiagram>();
-		
+
 		for (IRPModelElement theSelectedEl : theSelectedEls) {
-			
+
 			@SuppressWarnings("unchecked")
 			List<IRPActivityDiagram> theCandidates = theSelectedEl.getNestedElementsByMetaClass("ActivityDiagramGE", 1).toList();
-			
+
 			for (IRPActivityDiagram theCandidate : theCandidates) {
 				if (!theADs.contains(theCandidate)){
-					
+
 					if (theCandidate.isReadOnly()==0){
 						theADs.add(theCandidate);			
 						_rhpLog.debug("Adding " + _rhpLog.elInfo(theCandidate.getOwner()) + " to the list");
@@ -1531,38 +1543,38 @@ public abstract class BaseContext {
 				}
 			}
 		}
-		
+
 		return theADs;
 	}
-	
+
 	public IRPFlowchart getTemplateForActivityDiagram(
 			IRPModelElement basedOnContext,
 			String basedOnPropertyKey ){
-		
+
 		IRPFlowchart theTemplate = null;
-		
+
 		String theTemplateName = 
 				basedOnContext.getPropertyValue( 
 						basedOnPropertyKey );
-		
+
 		if( theTemplateName != null && 
-			!theTemplateName.trim().isEmpty() ){
-			
+				!theTemplateName.trim().isEmpty() ){
+
 			theTemplate = (IRPFlowchart) basedOnContext.getProject().findNestedElementRecursive(
-							theTemplateName, 
-							"ActivityDiagram" );
-			
+					theTemplateName, 
+					"ActivityDiagram" );
+
 			if( theTemplate == null ){
 				_rhpLog.warning( "Warning, unable to find template called " + 
 						theTemplateName + " named in TemplateForActivityDiagram property" );
 			}
 		}
-		
+
 		_rhpLog.debug( "getTemplateForActivityDiagram, found " + _rhpLog.elInfo( theTemplate ) );
-		
+
 		return theTemplate;
 	}
-	
+
 	public IRPGraphElement getCorrespondingGraphElement(
 			IRPModelElement forElement,
 			IRPActivityDiagram theAD ) throws Exception {
@@ -1571,8 +1583,8 @@ public abstract class BaseContext {
 
 		@SuppressWarnings("unchecked")
 		List<IRPGraphElement> theGraphEls = 
-				theAD.getCorrespondingGraphicElements( forElement ).toList();
-		
+		theAD.getCorrespondingGraphicElements( forElement ).toList();
+
 		if( theGraphEls.size() > 1 ){
 			throw new Exception("There is more than one graph element for " + _rhpLog.elInfo(forElement));
 		} else if( theGraphEls.size() == 1 ){
@@ -1581,10 +1593,10 @@ public abstract class BaseContext {
 			_rhpLog.warning("Warning, getCorrespondingGraphElement dif not find a graph element corresponding to " + 
 					_rhpLog.elInfo(forElement) + " on " + _rhpLog.elInfo(theAD) );
 		}
-		
+
 		return ret;
 	}
-	
+
 	public IRPGraphElement getGraphElement(
 			IRPModelElement element,
 			IRPFlowchart fc) {
@@ -1593,7 +1605,7 @@ public abstract class BaseContext {
 
 		@SuppressWarnings("unchecked")
 		List<IRPGraphElement> gList = fc.getGraphicalElements().toList();
-		
+
 		if (!gList.isEmpty()) {
 			for (IRPGraphElement g : gList) {
 				if (g.getModelObject() != null) {
@@ -1605,168 +1617,168 @@ public abstract class BaseContext {
 				}
 			}
 		}
-		
+
 		return ret;
 	}
-	
+
 	public IRPPin getPin(
 			String withName,
 			IRPAcceptEventAction onAcceptEventAction ){
-		
+
 		IRPPin thePin = null;
-		
+
 		List<IRPPin> theCandidates = getPins( onAcceptEventAction );
-		
+
 		for( IRPPin theCandidate : theCandidates ){
-			
+
 			if( theCandidate.getName().equals( withName ) ){
 				thePin = theCandidate;
 			}
 		}
-		
+
 		return thePin;
 	}
-	
+
 	public List<IRPPin> getPins(
 			IRPAcceptEventAction onAcceptEventAction ){
-		
+
 		List<IRPPin> thePins = new ArrayList<>();
-		
+
 		for( Object o: onAcceptEventAction.getSubStateVertices().toList()){
 			if( o instanceof IRPPin ){
-			
+
 				thePins.add( (IRPPin) o );
 			}
 		}
-		
+
 		return thePins;
 	}
-	
+
 	public IRPStateVertex getTargetOfOutTransitionIfSingleOneExisting(
 			IRPStateVertex theStateVertex ){
-		
+
 		IRPStateVertex theTarget = null;
-		
+
 		@SuppressWarnings("unchecked")
 		List<IRPTransition> theOutTransitions = theStateVertex.getOutTransitions().toList();
-		
+
 		if( theOutTransitions.size() == 1 ){
-			
+
 			IRPTransition theTransition = theOutTransitions.get( 0 );
 			theTarget = theTransition.getItsTarget();
 		}
-		
+
 		return theTarget;
 	}
-	
+
 	public String determineUniqueStateBasedOn(
 			String theProposedName,
 			IRPState underElement ){
-		
+
 		int count = 0;
-		
+
 		String theUniqueName = theProposedName;
-		
+
 		while( !isStateUnique(
 				theUniqueName, underElement ) ){
-			
+
 			count++;
 			theUniqueName = theProposedName + count;
 		}
-		
+
 		return theUniqueName;
 	}
-	
+
 	public boolean isStateUnique(
 			String theProposedName, 
 			IRPState underneathTheEl ){
-				
+
 		int count = 0;
-		
+
 		@SuppressWarnings("unchecked")
 		List<IRPState> theExistingEls = 
-				underneathTheEl.getSubStates().toList();
-		
+		underneathTheEl.getSubStates().toList();
+
 		for (IRPModelElement theExistingEl : theExistingEls) {
-			
+
 			if (theExistingEl.getName().equals( theProposedName )){
 				count++;
 				break;
 			}
 		}
-		
+
 		if (count > 1){
 			_rhpLog.warning("Warning in isStateUnique, there are " + count + " elements called " + 
 					theProposedName + ". This may cause issues.");
 		}
-				
+
 		boolean isUnique = (count == 0);
 
 		return isUnique;
 	}
-	
+
 	public void dumpGraphicalPropertiesFor(
 			IRPGraphElement theGraphEl){
-	 
+
 		@SuppressWarnings("unchecked")
 		List<IRPGraphicalProperty> theGraphProperties = theGraphEl.getAllGraphicalProperties().toList();
-		
+
 		_rhpLog.info("---------------------------");
 		for (IRPGraphicalProperty theGraphicalProperty : theGraphProperties) {
-			
+
 			_rhpLog.info(theGraphicalProperty.getKey() + "=" + theGraphicalProperty.getValue());
 		}
 		_rhpLog.info("---------------------------"); 
 	}
-	
+
 	public String buildStringFromModelEls(
 			List<? extends IRPModelElement> theEls,
 			int max ){
-		
+
 		String theString = "";
 
 		int count = 0;
-		
+
 		for( Iterator<? extends IRPModelElement> iterator = theEls.iterator(); iterator.hasNext(); ) {
-			
+
 			count++;
 			IRPModelElement theEl = (IRPModelElement) iterator.next();
 
 			theString += count + ". " + _rhpLog.elInfo( theEl ) + " \n";
-			
+
 			if( count >= max ){
 				theString += "... (" + theEls.size() + " in list) \n";
 				break;
 			}
 		}
-		
+
 		return theString;
 	}
-	
+
 	public String buildStringFrom(
 			List<String> theList, 
 			int max ){
-		
+
 		String theString = "";
-		
+
 		int count = 0;
-		
+
 		for( Iterator<String> iterator = theList.iterator(); iterator.hasNext(); ) {
-			
+
 			count++;
 			String string = (String) iterator.next();
 
 			theString += string + " \n";
-			
+
 			if( count >= max ){
 				theString += "... ( " + theList.size() + ") \n";
 				break;
 			}
 		}
-		
+
 		return theString;
 	}
-	
+
 	public void browseAndAddUnit(
 			IRPProject inProject, 
 			boolean relative ){
@@ -1788,27 +1800,27 @@ public abstract class BaseContext {
 			_rhpLog.debug("theFile.getParent = " + theFile.getParent() );
 			_rhpLog.debug("theFile.getPath = " + theFile.getPath() );
 			_rhpLog.debug("theFile.getParentFile().getName() = " + theFile.getParentFile().getName() );
-			
+
 			String theTargetPath;
 
 			try {
 				theTargetPath = theFile.getCanonicalPath();
 
 				_rhpLog.debug( "theTargetPath=" + theTargetPath );
-				
+
 				_rhpApp.addToModelByReference( theTargetPath );
 
 				if( relative ){
 
 					String theFileNameIncludingExtension = theFile.getName();
-					
+
 					String theName = theFileNameIncludingExtension.substring(0, theFileNameIncludingExtension.length()-3);
 
 					int trimSize = theName.length()+5;
-					
+
 					Path targetPath = Paths.get( theTargetPath.substring(0, theTargetPath.length()-trimSize) );
 					Path targetRoot = targetPath.getRoot();
-					
+
 					_rhpLog.debug( "targetRoot.toString()=" + targetRoot.toString() );
 
 					Path sourcePath = Paths.get( 
@@ -1818,7 +1830,7 @@ public abstract class BaseContext {
 					Path sourceRoot = sourcePath.getRoot();
 
 					_rhpLog.debug( "sourceRoot.toString()=" + sourceRoot.toString() );
-					
+
 					if( !targetRoot.equals( sourceRoot ) ){
 						_rhpLog.debug("Unable to set Unit called " + theName + " to relative, as the drive letters are different");
 						_rhpLog.debug("theTargetDir root =" + targetPath.getRoot());
@@ -1847,144 +1859,144 @@ public abstract class BaseContext {
 			}
 		}
 	}
-	
+
 	public IRPState getStateCalled(
 			String theName, 
 			IRPStatechart inTheDiagram, 
 			IRPModelElement ownedByEl ){
-		
+
 		@SuppressWarnings("unchecked")
 		List<IRPModelElement> theElsInDiagram = 
-			inTheDiagram.getElementsInDiagram().toList();
-		
+		inTheDiagram.getElementsInDiagram().toList();
+
 		IRPState theState = null;
-		
+
 		int count = 0;
-		
+
 		for( IRPModelElement theEl : theElsInDiagram ){
-			
+
 			if( theEl instanceof IRPState 
 					&& theEl.getName().equals( theName )
 					&& getOwningClassifierFor( theEl ).equals( ownedByEl ) ){
-				
-				_rhpLog.debug( "Found state called " + theEl.getName() + 
-						" owned by " + theEl.getOwner().getFullPathName() );
-				
+
+				//_rhpLog.debug( "Found state called " + theEl.getName() + 
+				//		" owned by " + theEl.getOwner().getFullPathName() );
+
 				theState = (IRPState) theEl;
 				count++;
 			}
 		}
-		
+
 		if (count != 1){
 			_rhpLog.warning( "Warning in getStateCalled (" + count + 
 					") states called " + theName + " were found" );
 		}
-		
+
 		return theState;
 	}
-	
+
 	private IRPModelElement getOwningClassifierFor(
 			IRPModelElement theState ){
-		
+
 		IRPModelElement theOwner = theState.getOwner();
-		
+
 		while( theOwner.getMetaClass().equals( "State" ) || 
-			   theOwner.getMetaClass().equals( "Statechart" ) ){
-			
+				theOwner.getMetaClass().equals( "Statechart" ) ){
+
 			theOwner = theOwner.getOwner();
 		}
-		
-		_rhpLog.debug( "The owner for " + _rhpLog.elInfo( theState ) + 
-				" is " + _rhpLog.elInfo( theOwner ) );
-			
+
+		//_rhpLog.debug( "The owner for " + _rhpLog.elInfo( theState ) + 
+		//		" is " + _rhpLog.elInfo( theOwner ) );
+
 		return theOwner;
 	}	
 
 	public IRPGraphElement findGraphEl(
 			IRPClassifier theClassifier, 
 			String withTheName ){
-		
+
 		IRPGraphElement theFoundGraphEl = null;
-		
+
 		@SuppressWarnings("unchecked")
 		List<IRPStatechartDiagram> theStatechartDiagrams = 
-				theClassifier.getStatechart().getNestedElementsByMetaClass(
-						"StatechartDiagram", 1 ).toList();
-		
+		theClassifier.getStatechart().getNestedElementsByMetaClass(
+				"StatechartDiagram", 1 ).toList();
+
 		for (IRPStatechartDiagram theStatechartDiagram : theStatechartDiagrams) {
-			
-			_rhpLog.debug( _rhpLog.elInfo(theStatechartDiagram) + " was found owned by " + 
-					_rhpLog.elInfo( theClassifier ) );
-			
+
+			//_rhpLog.debug( _rhpLog.elInfo(theStatechartDiagram) + " was found owned by " + 
+			//		_rhpLog.elInfo( theClassifier ) );
+
 			@SuppressWarnings("unchecked")
 			List<IRPGraphElement> theGraphEls = 
-				theStatechartDiagram.getGraphicalElements().toList();
-			
+			theStatechartDiagram.getGraphicalElements().toList();
+
 			for( IRPGraphElement theGraphEl : theGraphEls ){
-				
+
 				IRPModelElement theEl = theGraphEl.getModelObject();
-				
+
 				if( theEl != null ){
-					_rhpLog.debug( "Found " + theEl.getMetaClass() + 
-							" called " + theEl.getName() );
-					
+					//_rhpLog.debug( "Found " + theEl.getMetaClass() + 
+					//		" called " + theEl.getName() );
+
 					if( theEl.getName().equals( withTheName ) ){
-						
-						_rhpLog.debug( "Success, found GraphEl called " + 
-								withTheName + " in statechart for " + 
-								_rhpLog.elInfo( theClassifier ) );
-						
+
+						//_rhpLog.debug( "Success, found GraphEl called " + 
+						//		withTheName + " in statechart for " + 
+						//		_rhpLog.elInfo( theClassifier ) );
+
 						theFoundGraphEl = theGraphEl;
 						break;
 					}
 				}
 			}
 		}
-		
+
 		return theFoundGraphEl;
 	}
-	
+
 	public void cleanUpModelRemnants(){
-		
+
 		deleteIfPresent( "Structure1", "StructureDiagram", _rhpPrj );
 		deleteIfPresent( "Model1", "ObjectModelDiagram", _rhpPrj );
 		deleteIfPresent( "Default", "Package", _rhpPrj );
-		
+
 		IRPModelElement theDefaultComponent = 
-				_rhpPrj.findElementsByFullName("DefaultComponent", "Component");
-		
+				_rhpPrj.findElementsByFullName( "DefaultComponent", "Component" );
+
 		if( theDefaultComponent != null ){
 			theDefaultComponent.setName( "NotUsedComp" );
-			
+
 			IRPModelElement theDefaultConfig = 
-					theDefaultComponent.findNestedElement("DefaultConfig", "Configuration");
-			
+					theDefaultComponent.findNestedElement( "DefaultConfig", "Configuration" );
+
 			if( theDefaultConfig != null ){
 				theDefaultConfig.setName( "NotUsedComp" );
 			}
 		}
 	}
-	
+
 	public String getStringForTagCalled( 
 			String theTagName,
 			IRPModelElement onElement,
 			String defaultIfNotSet ){
-	
+
 		String theValue = defaultIfNotSet;
-		
+
 		IRPTag theTag = onElement.getTag( theTagName );
-		
+
 		if( theTag != null ){
 			theValue = theTag.getValue();
-			
+
 			if( theValue.isEmpty() ){
 				theValue = defaultIfNotSet;
 			}
 		}
-		
+
 		return theValue;
 	}
-	
+
 	public IRPPackage getExistingOrCreateNewPackageWith( 
 			String theName, 
 			IRPModelElement underneathTheEl ){
@@ -2022,23 +2034,22 @@ public abstract class BaseContext {
 
 		return theElement;
 	}
-	
+
 	public void setStringTagValueOn( 
 			IRPModelElement theOwner, 
 			String theTagName, 
 			String theValue ){
-		
+
 		IRPTag theTag = theOwner.getTag( theTagName );
-		
+
 		if( theTag != null ){
 			theOwner.setTagValue( theTag, theValue );
 		} else {
-			
 			_rhpLog.error( "Error in GeneralHelpers.setStringTagValueOn for " + 
 					_rhpLog.elInfo( theOwner) + ", unable to find tag called " + theTagName );
 		}
 	}
-	
+
 	public IRPProfile addProfileIfNotPresent(
 			String theProfileName ){
 
@@ -2059,28 +2070,28 @@ public abstract class BaseContext {
 			}
 
 		} else {
-			_rhpLog.debug( _rhpLog.elInfo( theProfile ) + " is already present in the project" );
+			//_rhpLog.debug( _rhpLog.elInfo( theProfile ) + " is already present in the project" );
 		}
 
 		return theProfile;		
 	}
-	
+
 	public void addAComponentWith(
 			String theName,
 			IRPPackage theBlockTestPackage, 
 			IRPClass theUsageDomainBlock,
 			String theSimulationMode ){
-		
+
 		IRPComponent theComponent = 
 				(IRPComponent) theBlockTestPackage.addNewAggr(
 						"Component", theName + "_EXE");
-		
+
 		theComponent.setPropertyValue("Activity.General.SimulationMode", theSimulationMode);
 
 		IRPConfiguration theConfiguration = (IRPConfiguration) theComponent.findConfiguration("DefaultConfig");
-		
+
 		String theEnvironment = theConfiguration.getPropertyValue("CPP_CG.Configuration.Environment");
-		
+
 		theConfiguration.setName( theEnvironment );			
 		theConfiguration.setPropertyValue("WebComponents.WebFramework.GenerateInstrumentationCode", "True");		
 		theConfiguration.addInitialInstance( theUsageDomainBlock );
@@ -2096,26 +2107,26 @@ public abstract class BaseContext {
 
 	public Set<IRPClassifier> getBaseClassesOf( 
 			Set<IRPClassifier> theClassifiers ){
-		
+
 		Set<IRPClassifier> theBaseClasses = new HashSet<IRPClassifier>();
-		
+
 		for (IRPModelElement theEl : theClassifiers ){
-			
+
 			@SuppressWarnings("unchecked")
 			List<IRPModelElement> theGeneralizations = 
-					theEl.getNestedElementsByMetaClass("Generalization", 0).toList();
-			
+			theEl.getNestedElementsByMetaClass("Generalization", 0).toList();
+
 			for (IRPModelElement theGenEl : theGeneralizations) {
 				IRPGeneralization theGeneralization = (IRPGeneralization)theGenEl;
-				
+
 				IRPClassifier theBaseClass = theGeneralization.getBaseClass();
 				theBaseClasses.add( theBaseClass );
 			}
 		}
-		
+
 		return theBaseClasses;
 	}
-	
+
 	public String getActionTextFrom(
 			IRPModelElement theEl) {
 
@@ -2134,7 +2145,7 @@ public abstract class BaseContext {
 				IRPEvent theEvent = theAcceptEventAction.getEvent();
 
 				if (theEvent==null){
-					_rhpLog.debug( "Event has no name so using Name" );
+					//_rhpLog.debug( "Event has no name so using Name" );
 					theSourceInfo = theState.getName();
 				} else {
 					theSourceInfo = theEvent.getName();
@@ -2150,7 +2161,7 @@ public abstract class BaseContext {
 					if (theEvent != null){
 						theSourceInfo = theEvent.getName();
 					} else {
-						_rhpLog.debug("SendAction has no Event so using Name of action");
+						//_rhpLog.debug("SendAction has no Event so using Name of action");
 						theSourceInfo = theState.getName();
 					}
 				} else {
@@ -2169,7 +2180,7 @@ public abstract class BaseContext {
 				}
 
 			} else {
-				_rhpLog.warning("Warning in getActionTextFrom, " + theStateType + " was not handled");
+				_rhpLog.warning( "Warning in getActionTextFrom, " + theStateType + " was not handled" );
 			}
 
 		} else if (theEl instanceof IRPTransition){
@@ -2207,7 +2218,7 @@ public abstract class BaseContext {
 
 			if( theSourceInfo.isEmpty() ){
 
-				_rhpLog.warning( "Warning, " + _rhpLog.elInfo( theEl ) + " has no text" );
+				_rhpLog.debug( "Warning, " + _rhpLog.elInfo( theEl ) + " has no text" );
 			} else {
 				theSourceInfo = decapitalize( theSourceInfo );
 			}
@@ -2215,7 +2226,7 @@ public abstract class BaseContext {
 
 		return theSourceInfo;
 	}
-	
+
 	public List<IRPModelElement> findModelElementsWithoutStereotypeNestedUnder(
 			IRPModelElement rootEl, 
 			String ofMetaClass, 
@@ -2236,7 +2247,7 @@ public abstract class BaseContext {
 
 		return theFound;
 	}
-	
+
 	public Set<IRPModelElement> findModelElementsNestedUnder(
 			IRPModelElement rootEl, 
 			String ofMetaClass, 
@@ -2261,7 +2272,7 @@ public abstract class BaseContext {
 
 		return theFound;
 	}
-	
+
 	public boolean checkIsNestedUnderAProfile(
 			IRPModelElement theElementToCheck){
 
@@ -2280,7 +2291,7 @@ public abstract class BaseContext {
 
 		return isUnderAProfile;
 	}
-	
+
 	public Set<IRPModelElement> findModelElementsIn(
 			List<IRPGraphElement> theGraphElementList, 
 			String withMetaClass){
@@ -2347,13 +2358,13 @@ public abstract class BaseContext {
 			if (theExistingGatewayStereotype == null && 
 					hasStereotypeCalled("deriveReqt", theDependency)){
 
-				_rhpLog.debug("Applying " + _rhpLog.elInfo(theStereotypeToApply) + " to " + _rhpLog.elInfo(theDependency));
+				//_rhpLog.debug("Applying " + _rhpLog.elInfo(theStereotypeToApply) + " to " + _rhpLog.elInfo(theDependency));
 				theDependency.setStereotype(theStereotypeToApply);
 				theDependency.changeTo("Derive Requirement");
 			}
 		}
 	}
-	
+
 	public IRPClass findOwningClassIfOneExistsFor( 
 			IRPModelElement theModelEl ){
 
@@ -2363,7 +2374,7 @@ public abstract class BaseContext {
 		if( ( theOwner != null ) &&
 				!( theOwner instanceof IRPProject ) ){
 
-			if( theOwner.getMetaClass().equals("Class") ){
+			if( theOwner.getMetaClass().equals( "Class" ) ){
 
 				theResult = (IRPClass) theOwner;
 			} else {
@@ -2373,7 +2384,7 @@ public abstract class BaseContext {
 
 		return theResult;
 	}
-	
+
 	public List<IRPLink> getLinksBetween(
 			IRPSysMLPort thePort,
 			IRPInstance ownedByPart,
@@ -2406,9 +2417,9 @@ public abstract class BaseContext {
 						andThePort.equals( toSysMLPort ) &&
 						whichIsOwnedByPart.equals( toSysMLElement ) ){
 
-					_rhpLog.debug("Check for links between " + _rhpLog.elInfo(fromSysMLPort) + " and " + 
-							_rhpLog.elInfo( toSysMLPort ) + " successfully found " + 
-							_rhpLog.elInfo( theExistingLink ) );
+					//_rhpLog.debug("Check for links between " + _rhpLog.elInfo(fromSysMLPort) + " and " + 
+					//		_rhpLog.elInfo( toSysMLPort ) + " successfully found " + 
+					//		_rhpLog.elInfo( theExistingLink ) );
 
 					theLinksBetween.add( theExistingLink );
 
@@ -2417,9 +2428,9 @@ public abstract class BaseContext {
 						andThePort.equals( fromSysMLPort ) &&
 						whichIsOwnedByPart.equals( toSysMLElement ) ){
 
-					_rhpLog.debug("Check for links between " + _rhpLog.elInfo(toSysMLPort) + " and " + 
-							_rhpLog.elInfo( fromSysMLPort ) + " successfully found " + 
-							_rhpLog.elInfo( theExistingLink ) );
+					//_rhpLog.debug("Check for links between " + _rhpLog.elInfo(toSysMLPort) + " and " + 
+					//		_rhpLog.elInfo( fromSysMLPort ) + " successfully found " + 
+					//		_rhpLog.elInfo( theExistingLink ) );
 
 					theLinksBetween.add( theExistingLink );
 
@@ -2434,13 +2445,13 @@ public abstract class BaseContext {
 			}
 		}
 
-		_rhpLog.debug("getLinksBetween " + _rhpLog.elInfo( thePort ) + " and " +
-				_rhpLog.elInfo( andThePort ) + " has found " + 
-				theLinksBetween.size() + " matches");
+		//_rhpLog.debug("getLinksBetween " + _rhpLog.elInfo( thePort ) + " and " +
+		//		_rhpLog.elInfo( andThePort ) + " has found " + 
+		//		theLinksBetween.size() + " matches");
 
 		return theLinksBetween;
 	}
-	
+
 	public String getCreateRequirementTextForPrefixing(
 			IRPModelElement basedOnContextEl,
 			String andPropertyName ){
@@ -2459,42 +2470,49 @@ public abstract class BaseContext {
 
 		return thePropertyValue;
 	}
-	
+
 	abstract public IRPPackage addNewTermPackageAndSetUnitProperties( 
 			String theName,
 			IRPPackage theOwner,
 			String theNewTermName );
-	
-	public IRPStereotype getStereotypeToUseForFunctions(
-			IRPModelElement basedOnContextEl ){
 
-		IRPStereotype theStereotype = getStereotypeBasedOn(
-				basedOnContextEl, 
-				"ExecutableMBSEProfile.FunctionalAnalysis.TraceabilityTypeToUseForFunctions" );
 
-		return theStereotype;
+	public IRPStereotype getStereotypeToUseForFunctions(){
+
+		if( _stereotypeToUseForFunctions == null ){
+			
+			_stereotypeToUseForFunctions = getStereotypeBasedOn(
+					_rhpPrj, 
+					"ExecutableMBSEProfile.FunctionalAnalysis.TraceabilityTypeToUseForFunctions" );
+		}
+		
+		return _stereotypeToUseForFunctions;
 	}
 
-	public IRPStereotype getStereotypeToUseForActions(
-			IRPModelElement basedOnContext ){
+	public IRPStereotype getStereotypeToUseForActions(){
 
-		IRPStereotype theStereotype = getStereotypeBasedOn(
-				basedOnContext, 
-				"ExecutableMBSEProfile.RequirementsAnalysis.TraceabilityTypeToUseForActions" );
+		if( _stereotypeToUseForActions == null ){
 
-		return theStereotype;
+			_stereotypeToUseForActions = getStereotypeBasedOn(
+					_rhpPrj, 
+					"ExecutableMBSEProfile.RequirementsAnalysis.TraceabilityTypeToUseForActions" );
+		}
+		
+		return _stereotypeToUseForActions;
 	}
 
-	public IRPStereotype getStereotypeToUseForUseCases(
-			IRPModelElement basedOnContext ){
+	public IRPStereotype getStereotypeToUseForUseCases(){
 
-		IRPStereotype theStereotype = getStereotypeBasedOn(
-				basedOnContext, 
-				"ExecutableMBSEProfile.RequirementsAnalysis.TraceabilityTypeToUseForUseCases" );
-
-		return theStereotype;
+		if( _stereotypeToUseForUseCases == null ){
+			
+			_stereotypeToUseForUseCases = getStereotypeBasedOn(
+					_rhpPrj, 
+					"ExecutableMBSEProfile.RequirementsAnalysis.TraceabilityTypeToUseForUseCases" );
+		}
+		
+		return _stereotypeToUseForUseCases;
 	}
-	
+
 	protected IRPStereotype getStereotypeBasedOn(
 			IRPModelElement theContextEl,
 			String andPropertyValue ){
@@ -2518,13 +2536,13 @@ public abstract class BaseContext {
 				//theStereotype = selectAndPersistStereotype( basedOnContext.getProject(), thePkg, theTag );
 
 			} else {				
-				_rhpLog.debug( "Using " + _rhpLog.elInfo( theStereotype ) + " for " + andPropertyValue );
+				//_rhpLog.debug( "Using " + _rhpLog.elInfo( theStereotype ) + " for " + andPropertyValue );
 			}		
 		}
 
 		return theStereotype;
 	}
-	
+
 	public IRPLink addConnectorBetweenSysMLPortsIfOneDoesntExist(
 			IRPSysMLPort theSrcPort,
 			IRPInstance theSrcPart, 
@@ -2535,8 +2553,8 @@ public abstract class BaseContext {
 
 		IRPClass theAssemblyBlock = (IRPClass) theSrcPart.getOwner();
 
-		_rhpLog.debug( "addConnectorBetweenSysMLPortsIfOneDoesntExist has determined that " + 
-				_rhpLog.elInfo( theAssemblyBlock ) + " is the assembly block" );
+		//_rhpLog.debug( "addConnectorBetweenSysMLPortsIfOneDoesntExist has determined that " + 
+		//		_rhpLog.elInfo( theAssemblyBlock ) + " is the assembly block" );
 
 		List<IRPLink> theLinks = getLinksBetween(
 				theSrcPort, 
@@ -2548,8 +2566,8 @@ public abstract class BaseContext {
 		// only add if one does not already exist
 		if( theLinks.size() == 0 ){
 
-			_rhpLog.debug( "Adding a new connector between " + _rhpLog.elInfo( theSrcPort ) + 
-					" and " + _rhpLog.elInfo( theTgtPort ) + " as one does not exist" ); 
+			//_rhpLog.debug( "Adding a new connector between " + _rhpLog.elInfo( theSrcPort ) + 
+			//		" and " + _rhpLog.elInfo( theTgtPort ) + " as one does not exist" ); 
 
 			IRPPackage thePkg = (IRPPackage) theAssemblyBlock.getOwner();
 
@@ -2560,7 +2578,7 @@ public abstract class BaseContext {
 					theSrcPort, 
 					theTgtPort );
 
-			theLink.changeTo("connector");
+			theLink.changeTo( "connector" );
 
 			String theUniqueName = determineUniqueNameBasedOn(
 					theSrcPart.getName() + "_" + theSrcPort.getName() + "__" + 
@@ -2571,8 +2589,8 @@ public abstract class BaseContext {
 			theLink.setName( theUniqueName );		
 			theLink.setOwner( theAssemblyBlock );
 
-			_rhpLog.debug("Added " + _rhpLog.elInfo( theLink ) + 
-					" to " + _rhpLog.elInfo( theAssemblyBlock ));
+			//_rhpLog.debug("Added " + _rhpLog.elInfo( theLink ) + 
+			//		" to " + _rhpLog.elInfo( theAssemblyBlock ));
 		}
 
 		return theLink;
@@ -2612,7 +2630,7 @@ public abstract class BaseContext {
 			_rhpLog.error( "Error: Unable to find element with name " + toBlockWithName );
 		}
 	}
-	
+
 	public List<IRPModelElement> getExistingElementsBasedOn(
 			IRPPackage theOwningPackage,
 			String theRelatedPackageStereotype,
@@ -2649,14 +2667,14 @@ public abstract class BaseContext {
 
 		return existingEls;
 	}
-	
+
 	public void moveRequirementIfNeeded(
 			IRPRequirement theReqt) {
 	}
-	
+
 	public void autoPopulateProjectPackageDiagramIfNeeded() {
 	}
-	
+
 	public boolean getIsCreateSDWithAutoShowApplied(
 			IRPModelElement forContextEl ){
 
@@ -2676,7 +2694,7 @@ public abstract class BaseContext {
 
 		return result;
 	}
-	
+
 	public void info( 
 			String theStr ){
 

@@ -328,7 +328,7 @@ public class SelectedElementContext {
 	public IRPPackage getSimulationSettingsPackageBasedOn(
 			IRPModelElement theContextEl ){
 
-		_context.debug( "getSimulationSettingsPackageBasedOn invoked for " + _context.elInfo( theContextEl ) );
+		//_context.debug( "getSimulationSettingsPackageBasedOn invoked for " + _context.elInfo( theContextEl ) );
 
 		IRPPackage theSettingsPkg = null;
 

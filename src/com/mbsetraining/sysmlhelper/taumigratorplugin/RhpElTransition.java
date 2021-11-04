@@ -274,7 +274,7 @@ public class RhpElTransition extends RhpElGraphEdge {
 								(IRPGraphNode) _context.getCorrespondingGraphElement( 
 										theDstModelEl, theActivityDiagramGE );
 												
-						_context.dumpGraphicalPropertiesFor(theExistingDstGraphNode);
+						//_context.dumpGraphicalPropertiesFor(theExistingDstGraphNode);
 						
 						GraphNodeInfo theDstNodeInfo = new GraphNodeInfo( theExistingDstGraphNode, _context );
 

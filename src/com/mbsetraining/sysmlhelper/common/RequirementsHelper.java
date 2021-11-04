@@ -192,8 +192,7 @@ public class RequirementsHelper {
 		IRPDependency theDep = theModelObject.addDependencyTo( theReqt );
 
 		IRPStereotype theDependencyStereotype = 
-				_context.getStereotypeToUseForActions(
-						theModelObject );
+				_context.getStereotypeToUseForActions();
 		
 		if( theDependencyStereotype != null ){
 			

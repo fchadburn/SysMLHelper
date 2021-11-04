@@ -1,4 +1,4 @@
-package requirementsanalysisplugin;
+package com.mbsetraining.sysmlhelper.rolluptraceabilitytotransition;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -178,7 +178,7 @@ public class RollUpTraceabilityToTheTransitionPanel extends ExecutableMBSEBasePa
 		Set<IRPRequirement> theDependsOns = new HashSet<>();
 		
 		IRPStereotype theDependencyStereotype = 
-				((ExecutableMBSE_Context) _context).getStereotypeToUseForFunctions( theTransition );
+				((ExecutableMBSE_Context) _context).getStereotypeToUseForFunctions();
 				
 		IRPModelElement theOwner = 
 				_context.findOwningClassIfOneExistsFor( 

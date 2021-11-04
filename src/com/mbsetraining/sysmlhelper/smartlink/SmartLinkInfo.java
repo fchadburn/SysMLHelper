@@ -45,7 +45,7 @@ public class SmartLinkInfo {
 		
 		_isPopulatePossible = false;
 		
-		IRPModelElement contextEl = theEndLinkEls.get(0);
+		//IRPModelElement contextEl = theEndLinkEls.get(0);
 		
 		if( _startLinkElements.areElementsAllReqts() ){
 
@@ -54,13 +54,11 @@ public class SmartLinkInfo {
 
 		} else if( _startLinkElements.areElementsAllDeriveDependencySources() ){
 
-			_relationType = _context.getStereotypeToUseForActions( 
-					contextEl );
+			_relationType = _context.getStereotypeToUseForActions();
 
 		} else if( _startLinkElements.areElementsAllRefinementDependencySources() ){
 
-			_relationType = _context.getStereotypeToUseForUseCases( 
-					contextEl );
+			_relationType = _context.getStereotypeToUseForUseCases();
 
 		} else if( _startLinkElements.areElementsAllVerificationDependencySources() ){
 
@@ -68,8 +66,7 @@ public class SmartLinkInfo {
 			
 		} else if( _startLinkElements.areElementsAllSatisfyDependencySources() ){
 
-			_relationType = _context.getStereotypeToUseForFunctions( 
-					contextEl );
+			_relationType = _context.getStereotypeToUseForFunctions();
 
 		} else {
 

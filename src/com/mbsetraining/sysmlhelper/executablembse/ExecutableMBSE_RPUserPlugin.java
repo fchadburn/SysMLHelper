@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Set;
 
 import requirementsanalysisplugin.PopulateRelatedRequirementsPanel;
-import requirementsanalysisplugin.RollUpTraceabilityToTheTransitionPanel;
 import functionalanalysisplugin.CreateNewActorPanel;
 import functionalanalysisplugin.CreateNewBlockPartPanel;
 import functionalanalysisplugin.TestCaseCreator;
@@ -28,6 +27,7 @@ import com.mbsetraining.sysmlhelper.gateway.CreateGatewayProjectPanel;
 import com.mbsetraining.sysmlhelper.gateway.MarkedAsDeletedPanel;
 import com.mbsetraining.sysmlhelper.gateway.MoveRequirements;
 import com.mbsetraining.sysmlhelper.populateparts.PopulatePartsPanel;
+import com.mbsetraining.sysmlhelper.rolluptraceabilitytotransition.RollUpTraceabilityToTheTransitionPanel;
 import com.mbsetraining.sysmlhelper.sequencediagram.SequenceDiagramCreator;
 import com.mbsetraining.sysmlhelper.sequencediagram.UpdateInferfacesBasedOnSequenceDiagramPanel;
 import com.mbsetraining.sysmlhelper.sequencediagram.VerificationDependencyUpdater;
@@ -52,7 +52,12 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 		String theAppID = theRhapsodyApp.getApplicationConnectionString();
 
-		_context = new ExecutableMBSE_Context( theAppID );
+		try {
+			_context = new ExecutableMBSE_Context( theAppID );
+
+		} catch (Exception e) {
+			_context.error( "Exception in RhpPluginInit, e=" + e.getMessage() );
+		}
 
 		final String legalNotice = 
 				"Copyright (C) 2015-2021  MBSE Training and Consulting Limited (www.executablembse.com)"

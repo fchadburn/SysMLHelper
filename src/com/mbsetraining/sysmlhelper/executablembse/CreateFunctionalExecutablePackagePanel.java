@@ -99,8 +99,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 		List<IRPActor> theActors = new ArrayList<>();
 
 		@SuppressWarnings("unchecked")
-		List<IRPModelElement> theUseCaseEls = 
-		underneathTheEl.getNestedElementsByMetaClass( 
+		List<IRPModelElement> theUseCaseEls = underneathTheEl.getNestedElementsByMetaClass( 
 				"UseCase", 1 ).toList();
 
 		for( IRPModelElement theUseCaseEl : theUseCaseEls ){
@@ -112,9 +111,10 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 
 			for( IRPModelElement theRelationEl : theRelationEls ){
 
-				_context.debug("Found " + _context.elInfo( theRelationEl ) );
+				//_context.debug("Found " + _context.elInfo( theRelationEl ) );
 
 				if( theRelationEl.getMetaClass().equals( "AssociationEnd" ) ){
+					
 					IRPRelation theRelation = (IRPRelation) theRelationEl;
 					IRPClassifier theOtherClass = theRelation.getOtherClass();
 
@@ -204,7 +204,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 		_useCasePkgs = new ArrayList<>();
 
 		for( Object theValue : theValues ){
-			_context.debug( "Value is " + theValue.toString() );
+			//_context.debug( "Value is " + theValue.toString() );
 
 			IRPModelElement theUseCasePkg =
 					theElementMap.getElementUsingFullName( theValue.toString() );
@@ -221,8 +221,8 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 			}
 		}
 
-		_context.debug("Setting root package to " + _context.elInfo( _rootPackage ) );
-		_context.debug("There are " + _originalActors.size() + " original actors found" );
+		//_context.debug("Setting root package to " + _context.elInfo( _rootPackage ) );
+		//_context.debug("There are " + _originalActors.size() + " original actors found" );
 
 		_simulationType = withSimulationType;
 
@@ -312,8 +312,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 		thePanel.add( _blockNameTextField );			
 
 		List<IRPModelElement> theStereotypes = 
-				_context.getStereotypesForBlockPartCreation( 
-						_rootPackage.getProject() );
+				_context.getStereotypesForBlockPartCreation();
 
 		_chosenStereotype = new RhapsodyComboBox( theStereotypes, false );
 
@@ -410,11 +409,11 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 
 		if( _simulationType==SimulationType.FullSim ){
 
-			_context.debug( "There are " + _originalActors.size() );
+			//_context.debug( "There are " + _originalActors.size() );
 
 			for( IRPModelElement theActor : _originalActors ){
 
-				_context.debug("Creating actor '"+ theActor.getName() + "'");
+				//_context.debug( "Creating actor '"+ theActor.getName() + "'" );
 
 				JCheckBox theActorCheckBox = new JCheckBox("Create actor called:");
 
@@ -590,7 +589,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 
 				} else {
 					theLogicalSystemBlock.addGeneralization( (IRPClassifier) theChosenOne );
-					_context.debug( _context.elInfo( theChosenOne ) + "was the chosen one" );
+					//_context.debug( _context.elInfo( theChosenOne ) + "was the chosen one" );
 				}
 
 				// Add Usage dependency to the interfaces package that will contain the system events

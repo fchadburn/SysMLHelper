@@ -30,7 +30,7 @@ public class CreateExternalSignalsPkgChooser {
 			ExecutableMBSE_Context context ){
 		
 		_context = context;
-		
+				
 		final String theDefaultName = _context.getDefaultExternalSignalsPackageName();
 		
 		_ownerPkg = theOwnerPkg;

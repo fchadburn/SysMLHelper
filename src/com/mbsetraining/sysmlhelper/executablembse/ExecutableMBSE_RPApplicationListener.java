@@ -502,8 +502,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 		// only do move if property is set
 		boolean isEnabled = 
-				_context.getIsEnableAutoMoveOfRequirements(
-						modelElement );
+				_context.getIsEnableAutoMoveOfRequirements();
 
 		String theReqtsPkgStereotypeName = _context.REQTS_ANALYSIS_REQUIREMENT_PACKAGE;
 

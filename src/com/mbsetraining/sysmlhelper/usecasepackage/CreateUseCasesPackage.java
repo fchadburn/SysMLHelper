@@ -37,7 +37,7 @@ public class CreateUseCasesPackage {
 		
 		String theAdornedName = theUseCasesPackageName + "Pkg";
 		
-		_context.debug( "The name is " + theAdornedName );
+		//_context.debug( "The name is " + theAdornedName );
 		
 		IRPPackage theUseCasePkg = theOwningPkg.addNestedPackage( theAdornedName );
 		theUseCasePkg.changeTo( _context.REQTS_ANALYSIS_USE_CASE_PACKAGE );

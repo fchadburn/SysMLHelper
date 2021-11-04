@@ -360,8 +360,7 @@ public abstract class CreateTracedElementPanel extends JPanel {
 			List<IRPRequirement> theReqtsToAdd ){
 
 		IRPStereotype theDependencyStereotype =
-				_context.getStereotypeToUseForFunctions( 
-						_context.get_selectedContext().getChosenBlock() );
+				_context.getStereotypeToUseForFunctions();
 				
 		if( theDependencyStereotype != null ){
 			

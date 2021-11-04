@@ -75,12 +75,13 @@ public class PortBasedConnector {
 							theTargetPart,
 							theOwningClassifier );
 						
+			/*
 			for (IRPLink theLink : theMatchingLinks) {
 				_context.debug( _context.elInfo( theLink ) + 
 						" is a link between " + _context.elInfo( theSourcePart ) + " and " + 
 						_context.elInfo( theTargetPart ) + " in the context of " + 
 						_context.elInfo( theOwningClassifier ) );
-			}
+			}*/
 			
 			if( theMatchingLinks.size() == 1 ){
 				_link = theMatchingLinks.get( 0 );
@@ -107,8 +108,8 @@ public class PortBasedConnector {
 					UserInterfaceHelper.showWarningDialog("Error");
 				}
 				
-				_context.debug( _context.elInfo( _sourcePort ) + " on " + _context.elInfo( _sourceClassifier) + " is required interface port" );				
-				_context.debug( _context.elInfo( _targetPort ) + " on " + _context.elInfo( _targetClassifier) + " is the provided interface port" );
+				//_context.debug( _context.elInfo( _sourcePort ) + " on " + _context.elInfo( _sourceClassifier) + " is required interface port" );				
+				//_context.debug( _context.elInfo( _targetPort ) + " on " + _context.elInfo( _targetClassifier) + " is the provided interface port" );
 			}
 		}
 	}
@@ -210,9 +211,9 @@ public class PortBasedConnector {
 			IRPClassifier ownedByElement,
 			IRPClass theInterface ){
 		
-		_context.debug( _context.elInfo( ownedByElement ) + 
-				" is the provider of " + _context.elInfo( theInterface ) +
-				" so added a Realization to it to enable inherited operations to be seen" );
+		//_context.debug( _context.elInfo( ownedByElement ) + 
+		//		" is the provider of " + _context.elInfo( theInterface ) +
+		//		" so added a Realization to it to enable inherited operations to be seen" );
 
 		try {
 			boolean isThereAnExistingGeneralization = 
@@ -233,19 +234,18 @@ public class PortBasedConnector {
 					IRPGeneralization theGen = (IRPGeneralization)theGeneralizationEl;
 					
 					if( theGen.getBaseClass().equals( theInterface ) ){
-						_context.debug( "Changing " + _context.elInfo( theGen ) + " to be a Realization" );
+						//_context.debug( "Changing " + _context.elInfo( theGen ) + " to be a Realization" );
 						theGen.changeTo( "Realization" );
 					}
 				}
 			} else {
-				_context.debug("Skipped adding a realization to " + _context.elInfo( theInterface ) + 
-						" from " + _context.elInfo( ownedByElement ) + " as one already exists" );
+				//_context.debug("Skipped adding a realization to " + _context.elInfo( theInterface ) + 
+				//		" from " + _context.elInfo( ownedByElement ) + " as one already exists" );
 			}
 
-		} catch (Exception e) {
-			_context.error("Exception in addRealizationTo, trying to add generalisation, e=" + e.getMessage() );
+		} catch( Exception e ){
+			_context.error( "Exception in addRealizationTo, trying to add generalisation, e=" + e.getMessage() );
 		}
-
 	}
 	
 	private List<IRPLink> getExistingLinksBetween(

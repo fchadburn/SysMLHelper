@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Set;
 
 import requirementsanalysisplugin.PopulateRelatedRequirementsPanel;
-import requirementsanalysisplugin.RollUpTraceabilityToTheTransitionPanel;
 import functionalanalysisplugin.PopulateFunctionalAnalysisPkg;
 import functionalanalysisplugin.PopulateFunctionalAnalysisPkg.SimulationType;
 import designsynthesisplugin.PopulateDesignSynthesisPkg;
@@ -20,6 +19,7 @@ import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.gateway.CreateGatewayProjectPanel;
 import com.mbsetraining.sysmlhelper.gateway.MarkedAsDeletedPanel;
 import com.mbsetraining.sysmlhelper.gateway.MoveRequirements;
+import com.mbsetraining.sysmlhelper.rolluptraceabilitytotransition.RollUpTraceabilityToTheTransitionPanel;
 import com.mbsetraining.sysmlhelper.sequencediagram.VerificationDependencyUpdater;
 import com.mbsetraining.sysmlhelper.smartlink.EndlinkPanel;
 import com.telelogic.rhapsody.core.*;
