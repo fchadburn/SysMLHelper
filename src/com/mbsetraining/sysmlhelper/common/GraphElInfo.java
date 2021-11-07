@@ -6,12 +6,12 @@ import com.telelogic.rhapsody.core.IRPGraphNode;
 
 public class GraphElInfo {
 
-	ConfigurationSettings _context;
+	BaseContext _context;
 	IRPGraphElement _graphEl;
 	
 	public GraphElInfo(
 			IRPGraphElement theGraphEl,
-			ConfigurationSettings context ) {
+			BaseContext context ) {
 		
 		_context = context;
 		_graphEl = theGraphEl;

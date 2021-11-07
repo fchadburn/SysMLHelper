@@ -20,10 +20,10 @@ import com.telelogic.rhapsody.core.IRPStructureDiagram;
 
 public class BlockDiagramHelper {
 
-	ConfigurationSettings _context;
+	BaseContext _context;
 	
 	public BlockDiagramHelper(
-			ConfigurationSettings context ) {
+			BaseContext context ) {
 
 		_context = context;
 	}

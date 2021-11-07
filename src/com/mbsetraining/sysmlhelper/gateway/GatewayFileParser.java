@@ -10,7 +10,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.common.BaseContext;
 
 public class GatewayFileParser {
 
@@ -18,11 +18,11 @@ public class GatewayFileParser {
 
 	List<String> m_SectionNames;
 	List<GatewayFileSection> m_SectionContents;
-	ConfigurationSettings _context;
+	BaseContext _context;
 
 	public GatewayFileParser(
 			File theFile,
-			ConfigurationSettings context ) {
+			BaseContext context ) {
 	
 		_context = context;
 		m_File = theFile;

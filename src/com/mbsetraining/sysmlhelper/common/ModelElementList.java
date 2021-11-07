@@ -14,24 +14,24 @@ public class ModelElementList extends ArrayList<IRPModelElement>{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	protected ConfigurationSettings _context;
+	protected BaseContext _context;
 	
 	public ModelElementList(
-			ConfigurationSettings context ) {
+			BaseContext context ) {
 		super();
 		_context = context;
 	}
 
 	public ModelElementList(
 			Collection<? extends IRPModelElement> c,
-			ConfigurationSettings context ) {
+			BaseContext context ) {
 		super(c);
 		_context = context;
 	}
 
 	public ModelElementList(
 			int initialCapacity,
-			ConfigurationSettings context ) {
+			BaseContext context ) {
 		super(initialCapacity);
 		_context = context;
 	}

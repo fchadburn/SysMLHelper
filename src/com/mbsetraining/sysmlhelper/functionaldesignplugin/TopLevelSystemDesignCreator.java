@@ -3,7 +3,6 @@ package com.mbsetraining.sysmlhelper.functionaldesignplugin;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.*;
 
@@ -37,15 +36,13 @@ public class TopLevelSystemDesignCreator {
 	}
 
 	public void createSampleModel(
-			IRPPackage theRhpPrj,
-			List<IRPActor> theMasterActors,
-			ConfigurationSettings theConfigSettings ){
+			List<IRPActor> theMasterActors ){
 
 		String theNewTerm = "1.1 System-Level Design";
 
 		TopLevelSystemDesignCreator theCreator = 
 				new TopLevelSystemDesignCreator( 
-						theRhpPrj, 
+						_context.get_rhpPrj(), 
 						theNewTerm,
 						"PlatformManagementSystem", 
 						"PMS", 

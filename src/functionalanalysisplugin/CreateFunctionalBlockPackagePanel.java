@@ -1,10 +1,6 @@
 package functionalanalysisplugin;
 
 import functionalanalysisplugin.PopulateFunctionalAnalysisPkg.SimulationType;
-import generalhelpers.GeneralHelpers;
-import generalhelpers.Logger;
-import generalhelpers.StereotypeAndPropertySettings;
-import generalhelpers.UserInterfaceHelpers;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -30,6 +26,7 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.GraphNodeInfo;
 import com.mbsetraining.sysmlhelper.common.RhapsodyComboBox;
@@ -53,7 +50,7 @@ public class CreateFunctionalBlockPackagePanel extends ExecutableMBSEBasePanel {
 	private JCheckBox m_TestDriverCheckBox;
 	private SimulationType m_SimulationType;
 	private RhapsodyComboBox m_ChosenStereotype;
-	private ConfigurationSettings m_ConfigSettings;
+	private BaseContext m_ConfigSettings;
 	
 	/**
 	 * 
@@ -64,7 +61,7 @@ public class CreateFunctionalBlockPackagePanel extends ExecutableMBSEBasePanel {
 			final IRPPackage theRootPackage,
 			final IRPPackage theRequirementsAnalysisPkg,
 			final SimulationType withSimulationType,
-			final ConfigurationSettings andConfigSettings ) {
+			final BaseContext andConfigSettings ) {
 		
 		String introText = null;
 		

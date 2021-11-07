@@ -2,7 +2,7 @@ package com.mbsetraining.sysmlhelper.sequencediagram;
 
 import java.util.List;
 
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
@@ -28,8 +28,7 @@ public class MessageInfo {
 	protected boolean _isDirectedFeatureSettingNeeded;
 	protected boolean _isSetAsBehaviouralPortNeededForToPort;
 	protected boolean _isSetAsBehaviouralPortNeededForFromPort;
-
-	protected ConfigurationSettings _context;
+	protected BaseContext _context;
 
 	public static void main(String[] args) {
 		
@@ -67,7 +66,7 @@ public class MessageInfo {
 			IRPMessage theMessage,
 			IRPSequenceDiagram theDiagram,
 			InterfaceInfoList candidateInterfaces,
-			ConfigurationSettings context ) {
+			BaseContext context ) {
 		
 		_context = context;
 		_message = theMessage;

@@ -11,10 +11,10 @@ import com.telelogic.rhapsody.core.*;
 public class NestedActivityDiagram {
 
 	protected final static String m_Prefix = "AD - ";
-	protected ConfigurationSettings _context;
+	protected BaseContext _context;
 	
 	public NestedActivityDiagram(
-			ConfigurationSettings context ) {
+			BaseContext context ) {
 		
 		_context = context;
 	}

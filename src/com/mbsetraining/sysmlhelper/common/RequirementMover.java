@@ -11,7 +11,7 @@ public class RequirementMover extends ElementMover {
 	public RequirementMover(
 			IRPModelElement theElement,
 			String whereMoveToHasStereotype,
-			ConfigurationSettings context ){
+			BaseContext context ){
 		
 		super( theElement, whereMoveToHasStereotype, context );
 		

@@ -3,12 +3,12 @@ package com.mbsetraining.sysmlhelper.executablembse;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.telelogic.rhapsody.core.*;
 
 public class AutoPackageDiagram {
 
-	ConfigurationSettings _context;
+	BaseContext _context;
 	IRPObjectModelDiagram _diagram = null; 
 	
 	private boolean isRootOwnerInProjectAProfile(
@@ -33,7 +33,7 @@ public class AutoPackageDiagram {
 	}
 	
 	public AutoPackageDiagram( 
-			ConfigurationSettings theContext ) {
+			BaseContext theContext ) {
 		
 		_context = theContext;
 	}

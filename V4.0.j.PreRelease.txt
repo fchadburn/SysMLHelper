@@ -535,6 +535,7 @@ V4.0.j.Rhp831.PreRelease (XX-XXX-XXXX):
 #368 24-OCT-2021: ExecutableMBSE: Fixes to get selected context to work when creating multiple scenario packages in same project (F.J.Chadburn)
 #369 04-NOV-2021: ExecutableMBSE: Some optimisation of logging and property reading to speed things up (F.J.Chadburn)
 #370 04-NOV-2021: ExecutableMBSE: Move properties to the FunctionalAnalysis set and change default of IsSendEventViaPanelWantedByDefault to true (F.J.Chadburn)
+#371 07-NOV-2021: ExecutableMBSE: Refactored to separate out ConfigurationSettings file read from _context construction to speed up dialog launching (F.J.Chadburn)
 
 Backlog/Known issues
 

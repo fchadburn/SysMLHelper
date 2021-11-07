@@ -3,17 +3,17 @@ package com.mbsetraining.sysmlhelper.executablembse;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.telelogic.rhapsody.core.*;
 
 public class HierarchyHelper {
 
 	private List<IRPInstance> _instances = new ArrayList<>();
-	private ConfigurationSettings _context;
+	private BaseContext _context;
 	
 	public HierarchyHelper(
 			IRPModelElement basedOnRoot,
-			ConfigurationSettings context ){
+			BaseContext context ){
 		
 		_context = context;
 		

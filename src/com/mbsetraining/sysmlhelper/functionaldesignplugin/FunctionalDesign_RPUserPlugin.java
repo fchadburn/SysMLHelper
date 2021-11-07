@@ -3,6 +3,7 @@ package com.mbsetraining.sysmlhelper.functionaldesignplugin;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.*;
 
@@ -10,7 +11,8 @@ public class FunctionalDesign_RPUserPlugin extends RPUserPlugin {
 
 	protected FunctionalDesign_Context _context;
 	protected FunctionalDesign_RPApplicationListener _listener = null;
-
+	protected ConfigurationSettings _settings;
+	
 	// called when plug-in is loaded
 	public void RhpPluginInit(
 			final IRPApplication theRhapsodyApp ){
@@ -45,9 +47,14 @@ public class FunctionalDesign_RPUserPlugin extends RPUserPlugin {
 
 		_listener.connect( theRhapsodyApp );
 
-		_context.info( "The FunctionalDesign profile version is " + _context.getProperty( "PluginVersion" ) );
-
-		_context.checkIfSetupProjectIsNeeded( false, true );
+		_settings = new ConfigurationSettings(
+				"FunctionalDesign.properties", 
+				"FunctionalDesign_MessagesBundle",
+				"FunctionalDesign" , 
+				_context );
+		
+		_context.info( "The FunctionalDesign profile version is " + _context.getPluginVersion() );
+		_settings.checkIfSetupProjectIsNeeded( false, true );
 	}
 
 	// called when the plug-in pop-up menu  is selected
@@ -63,14 +70,14 @@ public class FunctionalDesign_RPUserPlugin extends RPUserPlugin {
 
 			if( !theSelectedEls.isEmpty() ){
 
-				if( menuItem.equals( _context.getString(
+				if( menuItem.equals( _settings.getString(
 						"functionaldesignplugin.CreateFunctionalDesignPkgStructure" ) ) ){
 
 					if( theSelectedEl instanceof IRPPackage ){
 						CreateFunctionalDesignSpecificationPackage.launchTheDialog( _context.get_rhpAppID() );
 					}
 
-				} else if( menuItem.equals( _context.getString( 
+				} else if( menuItem.equals( _settings.getString( 
 						"functionaldesignplugin.CreateSampleProjectStructure" ) ) ){
 
 					boolean isContinue = checkAndPerformProfileSetupIfNeeded();
@@ -90,12 +97,10 @@ public class FunctionalDesign_RPUserPlugin extends RPUserPlugin {
 								theMasterActors,
 								_context );
 
-						TopLevelSystemDesignCreator theTopLevelCreator = new TopLevelSystemDesignCreator( _context );
+						TopLevelSystemDesignCreator theTopLevelCreator = 
+								new TopLevelSystemDesignCreator( _context );
 
-						theTopLevelCreator.createSampleModel(
-								theRhpPrj, 
-								theMasterActors,
-								_context );
+						theTopLevelCreator.createSampleModel( theMasterActors );
 
 						_context.deleteIfPresent( "Structure1", "StructureDiagram", theRhpPrj );
 						_context.deleteIfPresent( "Model1", "ObjectModelDiagram", theRhpPrj );
@@ -107,7 +112,8 @@ public class FunctionalDesign_RPUserPlugin extends RPUserPlugin {
 						//PopulateRequirementsAnalysisPkg.createRequirementsAnalysisPkg( (IRPProject) theSelectedEl ); 
 					}
 
-				} else if (menuItem.equals(_context.getString("functionaldesignplugin.SetupFunctionalDesignProjectProperties"))){
+				} else if (menuItem.equals( _settings.getString(
+						"functionaldesignplugin.SetupFunctionalDesignProjectProperties"))){
 
 					checkAndPerformProfileSetupIfNeeded();
 
@@ -260,7 +266,7 @@ public class FunctionalDesign_RPUserPlugin extends RPUserPlugin {
 		boolean isContinue = true;
 
 		boolean isShowInfoDialog = _context.getIsShowProfileVersionCheckDialogs();
-		boolean isSetupNeeded = _context.checkIfSetupProjectIsNeeded( isShowInfoDialog, false );
+		boolean isSetupNeeded = _settings.checkIfSetupProjectIsNeeded( isShowInfoDialog, false );
 
 		if( isSetupNeeded ){
 
@@ -270,7 +276,7 @@ public class FunctionalDesign_RPUserPlugin extends RPUserPlugin {
 			isContinue = UserInterfaceHelper.askAQuestion( theMsg );
 
 			if( isContinue ){
-				_context.setupProjectWithProperties();
+				_settings.setupProjectWithProperties();
 			}
 		}
 		return isContinue;

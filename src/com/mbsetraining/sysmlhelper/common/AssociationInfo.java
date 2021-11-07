@@ -13,12 +13,12 @@ public class AssociationInfo {
 	protected IRPActor m_NewActor = null;
 	protected Set<IRPGraphEdge> m_GraphEdges = new HashSet<>();
 	protected Set<IRPDiagram> m_Diagrams = new HashSet<>();
-	protected ConfigurationSettings _context;
+	protected BaseContext _context;
 	
 	public AssociationInfo( 
 			IRPRelation theOldRelation, 
 			IRPRelation theNewRelation,
-			ConfigurationSettings context ) {
+			BaseContext context ) {
 
 		_context = context;
 		

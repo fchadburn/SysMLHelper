@@ -23,18 +23,71 @@ import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.common.BaseContext;
 
 public class JCheckBoxTree extends JTree {
 
 	private static final long serialVersionUID = -4194122328392241790L;
 
 	JCheckBoxTree _selfPointer = this;
-	ConfigurationSettings _context;
+	BaseContext _context;
 
+	public JCheckBoxTree( 
+			BaseContext context ) {
+		
+		super();
+		
+		_context = context;
+		
+		// Disabling toggling by double-click
+		this.setToggleClickCount(0);
+		// Overriding cell renderer by new one defined above
+		CheckBoxCellRenderer cellRenderer = new CheckBoxCellRenderer();
+		this.setCellRenderer(cellRenderer);
+
+		// Overriding selection model by an empty one
+		DefaultTreeSelectionModel dtsm = new DefaultTreeSelectionModel() {      
+			private static final long serialVersionUID = -8190634240451667286L;
+			// Totally disabling the selection mechanism
+			public void setSelectionPath(TreePath path) {
+			}           
+			public void addSelectionPath(TreePath path) {                       
+			}           
+			public void removeSelectionPath(TreePath path) {
+			}
+			public void setSelectionPaths(TreePath[] pPaths) {
+			}
+		};
+		// Calling checking mechanism on mouse click
+		this.addMouseListener(new MouseListener() {
+			public void mouseClicked(MouseEvent arg0) {
+				TreePath tp = _selfPointer.getPathForLocation(arg0.getX(), arg0.getY());
+				if (tp == null) {
+					return;
+				}
+				boolean checkMode = ! nodesCheckingState.get(tp)._isSelected;
+				checkSubTree(tp, checkMode);
+				updatePredecessorsWithCheckMode(tp, checkMode);
+				// Firing the check change event
+				fireCheckChangeEvent(new CheckChangeEvent(new Object()));
+				// Repainting tree after the data structures were updated
+				_selfPointer.repaint();                          
+			}           
+			public void mouseEntered(MouseEvent arg0) {         
+			}           
+			public void mouseExited(MouseEvent arg0) {              
+			}
+			public void mousePressed(MouseEvent arg0) {             
+			}
+			public void mouseReleased(MouseEvent arg0) {
+			}           
+		});
+		this.setSelectionModel(dtsm);
+	}
 	// Defining data structure that will enable to fast check-indicate the state of each node
 	// It totally replaces the "selection" mechanism of the JTree
 	public class CheckedNode {
+		
 		boolean _isSelected;
 		boolean _hasChildren;
 		boolean _allChildrenSelected;
@@ -184,59 +237,6 @@ public class JCheckBoxTree extends JTree {
 
 			return this;
 		}       
-	}
-
-	public JCheckBoxTree( 
-			ConfigurationSettings context ) {
-		
-		super();
-		
-		_context = context;
-		
-		// Disabling toggling by double-click
-		this.setToggleClickCount(0);
-		// Overriding cell renderer by new one defined above
-		CheckBoxCellRenderer cellRenderer = new CheckBoxCellRenderer();
-		this.setCellRenderer(cellRenderer);
-
-		// Overriding selection model by an empty one
-		DefaultTreeSelectionModel dtsm = new DefaultTreeSelectionModel() {      
-			private static final long serialVersionUID = -8190634240451667286L;
-			// Totally disabling the selection mechanism
-			public void setSelectionPath(TreePath path) {
-			}           
-			public void addSelectionPath(TreePath path) {                       
-			}           
-			public void removeSelectionPath(TreePath path) {
-			}
-			public void setSelectionPaths(TreePath[] pPaths) {
-			}
-		};
-		// Calling checking mechanism on mouse click
-		this.addMouseListener(new MouseListener() {
-			public void mouseClicked(MouseEvent arg0) {
-				TreePath tp = _selfPointer.getPathForLocation(arg0.getX(), arg0.getY());
-				if (tp == null) {
-					return;
-				}
-				boolean checkMode = ! nodesCheckingState.get(tp)._isSelected;
-				checkSubTree(tp, checkMode);
-				updatePredecessorsWithCheckMode(tp, checkMode);
-				// Firing the check change event
-				fireCheckChangeEvent(new CheckChangeEvent(new Object()));
-				// Repainting tree after the data structures were updated
-				_selfPointer.repaint();                          
-			}           
-			public void mouseEntered(MouseEvent arg0) {         
-			}           
-			public void mouseExited(MouseEvent arg0) {              
-			}
-			public void mousePressed(MouseEvent arg0) {             
-			}
-			public void mouseReleased(MouseEvent arg0) {
-			}           
-		});
-		this.setSelectionModel(dtsm);
 	}
 
 	// When a node is checked/unchecked, updating the states of the predecessors

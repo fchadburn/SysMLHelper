@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.mbsetraining.sysmlhelper.common.RequirementMover;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.IRPActor;
@@ -28,7 +28,7 @@ import com.telelogic.rhapsody.core.IRPSysMLPort;
 import com.telelogic.rhapsody.core.IRPTransition;
 import com.telelogic.rhapsody.core.IRPUnit;
 
-public class ExecutableMBSE_Context extends ConfigurationSettings {
+public class ExecutableMBSE_Context extends BaseContext {
 
 	public final String FLOW_CONNECTOR = "Flow Connector";
 	public final String SUBSYSTEM_USAGE = "Subsystem Usage";
@@ -84,18 +84,14 @@ public class ExecutableMBSE_Context extends ConfigurationSettings {
 	public ExecutableMBSE_Context(
 			String theAppID ){
 
-		super( theAppID, 
+		super(  theAppID, 
 				"ExecutableMBSEProfile.General.EnableErrorLogging", 
-				"ExecutableMBSEProfile.General.EnableWarningLogging",
+				"ExecutableMBSEProfile.General.EnableWarningLogging", 
 				"ExecutableMBSEProfile.General.EnableInfoLogging", 
-				"ExecutableMBSEProfile.General.EnableDebugLogging",
-				"ExecutableMBSEProfile.General.PluginVersion",
-				"ExecutableMBSEProfile.General.UserDefinedMetaClassesAsSeparateUnit",
-				"ExecutableMBSEProfile.General.AllowPluginToControlUnitGranularity",
-				"ExecutableMBSE.properties", 
-				"ExecutableMBSE_MessagesBundle",
-				"ExecutableMBSE" 
-				);
+				"ExecutableMBSEProfile.General.EnableDebugLogging", 
+				"ExecutableMBSEProfile.General.PluginVersion", 
+				"ExecutableMBSEProfile.General.UserDefinedMetaClassesAsSeparateUnit", 
+				"ExecutableMBSEProfile.General.AllowPluginToControlUnitGranularity" );
 
 		_selectionContext = new SelectedElementContext( this );
 	}

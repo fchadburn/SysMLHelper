@@ -8,10 +8,10 @@ import com.telelogic.rhapsody.core.*;
    
 public class RequirementsHelper {
  	
-	protected ConfigurationSettings _context;
+	protected BaseContext _context;
 	
 	public RequirementsHelper(
-			ConfigurationSettings context ){
+			BaseContext context ){
 		
 		_context = context;
 	}

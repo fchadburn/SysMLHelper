@@ -2,18 +2,26 @@ package com.mbsetraining.sysmlhelper.taumigratorplugin;
 
 import java.util.List;
 
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.*;
 
 public class TauMigrator_RPUserPlugin extends RPUserPlugin {
 
 	protected TauMigrator_Context _context = null;
+	protected ConfigurationSettings _settings = null;
 
 	// called when plug-in is loaded
 	public void RhpPluginInit(
 			final IRPApplication theRhapsodyApp ){
 
 		_context = new TauMigrator_Context( theRhapsodyApp.getApplicationConnectionString() );
+
+		_settings = new ConfigurationSettings(
+				"TauMigrator.properties", 
+				"TauMigrator_MessagesBundle",
+				"TauMigrator",
+				_context );
 
 		final String legalNotice = 
 				"Copyright (C) 2015-2021  MBSE Training and Consulting Limited (www.executablembse.com)"
@@ -37,9 +45,9 @@ public class TauMigrator_RPUserPlugin extends RPUserPlugin {
 
 		_context.info( msg );
 
-		_context.info( "The TauMigrator profile version is " + _context.getProperty( "PluginVersion" ) );
+		_context.info( "The TauMigrator profile version is " + _context.getPluginVersion() );
 
-		_context.checkIfSetupProjectIsNeeded( false, true );
+		_settings.checkIfSetupProjectIsNeeded( false, true );
 	}
 
 	// called when the plug-in pop-up menu  is selected
@@ -54,7 +62,7 @@ public class TauMigrator_RPUserPlugin extends RPUserPlugin {
 
 			if( !theSelectedEls.isEmpty() ){
 
-				if( menuItem.equals( _context.getString( 
+				if( menuItem.equals( _settings.getString( 
 						"taumigratorplugin.ImportTauModelFromXML" ) ) ){
 
 					boolean isContinue = checkAndPerformProfileSetupIfNeeded();
@@ -70,8 +78,8 @@ public class TauMigrator_RPUserPlugin extends RPUserPlugin {
 						_context.deleteIfPresent( "Model1", "ObjectModelDiagram", theRhpPrj );
 						_context.deleteIfPresent( "Default", "Package", theRhpPrj );
 					}					
-					
-				} else if( menuItem.equals( _context.getString( 
+
+				} else if( menuItem.equals( _settings.getString( 
 						"taumigratorplugin.SetupTauMigratorProjectProperties" ) ) ){
 
 					checkAndPerformProfileSetupIfNeeded();
@@ -82,7 +90,7 @@ public class TauMigrator_RPUserPlugin extends RPUserPlugin {
 			}
 
 			_context.debug("... completed");
-			
+
 		} catch( Exception e ){
 			_context.error( "Exception in OnMenuItemSelect, e=" + e.getMessage() );
 		}
@@ -112,7 +120,7 @@ public class TauMigrator_RPUserPlugin extends RPUserPlugin {
 		boolean isContinue = true;
 
 		boolean isShowInfoDialog = _context.getIsShowProfileVersionCheckDialogs();
-		boolean isSetupNeeded = _context.checkIfSetupProjectIsNeeded( isShowInfoDialog, false );
+		boolean isSetupNeeded = _settings.checkIfSetupProjectIsNeeded( isShowInfoDialog, false );
 
 		if( isSetupNeeded ){
 
@@ -122,7 +130,7 @@ public class TauMigrator_RPUserPlugin extends RPUserPlugin {
 			isContinue = UserInterfaceHelper.askAQuestion( theMsg );
 
 			if( isContinue ){
-				_context.setupProjectWithProperties();
+				_settings.setupProjectWithProperties();
 			}
 		}
 		return isContinue;

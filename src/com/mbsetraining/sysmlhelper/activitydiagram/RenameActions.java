@@ -6,13 +6,13 @@ import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
 public class RenameActions {
 
-	protected ConfigurationSettings _context;
+	protected BaseContext _context;
 	protected int _renameDialogChoice = -999;
 	protected int _infoChoice = -999;
 	protected JCheckBox _dontAskAgainCheckBox;
@@ -28,7 +28,7 @@ public class RenameActions {
 	}
 
 	public RenameActions( 
-			ConfigurationSettings context ) {
+			BaseContext context ) {
 
 		_context = context;
 	}

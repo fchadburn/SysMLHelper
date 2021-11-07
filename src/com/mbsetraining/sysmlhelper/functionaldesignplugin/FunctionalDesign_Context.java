@@ -2,7 +2,8 @@ package com.mbsetraining.sysmlhelper.functionaldesignplugin;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+
+import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.IRPActor;
 import com.telelogic.rhapsody.core.IRPFlowchart;
@@ -11,7 +12,7 @@ import com.telelogic.rhapsody.core.IRPPackage;
 import com.telelogic.rhapsody.core.IRPProject;
 import com.telelogic.rhapsody.core.IRPUnit;
 
-public class FunctionalDesign_Context extends ConfigurationSettings {
+public class FunctionalDesign_Context extends BaseContext {
 	
 	public FunctionalDesign_Context(
 			String theAppID ){
@@ -23,10 +24,7 @@ public class FunctionalDesign_Context extends ConfigurationSettings {
 				"FunctionalDesignProfile.General.EnableDebugLogging",
 				"FunctionalDesignProfile.General.PluginVersion",
 				"FunctionalDesignProfile.General.UserDefinedMetaClassesAsSeparateUnit",
-				"FunctionalDesignProfile.General.AllowPluginToControlUnitGranularity",
-				"FunctionalDesign.properties", 
-				"FunctionalDesign_MessagesBundle",
-				"FunctionalDesign" 
+				"FunctionalDesignProfile.General.AllowPluginToControlUnitGranularity"
 				);
 	}
 	

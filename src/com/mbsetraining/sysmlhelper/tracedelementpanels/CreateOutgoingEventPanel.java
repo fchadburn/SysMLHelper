@@ -90,7 +90,7 @@ public class CreateOutgoingEventPanel extends CreateTracedElementPanel {
 				UserInterfaceHelper.showWarningDialog( "There are no actor parts to send events to in the " + 
 						_context.elInfo( theBuildingBlock ) + ". \n\n" +
 						"If you want to send an event then add an actor to the BDD and connect its part using ports. These steps are automated \n" +
-						"by the '" + _context.getString( "functionalanalysisplugin.AddNewActorToPackageMenu" ) + "' command. ");
+						"by the 'Add new actor to package under development' command. ");
 
 			} else {
 

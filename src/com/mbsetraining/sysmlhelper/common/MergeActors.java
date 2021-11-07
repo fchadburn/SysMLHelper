@@ -7,29 +7,20 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
 public class MergeActors {
 
-	ConfigurationSettings _context;
+	BaseContext _context;
 	
 	public static void main(String[] args) {
 		
 
 		String theAppID = RhapsodyAppServer.getActiveRhapsodyApplication().getApplicationConnectionString();
 			
-		ConfigurationSettings context = new ConfigurationSettings
-				(theAppID, 
-				"ExecutableMBSEProfile.General.EnableErrorLogging", 
-				"ExecutableMBSEProfile.General.EnableWarningLogging",
-				"ExecutableMBSEProfile.General.EnableInfoLogging", 
-				"ExecutableMBSEProfile.General.EnableDebugLogging",
-				"ExecutableMBSEProfile.General.PluginVersion",
-				"ExecutableMBSEProfile.General.UserDefinedMetaClassesAsSeparateUnit",
-				"ExecutableMBSEProfile.General.AllowPluginToControlUnitGranularity",
-				"ExecutableMBSE.properties", 
-				"ExecutableMBSE_MessagesBundle",
-				"ExecutableMBSE" );
+		ExecutableMBSE_Context context = new ExecutableMBSE_Context
+				(theAppID);
 		
 		try {
 					
@@ -47,7 +38,7 @@ public class MergeActors {
 	}
 	
 	public MergeActors(
-			ConfigurationSettings context ) {
+			BaseContext context ) {
 		
 		_context = context;
 	}

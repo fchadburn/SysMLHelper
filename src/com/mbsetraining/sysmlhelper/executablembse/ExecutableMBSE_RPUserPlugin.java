@@ -12,6 +12,7 @@ import functionalanalysisplugin.PopulateFunctionalAnalysisPkg.SimulationType;
 
 import com.mbsetraining.sysmlhelper.activitydiagram.ActivityDiagramChecker;
 import com.mbsetraining.sysmlhelper.activitydiagram.RenameActions;
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.DependencySelector;
 import com.mbsetraining.sysmlhelper.common.LayoutHelper;
 import com.mbsetraining.sysmlhelper.common.NestedActivityDiagram;
@@ -42,7 +43,8 @@ import com.telelogic.rhapsody.core.*;
 
 public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
-	protected ExecutableMBSE_Context _context = null;
+	protected ExecutableMBSE_Context _context;
+	protected ConfigurationSettings _settings;
 	protected ExecutableMBSE_RPApplicationListener _listener = null;
 	protected List<String> _startLinkGuids = new ArrayList<>();
 
@@ -54,8 +56,14 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 		try {
 			_context = new ExecutableMBSE_Context( theAppID );
+			
+			_settings = new ConfigurationSettings(
+					"ExecutableMBSE.properties", 
+					"ExecutableMBSE_MessagesBundle",
+					"ExecutableMBSE" , 
+					_context );
 
-		} catch (Exception e) {
+		} catch( Exception e ){
 			_context.error( "Exception in RhpPluginInit, e=" + e.getMessage() );
 		}
 
@@ -87,9 +95,9 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 		_listener.connect( theRhapsodyApp );
 
-		_context.info( "The ExecutableMBSE profile version is " + _context.getProperty( "PluginVersion" ) );
+		_context.info( "The ExecutableMBSE profile version is " + _context.getPluginVersion() );
 
-		_context.checkIfSetupProjectIsNeeded( false, true );
+		_settings.checkIfSetupProjectIsNeeded( false, true );
 	}
 
 	// called when the plug-in pop-up menu  is selected
@@ -108,7 +116,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 			if( !theSelectedEls.isEmpty() ){
 
-				if( menuItem.equals( _context.getString(
+				if( menuItem.equals( _settings.getString(
 						"executablembseplugin.CreateContextPackageMenu" ) ) ){
 
 					if( theSelectedEl instanceof IRPPackage ){
@@ -123,7 +131,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						_context.error( menuItem + " invoked out of context and only works for packages" );
 					}
 
-				} else if( menuItem.equals( _context.getString(
+				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.CreateRAStructureMenu" ) ) ){
 
 					if( theSelectedEl instanceof IRPPackage ){
@@ -138,17 +146,17 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						_context.error( menuItem + " invoked out of context and only works for packages" );
 					}
 
-				} else if( menuItem.equals( _context.getString(
+				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.SetupRAProperties" ) ) ){
 
 					if( theSelectedEl instanceof IRPPackage ){
-						_context.checkIfSetupProjectIsNeeded( true );
+						_settings.checkIfSetupProjectIsNeeded( true );
 						_context.cleanUpModelRemnants();
 					} else {
 						_context.error( menuItem + " invoked out of context and only works for packages" );
 					}
 
-				} else if( menuItem.equals( _context.getString(
+				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.PopulatePartsMenu" ) ) ){
 
 					if( theSelectedEl instanceof IRPClassifier || 
@@ -161,7 +169,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						_context.error( menuItem + " invoked out of context and only works for classes, objects, or structure diagrams/ibds" );
 					}
 					
-				} else if( menuItem.equals( _context.getString(
+				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.GenerateSequenceDiagramMenu" ) ) ){
 
 					if( theSelectedEl instanceof IRPClass ){
@@ -180,7 +188,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						_context.error( menuItem + " invoked out of context and only works for classes" );
 					}
 					
-				} else if( menuItem.equals( _context.getString(
+				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.CreateFullSimFAStructureMenu" ) ) ){
 
 					if( theSelectedEl instanceof IRPProject ){
@@ -191,7 +199,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 						if( isProceed ){
 
-							_context.setPropertiesValuesRequestedInConfigFile( 
+							_settings.setPropertiesValuesRequestedInConfigFile( 
 									_context.get_rhpPrj(),
 									"setPropertyForFunctionalAnalysisModel" );
 
@@ -206,14 +214,15 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						_context.error( menuItem + " invoked out of context and only works for packages" );
 					} 
 
-				} else if (menuItem.equals(_context.getString("executablembseplugin.QuickHyperlinkMenu"))){
+				} else if (menuItem.equals(_settings.getString(
+						"executablembseplugin.QuickHyperlinkMenu" ) ) ){
 
 					IRPHyperLink theHyperLink = (IRPHyperLink) theSelectedEl.addNewAggr("HyperLink", "");
 					theHyperLink.setDisplayOption(HYPNameType.RP_HYP_NAMETEXT, "");
 					theHyperLink.highLightElement();
 					theHyperLink.openFeaturesDialog(0);
 
-				} else if( menuItem.equals( _context.getString(
+				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.SelectDependsOnElementsMenu" ) ) ){
 
 					Set<IRPModelElement> theCombinedSet = 
@@ -225,7 +234,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					theSelector.selectDependsOnElementsFor( 
 							theCombinedSet, null );
 
-				} else if( menuItem.equals( _context.getString(
+				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.SelectDependentElementsMenu" ) ) ){
 
 					Set<IRPModelElement> theCombinedSet = 
@@ -237,7 +246,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					theSelector.selectDependentElementsFor( 
 							theCombinedSet, null );
 
-				} else if( menuItem.equals( _context.getString(
+				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.SelectDependsOnDeriveOnlyElementsMenu" ) ) ){
 
 					Set<IRPModelElement> theCombinedSet = 
@@ -249,7 +258,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					theSelector.selectDependsOnElementsFor( 
 							theCombinedSet, "derive" );
 
-				} else if( menuItem.equals( _context.getString(
+				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.SelectDependentDeriveOnlyElementsMenu" ) ) ){
 
 					Set<IRPModelElement> theCombinedSet = 
@@ -261,7 +270,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					theSelector.selectDependentElementsFor( 
 							theCombinedSet, "derive" );
 
-				} else if( menuItem.equals( _context.getString(
+				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.SelectDependsOnSatisfyOnlyElementsMenu" ) ) ){
 
 					Set<IRPModelElement> theCombinedSet = 
@@ -273,7 +282,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					theSelector.selectDependsOnElementsFor( 
 							theCombinedSet, "satisfy" );
 
-				} else if( menuItem.equals( _context.getString(
+				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.SelectDependentSatisfyOnlyElementsMenu" ) ) ){
 
 					Set<IRPModelElement> theCombinedSet = 
@@ -285,7 +294,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					theSelector.selectDependentElementsFor( 
 							theCombinedSet, "satisfy" );
 
-				} else if( menuItem.equals( _context.getString(
+				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.SelectDependsOnVerifyOnlyElementsMenu" ) ) ){
 
 					Set<IRPModelElement> theCombinedSet = 
@@ -297,7 +306,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					theSelector.selectDependsOnElementsFor( 
 							theCombinedSet, "verify" );
 
-				} else if( menuItem.equals( _context.getString(
+				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.SelectDependentVerifyOnlyElementsMenu" ) ) ){
 
 					Set<IRPModelElement> theCombinedSet = 
@@ -309,7 +318,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					theSelector.selectDependentElementsFor( 
 							theCombinedSet, "verify" );
 
-				} else if( menuItem.equals( _context.getString(
+				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.SelectDependsOnRefineOnlyElementsMenu" ) ) ){
 
 					Set<IRPModelElement> theCombinedSet = 
@@ -321,7 +330,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					theSelector.selectDependsOnElementsFor( 
 							theCombinedSet, "refine" );
 
-				} else if( menuItem.equals( _context.getString(
+				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.SelectDependentRefineOnlyElementsMenu" ) ) ){
 
 					Set<IRPModelElement> theCombinedSet = 
@@ -333,7 +342,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					theSelector.selectDependentElementsFor( 
 							theCombinedSet, "refine" );
 
-				} else if( menuItem.equals( _context.getString(
+				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.SelectDependsOnDeriveReqtOnlyElementsMenu" ) ) ){
 
 					Set<IRPModelElement> theCombinedSet = 
@@ -345,7 +354,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					theSelector.selectDependsOnElementsFor( 
 							theCombinedSet, "deriveReqt" );
 
-				} else if( menuItem.equals( _context.getString(
+				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.SelectDependentDeriveReqtOnlyElementsMenu" ) ) ){
 
 					Set<IRPModelElement> theCombinedSet = 
@@ -357,34 +366,35 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					theSelector.selectDependentElementsFor( 
 							theCombinedSet, "deriveReqt" );
 
-				} else if (menuItem.equals(_context.getString("executablembseplugin.SetupGatewayProjectMenu"))){
+				} else if (menuItem.equals(_settings.getString(
+						"executablembseplugin.SetupGatewayProjectMenu" ) ) ){
 
 					if (theSelectedEl instanceof IRPProject){
 						CreateGatewayProjectPanel.launchThePanel( theAppID, ".*.rqtf$" );				
 					}
 
-				} else if (menuItem.equals(_context.getString("executablembseplugin.AddRelativeUnitMenu"))){
+				} else if (menuItem.equals( _settings.getString("executablembseplugin.AddRelativeUnitMenu"))){
 
 					_context.browseAndAddUnit( theSelectedEl.getProject(), true );
 
-				} else if( menuItem.equals( _context.getString( 
+				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.CreateNestedADMenu" ) ) ){
 
 					NestedActivityDiagram theHelper = new NestedActivityDiagram(_context);
 					theHelper.createNestedActivityDiagramsFor( theSelectedEls );
 
-				} else if( menuItem.equals( _context.getString( 
+				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.ReportOnNamingAndTraceabilityMenu" ) ) ){
 
 					ActivityDiagramChecker.launchPanelsFor( theSelectedEls, _context );
 
-				} else if( menuItem.equals( _context.getString( 
+				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.AutoRenameActions" ) ) ){
 
 					RenameActions theRenamer = new RenameActions( _context );
 					theRenamer.performRenamesFor( theSelectedEls );
 										
-				} else if( menuItem.equals( _context.getString( 
+				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.MoveUnclaimedReqtsMenu" ) ) ){
 
 					MoveRequirements theMover = new MoveRequirements( _context );
@@ -393,19 +403,19 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 							theSelectedEls, 
 							_context.get_rhpPrj() );
 
-				} else if( menuItem.equals( _context.getString( 
+				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.CreateNewRequirementMenu" ) ) ){
 
 					RequirementsHelper theHelper = new RequirementsHelper( _context );
 					theHelper.createNewRequirementsFor( theSelectedGraphEls );
 
-				} else if (menuItem.equals( _context.getString( 
+				} else if (menuItem.equals( _settings.getString( 
 						"executablembseplugin.PerformRenameInBrowserMenu" ))){
 
 					RenameActions theRenamer = new RenameActions(_context);
 					theRenamer.performRenamesFor( theSelectedEls );
 
-				} else if( menuItem.equals( _context.getString( 
+				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.UpdateNestedADNamesMenu" ) ) ){
 
 					NestedActivityDiagram theHelper = new NestedActivityDiagram(_context);
@@ -413,19 +423,19 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					theHelper.renameNestedActivityDiagramsFor( 
 							theSelectedEls );
 
-				} else if( menuItem.equals( _context.getString( 
+				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.DeleteTaggedAsDeletedAtHighLevelMenu" ))){
 
 					MarkedAsDeletedPanel.launchThePanel( theAppID );
 
-				} else if( menuItem.equals( _context.getString( 
+				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.ExportRequirementsToCsvForImportIntoDOORSNG" ))){
 
 					ExportRequirementsToCSV theExporter = new ExportRequirementsToCSV( _context );
 
 					theExporter.exportRequirementsToCSVUnderSelectedEl();
 
-				} else if( menuItem.equals( _context.getString( 
+				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.SwitchRequirementsToDOORSNG" ))){
 
 					SwitchRhapsodyRequirementsToDNG theSwitcher = 
@@ -433,7 +443,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 					theSwitcher.SwitchRequirements();
 
-				} else if( menuItem.equals( _context.getString( 
+				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.StartLinkMenu" ) ) ){
 
 					_startLinkGuids.clear();
@@ -442,7 +452,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						_startLinkGuids.add( theEl.getGUID() );
 					}
 
-				} else if( menuItem.equals( _context.getString( 
+				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.EndLinkMenu" ) ) ){
 
 					if( _startLinkGuids.isEmpty() ){
@@ -454,14 +464,14 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 								_startLinkGuids );
 					}
 
-				} else if (menuItem.equals(_context.getString( "executablembseplugin.RollUpTraceabilityUpToTransitionLevel" ))){
+				} else if (menuItem.equals( _settings.getString( "executablembseplugin.RollUpTraceabilityUpToTransitionLevel" ))){
 
 					if( theSelectedGraphEls != null ){
 						IRPGraphElement theSelectedGraphEl = theSelectedGraphEls.get( 0 );
 						RollUpTraceabilityToTheTransitionPanel.launchThePanel( theSelectedGraphEl, _context );
 					}
 
-				} else if( menuItem.equals( _context.getString( 
+				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.layoutDependencies" ) ) ){
 
 					if( theSelectedGraphEls.size() > 0 ){
@@ -510,13 +520,15 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 								(IRPPackage) theSelectedEl );
 					}
 
-				} else if (menuItem.equals(_context.getString("executablembseplugin.PopulateRequirementsForSDsMenu"))){
+				} else if (menuItem.equals( _settings.getString(
+						"executablembseplugin.PopulateRequirementsForSDsMenu" ) ) ){
 
 					if (theSelectedEl instanceof IRPSequenceDiagram){
 						PopulateRelatedRequirementsPanel.launchThePanel( theAppID );
 					}
 
-				} else if (menuItem.equals(_context.getString("executablembseplugin.UpdateVerificationDependenciesForSDsMenu"))){
+				} else if (menuItem.equals( _settings.getString(
+						"executablembseplugin.UpdateVerificationDependenciesForSDsMenu" ) ) ){
 
 					if( !theSelectedEls.isEmpty() ){
 						
@@ -526,34 +538,34 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						theHelper.updateVerificationsForSequenceDiagramsBasedOn( theSelectedEls );
 					}				
 
-				} else if( menuItem.equals( _context.getString(
+				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.CreateIncomingEventMenu" ) ) ){
 
 					CreateIncomingEventPanel.launchThePanel( theAppID );
 
-				} else if( menuItem.equals( _context.getString(
+				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.CreateAnOperationMenu" ) ) ){
 
 					CreateOperationPanel.launchThePanel( theAppID );
 
-				} else if( menuItem.equals( _context.getString(
+				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.CreateOutgoingEventMenu"))){
 
 					CreateOutgoingEventPanel.launchThePanel( theAppID );
 
-				} else if( menuItem.equals( _context.getString(
+				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.CreateAttributeMenu" ) ) ){
 
 					CreateTracedAttributePanel.launchThePanel( theAppID );
 
-				} else if( menuItem.equals( _context.getString(
+				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.UpdateAttributeOrCheckOpMenu" ) ) ){
 
 					if( theSelectedEl instanceof IRPAttribute ){
 						UpdateTracedAttributePanel.launchThePanel( theAppID, _context );
 					}
 
-				} else if( menuItem.equals( _context.getString(
+				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.CreateEventForAttributeMenu" ) ) ){
 
 					if( theSelectedEl instanceof IRPAttribute ){
@@ -570,13 +582,13 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 					}				
 
-				} else if( menuItem.equals(_context.getString("executablembseplugin.DeriveDownstreamRequirementMenu"))){
+				} else if( menuItem.equals( _settings.getString("executablembseplugin.DeriveDownstreamRequirementMenu"))){
 
 					if (!theSelectedGraphEls.isEmpty()){
 						//CreateDerivedRequirementPanel.deriveDownstreamRequirement( theSelectedGraphEls );
 					}
 
-				} else if (menuItem.equals(_context.getString("executablembseplugin.CreateNewTestCaseForTestDriverMenu"))){
+				} else if (menuItem.equals( _settings.getString("executablembseplugin.CreateNewTestCaseForTestDriverMenu"))){
 
 					if (theSelectedEl instanceof IRPClass){
 
@@ -588,19 +600,19 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						theCreator.createTestCaseFor( (IRPSequenceDiagram) theSelectedEl );
 					}
 
-				} else if (menuItem.equals(_context.getString("executablembseplugin.AddNewActorToPackageMenu"))){
+				} else if (menuItem.equals( _settings.getString("executablembseplugin.AddNewActorToPackageMenu"))){
 
 					if (theSelectedEl instanceof IRPPackage){
 						CreateNewActorPanel.launchThePanel( theAppID );
 					}
 
-				} else if (menuItem.equals(_context.getString("executablembseplugin.AddNewBlockPartToPackageMenu"))){
+				} else if (menuItem.equals( _settings.getString("executablembseplugin.AddNewBlockPartToPackageMenu"))){
 
 					if (theSelectedEl instanceof IRPPackage || theSelectedEl instanceof IRPDiagram ){
 						CreateNewBlockPartPanel.launchThePanel( theAppID );
 					}
 
-				} else if (menuItem.equals(_context.getString("executablembseplugin.UpdatePortsAndInterfacesMenu"))){
+				} else if (menuItem.equals( _settings.getString("executablembseplugin.UpdatePortsAndInterfacesMenu"))){
 
 					if( theSelectedEl instanceof IRPSequenceDiagram ||
 							theSelectedEl instanceof IRPMessage ){
@@ -609,7 +621,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 								theAppID, theSelectedEl.getGUID() );
 					}
 					
-				} else if( menuItem.equals( _context.getString(
+				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.CopyActivityDiagramsMenu" ) ) ){
 
 					if( theSelectedEl instanceof IRPPackage ){
@@ -661,12 +673,14 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						}
 					}							
 
-				} else if (menuItem.equals(_context.getString("executablembseplugin.DeleteEventsAndRelatedElementsMenu"))){
+				} else if (menuItem.equals( _settings.getString(
+						"executablembseplugin.DeleteEventsAndRelatedElementsMenu"))){
 
 					EventDeletor theDeletor = new EventDeletor( _context );
 					theDeletor.deleteEventAndRelatedElementsFor( theSelectedEls );
 
-				} else if (menuItem.equals(_context.getString("executablembseplugin.RecreateAutoShowSequenceDiagramMenu"))){
+				} else if (menuItem.equals( _settings.getString(
+						"executablembseplugin.RecreateAutoShowSequenceDiagramMenu"))){
 
 					if( theSelectedEl instanceof IRPSequenceDiagram ){
 
@@ -1036,7 +1050,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 		boolean isContinue = true;
 
 		boolean isShowInfoDialog = _context.getIsShowProfileVersionCheckDialogs();
-		boolean isSetupNeeded = _context.checkIfSetupProjectIsNeeded( isShowInfoDialog, false );
+		boolean isSetupNeeded = _settings.checkIfSetupProjectIsNeeded( isShowInfoDialog, false );
 
 		if( isSetupNeeded ){
 
@@ -1046,7 +1060,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 			isContinue = UserInterfaceHelper.askAQuestion( theMsg );
 
 			if( isContinue ){
-				_context.setupProjectWithProperties();
+				_settings.setupProjectWithProperties();
 			}
 		}
 		return isContinue;

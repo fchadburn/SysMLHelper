@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.telelogic.rhapsody.core.*;
  
 public class ActionList extends ArrayList<ActionInfo> {
@@ -19,7 +19,7 @@ public class ActionList extends ArrayList<ActionInfo> {
 	
 	ActionList(
 			IRPActivityDiagram theAD,
-			ConfigurationSettings context ){
+			BaseContext context ){
 		
 		super();
 						

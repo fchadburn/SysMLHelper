@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.telelogic.rhapsody.core.*;
  
 public class ActionInfo {
@@ -23,14 +23,14 @@ public class ActionInfo {
 	private IRPModelElement theElement = null;
 	private String currentUnadornedName = "Unspecified";
 	
-	private ConfigurationSettings _context;
+	private BaseContext _context;
 	
 	private final List<String> elementTypesNeedingTraceability = 
 			Arrays.asList("Action", "AcceptEventAction", "EventState", "TimeEvent", "Transition", "Constraint");
 	
 	public ActionInfo(
 			IRPModelElement theElement, 
-			ConfigurationSettings context) {
+			BaseContext context) {
 		
 		_context = context;
 		
@@ -106,7 +106,7 @@ public class ActionInfo {
 	
 	public static boolean isTraceabilityNeededFor( 
 			IRPModelElement theEl,
-			ConfigurationSettings context ){
+			BaseContext context ){
 	
 		boolean isTraceabilityNeeded = false;
 		

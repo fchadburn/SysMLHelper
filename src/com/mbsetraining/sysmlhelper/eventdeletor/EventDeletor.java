@@ -4,16 +4,17 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.mbsetraining.sysmlhelper.common.ModelElementList;
 import com.telelogic.rhapsody.core.*;
 
 public class EventDeletor {
 	
-	protected ConfigurationSettings _context;
+	protected BaseContext _context;
 	
 	public EventDeletor(
-			ConfigurationSettings context ) {
+			BaseContext context ) {
+		
 		_context = context;
 	}
 

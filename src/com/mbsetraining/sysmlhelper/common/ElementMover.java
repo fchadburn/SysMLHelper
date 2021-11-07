@@ -9,12 +9,12 @@ public class ElementMover {
 
 	final protected IRPPackage _moveToPkg;
 	final protected String _whereMoveToHasStereotype;
-	final protected ConfigurationSettings _context;
+	final protected BaseContext _context;
 	
 	public ElementMover(
 			IRPModelElement basedOnEl,
 			String whereMoveToHasStereotype,
-			ConfigurationSettings context ) {
+			BaseContext context ) {
 		
 		_context = context;
 		_whereMoveToHasStereotype = whereMoveToHasStereotype;

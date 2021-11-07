@@ -8,15 +8,15 @@ import java.nio.file.Paths;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.telelogic.rhapsody.core.*;
 
 public class PopulatePkg {
 
-	protected ConfigurationSettings _context;
+	protected BaseContext _context;
 	
 	public PopulatePkg(
-			ConfigurationSettings context ){
+			BaseContext context ){
 		
 		_context = context;
 	}

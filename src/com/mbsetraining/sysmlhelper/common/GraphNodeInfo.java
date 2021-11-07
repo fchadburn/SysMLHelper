@@ -9,11 +9,11 @@ public class GraphNodeInfo {
 	protected int _posY;
 	protected int _nWidth;
 	protected int _nHeight;
-	protected ConfigurationSettings _context;
+	protected BaseContext _context;
 	
 	public GraphNodeInfo(
 			IRPGraphNode theGraphNode,
-			ConfigurationSettings context ) {	
+			BaseContext context ) {	
 		
 		_context = context;
 		_graphNode = theGraphNode;

@@ -1,6 +1,6 @@
 package com.mbsetraining.sysmlhelper.smartlink;
 
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.telelogic.rhapsody.core.*;
 
 public class RelationInfo {
@@ -8,13 +8,13 @@ public class RelationInfo {
 	private DiagramElementInfo m_StartElement;
 	private DiagramElementInfo m_EndElement;
 	private IRPStereotype m_RelationType;
-	private ConfigurationSettings _context;
+	private BaseContext _context;
 	
 	public RelationInfo(
 			DiagramElementInfo fromStartElement,
 			DiagramElementInfo toEndElement, 
 			IRPStereotype withRelationType,
-			ConfigurationSettings context ){
+			BaseContext context ){
 				
 		_context = context;
 		

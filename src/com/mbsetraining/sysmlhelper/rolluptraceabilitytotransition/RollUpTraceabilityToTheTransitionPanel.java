@@ -18,7 +18,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.mbsetraining.sysmlhelper.common.GraphElInfo;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
@@ -58,7 +58,7 @@ public class RollUpTraceabilityToTheTransitionPanel extends ExecutableMBSEBasePa
 	
 	public static void launchThePanel(
 			final IRPGraphElement theTransitionGraphEl,
-			ConfigurationSettings theContext ){
+			BaseContext theContext ){
 	
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 

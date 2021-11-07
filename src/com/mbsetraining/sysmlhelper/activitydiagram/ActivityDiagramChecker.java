@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
@@ -26,7 +26,7 @@ public class ActivityDiagramChecker extends JFrame{
 	private JScrollPane _scrollPane;
 	private MouseListener _listener;
 	private List<ActionInfo> _checkedElements; 
-	private ConfigurationSettings _context;
+	private BaseContext _context;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -41,7 +41,7 @@ public class ActivityDiagramChecker extends JFrame{
 	
 	public static void launchPanelsFor(
 			List<IRPModelElement> theSelectedEls,
-			ConfigurationSettings context ){
+			BaseContext context ){
 
 		List<IRPActivityDiagram> theADs = context.buildListOfActivityDiagramsFor(theSelectedEls);
 

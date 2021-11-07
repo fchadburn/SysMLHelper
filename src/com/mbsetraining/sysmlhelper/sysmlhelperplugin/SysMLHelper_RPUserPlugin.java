@@ -11,6 +11,7 @@ import designsynthesisplugin.PopulateDesignSynthesisPkg;
 
 import com.mbsetraining.sysmlhelper.activitydiagram.ActivityDiagramChecker;
 import com.mbsetraining.sysmlhelper.activitydiagram.RenameActions;
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.DependencySelector;
 import com.mbsetraining.sysmlhelper.common.LayoutHelper;
 import com.mbsetraining.sysmlhelper.common.NestedActivityDiagram;
@@ -29,6 +30,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 	protected SysMLHelper_Context _context;
 	protected SysMLHelper_RPApplicationListener _listener = null;
 	protected List<String> _startLinkGuids = new ArrayList<>();
+	protected ConfigurationSettings _settings;
 
 	// called when plug-in is loaded
 	public void RhpPluginInit(
@@ -37,7 +39,13 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 		String theAppID = theRhapsodyApp.getApplicationConnectionString();
 
 		_context = new SysMLHelper_Context( theAppID );
-
+		
+		_settings = new ConfigurationSettings(
+				"ExecutableMBSE.properties", 
+				"ExecutableMBSE_MessagesBundle",
+				"ExecutableMBSE" , 
+				_context );
+		
 		final String legalNotice = 
 				"Copyright (C) 2015-2021  MBSE Training and Consulting Limited (www.executablembse.com)"
 						+ "\n"
@@ -66,9 +74,9 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 
 		_listener.connect( theRhapsodyApp );
 
-		_context.info( "The SysMLHelper profile version is " + _context.getProperty( "PluginVersion" ) );
+		_context.info( "The SysMLHelper profile version is " + _context.getPluginVersion() );
 
-		_context.checkIfSetupProjectIsNeeded( false, true );
+		_settings.checkIfSetupProjectIsNeeded( false, true );
 	}
 
 	// called when the plug-in pop-up menu  is selected
@@ -85,47 +93,55 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 
 			if( !theSelectedEls.isEmpty() ){
 
-				if (menuItem.equals(_context.getString("sysmlhelperplugin.CreateRAStructureMenu"))){
+				if (menuItem.equals(_settings.getString("sysmlhelperplugin.CreateRAStructureMenu"))){
 
 					if (theSelectedEl instanceof IRPProject){
 
-						PopulateRequirementsAnalysisPkg thePopulator = new PopulateRequirementsAnalysisPkg( _context );
+						PopulateRequirementsAnalysisPkg thePopulator = 
+								new PopulateRequirementsAnalysisPkg( _context, _settings );
+						
 						thePopulator.createRequirementsAnalysisPkg(); 
 					}
 
-				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.SetupRAProperties"))){
+				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.SetupRAProperties"))){
 
 					if( theSelectedEl instanceof IRPPackage ){
-						_context.checkIfSetupProjectIsNeeded( true );
+						_settings.checkIfSetupProjectIsNeeded( true );
 					} else {
 						_context.error( menuItem + " invoked out of context and only works for packages" );
 					}
 
-				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.CreateFullSimFAStructureMenu"))){
+				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.CreateFullSimFAStructureMenu"))){
 
 					if (theSelectedEl instanceof IRPProject){
 
-						PopulateFunctionalAnalysisPkg thePopulator = new PopulateFunctionalAnalysisPkg( _context );
+						PopulateFunctionalAnalysisPkg thePopulator = 
+								new PopulateFunctionalAnalysisPkg( _context, _settings );
+						
 						thePopulator.createFunctionalAnalysisPkg( SimulationType.FullSim ); 
 					}
 
-				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.CreateSimpleSimFAStructureMenu"))){
+				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.CreateSimpleSimFAStructureMenu"))){
 
 					if (theSelectedEl instanceof IRPProject){
 
-						PopulateFunctionalAnalysisPkg thePopulator = new PopulateFunctionalAnalysisPkg( _context );
+						PopulateFunctionalAnalysisPkg thePopulator = 
+								new PopulateFunctionalAnalysisPkg( _context, _settings );
+						
 						thePopulator.createFunctionalAnalysisPkg( SimulationType.SimpleSim ); 
 					}
 
-				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.CreateNoSimFAStructureMenu"))){
+				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.CreateNoSimFAStructureMenu"))){
 
 					if (theSelectedEl instanceof IRPProject){
 
-						PopulateFunctionalAnalysisPkg thePopulator = new PopulateFunctionalAnalysisPkg( _context );
+						PopulateFunctionalAnalysisPkg thePopulator = 
+								new PopulateFunctionalAnalysisPkg( _context, _settings );
+						
 						thePopulator.createFunctionalAnalysisPkg( SimulationType.NoSim ); 
 					}
 
-				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.CreateDSStructureMenu"))){
+				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.CreateDSStructureMenu"))){
 
 					if (theSelectedEl instanceof IRPProject){
 
@@ -133,14 +149,14 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 						thePopulator.createDesignSynthesisPkg(); 
 					}
 
-				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.QuickHyperlinkMenu"))){
+				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.QuickHyperlinkMenu"))){
 
 					IRPHyperLink theHyperLink = (IRPHyperLink) theSelectedEl.addNewAggr("HyperLink", "");
 					theHyperLink.setDisplayOption(HYPNameType.RP_HYP_NAMETEXT, "");
 					theHyperLink.highLightElement();
 					theHyperLink.openFeaturesDialog(0);
 
-				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.SelectDependsOnElementsMenu"))){
+				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.SelectDependsOnElementsMenu"))){
 
 					Set<IRPModelElement> theCombinedSet = 
 							_context.getSetOfElementsFromCombiningThe(
@@ -151,7 +167,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 					theSelector.selectDependsOnElementsFor( 
 							theCombinedSet, null );
 
-				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.SelectDependentElementsMenu"))){
+				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.SelectDependentElementsMenu"))){
 
 					Set<IRPModelElement> theCombinedSet = 
 							_context.getSetOfElementsFromCombiningThe(
@@ -162,7 +178,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 					theSelector.selectDependentElementsFor( 
 							theCombinedSet, null );
 
-				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.SelectDependsOnDeriveOnlyElementsMenu"))){
+				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.SelectDependsOnDeriveOnlyElementsMenu"))){
 
 					Set<IRPModelElement> theCombinedSet = 
 							_context.getSetOfElementsFromCombiningThe(
@@ -173,7 +189,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 					theSelector.selectDependsOnElementsFor( 
 							theCombinedSet, "derive" );
 
-				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.SelectDependentDeriveOnlyElementsMenu"))){
+				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.SelectDependentDeriveOnlyElementsMenu"))){
 
 					Set<IRPModelElement> theCombinedSet = 
 							_context.getSetOfElementsFromCombiningThe(
@@ -184,7 +200,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 					theSelector.selectDependentElementsFor( 
 							theCombinedSet, "derive" );
 
-				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.SelectDependsOnSatisfyOnlyElementsMenu"))){
+				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.SelectDependsOnSatisfyOnlyElementsMenu"))){
 
 					Set<IRPModelElement> theCombinedSet = 
 							_context.getSetOfElementsFromCombiningThe(
@@ -195,7 +211,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 					theSelector.selectDependsOnElementsFor( 
 							theCombinedSet, "satisfy" );
 
-				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.SelectDependentSatisfyOnlyElementsMenu"))){
+				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.SelectDependentSatisfyOnlyElementsMenu"))){
 
 					Set<IRPModelElement> theCombinedSet = 
 							_context.getSetOfElementsFromCombiningThe(
@@ -206,7 +222,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 					theSelector.selectDependentElementsFor( 
 							theCombinedSet, "satisfy" );
 
-				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.SelectDependsOnVerifyOnlyElementsMenu"))){
+				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.SelectDependsOnVerifyOnlyElementsMenu"))){
 
 					Set<IRPModelElement> theCombinedSet = 
 							_context.getSetOfElementsFromCombiningThe(
@@ -217,7 +233,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 					theSelector.selectDependsOnElementsFor( 
 							theCombinedSet, "verify" );
 
-				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.SelectDependentVerifyOnlyElementsMenu"))){
+				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.SelectDependentVerifyOnlyElementsMenu"))){
 
 					Set<IRPModelElement> theCombinedSet = 
 							_context.getSetOfElementsFromCombiningThe(
@@ -228,7 +244,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 					theSelector.selectDependentElementsFor( 
 							theCombinedSet, "verify" );
 
-				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.SelectDependsOnRefineOnlyElementsMenu"))){
+				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.SelectDependsOnRefineOnlyElementsMenu"))){
 
 					Set<IRPModelElement> theCombinedSet = 
 							_context.getSetOfElementsFromCombiningThe(
@@ -239,7 +255,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 					theSelector.selectDependsOnElementsFor( 
 							theCombinedSet, "refine" );
 
-				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.SelectDependentRefineOnlyElementsMenu"))){
+				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.SelectDependentRefineOnlyElementsMenu"))){
 
 					Set<IRPModelElement> theCombinedSet = 
 							_context.getSetOfElementsFromCombiningThe(
@@ -250,7 +266,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 					theSelector.selectDependentElementsFor( 
 							theCombinedSet, "refine" );
 
-				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.SelectDependsOnDeriveReqtOnlyElementsMenu"))){
+				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.SelectDependsOnDeriveReqtOnlyElementsMenu"))){
 
 					Set<IRPModelElement> theCombinedSet = 
 							_context.getSetOfElementsFromCombiningThe(
@@ -261,7 +277,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 					theSelector.selectDependsOnElementsFor( 
 							theCombinedSet, "deriveReqt" );
 
-				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.SelectDependentDeriveReqtOnlyElementsMenu"))){
+				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.SelectDependentDeriveReqtOnlyElementsMenu"))){
 
 					Set<IRPModelElement> theCombinedSet = 
 							_context.getSetOfElementsFromCombiningThe(
@@ -272,27 +288,27 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 					theSelector.selectDependentElementsFor( 
 							theCombinedSet, "deriveReqt" );
 
-				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.SetupGatewayProjectMenu"))){
+				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.SetupGatewayProjectMenu"))){
 
 					if (theSelectedEl instanceof IRPProject){
 						CreateGatewayProjectPanel.launchThePanel( _context.get_rhpAppID(), ".*.rqtf$" );				
 					}
 
-				} else if (menuItem.equals(_context.getString("sysmlhelperplugin.AddRelativeUnitMenu"))){
+				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.AddRelativeUnitMenu"))){
 
 					_context.browseAndAddUnit( theSelectedEl.getProject(), true );								
 
 					// Requirements Analysis
-				} else if (menuItem.equals(_context.getString( "requirementsanalysisplugin.CreateNestedADMenu" ))){
+				} else if (menuItem.equals(_settings.getString( "requirementsanalysisplugin.CreateNestedADMenu" ))){
 
 					NestedActivityDiagram theHelper = new NestedActivityDiagram(_context);
 					theHelper.createNestedActivityDiagramsFor( theSelectedEls );
 
-				} else if (menuItem.equals(_context.getString( "requirementsanalysisplugin.ReportOnNamingAndTraceabilityMenu" ))){
+				} else if (menuItem.equals(_settings.getString( "requirementsanalysisplugin.ReportOnNamingAndTraceabilityMenu" ))){
 
 					ActivityDiagramChecker.launchPanelsFor( theSelectedEls, _context );
 
-				} else if (menuItem.equals(_context.getString( "requirementsanalysisplugin.MoveUnclaimedReqtsMenu" ))){
+				} else if (menuItem.equals(_settings.getString( "requirementsanalysisplugin.MoveUnclaimedReqtsMenu" ))){
 
 					MoveRequirements theMover = new MoveRequirements( _context );
 
@@ -300,28 +316,28 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 							theSelectedEls, 
 							_context.get_rhpPrj() );
 
-				} else if (menuItem.equals(_context.getString( "requirementsanalysisplugin.CreateNewRequirementMenu" ))){
+				} else if (menuItem.equals(_settings.getString( "requirementsanalysisplugin.CreateNewRequirementMenu" ))){
 
 					RequirementsHelper theHelper = new RequirementsHelper( _context );
 					theHelper.createNewRequirementsFor( theSelectedGraphEls );
 
-				} else if (menuItem.equals(_context.getString( "requirementsanalysisplugin.PerformRenameInBrowserMenu" ))){
+				} else if (menuItem.equals(_settings.getString( "requirementsanalysisplugin.PerformRenameInBrowserMenu" ))){
 
 					RenameActions theRenamer = new RenameActions(_context);
 					theRenamer.performRenamesFor( theSelectedEls );
 
-				} else if (menuItem.equals(_context.getString( "requirementsanalysisplugin.UpdateNestedADNamesMenu" ))){
+				} else if (menuItem.equals(_settings.getString( "requirementsanalysisplugin.UpdateNestedADNamesMenu" ))){
 
 					NestedActivityDiagram theHelper = new NestedActivityDiagram(_context);
 
 					theHelper.renameNestedActivityDiagramsFor( 
 							theSelectedEls );
 
-				} else if (menuItem.equals(_context.getString( "requirementsanalysisplugin.DeleteTaggedAsDeletedAtHighLevelMenu" ))){
+				} else if (menuItem.equals(_settings.getString( "requirementsanalysisplugin.DeleteTaggedAsDeletedAtHighLevelMenu" ))){
 
 					MarkedAsDeletedPanel.launchThePanel( theAppID );
 
-				} else if (menuItem.equals(_context.getString( "requirementsanalysisplugin.StartLinkMenu" ))){
+				} else if (menuItem.equals(_settings.getString( "requirementsanalysisplugin.StartLinkMenu" ))){
 
 					_startLinkGuids.clear();
 
@@ -329,7 +345,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 						_startLinkGuids.add( theEl.getGUID() );
 					}
 
-				} else if (menuItem.equals(_context.getString( "requirementsanalysisplugin.EndLinkMenu" ))){
+				} else if (menuItem.equals(_settings.getString( "requirementsanalysisplugin.EndLinkMenu" ))){
 
 					if( _startLinkGuids.isEmpty() ){
 
@@ -340,14 +356,14 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 								_startLinkGuids );
 					}
 
-				} else if (menuItem.equals(_context.getString( "requirementsanalysisplugin.RollUpTraceabilityUpToTransitionLevel" ))){
+				} else if (menuItem.equals(_settings.getString( "requirementsanalysisplugin.RollUpTraceabilityUpToTransitionLevel" ))){
 
 					if( theSelectedGraphEls != null ){
 						IRPGraphElement theSelectedGraphEl = theSelectedGraphEls.get( 0 );
 						RollUpTraceabilityToTheTransitionPanel.launchThePanel( theSelectedGraphEl, _context );
 					}
 
-				} else if (menuItem.equals(_context.getString( "requirementsanalysisplugin.layoutDependencies" ))){
+				} else if (menuItem.equals(_settings.getString( "requirementsanalysisplugin.layoutDependencies" ))){
 
 					if( theSelectedGraphEls.size() > 0 ){
 
@@ -395,13 +411,13 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 								(IRPPackage) theSelectedEl );
 					}				
 
-				} else if (menuItem.equals(_context.getString("requirementsanalysisplugin.PopulateRequirementsForSDsMenu"))){
+				} else if (menuItem.equals(_settings.getString("requirementsanalysisplugin.PopulateRequirementsForSDsMenu"))){
 
 					if (theSelectedEl instanceof IRPSequenceDiagram){
 						PopulateRelatedRequirementsPanel.launchThePanel( theAppID );
 					}
 
-				} else if (menuItem.equals(_context.getString("requirementsanalysisplugin.UpdateVerificationDependenciesForSDsMenu"))){		
+				} else if (menuItem.equals(_settings.getString("requirementsanalysisplugin.UpdateVerificationDependenciesForSDsMenu"))){		
 
 					if( !theSelectedEls.isEmpty() ){
 

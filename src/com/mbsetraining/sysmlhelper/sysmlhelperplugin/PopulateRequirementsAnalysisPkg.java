@@ -5,6 +5,8 @@ import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
+import com.mbsetraining.sysmlhelper.common.BaseContext;
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.PopulatePkg;
 import com.mbsetraining.sysmlhelper.gateway.CreateGatewayProjectPanel;
@@ -12,10 +14,15 @@ import com.telelogic.rhapsody.core.*;
 
 public class PopulateRequirementsAnalysisPkg extends PopulatePkg {
 		
+	protected ConfigurationSettings _settings;
+	
 	public PopulateRequirementsAnalysisPkg(
-			SysMLHelper_Context context ) {
+			BaseContext context,
+			ConfigurationSettings settings ){
 		
-		super(context);
+		super( context );
+		
+		_settings = settings;
 	}
 	
 	public void displayGraphicalPropertiesFor(IRPGraphElement theGraphEl){
@@ -96,7 +103,7 @@ public class PopulateRequirementsAnalysisPkg extends PopulatePkg {
 			_context.deleteIfPresent( "Structure1", "StructureDiagram", _context.get_rhpPrj() );
 			_context.deleteIfPresent( "Default", "Package", _context.get_rhpPrj() );
 				    	
-	    	_context.setPropertiesValuesRequestedInConfigFile( 
+	    	_settings.setPropertiesValuesRequestedInConfigFile( 
 	    			_context.get_rhpPrj(),
 	    			"setPropertyForRequirementsAnalysisModel" );
 	    			

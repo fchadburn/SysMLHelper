@@ -3,7 +3,7 @@ package com.mbsetraining.sysmlhelper.populateparts;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.telelogic.rhapsody.core.*;
 
 public class ModelElInfo {
@@ -11,13 +11,13 @@ public class ModelElInfo {
 	public IRPClassifier _classifier;
 	public IRPInstance _part;
 	public boolean _isSilent;
-	private ConfigurationSettings _context;
+	private BaseContext _context;
 	
 	public ModelElInfo(
 			IRPClassifier theClassifier,
 			IRPInstance thePart,
 			boolean isSilent,
-			ConfigurationSettings context ){
+			BaseContext context ){
 	
 		_context = context;
 		_classifier = theClassifier;

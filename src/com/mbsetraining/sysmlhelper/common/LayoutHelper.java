@@ -7,10 +7,10 @@ import com.telelogic.rhapsody.core.*;
 
 public class LayoutHelper {
 
-	ConfigurationSettings _context;
+	BaseContext _context;
 	
 	public LayoutHelper(
-			ConfigurationSettings context ) {
+			BaseContext context ) {
 		_context = context;
 	}
 	

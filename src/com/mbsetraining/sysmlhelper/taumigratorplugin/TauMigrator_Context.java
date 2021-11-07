@@ -1,8 +1,9 @@
 package com.mbsetraining.sysmlhelper.taumigratorplugin;
 
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.common.BaseContext;
+import com.telelogic.rhapsody.core.IRPPackage;
 
-public class TauMigrator_Context extends ConfigurationSettings {
+public class TauMigrator_Context extends BaseContext {
 
 	public TauMigrator_Context(
 			String theAppID ){
@@ -14,10 +15,7 @@ public class TauMigrator_Context extends ConfigurationSettings {
 				"TauMigratorProfile.General.EnableDebugLogging",
 				"TauMigratorProfile.General.PluginVersion",
 				"TauMigratorProfile.General.UserDefinedMetaClassesAsSeparateUnit",
-				"TauMigratorProfile.General.AllowPluginToControlUnitGranularity",
-				"TauMigrator.properties", 
-				"TauMigrator_MessagesBundle",
-				"TauMigrator" 
+				"TauMigratorProfile.General.AllowPluginToControlUnitGranularity"
 				);
 	}
 	
@@ -28,5 +26,11 @@ public class TauMigrator_Context extends ConfigurationSettings {
 				"SysMLHelper.General.IsShowProfileVersionCheckDialogs" );
 				
 		return result;
+	}
+
+	@Override
+	public IRPPackage addNewTermPackageAndSetUnitProperties(String theName,
+			IRPPackage theOwner, String theNewTermName) {
+		return null;
 	}
 }

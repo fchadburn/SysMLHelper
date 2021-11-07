@@ -2,6 +2,7 @@ package designsynthesisplugin;
 
 import java.util.List;
 
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
@@ -9,12 +10,19 @@ public class DesignSynthesisPlugin extends RPUserPlugin {
 
 	protected ExecutableMBSE_Context _context = null;
 	protected PortCreator _portCreator = null;
+	protected ConfigurationSettings _settings;
 
 	// called when plug-in is loaded
 	public void RhpPluginInit(
 			final IRPApplication theRhapsodyApp ){
 
 		_context = new ExecutableMBSE_Context( theRhapsodyApp.getApplicationConnectionString() );
+
+		_settings = new ConfigurationSettings(
+				"ExecutableMBSE.properties", 
+				"ExecutableMBSE_MessagesBundle",
+				"ExecutableMBSE", 
+				_context );
 
 		String msg = "The ExecutableMBSE component of the SysMLHelperPlugin was loaded successfully.";		
 
@@ -27,7 +35,7 @@ public class DesignSynthesisPlugin extends RPUserPlugin {
 	public void OnMenuItemSelect(
 			String menuItem ){
 
-		IRPModelElement theSelectedEl = _context.getSelectedElement();			
+		IRPModelElement theSelectedEl = _context.getSelectedElement( false );			
 		List<IRPModelElement> theSelectedEls = _context.getSelectedElements();
 
 		_context.info("Starting ("+ theSelectedEls.size() + " elements were selected) ...");
@@ -35,7 +43,8 @@ public class DesignSynthesisPlugin extends RPUserPlugin {
 		if( !theSelectedEls.isEmpty() ){
 			//selElemName = theSelectedEl.getName();	
 
-			if (menuItem.equals(_context.getString("designsynthesisplugin.MakeAttributeAPublishFlowportMenu"))){
+			if (menuItem.equals(_settings.getString(
+					"designsynthesisplugin.MakeAttributeAPublishFlowportMenu"))){
 
 				if (theSelectedEl instanceof IRPAttribute){
 					try {
@@ -46,7 +55,8 @@ public class DesignSynthesisPlugin extends RPUserPlugin {
 					}
 				}
 
-			} else if (menuItem.equals(_context.getString("designsynthesisplugin.MakeAttributeASubscribeFlowportMenu"))){
+			} else if (menuItem.equals(_settings.getString(
+					"designsynthesisplugin.MakeAttributeASubscribeFlowportMenu"))){
 
 				if (theSelectedEl instanceof IRPAttribute){
 					try {
@@ -57,7 +67,8 @@ public class DesignSynthesisPlugin extends RPUserPlugin {
 					}
 				}
 
-			} else if (menuItem.equals(_context.getString("designsynthesisplugin.DeleteAttributeAndRelatedElementsMenu"))){
+			} else if (menuItem.equals(_settings.getString(
+					"designsynthesisplugin.DeleteAttributeAndRelatedElementsMenu"))){
 
 				try {
 					if( theSelectedEl instanceof IRPAttribute ){

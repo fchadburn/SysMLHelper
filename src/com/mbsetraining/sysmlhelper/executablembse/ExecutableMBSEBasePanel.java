@@ -32,7 +32,6 @@ public abstract class ExecutableMBSEBasePanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	protected ExecutableMBSE_Context _context;
-	//protected SelectedElementContext _selectedContext;
 
 	protected ExecutableMBSEBasePanel(
 			String theAppID ){
@@ -40,7 +39,6 @@ public abstract class ExecutableMBSEBasePanel extends JPanel {
 		super();
 		
 		_context = new ExecutableMBSE_Context( theAppID );
-		//_selectedContext = new SelectedElementContext( _context );
 	}
 	
 	List<IRPUnit> m_UnitsForReadWrite = new ArrayList<IRPUnit>();

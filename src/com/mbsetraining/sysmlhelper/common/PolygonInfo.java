@@ -4,13 +4,13 @@ import com.telelogic.rhapsody.core.*;
 
 public class PolygonInfo {
 
-	private IRPGraphElement _graphElement;
-	private String[] _component; 
-	ConfigurationSettings _context;
+	protected IRPGraphElement _graphElement;
+	protected String[] _component; 
+	protected BaseContext _context;
 	
 	public PolygonInfo( 
 			IRPGraphElement theGraphEl,
-			ConfigurationSettings context ){
+			BaseContext context ){
 		
 		_context = context;
 		_graphElement = theGraphEl;

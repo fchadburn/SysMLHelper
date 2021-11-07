@@ -6,19 +6,19 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map.Entry;
 
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.common.BaseContext;
 
 public class GatewayFileSection {
 
 	private String m_SectionName = null;
 	private boolean m_isImmutable = false;
-	protected ConfigurationSettings _context;
+	protected BaseContext _context;
 	
 	LinkedHashMap<String, String> m_SettingsMap = new LinkedHashMap<String, String>();
 	
 	public GatewayFileSection(
 			String theDocumentName,
-			ConfigurationSettings context ) {
+			BaseContext context ) {
 		
 		_context = context;
 		this.m_SectionName = theDocumentName;

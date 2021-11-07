@@ -3,6 +3,8 @@ package functionalanalysisplugin;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
+import com.mbsetraining.sysmlhelper.common.BaseContext;
+import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.PopulatePkg;
 import com.mbsetraining.sysmlhelper.gateway.CreateGatewayProjectPanel;
@@ -16,10 +18,15 @@ public class PopulateFunctionalAnalysisPkg extends PopulatePkg {
 	    FullSim, SimpleSim, NoSim
 	}
 	
+	protected ConfigurationSettings _settings;
+	
 	public PopulateFunctionalAnalysisPkg(
-			SysMLHelper_Context context ){
+			BaseContext context,
+			ConfigurationSettings settings ){
 		
 		super( context );
+		
+		_settings = settings;
 	}
 	
 	public void createFunctionalAnalysisPkg(
@@ -162,7 +169,7 @@ public class PopulateFunctionalAnalysisPkg extends PopulatePkg {
 			_context.deleteIfPresent( "Structure1", "StructureDiagram", forProject );
 			_context.deleteIfPresent( "Default", "Package", forProject );
 	    		    	
-	    	_context.setPropertiesValuesRequestedInConfigFile( 
+	    	_settings.setPropertiesValuesRequestedInConfigFile( 
 	    			forProject,
 	    			"setPropertyForFunctionalAnalysisModel" );
 	    		    	

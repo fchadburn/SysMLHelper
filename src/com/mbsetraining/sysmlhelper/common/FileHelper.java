@@ -11,10 +11,10 @@ import com.telelogic.rhapsody.core.IRPProject;
 
 public class FileHelper {
 	
-	protected ConfigurationSettings _context;
+	protected BaseContext _context;
 	
 	public FileHelper(
-			ConfigurationSettings context ) {
+			BaseContext context ) {
 		_context = context;
 	}
  

@@ -3,7 +3,7 @@ package com.mbsetraining.sysmlhelper.sequencediagram;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.telelogic.rhapsody.core.*;
 
 public class MessageInfoList extends ArrayList<MessageInfo>{
@@ -13,15 +13,14 @@ public class MessageInfoList extends ArrayList<MessageInfo>{
 	 */
 	private static final long serialVersionUID = -7379143084838550398L;
 	
-	ConfigurationSettings _context;
-	InterfaceInfoList _candidateInterfaces;
-	
-	int _upToDateCount = 0;
+	protected InterfaceInfoList _candidateInterfaces;
+	protected BaseContext _context;
+	protected int _upToDateCount = 0;
 	
 	public MessageInfoList(
 			IRPSequenceDiagram theSD,
 			InterfaceInfoList theCandidateInterfaces,
-			ConfigurationSettings theContext ){
+			BaseContext theContext ){
 		
 		_context = theContext;
 		_candidateInterfaces = theCandidateInterfaces;
@@ -31,7 +30,7 @@ public class MessageInfoList extends ArrayList<MessageInfo>{
 		@SuppressWarnings("unchecked")
 		List<IRPModelElement> theMessages = theCollab.getMessages().toList();
 		
-		_context.debug( "MessageInfoList constructor determined that there are " + theMessages.size() + " messages on " + _context.elInfo( theSD ) );
+		//_context.debug( "MessageInfoList constructor determined that there are " + theMessages.size() + " messages on " + _context.elInfo( theSD ) );
 		
 		for( IRPModelElement theMessage : theMessages ){
 			
@@ -40,9 +39,22 @@ public class MessageInfoList extends ArrayList<MessageInfo>{
 			}
 		}		
 		
-		_context.debug( "The MessageInfoList constructor completed (" + _upToDateCount + 
-				" messages on " + _context.elInfo( theSD ) + " are up to date, and " + this.size() + " are not)");
+		//_context.debug( "The MessageInfoList constructor completed (" + _upToDateCount + 
+		//		" messages on " + _context.elInfo( theSD ) + " are up to date, and " + this.size() + " are not)");
+	}
+	
+	public MessageInfoList(
+			IRPMessage theMessage,
+			IRPSequenceDiagram onDiagram,
+			InterfaceInfoList theCandidateInterfaces,
+			BaseContext theContext ){
+		
+		_context = theContext;
+		_candidateInterfaces = theCandidateInterfaces;
 
+		//_context.debug( "MessageInfoList constructor invoked for " + _context.elInfo( theMessage ) );
+		
+		addOrUpdateCount( theMessage, onDiagram );
 	}
 
 	private void addOrUpdateCount(
@@ -62,26 +74,12 @@ public class MessageInfoList extends ArrayList<MessageInfo>{
 				add( theMessageInfo );
 			}			
 		} else {
-			_context.debug( "addOrUpdateCount is ignoring " + _context.elInfo( theMessage ) + " as it's not an event or operation" );
+			//_context.debug( "addOrUpdateCount is ignoring " + _context.elInfo( theMessage ) + " as it's not an event or operation" );
 		}
 	}
 	
 	public int get_upToDateCount() {
 		return _upToDateCount;
-	}
-
-	public MessageInfoList(
-			IRPMessage theMessage,
-			IRPSequenceDiagram onDiagram,
-			InterfaceInfoList theCandidateInterfaces,
-			ConfigurationSettings theContext ){
-		
-		_context = theContext;
-		_candidateInterfaces = theCandidateInterfaces;
-
-		_context.debug( "MessageInfoList constructor invoked for " + _context.elInfo( theMessage ) );
-		
-		addOrUpdateCount( theMessage, onDiagram );
 	}
 	
 	protected void dumpInfo(){

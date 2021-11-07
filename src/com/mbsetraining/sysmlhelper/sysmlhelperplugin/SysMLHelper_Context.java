@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.IRPActor;
 import com.telelogic.rhapsody.core.IRPAttribute;
@@ -26,7 +26,7 @@ import com.telelogic.rhapsody.core.IRPSysMLPort;
 import com.telelogic.rhapsody.core.IRPTransition;
 import com.telelogic.rhapsody.core.IRPUnit;
 
-public class SysMLHelper_Context extends ConfigurationSettings {
+public class SysMLHelper_Context extends BaseContext {
 
 	final protected String _defaultExternalSignalsPackageName;
 	final protected String _defaultContextDiagramPackageName;
@@ -48,10 +48,7 @@ public class SysMLHelper_Context extends ConfigurationSettings {
 				"ExecutableMBSEProfile.General.EnableDebugLogging",
 				"ExecutableMBSEProfile.General.PluginVersion",
 				"ExecutableMBSEProfile.General.UserDefinedMetaClassesAsSeparateUnit",
-				"ExecutableMBSEProfile.General.AllowPluginToControlUnitGranularity",
-				"SysMLHelper.properties", 
-				"SysMLHelper_MessagesBundle",
-				"SysMLHelper" 
+				"ExecutableMBSEProfile.General.AllowPluginToControlUnitGranularity"
 				);
 
 		_defaultExternalSignalsPackageName = _rhpPrj.getPropertyValue(

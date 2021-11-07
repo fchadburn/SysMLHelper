@@ -4,7 +4,10 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -2723,6 +2726,23 @@ public abstract class BaseContext {
 			IRPModelElement theEl ){
 
 		return _rhpLog.elInfo( theEl );		
+	}
+	
+	public Date getDate( 
+			String fromString ){
+
+		SimpleDateFormat parser = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+
+		Date date = null;
+
+		try {
+			date = parser.parse( fromString );
+
+		} catch( ParseException e ){
+			error( "Exception in getDate trying to parse date" );
+		}
+
+		return date;
 	}
 }
 

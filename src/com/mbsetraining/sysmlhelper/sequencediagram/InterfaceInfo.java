@@ -1,6 +1,6 @@
 package com.mbsetraining.sysmlhelper.sequencediagram;
 
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.telelogic.rhapsody.core.*;
 
 public class InterfaceInfo {
@@ -12,13 +12,13 @@ public class InterfaceInfo {
 	protected IRPPort _toPort;
 	protected boolean _isFromPortNeedsToBeBehavioural;
 	protected boolean _isToPortNeedsToBeBehavioural;
-	protected ConfigurationSettings _context;
+	protected BaseContext _context;
 
 	public InterfaceInfo(
 		IRPClass interfaceClass,
 		IRPPort fromPort,
 		IRPPort toPort,
-		ConfigurationSettings context ){
+		BaseContext context ){
 
 		_interfaceClass = interfaceClass;
 		_fromPort = fromPort;

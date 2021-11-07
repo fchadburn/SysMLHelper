@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.mbsetraining.sysmlhelper.common.NamedElementMap;
 import com.telelogic.rhapsody.core.*;
 
@@ -33,7 +33,7 @@ public class GatewayDocumentPanel extends JPanel {
 	private String m_OriginalBaseline = null;
 	private JComboBox<Object> m_RequirementsPkgComboBox = null;
 	private NamedElementMap m_NamedElementMap = null;
-	protected ConfigurationSettings _context;
+	protected BaseContext _context;
 	
 	public GatewayDocumentPanel(
 			String theOriginalName,
@@ -44,7 +44,7 @@ public class GatewayDocumentPanel extends JPanel {
 			List<IRPModelElement> thePackagesToImportInto,
 			IRPModelElement theDefaultPackage,
 			boolean isImmutable,
-			ConfigurationSettings context ) throws FileNotFoundException {
+			BaseContext context ) throws FileNotFoundException {
 		
 		super();
 		

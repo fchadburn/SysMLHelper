@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.telelogic.rhapsody.core.*;
 
 public class DiagramElementList extends HashSet<DiagramElementInfo> {
@@ -15,12 +15,12 @@ public class DiagramElementList extends HashSet<DiagramElementInfo> {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	ConfigurationSettings _context;
+	protected BaseContext _context;
 	
 	public DiagramElementList(
 			List<IRPModelElement> theModelEls,
 			List<IRPGraphElement> theGraphEls,
-			ConfigurationSettings context ) {
+			BaseContext context ) {
 		
 		_context = context;
 		

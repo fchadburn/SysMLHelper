@@ -110,7 +110,7 @@ public class UserInterfaceHelper {
 			String andQuestion, 
 			String andDefault, 
 			int size,
-			ConfigurationSettings context ){
+			BaseContext context ){
 
 		String theEntry = andDefault;
 

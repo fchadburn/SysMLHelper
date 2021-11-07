@@ -3,14 +3,14 @@ package designsynthesisplugin;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
+import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.mbsetraining.sysmlhelper.executablembse.PopulatePkg;
-import com.mbsetraining.sysmlhelper.sysmlhelperplugin.SysMLHelper_Context;
 import com.telelogic.rhapsody.core.*;
 
 public class PopulateDesignSynthesisPkg extends PopulatePkg {
 
 	public PopulateDesignSynthesisPkg(
-			SysMLHelper_Context context ){
+			BaseContext context ){
 
 		super( context );
 	}

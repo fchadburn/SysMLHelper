@@ -4,15 +4,15 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.telelogic.rhapsody.core.*;
 
 public class VerificationDependencyUpdater {	
 
-	protected ConfigurationSettings _context;
+	protected BaseContext _context;
 	
 	public VerificationDependencyUpdater(
-			ConfigurationSettings context ) {
+			BaseContext context ) {
 
 		_context = context;
 	}

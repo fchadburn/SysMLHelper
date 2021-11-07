@@ -5,12 +5,12 @@ import com.telelogic.rhapsody.core.*;
 public class GraphEdgeInfo {
 	
 	protected IRPGraphEdge _graphEdge;
-	protected ConfigurationSettings _context;
 	protected PolygonInfo _polygonInfo;
-			
+	protected BaseContext _context;
+		
 	public GraphEdgeInfo(
 			IRPGraphEdge theGraphEdge,
-			ConfigurationSettings context ) {	
+			BaseContext context ) {	
 		
 		_context = context;
 		_graphEdge = theGraphEdge;

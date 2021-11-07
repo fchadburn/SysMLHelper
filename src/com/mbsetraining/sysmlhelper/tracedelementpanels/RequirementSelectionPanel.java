@@ -22,7 +22,7 @@ import javax.swing.JTextArea;
 import javax.swing.GroupLayout.ParallelGroup;
 import javax.swing.GroupLayout.SequentialGroup;
 
-import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.telelogic.rhapsody.core.*;
 
 public class RequirementSelectionPanel extends JPanel {
@@ -34,13 +34,13 @@ public class RequirementSelectionPanel extends JPanel {
 	
 	private Map<IRPRequirement, JCheckBox> m_CheckBoxMap = new HashMap<IRPRequirement, JCheckBox>();
 
-	protected ConfigurationSettings _context;
+	protected BaseContext _context;
 	
 	public RequirementSelectionPanel(
 			String theLabelText,
 			Set<IRPRequirement> theReqtsInTable,
 			Set<IRPRequirement> theReqtsSelected,
-			ConfigurationSettings context ){
+			BaseContext context ){
 		
 		super();
 		

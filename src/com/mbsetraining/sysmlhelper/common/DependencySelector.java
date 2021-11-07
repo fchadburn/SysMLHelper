@@ -9,10 +9,10 @@ import com.telelogic.rhapsody.core.*;
 
 public class DependencySelector {
 	
-	ConfigurationSettings _context;
+	BaseContext _context;
 	
 	public DependencySelector(
-			ConfigurationSettings theContext ) {
+			BaseContext theContext ) {
 		
 		_context = theContext;
 	}
