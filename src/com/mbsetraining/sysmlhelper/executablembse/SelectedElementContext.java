@@ -104,7 +104,7 @@ public class SelectedElementContext {
 
 			theGraphEl = _selectedGraphEls.get( 0 );
 		} else {
-			_context.warning( "getSelectedGraphEl is returning null");
+			_context.debug( "getSelectedGraphEl is returning null");
 		}
 
 		return theGraphEl;
@@ -191,7 +191,7 @@ public class SelectedElementContext {
 				IRPModelElement theOwner = 
 						_context.findOwningClassIfOneExistsFor( _selectedEl );
 
-				_context.debug( _context.elInfo( theOwner ) + "is the Owner");
+				//_context.debug( _context.elInfo( theOwner ) + "is the Owner");
 
 				if( _context.hasStereotypeCalled( "TestDriver", theOwner ) ){
 
@@ -221,9 +221,7 @@ public class SelectedElementContext {
 										theMsg, 
 										true ); 
 
-						if( theChosenBlockEl != null && 
-								theChosenBlockEl instanceof IRPClass ){
-
+						if( theChosenBlockEl instanceof IRPClass ){
 							_chosenBlock = (IRPClass) theChosenBlockEl;
 						}
 					} else {
@@ -249,8 +247,7 @@ public class SelectedElementContext {
 				_context.info( "Element named in " + tagNameForAssemblyBlockUnderDev + 
 						" is " + _context.elInfo( elementInTag ) );
 
-				if( elementInTag != null && 
-						elementInTag instanceof IRPClass ){
+				if( elementInTag instanceof IRPClass ){
 					_buildingBlock = (IRPClass)elementInTag;
 				}
 
@@ -512,12 +509,6 @@ public class SelectedElementContext {
 		}
 
 		return theBuildingBlocks;
-	}
-
-	public IRPClass getBuildingBlock( 
-			IRPModelElement basedOnContextEl ){
-
-		return _buildingBlock;
 	}
 
 	public IRPPackage getPackageForActorsAndTest(){

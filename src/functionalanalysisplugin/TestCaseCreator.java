@@ -18,15 +18,17 @@ public class TestCaseCreator {
 	public void createTestCaseFor( 
 			IRPSequenceDiagram theSD ){
 
-		_context.debug("createTestCaseFor invoked for " + _context.elInfo( theSD ) );
+		_context.debug( "createTestCaseFor invoked for " + _context.elInfo( theSD ) );
 
 		IRPCollaboration theLogicalCollab = theSD.getLogicalCollaboration();
 
 		@SuppressWarnings("unchecked")
 		List<IRPMessage> theMessages = theLogicalCollab.getMessages().toList();
 
+		_context.get_selectedContext().setContextTo( theSD );
+		
 		IRPClass theBuildingBlock = 
-				_context.get_selectedContext().getBuildingBlock( theSD );
+				_context.get_selectedContext().getBuildingBlock();
 
 		if( theBuildingBlock != null ){
 
@@ -48,24 +50,27 @@ public class TestCaseCreator {
 				IRPInterfaceItem theInterfaceItem = theMessage.getFormalInterfaceItem();
 
 				if (theInterfaceItem instanceof IRPEvent) {
-					_context.debug( _context.elInfo( theMessage ) + " was found with source = " + _context.elInfo(theSource)
-							+ ", and theInterfaceItem=" + _context.elInfo(theInterfaceItem));
+					
+					_context.debug( _context.elInfo( theMessage ) + " was found with source = " + 
+							_context.elInfo( theSource ) + ", and theInterfaceItem = " + 
+							_context.elInfo(theInterfaceItem));
 
 					IRPEvent theEvent = (IRPEvent) theInterfaceItem;
 
-					String theEventName = theEvent.getName().replaceFirst("req", "send_");
+					String theEventName = theEvent.getName().replaceFirst( "req", "send_" );
 
 					for (IRPActor theActor : theActors) {
 
-						IRPModelElement theSend = _context.findElementWithMetaClassAndName("Reception",
-								theEventName, theActor);
+						IRPModelElement theSend = _context.findElementWithMetaClassAndName( 
+								"Reception", theEventName, theActor );
 
 						if (theSend != null) {
 							_context.debug("Voila, found " + _context.elInfo(theSend) + " owned by "
 									+ _context.elInfo(theActor));
 
-							IRPLink existingLinkConnectingBlockToActor = ActorMappingInfo
-									.getExistingLinkBetweenBaseClassifiersOf(theTestBlock, theActor);
+							IRPLink existingLinkConnectingBlockToActor = _context
+									.getExistingLinkBetweenBaseClassifiersOf( 
+											theTestBlock, theActor, theBuildingBlock );
 
 							if (existingLinkConnectingBlockToActor != null) {
 								IRPPort theToPort = existingLinkConnectingBlockToActor.getToPort();
@@ -77,8 +82,8 @@ public class TestCaseCreator {
 								theCode += "sleep(4);\n";
 
 							} else {
-								_context.warning("No connector found between " + _context.elInfo(theTestBlock) + " and "
-										+ _context.elInfo(theActor));
+								_context.warning( "No connector found between " + _context.elInfo( theTestBlock ) + " and "
+										+ _context.elInfo( theActor ) );
 							}
 
 						} else {
@@ -94,8 +99,9 @@ public class TestCaseCreator {
 									_context.debug("Voila, found " + _context.elInfo(theSendAgain)
 											+ " owned by " + _context.elInfo(theBaseClassifier));
 
-									IRPLink existingLinkConnectingBlockToActor = ActorMappingInfo
-											.getExistingLinkBetweenBaseClassifiersOf(theTestBlock, theActor);
+									IRPLink existingLinkConnectingBlockToActor = _context
+											.getExistingLinkBetweenBaseClassifiersOf( 
+													theTestBlock, theActor, theBuildingBlock );
 
 									if (existingLinkConnectingBlockToActor != null) {
 										IRPPort theToPort = existingLinkConnectingBlockToActor.getToPort();
@@ -106,8 +112,8 @@ public class TestCaseCreator {
 										theCode += "sleep(4);\n";
 
 									} else {
-										_context.warning("No connector found between " + _context.elInfo(theTestBlock)
-												+ " and " + _context.elInfo(theActor));
+										_context.warning( "No connector found between " + _context.elInfo(theTestBlock)
+												+ " and " + _context.elInfo( theActor ) );
 									}
 								}
 							}

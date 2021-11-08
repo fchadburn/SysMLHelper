@@ -206,8 +206,10 @@ public class CreateNewActorPanel extends ExecutableMBSEBasePanel {
 		
 		if( checkValidity( false ) ){
 			
+			_context.get_selectedContext().setContextTo( m_RootPackage );
+			
 			IRPClass theAssemblyBlock = 
-					_context.get_selectedContext().getBuildingBlock( m_RootPackage );
+					_context.get_selectedContext().getBuildingBlock();
 			
 			if( m_RootPackage != null ){
 				

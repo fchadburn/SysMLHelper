@@ -44,8 +44,10 @@ public class SequenceDiagramCreator {
 	public void updateLifelinesToMatchPartsInActiveBuildingBlock(
 			IRPSequenceDiagram theSequenceDiagram ){
 		
+		_context.get_selectedContext().setContextTo( theSequenceDiagram );
+		
 		IRPClass theBuildingBlock = 
-				_context.get_selectedContext().getBuildingBlock( theSequenceDiagram );
+				_context.get_selectedContext().getBuildingBlock();
 
 		if( theBuildingBlock != null ){
 
@@ -165,7 +167,7 @@ public class SequenceDiagramCreator {
 		return theDomainBlock;
 	}
 	
-	public void createSequenceDiagramFor(
+	public IRPSequenceDiagram createSequenceDiagramFor(
 			IRPClass theAssemblyBlock, 
 			IRPPackage inPackage,
 			String withName,
@@ -174,6 +176,8 @@ public class SequenceDiagramCreator {
 			boolean isRecreateExisting ){
 
 		boolean isCreateSD = true;
+		
+		IRPSequenceDiagram theSD = null;
 
 		@SuppressWarnings("unchecked")
 		List<IRPInstance> theParts = theAssemblyBlock.getNestedElementsByMetaClass( "Part", 0 ).toList();
@@ -213,7 +217,7 @@ public class SequenceDiagramCreator {
 
 		if( isCreateSD ){
 
-			IRPSequenceDiagram theSD = inPackage.addSequenceDiagram( withName );
+			theSD = inPackage.addSequenceDiagram( withName );
 
 			int xPos = 30;
 			int yPos = 0;
@@ -279,6 +283,8 @@ public class SequenceDiagramCreator {
 				theSD.openDiagram();
 			}
 		}
+		
+		return theSD;
 	}
 	
 	private boolean isPartTheOnlyOneOfItsTypeUnder(

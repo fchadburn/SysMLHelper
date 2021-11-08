@@ -1,6 +1,5 @@
 package functionalanalysisplugin;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JCheckBox;
@@ -87,74 +86,7 @@ public class ActorMappingInfo {
 		m_ActorNameTextField.setText( theProposedActorName );
 	}
 	
-	@SuppressWarnings("unchecked")
-	public IRPLink getExistingLinkBetweenBaseClassifiersOf(
-			IRPClassifier theClassifier, 
-			IRPClassifier andTheClassifier ){
-		
-		int isLinkFoundCount = 0;
-		IRPLink theExistingLink = null;
-		
-		IRPModelElement theFAPackage = 
-				theClassifier.getProject().findNestedElementRecursive(
-						"FunctionalAnalysisPkg", "Package" );
 
-		if( theFAPackage != null && theFAPackage instanceof IRPPackage ){
-			
-			List<IRPClassifier> theOtherEndsBases = new ArrayList<>();
-			theOtherEndsBases.add( andTheClassifier );
-			theOtherEndsBases.addAll( andTheClassifier.getBaseClassifiers().toList() );
-			
-			List<IRPClassifier> theSourcesBases = new ArrayList<>();
-			theSourcesBases.add( theClassifier );
-			theSourcesBases.addAll( theClassifier.getBaseClassifiers().toList() );
-			
-			List<IRPClass> theBuildingBlocks = 
-					_context.get_selectedContext().getBuildingBlocks( 
-							(IRPPackage) theFAPackage );
-
-			for( IRPClass theBuildingBlock : theBuildingBlocks ){
-				
-				_context.debug("Found theBuildingBlock: " + _context.elInfo( theBuildingBlock ) );
-				
-				List<IRPLink> theLinks = theBuildingBlock.getLinks().toList();
-			
-				for( IRPLink theLink : theLinks ){
-					
-					IRPModelElement fromEl = theLink.getFromElement();
-					IRPModelElement toEl = theLink.getToElement();
-					
-					if( fromEl != null && 
-						fromEl instanceof IRPInstance && 
-						toEl != null && 
-						toEl instanceof IRPInstance ){
-					
-						IRPClassifier fromClassifier = ((IRPInstance)fromEl).getOtherClass();
-						IRPClassifier toClassifier = ((IRPInstance)toEl).getOtherClass();
-						
-						if( ( theOtherEndsBases.contains( toClassifier ) &&
-						      theSourcesBases.contains( fromClassifier ) ) ||
-								
-							( theSourcesBases.contains( toClassifier ) &&
-							  theOtherEndsBases.contains( fromClassifier ) ) ){
-							
-							_context.debug("Found that " + _context.elInfo( fromClassifier ) 
-									+ " is already linked to " + _context.elInfo( toClassifier ) );
-							
-							theExistingLink = theLink;
-							isLinkFoundCount++;
-						}						
-					}
-				}
-			}
-		}
-		
-		if( isLinkFoundCount > 1 ){
-			_context.warning("Warning in getExistingLinkBetweenBaseClassifiersOf, there are " + isLinkFoundCount );
-		}
-		
-		return theExistingLink;
-	}
 	
 	public IRPInstance performActorPartCreationIfSelectedIn(
 			IRPClass theAssemblyBlock,
@@ -298,8 +230,8 @@ public class ActorMappingInfo {
 		IRPClassifier theTesterBlock = theTesterPart.getOtherClass();
 		
 		IRPLink existingLinkConnectingTesterToActor = 
-				getExistingLinkBetweenBaseClassifiersOf(
-						theTesterBlock, theActor );
+				_context.getExistingLinkBetweenBaseClassifiersOf(
+						theTesterBlock, theActor, theAssemblyBlock );
 		
 		IRPPort theActorToTesterPort = null;
 		IRPPort theTesterToActorPort = null;
@@ -361,8 +293,8 @@ public class ActorMappingInfo {
 		IRPClassifier connectedToBlock = theConnectedToPart.getOtherClass();
 		
 		IRPLink existingLinkConnectingBlockToActor = 
-				getExistingLinkBetweenBaseClassifiersOf(
-						connectedToBlock, theActor );
+				_context.getExistingLinkBetweenBaseClassifiersOf(
+						connectedToBlock, theActor, theAssemblyBlock );
 		
 		IRPPort theActorToSystemPort = null;
 		IRPPort theSystemToActorPort = null;

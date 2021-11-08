@@ -18,9 +18,9 @@ public class CreateOperationPanel extends CreateTracedElementPanel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-
-	private JCheckBox m_CallOperationIsNeededCheckBox;
+	private static final long serialVersionUID = -3759980130721314325L;
+	
+	private JCheckBox _callOperationIsNeededCheckBox;
 
 	// for testing only
 	public static void main(String[] args) {
@@ -119,13 +119,13 @@ public class CreateOperationPanel extends CreateTracedElementPanel {
 		JPanel theNamePanel = createChosenNamePanelWith( "Create an operation called:  ", theProposedName );
 		theNamePanel.setAlignmentX(LEFT_ALIGNMENT);
 		
-		m_CallOperationIsNeededCheckBox = new JCheckBox("Populate on diagram?");
-		setupPopulateCheckbox( m_CallOperationIsNeededCheckBox );
+		_callOperationIsNeededCheckBox = new JCheckBox("Populate on diagram?");
+		setupPopulateCheckbox( _callOperationIsNeededCheckBox );
 				
 		JPanel thePageStartPanel = new JPanel();
 		thePageStartPanel.setLayout( new BoxLayout( thePageStartPanel, BoxLayout.X_AXIS ) );
 		thePageStartPanel.add( theNamePanel );
-		thePageStartPanel.add( m_CallOperationIsNeededCheckBox );
+		thePageStartPanel.add( _callOperationIsNeededCheckBox );
 		
 		add( thePageStartPanel, BorderLayout.PAGE_START );
 		add( _requirementSelectionPanel, BorderLayout.WEST );
@@ -208,7 +208,7 @@ public class CreateOperationPanel extends CreateTracedElementPanel {
 			}
 		}
 
-		if( m_CallOperationIsNeededCheckBox.isSelected() ){
+		if( _callOperationIsNeededCheckBox.isSelected() ){
 			populateCallOperationActionOnDiagram( theOperation );
 		}
 

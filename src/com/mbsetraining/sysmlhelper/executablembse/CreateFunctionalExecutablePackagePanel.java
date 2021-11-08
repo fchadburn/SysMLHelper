@@ -571,6 +571,9 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 			//}
 
 			theLogicalSystemBlock.changeTo( "Block" );
+			
+			_context.info( "Created '" + _context.elInfo( theLogicalSystemBlock ) + "'" );
+
 			theLogicalSystemBlock.highLightElement();
 
 			// only apply generalisation to create the state chart if simulation applies
@@ -730,6 +733,8 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 					} else {
 						_context.error( "Error, either part or port is null" );
 					}
+					
+					_context.info( "Created '" + _context.elInfo( theSystemAssemblyBlock ) + "' as the test execution context" );
 
 					//					for( IRPPackage theUseCasePkg : m_UseCasePkgs ){		
 					//						theFunctionalBlockPkg.addDependencyTo( theUseCasePkg );
@@ -743,24 +748,35 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 				// Add a sequence diagram
 				SequenceDiagramCreator theHelper = new SequenceDiagramCreator( _context );
 				
-				theHelper.createSequenceDiagramFor(
+				IRPSequenceDiagram theSD = theHelper.createSequenceDiagramFor(
 						theSystemAssemblyBlock, 
 						theRootPkg, 
 						"SD - " + theName,
 						_context.getIsCreateSDWithAutoShowApplied( theRootPkg ),
 						false,
 						false );
+				
+				_context.info( "Created '" + _context.elInfo( theSD ) + "' with lifelines for test execution" );
 
 				IRPStatechartDiagram theStatechart = 
 						theLogicalSystemBlock.getStatechart().getStatechartDiagram();
 
 				if( theStatechart != null ){
+					
+					theLogicalSystemBlock.getStatechart().setName( "STM - " + theName );
+
 					theStatechart.highLightElement();
 					theStatechart.openDiagram();
+					
+					_context.info( "Created '" + _context.elInfo( theStatechart ) + "' with design pattern for modeling guard-based transitions" );
 				}
 
 				// Add a component
-				_context.addAComponentWith( theName, theTestPkg, theSystemAssemblyBlock, "StateOriented" );
+				IRPComponent theComponent = _context.addAComponentWith( 
+						theName, theTestPkg, theSystemAssemblyBlock, "StateOriented" );
+				
+				theComponent.highLightElement();
+				_context.info( "Created '" + _context.elInfo( theComponent ) + "' to build simulation based on the execution context" );
 			}
 
 			BlockDiagramHelper theHelper = new BlockDiagramHelper(_context);

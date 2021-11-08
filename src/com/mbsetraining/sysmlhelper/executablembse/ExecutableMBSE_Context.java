@@ -15,6 +15,7 @@ import com.telelogic.rhapsody.core.IRPClassifier;
 import com.telelogic.rhapsody.core.IRPDependency;
 import com.telelogic.rhapsody.core.IRPEvent;
 import com.telelogic.rhapsody.core.IRPEventReception;
+import com.telelogic.rhapsody.core.IRPInstance;
 import com.telelogic.rhapsody.core.IRPLink;
 import com.telelogic.rhapsody.core.IRPModelElement;
 import com.telelogic.rhapsody.core.IRPOperation;
@@ -92,8 +93,6 @@ public class ExecutableMBSE_Context extends BaseContext {
 				"ExecutableMBSEProfile.General.PluginVersion", 
 				"ExecutableMBSEProfile.General.UserDefinedMetaClassesAsSeparateUnit", 
 				"ExecutableMBSEProfile.General.AllowPluginToControlUnitGranularity" );
-
-		_selectionContext = new SelectedElementContext( this );
 	}
 
 	// Generally single call per session, so use lazy load
@@ -699,14 +698,14 @@ public class ExecutableMBSE_Context extends BaseContext {
 					_rhpPrj,
 					"ExecutableMBSEProfile.General.IsCreateParametricSubpackageSelected" );
 		}
-		
+
 		return _isCreateParametricSubpackageSelected;
 	}
 
 	public boolean getIsCallOperationSupportEnabled(){
 
 		if( _isCallOperationSupportEnabled == null ){
-			
+
 			_isCallOperationSupportEnabled = getBooleanPropertyValue(
 					_rhpPrj,
 					"ExecutableMBSEProfile.FunctionalAnalysis.IsCallOperationSupportEnabled" );
@@ -993,7 +992,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 			if( theExistingFlowPort != null ){
 				super.debug( super.elInfo( theExistingFlowPort ) + " was found based on name matching" );
 			} else {
-				super.warning( "Unable to find an existing flow port related to " + super.elInfo( forTheAttribute ) );
+				super.debug( "Unable to find an existing flow port related to " + super.elInfo( forTheAttribute ) );
 			}
 		}
 
@@ -1157,6 +1156,61 @@ public class ExecutableMBSE_Context extends BaseContext {
 		}
 
 		return _selectionContext;
+	}
+
+	@SuppressWarnings("unchecked")
+	public IRPLink getExistingLinkBetweenBaseClassifiersOf(
+			IRPClassifier theClassifier, 
+			IRPClassifier andTheClassifier,
+			IRPClassifier underTheAssemblyBlock ){
+
+		int isLinkFoundCount = 0;
+		IRPLink theExistingLink = null;
+
+		List<IRPClassifier> theOtherEndsBases = new ArrayList<>();
+		theOtherEndsBases.add( andTheClassifier );
+		theOtherEndsBases.addAll( andTheClassifier.getBaseClassifiers().toList() );
+
+		List<IRPClassifier> theSourcesBases = new ArrayList<>();
+		theSourcesBases.add( theClassifier );
+		theSourcesBases.addAll( theClassifier.getBaseClassifiers().toList() );
+
+		super.debug( "underTheAssemblyBlock is looking under " + super.elInfo( underTheAssemblyBlock ) );
+
+		List<IRPLink> theLinks = underTheAssemblyBlock.getLinks().toList();
+
+		for( IRPLink theLink : theLinks ){
+
+			IRPModelElement fromEl = theLink.getFromElement();
+			IRPModelElement toEl = theLink.getToElement();
+
+			if( fromEl instanceof IRPInstance && 
+					toEl instanceof IRPInstance ){
+
+				IRPClassifier fromClassifier = ((IRPInstance)fromEl).getOtherClass();
+				IRPClassifier toClassifier = ((IRPInstance)toEl).getOtherClass();
+
+				if( ( theOtherEndsBases.contains( toClassifier ) &&
+						theSourcesBases.contains( fromClassifier ) ) ||
+
+						( theSourcesBases.contains( toClassifier ) &&
+								theOtherEndsBases.contains( fromClassifier ) ) ){
+
+					super.debug( "Found that " + super.elInfo( fromClassifier ) 
+							+ " is already linked to " + super.elInfo( toClassifier ) );
+
+					theExistingLink = theLink;
+					isLinkFoundCount++;
+				}						
+			}
+
+		}
+
+		if( isLinkFoundCount > 1 ){
+			super.warning( "Warning in getExistingLinkBetweenBaseClassifiersOf, there are " + isLinkFoundCount );
+		}
+
+		return theExistingLink;
 	}
 }
 

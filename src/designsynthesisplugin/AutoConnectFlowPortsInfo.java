@@ -15,30 +15,29 @@ import com.telelogic.rhapsody.core.*;
 
 public class AutoConnectFlowPortsInfo {
 
-	private String m_AttributeName;
-
-	final private String m_DoNothing = "Do nothing";
-	final private String m_CreateNew = "Create new attribute";
-	final private String m_None = "<None>";
+	final private String _doNothingOption = "Do nothing";
+	final private String _createNewAttributeOption = "Create new attribute";
+	final private String _noneOption = "<None>";
 	
-	private IRPAttribute m_SubscribingAttribute;
-	private IRPSysMLPort m_SubscribingFlowPort;
-	private IRPInstance m_SubscribingPart;
-	private IRPClassifier m_SubscribingBlock;
-	private Set<IRPStructureDiagram> m_DiagramsToUpdate = null;
-	private IRPAttribute m_PublishingAttribute;
-	private IRPSysMLPort m_PublishingFlowPort;
-	private IRPInstance m_PublishingPart;
-	private IRPClassifier m_BuildingBlock;
-	private JComboBox<Object> m_BindingChoiceComboBox;
+	private String _attributeName;
+	private IRPAttribute _subscribingAttribute;
+	private IRPSysMLPort _subscribingFlowPort;
+	private IRPInstance _subscribingPart;
+	private IRPClassifier _subscribingBlock;
+	private Set<IRPStructureDiagram> _diagramsToUpdate;
+	private IRPAttribute _publishingAttribute;
+	private IRPSysMLPort _publishingFlowPort;
+	private IRPInstance _publishingPart;
+	private IRPClassifier _buildingBlock;
+	private JComboBox<Object> _bindingChoiceComboBox;
 	
 	private ExecutableMBSE_Context _context;
 
-	private Set<IRPLink> m_Links = new HashSet<IRPLink>();
+	private Set<IRPLink> _links = new HashSet<IRPLink>();
 	
-	protected JTextField m_ChosenNameTextField = new JTextField();
+	protected JTextField _chosenNameTextField = new JTextField();
 	
-	private FlowType m_ExistingFlowType = FlowType.Nothing;
+	private FlowType _existingFlowType = FlowType.Nothing;
 		
 	public enum FlowType {
 	    Nothing, Publish, Subscribe
@@ -48,10 +47,10 @@ public class AutoConnectFlowPortsInfo {
 			IRPAttribute theSrcAttribute,
 			IRPInstance inTgtPart ){
 
-		_context.debug("getExistingAttributesLinkedTo invoked for " + 
-				_context.elInfo( theSrcAttribute ) + " owned by " + 
-				_context.elInfo( theSrcAttribute.getOwner() ) + " to see if there are links to " + 
-				_context.elInfo( inTgtPart ) );
+		//_context.debug( "getExistingAttributesLinkedTo invoked for " + 
+		//		_context.elInfo( theSrcAttribute ) + " owned by " + 
+		//		_context.elInfo( theSrcAttribute.getOwner() ) + " to see if there are links to " + 
+		//		_context.elInfo( inTgtPart ) );
 		
 		List<IRPAttribute> theExistingAttributes = 
 				new ArrayList<IRPAttribute>();
@@ -60,7 +59,7 @@ public class AutoConnectFlowPortsInfo {
 
 		if( theSrcFlowPort == null ){
 
-			_context.warning("Warning in getExistingFlowPortsLinkedTo, " + 
+			_context.debug( "getExistingAttributesLinkedTo found that " + 
 					_context.elInfo( theSrcAttribute ) + 
 					" has no flowport when one is expected");
 			
@@ -81,17 +80,17 @@ public class AutoConnectFlowPortsInfo {
 
 				if( theTgtFlowPort != null ){
 					
-					m_Links.addAll( _context.getLinksBetween(
+					_links.addAll( _context.getLinksBetween(
 							theSrcFlowPort, 
-							m_PublishingPart,
+							_publishingPart,
 							theTgtFlowPort, 
 							inTgtPart,
 							theAssemblyBlock ) );
 					
-					boolean isExistingLink = m_Links.size() > 0 ;
+					boolean isExistingLink = _links.size() > 0 ;
 							
 					if( isExistingLink ){
-						_context.debug("Found " + _context.elInfo( theTgtFlowPort ) );
+						//_context.debug( "Found " + _context.elInfo( theTgtFlowPort ) );
 						theExistingAttributes.add( theTgtAttribute );
 					}
 				}									
@@ -109,55 +108,56 @@ public class AutoConnectFlowPortsInfo {
 		
 		_context = context;
 
-		_context.debug("AutoConnectFlowPortsInfo constructor was invoked for " + 
+		_context.debug( "AutoConnectFlowPortsInfo constructor was invoked for " + 
 				_context.elInfo( toPublishingAttribute ) + " to subscriber " +
 				_context.elInfo( fromSubscribingPart ) );
 		
-		m_PublishingAttribute = toPublishingAttribute;
-		m_PublishingFlowPort = _context.getExistingFlowPort( m_PublishingAttribute );
-		m_PublishingPart = toPublishingPart;
+		_publishingAttribute = toPublishingAttribute;
+		_publishingFlowPort = _context.getExistingFlowPort( _publishingAttribute );
+		_publishingPart = toPublishingPart;
 		
-		m_AttributeName = toPublishingAttribute.getName();
-		m_SubscribingPart = fromSubscribingPart;
-		m_SubscribingBlock = fromSubscribingPart.getOtherClass();
-		m_BuildingBlock = (IRPClassifier) fromSubscribingPart.getOwner();
+		_attributeName = toPublishingAttribute.getName();
+		_subscribingPart = fromSubscribingPart;
+		_subscribingBlock = fromSubscribingPart.getOtherClass();
+		_buildingBlock = (IRPClassifier) fromSubscribingPart.getOwner();
 
-		m_BindingChoiceComboBox = new JComboBox<Object>();
+		_bindingChoiceComboBox = new JComboBox<Object>();
 		
-		m_BindingChoiceComboBox.addActionListener( new ActionListener(){
+		_bindingChoiceComboBox.addActionListener( new ActionListener(){
 		    public void actionPerformed( ActionEvent e ){
 		    	
-		    	String selectedValue = m_BindingChoiceComboBox.getSelectedItem().toString();
+		    	String selectedValue = _bindingChoiceComboBox.getSelectedItem().toString();
 		    	
-		    	if( selectedValue.equals( m_DoNothing ) ){
-		    		m_ChosenNameTextField.setText( m_None );
-		    		m_ChosenNameTextField.setEnabled( false );
+		    	if( selectedValue.equals( _doNothingOption ) ){
 		    		
-		    	} else if( selectedValue.equals( m_CreateNew ) ){
+		    		_chosenNameTextField.setText( _noneOption );
+		    		_chosenNameTextField.setEnabled( false );
+		    		
+		    	} else if( selectedValue.equals( _createNewAttributeOption ) ){
 		    		
 		    		String theProposedName = _context.determineUniqueNameBasedOn( 
-		    				m_PublishingAttribute.getName(), 
+		    				_publishingAttribute.getName(), 
 		    				"Attribute", 
-		    				m_SubscribingBlock );
+		    				_subscribingBlock );
 		    		
-		    		m_ChosenNameTextField.setText( theProposedName );
-		    		m_ChosenNameTextField.setEnabled( true );		    		
+		    		_chosenNameTextField.setText( theProposedName );
+		    		_chosenNameTextField.setEnabled( true );		    		
 		    	} else {
-		    		m_ChosenNameTextField.setText( selectedValue );
-		    		m_ChosenNameTextField.setEnabled( false );		 		    		
+		    		_chosenNameTextField.setText( selectedValue );
+		    		_chosenNameTextField.setEnabled( false );		 		    		
 		    	}
 		    	
-		    	_context.debug( selectedValue + " was selected" );
+		    	//_context.debug( selectedValue + " was selected" );
 		    }
 		});
 
 		@SuppressWarnings("unchecked")
 		List<IRPAttribute> theAttributes = 
-				m_SubscribingBlock.getAttributes().toList();
+				_subscribingBlock.getAttributes().toList();
 				
 		List<IRPAttribute> theExistingLinkedAttributes = 
 				getExistingAttributesLinkedTo( 
-						m_PublishingAttribute, m_SubscribingPart );
+						_publishingAttribute, _subscribingPart );
 		
 		if( theExistingLinkedAttributes.size() > 0 ){
 
@@ -165,63 +165,63 @@ public class AutoConnectFlowPortsInfo {
 					theExistingLinkedAttributes.get(0);
 
 			String theOption = "Already connected";
-			m_BindingChoiceComboBox.addItem( theOption );			
-			m_BindingChoiceComboBox.setSelectedItem( theOption );
-			m_BindingChoiceComboBox.setEnabled( false );				
+			_bindingChoiceComboBox.addItem( theOption );			
+			_bindingChoiceComboBox.setSelectedItem( theOption );
+			_bindingChoiceComboBox.setEnabled( false );				
 			
 			if( theExistingLinkedAttributes.size() == 1 ){
-				m_ChosenNameTextField.setText( theExistingAttribute.getName() );
+				_chosenNameTextField.setText( theExistingAttribute.getName() );
 			} else {
-				m_ChosenNameTextField.setText( "<Multiple Connectors>" );
+				_chosenNameTextField.setText( "<Multiple Connectors>" );
 			}
 			
-			m_ChosenNameTextField.setEnabled( false );
+			_chosenNameTextField.setEnabled( false );
 		
 		} else {
 			
 			IRPAttribute theAttributeWithSameName = 
-					m_SubscribingBlock.findAttribute( toPublishingAttribute.getName() );
+					_subscribingBlock.findAttribute( toPublishingAttribute.getName() );
 
-			m_BindingChoiceComboBox.addItem( m_DoNothing );
-			m_BindingChoiceComboBox.addItem( m_CreateNew );
+			_bindingChoiceComboBox.addItem( _doNothingOption );
+			_bindingChoiceComboBox.addItem( _createNewAttributeOption );
 
 			for( IRPAttribute theAttribute : theAttributes ){			
 				String theName = theAttribute.getName();
-				m_BindingChoiceComboBox.addItem( theName );		
+				_bindingChoiceComboBox.addItem( theName );		
 			}
 
-			m_BindingChoiceComboBox.setSelectedItem( m_DoNothing );
-			m_BindingChoiceComboBox.setEnabled( true );
+			_bindingChoiceComboBox.setSelectedItem( _doNothingOption );
+			_bindingChoiceComboBox.setEnabled( true );
 
 			if( theAttributeWithSameName != null ){
 
-				m_BindingChoiceComboBox.setSelectedItem( toPublishingAttribute.getName() );
-				m_ChosenNameTextField.setText( toPublishingAttribute.getName() );
-				m_ChosenNameTextField.setEnabled( false );
+				_bindingChoiceComboBox.setSelectedItem( toPublishingAttribute.getName() );
+				_chosenNameTextField.setText( toPublishingAttribute.getName() );
+				_chosenNameTextField.setEnabled( false );
 
 			} else {
-				m_ChosenNameTextField.setText( m_None );
-				m_ChosenNameTextField.setEnabled( false );
+				_chosenNameTextField.setText( _noneOption );
+				_chosenNameTextField.setEnabled( false );
 			}
 		}
 		
 		IRPModelElement theEl = 
 				fromSubscribingPart.getOtherClass().findNestedElement( 
-						m_AttributeName, "Attribute" );
+						_attributeName, "Attribute" );
 		
 		if( theEl != null ){
 			
-			m_SubscribingAttribute = (IRPAttribute) theEl;
-			m_SubscribingFlowPort = _context.getExistingFlowPort( m_SubscribingAttribute );
+			_subscribingAttribute = (IRPAttribute) theEl;
+			_subscribingFlowPort = _context.getExistingFlowPort( _subscribingAttribute );
 			
-			if( m_SubscribingFlowPort != null ){
+			if( _subscribingFlowPort != null ){
 				
-				m_Links.addAll( _context.getLinksBetween(
-						m_SubscribingFlowPort, 
-						m_SubscribingPart,
-						m_PublishingFlowPort, 
-						m_PublishingPart,
-						m_BuildingBlock ) );
+				_links.addAll( _context.getLinksBetween(
+						_subscribingFlowPort, 
+						_subscribingPart,
+						_publishingFlowPort, 
+						_publishingPart,
+						_buildingBlock ) );
 						
 				
 			} else {
@@ -230,93 +230,93 @@ public class AutoConnectFlowPortsInfo {
 
 		} else {
 			
-			_context.debug( _context.elInfo( fromSubscribingPart ) + " has no attribute called " + m_AttributeName );
+			_context.debug( _context.elInfo( fromSubscribingPart ) + " has no attribute called " + _attributeName );
 
-			m_SubscribingAttribute = null;
-			m_SubscribingFlowPort = null;
-			m_ExistingFlowType = FlowType.Nothing;
+			_subscribingAttribute = null;
+			_subscribingFlowPort = null;
+			_existingFlowType = FlowType.Nothing;
 
 		}
 	}
 	
 	public IRPSysMLPort getSubscribingFlowPort() {
 		
-		_context.debug("getSubscribingFlowPort was invoked for " + _context.elInfo( m_SubscribingPart ) + " and is returning " + _context.elInfo (m_SubscribingFlowPort) + " for attribute " + _context.elInfo( m_SubscribingAttribute ));
-		return m_SubscribingFlowPort;
+		_context.debug("getSubscribingFlowPort was invoked for " + _context.elInfo( _subscribingPart ) + " and is returning " + _context.elInfo (_subscribingFlowPort) + " for attribute " + _context.elInfo( _subscribingAttribute ));
+		return _subscribingFlowPort;
 	}
 	
 	public IRPSysMLPort getPublishingFlowPort() {
-		return m_PublishingFlowPort;
+		return _publishingFlowPort;
 	}
 	
 	public IRPClassifier getOwningBlock() {
-		return m_SubscribingBlock;
+		return _subscribingBlock;
 	}
 	
 	public IRPClassifier getBuildingBlock() {
-		return m_BuildingBlock;
+		return _buildingBlock;
 	}
 	
 	public IRPInstance getOwnedByPart() {
-		return m_SubscribingPart;
+		return _subscribingPart;
 	}
 	
 	public boolean isThereAnExistingAttribute(){
-		return m_SubscribingAttribute != null;
+		return _subscribingAttribute != null;
 	}
 	
 	public FlowType getExistingAttributeFlowType(){
-		return m_ExistingFlowType;
+		return _existingFlowType;
 	}
 	
 	public String getIDString(){
-		return m_SubscribingPart.getName() + ":" + m_SubscribingPart.getOtherClass().getName();
+		return _subscribingPart.getName() + ":" + _subscribingPart.getOtherClass().getName();
 	}
 	
 	public boolean isCreateNewSelected(){
-		return m_BindingChoiceComboBox.isEnabled() &&
-			   m_BindingChoiceComboBox.getSelectedItem().equals( m_CreateNew );
+		return _bindingChoiceComboBox.isEnabled() &&
+			   _bindingChoiceComboBox.getSelectedItem().equals( _createNewAttributeOption );
 	}
 		
 	public void performSelectedOperations(){
 		
 		IRPLink theLink = null;
 		
-		m_DiagramsToUpdate = new HashSet<IRPStructureDiagram>();
+		_diagramsToUpdate = new HashSet<IRPStructureDiagram>();
 		
 		if( isCreateNewSelected() ){
 
-				_context.info("Add a new " + _context.elInfo( m_PublishingAttribute ) + 
+				_context.info("Add a new " + _context.elInfo( _publishingAttribute ) + 
 						" to " + getIDString() );
 				
-				IRPAttribute theAttribute = (IRPAttribute) m_PublishingAttribute.clone( 
-						m_ChosenNameTextField.getText(), 
+				IRPAttribute theAttribute = (IRPAttribute) _publishingAttribute.clone( 
+						_chosenNameTextField.getText(), 
 						getOwningBlock() );
 				
 				PortCreator theCreator = new PortCreator(_context);
-				m_SubscribingFlowPort = theCreator.createSubscribeFlowportFor( theAttribute );
+				_subscribingFlowPort = theCreator.createSubscribeFlowportFor( theAttribute );
 
 				theLink = _context.addConnectorBetweenSysMLPortsIfOneDoesntExist(
-						m_PublishingFlowPort,
-						m_PublishingPart, 
-						m_SubscribingFlowPort, 
-						m_SubscribingPart );
+						_publishingFlowPort,
+						_publishingPart, 
+						_subscribingFlowPort, 
+						_subscribingPart );
 				
-				m_Links.add( theLink );
+				_links.add( theLink );
 
 			
-		} else if( !m_BindingChoiceComboBox.getSelectedItem().equals( m_DoNothing ) ) {
+		} else if( !_bindingChoiceComboBox.getSelectedItem().equals( _doNothingOption ) ) {
 			
 			PortCreator theCreator = new PortCreator(_context);
-			m_SubscribingFlowPort = theCreator.createSubscribeFlowportFor( m_SubscribingAttribute );
+			_subscribingFlowPort = theCreator.createSubscribeFlowportFor( _subscribingAttribute );
 
 			theLink = _context.addConnectorBetweenSysMLPortsIfOneDoesntExist(
-					m_PublishingFlowPort,
-					m_PublishingPart, 
-					m_SubscribingFlowPort, 
-					m_SubscribingPart );
+					_publishingFlowPort,
+					_publishingPart, 
+					_subscribingFlowPort, 
+					_subscribingPart );
 
-			m_Links.add( theLink );
+			_links.add( theLink );
 		}
 		
 		if( theLink != null ){
@@ -324,8 +324,8 @@ public class AutoConnectFlowPortsInfo {
 			IRPSysMLPort fromPort = theLink.getFromSysMLPort();
 			IRPSysMLPort toPort = theLink.getToSysMLPort();
 			
-			m_DiagramsToUpdate.addAll( getIBDsWith( fromPort ) );
-			m_DiagramsToUpdate.retainAll( getIBDsWith( toPort ) );
+			_diagramsToUpdate.addAll( getIBDsWith( fromPort ) );
+			_diagramsToUpdate.retainAll( getIBDsWith( toPort ) );
 		}		
 	}
 	
@@ -354,23 +354,23 @@ public class AutoConnectFlowPortsInfo {
 	}
 	
 	public IRPClassifier getM_SubscribingBlock() {
-		return m_SubscribingBlock;
+		return _subscribingBlock;
 	}
 	
 	public JComboBox<Object> getM_BindingChoiceComboBox() {
-		return m_BindingChoiceComboBox;
+		return _bindingChoiceComboBox;
 	}
 	
 	public Set<IRPStructureDiagram> getM_DiagramsToUpdate(){
-		return m_DiagramsToUpdate;
+		return _diagramsToUpdate;
 	}
 	
 	JTextField getM_ChosenNameTextField() {
-		return m_ChosenNameTextField;
+		return _chosenNameTextField;
 	}
 	
 	Set<IRPLink> getM_Links(){
-		return m_Links;
+		return _links;
 	}
 
 }

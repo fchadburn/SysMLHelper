@@ -126,7 +126,9 @@ public class PopulateFunctionalAnalysisPkg extends PopulatePkg {
 				    	
 				    } else if (confirm == JOptionPane.NO_OPTION){
 					    
-				    	PopulateRequirementsAnalysisPkg thePopulator = new PopulateRequirementsAnalysisPkg( (SysMLHelper_Context) _context );
+				    	PopulateRequirementsAnalysisPkg thePopulator = 
+				    			new PopulateRequirementsAnalysisPkg( (SysMLHelper_Context) _context, _settings );
+				    	
 				    	thePopulator.populateRequirementsAnalysisPkg();		
 						CreateGatewayProjectPanel.launchThePanel( _context.get_rhpAppID(), "^RequirementsAnalysisPkg.rqtf$" );
 							    

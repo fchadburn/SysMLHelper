@@ -2079,7 +2079,7 @@ public abstract class BaseContext {
 		return theProfile;		
 	}
 
-	public void addAComponentWith(
+	public IRPComponent addAComponentWith(
 			String theName,
 			IRPPackage theBlockTestPackage, 
 			IRPClass theUsageDomainBlock,
@@ -2106,6 +2106,8 @@ public abstract class BaseContext {
 		theNoWebConfig.setScopeType("implicit");
 
 		theConfiguration.getProject().setActiveConfiguration( theConfiguration );		
+		
+		return theComponent;
 	}
 
 	public Set<IRPClassifier> getBaseClassesOf( 
@@ -2131,11 +2133,12 @@ public abstract class BaseContext {
 	}
 
 	public String getActionTextFrom(
-			IRPModelElement theEl) {
+			IRPModelElement theEl ){
 
 		String theSourceInfo = null;
 
-		if (theEl instanceof IRPState){
+		if( theEl instanceof IRPState ){
+			
 			IRPState theState = (IRPState)theEl;
 			String theStateType = theState.getStateType();
 
@@ -2221,7 +2224,7 @@ public abstract class BaseContext {
 
 			if( theSourceInfo.isEmpty() ){
 
-				_rhpLog.debug( "Warning, " + _rhpLog.elInfo( theEl ) + " has no text" );
+				_rhpLog.debug( "getActionTextFrom determined that " + _rhpLog.elInfo( theEl ) + " has no text" );
 			} else {
 				theSourceInfo = decapitalize( theSourceInfo );
 			}

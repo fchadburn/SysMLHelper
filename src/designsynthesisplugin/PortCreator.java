@@ -16,6 +16,7 @@ public class PortCreator {
 	
 	public PortCreator(
 			ExecutableMBSE_Context context) {
+		
 		_context = context;
 	}
 	
@@ -31,8 +32,8 @@ public class PortCreator {
 
 				createPublishFlowportFor(theAttribute);
 			} else {
-				_context.debug("Doing nothing for " + _context.elInfo(selectedEl) 
-						+ " as it is not an Atttribute");
+				_context.debug( "Doing nothing for " + _context.elInfo(selectedEl) 
+						+ " as it is not an Atttribute" );
 			}
 		}
 	}
@@ -50,7 +51,7 @@ public class PortCreator {
 			if( !thePort.getName().equals( theDesiredPortName ) ){
 				
 				_context.debug( "Renaming " + _context.elInfo( thePort ) + " to " + theDesiredPortName );
-				thePort.setName(theDesiredPortName);
+				thePort.setName( theDesiredPortName );
 			}
 			
 			thePort.setType( theAttribute.getType() );
@@ -279,8 +280,7 @@ public class PortCreator {
 
 			IRPModelElement theDependsOn = theDependency.getDependsOn();
 
-			if( theDependsOn != null && 
-				theDependsOn instanceof IRPModelElement &&
+			if( theDependsOn instanceof IRPModelElement &&
 				_context.hasStereotypeCalled( "AutoRipple", theDependency ) ){
 
 				IRPModelElement theElementOwner = theDependsOn.getOwner();
@@ -302,14 +302,14 @@ public class PortCreator {
 
 					if( !theElementOwner.equals( theAttributeOwner ) ){
 
-						_context.info( "Detected a need to delete the «AutoRipple» dependency to " + _context.elInfo( theDependsOn ) + 
-								" owned by " + _context.elInfo( theElementOwner ) + ", as it is not owned by " + 
-								_context.elInfo( theAttributeOwner ) );
+						//_context.debug( "Detected a need to delete the «AutoRipple» dependency to " + _context.elInfo( theDependsOn ) + 
+						//		" owned by " + _context.elInfo( theElementOwner ) + ", as it is not owned by " + 
+						//		_context.elInfo( theAttributeOwner ) );
 
 						dependenciesToDelete.add( theDependency );
 						theDependency.highLightElement();
 					} else {
-						_context.debug( _context.elInfo( theDependsOn ) + " was found based on «AutoRipple» dependency");
+						//_context.debug( _context.elInfo( theDependsOn ) + " was found based on «AutoRipple» dependency");
 					}
 				}	
 			}
@@ -317,6 +317,7 @@ public class PortCreator {
 
 		if( !dependenciesToDelete.isEmpty() ){
 			
+			/*
 			JDialog.setDefaultLookAndFeelDecorated(true);
 
 			String infoText = "To maintain consistency the following «AutoRipple» dependencies will be deleted: " +
@@ -336,7 +337,8 @@ public class PortCreator {
 						" owned by " + _context.elInfo( theElementOwner ) + " \n";
 			}
 
-			_context.info( infoText );
+			_context.debug( infoText );
+			*/
 			
 			theAttribute.getOwner().highLightElement();
 			
@@ -348,25 +350,7 @@ public class PortCreator {
 }
 
 /**
- * Copyright (C) 2016-2017  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #006 02-MAY-2016: Add FunctionalAnalysisPkg helper support (F.J.Chadburn)
-    #095 23-AUG-2016: Turned off the "Do you want to add subscribe ports to other Blocks?" question (F.J.Chadburn)
-    #123 25-NOV-2016: Improved Publish/Subscribe ports to clean up AutoRipple dependencies when doing copy/paste (F.J.Chadburn)
-    #124 25-NOV-2016: Cleaned up unused code from PortCreator (F.J.Chadburn)
-    #164 15-FEB-2017: Fixed .hep for Publish/Subscribe flow ports to work with ValueProperty's in 8.2 (F.J.Chadburn)
-    #173 02-APR-2017: cleanUpAutoRippleDependencies now gives an information rather than warning dialog (F.J.Chadburn)
-    #174 02-APR-2017: Improved flowPort creation to highlight port after creation (F.J.Chadburn)
-    #175 02-APR-2017: Improved flowPort creation to copy req'ts traceability from attribute to flow-port (F.J.Chadburn)
-    #180 29-MAY-2017: Added new Design Synthesis menu to Delete attribute and related elements (F.J.Chadburn)
-    #181 29-MAY-2017: Replace dialog with Log message in cleanUpAutoRippleDependencies (F.J.Chadburn)
-    #182 29-MAY-2017: Tweak to keep attribute selected after switching to publish or subscribe flow-port (F.J.Chadburn)
-    #192 05-JUN-2017: Widened DeleteAttributeAndRelatedElementsMenu support to work with flow-ports as well (F.J.Chadburn)
-    #193 05-JUN-2017: Added Transitions to «AutoRipple» list so they're also cleaned up when attribute is deleted (F.J.Chadburn)
-    #213 09-JUL-2017: Add dialogs to auto-connect «publish»/«subscribe» FlowPorts for white-box simulation (F.J.Chadburn)
-    #227 06-SEP-2017: Increased robustness to stop smart link panel using non new term version of <<refine>> (F.J.Chadburn)
-    #228 06-SEP-2017: Refine subscribe port creation to include change event reception creation (F.J.Chadburn)
+ * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

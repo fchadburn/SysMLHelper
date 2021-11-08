@@ -20,6 +20,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
 import designsynthesisplugin.PortCreator;
@@ -31,13 +32,18 @@ public class CreateTracedAttributePanel extends CreateTracedElementPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	protected JTextField m_InitialValueTextField = null;
-	private JCheckBox m_CheckOperationCheckBox;
-	private String m_CheckOpName;
-	private JCheckBox m_CallOperationIsNeededCheckBox;
-	private JRadioButton m_NoFlowPort;
-	private JRadioButton m_PubFlowPort;
-	private JRadioButton m_SubFlowPort;
+	protected JTextField _initialValueTextField = null;
+	private JCheckBox _checkOperationCheckBox;
+	private String _checkOpName;
+	private JCheckBox _callOperationIsNeededCheckBox;
+	private JRadioButton _noFlowPortRadioButton;
+	private JRadioButton _pubFlowPortRadioButton;
+	private JRadioButton _subFlowPortRadioButton;
+	
+	public static void main(String[] args) {
+		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
+		launchThePanel( theRhpApp.getApplicationConnectionString() );
+	}
 	
 	public static void launchThePanel(
 			String theAppID ){
@@ -94,22 +100,21 @@ public class CreateTracedAttributePanel extends CreateTracedElementPanel {
 						"You need to add the relevant package structure first." );
 			} else {
 				
-				IRPModelElement theModelObject = null;
-				IRPGraphElement theSelectedGraphEl = _context.get_selectedContext().getSelectedGraphEl();
-				String theSourceText = "attributeName";
-
-				if( theSelectedGraphEl != null ){
-					theModelObject = theSelectedGraphEl.getModelObject();
-				}
+				IRPModelElement theModelObject = _context.getSelectedElement( true );
 				
-				if( theModelObject != null ){
-					theSourceText = _context.getActionTextFrom( theModelObject );
+				String theSourceText = "attributeName";
+				
+				if( theModelObject instanceof IRPState ){
+					String theActionText = _context.getActionTextFrom( theModelObject );
+					
+					if( theActionText != null ){
+						theSourceText = theActionText;
+					}					
 				}
 				
 				createCommonContent( _context.get_selectedContext().getChosenBlock(), theSourceText );
 			}
 		}
-
 	}
 	
 	private void createCommonContent(
@@ -137,10 +142,10 @@ public class CreateTracedAttributePanel extends CreateTracedElementPanel {
 		JPanel theCenterPanel = new JPanel();
 		theCenterPanel.setLayout( new BoxLayout( theCenterPanel, BoxLayout.Y_AXIS ) );
 
-		m_CheckOperationCheckBox = new JCheckBox();
-		m_CheckOperationCheckBox.setBorder( BorderFactory.createEmptyBorder( 0, 0, 10, 0 ) );
+		_checkOperationCheckBox = new JCheckBox();
+		_checkOperationCheckBox.setBorder( BorderFactory.createEmptyBorder( 0, 0, 10, 0 ) );
 
-		m_CheckOperationCheckBox.addActionListener( new ActionListener() {
+		_checkOperationCheckBox.addActionListener( new ActionListener() {
 			
 		      public void actionPerformed(ActionEvent actionEvent) {
 		    	  
@@ -157,8 +162,8 @@ public class CreateTracedAttributePanel extends CreateTracedElementPanel {
 						isPopulate = _context.getIsPopulateWantedByDefault();
 					}
 					
-			        m_CallOperationIsNeededCheckBox.setEnabled( selected );
-			        m_CallOperationIsNeededCheckBox.setSelected( selected && isPopulate );
+			        _callOperationIsNeededCheckBox.setEnabled( selected );
+			        _callOperationIsNeededCheckBox.setSelected( selected && isPopulate );
 			        			        
 			      }} );
 		
@@ -181,34 +186,34 @@ public class CreateTracedAttributePanel extends CreateTracedElementPanel {
 					}	
 				});
 		
-		m_CheckOperationCheckBox.setSelected(true);
-		m_CheckOperationCheckBox.setEnabled(true);
+		_checkOperationCheckBox.setSelected(true);
+		_checkOperationCheckBox.setEnabled(true);
 
-		m_CallOperationIsNeededCheckBox = new JCheckBox("Populate the '" + m_CheckOpName + "' operation on diagram?");
-		m_CallOperationIsNeededCheckBox.setBorder( BorderFactory.createEmptyBorder( 0, 0, 10, 0 ) );
-		setupPopulateCheckbox( m_CallOperationIsNeededCheckBox );
+		_callOperationIsNeededCheckBox = new JCheckBox("Populate the '" + _checkOpName + "' operation on diagram?");
+		_callOperationIsNeededCheckBox.setBorder( BorderFactory.createEmptyBorder( 0, 0, 10, 0 ) );
+		setupPopulateCheckbox( _callOperationIsNeededCheckBox );
 		
 		updateNames();
 		
-		theCenterPanel.add( m_CheckOperationCheckBox );
-		theCenterPanel.add( m_CallOperationIsNeededCheckBox );
+		theCenterPanel.add( _checkOperationCheckBox );
+		theCenterPanel.add( _callOperationIsNeededCheckBox );
 
-		m_NoFlowPort  = new JRadioButton( "None", true );
-		m_PubFlowPort = new JRadioButton( "첧ub�" );
-		m_SubFlowPort = new JRadioButton( "첯ub�" );
+		_noFlowPortRadioButton  = new JRadioButton( "None", true );
+		_pubFlowPortRadioButton = new JRadioButton( "첧ub�" );
+		_subFlowPortRadioButton = new JRadioButton( "첯ub�" );
 		
 		ButtonGroup group = new ButtonGroup();
-		group.add( m_NoFlowPort );
-		group.add( m_PubFlowPort );
-		group.add( m_SubFlowPort );
+		group.add( _noFlowPortRadioButton );
+		group.add( _pubFlowPortRadioButton );
+		group.add( _subFlowPortRadioButton );
 
 		JPanel theFlowPortOptions = new JPanel();
 		theFlowPortOptions.setLayout( new BoxLayout( theFlowPortOptions, BoxLayout.LINE_AXIS ) );
 		theFlowPortOptions.setAlignmentX( LEFT_ALIGNMENT );
 		theFlowPortOptions.add ( new JLabel("Create a FlowPort: ") );
-		theFlowPortOptions.add( m_NoFlowPort );
-		theFlowPortOptions.add( m_PubFlowPort );
-		theFlowPortOptions.add( m_SubFlowPort );
+		theFlowPortOptions.add( _noFlowPortRadioButton );
+		theFlowPortOptions.add( _pubFlowPortRadioButton );
+		theFlowPortOptions.add( _subFlowPortRadioButton );
 	    
 		theCenterPanel.add( theFlowPortOptions );
 		
@@ -228,32 +233,32 @@ public class CreateTracedAttributePanel extends CreateTracedElementPanel {
 		
 		JLabel theLabel =  new JLabel(" with the initial value:  ");
 		
-		m_InitialValueTextField = new JTextField();
-		m_InitialValueTextField.setText( withValue );
-		m_InitialValueTextField.setPreferredSize( new Dimension( 100, 20 ) );
-		m_InitialValueTextField.setMaximumSize( new Dimension( 100, 20 ) );
+		_initialValueTextField = new JTextField();
+		_initialValueTextField.setText( withValue );
+		_initialValueTextField.setPreferredSize( new Dimension( 100, 20 ) );
+		_initialValueTextField.setMaximumSize( new Dimension( 100, 20 ) );
 		
 		JPanel thePanel = new JPanel();
 		thePanel.setLayout( new BoxLayout(thePanel, BoxLayout.X_AXIS ) );	
 		thePanel.add( theLabel );
-		thePanel.add( m_InitialValueTextField );
+		thePanel.add( _initialValueTextField );
 		
 		return thePanel;
 	}
 	
 	private void updateNames(){
 		
-		m_CheckOpName = _context.determineBestCheckOperationNameFor(
+		_checkOpName = _context.determineBestCheckOperationNameFor(
 				_context.get_selectedContext().getChosenBlock(),
 				_chosenNameTextField.getText(),
 				40 );
 		
-		m_CheckOperationCheckBox.setText(
-				"Add a '" + m_CheckOpName + 
+		_checkOperationCheckBox.setText(
+				"Add a '" + _checkOpName + 
 				"' operation to the block that returns the attribute value" );
 		
-		m_CallOperationIsNeededCheckBox.setText(
-				"Populate the '" + m_CheckOpName + "' operation on diagram?");
+		_callOperationIsNeededCheckBox.setText(
+				"Populate the '" + _checkOpName + "' operation on diagram?");
 	}
 	
 	@Override
@@ -283,19 +288,19 @@ public class CreateTracedAttributePanel extends CreateTracedElementPanel {
 			errorMessage = "Unable to proceed as the name '" + _chosenNameTextField.getText() + "' is not unique";
 			isValid = false;
 
-		} else if( m_CheckOperationCheckBox.isSelected() && 
+		} else if( _checkOperationCheckBox.isSelected() && 
 				   !_context.isElementNameUnique(
-						   m_CheckOpName,
+						   _checkOpName,
 						   "Operation",
 						   theChosenBlock, 
 						   1 ) ){
 
 			errorMessage = "Unable to proceed as the derived check operation name '" + 
-					m_CheckOpName + "' is not unique";
+					_checkOpName + "' is not unique";
 			
 			isValid = false;
 			
-		} else if (!isInteger( m_InitialValueTextField.getText() )){
+		} else if (!isInteger( _initialValueTextField.getText() )){
 			
 			errorMessage = "Unable to proceed as the initial value '" + _chosenNameTextField.getText() + "' is not an integer";
 			isValid = false;
@@ -335,15 +340,15 @@ public class CreateTracedAttributePanel extends CreateTracedElementPanel {
 			IRPAttribute theAttribute = addAttributeTo( 
 					_context.get_selectedContext().getChosenBlock(), 
 					_chosenNameTextField.getText(), 
-					m_InitialValueTextField.getText(),
+					_initialValueTextField.getText(),
 					selectedReqtsList );
 												
-			if( m_CheckOperationCheckBox.isSelected() ){
+			if( _checkOperationCheckBox.isSelected() ){
 				
-				IRPOperation theCheckOp = addCheckOperationFor( theAttribute, m_CheckOpName );
+				IRPOperation theCheckOp = addCheckOperationFor( theAttribute, _checkOpName );
 				addTraceabilityDependenciesTo( theCheckOp, selectedReqtsList );	
 				
-				if( m_CallOperationIsNeededCheckBox.isSelected() ){
+				if( _callOperationIsNeededCheckBox.isSelected() ){
 					populateCallOperationActionOnDiagram( theCheckOp );
 				}
 				
@@ -356,11 +361,11 @@ public class CreateTracedAttributePanel extends CreateTracedElementPanel {
 			
 			PortCreator theCreator = new PortCreator(_context);
 			
-			if( m_PubFlowPort.isSelected() ){
+			if( _pubFlowPortRadioButton.isSelected() ){
 				theCreator.createPublishFlowportFor( theAttribute );
 			}
 
-			if( m_SubFlowPort.isSelected() ){
+			if( _subFlowPortRadioButton.isSelected() ){
 				theCreator.createSubscribeFlowportFor( theAttribute );
 			}
 			

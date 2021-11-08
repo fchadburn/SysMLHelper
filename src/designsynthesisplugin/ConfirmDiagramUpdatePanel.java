@@ -26,12 +26,12 @@ import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
 import com.telelogic.rhapsody.core.*;
 
 public class ConfirmDiagramUpdatePanel extends ExecutableMBSEBasePanel {
-
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = 280239824435108870L;
+
 	private AutoConnectFlowPortsMap m_AutoConnectFlowPortsMap = 
 			new AutoConnectFlowPortsMap();
 	
