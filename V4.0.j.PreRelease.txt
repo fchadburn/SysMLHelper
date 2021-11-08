@@ -539,6 +539,7 @@ V4.0.j.Rhp831.PreRelease (XX-XXX-XXXX):
 #372 08-NOV-2021: ExecutableMBSE: Add logging to creation of scenario package to improve awareness of user of the key elements being created (F.J.Chadburn)
 #373 08-NOV-2021: ExecutableMBSE: Get helper to rename the STM owned by the system block to STM - <block name> after creation (F.J.Chadburn)
 #374 08-NOV-2021: ExecutableMBSE: Get the flow port creation dialog to work with new thread safe over Rhapsody version mechanism that doesn't pass Rhapsody elements (F.J.Chadburn)
+#375 08-NOV-2021: ExecutableMBSE: Apply DontShow stereotype to panel diagram during simulation structure creation so that it doesn't show by default (F.J.Chadburn)
 
 Backlog/Known issues
 

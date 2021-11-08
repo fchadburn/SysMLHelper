@@ -740,9 +740,13 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 					//						theFunctionalBlockPkg.addDependencyTo( theUseCasePkg );
 					//					}
 
+					// assume panel diagram simulation will be optional used hence dont show by default
+					_context.applyExistingStereotype( "DontShow", thePD );
+					
 				} else {
 					// assume panel diagram simulation will be used (esp. for simple sim)
-					_context.applyExistingStereotype("AutoShow", thePD);
+					_context.applyExistingStereotype( "AutoShow", thePD );
+					
 				} // end FullSim only				
 
 				// Add a sequence diagram

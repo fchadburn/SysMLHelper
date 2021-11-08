@@ -1658,7 +1658,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">10.22.2021::15:57:45</_modifiedTime>
+			<_modifiedTime type="a">11.8.2021::10:4:55</_modifiedTime>
 			<_lastID type="a">23</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -7350,7 +7350,7 @@ Tips:\par%0D
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">AutoLaunchAnimation</_Name>
-													<_Value type="a">Always</_Value>
+													<_Value type="a">Never</_Value>
 													<_Type type="a">Enum</_Type>
 													<_ExtraTypeInfo type="a">Never, IfInScope, Always</_ExtraTypeInfo>
 												</IProperty>
@@ -7393,10 +7393,11 @@ Tips:\par%0D
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">DontShow</_name>
-			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
+			<_modifiedTime type="a">11.8.2021::10:4:55</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
-					<size type="a">2</size>
+					<size type="a">3</size>
+					<value>PanelDiagram</value>
 					<value>Event</value>
 					<value>SequenceDiagram</value>
 				</IRPYRawContainer>
