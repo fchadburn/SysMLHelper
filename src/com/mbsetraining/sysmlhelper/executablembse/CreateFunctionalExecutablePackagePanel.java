@@ -1,6 +1,5 @@
 package com.mbsetraining.sysmlhelper.executablembse;
 
-import functionalanalysisplugin.ActorMappingInfo;
 import functionalanalysisplugin.PopulateFunctionalAnalysisPkg.SimulationType;
 
 import java.awt.BorderLayout;
@@ -801,7 +800,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 			
 			_context.info( "Package structure construction of " + _context.elInfo( theRootPkg ) + " has completed");
 		} else {
-			_context.error("Error in CreateFunctionalBlockPackagePanel.performAction, checkValidity returned false");
+			_context.error( "Error in CreateFunctionalBlockPackagePanel.performAction, checkValidity returned false");
 		}	
 	}
 }

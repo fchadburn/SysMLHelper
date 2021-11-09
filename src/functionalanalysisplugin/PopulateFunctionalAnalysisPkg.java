@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.createnewblockpart.CreateNewBlockPartPanel;
 import com.mbsetraining.sysmlhelper.executablembse.PopulatePkg;
 import com.mbsetraining.sysmlhelper.gateway.CreateGatewayProjectPanel;
 import com.mbsetraining.sysmlhelper.sysmlhelperplugin.PopulateRequirementsAnalysisPkg;

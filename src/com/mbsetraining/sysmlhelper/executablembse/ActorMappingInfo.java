@@ -1,4 +1,4 @@
-package functionalanalysisplugin;
+package com.mbsetraining.sysmlhelper.executablembse;
 
 import java.util.List;
 
@@ -7,17 +7,16 @@ import javax.swing.JTextField;
 
 import com.mbsetraining.sysmlhelper.common.RhapsodyComboBox;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
-import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
 public class ActorMappingInfo {
 
-	final public String m_ActorBlankName = "EnterActorName";
+	final public String _actorBlankName = "EnterActorName";
 	
-	private RhapsodyComboBox m_InheritedFromComboBox;
-	private JCheckBox m_ActorCheckBox;
-	private JTextField m_ActorNameTextField;
-	private IRPActor m_SourceActor = null;
+	private RhapsodyComboBox _inheritedFromComboBox;
+	private JCheckBox _actorCheckBox;
+	private JTextField _actorNameTextField;
+	private IRPActor _sourceActor = null;
 	
 	private ExecutableMBSE_Context _context;
 
@@ -32,30 +31,30 @@ public class ActorMappingInfo {
 		
 		_context = context;
 
-		this.m_InheritedFromComboBox = theRhapsodyComboBox;
-		this.m_ActorCheckBox = theActorCheckBox;
-		this.m_ActorNameTextField = theActorName;
-		this.m_SourceActor = theSourceActor;
+		this._inheritedFromComboBox = theRhapsodyComboBox;
+		this._actorCheckBox = theActorCheckBox;
+		this._actorNameTextField = theActorName;
+		this._sourceActor = theSourceActor;
 	}
 	
 	public JTextField getTextField(){
-		return m_ActorNameTextField;
+		return _actorNameTextField;
 	}
 	
 	public boolean isSelected(){
-		return m_ActorCheckBox.isSelected();
+		return _actorCheckBox.isSelected();
 	}
 	
 	public String getName(){
-		return m_ActorNameTextField.getText();
+		return _actorNameTextField.getText();
 	}
 	
 	public String getSourceActorName(){
-		return m_SourceActor.getName();
+		return _sourceActor.getName();
 	}
 	
 	public IRPActor getSourceActor(){
-		return m_SourceActor;
+		return _sourceActor;
 	}
 	
 	public void updateToBestActorNamesBasedOn(
@@ -63,10 +62,10 @@ public class ActorMappingInfo {
 		
 		String theOriginalActorName;
 		
-		if( m_SourceActor != null ){
-			theOriginalActorName = m_SourceActor.getName();
+		if( _sourceActor != null ){
+			theOriginalActorName = _sourceActor.getName();
 		} else {
-			theOriginalActorName = m_ActorBlankName;
+			theOriginalActorName = _actorBlankName;
 		}
 		
 		String theDesiredName;
@@ -83,7 +82,7 @@ public class ActorMappingInfo {
 		//		"Actor", 
 		//		_context.get_rhpPrj() );
 		
-		m_ActorNameTextField.setText( theProposedActorName );
+		_actorNameTextField.setText( theProposedActorName );
 	}
 	
 
@@ -131,16 +130,16 @@ public class ActorMappingInfo {
 
 						theConnectedToPart = thePart;
 
-						_context.debug( _context.elInfo( theConnectedToPart ) + " was found to connect the actors to, and is typed by " + 
-								_context.elInfo( connectedToBlock ) );
+						//_context.debug( _context.elInfo( theConnectedToPart ) + " was found to connect the actors to, and is typed by " + 
+						//		_context.elInfo( connectedToBlock ) );
 
 					} else if ( isTestDriver ){
 
 						theTesterPart = thePart;
 						theTesterBlock = theOtherClass;
 
-						_context.debug( _context.elInfo( theTesterPart ) + " was found as the test driver, and is typed by " + 
-								_context.elInfo( theTesterBlock ) );
+						//_context.debug( _context.elInfo( theTesterPart ) + " was found as the test driver, and is typed by " + 
+						//		_context.elInfo( theTesterBlock ) );
 					}
 				}				
 			}
@@ -151,7 +150,7 @@ public class ActorMappingInfo {
 			IRPActor theActor = thePackageForActor.addActor( theLegalActorName );
 			theActor.highLightElement();
 
-			String theText = "Create actor called " + m_ActorNameTextField.getText();
+			String theText = "Create actor called " + _actorNameTextField.getText();
 
 			// Make each of the actors a part of the SystemAssembly block
 			theActorPart = (IRPInstance) theAssemblyBlock.addNewAggr( "Part", "" );
@@ -161,7 +160,7 @@ public class ActorMappingInfo {
 			if( isInheritanceAllowed ){
 
 				IRPModelElement theInheritedFrom = 
-						m_InheritedFromComboBox.getSelectedRhapsodyItem();
+						_inheritedFromComboBox.getSelectedRhapsodyItem();
 				
 				if( theInheritedFrom != null ){
 					theText = theText + " inherited from " + theInheritedFrom.getName();
@@ -176,7 +175,7 @@ public class ActorMappingInfo {
 					if( theTestbench != null ){
 						theActor.addGeneralization( theTestbench );
 					} else {
-						_context.error("Error: Unable to find Actor with name Testbench");
+						_context.error( "Unable to find Actor with name Testbench" );
 					}
 				}
 
@@ -215,7 +214,7 @@ public class ActorMappingInfo {
 			_context.debug( "Finishing adding part connected to actor" );
 
 		} else {
-			_context.debug( "Not selected" );
+			//_context.debug( "Not selected" );
 		}
 		
 		return theActorPart;
@@ -238,9 +237,9 @@ public class ActorMappingInfo {
 		
 		if( existingLinkConnectingTesterToActor != null ){
 			
-			_context.debug( "There are existing ports between " + 
-					_context.elInfo( theTesterBlock ) + " and " + 
-					_context.elInfo( theActor ) );
+			//_context.debug( "There are existing ports between " + 
+			//		_context.elInfo( theTesterBlock ) + " and " + 
+			//		_context.elInfo( theActor ) );
 		
 			IRPPort fromPort = existingLinkConnectingTesterToActor.getFromPort();
 			IRPPort toPort = existingLinkConnectingTesterToActor.getToPort();
@@ -255,9 +254,9 @@ public class ActorMappingInfo {
 			
 		} else {
 
-			_context.debug( "Creating a new connector between " + 
-					_context.elInfo( theTesterBlock ) + " and " + 
-					_context.elInfo( theActor ) );
+			//_context.debug( "Creating a new connector between " + 
+			//		_context.elInfo( theTesterBlock ) + " and " + 
+			//		_context.elInfo( theActor ) );
 
 			try {
 				// and connect actor to the TestDriver block
@@ -301,8 +300,8 @@ public class ActorMappingInfo {
 		
 		if( existingLinkConnectingBlockToActor != null ){
 			
-			_context.debug( "There is an existing connector between " + 
-					_context.elInfo( connectedToBlock ) + " and " + _context.elInfo( theActor ) );
+			//_context.debug( "There is an existing connector between " + 
+			//		_context.elInfo( connectedToBlock ) + " and " + _context.elInfo( theActor ) );
 		
 			IRPPort fromPort = existingLinkConnectingBlockToActor.getFromPort();
 			IRPPort toPort = existingLinkConnectingBlockToActor.getToPort();
@@ -316,16 +315,16 @@ public class ActorMappingInfo {
 			}	
 		} else {
 
-			_context.debug( "Creating a new connector between " + 
-					_context.elInfo( connectedToBlock ) + " and " + 
-					_context.elInfo( theActor ) );
+			//_context.debug( "Creating a new connector between " + 
+			//		_context.elInfo( connectedToBlock ) + " and " + 
+			//		_context.elInfo( theActor ) );
 
 			String theActorPortName = 
 					_context.determineUniqueNameBasedOn(
 							"p" + connectedToBlock.getName() , "Port", theActor);
 
-			_context.debug("Attempting to create port called " + 
-					theActorPortName + " owned by " + _context.elInfo( theActor ));
+			//_context.debug("Attempting to create port called " + 
+			//		theActorPortName + " owned by " + _context.elInfo( theActor ));
 
 			// and connect actor to the LogicalSystem block
 			theActorToSystemPort = 
@@ -336,16 +335,16 @@ public class ActorMappingInfo {
 					_context.determineUniqueNameBasedOn(
 							"p" + theActor.getName() , "Port", connectedToBlock);
 
-			_context.debug( "Attempting to create port called " + 
-					theSystemPortName + " owned by " + 
-					_context.elInfo( connectedToBlock ) );
+			//_context.debug( "Attempting to create port called " + 
+			//		theSystemPortName + " owned by " + 
+			//		_context.elInfo( connectedToBlock ) );
 
 			try {
 				theSystemToActorPort = 
 						(IRPPort) connectedToBlock.addNewAggr(
 								"Port", theSystemPortName );	
 			} catch( Exception e ){
-				_context.error("Exception while trying to create system to actor port");
+				_context.error( "Exception while trying to create system to actor port, e=" + e.getMessage() );
 			}			
 		}
 		
@@ -361,7 +360,7 @@ public class ActorMappingInfo {
 			theLogicalSystemLink.changeTo( "connector" );
 			
 		} catch( Exception e ){
-			_context.error("Exception while trying to addLink");
+			_context.error( "Exception while trying to addLink, e=" + e.getMessage() );
 		}
 	}
 }

@@ -403,7 +403,7 @@ isVisible52=1
 DLLServerCompatible52=1
 
 #REM: Add pop-up menu
-name53=MBSE Method: Functional Analysis\Add new block/part to package under development
+name53=MBSE Method: Design Synthesis\Add new block/part to package under development
 isPluginCommand53=1
 command53=InvokeExecutableMBSEHelper
 applicableTo53=Package,Block Definition Diagram,Internal Block Diagram,21 Funct Analysis - Scenarios Package,22 Funct Analysis - Design Package

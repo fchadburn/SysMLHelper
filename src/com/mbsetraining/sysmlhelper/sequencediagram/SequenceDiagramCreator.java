@@ -60,7 +60,7 @@ public class SequenceDiagramCreator {
 					true );
 
 		} else {
-			_context.error("Error, unable to find building block or tester pkg");
+			_context.error( "Unable to find building block or tester pkg" );
 		}
 	}
 
@@ -68,8 +68,8 @@ public class SequenceDiagramCreator {
 			IRPClass theAssemblyBlock) {
 
 		IRPPackage thePackageForSD = 
-				_context.get_selectedContext().getPackageForActorsAndTest();
-
+				_context.get_selectedContext().getScenarioRootContextPackage();
+		
 		if( thePackageForSD != null ){
 
 			List<IRPModelElement> theSDs = 
@@ -90,6 +90,9 @@ public class SequenceDiagramCreator {
 						_context.getIsCreateSDWithAutoShowApplied( theSD ),
 						false,
 						true );
+			} else {
+				_context.debug( "Unable to find one sequence diagram with AutoShow stereotype under " +
+						_context.elInfo( thePackageForSD ) );
 			}
 		}
 	}
@@ -102,8 +105,8 @@ public class SequenceDiagramCreator {
 		IRPClass theDomainBlock = getDomainBlockAbove( theAssemblyBlock );
 		
 		if( theDomainBlock != null ){			
-			_context.debug( "The DomainBlock for " + _context.elInfo( theAssemblyBlock ) + 
-					" is " + _context.elInfo( theDomainBlock ) );
+			//_context.debug( "The DomainBlock for " + _context.elInfo( theAssemblyBlock ) + 
+			//		" is " + _context.elInfo( theDomainBlock ) );
 			
 			@SuppressWarnings("unchecked")
 			List<IRPInstance> theCandidates = theDomainBlock.getNestedElementsByMetaClass( "Part", 0 ).toList();
@@ -191,8 +194,8 @@ public class SequenceDiagramCreator {
 
 			if( theExistingDiagram != null ){
 
-				String theMsg = _context.elInfo( theExistingDiagram ) + " already exists in " + 
-						_context.elInfo( inPackage ) + "\nDo you want to recreate it with x" + 
+				String theMsg = _context.elInfo( theExistingDiagram ) + " already exists in \n" + 
+						_context.elInfo( inPackage ) + "\n\nDo you want to recreate it with " + 
 						theParts.size() + " lifelines for:\n";
 
 				for( Iterator<IRPInstance> iterator = theParts.iterator(); iterator.hasNext(); ){
@@ -278,9 +281,11 @@ public class SequenceDiagramCreator {
 				_context.applyExistingStereotype( "AutoShow", theSD );
 			}
 			
+			_context.info( _context.elInfo( theSD ) + " owned by " + _context.elInfo( theSD.getOwner() ) + 
+					" was created with " + theParts.size() + " lifelines" );
+			
 			if( isOpenDiagram ){
 				theSD.highLightElement();
-				theSD.openDiagram();
 			}
 		}
 		
@@ -309,8 +314,8 @@ public class SequenceDiagramCreator {
 					IRPClassifier theCandidateType = theCandidate.getOtherClass();
 					
 					if( theCandidateType.equals( theType ) ){
-						_context.debug( "Found that " + _context.elInfo( theCandidate ) + 
-								" has same type as " + _context.elInfo( thePart ) );
+						//_context.debug( "Found that " + _context.elInfo( theCandidate ) + 
+						//		" has same type as " + _context.elInfo( thePart ) );
 						isPartTheOnlyOneOfItsType = false;
 						break;
 					}

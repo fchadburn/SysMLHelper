@@ -17,7 +17,7 @@ public class SelectedElementContext {
 
 	private List<IRPGraphElement> _selectedGraphEls;
 	private IRPModelElement _selectedEl;
-	private IRPPackage _contextEl;
+	private IRPPackage _scenarioRootContextPackage;
 	private IRPClass _buildingBlock;
 	private IRPClass _chosenBlock;
 	private IRPDiagram _sourceGraphElDiagram;
@@ -52,22 +52,22 @@ public class SelectedElementContext {
 			}
 		}
 
-		_contextEl = getSimulationSettingsPackageBasedOn( _selectedEl );
+		_scenarioRootContextPackage = getSimulationSettingsPackageBasedOn( _selectedEl );
 
 		_packageForActorsAndTest = getPkgNamedInFunctionalPackageTag(
-				_contextEl, 
+				_scenarioRootContextPackage, 
 				tagNameForPackageForActorsAndTest );
 
 		_buildingBlock = (IRPClass) getElementNamedInFunctionalPackageTag(
-				_contextEl, 
+				_scenarioRootContextPackage, 
 				tagNameForAssemblyBlockUnderDev );
 
 		_packageForEventsAndInterfaces = getPkgNamedInFunctionalPackageTag(
-				_contextEl, 
+				_scenarioRootContextPackage, 
 				tagNameForPackageForEventsAndInterfaces );
 
 		_packageForBlocks = getPkgNamedInFunctionalPackageTag(
-				_contextEl, 
+				_scenarioRootContextPackage, 
 				tagNameForPackageForBlocks );
 
 		_sourceGraphElDiagram = getSourceDiagram();
@@ -237,11 +237,11 @@ public class SelectedElementContext {
 	public IRPClass getBuildingBlock(){
 
 		if( _buildingBlock == null && 
-				_contextEl != null ){
+				_scenarioRootContextPackage != null ){
 
 			try {
 				IRPModelElement elementInTag = getElementNamedInFunctionalPackageTag(
-						_contextEl, 
+						_scenarioRootContextPackage, 
 						tagNameForAssemblyBlockUnderDev );
 
 				_context.info( "Element named in " + tagNameForAssemblyBlockUnderDev + 
@@ -292,7 +292,7 @@ public class SelectedElementContext {
 
 		IRPModelElement theEl = null;
 
-		IRPTag theTag = _contextEl.getTag( theTagName );
+		IRPTag theTag = _scenarioRootContextPackage.getTag( theTagName );
 
 		if( theTag != null ){
 
@@ -316,7 +316,7 @@ public class SelectedElementContext {
 		if( theEl == null ){
 			_context.error( "Error in getElementNamedInFunctionalPackageTag, " + 
 					"unable to find value for tag called " + theTagName + " under " + 
-					_context.elInfo( _contextEl ) );
+					_context.elInfo( _scenarioRootContextPackage ) );
 		}
 
 		return theEl;
@@ -482,8 +482,11 @@ public class SelectedElementContext {
 	}
 
 	public IRPPackage getPackageForBlocks(){
-
 		return _packageForBlocks;
+	}
+	
+	public IRPPackage getScenarioRootContextPackage(){
+		return _scenarioRootContextPackage;
 	}
 
 	public List<IRPClass> getBuildingBlocks(
@@ -562,7 +565,7 @@ public class SelectedElementContext {
 		if( theTag != null ){
 			String thePackageName = theTag.getValue();
 
-			thePackage = (IRPPackage) _contextEl.getProject().findNestedElementRecursive(
+			thePackage = (IRPPackage) _scenarioRootContextPackage.getProject().findNestedElementRecursive(
 					thePackageName, "Package");
 
 			if( thePackage == null ){

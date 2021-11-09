@@ -1,4 +1,4 @@
-package functionalanalysisplugin;
+package com.mbsetraining.sysmlhelper.createnewblockpart;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -25,13 +25,13 @@ public class CreateNewBlockPartPanel extends ExecutableMBSEBasePanel {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private IRPPackage m_RootPackage;
-	private IRPClass m_AssemblyBlock;
+	private IRPPackage _rootPackage;
+	private IRPClass _assemblyBlock;
 
-	protected JTextField m_BlockNameTextField = null;
-	protected JTextField m_PartNameTextField = null;
+	protected JTextField _blockNameTextField = null;
+	protected JTextField _partNameTextField = null;
 
-	protected RhapsodyComboBox m_ChosenStereotype;
+	protected RhapsodyComboBox _chosenStereotype;
 
 	// testing only
 	public static void main(String[] args) {
@@ -69,6 +69,8 @@ public class CreateNewBlockPartPanel extends ExecutableMBSEBasePanel {
 
 		super( theAppID );
 
+		_context.get_selectedContext().setContextTo( _context.getSelectedElement( true ) );
+		
 		IRPClass theBuildingBlock = 
 				_context.get_selectedContext().getBuildingBlock();
 
@@ -81,13 +83,19 @@ public class CreateNewBlockPartPanel extends ExecutableMBSEBasePanel {
 
 		} else { // theBuildingBlock != null
 
-			m_RootPackage = _context.get_selectedContext().getPackageForBlocks();
-			m_AssemblyBlock = _context.get_selectedContext().getBuildingBlock();
+			_rootPackage = _context.get_selectedContext().getPackageForBlocks();
+			_assemblyBlock = _context.get_selectedContext().getBuildingBlock();
 
 			setLayout( new BorderLayout(10,10) );
 			setBorder( BorderFactory.createEmptyBorder( 10, 10, 10, 10 ) );
 
-			add( createBlockChoicePanel( "" ), BorderLayout.PAGE_START );
+			JPanel theStartPanel = new JPanel();
+
+			theStartPanel.setLayout( new BoxLayout( theStartPanel, BoxLayout.PAGE_AXIS ) );
+			theStartPanel.add( createPanelWithTextCentered( "Context for part: " + _context.elInfo( _assemblyBlock ) ) );
+			theStartPanel.add( createBlockChoicePanel( "" ) );
+			
+			add( theStartPanel, BorderLayout.PAGE_START );
 			add( createStereotypePanel(), BorderLayout.CENTER );	    
 			add( createOKCancelPanel(), BorderLayout.PAGE_END );
 		}
@@ -101,17 +109,17 @@ public class CreateNewBlockPartPanel extends ExecutableMBSEBasePanel {
 		List<IRPModelElement> theStereotypes = 
 				_context.getStereotypesForBlockPartCreation();
 
-		m_ChosenStereotype = new RhapsodyComboBox( theStereotypes, false );
-		m_ChosenStereotype.setMaximumSize( new Dimension( 250, 20 ) );
+		_chosenStereotype = new RhapsodyComboBox( theStereotypes, false );
+		_chosenStereotype.setMaximumSize( new Dimension( 250, 20 ) );
 
 		if( theStereotypes.size() > 0 ){
 			// set to first value in list
-			m_ChosenStereotype.setSelectedRhapsodyItem( theStereotypes.get( 0 ) );	
+			_chosenStereotype.setSelectedRhapsodyItem( theStereotypes.get( 0 ) );	
 			_context.debug("Setting default stereotype to " + _context.elInfo(theStereotypes.get( 0 )));
 		}
 
 		thePanel.add( new JLabel( "  Stereotype as: " ) );
-		thePanel.add( m_ChosenStereotype );
+		thePanel.add( _chosenStereotype );
 
 		return thePanel;
 	}
@@ -121,22 +129,22 @@ public class CreateNewBlockPartPanel extends ExecutableMBSEBasePanel {
 
 		JPanel thePanel = new JPanel();
 		thePanel.setLayout( new BoxLayout(thePanel, BoxLayout.X_AXIS ) );	
-
-		m_BlockNameTextField = new JTextField();
-		m_BlockNameTextField.setPreferredSize( new Dimension( 150, 20 ) );
+		
+		_blockNameTextField = new JTextField();
+		_blockNameTextField.setPreferredSize( new Dimension( 150, 20 ) );
 
 		JCheckBox theBlockCheckBox = new JCheckBox( "Create block called:" );
-
 		theBlockCheckBox.setSelected( true );
+				
 		thePanel.add( theBlockCheckBox );
-		thePanel.add( m_BlockNameTextField );
+		thePanel.add( _blockNameTextField );
 
 		thePanel.add( new JLabel(" with part name (leave blank for default): ") );
 
-		m_PartNameTextField = new JTextField();
-		m_PartNameTextField.setPreferredSize( new Dimension( 150, 20 ) );
+		_partNameTextField = new JTextField();
+		_partNameTextField.setPreferredSize( new Dimension( 150, 20 ) );
 
-		thePanel.add( m_PartNameTextField );
+		thePanel.add( _partNameTextField );
 
 		return thePanel;
 	}
@@ -148,7 +156,7 @@ public class CreateNewBlockPartPanel extends ExecutableMBSEBasePanel {
 		boolean isValid = true;
 		String errorMsg = "";
 
-		String theBlockName = m_BlockNameTextField.getText();
+		String theBlockName = _blockNameTextField.getText();
 
 		if ( theBlockName.trim().isEmpty() ){
 
@@ -157,7 +165,7 @@ public class CreateNewBlockPartPanel extends ExecutableMBSEBasePanel {
 
 		} else {
 			boolean isLegalBlockName = 
-					_context.isLegalName( theBlockName, m_RootPackage );
+					_context.isLegalName( theBlockName, _rootPackage );
 
 			if( !isLegalBlockName ){
 
@@ -167,7 +175,7 @@ public class CreateNewBlockPartPanel extends ExecutableMBSEBasePanel {
 			} else if( !_context.isElementNameUnique(
 					theBlockName, 
 					"Class", 
-					m_RootPackage, 
+					_rootPackage, 
 					1 ) ){
 
 				errorMsg += "Unable to proceed as the Block name '" + theBlockName + "' is not unique";
@@ -175,12 +183,12 @@ public class CreateNewBlockPartPanel extends ExecutableMBSEBasePanel {
 
 			} else {
 
-				String thePartName = m_PartNameTextField.getText();
+				String thePartName = _partNameTextField.getText();
 
 				if ( !thePartName.trim().isEmpty() ){
 
 					boolean isLegalPartName = 
-							_context.isLegalName( thePartName, m_AssemblyBlock );
+							_context.isLegalName( thePartName, _assemblyBlock );
 
 					if( !isLegalPartName ){
 
@@ -190,11 +198,11 @@ public class CreateNewBlockPartPanel extends ExecutableMBSEBasePanel {
 					} else if( !_context.isElementNameUnique(
 							thePartName, 
 							"Object", 
-							m_AssemblyBlock, 
+							_assemblyBlock, 
 							0 ) ){
 
 						errorMsg += "Unable to proceed as the Part name '" + thePartName + "' is not unique for " + 
-								_context.elInfo( m_AssemblyBlock );
+								_context.elInfo( _assemblyBlock );
 
 						isValid = false;
 					}
@@ -226,7 +234,7 @@ public class CreateNewBlockPartPanel extends ExecutableMBSEBasePanel {
 
 			if( theClassifier != null &&
 					theClassifier instanceof IRPActor &&
-					theClassifier.getName().equals( "ElapsedTime" ) ){
+					_context.hasStereotypeCalled( "ElapsedTimeGenerator", theClassifier ) ){
 
 				theElapsedTimePart = theInstance;
 				break;
@@ -241,47 +249,44 @@ public class CreateNewBlockPartPanel extends ExecutableMBSEBasePanel {
 
 		if( checkValidity( false ) ){
 
-			if( m_RootPackage != null ){
+			if( _rootPackage != null ){
 
-				String theName = m_BlockNameTextField.getText();
+				String theName = _blockNameTextField.getText();
 
-				IRPClass theClass = m_RootPackage.addClass( theName );
+				IRPClass theClass = _rootPackage.addClass( theName );
 				theClass.highLightElement();				
 
-				IRPProject theProject = theClass.getProject();
+				IRPStereotype theTimeElapsedBlockStereotype = 
+						_context.getStereotypeForTimeElapsedBlock();
 
-				_context.addGeneralization( 
-						theClass, 
-						"TimeElapsedBlock", 
-						theProject );
-
-				String thePartName = m_PartNameTextField.getText().trim();
+				theClass.setStereotype( theTimeElapsedBlockStereotype );
+				
+				String thePartName = _partNameTextField.getText().trim();
 
 				IRPInstance thePart = 
-						(IRPInstance) m_AssemblyBlock.addNewAggr(
+						(IRPInstance) _assemblyBlock.addNewAggr(
 								"Part", thePartName );
 
 				thePart.setOtherClass( theClass );
 				thePart.highLightElement();
 
-				IRPModelElement theSelectedStereotype = m_ChosenStereotype.getSelectedRhapsodyItem();
+				IRPModelElement theSelectedStereotype = _chosenStereotype.getSelectedRhapsodyItem();
 
-				if( theSelectedStereotype != null && 
-						theSelectedStereotype instanceof IRPStereotype ){
+				if( theSelectedStereotype instanceof IRPStereotype ){
 
 					try {
 						theClass.setStereotype( (IRPStereotype) theSelectedStereotype );
 
-					} catch (Exception e) {
-						_context.error("Exception in CreateNewBlockPartPanel.performAction, unable to apply " + 
+					} catch( Exception e ){
+						_context.error( "Exception in CreateNewBlockPartPanel.performAction, unable to apply " + 
 								theSelectedStereotype.getName() + " to " + _context.elInfo( theClass ) );	
 					}
 
 					try {
 						thePart.setStereotype( (IRPStereotype) theSelectedStereotype );
 
-					} catch (Exception e) {
-						_context.error("Exception in CreateNewBlockPartPanel.performAction, unable to apply " + 
+					} catch( Exception e ){
+						_context.error( "Exception in CreateNewBlockPartPanel.performAction, unable to apply " + 
 								theSelectedStereotype.getName() + " to " + _context.elInfo( thePart ) );	
 					}
 				}
@@ -290,7 +295,7 @@ public class CreateNewBlockPartPanel extends ExecutableMBSEBasePanel {
 
 				// Try and find ElapsedTime actor part 				
 				IRPInstance theElapsedTimePart = 
-						getElapsedTimeActorPartFor( m_AssemblyBlock );
+						getElapsedTimeActorPartFor( _assemblyBlock );
 
 				if( theElapsedTimePart != null ){
 
@@ -321,24 +326,24 @@ public class CreateNewBlockPartPanel extends ExecutableMBSEBasePanel {
 								thePart );
 
 					} else {
-						_context.error("Error in CreateNewBlockPartPanel.performAction(), unable to find elapsedTime ports") ;
+						_context.error( "CreateNewBlockPartPanel.performAction was unable to find elapsedTime ports") ;
 					}
 
 				} else {
-					_context.error("Error in CreateNewBlockPartPanel.performAction: Unable to find ElapsedTime actor in project. You may be missing the BasePkg");
+					_context.error( "CreateNewBlockPartPanel.performAction was unable to find ElapsedTime actor in project. You may be missing the BasePkg");
 				}
 
 				SequenceDiagramCreator theHelper = new SequenceDiagramCreator(_context);
 
 				theHelper.updateAutoShowSequenceDiagramFor( 
-						m_AssemblyBlock );
+						_assemblyBlock );
 
 			} else {
-				_context.error("Error in CreateNewActorPanel.performAction, unable to find " + _context.elInfo( m_RootPackage ) );
+				_context.error( "CreateNewBlockPartPanel.performAction was unable to find " + _context.elInfo( _rootPackage ) );
 			}
 
 		} else {
-			_context.error("Error in CreateNewActorPanel.performAction, checkValidity returned false");
+			_context.error( "CreateNewBlockPartPanel.performAction, checkValidity returned false" );
 		}		
 	}	
 }

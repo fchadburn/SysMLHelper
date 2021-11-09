@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 
 import com.mbsetraining.sysmlhelper.common.RhapsodyComboBox;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.executablembse.ActorMappingInfo;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.mbsetraining.sysmlhelper.sequencediagram.SequenceDiagramCreator;
@@ -171,7 +172,7 @@ public class CreateNewActorPanel extends ExecutableMBSEBasePanel {
 		
 		String theChosenName = m_ChosenNameTextField.getText();
 		
-		if ( theChosenName.contains( m_ClassifierMappingInfo.m_ActorBlankName ) ){
+		if ( theChosenName.contains( m_ClassifierMappingInfo._actorBlankName ) ){
 			
 			errorMsg += "Please choose a valid name for the Actor";
 			isValid = false;
