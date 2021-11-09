@@ -163,7 +163,7 @@ public class PortBasedConnector {
 			onTargetPort.getProvidedInterfaces().toList();
 		
 		if( theProvidedInterfaces.size() > 1 ){
-			_context.error("Error, there are " + 
+			_context.error( "Error, there are " + 
 					theProvidedInterfaces.size() + " provided interfaces when expecting 1" );
 			
 		} else if( theProvidedInterfaces.size()==1 ){

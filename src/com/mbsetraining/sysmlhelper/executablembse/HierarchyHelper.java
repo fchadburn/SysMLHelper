@@ -71,7 +71,7 @@ public class HierarchyHelper {
 	public List<IRPInstance> getOwningPartsFor(
 			IRPInstance theInstance ){
 		
-		_context.debug("getOwningPartsFor invoked for " + _context.elInfo( theInstance ) );
+		//_context.debug("getOwningPartsFor invoked for " + _context.elInfo( theInstance ) );
 		
 		List<IRPInstance> theOwningParts = new ArrayList<>();
 	
@@ -92,9 +92,9 @@ public class HierarchyHelper {
 					
 					IRPInstance thePart = thePartsOfOtherClass.get( 0 );	
 				
-					_context.debug( _context.elInfo( thePart) + " is the part");
+					//_context.debug( _context.elInfo( thePart) + " is the part");
 					
-						List<IRPInstance> theOwningPartsFor = 
+					List<IRPInstance> theOwningPartsFor = 
 								getOwningPartsFor( thePart );
 					
 					if( theOwningPartsFor != null ){
@@ -122,20 +122,20 @@ public class HierarchyHelper {
 
 		for( IRPInstance theCandidatePart : _instances ){
 
-			_context.debug( "Checking theCandidatePart = " + _context.elInfo( theCandidatePart ) );
+			//_context.debug( "Checking theCandidatePart = " + _context.elInfo( theCandidatePart ) );
 			
 			if( theCandidatePart.getOtherClass().equals( 
 					typedByClassifier) ){
 				
-				_context.debug("getAllParts typed by " + _context.elInfo( typedByClassifier ) + 
-						" found " + _context.elInfo( theCandidatePart ) );
+				//_context.debug("getAllParts typed by " + _context.elInfo( typedByClassifier ) + 
+				//		" found " + _context.elInfo( theCandidatePart ) );
 				
 				theParts.add( theCandidatePart );
 			}
 		}
 
-		_context.debug( "getAllPartsInProject is returning " + theParts.size() + 
-				" parts for " + _context.elInfo( typedByClassifier ) );
+		//_context.debug( "getAllPartsInProject is returning " + theParts.size() + 
+		//		" parts for " + _context.elInfo( typedByClassifier ) );
 		
 		return theParts;
 	}
@@ -148,18 +148,18 @@ public class HierarchyHelper {
 			
 			IRPModelElement theOwner = theCandidatePart.getOwner();
 			
-			_context.debug( _context.elInfo( theCandidatePart ) + " has owner " + _context.elInfo( theOwner) );
+			//_context.debug( _context.elInfo( theCandidatePart ) + " has owner " + _context.elInfo( theOwner) );
 			
 			if( theOwner instanceof IRPClass && 
 				theOwner.getName().equals( "TopLevel" ) &&
 				!theParts.contains( theCandidatePart )){
 				
-				_context.debug("getAllPartsOwnedByPackages found " + _context.elInfo( theCandidatePart ) );
+				//_context.debug("getAllPartsOwnedByPackages found " + _context.elInfo( theCandidatePart ) );
 				theParts.add( theCandidatePart );
 			}
 		}
 
-		_context.debug( "getAllPartsOwnedByPackages is returning " + theParts.size() + " parts" );
+		//_context.debug( "getAllPartsOwnedByPackages is returning " + theParts.size() + " parts" );
 		
 		return theParts;
 	}

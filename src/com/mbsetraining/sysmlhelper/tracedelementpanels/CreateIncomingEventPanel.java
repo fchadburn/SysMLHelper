@@ -28,8 +28,8 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-
+	private static final long serialVersionUID = 8467350275520692573L;
+	
 	private JCheckBox _eventActionIsNeededCheckBox;
 	private JCheckBox _createSendEventCheckBox;
 	private JCheckBox _createSendEventViaPanelCheckBox;
@@ -96,7 +96,7 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 
 						if( thePort == null ){
 
-							UserInterfaceHelper.showWarningDialog(
+							buildUnableToRunDialog(
 									"Unable to find a port that connects " + _context.elInfo(theActor) + " to the " + 
 											_context.elInfo( theChosenBlock ) + ". \n" +
 											"You may want to add the necessary ports and connector to the IBD under " + 

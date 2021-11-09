@@ -549,6 +549,7 @@ V4.0.k.Rhp831.PreRelease (XX-XXX-XXXX):
 #380 09-NOV-2021: ExecutableMBSE: Added implementation of publish/subscribe flow port menus to OnMenuItemSelect for design synthesis purposes (F.J.Chadburn)
 #381 09-NOV-2021: ExecutableMBSE: Get Add new block/part to package under development to work with new scenario package structure (F.J.Chadburn)
 #382 09-NOV-2021: ExecutableMBSE: Get CreateNewActorPanel working with new scenario package structure (F.J.Chadburn)
+#383 09-NOV-2021: ExecutableMBSE: Get CreateIncomingEventPanel to make use of buildUnableToRunDialog if no connector between block and actor (F.J.Chadburn)
 
 Backlog/Known issues
 
