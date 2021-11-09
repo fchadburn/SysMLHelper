@@ -544,6 +544,8 @@ V4.0.j.Rhp831.PreRelease (08-NOV-2021):
 V4.0.k.Rhp831.PreRelease (XX-XXX-XXXX):
 #376 09-NOV-2021: ExecutableMBSE: Add protection to cleanUpModelRemnants to cope better with unresolved Component (F.J.Chadburn)
 #377 09-NOV-2021: ExecutableMBSE: Fixes checkIfSetupProjectIsNeeded so that project's version is shown where expected (F.J.Chadburn)
+#378 09-NOV-2021: ExecutableMBSE: Get AutoConnectFlowPortsPanel to cope better when there are not other parts available to public to (F.J.Chadburn)
+#379 09-NOV-2021: ExecutableMBSE: Refinement of stereotypes returned by BaseContext to use lazy loading to improve performance if called multiple times (F.J.Chadburn)
 
 Backlog/Known issues
 

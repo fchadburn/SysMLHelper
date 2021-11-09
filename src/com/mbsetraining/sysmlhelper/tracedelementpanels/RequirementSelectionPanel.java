@@ -32,7 +32,7 @@ public class RequirementSelectionPanel extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private Map<IRPRequirement, JCheckBox> m_CheckBoxMap = new HashMap<IRPRequirement, JCheckBox>();
+	private Map<IRPRequirement, JCheckBox> _checkBoxMap = new HashMap<IRPRequirement, JCheckBox>();
 
 	protected BaseContext _context;
 	
@@ -89,7 +89,7 @@ public class RequirementSelectionPanel extends JPanel {
 		theHorizSequenceGroup.addGroup( theColumn1ParallelGroup );
 		theHorizSequenceGroup.addGroup( theColumn2ParallelGroup );
 
-		for (IRPRequirement theReqt : theReqtsInTable) {
+		for( IRPRequirement theReqt : theReqtsInTable ){
 
 			JCheckBox theReqtCheckBox = new JCheckBox( theReqt.getName()) ;
 
@@ -112,7 +112,7 @@ public class RequirementSelectionPanel extends JPanel {
 
 			theVerticalSequenceGroup.addGroup( theVertical1ParallelGroup );		  
 
-			m_CheckBoxMap.put(theReqt, theReqtCheckBox);
+			_checkBoxMap.put(theReqt, theReqtCheckBox);
 		}
 
 		theGroupLayout.setHorizontalGroup( theHorizSequenceGroup );
@@ -125,7 +125,7 @@ public class RequirementSelectionPanel extends JPanel {
 		
 		for( IRPRequirement theReqt : theReqts ){
 			
-			JCheckBox theCheckBox = m_CheckBoxMap.get( theReqt );
+			JCheckBox theCheckBox = _checkBoxMap.get( theReqt );
 			
 			if( theCheckBox != null ){
 				theCheckBox.setSelected( true );
@@ -140,7 +140,7 @@ public class RequirementSelectionPanel extends JPanel {
 		
 		for( IRPRequirement theReqt : theReqts ){
 			
-			JCheckBox theCheckBox = m_CheckBoxMap.get( theReqt );
+			JCheckBox theCheckBox = _checkBoxMap.get( theReqt );
 			
 			if( theCheckBox != null ){
 				theCheckBox.setSelected( false );
@@ -154,19 +154,18 @@ public class RequirementSelectionPanel extends JPanel {
 		
 		List<IRPRequirement> theFilteredReqts = new ArrayList<IRPRequirement>();
 		
-		for (Entry<IRPRequirement, JCheckBox> entry : m_CheckBoxMap.entrySet())
+		for (Entry<IRPRequirement, JCheckBox> entry : _checkBoxMap.entrySet())
 		{
 			JCheckBox theCheckBox = entry.getValue();
 			
 		    if (theCheckBox.isSelected()){
 		    	IRPRequirement theRequirement = entry.getKey();
 		    	
-		    	_context.debug( _context.elInfo( theRequirement ) + " was selected");
+		    	//_context.debug( _context.elInfo( theRequirement ) + " was selected");
 		    	theFilteredReqts.add( theRequirement );
 		    } else {
-		    	IRPRequirement theRequirement = entry.getKey();
-		    	
-		    	_context.debug( _context.elInfo( theRequirement ) + " was not selected");
+		    	//IRPRequirement theRequirement = entry.getKey();
+		    	//_context.debug( _context.elInfo( theRequirement ) + " was not selected");
 		    }
 		}
 		

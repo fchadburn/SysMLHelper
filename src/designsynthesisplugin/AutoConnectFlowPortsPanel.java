@@ -105,11 +105,6 @@ public class AutoConnectFlowPortsPanel extends ExecutableMBSEBasePanel {
 
 			_publishingPart = getPartMatchingAttributesOwnerUnder( 
 					theBuildingBlock, _publishingAttribute.getOwner() );
-			
-			if( _publishingPort != null && _context.hasStereotypeCalled( "publish", _publishingAttribute ) ){
-
-
-			}
 
 			List<IRPInstance> theCandidateParts =
 					theBuildingBlock.getNestedElementsByMetaClass( "Part", 0 ).toList();
@@ -117,7 +112,7 @@ public class AutoConnectFlowPortsPanel extends ExecutableMBSEBasePanel {
 			// Add radio buttons for all the parts that are not test drivers
 			for( IRPInstance theCandidatePart : theCandidateParts ){	
 
-				_context.debug( "theCandidatePart is " + _context.elInfo( theCandidatePart ) );
+				//_context.debug( "theCandidatePart is " + _context.elInfo( theCandidatePart ) );
 				
 				IRPClassifier theOtherClass = theCandidatePart.getOtherClass();
 
@@ -145,7 +140,10 @@ public class AutoConnectFlowPortsPanel extends ExecutableMBSEBasePanel {
 
 			if( _radioButtonMap.isEmpty() ){
 
-				JLabel theLabel = new JLabel( "There are no other parts" );
+				JLabel theLabel = new JLabel( 
+						"There are no other parts under the " + theBuildingBlock.getName() + " block that " + 
+						_context.elInfo( _publishingAttribute ) + " can be published to " );
+						
 				theLabel.setAlignmentX( Component.LEFT_ALIGNMENT );
 				theBox.add( theLabel );
 
@@ -170,10 +168,10 @@ public class AutoConnectFlowPortsPanel extends ExecutableMBSEBasePanel {
 				theBox.add( new JLabel( "   " ) );
 
 				theBox.add( theScrollPane );
-
-				add( theBox, BorderLayout.CENTER );
-				add( createOKCancelPanel(), BorderLayout.PAGE_END );
 			}
+			
+			add( theBox, BorderLayout.CENTER );
+			add( createOKCancelPanel(), BorderLayout.PAGE_END );
 		}
 	}
 

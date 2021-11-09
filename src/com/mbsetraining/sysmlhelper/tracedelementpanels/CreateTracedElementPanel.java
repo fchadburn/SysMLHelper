@@ -546,8 +546,8 @@ public abstract class CreateTracedElementPanel extends JPanel {
 				_context.error( "Error in populateCallOperationActionOnDiagram, m_SourceGraphElementDiagram is null when value was expected" );
 			}
 
-		} catch (Exception e) {
-			_context.error( "Error in populateCallOperationActionOnDiagram, unhandled exception was detected ");
+		} catch( Exception e ){
+			_context.error( "populateCallOperationActionOnDiagram, unhandled exception was detected, e=" + e.getMessage());
 		}
 	}
 	

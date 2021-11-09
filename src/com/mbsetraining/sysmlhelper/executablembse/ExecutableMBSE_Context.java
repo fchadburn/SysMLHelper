@@ -82,6 +82,14 @@ public class ExecutableMBSE_Context extends BaseContext {
 	protected List<IRPModelElement> _stereotypesForBlockPartCreation;
 	protected String _autoGenerationOfFlowPortsForLinksPolicy;
 
+	protected IRPStereotype _stereotypeForTestbench;
+	protected IRPStereotype _stereotypeForTimeElapsedActor;
+	protected IRPStereotype _stereotypeForTimeElapsedBlock;
+	protected IRPStereotype _newTermForUseCaseDiagram;
+	protected IRPStereotype _newTermForSystemContextDiagram;
+	protected IRPStereotype _newTermForActorUsage;
+	protected IRPStereotype _newTermForSystemContext;
+
 	public ExecutableMBSE_Context(
 			String theAppID ){
 
@@ -239,102 +247,123 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 	public IRPStereotype getStereotypeForTestbench(){
 
-		IRPStereotype theStereotype = getExistingStereotype( 
-				TESTBENCH_STEREOTYPE, 
-				_rhpPrj );
+		if( _stereotypeForTestbench == null ){
 
-		if( theStereotype == null ){
-			super.error( "Error in getStereotypeForTestbench, no Stereotyped called " + 
-					TESTBENCH_STEREOTYPE + " was found" );
-		}	
+			_stereotypeForTestbench = getExistingStereotype( 
+					TESTBENCH_STEREOTYPE, 
+					_rhpPrj );
 
-		return theStereotype;
+			if( _stereotypeForTestbench == null ){
+				super.error( "Error in getStereotypeForTestbench, no Stereotyped called " + 
+						TESTBENCH_STEREOTYPE + " was found" );
+			}	
+		}
+
+		return _stereotypeForTestbench;
 	}
 
 	public IRPStereotype getStereotypeForTimeElapsedActor(){
 
-		IRPStereotype theStereotype = getExistingStereotype( 
-				ELAPSED_TIME_GENERATOR_STEREOTYPE, 
-				_rhpPrj );
+		if( _stereotypeForTimeElapsedActor == null ){
 
-		if( theStereotype == null ){
-			super.error( "Error in getStereotypeForTimeElapsedActor, no Stereotyped called " + 
-					ELAPSED_TIME_GENERATOR_STEREOTYPE + " was found" );
-		}	
+			_stereotypeForTimeElapsedActor = getExistingStereotype( 
+					ELAPSED_TIME_GENERATOR_STEREOTYPE, 
+					_rhpPrj );
 
-		return theStereotype;
+			if( _stereotypeForTimeElapsedActor == null ){
+				super.error( "Error in getStereotypeForTimeElapsedActor, no Stereotyped called " + 
+						ELAPSED_TIME_GENERATOR_STEREOTYPE + " was found" );
+			}	
+		}
+
+		return _stereotypeForTimeElapsedActor;
 	}
 
 	public IRPStereotype getStereotypeForTimeElapsedBlock(){
 
-		IRPStereotype theStereotype = getExistingStereotype( 
-				TIME_ELAPSED_BLOCK_STEREOTYPE, 
-				_rhpPrj );
+		if( _stereotypeForTimeElapsedBlock == null ){
 
-		if( theStereotype == null ){
-			super.error( "Error in getStereotypeForTimeElapsedBlock, no Stereotyped called " + 
-					TIME_ELAPSED_BLOCK_STEREOTYPE + " was found" );
-		}	
+			_stereotypeForTimeElapsedBlock = getExistingStereotype( 
+					TIME_ELAPSED_BLOCK_STEREOTYPE, 
+					_rhpPrj );
 
-		return theStereotype;
+			if( _stereotypeForTimeElapsedBlock == null ){
+				super.error( "Error in getStereotypeForTimeElapsedBlock, no Stereotyped called " + 
+						TIME_ELAPSED_BLOCK_STEREOTYPE + " was found" );
+			}
+		}
+
+		return _stereotypeForTimeElapsedBlock;
 	}
 
 	public IRPStereotype getNewTermForUseCaseDiagram(){
 
-		IRPStereotype theStereotype = getExistingStereotype( 
-				NEW_TERM_FOR_USE_CASE_DIAGRAM, 
-				_rhpPrj );
+		if( _newTermForUseCaseDiagram == null ){
 
-		if( theStereotype == null ){
-			super.error( "Error in getNewTermForUseCaseDiagram, no Stereotyped called " + 
-					NEW_TERM_FOR_USE_CASE_DIAGRAM + " was found" );
-		}	
+			_newTermForUseCaseDiagram = getExistingStereotype( 
+					NEW_TERM_FOR_USE_CASE_DIAGRAM, 
+					_rhpPrj );
 
-		return theStereotype;
+			if( _newTermForUseCaseDiagram == null ){
+				super.error( "Error in getNewTermForUseCaseDiagram, no Stereotyped called " + 
+						NEW_TERM_FOR_USE_CASE_DIAGRAM + " was found" );
+			}	
+		}
+
+		return _newTermForUseCaseDiagram;
 	}
 
 	public IRPStereotype getNewTermForSystemContextDiagram(){
 
-		IRPStereotype theStereotype = getExistingStereotype( 
-				NEW_TERM_FOR_SYSTEM_CONTEXT_DIAGRAM, 
-				_rhpPrj );
+		if( _newTermForSystemContextDiagram == null ){
 
-		if( theStereotype == null ){
+			_newTermForSystemContextDiagram = getExistingStereotype( 
+					NEW_TERM_FOR_SYSTEM_CONTEXT_DIAGRAM, 
+					_rhpPrj );
 
-			super.error( "Error in getNewTermForSystemContextDiagram, no Stereotyped called " + 
-					NEW_TERM_FOR_SYSTEM_CONTEXT_DIAGRAM + " was found" );
-		}	
+			if( _newTermForSystemContextDiagram == null ){
 
-		return theStereotype;
+				super.error( "Error in getNewTermForSystemContextDiagram, no Stereotyped called " + 
+						NEW_TERM_FOR_SYSTEM_CONTEXT_DIAGRAM + " was found" );
+			}	
+		}
+
+		return _newTermForSystemContextDiagram;
 	}
 
 	public IRPStereotype getNewTermForActorUsage(){
 
-		IRPStereotype theStereotype = getExistingStereotype( 
-				NEW_TERM_FOR_ACTOR_USAGE, 
-				_rhpPrj );
+		if( _newTermForActorUsage == null ){
 
-		if( theStereotype == null ){
+			_newTermForActorUsage = getExistingStereotype( 
+					NEW_TERM_FOR_ACTOR_USAGE, 
+					_rhpPrj );
 
-			super.error( "Error in getNewTermForActorUsage, no Stereotyped called " + 
-					NEW_TERM_FOR_ACTOR_USAGE + " was found" );
-		}	
+			if( _newTermForActorUsage == null ){
 
-		return theStereotype;
+				super.error( "Error in getNewTermForActorUsage, no Stereotyped called " + 
+						NEW_TERM_FOR_ACTOR_USAGE + " was found" );
+			}				
+		}
+
+		return _newTermForActorUsage;
 	}
 
 	public IRPStereotype getNewTermForSystemContext(){
 
-		IRPStereotype theStereotype = getExistingStereotype( 
-				NEW_TERM_FOR_SYSTEM_CONTEXT, 
-				_rhpPrj );
+		if( _newTermForSystemContext == null ){
+			
+			_newTermForSystemContext = getExistingStereotype( 
+					NEW_TERM_FOR_SYSTEM_CONTEXT, 
+					_rhpPrj );
 
-		if( theStereotype == null ){			
-			super.error( "Error in getNewTermForSystemContext, no Stereotyped called " + 
-					NEW_TERM_FOR_SYSTEM_CONTEXT + " was found" );
-		}	
+			if( _newTermForSystemContext == null ){			
+				super.error( "Error in getNewTermForSystemContext, no Stereotyped called " + 
+						NEW_TERM_FOR_SYSTEM_CONTEXT + " was found" );
+			}		
+		}
 
-		return theStereotype;
+		return _newTermForSystemContext;
 	}
 
 	public List<IRPActor> getMasterActorList(

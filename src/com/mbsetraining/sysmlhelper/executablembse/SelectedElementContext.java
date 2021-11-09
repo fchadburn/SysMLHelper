@@ -339,15 +339,17 @@ public class SelectedElementContext {
 							1 );
 
 			if( thePackageEls.isEmpty() ){
-				_context.warning( "Warning in getSimulationSettingsPackageBasedOn, unable to find use case settings package");
+				_context.warning( "Unable to find a " + _context.FUNCT_ANALYSIS_SCENARIOS_PACKAGE + 
+						" package. Have you added one to the model?" );
 
 			} else if( thePackageEls.size()==1){
 
 				theSettingsPkg = (IRPPackage) thePackageEls.get(0);
 
 			} else {
-				_context.error( "Error in getSimulationSettingsPackageBasedOn, unable to find use case settings package");
-
+				_context.debug( "There are " + thePackageEls.size() + " " +	_context.FUNCT_ANALYSIS_SCENARIOS_PACKAGE + 
+						" packages, so you will have to choose one?" );
+				
 				IRPModelElement theUserSelectedPkg = 
 						UserInterfaceHelper.launchDialogToSelectElement(
 								thePackageEls, 
@@ -364,7 +366,7 @@ public class SelectedElementContext {
 						_context.FUNCT_ANALYSIS_SCENARIOS_PACKAGE, 
 						theContextEl ) ){
 
-			_context.debug( "getSimulationSettingsPackageBasedOn, is returning " + _context.elInfo( theContextEl ) );
+			_context.debug( "getSimulationSettingsPackageBasedOn is returning " + _context.elInfo( theContextEl ) );
 
 			theSettingsPkg = (IRPPackage) theContextEl;
 
@@ -402,7 +404,7 @@ public class SelectedElementContext {
 
 		} else {
 
-			_context.debug("Recursing to look at owner of " + _context.elInfo( theContextEl ) );
+			_context.debug( "Recursing to look at owner of " + _context.elInfo( theContextEl ) );
 
 			// recurse
 			theSettingsPkg = getSimulationSettingsPackageBasedOn(

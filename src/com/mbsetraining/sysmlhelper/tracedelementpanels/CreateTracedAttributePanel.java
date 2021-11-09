@@ -20,18 +20,16 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
-import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
 import designsynthesisplugin.PortCreator;
 
 public class CreateTracedAttributePanel extends CreateTracedElementPanel {
-
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = -5130829523852064061L;
 	protected JTextField _initialValueTextField = null;
 	private JCheckBox _checkOperationCheckBox;
 	private String _checkOpName;
@@ -126,7 +124,7 @@ public class CreateTracedAttributePanel extends CreateTracedElementPanel {
 				"Attribute", 
 				onTargetBlock );
 
-		_context.debug("The proposed name is '" + theProposedName + "'");
+		//_context.debug("The proposed name is '" + theProposedName + "'");
 		
 		JPanel thePageStartPanel = new JPanel();
 		thePageStartPanel.setLayout( new BoxLayout( thePageStartPanel, BoxLayout.X_AXIS ) );
@@ -333,7 +331,7 @@ public class CreateTracedAttributePanel extends CreateTracedElementPanel {
 	protected void performAction() {
 		
 		// do silent check first
-		if (checkValidity( false )){
+		if( checkValidity( false ) ){
 
 			List<IRPRequirement> selectedReqtsList = _requirementSelectionPanel.getSelectedRequirementsList();
 
