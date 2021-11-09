@@ -541,6 +541,10 @@ V4.0.j.Rhp831.PreRelease (08-NOV-2021):
 #374 08-NOV-2021: ExecutableMBSE: Get the flow port creation dialog to work with new thread safe over Rhapsody version mechanism that doesn't pass Rhapsody elements (F.J.Chadburn)
 #375 08-NOV-2021: ExecutableMBSE: Apply DontShow stereotype to panel diagram during simulation structure creation so that it doesn't show by default (F.J.Chadburn)
 
+V4.0.k.Rhp831.PreRelease (XX-XXX-XXXX):
+#376 09-NOV-2021: ExecutableMBSE: Add protection to cleanUpModelRemnants to cope better with unresolved Component (F.J.Chadburn)
+#377 09-NOV-2021: ExecutableMBSE: Fixes checkIfSetupProjectIsNeeded so that project's version is shown where expected (F.J.Chadburn)
+
 Backlog/Known issues
 
 - Get configuration to be automatically set to Animation so that it works with Developer Edition better

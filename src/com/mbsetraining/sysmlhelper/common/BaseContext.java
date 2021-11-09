@@ -23,6 +23,9 @@ import com.telelogic.rhapsody.core.*;
 
 public abstract class BaseContext {
 
+	private static final String NOT_USED_COMP = "NotUsedComp";
+	private static final String NOT_USED_CONFIG = "NotUsedConfig";
+
 	private String _pluginVersionProperty;
 	private String _userDefinedMetaClassesAsSeparateUnitProperty;
 	//private String _allowPluginToControlUnitGranularityProperty;
@@ -1969,13 +1972,27 @@ public abstract class BaseContext {
 				_rhpPrj.findElementsByFullName( "DefaultComponent", "Component" );
 
 		if( theDefaultComponent != null ){
-			theDefaultComponent.setName( "NotUsedComp" );
+
+			try {
+				theDefaultComponent.setName( NOT_USED_COMP );
+
+			} catch( Exception e ){
+				error( "Unable to change name of " + elInfo( theDefaultComponent ) + 
+						" to " + NOT_USED_COMP + ", e=" + e.getMessage()  );
+			}
 
 			IRPModelElement theDefaultConfig = 
 					theDefaultComponent.findNestedElement( "DefaultConfig", "Configuration" );
 
 			if( theDefaultConfig != null ){
-				theDefaultConfig.setName( "NotUsedComp" );
+
+				try {
+					theDefaultConfig.setName( NOT_USED_CONFIG );
+
+				} catch( Exception e ){
+					error( "Unable to change name of " + elInfo( theDefaultConfig ) + 
+							" to " + NOT_USED_CONFIG + ", e=" + e.getMessage()  );
+				}			
 			}
 		}
 	}
@@ -2106,7 +2123,7 @@ public abstract class BaseContext {
 		theNoWebConfig.setScopeType("implicit");
 
 		theConfiguration.getProject().setActiveConfiguration( theConfiguration );		
-		
+
 		return theComponent;
 	}
 
@@ -2138,7 +2155,7 @@ public abstract class BaseContext {
 		String theSourceInfo = null;
 
 		if( theEl instanceof IRPState ){
-			
+
 			IRPState theState = (IRPState)theEl;
 			String theStateType = theState.getStateType();
 
@@ -2486,12 +2503,12 @@ public abstract class BaseContext {
 	public IRPStereotype getStereotypeToUseForFunctions(){
 
 		if( _stereotypeToUseForFunctions == null ){
-			
+
 			_stereotypeToUseForFunctions = getStereotypeBasedOn(
 					_rhpPrj, 
 					"ExecutableMBSEProfile.FunctionalAnalysis.TraceabilityTypeToUseForFunctions" );
 		}
-		
+
 		return _stereotypeToUseForFunctions;
 	}
 
@@ -2503,19 +2520,19 @@ public abstract class BaseContext {
 					_rhpPrj, 
 					"ExecutableMBSEProfile.RequirementsAnalysis.TraceabilityTypeToUseForActions" );
 		}
-		
+
 		return _stereotypeToUseForActions;
 	}
 
 	public IRPStereotype getStereotypeToUseForUseCases(){
 
 		if( _stereotypeToUseForUseCases == null ){
-			
+
 			_stereotypeToUseForUseCases = getStereotypeBasedOn(
 					_rhpPrj, 
 					"ExecutableMBSEProfile.RequirementsAnalysis.TraceabilityTypeToUseForUseCases" );
 		}
-		
+
 		return _stereotypeToUseForUseCases;
 	}
 
@@ -2730,7 +2747,7 @@ public abstract class BaseContext {
 
 		return _rhpLog.elInfo( theEl );		
 	}
-	
+
 	public Date getDate( 
 			String fromString ){
 

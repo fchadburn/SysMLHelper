@@ -8,6 +8,7 @@ import java.util.Locale;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
 public class ConfigurationSettings  {
@@ -20,6 +21,24 @@ public class ConfigurationSettings  {
 
 	protected BaseContext _context;
 
+	public static void main(String[] args) {
+				
+		String theAppID = RhapsodyAppServer.getActiveRhapsodyApplication().getApplicationConnectionString();
+		
+		BaseContext _context = new ExecutableMBSE_Context( theAppID );
+		_context.cleanUpModelRemnants();
+
+/*		ConfigurationSettings _settings = new ConfigurationSettings(
+				"ExecutableMBSE.properties", 
+				"ExecutableMBSE_MessagesBundle",
+				"ExecutableMBSE" , 
+				_context );
+		
+		_settings.setPropertiesValuesRequestedInConfigFile( 
+				_context.get_rhpPrj(),
+				"setPropertyForExecutableMBSEModel" );*/
+	}
+	
 	public ConfigurationSettings(
 			String thePropertyFileName,
 			String theResourceBundleFileName,
@@ -194,7 +213,7 @@ public class ConfigurationSettings  {
 			} else {
 
 				String theProjectsProfileDateValue = theProjectDateTag.getValue();
-				//String theProjectsProfileVersionValue = theProjectVersionTag.getValue();
+				String theProjectsProfileVersionValue = theProjectVersionTag.getValue();
 
 				//_context.debug( "Project's required ProfileDate    = " + theProjectsProfileDateValue );
 				//_context.debug( "Project's required ProfileVersion = " + theProjectsProfileVersionValue );
@@ -215,7 +234,7 @@ public class ConfigurationSettings  {
 							"The current profile version you have installed is " + theProfileVersionValue + 
 							" (" + theProfileDateValue + ")\n" +
 							"The project called " + thePrj.getName() + 
-							" is suggesting it needs " + theProfileVersionValue + 
+							" is suggesting it needs " + theProjectsProfileVersionValue + 
 							" (" + theProjectsProfileDateValue + ") \n";
 
 				} else if( theProjectsProfileDate.equals( profileDate ) ){
@@ -230,7 +249,7 @@ public class ConfigurationSettings  {
 							"The current profile version you have installed is " + theProfileVersionValue + 
 							" (" + theProfileDateValue + ") \n" +
 							"The project called " + thePrj.getName() + 
-							" is suggesting it needs " + theProfileVersionValue + 
+							" is suggesting it needs " + theProjectsProfileVersionValue + 
 							" (" + theProjectsProfileDateValue + ") \n\n";
 
 					if( isProvideFixingAdvice ){
