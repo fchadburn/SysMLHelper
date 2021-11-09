@@ -1,4 +1,4 @@
-package functionalanalysisplugin;
+package com.mbsetraining.sysmlhelper.createactorpart;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -17,7 +17,6 @@ import com.mbsetraining.sysmlhelper.common.RhapsodyComboBox;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.ActorMappingInfo;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
-import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.mbsetraining.sysmlhelper.sequencediagram.SequenceDiagramCreator;
 import com.telelogic.rhapsody.core.*;
 
@@ -26,31 +25,31 @@ public class CreateNewActorPanel extends ExecutableMBSEBasePanel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 358021036519229322L;
 
-	private IRPPackage m_RootPackage;
-	protected JTextField m_ChosenNameTextField = null;
-	private ActorMappingInfo m_ClassifierMappingInfo;
-	private IRPClass m_BlockToConnectTo = null;
-	protected ExecutableMBSE_Context _context;
+	protected IRPPackage _rootPackage;
+	protected JTextField _chosenNameTextField;
+	protected ActorMappingInfo _classifierMappingInfo;
+	protected IRPClass _blockToConnectTo;
+	protected IRPClass _assemblyBlock;
 
 	public static void main(String[] args) {	
 		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
 		launchThePanel( theRhpApp.getApplicationConnectionString() );
 	}
-	
+
 	public static void launchThePanel(
 			final String theAppID ){
-				
+
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 
 			@Override
 			public void run() {
-				
+
 				JFrame.setDefaultLookAndFeelDecorated( true );
-				
+
 				JFrame frame = new JFrame( "Create new Actor" );
-				
+
 				frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 
 				CreateNewActorPanel thePanel = 
@@ -63,49 +62,56 @@ public class CreateNewActorPanel extends ExecutableMBSEBasePanel {
 			}
 		});
 	}
-	
+
 	public CreateNewActorPanel( String theAppID ){
-		
+
 		super( theAppID );
-		
+
 		_context.get_selectedContext().setContextTo( 
 				_context.getSelectedElement( false ) );
-				
+
 		IRPClass theBuildingBlock = 
 				_context.get_selectedContext().getBuildingBlock();
 
 		if( theBuildingBlock == null ){
-			
+
 			buildUnableToRunDialog( 
 					"Sorry, this helper is unable to run this command because \n" +
-					"there was no execution context or block found in the model. \n " +
+							"there was no execution context or block found in the model. \n " +
 					"You need to add the relevant package structure first." );
-			
+
 		} else { // theBuildingBlock != null
-			
+
 			IRPClass theBlock = _context.get_selectedContext().getBlockUnderDev(
 					"Which Block/Part do you want to wire the Actor to?" );
-			
+
 			if( theBlock == null ){
 				buildUnableToRunDialog( 
 						"Sorry, this helper is unable to run this command because \n" +
-						"there was no execution context or block found in the model. \n " +
+								"there was no execution context or block found in the model. \n " +
 						"You need to add the relevant package structure first." );
 			} else {
-				m_RootPackage = _context.get_selectedContext().getSimulationSettingsPackageBasedOn( theBlock );
-				m_BlockToConnectTo = _context.get_selectedContext().getChosenBlock();
-				
+				_rootPackage = _context.get_selectedContext().getPackageForActorsAndTest();
+				_blockToConnectTo = _context.get_selectedContext().getChosenBlock();
+				_assemblyBlock = _context.get_selectedContext().getBuildingBlock();
+
 				setLayout( new BorderLayout(10,10) );
 				setBorder( BorderFactory.createEmptyBorder( 10, 10, 10, 10 ) );
-				
-				if( m_BlockToConnectTo != null ){
-					add( createActorChoicePanel( m_BlockToConnectTo.getName() ), BorderLayout.PAGE_START );
+
+				JPanel theStartPanel = new JPanel();
+
+				theStartPanel.setLayout( new BoxLayout( theStartPanel, BoxLayout.PAGE_AXIS ) );
+				theStartPanel.add( createPanelWithTextCentered( "Context for part: " + _context.elInfo( _assemblyBlock ) ) );
+
+				add( theStartPanel, BorderLayout.PAGE_START );
+
+				if( _blockToConnectTo != null ){
+					add( createActorChoicePanel( _blockToConnectTo.getName() ), BorderLayout.CENTER );
 
 				} else {
-					add( createActorChoicePanel( "" ), BorderLayout.PAGE_START );
-
+					add( createActorChoicePanel( "" ), BorderLayout.CENTER );
 				}
-				
+
 				add( createOKCancelPanel(), BorderLayout.PAGE_END );
 
 			}
@@ -114,122 +120,111 @@ public class CreateNewActorPanel extends ExecutableMBSEBasePanel {
 
 	@SuppressWarnings("unchecked")
 	private JPanel createActorChoicePanel(String theBlockName){
-		
+
 		JPanel thePanel = new JPanel();
 		thePanel.setLayout( new BoxLayout(thePanel, BoxLayout.X_AXIS ) );	
-		
-		m_ChosenNameTextField = new JTextField();
-		m_ChosenNameTextField.setPreferredSize( new Dimension( 300, 20 ) );
+
+		_chosenNameTextField = new JTextField();
+		_chosenNameTextField.setPreferredSize( new Dimension( 300, 20 ) );
 
 		List<IRPModelElement> theExistingActors;
-		
+
 		boolean isAllowInheritanceChoices = 
-				_context.getIsAllowInheritanceChoices( m_RootPackage );
-		
+				_context.getIsAllowInheritanceChoices( _rootPackage );
+
 		if( isAllowInheritanceChoices ){
-			
-			theExistingActors = m_RootPackage.getNestedElementsByMetaClass( 
+
+			theExistingActors = _rootPackage.getNestedElementsByMetaClass( 
 					"Actor", 1 ).toList();
 		} else {
 			theExistingActors = new ArrayList<>();
 		}
-				
+
 		RhapsodyComboBox theInheritedActorComboBox = 
 				new RhapsodyComboBox( theExistingActors, false );
-		
+
 		JCheckBox theActorCheckBox = new JCheckBox( "Create actor called:" );
-		    
+
 		theActorCheckBox.setSelected( true );
-			
-		m_ClassifierMappingInfo = 
+
+		_classifierMappingInfo = 
 				new ActorMappingInfo(
 						theInheritedActorComboBox, 
 						theActorCheckBox, 
-						m_ChosenNameTextField, 
+						_chosenNameTextField, 
 						null,
 						_context );
-		
-		m_ClassifierMappingInfo.updateToBestActorNamesBasedOn( theBlockName );
-		
-	    thePanel.add( theActorCheckBox );
-	    thePanel.add( m_ChosenNameTextField );
-	    
-	    if( isAllowInheritanceChoices ){
-		    JLabel theLabel = new JLabel( "Inherit from:" );
-		    thePanel.add( theLabel );
-		    thePanel.add( theInheritedActorComboBox );	    	
-	    }
-	    
+
+		_classifierMappingInfo.updateToBestActorNamesBasedOn( theBlockName );
+
+		thePanel.add( theActorCheckBox );
+		thePanel.add( _chosenNameTextField );
+
+		if( isAllowInheritanceChoices ){
+			JLabel theLabel = new JLabel( "Inherit from:" );
+			thePanel.add( theLabel );
+			thePanel.add( theInheritedActorComboBox );	    	
+		}
+
 		return thePanel;
 	}
-	
+
 	@Override
 	protected boolean checkValidity(
 			boolean isMessageEnabled) {
-		
+
 		boolean isValid = true;
 		String errorMsg = "";
-		
-		String theChosenName = m_ChosenNameTextField.getText();
-		
-		if ( theChosenName.contains( m_ClassifierMappingInfo._actorBlankName ) ){
-			
+
+		String theChosenName = _chosenNameTextField.getText();
+
+		if ( theChosenName.contains( _classifierMappingInfo._actorBlankName ) ){
+
 			errorMsg += "Please choose a valid name for the Actor";
 			isValid = false;
-			
+
 		} else {
-			boolean isLegalBlockName = _context.isLegalName( theChosenName, m_BlockToConnectTo );
-			
+			boolean isLegalBlockName = _context.isLegalName( theChosenName, _blockToConnectTo );
+
 			if (!isLegalBlockName){
-				
+
 				errorMsg += theChosenName + " is not legal as an identifier representing an executable Actor\n";				
 				isValid = false;
-				
+
 			} else if (!_context.isElementNameUnique(
-					
-				theChosenName, "Actor", m_RootPackage, 1)){
+
+					theChosenName, "Actor", _rootPackage, 1)){
 
 				errorMsg += "Unable to proceed as the Actor name '" + theChosenName + "' is not unique";
 				isValid = false;
 			}
 		}
-		
+
 		if (isMessageEnabled && !isValid && errorMsg != null){
 
 			UserInterfaceHelper.showWarningDialog( errorMsg );
 		}
-		
+
 		return isValid;
 	}
 
 	@Override
 	protected void performAction() {
-		
+
 		if( checkValidity( false ) ){
-			
-			_context.get_selectedContext().setContextTo( m_RootPackage );
-			
-			IRPClass theAssemblyBlock = 
-					_context.get_selectedContext().getBuildingBlock();
-			
-			if( m_RootPackage != null ){
-				
-				IRPInstance theActorPart =
-						m_ClassifierMappingInfo.performActorPartCreationIfSelectedIn( 
-								theAssemblyBlock, m_BlockToConnectTo );
-				
-				if( theActorPart != null ){
-					
-					SequenceDiagramCreator theHelper = new SequenceDiagramCreator( _context );
-					theHelper.updateAutoShowSequenceDiagramFor( theAssemblyBlock );
-				}
-			
-			} else {
-				_context.error("Error in CreateNewActorPanel.performAction, unable to find " + _context.elInfo( m_RootPackage ) );
+
+			IRPInstance theActorPart =
+					_classifierMappingInfo.performActorPartCreationIfSelectedIn( 
+							_assemblyBlock, _blockToConnectTo );
+
+			if( theActorPart != null ){
+
+				SequenceDiagramCreator theHelper = new SequenceDiagramCreator( _context );
+				theHelper.updateAutoShowSequenceDiagramFor( _assemblyBlock );
 			}
-						
+
 		} else {
-			_context.error("Error in CreateNewActorPanel.performAction, checkValidity returned false");
+			_context.error( "CreateNewActorPanel.performAction, checkValidity returned false" );
 		}		
 	}
 }
@@ -251,4 +246,4 @@ public class CreateNewActorPanel extends ExecutableMBSEBasePanel {
 
     You should have received a copy of the GNU General Public License
     along with SysMLHelperPlugin.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */

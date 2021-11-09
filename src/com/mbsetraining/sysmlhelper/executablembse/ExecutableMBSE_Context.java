@@ -1221,7 +1221,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 		theSourcesBases.add( theClassifier );
 		theSourcesBases.addAll( theClassifier.getBaseClassifiers().toList() );
 
-		super.debug( "underTheAssemblyBlock is looking under " + super.elInfo( underTheAssemblyBlock ) );
+		//super.debug( "getExistingLinkBetweenBaseClassifiersOf is looking under " + super.elInfo( underTheAssemblyBlock ) );
 
 		List<IRPLink> theLinks = underTheAssemblyBlock.getLinks().toList();
 
@@ -1242,8 +1242,8 @@ public class ExecutableMBSE_Context extends BaseContext {
 						( theSourcesBases.contains( toClassifier ) &&
 								theOtherEndsBases.contains( fromClassifier ) ) ){
 
-					super.debug( "Found that " + super.elInfo( fromClassifier ) 
-							+ " is already linked to " + super.elInfo( toClassifier ) );
+					//super.debug( "Found that " + super.elInfo( fromClassifier ) 
+					//		+ " is already linked to " + super.elInfo( toClassifier ) );
 
 					theExistingLink = theLink;
 					isLinkFoundCount++;

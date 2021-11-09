@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
+import com.mbsetraining.sysmlhelper.createactorpart.CreateNewActorPanel;
 import com.mbsetraining.sysmlhelper.createnewblockpart.CreateNewBlockPartPanel;
 import com.mbsetraining.sysmlhelper.eventdeletor.EventDeletor;
 import com.mbsetraining.sysmlhelper.sequencediagram.SequenceDiagramCreator;

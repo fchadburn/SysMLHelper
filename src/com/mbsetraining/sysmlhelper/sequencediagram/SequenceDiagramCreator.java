@@ -136,7 +136,7 @@ public class SequenceDiagramCreator {
 		
 		for( IRPModelElement theReference : theReferences ){
 			
-			_context.debug( _context.elInfo( theReference ) + " is a candidate" );
+			//_context.debug( _context.elInfo( theReference ) + " is a candidate" );
 			
 			if( theReference instanceof IRPInstance ){
 				
@@ -149,9 +149,9 @@ public class SequenceDiagramCreator {
 						theOtherClass.equals( theAssemblyBlock ) &&
 						theInstanceOwner instanceof IRPClass ){
 					
-					_context.debug( "getDomainBlockAbove found " + 
-							_context.elInfo( theInstanceOwner ) + " for " + 
-							_context.elInfo( theAssemblyBlock ) );
+					//_context.debug( "getDomainBlockAbove found " + 
+					//		_context.elInfo( theInstanceOwner ) + " for " + 
+					//		_context.elInfo( theAssemblyBlock ) );
 					
 					theDomainBlockCandidates.add( (IRPClass) theInstanceOwner );
 				}

@@ -23,14 +23,12 @@ public class CreateNewBlockPartPanel extends ExecutableMBSEBasePanel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-
-	private IRPPackage _rootPackage;
-	private IRPClass _assemblyBlock;
-
+	private static final long serialVersionUID = -7444732682041471013L;
+	
+	protected IRPPackage _rootPackage;
+	protected IRPClass _assemblyBlock;
 	protected JTextField _blockNameTextField = null;
 	protected JTextField _partNameTextField = null;
-
 	protected RhapsodyComboBox _chosenStereotype;
 
 	// testing only

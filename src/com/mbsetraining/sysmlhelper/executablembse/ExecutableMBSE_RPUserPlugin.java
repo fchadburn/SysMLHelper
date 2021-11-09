@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Set;
 
 import requirementsanalysisplugin.PopulateRelatedRequirementsPanel;
-import functionalanalysisplugin.CreateNewActorPanel;
 import functionalanalysisplugin.TestCaseCreator;
 import functionalanalysisplugin.PopulateFunctionalAnalysisPkg.SimulationType;
 
@@ -19,6 +18,7 @@ import com.mbsetraining.sysmlhelper.common.RequirementsHelper;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.contextdiagram.CreateContextPackagePanel;
 import com.mbsetraining.sysmlhelper.copyactivitydiagram.CopyActivityDiagramsPanel;
+import com.mbsetraining.sysmlhelper.createactorpart.CreateNewActorPanel;
 import com.mbsetraining.sysmlhelper.createnewblockpart.CreateNewBlockPartPanel;
 import com.mbsetraining.sysmlhelper.doorsng.ExportRequirementsToCSV;
 import com.mbsetraining.sysmlhelper.doorsng.SwitchRhapsodyRequirementsToDNG;
