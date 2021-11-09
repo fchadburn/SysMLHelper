@@ -546,11 +546,11 @@ V4.0.k.Rhp831.PreRelease (XX-XXX-XXXX):
 #377 09-NOV-2021: ExecutableMBSE: Fixes checkIfSetupProjectIsNeeded so that project's version is shown where expected (F.J.Chadburn)
 #378 09-NOV-2021: ExecutableMBSE: Get AutoConnectFlowPortsPanel to cope better when there are not other parts available to public to (F.J.Chadburn)
 #379 09-NOV-2021: ExecutableMBSE: Refinement of stereotypes returned by BaseContext to use lazy loading to improve performance if called multiple times (F.J.Chadburn)
+#380 09-NOV-2021: ExecutableMBSE: Added implementation of publish/subscribe flow port menus to OnMenuItemSelect for design synthesis purposes (F.J.Chadburn)
 
 Backlog/Known issues
 
 - Get configuration to be automatically set to Animation so that it works with Developer Edition better
-- Get configuration to be automatically set to MSVN if that's the default so that it works with configured environment
 - It would be useful to have a way to specify a different bleed colour
 - When creating the Functional Analysis package a dependency to the actor package causes elements that don't compile to be brought into the build
 - Get the panel diagram population of test bench to be auto set
@@ -577,4 +577,3 @@ Backlog/Known issues
 - Ensure that hep file allows for right-click of System Block, System Usage etc for some of the general features.
 - Allow functional deposition of function blocks/usages to any level
 - Add a query and custom view that filters out requirements
-- Fixes needed to allow models to work when multiple scenario packages are created (prevent dialog pull-ups from not knowing context)

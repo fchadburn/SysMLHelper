@@ -41,6 +41,8 @@ import com.mbsetraining.sysmlhelper.tracedelementpanels.UpdateTracedAttributePan
 import com.mbsetraining.sysmlhelper.usecasepackage.CreateUseCasesPackagePanel;
 import com.telelogic.rhapsody.core.*;
 
+import designsynthesisplugin.PortCreator;
+
 public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 	protected ExecutableMBSE_Context _context;
@@ -194,7 +196,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					if( theSelectedEl instanceof IRPProject ){
 
 						boolean isProceed = UserInterfaceHelper.askAQuestion(
-								"The project will need some settings changed. \n" +
+								"The project may need some settings changed. \n" +
 								"Do you want to proceed?");
 
 						if( isProceed ){
@@ -673,8 +675,8 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						}
 					}							
 
-				} else if (menuItem.equals( _settings.getString(
-						"executablembseplugin.DeleteEventsAndRelatedElementsMenu"))){
+				} else if( menuItem.equals( _settings.getString(
+						"executablembseplugin.DeleteEventsAndRelatedElementsMenu" ) ) ){
 
 					EventDeletor theDeletor = new EventDeletor( _context );
 					theDeletor.deleteEventAndRelatedElementsFor( theSelectedEls );
@@ -690,13 +692,42 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 								(IRPSequenceDiagram) theSelectedEl );
 					}	
 
-				} else {
-					_context.debug( _context.elInfo( theSelectedEl ) + " was invoked with menuItem='" + menuItem + "'");
-				}
+				} else if( menuItem.equals( _settings.getString(
+						"executablembseplugin.MakeAttributeAPublishFlowportMenu" ) ) ){
 
+					if( theSelectedEl instanceof IRPAttribute){
+
+						PortCreator portCreator = new PortCreator( _context );
+						portCreator.createPublishFlowportsFor( theSelectedEls );
+
+					}
+
+				} else if( menuItem.equals( _settings.getString(
+						"executablembseplugin.MakeAttributeASubscribeFlowportMenu" ) ) ){
+
+					if( theSelectedEl instanceof IRPAttribute ){
+						PortCreator portCreator = new PortCreator( _context );
+						portCreator.createSubscribeFlowportsFor( theSelectedEls );
+					}
+
+				} else if( menuItem.equals(_settings.getString(
+						"designsynthesisplugin.DeleteAttributeAndRelatedElementsMenu" ) ) ){
+
+					PortCreator portCreator = new PortCreator( _context );
+
+					if( theSelectedEl instanceof IRPAttribute ){
+						portCreator.deleteAttributeAndRelatedEls( (IRPAttribute) theSelectedEl );
+					} else if( theSelectedEl instanceof IRPSysMLPort ){
+						portCreator.deleteFlowPortAndRelatedEls( (IRPSysMLPort) theSelectedEl );
+					}
+					
+				} else {
+					_context.warning( "Unhandled menu: " + _context.elInfo( theSelectedEl ) + " was invoked with menuItem='" + menuItem + "'");
+				}
 
 				_context.debug( "'" + menuItem + "' completed.");
 			}
+			
 		} catch( Exception e ){
 			_context.error( "Exception in OnMenuItemSelect, e=" + e.getMessage() );
 		}

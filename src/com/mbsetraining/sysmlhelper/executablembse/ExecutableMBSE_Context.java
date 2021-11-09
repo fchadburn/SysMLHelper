@@ -58,6 +58,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String NEW_TERM_FOR_ACTOR_USAGE = "ActorUsage";
 	public final String NEW_TERM_FOR_SYSTEM_CONTEXT = "SystemUsage";
 	public final String TESTBENCH_STEREOTYPE = "Testbench";
+	public final String AUTO_RIPPLE_STEREOTYPE = "AutoRipple";
 
 	protected SelectedElementContext _selectionContext;
 
@@ -85,6 +86,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	protected IRPStereotype _stereotypeForTestbench;
 	protected IRPStereotype _stereotypeForTimeElapsedActor;
 	protected IRPStereotype _stereotypeForTimeElapsedBlock;
+	protected IRPStereotype _stereotypeForAutoRipple;
 	protected IRPStereotype _newTermForUseCaseDiagram;
 	protected IRPStereotype _newTermForSystemContextDiagram;
 	protected IRPStereotype _newTermForActorUsage;
@@ -294,6 +296,23 @@ public class ExecutableMBSE_Context extends BaseContext {
 		}
 
 		return _stereotypeForTimeElapsedBlock;
+	}
+	
+	public IRPStereotype getStereotypeForAutoRipple(){
+
+		if( _stereotypeForAutoRipple == null ){
+
+			_stereotypeForAutoRipple = getExistingStereotype( 
+					AUTO_RIPPLE_STEREOTYPE, 
+					_rhpPrj );
+
+			if( _stereotypeForAutoRipple == null ){
+				super.error( "Error in getStereotypeForAutoRipple, no Stereotyped called " + 
+						AUTO_RIPPLE_STEREOTYPE + " was found" );
+			}
+		}
+
+		return _stereotypeForAutoRipple;
 	}
 
 	public IRPStereotype getNewTermForUseCaseDiagram(){
@@ -1000,14 +1019,14 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 				if( theElementsOwner.equals( theAttributeOwner )){
 					theExistingFlowPort = (IRPSysMLPort)theEl;
-					super.debug( super.elInfo( theExistingFlowPort ) + " was found based on «AutoRipple» dependency" );					
+					//super.debug( super.elInfo( theExistingFlowPort ) + " was found based on «AutoRipple» dependency" );					
 				} else {
-					super.warning( "Warning, in getExistingFlowPort() for " + 
-							super.elInfo( forTheAttribute ) + ":" + super.elInfo( theEl ) + 
-							"was found based on «AutoRipple» dependency" );	
+					//super.debug( "Warning, in getExistingFlowPort() for " + 
+					//		super.elInfo( forTheAttribute ) + ":" + super.elInfo( theEl ) + 
+					//		" was found based on «AutoRipple» dependency" );	
 
-					super.warning("However, it is incorrectly owned by " + super.elInfo( theElementsOwner ) + 
-							" hence relation needs to be deleted");
+					//super.debug("However, it is incorrectly owned by " + super.elInfo( theElementsOwner ) + 
+					//		" hence relation needs to be deleted");
 				}
 			}
 		}
@@ -1019,9 +1038,9 @@ public class ExecutableMBSE_Context extends BaseContext {
 					forTheAttribute.getName(), "FlowPort" );
 
 			if( theExistingFlowPort != null ){
-				super.debug( super.elInfo( theExistingFlowPort ) + " was found based on name matching" );
+				//super.debug( super.elInfo( theExistingFlowPort ) + " was found based on name matching" );
 			} else {
-				super.debug( "Unable to find an existing flow port related to " + super.elInfo( forTheAttribute ) );
+				//super.debug( "Unable to find an existing flow port related to " + super.elInfo( forTheAttribute ) );
 			}
 		}
 
@@ -1048,14 +1067,14 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 				if( theElementsOwner.equals( theAttributeOwner )){
 					theExistingCheckOp = (IRPOperation)theEl;
-					super.debug( super.elInfo( theExistingCheckOp ) + " was found based on «AutoRipple» dependency" );					
+					//super.debug( super.elInfo( theExistingCheckOp ) + " was found based on «AutoRipple» dependency" );					
 				} else {
-					super.warning( "Warning, in getExistingCheckOp() for " + 
-							super.elInfo( forTheAttribute ) + ":" + super.elInfo( theEl ) + 
-							" was found based on «AutoRipple» dependency" );	
+					//super.debug( "Warning, in getExistingCheckOp() for " + 
+					//		super.elInfo( forTheAttribute ) + ":" + super.elInfo( theEl ) + 
+					//		" was found based on «AutoRipple» dependency" );	
 
-					super.warning("However, it is incorrectly owned by " + super.elInfo( theElementsOwner ) + 
-							" hence relation needs to be deleted");
+					//super.debug( "However, it is incorrectly owned by " + super.elInfo( theElementsOwner ) + 
+					//		" hence relation needs to be deleted");
 				}
 			}
 		}
@@ -1073,9 +1092,9 @@ public class ExecutableMBSE_Context extends BaseContext {
 							theExpectedName, "Operation" );
 
 			if( theExistingCheckOp != null ){
-				super.debug( super.elInfo( theExistingCheckOp ) + " was found based on name matching" );
+				//super.debug( super.elInfo( theExistingCheckOp ) + " was found based on name matching" );
 			} else {
-				super.warning( "Unable to find an existing check operation called " + theExpectedName );
+				//super.debug( "Unable to find an existing check operation called " + theExpectedName );
 			}
 		}
 
@@ -1086,9 +1105,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 			IRPModelElement fromElement, 
 			IRPModelElement toElement ){
 
-		IRPStereotype theAutoRippleStereotype = 
-				super.getExistingStereotype( 
-						"AutoRipple", fromElement.getProject() );
+		IRPStereotype theAutoRippleStereotype = getStereotypeForAutoRipple();
 
 		IRPDependency theDependency =
 				super.addStereotypedDependencyIfOneDoesntExist(
