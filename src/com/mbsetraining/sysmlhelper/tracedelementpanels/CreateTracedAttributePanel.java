@@ -20,9 +20,8 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.pubsubportcreation.PortCreator;
 import com.telelogic.rhapsody.core.*;
-
-import designsynthesisplugin.PortCreator;
 
 public class CreateTracedAttributePanel extends CreateTracedElementPanel {
 	

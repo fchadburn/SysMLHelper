@@ -23,6 +23,8 @@ import javax.swing.GroupLayout.SequentialGroup;
 
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
+import com.mbsetraining.sysmlhelper.pubsubportcreation.AutoConnectFlowPortsInfo;
+import com.mbsetraining.sysmlhelper.pubsubportcreation.AutoConnectFlowPortsMap;
 import com.telelogic.rhapsody.core.*;
 
 public class ConfirmDiagramUpdatePanel extends ExecutableMBSEBasePanel {

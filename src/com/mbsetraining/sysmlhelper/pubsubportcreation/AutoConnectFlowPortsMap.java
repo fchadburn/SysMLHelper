@@ -1,4 +1,4 @@
-package designsynthesisplugin;
+package com.mbsetraining.sysmlhelper.pubsubportcreation;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,9 +6,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.mbsetraining.sysmlhelper.pubsubportcreation.AutoConnectFlowPortsInfo.FlowType;
 import com.telelogic.rhapsody.core.*;
-
-import designsynthesisplugin.AutoConnectFlowPortsInfo.FlowType;
 
 public class AutoConnectFlowPortsMap extends HashMap<IRPInstance, AutoConnectFlowPortsInfo> {
 

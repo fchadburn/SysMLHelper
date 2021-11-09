@@ -28,6 +28,7 @@ import com.mbsetraining.sysmlhelper.gateway.CreateGatewayProjectPanel;
 import com.mbsetraining.sysmlhelper.gateway.MarkedAsDeletedPanel;
 import com.mbsetraining.sysmlhelper.gateway.MoveRequirements;
 import com.mbsetraining.sysmlhelper.populateparts.PopulatePartsPanel;
+import com.mbsetraining.sysmlhelper.pubsubportcreation.PortCreator;
 import com.mbsetraining.sysmlhelper.rolluptraceabilitytotransition.RollUpTraceabilityToTheTransitionPanel;
 import com.mbsetraining.sysmlhelper.sequencediagram.SequenceDiagramCreator;
 import com.mbsetraining.sysmlhelper.sequencediagram.UpdateInferfacesBasedOnSequenceDiagramPanel;
@@ -40,8 +41,6 @@ import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateTracedAttributePan
 import com.mbsetraining.sysmlhelper.tracedelementpanels.UpdateTracedAttributePanel;
 import com.mbsetraining.sysmlhelper.usecasepackage.CreateUseCasesPackagePanel;
 import com.telelogic.rhapsody.core.*;
-
-import designsynthesisplugin.PortCreator;
 
 public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 

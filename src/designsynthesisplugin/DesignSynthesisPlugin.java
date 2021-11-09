@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
+import com.mbsetraining.sysmlhelper.pubsubportcreation.PortCreator;
 import com.telelogic.rhapsody.core.*;
 
 public class DesignSynthesisPlugin extends RPUserPlugin {

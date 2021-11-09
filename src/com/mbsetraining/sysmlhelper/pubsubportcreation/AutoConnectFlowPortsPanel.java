@@ -1,4 +1,4 @@
-package designsynthesisplugin;
+package com.mbsetraining.sysmlhelper.pubsubportcreation;
 
 import java.awt.BorderLayout;
 import java.awt.Component;

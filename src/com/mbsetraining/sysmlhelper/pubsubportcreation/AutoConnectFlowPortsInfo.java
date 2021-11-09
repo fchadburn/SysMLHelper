@@ -1,4 +1,4 @@
-package designsynthesisplugin;
+package com.mbsetraining.sysmlhelper.pubsubportcreation;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
