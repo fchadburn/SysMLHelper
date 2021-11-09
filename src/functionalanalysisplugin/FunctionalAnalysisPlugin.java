@@ -11,6 +11,7 @@ import java.util.Set;
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.createactorpart.CreateNewActorPanel;
 import com.mbsetraining.sysmlhelper.createnewblockpart.CreateNewBlockPartPanel;
+import com.mbsetraining.sysmlhelper.createtestcase.TestCaseCreator;
 import com.mbsetraining.sysmlhelper.eventdeletor.EventDeletor;
 import com.mbsetraining.sysmlhelper.sequencediagram.SequenceDiagramCreator;
 import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateIncomingEventPanel;

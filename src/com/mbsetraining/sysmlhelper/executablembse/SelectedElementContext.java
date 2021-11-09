@@ -649,15 +649,15 @@ public class SelectedElementContext {
 			IRPInstance theInstance = (IRPInstance)theCandidatePart;
 			IRPClassifier theClassifier = theInstance.getOtherClass();
 
-			_context.debug( "The instance is " + _context.elInfo( theInstance) + 
-					" typed by " + _context.elInfo( theClassifier ) );
+			//_context.debug( "The instance is " + _context.elInfo( theInstance) + 
+			//		" typed by " + _context.elInfo( theClassifier ) );
 
 			// don't add actors or test driver
 			if( theClassifier != null && 
 					theClassifier instanceof IRPClass &&
 					_context.hasStereotypeCalled( "TestDriver", theClassifier ) ){
 
-				_context.debug("Found " + _context.elInfo( theClassifier ) );
+				//_context.debug("Found " + _context.elInfo( theClassifier ) );
 				theTestBlock = (IRPClass) theClassifier;
 			}
 		}

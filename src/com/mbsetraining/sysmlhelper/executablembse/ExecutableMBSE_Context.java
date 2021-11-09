@@ -1116,61 +1116,6 @@ public class ExecutableMBSE_Context extends BaseContext {
 		return theDependency;
 	}
 
-	public IRPOperation createTestCaseFor( IRPClass theTestDriver ){
-
-		IRPOperation theOp = null;
-
-		if (super.hasStereotypeCalled("TestDriver", theTestDriver)){
-
-			super.debug("createTestCaseFor was invoked for " + super.elInfo(theTestDriver));
-
-			String[] theSplitName = theTestDriver.getName().split("_");
-
-			String thePrefix = theSplitName[0] + "_Test_";
-
-			super.debug("The prefix for TestCase was calculated as '" + thePrefix + "'");
-
-			int count = 0;
-			boolean isUniqueNumber = false;
-			String nameToTry = null;
-
-			while (isUniqueNumber==false){
-				count++;
-				nameToTry = thePrefix + String.format("%03d", count);
-
-				if (theTestDriver.findNestedElement(nameToTry, "Operation") == null){
-					isUniqueNumber = true;
-				}
-			}
-
-			if (isUniqueNumber){
-				theOp = theTestDriver.addOperation(nameToTry);
-				theOp.highLightElement();
-				theOp.changeTo("Test Case");
-
-				IRPState theState = getStateCalled("Ready", theTestDriver.getStatechart(), theTestDriver);
-
-				String theEventName = "ev" + nameToTry;
-
-				IRPEventReception theEventReception = theTestDriver.addReception( theEventName );
-
-				if (theEventReception != null){
-					IRPEvent theEvent = theEventReception.getEvent();
-
-					super.debug("The state called " + theState.getFullPathName() + " is owned by " + theState.getOwner().getFullPathName());
-					IRPTransition theTransition = theState.addInternalTransition( theEvent );
-					theTransition.setItsAction( theOp.getName() + "();");
-				}
-			}		
-
-		} else {
-			UserInterfaceHelper.showWarningDialog(
-					"This operation only works if you right-click a «TestDriver» block");	    
-		}
-
-		return theOp;
-	}
-
 	@Override
 	public void moveRequirementIfNeeded(
 			IRPRequirement theReqt) {

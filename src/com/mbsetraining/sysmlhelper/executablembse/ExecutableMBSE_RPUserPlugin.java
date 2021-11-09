@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Set;
 
 import requirementsanalysisplugin.PopulateRelatedRequirementsPanel;
-import functionalanalysisplugin.TestCaseCreator;
 import functionalanalysisplugin.PopulateFunctionalAnalysisPkg.SimulationType;
 
 import com.mbsetraining.sysmlhelper.activitydiagram.ActivityDiagramChecker;
@@ -20,6 +19,7 @@ import com.mbsetraining.sysmlhelper.contextdiagram.CreateContextPackagePanel;
 import com.mbsetraining.sysmlhelper.copyactivitydiagram.CopyActivityDiagramsPanel;
 import com.mbsetraining.sysmlhelper.createactorpart.CreateNewActorPanel;
 import com.mbsetraining.sysmlhelper.createnewblockpart.CreateNewBlockPartPanel;
+import com.mbsetraining.sysmlhelper.createtestcase.TestCaseCreator;
 import com.mbsetraining.sysmlhelper.doorsng.ExportRequirementsToCSV;
 import com.mbsetraining.sysmlhelper.doorsng.SwitchRhapsodyRequirementsToDNG;
 import com.mbsetraining.sysmlhelper.eventdeletor.EventDeletor;
@@ -589,27 +589,30 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						//CreateDerivedRequirementPanel.deriveDownstreamRequirement( theSelectedGraphEls );
 					}
 
-				} else if (menuItem.equals( _settings.getString("executablembseplugin.CreateNewTestCaseForTestDriverMenu"))){
+				} else if( menuItem.equals( _settings.getString(
+						"executablembseplugin.CreateNewTestCaseForTestDriverMenu" ) ) ){
 
-					if (theSelectedEl instanceof IRPClass){
+					TestCaseCreator theCreator = new TestCaseCreator( _context );
 
-						_context.createTestCaseFor( (IRPClass) theSelectedEl );
-
+					if( theSelectedEl instanceof IRPClass ){
+						theCreator.createTestCaseFor( (IRPClass) theSelectedEl );
+						
 					} else if (theSelectedEl instanceof IRPSequenceDiagram){
-
-						TestCaseCreator theCreator = new TestCaseCreator(_context);
 						theCreator.createTestCaseFor( (IRPSequenceDiagram) theSelectedEl );
 					}
 
-				} else if (menuItem.equals( _settings.getString("executablembseplugin.AddNewActorToPackageMenu"))){
+				} else if( menuItem.equals( _settings.getString(
+						"executablembseplugin.AddNewActorToPackageMenu" ) ) ){
 
 					if (theSelectedEl instanceof IRPPackage){
 						CreateNewActorPanel.launchThePanel( theAppID );
 					}
 
-				} else if (menuItem.equals( _settings.getString("executablembseplugin.AddNewBlockPartToPackageMenu"))){
+				} else if( menuItem.equals( _settings.getString(
+						"executablembseplugin.AddNewBlockPartToPackageMenu" ) ) ){
 
-					if (theSelectedEl instanceof IRPPackage || theSelectedEl instanceof IRPDiagram ){
+					if( theSelectedEl instanceof IRPPackage || 
+							theSelectedEl instanceof IRPDiagram ){
 						CreateNewBlockPartPanel.launchThePanel( theAppID );
 					}
 

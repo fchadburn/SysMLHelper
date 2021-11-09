@@ -1,13 +1,35 @@
-package functionalanalysisplugin;
+package com.mbsetraining.sysmlhelper.createtestcase;
 
 import java.util.List;
 
+import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
 public class TestCaseCreator {
 	
 	ExecutableMBSE_Context _context;
+	
+	public static void main(String[] args) {
+		
+		IRPApplication theRhpEl = RhapsodyAppServer.getActiveRhapsodyApplication();
+		
+		ExecutableMBSE_Context _context = 
+				new ExecutableMBSE_Context( theRhpEl.getApplicationConnectionString() );
+
+		IRPModelElement theSelectedEl = theRhpEl.getSelectedElement();
+		
+		TestCaseCreator theCreator = new TestCaseCreator( _context );
+		
+		if (theSelectedEl instanceof IRPClass){
+
+			theCreator.createTestCaseFor( (IRPClass) theSelectedEl );
+
+		} else if (theSelectedEl instanceof IRPSequenceDiagram){
+
+			theCreator.createTestCaseFor( (IRPSequenceDiagram) theSelectedEl );
+		}
+	}
 	
 	public TestCaseCreator(
 			ExecutableMBSE_Context context ) {
@@ -35,7 +57,7 @@ public class TestCaseCreator {
 			IRPClass theTestBlock = 
 					_context.get_selectedContext().getTestBlock( theBuildingBlock );
 			
-			IRPOperation theTC = _context.createTestCaseFor( theTestBlock );
+			IRPOperation theTC = createTestCaseFor( theTestBlock );
 
 			String theCode = 
 					"comment(\"\");\n" +
@@ -53,7 +75,7 @@ public class TestCaseCreator {
 					
 					_context.debug( _context.elInfo( theMessage ) + " was found with source = " + 
 							_context.elInfo( theSource ) + ", and theInterfaceItem = " + 
-							_context.elInfo(theInterfaceItem));
+							_context.elInfo( theInterfaceItem ) );
 
 					IRPEvent theEvent = (IRPEvent) theInterfaceItem;
 
@@ -64,20 +86,42 @@ public class TestCaseCreator {
 						IRPModelElement theSend = _context.findElementWithMetaClassAndName( 
 								"Reception", theEventName, theActor );
 
-						if (theSend != null) {
-							_context.debug("Voila, found " + _context.elInfo(theSend) + " owned by "
-									+ _context.elInfo(theActor));
+						if( theSend != null ){
+							
+							_context.debug( "Voila, found " + _context.elInfo(theSend) + " owned by "
+									+ _context.elInfo( theActor ) );
 
 							IRPLink existingLinkConnectingBlockToActor = _context
 									.getExistingLinkBetweenBaseClassifiersOf( 
 											theTestBlock, theActor, theBuildingBlock );
 
-							if (existingLinkConnectingBlockToActor != null) {
+							if( existingLinkConnectingBlockToActor != null ){
+								
 								IRPPort theToPort = existingLinkConnectingBlockToActor.getToPort();
 
 								theCode += "OPORT(" + theToPort.getName() + ")->GEN(";
 								theCode += theSend.getName() + "(";
-								//theCode += theMessage.
+								
+								try {
+									IRPCollection theList = theMessage.getActualParameterList();
+
+									if( theList.getCount() == 1 ){
+										
+										Object theParam = theList.getItem( 1 );
+										String theValue = theParam.toString().replace( "value = ", "" );
+																			
+										_context.debug( "Parameter for value is " + theValue );
+										
+										if( theValue.matches( "\\d+" ) ){										
+											theCode += theValue;
+										} else {
+											_context.warning( "Unable to parse argument parameter for " + _context.elInfo( theSend ) );
+										}
+									}
+								} catch( Exception e ){
+									_context.error( "Exception trying to get argument parameter for " + _context.elInfo( theSend ) );
+								}
+								
 								theCode += "));\n";
 								theCode += "sleep(4);\n";
 
@@ -127,6 +171,67 @@ public class TestCaseCreator {
 			theTC.setBody(theCode);
 			theTC.highLightElement();
 		}
+	}
+	
+	public IRPOperation createTestCaseFor( 
+			IRPClass theTestDriver ){
+
+		IRPOperation theOp = null;
+
+		if( _context.hasStereotypeCalled( "TestDriver", theTestDriver ) ){
+
+			_context.debug( "createTestCaseFor was invoked for " + _context.elInfo( theTestDriver ) );
+
+			String[] theSplitName = theTestDriver.getName().split("_");
+
+			String thePrefix = theSplitName[0] + "_Test_";
+
+			//_context.debug( "The prefix for TestCase was calculated as '" + thePrefix + "'" );
+
+			int count = 0;
+			boolean isUniqueNumber = false;
+			String nameToTry = null;
+
+			while (isUniqueNumber==false){
+				count++;
+				nameToTry = thePrefix + String.format("%03d", count);
+
+				if (theTestDriver.findNestedElement(nameToTry, "Operation") == null){
+					isUniqueNumber = true;
+				}
+			}
+
+			if (isUniqueNumber){
+				theOp = theTestDriver.addOperation(nameToTry);
+				theOp.highLightElement();
+				theOp.changeTo("Test Case");
+
+				IRPState theState = _context.getStateCalled(
+						"Ready", 
+						theTestDriver.getStatechart(), 
+						theTestDriver );
+
+				String theEventName = "ev" + nameToTry;
+
+				IRPEventReception theEventReception = theTestDriver.addReception( theEventName );
+
+				if (theEventReception != null){
+					IRPEvent theEvent = theEventReception.getEvent();
+
+					_context.debug( "The state called " + theState.getFullPathName() + 
+							" is owned by " + theState.getOwner().getFullPathName() );
+					
+					IRPTransition theTransition = theState.addInternalTransition( theEvent );
+					theTransition.setItsAction( theOp.getName() + "();");
+				}
+			}		
+
+		} else {
+			UserInterfaceHelper.showWarningDialog(
+					"This operation only works if you right-click a «TestDriver» block");	    
+		}
+
+		return theOp;
 	}
 }
 

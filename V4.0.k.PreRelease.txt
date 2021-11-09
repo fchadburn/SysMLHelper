@@ -551,6 +551,7 @@ V4.0.k.Rhp831.PreRelease (XX-XXX-XXXX):
 #382 09-NOV-2021: ExecutableMBSE: Get CreateNewActorPanel working with new scenario package structure (F.J.Chadburn)
 #383 09-NOV-2021: ExecutableMBSE: Get CreateIncomingEventPanel to make use of buildUnableToRunDialog if no connector between block and actor (F.J.Chadburn)
 #384 09-NOV-2021: ExecutableMBSE: Clean-up unused class called BlockSelectionInfo
+#385 09-NOV-2021: ExecutableMBSE: Test and fix TestCaseCreator so that it works in new structure and can also pick out the value = arguments from sequences (F.J.Chadburn)
 
 Backlog/Known issues
 
