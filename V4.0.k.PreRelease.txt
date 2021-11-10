@@ -541,7 +541,7 @@ V4.0.j.Rhp831.PreRelease (08-NOV-2021):
 #374 08-NOV-2021: ExecutableMBSE: Get the flow port creation dialog to work with new thread safe over Rhapsody version mechanism that doesn't pass Rhapsody elements (F.J.Chadburn)
 #375 08-NOV-2021: ExecutableMBSE: Apply DontShow stereotype to panel diagram during simulation structure creation so that it doesn't show by default (F.J.Chadburn)
 
-V4.0.k.Rhp831.PreRelease (XX-XXX-XXXX):
+V4.0.k.Rhp831.PreRelease (10-NOV-2021):
 #376 09-NOV-2021: ExecutableMBSE: Add protection to cleanUpModelRemnants to cope better with unresolved Component (F.J.Chadburn)
 #377 09-NOV-2021: ExecutableMBSE: Fixes checkIfSetupProjectIsNeeded so that project's version is shown where expected (F.J.Chadburn)
 #378 09-NOV-2021: ExecutableMBSE: Get AutoConnectFlowPortsPanel to cope better when there are not other parts available to public to (F.J.Chadburn)
@@ -552,6 +552,8 @@ V4.0.k.Rhp831.PreRelease (XX-XXX-XXXX):
 #383 09-NOV-2021: ExecutableMBSE: Get CreateIncomingEventPanel to make use of buildUnableToRunDialog if no connector between block and actor (F.J.Chadburn)
 #384 09-NOV-2021: ExecutableMBSE: Clean-up unused class called BlockSelectionInfo
 #385 09-NOV-2021: ExecutableMBSE: Test and fix TestCaseCreator so that it works in new structure and can also pick out the value = arguments from sequences (F.J.Chadburn)
+#386 10-NOV-2021: ExecutableMBSE: Add ShowPortsInterfaces = False to the ExecutableMBSE.properties so that IBDs look less scarey by default (F.J.Chadburn)
+#387 10-NOV-2021: ExecutableMBSE: Make Add new actor to package under development menu available on 24 Funct Analysis - Test Package (F.J.Chadburn)
 
 Backlog/Known issues
 

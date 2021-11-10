@@ -398,7 +398,7 @@ DLLServerCompatible51=1
 name52=MBSE Method: Functional Analysis\Add new actor to package under development
 isPluginCommand52=1
 command52=InvokeExecutableMBSEHelper
-applicableTo52=Package,21 Funct Analysis - Scenarios Package
+applicableTo52=Package,21 Funct Analysis - Scenarios Package,24 Funct Analysis - Test Package
 isVisible52=1
 DLLServerCompatible52=1
 
