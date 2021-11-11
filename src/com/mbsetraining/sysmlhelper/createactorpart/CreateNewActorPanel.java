@@ -76,8 +76,8 @@ public class CreateNewActorPanel extends ExecutableMBSEBasePanel {
 		if( theBuildingBlock == null ){
 
 			buildUnableToRunDialog( 
-					"Sorry, this helper is unable to run this command because \n" +
-							"there was no execution context or block found in the model. \n " +
+					"Sorry, this helper is unable to run because \n" +
+							"there was no execution context block found in the model. \n " +
 					"You need to add the relevant package structure first." );
 
 		} else { // theBuildingBlock != null
@@ -87,9 +87,9 @@ public class CreateNewActorPanel extends ExecutableMBSEBasePanel {
 
 			if( theBlock == null ){
 				buildUnableToRunDialog( 
-						"Sorry, this helper is unable to run this command because \n" +
-								"there was no execution context or block found in the model. \n " +
-						"You need to add the relevant package structure first." );
+						"Sorry, this helper is unable to run because no parts/blocks were found  \n" +
+						"under " + _context.elInfo( theBuildingBlock ) + " to wire an actor to. \n " +
+						"You need to add a part/block to the system before adding an actor." );
 			} else {
 				_rootPackage = _context.get_selectedContext().getPackageForActorsAndTest();
 				_blockToConnectTo = _context.get_selectedContext().getChosenBlock();

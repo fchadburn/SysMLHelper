@@ -209,7 +209,7 @@ public class SelectedElementContext {
 
 				if( theCandidates.isEmpty() ){
 
-					_context.error("Error in getBlockUnderDev, no parts typed by Blocks were found underneath " + 
+					_context.warning( "No parts typed by Blocks were found underneath " + 
 							_context.elInfo( _buildingBlock ) );
 				} else {
 
@@ -614,7 +614,7 @@ public class SelectedElementContext {
 
 			if( theCandidates.isEmpty() ){
 
-				_context.error("Error in getBlockUnderDev, no parts typed by Blocks were found underneath " + 
+				_context.error( "No parts typed by Blocks were found underneath " + 
 						_context.elInfo( _buildingBlock ) );
 			} else {
 

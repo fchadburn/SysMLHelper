@@ -555,8 +555,13 @@ V4.0.k.Rhp831.PreRelease (10-NOV-2021):
 #386 10-NOV-2021: ExecutableMBSE: Add ShowPortsInterfaces = False to the ExecutableMBSE.properties so that IBDs look less scarey by default (F.J.Chadburn)
 #387 10-NOV-2021: ExecutableMBSE: Make Add new actor to package under development menu available on 24 Funct Analysis - Test Package (F.J.Chadburn)
 
+V4.0.l.Rhp831.PreRelease (XX-XXX-XXXX):
+#388 11-NOV-2021: ExecutableMBSE: Fix text in warning dialog launched by CreateNewActorPanel when there is no block/part found to wire actor to (F.J.Chadburn)
+
 Backlog/Known issues
 
+- STM was not being renamed when adding a new part/block
+- Need to set Animation by default
 - Get configuration to be automatically set to Animation so that it works with Developer Edition better
 - It would be useful to have a way to specify a different bleed colour
 - When creating the Functional Analysis package a dependency to the actor package causes elements that don't compile to be brought into the build
