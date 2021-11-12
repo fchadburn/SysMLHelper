@@ -1658,7 +1658,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">11.11.2021::10:40:16</_modifiedTime>
+			<_modifiedTime type="a">11.12.2021::15:9:45</_modifiedTime>
 			<_lastID type="a">23</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -8559,8 +8559,8 @@ Tips:\par%0D
 		<IStereotype type="e">
 			<_id type="a">GUID 60c4eeac-f4e9-4ff0-a9e1-9d6c33a8f1ce</_id>
 			<_myState type="a">8192</_myState>
-			<_name type="a">ElapsedTimeBlock</_name>
-			<_modifiedTime type="a">10.13.2018::12:36:2</_modifiedTime>
+			<_name type="a">TimeBlock</_name>
+			<_modifiedTime type="a">11.12.2021::15:9:39</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -8605,8 +8605,8 @@ Tips:\par%0D
 		<IStereotype type="e">
 			<_id type="a">GUID 8e1ab178-5c64-479e-a5aa-2e97533262e9</_id>
 			<_myState type="a">8192</_myState>
-			<_name type="a">ElapsedTimeGenerator</_name>
-			<_modifiedTime type="a">10.9.2018::15:48:12</_modifiedTime>
+			<_name type="a">TimeGenerator</_name>
+			<_modifiedTime type="a">11.12.2021::15:9:45</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>

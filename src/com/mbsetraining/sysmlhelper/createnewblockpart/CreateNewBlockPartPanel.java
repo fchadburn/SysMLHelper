@@ -216,32 +216,6 @@ public class CreateNewBlockPartPanel extends ExecutableMBSEBasePanel {
 		return isValid;
 	}
 
-	private IRPInstance getElapsedTimeActorPartFor(
-			IRPClass theAssemblyBlock ){
-
-		IRPInstance theElapsedTimePart = null;
-
-		@SuppressWarnings("unchecked")
-		List<IRPInstance> theInstances = 
-		theAssemblyBlock.getNestedElementsByMetaClass(
-				"Instance", 0 ).toList();
-
-		for( IRPInstance theInstance : theInstances ){
-
-			IRPClassifier theClassifier = theInstance.getOtherClass();
-
-			if( theClassifier != null &&
-					theClassifier instanceof IRPActor &&
-					_context.hasStereotypeCalled( "ElapsedTimeGenerator", theClassifier ) ){
-
-				theElapsedTimePart = theInstance;
-				break;
-			}
-		}
-
-		return theElapsedTimePart;
-	}
-
 	@Override
 	protected void performAction() {
 
@@ -312,7 +286,7 @@ public class CreateNewBlockPartPanel extends ExecutableMBSEBasePanel {
 
 				// Try and find ElapsedTime actor part 				
 				IRPInstance theElapsedTimePart = 
-						getElapsedTimeActorPartFor( _assemblyBlock );
+						_context.getElapsedTimeActorPartFor( _assemblyBlock );
 
 				if( theElapsedTimePart != null ){
 

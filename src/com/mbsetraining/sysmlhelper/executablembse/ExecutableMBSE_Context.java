@@ -47,8 +47,8 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String FUNCT_ANALYSIS_INTERFACES_PACKAGE = "23 Funct Analysis - Interfaces Package";
 	public final String FUNCT_ANALYSIS_TEST_PACKAGE = "24 Funct Analysis - Test Package";
 	public final String DESIGN_SYNTHESIS_SUBSYSTEM_INTERFACES_PACKAGE = "33 Design Synthesis - Subsystem Interfaces Package";
-	public final String TIME_ELAPSED_BLOCK_STEREOTYPE = "ElapsedTimeBlock";
-	public final String ELAPSED_TIME_GENERATOR_STEREOTYPE = "ElapsedTimeGenerator";
+	public final String TIME_ELAPSED_BLOCK_STEREOTYPE = "TimeBlock";
+	public final String ELAPSED_TIME_GENERATOR_STEREOTYPE = "TimeGenerator";
 	public final String NEW_TERM_FOR_USE_CASE_DIAGRAM = "EnhancedUseCaseDiagram";
 	public final String NEW_TERM_FOR_SYSTEM_CONTEXT_DIAGRAM = "SystemContextDiagram";
 	public final String NEW_TERM_FOR_ACTOR_USAGE = "ActorUsage";
@@ -1208,6 +1208,31 @@ public class ExecutableMBSE_Context extends BaseContext {
 		}
 
 		return theExistingLink;
+	}
+	
+	public IRPInstance getElapsedTimeActorPartFor(
+			IRPClass theAssemblyBlock ){
+
+		IRPInstance theElapsedTimePart = null;
+
+		@SuppressWarnings("unchecked")
+		List<IRPInstance> theInstances = 
+		theAssemblyBlock.getNestedElementsByMetaClass(
+				"Instance", 0 ).toList();
+
+		for( IRPInstance theInstance : theInstances ){
+
+			IRPClassifier theClassifier = theInstance.getOtherClass();
+
+			if( theClassifier instanceof IRPActor &&
+					hasStereotypeCalled( ELAPSED_TIME_GENERATOR_STEREOTYPE, theClassifier ) ){
+
+				theElapsedTimePart = theInstance;
+				break;
+			}
+		}
+
+		return theElapsedTimePart;
 	}
 }
 

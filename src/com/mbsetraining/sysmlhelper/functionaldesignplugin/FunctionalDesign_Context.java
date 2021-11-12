@@ -354,26 +354,6 @@ public class FunctionalDesign_Context extends BaseContext {
 		return theStereotypes;
 	}
 	
-	public String getElapsedTimeBlockStereotype(
-			IRPModelElement basedOnContextEl ) {
-		
-		String thePropertyValue = 
-				basedOnContextEl.getPropertyValue( 
-						"SysMLHelper.General.ElapsedTimeBlockStereotype" );
-		
-		return thePropertyValue;
-	}
-	
-	public String getElapsedTimeActorStereotype(
-			IRPModelElement basedOnContextEl ) {
-		
-		String thePropertyValue = 
-				basedOnContextEl.getPropertyValue( 
-						"SysMLHelper.General.ElapsedTimeActorStereotype" );
-		
-		return thePropertyValue;
-	}
-	
 	public String getTestbenchStereotype(
 			IRPModelElement basedOnContextEl ) {
 		

@@ -90,57 +90,6 @@ public class SysMLHelper_Context extends BaseContext {
 		return result;
 	}
 
-	public IRPStereotype getStereotypeForTestbench(
-			IRPModelElement basedOnContextEl ){
-
-		String theTestbenchSterotype = getTestbenchStereotype( basedOnContextEl );
-
-		IRPStereotype theStereotype = getExistingStereotype( 
-				theTestbenchSterotype, 
-				basedOnContextEl.getProject() );
-
-		if( theStereotype == null ){
-			super.error( "Error in getStereotypeForTestbench, no Stereotyped called " + 
-					theTestbenchSterotype + " was found" );
-		}	
-
-		return theStereotype;
-	}
-
-	public IRPStereotype getStereotypeForTimeElapsedActor(
-			IRPModelElement basedOnContextEl ){
-
-		String theElapsedTimeActorStereotype = getElapsedTimeActorStereotype( basedOnContextEl );
-
-		IRPStereotype theStereotype = getExistingStereotype( 
-				theElapsedTimeActorStereotype, 
-				basedOnContextEl.getProject() );
-
-		if( theStereotype == null ){
-			super.error( "Error in getStereotypeForTimeElapsedActor, no Stereotyped called " + 
-					theElapsedTimeActorStereotype + " was found" );
-		}	
-
-		return theStereotype;
-	}
-
-	public IRPStereotype getStereotypeForTimeElapsedBlock(
-			IRPModelElement basedOnContextEl ){
-
-		String theElapsedTimeBlockStereotype = getElapsedTimeBlockStereotype( basedOnContextEl );
-
-		IRPStereotype theStereotype = getExistingStereotype( 
-				theElapsedTimeBlockStereotype, 
-				basedOnContextEl.getProject() );
-
-		if( theStereotype == null ){
-			super.error( "Error in getStereotypeForTimeElapsedBlock, no Stereotyped called " + 
-					theElapsedTimeBlockStereotype + " was found" );
-		}	
-
-		return theStereotype;
-	}
-
 	public IRPStereotype getNewTermForUseCaseDiagram(){
 		
 		IRPStereotype newTermForUseCaseDiagram = getStereotypeBasedOn(
@@ -468,36 +417,6 @@ public class SysMLHelper_Context extends BaseContext {
 		}
 
 		return theStereotypes;
-	}
-
-	public String getElapsedTimeBlockStereotype(
-			IRPModelElement basedOnContextEl ) {
-
-		String thePropertyValue = 
-				basedOnContextEl.getPropertyValue( 
-						"ExecutableMBSEProfile.General.ElapsedTimeBlockStereotype" );
-
-		return thePropertyValue;
-	}
-
-	public String getElapsedTimeActorStereotype(
-			IRPModelElement basedOnContextEl ) {
-
-		String thePropertyValue = 
-				basedOnContextEl.getPropertyValue( 
-						"ExecutableMBSEProfile.General.ElapsedTimeActorStereotype" );
-
-		return thePropertyValue;
-	}
-
-	public String getTestbenchStereotype(
-			IRPModelElement basedOnContextEl ) {
-
-		String thePropertyValue = 
-				basedOnContextEl.getPropertyValue( 
-						"ExecutableMBSEProfile.General.TestbenchStereotype" );
-
-		return thePropertyValue;
 	}
 
 	public String getMasterActorPackageStereotype(
