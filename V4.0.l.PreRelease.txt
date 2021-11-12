@@ -557,6 +557,7 @@ V4.0.k.Rhp831.PreRelease (10-NOV-2021):
 
 V4.0.l.Rhp831.PreRelease (XX-XXX-XXXX):
 #388 11-NOV-2021: ExecutableMBSE: Fix text in warning dialog launched by CreateNewActorPanel when there is no block/part found to wire actor to (F.J.Chadburn)
+#389 12-NOV-2021: ExecutableMBSE: Explicitly set instrumentation type to Animation to cope better with use of Developer Edition (F.J.Chadburn) 
 
 Backlog/Known issues
 

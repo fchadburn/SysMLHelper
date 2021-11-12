@@ -39,6 +39,11 @@ import com.telelogic.rhapsody.core.*;
 
 public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1428625802424499675L;
+	
 	final private String _blankName = "<Put Name Here>";
 	private IRPPackage _rootPackage;
 	private List<IRPActor> _originalActors;
@@ -52,11 +57,6 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 	private SimulationType _simulationType;
 	private RhapsodyComboBox _chosenStereotype;
 	private Set<String> _excludeMetaClasses = new HashSet<>( Arrays.asList( "Actor" ) );
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 	public static void main(String[] args) {
 	
@@ -540,10 +540,24 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 			// Populate content for the BlockPkg
 			IRPClass theLogicalSystemBlock = theBlockPkg.addClass( theName );
 
+			//IRPModelElement theChosenStereotype = m_ChosenStereotype.getSelectedRhapsodyItem();
+			//
+			//if( theChosenStereotype != null && 
+			//	theChosenStereotype instanceof IRPStereotype ){
+			//	
+			//	theLogicalSystemBlock.setStereotype( (IRPStereotype) theChosenStereotype );
+			//}
+
+			theLogicalSystemBlock.changeTo( "Block" );
+			
+			_context.info( "Created '" + _context.elInfo( theLogicalSystemBlock ) + "'" );
+			
+			theLogicalSystemBlock.highLightElement();
+
 			IRPClass theSystemAssemblyBlock = 
 					theRootPkg.addClass( theName + "_SystemAssembly" );
 
-			theSystemAssemblyBlock.changeTo("Block");
+			theSystemAssemblyBlock.changeTo("Block");			
 
 			// Make the LogicalSystem a part of the SystemAssembly block
 			IRPInstance theLogicalSystemPart = 
@@ -560,20 +574,6 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 					theBlockPkg );
 
 			_context.get_selectedContext().setContextTo( theRootPkg );
-
-			//IRPModelElement theChosenStereotype = m_ChosenStereotype.getSelectedRhapsodyItem();
-			//
-			//if( theChosenStereotype != null && 
-			//	theChosenStereotype instanceof IRPStereotype ){
-			//	
-			//	theLogicalSystemBlock.setStereotype( (IRPStereotype) theChosenStereotype );
-			//}
-
-			theLogicalSystemBlock.changeTo( "Block" );
-			
-			_context.info( "Created '" + _context.elInfo( theLogicalSystemBlock ) + "'" );
-
-			theLogicalSystemBlock.highLightElement();
 
 			// only apply generalisation to create the state chart if simulation applies
 			if( _simulationType==SimulationType.FullSim || 
@@ -671,7 +671,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 							theLogicalSystemPart );
 
 				} else {
-					_context.error("Error in CreateFunctionalBlockPackagePanel.performAction(), unable to find elapsedTime ports") ;
+					_context.error( "CreateFunctionalExecutablePackagePanel.performAction() was unable to find elapsedTime ports" );
 				}
 
 				IRPPanelDiagram thePD = 
@@ -730,7 +730,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 
 						theLink.changeTo( "connector" );
 					} else {
-						_context.error( "Error, either part or port is null" );
+						_context.error( "CreateFunctionalExecutablePackagePanel.performAction detected that either part or port is null" );
 					}
 					
 					_context.info( "Created '" + _context.elInfo( theSystemAssemblyBlock ) + "' as the test execution context" );
@@ -739,7 +739,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 					//						theFunctionalBlockPkg.addDependencyTo( theUseCasePkg );
 					//					}
 
-					// assume panel diagram simulation will be optional used hence dont show by default
+					// assume panel diagram simulation will be optional used hence don't show by default
 					_context.applyExistingStereotype( "DontShow", thePD );
 					
 				} else {

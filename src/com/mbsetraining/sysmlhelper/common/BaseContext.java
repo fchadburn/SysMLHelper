@@ -2103,23 +2103,25 @@ public abstract class BaseContext {
 
 		IRPComponent theComponent = 
 				(IRPComponent) theBlockTestPackage.addNewAggr(
-						"Component", theName + "_EXE");
+						"Component", theName + "_EXE" );
 
-		theComponent.setPropertyValue("Activity.General.SimulationMode", theSimulationMode);
+		theComponent.setPropertyValue( "Activity.General.SimulationMode", theSimulationMode );
 
-		IRPConfiguration theConfiguration = (IRPConfiguration) theComponent.findConfiguration("DefaultConfig");
+		IRPConfiguration theConfiguration = (IRPConfiguration) theComponent.findConfiguration( "DefaultConfig" );
 
-		String theEnvironment = theConfiguration.getPropertyValue("CPP_CG.Configuration.Environment");
+		String theEnvironment = theConfiguration.getPropertyValue( "CPP_CG.Configuration.Environment" );
 
 		theConfiguration.setName( theEnvironment );			
-		theConfiguration.setPropertyValue("WebComponents.WebFramework.GenerateInstrumentationCode", "True");		
+		theConfiguration.setPropertyValue( "WebComponents.WebFramework.GenerateInstrumentationCode", "True" );		
 		theConfiguration.addInitialInstance( theUsageDomainBlock );
-		theConfiguration.setScopeType("implicit");
+		theConfiguration.setScopeType( "implicit" );
+		theConfiguration.setInstrumentationType( "Animation" );
 
 		IRPConfiguration theNoWebConfig = theComponent.addConfiguration( theEnvironment + "_NoWebify" );			
-		theNoWebConfig.setPropertyValue("WebComponents.WebFramework.GenerateInstrumentationCode", "False");		
+		theNoWebConfig.setPropertyValue( "WebComponents.WebFramework.GenerateInstrumentationCode", "False" );		
 		theNoWebConfig.addInitialInstance( theUsageDomainBlock );
-		theNoWebConfig.setScopeType("implicit");
+		theNoWebConfig.setScopeType( "implicit" );
+		theNoWebConfig.setInstrumentationType( "Animation" );
 
 		theConfiguration.getProject().setActiveConfiguration( theConfiguration );		
 
