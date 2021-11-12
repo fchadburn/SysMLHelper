@@ -251,13 +251,41 @@ public class CreateNewBlockPartPanel extends ExecutableMBSEBasePanel {
 
 				String theName = _blockNameTextField.getText();
 
-				IRPClass theClass = _rootPackage.addClass( theName );
-				theClass.highLightElement();				
+				IRPClass theBlock = _rootPackage.addClass( theName );
+				theBlock.highLightElement();				
 
 				IRPStereotype theTimeElapsedBlockStereotype = 
 						_context.getStereotypeForTimeElapsedBlock();
 
-				theClass.setStereotype( theTimeElapsedBlockStereotype );
+				theBlock.setStereotype( theTimeElapsedBlockStereotype );
+
+				IRPModelElement theSelectedStereotype = _chosenStereotype.getSelectedRhapsodyItem();
+
+				if( theSelectedStereotype instanceof IRPStereotype ){
+
+					try {
+						theBlock.setStereotype( (IRPStereotype) theSelectedStereotype );
+
+					} catch( Exception e ){
+						_context.error( "Exception in CreateNewBlockPartPanel.performAction, unable to apply " + 
+								theSelectedStereotype.getName() + " to " + _context.elInfo( theBlock ) );	
+					}
+				}
+
+				theBlock.changeTo( "Block" );
+				
+				// Rename the statechart to include the name of the block
+				IRPStatechart theStatechart = theBlock.getStatechart();
+				
+				if( theStatechart != null ){
+					theStatechart.setName( "STM - " + theName );				
+					_context.info( "Created " + _context.elInfo( theBlock ) + 
+							" with " + _context.elInfo( theStatechart ) );
+
+				} else {
+					_context.info( "Created " + _context.elInfo( theBlock ) + 
+							" owned by " + _context.elInfo( theBlock.getOwner() ) );
+				}
 				
 				String thePartName = _partNameTextField.getText().trim();
 
@@ -265,20 +293,13 @@ public class CreateNewBlockPartPanel extends ExecutableMBSEBasePanel {
 						(IRPInstance) _assemblyBlock.addNewAggr(
 								"Part", thePartName );
 
-				thePart.setOtherClass( theClass );
+				thePart.setOtherClass( theBlock );
 				thePart.highLightElement();
-
-				IRPModelElement theSelectedStereotype = _chosenStereotype.getSelectedRhapsodyItem();
-
+				
+				_context.info( "Created " + _context.elInfo( thePart ) + " owned by " + 
+						_context.elInfo( thePart.getOwner() ));
+				
 				if( theSelectedStereotype instanceof IRPStereotype ){
-
-					try {
-						theClass.setStereotype( (IRPStereotype) theSelectedStereotype );
-
-					} catch( Exception e ){
-						_context.error( "Exception in CreateNewBlockPartPanel.performAction, unable to apply " + 
-								theSelectedStereotype.getName() + " to " + _context.elInfo( theClass ) );	
-					}
 
 					try {
 						thePart.setStereotype( (IRPStereotype) theSelectedStereotype );
@@ -288,8 +309,6 @@ public class CreateNewBlockPartPanel extends ExecutableMBSEBasePanel {
 								theSelectedStereotype.getName() + " to " + _context.elInfo( thePart ) );	
 					}
 				}
-
-				theClass.changeTo( "Block" );
 
 				// Try and find ElapsedTime actor part 				
 				IRPInstance theElapsedTimePart = 
@@ -309,7 +328,7 @@ public class CreateNewBlockPartPanel extends ExecutableMBSEBasePanel {
 
 					IRPSysMLPort theBlocksElapsedTimePort = 
 							(IRPSysMLPort) _context.findNestedElementUnder( 
-									(IRPClassifier) theClass,
+									(IRPClassifier) theBlock,
 									"elapsedTime",
 									"SysMLPort",
 									true );

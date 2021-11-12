@@ -560,10 +560,10 @@ V4.0.l.Rhp831.PreRelease (XX-XXX-XXXX):
 #389 12-NOV-2021: ExecutableMBSE: Explicitly set instrumentation type to Animation to cope better with use of Developer Edition (F.J.Chadburn) 
 #390 12-NOV-2021: ExecutableMBSE: When auto drawing IBD ensure the parts are drawn in structured rather than specification view (F.J.Chadburn)
 #391 12-NOV-2021: ExecutableMBSE: Fix issue when drawing IBD where the TestDriver was not being drawn in correct location (F.J.Chadburn)
+#392 12-NOV-2021: ExecutableMBSE: Fix issue with STM was not being renamed when adding a new part/block (F.J.Chadburn)
 
 Backlog/Known issues
 
-- STM was not being renamed when adding a new part/block
 - It would be useful to have a way to specify a different bleed colour
 - Get the panel diagram population of test bench to be auto set
 - If SysML stereotype is not applied on project then an error occurs in the transition roll up of requirements, hence need to add check/warning

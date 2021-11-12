@@ -769,6 +769,8 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 					theStatechart.openDiagram();
 					
 					_context.info( "Created '" + _context.elInfo( theStatechart ) + "' with design pattern for modeling guard-based transitions" );
+				} else {
+					_context.error( "Unable to find statechart for " + _context.elInfo( theLogicalSystemBlock ) );
 				}
 
 				// Add a component
