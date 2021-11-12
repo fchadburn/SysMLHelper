@@ -1,7 +1,5 @@
 package com.mbsetraining.sysmlhelper.executablembse;
 
-import functionalanalysisplugin.PopulateFunctionalAnalysisPkg.SimulationType;
-
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -43,7 +41,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 	 * 
 	 */
 	private static final long serialVersionUID = 1428625802424499675L;
-	
+
 	final private String _blankName = "<Put Name Here>";
 	private IRPPackage _rootPackage;
 	private List<IRPActor> _originalActors;
@@ -54,18 +52,16 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 	private RhapsodyComboBox _testDriverInheritanceChoice;
 	private JTextField _testDriverNameTextField;
 	private JCheckBox _testDriverCheckBox;
-	private SimulationType _simulationType;
 	private RhapsodyComboBox _chosenStereotype;
 	private Set<String> _excludeMetaClasses = new HashSet<>( Arrays.asList( "Actor" ) );
 
 	public static void main(String[] args) {
-	
+
 		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
-		launchThePanel( SimulationType.FullSim, theRhpApp.getApplicationConnectionString() );
+		launchThePanel( theRhpApp.getApplicationConnectionString() );
 	}
-	
+
 	public static void launchThePanel(
-			final SimulationType withSimulationType,
 			String theAppID ) {
 
 		javax.swing.SwingUtilities.invokeLater( new Runnable() {
@@ -81,8 +77,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 
 				CreateFunctionalExecutablePackagePanel thePanel = 
 						new CreateFunctionalExecutablePackagePanel(
-								theAppID, 
-								withSimulationType );
+								theAppID );
 
 				frame.setContentPane( thePanel );
 				frame.pack();
@@ -91,7 +86,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 			}
 		});
 	}
-	
+
 	private List<IRPActor> getActorsAssociatedToUseCases(
 			IRPModelElement underneathTheEl ){
 
@@ -113,7 +108,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 				//_context.debug("Found " + _context.elInfo( theRelationEl ) );
 
 				if( theRelationEl.getMetaClass().equals( "AssociationEnd" ) ){
-					
+
 					IRPRelation theRelation = (IRPRelation) theRelationEl;
 					IRPClassifier theOtherClass = theRelation.getOtherClass();
 
@@ -136,15 +131,15 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 	}
 
 	public static int getSelection( JOptionPane optionPane ){
-		
+
 		int returnValue = JOptionPane.OK_CANCEL_OPTION;
 
 		Object selectedValue = optionPane.getValue();
-		
+
 		if( selectedValue != null ){
-			
+
 			Object options[] = optionPane.getOptions();
-			
+
 			if( options == null ){
 				if( selectedValue instanceof Integer ) {
 					returnValue = ((Integer) selectedValue).intValue();
@@ -158,16 +153,15 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 				}
 			}
 		}
-		
+
 		return returnValue;
 	}
 
 	CreateFunctionalExecutablePackagePanel(
-			String appID,
-			final SimulationType withSimulationType ){
+			String appID ){
 
 		super( appID );
-		
+
 		_rootPackage = _context.get_rhpPrj();
 
 		List<IRPModelElement> theUseCasePackages =
@@ -222,8 +216,6 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 
 		//_context.debug("Setting root package to " + _context.elInfo( _rootPackage ) );
 		//_context.debug("There are " + _originalActors.size() + " original actors found" );
-
-		_simulationType = withSimulationType;
 
 		setLayout( new BorderLayout() );
 
@@ -406,55 +398,52 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 
 		_actorChoices = new ArrayList<ActorMappingInfo>();
 
-		if( _simulationType==SimulationType.FullSim ){
+		//_context.debug( "There are " + _originalActors.size() );
 
-			//_context.debug( "There are " + _originalActors.size() );
+		for( IRPModelElement theActor : _originalActors ){
 
-			for( IRPModelElement theActor : _originalActors ){
+			//_context.debug( "Creating actor '"+ theActor.getName() + "'" );
 
-				//_context.debug( "Creating actor '"+ theActor.getName() + "'" );
+			JCheckBox theActorCheckBox = new JCheckBox("Create actor called:");
 
-				JCheckBox theActorCheckBox = new JCheckBox("Create actor called:");
+			theActorCheckBox.setSelected(true);
 
-				theActorCheckBox.setSelected(true);
+			theActorCheckBox.addActionListener( new ActionListener() {
 
-				theActorCheckBox.addActionListener( new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					clearActorNamesIfNeeded();		
+				}
+			});
 
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						clearActorNamesIfNeeded();		
-					}
-				});
+			JTextField theActorNameTextField = new JTextField();
+			theActorNameTextField.setPreferredSize( new Dimension( 200, 20 ) );
 
-				JTextField theActorNameTextField = new JTextField();
-				theActorNameTextField.setPreferredSize( new Dimension( 200, 20 ) );
+			List<IRPModelElement> theBlankList = new ArrayList<>();
 
-				List<IRPModelElement> theBlankList = new ArrayList<>();
+			RhapsodyComboBox theInheritedActorComboBox = new RhapsodyComboBox( theBlankList, false );			
+			theInheritedActorComboBox.setPreferredSize(new Dimension(100, 20));
 
-				RhapsodyComboBox theInheritedActorComboBox = new RhapsodyComboBox( theBlankList, false );			
-				theInheritedActorComboBox.setPreferredSize(new Dimension(100, 20));
+			ActorMappingInfo theMappingInfo = 
+					new ActorMappingInfo(
+							theInheritedActorComboBox, 
+							theActorCheckBox, 
+							theActorNameTextField, 
+							(IRPActor)theActor,								
+							_context );
 
-				ActorMappingInfo theMappingInfo = 
-						new ActorMappingInfo(
-								theInheritedActorComboBox, 
-								theActorCheckBox, 
-								theActorNameTextField, 
-								(IRPActor)theActor,								
-								_context );
+			theMappingInfo.updateToBestActorNamesBasedOn( theBlockName );
 
-				theMappingInfo.updateToBestActorNamesBasedOn( theBlockName );
+			_actorChoices.add( theMappingInfo );
 
-				_actorChoices.add( theMappingInfo );
+			theColumn1ParallelGroup.addComponent( theActorCheckBox );   
+			theColumn2ParallelGroup.addComponent( theActorNameTextField );    
 
-				theColumn1ParallelGroup.addComponent( theActorCheckBox );   
-				theColumn2ParallelGroup.addComponent( theActorNameTextField );    
+			ParallelGroup theVertical1ParallelGroup1 = theGroupLayout.createParallelGroup( GroupLayout.Alignment.BASELINE);
+			theVertical1ParallelGroup1.addComponent( theActorCheckBox );
+			theVertical1ParallelGroup1.addComponent( theActorNameTextField );
 
-				ParallelGroup theVertical1ParallelGroup = theGroupLayout.createParallelGroup( GroupLayout.Alignment.BASELINE);
-				theVertical1ParallelGroup.addComponent( theActorCheckBox );
-				theVertical1ParallelGroup.addComponent( theActorNameTextField );
-
-				theVerticalSequenceGroup.addGroup( theVertical1ParallelGroup );		    		    
-			}
+			theVerticalSequenceGroup.addGroup( theVertical1ParallelGroup1 );		    		    
 
 			_testDriverCheckBox = new JCheckBox("Create TestDriver called:");
 			_testDriverCheckBox.setEnabled( false );
@@ -502,7 +491,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 							theName + "Pkg",
 							_rootPackage,
 							_context.FUNCT_ANALYSIS_SCENARIOS_PACKAGE );
-			
+
 			_context.info( "Starting construction of " + _context.elInfo( theRootPkg ) );
 
 			// Create nested package for block		
@@ -528,15 +517,15 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 			// Create nested package for housing the ADs
 			IRPPackage theWorkingPackage = 
 					_context.addNewTermPackageAndSetUnitProperties(
-					"Working_" + theName + "Pkg",
-					theRootPkg,
-					_context.REQTS_ANALYSIS_WORKING_COPY_PACKAGE );
+							"Working_" + theName + "Pkg",
+							theRootPkg,
+							_context.REQTS_ANALYSIS_WORKING_COPY_PACKAGE );
 
 			// Add dependency to the use case package to enable drawing of activity diagram copies into the working package
 			for( IRPPackage theUseCasePkg : _useCasePkgs ){
 				theWorkingPackage.addDependencyTo( theUseCasePkg );
 			}
-			
+
 			// Populate content for the BlockPkg
 			IRPClass theLogicalSystemBlock = theBlockPkg.addClass( theName );
 
@@ -549,7 +538,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 			//}
 
 			theLogicalSystemBlock.changeTo( "Block" );
-						
+
 			theLogicalSystemBlock.highLightElement();
 
 			IRPClass theSystemAssemblyBlock = 
@@ -563,7 +552,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 							"Part", "" );
 
 			theLogicalSystemPart.setOtherClass( theLogicalSystemBlock );
-			
+
 			_context.info( "Created '" + _context.elInfo( theLogicalSystemBlock ) + "'" );
 
 			_context.get_selectedContext().setupFunctionalAnalysisTagsFor( 
@@ -575,33 +564,28 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 
 			_context.get_selectedContext().setContextTo( theRootPkg );
 
-			// only apply generalisation to create the state chart if simulation applies
-			if( _simulationType==SimulationType.FullSim || 
-					_simulationType==SimulationType.SimpleSim ){
+			IRPModelElement theChosenOne = 
+					_blockInheritanceChoice.getSelectedRhapsodyItem();
 
-				IRPModelElement theChosenOne = 
-						_blockInheritanceChoice.getSelectedRhapsodyItem();
+			if( theChosenOne==null ){
 
-				if( theChosenOne==null ){
+				IRPStereotype theTimeElapsedBlockStereotype = 
+						_context.getStereotypeForTimeElapsedBlock();
 
-					IRPStereotype theTimeElapsedBlockStereotype = 
-							_context.getStereotypeForTimeElapsedBlock();
+				theLogicalSystemBlock.setStereotype( theTimeElapsedBlockStereotype );					
 
-					theLogicalSystemBlock.setStereotype( theTimeElapsedBlockStereotype );					
-
-				} else {
-					theLogicalSystemBlock.addGeneralization( (IRPClassifier) theChosenOne );
-					//_context.debug( _context.elInfo( theChosenOne ) + "was the chosen one" );
-				}
-
-				// Add Usage dependency to the interfaces package that will contain the system events
-				IRPDependency theBlocksUsageDep = theBlockPkg.addDependencyTo( theInterfacesPkg );
-				theBlocksUsageDep.addStereotype( "Usage", "Dependency" );
-
-				// Add Usage dependency to the interfaces package that will contain the events
-				IRPDependency theUsageDep = theTestPkg.addDependencyTo( theInterfacesPkg );
-				theUsageDep.addStereotype( "Usage", "Dependency" );
+			} else {
+				theLogicalSystemBlock.addGeneralization( (IRPClassifier) theChosenOne );
+				//_context.debug( _context.elInfo( theChosenOne ) + "was the chosen one" );
 			}
+
+			// Add Usage dependency to the interfaces package that will contain the system events
+			IRPDependency theBlocksUsageDep = theBlockPkg.addDependencyTo( theInterfacesPkg );
+			theBlocksUsageDep.addStereotype( "Usage", "Dependency" );
+
+			// Add Usage dependency to the interfaces package that will contain the events
+			IRPDependency theUsageDep = theTestPkg.addDependencyTo( theInterfacesPkg );
+			theUsageDep.addStereotype( "Usage", "Dependency" );
 
 			//			if( theReqtsPkg != null && theReqtsPkg instanceof IRPPackage ){
 			//				
@@ -625,178 +609,167 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 
 			// Populate nested TestPkg package with components necessary for wiring up a simulation
 
-			if( _simulationType==SimulationType.FullSim ||
-					_simulationType==SimulationType.SimpleSim ){
+			// Make ElapsedTime actor part of the SystemAssembly block
 
-				// Make ElapsedTime actor part of the SystemAssembly block
-			
-				IRPActor theElapsedTimeActor = 
-						theTestPkg.addActor( "ElapsedTime_" + theName );
+			IRPActor theElapsedTimeActor = 
+					theTestPkg.addActor( "ElapsedTime_" + theName );
 
-				theElapsedTimeActor.setStereotype( 
-						_context.getStereotypeForTimeElapsedActor() );
+			theElapsedTimeActor.setStereotype( 
+					_context.getStereotypeForTimeElapsedActor() );
 
-				IRPInstance theElapsedTimePart = null;
+			IRPInstance theElapsedTimePart = null;
 
-				theElapsedTimePart = 
-						(IRPInstance) theSystemAssemblyBlock.addNewAggr(
-								"Part", "" );
+			theElapsedTimePart = 
+					(IRPInstance) theSystemAssemblyBlock.addNewAggr(
+							"Part", "" );
 
-				theElapsedTimePart.setOtherClass( 
-						(IRPClassifier) theElapsedTimeActor );
+			theElapsedTimePart.setOtherClass( 
+					(IRPClassifier) theElapsedTimeActor );
 
-				IRPSysMLPort theActorsElapsedTimePort = 
-						(IRPSysMLPort) _context.findNestedElementUnder( 
-								(IRPClassifier) theElapsedTimeActor,
-								"elapsedTime",
-								"SysMLPort",
-								true );
+			IRPSysMLPort theActorsElapsedTimePort = 
+					(IRPSysMLPort) _context.findNestedElementUnder( 
+							(IRPClassifier) theElapsedTimeActor,
+							"elapsedTime",
+							"SysMLPort",
+							true );
 
-				IRPSysMLPort theBlocksElapsedTimePort = 
-						(IRPSysMLPort) _context.findNestedElementUnder( 
-								(IRPClassifier) theLogicalSystemBlock,
-								"elapsedTime",
-								"SysMLPort",
-								true );
+			IRPSysMLPort theBlocksElapsedTimePort = 
+					(IRPSysMLPort) _context.findNestedElementUnder( 
+							(IRPClassifier) theLogicalSystemBlock,
+							"elapsedTime",
+							"SysMLPort",
+							true );
 
-				if( theActorsElapsedTimePort != null &&
-						theBlocksElapsedTimePort != null ){
+			if( theActorsElapsedTimePort != null &&
+					theBlocksElapsedTimePort != null ){
 
-					_context.addConnectorBetweenSysMLPortsIfOneDoesntExist(
-							theActorsElapsedTimePort, 
-							theElapsedTimePart, 
-							theBlocksElapsedTimePort, 
-							theLogicalSystemPart );
+				_context.addConnectorBetweenSysMLPortsIfOneDoesntExist(
+						theActorsElapsedTimePort, 
+						theElapsedTimePart, 
+						theBlocksElapsedTimePort, 
+						theLogicalSystemPart );
 
-				} else {
-					_context.error( "CreateFunctionalExecutablePackagePanel.performAction() was unable to find elapsedTime ports" );
-				}
-
-				IRPPanelDiagram thePD = 
-						theTestPkg.addPanelDiagram(
-								"PD - " + theLogicalSystemBlock.getName() );
-
-				if( _simulationType==SimulationType.FullSim ){
-
-					IRPClass theTesterBlock = 
-							theTestPkg.addClass( _testDriverNameTextField.getText() );
-
-					_context.applyExistingStereotype( "TestDriver", theTesterBlock );
-
-					theTesterBlock.changeTo( "Block" );
-
-					// Make the TestDriver a part of the UsageDomain block
-					IRPInstance theTestDriverPart = 
-							(IRPInstance) theSystemAssemblyBlock.addNewAggr(
-									"Part", "" );
-
-					theTestDriverPart.setOtherClass( theTesterBlock );
-
-					//					GeneralHelpers.applyExistingStereotype( "TestDriver", theTestDriverPart );
-
-					for( ActorMappingInfo theInfo : _actorChoices ){
-
-						IRPInstance theActorPart = 
-								theInfo.performActorPartCreationIfSelectedIn( 
-										theSystemAssemblyBlock,
-										theLogicalSystemBlock );
-
-						PortBasedConnector thePortBasedConnector = 
-								new PortBasedConnector( theActorPart, theLogicalSystemPart, _context ); 
-
-						thePortBasedConnector.getExistingOrCreateNewProvidedInterfaceOnTargetPort( theInterfacesPkg );
-						thePortBasedConnector.getExistingOrCreateNewProvidedInterfaceOnSourcePort( theInterfacesPkg );
-					}
-
-					// Connect TestDriver to elapsedTime actor
-					IRPPort theElapsedTimePortOnTesterBlock = 
-							(IRPPort) theTesterBlock.addNewAggr( "Port", "pElapsedTime" );
-
-					IRPPort theTesterPortOnElapsedTimeActor =
-							(IRPPort) theElapsedTimeActor.findNestedElement( "pTester", "Port" );
-
-					if( theTesterPortOnElapsedTimeActor != null &&
-							theElapsedTimePart != null ){
-
-						IRPLink theLink = theSystemAssemblyBlock.addLink(
-								theElapsedTimePart, 
-								theTestDriverPart, 
-								null, 
-								theTesterPortOnElapsedTimeActor,
-								theElapsedTimePortOnTesterBlock );
-
-						theLink.changeTo( "connector" );
-					} else {
-						_context.error( "CreateFunctionalExecutablePackagePanel.performAction detected that either part or port is null" );
-					}
-					
-					_context.info( "Created '" + _context.elInfo( theSystemAssemblyBlock ) + "' as the test execution context" );
-
-					//					for( IRPPackage theUseCasePkg : m_UseCasePkgs ){		
-					//						theFunctionalBlockPkg.addDependencyTo( theUseCasePkg );
-					//					}
-
-					// assume panel diagram simulation will be optional used hence don't show by default
-					_context.applyExistingStereotype( "DontShow", thePD );
-					
-				} else {
-					// assume panel diagram simulation will be used (esp. for simple sim)
-					_context.applyExistingStereotype( "AutoShow", thePD );
-					
-				} // end FullSim only				
-
-				// Add a sequence diagram
-				SequenceDiagramCreator theHelper = new SequenceDiagramCreator( _context );
-				
-				IRPSequenceDiagram theSD = theHelper.createSequenceDiagramFor(
-						theSystemAssemblyBlock, 
-						theRootPkg, 
-						"SD - " + theName,
-						_context.getIsCreateSDWithAutoShowApplied( theRootPkg ),
-						false,
-						false );
-				
-				_context.info( "Created '" + _context.elInfo( theSD ) + "' with lifelines for test execution" );
-
-				IRPStatechartDiagram theStatechart = 
-						theLogicalSystemBlock.getStatechart().getStatechartDiagram();
-
-				if( theStatechart != null ){
-					
-					theLogicalSystemBlock.getStatechart().setName( "STM - " + theName );
-
-					theStatechart.highLightElement();
-					theStatechart.openDiagram();
-					
-					_context.info( "Created '" + _context.elInfo( theStatechart ) + "' with design pattern for modeling guard-based transitions" );
-				} else {
-					_context.error( "Unable to find statechart for " + _context.elInfo( theLogicalSystemBlock ) );
-				}
-
-				// Add a component
-				IRPComponent theComponent = _context.addAComponentWith( 
-						theName, theTestPkg, theSystemAssemblyBlock, "StateOriented" );
-				
-				theComponent.highLightElement();
-				_context.info( "Created '" + _context.elInfo( theComponent ) + "' to build simulation based on the execution context" );
+			} else {
+				_context.error( "CreateFunctionalExecutablePackagePanel.performAction() was unable to find elapsedTime ports" );
 			}
 
-			BlockDiagramHelper theHelper = new BlockDiagramHelper(_context);
-			
-			theHelper.createBDDFor(
+			IRPPanelDiagram thePD = 
+					theTestPkg.addPanelDiagram(
+							"PD - " + theLogicalSystemBlock.getName() );
+
+
+			IRPClass theTesterBlock = 
+					theTestPkg.addClass( _testDriverNameTextField.getText() );
+
+			_context.applyExistingStereotype( "TestDriver", theTesterBlock );
+
+			theTesterBlock.changeTo( "Block" );
+
+			// Make the TestDriver a part of the UsageDomain block
+			IRPInstance theTestDriverPart = 
+					(IRPInstance) theSystemAssemblyBlock.addNewAggr(
+							"Part", "" );
+
+			theTestDriverPart.setOtherClass( theTesterBlock );
+
+			//					GeneralHelpers.applyExistingStereotype( "TestDriver", theTestDriverPart );
+
+			for( ActorMappingInfo theInfo : _actorChoices ){
+
+				IRPInstance theActorPart = 
+						theInfo.performActorPartCreationIfSelectedIn( 
+								theSystemAssemblyBlock,
+								theLogicalSystemBlock );
+
+				PortBasedConnector thePortBasedConnector = 
+						new PortBasedConnector( theActorPart, theLogicalSystemPart, _context ); 
+
+				thePortBasedConnector.getExistingOrCreateNewProvidedInterfaceOnTargetPort( theInterfacesPkg );
+				thePortBasedConnector.getExistingOrCreateNewProvidedInterfaceOnSourcePort( theInterfacesPkg );
+			}
+
+			// Connect TestDriver to elapsedTime actor
+			IRPPort theElapsedTimePortOnTesterBlock = 
+					(IRPPort) theTesterBlock.addNewAggr( "Port", "pElapsedTime" );
+
+			IRPPort theTesterPortOnElapsedTimeActor =
+					(IRPPort) theElapsedTimeActor.findNestedElement( "pTester", "Port" );
+
+			if( theTesterPortOnElapsedTimeActor != null &&
+					theElapsedTimePart != null ){
+
+				IRPLink theLink = theSystemAssemblyBlock.addLink(
+						theElapsedTimePart, 
+						theTestDriverPart, 
+						null, 
+						theTesterPortOnElapsedTimeActor,
+						theElapsedTimePortOnTesterBlock );
+
+				theLink.changeTo( "connector" );
+			} else {
+				_context.error( "CreateFunctionalExecutablePackagePanel.performAction detected that either part or port is null" );
+			}
+
+			_context.info( "Created '" + _context.elInfo( theSystemAssemblyBlock ) + "' as the test execution context" );
+
+			//					for( IRPPackage theUseCasePkg : m_UseCasePkgs ){		
+			//						theFunctionalBlockPkg.addDependencyTo( theUseCasePkg );
+			//					}
+
+			// assume panel diagram simulation will be optional used hence don't show by default
+			_context.applyExistingStereotype( "DontShow", thePD );				
+
+			// Add a sequence diagram
+			SequenceDiagramCreator theHelper = new SequenceDiagramCreator( _context );
+
+			IRPSequenceDiagram theSD = theHelper.createSequenceDiagramFor(
+					theSystemAssemblyBlock, 
+					theRootPkg, 
+					"SD - " + theName,
+					_context.getIsCreateSDWithAutoShowApplied( theRootPkg ),
+					false,
+					false );
+
+			_context.info( "Created '" + _context.elInfo( theSD ) + "' with lifelines for test execution" );
+
+			IRPStatechartDiagram theStatechart = 
+					theLogicalSystemBlock.getStatechart().getStatechartDiagram();
+
+			if( theStatechart != null ){
+
+				theLogicalSystemBlock.getStatechart().setName( "STM - " + theName );
+
+				theStatechart.highLightElement();
+				theStatechart.openDiagram();
+
+				_context.info( "Created '" + _context.elInfo( theStatechart ) + "' with design pattern for modeling guard-based transitions" );
+			} else {
+				_context.error( "Unable to find statechart for " + _context.elInfo( theLogicalSystemBlock ) );
+			}
+
+			// Add a component
+			IRPComponent theComponent = _context.addAComponentWith( 
+					theName, theTestPkg, theSystemAssemblyBlock, "StateOriented" );
+
+			theComponent.highLightElement();
+			_context.info( "Created '" + _context.elInfo( theComponent ) + "' to build simulation based on the execution context" );
+
+			BlockDiagramHelper theDiagramHelper = new BlockDiagramHelper(_context);
+
+			theDiagramHelper.createBDDFor(
 					theSystemAssemblyBlock,
 					theBlockPkg,
 					"BDD - " + theSystemAssemblyBlock.getName(),
 					"Block Definition Diagram",
 					_excludeMetaClasses );
 
-			theHelper.createIBDFor( 
+			theDiagramHelper.createIBDFor( 
 					theSystemAssemblyBlock, 
 					"IBD - " + theSystemAssemblyBlock.getName(),
 					"Internal Block Diagram" );
 
 			_context.autoPopulateProjectPackageDiagramIfNeeded();
-			
+
 			_context.info( "Package structure construction of " + _context.elInfo( theRootPkg ) + " has completed");
 		} else {
 			_context.error( "Error in CreateFunctionalBlockPackagePanel.performAction, checkValidity returned false");
@@ -806,7 +779,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 
 /**
  * Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
-    
+
     This file is part of SysMLHelperPlugin.
 
     SysMLHelperPlugin is free software: you can redistribute it and/or modify

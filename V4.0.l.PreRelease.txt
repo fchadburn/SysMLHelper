@@ -561,6 +561,7 @@ V4.0.l.Rhp831.PreRelease (XX-XXX-XXXX):
 #390 12-NOV-2021: ExecutableMBSE: When auto drawing IBD ensure the parts are drawn in structured rather than specification view (F.J.Chadburn)
 #391 12-NOV-2021: ExecutableMBSE: Fix issue when drawing IBD where the TestDriver was not being drawn in correct location (F.J.Chadburn)
 #392 12-NOV-2021: ExecutableMBSE: Fix issue with STM was not being renamed when adding a new part/block (F.J.Chadburn)
+#393 12-NOV-2021: ExecutableMBSE: Remove some of the deprecated code for the v3 functional analysis and design synthesis plugins (F.J.Chadburn)
 
 Backlog/Known issues
 

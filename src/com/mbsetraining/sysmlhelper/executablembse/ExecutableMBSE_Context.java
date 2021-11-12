@@ -13,8 +13,6 @@ import com.telelogic.rhapsody.core.IRPAttribute;
 import com.telelogic.rhapsody.core.IRPClass;
 import com.telelogic.rhapsody.core.IRPClassifier;
 import com.telelogic.rhapsody.core.IRPDependency;
-import com.telelogic.rhapsody.core.IRPEvent;
-import com.telelogic.rhapsody.core.IRPEventReception;
 import com.telelogic.rhapsody.core.IRPInstance;
 import com.telelogic.rhapsody.core.IRPLink;
 import com.telelogic.rhapsody.core.IRPModelElement;
@@ -23,10 +21,8 @@ import com.telelogic.rhapsody.core.IRPPackage;
 import com.telelogic.rhapsody.core.IRPPort;
 import com.telelogic.rhapsody.core.IRPProject;
 import com.telelogic.rhapsody.core.IRPRequirement;
-import com.telelogic.rhapsody.core.IRPState;
 import com.telelogic.rhapsody.core.IRPStereotype;
 import com.telelogic.rhapsody.core.IRPSysMLPort;
-import com.telelogic.rhapsody.core.IRPTransition;
 import com.telelogic.rhapsody.core.IRPUnit;
 
 public class ExecutableMBSE_Context extends BaseContext {

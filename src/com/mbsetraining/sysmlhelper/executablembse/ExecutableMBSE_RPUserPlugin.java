@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Set;
 
 import requirementsanalysisplugin.PopulateRelatedRequirementsPanel;
-import functionalanalysisplugin.PopulateFunctionalAnalysisPkg.SimulationType;
 
 import com.mbsetraining.sysmlhelper.activitydiagram.ActivityDiagramChecker;
 import com.mbsetraining.sysmlhelper.activitydiagram.RenameActions;
@@ -205,7 +204,6 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 									"setPropertyForFunctionalAnalysisModel" );
 
 							CreateFunctionalExecutablePackagePanel.launchThePanel( 
-									SimulationType.FullSim,
 									theAppID );
 
 						} else {

@@ -5,10 +5,6 @@ import java.util.List;
 import java.util.Set;
 
 import requirementsanalysisplugin.PopulateRelatedRequirementsPanel;
-import functionalanalysisplugin.PopulateFunctionalAnalysisPkg;
-import functionalanalysisplugin.PopulateFunctionalAnalysisPkg.SimulationType;
-import designsynthesisplugin.PopulateDesignSynthesisPkg;
-
 import com.mbsetraining.sysmlhelper.activitydiagram.ActivityDiagramChecker;
 import com.mbsetraining.sysmlhelper.activitydiagram.RenameActions;
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
@@ -109,44 +105,6 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 						_settings.checkIfSetupProjectIsNeeded( true );
 					} else {
 						_context.error( menuItem + " invoked out of context and only works for packages" );
-					}
-
-				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.CreateFullSimFAStructureMenu"))){
-
-					if (theSelectedEl instanceof IRPProject){
-
-						PopulateFunctionalAnalysisPkg thePopulator = 
-								new PopulateFunctionalAnalysisPkg( _context, _settings );
-						
-						thePopulator.createFunctionalAnalysisPkg( SimulationType.FullSim ); 
-					}
-
-				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.CreateSimpleSimFAStructureMenu"))){
-
-					if (theSelectedEl instanceof IRPProject){
-
-						PopulateFunctionalAnalysisPkg thePopulator = 
-								new PopulateFunctionalAnalysisPkg( _context, _settings );
-						
-						thePopulator.createFunctionalAnalysisPkg( SimulationType.SimpleSim ); 
-					}
-
-				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.CreateNoSimFAStructureMenu"))){
-
-					if (theSelectedEl instanceof IRPProject){
-
-						PopulateFunctionalAnalysisPkg thePopulator = 
-								new PopulateFunctionalAnalysisPkg( _context, _settings );
-						
-						thePopulator.createFunctionalAnalysisPkg( SimulationType.NoSim ); 
-					}
-
-				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.CreateDSStructureMenu"))){
-
-					if (theSelectedEl instanceof IRPProject){
-
-						PopulateDesignSynthesisPkg thePopulator = new PopulateDesignSynthesisPkg( _context );
-						thePopulator.createDesignSynthesisPkg(); 
 					}
 
 				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.QuickHyperlinkMenu"))){
