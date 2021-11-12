@@ -1,5 +1,5 @@
 [Helpers]
-numberOfElements=76
+numberOfElements=78
 
 #REM: Definition of the plug-in
 name1=InvokeExecutableMBSEHelper
@@ -593,6 +593,21 @@ command76=InvokeExecutableMBSEHelper
 applicableTo76=Block,System Block,Domain Block
 isVisible76=1
 DLLServerCompatible76=1
+
+#REM: Add SDCleaner plugin from Harmony profile
+name77=SDCleaner
+JavaMainClass77=com.ibm.rhapsody.setoolkit.SDCleaner_Launcher
+JavaClassPath77=$OMROOT/Profiles/HarmonySE/SE Toolkit/SDCleaner.jar
+isPlugin77=1
+helperTriggers77=
+
+#REM: Add pop-up menu
+name78=SE-Toolkit\Straighten Messages
+isPluginCommand78=1
+command78=SDCleaner
+applicableTo78=SequenceDiagram
+isVisible78=1
+helperTriggers78=
 
 #REM Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 #REM
