@@ -115,8 +115,8 @@ public class PortCreator {
 				
 				String theChangeEventName = "ch" + _context.capitalize(theAttribute.getName());
 				
-				_context.debug("Ensure there is a change event reception called " + 
-						theChangeEventName + " on " + _context.elInfo( theClassifier ) );
+				//_context.debug( "Ensure there is a change event reception called " + 
+				//		theChangeEventName + " on " + _context.elInfo( theClassifier ) );
 				
 				IRPModelElement theReception = _context.getExistingOrCreateNewElementWith(
 						theChangeEventName,
@@ -127,7 +127,7 @@ public class PortCreator {
 						theAttribute, theReception );
 				
 			} else {
-				_context.error("Error in createSubscribeFlowportFor, element is not a classifier");
+				_context.error( "Error in createSubscribeFlowportFor, element is not a classifier" );
 			}
 			
 			IRPStereotype existingStereotype = 

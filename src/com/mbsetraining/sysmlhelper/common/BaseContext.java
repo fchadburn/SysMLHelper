@@ -881,7 +881,6 @@ public abstract class BaseContext {
 		return theResult;
 	}
 
-
 	public IRPModelElement launchDialogToSelectElement(
 			List<IRPModelElement> inList, 
 			String messageToDisplay, 
@@ -982,7 +981,7 @@ public abstract class BaseContext {
 
 	public IRPStereotype getStereotypeCalled(
 			String theName, 
-			IRPModelElement onTheEl){
+			IRPModelElement onTheEl ){
 
 		int count = 0;
 		IRPStereotype theFoundStereotype = null;
@@ -990,17 +989,17 @@ public abstract class BaseContext {
 		@SuppressWarnings("unchecked")
 		List <IRPStereotype> theStereotypes = onTheEl.getStereotypes().toList();
 
-		for (IRPStereotype theStereotype : theStereotypes) {
-			if (theStereotype.getName().equals(theName)){
+		for( IRPStereotype theStereotype : theStereotypes ){
+			if( theStereotype.getName().equals( theName ) ){
 
 				theFoundStereotype = theStereotype;
 				count++;
 			}
 		}
 
-		if (count > 1){
-			_rhpLog.warning("Warning in getStereotypeCalled, found " + count 
-					+ " elements that are called " + theName);
+		if( count > 1 ){
+			_rhpLog.warning( "getStereotypeCalled found " + count 
+					+ " elements that are called " + theName + " when expecting 1" );
 		}
 
 		return theFoundStereotype;

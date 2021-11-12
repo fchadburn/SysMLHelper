@@ -579,7 +579,6 @@ Backlog/Known issues
 - Auto-move for InterfaceBlock?
 - Hide TriggeredOperations/Constructor/Destructor perhaps?
 - Move icons into the Icon package and ensure they're all controlled files so that Save As works cleanly
-- Remove need for parallel region to have ch events/check this?
 - Move projects into separate root folders for cleanliness of plug-and-play
 - SysMLHelper deprecate functional analysis menus to go with ExecutableMBSE profile instead
 - Get the auto-generate ports/interfaces for connector to determine if there is a subsystem interfaces package in the model for events etc?
