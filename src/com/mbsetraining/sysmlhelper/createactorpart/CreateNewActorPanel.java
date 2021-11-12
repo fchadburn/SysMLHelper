@@ -15,7 +15,6 @@ import javax.swing.JTextField;
 
 import com.mbsetraining.sysmlhelper.common.RhapsodyComboBox;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
-import com.mbsetraining.sysmlhelper.executablembse.ActorMappingInfo;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
 import com.mbsetraining.sysmlhelper.sequencediagram.SequenceDiagramCreator;
 import com.telelogic.rhapsody.core.*;

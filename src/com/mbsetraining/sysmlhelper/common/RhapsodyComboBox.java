@@ -73,14 +73,14 @@ public class RhapsodyComboBox extends JComboBox<Object>{
 			}
 		}
 	}
+	
+	public void setSelectedToNothing(){
+		setSelectedIndex( 0 );
+	}
 }
 
 /**
- * Copyright (C) 2016-2017  MBSE Training and Consulting Limited (www.executablembse.com)
-
-    Change history:
-    #006 02-MAY-2016: Add FunctionalAnalysisPkg helper support (F.J.Chadburn)
-    #220 12-JUL-2017: Added customisable Stereotype choice to the Block and block/Part creation dialogs (F.J.Chadburn) 
+ * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

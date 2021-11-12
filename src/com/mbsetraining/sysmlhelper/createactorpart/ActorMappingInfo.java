@@ -1,4 +1,4 @@
-package com.mbsetraining.sysmlhelper.executablembse;
+package com.mbsetraining.sysmlhelper.createactorpart;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import javax.swing.JTextField;
 
 import com.mbsetraining.sysmlhelper.common.RhapsodyComboBox;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
 public class ActorMappingInfo {

@@ -109,12 +109,7 @@ public class CreateNewBlockPartPanel extends ExecutableMBSEBasePanel {
 
 		_chosenStereotype = new RhapsodyComboBox( theStereotypes, false );
 		_chosenStereotype.setMaximumSize( new Dimension( 250, 20 ) );
-
-		if( theStereotypes.size() > 0 ){
-			// set to first value in list
-			_chosenStereotype.setSelectedRhapsodyItem( theStereotypes.get( 0 ) );	
-			_context.debug("Setting default stereotype to " + _context.elInfo(theStereotypes.get( 0 )));
-		}
+		_chosenStereotype.setSelectedToNothing();	
 
 		thePanel.add( new JLabel( "  Stereotype as: " ) );
 		thePanel.add( _chosenStereotype );
@@ -231,14 +226,14 @@ public class CreateNewBlockPartPanel extends ExecutableMBSEBasePanel {
 				IRPStereotype theTimeElapsedBlockStereotype = 
 						_context.getStereotypeForTimeElapsedBlock();
 
-				theBlock.setStereotype( theTimeElapsedBlockStereotype );
+				theBlock.addSpecificStereotype( theTimeElapsedBlockStereotype );
 
 				IRPModelElement theSelectedStereotype = _chosenStereotype.getSelectedRhapsodyItem();
 
 				if( theSelectedStereotype instanceof IRPStereotype ){
 
 					try {
-						theBlock.setStereotype( (IRPStereotype) theSelectedStereotype );
+						theBlock.addSpecificStereotype( (IRPStereotype) theSelectedStereotype );
 
 					} catch( Exception e ){
 						_context.error( "Exception in CreateNewBlockPartPanel.performAction, unable to apply " + 

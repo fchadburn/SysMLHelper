@@ -32,6 +32,7 @@ import com.mbsetraining.sysmlhelper.common.BlockDiagramHelper;
 import com.mbsetraining.sysmlhelper.common.NamedElementMap;
 import com.mbsetraining.sysmlhelper.common.RhapsodyComboBox;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.createactorpart.ActorMappingInfo;
 import com.mbsetraining.sysmlhelper.sequencediagram.SequenceDiagramCreator;
 import com.telelogic.rhapsody.core.*;
 
@@ -306,10 +307,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 				_context.getStereotypesForBlockPartCreation();
 
 		_chosenStereotype = new RhapsodyComboBox( theStereotypes, false );
-
-		if( theStereotypes.size() > 0 ){
-			_chosenStereotype.setSelectedRhapsodyItem( theStereotypes.get( 1 ) );
-		}
+		_chosenStereotype.setSelectedToNothing();
 
 		thePanel.add( new JLabel( "  Stereotype as: " ) );
 		thePanel.add( _chosenStereotype );
@@ -443,33 +441,33 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 			theVertical1ParallelGroup1.addComponent( theActorCheckBox );
 			theVertical1ParallelGroup1.addComponent( theActorNameTextField );
 
-			theVerticalSequenceGroup.addGroup( theVertical1ParallelGroup1 );		    		    
-
-			_testDriverCheckBox = new JCheckBox("Create TestDriver called:");
-			_testDriverCheckBox.setEnabled( false );
-			_testDriverCheckBox.setSelected( true );
-
-			_testDriverNameTextField = new JTextField( determineTestDriverName( theBlockName ) );
-			_testDriverNameTextField.setPreferredSize( new Dimension( 200, 20 ));
-			_testDriverNameTextField.setEnabled( false );
-			_testDriverNameTextField.setEditable( false );
-
-			List<IRPModelElement> theExistingBlocks = 
-					_context.findElementsWithMetaClassAndStereotype(
-							"Class", "TestDriver", _rootPackage, 1);
-
-			_testDriverInheritanceChoice = new RhapsodyComboBox( theExistingBlocks, false );			
-			_testDriverInheritanceChoice.setPreferredSize( new Dimension(100, 20) );
-
-			theColumn1ParallelGroup.addComponent( _testDriverCheckBox );   
-			theColumn2ParallelGroup.addComponent( _testDriverNameTextField );    
-
-			ParallelGroup theVertical1ParallelGroup = theGroupLayout.createParallelGroup( GroupLayout.Alignment.BASELINE);
-			theVertical1ParallelGroup.addComponent( _testDriverCheckBox );
-			theVertical1ParallelGroup.addComponent( _testDriverNameTextField );
-
-			theVerticalSequenceGroup.addGroup( theVertical1ParallelGroup );	
+			theVerticalSequenceGroup.addGroup( theVertical1ParallelGroup1 );	
 		}
+
+		_testDriverCheckBox = new JCheckBox("Create TestDriver called:");
+		_testDriverCheckBox.setEnabled( false );
+		_testDriverCheckBox.setSelected( true );
+
+		_testDriverNameTextField = new JTextField( determineTestDriverName( theBlockName ) );
+		_testDriverNameTextField.setPreferredSize( new Dimension( 200, 20 ));
+		_testDriverNameTextField.setEnabled( false );
+		_testDriverNameTextField.setEditable( false );
+
+		List<IRPModelElement> theExistingBlocks = 
+				_context.findElementsWithMetaClassAndStereotype(
+						"Class", "TestDriver", _rootPackage, 1 );
+
+		_testDriverInheritanceChoice = new RhapsodyComboBox( theExistingBlocks, false );			
+		_testDriverInheritanceChoice.setPreferredSize( new Dimension(100, 20) );
+
+		theColumn1ParallelGroup.addComponent( _testDriverCheckBox );   
+		theColumn2ParallelGroup.addComponent( _testDriverNameTextField );    
+
+		ParallelGroup theVertical1ParallelGroup2 = theGroupLayout.createParallelGroup( GroupLayout.Alignment.BASELINE);
+		theVertical1ParallelGroup2.addComponent( _testDriverCheckBox );
+		theVertical1ParallelGroup2.addComponent( _testDriverNameTextField );
+
+		theVerticalSequenceGroup.addGroup( theVertical1ParallelGroup2 );	
 
 		theGroupLayout.setHorizontalGroup( theHorizSequenceGroup );
 		theGroupLayout.setVerticalGroup( theVerticalSequenceGroup );
@@ -528,15 +526,6 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 
 			// Populate content for the BlockPkg
 			IRPClass theLogicalSystemBlock = theBlockPkg.addClass( theName );
-
-			//IRPModelElement theChosenStereotype = m_ChosenStereotype.getSelectedRhapsodyItem();
-			//
-			//if( theChosenStereotype != null && 
-			//	theChosenStereotype instanceof IRPStereotype ){
-			//	
-			//	theLogicalSystemBlock.setStereotype( (IRPStereotype) theChosenStereotype );
-			//}
-
 			theLogicalSystemBlock.changeTo( "Block" );
 
 			theLogicalSystemBlock.highLightElement();
@@ -572,11 +561,32 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 				IRPStereotype theTimeElapsedBlockStereotype = 
 						_context.getStereotypeForTimeElapsedBlock();
 
-				theLogicalSystemBlock.setStereotype( theTimeElapsedBlockStereotype );					
+				theLogicalSystemBlock.addSpecificStereotype( theTimeElapsedBlockStereotype );					
 
 			} else {
 				theLogicalSystemBlock.addGeneralization( (IRPClassifier) theChosenOne );
 				//_context.debug( _context.elInfo( theChosenOne ) + "was the chosen one" );
+			}
+
+			IRPModelElement theChosenStereotype = _chosenStereotype.getSelectedRhapsodyItem();
+
+			if( theChosenStereotype instanceof IRPStereotype ){
+
+				try {
+					theLogicalSystemBlock.addSpecificStereotype( (IRPStereotype) theChosenStereotype );
+
+				} catch( Exception e ){
+					_context.error( "Exception in CreateNewBlockPartPanel.performAction, unable to apply " + 
+							theChosenStereotype.getName() + " to " + _context.elInfo( theLogicalSystemBlock ) );	
+				}
+				
+				try {
+					theLogicalSystemPart.addSpecificStereotype( (IRPStereotype) theChosenStereotype );
+
+				} catch( Exception e ){
+					_context.error( "Exception in CreateNewBlockPartPanel.performAction, unable to apply " + 
+							theChosenStereotype.getName() + " to " + _context.elInfo( theLogicalSystemPart ) );	
+				}
 			}
 
 			// Add Usage dependency to the interfaces package that will contain the system events
@@ -601,11 +611,6 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 			//				}
 			//			}
 
-			//if( theChosenStereotype != null && 
-			//	theChosenStereotype instanceof IRPStereotype ){
-			//		
-			//	theLogicalSystemPart.setStereotype( (IRPStereotype) theChosenStereotype );
-			//}
 
 			// Populate nested TestPkg package with components necessary for wiring up a simulation
 

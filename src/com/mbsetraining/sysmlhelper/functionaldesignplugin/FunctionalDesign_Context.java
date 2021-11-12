@@ -654,16 +654,6 @@ public class FunctionalDesign_Context extends BaseContext {
 		return result;
 	}
 	
-	public boolean getIsAllowInheritanceChoices(
-			IRPModelElement forContextEl ){
-		
-		boolean result = getBooleanPropertyValue(
-				forContextEl,
-				"SysMLHelper.FunctionalAnalysis.IsAllowInheritanceChoices" );
-				
-		return result;
-	}
-	
 	public boolean getIsShowProfileVersionCheckDialogs(
 			IRPModelElement forContextEl ){
 		

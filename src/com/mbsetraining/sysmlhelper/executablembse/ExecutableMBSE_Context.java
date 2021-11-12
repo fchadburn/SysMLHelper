@@ -615,16 +615,34 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 				for( String theString : split ){
 
-					IRPModelElement theStereotypeElement = 
-							findElementWithMetaClassAndName( 
+					List<IRPModelElement> theStereotypeCandidates = 
+							findElementsWithMetaClassAndName( 
 									"Stereotype", theString.trim(), forContextEl );
 
-					if( theStereotypeElement != null ){
-						theStereotypes.add( theStereotypeElement );
+					if( theStereotypeCandidates.size() == 0 ){
+						
+						super.warning( "Unable to find " + theString + " specified in " + 
+								thePropertyKey + " property" );
+						
+					} else if( theStereotypeCandidates.size() == 1 ){
+						
+						theStereotypes.add( theStereotypeCandidates.get( 0 ) );
+					} else {
+						
+						for( IRPModelElement theStereotypeCandidate : theStereotypeCandidates ){
+							
+							String theFullName = theStereotypeCandidate.getFullPathName();
+							super.debug (theFullName);
+							
+							if( theFullName.startsWith( "ExecutableMBSEProfile" ) ){
+								theStereotypes.add( theStereotypeCandidate );
+								break;
+							}
+						}
 					}
 				}
 
-				super.debug( "getStereotypesForBlockPartCreation was invoked and found " + theStereotypeList + 
+				super.debug( "getStereotypesBasedOnProperty  found " + theStereotypeList + 
 						", it is returning a list of x" + theStereotypes.size() + " stereotypes" );
 			}
 		} catch( Exception e ){

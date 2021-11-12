@@ -562,10 +562,14 @@ V4.0.l.Rhp831.PreRelease (XX-XXX-XXXX):
 #391 12-NOV-2021: ExecutableMBSE: Fix issue when drawing IBD where the TestDriver was not being drawn in correct location (F.J.Chadburn)
 #392 12-NOV-2021: ExecutableMBSE: Fix issue with STM was not being renamed when adding a new part/block (F.J.Chadburn)
 #393 12-NOV-2021: ExecutableMBSE: Remove some of the deprecated code for the v3 functional analysis and design synthesis plugins (F.J.Chadburn)
-#394 12-NOV-2021: ExecutableMBSE: Shorten ElapsedTimeBlock/ElapsedTimeGenerator stereotypes to TimeBlock/TimeGenerator to make them less in your face (F.J.Chadburn) 
+#394 12-NOV-2021: ExecutableMBSE: Shorten ElapsedTimeBlock/ElapsedTimeGenerator stereotypes to TimeBlock/TimeGenerator to make them less in your face (F.J.Chadburn)
+#395 12-NOV-2021: ExecutableMBSE: Get the stereotype selection menu working for initial scenario structure population and when adding new block/part (F.J.Chadburn)
 
 Backlog/Known issues
 
+- Is it possible to add menu to straighten the messages on sequence diagrams?
+- Sequence diagram autopopulate dialog is using part names which makes it look a bit cluttered
+- Resolve issue with comma's used in the csv file that is exported to DOORS NG
 - It would be useful to have a way to specify a different bleed colour
 - Get the panel diagram population of test bench to be auto set
 - If SysML stereotype is not applied on project then an error occurs in the transition roll up of requirements, hence need to add check/warning

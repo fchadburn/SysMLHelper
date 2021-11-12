@@ -1093,7 +1093,7 @@ public abstract class BaseContext {
 
 		} else if (theMatches.size()>1){
 
-			_rhpLog.warning("Warning in findElementWithMetaClassAndName(" + theMetaClass + "," + 
+			_rhpLog.debug( "Warning in findElementWithMetaClassAndName(" + theMetaClass + "," + 
 					andName + ","+_rhpLog.elInfo(underneathTheEl)+"), " + theMatches.size() + 
 					" elements were found when I was expecting only one");
 
