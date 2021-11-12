@@ -175,7 +175,7 @@ public class SelectedElementContext {
 				IRPInstance thePart = (IRPInstance) _selectedEl;
 				IRPClassifier theOtherClass = thePart.getOtherClass();
 
-				if( _context.hasStereotypeCalled( "TestDriver", theOtherClass ) ){
+				if( _context.isTestDriver( thePart ) ){
 
 					UserInterfaceHelper.showWarningDialog( "Sorry, you cannot perform " + theMsg + " with a TestDriver part" );
 

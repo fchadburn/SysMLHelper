@@ -928,6 +928,16 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		return theClassifiersConnectedTo;
 	}
+	
+	public boolean isTestDriver( 
+			IRPInstance thePart ){
+		
+		IRPClassifier theType = thePart.getOtherClass();
+
+		boolean isTestDriver = hasStereotypeCalled( "TestDriver", theType );
+		
+		return isTestDriver;
+	}
 
 	public IRPPort getPortThatConnects(
 			IRPClassifier theSourceClassifier,

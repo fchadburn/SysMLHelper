@@ -549,15 +549,13 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 			//}
 
 			theLogicalSystemBlock.changeTo( "Block" );
-			
-			_context.info( "Created '" + _context.elInfo( theLogicalSystemBlock ) + "'" );
-			
+						
 			theLogicalSystemBlock.highLightElement();
 
 			IRPClass theSystemAssemblyBlock = 
 					theRootPkg.addClass( theName + "_SystemAssembly" );
 
-			theSystemAssemblyBlock.changeTo("Block");			
+			theSystemAssemblyBlock.changeTo( "Block" );			
 
 			// Make the LogicalSystem a part of the SystemAssembly block
 			IRPInstance theLogicalSystemPart = 
@@ -566,6 +564,8 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 
 			theLogicalSystemPart.setOtherClass( theLogicalSystemBlock );
 			
+			_context.info( "Created '" + _context.elInfo( theLogicalSystemBlock ) + "'" );
+
 			_context.get_selectedContext().setupFunctionalAnalysisTagsFor( 
 					theRootPkg,
 					theSystemAssemblyBlock,
@@ -617,8 +617,6 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 			//				}
 			//			}
 
-
-
 			//if( theChosenStereotype != null && 
 			//	theChosenStereotype instanceof IRPStereotype ){
 			//		
@@ -642,7 +640,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 
 				theElapsedTimePart = 
 						(IRPInstance) theSystemAssemblyBlock.addNewAggr(
-								"Part", "");
+								"Part", "" );
 
 				theElapsedTimePart.setOtherClass( 
 						(IRPClassifier) theElapsedTimeActor );
@@ -708,7 +706,6 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 
 						thePortBasedConnector.getExistingOrCreateNewProvidedInterfaceOnTargetPort( theInterfacesPkg );
 						thePortBasedConnector.getExistingOrCreateNewProvidedInterfaceOnSourcePort( theInterfacesPkg );
-
 					}
 
 					// Connect TestDriver to elapsedTime actor
