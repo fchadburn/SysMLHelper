@@ -73,6 +73,8 @@ public class ExecutableMBSE_Context extends BaseContext {
 	protected Boolean _isPopulateOptionHidden;
 	protected Boolean _isCreateParametricSubpackageSelected;
 	protected Boolean _isCallOperationSupportEnabled;
+	protected Boolean _isCreateSDWithAutoShowApplied;
+	protected Boolean _isCreateSDWithTestDriverLifeline;
 
 	protected List<String> _storeUnitInSeparateDirectoryNewTerms;
 	protected List<String> _dontCreateSeparateUnitNewTerms;
@@ -598,7 +600,6 @@ public class ExecutableMBSE_Context extends BaseContext {
 				"ExecutableMBSEProfile.General.SystemLevelPackageStereotypes" );
 	}
 
-
 	public List<IRPModelElement> getStereotypesBasedOnProperty(
 			IRPModelElement forContextEl,
 			String thePropertyKey ){
@@ -774,6 +775,31 @@ public class ExecutableMBSE_Context extends BaseContext {
 		}
 
 		return _isCallOperationSupportEnabled;
+	}
+	
+	public boolean getIsCreateSDWithAutoShowApplied(){
+
+		if( _isCreateSDWithAutoShowApplied == null ){
+			
+			_isCreateSDWithAutoShowApplied = getBooleanPropertyValue(
+					_rhpPrj,
+					"ExecutableMBSEProfile.FunctionalAnalysis.IsCreateSDWithAutoShowApplied" );
+		}
+
+
+		return _isCreateSDWithAutoShowApplied;
+	}
+
+	public boolean getIsCreateSDWithTestDriverLifeline(){
+
+		if( _isCreateSDWithTestDriverLifeline == null ){
+
+			_isCreateSDWithTestDriverLifeline = getBooleanPropertyValue(
+					_rhpPrj,
+					"ExecutableMBSEProfile.FunctionalAnalysis.IsCreateSDWithTestDriverLifeline" );
+		}
+		
+		return _isCreateSDWithTestDriverLifeline;
 	}
 
 	public boolean getIsConvertToDetailedADOptionEnabled(

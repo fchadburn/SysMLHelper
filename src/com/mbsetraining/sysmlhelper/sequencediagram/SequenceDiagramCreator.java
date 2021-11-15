@@ -32,6 +32,12 @@ public class SequenceDiagramCreator {
 					false,
 					true,
 					false );
+			
+		} else if( theSelectedEl instanceof IRPSequenceDiagram ){
+			
+			ExecutableMBSE_Context theContext = new ExecutableMBSE_Context( theRhpApp.getApplicationConnectionString() );
+			SequenceDiagramCreator theHelper = new SequenceDiagramCreator( theContext );
+			theHelper.updateLifelinesToMatchPartsInActiveBuildingBlock( (IRPSequenceDiagram) theSelectedEl );
 		}
 	}
 	
@@ -55,7 +61,7 @@ public class SequenceDiagramCreator {
 					theBuildingBlock, 
 					(IRPPackage) theSequenceDiagram.getOwner(), 
 					theSequenceDiagram.getName(),
-					_context.getIsCreateSDWithAutoShowApplied( theSequenceDiagram ),
+					_context.getIsCreateSDWithAutoShowApplied(),
 					false,
 					true );
 
@@ -87,7 +93,7 @@ public class SequenceDiagramCreator {
 						theAssemblyBlock, 
 						thePackageForSD, 
 						theSD.getName(),
-						_context.getIsCreateSDWithAutoShowApplied( theSD ),
+						_context.getIsCreateSDWithAutoShowApplied(),
 						false,
 						true );
 			} else {
@@ -187,6 +193,22 @@ public class SequenceDiagramCreator {
 		
 		theParts.addAll( getActorPartsFromLevelAbove( theAssemblyBlock ) );
 
+		List<IRPInstance> theTestDriverParts = new ArrayList<IRPInstance>();
+		List<IRPInstance> theActorParts = new ArrayList<IRPInstance>();
+		List<IRPInstance> theBlockParts = new ArrayList<IRPInstance>();
+
+		// Determine actors vs. internal parts vs test drivers
+		for( IRPInstance thePart : theParts ) {
+
+			if( _context.isTestDriver( thePart ) ){
+				theTestDriverParts.add( thePart );
+			} else if( thePart.getOtherClass() instanceof IRPActor ){
+				theActorParts.add( thePart );
+			} else {
+				theBlockParts.add( thePart );
+			}
+		}
+		
 		if( isRecreateExisting ){
 
 			IRPModelElement theExistingDiagram = 
@@ -198,14 +220,47 @@ public class SequenceDiagramCreator {
 						_context.elInfo( inPackage ) + "\n\nDo you want to recreate it with " + 
 						theParts.size() + " lifelines for:\n";
 
-				for( Iterator<IRPInstance> iterator = theParts.iterator(); iterator.hasNext(); ){
+				// Do Test Driver first, if enabled in properties
+				if( _context.getIsCreateSDWithTestDriverLifeline() ){
 
-					IRPInstance thePart = (IRPInstance) iterator.next();
-					IRPClassifier theType = thePart.getOtherClass();
-					theMsg += thePart.getName() + "." + theType.getName() + 
-							" (" + theType.getUserDefinedMetaClass() + ")\n"; 
+					for( IRPInstance thePart : theTestDriverParts ) {
+	
+						IRPClassifier theType = thePart.getOtherClass();
+						theMsg += theType.getName() + 
+								" (" + theType.getUserDefinedMetaClass() + ")\n"; 
+					}
+				}	
+
+				// Then actors
+				for( IRPInstance thePart : theActorParts ) {
+
+					if( isPartTheOnlyOneOfItsTypeUnder( theAssemblyBlock, thePart ) ){
+						
+						IRPClassifier theType = thePart.getOtherClass();
+						theMsg += theType.getName() + 
+								" (" + theType.getUserDefinedMetaClass() + ")\n"; 
+					} else {
+						IRPClassifier theType = thePart.getOtherClass();
+						theMsg += thePart.getName() + "." + theType.getName() + 
+								" (" + theType.getUserDefinedMetaClass() + ")\n"; 
+					}
 				}
 
+				// Then blocks
+				for( IRPInstance thePart : theBlockParts ) {
+
+					if( isPartTheOnlyOneOfItsTypeUnder( theAssemblyBlock, thePart ) ){
+						
+						IRPClassifier theType = thePart.getOtherClass();
+						theMsg += theType.getName() + 
+								" (" + theType.getUserDefinedMetaClass() + ")\n"; 
+					} else {
+						IRPClassifier theType = thePart.getOtherClass();
+						theMsg += thePart.getName() + "." + theType.getName() + 
+								" (" + theType.getUserDefinedMetaClass() + ")\n"; 
+					}
+				}
+				
 				isCreateSD = UserInterfaceHelper.askAQuestion( theMsg );
 
 				if( isCreateSD ){
@@ -228,53 +283,43 @@ public class SequenceDiagramCreator {
 			int nHeight = 1000;
 			int xGap = 30;
 
-			// Do Test Driver first
-			for( IRPInstance thePart : theParts ) {
+			// Do Test Driver first, if enabled in properties
+			if( _context.getIsCreateSDWithTestDriverLifeline() ){
 
-				if( _context.hasStereotypeCalled( "TestDriver", thePart.getOtherClass() ) && 
-						_context.getIsCreateSDWithTestDriverLifeline( theSD ) ){
+				for( IRPInstance thePart : theTestDriverParts ) {
 
-					//IRPClassifier theType = thePart.getOtherClass();
 					theSD.addNewNodeForElement( thePart, xPos, yPos, nWidth, nHeight );
 					xPos = xPos + nWidth + xGap;
 				}
-			}
+			}	
 
 			// Then actors
-			for( IRPInstance thePart : theParts ) {
+			for( IRPInstance thePart : theActorParts ) {
 
-				IRPClassifier theType = thePart.getOtherClass();
-
-				if( theType instanceof IRPActor ){
+				if( isPartTheOnlyOneOfItsTypeUnder( theAssemblyBlock, thePart ) ){
 					
-					if( isPartTheOnlyOneOfItsTypeUnder( theAssemblyBlock, thePart ) ){
-						
-						theSD.addNewNodeForElement( theType, xPos, yPos, nWidth, nHeight );
-					} else {
-						theSD.addNewNodeForElement( thePart, xPos, yPos, nWidth, nHeight );
-					}
-					
-					xPos = xPos + nWidth + xGap;
+					IRPClassifier theType = thePart.getOtherClass();
+					theSD.addNewNodeForElement( theType, xPos, yPos, nWidth, nHeight );
+				} else {
+					theSD.addNewNodeForElement( thePart, xPos, yPos, nWidth, nHeight );
 				}
+					
+				xPos = xPos + nWidth + xGap;
 			}
 
 			// Then components
-			for( IRPInstance thePart : theParts ) {
+			for( IRPInstance thePart : theBlockParts ) {
 
 				IRPClassifier theType = thePart.getOtherClass();
 
-				if( !( theType instanceof IRPActor ) &&
-						!_context.hasStereotypeCalled( "TestDriver", theType ) ){
-
-					if( isPartTheOnlyOneOfItsTypeUnder( theAssemblyBlock, thePart ) ){
+				if( isPartTheOnlyOneOfItsTypeUnder( theAssemblyBlock, thePart ) ){
 						
-						theSD.addNewNodeForElement( theType, xPos, yPos, nWidth, nHeight );
-					} else {
-						theSD.addNewNodeForElement( thePart, xPos, yPos, nWidth, nHeight );
-					}
-					
-					xPos = xPos + nWidth + xGap;
+					theSD.addNewNodeForElement( theType, xPos, yPos, nWidth, nHeight );
+				} else {
+					theSD.addNewNodeForElement( thePart, xPos, yPos, nWidth, nHeight );
 				}
+					
+				xPos = xPos + nWidth + xGap;
 			}
 
 			if( isAutoShow ){

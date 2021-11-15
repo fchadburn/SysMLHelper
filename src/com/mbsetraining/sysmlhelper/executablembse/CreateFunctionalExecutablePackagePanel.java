@@ -731,7 +731,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 					theSystemAssemblyBlock, 
 					theRootPkg, 
 					"SD - " + theName,
-					_context.getIsCreateSDWithAutoShowApplied( theRootPkg ),
+					_context.getIsCreateSDWithAutoShowApplied(),
 					false,
 					false );
 

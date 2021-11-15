@@ -567,6 +567,7 @@ V4.0.l.Rhp831.PreRelease (XX-XXX-XXXX):
 #396 12-NOV-2021: ExecutableMBSE: Add the SE-Toolkit Straighten Messages command to the right-click menu for sequence diagrams (F.J.Chadburn)
 #397 15-NOV-2021: ExecutableMBSE: Renamed Pub/Sub radio buttons on CreateTracedAttributePanel to correct stereotype names publish/subscribe (F.J.Chadburn)
 #398 15-NOV-2021: ExecutableMBSE: Fix to get Delete attribute and related elements menu working in ExecutableMBSEProfile context (F.J.Chadburn)
+#399 15-NOV-2021: ExecutableMBSE: Improve sequence diagram autopopulate dialog to not use part names so it looks less cluttered (F.J.Chadburn)
 
 Backlog/Known issues
 

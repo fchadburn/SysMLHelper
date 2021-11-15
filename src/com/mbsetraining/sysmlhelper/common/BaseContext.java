@@ -2698,26 +2698,6 @@ public abstract class BaseContext {
 	public void autoPopulateProjectPackageDiagramIfNeeded() {
 	}
 
-	public boolean getIsCreateSDWithAutoShowApplied(
-			IRPModelElement forContextEl ){
-
-		boolean result = getBooleanPropertyValue(
-				forContextEl,
-				"ExecutableMBSEProfile.FunctionalAnalysis.IsCreateSDWithAutoShowApplied" );
-
-		return result;
-	}
-
-	public boolean getIsCreateSDWithTestDriverLifeline(
-			IRPModelElement forContextEl ){
-
-		boolean result = getBooleanPropertyValue(
-				forContextEl,
-				"ExecutableMBSEProfile.FunctionalAnalysis.IsCreateSDWithTestDriverLifeline" );
-
-		return result;
-	}
-
 	public void info( 
 			String theStr ){
 
