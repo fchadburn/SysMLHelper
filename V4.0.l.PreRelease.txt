@@ -555,7 +555,7 @@ V4.0.k.Rhp831.PreRelease (10-NOV-2021):
 #386 10-NOV-2021: ExecutableMBSE: Add ShowPortsInterfaces = False to the ExecutableMBSE.properties so that IBDs look less scarey by default (F.J.Chadburn)
 #387 10-NOV-2021: ExecutableMBSE: Make Add new actor to package under development menu available on 24 Funct Analysis - Test Package (F.J.Chadburn)
 
-V4.0.l.Rhp831.PreRelease (XX-XXX-XXXX):
+V4.0.l.Rhp831.PreRelease (15-NOV-2021):
 #388 11-NOV-2021: ExecutableMBSE: Fix text in warning dialog launched by CreateNewActorPanel when there is no block/part found to wire actor to (F.J.Chadburn)
 #389 12-NOV-2021: ExecutableMBSE: Explicitly set instrumentation type to Animation to cope better with use of Developer Edition (F.J.Chadburn) 
 #390 12-NOV-2021: ExecutableMBSE: When auto drawing IBD ensure the parts are drawn in structured rather than specification view (F.J.Chadburn)
@@ -572,6 +572,7 @@ V4.0.l.Rhp831.PreRelease (XX-XXX-XXXX):
 
 Backlog/Known issues
 
+- Get standard Executable profile to0 auto-populate ports when a connector is drawn
 - Use of Harmony toolkit before switching to this one changes the display options
 - Resolve issue with comma's used in the csv file that is exported to DOORS NG
 - Get the panel diagram population of test bench to be auto set
