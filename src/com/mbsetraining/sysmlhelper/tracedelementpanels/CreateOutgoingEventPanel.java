@@ -445,7 +445,7 @@ public class CreateOutgoingEventPanel extends CreateTracedElementPanel {
 				populateSendActionOnDiagram( theEvent );
 			}
 
-			_context.get_selectedContext().bleedColorToElementsRelatedTo( selectedReqtsList );
+			bleedColorToElementsRelatedTo( selectedReqtsList );
 		}
 	}
 }

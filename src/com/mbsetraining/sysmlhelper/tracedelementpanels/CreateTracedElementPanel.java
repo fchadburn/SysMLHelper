@@ -299,7 +299,7 @@ public abstract class CreateTracedElementPanel extends JPanel {
 		// only bleed on activity diagrams		
 		if( theGraphEl.getDiagram() instanceof IRPActivityDiagram ){
 			
-			String theColorSetting = "255,0,0";
+			String theForegroundColor = _context.getBleedForegroundColor();
 			IRPDiagram theDiagram = theGraphEl.getDiagram();
 			IRPModelElement theEl = theGraphEl.getModelObject();
 			
@@ -307,8 +307,8 @@ public abstract class CreateTracedElementPanel extends JPanel {
 				
 				List<IRPRequirement> theSelectedReqts = _requirementSelectionPanel.getSelectedRequirementsList();
 				
-				_context.debug("Setting color to red for " + theEl.getName());
-				theGraphEl.setGraphicalProperty("ForegroundColor", theColorSetting);
+				//_context.debug( "Setting color to " + theColorSetting + " for " + theEl.getName());
+				theGraphEl.setGraphicalProperty( "ForegroundColor", theForegroundColor );
 				
 				@SuppressWarnings("unchecked")
 				List<IRPDependency> theExistingDeps = theEl.getDependencies().toList();
@@ -321,32 +321,80 @@ public abstract class CreateTracedElementPanel extends JPanel {
 						theDependsOn instanceof IRPRequirement && 
 						theSelectedReqts.contains( theDependsOn )){	
 						
-						bleedColorToGraphElsRelatedTo( theDependsOn, theColorSetting, theDiagram );
-						bleedColorToGraphElsRelatedTo( theDependency, theColorSetting, theDiagram );
+						bleedColorToGraphElsRelatedTo( theDependsOn, theForegroundColor, theDiagram );
+						bleedColorToGraphElsRelatedTo( theDependency, theForegroundColor, theDiagram );
 					}
 				}
 			}
 		}
 	}
+	
+	public void bleedColorToElementsRelatedTo(
+			List<IRPRequirement> theSelectedReqts ){
 
-	private void bleedColorToGraphElsRelatedTo(
+		IRPGraphElement theSelectedGraphEl = _context.get_selectedContext().getSelectedGraphEl();
+
+		// only bleed on activity diagrams		
+		if( theSelectedGraphEl != null &&
+				theSelectedGraphEl.getDiagram() instanceof IRPActivityDiagram ){
+
+			for( IRPGraphElement theGraphEl : _context.get_selectedContext().get_selectedGraphEls() ) {
+				
+				bleedColorToElementsRelatedTo( theGraphEl, theSelectedReqts );
+			}
+		}
+	}
+	
+	public void bleedColorToElementsRelatedTo(
+			IRPGraphElement theGraphEl,
+			List<IRPRequirement> theSelectedReqts ){
+
+		String theForegroundColor = _context.getBleedForegroundColor();
+		IRPDiagram theDiagram = theGraphEl.getDiagram();
+		IRPModelElement theEl = theGraphEl.getModelObject();
+
+		if( theEl != null ){
+
+			//_context.debug("Setting color to red for " + theEl.getName());
+			theGraphEl.setGraphicalProperty( "ForegroundColor", theForegroundColor );
+
+			@SuppressWarnings("unchecked")
+			List<IRPDependency> theExistingDeps = theEl.getDependencies().toList();
+
+			for (IRPDependency theDependency : theExistingDeps) {
+
+				IRPModelElement theDependsOn = theDependency.getDependsOn();
+
+				if (theDependsOn != null && 
+						theDependsOn instanceof IRPRequirement && 
+						theSelectedReqts.contains( theDependsOn )){	
+
+					bleedColorToGraphElsRelatedTo( theDependsOn, theForegroundColor, theDiagram );
+					bleedColorToGraphElsRelatedTo( theDependency, theForegroundColor, theDiagram );
+				}
+			}
+		}
+	}
+
+	public void bleedColorToGraphElsRelatedTo(
 			IRPModelElement theEl, 
-			String theColorSetting, 
-			IRPDiagram onDiagram){
+			String theForegroundColor, 
+			IRPDiagram onDiagram ){
 
 		@SuppressWarnings("unchecked")
 		List<IRPGraphElement> theGraphElsRelatedToElement = 
-				onDiagram.getCorrespondingGraphicElements( theEl ).toList();
-		
+		onDiagram.getCorrespondingGraphicElements( theEl ).toList();
+
 		for (IRPGraphElement irpGraphElement : theGraphElsRelatedToElement) {
-			
-			irpGraphElement.setGraphicalProperty("ForegroundColor", theColorSetting);
-			
+
+			irpGraphElement.setGraphicalProperty( "ForegroundColor", theForegroundColor );
+
+			/*
 			IRPModelElement theModelObject = irpGraphElement.getModelObject();
-			
-			if (theModelObject != null){
-				_context.debug("Setting color to red for " + theModelObject.getName());
-			}
+
+			if( theModelObject != null ){
+				_context.debug("Setting color to " + theForegroundColor + " for " + theModelObject.getName());
+			}*/
 		}
 	}
 	
@@ -410,18 +458,16 @@ public abstract class CreateTracedElementPanel extends JPanel {
 		List<IRPInstance> theParts = 
  			theBuildingBlock.getNestedElementsByMetaClass("Part", 0).toList();
 		
-		IRPStereotype theTestbenchStereotype = _context.getStereotypeForTestbench();
-
-		for (IRPInstance thePart : theParts) {
+		for( IRPInstance thePart : theParts ){
 			
 			IRPClassifier theOtherClass = thePart.getOtherClass();
 			
 			if (theOtherClass instanceof IRPActor && 
 					_context.hasStereotypeCalled( 
-							theTestbenchStereotype.getName(), 
+							_context.TESTBENCH_STEREOTYPE, 
 							theOtherClass ) ){
 				
-				theActors.add((IRPActor) theOtherClass);					
+				theActors.add( (IRPActor) theOtherClass );					
 			}
 		}
 		
@@ -549,97 +595,6 @@ public abstract class CreateTracedElementPanel extends JPanel {
 		} catch( Exception e ){
 			_context.error( "populateCallOperationActionOnDiagram, unhandled exception was detected, e=" + e.getMessage());
 		}
-	}
-	
-	protected IRPClass getBlock(
-			final IRPGraphElement theSourceGraphElement,
-			final IRPModelElement orTheModelElement, 
-			final String theMsg ){
-		
-		IRPClass theBlock = null;
-		
-		if( theSourceGraphElement != null ){
-			
-			IRPModelElement theModelObject = theSourceGraphElement.getModelObject();
-			
-			if( theModelObject != null ){
-
-				if( theModelObject instanceof IRPClass &&
-					!_context.hasStereotypeCalled( "TestDriver", theModelObject ) ){
-
-					theBlock = (IRPClass) theModelObject;
-
-				} else if( theModelObject instanceof IRPInstance ){
-
-					IRPInstance thePart = (IRPInstance) theModelObject;
-
-					IRPClassifier theOtherClass = thePart.getOtherClass();
-
-					if( theOtherClass instanceof IRPClass &&
-						!_context.hasStereotypeCalled( "TestDriver", theOtherClass ) ){
-
-						theBlock = (IRPClass)theOtherClass;
-					}
-				}
-			}
-
-		} else if( orTheModelElement != null ){
-
-			_context.debug(orTheModelElement.getMetaClass() + "is the MetaClass");
-			
-			if( orTheModelElement instanceof IRPClass &&
-				!_context.hasStereotypeCalled( "TestDriver", orTheModelElement ) ){
-
-				theBlock = (IRPClass) orTheModelElement;
-
-			} else if( orTheModelElement instanceof IRPInstance ){
-
-				IRPInstance thePart = (IRPInstance) orTheModelElement;
-
-				IRPClassifier theOtherClass = thePart.getOtherClass();
-
-				if( theOtherClass instanceof IRPClass &&
-					!_context.hasStereotypeCalled( "TestDriver", theOtherClass ) ){
-					
-					theBlock = (IRPClass)theOtherClass;
-				}
-				
-			} else if( orTheModelElement.getMetaClass().equals("StatechartDiagram") ){
-		
-				IRPModelElement theOwner = 
-						_context.findOwningClassIfOneExistsFor( orTheModelElement );
-				
-				_context.debug( _context.elInfo( theOwner ) + "is the Owner");
-				
-				if( theOwner instanceof IRPClass &&
-					!_context.hasStereotypeCalled( "TestDriver", theOwner )){
-					
-					theBlock = (IRPClass) theOwner;
-				}
-			}
-		}
-
-		if( theBlock == null ){
-			
-			IRPModelElement theContextEl = null;
-			
-			if( orTheModelElement != null ){
-				theContextEl = orTheModelElement;
-			} else if( theSourceGraphElement != null ){
-				theContextEl = theSourceGraphElement.getModelObject();
-			}
-			
-			if( theContextEl != null ){
-				
-				theBlock = _context.get_selectedContext().getBlockUnderDev( 
-						theContextEl, theMsg );
-			} else {
-				_context.error("Error in getBlock");
-			}
-
-		}
-		
-		return theBlock;
 	}
 	
 	protected IRPAttribute addAttributeTo( 

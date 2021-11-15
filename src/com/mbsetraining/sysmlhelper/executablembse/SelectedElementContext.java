@@ -73,6 +73,10 @@ public class SelectedElementContext {
 		_sourceGraphElDiagram = getSourceDiagram();
 	}
 
+	public List<IRPGraphElement> get_selectedGraphEls() {
+		return _selectedGraphEls;
+	}
+
 	@SuppressWarnings("unchecked")
 	public Set<IRPRequirement> getSelectedReqts(){
 
@@ -412,73 +416,6 @@ public class SelectedElementContext {
 		}
 
 		return theSettingsPkg;
-	}
-
-	public void bleedColorToElementsRelatedTo(
-			List<IRPRequirement> theSelectedReqts ){
-
-		IRPGraphElement theSelectedGraphEl = getSelectedGraphEl();
-
-		// only bleed on activity diagrams		
-		if( theSelectedGraphEl != null &&
-				theSelectedGraphEl.getDiagram() instanceof IRPActivityDiagram ){
-
-			for( IRPGraphElement theGraphEl : _selectedGraphEls ) {
-				bleedColorToElementsRelatedTo( theGraphEl, theSelectedReqts );
-			}
-		}
-	}
-
-	private void bleedColorToElementsRelatedTo(
-			IRPGraphElement theGraphEl,
-			List<IRPRequirement> theSelectedReqts ){
-
-		String theColorSetting = "255,0,0";
-		IRPDiagram theDiagram = theGraphEl.getDiagram();
-		IRPModelElement theEl = theGraphEl.getModelObject();
-
-		if( theEl != null ){
-
-			_context.debug("Setting color to red for " + theEl.getName());
-			theGraphEl.setGraphicalProperty("ForegroundColor", theColorSetting);
-
-			@SuppressWarnings("unchecked")
-			List<IRPDependency> theExistingDeps = theEl.getDependencies().toList();
-
-			for (IRPDependency theDependency : theExistingDeps) {
-
-				IRPModelElement theDependsOn = theDependency.getDependsOn();
-
-				if (theDependsOn != null && 
-						theDependsOn instanceof IRPRequirement && 
-						theSelectedReqts.contains( theDependsOn )){	
-
-					bleedColorToGraphElsRelatedTo( theDependsOn, theColorSetting, theDiagram );
-					bleedColorToGraphElsRelatedTo( theDependency, theColorSetting, theDiagram );
-				}
-			}
-		}
-	}
-
-	private void bleedColorToGraphElsRelatedTo(
-			IRPModelElement theEl, 
-			String theColorSetting, 
-			IRPDiagram onDiagram){
-
-		@SuppressWarnings("unchecked")
-		List<IRPGraphElement> theGraphElsRelatedToElement = 
-		onDiagram.getCorrespondingGraphicElements( theEl ).toList();
-
-		for (IRPGraphElement irpGraphElement : theGraphElsRelatedToElement) {
-
-			irpGraphElement.setGraphicalProperty("ForegroundColor", theColorSetting);
-
-			IRPModelElement theModelObject = irpGraphElement.getModelObject();
-
-			if (theModelObject != null){
-				_context.debug("Setting color to red for " + theModelObject.getName());
-			}
-		}
 	}
 
 	public IRPPackage getPackageForBlocks(){

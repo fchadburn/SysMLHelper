@@ -568,12 +568,12 @@ V4.0.l.Rhp831.PreRelease (XX-XXX-XXXX):
 #397 15-NOV-2021: ExecutableMBSE: Renamed Pub/Sub radio buttons on CreateTracedAttributePanel to correct stereotype names publish/subscribe (F.J.Chadburn)
 #398 15-NOV-2021: ExecutableMBSE: Fix to get Delete attribute and related elements menu working in ExecutableMBSEProfile context (F.J.Chadburn)
 #399 15-NOV-2021: ExecutableMBSE: Improve sequence diagram autopopulate dialog to not use part names so it looks less cluttered (F.J.Chadburn)
+#400 15-NOV-2021: ExecutableMBSE: Add BleedForegroundColor property to provide ability to specify the bleed color used on activity diagrams (F.J.Chadburn)
 
 Backlog/Known issues
 
 - Use of Harmony toolkit before switching to this one changes the display options
 - Resolve issue with comma's used in the csv file that is exported to DOORS NG
-- It would be useful to have a way to specify a different bleed colour
 - Get the panel diagram population of test bench to be auto set
 - If SysML stereotype is not applied on project then an error occurs in the transition roll up of requirements, hence need to add check/warning
 - Double word on event creation dialog could be improved, reqTestBedOperatorOperatorPowersOnController

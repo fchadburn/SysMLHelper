@@ -49,6 +49,7 @@ Subject ExecutableMBSEProfile
 9. You can delete this Note, if you want."
 		Property CSVExportArtifactType String "System Requirement"
 		Property CVSExportIncludeArtifactName Bool "False"
+		Property BleedForegroundColor String "0,255,0"
 	end
 	Metaclass FunctionalAnalysis
 		Property TraceabilityTypeToUseForFunctions String "satisfy"

@@ -13,6 +13,8 @@ import com.telelogic.rhapsody.core.IRPAttribute;
 import com.telelogic.rhapsody.core.IRPClass;
 import com.telelogic.rhapsody.core.IRPClassifier;
 import com.telelogic.rhapsody.core.IRPDependency;
+import com.telelogic.rhapsody.core.IRPDiagram;
+import com.telelogic.rhapsody.core.IRPGraphElement;
 import com.telelogic.rhapsody.core.IRPInstance;
 import com.telelogic.rhapsody.core.IRPLink;
 import com.telelogic.rhapsody.core.IRPModelElement;
@@ -80,6 +82,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	protected List<String> _dontCreateSeparateUnitNewTerms;
 	protected List<IRPModelElement> _stereotypesForBlockPartCreation;
 	protected String _autoGenerationOfFlowPortsForLinksPolicy;
+	protected String _bleedForegroundColor;
 
 	protected IRPStereotype _stereotypeForTestbench;
 	protected IRPStereotype _stereotypeForTimeElapsedActor;
@@ -295,7 +298,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		return _stereotypeForTimeElapsedBlock;
 	}
-	
+
 	public IRPStereotype getStereotypeForAutoRipple(){
 
 		if( _stereotypeForAutoRipple == null ){
@@ -369,7 +372,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public IRPStereotype getNewTermForSystemContext(){
 
 		if( _newTermForSystemContext == null ){
-			
+
 			_newTermForSystemContext = getExistingStereotype( 
 					NEW_TERM_FOR_SYSTEM_CONTEXT, 
 					_rhpPrj );
@@ -621,20 +624,20 @@ public class ExecutableMBSE_Context extends BaseContext {
 									"Stereotype", theString.trim(), forContextEl );
 
 					if( theStereotypeCandidates.size() == 0 ){
-						
+
 						super.warning( "Unable to find " + theString + " specified in " + 
 								thePropertyKey + " property" );
-						
+
 					} else if( theStereotypeCandidates.size() == 1 ){
-						
+
 						theStereotypes.add( theStereotypeCandidates.get( 0 ) );
 					} else {
-						
+
 						for( IRPModelElement theStereotypeCandidate : theStereotypeCandidates ){
-							
+
 							String theFullName = theStereotypeCandidate.getFullPathName();
 							super.debug (theFullName);
-							
+
 							if( theFullName.startsWith( "ExecutableMBSEProfile" ) ){
 								theStereotypes.add( theStereotypeCandidate );
 								break;
@@ -675,6 +678,17 @@ public class ExecutableMBSE_Context extends BaseContext {
 		}
 
 		return thePropertyValue;
+	}
+
+	public String getBleedForegroundColor(){
+
+		if( _bleedForegroundColor == null ){
+
+			_bleedForegroundColor = _rhpPrj.getPropertyValue( 
+					"ExecutableMBSEProfile.RequirementsAnalysis.BleedForegroundColor" );
+		}
+
+		return _bleedForegroundColor;
 	}
 
 	public boolean getIsApplyAutoShowToSequenceDiagramTemplate(
@@ -776,11 +790,11 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		return _isCallOperationSupportEnabled;
 	}
-	
+
 	public boolean getIsCreateSDWithAutoShowApplied(){
 
 		if( _isCreateSDWithAutoShowApplied == null ){
-			
+
 			_isCreateSDWithAutoShowApplied = getBooleanPropertyValue(
 					_rhpPrj,
 					"ExecutableMBSEProfile.FunctionalAnalysis.IsCreateSDWithAutoShowApplied" );
@@ -798,7 +812,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 					_rhpPrj,
 					"ExecutableMBSEProfile.FunctionalAnalysis.IsCreateSDWithTestDriverLifeline" );
 		}
-		
+
 		return _isCreateSDWithTestDriverLifeline;
 	}
 
@@ -968,14 +982,14 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		return theClassifiersConnectedTo;
 	}
-	
+
 	public boolean isTestDriver( 
 			IRPInstance thePart ){
-		
+
 		IRPClassifier theType = thePart.getOtherClass();
 
 		boolean isTestDriver = hasStereotypeCalled( "TestDriver", theType );
-		
+
 		return isTestDriver;
 	}
 
@@ -1253,7 +1267,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		return theExistingLink;
 	}
-	
+
 	public IRPInstance getElapsedTimeActorPartFor(
 			IRPClass theAssemblyBlock ){
 

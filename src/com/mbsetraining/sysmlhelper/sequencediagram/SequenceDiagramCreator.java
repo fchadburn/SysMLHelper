@@ -1,7 +1,6 @@
 package com.mbsetraining.sysmlhelper.sequencediagram;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;

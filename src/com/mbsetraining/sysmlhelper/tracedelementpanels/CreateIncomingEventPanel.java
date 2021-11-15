@@ -828,7 +828,7 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 					theClassifier );
 		}	
 
-		_context.get_selectedContext().bleedColorToElementsRelatedTo( selectedReqtsList );
+		bleedColorToElementsRelatedTo( selectedReqtsList );
 
 		if( _eventActionIsNeededCheckBox.isSelected() ){
 			populateReceiveEventActionOnDiagram( theEvent );

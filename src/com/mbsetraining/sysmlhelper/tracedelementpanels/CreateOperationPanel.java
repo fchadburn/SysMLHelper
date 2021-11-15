@@ -188,7 +188,7 @@ public class CreateOperationPanel extends CreateTracedElementPanel {
 
 				if( theExistingOp == null ){
 
-					_context.debug("Setting the " + _context.elInfo( theCallOp ) + 
+					_context.debug( "Setting the " + _context.elInfo( theCallOp ) + 
 							" to " + _context.elInfo(theOperation) );
 
 					theCallOp.setOperation( theOperation );
@@ -204,7 +204,7 @@ public class CreateOperationPanel extends CreateTracedElementPanel {
 			} else {
 				List<IRPRequirement> theSelectedReqtsList = _requirementSelectionPanel.getSelectedRequirementsList();
 				addTraceabilityDependenciesTo( theOperation, theSelectedReqtsList );
-				_context.get_selectedContext().bleedColorToElementsRelatedTo( theSelectedReqtsList );
+				bleedColorToElementsRelatedTo( theSelectedReqtsList );
 			}
 		}
 
