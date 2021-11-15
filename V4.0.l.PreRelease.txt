@@ -572,7 +572,6 @@ V4.0.l.Rhp831.PreRelease (XX-XXX-XXXX):
 Backlog/Known issues
 
 - Use of Harmony toolkit before switching to this one changes the display options
-- Sequence diagram autopopulate dialog is using part names which makes it look a bit cluttered
 - Resolve issue with comma's used in the csv file that is exported to DOORS NG
 - It would be useful to have a way to specify a different bleed colour
 - Get the panel diagram population of test bench to be auto set
