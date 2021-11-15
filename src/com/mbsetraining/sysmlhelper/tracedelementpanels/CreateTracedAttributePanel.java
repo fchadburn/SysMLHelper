@@ -196,8 +196,8 @@ public class CreateTracedAttributePanel extends CreateTracedElementPanel {
 		theCenterPanel.add( _callOperationIsNeededCheckBox );
 
 		_noFlowPortRadioButton  = new JRadioButton( "None", true );
-		_pubFlowPortRadioButton = new JRadioButton( "«Pub»" );
-		_subFlowPortRadioButton = new JRadioButton( "«Sub»" );
+		_pubFlowPortRadioButton = new JRadioButton( "«publish»" );
+		_subFlowPortRadioButton = new JRadioButton( "«subscribe»" );
 		
 		ButtonGroup group = new ButtonGroup();
 		group.add( _noFlowPortRadioButton );

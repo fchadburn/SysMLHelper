@@ -565,9 +565,11 @@ V4.0.l.Rhp831.PreRelease (XX-XXX-XXXX):
 #394 12-NOV-2021: ExecutableMBSE: Shorten ElapsedTimeBlock/ElapsedTimeGenerator stereotypes to TimeBlock/TimeGenerator to make them less in your face (F.J.Chadburn)
 #395 12-NOV-2021: ExecutableMBSE: Get the stereotype selection menu working for initial scenario structure population and when adding new block/part (F.J.Chadburn)
 #396 12-NOV-2021: ExecutableMBSE: Add the SE-Toolkit Straighten Messages command to the right-click menu for sequence diagrams (F.J.Chadburn)
+#397 15-NOV-2021: ExecutableMBSE: Renamed Pub/Sub radio buttons on CreateTracedAttributePanel to correct stereotype names publish/subscribe (F.J.Chadburn)
 
 Backlog/Known issues
 
+- Use of Harmony toolkit before switching to this one changes the display options
 - Sequence diagram autopopulate dialog is using part names which makes it look a bit cluttered
 - Resolve issue with comma's used in the csv file that is exported to DOORS NG
 - It would be useful to have a way to specify a different bleed colour
