@@ -711,7 +711,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					}
 
 				} else if( menuItem.equals(_settings.getString(
-						"designsynthesisplugin.DeleteAttributeAndRelatedElementsMenu" ) ) ){
+						"executablembseplugin.DeleteAttributeAndRelatedElementsMenu" ) ) ){
 
 					PortCreator portCreator = new PortCreator( _context );
 
