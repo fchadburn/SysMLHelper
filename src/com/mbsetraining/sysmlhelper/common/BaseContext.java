@@ -2382,7 +2382,11 @@ public abstract class BaseContext {
 					hasStereotypeCalled("deriveReqt", theDependency)){
 
 				//_rhpLog.debug("Applying " + _rhpLog.elInfo(theStereotypeToApply) + " to " + _rhpLog.elInfo(theDependency));
-				theDependency.setStereotype(theStereotypeToApply);
+				
+				if( theStereotypeToApply != null ){
+					theDependency.setStereotype(theStereotypeToApply);					
+				}
+				
 				theDependency.changeTo("Derive Requirement");
 			}
 		}

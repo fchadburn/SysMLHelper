@@ -572,6 +572,7 @@ V4.0.l.Rhp831.PreRelease (15-NOV-2021):
 
 V4.0.m.Rhp831.PreRelease (XX-XXX-XXXX):
 #401 18-NOV-2021: ExecutableMBSE: Initial fixes to get SysMLHelper plugin requirements parts to work with ExecutableMBSE_Context (F.J.Chadburn)
+#402 18-NOV-2021: ExecutableMBSE: Checkpoint of CreateDerivedRequirementPanel changes to get it to compile/invoke with new thread safe mechanisms (F.J.Chadburn)
 
 Backlog/Known issues
 

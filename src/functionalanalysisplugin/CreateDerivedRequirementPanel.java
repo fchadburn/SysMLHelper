@@ -29,159 +29,26 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-
-	NamedElementMap m_NamedElementMap;
-	private JComboBox<Object> m_FromPackageComboBox = null;
-	private JTextArea m_Specification = null;
-	private RequirementSelectionPanel m_RequirementSelectionPanel;
-	private JCheckBox m_PopulateOnDiagramCheckBox; 
-	private JCheckBox m_MoveIntoCheckBox; 
+	private static final long serialVersionUID = -3688632776838701799L;
 	
-	public void deriveDownstreamRequirement(
-			List<IRPGraphElement> theSelectedGraphEls) {
-		
-		int selectedCount = theSelectedGraphEls.size();
-		
-		if (selectedCount > 1){
-			_context.warning("Warning in deriveDownstreamRequirement, operation only works for " +
-					"1 selected element and " + selectedCount + " were selected");
-			
-		} else if (selectedCount == 0){
-			_context.error("Error in deriveDownstreamRequirement, no elements were selected");	
-			
-		} else {		
-			IRPGraphElement theSelectedGraphEl = theSelectedGraphEls.get(0);
-			IRPModelElement theModelObject = theSelectedGraphEl.getModelObject();
-			
-			if (theModelObject instanceof IRPRequirement){
-				
-				Set<IRPRequirement> theReqts = new HashSet<IRPRequirement>();
-				
-				theReqts.add( (IRPRequirement)theModelObject );
-				
-				CreateDerivedRequirementPanel.launchThePanel( 
-						theSelectedGraphEls.get(0), 
-						theReqts, 
-						_context.get_rhpPrj() );
+	protected NamedElementMap _namedElementMap;
+	protected JComboBox<Object> _fromPackageComboBox = null;
+	protected JTextArea _specificationTextArea = null;
+//	private RequirementSelectionPanel m_RequirementSelectionPanel;
+	protected JCheckBox _populateOnDiagramCheckBox; 
+	protected JCheckBox _moveIntoCheckBox; 
+	protected Set<IRPRequirement> _forHigherLevelReqts;
+	protected IRPGraphElement _sourceGraphElement;
+	protected IRPModelElement _targetOwningElement;
 
-			} else if (theModelObject instanceof IRPCallOperation){
-				
-				IRPCallOperation theCallOp = (IRPCallOperation)theModelObject;
-				IRPInterfaceItem theOperation = theCallOp.getOperation();
-				
-				Set<IRPRequirement> theReqts = 
-						_context.getRequirementsThatTraceFromWithStereotype(
-								theOperation, "satisfy");
+	public static void main(String[] args) {
 
-				CreateDerivedRequirementPanel.launchThePanel( 
-						theSelectedGraphEls.get(0), 
-						theReqts, 
-						_context.get_rhpPrj() );
-			
-			} else if (theModelObject instanceof IRPAcceptEventAction){
-			
-				IRPAcceptEventAction theAcceptEvent = (IRPAcceptEventAction)theModelObject;
-				
-				// not all accept events will have an event
-				IRPInterfaceItem theEvent = theAcceptEvent.getEvent();
-
-				if( theEvent != null ){
-					Set<IRPRequirement> theReqts = 
-							_context.getRequirementsThatTraceFromWithStereotype(
-									theEvent, "satisfy");
-
-					CreateDerivedRequirementPanel.launchThePanel( 
-							theSelectedGraphEls.get(0), 
-							theReqts, 
-							_context.get_rhpPrj() );			
-				} else {
-
-					Set<IRPRequirement> theReqts = 
-							_context.getRequirementsThatTraceFromWithStereotype(
-									theAcceptEvent, "derive");
-
-					CreateDerivedRequirementPanel.launchThePanel( 
-							theSelectedGraphEls.get(0), 
-							theReqts, 
-							_context.get_rhpPrj() );
-				}
-
-			} else if (theModelObject instanceof IRPState) { // SendAction
-
-				IRPState theState = (IRPState)theModelObject;
-				String theStateType = theState.getStateType();
-				
-				if (theStateType.equals("EventState")){ // receive event
-					
-					IRPSendAction theSendAction = theState.getSendAction();
-					
-					if (theSendAction != null){
-						IRPEvent theEvent = theSendAction.getEvent();
-						
-						if (theEvent != null){
-							Set<IRPRequirement> theReqts = 
-									_context.getRequirementsThatTraceFromWithStereotype(
-											theEvent, "satisfy");
-
-							CreateDerivedRequirementPanel.launchThePanel( 
-									theSelectedGraphEls.get(0), 
-									theReqts, 
-									_context.get_rhpPrj() );
-						} else {
-							Set<IRPRequirement> theReqts = 
-									_context.getRequirementsThatTraceFromWithStereotype(
-											theState, "derive");
-
-							CreateDerivedRequirementPanel.launchThePanel( 
-									theSelectedGraphEls.get(0), 
-									theReqts, 
-									_context.get_rhpPrj() );
-						}
-					} else {
-						_context.error("Error in deriveDownstreamRequirement, theSendAction is null");
-					}
-					
-				} else if (theStateType.equals("Action")){
-					
-					Set<IRPRequirement> theReqts = 
-							_context.getRequirementsThatTraceFromWithStereotype(
-									theState, "derive");
-
-					CreateDerivedRequirementPanel.launchThePanel( 
-							theSelectedGraphEls.get(0), 
-							theReqts, 
-							_context.get_rhpPrj() );
-					
-				} else {
-					_context.warning("Warning in deriveDownstreamRequirement, this operation is not supported for theState.getStateType()=" + theState.getStateType());
-				}
-
-			} else if (theModelObject instanceof IRPOperation || 
-					  (theModelObject instanceof IRPEvent) ||
-					  (theModelObject instanceof IRPAttribute) ){
-				
-				Set<IRPRequirement> theReqts = 
-						_context.getRequirementsThatTraceFromWithStereotype(
-								theModelObject, "satisfy");
-
-				CreateDerivedRequirementPanel.launchThePanel( 
-						theSelectedGraphEls.get(0), 
-						theReqts, 
-						_context.get_rhpPrj() );
-				
-			} else { 
-
-				_context.warning( "Warning in , " + _context.elInfo(theModelObject) + 
-						" was not handled as call with this type was not expected" );
-			}
-		}
+		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
+		launchThePanel( theRhpApp.getApplicationConnectionString() );
 	}
-	
+
 	public static void launchThePanel(
-			final IRPGraphElement theSourceGraphElement,
-			final Set<IRPRequirement> forHigherLevelReqts,
-			final IRPProject inTheProject ){
+			String theRhpID ){
 
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 
@@ -190,13 +57,13 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 				JFrame.setDefaultLookAndFeelDecorated( true );
 
 				JFrame frame = new JFrame(
-						"Derive a new requirement from " + _context.elInfo(theSourceGraphElement.getModelObject()) + "?");
+						"Derive a new requirement?");
 
 				frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 
 				CreateDerivedRequirementPanel thePanel = 
 						new CreateDerivedRequirementPanel( 
-								theSourceGraphElement, forHigherLevelReqts, inTheProject );
+								theRhpID );
 
 				frame.setContentPane( thePanel );
 				frame.pack();
@@ -205,86 +72,192 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 			}
 		});
 	}
-	
+
 	CreateDerivedRequirementPanel(
-			final IRPGraphElement theSourceGraphElement,
-			final Set<IRPRequirement> forHigherLevelReqts,
-			final IRPProject inTheProject ){
-		
-		super(theSourceGraphElement, forHigherLevelReqts, null, inTheProject);
-		
-		_context.writeLine( "Create Derived Reqt panel invoked from " + _context.elInfo( m_SourceGraphElement.getModelObject() ) );
-		
+			String theAppID ){
+
+		super( theAppID );
+
+		List<IRPGraphElement> theSelectedGraphEls = _context.getSelectedGraphElements();
+
+		int selectedCount = theSelectedGraphEls.size();
+
+		if (selectedCount > 1){
+			_context.warning("Warning in deriveDownstreamRequirement, operation only works for " +
+					"1 selected element and " + selectedCount + " were selected");
+
+		} else if (selectedCount == 0){
+			_context.error("Error in deriveDownstreamRequirement, no elements were selected");	
+
+		} else {		
+			IRPGraphElement theSelectedGraphEl = theSelectedGraphEls.get(0);
+			IRPModelElement theModelObject = theSelectedGraphEl.getModelObject();
+
+			_forHigherLevelReqts = new HashSet<IRPRequirement>();
+			_sourceGraphElement = theSelectedGraphEls.get(0);
+
+			if (theModelObject instanceof IRPRequirement){
+
+				_forHigherLevelReqts.add( (IRPRequirement)theModelObject );
+
+			} else if (theModelObject instanceof IRPCallOperation){
+
+				IRPCallOperation theCallOp = (IRPCallOperation)theModelObject;
+				IRPInterfaceItem theOperation = theCallOp.getOperation();
+
+				_forHigherLevelReqts = 
+						_context.getRequirementsThatTraceFromWithStereotype(
+								theOperation, "satisfy");
+
+			} else if (theModelObject instanceof IRPAcceptEventAction){
+
+				IRPAcceptEventAction theAcceptEvent = (IRPAcceptEventAction)theModelObject;
+
+				// not all accept events will have an event
+				IRPInterfaceItem theEvent = theAcceptEvent.getEvent();
+
+				if( theEvent != null ){
+					_forHigherLevelReqts = 
+							_context.getRequirementsThatTraceFromWithStereotype(
+									theEvent, "satisfy");			
+				} else {
+
+					_forHigherLevelReqts = 
+							_context.getRequirementsThatTraceFromWithStereotype(
+									theAcceptEvent, "derive");
+				}
+
+			} else if (theModelObject instanceof IRPState) { // SendAction
+
+				IRPState theState = (IRPState)theModelObject;
+				String theStateType = theState.getStateType();
+
+				if (theStateType.equals("EventState")){ // receive event
+
+					IRPSendAction theSendAction = theState.getSendAction();
+
+					if (theSendAction != null){
+						IRPEvent theEvent = theSendAction.getEvent();
+
+						if (theEvent != null){
+							_forHigherLevelReqts = 
+									_context.getRequirementsThatTraceFromWithStereotype(
+											theEvent, "satisfy");
+						} else {
+							_forHigherLevelReqts = 
+									_context.getRequirementsThatTraceFromWithStereotype(
+											theState, "derive");
+						}
+					} else {
+						_context.error("Error in deriveDownstreamRequirement, theSendAction is null");
+					}
+
+				} else if (theStateType.equals("Action")){
+
+					_forHigherLevelReqts = 
+							_context.getRequirementsThatTraceFromWithStereotype(
+									theState, "derive");
+
+				} else {
+					_context.warning("Warning in deriveDownstreamRequirement, this operation is not supported for theState.getStateType()=" + theState.getStateType());
+				}
+
+			} else if (theModelObject instanceof IRPOperation || 
+					(theModelObject instanceof IRPEvent) ||
+					(theModelObject instanceof IRPAttribute) ){
+
+				_forHigherLevelReqts = 
+						_context.getRequirementsThatTraceFromWithStereotype(
+								theModelObject, "satisfy");
+
+				_sourceGraphElement = theSelectedGraphEls.get(0);
+
+			} else { 
+
+				_context.warning( "Warning in , " + _context.elInfo(theModelObject) + 
+						" was not handled as call with this type was not expected" );
+			}
+		}
+
+		_context.info( "Create Derived Reqt panel invoked from " + _context.elInfo( _sourceGraphElement.getModelObject() ) );
+
 		final String preferredRootPackageName = "FunctionalAnalysisPkg";
-		
+
 		IRPModelElement thePreferredRootPkg = 
-				m_Project.findElementsByFullName( preferredRootPackageName, "Package" );
-		
+				_context.get_rhpPrj().findElementsByFullName( preferredRootPackageName, "Package" );
+
 		Set<IRPModelElement> thePackages = new LinkedHashSet<IRPModelElement>();
 		Set<IRPModelElement> thePreferredPackages = new LinkedHashSet<IRPModelElement>();
-		
+
 		if( thePreferredRootPkg != null ){
 			thePreferredPackages.addAll(
 					_context.findModelElementsNestedUnder(
 							thePreferredRootPkg, "Package", "from.*") );
 		}
-		
+
 		thePackages.addAll( thePreferredPackages );
-		
+
 		// now add everything else not in a profile (i.e. superset of options)
 		thePackages.addAll(
 				_context.findModelElementsNestedUnder(
 						_context.get_rhpPrj(), "Package", "from.*") );
-		 
-		m_NamedElementMap = new NamedElementMap( new ArrayList<IRPModelElement>( thePackages ) );
-		
-		m_FromPackageComboBox = new JComboBox<Object>( m_NamedElementMap.getFullNames() );
-		m_FromPackageComboBox.setAlignmentX( LEFT_ALIGNMENT );
-		
-		m_Specification = new JTextArea( 5, 20 );
-		m_Specification.setBorder( BorderFactory.createBevelBorder( 1 ));
-		m_Specification.setAlignmentX( LEFT_ALIGNMENT );
 
-		m_MoveIntoCheckBox = new JCheckBox( "Move into:  " );
-		m_MoveIntoCheckBox.setAlignmentX( LEFT_ALIGNMENT );
-		m_MoveIntoCheckBox.setBorder( BorderFactory.createEmptyBorder(0, 0, 0, 0));
-		
+		thePackages.addAll(
+				_context.findElementsWithMetaClassAndStereotype(
+						"Package", 
+						_context.REQTS_ANALYSIS_REQUIREMENT_PACKAGE, 
+						_context.get_rhpPrj(), 
+						1 ) );
+
+		_namedElementMap = new NamedElementMap( new ArrayList<IRPModelElement>( thePackages ) );
+
+		_fromPackageComboBox = new JComboBox<Object>( _namedElementMap.getFullNames() );
+		_fromPackageComboBox.setAlignmentX( LEFT_ALIGNMENT );
+
+		_specificationTextArea = new JTextArea( 5, 20 );
+		_specificationTextArea.setBorder( BorderFactory.createBevelBorder( 1 ));
+		_specificationTextArea.setAlignmentX( LEFT_ALIGNMENT );
+
+		_moveIntoCheckBox = new JCheckBox( "Move into:  " );
+		_moveIntoCheckBox.setAlignmentX( LEFT_ALIGNMENT );
+		_moveIntoCheckBox.setBorder( BorderFactory.createEmptyBorder(0, 0, 0, 0));
+
 		// only select by default if preferred packages are found
-		m_MoveIntoCheckBox.setSelected( !thePreferredPackages.isEmpty() );
-		
-		if( m_MoveIntoCheckBox.isSelected() ){
-			m_TargetOwningElement = 
-					m_NamedElementMap.getElementUsingFullName( 
-							m_FromPackageComboBox.getSelectedItem() );
+		_moveIntoCheckBox.setSelected( !thePreferredPackages.isEmpty() );
+
+		if( _moveIntoCheckBox.isSelected() ){
+			_targetOwningElement = 
+					_namedElementMap.getElementUsingFullName( 
+							_fromPackageComboBox.getSelectedItem() );
 		} else {
-			m_TargetOwningElement = theSourceGraphElement.getDiagram();
+			_targetOwningElement = _sourceGraphElement.getDiagram();
 		}
-		
+
 		String theProposedName =
 				_context.determineUniqueNameBasedOn( 
 						"derivedreqt",
 						"Requirement",
-						m_TargetOwningElement );
-		
-		m_RequirementSelectionPanel = new RequirementSelectionPanel( 
+						_targetOwningElement );
+
+		_requirementSelectionPanel = new RequirementSelectionPanel( 
 				"Create «deriveReqt» dependencies to:",
-				forHigherLevelReqts, 
-				forHigherLevelReqts,
+				_forHigherLevelReqts, 
+				_forHigherLevelReqts,
 				_context );
-		
-		m_RequirementSelectionPanel.setAlignmentX(LEFT_ALIGNMENT);
-		
+
+		_requirementSelectionPanel.setAlignmentX(LEFT_ALIGNMENT);
+
 		JPanel theNamePanel = createChosenNamePanelWith( "Create a requirement called:  ", theProposedName );
 		theNamePanel.setAlignmentX(LEFT_ALIGNMENT);
-		
-		m_PopulateOnDiagramCheckBox = new JCheckBox( "Populate on diagram?" );
-		m_PopulateOnDiagramCheckBox.setSelected( true );
-		
+
+		_populateOnDiagramCheckBox = new JCheckBox( "Populate on diagram?" );
+		_populateOnDiagramCheckBox.setSelected( true );
+
 		JPanel thePageStartPanel = new JPanel();
 		thePageStartPanel.setLayout( new BoxLayout( thePageStartPanel, BoxLayout.X_AXIS ) );
 		thePageStartPanel.add( theNamePanel );
-		thePageStartPanel.add( m_PopulateOnDiagramCheckBox );
-		
+		thePageStartPanel.add( _populateOnDiagramCheckBox );
+
 		// create panel
 		setLayout( new BorderLayout(10,10) );
 		setBorder( BorderFactory.createEmptyBorder( 10, 10, 10, 10 ) );		
@@ -292,62 +265,62 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 		add( createWestCentrePanel(), BorderLayout.CENTER );
 		add( createPageEndPanel(), BorderLayout.PAGE_END );
 	}
-	
+
 	private Component createWestCentrePanel() {
-		
+
 		JLabel theSpecText = new JLabel( "Specification text:" );
 		theSpecText.setBorder( BorderFactory.createEmptyBorder(10, 0, 0, 0));
 		theSpecText.setAlignmentX( LEFT_ALIGNMENT );
-		
+
 		JPanel theMoveIntoPanel = new JPanel();
 		theMoveIntoPanel.setLayout( new BoxLayout( theMoveIntoPanel, BoxLayout.X_AXIS ) );
-		theMoveIntoPanel.add( m_MoveIntoCheckBox );
-		theMoveIntoPanel.add( m_FromPackageComboBox );
+		theMoveIntoPanel.add( _moveIntoCheckBox );
+		theMoveIntoPanel.add( _fromPackageComboBox );
 		theMoveIntoPanel.setBorder( BorderFactory.createEmptyBorder(10, 0, 0, 0));
 		theMoveIntoPanel.setAlignmentX( LEFT_ALIGNMENT );
 
 		JPanel thePanel = new JPanel();
 		thePanel.setLayout( new BoxLayout(thePanel, BoxLayout.Y_AXIS ) );
-		
-		thePanel.add( m_RequirementSelectionPanel );
+
+		thePanel.add( _requirementSelectionPanel );
 		thePanel.add( theSpecText ); 
-		thePanel.add( m_Specification );
+		thePanel.add( _specificationTextArea );
 		thePanel.add( theMoveIntoPanel );
-		
+
 		return thePanel;
 	}
-	
+
 	private Component createPageEndPanel() {
 
 		JLabel theLabel = new JLabel( "Do you want to proceed?" );
 		theLabel.setAlignmentX(CENTER_ALIGNMENT);
 		theLabel.setBorder( BorderFactory.createEmptyBorder(10, 10, 10, 10));
-		
+
 		JPanel thePanel = new JPanel();
 		thePanel.setLayout( new BoxLayout(thePanel, BoxLayout.Y_AXIS ) );	
 		thePanel.setAlignmentX(CENTER_ALIGNMENT);
 		thePanel.add( theLabel );
 		thePanel.add( createOKCancelPanel() );
-		
+
 		return thePanel;
 	}
-	
+
 	@Override
 	protected boolean checkValidity(boolean isMessageEnabled) {
 
 		String errorMsg = "";
 		boolean isValid = true;
 
-		if( m_MoveIntoCheckBox.isSelected() && !_context.isElementNameUnique(
-					_chosenNameTextField.getText(), "Requirement", m_TargetOwningElement, 1 )){
+		if( _moveIntoCheckBox.isSelected() && !_context.isElementNameUnique(
+				_chosenNameTextField.getText(), "Requirement", _targetOwningElement, 1 )){
 
 			errorMsg = "Unable to proceed as the name '" + _chosenNameTextField.getText() + 
-					"' is not unique in " + _context.elInfo( m_TargetOwningElement );
+					"' is not unique in " + _context.elInfo( _targetOwningElement );
 
 			isValid = false;
 
 		} else if (!_context.isElementNameUnique(
-					_chosenNameTextField.getText(), "Requirement", _context.get_rhpPrj(), 1)){
+				_chosenNameTextField.getText(), "Requirement", _context.get_rhpPrj(), 1)){
 
 			errorMsg = "Unable to proceed as the name '" + _chosenNameTextField.getText() + 
 					"' is not unique in " + _context.elInfo( _context.get_rhpPrj() );
@@ -358,7 +331,7 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 		if (isMessageEnabled && !isValid && errorMsg != null){
 			UserInterfaceHelper.showWarningDialog( errorMsg );
 		}
-		
+
 		return isValid;
 	}
 
@@ -368,89 +341,89 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 		try {
 			// do silent check first
 			if( checkValidity( false ) ){
-				
-				if( m_SourceGraphElement != null && m_SourceGraphElement instanceof IRPGraphNode ){
 
-					GraphNodeInfo theNodeInfo = new GraphNodeInfo( (IRPGraphNode) m_SourceGraphElement, _context );
-					
+				if( _sourceGraphElement instanceof IRPGraphNode ){
+
+					GraphNodeInfo theNodeInfo = new GraphNodeInfo( (IRPGraphNode) _sourceGraphElement, _context );
+
 					int x = theNodeInfo.getTopLeftX() + 140;
 					int y = theNodeInfo.getTopLeftY() + 140;
 
-					IRPDiagram theDiagram = m_SourceGraphElement.getDiagram();
+					IRPDiagram theDiagram = _sourceGraphElement.getDiagram();
 
 					IRPRequirement theRequirement = null;
-					
+
 					if( theDiagram instanceof IRPActivityDiagram ){
-						
+
 						IRPActivityDiagram theAD = (IRPActivityDiagram)theDiagram;
 						IRPFlowchart theFC = (IRPFlowchart) theAD.getFlowchart();
-						
+
 						theRequirement = (IRPRequirement) theFC.addNewAggr(
 								"Requirement", _chosenNameTextField.getText() );
-						
+
 					} else if( theDiagram instanceof IRPObjectModelDiagram ||
-							   theDiagram instanceof IRPStatechartDiagram ||
-							   theDiagram instanceof IRPStructureDiagram ||
-							   theDiagram instanceof IRPUseCaseDiagram ){
-					
+							theDiagram instanceof IRPStatechartDiagram ||
+							theDiagram instanceof IRPStructureDiagram ||
+							theDiagram instanceof IRPUseCaseDiagram ){
+
 						theRequirement = (IRPRequirement) theDiagram.addNewAggr(
 								"Requirement", _chosenNameTextField.getText()  );
-						
+
 					} else {
 						_context.warning("Warning in CreateDerivedRequirementPanel.performAction, " +
 								_context.elInfo( theDiagram ) + " is not supported");
 					}
-					
+
 					if( theRequirement != null ){
-						
-						IRPModelElement theSourceModelObject = m_SourceGraphElement.getModelObject();
-						
+
+						IRPModelElement theSourceModelObject = _sourceGraphElement.getModelObject();
+
 						addDeriveRelationsTo( theRequirement, theSourceModelObject );
 
 						/// Create collection for completeRelations purposes
 						IRPCollection theCollection = 
 								RhapsodyAppServer.getActiveRhapsodyApplication().createNewCollection();
-						
-						theRequirement.setSpecification( m_Specification.getText() );
-						
+
+						theRequirement.setSpecification( _specificationTextArea.getText() );
+
 						List<IRPRequirement> theUpstreamReqts = 
-								m_RequirementSelectionPanel.getSelectedRequirementsList();
+								_requirementSelectionPanel.getSelectedRequirementsList();
 
 						if (theUpstreamReqts.isEmpty()){
-							
+
 							_context.warning("Warning in performAction, no upstream requirement was selected");
-							
+
 						} else {
 							IRPStereotype theDeriveReqtStereotype = 
 									_context.getExistingStereotype( "deriveReqt", theRequirement.getProject() );
 
 							for (IRPRequirement theUpstreamReqt : theUpstreamReqts) {
-								
+
 								_context.addStereotypedDependencyIfOneDoesntExist(
 										theRequirement, theUpstreamReqt, theDeriveReqtStereotype );
-								
-								if( m_PopulateOnDiagramCheckBox.isSelected() ){
+
+								if( _populateOnDiagramCheckBox.isSelected() ){
 									@SuppressWarnings("unchecked")
 									List<IRPGraphElement> theGraphEls = 
-											theDiagram.getCorrespondingGraphicElements( theUpstreamReqt ).toList();
-									
+									theDiagram.getCorrespondingGraphicElements( theUpstreamReqt ).toList();
+
 									for (IRPGraphElement theGraphEl : theGraphEls) {
 										theCollection.addGraphicalItem( theGraphEl );
 									}									
 								}
 							}				
 						}
-						
-						if( m_MoveIntoCheckBox.isSelected() ){
+
+						if( _moveIntoCheckBox.isSelected() ){
 							moveAndStereotype( theRequirement );
 						}
-						
-						if( m_PopulateOnDiagramCheckBox.isSelected() ){
-					
+
+						if( _populateOnDiagramCheckBox.isSelected() ){
+
 							IRPGraphNode theNewReqtNode = 
 									theDiagram.addNewNodeForElement( theRequirement, x, y, 300, 100 );
-							
-							theCollection.addGraphicalItem( m_SourceGraphElement );
+
+							theCollection.addGraphicalItem( _sourceGraphElement );
 							theCollection.addGraphicalItem( theNewReqtNode );
 							theDiagram.completeRelations(theCollection, 0);							
 						}
@@ -460,19 +433,19 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 				_context.error("Error in CreateDerivedRequirementPanel.performAction, checkValidity returned false");
 			}	
 		} catch (Exception e) {
-			_context.error("Error, unhandled exception detected in CreateDerivedRequirementPanel.performAction");
+			_context.error("Error, unhandled exception detected in CreateDerivedRequirementPanel.performAction, e=" + e.getMessage() );
 		}
-		
+
 	}
 
 	private void addDeriveRelationsTo(
 			IRPRequirement theRequirement,
 			IRPModelElement theSourceModelObject ){
-		
+
 		IRPStereotype theDeriveStereotype = 
 				_context.getExistingStereotype( 
 						"derive", theRequirement.getProject() );
-		
+
 		// Add a derive dependency if the source element is an 
 		// accept event or call operation
 		if( theSourceModelObject instanceof IRPCallOperation ){
@@ -480,19 +453,19 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 			IRPCallOperation theCallOp = (IRPCallOperation)theSourceModelObject;
 
 			IRPInterfaceItem theOperation = theCallOp.getOperation();
-			
+
 			if( theOperation != null ){
 
 				_context.addStereotypedDependencyIfOneDoesntExist(
 						theCallOp, theRequirement, theDeriveStereotype );
-				
+
 				_context.addStereotypedDependencyIfOneDoesntExist(
 						theOperation, theRequirement, theDeriveStereotype );
 
 			} else {
 				_context.debug("Skipped adding derive dependencies as no Operation found for the call operation");
 			}
-			
+
 		} else if ( theSourceModelObject instanceof IRPAcceptEventAction ){
 
 			IRPAcceptEventAction theAcceptEventAction = 
@@ -504,78 +477,78 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 
 				_context.addStereotypedDependencyIfOneDoesntExist(
 						theAcceptEventAction, theRequirement, theDeriveStereotype );
-				
+
 				_context.addStereotypedDependencyIfOneDoesntExist(
 						theEvent, theRequirement, theDeriveStereotype );
 
 			} else {
 				_context.debug("Skipped adding derive dependencies as no Event was found for the accept event action");
 			}
-			
+
 		} else if ( theSourceModelObject instanceof IRPState ){
 
 			IRPState theState = (IRPState)theSourceModelObject;
 
 			String theStateType = theState.getStateType();
-			
+
 			if( theStateType.equals( "EventState") ){
-				
+
 				IRPSendAction theSendAction = theState.getSendAction();
-				
+
 				if( theSendAction != null ){
 					IRPEvent theEvent = theSendAction.getEvent();
-					
+
 					if( theEvent != null ){
-						
+
 						_context.addStereotypedDependencyIfOneDoesntExist(
 								theState, theRequirement, theDeriveStereotype );
-						
+
 						_context.addStereotypedDependencyIfOneDoesntExist(
-									theEvent, theRequirement, theDeriveStereotype );
+								theEvent, theRequirement, theDeriveStereotype );
 
 					} else {
 						_context.debug("Skipped adding derive dependencies as no event found for " + _context.elInfo(theState));
 					}
-					
+
 				} else {
 					_context.debug("Error in addDeriveRelationsTo, theSendAction==null for " + _context.elInfo(theState)); 
 				}
-				
+
 			} else if ( theStateType.equals( "Action") ){ // i.e. just text
 
 				// don't add 
-				
+
 			} else {
 				_context.warning("Warning in addDeriveRelationsTo, getStateType=" + theStateType + " is not supported");
 			}
-	
+
 		} else if ( theSourceModelObject instanceof IRPOperation || 
-				    theSourceModelObject instanceof IRPEvent ||
-				    theSourceModelObject instanceof IRPAttribute ){
+				theSourceModelObject instanceof IRPEvent ||
+				theSourceModelObject instanceof IRPAttribute ){
 
 			_context.addStereotypedDependencyIfOneDoesntExist(
 					theSourceModelObject, theRequirement, theDeriveStereotype );
 
 		} else {
 			_context.warning("Warning in addDeriveRelationsTo, " + _context.elInfo( theSourceModelObject ) + " was not handled");
-			
+
 		}
 	}
 
 	private void moveAndStereotype( 
 			IRPRequirement theRequirement ) {
-			
+
 		IRPModelElement theChosenPkg = 
-				m_NamedElementMap.getElementUsingFullName( 
-						m_FromPackageComboBox.getSelectedItem() );
-			
-		if( theChosenPkg != null && theChosenPkg instanceof IRPPackage ){
-				
+				_namedElementMap.getElementUsingFullName( 
+						_fromPackageComboBox.getSelectedItem() );
+
+		if( theChosenPkg instanceof IRPPackage ){
+
 			// check if already element of same name
 			IRPModelElement alreadyExistingEl = 
 					theChosenPkg.findNestedElement(
 							theRequirement.getName(), "Requirement" );
-				
+
 			if (alreadyExistingEl != null){
 				_context.error("Error: Unable to move " + _context.elInfo( theRequirement ) 
 						+ " as requirement of same name already exists under " 
@@ -583,25 +556,24 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 			} else {
 				IRPStereotype theStereotypeToApply = 
 						_context.getStereotypeAppliedTo( theChosenPkg, "from.*" );
-					
-				_context.debug( _context.elInfo( theStereotypeToApply ) + " is the stereotype to apply");
-					
-				if (theStereotypeToApply != null){
-						
-					theRequirement.setStereotype( theStereotypeToApply );
 
+				_context.debug( _context.elInfo( theStereotypeToApply ) + " is the stereotype to apply");
+
+				if (theStereotypeToApply != null){
+
+					theRequirement.setStereotype( theStereotypeToApply );
+				}
 					_context.debug("Moving " + _context.elInfo(theRequirement) 
 							+ " into " + _context.elInfo(theChosenPkg));
-						
+
 					theRequirement.setOwner(theChosenPkg);
-					
+
 					_context.applyStereotypeToDeriveReqtDependenciesOriginatingFrom( 
 							theRequirement, theStereotypeToApply );
-						
+
 					theRequirement.highLightElement();
-				}
 			}
-				
+
 		} else {
 			_context.error("Error in moveAndStereotype, no package was selected for the move");
 		}
@@ -625,5 +597,5 @@ public class CreateDerivedRequirementPanel extends CreateTracedElementPanel {
 
     You should have received a copy of the GNU General Public License
     along with SysMLHelperPlugin.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
 

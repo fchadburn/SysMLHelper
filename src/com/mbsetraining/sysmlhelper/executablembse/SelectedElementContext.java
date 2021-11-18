@@ -54,21 +54,24 @@ public class SelectedElementContext {
 
 		_scenarioRootContextPackage = getSimulationSettingsPackageBasedOn( _selectedEl );
 
-		_packageForActorsAndTest = getPkgNamedInFunctionalPackageTag(
-				_scenarioRootContextPackage, 
-				tagNameForPackageForActorsAndTest );
+		if( _scenarioRootContextPackage != null ){
+			
+			_packageForActorsAndTest = getPkgNamedInFunctionalPackageTag(
+					_scenarioRootContextPackage, 
+					tagNameForPackageForActorsAndTest );
 
-		_buildingBlock = (IRPClass) getElementNamedInFunctionalPackageTag(
-				_scenarioRootContextPackage, 
-				tagNameForAssemblyBlockUnderDev );
+			_buildingBlock = (IRPClass) getElementNamedInFunctionalPackageTag(
+					_scenarioRootContextPackage, 
+					tagNameForAssemblyBlockUnderDev );
 
-		_packageForEventsAndInterfaces = getPkgNamedInFunctionalPackageTag(
-				_scenarioRootContextPackage, 
-				tagNameForPackageForEventsAndInterfaces );
+			_packageForEventsAndInterfaces = getPkgNamedInFunctionalPackageTag(
+					_scenarioRootContextPackage, 
+					tagNameForPackageForEventsAndInterfaces );
 
-		_packageForBlocks = getPkgNamedInFunctionalPackageTag(
-				_scenarioRootContextPackage, 
-				tagNameForPackageForBlocks );
+			_packageForBlocks = getPkgNamedInFunctionalPackageTag(
+					_scenarioRootContextPackage, 
+					tagNameForPackageForBlocks );
+		}
 
 		_sourceGraphElDiagram = getSourceDiagram();
 	}

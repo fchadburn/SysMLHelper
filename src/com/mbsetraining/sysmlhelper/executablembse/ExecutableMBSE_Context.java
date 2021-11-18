@@ -13,8 +13,6 @@ import com.telelogic.rhapsody.core.IRPAttribute;
 import com.telelogic.rhapsody.core.IRPClass;
 import com.telelogic.rhapsody.core.IRPClassifier;
 import com.telelogic.rhapsody.core.IRPDependency;
-import com.telelogic.rhapsody.core.IRPDiagram;
-import com.telelogic.rhapsody.core.IRPGraphElement;
 import com.telelogic.rhapsody.core.IRPInstance;
 import com.telelogic.rhapsody.core.IRPLink;
 import com.telelogic.rhapsody.core.IRPModelElement;
