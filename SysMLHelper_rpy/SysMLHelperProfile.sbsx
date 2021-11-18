@@ -13,7 +13,31 @@
 			<_properties type="p"><IPropertyContainer type="e">
 				<Subjects type="c">
 					<IRPYRawContainer type="e">
-						<size type="a">1</size>
+						<size type="a">2</size>
+						<IPropertySubject type="e">
+							<_Name type="a">General</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Profile</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">AutoReferences</_Name>
+													<_Value type="a">$OMROOT\Profiles\SysML\SysMLProfile_rpy\SysML.sbs</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
 						<IPropertySubject type="e">
 							<_Name type="a">Model</_Name>
 							<Metaclasses type="c">
@@ -58,11 +82,11 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SysMLHelperProfile</_name>
-			<_modifiedTimeWeak type="a">7.8.2021::13:3:17</_modifiedTimeWeak>
-			<_modifiedTime type="a">7.8.2021::13:3:17</_modifiedTime>
+			<_modifiedTimeWeak type="a">11.17.2021::9:30:5</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.17.2021::9:30:5</_modifiedTime>
 			<_lastID type="a">1</_lastID>
-			<weakCGTime type="a">7.8.2021::13:3:17</weakCGTime>
-			<strongCGTime type="a">6.17.2021::14:52:52</strongCGTime>
+			<weakCGTime type="a">11.17.2021::9:30:5</weakCGTime>
+			<strongCGTime type="a">11.17.2021::9:30:5</strongCGTime>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<_configurationRelatedTime type="a">1.2.1990::0:0:0</_configurationRelatedTime>

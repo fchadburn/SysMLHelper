@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import requirementsanalysisplugin.PopulateRelatedRequirementsPanel;
+
 import com.mbsetraining.sysmlhelper.activitydiagram.ActivityDiagramChecker;
 import com.mbsetraining.sysmlhelper.activitydiagram.RenameActions;
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
@@ -13,6 +14,7 @@ import com.mbsetraining.sysmlhelper.common.LayoutHelper;
 import com.mbsetraining.sysmlhelper.common.NestedActivityDiagram;
 import com.mbsetraining.sysmlhelper.common.RequirementsHelper;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.mbsetraining.sysmlhelper.gateway.CreateGatewayProjectPanel;
 import com.mbsetraining.sysmlhelper.gateway.MarkedAsDeletedPanel;
 import com.mbsetraining.sysmlhelper.gateway.MoveRequirements;
@@ -23,7 +25,7 @@ import com.telelogic.rhapsody.core.*;
 
 public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 
-	protected SysMLHelper_Context _context;
+	protected ExecutableMBSE_Context _context;
 	protected SysMLHelper_RPApplicationListener _listener = null;
 	protected List<String> _startLinkGuids = new ArrayList<>();
 	protected ConfigurationSettings _settings;
@@ -34,12 +36,12 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 
 		String theAppID = theRhapsodyApp.getApplicationConnectionString();
 
-		_context = new SysMLHelper_Context( theAppID );
+		_context = new ExecutableMBSE_Context( theAppID );
 		
 		_settings = new ConfigurationSettings(
-				"ExecutableMBSE.properties", 
-				"ExecutableMBSE_MessagesBundle",
-				"ExecutableMBSE" , 
+				"SysMLHelper.properties", 
+				"SysMLHelper_MessagesBundle",
+				"SysMLHelper" , 
 				_context );
 		
 		final String legalNotice = 

@@ -4,11 +4,24 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
    
 public class RequirementsHelper {
  	
 	protected BaseContext _context;
+	
+	public static void main(String[] args) {
+		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
+	
+		ExecutableMBSE_Context theContext = new ExecutableMBSE_Context( 
+				theRhpApp.getApplicationConnectionString() );
+		
+		List<IRPGraphElement> theSelectedGraphEls = theContext.getSelectedGraphElements();
+		
+		RequirementsHelper theHelper = new RequirementsHelper( theContext );
+		theHelper.createNewRequirementsFor( theSelectedGraphEls );
+	}
 	
 	public RequirementsHelper(
 			BaseContext context ){
@@ -26,6 +39,8 @@ public class RequirementsHelper {
 	
 	private void createNewRequirementFor(
 			IRPGraphElement theGraphEl ){
+		
+		_context.debug( "createNewRequirementFor" );
 		
 		IRPModelElement theModelObject = theGraphEl.getModelObject();
 		IRPDiagram theDiagram = theGraphEl.getDiagram();

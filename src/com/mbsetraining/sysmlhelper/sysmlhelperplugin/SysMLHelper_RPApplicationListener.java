@@ -8,23 +8,22 @@ import java.util.Set;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
-import com.mbsetraining.sysmlhelper.common.ElementMover;
 import com.mbsetraining.sysmlhelper.common.NestedActivityDiagram;
-import com.mbsetraining.sysmlhelper.common.RequirementMover;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateOperationPanel;
 import com.telelogic.rhapsody.core.*;
 
 public class SysMLHelper_RPApplicationListener extends RPApplicationListener {
 
-	private SysMLHelper_Context _context;
+	private ExecutableMBSE_Context _context;
 
 	public SysMLHelper_RPApplicationListener( 
 			String expectedProfileName,
-			SysMLHelper_Context context ) {
+			ExecutableMBSE_Context context ) {
 
 		_context = context;
-		_context.info( "ExecutableMBSE_RPApplicationListener was loaded - Listening for events (double-click etc)" ); 
+		_context.info( "SysMLHelper_RPApplicationListener was loaded - Listening for events (double-click etc)" ); 
 	}
 
 	public boolean afterAddElement(
@@ -36,20 +35,7 @@ public class SysMLHelper_RPApplicationListener extends RPApplicationListener {
 			_context.setSavedInSeparateDirectoryIfAppropriateFor( 
 					modelElement );
 
-			if( modelElement instanceof IRPRequirement ){
-
-				afterAddForRequirement( modelElement );
-
-			} else if( modelElement instanceof IRPClass && 
-					_context.hasStereotypeCalled( "Interface", modelElement )){
-
-				afterAddForInterface( modelElement );
-
-			} else if( modelElement instanceof IRPEvent ){
-
-				afterAddForEvent( modelElement );
-				
-			} else if( modelElement instanceof IRPDependency && 
+			if( modelElement instanceof IRPDependency && 
 					modelElement.getUserDefinedMetaClass().equals(
 							"Derive Requirement" ) ){
 
@@ -62,7 +48,7 @@ public class SysMLHelper_RPApplicationListener extends RPApplicationListener {
 			}
 
 		} catch( Exception e ){
-			_context.error( "ExecutableMBSE_RPApplicationListener.afterAddElement, " +
+			_context.error( "SysMLHelper_RPApplicationListener.afterAddElement, " +
 					" unhandled exception related to " + _context.elInfo( modelElement ) + 
 					e.getMessage() );
 		}
@@ -74,9 +60,7 @@ public class SysMLHelper_RPApplicationListener extends RPApplicationListener {
 			IRPCallOperation theCallOp ){
 
 		// only do move if property is set
-		boolean isEnabled = 
-				_context.getIsCallOperationSupportEnabled(
-						theCallOp );
+		boolean isEnabled = _context.getIsCallOperationSupportEnabled();
 
 		if( isEnabled ){
 
@@ -151,79 +135,6 @@ public class SysMLHelper_RPApplicationListener extends RPApplicationListener {
 				theDependency.setStereotype( theExistingGatewayStereotype );
 				theDependency.changeTo( "Derive Requirement" );
 			}			
-		}
-	}
-
-	private void afterAddForInterface(
-			IRPModelElement modelElement ){
-
-		// only do move if property is set
-		boolean isEnabled = _context.getIsEnableAutoMoveOfInterfaces( modelElement );
-
-		if( isEnabled ){
-			ElementMover theElementMover = new ElementMover( 
-					modelElement, 
-					_context.getInterfacesPackageStereotype( modelElement ),
-					_context );
-
-			theElementMover.performMove( modelElement );
-		}
-	}
-	
-	private void afterAddForEvent(
-			IRPModelElement modelElement ){
-
-		_context.debug( "afterAddForEvent invoked for " + _context.elInfo( modelElement ) );
-		
-		// only do move if property is set
-		boolean isEnabled = _context.getIsEnableAutoMoveOfEventsOnAddNewElement();
-
-		if( isEnabled ){
-						
-			ElementMover theElementMover = new ElementMover( 
-					modelElement, 
-					_context.getExternalSignalsPackageStereotype(),
-					_context );
-
-			if( theElementMover.isMovePossible() ){
-				
-				IRPModelElement moveToPkg = theElementMover.get_moveToPkg();
-
-				// This delay + the save should mean that Event won't crash Rhapsody
-				boolean isContinue = UserInterfaceHelper.askAQuestion( 
-						"Move " + modelElement.getUserDefinedMetaClass() + " to " + 
-						moveToPkg.getName() + "?" );
-				
-				if( isContinue ){
-					
-					theElementMover.performMove( modelElement );
-										
-					try {
-						_context.get_rhpPrj().save();
-
-					} catch( Exception e ){
-						_context.error( "Exception on save in afterAddForEvent, e=" + e.getMessage() );
-					}
-				}
-			}
-		}
-	}
-
-	private void afterAddForRequirement(
-			IRPModelElement modelElement ){
-
-		// only do move if property is set
-		boolean isEnabled = 
-				_context.getIsEnableAutoMoveOfRequirements(
-						modelElement );
-
-		String theReqtsPkgStereotypeName = _context.getRequirementPackageStereotype();
-		
-		if( isEnabled && 
-				theReqtsPkgStereotypeName != null ){
-			
-			RequirementMover theElementMover = new RequirementMover( modelElement, theReqtsPkgStereotypeName, _context );
-			theElementMover.performMove( modelElement );
 		}
 	}
 

@@ -33,28 +33,16 @@ public class ElementMover {
 						basedOnEl, 
 						_whereMoveToHasStereotype );
 		
-		_context.debug( theCandidateEls.size() + " theCandidateEls were found for " + _context.elInfo( basedOnEl ) );
+		//_context.debug( theCandidateEls.size() + " theCandidateEls were found for " + _context.elInfo( basedOnEl ) );
 
-		if( theCandidateEls.size()==1 ){
-			
-			IRPModelElement theCandidate = null;
-			
-			for( IRPModelElement theCandidateEl : theCandidateEls ){
-				theCandidate = theCandidateEl;
-			}
-			
-			if( theCandidate instanceof IRPPackage ){
-				theMoveToPkg = (IRPPackage) theCandidate;
-			}
-			
-		} else if( theCandidateEls.size()==0 ){
+		if( theCandidateEls.size()==0 ){
 			
 			IRPModelElement theOwner = basedOnEl.getOwner();
 				
 			if( theOwner instanceof IRPClassifier &&
 					theOwner.getName().equals( "TopLevel" ) ){
 					
-				_context.debug( "TopLevel is " + _context.elInfo( theOwner ) );
+				//_context.debug( "TopLevel is " + _context.elInfo( theOwner ) );
 				
 				@SuppressWarnings("unchecked")
 				List<IRPPackage> thePkgs = _context.get_rhpPrj().getNestedElementsByMetaClass( "Package", 1 ).toList();
@@ -66,7 +54,7 @@ public class ElementMover {
 					
 					if( theGlobalObjects.contains( basedOnEl ) ){
 						
-						_context.debug( "The global object is in " + _context.elInfo( thePkg ) );
+						//_context.debug( "The global object is in " + _context.elInfo( thePkg ) );
 						theOwner = thePkg;
 					}
 				}
@@ -78,6 +66,18 @@ public class ElementMover {
 
 			} else {
 				// Unable to find a matching package in corresponding ownership tree
+			}
+			
+		} else if( theCandidateEls.size()==1 ){
+			
+			IRPModelElement theCandidate = null;
+			
+			for( IRPModelElement theCandidateEl : theCandidateEls ){
+				theCandidate = theCandidateEl;
+			}
+			
+			if( theCandidate instanceof IRPPackage ){
+				theMoveToPkg = (IRPPackage) theCandidate;
 			}
 		}
 		

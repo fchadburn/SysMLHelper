@@ -570,8 +570,18 @@ V4.0.l.Rhp831.PreRelease (15-NOV-2021):
 #399 15-NOV-2021: ExecutableMBSE: Improve sequence diagram autopopulate dialog to not use part names so it looks less cluttered (F.J.Chadburn)
 #400 15-NOV-2021: ExecutableMBSE: Add BleedForegroundColor property to provide ability to specify the bleed color used on activity diagrams (F.J.Chadburn)
 
+V4.0.m.Rhp831.PreRelease (XX-XXX-XXXX):
+#401 18-NOV-2021: ExecutableMBSE: Initial fixes to get SysMLHelper plugin requirements parts to work with ExecutableMBSE_Context (F.J.Chadburn)
+
 Backlog/Known issues
 
+- Color bleed is green not red
+- Get SysMLHelper working enough to do lab
+- Property to disable double-click helper
+- Better support for seeing Gateway like views
+- Default query for filtering out requirements
+- Better Wizard for building up a white-box model
+- Import from file option for Blocks/Actors perhaps?
 - Get standard Executable profile to0 auto-populate ports when a connector is drawn
 - Use of Harmony toolkit before switching to this one changes the display options
 - Resolve issue with comma's used in the csv file that is exported to DOORS NG
