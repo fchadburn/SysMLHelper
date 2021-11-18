@@ -841,69 +841,71 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		boolean theReturn = false;
 
 		try {	
+			if( _context.getIsDoubleClickFunctionalityEnabled() ){
+				
+				List<IRPModelElement> optionsList = null;
 
-			List<IRPModelElement> optionsList = null;
+				if( pModelElement instanceof IRPCallOperation ){
 
-			if( pModelElement instanceof IRPCallOperation ){
+					IRPCallOperation theCallOp = (IRPCallOperation)pModelElement;
 
-				IRPCallOperation theCallOp = (IRPCallOperation)pModelElement;
+					IRPInterfaceItem theInterfaceItem = theCallOp.getOperation();
 
-				IRPInterfaceItem theInterfaceItem = theCallOp.getOperation();
+					if( theInterfaceItem != null &&
+							theInterfaceItem instanceof IRPOperation ){
 
-				if( theInterfaceItem != null &&
-						theInterfaceItem instanceof IRPOperation ){
+						IRPOperation theOp = (IRPOperation)theInterfaceItem;
 
-					IRPOperation theOp = (IRPOperation)theInterfaceItem;
+						optionsList = getDiagramsFor( theOp );
+					}
 
-					optionsList = getDiagramsFor( theOp );
+				} else if( pModelElement instanceof IRPInstance ){
+
+					IRPInstance thePart = (IRPInstance)pModelElement;
+
+					IRPClassifier theClassifier = thePart.getOtherClass();
+
+					if( theClassifier != null ){
+						optionsList = getDiagramsFor( theClassifier );
+					}
 				}
 
-			} else if( pModelElement instanceof IRPInstance ){
-
-				IRPInstance thePart = (IRPInstance)pModelElement;
-
-				IRPClassifier theClassifier = thePart.getOtherClass();
-
-				if( theClassifier != null ){
-					optionsList = getDiagramsFor( theClassifier );
+				if (optionsList == null){
+					optionsList = getDiagramsFor( pModelElement );
 				}
+
+				int numberOfDiagrams = optionsList.size();
+
+				if( numberOfDiagrams > 0 ){
+
+					theReturn = openNestedDiagramDialogFor( optionsList, pModelElement );
+
+				} else if( pModelElement instanceof IRPUseCase ){
+
+					String theUnadornedName = "AD - " + pModelElement.getName();
+
+					boolean theAnswer = UserInterfaceHelper.askAQuestion(
+							"This use case has no nested text-based Activity Diagram.\n"+
+									"Do you want to create one called '" + theUnadornedName + "'?");
+
+					if( theAnswer == true ){
+
+						_context.debug( "User chose to create a new activity diagram" );
+
+						NestedActivityDiagram theHelper = new NestedActivityDiagram(_context);
+
+						theHelper.createNestedActivityDiagram( 
+								(IRPClassifier) pModelElement, 
+								"AD - " + pModelElement.getName(),
+								"ExecutableMBSEProfile.RequirementsAnalysis.TemplateForActivityDiagram" );
+					}
+
+					theReturn = true; // don't launch the Features  window									
+
+				} else {
+					theReturn = false; // do default, i.e. open the features dialog
+				}	
 			}
-
-			if (optionsList == null){
-				optionsList = getDiagramsFor( pModelElement );
-			}
-
-			int numberOfDiagrams = optionsList.size();
-
-			if( numberOfDiagrams > 0 ){
-
-				theReturn = openNestedDiagramDialogFor( optionsList, pModelElement );
-
-			} else if( pModelElement instanceof IRPUseCase ){
-
-				String theUnadornedName = "AD - " + pModelElement.getName();
-
-				boolean theAnswer = UserInterfaceHelper.askAQuestion(
-						"This use case has no nested text-based Activity Diagram.\n"+
-								"Do you want to create one called '" + theUnadornedName + "'?");
-
-				if( theAnswer == true ){
-
-					_context.debug( "User chose to create a new activity diagram" );
-
-					NestedActivityDiagram theHelper = new NestedActivityDiagram(_context);
-
-					theHelper.createNestedActivityDiagram( 
-							(IRPClassifier) pModelElement, 
-							"AD - " + pModelElement.getName(),
-							"ExecutableMBSEProfile.RequirementsAnalysis.TemplateForActivityDiagram" );
-				}
-
-				theReturn = true; // don't launch the Features  window									
-
-			} else {
-				theReturn = false; // do default, i.e. open the features dialog
-			}	
 
 		} catch( Exception e ){
 			_context.error( "Unhandled exception in onDoubleClick(), e=" + e.getMessage() );			

@@ -12,6 +12,7 @@ Subject ExecutableMBSEProfile
 		Property DontCreateSeparateUnitNewTerms String ""        
 		Property IsAutoPopulatePackageDiagram Bool "True"          
 		Property IsShowProfileVersionCheckDialogs Bool "True"
+		Property IsDoubleClickFunctionalityEnabled Bool "True"
 	end
 	Metaclass RequirementsAnalysis
 		Property CreateRequirementTextForPrefixing String "The feature shall allow the "

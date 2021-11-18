@@ -573,12 +573,12 @@ V4.0.l.Rhp831.PreRelease (15-NOV-2021):
 V4.0.m.Rhp831.PreRelease (XX-XXX-XXXX):
 #401 18-NOV-2021: ExecutableMBSE: Initial fixes to get SysMLHelper plugin requirements parts to work with ExecutableMBSE_Context (F.J.Chadburn)
 #402 18-NOV-2021: ExecutableMBSE: Checkpoint of CreateDerivedRequirementPanel changes to get it to compile/invoke with new thread safe mechanisms (F.J.Chadburn)
+#403 18-NOV-2021: ExecutableMBSE/SysMLHelper: Added IsDoubleClickFunctionalityEnabled to enable double-click functionality to be turned off/on (F.J.Chadburn)
 
 Backlog/Known issues
 
 - Color bleed is green not red
 - Get SysMLHelper working enough to do lab
-- Property to disable double-click helper
 - Better support for seeing Gateway like views
 - Default query for filtering out requirements
 - Better Wizard for building up a white-box model
@@ -599,7 +599,6 @@ Backlog/Known issues
 - Hide TriggeredOperations/Constructor/Destructor perhaps?
 - Move icons into the Icon package and ensure they're all controlled files so that Save As works cleanly
 - Move projects into separate root folders for cleanliness of plug-and-play
-- SysMLHelper deprecate functional analysis menus to go with ExecutableMBSE profile instead
 - Get the auto-generate ports/interfaces for connector to determine if there is a subsystem interfaces package in the model for events etc?
 - Incorporate short-hand names with subsystems
 - Add a decent ICD-like table for showing messages carried on Interface Blocks with direction etc

@@ -75,7 +75,9 @@ public class ExecutableMBSE_Context extends BaseContext {
 	protected Boolean _isCallOperationSupportEnabled;
 	protected Boolean _isCreateSDWithAutoShowApplied;
 	protected Boolean _isCreateSDWithTestDriverLifeline;
-
+	protected Boolean _isShowProfileVersionCheckDialogs;
+	protected Boolean _isDoubleClickFunctionalityEnabled;
+	
 	protected List<String> _storeUnitInSeparateDirectoryNewTerms;
 	protected List<String> _dontCreateSeparateUnitNewTerms;
 	protected List<IRPModelElement> _stereotypesForBlockPartCreation;
@@ -237,13 +239,25 @@ public class ExecutableMBSE_Context extends BaseContext {
 		return _stereotypesForBlockPartCreation;
 	}
 
-	public boolean getIsShowProfileVersionCheckDialogs(){
+	public Boolean getIsShowProfileVersionCheckDialogs(){
 
-		boolean result = getBooleanPropertyValue(
+		if( _isShowProfileVersionCheckDialogs == null ){	
+			_isShowProfileVersionCheckDialogs = getBooleanPropertyValue(
 				_rhpPrj,
 				"ExecutableMBSEProfile.General.IsShowProfileVersionCheckDialogs" );
-
-		return result;
+		}
+		
+		return _isShowProfileVersionCheckDialogs;
+	}
+	
+	// This is called on double-click 
+	public Boolean getIsDoubleClickFunctionalityEnabled(){
+		
+		_isDoubleClickFunctionalityEnabled = getBooleanPropertyValue(
+					_rhpPrj,
+					"ExecutableMBSEProfile.General.IsDoubleClickFunctionalityEnabled" );
+		
+		return _isDoubleClickFunctionalityEnabled;
 	}
 
 	public IRPStereotype getStereotypeForTestbench(){
