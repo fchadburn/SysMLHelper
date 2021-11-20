@@ -293,4 +293,10 @@ Subject ConfigurationManagement
 		Property MoveActivation Enum "Disable,UserConfirmation,Automatic" "Automatic"
 	end
 end
+Subject Model
+	Metaclass Project
+		Property BrowseTraceabilityName String "Browse Traceability"
+		Property BrowseTraceabilityPattern String "Package*,Requirement+,pluginMethod:getElementsThatTraceFromRequirements"
+	end
+end
 end

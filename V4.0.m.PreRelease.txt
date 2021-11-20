@@ -574,12 +574,12 @@ V4.0.m.Rhp831.PreRelease (XX-XXX-XXXX):
 #401 18-NOV-2021: ExecutableMBSE: Initial fixes to get SysMLHelper plugin requirements parts to work with ExecutableMBSE_Context (F.J.Chadburn)
 #402 18-NOV-2021: ExecutableMBSE: Checkpoint of CreateDerivedRequirementPanel changes to get it to compile/invoke with new thread safe mechanisms (F.J.Chadburn)
 #403 18-NOV-2021: ExecutableMBSE/SysMLHelper: Added IsDoubleClickFunctionalityEnabled to enable double-click functionality to be turned off/on (F.J.Chadburn)
+#404 20-NOV-2021: ExecutableMBSE: Add Browse Traceability menu to the Browse Hierarchy menu as per Rhapsody Tip #87 - Custom browsers (F.J.Chadburn)
 
 Backlog/Known issues
 
 - Color bleed is green not red
 - Get SysMLHelper working enough to do lab
-- Better support for seeing Gateway like views
 - Default query for filtering out requirements
 - Better Wizard for building up a white-box model
 - Import from file option for Blocks/Actors perhaps?
