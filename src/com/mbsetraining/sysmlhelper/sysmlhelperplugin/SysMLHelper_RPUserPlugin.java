@@ -74,7 +74,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 
 		_context.info( "The SysMLHelper profile version is " + _context.getPluginVersion() );
 
-		_settings.checkIfSetupProjectIsNeeded( false, true );
+		//_settings.checkIfSetupProjectIsNeeded( false, true );
 	}
 
 	// called when the plug-in pop-up menu  is selected
