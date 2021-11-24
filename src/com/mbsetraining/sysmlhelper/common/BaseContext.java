@@ -1846,7 +1846,7 @@ public abstract class BaseContext {
 
 						IRPModelElement theCandidate = inProject.findAllByName( theName, "Package" );
 
-						if( theCandidate != null && theCandidate instanceof IRPPackage ){
+						if( theCandidate instanceof IRPPackage ){
 
 							IRPPackage theAddedPackage = (IRPPackage)theCandidate;
 
