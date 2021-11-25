@@ -47,6 +47,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String FUNCT_ANALYSIS_INTERFACES_PACKAGE = "23 Funct Analysis - Interfaces Package";
 	public final String FUNCT_ANALYSIS_TEST_PACKAGE = "24 Funct Analysis - Test Package";
 	public final String DESIGN_SYNTHESIS_SUBSYSTEM_INTERFACES_PACKAGE = "33 Design Synthesis - Subsystem Interfaces Package";
+	public final String DESIGN_SYNTHESIS_LOGICAL_SYSTEM_PACKAGE = "31 Design Synthesis - Logical System Package";
 	public final String TIME_ELAPSED_BLOCK_STEREOTYPE = "TimeBlock";
 	public final String ELAPSED_TIME_GENERATOR_STEREOTYPE = "TimeGenerator";
 	public final String NEW_TERM_FOR_USE_CASE_DIAGRAM = "EnhancedUseCaseDiagram";
@@ -81,7 +82,8 @@ public class ExecutableMBSE_Context extends BaseContext {
 	protected List<String> _storeUnitInSeparateDirectoryNewTerms;
 	protected List<String> _dontCreateSeparateUnitNewTerms;
 	protected List<IRPModelElement> _stereotypesForBlockPartCreation;
-	protected String _autoGenerationOfFlowPortsForLinksPolicy;
+	protected String _autoGenerationOfPortsForLinksPolicy;
+	protected String _autoGenerationOfPortsForLinksDefaultType;
 	protected String _bleedForegroundColor;
 
 	protected IRPStereotype _stereotypeForTestbench;
@@ -868,29 +870,26 @@ public class ExecutableMBSE_Context extends BaseContext {
 		return result;
 	}
 
-	public String getAutoGenerationOfProxyPortsForLinksPolicy(
+	public String getAutoGenerationOfPortsForLinksPolicy(
 			IRPModelElement forContextEl ){
-
-		String result = getStringPropertyValueFromRhp(
+		
+		_autoGenerationOfPortsForLinksPolicy = getStringPropertyValueFromRhp(
 				forContextEl,
-				"ExecutableMBSEProfile.DesignSynthesis.AutoGenerationOfProxyPortsForLinksPolicy",
+				"ExecutableMBSEProfile.DesignSynthesis.AutoGenerationOfPortsForLinksPolicy",
 				"Never" );
 
-		return result;
+		return _autoGenerationOfPortsForLinksPolicy;
 	}
-
-	public String getAutoGenerationOfFlowPortsForLinksPolicy(
+	
+	public String getAutoGenerationOfPortsForLinksDefaultType(
 			IRPModelElement forContextEl ){
+		
+		_autoGenerationOfPortsForLinksDefaultType = getStringPropertyValueFromRhp(
+				forContextEl,
+				"ExecutableMBSEProfile.DesignSynthesis.AutoGenerationOfPortsForLinksDefaultType",
+				"StandardPorts" );
 
-		if( _autoGenerationOfFlowPortsForLinksPolicy == null ){
-
-			_autoGenerationOfFlowPortsForLinksPolicy = getStringPropertyValueFromRhp(
-					forContextEl,
-					"ExecutableMBSEProfile.FunctionalAnalysis.AutoGenerationOfFlowPortsForLinksPolicy",
-					"Never" );
-		}
-
-		return _autoGenerationOfFlowPortsForLinksPolicy;
+		return _autoGenerationOfPortsForLinksDefaultType;
 	}
 
 	@Override
@@ -1303,6 +1302,35 @@ public class ExecutableMBSE_Context extends BaseContext {
 		}
 
 		return theElapsedTimePart;
+	}
+	
+	public boolean isOwnedUnderPackageHierarchy( 
+			String withPackageStereotypeName, 
+			IRPModelElement theElement ){
+		
+		boolean isOwnedUnderHierarchy = false;
+		
+		IRPModelElement theOwner = theElement.getOwner();
+		
+		if( theOwner != null ){
+			
+			IRPPackage theOwningPkg = getOwningPackageFor( theOwner );
+			
+			if( theOwningPkg != null ){
+				
+				if( hasStereotypeCalled(
+						withPackageStereotypeName, 
+						theOwningPkg ) ){
+					isOwnedUnderHierarchy = true;
+				} else {
+					isOwnedUnderHierarchy = isOwnedUnderPackageHierarchy(
+							withPackageStereotypeName,  
+							theOwningPkg );
+				}
+			}
+		}
+		
+		return isOwnedUnderHierarchy;
 	}
 }
 

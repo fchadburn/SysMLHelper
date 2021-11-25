@@ -576,9 +576,14 @@ V4.0.m.Rhp831.PreRelease (XX-XXX-XXXX):
 #403 18-NOV-2021: ExecutableMBSE/SysMLHelper: Added IsDoubleClickFunctionalityEnabled to enable double-click functionality to be turned off/on (F.J.Chadburn)
 #404 20-NOV-2021: ExecutableMBSE: Add Browse Traceability menu to the Browse Hierarchy menu as per Rhapsody Tip #87 - Custom browsers (F.J.Chadburn)
 #405 24-NOV-2021: SysMLHelper: Remove profile version check from the plugin start-up
+#406 25-NOV-2021: ExecutableMBSE: Quickly create ports between actors and blocks by drawing link between them on an IBD (F.J.Chadburn)
 
 Backlog/Known issues
 
+- Improve traceability browser to have the relationship names in the tree, e.g., satisfy vs derive
+- Move all executable mbse icons into nested icon package
+- Hide the software package stuff
+- Review options on changing menus or merging in as it looks too complex
 - TestConductor/ATG.
 - BlackBox. 
 - Have a way to check naming conventions for attributes 

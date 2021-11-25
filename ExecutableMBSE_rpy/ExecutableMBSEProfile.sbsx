@@ -1658,7 +1658,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">11.18.2021::16:40:38</_modifiedTime>
+			<_modifiedTime type="a">11.25.2021::17:50:7</_modifiedTime>
 			<_lastID type="a">23</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -6600,7 +6600,32 @@ Tips:\par%0D
 			<_properties type="p"><IPropertyContainer type="e">
 				<Subjects type="c">
 					<IRPYRawContainer type="e">
-						<size type="a">1</size>
+						<size type="a">2</size>
+						<IPropertySubject type="e">
+							<_Name type="a">ExecutableMBSEProfile</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">DesignSynthesis</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">AutoGenerationOfPortsForLinksDefaultType</_Name>
+													<_Value type="a">RapidPorts</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">No,StandardPorts,ProxyPorts,RapidPorts</_ExtraTypeInfo>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
 						<IPropertySubject type="e">
 							<_Name type="a">Model</_Name>
 							<Metaclasses type="c">
@@ -6636,7 +6661,7 @@ Tips:\par%0D
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">21 Funct Analysis - Scenarios Package</_name>
-			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
+			<_modifiedTime type="a">11.25.2021::17:50:7</_modifiedTime>
 			<_lastID type="a">6</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -8473,7 +8498,7 @@ Tips:\par%0D
 			<_id type="a">GUID 99d433ee-75c1-40c0-8ef0-8ea14c3d7d23</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileInfo</_name>
-			<_modifiedTime type="a">11.18.2021::16:40:38</_modifiedTime>
+			<_modifiedTime type="a">11.25.2021::13:12:48</_modifiedTime>
 			<_lastID type="a">3</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -8491,7 +8516,7 @@ Tips:\par%0D
 			<_id type="a">GUID 00c06448-4cf5-4b58-a462-af1a3bccd935</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileDate</_name>
-			<_modifiedTime type="a">11.18.2021::16:40:38</_modifiedTime>
+			<_modifiedTime type="a">11.25.2021::13:12:48</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IType</_hm2Class>
@@ -8502,13 +8527,13 @@ Tips:\par%0D
 			</_typeOf>
 			<_isOrdered type="a">0</_isOrdered>
 			<AggregatesList type="e">
-				<value>GUID 5088ddab-856b-4e76-a835-b924e74f6355</value>
+				<value>GUID 2e1fa886-30af-4427-ac3d-2b011226aa8a</value>
 			</AggregatesList>
 		</ITag>
 		<ILiteralSpecification type="e">
-			<_id type="a">GUID 5088ddab-856b-4e76-a835-b924e74f6355</_id>
-			<_modifiedTime type="a">11.18.2021::16:40:38</_modifiedTime>
-			<_value type="a">2021/11/18 16:40:00</_value>
+			<_id type="a">GUID 2e1fa886-30af-4427-ac3d-2b011226aa8a</_id>
+			<_modifiedTime type="a">11.25.2021::13:12:48</_modifiedTime>
+			<_value type="a">2021/11/25 13:12:00</_value>
 		</ILiteralSpecification>
 		<ITag type="e">
 			<_id type="a">GUID c783ee62-7cd8-4f71-8651-25132d0e1150</_id>
@@ -10104,7 +10129,7 @@ Query</_Value>
 			<_id type="a">GUID d213ea00-7590-48aa-8f30-a0a61f8fcd08</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Packages</_name>
-			<_modifiedTime type="a">8.13.2021::15:0:56</_modifiedTime>
+			<_modifiedTime type="a">11.25.2021::16:31:56</_modifiedTime>
 			<_defaultComposite type="s">GUID 26c8a3f9-6aee-4dff-a42f-bf1cc2880009</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
@@ -10566,7 +10591,32 @@ Query</_Value>
 			<_properties type="p"><IPropertyContainer type="e">
 				<Subjects type="c">
 					<IRPYRawContainer type="e">
-						<size type="a">1</size>
+						<size type="a">2</size>
+						<IPropertySubject type="e">
+							<_Name type="a">ExecutableMBSEProfile</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">DesignSynthesis</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">AutoGenerationOfPortsForLinksDefaultType</_Name>
+													<_Value type="a">ProxyPorts</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">No,StandardPorts,ProxyPorts,RapidPorts</_ExtraTypeInfo>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
 						<IPropertySubject type="e">
 							<_Name type="a">Model</_Name>
 							<Metaclasses type="c">
@@ -10614,7 +10664,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">LogicalSystemPackage</_name>
-			<_modifiedTime type="a">8.11.2021::8:39:56</_modifiedTime>
+			<_modifiedTime type="a">11.25.2021::16:31:56</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>

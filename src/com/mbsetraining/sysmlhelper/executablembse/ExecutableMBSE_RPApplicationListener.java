@@ -30,6 +30,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		_context.info( "ExecutableMBSE_RPApplicationListener was loaded - Listening for events (double-click etc)" ); 
 	}
 
+	@Override
 	public boolean afterAddElement(
 			IRPModelElement modelElement ){
 
@@ -569,78 +570,232 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 	private void afterAddForLink(
 			IRPLink theLink ){
 
-		_context.debug( "afterAddForLink invoked for " + _context.elInfo( theLink ) + 
-				" owned by " + _context.elInfo( theLink.getOwner() ) );
+		if( _context.isOwnedUnderPackageHierarchy( 
+				_context.FUNCT_ANALYSIS_SCENARIOS_PACKAGE, theLink ) ){
 
-		String fromUserDefinedMetaClass = ( ( theLink.getFrom() == null ) ? "null from" : theLink.getFrom().getUserDefinedMetaClass() );
-		String toUserDefinedMetaClass = ( ( theLink.getTo() == null ) ? "null to" : theLink.getTo().getUserDefinedMetaClass() );
+			String fromUserDefinedMetaClass = ( ( theLink.getFrom() == null ) ? "null from" : theLink.getFrom().getUserDefinedMetaClass() );
+			String toUserDefinedMetaClass = ( ( theLink.getTo() == null ) ? "null to" : theLink.getTo().getUserDefinedMetaClass() );
 
-		_context.debug( "fromUserDefinedMetaClass is " + fromUserDefinedMetaClass );
-		_context.debug( "toUserDefinedMetaClass is " + toUserDefinedMetaClass );
+			_context.debug( "afterAddForLink invoked for  " + _context.elInfo( theLink ) + 
+					" owned by " + _context.elInfo( theLink.getOwner() ) );
+			
+			//_context.debug( "fromUserDefinedMetaClass is " + fromUserDefinedMetaClass );
+			//_context.debug( "toUserDefinedMetaClass is " + toUserDefinedMetaClass );
 
-		if( theLink.getUserDefinedMetaClass().equals( 
-				_context.FLOW_CONNECTOR ) &&
-				fromUserDefinedMetaClass.equals( 
-						_context.FUNCTION_USAGE ) &&
-						toUserDefinedMetaClass.equals( 
-								_context.FUNCTION_USAGE ) ){
+			if( toUserDefinedMetaClass.equals( _context.OBJECT ) && 
+					fromUserDefinedMetaClass.equals( _context.OBJECT ) ){
 
-			boolean isContinue = false;
+				IRPClassifier fromClassifier = theLink.getFrom().getOtherClass();
+				IRPClassifier toClassifier = theLink.getTo().getOtherClass();
 
-			String autoGenPolicy = _context.getAutoGenerationOfFlowPortsForLinksPolicy( 
-					_context.get_rhpPrj() );
-
-			if( autoGenPolicy.equals( "Always" ) ){
-
-				isContinue = true;
-
-			} else if( autoGenPolicy.equals( "UserDialog" ) ){
-
-				isContinue = UserInterfaceHelper.askAQuestion(
-						"You have drawn a connector between two " + 
-								_context.FUNCTION_USAGE + "s.\n"+
-								"Do you want to automatically create " + _context.FLOW_OUTPUT + " and " +
-								_context.FLOW_INPUT + " ports?");
+				if( fromClassifier instanceof IRPActor && 
+						toClassifier instanceof IRPClass ){
+					
+					createPortsBasedOnPropertyPoliciesFor( theLink );
+				
+				} else if( toClassifier instanceof IRPActor && 
+						fromClassifier instanceof IRPClass ){
+					
+					createPortsBasedOnPropertyPoliciesFor( theLink );
+				}
 			}
 
-			if( isContinue ){
-				autoCreateFlowPortsFor( theLink );
+		} else if( _context.isOwnedUnderPackageHierarchy( 
+				_context.DESIGN_SYNTHESIS_LOGICAL_SYSTEM_PACKAGE, theLink ) ){
+
+			String fromUserDefinedMetaClass = ( ( theLink.getFrom() == null ) ? "null from" : theLink.getFrom().getUserDefinedMetaClass() );
+			String toUserDefinedMetaClass = ( ( theLink.getTo() == null ) ? "null to" : theLink.getTo().getUserDefinedMetaClass() );
+
+			//_context.info( "fromUserDefinedMetaClass is " + fromUserDefinedMetaClass );
+			//_context.info( "toUserDefinedMetaClass is " + toUserDefinedMetaClass );
+
+			_context.debug( "afterAddForLink invoked for  " + _context.elInfo( theLink ) + 
+					" owned by " + _context.elInfo( theLink.getOwner() ) );
+
+			if( theLink.getUserDefinedMetaClass().equals( 
+					_context.FLOW_CONNECTOR ) &&
+					fromUserDefinedMetaClass.equals( 
+							_context.FUNCTION_USAGE ) &&
+							toUserDefinedMetaClass.equals( 
+									_context.FUNCTION_USAGE ) ){
+
+				boolean isContinue = false;
+
+				String autoGenPolicy = _context.getAutoGenerationOfPortsForLinksPolicy( 
+						_context.get_rhpPrj() );
+
+				if( autoGenPolicy.equals( "Always" ) ){
+
+					isContinue = true;
+
+				} else if( autoGenPolicy.equals( "UserDialog" ) ){
+
+					isContinue = UserInterfaceHelper.askAQuestion(
+							"You have drawn a connector between two " + 
+									_context.FUNCTION_USAGE + "s.\n"+
+									"Do you want to automatically create " + _context.FLOW_OUTPUT + " and " +
+									_context.FLOW_INPUT + " ports?");
+				}
+
+				if( isContinue ){
+					autoCreateFlowPortsFor( theLink );
+				}
+
+				// Allow to work for subsystem => subsystem or actor (object) => system or 
+				// system => actor (object)
+			} else if( ( fromUserDefinedMetaClass.equals( 
+					_context.SUBSYSTEM_USAGE ) &&
+					toUserDefinedMetaClass.equals( 
+							_context.SUBSYSTEM_USAGE ) ) ||
+							( fromUserDefinedMetaClass.equals( 
+									_context.SYSTEM_USAGE ) &&
+									toUserDefinedMetaClass.equals( 
+											_context.OBJECT ) ) ||
+											( toUserDefinedMetaClass.equals( 
+													_context.SYSTEM_USAGE ) &&
+													fromUserDefinedMetaClass.equals( 
+															_context.OBJECT ) )){
+
+				createPortsBasedOnPropertyPoliciesFor( theLink );
 			}
+		}
+	}
 
-			// Allow to work for subsystem => subsystem or actor (object) => system or 
-			// system => actor (object)
-		} else if( ( fromUserDefinedMetaClass.equals( 
-				_context.SUBSYSTEM_USAGE ) &&
-				toUserDefinedMetaClass.equals( 
-						_context.SUBSYSTEM_USAGE ) ) ||
-						( fromUserDefinedMetaClass.equals( 
-								_context.SYSTEM_USAGE ) &&
-								toUserDefinedMetaClass.equals( 
-										_context.OBJECT ) ) ||
-										( toUserDefinedMetaClass.equals( 
-												_context.SYSTEM_USAGE ) &&
-												fromUserDefinedMetaClass.equals( 
-														_context.OBJECT ) )){
+	private void createPortsBasedOnPropertyPoliciesFor(
+			IRPLink theLink ){
+		
+		String autoGenPolicy = _context.getAutoGenerationOfPortsForLinksPolicy( 
+				theLink );
 
-			boolean isContinue = false;
+		String autoGenDefaultType = _context.getAutoGenerationOfPortsForLinksDefaultType( 
+				theLink );
 
-			String autoGenPolicy = _context.getAutoGenerationOfProxyPortsForLinksPolicy( 
-					_context.get_rhpPrj() );
+		if( autoGenPolicy.equals( "Always" ) ){
 
-			if( autoGenPolicy.equals( "Always" ) ){
+			createPortsFor( theLink, autoGenDefaultType );
 
-				isContinue = true;
+		} else if( autoGenPolicy.equals( "UserDialog" ) ){
 
-			} else if( autoGenPolicy.equals( "UserDialog" ) ){
+			String[] options = {"No","StandardPorts","ProxyPorts","RapidPorts"};
 
-				isContinue = UserInterfaceHelper.askAQuestion(
-						"You have drawn a connector from " + fromUserDefinedMetaClass + 
-						" => " + toUserDefinedMetaClass + ".\n"+
-						"Do you want to automatically create proxy ports?");
-			}
+			String selectedPortType = (String) JOptionPane.showInputDialog(
+					null,
+					"You have drawn a  connector from " + theLink.getFrom().getUserDefinedMetaClass() + 
+					" => " + theLink.getTo().getUserDefinedMetaClass() + ".\n"+
+					"Do you want to automatically create ports?",
+					"Input",
+					JOptionPane.QUESTION_MESSAGE,
+					null,
+					options,
+					autoGenDefaultType );
 
-			if( isContinue ){
-				autoCreateProxyPortsFor( theLink );
+			createPortsFor( theLink, selectedPortType );
+		}
+	}
+
+	private void createPortsFor(IRPLink theLink, String selectedPortType) {
+		if( selectedPortType.equals( "No" ) ){
+			// do nothing
+		} else if( selectedPortType.equals( "ProxyPorts" ) ){
+			autoCreateProxyPortsFor( theLink );
+		} else if( selectedPortType.equals( "StandardPorts" ) ){
+			autoCreateStandardPortsAndInterfacesFor( theLink );
+		} else if( selectedPortType.equals( "RapidPorts" ) ){
+			autoCreateRapidPortsFor( theLink );
+		} else {
+			_context.warning( "Ignoring request as " + selectedPortType + 
+					" is not supported" );
+		}
+	}
+
+	private void autoCreateStandardPortsAndInterfacesFor(
+			IRPLink theLink ){
+
+		IRPGraphEdge theGraphEdge = getCorrespondingGraphEdgeFor( theLink );
+
+		if( theGraphEdge != null ){
+
+			IRPDiagram theDiagram = theGraphEdge.getDiagram();
+
+			IRPModelElement fromClassifierEl = theLink.getFrom().getOtherClass();
+			IRPModelElement toClassifierEl = theLink.getTo().getOtherClass();
+
+			_context.debug( "theLink.getFrom() = " + _context.elInfo( theLink.getFrom() ) );
+
+			if( fromClassifierEl instanceof IRPClassifier && 
+					toClassifierEl instanceof IRPClassifier ){
+
+				_context.debug( "fromClassifierEl = " + _context.elInfo( fromClassifierEl ) );
+				_context.debug( "toClassifierEl = " + _context.elInfo( toClassifierEl ) );
+
+				String toClassifierName = _context.capitalize( toClassifierEl.getName().replace( " ", "" ) );
+				String fromClassifierName = _context.capitalize( fromClassifierEl.getName().replace( " ", "" ) );
+
+				String fromPortName = _context.determineUniqueNameBasedOn( 
+						"p" + toClassifierName, 
+						"Port", 
+						fromClassifierEl );
+
+				String toPortName = _context.determineUniqueNameBasedOn( 
+						"p" + fromClassifierName, 
+						"Port", 
+						toClassifierEl );
+
+				GraphEdgeInfo theGraphEdgeInfo = new GraphEdgeInfo( theGraphEdge, _context ); 
+
+				IRPPackage theOwningPkg = _context.getOwningPackageFor( theDiagram );
+
+				String fromInterfaceName =
+						_context.determineUniqueNameBasedOn( 
+								"I" + fromClassifierName, 
+								"Class", 
+								theOwningPkg );
+
+				IRPClass fromInterface = theOwningPkg.addClass( fromInterfaceName );
+				fromInterface.changeTo( "Interface" );
+
+				IRPPort fromPort = (IRPPort) fromClassifierEl.addNewAggr( "Port", fromPortName );
+				_context.debug( "Created fromPort as " + _context.elInfo( fromPort ) );
+
+
+
+				String toInterfaceName =
+						_context.determineUniqueNameBasedOn( 
+								"I" + toClassifierName, 
+								"Class", 
+								theOwningPkg );
+
+				IRPClass toInterface = theOwningPkg.addClass( toInterfaceName );
+				toInterface.changeTo( "Interface" );
+				
+				IRPPort toPort = (IRPPort) toClassifierEl.addNewAggr( "Port", toPortName );		
+				_context.debug( "Created toPort as " + _context.elInfo( toPort ) );
+				
+				fromPort.addProvidedInterface( fromInterface );
+				fromPort.addRequiredInterface( toInterface );
+
+				toPort.addProvidedInterface( toInterface );
+				toPort.addRequiredInterface( fromInterface );
+				
+				IRPGraphNode fromPortNode = addGraphNodeFor( 
+						fromPort, theDiagram, theGraphEdgeInfo.getStartX(), theGraphEdgeInfo.getStartY() );
+				
+				IRPGraphNode toPortNode = 
+						addGraphNodeFor( toPort, theDiagram, theGraphEdgeInfo.getEndX(), theGraphEdgeInfo.getEndY() );					
+
+				IRPLink newLink = theLink.getFrom().addLinkToElement( theLink.getTo(), null, fromPort, toPort );
+				_context.debug( "Created " + _context.elInfo( newLink ) );
+
+				theDiagram.addNewEdgeForElement( 
+						newLink, 
+						fromPortNode, 
+						theGraphEdgeInfo.getStartX(), 
+						theGraphEdgeInfo.getStartY(), 
+						toPortNode, 
+						theGraphEdgeInfo.getEndX(), 
+						theGraphEdgeInfo.getEndY() );
+
+				theLink.deleteFromProject();
 			}
 		}
 	}
@@ -799,6 +954,69 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		}
 	}
 
+	private void autoCreateRapidPortsFor(
+			IRPLink theLink ){
+
+		IRPGraphEdge theGraphEdge = getCorrespondingGraphEdgeFor( theLink );
+
+		if( theGraphEdge != null ){
+
+			IRPDiagram theDiagram = theGraphEdge.getDiagram();
+
+			IRPModelElement fromClassifierEl = theLink.getFrom().getOtherClass();
+			IRPModelElement toClassifierEl = theLink.getTo().getOtherClass();
+
+			_context.debug( "theLink.getFrom() = " + _context.elInfo( theLink.getFrom() ) );
+
+			if( fromClassifierEl instanceof IRPClassifier && 
+					toClassifierEl instanceof IRPClassifier ){
+
+				_context.debug( "fromClassifierEl = " + _context.elInfo( fromClassifierEl ) );
+				_context.debug( "toClassifierEl = " + _context.elInfo( toClassifierEl ) );
+
+				String toClassifierName = _context.capitalize( toClassifierEl.getName().replace( " ", "" ) );
+				String fromClassifierName = _context.capitalize( fromClassifierEl.getName().replace( " ", "" ) );
+
+				String fromPortName = _context.determineUniqueNameBasedOn( 
+						"p" + toClassifierName, 
+						"Port", 
+						fromClassifierEl );
+
+				String toPortName = _context.determineUniqueNameBasedOn( 
+						"p" + fromClassifierName, 
+						"Port", 
+						toClassifierEl );
+
+				GraphEdgeInfo theGraphEdgeInfo = new GraphEdgeInfo( theGraphEdge, _context ); 
+
+				IRPPort fromPort = (IRPPort) fromClassifierEl.addNewAggr( "Port", fromPortName );
+				_context.debug( "Created fromPort as " + _context.elInfo( fromPort ) );
+
+				IRPGraphNode fromPortNode = addGraphNodeFor( 
+						fromPort, theDiagram, theGraphEdgeInfo.getStartX(), theGraphEdgeInfo.getStartY() );
+
+				IRPPort toPort = (IRPPort) toClassifierEl.addNewAggr( "Port", toPortName );		
+				_context.debug( "Created toPort as " + _context.elInfo( toPort ) );
+
+				IRPGraphNode toPortNode = 
+						addGraphNodeFor( toPort, theDiagram, theGraphEdgeInfo.getEndX(), theGraphEdgeInfo.getEndY() );					
+
+				IRPLink newLink = theLink.getFrom().addLinkToElement( theLink.getTo(), null, fromPort, toPort );
+				_context.debug( "Created " + _context.elInfo( newLink ) );
+
+				theDiagram.addNewEdgeForElement( 
+						newLink, 
+						fromPortNode, 
+						theGraphEdgeInfo.getStartX(), 
+						theGraphEdgeInfo.getStartY(), 
+						toPortNode, 
+						theGraphEdgeInfo.getEndX(), 
+						theGraphEdgeInfo.getEndY() );
+
+				theLink.deleteFromProject();
+			}
+		}
+	}
 	private IRPGraphNode addGraphNodeFor(
 			IRPModelElement thePortEl,
 			IRPDiagram toDiagram,
@@ -842,7 +1060,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 		try {	
 			if( _context.getIsDoubleClickFunctionalityEnabled() ){
-				
+
 				List<IRPModelElement> optionsList = null;
 
 				if( pModelElement instanceof IRPCallOperation ){
