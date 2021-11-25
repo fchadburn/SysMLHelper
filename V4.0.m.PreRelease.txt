@@ -577,6 +577,7 @@ V4.0.m.Rhp831.PreRelease (XX-XXX-XXXX):
 #404 20-NOV-2021: ExecutableMBSE: Add Browse Traceability menu to the Browse Hierarchy menu as per Rhapsody Tip #87 - Custom browsers (F.J.Chadburn)
 #405 24-NOV-2021: SysMLHelper: Remove profile version check from the plugin start-up
 #406 25-NOV-2021: ExecutableMBSE: Quickly create ports between actors and blocks by drawing link between them on an IBD (F.J.Chadburn)
+#407 25-NOV-2021: ExecutableMBSE: Change BleedForegroundColor property back to red as the default for showing that actions have been worked on (F.J.Chadburn)
 
 Backlog/Known issues
 
@@ -589,7 +590,6 @@ Backlog/Known issues
 - Have a way to check naming conventions for attributes 
 - Have a button to auto-update event name after setting the attribute
 - Right-click of requirmeent in browser did not work when creating an event
-- Color bleed is green not red
 - Get SysMLHelper working enough to do lab
 - Default query for filtering out requirements
 - Better Wizard for building up a white-box model
