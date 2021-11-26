@@ -1,5 +1,5 @@
 [Helpers]
-numberOfElements=78
+numberOfElements=73
 
 #REM: Definition of the plug-in
 name1=InvokeExecutableMBSEHelper
@@ -109,7 +109,7 @@ isVisible11=1
 DLLServerCompatible11=1
 
 #REM: Add pop-up menu 
-name12=MBSE Method: General Utilities\Quick hyperlink
+name12=MBSE Method: Other\Quick hyperlink
 isPluginCommand12=1
 command12=InvokeExecutableMBSEHelper
 applicableTo12=State,Block,Instance,UseCase
@@ -125,7 +125,7 @@ isVisible15=1
 DLLServerCompatible15=1
 
 #REM: Add pop-up menu 
-name16=MBSE Method: General Utilities\Add a relative reference to an external unit (.sbs)
+name16=MBSE Method: Other\Add a relative reference to an external unit (.sbs)
 isPluginCommand16=1
 command16=InvokeExecutableMBSEHelper
 applicableTo16=Project,SysML,Package
@@ -133,7 +133,7 @@ isVisible16=1
 DLLServerCompatible16=1
 
 #REM: Add pop-up menu 
-name17=MBSE Method: General Utilities\Select Depends On element(s)\All
+name17=MBSE Method: Other\Select Depends On element(s)\All
 isPluginCommand17=1
 command17=InvokeExecutableMBSEHelper
 applicableTo17=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint
@@ -141,7 +141,7 @@ isVisible17=1
 DLLServerCompatible17=1
 
 #REM: Add pop-up menu 
-name18=MBSE Method: General Utilities\Select Dependent element(s)\All
+name18=MBSE Method: Other\Select Dependent element(s)\All
 isPluginCommand18=1
 command18=InvokeExecutableMBSEHelper
 applicableTo18=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint
@@ -149,7 +149,7 @@ isVisible18=1
 DLLServerCompatible18=1
 
 #REM: Add pop-up menu 
-name19=MBSE Method: General Utilities\Select Depends On element(s)\Derives
+name19=MBSE Method: Other\Select Depends On element(s)\Derives
 isPluginCommand19=1
 command19=InvokeExecutableMBSEHelper
 applicableTo19=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint
@@ -157,7 +157,7 @@ isVisible19=1
 DLLServerCompatible19=1
 
 #REM: Add pop-up menu 
-name20=MBSE Method: General Utilities\Select Depends On element(s)\Satisfies
+name20=MBSE Method: Other\Select Depends On element(s)\Satisfies
 isPluginCommand20=1
 command20=InvokeExecutableMBSEHelper
 applicableTo20=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint
@@ -165,7 +165,7 @@ isVisible20=1
 DLLServerCompatible20=1
 
 #REM: Add pop-up menu 
-name21=MBSE Method: General Utilities\Select Depends On element(s)\Verifies
+name21=MBSE Method: Other\Select Depends On element(s)\Verifies
 isPluginCommand21=1
 command21=InvokeExecutableMBSEHelper
 applicableTo21=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint
@@ -173,7 +173,7 @@ isVisible21=1
 DLLServerCompatible21=1
 
 #REM: Add pop-up menu 
-name22=MBSE Method: General Utilities\Select Depends On element(s)\Refines
+name22=MBSE Method: Other\Select Depends On element(s)\Refines
 isPluginCommand22=1
 command22=InvokeExecutableMBSEHelper
 applicableTo22=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint
@@ -181,7 +181,7 @@ isVisible22=1
 DLLServerCompatible22=1
 
 #REM: Add pop-up menu 
-name23=MBSE Method: General Utilities\Select Depends On element(s)\Derive Requirement
+name23=MBSE Method: Other\Select Depends On element(s)\Derive Requirement
 isPluginCommand23=1
 command23=InvokeExecutableMBSEHelper
 applicableTo23=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint
@@ -189,7 +189,7 @@ isVisible23=1
 DLLServerCompatible23=1
 
 #REM: Add pop-up menu 
-name24=MBSE Method: General Utilities\Select Dependent element(s)\All
+name24=MBSE Method: Other\Select Dependent element(s)\All
 isPluginCommand24=1
 command24=InvokeExecutableMBSEHelper
 applicableTo24=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint
@@ -197,7 +197,7 @@ isVisible24=1
 DLLServerCompatible24=1
 
 #REM: Add pop-up menu 
-name25=MBSE Method: General Utilities\Select Dependent element(s)\Derives
+name25=MBSE Method: Other\Select Dependent element(s)\Derives
 isPluginCommand25=1
 command25=InvokeExecutableMBSEHelper
 applicableTo25=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint
@@ -205,7 +205,7 @@ isVisible25=1
 DLLServerCompatible25=1
 
 #REM: Add pop-up menu 
-name26=MBSE Method: General Utilities\Select Dependent element(s)\Satisfies
+name26=MBSE Method: Other\Select Dependent element(s)\Satisfies
 isPluginCommand26=1
 command26=InvokeExecutableMBSEHelper
 applicableTo26=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint
@@ -213,7 +213,7 @@ isVisible26=1
 DLLServerCompatible26=1
 
 #REM: Add pop-up menu 
-name27=MBSE Method: General Utilities\Select Dependent element(s)\Verifies
+name27=MBSE Method: Other\Select Dependent element(s)\Verifies
 isPluginCommand27=1
 command27=InvokeExecutableMBSEHelper
 applicableTo27=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint
@@ -221,7 +221,7 @@ isVisible27=1
 DLLServerCompatible27=1
 
 #REM: Add pop-up menu 
-name28=MBSE Method: General Utilities\Select Dependent element(s)\Refines
+name28=MBSE Method: Other\Select Dependent element(s)\Refines
 isPluginCommand28=1
 command28=InvokeExecutableMBSEHelper
 applicableTo28=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint
@@ -229,7 +229,7 @@ isVisible28=1
 DLLServerCompatible28=1
 
 #REM: Add pop-up menu 
-name29=MBSE Method: General Utilities\Select Dependent element(s)\Derive Requirement
+name29=MBSE Method: Other\Select Dependent element(s)\Derive Requirement
 isPluginCommand29=1
 command29=InvokeExecutableMBSEHelper
 applicableTo29=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint
@@ -251,7 +251,7 @@ isVisible31=1
 helperTriggers31=
 
 #REM: Add pop-up menu
-name32=MBSE Method: Setup project properties
+name32=MBSE Method: Other\Setup project properties
 isPluginCommand32=1
 command32=InvokeExecutableMBSEHelper
 applicableTo32=Project,SysML
@@ -371,119 +371,119 @@ isVisible48=1
 DLLServerCompatible48=1
 
 #REM: Add pop-up menu
-name49=MBSE Method: Functional Analysis\Populate functional block package hierarchy\Full Sim
+name49=MBSE Method: Functional Analysis\Add new actor to package under development
 isPluginCommand49=1
 command49=InvokeExecutableMBSEHelper
-applicableTo49=Package
+applicableTo49=Package,21 Funct Analysis - Scenarios Package,24 Funct Analysis - Test Package
 isVisible49=1
 DLLServerCompatible49=1
 
 #REM: Add pop-up menu
-name50=MBSE Method: Functional Analysis\Populate functional block package hierarchy\Simple Sim
+name50=MBSE Method: Design Synthesis\Add new block/part to package under development
 isPluginCommand50=1
 command50=InvokeExecutableMBSEHelper
-applicableTo50=Package
+applicableTo50=Package,Block Definition Diagram,Internal Block Diagram,21 Funct Analysis - Scenarios Package,22 Funct Analysis - Design Package
 isVisible50=1
 DLLServerCompatible50=1
 
 #REM: Add pop-up menu
-name51=MBSE Method: Functional Analysis\Populate functional block package hierarchy\No Sim
+name51=MBSE Method: Functional Analysis\Copy activity diagrams to package under development
 isPluginCommand51=1
 command51=InvokeExecutableMBSEHelper
-applicableTo51=Package
+applicableTo51=12 Reqts Analysis - Working Copy Package
 isVisible51=1
 DLLServerCompatible51=1
 
 #REM: Add pop-up menu
-name52=MBSE Method: Functional Analysis\Add new actor to package under development
+name52=MBSE Method: Functional Analysis\Create an incoming event sent by an actor
 isPluginCommand52=1
 command52=InvokeExecutableMBSEHelper
-applicableTo52=Package,21 Funct Analysis - Scenarios Package,24 Funct Analysis - Test Package
+applicableTo52=ActivityDiagram,ObjectModelDiagram,Block Definition Diagram,Internal Block Diagram,Statechart,SequenceDiagram,UseCaseDiagram,Enhanced Use Case Diagram,Requirements Diagram,State,Transition,Comment,AcceptEventAction,SendAction,AcceptTimeEvent,Constraint,Use Case Precondition,Use Case Postcondition,Use Case Description,Precondition,Postcondition,ControlFlow,Requirement,Block,Object,22 Funct Analysis - Design Package
 isVisible52=1
 DLLServerCompatible52=1
 
 #REM: Add pop-up menu
-name53=MBSE Method: Design Synthesis\Add new block/part to package under development
+name53=MBSE Method: Functional Analysis\Create an outgoing event sent to an actor
 isPluginCommand53=1
 command53=InvokeExecutableMBSEHelper
-applicableTo53=Package,Block Definition Diagram,Internal Block Diagram,21 Funct Analysis - Scenarios Package,22 Funct Analysis - Design Package
+applicableTo53=ActivityDiagram,ObjectModelDiagram,Block Definition Diagram,Internal Block Diagram,Statechart,SequenceDiagram,UseCaseDiagram,Enhanced Use Case Diagram,Requirements Diagram,State,Transition,Comment,AcceptEventAction,SendAction,AcceptTimeEvent,Constraint,,Use Case Precondition,Use Case Postcondition,Use Case Description,Precondition,Postcondition,ControlFlow,Requirement,Block,Object,22 Funct Analysis - Design Package
 isVisible53=1
 DLLServerCompatible53=1
 
 #REM: Add pop-up menu
-name54=MBSE Method: Functional Analysis\Copy activity diagrams to package under development
+name54=MBSE Method: Functional Analysis\Create an operation that the system does
 isPluginCommand54=1
 command54=InvokeExecutableMBSEHelper
-applicableTo54=12 Reqts Analysis - Working Copy Package
+applicableTo54=ActivityDiagram,ObjectModelDiagram,Block Definition Diagram,Internal Block Diagram,Statechart,SequenceDiagram,UseCaseDiagram,Enhanced Use Case Diagram,Requirements Diagram,State,Transition,Comment,AcceptEventAction,SendAction,AcceptTimeEvent,Constraint,,Use Case Precondition,Use Case Postcondition,Use Case Description,Precondition,Postcondition,ControlFlow,Requirement,Block,Object,22 Funct Analysis - Design Package
 isVisible54=1
 DLLServerCompatible54=1
 
 #REM: Add pop-up menu
-name55=MBSE Method: Functional Analysis\Create an incoming event sent by an actor
+name55=MBSE Method: Functional Analysis\Create an attribute/flow-port/check operation
 isPluginCommand55=1
 command55=InvokeExecutableMBSEHelper
-applicableTo55=ActivityDiagram,ObjectModelDiagram,Block Definition Diagram,Internal Block Diagram,Statechart,SequenceDiagram,UseCaseDiagram,Enhanced Use Case Diagram,Requirements Diagram,State,Transition,Comment,AcceptEventAction,SendAction,AcceptTimeEvent,Constraint,Use Case Precondition,Use Case Postcondition,Use Case Description,Precondition,Postcondition,ControlFlow,Requirement,Block,Object,22 Funct Analysis - Design Package
+applicableTo55=ActivityDiagram,ObjectModelDiagram,Block Definition Diagram,Internal Block Diagram,Statechart,SequenceDiagram,UseCaseDiagram,Enhanced Use Case Diagram,Requirements Diagram,State,Transition,Comment,AcceptEventAction,SendAction,AcceptTimeEvent,Constraint,,Use Case Precondition,Use Case Postcondition,Use Case Description,Precondition,Postcondition,ControlFlow,Requirement,Block,Object,22 Funct Analysis - Design Package
 isVisible55=1
 DLLServerCompatible55=1
 
 #REM: Add pop-up menu
-name56=MBSE Method: Functional Analysis\Create an outgoing event sent to an actor
+name56=MBSE Method: Functional Analysis\Derive downstream requirement
 isPluginCommand56=1
 command56=InvokeExecutableMBSEHelper
-applicableTo56=ActivityDiagram,ObjectModelDiagram,Block Definition Diagram,Internal Block Diagram,Statechart,SequenceDiagram,UseCaseDiagram,Enhanced Use Case Diagram,Requirements Diagram,State,Transition,Comment,AcceptEventAction,SendAction,AcceptTimeEvent,Constraint,,Use Case Precondition,Use Case Postcondition,Use Case Description,Precondition,Postcondition,ControlFlow,Requirement,Block,Object,22 Funct Analysis - Design Package
+applicableTo56=Requirement,CallOperation,AcceptEventAction,State,Operation,Event,Attribute,ValueProperty
 isVisible56=1
 DLLServerCompatible56=1
 
 #REM: Add pop-up menu
-name57=MBSE Method: Functional Analysis\Create an operation that the system does
+name57=MBSE Method: Functional Analysis\Create new TestCase for «TestDriver»
 isPluginCommand57=1
 command57=InvokeExecutableMBSEHelper
-applicableTo57=ActivityDiagram,ObjectModelDiagram,Block Definition Diagram,Internal Block Diagram,Statechart,SequenceDiagram,UseCaseDiagram,Enhanced Use Case Diagram,Requirements Diagram,State,Transition,Comment,AcceptEventAction,SendAction,AcceptTimeEvent,Constraint,,Use Case Precondition,Use Case Postcondition,Use Case Description,Precondition,Postcondition,ControlFlow,Requirement,Block,Object,22 Funct Analysis - Design Package
+applicableTo57=Block,SequenceDiagram
 isVisible57=1
 DLLServerCompatible57=1
 
 #REM: Add pop-up menu
-name58=MBSE Method: Functional Analysis\Create an attribute/flow-port/check operation
+name58=MBSE Method: Delete Event and related elements from Model
 isPluginCommand58=1
 command58=InvokeExecutableMBSEHelper
-applicableTo58=ActivityDiagram,ObjectModelDiagram,Block Definition Diagram,Internal Block Diagram,Statechart,SequenceDiagram,UseCaseDiagram,Enhanced Use Case Diagram,Requirements Diagram,State,Transition,Comment,AcceptEventAction,SendAction,AcceptTimeEvent,Constraint,,Use Case Precondition,Use Case Postcondition,Use Case Description,Precondition,Postcondition,ControlFlow,Requirement,Block,Object,22 Funct Analysis - Design Package
+applicableTo58=Event,Reception
 isVisible58=1
 DLLServerCompatible58=1
 
 #REM: Add pop-up menu
-name59=MBSE Method: Functional Analysis\Derive downstream requirement
+name59=MBSE Method: Functional Analysis\Switch menus to «MoreDetailedAD»
 isPluginCommand59=1
 command59=InvokeExecutableMBSEHelper
-applicableTo59=Requirement,CallOperation,AcceptEventAction,State,Operation,Event,Attribute,ValueProperty
-isVisible59=1
+applicableTo59=ActivityDiagram
+isVisible59=0
 DLLServerCompatible59=1
 
 #REM: Add pop-up menu
-name60=MBSE Method: Functional Analysis\Create new TestCase for «TestDriver»
+name60=MBSE Method: Functional Analysis\Update attribute and/or check operation owned by the system
 isPluginCommand60=1
 command60=InvokeExecutableMBSEHelper
-applicableTo60=Block,SequenceDiagram
+applicableTo60=Attribute,ValueProperty
 isVisible60=1
 DLLServerCompatible60=1
 
 #REM: Add pop-up menu
-name61=MBSE Method: Delete Event and related elements from Model
+nam61=MBSE Method: Functional Analysis\Create an incoming event sent by an actor to change this attribute
 isPluginCommand61=1
 command61=InvokeExecutableMBSEHelper
-applicableTo61=Event,Reception
+applicableTo61=Attribute,ValueProperty
 isVisible61=1
 DLLServerCompatible61=1
 
 #REM: Add pop-up menu
-name62=MBSE Method: Functional Analysis\Switch menus to «MoreDetailedAD»
+name62=MBSE Method: Functional Analysis\Re-create «AutoShow» sequence diagram
 isPluginCommand62=1
 command62=InvokeExecutableMBSEHelper
-applicableTo62=ActivityDiagram
-isVisible62=0
+applicableTo62=SequenceDiagram
+isVisible62=1
 DLLServerCompatible62=1
 
 #REM: Add pop-up menu
-name63=MBSE Method: Functional Analysis\Update attribute and/or check operation owned by the system
+name63=MBSE Method: Design Synthesis\Make attribute a «publish» flowport
 isPluginCommand63=1
 command63=InvokeExecutableMBSEHelper
 applicableTo63=Attribute,ValueProperty
@@ -491,7 +491,7 @@ isVisible63=1
 DLLServerCompatible63=1
 
 #REM: Add pop-up menu
-nam64=MBSE Method: Functional Analysis\Create an incoming event sent by an actor to change this attribute
+name64=MBSE Method: Design Synthesis\Make attribute a «subscribe» flowport
 isPluginCommand64=1
 command64=InvokeExecutableMBSEHelper
 applicableTo64=Attribute,ValueProperty
@@ -499,115 +499,75 @@ isVisible64=1
 DLLServerCompatible64=1
 
 #REM: Add pop-up menu
-name65=MBSE Method: Functional Analysis\Switch menus to Full Sim
+name65=MBSE Method: Design Synthesis\Delete attribute and related elements
 isPluginCommand65=1
 command65=InvokeExecutableMBSEHelper
-applicableTo65=Project,SysML
-isVisible65=0
+applicableTo65=Attribute,ValueProperty,FlowPort
+isVisible65=1
 DLLServerCompatible65=1
 
 #REM: Add pop-up menu
-name66=MBSE Method: Functional Analysis\Switch menus to Simple Sim
+name66=MBSE Method: Requirements Analysis\Export requirements to csv for import into DOORS NG
 isPluginCommand66=1
 command66=InvokeExecutableMBSEHelper
-applicableTo66=Project,SysML
-isVisible66=0
+applicableTo66=13 Reqts Analysis - Requirement Package,Package
+isVisible66=1
 DLLServerCompatible66=1
 
 #REM: Add pop-up menu
-name67=MBSE Method: Functional Analysis\Re-create «AutoShow» sequence diagram
+name67=MBSE Method: Requirements Analysis\Switch requirements to DOORS NG
 isPluginCommand67=1
 command67=InvokeExecutableMBSEHelper
-applicableTo67=SequenceDiagram
+applicableTo67=13 Reqts Analysis - Requirement Package,Package
 isVisible67=1
 DLLServerCompatible67=1
 
 #REM: Add pop-up menu
-name68=MBSE Method: Design Synthesis\Make attribute a «publish» flowport
+name68=MBSE Method: Other\Populate parts
 isPluginCommand68=1
 command68=InvokeExecutableMBSEHelper
-applicableTo68=Attribute,ValueProperty
+applicableTo68=Object,Class,Internal Block Diagram,Internal Block Diagram - Simple,Internal Block Diagram - Functional,Internal Block Diagram - Software,Subsystem Usage,System Usage
 isVisible68=1
 DLLServerCompatible68=1
 
 #REM: Add pop-up menu
-name69=MBSE Method: Design Synthesis\Make attribute a «subscribe» flowport
+name69=MBSE Method: Requirements Analysis\Create a Context Diagram Package structure
 isPluginCommand69=1
 command69=InvokeExecutableMBSEHelper
-applicableTo69=Attribute,ValueProperty
+applicableTo69=Project,SysML
 isVisible69=1
 DLLServerCompatible69=1
 
 #REM: Add pop-up menu
-name70=MBSE Method: Design Synthesis\Delete attribute and related elements
+name70=MBSE Method: Design Synthesis\Update Ports and Interfaces
 isPluginCommand70=1
 command70=InvokeExecutableMBSEHelper
-applicableTo70=Attribute,ValueProperty,FlowPort
+applicableTo70=SequenceDiagram,Message
 isVisible70=1
 DLLServerCompatible70=1
 
 #REM: Add pop-up menu
-name71=MBSE Method: Requirements Analysis\Export requirements to csv for import into DOORS NG
+name71=MBSE Method: Design Synthesis\Generate Sequence Diagram
 isPluginCommand71=1
 command71=InvokeExecutableMBSEHelper
-applicableTo71=13 Reqts Analysis - Requirement Package,Package
+applicableTo71=Block,System Block,Domain Block
 isVisible71=1
 DLLServerCompatible71=1
 
-#REM: Add pop-up menu
-name72=MBSE Method: Requirements Analysis\Switch requirements to DOORS NG
-isPluginCommand72=1
-command72=InvokeExecutableMBSEHelper
-applicableTo72=13 Reqts Analysis - Requirement Package,Package
-isVisible72=1
-DLLServerCompatible72=1
-
-#REM: Add pop-up menu
-name73=MBSE Method: General Utilities\Populate parts
-isPluginCommand73=1
-command73=InvokeExecutableMBSEHelper
-applicableTo73=Object,Class,Internal Block Diagram,Internal Block Diagram - Simple,Internal Block Diagram - Functional,Internal Block Diagram - Software,Subsystem Usage,System Usage
-isVisible73=1
-DLLServerCompatible73=1
-
-#REM: Add pop-up menu
-name74=MBSE Method: Requirements Analysis\Create a Context Diagram Package structure
-isPluginCommand74=1
-command74=InvokeExecutableMBSEHelper
-applicableTo74=Project,SysML
-isVisible74=1
-DLLServerCompatible74=1
-
-#REM: Add pop-up menu
-name75=MBSE Method: Design Synthesis\Update Ports and Interfaces
-isPluginCommand75=1
-command75=InvokeExecutableMBSEHelper
-applicableTo75=SequenceDiagram,Message
-isVisible75=1
-DLLServerCompatible75=1
-
-#REM: Add pop-up menu
-name76=MBSE Method: Design Synthesis\Generate Sequence Diagram
-isPluginCommand76=1
-command76=InvokeExecutableMBSEHelper
-applicableTo76=Block,System Block,Domain Block
-isVisible76=1
-DLLServerCompatible76=1
-
 #REM: Add SDCleaner plugin from Harmony profile
-name77=SDCleaner
-JavaMainClass77=com.ibm.rhapsody.setoolkit.SDCleaner_Launcher
-JavaClassPath77=$OMROOT/Profiles/HarmonySE/SE Toolkit/SDCleaner.jar
-isPlugin77=1
-helperTriggers77=
+name72=SDCleaner
+JavaMainClass72=com.ibm.rhapsody.setoolkit.SDCleaner_Launcher
+JavaClassPath72=$OMROOT/Profiles/HarmonySE/SE Toolkit/SDCleaner.jar
+isPlugin72=1
+helperTriggers72=
 
 #REM: Add pop-up menu
-name78=SE-Toolkit\Straighten Messages
-isPluginCommand78=1
-command78=SDCleaner
-applicableTo78=SequenceDiagram
-isVisible78=1
-helperTriggers78=
+name73=SE-Toolkit\Straighten Messages
+isPluginCommand73=1
+command73=SDCleaner
+applicableTo73=SequenceDiagram
+isVisible73=1
+helperTriggers73=
 
 #REM Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
 #REM

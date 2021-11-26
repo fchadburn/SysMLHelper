@@ -578,10 +578,14 @@ V4.0.m.Rhp831.PreRelease (XX-XXX-XXXX):
 #405 24-NOV-2021: SysMLHelper: Remove profile version check from the plugin start-up
 #406 25-NOV-2021: ExecutableMBSE: Quickly create ports between actors and blocks by drawing link between them on an IBD (F.J.Chadburn)
 #407 25-NOV-2021: ExecutableMBSE: Change BleedForegroundColor property back to red as the default for showing that actions have been worked on (F.J.Chadburn)
+#408 26-NOV-2021: ExecutableMBSE: Clean redundant SysMLHelper commands from the hep file and rename General Utilities subcategory to Other (F.J.Chadburn)
+#409 26-NOV-2021: ExecutableMBSE: Move the setup project properties into the MBSE Method: Other submenu structure to make menus cleaner (F.J.Chadburn) 
 
 Backlog/Known issues
 
+- Add warning message if you right-click SD to generate a sequence diagram and it has no child parts
 - Improve traceability browser to have the relationship names in the tree, e.g., satisfy vs derive
+- Some menus no longer need to work for packages, rather should only work for new terms
 - Move all executable mbse icons into nested icon package
 - Hide the software package stuff
 - Review options on changing menus or merging in as it looks too complex
