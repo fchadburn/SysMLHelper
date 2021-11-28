@@ -8,11 +8,14 @@ import java.util.Set;
 import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.mbsetraining.sysmlhelper.common.RequirementMover;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.telelogic.rhapsody.core.IRPActivityDiagram;
 import com.telelogic.rhapsody.core.IRPActor;
 import com.telelogic.rhapsody.core.IRPAttribute;
 import com.telelogic.rhapsody.core.IRPClass;
 import com.telelogic.rhapsody.core.IRPClassifier;
 import com.telelogic.rhapsody.core.IRPDependency;
+import com.telelogic.rhapsody.core.IRPDiagram;
+import com.telelogic.rhapsody.core.IRPGraphElement;
 import com.telelogic.rhapsody.core.IRPInstance;
 import com.telelogic.rhapsody.core.IRPLink;
 import com.telelogic.rhapsody.core.IRPModelElement;
@@ -1331,6 +1334,67 @@ public class ExecutableMBSE_Context extends BaseContext {
 		}
 		
 		return isOwnedUnderHierarchy;
+	}
+	
+	public void bleedColorToElementsRelatedTo(
+			List<IRPRequirement> theSelectedReqts ){
+
+		IRPGraphElement theSelectedGraphEl = get_selectedContext().getSelectedGraphEl();
+
+		// only bleed on activity diagrams		
+		if( theSelectedGraphEl != null &&
+				theSelectedGraphEl.getDiagram() instanceof IRPActivityDiagram ){
+
+			for( IRPGraphElement theGraphEl : get_selectedContext().get_selectedGraphEls() ) {
+				
+				bleedColorToElementsRelatedTo( theGraphEl, theSelectedReqts );
+			}
+		}
+	}
+	
+	private void bleedColorToElementsRelatedTo(
+			IRPGraphElement theGraphEl,
+			List<IRPRequirement> theSelectedReqts ){
+
+		String theForegroundColor = getBleedForegroundColor();
+		IRPDiagram theDiagram = theGraphEl.getDiagram();
+		IRPModelElement theEl = theGraphEl.getModelObject();
+
+		if( theEl != null ){
+
+			//_context.debug("Setting color to red for " + theEl.getName());
+			theGraphEl.setGraphicalProperty( "ForegroundColor", theForegroundColor );
+
+			@SuppressWarnings("unchecked")
+			List<IRPDependency> theExistingDeps = theEl.getDependencies().toList();
+
+			for (IRPDependency theDependency : theExistingDeps) {
+
+				IRPModelElement theDependsOn = theDependency.getDependsOn();
+
+				if (theDependsOn != null && 
+						theDependsOn instanceof IRPRequirement && 
+						theSelectedReqts.contains( theDependsOn )){	
+
+					bleedColorToGraphElsRelatedTo( theDependsOn, theForegroundColor, theDiagram );
+					bleedColorToGraphElsRelatedTo( theDependency, theForegroundColor, theDiagram );
+				}
+			}
+		}
+	}
+
+	public void bleedColorToGraphElsRelatedTo(
+			IRPModelElement theEl, 
+			String theForegroundColor, 
+			IRPDiagram onDiagram ){
+
+		@SuppressWarnings("unchecked")
+		List<IRPGraphElement> theGraphElsRelatedToElement = 
+		onDiagram.getCorrespondingGraphicElements( theEl ).toList();
+
+		for (IRPGraphElement theGraphEl : theGraphElsRelatedToElement) {
+			theGraphEl.setGraphicalProperty( "ForegroundColor", theForegroundColor );
+		}
 	}
 }
 

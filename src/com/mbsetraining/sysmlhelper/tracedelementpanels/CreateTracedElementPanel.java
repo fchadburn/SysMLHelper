@@ -321,82 +321,15 @@ public abstract class CreateTracedElementPanel extends JPanel {
 						theDependsOn instanceof IRPRequirement && 
 						theSelectedReqts.contains( theDependsOn )){	
 						
-						bleedColorToGraphElsRelatedTo( theDependsOn, theForegroundColor, theDiagram );
-						bleedColorToGraphElsRelatedTo( theDependency, theForegroundColor, theDiagram );
+						_context.bleedColorToGraphElsRelatedTo( theDependsOn, theForegroundColor, theDiagram );
+						_context.bleedColorToGraphElsRelatedTo( theDependency, theForegroundColor, theDiagram );
 					}
 				}
 			}
 		}
 	}
 	
-	public void bleedColorToElementsRelatedTo(
-			List<IRPRequirement> theSelectedReqts ){
 
-		IRPGraphElement theSelectedGraphEl = _context.get_selectedContext().getSelectedGraphEl();
-
-		// only bleed on activity diagrams		
-		if( theSelectedGraphEl != null &&
-				theSelectedGraphEl.getDiagram() instanceof IRPActivityDiagram ){
-
-			for( IRPGraphElement theGraphEl : _context.get_selectedContext().get_selectedGraphEls() ) {
-				
-				bleedColorToElementsRelatedTo( theGraphEl, theSelectedReqts );
-			}
-		}
-	}
-	
-	public void bleedColorToElementsRelatedTo(
-			IRPGraphElement theGraphEl,
-			List<IRPRequirement> theSelectedReqts ){
-
-		String theForegroundColor = _context.getBleedForegroundColor();
-		IRPDiagram theDiagram = theGraphEl.getDiagram();
-		IRPModelElement theEl = theGraphEl.getModelObject();
-
-		if( theEl != null ){
-
-			//_context.debug("Setting color to red for " + theEl.getName());
-			theGraphEl.setGraphicalProperty( "ForegroundColor", theForegroundColor );
-
-			@SuppressWarnings("unchecked")
-			List<IRPDependency> theExistingDeps = theEl.getDependencies().toList();
-
-			for (IRPDependency theDependency : theExistingDeps) {
-
-				IRPModelElement theDependsOn = theDependency.getDependsOn();
-
-				if (theDependsOn != null && 
-						theDependsOn instanceof IRPRequirement && 
-						theSelectedReqts.contains( theDependsOn )){	
-
-					bleedColorToGraphElsRelatedTo( theDependsOn, theForegroundColor, theDiagram );
-					bleedColorToGraphElsRelatedTo( theDependency, theForegroundColor, theDiagram );
-				}
-			}
-		}
-	}
-
-	public void bleedColorToGraphElsRelatedTo(
-			IRPModelElement theEl, 
-			String theForegroundColor, 
-			IRPDiagram onDiagram ){
-
-		@SuppressWarnings("unchecked")
-		List<IRPGraphElement> theGraphElsRelatedToElement = 
-		onDiagram.getCorrespondingGraphicElements( theEl ).toList();
-
-		for (IRPGraphElement irpGraphElement : theGraphElsRelatedToElement) {
-
-			irpGraphElement.setGraphicalProperty( "ForegroundColor", theForegroundColor );
-
-			/*
-			IRPModelElement theModelObject = irpGraphElement.getModelObject();
-
-			if( theModelObject != null ){
-				_context.debug("Setting color to " + theForegroundColor + " for " + theModelObject.getName());
-			}*/
-		}
-	}
 	
 	protected void addTraceabilityDependenciesTo(
 			IRPModelElement theElement, 

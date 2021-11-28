@@ -581,10 +581,10 @@ V4.0.m.Rhp831.PreRelease (XX-XXX-XXXX):
 #408 26-NOV-2021: ExecutableMBSE: Clean redundant SysMLHelper commands from the hep file and rename General Utilities subcategory to Other (F.J.Chadburn)
 #409 26-NOV-2021: ExecutableMBSE: Move the setup project properties into the MBSE Method: Other submenu structure to make menus cleaner (F.J.Chadburn) 
 #410 28-NOV-2021: ExecutableMBSE: Get attribute publishing wizard to move ch Event into the interfaces package to avoid issues with TC (F.J.Chadburn)
+#411 28-NOV-2021: ExecutableMBSE: Get graph node for requirement to have bleed colour after ending a link (F.J.Chadburn)
 
 Backlog/Known issues
 
-- Get graph node for requirement to have bleed colour after ending a link
 - Add warning message if you right-click SD to generate a sequence diagram and it has no child parts
 - Improve traceability browser to have the relationship names in the tree, e.g., satisfy vs derive
 - Some menus no longer need to work for packages, rather should only work for new terms

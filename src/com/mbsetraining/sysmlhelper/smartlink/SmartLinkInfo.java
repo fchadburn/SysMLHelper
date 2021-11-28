@@ -140,11 +140,11 @@ public class SmartLinkInfo {
 
 						if( theExistingGraphEls.isEmpty() ){
 
-							_context.debug( "Determined graphEdge needed for " + 
-									_context.elInfo( _relationType ) + " from " + 
-									_context.elInfo( theStartGraphEl.getModelObject() ) + " to " + 
-									_context.elInfo( theEndGraphEl.getModelObject() ) + " on " +
-									_context.elInfo( theDiagram ) );
+							//_context.debug( "Determined graphEdge needed for " + 
+							//		_context.elInfo( _relationType ) + " from " + 
+							//		_context.elInfo( theStartGraphEl.getModelObject() ) + " to " + 
+							//		_context.elInfo( theEndGraphEl.getModelObject() ) + " on " +
+							//		_context.elInfo( theDiagram ) );
 
 							isPopulatePossible = true;
 							
@@ -276,6 +276,7 @@ public class SmartLinkInfo {
 						theRelationInfo.getStartElement().getElement(), 
 						theRelationInfo.getEndElement().getElement(), 
 						_relationType );
+				
 			}
 			
 			performPopulateOnDiagram(

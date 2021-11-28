@@ -18,15 +18,14 @@ public class EndlinkPanel extends ExecutableMBSEBasePanel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 6999678549678497401L;
+	private SmartLinkInfo _smartLinkInfo;
+	private JCheckBox _populateOnDiagramCheckBox; 
 
-	private SmartLinkInfo m_SmartLinkInfo;
-	private JCheckBox m_PopulateOnDiagramCheckBox; 
-
-	private List<IRPModelElement> m_StartLinkEls;
-	private List<IRPGraphElement> m_StartLinkGraphEls;
-	private List<IRPModelElement> m_EndLinkEls;
-	private List<IRPGraphElement> m_EndLinkGraphEls;
+	private List<IRPModelElement> _startLinkEls;
+	private List<IRPGraphElement> _startLinkGraphEls;
+	private List<IRPModelElement> _endLinkEls;
+	private List<IRPGraphElement> _endLinkGraphEls;
 	
 	public static void launchThePanel(
 			final String theAppID,
@@ -64,8 +63,8 @@ public class EndlinkPanel extends ExecutableMBSEBasePanel {
 
 		boolean isCyclical = false;
 
-		m_StartLinkEls = new ArrayList<IRPModelElement>();
-		m_StartLinkGraphEls = new ArrayList<IRPGraphElement>();
+		_startLinkEls = new ArrayList<IRPModelElement>();
+		_startLinkGraphEls = new ArrayList<IRPGraphElement>();
 
 		for( String theGUID : theStartLinkGUIDs ){	
 			
@@ -74,18 +73,18 @@ public class EndlinkPanel extends ExecutableMBSEBasePanel {
 			if( theStartLinkEl == null ){
 				_context.error( "Unable to find start link element with GUID " + theGUID );
 			} else {
-				m_StartLinkEls.add( theStartLinkEl );
+				_startLinkEls.add( theStartLinkEl );
 			}
 		}
 		
-		m_EndLinkEls = _context.getSelectedElements();
-		m_EndLinkGraphEls = _context.getSelectedGraphElements();
+		_endLinkEls = _context.getSelectedElements();
+		_endLinkGraphEls = _context.getSelectedGraphElements();
 		
-		for( IRPGraphElement theEndGraphEl : m_EndLinkGraphEls ){
+		for( IRPGraphElement theEndGraphEl : _endLinkGraphEls ){
 			
 			IRPDiagram theDiagram = theEndGraphEl.getDiagram();
 			
-			for( IRPModelElement startLinkEl : m_StartLinkEls ){
+			for( IRPModelElement startLinkEl : _startLinkEls ){
 				
 				@SuppressWarnings("unchecked")
 				List<IRPGraphElement> theGraphEls = 
@@ -93,45 +92,45 @@ public class EndlinkPanel extends ExecutableMBSEBasePanel {
 			
 				for (IRPGraphElement theGraphEl : theGraphEls) {
 					
-					if( !m_StartLinkGraphEls.contains( theGraphEl ) ){
-						m_StartLinkGraphEls.add( theGraphEl );
+					if( !_startLinkGraphEls.contains( theGraphEl ) ){
+						_startLinkGraphEls.add( theGraphEl );
 					}
 				}
 			}
 		}
 		
-		for( IRPModelElement theStartLinkEl : m_StartLinkEls ){
+		for( IRPModelElement theStartLinkEl : _startLinkEls ){
 
-			if( m_EndLinkEls.contains( theStartLinkEl ) ){
+			if( _endLinkEls.contains( theStartLinkEl ) ){
 				isCyclical = true;
 				break;
 			}
 		}
 
-		m_PopulateOnDiagramCheckBox = new JCheckBox( "Populate on diagram?" );
-		m_PopulateOnDiagramCheckBox.setSelected( false );
-		m_PopulateOnDiagramCheckBox.setVisible( false );
+		_populateOnDiagramCheckBox = new JCheckBox( "Populate on diagram?" );
+		_populateOnDiagramCheckBox.setSelected( false );
+		_populateOnDiagramCheckBox.setVisible( false );
 
 		if( isCyclical ){
 
 			add( new JLabel( "Unable to proceed as you've selected cyclical start and end elements" ), BorderLayout.PAGE_START );
 
 		} else {
-			m_SmartLinkInfo = new SmartLinkInfo(
-					m_StartLinkEls, m_StartLinkGraphEls, m_EndLinkEls, m_EndLinkGraphEls, _context );
+			_smartLinkInfo = new SmartLinkInfo(
+					_startLinkEls, _startLinkGraphEls, _endLinkEls, _endLinkGraphEls, _context );
 
 			setLayout( new BorderLayout(10,10) );
 			setBorder( BorderFactory.createEmptyBorder( 10, 10, 10, 10 ) );
 
-			add( new JLabel( m_SmartLinkInfo.getDescriptionHTML() ), BorderLayout.PAGE_START );
+			add( new JLabel( _smartLinkInfo.getDescriptionHTML() ), BorderLayout.PAGE_START );
 
-			if( m_SmartLinkInfo.getIsPopulatePossible() ){
+			if( _smartLinkInfo.getIsPopulatePossible() ){
 
-				m_PopulateOnDiagramCheckBox = new JCheckBox( "Populate on diagram?" );
-				m_PopulateOnDiagramCheckBox.setSelected( true );
-				m_PopulateOnDiagramCheckBox.setVisible( true );
+				_populateOnDiagramCheckBox = new JCheckBox( "Populate on diagram?" );
+				_populateOnDiagramCheckBox.setSelected( true );
+				_populateOnDiagramCheckBox.setVisible( true );
 
-				add( m_PopulateOnDiagramCheckBox, BorderLayout.CENTER );
+				add( _populateOnDiagramCheckBox, BorderLayout.CENTER );
 			}
 		}
 
@@ -151,8 +150,8 @@ public class EndlinkPanel extends ExecutableMBSEBasePanel {
 				_context.info( _context.elInfo( theStartLinkEl ) ); 
 			}
 
-			m_StartLinkEls = theStartLinkEls;
-			m_StartLinkGraphEls = theStartLinkGraphEls;
+			_startLinkEls = theStartLinkEls;
+			_startLinkGraphEls = theStartLinkGraphEls;
 
 		} else {
 			_context.error( "Error in SmartLinkPanel.launchTheStartLinkPanel, " +
@@ -180,13 +179,15 @@ public class EndlinkPanel extends ExecutableMBSEBasePanel {
 			// do silent check first
 			if( checkValidity( false ) ){
 
-				if( m_SmartLinkInfo.getAreNewRelationsNeeded() || 
-						m_SmartLinkInfo.getIsPopulatePossible() ){
+				if( _smartLinkInfo.getAreNewRelationsNeeded() || 
+						_smartLinkInfo.getIsPopulatePossible() ){
 
-					m_SmartLinkInfo.createDependencies( 
-							m_PopulateOnDiagramCheckBox.isSelected() );
+					_smartLinkInfo.createDependencies( 
+							_populateOnDiagramCheckBox.isSelected() );
 				}
-
+				
+				bleedColourToEndLinkGraphEls();
+				
 			} else {
 				_context.error( "Error in SmartLinkPanel.performAction, " +
 						"checkValidity returned false" );
@@ -194,6 +195,26 @@ public class EndlinkPanel extends ExecutableMBSEBasePanel {
 		} catch (Exception e) {
 			_context.error( "Error, unhandled exception detected in SmartLinkPanel.performAction" );
 		}	
+	}
+	
+	public void bleedColourToEndLinkGraphEls(){
+		
+		String theForegroundColour = _context.getBleedForegroundColor();
+		
+		for( IRPGraphElement _endLinkGraphEl : _endLinkGraphEls){
+			
+			IRPModelElement theModelObject = _endLinkGraphEl.getModelObject();
+			
+			if( theModelObject instanceof IRPRequirement ){
+				
+				//_context.info( "Bleed colour to " + _context.elInfo( theModelObject ) );
+				
+				_context.bleedColorToGraphElsRelatedTo( 
+						theModelObject, 
+						theForegroundColour, 
+						_endLinkGraphEl.getDiagram() );
+			}
+		}
 	}
 }
 

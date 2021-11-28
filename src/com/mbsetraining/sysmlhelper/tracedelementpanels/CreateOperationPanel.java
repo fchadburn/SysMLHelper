@@ -204,7 +204,7 @@ public class CreateOperationPanel extends CreateTracedElementPanel {
 			} else {
 				List<IRPRequirement> theSelectedReqtsList = _requirementSelectionPanel.getSelectedRequirementsList();
 				addTraceabilityDependenciesTo( theOperation, theSelectedReqtsList );
-				bleedColorToElementsRelatedTo( theSelectedReqtsList );
+				_context.bleedColorToElementsRelatedTo( theSelectedReqtsList );
 			}
 		}
 
