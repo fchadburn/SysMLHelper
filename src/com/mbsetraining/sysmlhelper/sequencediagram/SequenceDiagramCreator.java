@@ -12,18 +12,18 @@ public class SequenceDiagramCreator {
 	protected ExecutableMBSE_Context _context;
 
 	public static void main(String[] args) {
-		
+
 		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
-		
+
 		IRPModelElement theSelectedEl = theRhpApp.getSelectedElement();
 
 		if( theSelectedEl instanceof IRPClass ){
-			
+
 			ExecutableMBSE_Context theContext = new ExecutableMBSE_Context( theRhpApp.getApplicationConnectionString() );
 			SequenceDiagramCreator theHelper = new SequenceDiagramCreator( theContext );
-			
+
 			IRPPackage theOwningPkg = theContext.getOwningPackageFor( theSelectedEl );
-			
+
 			theHelper.createSequenceDiagramFor( 
 					(IRPClass) theSelectedEl, 
 					theOwningPkg, 
@@ -31,15 +31,15 @@ public class SequenceDiagramCreator {
 					false,
 					true,
 					false );
-			
+
 		} else if( theSelectedEl instanceof IRPSequenceDiagram ){
-			
+
 			ExecutableMBSE_Context theContext = new ExecutableMBSE_Context( theRhpApp.getApplicationConnectionString() );
 			SequenceDiagramCreator theHelper = new SequenceDiagramCreator( theContext );
 			theHelper.updateLifelinesToMatchPartsInActiveBuildingBlock( (IRPSequenceDiagram) theSelectedEl );
 		}
 	}
-	
+
 	public SequenceDiagramCreator(
 			ExecutableMBSE_Context context ) {
 
@@ -48,9 +48,9 @@ public class SequenceDiagramCreator {
 
 	public void updateLifelinesToMatchPartsInActiveBuildingBlock(
 			IRPSequenceDiagram theSequenceDiagram ){
-		
+
 		_context.get_selectedContext().setContextTo( theSequenceDiagram );
-		
+
 		IRPClass theBuildingBlock = 
 				_context.get_selectedContext().getBuildingBlock();
 
@@ -74,7 +74,7 @@ public class SequenceDiagramCreator {
 
 		IRPPackage thePackageForSD = 
 				_context.get_selectedContext().getScenarioRootContextPackage();
-		
+
 		if( thePackageForSD != null ){
 
 			List<IRPModelElement> theSDs = 
@@ -104,20 +104,20 @@ public class SequenceDiagramCreator {
 
 	protected List<IRPInstance> getActorPartsFromLevelAbove(
 			IRPClass theAssemblyBlock ){
-	
+
 		List<IRPInstance> theActorParts = new ArrayList<IRPInstance>();
-		
+
 		IRPClass theDomainBlock = getDomainBlockAbove( theAssemblyBlock );
-		
+
 		if( theDomainBlock != null ){			
 			//_context.debug( "The DomainBlock for " + _context.elInfo( theAssemblyBlock ) + 
 			//		" is " + _context.elInfo( theDomainBlock ) );
-			
+
 			@SuppressWarnings("unchecked")
 			List<IRPInstance> theCandidates = theDomainBlock.getNestedElementsByMetaClass( "Part", 0 ).toList();
-			
+
 			for( IRPInstance theCandidate : theCandidates ){
-			
+
 				IRPClassifier theType = theCandidate.getOtherClass();
 
 				if( theType instanceof IRPActor ){
@@ -125,56 +125,73 @@ public class SequenceDiagramCreator {
 				}
 			}
 		}
-		
+
 		return theActorParts;
 	}
 
 	private IRPClass getDomainBlockAbove(
 			IRPClass theAssemblyBlock ){
-		
+
 		IRPClass theDomainBlock = null;
-		
+
 		@SuppressWarnings("unchecked")
 		List<IRPModelElement> theReferences = theAssemblyBlock.getReferences().toList();
-		
+
 		List<IRPClass> theDomainBlockCandidates = new ArrayList<>();
-		
+
 		for( IRPModelElement theReference : theReferences ){
-			
+
 			//_context.debug( _context.elInfo( theReference ) + " is a candidate" );
-			
+
 			if( theReference instanceof IRPInstance ){
-				
+
 				IRPInstance theInstance = (IRPInstance)theReference;
 				IRPModelElement theInstanceOwner = theInstance.getOwner();
-				
+
 				IRPClassifier theOtherClass = theInstance.getOtherClass();
-				
+
 				if( theOtherClass instanceof IRPClass && 
 						theOtherClass.equals( theAssemblyBlock ) &&
 						theInstanceOwner instanceof IRPClass ){
-					
+
 					//_context.debug( "getDomainBlockAbove found " + 
 					//		_context.elInfo( theInstanceOwner ) + " for " + 
 					//		_context.elInfo( theAssemblyBlock ) );
-					
+
 					theDomainBlockCandidates.add( (IRPClass) theInstanceOwner );
 				}
 			}
 		}
-		
+
 		int size = theDomainBlockCandidates.size();
-		
+
 		if( size == 1 ){
 			theDomainBlock = theDomainBlockCandidates.get( 0 );
 		} else if( size > 1 ){
 			_context.debug( "Unable to determine DomainBlock for " + _context.elInfo( theAssemblyBlock ) + 
 					" as there are " + size + " candidates not 1" );
 		}
-		
+
 		return theDomainBlock;
 	}
-	
+
+	private List<IRPInstance> getNestedPartsUnderneath(
+			IRPClassifier theClassifier ){
+
+		List<IRPInstance> theNestedParts = new ArrayList<>();
+
+		@SuppressWarnings("unchecked")
+		List<IRPInstance> theCandidates = theClassifier.getNestedElementsByMetaClass( "Part", 0 ).toList();
+
+		for( IRPInstance theCandidate : theCandidates ){
+			if( theCandidate.getMetaClass().equals("Object") ){
+				theNestedParts.add( theCandidate );
+			}
+		}
+
+		return theNestedParts;
+	}
+
 	public IRPSequenceDiagram createSequenceDiagramFor(
 			IRPClass theAssemblyBlock, 
 			IRPPackage inPackage,
@@ -184,49 +201,113 @@ public class SequenceDiagramCreator {
 			boolean isRecreateExisting ){
 
 		boolean isCreateSD = true;
-		
+
 		IRPSequenceDiagram theSD = null;
 
-		@SuppressWarnings("unchecked")
-		List<IRPInstance> theParts = theAssemblyBlock.getNestedElementsByMetaClass( "Part", 0 ).toList();
-		
-		theParts.addAll( getActorPartsFromLevelAbove( theAssemblyBlock ) );
+		List<IRPInstance> theParts = getNestedPartsUnderneath( theAssemblyBlock );
 
-		List<IRPInstance> theTestDriverParts = new ArrayList<IRPInstance>();
-		List<IRPInstance> theActorParts = new ArrayList<IRPInstance>();
-		List<IRPInstance> theBlockParts = new ArrayList<IRPInstance>();
+		if( theParts.isEmpty() ){
+			_context.warning( "Cannot create sequence diagram for " + _context.elInfo( theAssemblyBlock ) + " as it has no parts" );
+		} else {
+			theParts.addAll( getActorPartsFromLevelAbove( theAssemblyBlock ) );
 
-		// Determine actors vs. internal parts vs test drivers
-		for( IRPInstance thePart : theParts ) {
+			List<IRPInstance> theTestDriverParts = new ArrayList<IRPInstance>();
+			List<IRPInstance> theActorParts = new ArrayList<IRPInstance>();
+			List<IRPInstance> theBlockParts = new ArrayList<IRPInstance>();
 
-			if( _context.isTestDriver( thePart ) ){
-				theTestDriverParts.add( thePart );
-			} else if( thePart.getOtherClass() instanceof IRPActor ){
-				theActorParts.add( thePart );
-			} else {
-				theBlockParts.add( thePart );
+			// Determine actors vs. internal parts vs test drivers
+			for( IRPInstance thePart : theParts ) {
+
+				if( _context.isTestDriver( thePart ) ){
+					theTestDriverParts.add( thePart );
+				} else if( thePart.getOtherClass() instanceof IRPActor ){
+					theActorParts.add( thePart );
+				} else {
+					theBlockParts.add( thePart );
+				}
 			}
-		}
-		
-		if( isRecreateExisting ){
 
-			IRPModelElement theExistingDiagram = 
-					inPackage.findNestedElement( withName, "SequenceDiagram" );
+			if( isRecreateExisting ){
 
-			if( theExistingDiagram != null ){
+				IRPModelElement theExistingDiagram = 
+						inPackage.findNestedElement( withName, "SequenceDiagram" );
 
-				String theMsg = _context.elInfo( theExistingDiagram ) + " already exists in \n" + 
-						_context.elInfo( inPackage ) + "\n\nDo you want to recreate it with " + 
-						theParts.size() + " lifelines for:\n";
+				if( theExistingDiagram != null ){
+
+					String theMsg = _context.elInfo( theExistingDiagram ) + " already exists in \n" + 
+							_context.elInfo( inPackage ) + "\n\nDo you want to recreate it with " + 
+							theParts.size() + " lifelines for:\n";
+
+					// Do Test Driver first, if enabled in properties
+					if( _context.getIsCreateSDWithTestDriverLifeline() ){
+
+						for( IRPInstance thePart : theTestDriverParts ) {
+
+							IRPClassifier theType = thePart.getOtherClass();
+							theMsg += theType.getName() + 
+									" (" + theType.getUserDefinedMetaClass() + ")\n"; 
+						}
+					}	
+
+					// Then actors
+					for( IRPInstance thePart : theActorParts ) {
+
+						if( isPartTheOnlyOneOfItsTypeUnder( theAssemblyBlock, thePart ) ){
+
+							IRPClassifier theType = thePart.getOtherClass();
+							theMsg += theType.getName() + 
+									" (" + theType.getUserDefinedMetaClass() + ")\n"; 
+						} else {
+							IRPClassifier theType = thePart.getOtherClass();
+							theMsg += thePart.getName() + "." + theType.getName() + 
+									" (" + theType.getUserDefinedMetaClass() + ")\n"; 
+						}
+					}
+
+					// Then blocks
+					for( IRPInstance thePart : theBlockParts ) {
+
+						if( isPartTheOnlyOneOfItsTypeUnder( theAssemblyBlock, thePart ) ){
+
+							IRPClassifier theType = thePart.getOtherClass();
+							theMsg += theType.getName() + 
+									" (" + theType.getUserDefinedMetaClass() + ")\n"; 
+						} else {
+							IRPClassifier theType = thePart.getOtherClass();
+							theMsg += thePart.getName() + "." + theType.getName() + 
+									" (" + theType.getUserDefinedMetaClass() + ")\n"; 
+						}
+					}
+
+					isCreateSD = UserInterfaceHelper.askAQuestion( theMsg );
+
+					if( isCreateSD ){
+						theExistingDiagram.deleteFromProject();
+					}
+				}
+
+			} else {
+
+				withName = _context.determineUniqueNameBasedOn( withName, "SequenceDiagram", inPackage );
+			}
+
+			if( isCreateSD ){
+
+				theSD = inPackage.addSequenceDiagram( withName );
+
+				int xPos = 30;
+				int yPos = 0;
+				int nWidth = 100;
+				int nHeight = 1000;
+				int xGap = 30;
 
 				// Do Test Driver first, if enabled in properties
 				if( _context.getIsCreateSDWithTestDriverLifeline() ){
 
 					for( IRPInstance thePart : theTestDriverParts ) {
-	
-						IRPClassifier theType = thePart.getOtherClass();
-						theMsg += theType.getName() + 
-								" (" + theType.getUserDefinedMetaClass() + ")\n"; 
+
+						theSD.addNewNodeForElement( thePart, xPos, yPos, nWidth, nHeight );
+						xPos = xPos + nWidth + xGap;
 					}
 				}	
 
@@ -234,129 +315,68 @@ public class SequenceDiagramCreator {
 				for( IRPInstance thePart : theActorParts ) {
 
 					if( isPartTheOnlyOneOfItsTypeUnder( theAssemblyBlock, thePart ) ){
-						
+
 						IRPClassifier theType = thePart.getOtherClass();
-						theMsg += theType.getName() + 
-								" (" + theType.getUserDefinedMetaClass() + ")\n"; 
+						theSD.addNewNodeForElement( theType, xPos, yPos, nWidth, nHeight );
 					} else {
-						IRPClassifier theType = thePart.getOtherClass();
-						theMsg += thePart.getName() + "." + theType.getName() + 
-								" (" + theType.getUserDefinedMetaClass() + ")\n"; 
+						theSD.addNewNodeForElement( thePart, xPos, yPos, nWidth, nHeight );
 					}
-				}
 
-				// Then blocks
-				for( IRPInstance thePart : theBlockParts ) {
-
-					if( isPartTheOnlyOneOfItsTypeUnder( theAssemblyBlock, thePart ) ){
-						
-						IRPClassifier theType = thePart.getOtherClass();
-						theMsg += theType.getName() + 
-								" (" + theType.getUserDefinedMetaClass() + ")\n"; 
-					} else {
-						IRPClassifier theType = thePart.getOtherClass();
-						theMsg += thePart.getName() + "." + theType.getName() + 
-								" (" + theType.getUserDefinedMetaClass() + ")\n"; 
-					}
-				}
-				
-				isCreateSD = UserInterfaceHelper.askAQuestion( theMsg );
-
-				if( isCreateSD ){
-					theExistingDiagram.deleteFromProject();
-				}
-			}
-
-		} else {
-			
-			withName = _context.determineUniqueNameBasedOn( withName, "SequenceDiagram", inPackage );
-		}
-
-		if( isCreateSD ){
-
-			theSD = inPackage.addSequenceDiagram( withName );
-
-			int xPos = 30;
-			int yPos = 0;
-			int nWidth = 100;
-			int nHeight = 1000;
-			int xGap = 30;
-
-			// Do Test Driver first, if enabled in properties
-			if( _context.getIsCreateSDWithTestDriverLifeline() ){
-
-				for( IRPInstance thePart : theTestDriverParts ) {
-
-					theSD.addNewNodeForElement( thePart, xPos, yPos, nWidth, nHeight );
 					xPos = xPos + nWidth + xGap;
 				}
-			}	
 
-			// Then actors
-			for( IRPInstance thePart : theActorParts ) {
+				// Then components
+				for( IRPInstance thePart : theBlockParts ) {
 
-				if( isPartTheOnlyOneOfItsTypeUnder( theAssemblyBlock, thePart ) ){
-					
 					IRPClassifier theType = thePart.getOtherClass();
-					theSD.addNewNodeForElement( theType, xPos, yPos, nWidth, nHeight );
-				} else {
-					theSD.addNewNodeForElement( thePart, xPos, yPos, nWidth, nHeight );
+
+					if( isPartTheOnlyOneOfItsTypeUnder( theAssemblyBlock, thePart ) ){
+
+						theSD.addNewNodeForElement( theType, xPos, yPos, nWidth, nHeight );
+					} else {
+						theSD.addNewNodeForElement( thePart, xPos, yPos, nWidth, nHeight );
+					}
+
+					xPos = xPos + nWidth + xGap;
 				}
-					
-				xPos = xPos + nWidth + xGap;
-			}
 
-			// Then components
-			for( IRPInstance thePart : theBlockParts ) {
-
-				IRPClassifier theType = thePart.getOtherClass();
-
-				if( isPartTheOnlyOneOfItsTypeUnder( theAssemblyBlock, thePart ) ){
-						
-					theSD.addNewNodeForElement( theType, xPos, yPos, nWidth, nHeight );
-				} else {
-					theSD.addNewNodeForElement( thePart, xPos, yPos, nWidth, nHeight );
+				if( isAutoShow ){
+					_context.applyExistingStereotype( "AutoShow", theSD );
 				}
-					
-				xPos = xPos + nWidth + xGap;
-			}
 
-			if( isAutoShow ){
-				_context.applyExistingStereotype( "AutoShow", theSD );
-			}
-			
-			_context.info( _context.elInfo( theSD ) + " owned by " + _context.elInfo( theSD.getOwner() ) + 
-					" was created with " + theParts.size() + " lifelines" );
-			
-			if( isOpenDiagram ){
-				theSD.highLightElement();
+				_context.info( _context.elInfo( theSD ) + " owned by " + _context.elInfo( theSD.getOwner() ) + 
+						" was created with " + theParts.size() + " lifelines" );
+
+				if( isOpenDiagram ){
+					theSD.highLightElement();
+				}
 			}
 		}
-		
+
 		return theSD;
 	}
-	
+
 	private boolean isPartTheOnlyOneOfItsTypeUnder(
 			IRPClassifier theClassifier,
 			IRPInstance thePart ){
-		
+
 		boolean isPartTheOnlyOneOfItsType = true;
-		
+
 		if( thePart.isTypelessObject() == 0 ){
-			
+
 			IRPClassifier theType = thePart.getOtherClass();
-			
+
 			@SuppressWarnings("unchecked")
 			List<IRPInstance> theCandidates =
-					theClassifier.getNestedElementsByMetaClass( "Part", 0 ).toList();
-			
+			theClassifier.getNestedElementsByMetaClass( "Part", 0 ).toList();
+
 			for (IRPInstance theCandidate : theCandidates) {
-				
+
 				if( !theCandidate.equals( thePart ) &&
 						theCandidate.isTypelessObject()==0 ){
-					
+
 					IRPClassifier theCandidateType = theCandidate.getOtherClass();
-					
+
 					if( theCandidateType.equals( theType ) ){
 						//_context.debug( "Found that " + _context.elInfo( theCandidate ) + 
 						//		" has same type as " + _context.elInfo( thePart ) );
@@ -366,7 +386,7 @@ public class SequenceDiagramCreator {
 				}
 			}
 		}
-		
+
 		return isPartTheOnlyOneOfItsType;
 	}
 }
