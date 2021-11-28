@@ -257,7 +257,7 @@ public class SmartLinkInfo {
 				_startLinkElements.areElementsAllDeriveDependencySources() && 
 				_endLinkElements.areElementsAllReqts();
 		
-		_context.debug( "isDeriveDependencyNeeded is returning " + isNeeded );
+		//_context.debug( "isDeriveDependencyNeeded is returning " + isNeeded );
 		
 		return isNeeded;
 	}
@@ -283,6 +283,10 @@ public class SmartLinkInfo {
 					theRelationInfo,
 					false );
 		}
+	}
+	
+	public IRPStereotype get_relationType() {
+		return _relationType;
 	}
 }
 

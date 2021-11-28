@@ -186,7 +186,12 @@ public class EndlinkPanel extends ExecutableMBSEBasePanel {
 							_populateOnDiagramCheckBox.isSelected() );
 				}
 				
-				bleedColourToEndLinkGraphEls();
+				IRPStereotype theRelationType = _smartLinkInfo.get_relationType();
+				
+				if( theRelationType != null && 
+						theRelationType.getName().equals( "satisfy" ) ){
+					bleedColourToEndLinkGraphEls();
+				}
 				
 			} else {
 				_context.error( "Error in SmartLinkPanel.performAction, " +
