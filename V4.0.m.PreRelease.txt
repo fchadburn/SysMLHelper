@@ -587,6 +587,7 @@ V4.0.m.Rhp831.PreRelease (28-NOV-2021):
 
 Backlog/Known issues
 
+- Add helper to automatically add a default .jazzignore file to newly created project
 - Improve traceability browser to have the relationship names in the tree, e.g., satisfy vs derive
 - Some menus no longer need to work for packages, rather should only work for new terms
 - Move all executable mbse icons into nested icon package
