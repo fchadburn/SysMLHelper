@@ -286,7 +286,7 @@ public class AutoConnectFlowPortsInfo {
 		
 		if( isCreateNewSelected() ){
 
-				_context.info("Add a new " + _context.elInfo( _publishingAttribute ) + 
+				_context.info( "Add a new " + _context.elInfo( _publishingAttribute ) + 
 						" to " + getIDString() );
 				
 				IRPAttribute theAttribute = (IRPAttribute) _publishingAttribute.clone( 

@@ -118,13 +118,29 @@ public class PortCreator {
 				//_context.debug( "Ensure there is a change event reception called " + 
 				//		theChangeEventName + " on " + _context.elInfo( theClassifier ) );
 				
-				IRPModelElement theReception = _context.getExistingOrCreateNewElementWith(
+				IRPModelElement theReceptionEl = _context.getExistingOrCreateNewElementWith(
 						theChangeEventName,
 						"Reception",
 						theClassifier );
 				
+				IRPPackage theInterfacesPkg = _context.get_selectedContext().getPkgThatOwnsEventsAndInterfaces();
+				
+				if( theInterfacesPkg == null ){
+					_context.error( "Unable to find package that owns events and interfaces" );
+					
+				} else if( theReceptionEl instanceof IRPEventReception ){
+					
+					IRPEventReception theReception = (IRPEventReception)theReceptionEl;
+					IRPEvent theEvent = theReception.getEvent();
+					
+					if( !theEvent.getOwner().equals( theInterfacesPkg ) ){
+						_context.info( "Moving " + _context.elInfo( theEvent ) + " to " + _context.elInfo( theInterfacesPkg ) );
+						theEvent.setOwner( theInterfacesPkg );
+					}
+				}
+				
 				_context.addAutoRippleDependencyIfOneDoesntExist( 
-						theAttribute, theReception );
+						theAttribute, theReceptionEl );
 				
 			} else {
 				_context.error( "Error in createSubscribeFlowportFor, element is not a classifier" );
