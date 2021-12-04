@@ -425,7 +425,7 @@ public class CreateGatewayProjectPanel extends ExecutableMBSEBasePanel {
 		File theCandidateRqtfFile = null;
 
 		if (fileCount==0){
-			_context.warning("No file matching " + matchingTheRegEx + " was found in the " + inPathToSearch + " folder");
+			_context.debug("No file matching " + matchingTheRegEx + " was found in the " + inPathToSearch + " folder");
 
 		} else if (fileCount==1){
 

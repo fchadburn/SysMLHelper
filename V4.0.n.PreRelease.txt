@@ -585,8 +585,12 @@ V4.0.m.Rhp831.PreRelease (28-NOV-2021):
 #412 28-NOV-2021: ExecutableMBSE: Add warning message if you right-click SD to generate a sequence diagram and it has no child parts (F.J.Chadburn)
 #413 28-NOV-2021: ExecutableMBSE: Only bleed to requirement graph node on end link if the type of relation is a satisfy (F.J.Chadburn)
 
+V4.0.n.Rhp831.PreRelease (XX-XXX-XXXX):
+#414 04-DEC-2021: ExecutableMBSE: Rename ReportOnNamingAndTraceabilityMenu to 'Perform traceability checks...' and polish off a few unused menus (F.J.Chadburn)
+
 Backlog/Known issues
 
+- Add standard Dependency tool to the simplified activity diagrm
 - Add helper to automatically add a default .jazzignore file to newly created project
 - Improve traceability browser to have the relationship names in the tree, e.g., satisfy vs derive
 - Some menus no longer need to work for packages, rather should only work for new terms

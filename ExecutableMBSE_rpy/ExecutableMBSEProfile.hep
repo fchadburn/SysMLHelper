@@ -275,7 +275,7 @@ isVisible34=1
 DLLServerCompatible34=1
 
 #REM: Add pop-up menu
-name35=MBSE Method: Requirements Analysis\Report on naming and traceability checks for elements on Activity Diagram
+name35=MBSE Method: Requirements Analysis\Perform traceability checks for elements on Activity Diagram
 isPluginCommand35=1
 command35=InvokeExecutableMBSEHelper
 applicableTo35=UseCase,12 Reqts Analysis - Use Case Package,Package,ActivityDiagram,Textual Activity,Call Operation Activity

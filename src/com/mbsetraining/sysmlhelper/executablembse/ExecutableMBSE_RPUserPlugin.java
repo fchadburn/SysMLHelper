@@ -408,12 +408,6 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					RequirementsHelper theHelper = new RequirementsHelper( _context );
 					theHelper.createNewRequirementsFor( theSelectedGraphEls );
 
-				} else if (menuItem.equals( _settings.getString( 
-						"executablembseplugin.PerformRenameInBrowserMenu" ))){
-
-					RenameActions theRenamer = new RenameActions(_context);
-					theRenamer.performRenamesFor( theSelectedEls );
-
 				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.UpdateNestedADNamesMenu" ) ) ){
 
