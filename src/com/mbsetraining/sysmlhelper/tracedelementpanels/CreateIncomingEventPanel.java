@@ -10,6 +10,7 @@ import java.util.List;
 import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -42,6 +43,7 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 	private IRPPackage _packageForEvent;
 	private IRPActor _sourceActor;
 	private IRPPort _sourceActorPort;
+	private JButton _updateButton;
 
 	// for testing only
 	public static void main(String[] args) {
@@ -180,6 +182,7 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 				boolean selected = abstractButton.getModel().isSelected();
 
 				_createCheckOperationCheckBox.setEnabled( selected );
+				_updateButton.setEnabled( selected );
 				_createAttributeLabel.setEnabled( selected);
 				_nameForAttributeTextField.setEnabled( selected );
 
@@ -210,6 +213,7 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 		_createCheckOperationCheckBox = new JCheckBox();
 		_createCheckOperationCheckBox.setSelected( false );
 		_createCheckOperationCheckBox.setEnabled( false );
+		_updateButton.setEnabled( false );
 		theCenterPanel.add( _createCheckOperationCheckBox );
 
 		_createSendEventViaPanelCheckBox = new JCheckBox();
@@ -364,10 +368,10 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 			String theProposedName ){
 
 		JPanel thePanel = new JPanel();
-		thePanel.setLayout( new BoxLayout(thePanel, BoxLayout.X_AXIS ) );	
+		thePanel.setLayout( new BoxLayout( thePanel, BoxLayout.X_AXIS ) );	
 
-		_createAttributeLabel = new JLabel("Create an attribute called:  ");
-		_createAttributeLabel.setEnabled(false);
+		_createAttributeLabel = new JLabel( "Create an attribute called:  " );
+		_createAttributeLabel.setEnabled( false );
 		thePanel.add( _createAttributeLabel );
 
 		_nameForAttributeTextField = new JTextField( theProposedName );
@@ -393,7 +397,41 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 					}	
 				});
 
+		_updateButton = new JButton( "Update" );
+		_updateButton.setPreferredSize( new Dimension( 75,20 ) );
+
+		_updateButton.addActionListener( new ActionListener() {
+			
+			@Override
+			public void actionPerformed( ActionEvent e ) {
+				
+				try {
+					String theAttributeName = _nameForAttributeTextField.getText();
+					
+					if( !theAttributeName.isEmpty() ){
+						
+						String theDecapitalized = _context.decapitalize( theAttributeName );
+						
+						_nameForAttributeTextField.setText( theDecapitalized );
+
+						String theCapitalized = _context.capitalize( theAttributeName );
+						
+						String newEventName = determineBestEventName(
+								_context.get_selectedContext().getChosenBlock(),
+								theCapitalized );
+						
+						_chosenNameTextField.setText( newEventName );
+					}
+												
+				} catch( Exception e2 ){
+					_context.error( "Unhandled exception in when update button pressed, e2=" + e2.getMessage() );
+				}
+			}
+		});
+		
 		thePanel.add( _nameForAttributeTextField );
+		thePanel.add( new JLabel( " " ) );
+		thePanel.add( _updateButton );
 
 		return thePanel;
 	}

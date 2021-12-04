@@ -587,6 +587,7 @@ V4.0.m.Rhp831.PreRelease (28-NOV-2021):
 
 V4.0.n.Rhp831.PreRelease (XX-XXX-XXXX):
 #414 04-DEC-2021: ExecutableMBSE: Rename ReportOnNamingAndTraceabilityMenu to 'Perform traceability checks...' and polish off a few unused menus (F.J.Chadburn)
+#415 04-DEC-2021: ExecutableMBSE: Add a button to auto-update event name after setting the attribute name on create event dialog (F.J.Chadburn)
 
 Backlog/Known issues
 
@@ -599,15 +600,13 @@ Backlog/Known issues
 - Review options on changing menus or merging in as it looks too complex
 - TestConductor/ATG.
 - BlackBox. 
-- Have a way to check naming conventions for attributes 
-- Have a button to auto-update event name after setting the attribute
 - Right-click of requirmeent in browser did not work when creating an event
 - Get SysMLHelper working enough to do lab
 - Default query for filtering out requirements
 - Better Wizard for building up a white-box model
 - Import from file option for Blocks/Actors perhaps?
 - Add ability to roll up transitions where you're looking at the entry action.
-- When you use set operation it cannot roll up tracwability
+- When you use set operation it cannot roll up traceability
 - Get standard Executable profile to0 auto-populate ports when a connector is drawn
 - Use of Harmony toolkit before switching to this one changes the display options
 - Resolve issue with comma's used in the csv file that is exported to DOORS NG
