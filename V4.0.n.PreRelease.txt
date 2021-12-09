@@ -590,24 +590,22 @@ V4.0.n.Rhp831.PreRelease (XX-XXX-XXXX):
 #415 04-DEC-2021: ExecutableMBSE: Add a button to auto-update event name after setting the attribute name on create event dialog (F.J.Chadburn)
 #416 09-DEC-2021: ExecutableMBSE: Checkpoint of AutoRealizeWithCopyPanel, not fully implemented yet though (F.J.Chadburn)
 #417 09-DEC-2021: ExecutableMBSE: Fix to MessageInfoList to ignore OMStartBehaviorEvent's when determining which signals are not realized on SD (F.J.Chadburn)
+#418 09-DEC-2021: ExecutableMBSE: Add a CustomV_HideReqts to profile enable user to easily show/hide requirements on diagram (F.J.Chadburn)
 
 Backlog/Known issues
 
 - Bleed appearing on statechart unexpectadly
 - Add ability to right-click a use case and move to a new use case package (to spawn further development)
 - Add dialog to toggle autoshow stereotype with dontshow, so that you can easily switch to/from TC usage
-- Add standard Dependency tool to the simplified activity diagrm
 - Add helper to automatically add a default .jazzignore file to newly created project
 - Improve traceability browser to have the relationship names in the tree, e.g., satisfy vs derive
 - Some menus no longer need to work for packages, rather should only work for new terms
 - Move all executable mbse icons into nested icon package
 - Hide the software package stuff
 - Review options on changing menus or merging in as it looks too complex
-- TestConductor/ATG.
+- Can any more automation help with TestConductor/ATG initial setup?
 - BlackBox. 
 - Right-click of requirmeent in browser did not work when creating an event
-- Get SysMLHelper working enough to do lab
-- Default query for filtering out requirements
 - Better Wizard for building up a white-box model
 - Import from file option for Blocks/Actors perhaps?
 - Add ability to roll up transitions where you're looking at the entry action.
@@ -634,4 +632,3 @@ Backlog/Known issues
 - Do you need to generate menus with a version later than V8.3.1 to ensure compatibility?
 - Ensure that hep file allows for right-click of System Block, System Usage etc for some of the general features.
 - Conisder allowing functional deposition of function blocks/usages to any level
-- Add a query and custom view that filters out requirements
