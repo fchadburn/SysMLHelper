@@ -66,13 +66,19 @@ public class MessageInfoList extends ArrayList<MessageInfo>{
 		boolean isMessage = theMessageType.equals( "EVENT" ) || theMessageType.equals( "OPERATION" );
 		
 		if( isMessage ){
-			MessageInfo theMessageInfo = new MessageInfo( theMessage, onDiagram, _candidateInterfaces, _context );
 			
-			if( theMessageInfo.isUpToDate() ){
-				_upToDateCount++;
-			} else {					
-				add( theMessageInfo );
-			}			
+			if( theMessage.getName().equals( "OMStartBehaviorEvent" ) ){
+				
+				_context.debug( "Ignoring OMStartBehaviorEvent event" );
+			} else {
+				MessageInfo theMessageInfo = new MessageInfo( theMessage, onDiagram, _candidateInterfaces, _context );
+				
+				if( theMessageInfo.isUpToDate() ){
+					_upToDateCount++;
+				} else {					
+					add( theMessageInfo );
+				}							
+			}
 		} else {
 			//_context.debug( "addOrUpdateCount is ignoring " + _context.elInfo( theMessage ) + " as it's not an event or operation" );
 		}

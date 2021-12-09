@@ -588,9 +588,14 @@ V4.0.m.Rhp831.PreRelease (28-NOV-2021):
 V4.0.n.Rhp831.PreRelease (XX-XXX-XXXX):
 #414 04-DEC-2021: ExecutableMBSE: Rename ReportOnNamingAndTraceabilityMenu to 'Perform traceability checks...' and polish off a few unused menus (F.J.Chadburn)
 #415 04-DEC-2021: ExecutableMBSE: Add a button to auto-update event name after setting the attribute name on create event dialog (F.J.Chadburn)
+#416 09-DEC-2021: ExecutableMBSE: Checkpoint of AutoRealizeWithCopyPanel, not fully implemented yet though (F.J.Chadburn)
+#417 09-DEC-2021: ExecutableMBSE: Fix to MessageInfoList to ignore OMStartBehaviorEvent's when determining which signals are not realized on SD (F.J.Chadburn)
 
 Backlog/Known issues
 
+- Bleed appearing on statechart unexpectadly
+- Add ability to right-click a use case and move to a new use case package (to spawn further development)
+- Add dialog to toggle autoshow stereotype with dontshow, so that you can easily switch to/from TC usage
 - Add standard Dependency tool to the simplified activity diagrm
 - Add helper to automatically add a default .jazzignore file to newly created project
 - Improve traceability browser to have the relationship names in the tree, e.g., satisfy vs derive
@@ -628,5 +633,5 @@ Backlog/Known issues
 - Add a decent ICD-like table for showing messages carried on Interface Blocks with direction etc
 - Do you need to generate menus with a version later than V8.3.1 to ensure compatibility?
 - Ensure that hep file allows for right-click of System Block, System Usage etc for some of the general features.
-- Allow functional deposition of function blocks/usages to any level
+- Conisder allowing functional deposition of function blocks/usages to any level
 - Add a query and custom view that filters out requirements

@@ -25,11 +25,11 @@ public class InterfaceInfoList extends ArrayList<InterfaceInfo>{
 
 		List<IRPClass> theCandidates = getInterfaceBlocksUnder( _context.get_rhpPrj() );
 
-		//_context.debug( "There are " + theCandidates.size() + " candidates in " + _context.elInfo( _context.get_rhpPrj() ) );
+		_context.debug( "There are " + theCandidates.size() + " candidates  in " + _context.elInfo( _context.get_rhpPrj() ) );
 
 		for( IRPClass theCandidate : theCandidates ){
 
-			//_context.debug( _context.elInfo( theCandidate ) + " is a candidate" );
+			_context.debug( _context.elInfo( theCandidate ) + " is a candidate" );
 
 			List<IRPPort> theNonConjugatedPorts = getNonCongugatedPortsFor( theCandidate );
 
@@ -39,27 +39,44 @@ public class InterfaceInfoList extends ArrayList<InterfaceInfo>{
 
 				for( IRPPort theOtherEndPort : theOtherEndPorts ){
 
-					IRPClass theOtherEndContract = theOtherEndPort.getContract();
+					if( theCandidate.getUserDefinedMetaClass().equals( "InterfaceBlock" ) ){
 
-					if( theOtherEndContract == null ){
+						IRPClass theOtherEndContract = theOtherEndPort.getContract();
 
-						//_context.debug( _context.elInfo( theOtherEndPort ) + " does not have a contract set" );
+						if( theOtherEndContract == null ){
 
-					} else if( !theOtherEndContract.equals( theCandidate ) ){
+							_context.debug( _context.elInfo( theOtherEndPort ) + " does not have a contract set" );
+						} else {
 
-						//_context.debug( _context.elInfo( theOtherEndPort ) + " is contracted with " + 
-						//		_context.elInfo( theOtherEndContract ) + 
-						//		" rather than " + _context.elInfo( theCandidate ) );;
+							if( !theOtherEndContract.equals( theCandidate ) ){
 
-					} else if( theOtherEndPort.getIsReversed()==0 ){
-						//_context.debug( _context.elInfo( theOtherEndPort ) + " is contracted with " + 
-						//		_context.elInfo( theCandidate ) + " but is not set as conjugated" );
+								_context.debug( _context.elInfo( theOtherEndPort ) + " is contracted with " + 
+										_context.elInfo( theOtherEndContract ) + 
+										" rather than " + _context.elInfo( theCandidate ) );;
 
-					} else {
+							} else if( theOtherEndPort.getIsReversed()==0 ){
+								_context.debug( _context.elInfo( theOtherEndPort ) + " is contracted with " + 
+										_context.elInfo( theCandidate ) + " but is not set as conjugated" );
+
+							} else {
+								InterfaceInfo theInfo = new InterfaceInfo( 
+										(IRPClass) theCandidate, 
+										thePort, 
+										theOtherEndPort, 
+										_context );
+
+								add( theInfo );
+							}
+
+						}
+					} else if( theCandidate.getUserDefinedMetaClass().equals( "Interface" ) ){
+						
+						_context.debug( _context.elInfo( theCandidate ) + " is a UML interface" );
+						
 						InterfaceInfo theInfo = new InterfaceInfo( 
 								(IRPClass) theCandidate, 
 								thePort, 
-								theOtherEndPort, 
+								theOtherEndPort,
 								_context );
 
 						add( theInfo );
@@ -68,7 +85,7 @@ public class InterfaceInfoList extends ArrayList<InterfaceInfo>{
 			}
 		}		
 	}
-	
+
 	protected List<IRPPort> getNonCongugatedPortsFor(
 			IRPModelElement theEl ){
 
@@ -113,17 +130,17 @@ public class InterfaceInfoList extends ArrayList<InterfaceInfo>{
 
 				if( toPort != null && 
 						!toPort.equals( thePort ) ){
-					
+
 					//_context.debug( _context.elInfo( toPort ) + " is a connected port for " + _context.elInfo( thePort ) );
 					thePortsAtOtherEnd.add( toPort );
-					
+
 				} else {
-					
+
 					IRPPort fromPort = theLink.getFromPort();
-					
+
 					if( fromPort != null && 
 							!fromPort.equals( thePort ) ){
-						
+
 						//_context.debug( _context.elInfo( fromPort ) + " is a connected port for " + _context.elInfo( thePort ) );
 						thePortsAtOtherEnd.add( fromPort );
 					}
@@ -145,9 +162,14 @@ public class InterfaceInfoList extends ArrayList<InterfaceInfo>{
 		for( IRPModelElement theCandidate : theCandidates ){
 
 			boolean isReference = theCandidate.getSaveUnit().isReferenceUnit()==1;
+			String theUserDefinedMetaClass = theCandidate.getUserDefinedMetaClass();
 
 			if( !isReference &&
-					theCandidate.getUserDefinedMetaClass().equals( "InterfaceBlock" ) ){
+					( theUserDefinedMetaClass.equals( "InterfaceBlock" ) || 
+							theUserDefinedMetaClass.equals( "Interface" ) ) &&
+							!theCandidate.getName().endsWith( "_implicitContract" ) ){
+
+				_context.debug( _context.elInfo( theCandidate ) + " is an interface" );
 
 				theInterfaceBlocks.add( (IRPClass) theCandidate );
 			}
@@ -162,18 +184,18 @@ public class InterfaceInfoList extends ArrayList<InterfaceInfo>{
 			theInfo.dumpInfo();
 		}
 	}
-	
+
 	public InterfaceInfo getMatchingInterfaceInfoFrom(
 			IRPClassifier fromClassifier,
 			IRPClassifier toClassifier ){
-		
+
 		InterfaceInfo theInterfaceInfo = null;
-		
+
 		for( InterfaceInfo theInfo : this ){
-			
+
 			if( theInfo.get_fromClassifier().equals( fromClassifier ) &&
 					theInfo.get_toClassifier().equals( toClassifier )	){
-				
+
 				theInterfaceInfo = theInfo;
 				break;
 			}

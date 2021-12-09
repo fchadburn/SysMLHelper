@@ -44,7 +44,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">BasePkg</_name>
-			<_modifiedTime type="a">8.10.2021::7:16:45</_modifiedTime>
+			<_modifiedTime type="a">12.8.2021::10:34:31</_modifiedTime>
 			<_lastID type="a">2</_lastID>
 			<_defaultComposite type="s">GUID ffd36ddc-ce50-4ff6-9a88-d2bda093b1b2</_defaultComposite>
 			<_eventsBaseID type="a">10601</_eventsBaseID>
@@ -104,20 +104,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">chElapsedTime</_name>
-			<Stereotypes type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">1</size>
-					
-						<IHandle type="e">
-							<_hm2Class type="a">IStereotype</_hm2Class>
-							<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
-							<_hname type="a">Web Managed</_hname>
-							<_hid type="a">GUID 8c262ab8-d5e1-45d1-bc5b-8a4ccd78870c</_hid>
-						</IHandle>
-					
-				</IRPYRawContainer>
-			</Stereotypes>
-			<_modifiedTime type="a">8.10.2021::7:16:45</_modifiedTime>
+			<_modifiedTime type="a">12.8.2021::10:34:31</_modifiedTime>
 			<_virtual type="a">0</_virtual>
 			<Args type="c">
 				<IRPYRawContainer type="e">

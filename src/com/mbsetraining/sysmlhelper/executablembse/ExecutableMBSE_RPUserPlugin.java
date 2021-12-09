@@ -8,6 +8,7 @@ import requirementsanalysisplugin.PopulateRelatedRequirementsPanel;
 
 import com.mbsetraining.sysmlhelper.activitydiagram.ActivityDiagramChecker;
 import com.mbsetraining.sysmlhelper.activitydiagram.RenameActions;
+import com.mbsetraining.sysmlhelper.autorealizewithcopy.AutoRealizeWithCopyPanel;
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.DependencySelector;
 import com.mbsetraining.sysmlhelper.common.LayoutHelper;
@@ -372,7 +373,8 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						CreateGatewayProjectPanel.launchThePanel( theAppID, ".*.rqtf$" );				
 					}
 
-				} else if (menuItem.equals( _settings.getString("executablembseplugin.AddRelativeUnitMenu"))){
+				} else if (menuItem.equals( _settings.getString(
+						"executablembseplugin.AddRelativeUnitMenu" ) ) ){
 
 					_context.browseAndAddUnit( theSelectedEl.getProject(), true );
 
@@ -417,19 +419,19 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 							theSelectedEls );
 
 				} else if( menuItem.equals( _settings.getString( 
-						"executablembseplugin.DeleteTaggedAsDeletedAtHighLevelMenu" ))){
+						"executablembseplugin.DeleteTaggedAsDeletedAtHighLevelMenu" ) ) ){
 
 					MarkedAsDeletedPanel.launchThePanel( theAppID );
 
 				} else if( menuItem.equals( _settings.getString( 
-						"executablembseplugin.ExportRequirementsToCsvForImportIntoDOORSNG" ))){
+						"executablembseplugin.ExportRequirementsToCsvForImportIntoDOORSNG" ) ) ){
 
 					ExportRequirementsToCSV theExporter = new ExportRequirementsToCSV( _context );
 
 					theExporter.exportRequirementsToCSVUnderSelectedEl();
 
 				} else if( menuItem.equals( _settings.getString( 
-						"executablembseplugin.SwitchRequirementsToDOORSNG" ))){
+						"executablembseplugin.SwitchRequirementsToDOORSNG" ) ) ){
 
 					SwitchRhapsodyRequirementsToDNG theSwitcher = 
 							new SwitchRhapsodyRequirementsToDNG( _context );
@@ -450,14 +452,16 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 					if( _startLinkGuids.isEmpty() ){
 
-						UserInterfaceHelper.showWarningDialog( "You need to Start a link before you can end it" );
+						UserInterfaceHelper.showWarningDialog( 
+								"You need to Start a link before you can end it" );
 					} else {
 						EndlinkPanel.launchThePanel( 
 								theAppID, 
 								_startLinkGuids );
 					}
 
-				} else if (menuItem.equals( _settings.getString( "executablembseplugin.RollUpTraceabilityUpToTransitionLevel" ))){
+				} else if (menuItem.equals( _settings.getString( 
+						"executablembseplugin.RollUpTraceabilityUpToTransitionLevel" ) ) ){
 
 					if( theSelectedGraphEls != null ){
 						IRPGraphElement theSelectedGraphEl = theSelectedGraphEls.get( 0 );
@@ -575,7 +579,8 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 					}				
 
-				} else if( menuItem.equals( _settings.getString("executablembseplugin.DeriveDownstreamRequirementMenu"))){
+				} else if( menuItem.equals( _settings.getString(
+						"executablembseplugin.DeriveDownstreamRequirementMenu" ) ) ){
 
 					if (!theSelectedGraphEls.isEmpty()){
 						//CreateDerivedRequirementPanel.deriveDownstreamRequirement( theSelectedGraphEls );
@@ -608,7 +613,8 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						CreateNewBlockPartPanel.launchThePanel( theAppID );
 					}
 
-				} else if (menuItem.equals( _settings.getString("executablembseplugin.UpdatePortsAndInterfacesMenu"))){
+				} else if (menuItem.equals( _settings.getString(
+						"executablembseplugin.UpdatePortsAndInterfacesMenu"))){
 
 					if( theSelectedEl instanceof IRPSequenceDiagram ||
 							theSelectedEl instanceof IRPMessage ){
@@ -714,6 +720,16 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					} else if( theSelectedEl instanceof IRPSysMLPort ){
 						portCreator.deleteFlowPortAndRelatedEls( (IRPSysMLPort) theSelectedEl );
 					}
+					
+				} else if( menuItem.equals( _settings.getString( 
+						"executablembseplugin.AutoRealizeWithCopy" ) ) ){
+					
+					//if( theSelectedEl instanceof IRPSequenceDiagram ||
+					//		theSelectedEl instanceof IRPMessage ){
+						
+						AutoRealizeWithCopyPanel.launchThePanel( 
+								theAppID, theSelectedEl.getGUID() );
+					//}
 					
 				} else {
 					_context.warning( "Unhandled menu: " + _context.elInfo( theSelectedEl ) + " was invoked with menuItem='" + menuItem + "'");
