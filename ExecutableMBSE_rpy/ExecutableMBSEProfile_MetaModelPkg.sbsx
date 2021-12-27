@@ -25,7 +25,7 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">8.13.2021::14:57:49</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:47:45</_modifiedTime>
 			<_lastID type="a">10056</_lastID>
 			<_defaultComposite type="s">GUID 26d06e57-7121-4d5e-a0d6-98804dd35601</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -972,8 +972,8 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">MBSE Element</_hname>
-							<_hid type="a">GUID 0d931adc-d7f1-4642-94fa-e2a2f89d3dd6</_hid>
+							<_hname type="a">ExecutableMBSEProfile</_hname>
+							<_hid type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>
@@ -984,7 +984,7 @@
 					<_hid type="a">GUID bc887086-61f4-4c42-94ad-f909ae9b80e5</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">7.15.2021::12:13:18</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -1442,8 +1442,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">7.15.2021::12:13:18</_modifiedTime>
-			<_lastModifiedTime type="a">7.15.2021::12:13:18</_lastModifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
+			<_lastModifiedTime type="a">12.27.2021::17:45:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -4562,8 +4562,8 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">MBSE Element</_hname>
-							<_hid type="a">GUID 0d931adc-d7f1-4642-94fa-e2a2f89d3dd6</_hid>
+							<_hname type="a">ExecutableMBSEProfile</_hname>
+							<_hid type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>
@@ -4574,7 +4574,7 @@
 					<_hid type="a">GUID bc887086-61f4-4c42-94ad-f909ae9b80e5</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">7.5.2021::7:7:32</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -4993,8 +4993,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">7.5.2021::7:7:32</_modifiedTime>
-			<_lastModifiedTime type="a">7.5.2021::7:7:32</_lastModifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
+			<_lastModifiedTime type="a">12.27.2021::17:45:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -9093,8 +9093,8 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">MBSE Diagram</_hname>
-							<_hid type="a">GUID 0775b38f-d678-4575-851a-bc02ac3b4018</_hid>
+							<_hname type="a">ExecutableMBSEProfile</_hname>
+							<_hid type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>
@@ -9105,7 +9105,7 @@
 					<_hid type="a">GUID bc887086-61f4-4c42-94ad-f909ae9b80e5</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">7.15.2021::16:17:24</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -9559,8 +9559,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">7.15.2021::16:17:24</_modifiedTime>
-			<_lastModifiedTime type="a">7.15.2021::16:17:24</_lastModifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
+			<_lastModifiedTime type="a">12.27.2021::17:45:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -11294,8 +11294,8 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">MBSE Element</_hname>
-							<_hid type="a">GUID 0d931adc-d7f1-4642-94fa-e2a2f89d3dd6</_hid>
+							<_hname type="a">ExecutableMBSEProfile</_hname>
+							<_hid type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>
@@ -11306,7 +11306,7 @@
 					<_hid type="a">GUID a62a624c-1f96-4758-bc68-45d13ee71296</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">7.15.2021::16:17:24</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
 			<_lastID type="a">2</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -11681,8 +11681,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">7.15.2021::16:17:24</_modifiedTime>
-			<_lastModifiedTime type="a">7.15.2021::16:17:24</_lastModifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
+			<_lastModifiedTime type="a">12.27.2021::17:45:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -12803,8 +12803,8 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">MBSE Element</_hname>
-							<_hid type="a">GUID 0d931adc-d7f1-4642-94fa-e2a2f89d3dd6</_hid>
+							<_hname type="a">ExecutableMBSEProfile</_hname>
+							<_hid type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>
@@ -12815,7 +12815,7 @@
 					<_hid type="a">GUID fd73ba74-d6b0-43d2-a992-c7244e2fcb99</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">7.15.2021::12:40:3</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
 			<_lastID type="a">2</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -13154,8 +13154,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">7.15.2021::12:40:3</_modifiedTime>
-			<_lastModifiedTime type="a">7.15.2021::12:40:3</_lastModifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
+			<_lastModifiedTime type="a">12.27.2021::17:45:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -13721,8 +13721,8 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">MBSE Element</_hname>
-							<_hid type="a">GUID 0d931adc-d7f1-4642-94fa-e2a2f89d3dd6</_hid>
+							<_hname type="a">ExecutableMBSEProfile</_hname>
+							<_hid type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>
@@ -13733,7 +13733,7 @@
 					<_hid type="a">GUID c852deb4-47a4-4118-8431-fb8a130e7fa7</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">6.14.2021::16:23:48</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
 			<_lastID type="a">2</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -14157,8 +14157,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">6.14.2021::16:23:48</_modifiedTime>
-			<_lastModifiedTime type="a">6.14.2021::16:23:48</_lastModifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
+			<_lastModifiedTime type="a">12.27.2021::17:45:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -17328,8 +17328,8 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">MBSE Element</_hname>
-							<_hid type="a">GUID 0d931adc-d7f1-4642-94fa-e2a2f89d3dd6</_hid>
+							<_hname type="a">ExecutableMBSEProfile</_hname>
+							<_hid type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>
@@ -17340,7 +17340,7 @@
 					<_hid type="a">GUID 80598874-aed5-4469-bfde-32ac4ce1970d</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">6.15.2021::13:3:57</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
 			<_lastID type="a">2</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -17762,8 +17762,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">6.15.2021::13:3:57</_modifiedTime>
-			<_lastModifiedTime type="a">6.15.2021::13:3:57</_lastModifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
+			<_lastModifiedTime type="a">12.27.2021::17:45:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -20836,8 +20836,8 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">MBSE Diagram</_hname>
-							<_hid type="a">GUID 0775b38f-d678-4575-851a-bc02ac3b4018</_hid>
+							<_hname type="a">ExecutableMBSEProfile</_hname>
+							<_hid type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>
@@ -20848,7 +20848,7 @@
 					<_hid type="a">GUID 6fd7468e-ccf2-4728-a952-f463b34aede0</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">6.14.2021::16:24:39</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
 			<_lastID type="a">2</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -21267,8 +21267,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">6.14.2021::16:24:39</_modifiedTime>
-			<_lastModifiedTime type="a">6.14.2021::16:24:39</_lastModifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
+			<_lastModifiedTime type="a">12.27.2021::17:45:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -22876,8 +22876,8 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">MBSE Diagram</_hname>
-							<_hid type="a">GUID 0775b38f-d678-4575-851a-bc02ac3b4018</_hid>
+							<_hname type="a">ExecutableMBSEProfile</_hname>
+							<_hid type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>
@@ -22888,7 +22888,7 @@
 					<_hid type="a">GUID 7d1a9f2c-cefd-467b-b61e-e74b826894e3</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">6.14.2021::16:29:1</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
 			<_lastID type="a">2</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -23259,8 +23259,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">6.14.2021::16:29:1</_modifiedTime>
-			<_lastModifiedTime type="a">6.14.2021::16:29:1</_lastModifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
+			<_lastModifiedTime type="a">12.27.2021::17:45:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -24175,8 +24175,8 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">MBSE Diagram</_hname>
-							<_hid type="a">GUID 0775b38f-d678-4575-851a-bc02ac3b4018</_hid>
+							<_hname type="a">ExecutableMBSEProfile</_hname>
+							<_hid type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>
@@ -24187,7 +24187,7 @@
 					<_hid type="a">GUID adab7c1e-aa41-4df3-abfc-63916a92eb38</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">5.10.2021::9:1:2</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -24503,8 +24503,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">5.10.2021::9:1:2</_modifiedTime>
-			<_lastModifiedTime type="a">5.10.2021::9:1:2</_lastModifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
+			<_lastModifiedTime type="a">12.27.2021::17:45:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -25077,8 +25077,8 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">MBSE Element</_hname>
-							<_hid type="a">GUID 0d931adc-d7f1-4642-94fa-e2a2f89d3dd6</_hid>
+							<_hname type="a">ExecutableMBSEProfile</_hname>
+							<_hid type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>
@@ -25089,7 +25089,7 @@
 					<_hid type="a">GUID c53d1da3-6009-4d0f-8b60-7fbcdece52cd</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">6.14.2021::16:24:3</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
 			<_lastID type="a">2</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -25462,8 +25462,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">6.14.2021::16:24:3</_modifiedTime>
-			<_lastModifiedTime type="a">6.14.2021::16:24:3</_lastModifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
+			<_lastModifiedTime type="a">12.27.2021::17:45:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -26786,8 +26786,8 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">MBSE Element</_hname>
-							<_hid type="a">GUID 0d931adc-d7f1-4642-94fa-e2a2f89d3dd6</_hid>
+							<_hname type="a">ExecutableMBSEProfile</_hname>
+							<_hid type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>
@@ -26798,7 +26798,7 @@
 					<_hid type="a">GUID e18e8d62-cdb0-4ba4-809b-248a88c29a60</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">8.11.2021::8:38:24</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
 			<_lastID type="a">2</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -27220,8 +27220,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">8.11.2021::8:38:24</_modifiedTime>
-			<_lastModifiedTime type="a">8.11.2021::8:38:24</_lastModifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
+			<_lastModifiedTime type="a">12.27.2021::17:45:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -32006,8 +32006,8 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">MBSE Diagram</_hname>
-							<_hid type="a">GUID 0775b38f-d678-4575-851a-bc02ac3b4018</_hid>
+							<_hname type="a">ExecutableMBSEProfile</_hname>
+							<_hid type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>
@@ -32018,7 +32018,7 @@
 					<_hid type="a">GUID ff5629a3-242e-4c13-8efc-ae5ec8769ea7</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">8.11.2021::14:23:3</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
 			<_lastID type="a">2</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -32436,8 +32436,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">8.11.2021::14:17:29</_modifiedTime>
-			<_lastModifiedTime type="a">8.11.2021::14:17:29</_lastModifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
+			<_lastModifiedTime type="a">12.27.2021::17:45:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -36807,8 +36807,8 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">MBSE Element</_hname>
-							<_hid type="a">GUID 0d931adc-d7f1-4642-94fa-e2a2f89d3dd6</_hid>
+							<_hname type="a">ExecutableMBSEProfile</_hname>
+							<_hid type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>
@@ -36819,7 +36819,7 @@
 					<_hid type="a">GUID ff5629a3-242e-4c13-8efc-ae5ec8769ea7</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">8.10.2021::11:24:3</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
 			<_lastID type="a">7</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -37462,8 +37462,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">8.10.2021::11:24:3</_modifiedTime>
-			<_lastModifiedTime type="a">8.10.2021::11:24:3</_lastModifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
+			<_lastModifiedTime type="a">12.27.2021::17:45:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -42461,8 +42461,8 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">MBSE Element</_hname>
-							<_hid type="a">GUID 0d931adc-d7f1-4642-94fa-e2a2f89d3dd6</_hid>
+							<_hname type="a">ExecutableMBSEProfile</_hname>
+							<_hid type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>
@@ -42473,7 +42473,7 @@
 					<_hid type="a">GUID ff5629a3-242e-4c13-8efc-ae5ec8769ea7</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">8.10.2021::11:24:3</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
 			<_lastID type="a">6</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -42995,8 +42995,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">8.10.2021::11:24:3</_modifiedTime>
-			<_lastModifiedTime type="a">8.10.2021::11:24:3</_lastModifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
+			<_lastModifiedTime type="a">12.27.2021::17:45:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -46538,8 +46538,8 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">MBSE Element</_hname>
-							<_hid type="a">GUID 0d931adc-d7f1-4642-94fa-e2a2f89d3dd6</_hid>
+							<_hname type="a">ExecutableMBSEProfile</_hname>
+							<_hid type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>
@@ -46550,7 +46550,7 @@
 					<_hid type="a">GUID ff5629a3-242e-4c13-8efc-ae5ec8769ea7</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">8.10.2021::11:24:3</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
 			<_lastID type="a">9</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -47262,8 +47262,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">8.10.2021::11:24:3</_modifiedTime>
-			<_lastModifiedTime type="a">8.10.2021::11:24:3</_lastModifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
+			<_lastModifiedTime type="a">12.27.2021::17:45:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -49696,8 +49696,8 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">MBSE Element</_hname>
-							<_hid type="a">GUID 0d931adc-d7f1-4642-94fa-e2a2f89d3dd6</_hid>
+							<_hname type="a">ExecutableMBSEProfile</_hname>
+							<_hid type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>
@@ -49708,7 +49708,7 @@
 					<_hid type="a">GUID 6bb33f5f-b32e-49af-aaa1-5233776e9e88</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">7.15.2021::16:17:24</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
 			<_lastID type="a">2</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -50082,8 +50082,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">7.15.2021::16:17:24</_modifiedTime>
-			<_lastModifiedTime type="a">7.15.2021::16:17:24</_lastModifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
+			<_lastModifiedTime type="a">12.27.2021::17:45:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -51408,8 +51408,8 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">MBSE Element</_hname>
-							<_hid type="a">GUID 0d931adc-d7f1-4642-94fa-e2a2f89d3dd6</_hid>
+							<_hname type="a">ExecutableMBSEProfile</_hname>
+							<_hid type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>
@@ -51420,7 +51420,7 @@
 					<_hid type="a">GUID 41e14a72-55fd-433b-bd54-8d834eb700cc</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">6.15.2021::12:40:20</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
 			<_lastID type="a">2</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -51792,8 +51792,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">6.15.2021::12:40:20</_modifiedTime>
-			<_lastModifiedTime type="a">6.15.2021::12:40:20</_lastModifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
+			<_lastModifiedTime type="a">12.27.2021::17:45:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -52963,8 +52963,8 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">MBSE Diagram</_hname>
-							<_hid type="a">GUID 0775b38f-d678-4575-851a-bc02ac3b4018</_hid>
+							<_hname type="a">ExecutableMBSEProfile</_hname>
+							<_hid type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>
@@ -52975,7 +52975,7 @@
 					<_hid type="a">GUID 9199f4dc-5f9d-4c86-af04-3f1539172164</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">7.15.2021::14:41:32</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
 			<_lastID type="a">2</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -53383,8 +53383,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">7.5.2021::13:25:13</_modifiedTime>
-			<_lastModifiedTime type="a">7.5.2021::13:25:13</_lastModifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
+			<_lastModifiedTime type="a">12.27.2021::17:45:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -55736,8 +55736,8 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">MBSE Diagram</_hname>
-							<_hid type="a">GUID 0775b38f-d678-4575-851a-bc02ac3b4018</_hid>
+							<_hname type="a">ExecutableMBSEProfile</_hname>
+							<_hid type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>
@@ -55748,7 +55748,7 @@
 					<_hid type="a">GUID d4aa6407-47e5-4e78-8784-6d3ad83807b6</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">7.16.2021::10:2:33</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
 			<_lastID type="a">2</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -56125,8 +56125,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">7.16.2021::10:2:37</_modifiedTime>
-			<_lastModifiedTime type="a">7.16.2021::10:2:37</_lastModifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
+			<_lastModifiedTime type="a">12.27.2021::17:45:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -58038,8 +58038,8 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">MBSE Diagram</_hname>
-							<_hid type="a">GUID 0775b38f-d678-4575-851a-bc02ac3b4018</_hid>
+							<_hname type="a">ExecutableMBSEProfile</_hname>
+							<_hid type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>
@@ -58051,7 +58051,7 @@
 					<_hrmmServerID type="a">-1</_hrmmServerID>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">8.11.2021::14:49:26</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
 			<_lastID type="a">2</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -58517,8 +58517,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">8.11.2021::14:49:35</_modifiedTime>
-			<_lastModifiedTime type="a">8.11.2021::14:49:35</_lastModifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
+			<_lastModifiedTime type="a">12.27.2021::17:45:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -59719,8 +59719,8 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">MBSE Element</_hname>
-							<_hid type="a">GUID 0d931adc-d7f1-4642-94fa-e2a2f89d3dd6</_hid>
+							<_hname type="a">ExecutableMBSEProfile</_hname>
+							<_hid type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>
@@ -59731,7 +59731,7 @@
 					<_hid type="a">GUID 2c50888a-3a3d-44a2-8f3c-beb50d086c58</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">8.10.2021::11:24:3</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
 			<_lastID type="a">6</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -60246,8 +60246,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">8.10.2021::11:24:3</_modifiedTime>
-			<_lastModifiedTime type="a">8.10.2021::11:24:3</_lastModifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
+			<_lastModifiedTime type="a">12.27.2021::17:45:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -62145,8 +62145,8 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">MBSE Element</_hname>
-							<_hid type="a">GUID 0d931adc-d7f1-4642-94fa-e2a2f89d3dd6</_hid>
+							<_hname type="a">ExecutableMBSEProfile</_hname>
+							<_hid type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>
@@ -62157,7 +62157,7 @@
 					<_hid type="a">GUID 2c50888a-3a3d-44a2-8f3c-beb50d086c58</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">7.22.2021::13:7:15</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
 			<_lastID type="a">2</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -62531,8 +62531,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">7.22.2021::13:7:15</_modifiedTime>
-			<_lastModifiedTime type="a">7.22.2021::13:7:15</_lastModifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
+			<_lastModifiedTime type="a">12.27.2021::17:45:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -64025,8 +64025,8 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">MBSE Element</_hname>
-							<_hid type="a">GUID 0d931adc-d7f1-4642-94fa-e2a2f89d3dd6</_hid>
+							<_hname type="a">ExecutableMBSEProfile</_hname>
+							<_hid type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>
@@ -64037,7 +64037,7 @@
 					<_hid type="a">GUID c8d3990c-777b-4e8b-a088-3eedb670be80</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">7.5.2021::12:42:4</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
 			<_lastID type="a">2</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -64411,8 +64411,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">7.5.2021::12:42:4</_modifiedTime>
-			<_lastModifiedTime type="a">7.5.2021::12:42:4</_lastModifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
+			<_lastModifiedTime type="a">12.27.2021::17:45:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -65743,8 +65743,8 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">MBSE Element</_hname>
-							<_hid type="a">GUID 0d931adc-d7f1-4642-94fa-e2a2f89d3dd6</_hid>
+							<_hname type="a">ExecutableMBSEProfile</_hname>
+							<_hid type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>
@@ -65755,7 +65755,7 @@
 					<_hid type="a">GUID 2b0d5699-48ce-40c0-991d-906106d83dbe</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">7.16.2021::9:9:20</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
 			<_lastID type="a">4</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -66130,8 +66130,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">7.16.2021::9:9:20</_modifiedTime>
-			<_lastModifiedTime type="a">7.16.2021::9:9:20</_lastModifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
+			<_lastModifiedTime type="a">12.27.2021::17:45:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -66801,8 +66801,8 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">MBSE Element</_hname>
-							<_hid type="a">GUID 0d931adc-d7f1-4642-94fa-e2a2f89d3dd6</_hid>
+							<_hname type="a">ExecutableMBSEProfile</_hname>
+							<_hid type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>
@@ -66813,7 +66813,7 @@
 					<_hid type="a">GUID ce549b7a-7646-4080-b1b7-d4fb91f2beb7</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">7.16.2021::9:9:34</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
 			<_lastID type="a">3</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -67188,8 +67188,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">7.16.2021::9:9:34</_modifiedTime>
-			<_lastModifiedTime type="a">7.16.2021::9:9:34</_lastModifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
+			<_lastModifiedTime type="a">12.27.2021::17:45:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -67859,8 +67859,8 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">MBSE Relation</_hname>
-							<_hid type="a">GUID 39a1bf6f-d970-41b9-af9c-b4b35b14bb10</_hid>
+							<_hname type="a">ExecutableMBSEProfile</_hname>
+							<_hid type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>
@@ -67871,7 +67871,7 @@
 					<_hid type="a">GUID d9ff4d10-8180-491a-aa35-32a8935a775f</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">8.10.2021::11:24:3</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
 			<_lastID type="a">6</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -68375,8 +68375,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">8.10.2021::11:24:3</_modifiedTime>
-			<_lastModifiedTime type="a">8.10.2021::11:24:3</_lastModifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
+			<_lastModifiedTime type="a">12.27.2021::17:45:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -70347,8 +70347,8 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">MBSE Element</_hname>
-							<_hid type="a">GUID 0d931adc-d7f1-4642-94fa-e2a2f89d3dd6</_hid>
+							<_hname type="a">ExecutableMBSEProfile</_hname>
+							<_hid type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>
@@ -70359,7 +70359,7 @@
 					<_hid type="a">GUID a8bff4bf-10b8-4bed-aa33-eefc672a7862</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">8.10.2021::11:41:54</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
 			<_lastID type="a">5</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -70844,8 +70844,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">8.10.2021::11:41:58</_modifiedTime>
-			<_lastModifiedTime type="a">8.10.2021::11:41:58</_lastModifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
+			<_lastModifiedTime type="a">12.27.2021::17:45:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -74066,8 +74066,8 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">MBSE Element</_hname>
-							<_hid type="a">GUID 0d931adc-d7f1-4642-94fa-e2a2f89d3dd6</_hid>
+							<_hname type="a">ExecutableMBSEProfile</_hname>
+							<_hid type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>
@@ -74078,7 +74078,7 @@
 					<_hid type="a">GUID 1329ffea-cae9-4f62-a0ff-a4943aa4c2b9</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">8.10.2021::11:28:1</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
 			<_lastID type="a">2</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -74417,8 +74417,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">8.10.2021::11:28:1</_modifiedTime>
-			<_lastModifiedTime type="a">8.10.2021::11:28:1</_lastModifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
+			<_lastModifiedTime type="a">12.27.2021::17:45:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -75048,8 +75048,8 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">MBSE Element</_hname>
-							<_hid type="a">GUID 0d931adc-d7f1-4642-94fa-e2a2f89d3dd6</_hid>
+							<_hname type="a">ExecutableMBSEProfile</_hname>
+							<_hid type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>
@@ -75060,7 +75060,7 @@
 					<_hid type="a">GUID e18e8d62-cdb0-4ba4-809b-248a88c29a60</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">8.11.2021::14:52:21</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
 			<_lastID type="a">7</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -75588,8 +75588,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">8.11.2021::14:52:49</_modifiedTime>
-			<_lastModifiedTime type="a">8.11.2021::14:52:49</_lastModifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
+			<_lastModifiedTime type="a">12.27.2021::17:45:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -80108,8 +80108,8 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">MBSE Diagram</_hname>
-							<_hid type="a">GUID 0775b38f-d678-4575-851a-bc02ac3b4018</_hid>
+							<_hname type="a">ExecutableMBSEProfile</_hname>
+							<_hid type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>
@@ -80121,7 +80121,7 @@
 					<_hrmmServerID type="a">-1</_hrmmServerID>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">8.11.2021::14:15:14</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
 			<_lastID type="a">3</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -80597,8 +80597,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">8.11.2021::14:6:57</_modifiedTime>
-			<_lastModifiedTime type="a">8.11.2021::14:6:57</_lastModifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
+			<_lastModifiedTime type="a">12.27.2021::17:45:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -84981,8 +84981,8 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">MBSE Element</_hname>
-							<_hid type="a">GUID 0d931adc-d7f1-4642-94fa-e2a2f89d3dd6</_hid>
+							<_hname type="a">ExecutableMBSEProfile</_hname>
+							<_hid type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_hid>
 						</IHandle>
 					
 				</IRPYRawContainer>
@@ -84994,7 +84994,7 @@
 					<_hrmmServerID type="a">-1</_hrmmServerID>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">8.13.2021::14:57:55</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
 			<_lastID type="a">3</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -85465,8 +85465,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">8.13.2021::14:58:5</_modifiedTime>
-			<_lastModifiedTime type="a">8.13.2021::14:58:5</_lastModifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:45:31</_modifiedTime>
+			<_lastModifiedTime type="a">12.27.2021::17:45:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -85637,7 +85637,7 @@
 				</CGIText>
 			</m_name>
 			<m_drawBehavior type="a">4096</m_drawBehavior>
-			<m_transform type="a">4.13426 0 0 5.68182 -172 20 </m_transform>
+			<m_transform type="a">4.18982 0 0 5.68182 -172 20 </m_transform>
 			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
 			<m_AdditionalLabel type="p">
 				<CGIText type="e">
@@ -88167,17 +88167,9 @@
 				</IRPYRawContainer>
 			</Operations>
 			<AggregatesList type="e">
-				<value>GUID b74c24cb-57ec-49b0-920a-0412177abdfb</value>
 				<value>GUID 169e0c7f-ed5c-46ba-9270-58bfd584f373</value>
 			</AggregatesList>
 		</CGIClass>
-		<CGICompartment type="e">
-			<_id type="a">GUID b74c24cb-57ec-49b0-920a-0412177abdfb</_id>
-			<m_name type="a">HyperLinkShortCut</m_name>
-			<m_displayOption type="a">All</m_displayOption>
-			<m_bShowInherited type="a">0</m_bShowInherited>
-			<m_bOrdered type="a">0</m_bOrdered>
-		</CGICompartment>
 		<CGICompartment type="e">
 			<_id type="a">GUID 169e0c7f-ed5c-46ba-9270-58bfd584f373</_id>
 			<m_name type="a">Description</m_name>

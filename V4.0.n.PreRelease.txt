@@ -591,9 +591,11 @@ V4.0.n.Rhp831.PreRelease (XX-XXX-XXXX):
 #416 09-DEC-2021: ExecutableMBSE: Checkpoint of AutoRealizeWithCopyPanel, not fully implemented yet though (F.J.Chadburn)
 #417 09-DEC-2021: ExecutableMBSE: Fix to MessageInfoList to ignore OMStartBehaviorEvent's when determining which signals are not realized on SD (F.J.Chadburn)
 #418 09-DEC-2021: ExecutableMBSE: Add a CustomV_HideReqts to profile enable user to easily show/hide requirements on diagram (F.J.Chadburn)
+#419 27-DEC-2021: ExecutableMBSE: Use of ExecutableMBSEProfile as the right-click root menu to identify DSN elements and help simplify a bit (F.J.Chadburn) 
 
 Backlog/Known issues
-
+- Add a menu to put guards on to an activity diagram
+- Automatically name statecharts when they are created, STM - <Block name>, as statechart_3 doesn't really help as a name
 - Bleed appearing on statechart unexpectadly
 - Add ability to right-click a use case and move to a new use case package (to spawn further development)
 - Add dialog to toggle autoshow stereotype with dontshow, so that you can easily switch to/from TC usage

@@ -11,7 +11,7 @@
 			<_id type="a">GUID 4f2b6707-5798-4c1e-aa4b-c08bda2216fb</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">MetamodelProfileExtensionsProfile</_name>
-			<_modifiedTime type="a">5.10.2021::8:34:32</_modifiedTime>
+			<_modifiedTime type="a">12.27.2021::17:47:45</_modifiedTime>
 			<_lastID type="a">5</_lastID>
 			<_defaultComposite type="s">GUID 5acfea5e-557e-4311-ba12-6023a21b8426</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -19,6 +19,7 @@
 				<value>GUID 0d931adc-d7f1-4642-94fa-e2a2f89d3dd6</value>
 				<value>GUID 0775b38f-d678-4575-851a-bc02ac3b4018</value>
 				<value>GUID 39a1bf6f-d970-41b9-af9c-b4b35b14bb10</value>
+				<value>GUID a8165107-5800-41c4-a18e-921c2d3d5b70</value>
 				<value>GUID 5acfea5e-557e-4311-ba12-6023a21b8426</value>
 			</AggregatesList>
 		</IProfile>
@@ -51,6 +52,18 @@
 			<_myState type="a">8192</_myState>
 			<_name type="a">MBSE Relation</_name>
 			<_modifiedTime type="a">5.10.2021::8:34:32</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>Class</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+		</IStereotype>
+		<IStereotype type="e">
+			<_id type="a">GUID a8165107-5800-41c4-a18e-921c2d3d5b70</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">ExecutableMBSEProfile</_name>
+			<_modifiedTime type="a">12.27.2021::17:44:36</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
