@@ -594,6 +594,9 @@ V4.0.n.Rhp831.PreRelease (31-DEC-2021):
 #419 27-DEC-2021: ExecutableMBSE: Use of ExecutableMBSEProfile as the right-click root menu to identify DSN elements and help simplify a bit (F.J.Chadburn) 
 #420 28-DEC-2021: ExecutableMBSE: Include Textual Activity in the metamodeling profile usage and add the Transition Label tool to its drawing toolbar (F.J.Chadburn) 
 
+V4.0.o.Rhp831.PreRelease (XX-XXX-XXXX):
+#421 11-FEB-2022: ExecutableMBSE: Remove explicit line and fill colors for logical system package new term blocks, to allow local stereotype formats (F.J.Chadburn)
+
 Backlog/Known issues
 - Automatically name statecharts when they are created, STM - <Block name>, as statechart_3 doesn't really help as a name
 - Bleed appearing on statechart unexpectadly

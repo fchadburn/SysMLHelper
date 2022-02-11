@@ -91,21 +91,17 @@ Subject Format
 	end
 	Metaclass SubsystemUsage
 		Property DefaultSize String "0,34,390,62"
-		Property Fill.FillColor Color "255,255,255"
 		Property Font.Font String "Tahoma"
 		Property Font.Size Int "8"
 		Property Font.Weight@Child.NameCompartment@Name Int "700"
-		Property Line.LineColor Color "128,128,0"
 		Property Line.LineStyle Int "0"
 		Property Line.LineWidth Int "1"
 	end
 	Metaclass SystemUsage
 		Property DefaultSize String "0,34,220,148"
-		Property Fill.FillColor Color "255,255,255"
 		Property Font.Font String "Tahoma"
 		Property Font.Size Int "8"
 		Property Font.Weight@Child.NameCompartment@Name Int "700"
-		Property Line.LineColor Color "128,128,0"
 		Property Line.LineStyle Int "0"
 		Property Line.LineWidth Int "1"
 	end
@@ -121,12 +117,10 @@ Subject Format
 	end
 	Metaclass SubsystemBlock
 		Property DefaultSize String "0,0,219,114"
-		Property Fill.FillColor Color "255,255,255"
 		Property Font.Font String "Tahoma"
 		Property Font.Size Int "8"
 		Property Font.Weight@Child.NameCompartment@Name Int "700"
 		Property Font.Italic@Child.NameCompartment@Name Int "0"
-		Property Line.LineColor Color "109,163,217"
 		Property Line.LineStyle Int "0"
 		Property Line.LineWidth Int "1"
 	end
@@ -143,12 +137,10 @@ Subject Format
 	end
 	Metaclass SystemBlock
 		Property DefaultSize String "0,34,84,148"
-		Property Fill.FillColor Color "255,255,255"
 		Property Font.Font String "Tahoma"
 		Property Font.Size Int "8"
 		Property Font.Weight@Child.NameCompartment@Name Int "700"
 		Property Font.Italic@Child.NameCompartment@Name Int "0"
-		Property Line.LineColor Color "109,163,217"
 		Property Line.LineStyle Int "0"
 		Property Line.LineWidth Int "1"
 	end
