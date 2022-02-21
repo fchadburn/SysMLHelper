@@ -25,8 +25,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">12.28.2021::17:53:12</_modifiedTime>
-			<_lastID type="a">25</_lastID>
+			<_modifiedTime type="a">2.12.2022::16:40:6</_modifiedTime>
+			<_lastID type="a">26</_lastID>
 			<_defaultComposite type="s">GUID ed3fccd8-9776-4e76-be65-fed29cadd8e4</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
@@ -54,6 +54,7 @@
 				<value>GUID e9ee8750-4846-45e7-bef0-6a5166da82c8</value>
 				<value>GUID e7c92ce3-2cc3-45c5-a25a-f280e52f7240</value>
 				<value>GUID 412e5798-07e4-4c68-8222-a8fb8380c72b</value>
+				<value>GUID 85b222f6-524a-4a1f-bc7d-7719222e8200</value>
 			</AggregatesList>
 		</ISubsystem>
 		<IClass type="e">
@@ -546,6 +547,27 @@
 				</IHandle>
 			</_theMainDiagram>
 			<_modifiedTime type="a">12.28.2021::17:54:5</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 85b222f6-524a-4a1f-bc7d-7719222e8200</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">CallOperation</_name>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\ExecutableMBSEProfile_MetaModelPkg.sbsx</_hfilename>
+					<_hsubsystem type="a">ExecutableMBSEProfile_MetaModelPkg</_hsubsystem>
+					<_hclass type="a">Call Operation Activity</_hclass>
+					<_hname type="a">MMD - Call Operation Activity</_hname>
+					<_hid type="a">GUID e04762d9-695b-42f7-a56a-ee686e9906eb</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">2.12.2022::16:25:56</_modifiedTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
