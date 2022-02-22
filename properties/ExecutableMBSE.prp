@@ -124,6 +124,17 @@ Subject Format
 		Property Line.LineStyle Int "0"
 		Property Line.LineWidth Int "1"
 	end
+	Metaclass FeatureBlock
+		Property DefaultSize String "0,0,219,114"
+		Property Fill.FillColor Color "255,255,255"
+		Property Font.Font String "Tahoma"
+		Property Font.Size Int "8"
+		Property Font.Weight@Child.NameCompartment@Name Int "700"
+		Property Font.Italic@Child.NameCompartment@Name Int "1"
+		Property Line.LineColor Color "0,128,0"
+		Property Line.LineStyle Int "0"
+		Property Line.LineWidth Int "1"
+	end
 	Metaclass FunctionBlock
 		Property DefaultSize String "0,0,219,114"
 		Property Fill.FillColor Color "255,255,255"

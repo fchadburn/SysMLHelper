@@ -1658,7 +1658,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">2.21.2022::13:25:47</_modifiedTime>
+			<_modifiedTime type="a">2.22.2022::21:5:25</_modifiedTime>
 			<_lastID type="a">24</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -8271,7 +8271,7 @@ Tips:\par%0D
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">AddNewMenuStructure</_Name>
-													<_Value type="a">AcceptEventAction,AcceptTimeEvent,ActivityFinal,Attribute,CallBehavior,CallOperation,ControlFlow,DecisionNode,DefaultTransition,Fork,InterruptibleRegion,MergeNode,SendAction,Structure Diagram,Use Case Description,Use Case Postcondition,Use Case Precondition,ExecutableMBSEProfile/10 Reqts Analysis - Context Diagram Package,ExecutableMBSEProfile/11 Reqts Analysis - Actor Package,ExecutableMBSEProfile/12 Reqts Analysis - Use Case Package,ExecutableMBSEProfile/13 Reqts Analysis - Requirement Package,ExecutableMBSEProfile/14 Reqts Analysis - External Signals Package,ExecutableMBSEProfile/31 Design Synthesis - Logical System Package,ExecutableMBSEProfile/33 Design Synthesis - Software Design Package,ExecutableMBSEProfile/33 Design Synthesis - Subsystem Interfaces Package,ExecutableMBSEProfile/Actor Usage,ExecutableMBSEProfile/Block Definition Diagram - Simple,ExecutableMBSEProfile/Block Definition Diagram - Software,ExecutableMBSEProfile/C++ Class,ExecutableMBSEProfile/Call Operation Activity,ExecutableMBSEProfile/Component Usage,ExecutableMBSEProfile/Domain Block,ExecutableMBSEProfile/Enhanced Use Case Diagram,ExecutableMBSEProfile/Feature Usage,ExecutableMBSEProfile/Flow Connector,ExecutableMBSEProfile/Flow Input,ExecutableMBSEProfile/Flow Output,ExecutableMBSEProfile/Function Block,ExecutableMBSEProfile/Function Usage,ExecutableMBSEProfile/Internal Block Diagram - Functional,ExecutableMBSEProfile/Internal Block Diagram - Simple,ExecutableMBSEProfile/Internal Block Diagram - Software,ExecutableMBSEProfile/Software Component,ExecutableMBSEProfile/Subsystem Block,ExecutableMBSEProfile/Subsystem Usage,ExecutableMBSEProfile/System Block,ExecutableMBSEProfile/System Context Diagram,ExecutableMBSEProfile/System Usage,ExecutableMBSEProfile/TableV - Context Diagram Flows,ExecutableMBSEProfile/Textual Activity,Diagrams/Requirements Diagram,%0D
+													<_Value type="a">AcceptEventAction,AcceptTimeEvent,ActivityFinal,Attribute,CallBehavior,CallOperation,ControlFlow,DecisionNode,DefaultTransition,Fork,InterruptibleRegion,MergeNode,SendAction,Structure Diagram,Use Case Description,Use Case Postcondition,Use Case Precondition,ExecutableMBSEProfile/10 Reqts Analysis - Context Diagram Package,ExecutableMBSEProfile/11 Reqts Analysis - Actor Package,ExecutableMBSEProfile/12 Reqts Analysis - Use Case Package,ExecutableMBSEProfile/13 Reqts Analysis - Requirement Package,ExecutableMBSEProfile/14 Reqts Analysis - External Signals Package,ExecutableMBSEProfile/31 Design Synthesis - Logical System Package,ExecutableMBSEProfile/32 Design Synthesis - Feature Function Package,ExecutableMBSEProfile/33 Design Synthesis - Software Design Package,ExecutableMBSEProfile/33 Design Synthesis - Subsystem Interfaces Package,ExecutableMBSEProfile/Actor Usage,ExecutableMBSEProfile/Block Definition Diagram - Software,ExecutableMBSEProfile/Block Definition Diagram - System,ExecutableMBSEProfile/C++ Class,ExecutableMBSEProfile/Call Operation Activity,ExecutableMBSEProfile/Component Usage,ExecutableMBSEProfile/Domain Block,ExecutableMBSEProfile/Enhanced Use Case Diagram,ExecutableMBSEProfile/Feature Block,ExecutableMBSEProfile/Feature Usage,ExecutableMBSEProfile/Flow Connector,ExecutableMBSEProfile/Flow Input,ExecutableMBSEProfile/Flow Output,ExecutableMBSEProfile/Function Block,ExecutableMBSEProfile/Function Usage,ExecutableMBSEProfile/Internal Block Diagram - Functional,ExecutableMBSEProfile/Internal Block Diagram - Software,ExecutableMBSEProfile/Internal Block Diagram - System,ExecutableMBSEProfile/Software Component,ExecutableMBSEProfile/Subsystem Block,ExecutableMBSEProfile/Subsystem Usage,ExecutableMBSEProfile/System Block,ExecutableMBSEProfile/System Context Diagram,ExecutableMBSEProfile/System Usage,ExecutableMBSEProfile/TableV - Context Diagram Flows,ExecutableMBSEProfile/Textual Activity,Diagrams/Requirements Diagram,%0D
 Diagrams/UseCaseDiagram,%0D
 Diagrams/Package Diagram,%0D
 Diagrams/Block Definition Diagram,%0D
@@ -8454,7 +8454,7 @@ Query</_Value>
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">10 Reqts Analysis - Context Diagram Package,11 Reqts Analysis - Actor Package,12 Reqts Analysis - Use Case Package,13 Reqts Analysis - Requirement Package,14 Reqts Analysis - External Signals Package,31 Design Synthesis - Logical System Package,33 Design Synthesis - Software Design Package,33 Design Synthesis - Subsystem Interfaces Package,Call Operation Activity,Textual Activity</_Value>
+													<_Value type="a">10 Reqts Analysis - Context Diagram Package,11 Reqts Analysis - Actor Package,12 Reqts Analysis - Use Case Package,13 Reqts Analysis - Requirement Package,14 Reqts Analysis - External Signals Package,31 Design Synthesis - Logical System Package,32 Design Synthesis - Feature Function Package,33 Design Synthesis - Software Design Package,33 Design Synthesis - Subsystem Interfaces Package,Call Operation Activity,Textual Activity</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -8471,7 +8471,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSE</_name>
-			<_modifiedTime type="a">2.12.2022::16:42:40</_modifiedTime>
+			<_modifiedTime type="a">2.22.2022::12:15:24</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -8483,7 +8483,7 @@ Query</_Value>
 			<_id type="a">GUID 3307dbc4-6282-4d53-88b2-50e3de5ff8c2</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Diagrams</_name>
-			<_modifiedTime type="a">2.21.2022::13:18:23</_modifiedTime>
+			<_modifiedTime type="a">2.22.2022::12:16:2</_modifiedTime>
 			<_lastID type="a">4</_lastID>
 			<_defaultComposite type="s">GUID af3ccc20-8ac1-47a2-8c5f-be1a84c1550e</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -8563,19 +8563,19 @@ Query</_Value>
 												
 												<IProperty type="e">
 													<_Name type="a">DrawingToolbar</_Name>
-													<_Value type="a">System Block,Subsystem Block,Domain Block,Directed Composition,Generalization,Function Block,Software Component,Feature Usage,Dependency,Satisfaction,Problem,Rationale</_Value>
+													<_Value type="a">System Block,Subsystem Block,Domain Block,Directed Composition,Generalization,Feature Block,Function Block,Software Component,Dependency,Satisfaction,Problem,Rationale</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
 													<_Name type="a">Name</_Name>
-													<_Value type="a">Block Definition Diagram - Simple</_Value>
+													<_Value type="a">Block Definition Diagram - System</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
 													<_Name type="a">PluralName</_Name>
-													<_Value type="a">Block Definition Diagrams - Simple</_Value>
+													<_Value type="a">Block Definition Diagrams - System</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -8660,8 +8660,8 @@ Query</_Value>
 				</Subjects>
 			</IPropertyContainer>
 			</_properties>
-			<_name type="a">BlockDefinitionDiagramSimple</_name>
-			<_modifiedTime type="a">2.21.2022::13:18:23</_modifiedTime>
+			<_name type="a">BlockDefinitionDiagramSystem</_name>
+			<_modifiedTime type="a">2.22.2022::11:46:38</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -8922,7 +8922,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SystemContextDiagram</_name>
-			<_modifiedTime type="a">7.15.2021::16:18:43</_modifiedTime>
+			<_modifiedTime type="a">2.22.2022::12:16:2</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -9049,13 +9049,13 @@ Query</_Value>
 												
 												<IProperty type="e">
 													<_Name type="a">Name</_Name>
-													<_Value type="a">Internal Block Diagram - Simple</_Value>
+													<_Value type="a">Internal Block Diagram - System</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
 													<_Name type="a">PluralName</_Name>
-													<_Value type="a">Internal Block Diagrams - Simple</_Value>
+													<_Value type="a">Internal Block Diagrams - System</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -9095,8 +9095,8 @@ Query</_Value>
 				</Subjects>
 			</IPropertyContainer>
 			</_properties>
-			<_name type="a">InternalBlockDiagramSimple</_name>
-			<_modifiedTime type="a">7.15.2021::14:39:49</_modifiedTime>
+			<_name type="a">InternalBlockDiagramSystem</_name>
+			<_modifiedTime type="a">2.22.2022::11:18:54</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -9966,7 +9966,8 @@ Query</_Value>
 			<_id type="a">GUID d213ea00-7590-48aa-8f30-a0a61f8fcd08</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Packages</_name>
-			<_modifiedTime type="a">2.21.2022::13:18:19</_modifiedTime>
+			<_modifiedTime type="a">2.22.2022::20:53:37</_modifiedTime>
+			<_lastID type="a">1</_lastID>
 			<_defaultComposite type="s">GUID 26c8a3f9-6aee-4dff-a42f-bf1cc2880009</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
@@ -9978,6 +9979,7 @@ Query</_Value>
 				<value>GUID 4bceda2a-db08-49b8-9414-0ae2264d1818</value>
 				<value>GUID 1b9675ba-45f9-4d8c-b1cc-8e2b4e4a5461</value>
 				<value>GUID d4443255-5742-4bd6-971f-c0575617fb18</value>
+				<value>GUID 46437a8b-475f-470a-b07b-ac5fb5d1287b</value>
 				<value>GUID 26c8a3f9-6aee-4dff-a42f-bf1cc2880009</value>
 			</AggregatesList>
 		</ISubsystem>
@@ -10039,7 +10041,7 @@ Query</_Value>
 												<size type="a">4</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Query,Event,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Requirement,Actor,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
+													<_Value type="a">Query,Event,Diagram View,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Requirement,Actor,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -10074,7 +10076,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ActorPackage</_name>
-			<_modifiedTime type="a">7.5.2021::7:9:55</_modifiedTime>
+			<_modifiedTime type="a">2.22.2022::8:54:56</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -10141,7 +10143,7 @@ Query</_Value>
 												<size type="a">4</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Query,11 Reqts Analysis - Actor Package,13 Reqts Analysis - Requirement Package,Enhanced Use Case Diagram,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Requirement,Actor,UseCase,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
+													<_Value type="a">Query,Diagram View,11 Reqts Analysis - Actor Package,13 Reqts Analysis - Requirement Package,Enhanced Use Case Diagram,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Requirement,Actor,UseCase,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -10176,7 +10178,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">UseCasePackage</_name>
-			<_modifiedTime type="a">2.21.2022::13:18:2</_modifiedTime>
+			<_modifiedTime type="a">2.22.2022::8:55:9</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -10228,7 +10230,7 @@ Query</_Value>
 												<size type="a">4</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Query,Allocation,AllocationsTable,Requirements Diagram,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Remote Requirements Table,Requirement,Requirements Coverage Table,RequirementsTable,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
+													<_Value type="a">Query,Allocation,AllocationsTable,Diagram View,Requirements Diagram,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Remote Requirements Table,Requirement,Requirements Coverage Table,RequirementsTable,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -10263,7 +10265,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">RequirementPackage</_name>
-			<_modifiedTime type="a">6.14.2021::16:23:48</_modifiedTime>
+			<_modifiedTime type="a">2.22.2022::8:55:6</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -10378,7 +10380,7 @@ Query</_Value>
 												<size type="a">4</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Query,Event,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
+													<_Value type="a">Query,Event,Diagram View,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -10413,7 +10415,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExternalSignalsPackage</_name>
-			<_modifiedTime type="a">6.14.2021::16:24:3</_modifiedTime>
+			<_modifiedTime type="a">2.22.2022::8:55:22</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -10466,7 +10468,7 @@ Query</_Value>
 												<size type="a">4</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Query,Event,Interface,SequenceDiagram,33 Design Synthesis - Subsystem Interfaces Package,Block Definition Diagram - Simple,Block Definition Diagram - Software,C++ Class,Domain Block,Feature Usage,Flow Connector,Function Block,Software Component,Subsystem Block,System Block,Component,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,InterfaceBlock,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
+													<_Value type="a">Query,Event,Interface,Diagram View,SequenceDiagram,32 Design Synthesis - Feature Function Package,33 Design Synthesis - Subsystem Interfaces Package,Block Definition Diagram - Software,Block Definition Diagram - System,C++ Class,Domain Block,Feature Usage,Flow Connector,Function Block,Software Component,Subsystem Block,System Block,Component,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,InterfaceBlock,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -10501,7 +10503,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">LogicalSystemPackage</_name>
-			<_modifiedTime type="a">2.21.2022::13:18:19</_modifiedTime>
+			<_modifiedTime type="a">2.22.2022::20:53:37</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -10529,7 +10531,7 @@ Query</_Value>
 												<size type="a">4</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Query,Event,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,InterfaceBlock,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
+													<_Value type="a">Query,Event,Diagram View,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,InterfaceBlock,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -10564,7 +10566,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SubsystemInterfacesPackage</_name>
-			<_modifiedTime type="a">7.16.2021::8:18:42</_modifiedTime>
+			<_modifiedTime type="a">2.22.2022::8:56:3</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -10592,7 +10594,7 @@ Query</_Value>
 												<size type="a">4</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Query,Event,Interface,PanelDiagram,SequenceDiagram,Block Definition Diagram - Software,C++ Class,Software Component,Component,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
+													<_Value type="a">Query,Event,Interface,Diagram View,PanelDiagram,SequenceDiagram,Block Definition Diagram - Software,C++ Class,Software Component,Component,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -10627,7 +10629,70 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SoftwareDesignPackage</_name>
-			<_modifiedTime type="a">12.27.2021::17:25:27</_modifiedTime>
+			<_modifiedTime type="a">2.22.2022::8:56:28</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>Package</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+			<_newTerm type="a">1</_newTerm>
+		</IStereotype>
+		<IStereotype type="e">
+			<_id type="a">GUID 46437a8b-475f-470a-b07b-ac5fb5d1287b</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Stereotype</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">4</size>
+												<IProperty type="e">
+													<_Name type="a">Aggregates</_Name>
+													<_Value type="a">Query,Diagram View,Block Definition Diagram - System,Feature Block,Function Block,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">BrowserGroupIcon</_Name>
+													<_Value type="a">IconsPkg\FeatureFunctionPackages.ico</_Value>
+													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">BrowserIcon</_Name>
+													<_Value type="a">IconsPkg\FeatureFunctionPackage.ico</_Value>
+													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">Name</_Name>
+													<_Value type="a">32 Design Synthesis - Feature Function Package</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">FeatureFunctionPackage</_name>
+			<_modifiedTime type="a">2.22.2022::13:5:17</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -10651,14 +10716,15 @@ Query</_Value>
 			<_id type="a">GUID ec717f1d-0b3e-427a-89fd-8b516b2337c8</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Elements</_name>
-			<_modifiedTime type="a">12.28.2021::18:9:35</_modifiedTime>
-			<_lastID type="a">11</_lastID>
+			<_modifiedTime type="a">2.22.2022::20:5:0</_modifiedTime>
+			<_lastID type="a">12</_lastID>
 			<_defaultComposite type="s">GUID d51fb0a3-38d7-4d7a-9f45-35fd12f6ff2a</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
 				<value>GUID 36bc6402-2085-4cc4-ae15-a918539225cd</value>
 				<value>GUID 6f23967d-a250-46ca-9d95-a647c9c174e5</value>
 				<value>GUID 2835f8a8-c063-48c3-931a-9412002f52cb</value>
+				<value>GUID 8dd4230f-59be-4f10-8a6e-6be0923621dd</value>
 				<value>GUID 805fed45-0b89-4faa-8d7f-fd160aab51ba</value>
 				<value>GUID dae95d7f-192e-496c-97ad-dbea16019518</value>
 				<value>GUID 0d82e65a-54aa-4efd-8199-ae466b68bf96</value>
@@ -10695,7 +10761,7 @@ Query</_Value>
 												<size type="a">6</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Connector,Generalization,Operation,Reception,ValueProperty,Statechart,Block Definition Diagram - Simple,Component Usage,Feature Usage,Internal Block Diagram - Simple,Subsystem Usage,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale,Flow,ProxyPort</_Value>
+													<_Value type="a">Connector,Generalization,Operation,Reception,ValueProperty,Statechart,Block Definition Diagram - System,Component Usage,Feature Usage,Internal Block Diagram - System,Subsystem Usage,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale,Flow,ProxyPort</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -10742,7 +10808,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SystemBlock</_name>
-			<_modifiedTime type="a">12.27.2021::17:24:39</_modifiedTime>
+			<_modifiedTime type="a">2.22.2022::12:16:29</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -10845,7 +10911,7 @@ Query</_Value>
 												<size type="a">5</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Connector,Object,Internal Block Diagram - Simple,System Usage,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale</_Value>
+													<_Value type="a">Connector,Object,Internal Block Diagram - System,System Usage,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -10886,7 +10952,70 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">DomainBlock</_name>
-			<_modifiedTime type="a">12.27.2021::17:24:45</_modifiedTime>
+			<_modifiedTime type="a">2.22.2022::11:21:45</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>Class</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+			<_newTerm type="a">1</_newTerm>
+		</IStereotype>
+		<IStereotype type="e">
+			<_id type="a">GUID 8dd4230f-59be-4f10-8a6e-6be0923621dd</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Stereotype</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">4</size>
+												<IProperty type="e">
+													<_Name type="a">Aggregates</_Name>
+													<_Value type="a">Generalization,Requirements Diagram,Block Definition Diagram - System,Flow Connector,Function Usage,Internal Block Diagram - Functional,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">BrowserGroupIcon</_Name>
+													<_Value type="a">IconsPkg\FeatureBlocks.ico</_Value>
+													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">BrowserIcon</_Name>
+													<_Value type="a">IconsPkg\FeatureBlock.ico</_Value>
+													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">Name</_Name>
+													<_Value type="a">Feature Block</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">FeatureBlock</_name>
+			<_modifiedTime type="a">2.22.2022::20:5:0</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -10914,7 +11043,7 @@ Query</_Value>
 												<size type="a">7</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Flow Input,Flow Output,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale</_Value>
+													<_Value type="a">Flow Input,Flow Output,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale,Derivation</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -10968,7 +11097,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">FunctionBlock</_name>
-			<_modifiedTime type="a">12.27.2021::17:24:59</_modifiedTime>
+			<_modifiedTime type="a">2.22.2022::13:32:23</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -11164,7 +11293,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SystemUsage</_name>
-			<_modifiedTime type="a">12.27.2021::17:24:48</_modifiedTime>
+			<_modifiedTime type="a">2.22.2022::12:16:40</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -11192,7 +11321,7 @@ Query</_Value>
 												<size type="a">5</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Flow Connector,Function Usage,Internal Block Diagram - Functional,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale</_Value>
+													<_Value type="a">Flow Connector,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -11234,7 +11363,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">FeatureUsage</_name>
-			<_modifiedTime type="a">12.27.2021::15:49:29</_modifiedTime>
+			<_modifiedTime type="a">2.22.2022::12:16:4</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>

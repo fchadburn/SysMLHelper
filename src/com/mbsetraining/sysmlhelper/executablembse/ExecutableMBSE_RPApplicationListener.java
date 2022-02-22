@@ -578,7 +578,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 			_context.debug( "afterAddForLink invoked for  " + _context.elInfo( theLink ) + 
 					" owned by " + _context.elInfo( theLink.getOwner() ) );
-			
+
 			//_context.debug( "fromUserDefinedMetaClass is " + fromUserDefinedMetaClass );
 			//_context.debug( "toUserDefinedMetaClass is " + toUserDefinedMetaClass );
 
@@ -590,18 +590,20 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 				if( fromClassifier instanceof IRPActor && 
 						toClassifier instanceof IRPClass ){
-					
+
 					createPortsBasedOnPropertyPoliciesFor( theLink );
-				
+
 				} else if( toClassifier instanceof IRPActor && 
 						fromClassifier instanceof IRPClass ){
-					
+
 					createPortsBasedOnPropertyPoliciesFor( theLink );
 				}
 			}
 
 		} else if( _context.isOwnedUnderPackageHierarchy( 
-				_context.DESIGN_SYNTHESIS_LOGICAL_SYSTEM_PACKAGE, theLink ) ){
+				_context.DESIGN_SYNTHESIS_LOGICAL_SYSTEM_PACKAGE, theLink ) ||
+				_context.isOwnedUnderPackageHierarchy( 
+						_context.DESIGN_SYNTHESIS_FEATURE_FUNCTION_PACKAGE, theLink ) ){
 
 			String fromUserDefinedMetaClass = ( ( theLink.getFrom() == null ) ? "null from" : theLink.getFrom().getUserDefinedMetaClass() );
 			String toUserDefinedMetaClass = ( ( theLink.getTo() == null ) ? "null to" : theLink.getTo().getUserDefinedMetaClass() );
@@ -612,12 +614,18 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			_context.debug( "afterAddForLink invoked for  " + _context.elInfo( theLink ) + 
 					" owned by " + _context.elInfo( theLink.getOwner() ) );
 
-			if( theLink.getUserDefinedMetaClass().equals( 
+			if( (theLink.getUserDefinedMetaClass().equals( 
 					_context.FLOW_CONNECTOR ) &&
 					fromUserDefinedMetaClass.equals( 
 							_context.FUNCTION_USAGE ) &&
 							toUserDefinedMetaClass.equals( 
-									_context.FUNCTION_USAGE ) ){
+									_context.FUNCTION_USAGE ) || 
+									(theLink.getUserDefinedMetaClass().equals( 
+											_context.FLOW_CONNECTOR ) &&
+											fromUserDefinedMetaClass.equals( 
+													_context.FUNCTION_BLOCK ) &&
+													toUserDefinedMetaClass.equals( 
+															_context.FUNCTION_BLOCK )) ) ){
 
 				boolean isContinue = false;
 
@@ -663,7 +671,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 	private void createPortsBasedOnPropertyPoliciesFor(
 			IRPLink theLink ){
-		
+
 		String autoGenPolicy = _context.getAutoGenerationOfPortsForLinksPolicy( 
 				theLink );
 
@@ -767,19 +775,19 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 				IRPClass toInterface = theOwningPkg.addClass( toInterfaceName );
 				toInterface.changeTo( "Interface" );
-				
+
 				IRPPort toPort = (IRPPort) toClassifierEl.addNewAggr( "Port", toPortName );		
 				_context.debug( "Created toPort as " + _context.elInfo( toPort ) );
-				
+
 				fromPort.addProvidedInterface( fromInterface );
 				fromPort.addRequiredInterface( toInterface );
 
 				toPort.addProvidedInterface( toInterface );
 				toPort.addRequiredInterface( fromInterface );
-				
+
 				IRPGraphNode fromPortNode = addGraphNodeFor( 
 						fromPort, theDiagram, theGraphEdgeInfo.getStartX(), theGraphEdgeInfo.getStartY() );
-				
+
 				IRPGraphNode toPortNode = 
 						addGraphNodeFor( toPort, theDiagram, theGraphEdgeInfo.getEndX(), theGraphEdgeInfo.getEndY() );					
 

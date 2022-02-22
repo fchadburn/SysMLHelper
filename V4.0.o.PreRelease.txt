@@ -598,8 +598,12 @@ V4.0.o.Rhp831.PreRelease (XX-XXX-XXXX):
 #421 11-FEB-2022: ExecutableMBSE: Remove explicit line and fill colors for logical system package new term blocks, to allow local stereotype formats (F.J.Chadburn)
 #422 21-FEB-2022: ExecutableMBSE: Added Call Operation Activity to metamodel to get it to appear in right-click menus
 #423 21-FEB-2022: ExecutableMBSE: Added right-click menu to enable testing of SE-Toolkit Generate Sequence Diagram (F.J.Chadburn)
+#424 22-FEB-2022: ExecutableMBSE: Added Feature Block and Feature Function Package concepts to the metamodel to dovetail with Function Block (F.J.Chadburn)
 
 Backlog/Known issues
+- Why are use case description etc not in ExecutableMBSE submenus
+- Make associations redraw automatically also when running the redraw lines helper command
+- Add a right-click helper to create/sync olsc links for all relations shown on a diagram
 - Add a Function Block Package type to enable us to create a function library re-used by physical or functional architecture
 - Add ability to create a requirements diagram underneath a function block
 - Automatically name statecharts when they are created, STM - <Block name>, as statechart_3 doesn't really help as a name

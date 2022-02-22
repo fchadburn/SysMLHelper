@@ -34,6 +34,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String SUBSYSTEM_USAGE = "Subsystem Usage";
 	public final String SYSTEM_USAGE = "System Usage";
 	public final String FUNCTION_USAGE = "Function Usage";
+	public final String FUNCTION_BLOCK = "Function Block";
 	public final String FLOW_OUTPUT = "Flow Output";
 	public final String FLOW_INPUT = "Flow Input";
 	public final String OBJECT = "Object";
@@ -51,6 +52,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String FUNCT_ANALYSIS_TEST_PACKAGE = "24 Funct Analysis - Test Package";
 	public final String DESIGN_SYNTHESIS_SUBSYSTEM_INTERFACES_PACKAGE = "33 Design Synthesis - Subsystem Interfaces Package";
 	public final String DESIGN_SYNTHESIS_LOGICAL_SYSTEM_PACKAGE = "31 Design Synthesis - Logical System Package";
+	public final String DESIGN_SYNTHESIS_FEATURE_FUNCTION_PACKAGE = "32 Design Synthesis - Feature Function Package";
 	public final String TIME_ELAPSED_BLOCK_STEREOTYPE = "TimeBlock";
 	public final String ELAPSED_TIME_GENERATOR_STEREOTYPE = "TimeGenerator";
 	public final String NEW_TERM_FOR_USE_CASE_DIAGRAM = "EnhancedUseCaseDiagram";
