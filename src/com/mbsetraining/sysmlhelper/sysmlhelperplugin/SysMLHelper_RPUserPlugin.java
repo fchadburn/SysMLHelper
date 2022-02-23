@@ -323,20 +323,20 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 						RollUpTraceabilityToTheTransitionPanel.launchThePanel( theSelectedGraphEl, _context );
 					}
 
-				} else if (menuItem.equals(_settings.getString( "requirementsanalysisplugin.layoutDependencies" ))){
+				} else if (menuItem.equals(_settings.getString( "requirementsanalysisplugin.CenterStraightLinesMenu" ))){
 
 					if( theSelectedGraphEls.size() > 0 ){
 
 						LayoutHelper theHelper = new LayoutHelper( _context );
 
-						theHelper.centerDependenciesForTheGraphEls( 
+						theHelper.centerStraightLinesForTheGraphEls( 
 								theSelectedGraphEls );
 
 					} else if( theSelectedEl.getMetaClass().equals( "ActivityDiagramGE" ) ){
 
 						LayoutHelper theHelper = new LayoutHelper( _context );
 
-						theHelper.centerDependenciesForTheDiagram( 
+						theHelper.centerLinesForTheDiagram( 
 								(IRPDiagram) theSelectedEl );
 
 					} else if( theSelectedEl.getMetaClass().equals( "ActivityDiagram" ) ){
@@ -350,7 +350,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 
 							LayoutHelper theHelper = new LayoutHelper( _context );
 
-							theHelper.centerDependenciesForTheDiagram( 
+							theHelper.centerLinesForTheDiagram( 
 									(IRPDiagram) theDiagrams.get( 0 ) );
 						} else {
 							_context.error( "Error in OnMenuItemSelect, unable to find an ActivityDiagramGE" );
@@ -360,14 +360,14 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 
 						LayoutHelper theHelper = new LayoutHelper( _context );
 
-						theHelper.centerDependenciesForTheDiagram( 
+						theHelper.centerLinesForTheDiagram( 
 								(IRPDiagram) theSelectedEl );
 
 					} else if( theSelectedEl instanceof IRPPackage ){
 
 						LayoutHelper theHelper = new LayoutHelper( _context );
 
-						theHelper.centerDependenciesForThePackage( 
+						theHelper.centerLinesForThePackage( 
 								(IRPPackage) theSelectedEl );
 					}				
 

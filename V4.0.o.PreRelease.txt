@@ -594,16 +594,20 @@ V4.0.n.Rhp831.PreRelease (31-DEC-2021):
 #419 27-DEC-2021: ExecutableMBSE: Use of ExecutableMBSEProfile as the right-click root menu to identify DSN elements and help simplify a bit (F.J.Chadburn) 
 #420 28-DEC-2021: ExecutableMBSE: Include Textual Activity in the metamodeling profile usage and add the Transition Label tool to its drawing toolbar (F.J.Chadburn) 
 
-V4.0.o.Rhp831.PreRelease (XX-XXX-XXXX):
+V4.0.o.Rhp831.PreRelease (23-FEB-2022):
 #421 11-FEB-2022: ExecutableMBSE: Remove explicit line and fill colors for logical system package new term blocks, to allow local stereotype formats (F.J.Chadburn)
 #422 21-FEB-2022: ExecutableMBSE: Added Call Operation Activity to metamodel to get it to appear in right-click menus
 #423 21-FEB-2022: ExecutableMBSE: Added right-click menu to enable testing of SE-Toolkit Generate Sequence Diagram (F.J.Chadburn)
 #424 22-FEB-2022: ExecutableMBSE: Added Feature Block and Feature Function Package concepts to the metamodel to dovetail with Function Block (F.J.Chadburn)
 #425 23-FEB-2022: ExecutableMBSE: Tidy-up of icon sand general polishing, incl. introducing a DeprecatedProfile for unused ster (F.J.Chadburn)
-#426 23-FEB-2022: ExecutableMBSE: Move the use case description, pre-conditions and post-conditions types into the ExecutableMBSEProfile submenu
+#426 23-FEB-2022: ExecutableMBSE: Move the use case description, pre-conditions and post-conditions types into the ExecutableMBSEProfile submenu (F.J.Chadburn)
+#427 23-FEB-2022: ExecutableMBSE: Usability enhancement to generalize the re-draw dependencies to center helper to work with all straight lines (F.J.Chadburn)
 
 Backlog/Known issues
-- Make associations redraw automatically also when running the redraw lines helper command
+- Can we add Actor as part of a Feature Block?
+- Draw connector from function usage to subsystem port
+- Add a flow on a connector
+- Possible decision node?
 - Add a right-click helper to create/sync olsc links for all relations shown on a diagram
 - Add ability to create a requirements diagram underneath a function block
 - Automatically name statecharts when they are created, STM - <Block name>, as statechart_3 doesn't really help as a name

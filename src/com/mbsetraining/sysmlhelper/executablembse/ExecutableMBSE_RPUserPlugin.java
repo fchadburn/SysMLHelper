@@ -57,7 +57,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 		try {
 			_context = new ExecutableMBSE_Context( theAppID );
-			
+
 			_settings = new ConfigurationSettings(
 					"ExecutableMBSE.properties", 
 					"ExecutableMBSE_MessagesBundle",
@@ -69,7 +69,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 		}
 
 		final String legalNotice = 
-				"Copyright (C) 2015-2021  MBSE Training and Consulting Limited (www.executablembse.com)"
+				"Copyright (C) 2015-2022  MBSE Training and Consulting Limited (www.executablembse.com)"
 						+ "\n"
 						+ "SysMLHelperPlugin is free software: you can redistribute it and/or modify "
 						+ "it under the terms of the GNU General Public License as published by "
@@ -169,14 +169,14 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					} else {
 						_context.error( menuItem + " invoked out of context and only works for classes, objects, or structure diagrams/ibds" );
 					}
-					
+
 				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.GenerateSequenceDiagramMenu" ) ) ){
 
 					if( theSelectedEl instanceof IRPClass ){
 
 						SequenceDiagramCreator theCreator = new SequenceDiagramCreator( _context );
-						
+
 						theCreator.createSequenceDiagramFor( 
 								(IRPClass)theSelectedEl, 
 								_context.getOwningPackageFor(theSelectedEl), 
@@ -188,7 +188,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					} else {
 						_context.error( menuItem + " invoked out of context and only works for classes" );
 					}
-					
+
 				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.CreateFullSimFAStructureMenu" ) ) ){
 
@@ -394,7 +394,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 					RenameActions theRenamer = new RenameActions( _context );
 					theRenamer.performRenamesFor( theSelectedEls );
-										
+
 				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.MoveUnclaimedReqtsMenu" ) ) ){
 
@@ -469,34 +469,33 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					}
 
 				} else if( menuItem.equals( _settings.getString( 
-						"executablembseplugin.layoutDependencies" ) ) ){
+						"executablembseplugin.CenterStraightLinesMenu" ) ) ){
 
 					if( theSelectedGraphEls.size() > 0 ){
 
 						LayoutHelper theHelper = new LayoutHelper( _context );
 
-						theHelper.centerDependenciesForTheGraphEls( 
+						theHelper.centerStraightLinesForTheGraphEls( 
 								theSelectedGraphEls );
 
 					} else if( theSelectedEl.getMetaClass().equals( "ActivityDiagramGE" ) ){
 
 						LayoutHelper theHelper = new LayoutHelper( _context );
 
-						theHelper.centerDependenciesForTheDiagram( 
+						theHelper.centerLinesForTheDiagram( 
 								(IRPDiagram) theSelectedEl );
 
 					} else if( theSelectedEl.getMetaClass().equals( "ActivityDiagram" ) ){
 
 						@SuppressWarnings("unchecked")
-						List<IRPModelElement> theDiagrams = 
-						theSelectedEl.getNestedElementsByMetaClass( 
+						List<IRPModelElement> theDiagrams = theSelectedEl.getNestedElementsByMetaClass( 
 								"ActivityDiagramGE", 0 ).toList();
 
 						if( theDiagrams.size()==1 ){
 
 							LayoutHelper theHelper = new LayoutHelper( _context );
 
-							theHelper.centerDependenciesForTheDiagram( 
+							theHelper.centerLinesForTheDiagram( 
 									(IRPDiagram) theDiagrams.get( 0 ) );
 						} else {
 							_context.error( "Error in OnMenuItemSelect, unable to find an ActivityDiagramGE" );
@@ -506,14 +505,14 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 						LayoutHelper theHelper = new LayoutHelper( _context );
 
-						theHelper.centerDependenciesForTheDiagram( 
+						theHelper.centerLinesForTheDiagram( 
 								(IRPDiagram) theSelectedEl );
 
 					} else if( theSelectedEl instanceof IRPPackage ){
 
 						LayoutHelper theHelper = new LayoutHelper( _context );
 
-						theHelper.centerDependenciesForThePackage( 
+						theHelper.centerLinesForThePackage( 
 								(IRPPackage) theSelectedEl );
 					}
 
@@ -528,10 +527,10 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						"executablembseplugin.UpdateVerificationDependenciesForSDsMenu" ) ) ){
 
 					if( !theSelectedEls.isEmpty() ){
-						
+
 						VerificationDependencyUpdater theHelper = 
 								new VerificationDependencyUpdater( _context );
-						
+
 						theHelper.updateVerificationsForSequenceDiagramsBasedOn( theSelectedEls );
 					}				
 
@@ -593,7 +592,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 					if( theSelectedEl instanceof IRPClass ){
 						theCreator.createTestCaseFor( (IRPClass) theSelectedEl );
-						
+
 					} else if (theSelectedEl instanceof IRPSequenceDiagram){
 						theCreator.createTestCaseFor( (IRPSequenceDiagram) theSelectedEl );
 					}
@@ -618,11 +617,11 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 					if( theSelectedEl instanceof IRPSequenceDiagram ||
 							theSelectedEl instanceof IRPMessage ){
-						
+
 						UpdateInferfacesBasedOnSequenceDiagramPanel.launchThePanel( 
 								theAppID, theSelectedEl.getGUID() );
 					}
-					
+
 				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.CopyActivityDiagramsMenu" ) ) ){
 
@@ -720,24 +719,24 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					} else if( theSelectedEl instanceof IRPSysMLPort ){
 						portCreator.deleteFlowPortAndRelatedEls( (IRPSysMLPort) theSelectedEl );
 					}
-					
+
 				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.AutoRealizeWithCopy" ) ) ){
-					
+
 					//if( theSelectedEl instanceof IRPSequenceDiagram ||
 					//		theSelectedEl instanceof IRPMessage ){
-						
-						AutoRealizeWithCopyPanel.launchThePanel( 
-								theAppID, theSelectedEl.getGUID() );
+
+					AutoRealizeWithCopyPanel.launchThePanel( 
+							theAppID, theSelectedEl.getGUID() );
 					//}
-					
+
 				} else {
 					_context.warning( "Unhandled menu: " + _context.elInfo( theSelectedEl ) + " was invoked with menuItem='" + menuItem + "'");
 				}
 
 				_context.debug( "'" + menuItem + "' completed.");
 			}
-			
+
 		} catch( Exception e ){
 			_context.error( "Exception in OnMenuItemSelect, e=" + e.getMessage() );
 		}
@@ -1109,7 +1108,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 }
 
 /**
- * Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2018-2022  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

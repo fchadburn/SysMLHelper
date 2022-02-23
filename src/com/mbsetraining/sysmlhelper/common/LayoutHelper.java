@@ -27,16 +27,14 @@ public class LayoutHelper {
 			IRPModelElement theModelObject = theEdgeToRedraw.getModelObject();
 			
 			if( theSourceGraphEl != null && 
-				theTargetGraphEl != null &&
-				theModelObject != null &&
-				theModelObject instanceof IRPDependency ){
+				theTargetGraphEl != null ){
 				
 				IRPCollection theCollection = _context.createNewCollection();
 				theCollection.addGraphicalItem( theEdgeToRedraw );
 				theDiagram.removeGraphElements( theCollection );
 				
-				drawDependencyToMidPointsFor(
-						(IRPDependency) theModelObject, 
+				drawLineToMidPointsFor(
+						theModelObject, 
 						theSourceGraphEl, 
 						theTargetGraphEl, 
 						theDiagram );
@@ -44,33 +42,37 @@ public class LayoutHelper {
 		}
 	}
 	
-	private List<IRPGraphEdge> getAllDependencyGraphEdges( 
+	private List<IRPGraphEdge> getAllStraightGraphEdges( 
 			List<IRPGraphElement> inTheGraphEls ){
 		
-		List<IRPGraphEdge> theDependencyGraphEdges = new ArrayList<>();
+		List<IRPGraphEdge> theMatchingGraphEdges = new ArrayList<>();
 
 		for( IRPGraphElement theGraphEl : inTheGraphEls ){
 
 			if( theGraphEl instanceof IRPGraphEdge ){
+				
+				try {
+					IRPGraphicalProperty theGraphProperty = theGraphEl.getGraphicalProperty( "LineStyle" );
+					
+					if( theGraphProperty != null && theGraphProperty.getValue().equals( "Straight" ) ){
+						theMatchingGraphEdges.add( (IRPGraphEdge) theGraphEl );
+					}
 
-				IRPModelElement theModelObject = theGraphEl.getModelObject();
-
-				if( theModelObject != null && 
-					theModelObject instanceof IRPDependency ){
-
-					theDependencyGraphEdges.add( (IRPGraphEdge) theGraphEl );
+				} catch( Exception e ){
+					_context.error( "Exception in getAllStraightGraphEdges for " + 
+							_context.elInfo( theGraphEl.getModelObject() ) ); 
 				}
 			}
 		}
 		
-		return theDependencyGraphEdges;
+		return theMatchingGraphEdges;
 	}
 	
-	public void centerDependenciesForTheGraphEls( 
+	public void centerStraightLinesForTheGraphEls( 
 			List<IRPGraphElement> theGraphEls ){
 		
 		List<IRPGraphEdge> theEdgesToRedraw = 
-				getAllDependencyGraphEdges( theGraphEls );
+				getAllStraightGraphEdges( theGraphEls );
 		
 		boolean answer = UserInterfaceHelper.askAQuestion( "There are " + 
 				theEdgesToRedraw.size() + " dependencies selected.\n" +
@@ -82,7 +84,7 @@ public class LayoutHelper {
 		}
 	}
 	
-	public void centerDependenciesForThePackage( 
+	public void centerLinesForThePackage( 
 			IRPPackage thePackage ){
 
 		@SuppressWarnings("unchecked")
@@ -91,11 +93,11 @@ public class LayoutHelper {
 						"ActivityDiagramGE", 1 ).toList();
 	
 		for( IRPModelElement theAD : theADs ){
-			centerDependenciesForTheDiagram( (IRPDiagram) theAD );
+			centerLinesForTheDiagram( (IRPDiagram) theAD );
 		}
 	}
 	
-	public void centerDependenciesForTheDiagram( 
+	public void centerLinesForTheDiagram( 
 			IRPDiagram theDiagram ){
 				
 		@SuppressWarnings("unchecked")
@@ -103,12 +105,12 @@ public class LayoutHelper {
 				theDiagram.getGraphicalElements().toList();
 		
 		List<IRPGraphEdge> theEdgesToRedraw = 
-				getAllDependencyGraphEdges( theGraphEls );
+				getAllStraightGraphEdges( theGraphEls );
 		
 		if( theEdgesToRedraw.size()== 0 ){
 			
 			UserInterfaceHelper.showInformationDialog(
-					"There are no dependencies on the diagram" );
+					"There are no straight lines on the diagram" );
 		
 		} else {	
 			
@@ -122,7 +124,7 @@ public class LayoutHelper {
 			
 			boolean answer = UserInterfaceHelper.askAQuestion( 
 					"There are " + theEdgesToRedraw.size() + 
-					" dependencies on the " + theDiagramName + ".\n" +
+					" straight lines on the " + theDiagramName + ".\n" +
 					"Do you want to recentre them?");
 			
 			if( answer==true ){
@@ -131,8 +133,8 @@ public class LayoutHelper {
 		}
 	}
 	
-	public void drawDependencyToMidPointsFor(
-			IRPDependency existingDependency, 
+	public void drawLineToMidPointsFor(
+			IRPModelElement existingModelEl, 
 			IRPGraphElement theStartGraphEl,
 			IRPGraphElement theEndGraphEl, 
 			IRPDiagram theDiagram ){
@@ -147,7 +149,7 @@ public class LayoutHelper {
 			GraphElInfo theEndNodeInfo = new GraphElInfo( theEndNode, _context );
 			
 			theDiagram.addNewEdgeForElement(
-					existingDependency, 
+					existingModelEl, 
 					theStartNode, 
 					theStartNodeInfo.getMidX(), 
 					theStartNodeInfo.getMidY(), 
@@ -167,13 +169,13 @@ public class LayoutHelper {
 			theDiagram.completeRelations( theGraphEls, 0);	
 
 		} else {
-			_context.warning("Warning in redrawDependencyToMidPointsFor, the graphEls are not handled types for drawing relations");
+			_context.warning("Warning in drawLineToMidPointsFor, the graphEls are not handled types for drawing relations");
 		}
 	}
 }
 
 /**
- * Copyright (C) 2017-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2017-2022  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 
@@ -190,4 +192,3 @@ public class LayoutHelper {
     You should have received a copy of the GNU General Public License
     along with SysMLHelperPlugin.  If not, see <http://www.gnu.org/licenses/>.
 */
-

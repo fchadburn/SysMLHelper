@@ -152,7 +152,7 @@ public class SmartLinkInfo {
 
 								LayoutHelper theHelper = new LayoutHelper( _context );
 								
-								theHelper.drawDependencyToMidPointsFor(
+								theHelper.drawLineToMidPointsFor(
 										existingDependency, 
 										theStartGraphEl, 
 										theEndGraphEl,
@@ -291,7 +291,7 @@ public class SmartLinkInfo {
 }
 
 /**
- * Copyright (C) 2017-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2017-2022  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 
