@@ -1,0 +1,4312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RhapsodyArchive>
+	<MagicNumber></MagicNumber>
+	<CODE-PAGE>1252</CODE-PAGE>
+	<version>100.831.0</version>
+	<lang>C++</lang>
+	<BuildNo>9835718</BuildNo>
+	
+	<RHAPSODY-MODEL>
+	<ISubsystem type="e">
+			<_id type="a">GUID 138a9724-4be9-484f-854f-c52095eb026c</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">_QueriesAndCustomViews</_name>
+			<_modifiedTime type="a">2.23.2022::8:14:8</_modifiedTime>
+			<_defaultComposite type="s">GUID 485b302d-a0f3-4646-8433-3ddb864d10b1</_defaultComposite>
+			<_eventsBaseID type="a">-1</_eventsBaseID>
+			<AggregatesList type="e">
+				<value>GUID 381bcebf-e6bd-43b8-9d61-e00bc931dbce</value>
+				<value>GUID 485b302d-a0f3-4646-8433-3ddb864d10b1</value>
+				<value>GUID ba6a52ff-d05b-447d-ab12-e2ef230a91e2</value>
+				<value>GUID a253db64-595b-4a8d-adb3-ecc792d5d340</value>
+				<value>GUID 8c20d269-4d26-48d9-8eb7-240ac4f55293</value>
+				<value>GUID 02352e7a-0d6c-4b78-a88d-ac1b6ff45ba1</value>
+				<value>GUID 719b755b-a891-4406-915e-255628c0b6cb</value>
+				<value>GUID 4e8c8e74-90e8-4b9d-a61e-136ae9f0238f</value>
+				<value>GUID 5251a2b0-f53d-4b5d-9f6c-dc039336c357</value>
+				<value>GUID f3eb8934-48be-4638-acd3-976a9caec4ec</value>
+			</AggregatesList>
+		</ISubsystem>
+		<ISubsystem type="e">
+			<_id type="a">GUID 381bcebf-e6bd-43b8-9d61-e00bc931dbce</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">CustomV_HideReqts</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+							<_hname type="a">CustomView</_hname>
+							<_hid type="a">GUID 3691d096-b2e5-414d-b2b4-4fde08d44190</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">2.23.2022::8:14:8</_modifiedTime>
+			<_defaultComposite type="s">GUID dfff8fd4-c403-4156-8f0b-8d0affb51042</_defaultComposite>
+			<_eventsBaseID type="a">-1</_eventsBaseID>
+			<AggregatesList type="e">
+				<value>GUID 6c38b44f-2fcc-44b1-802d-3a3fe61ba2a2</value>
+				<value>GUID 42241d98-237d-4d6f-a168-d2db1aa0dcb2</value>
+				<value>GUID dfff8fd4-c403-4156-8f0b-8d0affb51042</value>
+			</AggregatesList>
+		</ISubsystem>
+		<ITag type="e">
+			<_id type="a">GUID 6c38b44f-2fcc-44b1-802d-3a3fe61ba2a2</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">CriteriaType</_name>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">RhpString</_hname>
+					<_hid type="a">GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<AggregatesList type="e">
+				<value>GUID 41af499a-833a-48bd-aa44-9358f1b81205</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 41af499a-833a-48bd-aa44-9358f1b81205</_id>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_value type="a">Queries</_value>
+		</ILiteralSpecification>
+		<ITag type="e">
+			<_id type="a">GUID 42241d98-237d-4d6f-a168-d2db1aa0dcb2</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Criteria</_name>
+			<_modifiedTime type="a">12.9.2021::18:12:16</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">RhpString</_hname>
+					<_hid type="a">GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<AggregatesList type="e">
+				<value>GUID 0f645df6-61c3-4829-a1fc-7d6f6222b233</value>
+			</AggregatesList>
+		</ITag>
+		<IInstanceValue type="e">
+			<_id type="a">GUID 0f645df6-61c3-4829-a1fc-7d6f6222b233</_id>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_value type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITableLayout</_hm2Class>
+					<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+				</IHandle>
+			</_value>
+		</IInstanceValue>
+		<IClass type="e">
+			<_id type="a">GUID dfff8fd4-c403-4156-8f0b-8d0affb51042</_id>
+			<_myState type="a">40960</_myState>
+			<_name type="a">TopLevel</_name>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 485b302d-a0f3-4646-8433-3ddb864d10b1</_id>
+			<_myState type="a">40960</_myState>
+			<_name type="a">TopLevel</_name>
+			<_modifiedTime type="a">1.1.1970::0:0:0</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<ITableLayout type="e">
+			<_id type="a">GUID ba6a52ff-d05b-447d-ab12-e2ef230a91e2</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">TableLayout</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">EnableCriteriaCheck</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">Query - Derived requirements</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+							<_hname type="a">Query</_hname>
+							<_hid type="a">GUID 4c77a3b1-822f-466e-bd06-76145c9e3b88</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">2.23.2022::8:14:2</_modifiedTime>
+			<TableElementTypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID ba6a52ff-d05b-447d-ab12-e2ef230a91e2</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Requirement</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+				</IRPYRawContainer>
+			</TableElementTypes>
+			<AggregatesList type="e">
+				<value>GUID 5fbe90af-8c90-405c-9fc7-f7485fe1646f</value>
+				<value>GUID 9820e449-881d-48e1-9eb7-726de0484379</value>
+			</AggregatesList>
+		</ITableLayout>
+		<ITag type="e">
+			<_id type="a">GUID 5fbe90af-8c90-405c-9fc7-f7485fe1646f</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">RelRef_How_Related</_name>
+			<_modifiedTime type="a">2.15.2017::20:16:30</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">SearchRelRefHowRelatedEnum</_hname>
+					<_hid type="a">GUID 1f51c8cc-5b4f-4e36-a391-d8a3d29b610a</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hclass type="a">Query</_hclass>
+					<_hname type="a">RelRef_How_Related</_hname>
+					<_hid type="a">GUID f135968b-beae-4e26-8834-174d58eac9df</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 8f52320c-9243-4ba9-95c9-328ddcfcc6e9</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 8f52320c-9243-4ba9-95c9-328ddcfcc6e9</_id>
+			<_modifiedTime type="a">2.15.2017::20:16:30</_modifiedTime>
+			<_value type="a">References</_value>
+		</ILiteralSpecification>
+		<ITag type="e">
+			<_id type="a">GUID 9820e449-881d-48e1-9eb7-726de0484379</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">RelRef_Metatype</_name>
+			<_modifiedTime type="a">2.15.2017::20:16:30</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">RhpString</_hname>
+					<_hid type="a">GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hclass type="a">Query</_hclass>
+					<_hname type="a">RelRef_Metatype</_hname>
+					<_hid type="a">GUID 290c2612-b019-493a-941a-7a1fa6a005ac</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 8a4c0de6-1352-44e5-ac8b-d17192c167a4</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 8a4c0de6-1352-44e5-ac8b-d17192c167a4</_id>
+			<_modifiedTime type="a">2.15.2017::20:16:30</_modifiedTime>
+			<_value type="a">Derivation</_value>
+		</ILiteralSpecification>
+		<ITableLayout type="e">
+			<_id type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">TableLayout</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">2</size>
+												<IProperty type="e">
+													<_Name type="a">EnableCriteriaCheck</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">QueryContextPattern</_Name>
+													<_Type type="a">MultiLine</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">Query - Everything but requirements</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+							<_hname type="a">Query</_hname>
+							<_hid type="a">GUID 4c77a3b1-822f-466e-bd06-76145c9e3b88</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">2.23.2022::8:14:2</_modifiedTime>
+			<TableElementTypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">203</size>
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">0. Metamodel Package</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">10 Reqts Analysis - Context Diagram Package</TableDataDefinitionName>
+						<_DataType type="a">793986116</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">11 Reqts Analysis - Actor Package</TableDataDefinitionName>
+						<_DataType type="a">1835627088</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">12 Reqts Analysis - Use Case Package</TableDataDefinitionName>
+						<_DataType type="a">1835627088</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">12 Reqts Analysis - Working Copy Package</TableDataDefinitionName>
+						<_DataType type="a">1769235297</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">13 Reqts Analysis - Requirement Package</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">14 Reqts Analysis - External Signals Package</TableDataDefinitionName>
+						<_DataType type="a">1835627088</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">21 Funct Analysis - Scenarios Package</TableDataDefinitionName>
+						<_DataType type="a">793986116</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">22 Funct Analysis - Design Package</TableDataDefinitionName>
+						<_DataType type="a">1769235297</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">23 Funct Analysis - Interfaces Package</TableDataDefinitionName>
+						<_DataType type="a">1835627088</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">24 Funct Analysis - Test Package</TableDataDefinitionName>
+						<_DataType type="a">1953721929</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">31 Design Synthesis - Logical System Package</TableDataDefinitionName>
+						<_DataType type="a">1953721929</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">33 Design Synthesis - Software Design Package</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">33 Design Synthesis - Subsystem Interfaces Package</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">AcceptEventAction</TableDataDefinitionName>
+						<_DataType type="a">793986116</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">AcceptTimeEvent</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">ActionBlock</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">ActivityDiagram</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">ActivityFinal</TableDataDefinitionName>
+						<_DataType type="a">793986116</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Activity_D</TableDataDefinitionName>
+						<_DataType type="a">1632913704</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Actor</TableDataDefinitionName>
+						<_DataType type="a">1835627088</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Actor Usage</TableDataDefinitionName>
+						<_DataType type="a">1953721929</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Allocation</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">AllocationsTable</TableDataDefinitionName>
+						<_DataType type="a">1835627088</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Argument</TableDataDefinitionName>
+						<_DataType type="a">793986116</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Association</TableDataDefinitionName>
+						<_DataType type="a">1835627088</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">AssociationEnd</TableDataDefinitionName>
+						<_DataType type="a">793986116</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Attribute</TableDataDefinitionName>
+						<_DataType type="a">793986116</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">BindingConnector</TableDataDefinitionName>
+						<_DataType type="a">793986116</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Block</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Block Definition Diagram</TableDataDefinitionName>
+						<_DataType type="a">793986116</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Block Definition Diagram - Simple</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Block Definition Diagram - Software</TableDataDefinitionName>
+						<_DataType type="a">1702129225</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">C++ Class</TableDataDefinitionName>
+						<_DataType type="a">1835627088</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">CSVImporter</TableDataDefinitionName>
+						<_DataType type="a">1769235297</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Call Operation Activity</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">CallBehavior</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">CallOperation</TableDataDefinitionName>
+						<_DataType type="a">793986116</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Callout</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">ChangeStructuralFeatureEvent</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Class</TableDataDefinitionName>
+						<_DataType type="a">793986116</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Class Diagram</TableDataDefinitionName>
+						<_DataType type="a">1835627088</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">ClassifierRole</TableDataDefinitionName>
+						<_DataType type="a">1702129225</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">CombinedFragment</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Comment</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">CommunicationDiagram</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Component</TableDataDefinitionName>
+						<_DataType type="a">793986116</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Component Usage</TableDataDefinitionName>
+						<_DataType type="a">1835627088</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">ComponentDiagram</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">ComponentInstance</TableDataDefinitionName>
+						<_DataType type="a">1702129225</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Condition</TableDataDefinitionName>
+						<_DataType type="a">793986116</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">ConditionMark</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Configuration</TableDataDefinitionName>
+						<_DataType type="a">1835627088</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Conform</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Connector</TableDataDefinitionName>
+						<_DataType type="a">1835627088</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Constraint</TableDataDefinitionName>
+						<_DataType type="a">793986116</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">ConstraintBlock</TableDataDefinitionName>
+						<_DataType type="a">22846672</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">ConstraintParameter</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">ConstraintProperty</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Constructor</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">ControlFlow</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">ControlledFile</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">CustomView</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">DataType</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">DecisionNode</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">DeepHistoryConnector</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">DefaultTransition</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Dependency</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">DeploymentDiagram</TableDataDefinitionName>
+						<_DataType type="a">1835627088</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">DestructionEvent</TableDataDefinitionName>
+						<_DataType type="a">151587341</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Destructor</TableDataDefinitionName>
+						<_DataType type="a">755566857</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Dimension</TableDataDefinitionName>
+						<_DataType type="a">1702129225</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Domain Block</TableDataDefinitionName>
+						<_DataType type="a">1835627088</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Eclipse Configuration</TableDataDefinitionName>
+						<_DataType type="a">1953721929</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Elaborates</TableDataDefinitionName>
+						<_DataType type="a">151587081</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Enhanced Use Case Diagram</TableDataDefinitionName>
+						<_DataType type="a">1867543651</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">EnumerationLiteral</TableDataDefinitionName>
+						<_DataType type="a">761673526</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Event</TableDataDefinitionName>
+						<_DataType type="a">1702129225</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">ExecutionOccurrence</TableDataDefinitionName>
+						<_DataType type="a">1835627088</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">External</TableDataDefinitionName>
+						<_DataType type="a">793986116</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Feature</TableDataDefinitionName>
+						<_DataType type="a">1835627088</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Feature Usage</TableDataDefinitionName>
+						<_DataType type="a">1769235297</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">File</TableDataDefinitionName>
+						<_DataType type="a">151587081</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Flow</TableDataDefinitionName>
+						<_DataType type="a">1835627088</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Flow Attribute</TableDataDefinitionName>
+						<_DataType type="a">1835627088</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Flow Connector</TableDataDefinitionName>
+						<_DataType type="a">1633886315</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Flow Input</TableDataDefinitionName>
+						<_DataType type="a">793986116</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Flow Output</TableDataDefinitionName>
+						<_DataType type="a">875389237</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">FlowPort</TableDataDefinitionName>
+						<_DataType type="a">1769235297</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">FlowProperty</TableDataDefinitionName>
+						<_DataType type="a">793986116</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">FlowSpecification</TableDataDefinitionName>
+						<_DataType type="a">1835627088</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Flowchart</TableDataDefinitionName>
+						<_DataType type="a">1867802478</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Folder</TableDataDefinitionName>
+						<_DataType type="a">221998188</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Fork</TableDataDefinitionName>
+						<_DataType type="a">1835627088</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">FullPort</TableDataDefinitionName>
+						<_DataType type="a">793986116</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Function Block</TableDataDefinitionName>
+						<_DataType type="a">793986116</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Function Usage</TableDataDefinitionName>
+						<_DataType type="a">1702129225</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Generalization</TableDataDefinitionName>
+						<_DataType type="a">1835627088</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">HLTrace</TableDataDefinitionName>
+						<_DataType type="a">755566857</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">HistoryConnector</TableDataDefinitionName>
+						<_DataType type="a">151587341</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">HyperLink</TableDataDefinitionName>
+						<_DataType type="a">1852140916</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">InputOutputTable</TableDataDefinitionName>
+						<_DataType type="a">793986116</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">InstanceSlot</TableDataDefinitionName>
+						<_DataType type="a">1953721929</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">InstanceSpecification</TableDataDefinitionName>
+						<_DataType type="a">793986116</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">InteractionOccurrence</TableDataDefinitionName>
+						<_DataType type="a">1835627088</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">InteractionOperand</TableDataDefinitionName>
+						<_DataType type="a">1835627088</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Interface</TableDataDefinitionName>
+						<_DataType type="a">1767994478</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">InterfaceBlock</TableDataDefinitionName>
+						<_DataType type="a">793986116</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Internal Block Diagram</TableDataDefinitionName>
+						<_DataType type="a">1634288755</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Internal Block Diagram - Functional</TableDataDefinitionName>
+						<_DataType type="a">1700015973</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Internal Block Diagram - Simple</TableDataDefinitionName>
+						<_DataType type="a">1700015212</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Internal Block Diagram - Software</TableDataDefinitionName>
+						<_DataType type="a">1145318516</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Internal Design - Internal Block Diagram</TableDataDefinitionName>
+						<_DataType type="a">963212401</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">ItemFlow</TableDataDefinitionName>
+						<_DataType type="a">1700015220</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Lifeline</TableDataDefinitionName>
+						<_DataType type="a">942438198</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Link</TableDataDefinitionName>
+						<_DataType type="a">1634891108</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">MatrixLayout</TableDataDefinitionName>
+						<_DataType type="a">795176041</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">MatrixView</TableDataDefinitionName>
+						<_DataType type="a">956593182</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Merge</TableDataDefinitionName>
+						<_DataType type="a">942765865</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">MergeNode</TableDataDefinitionName>
+						<_DataType type="a">1143761774</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Message</TableDataDefinitionName>
+						<_DataType type="a">1937010277</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Metamodel Diagram</TableDataDefinitionName>
+						<_DataType type="a">1852404851</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Metrics Layout</TableDataDefinitionName>
+						<_DataType type="a">1867543407</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Metrics View</TableDataDefinitionName>
+						<_DataType type="a">1182035557</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Module</TableDataDefinitionName>
+						<_DataType type="a">1634030181</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">MoreDetailedRD</TableDataDefinitionName>
+						<_DataType type="a">968389794</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Node</TableDataDefinitionName>
+						<_DataType type="a">961770575</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Object</TableDataDefinitionName>
+						<_DataType type="a">966620293</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">ObjectFlow</TableDataDefinitionName>
+						<_DataType type="a">1851859059</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">ObjectModelDiagram</TableDataDefinitionName>
+						<_DataType type="a">948598672</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">ObjectNode</TableDataDefinitionName>
+						<_DataType type="a">940996364</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">ObjectValue</TableDataDefinitionName>
+						<_DataType type="a">1954047348</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Operation</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Package</TableDataDefinitionName>
+						<_DataType type="a">969372883</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Package Diagram</TableDataDefinitionName>
+						<_DataType type="a">1936614772</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">PanelDiagram</TableDataDefinitionName>
+						<_DataType type="a">971142392</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Parametric Diagram</TableDataDefinitionName>
+						<_DataType type="a">1701998639</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">ParticipantProperty</TableDataDefinitionName>
+						<_DataType type="a">961442900</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Pin</TableDataDefinitionName>
+						<_DataType type="a">1953066089</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Port</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Postcondition</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Precondition</TableDataDefinitionName>
+						<_DataType type="a">745434985</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Problem</TableDataDefinitionName>
+						<_DataType type="a">1953653072</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">ProductDefinition</TableDataDefinitionName>
+						<_DataType type="a">1702131781</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Profile</TableDataDefinitionName>
+						<_DataType type="a">1836008308</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Project</TableDataDefinitionName>
+						<_DataType type="a">1684366446</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">ProxyPort</TableDataDefinitionName>
+						<_DataType type="a">1869762663</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Query</TableDataDefinitionName>
+						<_DataType type="a">1702259060</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Rationale</TableDataDefinitionName>
+						<_DataType type="a">1851859059</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Realization</TableDataDefinitionName>
+						<_DataType type="a">1769239397</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Reception</TableDataDefinitionName>
+						<_DataType type="a">366951192</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">ReferenceActivity</TableDataDefinitionName>
+						<_DataType type="a">2003134806</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Requirements Diagram</TableDataDefinitionName>
+						<_DataType type="a">1818846831</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">RequirementsDiagramHL</TableDataDefinitionName>
+						<_DataType type="a">1444967267</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">RequirementsTable</TableDataDefinitionName>
+						<_DataType type="a">793986116</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">SequenceDiagram</TableDataDefinitionName>
+						<_DataType type="a">793986116</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Settings</TableDataDefinitionName>
+						<_DataType type="a">1936288866</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">ShallowHistoryConnector</TableDataDefinitionName>
+						<_DataType type="a">366941496</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Software Component</TableDataDefinitionName>
+						<_DataType type="a">2003134806</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">StandardPort</TableDataDefinitionName>
+						<_DataType type="a">1635021678</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">State</TableDataDefinitionName>
+						<_DataType type="a">351047112</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">StateInvariant</TableDataDefinitionName>
+						<_DataType type="a">1936020524</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Statechart</TableDataDefinitionName>
+						<_DataType type="a">366945768</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Stereotype</TableDataDefinitionName>
+						<_DataType type="a">354332416</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">StructureDiagram</TableDataDefinitionName>
+						<_DataType type="a">354347456</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">StubOSLCElement</TableDataDefinitionName>
+						<_DataType type="a">1936020524</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">StubOSLCElements</TableDataDefinitionName>
+						<_DataType type="a">1917871982</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Subsystem Block</TableDataDefinitionName>
+						<_DataType type="a">1819234419</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Subsystem Usage</TableDataDefinitionName>
+						<_DataType type="a">1635412332</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Swimlane</TableDataDefinitionName>
+						<_DataType type="a">1145318521</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">SysML</TableDataDefinitionName>
+						<_DataType type="a">1769239397</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">SysMLPort</TableDataDefinitionName>
+						<_DataType type="a">1635412332</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">System Block</TableDataDefinitionName>
+						<_DataType type="a">354328256</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">System Context Diagram</TableDataDefinitionName>
+						<_DataType type="a">1145318521</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">System Usage</TableDataDefinitionName>
+						<_DataType type="a">2003134806</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">TableLayout</TableDataDefinitionName>
+						<_DataType type="a">1395615084</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">TableV - Context Diagram Flows</TableDataDefinitionName>
+						<_DataType type="a">1143765347</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">TableView</TableDataDefinitionName>
+						<_DataType type="a">2036558188</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Tag</TableDataDefinitionName>
+						<_DataType type="a">1936020524</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Test Case</TableDataDefinitionName>
+						<_DataType type="a">1395615084</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Textual Activity</TableDataDefinitionName>
+						<_DataType type="a">1444967267</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">TimeSegment</TableDataDefinitionName>
+						<_DataType type="a">1936020524</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">TimingDiagram</TableDataDefinitionName>
+						<_DataType type="a">1819234419</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Transition</TableDataDefinitionName>
+						<_DataType type="a">2036558188</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">TriggeredOperation</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Type</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Unit</TableDataDefinitionName>
+						<_DataType type="a">1701015137</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Use Case Description</TableDataDefinitionName>
+						<_DataType type="a">1768320882</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Use Case Postcondition</TableDataDefinitionName>
+						<_DataType type="a">364803616</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Use Case Precondition</TableDataDefinitionName>
+						<_DataType type="a">364801856</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">UseCase</TableDataDefinitionName>
+						<_DataType type="a">354328096</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">UseCaseDiagram</TableDataDefinitionName>
+						<_DataType type="a">364800096</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Validated By</TableDataDefinitionName>
+						<_DataType type="a">1867543407</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Value Binding </TableDataDefinitionName>
+						<_DataType type="a">1837743730</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">ValueProperty</TableDataDefinitionName>
+						<_DataType type="a">364797696</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">ValueType</TableDataDefinitionName>
+						<_DataType type="a">354330336</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">View</TableDataDefinitionName>
+						<_DataType type="a">364805536</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Viewpoint</TableDataDefinitionName>
+						<_DataType type="a">1952543329</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Visual Studio Configuration</TableDataDefinitionName>
+						<_DataType type="a">364799936</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">connector</TableDataDefinitionName>
+						<_DataType type="a">364780256</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">interruptibleRegion</TableDataDefinitionName>
+						<_DataType type="a">364801376</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">localPostcondition</TableDataDefinitionName>
+						<_DataType type="a">364796256</_DataType>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID a253db64-595b-4a8d-adb3-ecc792d5d340</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">localPrecondition</TableDataDefinitionName>
+						<_DataType type="a">364782176</_DataType>
+					</TableDataDefinition>
+					
+				</IRPYRawContainer>
+			</TableElementTypes>
+		</ITableLayout>
+		<ITableLayout type="e">
+			<_id type="a">GUID 8c20d269-4d26-48d9-8eb7-240ac4f55293</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">TableLayout</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">EnableCriteriaCheck</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">Query - No incoming relations requirements</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+							<_hname type="a">Query</_hname>
+							<_hid type="a">GUID 4c77a3b1-822f-466e-bd06-76145c9e3b88</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">2.23.2022::8:14:2</_modifiedTime>
+			<TableElementTypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID 8c20d269-4d26-48d9-8eb7-240ac4f55293</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Requirement</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+				</IRPYRawContainer>
+			</TableElementTypes>
+			<AggregatesList type="e">
+				<value>GUID c04bf590-68d9-4f7d-9a95-293e638b29ce</value>
+			</AggregatesList>
+		</ITableLayout>
+		<ITag type="e">
+			<_id type="a">GUID c04bf590-68d9-4f7d-9a95-293e638b29ce</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">SubQueries</_name>
+			<_modifiedTime type="a">2.15.2017::20:20:33</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IStereotype</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">Query</_hname>
+					<_hid type="a">GUID 4c77a3b1-822f-466e-bd06-76145c9e3b88</_hid>
+				</IHandle>
+			</_typeOf>
+			<_multiplicity type="a">*</_multiplicity>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hclass type="a">Query</_hclass>
+					<_hname type="a">SubQueries</_hname>
+					<_hid type="a">GUID caa101e6-3f54-415a-81ec-a67936c1a1d8</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID be9c5453-f84a-4125-a31f-3854e774ea9b</value>
+				<value>GUID 8062a8ab-d643-493e-bcf0-4c5bb60cd395</value>
+				<value>GUID 9f6d91ab-d815-4b36-b16b-51d469744798</value>
+			</AggregatesList>
+		</ITag>
+		<IInstanceValue type="e">
+			<_id type="a">GUID be9c5453-f84a-4125-a31f-3854e774ea9b</_id>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_value type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITableLayout</_hm2Class>
+					<_hid type="a">GUID f3eb8934-48be-4638-acd3-976a9caec4ec</_hid>
+				</IHandle>
+			</_value>
+		</IInstanceValue>
+		<IInstanceValue type="e">
+			<_id type="a">GUID 8062a8ab-d643-493e-bcf0-4c5bb60cd395</_id>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_value type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITableLayout</_hm2Class>
+					<_hid type="a">GUID 5251a2b0-f53d-4b5d-9f6c-dc039336c357</_hid>
+				</IHandle>
+			</_value>
+		</IInstanceValue>
+		<IInstanceValue type="e">
+			<_id type="a">GUID 9f6d91ab-d815-4b36-b16b-51d469744798</_id>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_value type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITableLayout</_hm2Class>
+					<_hid type="a">GUID 4e8c8e74-90e8-4b9d-a61e-136ae9f0238f</_hid>
+				</IHandle>
+			</_value>
+		</IInstanceValue>
+		<ITableLayout type="e">
+			<_id type="a">GUID 02352e7a-0d6c-4b78-a88d-ac1b6ff45ba1</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">TableLayout</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">EnableCriteriaCheck</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">Query - Refined requirements</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+							<_hname type="a">Query</_hname>
+							<_hid type="a">GUID 4c77a3b1-822f-466e-bd06-76145c9e3b88</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">2.23.2022::8:14:2</_modifiedTime>
+			<TableElementTypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID 02352e7a-0d6c-4b78-a88d-ac1b6ff45ba1</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Requirement</TableDataDefinitionName>
+						<_DataType type="a">0</_DataType>
+					</TableDataDefinition>
+					
+				</IRPYRawContainer>
+			</TableElementTypes>
+			<AggregatesList type="e">
+				<value>GUID a6ffe8a6-7d62-4894-be96-f8343b9d2e08</value>
+				<value>GUID d80bfa5c-34f2-4ed0-ae92-92c50c7dc38a</value>
+			</AggregatesList>
+		</ITableLayout>
+		<ITag type="e">
+			<_id type="a">GUID a6ffe8a6-7d62-4894-be96-f8343b9d2e08</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">RelRef_How_Related</_name>
+			<_modifiedTime type="a">2.15.2017::20:16:59</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">SearchRelRefHowRelatedEnum</_hname>
+					<_hid type="a">GUID 1f51c8cc-5b4f-4e36-a391-d8a3d29b610a</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hclass type="a">Query</_hclass>
+					<_hname type="a">RelRef_How_Related</_hname>
+					<_hid type="a">GUID f135968b-beae-4e26-8834-174d58eac9df</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID ca5dc43c-d250-4497-ab30-4e2ee1ced3b0</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID ca5dc43c-d250-4497-ab30-4e2ee1ced3b0</_id>
+			<_modifiedTime type="a">2.15.2017::20:16:59</_modifiedTime>
+			<_value type="a">References</_value>
+		</ILiteralSpecification>
+		<ITag type="e">
+			<_id type="a">GUID d80bfa5c-34f2-4ed0-ae92-92c50c7dc38a</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">RelRef_Metatype</_name>
+			<_modifiedTime type="a">2.15.2017::20:16:59</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">RhpString</_hname>
+					<_hid type="a">GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hclass type="a">Query</_hclass>
+					<_hname type="a">RelRef_Metatype</_hname>
+					<_hid type="a">GUID 290c2612-b019-493a-941a-7a1fa6a005ac</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 02b7a380-c063-45ae-aa27-cf013e682f98</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 02b7a380-c063-45ae-aa27-cf013e682f98</_id>
+			<_modifiedTime type="a">2.15.2017::20:16:59</_modifiedTime>
+			<_value type="a">Refinement</_value>
+		</ILiteralSpecification>
+		<ITableLayout type="e">
+			<_id type="a">GUID 719b755b-a891-4406-915e-255628c0b6cb</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">TableLayout</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">EnableCriteriaCheck</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">Query - Satisfied requirements</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+							<_hname type="a">Query</_hname>
+							<_hid type="a">GUID 4c77a3b1-822f-466e-bd06-76145c9e3b88</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">2.23.2022::8:14:2</_modifiedTime>
+			<TableElementTypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID 719b755b-a891-4406-915e-255628c0b6cb</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Requirement</TableDataDefinitionName>
+						<_DataType type="a">264283136</_DataType>
+					</TableDataDefinition>
+					
+				</IRPYRawContainer>
+			</TableElementTypes>
+			<AggregatesList type="e">
+				<value>GUID b27e350d-aa70-4d52-b258-59f866bb3c39</value>
+				<value>GUID ff4dd2e0-7ad3-4c15-bd1d-1c76a9b5c9bf</value>
+			</AggregatesList>
+		</ITableLayout>
+		<ITag type="e">
+			<_id type="a">GUID b27e350d-aa70-4d52-b258-59f866bb3c39</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">RelRef_How_Related</_name>
+			<_modifiedTime type="a">2.15.2017::20:17:14</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">SearchRelRefHowRelatedEnum</_hname>
+					<_hid type="a">GUID 1f51c8cc-5b4f-4e36-a391-d8a3d29b610a</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hclass type="a">Query</_hclass>
+					<_hname type="a">RelRef_How_Related</_hname>
+					<_hid type="a">GUID f135968b-beae-4e26-8834-174d58eac9df</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID b223c921-ea72-4d61-bcb3-fe38cf2517e2</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID b223c921-ea72-4d61-bcb3-fe38cf2517e2</_id>
+			<_modifiedTime type="a">2.15.2017::20:17:14</_modifiedTime>
+			<_value type="a">References</_value>
+		</ILiteralSpecification>
+		<ITag type="e">
+			<_id type="a">GUID ff4dd2e0-7ad3-4c15-bd1d-1c76a9b5c9bf</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">RelRef_Metatype</_name>
+			<_modifiedTime type="a">2.15.2017::20:17:14</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">RhpString</_hname>
+					<_hid type="a">GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hclass type="a">Query</_hclass>
+					<_hname type="a">RelRef_Metatype</_hname>
+					<_hid type="a">GUID 290c2612-b019-493a-941a-7a1fa6a005ac</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 00340f97-11f9-4e4b-a3bf-c22cb12a486f</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 00340f97-11f9-4e4b-a3bf-c22cb12a486f</_id>
+			<_modifiedTime type="a">2.15.2017::20:17:14</_modifiedTime>
+			<_value type="a">Satisfaction</_value>
+		</ILiteralSpecification>
+		<ITableLayout type="e">
+			<_id type="a">GUID 4e8c8e74-90e8-4b9d-a61e-136ae9f0238f</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">TableLayout</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">EnableCriteriaCheck</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">Query - Underived requirements</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+							<_hname type="a">Query</_hname>
+							<_hid type="a">GUID 4c77a3b1-822f-466e-bd06-76145c9e3b88</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">2.23.2022::8:14:2</_modifiedTime>
+			<TableElementTypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID 4e8c8e74-90e8-4b9d-a61e-136ae9f0238f</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Requirement</TableDataDefinitionName>
+						<_DataType type="a">43196144</_DataType>
+					</TableDataDefinition>
+					
+				</IRPYRawContainer>
+			</TableElementTypes>
+			<AggregatesList type="e">
+				<value>GUID 910115f7-d11c-47e0-b232-11bec4a180b0</value>
+				<value>GUID a0f70934-d600-4a1c-a092-76fd35387308</value>
+				<value>GUID c6e14f17-5062-49e5-9ed2-523db9550a9b</value>
+			</AggregatesList>
+		</ITableLayout>
+		<ITag type="e">
+			<_id type="a">GUID 910115f7-d11c-47e0-b232-11bec4a180b0</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">RelRef_Amount_Type</_name>
+			<_modifiedTime type="a">2.15.2017::20:17:27</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">SearchRelRefAmountTypeEnum</_hname>
+					<_hid type="a">GUID 20f1e2d7-a8d9-47e3-ba8e-79c8a90bb771</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hclass type="a">Query</_hclass>
+					<_hname type="a">RelRef_Amount_Type</_hname>
+					<_hid type="a">GUID 1833af5f-34ee-4820-ae90-85fb4db717de</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 0c68c1c9-6c10-4963-87ca-d49dceacc380</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 0c68c1c9-6c10-4963-87ca-d49dceacc380</_id>
+			<_modifiedTime type="a">2.15.2017::20:17:27</_modifiedTime>
+			<_value type="a">Exactly</_value>
+		</ILiteralSpecification>
+		<ITag type="e">
+			<_id type="a">GUID a0f70934-d600-4a1c-a092-76fd35387308</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">RelRef_How_Related</_name>
+			<_modifiedTime type="a">2.15.2017::20:17:27</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">SearchRelRefHowRelatedEnum</_hname>
+					<_hid type="a">GUID 1f51c8cc-5b4f-4e36-a391-d8a3d29b610a</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hclass type="a">Query</_hclass>
+					<_hname type="a">RelRef_How_Related</_hname>
+					<_hid type="a">GUID f135968b-beae-4e26-8834-174d58eac9df</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID f3822fa4-9450-4582-9778-7d9db897ca3e</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID f3822fa4-9450-4582-9778-7d9db897ca3e</_id>
+			<_modifiedTime type="a">2.15.2017::20:17:27</_modifiedTime>
+			<_value type="a">References</_value>
+		</ILiteralSpecification>
+		<ITag type="e">
+			<_id type="a">GUID c6e14f17-5062-49e5-9ed2-523db9550a9b</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">RelRef_Metatype</_name>
+			<_modifiedTime type="a">2.15.2017::20:17:27</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">RhpString</_hname>
+					<_hid type="a">GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hclass type="a">Query</_hclass>
+					<_hname type="a">RelRef_Metatype</_hname>
+					<_hid type="a">GUID 290c2612-b019-493a-941a-7a1fa6a005ac</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID c9488d23-4872-4a56-a692-43009fae613a</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID c9488d23-4872-4a56-a692-43009fae613a</_id>
+			<_modifiedTime type="a">2.15.2017::20:17:27</_modifiedTime>
+			<_value type="a">Derivation</_value>
+		</ILiteralSpecification>
+		<ITableLayout type="e">
+			<_id type="a">GUID 5251a2b0-f53d-4b5d-9f6c-dc039336c357</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">TableLayout</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">EnableCriteriaCheck</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">Query - Unrefined requirements</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+							<_hname type="a">Query</_hname>
+							<_hid type="a">GUID 4c77a3b1-822f-466e-bd06-76145c9e3b88</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">2.23.2022::8:14:2</_modifiedTime>
+			<TableElementTypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID 5251a2b0-f53d-4b5d-9f6c-dc039336c357</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Requirement</TableDataDefinitionName>
+						<_DataType type="a">43196144</_DataType>
+					</TableDataDefinition>
+					
+				</IRPYRawContainer>
+			</TableElementTypes>
+			<AggregatesList type="e">
+				<value>GUID 1feb77c0-1a48-4939-84e9-e4ee00add104</value>
+				<value>GUID e873e241-57aa-4167-8f22-e0e6d703636f</value>
+				<value>GUID a4fff845-8d05-4372-b1a6-7f87818fb8c6</value>
+			</AggregatesList>
+		</ITableLayout>
+		<ITag type="e">
+			<_id type="a">GUID 1feb77c0-1a48-4939-84e9-e4ee00add104</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">RelRef_Amount_Type</_name>
+			<_modifiedTime type="a">2.15.2017::20:17:44</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">SearchRelRefAmountTypeEnum</_hname>
+					<_hid type="a">GUID 20f1e2d7-a8d9-47e3-ba8e-79c8a90bb771</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hclass type="a">Query</_hclass>
+					<_hname type="a">RelRef_Amount_Type</_hname>
+					<_hid type="a">GUID 1833af5f-34ee-4820-ae90-85fb4db717de</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID abc8c313-4852-4ac2-9d4f-503fd4854169</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID abc8c313-4852-4ac2-9d4f-503fd4854169</_id>
+			<_modifiedTime type="a">2.15.2017::20:17:44</_modifiedTime>
+			<_value type="a">Exactly</_value>
+		</ILiteralSpecification>
+		<ITag type="e">
+			<_id type="a">GUID e873e241-57aa-4167-8f22-e0e6d703636f</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">RelRef_How_Related</_name>
+			<_modifiedTime type="a">2.15.2017::20:17:44</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">SearchRelRefHowRelatedEnum</_hname>
+					<_hid type="a">GUID 1f51c8cc-5b4f-4e36-a391-d8a3d29b610a</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hclass type="a">Query</_hclass>
+					<_hname type="a">RelRef_How_Related</_hname>
+					<_hid type="a">GUID f135968b-beae-4e26-8834-174d58eac9df</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 9ec6b07b-afe3-4f1b-9e6a-bc9686b5410b</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 9ec6b07b-afe3-4f1b-9e6a-bc9686b5410b</_id>
+			<_modifiedTime type="a">2.15.2017::20:17:44</_modifiedTime>
+			<_value type="a">References</_value>
+		</ILiteralSpecification>
+		<ITag type="e">
+			<_id type="a">GUID a4fff845-8d05-4372-b1a6-7f87818fb8c6</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">RelRef_Metatype</_name>
+			<_modifiedTime type="a">2.15.2017::20:17:44</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">RhpString</_hname>
+					<_hid type="a">GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hclass type="a">Query</_hclass>
+					<_hname type="a">RelRef_Metatype</_hname>
+					<_hid type="a">GUID 290c2612-b019-493a-941a-7a1fa6a005ac</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID ed14381e-80d8-457c-9170-b966deafe090</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID ed14381e-80d8-457c-9170-b966deafe090</_id>
+			<_modifiedTime type="a">2.15.2017::20:17:44</_modifiedTime>
+			<_value type="a">Refinement</_value>
+		</ILiteralSpecification>
+		<ITableLayout type="e">
+			<_id type="a">GUID f3eb8934-48be-4638-acd3-976a9caec4ec</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">TableLayout</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">EnableCriteriaCheck</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">Query - Unsatisfied requirements</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+							<_hname type="a">Query</_hname>
+							<_hid type="a">GUID 4c77a3b1-822f-466e-bd06-76145c9e3b88</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">2.23.2022::8:14:2</_modifiedTime>
+			<TableElementTypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID f3eb8934-48be-4638-acd3-976a9caec4ec</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Requirement</TableDataDefinitionName>
+						<_DataType type="a">43196144</_DataType>
+					</TableDataDefinition>
+					
+				</IRPYRawContainer>
+			</TableElementTypes>
+			<AggregatesList type="e">
+				<value>GUID 7512df43-d313-410d-bc05-866293d26d8f</value>
+				<value>GUID d7f4d202-89b6-4cf4-af28-5a58f04d5ea3</value>
+				<value>GUID 02c7f3c3-0e7c-48c0-83c9-7129ce4531aa</value>
+			</AggregatesList>
+		</ITableLayout>
+		<ITag type="e">
+			<_id type="a">GUID 7512df43-d313-410d-bc05-866293d26d8f</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">RelRef_Amount_Type</_name>
+			<_modifiedTime type="a">2.15.2017::20:18:1</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">SearchRelRefAmountTypeEnum</_hname>
+					<_hid type="a">GUID 20f1e2d7-a8d9-47e3-ba8e-79c8a90bb771</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hclass type="a">Query</_hclass>
+					<_hname type="a">RelRef_Amount_Type</_hname>
+					<_hid type="a">GUID 1833af5f-34ee-4820-ae90-85fb4db717de</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 7fa06676-5dbc-4da9-b410-647ab97be28e</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 7fa06676-5dbc-4da9-b410-647ab97be28e</_id>
+			<_modifiedTime type="a">2.15.2017::20:18:1</_modifiedTime>
+			<_value type="a">Exactly</_value>
+		</ILiteralSpecification>
+		<ITag type="e">
+			<_id type="a">GUID d7f4d202-89b6-4cf4-af28-5a58f04d5ea3</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">RelRef_How_Related</_name>
+			<_modifiedTime type="a">2.15.2017::20:18:1</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">SearchRelRefHowRelatedEnum</_hname>
+					<_hid type="a">GUID 1f51c8cc-5b4f-4e36-a391-d8a3d29b610a</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hclass type="a">Query</_hclass>
+					<_hname type="a">RelRef_How_Related</_hname>
+					<_hid type="a">GUID f135968b-beae-4e26-8834-174d58eac9df</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 81d25a98-33c4-4b06-bd53-a341747e35c0</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 81d25a98-33c4-4b06-bd53-a341747e35c0</_id>
+			<_modifiedTime type="a">2.15.2017::20:18:1</_modifiedTime>
+			<_value type="a">References</_value>
+		</ILiteralSpecification>
+		<ITag type="e">
+			<_id type="a">GUID 02c7f3c3-0e7c-48c0-83c9-7129ce4531aa</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">RelRef_Metatype</_name>
+			<_modifiedTime type="a">2.15.2017::20:18:1</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">RhpString</_hname>
+					<_hid type="a">GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hclass type="a">Query</_hclass>
+					<_hname type="a">RelRef_Metatype</_hname>
+					<_hid type="a">GUID 290c2612-b019-493a-941a-7a1fa6a005ac</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 8de17e57-f574-41a8-8980-09de0d566496</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 8de17e57-f574-41a8-8980-09de0d566496</_id>
+			<_modifiedTime type="a">2.15.2017::20:18:1</_modifiedTime>
+			<_value type="a">Satisfaction</_value>
+		</ILiteralSpecification>
+		
+	</RHAPSODY-MODEL>
+	<OslcLinks type="c">
+		<IRPYRawContainer type="e">
+			<size type="a">0</size>
+		</IRPYRawContainer>
+	</OslcLinks>
+
+<INCLUDES-RHAPSODY-INDEX>false</INCLUDES-RHAPSODY-INDEX>
+</RhapsodyArchive>
+
