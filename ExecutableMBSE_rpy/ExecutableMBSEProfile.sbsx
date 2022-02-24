@@ -1658,13 +1658,16 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">2.24.2022::20:51:26</_modifiedTime>
+			<EmbededFiles type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</EmbededFiles>
+			<_modifiedTime type="a">2.24.2022::21:29:10</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
-				<value>GUID 5ce37347-7f97-4234-a1ad-2c1e2d01010c</value>
-				<value>GUID 7894c636-fa0b-47e1-b434-db37ee53e4e5</value>
 				<value>GUID f825da1e-3d3d-409d-927a-c62820d97e7c</value>
 				<value>GUID a746f7e2-6384-457e-ab41-98646d75963e</value>
 				<value>GUID 7e7b99a9-82bd-47e2-bab3-4da0c9449c8a</value>
@@ -1685,20 +1688,6 @@
 				<value>GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</value>
 			</AggregatesList>
 		</IProfile>
-		<IEmbededFile type="e">
-			<_id type="a">GUID 5ce37347-7f97-4234-a1ad-2c1e2d01010c</_id>
-			<_name type="a">FeaturePurple.ico</_name>
-			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
-			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
-			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\FeaturePurple.ico</_LastKnownFullPath>
-		</IEmbededFile>
-		<IEmbededFile type="e">
-			<_id type="a">GUID 7894c636-fa0b-47e1-b434-db37ee53e4e5</_id>
-			<_name type="a">FeaturesPurple.ico</_name>
-			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
-			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
-			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\FeaturesPurple.ico</_LastKnownFullPath>
-		</IEmbededFile>
 		<ISubsystem type="e">
 			<_id type="a">GUID f825da1e-3d3d-409d-927a-c62820d97e7c</_id>
 			<_myState type="a">8192</_myState>
@@ -13431,7 +13420,7 @@ Query</_Value>
 			<_id type="a">GUID ec717f1d-0b3e-427a-89fd-8b516b2337c8</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Elements</_name>
-			<_modifiedTime type="a">2.24.2022::17:29:44</_modifiedTime>
+			<_modifiedTime type="a">2.24.2022::21:29:14</_modifiedTime>
 			<_lastID type="a">12</_lastID>
 			<_defaultComposite type="s">GUID d51fb0a3-38d7-4d7a-9f45-35fd12f6ff2a</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -13551,7 +13540,7 @@ Query</_Value>
 												<size type="a">6</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Object,Generalization,Operation,Reception,ValueProperty,Statechart,Component Usage,Function Usage,Subsystem Usage,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale,Flow,ProxyPort</_Value>
+													<_Value type="a">Object,Generalization,Operation,Reception,ValueProperty,Statechart,Block Definition Diagram - System,Component Usage,Function Usage,Internal Block Diagram - System,Subsystem Usage,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale,Flow,ProxyPort</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -13598,7 +13587,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SubsystemBlock</_name>
-			<_modifiedTime type="a">2.24.2022::17:29:44</_modifiedTime>
+			<_modifiedTime type="a">2.24.2022::21:29:10</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -13626,7 +13615,7 @@ Query</_Value>
 												<size type="a">5</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Connector,Object,Internal Block Diagram - System,System Usage,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale</_Value>
+													<_Value type="a">Connector,Object,Block Definition Diagram - System,Internal Block Diagram - System,System Usage,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -13667,7 +13656,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">DomainBlock</_name>
-			<_modifiedTime type="a">2.22.2022::11:21:45</_modifiedTime>
+			<_modifiedTime type="a">2.24.2022::21:29:14</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
