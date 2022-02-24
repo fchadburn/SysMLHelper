@@ -1658,7 +1658,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">2.24.2022::21:46:25</_modifiedTime>
+			<_modifiedTime type="a">2.24.2022::22:7:6</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -11182,7 +11182,7 @@ Query</_Value>
 			<_id type="a">GUID 3307dbc4-6282-4d53-88b2-50e3de5ff8c2</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Diagrams</_name>
-			<_modifiedTime type="a">2.24.2022::17:15:40</_modifiedTime>
+			<_modifiedTime type="a">2.24.2022::22:7:9</_modifiedTime>
 			<_lastID type="a">4</_lastID>
 			<_defaultComposite type="s">GUID af3ccc20-8ac1-47a2-8c5f-be1a84c1550e</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -11262,7 +11262,7 @@ Query</_Value>
 												
 												<IProperty type="e">
 													<_Name type="a">DrawingToolbar</_Name>
-													<_Value type="a">System Block,Subsystem Block,Domain Block,Directed Composition,Generalization,Feature Block,Function Block,Software Component,Dependency,Satisfaction,Problem,Rationale</_Value>
+													<_Value type="a">System Block,Subsystem Block,Domain Block,Directed Composition,Generalization,Feature Block,Function Block,Software Component,Dependency,Satisfaction,Problem,Rationale,Actor</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -11325,10 +11325,34 @@ Query</_Value>
 										<_Name type="a">Composition</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">1</size>
+												<size type="a">5</size>
 												<IProperty type="e">
 													<_Name type="a">RepresentParts</_Name>
 													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ShowSourceMultiplicity</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ShowSourceRole</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ShowTargetMultiplicity</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ShowTargetRole</_Name>
+													<_Value type="a">False</_Value>
 													<_Type type="a">Bool</_Type>
 												</IProperty>
 												
@@ -11360,7 +11384,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">BlockDefinitionDiagramSystem</_name>
-			<_modifiedTime type="a">2.22.2022::11:46:38</_modifiedTime>
+			<_modifiedTime type="a">2.24.2022::22:7:9</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -12665,7 +12689,7 @@ Query</_Value>
 			<_id type="a">GUID d213ea00-7590-48aa-8f30-a0a61f8fcd08</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Packages</_name>
-			<_modifiedTime type="a">2.24.2022::21:46:25</_modifiedTime>
+			<_modifiedTime type="a">2.24.2022::21:58:29</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_defaultComposite type="s">GUID 26c8a3f9-6aee-4dff-a42f-bf1cc2880009</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -13167,7 +13191,7 @@ Query</_Value>
 												<size type="a">4</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Query,Event,Interface,Diagram View,SequenceDiagram,32 Design Synthesis - Feature Function Package,33 Design Synthesis - Subsystem Interfaces Package,Block Definition Diagram - Software,Block Definition Diagram - System,C++ Class,Domain Block,Feature Usage,Flow Connector,Function Block,Software Component,Subsystem Block,System Block,Component,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,InterfaceBlock,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
+													<_Value type="a">Query,Event,Interface,Diagram View,SequenceDiagram,32 Design Synthesis - Feature Function Package,33 Design Synthesis - Subsystem Interfaces Package,Block Definition Diagram - Software,Block Definition Diagram - System,C++ Class,Domain Block,Feature Usage,Flow Connector,Function Block,Software Component,Subsystem Block,System Block,Component,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,InterfaceBlock,Requirement,Actor,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -13202,7 +13226,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">LogicalSystemPackage</_name>
-			<_modifiedTime type="a">2.22.2022::20:53:37</_modifiedTime>
+			<_modifiedTime type="a">2.24.2022::21:58:29</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>

@@ -608,10 +608,13 @@ V4.0.p.Rhp831.PreRelease (XX-XXX-XXXX):
 #429 24-FEB-2022: ExecutableMBSE: Tweak metamodel to make feature usage the part metaclass for feature blocks (F.J.Chadburn)
 #430 24-FEB-2022: ExecutableMBSE: Adjust metamodel to allow a bdd under feature, subsystem, and system blocks (F.J.Chadburn)
 #431 24-FEB-2022: ExecutableMBSE: Adjust metamodel to allow context diagram packages to own subsystem usages (F.J.Chadburn)
+#432 24-FEB-2022: ExecutableMBSE: Don't show role names and multiplicity on composition relations on bdd - systems (F.J.Chadburn)
+#433 24-FEB-2022: ExecutableMBSE: Allow for actors on the bdd - systems diagram and in the logical system package (F.J.Chadburn)
 
 Backlog/Known issues
 - Add a populate blocks to a bdd right click, recurse through the part hiearachy.
 - Can we add Actor as part of a Feature Block?
+- Get helper to build package hierarchy from the nested parts hioerarchy for subsystems
 - Draw connector from function usage to subsystem port
 - Add a flow on a connector
 - Possible decision node?
