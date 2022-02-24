@@ -607,10 +607,10 @@ V4.0.p.Rhp831.PreRelease (XX-XXX-XXXX):
 #428 24-FEB-2022: ExecutableMBSE: Extend metamodel to allow subsystem blocks to own other subsystem blocks (F.J.Chadburn)
 #429 24-FEB-2022: ExecutableMBSE: Tweak metamodel to make feature usage the part metaclass for feature blocks (F.J.Chadburn)
 #430 24-FEB-2022: ExecutableMBSE: Adjust metamodel to allow a bdd under feature, subsystem, and system blocks (F.J.Chadburn)
+#431 24-FEB-2022: ExecutableMBSE: Adjust metamodel to allow context diagram packages to own subsystem usages (F.J.Chadburn)
 
 Backlog/Known issues
 - Add a populate blocks to a bdd right click, recurse through the part hiearachy.
-- Allow subsystem block to own a flow
 - Can we add Actor as part of a Feature Block?
 - Draw connector from function usage to subsystem port
 - Add a flow on a connector
