@@ -616,6 +616,7 @@ V4.0.p.Rhp831.PreRelease (24-FEB-2022):
 #437 25-FEB-2022: ExecutableMBSE: Do a change to Actor Usage whenever a part is created that is typed by an actor (F.J.Chadburn)
 
 Backlog/Known issues
+- Need an IBD - System owned by a function
 - Anchors get deleted when you do the layout of straight lines
 - Add a populate blocks to a bdd right click, recurse through the part hiearachy.
 - Can we add Actor as part of a Feature Block?
