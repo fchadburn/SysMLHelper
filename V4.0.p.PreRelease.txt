@@ -611,6 +611,7 @@ V4.0.p.Rhp831.PreRelease (XX-XXX-XXXX):
 #432 24-FEB-2022: ExecutableMBSE: Don't show role names and multiplicity on composition relations on bdd - systems (F.J.Chadburn)
 #433 24-FEB-2022: ExecutableMBSE: Allow for actors on the bdd - systems diagram and in the logical system package (F.J.Chadburn)
 #434 25-FEB-2022: ExecutableMBSE: Housekeeping move of profile's .prp file into the ExecutableMBSE_rpy folder (F.J.Chadburn)
+#435 25-FEB-2022: ExecutableMBSE: Change default display options of system context diagrams so that ports are not shown (F.J.Chadburn)
 
 Backlog/Known issues
 - Add a populate blocks to a bdd right click, recurse through the part hiearachy.
