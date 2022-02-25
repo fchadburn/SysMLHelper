@@ -76,6 +76,16 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 				afterAddForFunctionUsage( (IRPInstance) modelElement );
 
+			} else if( theUserDefinedMetaClass.equals( "Object" ) ){
+				
+				IRPInstance theInstance = (IRPInstance)modelElement;
+				
+				IRPClassifier theOtherClass = theInstance.getOtherClass();
+				
+				if( theOtherClass.getMetaClass().equals( "Actor" ) ){
+					modelElement.changeTo( _context.ACTOR_USAGE );
+				}
+				
 			} else if( modelElement instanceof IRPFlow ){
 
 				afterAddForFlow( (IRPFlow) modelElement );

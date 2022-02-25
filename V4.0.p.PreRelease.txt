@@ -613,9 +613,9 @@ V4.0.p.Rhp831.PreRelease (XX-XXX-XXXX):
 #434 25-FEB-2022: ExecutableMBSE: Housekeeping move of profile's .prp file into the ExecutableMBSE_rpy folder (F.J.Chadburn)
 #435 25-FEB-2022: ExecutableMBSE: Change default display options of system context diagrams so that ports are not shown (F.J.Chadburn)
 #436 25-FEB-2022: ExecutableMBSE: Adjust metamodel to allow creation of requirements diagrams underneath a function block (F.J.Chadburn)
+#437 25-FEB-2022: ExecutableMBSE: Do a change to Actor Usage whenever a part is created that is typed by an actor (F.J.Chadburn)
 
 Backlog/Known issues
-- Get ActorUsage to be created when composition creates a part
 - Add a populate blocks to a bdd right click, recurse through the part hiearachy.
 - Can we add Actor as part of a Feature Block?
 - Get helper to build package hierarchy from the nested parts hioerarchy for subsystems

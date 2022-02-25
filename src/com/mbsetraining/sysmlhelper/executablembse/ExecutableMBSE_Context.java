@@ -31,6 +31,7 @@ import com.telelogic.rhapsody.core.IRPUnit;
 public class ExecutableMBSE_Context extends BaseContext {
 
 	public final String FLOW_CONNECTOR = "Flow Connector";
+	public final String ACTOR_USAGE = "Actor Usage";
 	public final String SUBSYSTEM_USAGE = "Subsystem Usage";
 	public final String SYSTEM_USAGE = "System Usage";
 	public final String FUNCTION_USAGE = "Function Usage";
