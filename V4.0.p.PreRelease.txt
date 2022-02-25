@@ -603,7 +603,7 @@ V4.0.o.Rhp831.PreRelease (23-FEB-2022):
 #426 23-FEB-2022: ExecutableMBSE: Move the use case description, pre-conditions and post-conditions types into the ExecutableMBSEProfile submenu (F.J.Chadburn)
 #427 23-FEB-2022: ExecutableMBSE: Usability enhancement to generalize the re-draw dependencies to center helper to work with all straight lines (F.J.Chadburn)
 
-V4.0.p.Rhp831.PreRelease (XX-XXX-XXXX):
+V4.0.p.Rhp831.PreRelease (24-FEB-2022):
 #428 24-FEB-2022: ExecutableMBSE: Extend metamodel to allow subsystem blocks to own other subsystem blocks (F.J.Chadburn)
 #429 24-FEB-2022: ExecutableMBSE: Tweak metamodel to make feature usage the part metaclass for feature blocks (F.J.Chadburn)
 #430 24-FEB-2022: ExecutableMBSE: Adjust metamodel to allow a bdd under feature, subsystem, and system blocks (F.J.Chadburn)
@@ -616,6 +616,7 @@ V4.0.p.Rhp831.PreRelease (XX-XXX-XXXX):
 #437 25-FEB-2022: ExecutableMBSE: Do a change to Actor Usage whenever a part is created that is typed by an actor (F.J.Chadburn)
 
 Backlog/Known issues
+- Anchors get deleted when you do the layout of straight lines
 - Add a populate blocks to a bdd right click, recurse through the part hiearachy.
 - Can we add Actor as part of a Feature Block?
 - Get helper to build package hierarchy from the nested parts hioerarchy for subsystems
