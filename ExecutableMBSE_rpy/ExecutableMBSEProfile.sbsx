@@ -637,7 +637,7 @@
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">PropertyFile</_Name>
-													<_Value type="a">$OMROOT\Profiles\SysMLHelper\properties\ExecutableMBSE.prp</_Value>
+													<_Value type="a">$OMROOT\Profiles\SysMLHelper\ExecutableMBSE_rpy\ExecutableMBSEProfile.prp</_Value>
 													<_Type type="a">File</_Type>
 												</IProperty>
 												
@@ -1658,7 +1658,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">2.24.2022::22:7:6</_modifiedTime>
+			<_modifiedTime type="a">2.25.2022::9:7:41</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
