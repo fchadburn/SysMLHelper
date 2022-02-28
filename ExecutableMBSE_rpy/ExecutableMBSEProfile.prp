@@ -1,6 +1,6 @@
 Subject ExecutableMBSEProfile
         Metaclass General
-		Property PluginVersion String "V4.0.p.Rhp831.PreRelease"
+		Property PluginVersion String "V4.0.q.Rhp831.PreRelease"
 		Property EnableInfoLogging Bool "True"
 		Property EnableWarningLogging Bool "True"
 		Property EnableErrorLogging Bool "True"
@@ -254,6 +254,19 @@ Subject ObjectModelGe
 		Property QuickNavigationCategories String "MainBehavior,MainDiagram,Hyperlinks,Diagrams"
 	end
 	Metaclass FunctionBlock
+		Property ShowAttributes Enum "All,None,Public,Explicit" "None"
+		Property ShowOperations Enum "All,None,Public,Explicit" "None"
+		Property ShowStereotype Enum "Label,Bitmap,None" "Label"
+		Property ShowName Enum  "Full_path,Relative,Name_only,Label" "Name_only"
+		Property ShowPorts Bool "False"
+		Property ShowPortsInterfaces Bool "True"
+		Property PortsSingleLabelLayout Enum "Off,Internal,External" "Off"
+		Property Compartments MultiLine "Description"
+		Property ShowInheritedAttributes Bool "False"
+		Property ShowInheritedOperations Bool "False"
+		Property QuickNavigationCategories String "MainBehavior,MainDiagram,Hyperlinks,Diagrams"
+	end
+	Metaclass FeatureBlock
 		Property ShowAttributes Enum "All,None,Public,Explicit" "None"
 		Property ShowOperations Enum "All,None,Public,Explicit" "None"
 		Property ShowStereotype Enum "Label,Bitmap,None" "Label"

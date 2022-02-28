@@ -615,6 +615,10 @@ V4.0.p.Rhp831.PreRelease (24-FEB-2022):
 #436 25-FEB-2022: ExecutableMBSE: Adjust metamodel to allow creation of requirements diagrams underneath a function block (F.J.Chadburn)
 #437 25-FEB-2022: ExecutableMBSE: Do a change to Actor Usage whenever a part is created that is typed by an actor (F.J.Chadburn)
 
+V4.0.q.Rhp831.PreRelease (XX-XXX-XXXX):
+#438 28-FEB-2022: ExecutableMBSE: Tweak to display options so that only Description field is shown by default for Feature Blocks (F.J.Chadburn)
+#439 28-FEB-2022: ExecutableMBSE: Added new Compartment option of Function Usages to Feature Blocks (F.J.Chadburn)
+
 Backlog/Known issues
 - Need an IBD - System owned by a function
 - Anchors get deleted when you do the layout of straight lines

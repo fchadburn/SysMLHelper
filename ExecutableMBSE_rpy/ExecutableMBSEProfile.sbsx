@@ -1658,7 +1658,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">2.25.2022::9:47:20</_modifiedTime>
+			<_modifiedTime type="a">2.28.2022::17:2:39</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -10868,7 +10868,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 99d433ee-75c1-40c0-8ef0-8ea14c3d7d23</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileInfo</_name>
-			<_modifiedTime type="a">2.24.2022::14:35:25</_modifiedTime>
+			<_modifiedTime type="a">2.28.2022::17:2:39</_modifiedTime>
 			<_lastID type="a">3</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -10886,7 +10886,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 00c06448-4cf5-4b58-a462-af1a3bccd935</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileDate</_name>
-			<_modifiedTime type="a">2.24.2022::14:35:25</_modifiedTime>
+			<_modifiedTime type="a">2.28.2022::17:2:34</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IType</_hm2Class>
@@ -10897,19 +10897,19 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</_typeOf>
 			<_isOrdered type="a">0</_isOrdered>
 			<AggregatesList type="e">
-				<value>GUID efc11062-69e2-419f-acc8-f00e46094e50</value>
+				<value>GUID 9a4fea12-fe16-4a01-a51e-8665687ab39d</value>
 			</AggregatesList>
 		</ITag>
 		<ILiteralSpecification type="e">
-			<_id type="a">GUID efc11062-69e2-419f-acc8-f00e46094e50</_id>
-			<_modifiedTime type="a">2.24.2022::14:35:25</_modifiedTime>
-			<_value type="a">2022/02/24 14:35:00</_value>
+			<_id type="a">GUID 9a4fea12-fe16-4a01-a51e-8665687ab39d</_id>
+			<_modifiedTime type="a">2.28.2022::17:2:34</_modifiedTime>
+			<_value type="a">2022/02/28 17:02:00</_value>
 		</ILiteralSpecification>
 		<ITag type="e">
 			<_id type="a">GUID c783ee62-7cd8-4f71-8651-25132d0e1150</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileVersion</_name>
-			<_modifiedTime type="a">2.24.2022::14:35:3</_modifiedTime>
+			<_modifiedTime type="a">2.28.2022::17:2:39</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IType</_hm2Class>
@@ -10920,13 +10920,13 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</_typeOf>
 			<_isOrdered type="a">0</_isOrdered>
 			<AggregatesList type="e">
-				<value>GUID acd8bd9c-51b7-49fd-a6aa-139ad07732a8</value>
+				<value>GUID 32003e3b-a9a9-4b76-9cb5-b6ad04177950</value>
 			</AggregatesList>
 		</ITag>
 		<ILiteralSpecification type="e">
-			<_id type="a">GUID acd8bd9c-51b7-49fd-a6aa-139ad07732a8</_id>
-			<_modifiedTime type="a">2.24.2022::14:35:3</_modifiedTime>
-			<_value type="a">V4.0.p.Rhp831.PreRelease</_value>
+			<_id type="a">GUID 32003e3b-a9a9-4b76-9cb5-b6ad04177950</_id>
+			<_modifiedTime type="a">2.28.2022::17:2:39</_modifiedTime>
+			<_value type="a">V4.0.q.Rhp831.PreRelease</_value>
 		</ILiteralSpecification>
 		<ITag type="e">
 			<_id type="a">GUID 6cadd9b1-62a9-477e-a2b1-45c9e04743fb</_id>
@@ -13475,7 +13475,7 @@ Query</_Value>
 			<_id type="a">GUID ec717f1d-0b3e-427a-89fd-8b516b2337c8</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Elements</_name>
-			<_modifiedTime type="a">2.25.2022::9:40:23</_modifiedTime>
+			<_modifiedTime type="a">2.28.2022::16:39:36</_modifiedTime>
 			<_lastID type="a">12</_lastID>
 			<_defaultComposite type="s">GUID d51fb0a3-38d7-4d7a-9f45-35fd12f6ff2a</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -13726,7 +13726,31 @@ Query</_Value>
 			<_properties type="p"><IPropertyContainer type="e">
 				<Subjects type="c">
 					<IRPYRawContainer type="e">
-						<size type="a">1</size>
+						<size type="a">2</size>
+						<IPropertySubject type="e">
+							<_Name type="a">General</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Graphics</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">AdditionalCompartments</_Name>
+													<_Value type="a">AllocatedFrom, AllocatedTo,Function Usage</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
 						<IPropertySubject type="e">
 							<_Name type="a">Model</_Name>
 							<Metaclasses type="c">
@@ -13787,7 +13811,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">FeatureBlock</_name>
-			<_modifiedTime type="a">2.24.2022::10:3:47</_modifiedTime>
+			<_modifiedTime type="a">2.28.2022::16:39:36</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
