@@ -52,7 +52,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String FUNCT_ANALYSIS_INTERFACES_PACKAGE = "23 Funct Analysis - Interfaces Package";
 	public final String FUNCT_ANALYSIS_TEST_PACKAGE = "24 Funct Analysis - Test Package";
 	public final String DESIGN_SYNTHESIS_SUBSYSTEM_INTERFACES_PACKAGE = "33 Design Synthesis - Subsystem Interfaces Package";
-	public final String DESIGN_SYNTHESIS_LOGICAL_SYSTEM_PACKAGE = "31 Design Synthesis - Logical System Package";
+	public final String DESIGN_SYNTHESIS_LOGICAL_SYSTEM_PACKAGE = "31 Design Synthesis - System Architecture Package";
 	public final String DESIGN_SYNTHESIS_FEATURE_FUNCTION_PACKAGE = "32 Design Synthesis - Feature Function Package";
 	public final String TIME_ELAPSED_BLOCK_STEREOTYPE = "TimeBlock";
 	public final String ELAPSED_TIME_GENERATOR_STEREOTYPE = "TimeGenerator";
