@@ -621,11 +621,11 @@ V4.0.q.Rhp831.PreRelease (XX-XXX-XXXX):
 #440 01-MAR-2022: ExecutableMBSE: Rename Logical System Package to System Architecture Package as can be used for non-logical as well (F.J.Chadburn)
 #441 08-MAR-2022: ExecutableMBSE: Added DecisionUsage and GuardedFlowPort concepts to support adding conditional logic to functional flow IBDs (F.J.Chadburn)
 #442 08-MAR-2022: ExecutableMBSE: Get profile to set NamesRegEx to allow any spaces in order to better cope with guarded flow ports (F.J.Chadburn)
+#443 08-MAR-2022: ExecutableMBSE: Allow Function Blocks to own Satisfactions (F.J.Chadburn)
 
 Backlog/Known issues
 - Rename signal package to be more general purpose
 - What about parallel flows in a function flow diagram
-- Need to be able to Satisfy. 
 - Putting traceability into compartment for a function block
 - Allow events to be added to any block
 - Can you show generalizations in a compartment
