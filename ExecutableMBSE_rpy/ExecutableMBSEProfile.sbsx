@@ -1658,7 +1658,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">3.8.2022::15:14:30</_modifiedTime>
+			<_modifiedTime type="a">3.8.2022::15:36:53</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -10994,7 +10994,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">AddNewMenuStructure</_Name>
-													<_Value type="a">AcceptEventAction,AcceptTimeEvent,ActivityFinal,Attribute,CallBehavior,CallOperation,ControlFlow,DecisionNode,DefaultTransition,Fork,InterruptibleRegion,MergeNode,SendAction,Structure Diagram,ExecutableMBSEProfile/10 Reqts Analysis - Context Diagram Package,ExecutableMBSEProfile/11 Reqts Analysis - Actor Package,ExecutableMBSEProfile/12 Reqts Analysis - Use Case Package,ExecutableMBSEProfile/13 Reqts Analysis - Requirement Package,ExecutableMBSEProfile/14 Reqts Analysis - External Signals Package,ExecutableMBSEProfile/31 Design Synthesis - System Architecture Package,ExecutableMBSEProfile/32 Design Synthesis - Feature Function Package,ExecutableMBSEProfile/33 Design Synthesis - Subsystem Interfaces Package,ExecutableMBSEProfile/34 Design Synthesis - Software Design Package,ExecutableMBSEProfile/Actor Usage,ExecutableMBSEProfile/Block Definition Diagram - Software,ExecutableMBSEProfile/Block Definition Diagram - System,ExecutableMBSEProfile/C++ Class,ExecutableMBSEProfile/Call Operation Activity,ExecutableMBSEProfile/Component Usage,ExecutableMBSEProfile/Decision Usage,ExecutableMBSEProfile/Domain Block,ExecutableMBSEProfile/Enhanced Use Case Diagram,ExecutableMBSEProfile/Feature Block,ExecutableMBSEProfile/Feature Usage,ExecutableMBSEProfile/Flow Connector,ExecutableMBSEProfile/Flow Input,ExecutableMBSEProfile/Flow Output,ExecutableMBSEProfile/Function Block,ExecutableMBSEProfile/Function Usage,ExecutableMBSEProfile/Guarded Flow Output,ExecutableMBSEProfile/Internal Block Diagram - Functional,ExecutableMBSEProfile/Internal Block Diagram - Software,ExecutableMBSEProfile/Internal Block Diagram - System,ExecutableMBSEProfile/Software Component,ExecutableMBSEProfile/Subsystem Block,ExecutableMBSEProfile/Subsystem Usage,ExecutableMBSEProfile/System Block,ExecutableMBSEProfile/System Context Diagram,ExecutableMBSEProfile/System Usage,ExecutableMBSEProfile/TableV - Context Diagram Flows,ExecutableMBSEProfile/Textual Activity,ExecutableMBSEProfile/Use Case Description,ExecutableMBSEProfile/Use Case Postcondition,ExecutableMBSEProfile/Use Case Precondition,Diagrams/Requirements Diagram,%0D
+													<_Value type="a">AcceptEventAction,AcceptTimeEvent,ActivityFinal,Attribute,CallBehavior,CallOperation,ControlFlow,DecisionNode,DefaultTransition,Fork,InterruptibleRegion,MergeNode,SendAction,Structure Diagram,ExecutableMBSEProfile/10 Reqts Analysis - Context Diagram Package,ExecutableMBSEProfile/11 Reqts Analysis - Actor Package,ExecutableMBSEProfile/12 Reqts Analysis - Use Case Package,ExecutableMBSEProfile/13 Reqts Analysis - Requirement Package,ExecutableMBSEProfile/14 Reqts Analysis - Signals Package,ExecutableMBSEProfile/31 Design Synthesis - System Architecture Package,ExecutableMBSEProfile/32 Design Synthesis - Feature Function Package,ExecutableMBSEProfile/33 Design Synthesis - Subsystem Interfaces Package,ExecutableMBSEProfile/34 Design Synthesis - Software Design Package,ExecutableMBSEProfile/Actor Usage,ExecutableMBSEProfile/Block Definition Diagram - Software,ExecutableMBSEProfile/Block Definition Diagram - System,ExecutableMBSEProfile/C++ Class,ExecutableMBSEProfile/Call Operation Activity,ExecutableMBSEProfile/Component Usage,ExecutableMBSEProfile/Decision Usage,ExecutableMBSEProfile/Domain Block,ExecutableMBSEProfile/Enhanced Use Case Diagram,ExecutableMBSEProfile/Feature Block,ExecutableMBSEProfile/Feature Usage,ExecutableMBSEProfile/Flow Connector,ExecutableMBSEProfile/Flow Input,ExecutableMBSEProfile/Flow Output,ExecutableMBSEProfile/Function Block,ExecutableMBSEProfile/Function Usage,ExecutableMBSEProfile/Guarded Flow Output,ExecutableMBSEProfile/Internal Block Diagram - Functional,ExecutableMBSEProfile/Internal Block Diagram - Software,ExecutableMBSEProfile/Internal Block Diagram - System,ExecutableMBSEProfile/Software Component,ExecutableMBSEProfile/Subsystem Block,ExecutableMBSEProfile/Subsystem Usage,ExecutableMBSEProfile/System Block,ExecutableMBSEProfile/System Context Diagram,ExecutableMBSEProfile/System Usage,ExecutableMBSEProfile/TableV - Context Diagram Flows,ExecutableMBSEProfile/Textual Activity,ExecutableMBSEProfile/Use Case Description,ExecutableMBSEProfile/Use Case Postcondition,ExecutableMBSEProfile/Use Case Precondition,Diagrams/Requirements Diagram,%0D
 Diagrams/UseCaseDiagram,%0D
 Diagrams/Package Diagram,%0D
 Diagrams/Block Definition Diagram,%0D
@@ -11177,7 +11177,7 @@ Query</_Value>
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">10 Reqts Analysis - Context Diagram Package,11 Reqts Analysis - Actor Package,12 Reqts Analysis - Use Case Package,13 Reqts Analysis - Requirement Package,14 Reqts Analysis - External Signals Package,31 Design Synthesis - System Architecture Package,32 Design Synthesis - Feature Function Package,33 Design Synthesis - Subsystem Interfaces Package,34 Design Synthesis - Software Design Package,Call Operation Activity,Textual Activity</_Value>
+													<_Value type="a">10 Reqts Analysis - Context Diagram Package,11 Reqts Analysis - Actor Package,12 Reqts Analysis - Use Case Package,13 Reqts Analysis - Requirement Package,14 Reqts Analysis - Signals Package,31 Design Synthesis - System Architecture Package,32 Design Synthesis - Feature Function Package,33 Design Synthesis - Subsystem Interfaces Package,34 Design Synthesis - Software Design Package,Call Operation Activity,Textual Activity</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -11194,7 +11194,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSE</_name>
-			<_modifiedTime type="a">3.7.2022::12:29:14</_modifiedTime>
+			<_modifiedTime type="a">3.8.2022::15:36:53</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -12749,7 +12749,7 @@ Query</_Value>
 			<_id type="a">GUID d213ea00-7590-48aa-8f30-a0a61f8fcd08</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Packages</_name>
-			<_modifiedTime type="a">3.8.2022::7:2:46</_modifiedTime>
+			<_modifiedTime type="a">3.8.2022::15:37:0</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_defaultComposite type="s">GUID 26c8a3f9-6aee-4dff-a42f-bf1cc2880009</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -13100,7 +13100,7 @@ Query</_Value>
 												<size type="a">4</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Query,Event,Diagram View,14 Reqts Analysis - External Signals Package,Actor Usage,Subsystem Usage,System Context Diagram,System Usage,TableV - Context Diagram Flows,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Flow,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
+													<_Value type="a">Query,Event,Diagram View,14 Reqts Analysis - Signals Package,Actor Usage,Subsystem Usage,System Context Diagram,System Usage,TableV - Context Diagram Flows,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Flow,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -13135,7 +13135,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ContextDiagramPackage</_name>
-			<_modifiedTime type="a">2.24.2022::21:46:25</_modifiedTime>
+			<_modifiedTime type="a">3.8.2022::15:37:0</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -13193,19 +13193,19 @@ Query</_Value>
 												
 												<IProperty type="e">
 													<_Name type="a">BrowserGroupIcon</_Name>
-													<_Value type="a">IconsPkg\ExternalSignalsPackages.ico</_Value>
+													<_Value type="a">IconsPkg\SignalsPackages.ico</_Value>
 													<_Type type="a">File</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
 													<_Name type="a">BrowserIcon</_Name>
-													<_Value type="a">IconsPkg\ExternalSignalsPackage.ico</_Value>
+													<_Value type="a">IconsPkg\SignalsPackage.ico</_Value>
 													<_Type type="a">File</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
 													<_Name type="a">Name</_Name>
-													<_Value type="a">14 Reqts Analysis - External Signals Package</_Value>
+													<_Value type="a">14 Reqts Analysis - Signals Package</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -13221,8 +13221,8 @@ Query</_Value>
 				</Subjects>
 			</IPropertyContainer>
 			</_properties>
-			<_name type="a">ExternalSignalsPackage</_name>
-			<_modifiedTime type="a">3.8.2022::7:2:46</_modifiedTime>
+			<_name type="a">SignalsPackage</_name>
+			<_modifiedTime type="a">3.8.2022::15:32:42</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -13305,13 +13305,13 @@ Query</_Value>
 												
 												<IProperty type="e">
 													<_Name type="a">BrowserGroupIcon</_Name>
-													<_Value type="a">IconsPkg\LogicalSystemPackages.ico</_Value>
+													<_Value type="a">IconsPkg\SystemArchitecturePackages.ico</_Value>
 													<_Type type="a">File</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
 													<_Name type="a">BrowserIcon</_Name>
-													<_Value type="a">IconsPkg\LogicalSystemPackage.ico</_Value>
+													<_Value type="a">IconsPkg\SystemArchitecturePackage.ico</_Value>
 													<_Type type="a">File</_Type>
 												</IProperty>
 												
@@ -13334,7 +13334,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SystemArchitecturePackage</_name>
-			<_modifiedTime type="a">3.8.2022::7:2:11</_modifiedTime>
+			<_modifiedTime type="a">3.8.2022::15:34:25</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -13392,13 +13392,13 @@ Query</_Value>
 												
 												<IProperty type="e">
 													<_Name type="a">BrowserGroupIcon</_Name>
-													<_Value type="a">IconsPkg\ExternalSignalsPackages.ico</_Value>
+													<_Value type="a">IconsPkg\SignalsPackages.ico</_Value>
 													<_Type type="a">File</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
 													<_Name type="a">BrowserIcon</_Name>
-													<_Value type="a">IconsPkg\ExternalSignalsPackage.ico</_Value>
+													<_Value type="a">IconsPkg\SignalsPackage.ico</_Value>
 													<_Type type="a">File</_Type>
 												</IProperty>
 												
@@ -13421,7 +13421,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SubsystemInterfacesPackage</_name>
-			<_modifiedTime type="a">3.8.2022::7:2:24</_modifiedTime>
+			<_modifiedTime type="a">3.8.2022::15:33:28</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -13455,13 +13455,13 @@ Query</_Value>
 												
 												<IProperty type="e">
 													<_Name type="a">BrowserGroupIcon</_Name>
-													<_Value type="a">IconsPkg\LogicalSystemPackages.ico</_Value>
+													<_Value type="a">IconsPkg\SystemArchitecturePackages.ico</_Value>
 													<_Type type="a">File</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
 													<_Name type="a">BrowserIcon</_Name>
-													<_Value type="a">IconsPkg\LogicalSystemPackage.ico</_Value>
+													<_Value type="a">IconsPkg\SystemArchitecturePackage.ico</_Value>
 													<_Type type="a">File</_Type>
 												</IProperty>
 												
@@ -13484,7 +13484,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SoftwareDesignPackage</_name>
-			<_modifiedTime type="a">2.23.2022::7:51:23</_modifiedTime>
+			<_modifiedTime type="a">3.8.2022::15:35:6</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>

@@ -623,15 +623,14 @@ V4.0.q.Rhp831.PreRelease (XX-XXX-XXXX):
 #442 08-MAR-2022: ExecutableMBSE: Get profile to set NamesRegEx to allow any spaces in order to better cope with guarded flow ports (F.J.Chadburn)
 #443 08-MAR-2022: ExecutableMBSE: Allow Function Blocks to own Satisfactions (F.J.Chadburn)
 #444 08-MAR-2022: ExecutableMBSE: Allow Function Blocks to have a compartment showing Satisfaction relations (F.J.Chadburn)
+#445 08-MAR-2022: ExecutableMBSE: External signal package renamed to more general purpose signals package for use with function block flows as well (F.J.Chadburn)
 
 Backlog/Known issues
-- Rename signal package to be more general purpose
 - What about parallel flows in a function flow diagram
 - Allow events to be added to any block
 - Can you show generalizations in a compartment
 - Can we put Rational and Problem on any diagram
 - Allow Requirement to be owned by the function block
-- Need to trace function block to a requirement, which relationship
 - Create relationship table
 - Need an IBD - System owned by a function
 - Anchors get deleted when you do the layout of straight lines

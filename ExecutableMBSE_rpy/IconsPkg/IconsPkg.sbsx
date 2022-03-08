@@ -11,14 +11,10 @@
 			<_id type="a">GUID 801c8dc2-1109-41eb-8815-e3fb68b9a344</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">IconsPkg</_name>
-			<_modifiedTime type="a">2.23.2022::8:38:4</_modifiedTime>
+			<_modifiedTime type="a">3.8.2022::15:31:40</_modifiedTime>
 			<_defaultComposite type="s">GUID 64eceb80-328e-445f-90f1-4b11f0a04bea</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
-				<value>GUID b620f6ca-17f0-4012-8be8-eec3f5b1561d</value>
-				<value>GUID 383d5831-932c-4062-8803-0acf46e5fe33</value>
-				<value>GUID 25527551-3bce-4500-9f74-bdae24829a75</value>
-				<value>GUID 8cd6b349-d9ea-45f4-9bb9-5fe450191494</value>
 				<value>GUID e5dcd70e-e13c-434b-86e2-544af9e25e5d</value>
 				<value>GUID 2937ea2f-6aba-4be9-999e-1dd63913929d</value>
 				<value>GUID ac36218d-e0cc-4de2-970e-7f5cdf935ce6</value>
@@ -37,37 +33,13 @@
 				<value>GUID ad67fe67-874d-422f-95c1-e9b46d881ecc</value>
 				<value>GUID ad733c38-d0c4-4813-81e1-42d2934f81fc</value>
 				<value>GUID 90c24424-01ed-4b2d-a816-fd074aff1ee7</value>
+				<value>GUID 98eab5e9-9299-4df9-b43d-2a618951b899</value>
+				<value>GUID be48ff94-42aa-4f4c-bbc1-1d040a0863a6</value>
+				<value>GUID dbd270f4-ad0e-4891-9714-fa6239b77f66</value>
+				<value>GUID b4d52db6-9207-4717-b117-4a5b61b92308</value>
 				<value>GUID 64eceb80-328e-445f-90f1-4b11f0a04bea</value>
 			</AggregatesList>
 		</ISubsystem>
-		<IEmbededFile type="e">
-			<_id type="a">GUID b620f6ca-17f0-4012-8be8-eec3f5b1561d</_id>
-			<_name type="a">ExternalSignalsPackage.ico</_name>
-			<_modifiedTime type="a">6.7.2021::7:5:49</_modifiedTime>
-			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
-			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\ExternalSignalsPackage.ico</_LastKnownFullPath>
-		</IEmbededFile>
-		<IEmbededFile type="e">
-			<_id type="a">GUID 383d5831-932c-4062-8803-0acf46e5fe33</_id>
-			<_name type="a">ExternalSignalsPackages.ico</_name>
-			<_modifiedTime type="a">6.7.2021::7:5:58</_modifiedTime>
-			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
-			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\ExternalSignalsPackages.ico</_LastKnownFullPath>
-		</IEmbededFile>
-		<IEmbededFile type="e">
-			<_id type="a">GUID 25527551-3bce-4500-9f74-bdae24829a75</_id>
-			<_name type="a">LogicalSystemPackage.ico</_name>
-			<_modifiedTime type="a">6.14.2021::16:3:2</_modifiedTime>
-			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
-			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\LogicalSystemPackage.ico</_LastKnownFullPath>
-		</IEmbededFile>
-		<IEmbededFile type="e">
-			<_id type="a">GUID 8cd6b349-d9ea-45f4-9bb9-5fe450191494</_id>
-			<_name type="a">LogicalSystemPackages.ico</_name>
-			<_modifiedTime type="a">6.14.2021::16:3:16</_modifiedTime>
-			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
-			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\LogicalSystemPackages.ico</_LastKnownFullPath>
-		</IEmbededFile>
 		<IEmbededFile type="e">
 			<_id type="a">GUID e5dcd70e-e13c-434b-86e2-544af9e25e5d</_id>
 			<_name type="a">SubsystemUsage.ico</_name>
@@ -193,6 +165,34 @@
 			<_modifiedTime type="a">2.23.2022::8:38:4</_modifiedTime>
 			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
 			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\ActorUsages.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID 98eab5e9-9299-4df9-b43d-2a618951b899</_id>
+			<_name type="a">SignalsPackage.ico</_name>
+			<_modifiedTime type="a">3.8.2022::15:31:11</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\SignalsPackage.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID be48ff94-42aa-4f4c-bbc1-1d040a0863a6</_id>
+			<_name type="a">SignalsPackages.ico</_name>
+			<_modifiedTime type="a">3.8.2022::15:31:18</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\SignalsPackages.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID dbd270f4-ad0e-4891-9714-fa6239b77f66</_id>
+			<_name type="a">SystemArchitecturePackage.ico</_name>
+			<_modifiedTime type="a">3.8.2022::15:31:27</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\SystemArchitecturePackage.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID b4d52db6-9207-4717-b117-4a5b61b92308</_id>
+			<_name type="a">SystemArchitecturePackages.ico</_name>
+			<_modifiedTime type="a">3.8.2022::15:31:34</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\SystemArchitecturePackages.ico</_LastKnownFullPath>
 		</IEmbededFile>
 		<IClass type="e">
 			<_id type="a">GUID 64eceb80-328e-445f-90f1-4b11f0a04bea</_id>

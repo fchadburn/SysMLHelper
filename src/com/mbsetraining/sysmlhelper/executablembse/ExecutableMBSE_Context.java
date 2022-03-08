@@ -47,7 +47,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String REQTS_ANALYSIS_USE_CASE_PACKAGE = "12 Reqts Analysis - Use Case Package";
 	public final String REQTS_ANALYSIS_WORKING_COPY_PACKAGE = "12 Reqts Analysis - Working Copy Package";
 	public final String REQTS_ANALYSIS_REQUIREMENT_PACKAGE = "13 Reqts Analysis - Requirement Package";
-	public final String REQTS_ANALYSIS_EXTERNAL_SIGNALS_PACKAGE = "14 Reqts Analysis - External Signals Package";
+	public final String REQTS_ANALYSIS_EXTERNAL_SIGNALS_PACKAGE = "14 Reqts Analysis - Signals Package";
 	public final String FUNCT_ANALYSIS_SCENARIOS_PACKAGE = "21 Funct Analysis - Scenarios Package";
 	public final String FUNCT_ANALYSIS_DESIGN_PACKAGE = "22 Funct Analysis - Design Package";
 	public final String FUNCT_ANALYSIS_INTERFACES_PACKAGE = "23 Funct Analysis - Interfaces Package";
