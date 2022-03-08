@@ -624,13 +624,13 @@ V4.0.q.Rhp831.PreRelease (XX-XXX-XXXX):
 #443 08-MAR-2022: ExecutableMBSE: Allow Function Blocks to own Satisfactions (F.J.Chadburn)
 #444 08-MAR-2022: ExecutableMBSE: Allow Function Blocks to have a compartment showing Satisfaction relations (F.J.Chadburn)
 #445 08-MAR-2022: ExecutableMBSE: External signal package renamed to more general purpose signals package for use with function block flows as well (F.J.Chadburn)
+#446 08-MAR-2022: ExecutableMBSE: Allow Feature Function packages to own Events (F.J.Chadburn)
+#447 08-MAR-2022: ExecutableMBSE: Allow Function Blocks to own Requirements (F.J.Chadburn)
 
 Backlog/Known issues
 - What about parallel flows in a function flow diagram
-- Allow events to be added to any block
 - Can you show generalizations in a compartment
 - Can we put Rational and Problem on any diagram
-- Allow Requirement to be owned by the function block
 - Create relationship table
 - Need an IBD - System owned by a function
 - Anchors get deleted when you do the layout of straight lines
@@ -638,7 +638,7 @@ Backlog/Known issues
 - Can we add Actor as part of a Feature Block?
 - Get helper to build package hierarchy from the nested parts hioerarchy for subsystems
 - Draw connector from function usage to subsystem port
-- Add a flow on a connector
+- Add a flow on a connector in the ibd system
 - Add a right-click helper to create/sync olsc links for all relations shown on a diagram
 - Automatically name statecharts when they are created, STM - <Block name>, as statechart_3 doesn't really help as a name
 - Bleed appearing on statechart unexpectadly
