@@ -76,6 +76,11 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 				afterAddForFunctionUsage( (IRPInstance) modelElement );
 
+			} else if( modelElement instanceof IRPInstance && 
+					_context.hasStereotypeCalled( "DecisionUsage", modelElement )){
+
+				afterAddForDecisionUsage( (IRPInstance) modelElement );
+				
 			} else if( theUserDefinedMetaClass.equals( "Object" ) ){
 				
 				IRPInstance theInstance = (IRPInstance)modelElement;
@@ -101,6 +106,10 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			} else if( theUserDefinedMetaClass.equals( _context.FLOW_OUTPUT ) ){
 
 				afterAddForFlowOutput( (IRPSysMLPort) modelElement );
+				
+			} else if( theUserDefinedMetaClass.equals( _context.GUARDED_FLOW_OUTPUT ) ){
+
+				afterAddForGuardedFlowOutput( (IRPSysMLPort) modelElement );
 			}
 
 		} catch( Exception e ){
@@ -117,6 +126,34 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			IRPSysMLPort theSysMLPort ){
 
 		setPortDirectionFor( theSysMLPort, "Out", "Untyped" );
+	}
+	
+	private void afterAddForGuardedFlowOutput(
+			IRPSysMLPort theSysMLPort ){
+
+		setPortDirectionFor( theSysMLPort, "Out", "Untyped" );
+		
+		int count = 0;
+
+		String theOriginalName = theSysMLPort.getName();
+		String theUniqueName = "[" + theOriginalName + "]";
+
+		while( !_context.isElementNameUnique(
+				theUniqueName, "SysMLPort", theSysMLPort.getOwner(), 1 ) ){
+
+			count++;
+			theUniqueName = "[" + theOriginalName + count + "]";
+		}
+		
+		try {
+			theSysMLPort.setName( theUniqueName );
+
+		} catch( Exception e ){
+			_context.warning( "Unable to set name to " + theUniqueName + 
+					" for " + _context.elInfo( theSysMLPort ) + 
+					" owned by " + _context.elInfo( theSysMLPort.getOwner() ) );
+			_context.warning( "Try setting the General::Model::NamesRegExp property to ^<(.*)$" );
+		}
 	}
 
 	private void afterAddForFlowInput(
@@ -405,6 +442,39 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		}
 	}
 
+	private void afterAddForDecisionUsage(
+			IRPInstance theInstance ){
+
+		IRPGraphElement theGraphEl = getGraphElFor( theInstance );		
+
+		// Only do this for parts, not directed compositions
+		if( theGraphEl instanceof IRPGraphNode ){
+
+			GraphNodeInfo theDecisionNodeInfo = new GraphNodeInfo( (IRPGraphNode) theGraphEl, _context );
+			
+			_context.debug( "afterAddForDecisionUsage found a graphNode for " + _context.elInfo( theGraphEl.getModelObject() ) );
+			
+			IRPSysMLPort theInPort = (IRPSysMLPort) theInstance.addNewAggr("SysMLPort", "");
+			theInPort.changeTo( _context.FLOW_INPUT );	
+			setPortDirectionFor( theInPort, "In", "Untyped" );	
+			IRPGraphElement theInPortGraphEl = getGraphElFor( theInPort );
+			//_context.dumpGraphicalPropertiesFor( theInPortGraphEl );
+			theInPortGraphEl.setGraphicalProperty( "Position", theDecisionNodeInfo.getTopLeftX() + "," + theDecisionNodeInfo.getMiddleY() );
+			theInPortGraphEl.setGraphicalProperty( "ShowName", "None" );
+
+			IRPSysMLPort theCondPort = (IRPSysMLPort) theInstance.addNewAggr("SysMLPort", "[put condition here]");
+			theCondPort.changeTo( _context.GUARDED_FLOW_OUTPUT );	
+			setPortDirectionFor( theCondPort, "Out", "Untyped" );
+			IRPGraphElement theCondPortGraphEl = getGraphElFor( theCondPort );
+			theCondPortGraphEl.setGraphicalProperty( "Position", theDecisionNodeInfo.getTopRightX() + "," + theDecisionNodeInfo.getMiddleY() );
+
+			IRPSysMLPort theElsePort = (IRPSysMLPort) theInstance.addNewAggr("SysMLPort", "[else]");
+			theElsePort.changeTo( _context.GUARDED_FLOW_OUTPUT );	
+			setPortDirectionFor( theElsePort, "Out", "Untyped" );
+			IRPGraphElement theElsePortGraphEl = getGraphElFor( theElsePort );
+			theElsePortGraphEl.setGraphicalProperty( "Position", theDecisionNodeInfo.getMiddleX() + "," + theDecisionNodeInfo.getBottomLeftY() );
+		}
+	}
 
 	private void switchGraphNodeFor(
 			IRPInstance modelElement,
@@ -1326,7 +1396,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 }
 
 /**
- * Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2018-2022  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 
