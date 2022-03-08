@@ -1658,7 +1658,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">3.8.2022::15:56:13</_modifiedTime>
+			<_modifiedTime type="a">3.8.2022::16:30:42</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -13595,7 +13595,7 @@ Query</_Value>
 			<_id type="a">GUID ec717f1d-0b3e-427a-89fd-8b516b2337c8</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Elements</_name>
-			<_modifiedTime type="a">3.8.2022::15:54:41</_modifiedTime>
+			<_modifiedTime type="a">3.8.2022::16:18:48</_modifiedTime>
 			<_lastID type="a">13</_lastID>
 			<_defaultComposite type="s">GUID d51fb0a3-38d7-4d7a-9f45-35fd12f6ff2a</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -13885,7 +13885,7 @@ Query</_Value>
 												<size type="a">6</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Generalization,Requirements Diagram,Block Definition Diagram - System,Decision Usage,Flow Connector,Function Usage,Internal Block Diagram - Functional,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale</_Value>
+													<_Value type="a">Generalization,Requirements Diagram,Block Definition Diagram - System,Decision Usage,Flow Connector,Function Usage,Internal Block Diagram - Functional,Internal Block Diagram - System,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -13933,7 +13933,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">FeatureBlock</_name>
-			<_modifiedTime type="a">3.1.2022::12:38:6</_modifiedTime>
+			<_modifiedTime type="a">3.8.2022::16:5:43</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -13985,7 +13985,7 @@ Query</_Value>
 												<size type="a">7</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Requirements Diagram,Flow Input,Flow Output,Guarded Flow Output,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale,Derivation,Requirement,Satisfaction</_Value>
+													<_Value type="a">Requirements Diagram,Flow Input,Flow Output,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale,Derivation,Requirement,Satisfaction</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -14039,7 +14039,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">FunctionBlock</_name>
-			<_modifiedTime type="a">3.8.2022::15:54:41</_modifiedTime>
+			<_modifiedTime type="a">3.8.2022::16:18:48</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
