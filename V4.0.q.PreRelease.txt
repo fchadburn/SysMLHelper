@@ -628,20 +628,20 @@ V4.0.q.Rhp831.PreRelease (XX-XXX-XXXX):
 #447 08-MAR-2022: ExecutableMBSE: Allow Function Blocks to own Requirements as they may group them (F.J.Chadburn)
 #448 08-MAR-2022: ExecutableMBSE: Allow Feature Block to own an IBD - System for use when inheriting a System Block (F.J.Chadburn)
 #449 09-MAR-2022: ExecutableMBSE: Fix issue with anchors getting deleted when you do the layout of straight lines (F.J.Chadburn)
+#450 09-MAR-2022: ExecutableMBSE: Add function connector to wire subsystem proxy port to input/output port of a function block and add to ibd - system (F.J.Chadburn)
 
 Backlog/Known issues
-- Can we add Actor as part of a Feature Block?
+- Can we add Actor usage to Feature Block's IBD?
+- Fix create flow port helper for ibd functional diagrams so that it works for port to block or port to port wirings better
 - Allow connector to flowport to subsystem proxy port
-- Allow a flow on a connector in the ibd system?
-- Merge the IBD - System and IBD - Functional toolbars into one diagram to simplify
-- What about parallel flows in a function flow diagram
+- Should we merge the IBD - System and IBD - Functional toolbars into one diagram to simplify
+- What about parallel flows in a function flow ibd?
 - Can you show generalizations in a compartment
 - Can we put Rational and Problem on any diagram
 - Create relationship table using a context pattern to report through the function/subsystem relationships
 - Add a populate blocks to a bdd right click, recurse through the part hiearachy.
 - Get populate parts tree view to grey out elements already on diagram?
 - Get helper to build package hierarchy from the nested parts hioerarchy for subsystems
-- Draw connector from function usage to subsystem port
 - Add a right-click helper to create/sync olsc links for all relations shown on a diagram
 - Automatically name statecharts when they are created, STM - <Block name>, as statechart_3 doesn't really help as a name
 - Bleed appearing on statechart unexpectadly
@@ -681,4 +681,3 @@ Backlog/Known issues
 - Add a decent ICD-like table for showing messages carried on Interface Blocks with direction etc
 - Do you need to generate menus with a version later than V8.3.1 to ensure compatibility?
 - Ensure that hep file allows for right-click of System Block, System Usage etc for some of the general features.
-- Conisder allowing functional deposition of function blocks/usages to any level
