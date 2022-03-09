@@ -629,11 +629,11 @@ V4.0.q.Rhp831.PreRelease (XX-XXX-XXXX):
 #448 08-MAR-2022: ExecutableMBSE: Allow Feature Block to own an IBD - System for use when inheriting a System Block (F.J.Chadburn)
 #449 09-MAR-2022: ExecutableMBSE: Fix issue with anchors getting deleted when you do the layout of straight lines (F.J.Chadburn)
 #450 09-MAR-2022: ExecutableMBSE: Add function connector to wire subsystem proxy port to input/output port of a function block and add to ibd - system (F.J.Chadburn)
+#451 09-MAR-2022: ExecutableMBSE: Allow function blocks to own allocations and add a tool to the bdd - system diagram for it (F.J.Chadburn)
 
 Backlog/Known issues
 - Can we add Actor usage to Feature Block's IBD?
 - Fix create flow port helper for ibd functional diagrams so that it works for port to block or port to port wirings better
-- Allow connector to flowport to subsystem proxy port
 - Should we merge the IBD - System and IBD - Functional toolbars into one diagram to simplify
 - What about parallel flows in a function flow ibd?
 - Can you show generalizations in a compartment
