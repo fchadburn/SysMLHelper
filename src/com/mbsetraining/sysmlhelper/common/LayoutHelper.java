@@ -48,13 +48,20 @@ public class LayoutHelper {
 		List<IRPGraphEdge> theMatchingGraphEdges = new ArrayList<>();
 
 		for( IRPGraphElement theGraphEl : inTheGraphEls ){
+			
+			IRPModelElement theModelEl = theGraphEl.getModelObject();
 
-			if( theGraphEl instanceof IRPGraphEdge ){
+			if( theGraphEl instanceof IRPGraphEdge &&
+				( theModelEl instanceof IRPDependency ||
+						theModelEl instanceof IRPRelation ||
+						theModelEl instanceof IRPGeneralization ) ){
 				
 				try {
 					IRPGraphicalProperty theGraphProperty = theGraphEl.getGraphicalProperty( "LineStyle" );
 					
-					if( theGraphProperty != null && theGraphProperty.getValue().equals( "Straight" ) ){
+					if( theGraphProperty != null && 
+							theGraphProperty.getValue().equals( "Straight" ) ){
+						
 						theMatchingGraphEdges.add( (IRPGraphEdge) theGraphEl );
 					}
 
@@ -75,8 +82,8 @@ public class LayoutHelper {
 				getAllStraightGraphEdges( theGraphEls );
 		
 		boolean answer = UserInterfaceHelper.askAQuestion( "There are " + 
-				theEdgesToRedraw.size() + " dependencies selected.\n" +
-				"Do you want to recentre them?");
+				theEdgesToRedraw.size() + " lines selected.\n" +
+				"Do you want to redraw them to the centers?");
 		
 		if( answer==true ){
 			
@@ -125,7 +132,7 @@ public class LayoutHelper {
 			boolean answer = UserInterfaceHelper.askAQuestion( 
 					"There are " + theEdgesToRedraw.size() + 
 					" straight lines on the " + theDiagramName + ".\n" +
-					"Do you want to recentre them?");
+					"Do you want to redraw them to the centers?" );
 			
 			if( answer==true ){
 				centerAll( theEdgesToRedraw );

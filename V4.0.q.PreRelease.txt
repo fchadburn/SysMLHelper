@@ -627,19 +627,21 @@ V4.0.q.Rhp831.PreRelease (XX-XXX-XXXX):
 #446 08-MAR-2022: ExecutableMBSE: Allow Feature Function packages to own Events as they are used to type flow inputs and outputs (F.J.Chadburn)
 #447 08-MAR-2022: ExecutableMBSE: Allow Function Blocks to own Requirements as they may group them (F.J.Chadburn)
 #448 08-MAR-2022: ExecutableMBSE: Allow Feature Block to own an IBD - System for use when inheriting a System Block (F.J.Chadburn)
+#449 09-MAR-2022: ExecutableMBSE: Fix issue with anchors getting deleted when you do the layout of straight lines (F.J.Chadburn)
 
 Backlog/Known issues
+- Can we add Actor as part of a Feature Block?
+- Allow connector to flowport to subsystem proxy port
+- Allow a flow on a connector in the ibd system?
 - Merge the IBD - System and IBD - Functional toolbars into one diagram to simplify
 - What about parallel flows in a function flow diagram
 - Can you show generalizations in a compartment
 - Can we put Rational and Problem on any diagram
-- Create relationship table
-- Anchors get deleted when you do the layout of straight lines
+- Create relationship table using a context pattern to report through the function/subsystem relationships
 - Add a populate blocks to a bdd right click, recurse through the part hiearachy.
-- Can we add Actor as part of a Feature Block?
+- Get populate parts tree view to grey out elements already on diagram?
 - Get helper to build package hierarchy from the nested parts hioerarchy for subsystems
 - Draw connector from function usage to subsystem port
-- Add a flow on a connector in the ibd system
 - Add a right-click helper to create/sync olsc links for all relations shown on a diagram
 - Automatically name statecharts when they are created, STM - <Block name>, as statechart_3 doesn't really help as a name
 - Bleed appearing on statechart unexpectadly
