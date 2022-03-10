@@ -80,20 +80,25 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 					_context.hasStereotypeCalled( "DecisionUsage", modelElement )){
 
 				afterAddForDecisionUsage( (IRPInstance) modelElement );
-				
+
 			} else if( theUserDefinedMetaClass.equals( "Object" ) ){
-				
+
 				IRPInstance theInstance = (IRPInstance)modelElement;
-				
+
 				IRPClassifier theOtherClass = theInstance.getOtherClass();
-				
+
 				if( theOtherClass.getMetaClass().equals( "Actor" ) ){
 					modelElement.changeTo( _context.ACTOR_USAGE );
 				}
-				
+
 			} else if( modelElement instanceof IRPFlow ){
 
 				afterAddForFlow( (IRPFlow) modelElement );
+
+			} else if( modelElement instanceof IRPLink &&
+					theUserDefinedMetaClass.equals( _context.FLOW_CONNECTOR ) ){
+
+				afterAddForFlowConnector( (IRPLink) modelElement );
 
 			} else if( modelElement instanceof IRPLink ){
 
@@ -106,7 +111,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			} else if( theUserDefinedMetaClass.equals( _context.FLOW_OUTPUT ) ){
 
 				afterAddForFlowOutput( (IRPSysMLPort) modelElement );
-				
+
 			} else if( theUserDefinedMetaClass.equals( _context.GUARDED_FLOW_OUTPUT ) ){
 
 				afterAddForGuardedFlowOutput( (IRPSysMLPort) modelElement );
@@ -127,12 +132,12 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 		setPortDirectionFor( theSysMLPort, "Out", "Untyped" );
 	}
-	
+
 	private void afterAddForGuardedFlowOutput(
 			IRPSysMLPort theSysMLPort ){
 
 		setPortDirectionFor( theSysMLPort, "Out", "Untyped" );
-		
+
 		int count = 0;
 
 		String theOriginalName = theSysMLPort.getName();
@@ -144,7 +149,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			count++;
 			theUniqueName = "[" + theOriginalName + count + "]";
 		}
-		
+
 		try {
 			theSysMLPort.setName( theUniqueName );
 
@@ -451,9 +456,9 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		if( theGraphEl instanceof IRPGraphNode ){
 
 			GraphNodeInfo theDecisionNodeInfo = new GraphNodeInfo( (IRPGraphNode) theGraphEl, _context );
-			
+
 			_context.debug( "afterAddForDecisionUsage found a graphNode for " + _context.elInfo( theGraphEl.getModelObject() ) );
-			
+
 			IRPSysMLPort theInPort = (IRPSysMLPort) theInstance.addNewAggr("SysMLPort", "");
 			theInPort.changeTo( _context.FLOW_INPUT );	
 			setPortDirectionFor( theInPort, "In", "Untyped" );	
@@ -645,6 +650,289 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		}
 
 		return theGraphEdge;
+	}
+
+	private void afterAddForFlowConnector(
+			IRPLink theLink ){
+
+		IRPSysMLPort fromSysMLPort = theLink.getFromSysMLPort();
+		IRPSysMLPort toSysMLPort = theLink.getToSysMLPort();
+
+		String fromMetaClass = ( ( theLink.getFrom() == null ) ? "null from" : theLink.getFrom().getUserDefinedMetaClass() );
+		String toMetaClass = ( ( theLink.getTo() == null ) ? "null to" : theLink.getTo().getUserDefinedMetaClass() );
+
+		IRPModelElement fromClassifierEl = theLink.getFrom().getOtherClass();
+		IRPModelElement toClassifierEl = theLink.getTo().getOtherClass();
+		
+		_context.info( "afterAddForLink invoked for  " + _context.elInfo( theLink ) + " owned by " + _context.elInfo( theLink.getOwner() ) );
+		_context.info( "fromMetaClass is " + fromMetaClass + ", fromSysMLPort is " + _context.elInfo( fromSysMLPort ) );
+		_context.info( "toMetaClass is " + toMetaClass + ", toSysMLPort is " + _context.elInfo( toSysMLPort ) );
+
+		_context.info( "fromClassifierEl is " + _context.elInfo( fromClassifierEl ) );
+		_context.info( "toClassifierEl is " + _context.elInfo( toClassifierEl ) );
+		
+		boolean isFromPortCreationNeeded;
+		boolean isToPortCreationNeeded;
+		IRPModelElement toPortType;
+		IRPModelElement fromPortType;
+		
+		boolean isFromPortTypeNeeded = false;
+		boolean isToPortTypeNeeded = false;
+		
+		if( toSysMLPort instanceof IRPSysMLPort ){
+			toPortType = toSysMLPort.getOtherClass();
+		} else {
+			toPortType = null;
+		}
+		
+		if( fromSysMLPort instanceof IRPSysMLPort ){
+			fromPortType = fromSysMLPort.getOtherClass();
+		} else {
+			fromPortType = null;
+		}
+		
+		if( toSysMLPort instanceof IRPSysMLPort ){
+			isToPortCreationNeeded = false;
+			
+			if( toPortType != null && 
+					fromPortType == null ){
+				
+				isFromPortTypeNeeded = true;
+				fromPortType = toPortType;
+			}
+			
+		} else {
+			isToPortCreationNeeded = true;
+			
+			if( fromPortType != null ){
+				isToPortTypeNeeded = true;
+				toPortType = fromPortType;
+			}
+		}
+		
+		if( fromSysMLPort instanceof IRPSysMLPort ){
+			isFromPortCreationNeeded = false;
+			
+			if( fromPortType != null &&
+					toPortType == null ){
+				
+				isToPortCreationNeeded = true;
+				toPortType = fromPortType;
+			}
+			
+		} else {
+			isFromPortCreationNeeded = true;
+			
+			if( toPortType != null ){
+				isFromPortTypeNeeded = true;
+				fromPortType = toPortType;
+			}
+		}
+		
+		if( isFromPortCreationNeeded || 
+				isToPortCreationNeeded ){
+			
+			boolean isContinue = false;
+
+			String autoGenPolicy = _context.getAutoGenerationOfPortsForLinksPolicy( 
+					_context.get_rhpPrj() );
+
+			if( autoGenPolicy.equals( "Always" ) ){
+
+				isContinue = true;
+
+			} else if( autoGenPolicy.equals( "UserDialog" ) ){
+
+				String msg = "You have drawn a " + _context.FLOW_CONNECTOR + " \n";
+				
+				if ( isFromPortCreationNeeded && isToPortCreationNeeded ){
+					msg = "Do you want to automatically create " + _context.FLOW_OUTPUT + " and " +
+								_context.FLOW_INPUT + " ports?";
+				} else if( isFromPortCreationNeeded ){
+					msg = "Do you want to automatically create a " + _context.FLOW_OUTPUT + " port?";
+				} else if( isToPortCreationNeeded ){
+					msg = "Do you want to automatically create a " + _context.FLOW_INPUT + " port?";
+				}
+						
+				isContinue = UserInterfaceHelper.askAQuestion( msg );
+			}
+
+			if( isContinue ){
+				
+				IRPGraphEdge theGraphEdge = getCorrespondingGraphEdgeFor( theLink );
+				IRPDiagram theDiagram = theGraphEdge.getDiagram();
+				GraphEdgeInfo theGraphEdgeInfo = new GraphEdgeInfo( theGraphEdge, _context ); 
+
+				IRPGraphNode fromPortNode = null;
+				
+				if( isFromPortCreationNeeded ){
+					
+					String fromPortName = _context.determineUniqueNameBasedOn( 
+							"out", 
+							"SysMLPort", 
+							fromClassifierEl );
+			
+					_context.debug( "fromPortName is " + fromPortName );
+					
+					
+					fromSysMLPort = (IRPSysMLPort) fromClassifierEl.addNewAggr( "SysMLPort", fromPortName );
+					_context.debug( "Created fromPort as " + _context.elInfo( fromSysMLPort ) );
+					setPortDirectionFor( fromSysMLPort, "Out", "Untyped" );
+					fromSysMLPort.changeTo( _context.FLOW_OUTPUT );
+			
+					fromPortNode = addGraphNodeFor( 
+							fromSysMLPort, theDiagram, theGraphEdgeInfo.getStartX(), theGraphEdgeInfo.getStartY() );
+				} else {
+					fromPortNode = (IRPGraphNode) theGraphEdge.getSource();
+				}
+				
+				IRPGraphNode toPortNode = null;
+
+				if( isToPortCreationNeeded ){
+					
+					String toPortName = _context.determineUniqueNameBasedOn( 
+							"in",
+							"SysMLPort", 
+							toClassifierEl );
+			
+					_context.debug( "toPortName is " + toPortName );
+					
+					toSysMLPort = (IRPSysMLPort) toClassifierEl.addNewAggr( "SysMLPort", toPortName );		
+					_context.debug( "Created toPort as " + _context.elInfo( toSysMLPort ) );
+					setPortDirectionFor( toSysMLPort, "In", "Untyped" );
+					toSysMLPort.changeTo( _context.FLOW_INPUT );
+			
+					toPortNode = addGraphNodeFor( 
+							toSysMLPort, theDiagram, theGraphEdgeInfo.getEndX(), theGraphEdgeInfo.getEndY() );					
+				} else {
+					toPortNode = (IRPGraphNode) theGraphEdge.getTarget();
+				}
+				
+				if( isToPortTypeNeeded ){
+					toSysMLPort.setOtherClass( (IRPClassifier) toPortType );
+				}
+				
+				if( isFromPortTypeNeeded ){
+					fromSysMLPort.setOtherClass( (IRPClassifier) fromPortType );
+				}
+				
+				IRPLink newLink = theLink.getFrom().addLinkToElement( theLink.getTo(), null, fromSysMLPort, toSysMLPort );
+				_context.debug( "Created " + _context.elInfo( newLink ) );
+		
+				theDiagram.addNewEdgeForElement( 
+						newLink, 
+						fromPortNode, 
+						theGraphEdgeInfo.getStartX(), 
+						theGraphEdgeInfo.getStartY(), 
+						toPortNode, 
+						theGraphEdgeInfo.getEndX(), 
+						theGraphEdgeInfo.getEndY() );
+		
+				newLink.changeTo( _context.FLOW_CONNECTOR );
+				
+				theLink.deleteFromProject();
+			}
+		}
+		
+		/*
+		if( (fromMetaClass.equals( 
+				_context.FUNCTION_USAGE ) &&
+				toMetaClass.equals( 
+						_context.FUNCTION_USAGE ) || 
+						(fromMetaClass.equals( 
+								_context.FUNCTION_BLOCK ) &&
+								toMetaClass.equals( 
+										_context.FUNCTION_BLOCK )) ) ){
+
+			boolean isContinue = false;
+
+			String autoGenPolicy = _context.getAutoGenerationOfPortsForLinksPolicy( 
+					_context.get_rhpPrj() );
+
+			if( autoGenPolicy.equals( "Always" ) ){
+
+				isContinue = true;
+
+			} else if( autoGenPolicy.equals( "UserDialog" ) ){
+
+				isContinue = UserInterfaceHelper.askAQuestion(
+						"You have drawn a connector between two " + 
+								_context.FUNCTION_USAGE + "s.\n"+
+								"Do you want to automatically create " + _context.FLOW_OUTPUT + " and " +
+								_context.FLOW_INPUT + " ports?");
+			}
+
+			if( isContinue ){
+				IRPGraphEdge theGraphEdge = getCorrespondingGraphEdgeFor( theLink );
+				
+				if( theGraphEdge != null ){
+				
+					IRPDiagram theDiagram = theGraphEdge.getDiagram();
+				
+
+				
+					_context.debug( "theLink.getFrom() = " + _context.elInfo( theLink.getFrom() ) );
+				
+					if( fromClassifierEl instanceof IRPClassifier && 
+							toClassifierEl instanceof IRPClassifier ){
+				
+						_context.debug( "fromClassifierEl = " + _context.elInfo( fromClassifierEl ) );
+						_context.debug( "toClassifierEl = " + _context.elInfo( toClassifierEl ) );
+				
+						String fromPortName = _context.determineUniqueNameBasedOn( 
+								"out", 
+								"SysMLPort", 
+								fromClassifierEl );
+				
+						_context.debug( "fromPortName is " + fromPortName );
+				
+						String toPortName = _context.determineUniqueNameBasedOn( 
+								"in",
+								"SysMLPort", 
+								toClassifierEl );
+				
+						_context.debug( "toPortName is " + toPortName );
+				
+						GraphEdgeInfo theGraphEdgeInfo = new GraphEdgeInfo( theGraphEdge, _context ); 
+				
+						IRPSysMLPort fromPort = (IRPSysMLPort) fromClassifierEl.addNewAggr( "SysMLPort", fromPortName );
+						_context.debug( "Created fromPort as " + _context.elInfo( fromPort ) );
+						setPortDirectionFor( fromPort, "Out", "Untyped" );
+						fromPort.changeTo( _context.FLOW_OUTPUT );
+				
+						IRPGraphNode fromPortNode = addGraphNodeFor( 
+								fromPort, theDiagram, theGraphEdgeInfo.getStartX(), theGraphEdgeInfo.getStartY() );
+				
+						IRPSysMLPort toPort = (IRPSysMLPort) toClassifierEl.addNewAggr( "SysMLPort", toPortName );		
+						_context.debug( "Created toPort as " + _context.elInfo( toPort ) );
+						setPortDirectionFor( toPort, "In", "Untyped" );
+						toPort.changeTo( _context.FLOW_INPUT );
+				
+						IRPGraphNode toPortNode = addGraphNodeFor( 
+								toPort, theDiagram, theGraphEdgeInfo.getEndX(), theGraphEdgeInfo.getEndY() );					
+				
+						IRPLink newLink = theLink.getFrom().addLinkToElement( theLink.getTo(), null, fromPort, toPort );
+						_context.debug( "Created " + _context.elInfo( newLink ) );
+				
+						theDiagram.addNewEdgeForElement( 
+								newLink, 
+								fromPortNode, 
+								theGraphEdgeInfo.getStartX(), 
+								theGraphEdgeInfo.getStartY(), 
+								toPortNode, 
+								theGraphEdgeInfo.getEndX(), 
+								theGraphEdgeInfo.getEndY() );
+				
+						theLink.deleteFromProject();
+				
+						CreateEventForFlowConnectorPanel.launchThePanel( 
+								_context.get_rhpAppID(), 
+								newLink.getGUID(),
+								theDiagram.getGUID() );
+					}
+				}
+			}
+		}*/
 	}
 
 	private void afterAddForLink(
