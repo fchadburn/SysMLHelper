@@ -615,7 +615,7 @@ V4.0.p.Rhp831.PreRelease (24-FEB-2022):
 #436 25-FEB-2022: ExecutableMBSE: Adjust metamodel to allow creation of requirements diagrams underneath a function block (F.J.Chadburn)
 #437 25-FEB-2022: ExecutableMBSE: Do a change to Actor Usage whenever a part is created that is typed by an actor (F.J.Chadburn)
 
-V4.0.q.Rhp831.PreRelease (XX-XXX-XXXX):
+V4.0.q.Rhp831.PreRelease (10-MAR-2022):
 #438 28-FEB-2022: ExecutableMBSE: Tweak to display options so that only Description field is shown by default for Feature Blocks (F.J.Chadburn)
 #439 28-FEB-2022: ExecutableMBSE: Added new Compartment option of Function Usages to Feature Blocks (F.J.Chadburn)
 #440 01-MAR-2022: ExecutableMBSE: Rename Logical System Package to System Architecture Package as can be used for non-logical as well (F.J.Chadburn)
