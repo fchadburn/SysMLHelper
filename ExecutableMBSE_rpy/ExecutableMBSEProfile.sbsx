@@ -1658,7 +1658,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">3.11.2022::14:27:3</_modifiedTime>
+			<_modifiedTime type="a">3.14.2022::12:31:38</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -10397,8 +10397,40 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 		<IStereotype type="e">
 			<_id type="a">GUID a746f7e2-6384-457e-ab41-98646d75963e</_id>
 			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Stereotype</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">DefaultName</_Name>
+													<_Value type="a">workingcopypkg</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
 			<_name type="a">12 Reqts Analysis - Working Copy Package</_name>
-			<_modifiedTime type="a">5.2.2021::11:32:34</_modifiedTime>
+			<_modifiedTime type="a">3.14.2022::12:30:42</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -10487,7 +10519,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">2</size>
+												<size type="a">3</size>
 												<IProperty type="e">
 													<_Name type="a">BrowserGroupIcon</_Name>
 													<_Value type="a">..\icons\ScenariosPackages.ico</_Value>
@@ -10498,6 +10530,12 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 													<_Name type="a">BrowserIcon</_Name>
 													<_Value type="a">..\icons\ScenariosPackage.ico</_Value>
 													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">DefaultName</_Name>
+													<_Value type="a">scenariospkg</_Value>
+													<_Type type="a">String</_Type>
 												</IProperty>
 												
 											</IRPYRawContainer>
@@ -10513,7 +10551,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">21 Funct Analysis - Scenarios Package</_name>
-			<_modifiedTime type="a">3.8.2022::10:10:37</_modifiedTime>
+			<_modifiedTime type="a">3.14.2022::12:30:35</_modifiedTime>
 			<_lastID type="a">6</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -10630,7 +10668,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">2</size>
+												<size type="a">3</size>
 												<IProperty type="e">
 													<_Name type="a">BrowserGroupIcon</_Name>
 													<_Value type="a">..\icons\ScenariosPackages.ico</_Value>
@@ -10641,6 +10679,12 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 													<_Name type="a">BrowserIcon</_Name>
 													<_Value type="a">..\icons\ScenariosPackage.ico</_Value>
 													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">DefaultName</_Name>
+													<_Value type="a">designpkg</_Value>
+													<_Type type="a">String</_Type>
 												</IProperty>
 												
 											</IRPYRawContainer>
@@ -10656,7 +10700,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">22 Funct Analysis - Design Package</_name>
-			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
+			<_modifiedTime type="a">3.14.2022::12:31:28</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -10681,7 +10725,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">2</size>
+												<size type="a">3</size>
 												<IProperty type="e">
 													<_Name type="a">BrowserGroupIcon</_Name>
 													<_Value type="a">..\icons\ScenariosPackages.ico</_Value>
@@ -10692,6 +10736,12 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 													<_Name type="a">BrowserIcon</_Name>
 													<_Value type="a">..\icons\ScenariosPackage.ico</_Value>
 													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">DefaultName</_Name>
+													<_Value type="a">interfacespkg</_Value>
+													<_Type type="a">String</_Type>
 												</IProperty>
 												
 											</IRPYRawContainer>
@@ -10707,7 +10757,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">23 Funct Analysis - Interfaces Package</_name>
-			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
+			<_modifiedTime type="a">3.14.2022::12:31:33</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -10732,7 +10782,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">2</size>
+												<size type="a">3</size>
 												<IProperty type="e">
 													<_Name type="a">BrowserGroupIcon</_Name>
 													<_Value type="a">..\icons\ScenariosPackages.ico</_Value>
@@ -10743,6 +10793,12 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 													<_Name type="a">BrowserIcon</_Name>
 													<_Value type="a">..\icons\ScenariosPackage.ico</_Value>
 													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">DefaultName</_Name>
+													<_Value type="a">testpkg</_Value>
+													<_Type type="a">String</_Type>
 												</IProperty>
 												
 											</IRPYRawContainer>
@@ -10758,7 +10814,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">24 Funct Analysis - Test Package</_name>
-			<_modifiedTime type="a">9.25.2018::9:19:28</_modifiedTime>
+			<_modifiedTime type="a">3.14.2022::12:31:38</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -12749,7 +12805,7 @@ Query</_Value>
 			<_id type="a">GUID d213ea00-7590-48aa-8f30-a0a61f8fcd08</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Packages</_name>
-			<_modifiedTime type="a">3.8.2022::15:53:11</_modifiedTime>
+			<_modifiedTime type="a">3.14.2022::12:30:2</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_defaultComposite type="s">GUID 26c8a3f9-6aee-4dff-a42f-bf1cc2880009</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -12821,7 +12877,7 @@ Query</_Value>
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">4</size>
+												<size type="a">5</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
 													<_Value type="a">Query,Event,Diagram View,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Requirement,Actor,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
@@ -12838,6 +12894,12 @@ Query</_Value>
 													<_Name type="a">BrowserIcon</_Name>
 													<_Value type="a">..\icons\ActorPackage.ico</_Value>
 													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">DefaultName</_Name>
+													<_Value type="a">actorpkg</_Value>
+													<_Type type="a">String</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
@@ -12859,7 +12921,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ActorPackage</_name>
-			<_modifiedTime type="a">2.22.2022::8:54:56</_modifiedTime>
+			<_modifiedTime type="a">3.14.2022::12:28:49</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -12923,7 +12985,7 @@ Query</_Value>
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">4</size>
+												<size type="a">5</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
 													<_Value type="a">Query,Diagram View,11 Reqts Analysis - Actor Package,13 Reqts Analysis - Requirement Package,Enhanced Use Case Diagram,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Requirement,Actor,UseCase,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
@@ -12940,6 +13002,12 @@ Query</_Value>
 													<_Name type="a">BrowserIcon</_Name>
 													<_Value type="a">..\icons\UseCasePackage.ico</_Value>
 													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">DefaultName</_Name>
+													<_Value type="a">usecasepkg</_Value>
+													<_Type type="a">String</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
@@ -12961,7 +13029,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">UseCasePackage</_name>
-			<_modifiedTime type="a">2.22.2022::8:55:9</_modifiedTime>
+			<_modifiedTime type="a">3.14.2022::12:29:6</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -13010,7 +13078,7 @@ Query</_Value>
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">4</size>
+												<size type="a">5</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
 													<_Value type="a">Query,Allocation,AllocationsTable,Diagram View,Requirements Diagram,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Remote Requirements Table,Requirement,Requirements Coverage Table,RequirementsTable,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
@@ -13027,6 +13095,12 @@ Query</_Value>
 													<_Name type="a">BrowserIcon</_Name>
 													<_Value type="a">..\icons\RequirementPackage.ico</_Value>
 													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">DefaultName</_Name>
+													<_Value type="a">requirementpkg</_Value>
+													<_Type type="a">String</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
@@ -13048,7 +13122,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">RequirementPackage</_name>
-			<_modifiedTime type="a">2.22.2022::8:55:6</_modifiedTime>
+			<_modifiedTime type="a">3.14.2022::12:29:12</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -13097,7 +13171,7 @@ Query</_Value>
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">4</size>
+												<size type="a">5</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
 													<_Value type="a">Query,Event,Diagram View,14 Reqts Analysis - Signals Package,Actor Usage,Subsystem Usage,System Context Diagram,System Usage,TableV - Context Diagram Flows,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Flow,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
@@ -13114,6 +13188,12 @@ Query</_Value>
 													<_Name type="a">BrowserIcon</_Name>
 													<_Value type="a">ContextDiagramPackage.ico</_Value>
 													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">DefaultName</_Name>
+													<_Value type="a">contextdiagrampkg</_Value>
+													<_Type type="a">String</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
@@ -13135,7 +13215,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ContextDiagramPackage</_name>
-			<_modifiedTime type="a">3.8.2022::15:37:0</_modifiedTime>
+			<_modifiedTime type="a">3.14.2022::12:29:20</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -13184,7 +13264,7 @@ Query</_Value>
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">4</size>
+												<size type="a">5</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
 													<_Value type="a">Query,Event,Diagram View,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
@@ -13201,6 +13281,12 @@ Query</_Value>
 													<_Name type="a">BrowserIcon</_Name>
 													<_Value type="a">IconsPkg\SignalsPackage.ico</_Value>
 													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">DefaultName</_Name>
+													<_Value type="a">signalspkg</_Value>
+													<_Type type="a">String</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
@@ -13222,7 +13308,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SignalsPackage</_name>
-			<_modifiedTime type="a">3.8.2022::15:32:42</_modifiedTime>
+			<_modifiedTime type="a">3.14.2022::12:29:26</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -13296,7 +13382,7 @@ Query</_Value>
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">4</size>
+												<size type="a">5</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
 													<_Value type="a">Query,Event,Interface,Diagram View,SequenceDiagram,32 Design Synthesis - Feature Function Package,33 Design Synthesis - Subsystem Interfaces Package,Block Definition Diagram - System,C++ Class,Domain Block,Feature Usage,Flow Connector,Function Block,Software Component,Subsystem Block,System Block,Component,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,InterfaceBlock,Requirement,Actor,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
@@ -13313,6 +13399,12 @@ Query</_Value>
 													<_Name type="a">BrowserIcon</_Name>
 													<_Value type="a">IconsPkg\SystemArchitecturePackage.ico</_Value>
 													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">DefaultName</_Name>
+													<_Value type="a">systemarchitecturepkg</_Value>
+													<_Type type="a">String</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
@@ -13334,7 +13426,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SystemArchitecturePackage</_name>
-			<_modifiedTime type="a">3.8.2022::15:34:25</_modifiedTime>
+			<_modifiedTime type="a">3.14.2022::12:29:33</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -13383,7 +13475,7 @@ Query</_Value>
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">4</size>
+												<size type="a">5</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
 													<_Value type="a">Query,Event,Diagram View,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,InterfaceBlock,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
@@ -13400,6 +13492,12 @@ Query</_Value>
 													<_Name type="a">BrowserIcon</_Name>
 													<_Value type="a">IconsPkg\SignalsPackage.ico</_Value>
 													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">DefaultName</_Name>
+													<_Value type="a">subsysteminterfacespkg</_Value>
+													<_Type type="a">String</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
@@ -13421,7 +13519,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SubsystemInterfacesPackage</_name>
-			<_modifiedTime type="a">3.8.2022::15:33:28</_modifiedTime>
+			<_modifiedTime type="a">3.14.2022::12:29:42</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -13446,7 +13544,7 @@ Query</_Value>
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">4</size>
+												<size type="a">5</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
 													<_Value type="a">Query,Event,Interface,Diagram View,PanelDiagram,SequenceDiagram,Block Definition Diagram - Software,C++ Class,Software Component,Component,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
@@ -13463,6 +13561,12 @@ Query</_Value>
 													<_Name type="a">BrowserIcon</_Name>
 													<_Value type="a">IconsPkg\SystemArchitecturePackage.ico</_Value>
 													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">DefaultName</_Name>
+													<_Value type="a">softwaredesignpkg</_Value>
+													<_Type type="a">String</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
@@ -13484,7 +13588,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SoftwareDesignPackage</_name>
-			<_modifiedTime type="a">3.8.2022::15:35:6</_modifiedTime>
+			<_modifiedTime type="a">3.14.2022::12:29:50</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -13533,7 +13637,7 @@ Query</_Value>
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">4</size>
+												<size type="a">5</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
 													<_Value type="a">Query,Event,Diagram View,Block Definition Diagram - System,Feature Block,Function Block,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
@@ -13550,6 +13654,12 @@ Query</_Value>
 													<_Name type="a">BrowserIcon</_Name>
 													<_Value type="a">IconsPkg\FeatureFunctionPackage.ico</_Value>
 													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">DefaultName</_Name>
+													<_Value type="a">featurefunctionpkg</_Value>
+													<_Type type="a">String</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
@@ -13571,7 +13681,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">FeatureFunctionPackage</_name>
-			<_modifiedTime type="a">3.8.2022::15:53:11</_modifiedTime>
+			<_modifiedTime type="a">3.14.2022::12:30:2</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
