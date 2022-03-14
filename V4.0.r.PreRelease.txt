@@ -636,9 +636,9 @@ V4.0.r.Rhp831.PreRelease (XX-XXX-XXXX):
 #453 14-MAR-2022: ExecutableMBSE: Fixes to get Type working when link connector drawing
 #454 14-MAR-2022: ExecutableMBSE: Add shorter default names with no spaces for all the new term package types to encourage similar and demo better (F.J.Chadburn)
 #455 14-MAR-2022: ExecutableMBSE: Allow use of Actor Usage on the internal block diagram - functional toolbar (F.J.Chadburn)
+#456 14-MAR-2022: ExecutableMBSE: Change display options for bdd - system so stereotype names are not shown for usage types when populating existing relations (F.J.Chadburn)
 
 Backlog/Known issues
-- FunctionUsage stereotype appeared on a bdd for some reason, any idea why?
 - When I created a separatre scenario package the project properties were not set.
 - Get DecisionUsage resizing to work, why isn't property taken?
 - Should we merge the IBD - System and IBD - Functional toolbars into one diagram to simplify
