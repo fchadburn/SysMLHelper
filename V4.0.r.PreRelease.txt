@@ -632,10 +632,14 @@ V4.0.q.Rhp831.PreRelease (10-MAR-2022):
 #451 09-MAR-2022: ExecutableMBSE: Allow function blocks to own allocations and add a tool to the bdd - system diagram for it (F.J.Chadburn)
 #452 10-MAR-2022: ExecutableMBSE: Checkpoint of link connector reworking
 
+V4.0.r.Rhp831.PreRelease (XX-XXX-XXXX):
+#453 14-MAR-2022: ExecutableMBSE: Fixes to get Type working when link connector drawing
+
 Backlog/Known issues
 - Fix create flow port helper for ibd functional diagrams so that it works for port to block or port to port wirings better
 - Can we add Actor usage to Feature Block's IBD?
 - FunctionUsage stereotype.
+- When I created a separatre scenario package the project properties were not set.
 - Get DecisionUsage resizing to work, why isn't property taken?
 - Should we merge the IBD - System and IBD - Functional toolbars into one diagram to simplify
 - What about parallel flows in a function flow ibd?
