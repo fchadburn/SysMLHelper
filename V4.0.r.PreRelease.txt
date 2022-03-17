@@ -637,6 +637,7 @@ V4.0.r.Rhp831.PreRelease (XX-XXX-XXXX):
 #454 14-MAR-2022: ExecutableMBSE: Add shorter default names with no spaces for all the new term package types to encourage similar and demo better (F.J.Chadburn)
 #455 14-MAR-2022: ExecutableMBSE: Allow use of Actor Usage on the internal block diagram - functional toolbar (F.J.Chadburn)
 #456 14-MAR-2022: ExecutableMBSE: Change display options for bdd - system so stereotype names are not shown for usage types when populating existing relations (F.J.Chadburn)
+#457 17-MAR-2022: ExecutableMBSE: Allow use case packages to own textual activity diagrams so that it's possible to split off from use case for change control (F.J.Chadburn)
 
 Backlog/Known issues
 - When I created a separatre scenario package the project properties were not set.
