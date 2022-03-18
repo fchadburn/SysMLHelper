@@ -12,9 +12,11 @@ import com.mbsetraining.sysmlhelper.common.ElementMover;
 import com.mbsetraining.sysmlhelper.common.GraphEdgeInfo;
 import com.mbsetraining.sysmlhelper.common.GraphNodeInfo;
 import com.mbsetraining.sysmlhelper.common.NestedActivityDiagram;
+import com.mbsetraining.sysmlhelper.common.PolygonInfo;
 import com.mbsetraining.sysmlhelper.common.RequirementMover;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.contextdiagram.CreateEventForFlowPanel;
+import com.mbsetraining.sysmlhelper.graphelementhelpers.GraphNodeResizer;
 import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateOperationPanel;
 import com.telelogic.rhapsody.core.*;
 
@@ -451,12 +453,15 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			IRPInstance theInstance ){
 
 		IRPGraphElement theGraphEl = getGraphElFor( theInstance );		
-
+		
 		// Only do this for parts, not directed compositions
 		if( theGraphEl instanceof IRPGraphNode ){
-
+			
+			GraphNodeResizer theResizer = new GraphNodeResizer( (IRPGraphNode) theGraphEl, _context);
+			theResizer.performResizing();
+			
 			GraphNodeInfo theDecisionNodeInfo = new GraphNodeInfo( (IRPGraphNode) theGraphEl, _context );
-
+			
 			_context.debug( "afterAddForDecisionUsage found a graphNode for " + _context.elInfo( theGraphEl.getModelObject() ) );
 
 			IRPSysMLPort theInPort = (IRPSysMLPort) theInstance.addNewAggr("SysMLPort", "");

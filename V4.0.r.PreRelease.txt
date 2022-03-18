@@ -638,10 +638,10 @@ V4.0.r.Rhp831.PreRelease (XX-XXX-XXXX):
 #455 14-MAR-2022: ExecutableMBSE: Allow use of Actor Usage on the internal block diagram - functional toolbar (F.J.Chadburn)
 #456 14-MAR-2022: ExecutableMBSE: Change display options for bdd - system so stereotype names are not shown for usage types when populating existing relations (F.J.Chadburn)
 #457 17-MAR-2022: ExecutableMBSE: Allow use case packages to own textual activity diagrams so that it's possible to split off from use case for change control (F.J.Chadburn)
+#458 18-MAR-2022: ExecutableMBSE: Fixed listener to get DecisionNode to resize to prp specified default size when element first added to diagram (F.J.Chadburn)
 
 Backlog/Known issues
 - When I created a separatre scenario package the project properties were not set.
-- Get DecisionUsage resizing to work, why isn't property taken?
 - Should we merge the IBD - System and IBD - Functional toolbars into one diagram to simplify
 - What about parallel flows in a function flow ibd?
 - Can you show generalizations in a compartment
