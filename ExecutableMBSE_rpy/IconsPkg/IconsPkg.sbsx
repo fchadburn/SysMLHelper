@@ -11,7 +11,7 @@
 			<_id type="a">GUID 801c8dc2-1109-41eb-8815-e3fb68b9a344</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">IconsPkg</_name>
-			<_modifiedTime type="a">3.8.2022::15:31:40</_modifiedTime>
+			<_modifiedTime type="a">3.24.2022::14:18:50</_modifiedTime>
 			<_defaultComposite type="s">GUID 64eceb80-328e-445f-90f1-4b11f0a04bea</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
@@ -37,6 +37,8 @@
 				<value>GUID be48ff94-42aa-4f4c-bbc1-1d040a0863a6</value>
 				<value>GUID dbd270f4-ad0e-4891-9714-fa6239b77f66</value>
 				<value>GUID b4d52db6-9207-4717-b117-4a5b61b92308</value>
+				<value>GUID 86d8148a-dd27-453d-8dc4-07e351119dc5</value>
+				<value>GUID aebd1385-d565-4ec3-a578-21b60532bdb9</value>
 				<value>GUID 64eceb80-328e-445f-90f1-4b11f0a04bea</value>
 			</AggregatesList>
 		</ISubsystem>
@@ -193,6 +195,20 @@
 			<_modifiedTime type="a">3.8.2022::15:31:34</_modifiedTime>
 			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
 			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\SystemArchitecturePackages.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID 86d8148a-dd27-453d-8dc4-07e351119dc5</_id>
+			<_name type="a">SubsystemPackage.ico</_name>
+			<_modifiedTime type="a">3.24.2022::14:17:54</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\SubsystemPackage.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID aebd1385-d565-4ec3-a578-21b60532bdb9</_id>
+			<_name type="a">SubsystemPackage.ico</_name>
+			<_modifiedTime type="a">3.24.2022::14:18:50</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\SubsystemPackage.ico</_LastKnownFullPath>
 		</IEmbededFile>
 		<IClass type="e">
 			<_id type="a">GUID 64eceb80-328e-445f-90f1-4b11f0a04bea</_id>
