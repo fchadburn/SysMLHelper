@@ -1658,7 +1658,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">3.25.2022::15:5:13</_modifiedTime>
+			<_modifiedTime type="a">3.25.2022::15:33:38</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -11262,7 +11262,7 @@ Query</_Value>
 			<_id type="a">GUID 3307dbc4-6282-4d53-88b2-50e3de5ff8c2</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Diagrams</_name>
-			<_modifiedTime type="a">3.25.2022::13:8:40</_modifiedTime>
+			<_modifiedTime type="a">3.25.2022::15:33:40</_modifiedTime>
 			<_lastID type="a">4</_lastID>
 			<_defaultComposite type="s">GUID af3ccc20-8ac1-47a2-8c5f-be1a84c1550e</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -12040,12 +12040,18 @@ Query</_Value>
 										<_Name type="a">Graphics</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">1</size>
+												<size type="a">2</size>
 												<IProperty type="e">
 													<_Name type="a">DefaultBoxView</_Name>
 													<_Value type="a">Structured</_Value>
 													<_Type type="a">Enum</_Type>
 													<_ExtraTypeInfo type="a">Specification,Structured,Default</_ExtraTypeInfo>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">WrapNameCompartmentText</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
 												</IProperty>
 												
 											</IRPYRawContainer>
@@ -12127,7 +12133,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">InternalBlockDiagramFunctional</_name>
-			<_modifiedTime type="a">3.25.2022::13:8:40</_modifiedTime>
+			<_modifiedTime type="a">3.25.2022::15:33:40</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>

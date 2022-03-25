@@ -643,9 +643,12 @@ V4.0.r.Rhp831.PreRelease (XX-XXX-XXXX):
 #460 24-MAR-2022: ExecutableMBSE: Change property for default text from create new requirement to "The system shall " (F.J.Chadburn)
 #461 25-MAR-2022: ExecutableMBSE: Add a BPMN-like parallel gateway tool to the IBD - Functional diagram (F.J.Chadburn)
 #462 25-MAR-2022: ExecutableMBSE: Change default display option for flow inputs/output names/types on IBD - Functional to 'None' (F.J.Chadburn)
+#463 25-MAR-2022: ExecutableMBSE: Get function block name text to wrap on IBD - Functional diagram to cope with longer function names better (F.J.Chadburn)
 
 Backlog/Known issues
 - Is RMM causing profile to unload?
+- Need a use case package to own a use case package
+- Need a use case package to own a textual activity
 - Need to be able to right-click Function Blocjk and add compartment for Satisfication and Derivations
 - Right-click Function Block and choose start link, to create derivation to 
 - Need derivation tool on the bdd - system
