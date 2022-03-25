@@ -640,15 +640,19 @@ V4.0.r.Rhp831.PreRelease (XX-XXX-XXXX):
 #457 17-MAR-2022: ExecutableMBSE: Allow use case packages to own textual activity diagrams so that it's possible to split off from use case for change control (F.J.Chadburn)
 #458 18-MAR-2022: ExecutableMBSE: Fixed listener to get DecisionNode to resize to prp specified default size when element first added to diagram (F.J.Chadburn)
 #459 24-MAR-2022: ExecutableMBSE: Add a subsystem package type to support different packages for subsystem blocks and function blocks as model evolves (F.J.Chadburn)
-#460 24-MAR-2022: ExecutableMBSE: Change property for default text from create new requirement to "The system shall "
+#460 24-MAR-2022: ExecutableMBSE: Change property for default text from create new requirement to "The system shall " (F.J.Chadburn)
+#461 25-MAR-2022: ExecutableMBSE: Add a BPMN-like parallel gateway tool to the IBD - Functional diagram (F.J.Chadburn)
+#462 25-MAR-2022: ExecutableMBSE: Change default display option for flow inputs/output names/types on IBD - Functional to 'None' (F.J.Chadburn)
 
 Backlog/Known issues
+- Is RMM causing profile to unload?
+- Need to be able to right-click Function Blocjk and add compartment for Satisfication and Derivations
+- Right-click Function Block and choose start link, to create derivation to 
+- Need derivation tool on the bdd - system
+- Need Function block text to wrap text, general graphioc propertry on a functional flow diagram.
+- Right-click a Function Usage and show the Satisfied by traceability
 - Add ability to right-click a use case and move to new package
-- Change default display options on ibd functional to only show the type if the flow port is typed
-- Add parallel logic option to functional flow diagram
 - When I created a separatre scenario package the project properties were not set.
-- Should we merge the IBD - System and IBD - Functional toolbars into one diagram to simplify
-- What about parallel flows in a function flow ibd?
 - Can you show generalizations in a compartment
 - Can we put Rational and Problem on any diagram
 - Create relationship table using a context pattern to report through the function/subsystem relationships

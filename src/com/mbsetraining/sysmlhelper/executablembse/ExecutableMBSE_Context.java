@@ -60,6 +60,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String NEW_TERM_FOR_USE_CASE_DIAGRAM = "EnhancedUseCaseDiagram";
 	public final String NEW_TERM_FOR_SYSTEM_CONTEXT_DIAGRAM = "SystemContextDiagram";
 	public final String NEW_TERM_FOR_ACTOR_USAGE = "ActorUsage";
+	public final String NEW_TERM_FOR_PARALLEL_GATEWAY = "ParallelGateway";
 	public final String NEW_TERM_FOR_SYSTEM_CONTEXT = "SystemUsage";
 	public final String TESTBENCH_STEREOTYPE = "Testbench";
 	public final String AUTO_RIPPLE_STEREOTYPE = "AutoRipple";

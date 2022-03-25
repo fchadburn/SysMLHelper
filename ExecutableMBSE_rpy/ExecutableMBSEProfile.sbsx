@@ -1658,7 +1658,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">3.24.2022::16:3:7</_modifiedTime>
+			<_modifiedTime type="a">3.25.2022::15:5:13</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -11050,7 +11050,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">AddNewMenuStructure</_Name>
-													<_Value type="a">AcceptEventAction,AcceptTimeEvent,ActivityFinal,Attribute,CallBehavior,CallOperation,ControlFlow,DecisionNode,DefaultTransition,Fork,InterruptibleRegion,MergeNode,SendAction,Structure Diagram,ExecutableMBSEProfile/10 Reqts Analysis - Context Diagram Package,ExecutableMBSEProfile/11 Reqts Analysis - Actor Package,ExecutableMBSEProfile/12 Reqts Analysis - Use Case Package,ExecutableMBSEProfile/13 Reqts Analysis - Requirement Package,ExecutableMBSEProfile/14 Reqts Analysis - Signals Package,ExecutableMBSEProfile/22 Funct Analysis - Feature Function Package,ExecutableMBSEProfile/31 Design Synthesis - System Architecture Package,ExecutableMBSEProfile/32 Design Synthesis - Subsystem Package,ExecutableMBSEProfile/33 Design Synthesis - Subsystem Interfaces Package,ExecutableMBSEProfile/34 Design Synthesis - Software Design Package,ExecutableMBSEProfile/Actor Usage,ExecutableMBSEProfile/Block Definition Diagram - Software,ExecutableMBSEProfile/Block Definition Diagram - System,ExecutableMBSEProfile/C++ Class,ExecutableMBSEProfile/Call Operation Activity,ExecutableMBSEProfile/Component Usage,ExecutableMBSEProfile/Decision Usage,ExecutableMBSEProfile/Domain Block,ExecutableMBSEProfile/Enhanced Use Case Diagram,ExecutableMBSEProfile/Feature Block,ExecutableMBSEProfile/Feature Usage,ExecutableMBSEProfile/Flow Connector,ExecutableMBSEProfile/Flow Input,ExecutableMBSEProfile/Flow Output,ExecutableMBSEProfile/Function Block,ExecutableMBSEProfile/Function Connector,ExecutableMBSEProfile/Function Usage,ExecutableMBSEProfile/Guarded Flow Output,ExecutableMBSEProfile/Internal Block Diagram - Functional,ExecutableMBSEProfile/Internal Block Diagram - Software,ExecutableMBSEProfile/Internal Block Diagram - System,ExecutableMBSEProfile/Software Component,ExecutableMBSEProfile/Subsystem Block,ExecutableMBSEProfile/Subsystem Usage,ExecutableMBSEProfile/System Block,ExecutableMBSEProfile/System Context Diagram,ExecutableMBSEProfile/System Usage,ExecutableMBSEProfile/TableV - Context Diagram Flows,ExecutableMBSEProfile/Textual Activity,ExecutableMBSEProfile/Use Case Description,ExecutableMBSEProfile/Use Case Postcondition,ExecutableMBSEProfile/Use Case Precondition,Diagrams/Requirements Diagram,%0D
+													<_Value type="a">AcceptEventAction,AcceptTimeEvent,ActivityFinal,Attribute,CallBehavior,CallOperation,ControlFlow,DecisionNode,DefaultTransition,Fork,InterruptibleRegion,MergeNode,SendAction,Structure Diagram,ExecutableMBSEProfile/10 Reqts Analysis - Context Diagram Package,ExecutableMBSEProfile/11 Reqts Analysis - Actor Package,ExecutableMBSEProfile/12 Reqts Analysis - Use Case Package,ExecutableMBSEProfile/13 Reqts Analysis - Requirement Package,ExecutableMBSEProfile/14 Reqts Analysis - Signals Package,ExecutableMBSEProfile/22 Funct Analysis - Feature Function Package,ExecutableMBSEProfile/31 Design Synthesis - System Architecture Package,ExecutableMBSEProfile/32 Design Synthesis - Subsystem Package,ExecutableMBSEProfile/33 Design Synthesis - Subsystem Interfaces Package,ExecutableMBSEProfile/34 Design Synthesis - Software Design Package,ExecutableMBSEProfile/Actor Usage,ExecutableMBSEProfile/Block Definition Diagram - Software,ExecutableMBSEProfile/Block Definition Diagram - System,ExecutableMBSEProfile/C++ Class,ExecutableMBSEProfile/Call Operation Activity,ExecutableMBSEProfile/Component Usage,ExecutableMBSEProfile/Decision Usage,ExecutableMBSEProfile/Domain Block,ExecutableMBSEProfile/Enhanced Use Case Diagram,ExecutableMBSEProfile/Feature Block,ExecutableMBSEProfile/Feature Usage,ExecutableMBSEProfile/Flow Connector,ExecutableMBSEProfile/Flow Input,ExecutableMBSEProfile/Flow Output,ExecutableMBSEProfile/Function Block,ExecutableMBSEProfile/Function Connector,ExecutableMBSEProfile/Function Usage,ExecutableMBSEProfile/Guarded Flow Output,ExecutableMBSEProfile/Internal Block Diagram - Functional,ExecutableMBSEProfile/Internal Block Diagram - Software,ExecutableMBSEProfile/Internal Block Diagram - System,ExecutableMBSEProfile/Parallel Gateway,ExecutableMBSEProfile/Software Component,ExecutableMBSEProfile/Subsystem Block,ExecutableMBSEProfile/Subsystem Usage,ExecutableMBSEProfile/System Block,ExecutableMBSEProfile/System Context Diagram,ExecutableMBSEProfile/System Usage,ExecutableMBSEProfile/TableV - Context Diagram Flows,ExecutableMBSEProfile/Textual Activity,ExecutableMBSEProfile/Use Case Description,ExecutableMBSEProfile/Use Case Postcondition,ExecutableMBSEProfile/Use Case Precondition,Diagrams/Requirements Diagram,%0D
 Diagrams/UseCaseDiagram,%0D
 Diagrams/Package Diagram,%0D
 Diagrams/Block Definition Diagram,%0D
@@ -11250,7 +11250,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSE</_name>
-			<_modifiedTime type="a">3.24.2022::16:3:7</_modifiedTime>
+			<_modifiedTime type="a">3.25.2022::13:7:48</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -11262,7 +11262,7 @@ Query</_Value>
 			<_id type="a">GUID 3307dbc4-6282-4d53-88b2-50e3de5ff8c2</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Diagrams</_name>
-			<_modifiedTime type="a">3.14.2022::13:53:7</_modifiedTime>
+			<_modifiedTime type="a">3.25.2022::13:8:40</_modifiedTime>
 			<_lastID type="a">4</_lastID>
 			<_defaultComposite type="s">GUID af3ccc20-8ac1-47a2-8c5f-be1a84c1550e</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -12074,7 +12074,7 @@ Query</_Value>
 												
 												<IProperty type="e">
 													<_Name type="a">DrawingToolbar</_Name>
-													<_Value type="a">Dependency,Flow Connector,Flow Input,Flow Output,Guarded Flow Output,Function Usage,Decision Usage,Actor Usage</_Value>
+													<_Value type="a">Dependency,Flow Connector,Flow Input,Flow Output,Guarded Flow Output,Function Usage,Actor Usage,Decision Usage,Parallel Gateway</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -12127,7 +12127,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">InternalBlockDiagramFunctional</_name>
-			<_modifiedTime type="a">3.14.2022::12:41:8</_modifiedTime>
+			<_modifiedTime type="a">3.25.2022::13:8:40</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -13904,7 +13904,7 @@ Query</_Value>
 			<_id type="a">GUID ec717f1d-0b3e-427a-89fd-8b516b2337c8</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Elements</_name>
-			<_modifiedTime type="a">3.14.2022::13:34:59</_modifiedTime>
+			<_modifiedTime type="a">3.25.2022::13:9:10</_modifiedTime>
 			<_lastID type="a">13</_lastID>
 			<_defaultComposite type="s">GUID d51fb0a3-38d7-4d7a-9f45-35fd12f6ff2a</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -13929,6 +13929,7 @@ Query</_Value>
 				<value>GUID a5a53e2a-9ba0-4cc5-8c5d-1ca5ed05f67b</value>
 				<value>GUID 690a5658-d3b2-4ca0-a69a-9440024253ac</value>
 				<value>GUID 18fac2df-c982-4443-ae43-a26493bd8308</value>
+				<value>GUID 72abea2c-0026-4e16-aa7a-a127313693ee</value>
 				<value>GUID d51fb0a3-38d7-4d7a-9f45-35fd12f6ff2a</value>
 			</AggregatesList>
 		</ISubsystem>
@@ -14194,7 +14195,7 @@ Query</_Value>
 												<size type="a">6</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Generalization,Requirements Diagram,Actor Usage,Block Definition Diagram - System,Decision Usage,Flow Connector,Function Usage,Internal Block Diagram - Functional,Internal Block Diagram - System,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale</_Value>
+													<_Value type="a">Generalization,Requirements Diagram,Actor Usage,Block Definition Diagram - System,Decision Usage,Flow Connector,Function Usage,Internal Block Diagram - Functional,Internal Block Diagram - System,Parallel Gateway,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -14242,7 +14243,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">FeatureBlock</_name>
-			<_modifiedTime type="a">3.14.2022::12:41:37</_modifiedTime>
+			<_modifiedTime type="a">3.25.2022::13:9:10</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -15428,6 +15429,118 @@ Query</_Value>
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
 					<value>SysMLPort</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+			<_newTerm type="a">1</_newTerm>
+		</IStereotype>
+		<IStereotype type="e">
+			<_id type="a">GUID 72abea2c-0026-4e16-aa7a-a127313693ee</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">2</size>
+						<IPropertySubject type="e">
+							<_Name type="a">General</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Graphics</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">4</size>
+												<IProperty type="e">
+													<_Name type="a">AssociatedImageFile</_Name>
+													<_Value type="a">IconsPkg\ParallelGatewayDiagramImage.ico</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">EnableImageView</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ImageOnlyShowName</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ImageViewLayout</_Name>
+													<_Value type="a">ImageOnly</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">ImageOnly, Structured, Compartment</_ExtraTypeInfo>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Stereotype</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">5</size>
+												<IProperty type="e">
+													<_Name type="a">Aggregates</_Name>
+													<_Value type="a">Flow Input,Flow Output,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">BrowserGroupIcon</_Name>
+													<_Value type="a">IconsPkg\ParallelGateways.ico</_Value>
+													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">BrowserIcon</_Name>
+													<_Value type="a">IconsPkg\ParallelGateway.ico</_Value>
+													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">DefaultName</_Name>
+													<_Value type="a">par</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">Name</_Name>
+													<_Value type="a">Parallel Gateway</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">ParallelGateway</_name>
+			<_modifiedTime type="a">3.25.2022::13:2:26</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>Object</value>
 				</IRPYRawContainer>
 			</_m2Classes>
 			<_newTerm type="a">1</_newTerm>

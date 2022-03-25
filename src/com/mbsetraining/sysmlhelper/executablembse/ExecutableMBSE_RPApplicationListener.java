@@ -12,7 +12,6 @@ import com.mbsetraining.sysmlhelper.common.ElementMover;
 import com.mbsetraining.sysmlhelper.common.GraphEdgeInfo;
 import com.mbsetraining.sysmlhelper.common.GraphNodeInfo;
 import com.mbsetraining.sysmlhelper.common.NestedActivityDiagram;
-import com.mbsetraining.sysmlhelper.common.PolygonInfo;
 import com.mbsetraining.sysmlhelper.common.RequirementMover;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.contextdiagram.CreateEventForFlowPanel;
@@ -83,6 +82,11 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 				afterAddForDecisionUsage( (IRPInstance) modelElement );
 
+			} else if( modelElement instanceof IRPInstance && 
+					_context.hasStereotypeCalled( _context.NEW_TERM_FOR_PARALLEL_GATEWAY, modelElement )){
+
+				afterAddForParallelGateway( (IRPInstance) modelElement );
+				
 			} else if( theUserDefinedMetaClass.equals( "Object" ) ){
 
 				IRPInstance theInstance = (IRPInstance)modelElement;
@@ -449,6 +453,19 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		}
 	}
 
+	private void afterAddForParallelGateway(
+			IRPInstance theInstance ){
+
+		IRPGraphElement theGraphEl = getGraphElFor( theInstance );		
+		
+		// Only do this for parts, not directed compositions
+		if( theGraphEl instanceof IRPGraphNode ){
+			
+			GraphNodeResizer theResizer = new GraphNodeResizer( (IRPGraphNode) theGraphEl, _context);
+			theResizer.performResizing();
+		}
+	}
+	
 	private void afterAddForDecisionUsage(
 			IRPInstance theInstance ){
 
