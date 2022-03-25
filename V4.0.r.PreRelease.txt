@@ -645,14 +645,14 @@ V4.0.r.Rhp831.PreRelease (XX-XXX-XXXX):
 #462 25-MAR-2022: ExecutableMBSE: Change default display option for flow inputs/output names/types on IBD - Functional to 'None' (F.J.Chadburn)
 #463 25-MAR-2022: ExecutableMBSE: Get function block name text to wrap on IBD - Functional diagram to cope with longer function names better (F.J.Chadburn)
 #464 25-MAR-2022: ExecutableMBSE: Allow a use case package to own a use case package so that activity diagram can be split into it if needed (F.J.Chadburn)
-#465 25-MAR-2022: ExecutableMBSE: Extend Function Usage/Block properties so that compartment diplay options provided for both Satisfaction and Derivations (F.J.Chadburn)
+#465 25-MAR-2022: ExecutableMBSE: Extend Function Usage/Block properties so that compartment display options provided for both Satisfaction and Derivations (F.J.Chadburn)
+#466 25-MAR-2022: ExecutableMBSE: Add Derivation tool to bdd - system diagram so we can use to trace to higher-level requirements (F.J.Chadburn)
 
 Backlog/Known issues
 - Automatically rename function block with a number?
+- Automatically add related class if bdd is created as child of a class, since it is probably going to start with the block at top
 - Is RMM causing profile to unload?
-- Need to be able to right-click Function Block for Satisfication and Derivations
 - Right-click Function Block and choose start link, to create derivation to 
-- Need derivation tool on the bdd - system
 - Right-click a Function Usage and show the Satisfied by traceability
 - Add ability to right-click a use case and move to new package
 - When I created a separatre scenario package the project properties were not set.
