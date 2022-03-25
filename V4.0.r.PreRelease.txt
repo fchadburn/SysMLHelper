@@ -644,15 +644,14 @@ V4.0.r.Rhp831.PreRelease (XX-XXX-XXXX):
 #461 25-MAR-2022: ExecutableMBSE: Add a BPMN-like parallel gateway tool to the IBD - Functional diagram (F.J.Chadburn)
 #462 25-MAR-2022: ExecutableMBSE: Change default display option for flow inputs/output names/types on IBD - Functional to 'None' (F.J.Chadburn)
 #463 25-MAR-2022: ExecutableMBSE: Get function block name text to wrap on IBD - Functional diagram to cope with longer function names better (F.J.Chadburn)
+#464 25-MAR-2022: ExecutableMBSE: Allow a use case package to own a use case package so that activity diagram can be split into it if needed (F.J.Chadburn)
 
 Backlog/Known issues
+- Automatically rename function block with a number?
 - Is RMM causing profile to unload?
-- Need a use case package to own a use case package
-- Need a use case package to own a textual activity
 - Need to be able to right-click Function Blocjk and add compartment for Satisfication and Derivations
 - Right-click Function Block and choose start link, to create derivation to 
 - Need derivation tool on the bdd - system
-- Need Function block text to wrap text, general graphioc propertry on a functional flow diagram.
 - Right-click a Function Usage and show the Satisfied by traceability
 - Add ability to right-click a use case and move to new package
 - When I created a separatre scenario package the project properties were not set.
