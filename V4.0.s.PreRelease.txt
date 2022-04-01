@@ -632,7 +632,7 @@ V4.0.q.Rhp831.PreRelease (10-MAR-2022):
 #451 09-MAR-2022: ExecutableMBSE: Allow function blocks to own allocations and add a tool to the bdd - system diagram for it (F.J.Chadburn)
 #452 10-MAR-2022: ExecutableMBSE: Checkpoint of link connector reworking
 
-V4.0.r.Rhp831.PreRelease (XX-XXX-XXXX):
+V4.0.r.Rhp831.PreRelease (25-MAR-2022):
 #453 14-MAR-2022: ExecutableMBSE: Fixes to get Type working when link connector drawing
 #454 14-MAR-2022: ExecutableMBSE: Add shorter default names with no spaces for all the new term package types to encourage similar and demo better (F.J.Chadburn)
 #455 14-MAR-2022: ExecutableMBSE: Allow use of Actor Usage on the internal block diagram - functional toolbar (F.J.Chadburn)
@@ -648,7 +648,14 @@ V4.0.r.Rhp831.PreRelease (XX-XXX-XXXX):
 #465 25-MAR-2022: ExecutableMBSE: Extend Function Usage/Block properties so that compartment display options provided for both Satisfaction and Derivations (F.J.Chadburn)
 #466 25-MAR-2022: ExecutableMBSE: Add Derivation tool to bdd - system diagram so we can use to trace to higher-level requirements (F.J.Chadburn)
 
+V4.0.s.Rhp831.PreRelease (XX-XXX-XXXX):
+#467 29-MAR-2022: ExecutableMBSE: Allow function blocks to be recursively decomposed into function usages to simplify and reuse of function chains (F.J.Chadburn)
+
 Backlog/Known issues
+- Allow Refinement on Feature Block compartment
+- Autocreate subsystem packages based on the BDD
+- Add callout notation support
+- Need to be able to have flows from input flow port/flow outs on border of the function block
 - Automatically rename function block with a number?
 - Automatically add related class if bdd is created as child of a class, since it is probably going to start with the block at top
 - Is RMM causing profile to unload?

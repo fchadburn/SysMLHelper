@@ -678,13 +678,16 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			IRPLink theLink ){
 
 		IRPSysMLPort fromSysMLPort = theLink.getFromSysMLPort();
+		IRPInstance fromInstance = theLink.getFrom();
+		
 		IRPSysMLPort toSysMLPort = theLink.getToSysMLPort();
+		IRPInstance toInstance = theLink.getTo();
 
-		String fromMetaClass = ( ( theLink.getFrom() == null ) ? "null from" : theLink.getFrom().getUserDefinedMetaClass() );
-		String toMetaClass = ( ( theLink.getTo() == null ) ? "null to" : theLink.getTo().getUserDefinedMetaClass() );
-
-		IRPModelElement fromClassifierEl = theLink.getFrom().getOtherClass();
-		IRPModelElement toClassifierEl = theLink.getTo().getOtherClass();
+		//String fromMetaClass = ( ( theLink.getFrom() == null ) ? "null from" : theLink.getFrom().getUserDefinedMetaClass() );
+		//String toMetaClass = ( ( theLink.getTo() == null ) ? "null to" : theLink.getTo().getUserDefinedMetaClass() );
+		
+		IRPClassifier fromClassifierEl = theLink.getFrom().getOtherClass();	
+		IRPClassifier toClassifierEl = theLink.getTo().getOtherClass();
 		
 		boolean isFromPortCreationNeeded;
 		boolean isToPortCreationNeeded;
@@ -696,11 +699,17 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		
 		if( toSysMLPort instanceof IRPSysMLPort ){
 			toPortType = toSysMLPort.getType();
+		} else if( toInstance instanceof IRPSysMLPort ){
+			toSysMLPort = (IRPSysMLPort) toInstance;
+			toPortType = toSysMLPort.getType();
 		} else {
 			toPortType = null;
 		}
 		
 		if( fromSysMLPort instanceof IRPSysMLPort ){
+			fromPortType = fromSysMLPort.getType();
+		} else if( fromInstance instanceof IRPSysMLPort ){
+			fromSysMLPort = (IRPSysMLPort) fromInstance;
 			fromPortType = fromSysMLPort.getType();
 		} else {
 			fromPortType = null;
@@ -824,31 +833,49 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				
 				if( isFromPortTypeNeeded ){
 					fromSysMLPort.setType( fromPortType );
-				}
+				}				
 				
-				IRPLink newLink = theLink.getFrom().addLinkToElement( theLink.getTo(), null, fromSysMLPort, toSysMLPort );
-		
-				theDiagram.addNewEdgeForElement( 
-						newLink, 
-						fromPortNode, 
-						theGraphEdgeInfo.getStartX(), 
-						theGraphEdgeInfo.getStartY(), 
-						toPortNode, 
-						theGraphEdgeInfo.getEndX(), 
-						theGraphEdgeInfo.getEndY() );
-		
-				newLink.changeTo( _context.FLOW_CONNECTOR );
-				
-				theLink.deleteFromProject();
-				
-				// Only launch the create event dialog if it was a non-port to non-port connector that was drawn
-				if( isToPortCreationNeeded && 
-						isFromPortCreationNeeded ){
+				try {
+					IRPLink newLink;
 					
-					CreateEventForFlowConnectorPanel.launchThePanel( 
-							_context.get_rhpAppID(), 
-							newLink.getGUID(),
-							theDiagram.getGUID() );			
+					if( fromClassifierEl == null &&
+							fromInstance instanceof IRPSysMLPort ){
+						fromClassifierEl = (IRPClassifier) fromInstance.getOwner();
+						
+						// delegated link from port on boundary of frame
+						newLink = ((IRPClass) fromClassifierEl).addLinkToPartViaPort( toInstance, toSysMLPort, fromSysMLPort, null );
+
+					} else {
+						newLink = theLink.getFrom().addLinkToElement( theLink.getTo(), null, fromSysMLPort, toSysMLPort );
+					}
+					
+					theDiagram.addNewEdgeForElement( 
+							newLink, 
+							fromPortNode, 
+							theGraphEdgeInfo.getStartX(), 
+							theGraphEdgeInfo.getStartY(), 
+							toPortNode, 
+							theGraphEdgeInfo.getEndX(), 
+							theGraphEdgeInfo.getEndY() );
+			
+					newLink.changeTo( _context.FLOW_CONNECTOR );
+					
+					theLink.deleteFromProject();
+					
+					// Only launch the create event dialog if it was a non-port to non-port connector that was drawn
+					if( isToPortCreationNeeded && 
+							isFromPortCreationNeeded ){
+						
+						CreateEventForFlowConnectorPanel.launchThePanel( 
+								_context.get_rhpAppID(), 
+								newLink.getGUID(),
+								theDiagram.getGUID() );			
+					}
+
+				} catch( Exception e ){
+					
+					String msg = e.getMessage();
+					_context.error( "Exception trying to re-create link in afterAddForFlowConnector, e=" + msg );
 				}
 			}
 		}

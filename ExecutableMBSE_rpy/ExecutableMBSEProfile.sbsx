@@ -1658,7 +1658,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">3.25.2022::16:0:29</_modifiedTime>
+			<_modifiedTime type="a">3.31.2022::9:24:2</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -10948,7 +10948,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 99d433ee-75c1-40c0-8ef0-8ea14c3d7d23</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileInfo</_name>
-			<_modifiedTime type="a">3.24.2022::14:35:54</_modifiedTime>
+			<_modifiedTime type="a">3.29.2022::12:58:32</_modifiedTime>
 			<_lastID type="a">3</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -10966,7 +10966,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 00c06448-4cf5-4b58-a462-af1a3bccd935</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileDate</_name>
-			<_modifiedTime type="a">3.24.2022::14:35:54</_modifiedTime>
+			<_modifiedTime type="a">3.29.2022::12:58:32</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IType</_hm2Class>
@@ -10977,19 +10977,19 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</_typeOf>
 			<_isOrdered type="a">0</_isOrdered>
 			<AggregatesList type="e">
-				<value>GUID 0354eac4-1492-4240-b9e0-71c7d91c9602</value>
+				<value>GUID 7fb44e7d-62e8-4b0b-a481-9239302417cb</value>
 			</AggregatesList>
 		</ITag>
 		<ILiteralSpecification type="e">
-			<_id type="a">GUID 0354eac4-1492-4240-b9e0-71c7d91c9602</_id>
-			<_modifiedTime type="a">3.24.2022::14:35:54</_modifiedTime>
-			<_value type="a">2022/03/24 14:35:00</_value>
+			<_id type="a">GUID 7fb44e7d-62e8-4b0b-a481-9239302417cb</_id>
+			<_modifiedTime type="a">3.29.2022::12:58:32</_modifiedTime>
+			<_value type="a">2022/03/29 13:58:00</_value>
 		</ILiteralSpecification>
 		<ITag type="e">
 			<_id type="a">GUID c783ee62-7cd8-4f71-8651-25132d0e1150</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileVersion</_name>
-			<_modifiedTime type="a">3.11.2022::14:26:47</_modifiedTime>
+			<_modifiedTime type="a">3.29.2022::12:58:20</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IType</_hm2Class>
@@ -11000,13 +11000,13 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</_typeOf>
 			<_isOrdered type="a">0</_isOrdered>
 			<AggregatesList type="e">
-				<value>GUID e5414215-09a1-412d-b4ac-157bb3afb1a2</value>
+				<value>GUID c678bfdb-78a6-4f40-8a21-1629a5d00316</value>
 			</AggregatesList>
 		</ITag>
 		<ILiteralSpecification type="e">
-			<_id type="a">GUID e5414215-09a1-412d-b4ac-157bb3afb1a2</_id>
-			<_modifiedTime type="a">3.11.2022::14:26:47</_modifiedTime>
-			<_value type="a">V4.0.r.Rhp831.PreRelease</_value>
+			<_id type="a">GUID c678bfdb-78a6-4f40-8a21-1629a5d00316</_id>
+			<_modifiedTime type="a">3.29.2022::12:58:20</_modifiedTime>
+			<_value type="a">V4.0.s.Rhp831.PreRelease</_value>
 		</ILiteralSpecification>
 		<ITag type="e">
 			<_id type="a">GUID 6cadd9b1-62a9-477e-a2b1-45c9e04743fb</_id>
@@ -13910,7 +13910,7 @@ Query</_Value>
 			<_id type="a">GUID ec717f1d-0b3e-427a-89fd-8b516b2337c8</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Elements</_name>
-			<_modifiedTime type="a">3.25.2022::15:50:48</_modifiedTime>
+			<_modifiedTime type="a">3.31.2022::7:52:21</_modifiedTime>
 			<_lastID type="a">13</_lastID>
 			<_defaultComposite type="s">GUID d51fb0a3-38d7-4d7a-9f45-35fd12f6ff2a</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -14301,7 +14301,7 @@ Query</_Value>
 												<size type="a">7</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Allocation,Requirements Diagram,Flow Input,Flow Output,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale,Derivation,Requirement,Satisfaction</_Value>
+													<_Value type="a">Allocation,Requirements Diagram,Block Definition Diagram - System,Flow Connector,Flow Input,Flow Output,Function Block,Function Usage,Internal Block Diagram - Functional,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale,Derivation,Requirement,Satisfaction</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -14355,7 +14355,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">FunctionBlock</_name>
-			<_modifiedTime type="a">3.25.2022::15:50:38</_modifiedTime>
+			<_modifiedTime type="a">3.31.2022::7:52:21</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -15590,7 +15590,7 @@ Query</_Value>
 			<_id type="a">GUID 1ed082fc-a722-40c7-819a-784f0ab68e62</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Relations</_name>
-			<_modifiedTime type="a">3.9.2022::10:3:47</_modifiedTime>
+			<_modifiedTime type="a">3.31.2022::9:24:2</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_defaultComposite type="s">GUID 6d41af48-18e4-4504-919f-6182efce13ce</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -15631,13 +15631,13 @@ Query</_Value>
 												
 												<IProperty type="e">
 													<_Name type="a">Sources</_Name>
-													<_Value type="a">Flow Output,Function Usage,Guarded Flow Output</_Value>
+													<_Value type="a">Flow Output,Function Usage,Guarded Flow Output,Flow Input</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
 													<_Name type="a">Targets</_Name>
-													<_Value type="a">Flow Input,Function Usage</_Value>
+													<_Value type="a">Flow Input,Function Usage,Flow Output</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -15654,7 +15654,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">FlowConnector</_name>
-			<_modifiedTime type="a">3.8.2022::7:57:21</_modifiedTime>
+			<_modifiedTime type="a">3.31.2022::9:24:2</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
