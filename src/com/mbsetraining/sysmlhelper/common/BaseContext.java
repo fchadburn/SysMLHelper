@@ -2748,10 +2748,91 @@ public abstract class BaseContext {
 
 		return date;
 	}
+	
+	public IRPGraphEdge getCorrespondingGraphEdgeFor( 
+			IRPLink theLink ){
+
+		IRPGraphEdge theGraphEdge = null;
+
+		@SuppressWarnings("unchecked")
+		List<IRPModelElement> theReferences = theLink.getReferences().toList();
+
+		if( theReferences.size() == 1 ){
+			IRPModelElement theReference = theReferences.get( 0 );	
+
+			debug( "theReference is " + elInfo( theReference ) );
+
+			if( theReference instanceof IRPStructureDiagram ){
+
+				IRPStructureDiagram theDiagram = (IRPStructureDiagram)theReference;
+
+				@SuppressWarnings("unchecked")
+				List<IRPGraphElement> theGraphEls = theDiagram.getCorrespondingGraphicElements( theLink ).toList();
+
+				if( theGraphEls.size() == 1 ){
+					IRPGraphElement theGraphEl = theGraphEls.get( 0 );
+
+					if( theGraphEl instanceof IRPGraphEdge ){
+						theGraphEdge = (IRPGraphEdge) theGraphEl;
+					}
+				}
+			}
+		}
+
+		return theGraphEdge;
+	}
+	
+	public IRPGraphNode addGraphNodeFor(
+			IRPModelElement thePortEl,
+			IRPDiagram toDiagram,
+			int x,
+			int y ){
+
+		IRPGraphNode thePortNode = null;
+
+		@SuppressWarnings("unchecked")
+		List<IRPGraphNode> theGraphNodes = 
+		toDiagram.getCorrespondingGraphicElements( thePortEl ).toList();
+
+		if( theGraphNodes.size() == 1 ){
+
+			thePortNode = theGraphNodes.get( 0 );
+
+			String thePosition = x + "," + y;
+
+			debug( "Setting Position of existing " + elInfo( thePortEl ) + " to " + thePosition );
+			thePortNode.setGraphicalProperty( "Position", thePosition );
+
+		} else {
+
+			thePortNode = toDiagram.addNewNodeForElement( thePortEl, x, y, 12, 12 );
+		}
+
+		return thePortNode;
+	}
+	
+	public void setPortDirectionFor(
+			IRPSysMLPort theSysMLPort,
+			String theDirection,
+			String theTypeName ){
+
+		IRPType theType = get_rhpPrj().findType( theTypeName );
+
+		if( theType == null ){
+
+			error( "pluginMethodForInputPort was unable to find the '" + 
+					theTypeName + "' type to use for " + elInfo( theSysMLPort ) );
+
+		} else {
+
+			theSysMLPort.setType( theType );
+			theSysMLPort.setPortDirection( theDirection );
+		}
+	}
 }
 
 /**
- * Copyright (C) 2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2021-2022  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

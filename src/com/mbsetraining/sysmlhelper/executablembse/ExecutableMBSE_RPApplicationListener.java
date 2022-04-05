@@ -16,6 +16,7 @@ import com.mbsetraining.sysmlhelper.common.RequirementMover;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.contextdiagram.CreateEventForFlowPanel;
 import com.mbsetraining.sysmlhelper.graphelementhelpers.GraphNodeResizer;
+import com.mbsetraining.sysmlhelper.portcreator.PortsForLinksCreator;
 import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateOperationPanel;
 import com.telelogic.rhapsody.core.*;
 
@@ -136,13 +137,13 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 	private void afterAddForFlowOutput(
 			IRPSysMLPort theSysMLPort ){
 
-		setPortDirectionFor( theSysMLPort, "Out", "Untyped" );
+		_context.setPortDirectionFor( theSysMLPort, "Out", "Untyped" );
 	}
 
 	private void afterAddForGuardedFlowOutput(
 			IRPSysMLPort theSysMLPort ){
 
-		setPortDirectionFor( theSysMLPort, "Out", "Untyped" );
+		_context.setPortDirectionFor( theSysMLPort, "Out", "Untyped" );
 
 		int count = 0;
 
@@ -170,26 +171,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 	private void afterAddForFlowInput(
 			IRPSysMLPort theSysMLPort ){
 
-		setPortDirectionFor( theSysMLPort, "In", "Untyped" );
-	}
-
-	private void setPortDirectionFor(
-			IRPSysMLPort theSysMLPort,
-			String theDirection,
-			String theTypeName ){
-
-		IRPType theType = _context.get_rhpPrj().findType( theTypeName );
-
-		if( theType == null ){
-
-			_context.error( "pluginMethodForInputPort was unable to find the '" + 
-					theTypeName + "' type to use for " + _context.elInfo( theSysMLPort ) );
-
-		} else {
-
-			theSysMLPort.setType( theType );
-			theSysMLPort.setPortDirection( theDirection );
-		}
+		_context.setPortDirectionFor( theSysMLPort, "In", "Untyped" );
 	}
 
 	private void afterAddForCallOperation(
@@ -483,7 +465,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 			IRPSysMLPort theInPort = (IRPSysMLPort) theInstance.addNewAggr("SysMLPort", "");
 			theInPort.changeTo( _context.FLOW_INPUT );	
-			setPortDirectionFor( theInPort, "In", "Untyped" );	
+			_context.setPortDirectionFor( theInPort, "In", "Untyped" );	
 			IRPGraphElement theInPortGraphEl = getGraphElFor( theInPort );
 			//_context.dumpGraphicalPropertiesFor( theInPortGraphEl );
 			theInPortGraphEl.setGraphicalProperty( "Position", theDecisionNodeInfo.getTopLeftX() + "," + theDecisionNodeInfo.getMiddleY() );
@@ -491,13 +473,13 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 			IRPSysMLPort theCondPort = (IRPSysMLPort) theInstance.addNewAggr("SysMLPort", "[put condition here]");
 			theCondPort.changeTo( _context.GUARDED_FLOW_OUTPUT );	
-			setPortDirectionFor( theCondPort, "Out", "Untyped" );
+			_context.setPortDirectionFor( theCondPort, "Out", "Untyped" );
 			IRPGraphElement theCondPortGraphEl = getGraphElFor( theCondPort );
 			theCondPortGraphEl.setGraphicalProperty( "Position", theDecisionNodeInfo.getTopRightX() + "," + theDecisionNodeInfo.getMiddleY() );
 
 			IRPSysMLPort theElsePort = (IRPSysMLPort) theInstance.addNewAggr("SysMLPort", "[else]");
 			theElsePort.changeTo( _context.GUARDED_FLOW_OUTPUT );	
-			setPortDirectionFor( theElsePort, "Out", "Untyped" );
+			_context.setPortDirectionFor( theElsePort, "Out", "Untyped" );
 			IRPGraphElement theElsePortGraphEl = getGraphElFor( theElsePort );
 			theElsePortGraphEl.setGraphicalProperty( "Position", theDecisionNodeInfo.getMiddleX() + "," + theDecisionNodeInfo.getBottomLeftY() );
 		}
@@ -641,38 +623,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		CreateEventForFlowPanel.launchThePanel( _context.get_rhpAppID() );
 	}
 
-	private IRPGraphEdge getCorrespondingGraphEdgeFor( 
-			IRPLink theLink ){
 
-		IRPGraphEdge theGraphEdge = null;
-
-		@SuppressWarnings("unchecked")
-		List<IRPModelElement> theReferences = theLink.getReferences().toList();
-
-		if( theReferences.size() == 1 ){
-			IRPModelElement theReference = theReferences.get( 0 );	
-
-			_context.debug( "theReference is " + _context.elInfo( theReference ) );
-
-			if( theReference instanceof IRPStructureDiagram ){
-
-				IRPStructureDiagram theDiagram = (IRPStructureDiagram)theReference;
-
-				@SuppressWarnings("unchecked")
-				List<IRPGraphElement> theGraphEls = theDiagram.getCorrespondingGraphicElements( theLink ).toList();
-
-				if( theGraphEls.size() == 1 ){
-					IRPGraphElement theGraphEl = theGraphEls.get( 0 );
-
-					if( theGraphEl instanceof IRPGraphEdge ){
-						theGraphEdge = (IRPGraphEdge) theGraphEl;
-					}
-				}
-			}
-		}
-
-		return theGraphEdge;
-	}
 
 	private void afterAddForFlowConnector(
 			IRPLink theLink ){
@@ -785,7 +736,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 			if( isContinue ){
 				
-				IRPGraphEdge theGraphEdge = getCorrespondingGraphEdgeFor( theLink );
+				IRPGraphEdge theGraphEdge = _context.getCorrespondingGraphEdgeFor( theLink );
 				IRPDiagram theDiagram = theGraphEdge.getDiagram();
 				GraphEdgeInfo theGraphEdgeInfo = new GraphEdgeInfo( theGraphEdge, _context ); 
 
@@ -799,10 +750,10 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 							fromClassifierEl );					
 					
 					fromSysMLPort = (IRPSysMLPort) fromClassifierEl.addNewAggr( "SysMLPort", fromPortName );
-					setPortDirectionFor( fromSysMLPort, "Out", "Untyped" );
+					_context.setPortDirectionFor( fromSysMLPort, "Out", "Untyped" );
 					fromSysMLPort.changeTo( _context.FLOW_OUTPUT );
 			
-					fromPortNode = addGraphNodeFor( 
+					fromPortNode = _context.addGraphNodeFor( 
 							fromSysMLPort, theDiagram, theGraphEdgeInfo.getStartX(), theGraphEdgeInfo.getStartY() );
 				} else {
 					fromPortNode = (IRPGraphNode) theGraphEdge.getSource();
@@ -818,10 +769,10 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 							toClassifierEl );
 								
 					toSysMLPort = (IRPSysMLPort) toClassifierEl.addNewAggr( "SysMLPort", toPortName );		
-					setPortDirectionFor( toSysMLPort, "In", "Untyped" );
+					_context.setPortDirectionFor( toSysMLPort, "In", "Untyped" );
 					toSysMLPort.changeTo( _context.FLOW_INPUT );
 			
-					toPortNode = addGraphNodeFor( 
+					toPortNode = _context.addGraphNodeFor( 
 							toSysMLPort, theDiagram, theGraphEdgeInfo.getEndX(), theGraphEdgeInfo.getEndY() );					
 				} else {
 					toPortNode = (IRPGraphNode) theGraphEdge.getTarget();
@@ -905,12 +856,14 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				if( fromClassifier instanceof IRPActor && 
 						toClassifier instanceof IRPClass ){
 
-					createPortsBasedOnPropertyPoliciesFor( theLink );
+					PortsForLinksCreator theCreator = new PortsForLinksCreator( _context, theLink );
+					theCreator.createPortsBasedOnPropertyPolicies();
 
 				} else if( toClassifier instanceof IRPActor && 
 						fromClassifier instanceof IRPClass ){
 
-					createPortsBasedOnPropertyPoliciesFor( theLink );
+					PortsForLinksCreator theCreator = new PortsForLinksCreator( _context, theLink );
+					theCreator.createPortsBasedOnPropertyPolicies();
 				}
 			}
 
@@ -960,7 +913,8 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				}
 
 				if( isContinue ){
-					autoCreateFlowPortsFor( theLink );
+					PortsForLinksCreator theCreator = new PortsForLinksCreator( _context, theLink );
+					theCreator.autoCreateFlowPorts();
 				}
 
 				// Allow to work for subsystem => subsystem or actor (object) => system or 
@@ -978,394 +932,10 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 													fromUserDefinedMetaClass.equals( 
 															_context.OBJECT ) )){
 
-				createPortsBasedOnPropertyPoliciesFor( theLink );
+				PortsForLinksCreator theCreator = new PortsForLinksCreator( _context, theLink );
+				theCreator.createPortsBasedOnPropertyPolicies();
 			}
 		}
-	}
-
-	private void createPortsBasedOnPropertyPoliciesFor(
-			IRPLink theLink ){
-
-		String autoGenPolicy = _context.getAutoGenerationOfPortsForLinksPolicy( 
-				theLink );
-
-		String autoGenDefaultType = _context.getAutoGenerationOfPortsForLinksDefaultType( 
-				theLink );
-
-		if( autoGenPolicy.equals( "Always" ) ){
-
-			createPortsFor( theLink, autoGenDefaultType );
-
-		} else if( autoGenPolicy.equals( "UserDialog" ) ){
-
-			String[] options = {"No","StandardPorts","ProxyPorts","RapidPorts"};
-
-			String selectedPortType = (String) JOptionPane.showInputDialog(
-					null,
-					"You have drawn a  connector from " + theLink.getFrom().getUserDefinedMetaClass() + 
-					" => " + theLink.getTo().getUserDefinedMetaClass() + ".\n"+
-					"Do you want to automatically create ports?",
-					"Input",
-					JOptionPane.QUESTION_MESSAGE,
-					null,
-					options,
-					autoGenDefaultType );
-
-			createPortsFor( theLink, selectedPortType );
-		}
-	}
-
-	private void createPortsFor(IRPLink theLink, String selectedPortType) {
-		if( selectedPortType.equals( "No" ) ){
-			// do nothing
-		} else if( selectedPortType.equals( "ProxyPorts" ) ){
-			autoCreateProxyPortsFor( theLink );
-		} else if( selectedPortType.equals( "StandardPorts" ) ){
-			autoCreateStandardPortsAndInterfacesFor( theLink );
-		} else if( selectedPortType.equals( "RapidPorts" ) ){
-			autoCreateRapidPortsFor( theLink );
-		} else {
-			_context.warning( "Ignoring request as " + selectedPortType + 
-					" is not supported" );
-		}
-	}
-
-	private void autoCreateStandardPortsAndInterfacesFor(
-			IRPLink theLink ){
-
-		IRPGraphEdge theGraphEdge = getCorrespondingGraphEdgeFor( theLink );
-
-		if( theGraphEdge != null ){
-
-			IRPDiagram theDiagram = theGraphEdge.getDiagram();
-
-			IRPModelElement fromClassifierEl = theLink.getFrom().getOtherClass();
-			IRPModelElement toClassifierEl = theLink.getTo().getOtherClass();
-
-			_context.debug( "theLink.getFrom() = " + _context.elInfo( theLink.getFrom() ) );
-
-			if( fromClassifierEl instanceof IRPClassifier && 
-					toClassifierEl instanceof IRPClassifier ){
-
-				_context.debug( "fromClassifierEl = " + _context.elInfo( fromClassifierEl ) );
-				_context.debug( "toClassifierEl = " + _context.elInfo( toClassifierEl ) );
-
-				String toClassifierName = _context.capitalize( toClassifierEl.getName().replace( " ", "" ) );
-				String fromClassifierName = _context.capitalize( fromClassifierEl.getName().replace( " ", "" ) );
-
-				String fromPortName = _context.determineUniqueNameBasedOn( 
-						"p" + toClassifierName, 
-						"Port", 
-						fromClassifierEl );
-
-				String toPortName = _context.determineUniqueNameBasedOn( 
-						"p" + fromClassifierName, 
-						"Port", 
-						toClassifierEl );
-
-				GraphEdgeInfo theGraphEdgeInfo = new GraphEdgeInfo( theGraphEdge, _context ); 
-
-				IRPPackage theOwningPkg = _context.getOwningPackageFor( theDiagram );
-
-				String fromInterfaceName =
-						_context.determineUniqueNameBasedOn( 
-								"I" + fromClassifierName, 
-								"Class", 
-								theOwningPkg );
-
-				IRPClass fromInterface = theOwningPkg.addClass( fromInterfaceName );
-				fromInterface.changeTo( "Interface" );
-
-				IRPPort fromPort = (IRPPort) fromClassifierEl.addNewAggr( "Port", fromPortName );
-				_context.debug( "Created fromPort as " + _context.elInfo( fromPort ) );
-
-
-
-				String toInterfaceName =
-						_context.determineUniqueNameBasedOn( 
-								"I" + toClassifierName, 
-								"Class", 
-								theOwningPkg );
-
-				IRPClass toInterface = theOwningPkg.addClass( toInterfaceName );
-				toInterface.changeTo( "Interface" );
-
-				IRPPort toPort = (IRPPort) toClassifierEl.addNewAggr( "Port", toPortName );		
-				_context.debug( "Created toPort as " + _context.elInfo( toPort ) );
-
-				fromPort.addProvidedInterface( fromInterface );
-				fromPort.addRequiredInterface( toInterface );
-
-				toPort.addProvidedInterface( toInterface );
-				toPort.addRequiredInterface( fromInterface );
-
-				IRPGraphNode fromPortNode = addGraphNodeFor( 
-						fromPort, theDiagram, theGraphEdgeInfo.getStartX(), theGraphEdgeInfo.getStartY() );
-
-				IRPGraphNode toPortNode = 
-						addGraphNodeFor( toPort, theDiagram, theGraphEdgeInfo.getEndX(), theGraphEdgeInfo.getEndY() );					
-
-				IRPLink newLink = theLink.getFrom().addLinkToElement( theLink.getTo(), null, fromPort, toPort );
-				_context.debug( "Created " + _context.elInfo( newLink ) );
-
-				theDiagram.addNewEdgeForElement( 
-						newLink, 
-						fromPortNode, 
-						theGraphEdgeInfo.getStartX(), 
-						theGraphEdgeInfo.getStartY(), 
-						toPortNode, 
-						theGraphEdgeInfo.getEndX(), 
-						theGraphEdgeInfo.getEndY() );
-
-				theLink.deleteFromProject();
-			}
-		}
-	}
-
-	private void autoCreateFlowPortsFor(
-			IRPLink theLink ){
-
-		IRPGraphEdge theGraphEdge = getCorrespondingGraphEdgeFor( theLink );
-
-		if( theGraphEdge != null ){
-
-			IRPDiagram theDiagram = theGraphEdge.getDiagram();
-
-			IRPModelElement fromClassifierEl = theLink.getFrom().getOtherClass();
-			IRPModelElement toClassifierEl = theLink.getTo().getOtherClass();
-
-			_context.debug( "theLink.getFrom() = " + _context.elInfo( theLink.getFrom() ) );
-
-			if( fromClassifierEl instanceof IRPClassifier && 
-					toClassifierEl instanceof IRPClassifier ){
-
-				_context.debug( "fromClassifierEl = " + _context.elInfo( fromClassifierEl ) );
-				_context.debug( "toClassifierEl = " + _context.elInfo( toClassifierEl ) );
-
-				String fromPortName = _context.determineUniqueNameBasedOn( 
-						"out", 
-						"SysMLPort", 
-						fromClassifierEl );
-
-				_context.debug( "fromPortName is " + fromPortName );
-
-				String toPortName = _context.determineUniqueNameBasedOn( 
-						"in",
-						"SysMLPort", 
-						toClassifierEl );
-
-				_context.debug( "toPortName is " + toPortName );
-
-				GraphEdgeInfo theGraphEdgeInfo = new GraphEdgeInfo( theGraphEdge, _context ); 
-
-				IRPSysMLPort fromPort = (IRPSysMLPort) fromClassifierEl.addNewAggr( "SysMLPort", fromPortName );
-				_context.debug( "Created fromPort as " + _context.elInfo( fromPort ) );
-				setPortDirectionFor( fromPort, "Out", "Untyped" );
-				fromPort.changeTo( _context.FLOW_OUTPUT );
-
-				IRPGraphNode fromPortNode = addGraphNodeFor( 
-						fromPort, theDiagram, theGraphEdgeInfo.getStartX(), theGraphEdgeInfo.getStartY() );
-
-				IRPSysMLPort toPort = (IRPSysMLPort) toClassifierEl.addNewAggr( "SysMLPort", toPortName );		
-				_context.debug( "Created toPort as " + _context.elInfo( toPort ) );
-				setPortDirectionFor( toPort, "In", "Untyped" );
-				toPort.changeTo( _context.FLOW_INPUT );
-
-				IRPGraphNode toPortNode = addGraphNodeFor( 
-						toPort, theDiagram, theGraphEdgeInfo.getEndX(), theGraphEdgeInfo.getEndY() );					
-
-				IRPLink newLink = theLink.getFrom().addLinkToElement( theLink.getTo(), null, fromPort, toPort );
-				_context.debug( "Created " + _context.elInfo( newLink ) );
-
-				theDiagram.addNewEdgeForElement( 
-						newLink, 
-						fromPortNode, 
-						theGraphEdgeInfo.getStartX(), 
-						theGraphEdgeInfo.getStartY(), 
-						toPortNode, 
-						theGraphEdgeInfo.getEndX(), 
-						theGraphEdgeInfo.getEndY() );
-
-				theLink.deleteFromProject();
-
-				CreateEventForFlowConnectorPanel.launchThePanel( 
-						_context.get_rhpAppID(), 
-						newLink.getGUID(),
-						theDiagram.getGUID() );
-			}
-		}
-	}
-
-	private void autoCreateProxyPortsFor(
-			IRPLink theLink ){
-
-		IRPGraphEdge theGraphEdge = getCorrespondingGraphEdgeFor( theLink );
-
-		if( theGraphEdge != null ){
-
-			IRPDiagram theDiagram = theGraphEdge.getDiagram();
-
-			IRPModelElement fromClassifierEl = theLink.getFrom().getOtherClass();
-			IRPModelElement toClassifierEl = theLink.getTo().getOtherClass();
-
-			_context.debug( "theLink.getFrom() = " + _context.elInfo( theLink.getFrom() ) );
-
-			if( fromClassifierEl instanceof IRPClassifier && 
-					toClassifierEl instanceof IRPClassifier ){
-
-				_context.debug( "fromClassifierEl = " + _context.elInfo( fromClassifierEl ) );
-				_context.debug( "toClassifierEl = " + _context.elInfo( toClassifierEl ) );
-
-				String toClassifierName = _context.capitalize( toClassifierEl.getName().replace( " ", "" ) );
-				String fromClassifierName = _context.capitalize( fromClassifierEl.getName().replace( " ", "" ) );
-
-				String fromPortName = _context.determineUniqueNameBasedOn( 
-						"p" + toClassifierName, 
-						"Port", 
-						fromClassifierEl );
-
-				String toPortName = _context.determineUniqueNameBasedOn( 
-						"p" + fromClassifierName, 
-						"Port", 
-						toClassifierEl );
-
-				GraphEdgeInfo theGraphEdgeInfo = new GraphEdgeInfo( theGraphEdge, _context ); 
-
-				IRPPackage theOwningPkg = _context.getOwningPackageFor( theDiagram );
-
-				String theInterfaceBlockName =
-						_context.determineUniqueNameBasedOn( 
-								"IB_" + fromClassifierName + "_To_" + toClassifierName, 
-								"Class", 
-								theOwningPkg );
-
-				IRPClass theInterfaceBlock = theOwningPkg.addClass( theInterfaceBlockName );
-				theInterfaceBlock.changeTo( "InterfaceBlock" );
-
-				IRPPort fromPort = (IRPPort) fromClassifierEl.addNewAggr( "Port", fromPortName );
-				_context.debug( "Created fromPort as " + _context.elInfo( fromPort ) );
-				fromPort.changeTo( "ProxyPort" );
-				fromPort.setOtherClass( theInterfaceBlock );
-
-				IRPGraphNode fromPortNode = addGraphNodeFor( 
-						fromPort, theDiagram, theGraphEdgeInfo.getStartX(), theGraphEdgeInfo.getStartY() );
-
-				IRPPort toPort = (IRPPort) toClassifierEl.addNewAggr( "Port", toPortName );		
-				_context.debug( "Created toPort as " + _context.elInfo( toPort ) );
-				toPort.changeTo( "ProxyPort" );
-				toPort.setOtherClass( theInterfaceBlock );
-				toPort.setIsReversed( 1 );
-
-				IRPGraphNode toPortNode = 
-						addGraphNodeFor( toPort, theDiagram, theGraphEdgeInfo.getEndX(), theGraphEdgeInfo.getEndY() );					
-
-				IRPLink newLink = theLink.getFrom().addLinkToElement( theLink.getTo(), null, fromPort, toPort );
-				_context.debug( "Created " + _context.elInfo( newLink ) );
-
-				theDiagram.addNewEdgeForElement( 
-						newLink, 
-						fromPortNode, 
-						theGraphEdgeInfo.getStartX(), 
-						theGraphEdgeInfo.getStartY(), 
-						toPortNode, 
-						theGraphEdgeInfo.getEndX(), 
-						theGraphEdgeInfo.getEndY() );
-
-				theLink.deleteFromProject();
-			}
-		}
-	}
-
-	private void autoCreateRapidPortsFor(
-			IRPLink theLink ){
-
-		IRPGraphEdge theGraphEdge = getCorrespondingGraphEdgeFor( theLink );
-
-		if( theGraphEdge != null ){
-
-			IRPDiagram theDiagram = theGraphEdge.getDiagram();
-
-			IRPModelElement fromClassifierEl = theLink.getFrom().getOtherClass();
-			IRPModelElement toClassifierEl = theLink.getTo().getOtherClass();
-
-			_context.debug( "theLink.getFrom() = " + _context.elInfo( theLink.getFrom() ) );
-
-			if( fromClassifierEl instanceof IRPClassifier && 
-					toClassifierEl instanceof IRPClassifier ){
-
-				_context.debug( "fromClassifierEl = " + _context.elInfo( fromClassifierEl ) );
-				_context.debug( "toClassifierEl = " + _context.elInfo( toClassifierEl ) );
-
-				String toClassifierName = _context.capitalize( toClassifierEl.getName().replace( " ", "" ) );
-				String fromClassifierName = _context.capitalize( fromClassifierEl.getName().replace( " ", "" ) );
-
-				String fromPortName = _context.determineUniqueNameBasedOn( 
-						"p" + toClassifierName, 
-						"Port", 
-						fromClassifierEl );
-
-				String toPortName = _context.determineUniqueNameBasedOn( 
-						"p" + fromClassifierName, 
-						"Port", 
-						toClassifierEl );
-
-				GraphEdgeInfo theGraphEdgeInfo = new GraphEdgeInfo( theGraphEdge, _context ); 
-
-				IRPPort fromPort = (IRPPort) fromClassifierEl.addNewAggr( "Port", fromPortName );
-				_context.debug( "Created fromPort as " + _context.elInfo( fromPort ) );
-
-				IRPGraphNode fromPortNode = addGraphNodeFor( 
-						fromPort, theDiagram, theGraphEdgeInfo.getStartX(), theGraphEdgeInfo.getStartY() );
-
-				IRPPort toPort = (IRPPort) toClassifierEl.addNewAggr( "Port", toPortName );		
-				_context.debug( "Created toPort as " + _context.elInfo( toPort ) );
-
-				IRPGraphNode toPortNode = 
-						addGraphNodeFor( toPort, theDiagram, theGraphEdgeInfo.getEndX(), theGraphEdgeInfo.getEndY() );					
-
-				IRPLink newLink = theLink.getFrom().addLinkToElement( theLink.getTo(), null, fromPort, toPort );
-				_context.debug( "Created " + _context.elInfo( newLink ) );
-
-				theDiagram.addNewEdgeForElement( 
-						newLink, 
-						fromPortNode, 
-						theGraphEdgeInfo.getStartX(), 
-						theGraphEdgeInfo.getStartY(), 
-						toPortNode, 
-						theGraphEdgeInfo.getEndX(), 
-						theGraphEdgeInfo.getEndY() );
-
-				theLink.deleteFromProject();
-			}
-		}
-	}
-	private IRPGraphNode addGraphNodeFor(
-			IRPModelElement thePortEl,
-			IRPDiagram toDiagram,
-			int x,
-			int y ){
-
-		IRPGraphNode thePortNode = null;
-
-		@SuppressWarnings("unchecked")
-		List<IRPGraphNode> theGraphNodes = 
-		toDiagram.getCorrespondingGraphicElements( thePortEl ).toList();
-
-		if( theGraphNodes.size() == 1 ){
-
-			thePortNode = theGraphNodes.get( 0 );
-
-			String thePosition = x + "," + y;
-
-			_context.debug( "Setting Position of existing " + _context.elInfo( thePortEl ) + " to " + thePosition );
-			thePortNode.setGraphicalProperty( "Position", thePosition );
-
-		} else {
-
-			thePortNode = toDiagram.addNewNodeForElement( thePortEl, x, y, 12, 12 );
-		}
-
-		return thePortNode;
 	}
 
 	@Override

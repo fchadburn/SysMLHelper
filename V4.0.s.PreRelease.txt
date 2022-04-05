@@ -651,12 +651,14 @@ V4.0.r.Rhp831.PreRelease (25-MAR-2022):
 V4.0.s.Rhp831.PreRelease (XX-XXX-XXXX):
 #467 01-APR-2022: ExecutableMBSE: Allow function blocks to be recursively decomposed into function usages to simplify and reuse of function chains (F.J.Chadburn)
 #468 05-APR-2022: ExecutableMBSE: Add ability to select depends elements for subsystem blocks etc, as useful for selecting requirements & drawing RD (F.J.Chadburn)
-#469 05-APR-2022: ExecutableMBSE: Allow Refinement on Feature Block compartment
-#470 05-APR-2022: ExecutableMBSE: Allow Refinement on right-click of Feature Block to mimmic relations of use cases
-#471 05-APR-2022: ExecutableMBSE: Allow Function Usage in a Subsystem Block compartment
-#472 05-APR-2022: ExecutableMBSE: Add a requirement diagram - system that has refinement in toolbar
+#469 05-APR-2022: ExecutableMBSE: Allow Refinement on Feature Block compartment (F.J.Chadburn)
+#470 05-APR-2022: ExecutableMBSE: Allow Refinement on right-click of Feature Block to mimmic relations of use cases (F.J.Chadburn)
+#471 05-APR-2022: ExecutableMBSE: Allow Function Usage in a Subsystem Block compartment (F.J.Chadburn)
+#472 05-APR-2022: ExecutableMBSE: Add a requirement diagram - system that has refinement in toolbar (F.J.Chadburn)
+#473 05-APR-2022: ExecutableMBSE: Refactored the ports for link connector creation code into separate class (F.J.Chadburn)
 
 Backlog/Known issues
+- Change default for diagrams to align with naming convention
 - Get metamodel profile to deal with General::Graphics::AdditionalCompartments better
 - Right-click system and subsystem block and select related classifiers based on usages/parts
 - Add a tag to subsystem
