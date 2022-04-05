@@ -654,12 +654,12 @@ V4.0.s.Rhp831.PreRelease (XX-XXX-XXXX):
 #469 05-APR-2022: ExecutableMBSE: Allow Refinement on Feature Block compartment
 #470 05-APR-2022: ExecutableMBSE: Allow Refinement on right-click of Feature Block to mimmic relations of use cases
 #471 05-APR-2022: ExecutableMBSE: Allow Function Usage in a Subsystem Block compartment
+#472 05-APR-2022: ExecutableMBSE: Add a requirement diagram - system that has refinement in toolbar
 
 Backlog/Known issues
 - Get metamodel profile to deal with General::Graphics::AdditionalCompartments better
 - Right-click system and subsystem block and select related classifiers based on usages/parts
 - Add a tag to subsystem
-- Add a requirement diagram that has refinement in toolbar
 - Compartments on a BDD - System don't really need the Operations and Value Properties
 - Autocreate subsystem packages based on the BDD
 - Add callout notation support
@@ -668,7 +668,6 @@ Backlog/Known issues
 - Automatically add related class if bdd is created as child of a class, since it is probably going to start with the block at top
 - Is RMM causing profile to unload?
 - Right-click Function Block and choose start link, to create derivation to 
-- Right-click a Function Usage and show the Satisfied by traceability
 - Add ability to right-click a use case and move to new package
 - When I created a separatre scenario package the project properties were not set.
 - Can you show generalizations in a compartment
@@ -687,7 +686,6 @@ Backlog/Known issues
 - Some menus no longer need to work for packages, rather should only work for new terms
 - Move all executable mbse icons into nested icon package
 - Hide the software package stuff
-- Review options on changing menus or merging in as it looks too complex
 - Can any more automation help with TestConductor/ATG initial setup?
 - BlackBox. 
 - Right-click of requirmeent in browser did not work when creating an event
