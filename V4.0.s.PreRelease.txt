@@ -650,12 +650,12 @@ V4.0.r.Rhp831.PreRelease (25-MAR-2022):
 
 V4.0.s.Rhp831.PreRelease (XX-XXX-XXXX):
 #467 01-APR-2022: ExecutableMBSE: Allow function blocks to be recursively decomposed into function usages to simplify and reuse of function chains (F.J.Chadburn)
+#468 05-APR-2022: ExecutableMBSE: Add ability to select depends elements for subsystem blocks etc, as useful for selecting requirements & drawing RD (F.J.Chadburn)
 
 Backlog/Known issues
 - Add a tag to subsystem
 - Subsystem Needs to Show a Function Usage
 - Compartments on a BDD - System don't really need the Operations and Value Properties
-- No ability to select depends elements for function blocks, this would useful for selecting requirements & drawing RD
 - Allow Refinement on Feature Block compartment
 - Autocreate subsystem packages based on the BDD
 - Add callout notation support
