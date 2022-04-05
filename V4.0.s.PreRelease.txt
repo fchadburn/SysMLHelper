@@ -656,12 +656,12 @@ V4.0.s.Rhp831.PreRelease (XX-XXX-XXXX):
 #471 05-APR-2022: ExecutableMBSE: Allow Function Usage in a Subsystem Block compartment (F.J.Chadburn)
 #472 05-APR-2022: ExecutableMBSE: Add a requirement diagram - system that has refinement in toolbar (F.J.Chadburn)
 #473 05-APR-2022: ExecutableMBSE: Refactored the ports for link connector creation code into separate class (F.J.Chadburn)
+#474 05-APR-2022: ExecutableMBSE: Added a short name tag to subsystem blocks (F.J.Chadburn)
 
 Backlog/Known issues
 - Change default for diagrams to align with naming convention
 - Get metamodel profile to deal with General::Graphics::AdditionalCompartments better
 - Right-click system and subsystem block and select related classifiers based on usages/parts
-- Add a tag to subsystem
 - Compartments on a BDD - System don't really need the Operations and Value Properties
 - Autocreate subsystem packages based on the BDD
 - Add callout notation support

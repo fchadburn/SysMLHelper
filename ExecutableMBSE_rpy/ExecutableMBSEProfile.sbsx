@@ -1658,7 +1658,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">4.5.2022::11:36:47</_modifiedTime>
+			<_modifiedTime type="a">4.5.2022::11:50:55</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -13922,7 +13922,7 @@ Query</_Value>
 			<_id type="a">GUID ec717f1d-0b3e-427a-89fd-8b516b2337c8</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Elements</_name>
-			<_modifiedTime type="a">4.5.2022::9:24:47</_modifiedTime>
+			<_modifiedTime type="a">4.5.2022::11:41:35</_modifiedTime>
 			<_lastID type="a">13</_lastID>
 			<_defaultComposite type="s">GUID d51fb0a3-38d7-4d7a-9f45-35fd12f6ff2a</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -14116,7 +14116,8 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SubsystemBlock</_name>
-			<_modifiedTime type="a">4.5.2022::8:36:16</_modifiedTime>
+			<_modifiedTime type="a">4.5.2022::11:41:35</_modifiedTime>
+			<_lastID type="a">1</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -14124,7 +14125,25 @@ Query</_Value>
 				</IRPYRawContainer>
 			</_m2Classes>
 			<_newTerm type="a">1</_newTerm>
+			<AggregatesList type="e">
+				<value>GUID dc5f2b40-ad59-4869-a16a-b80bafc1c8a6</value>
+			</AggregatesList>
 		</IStereotype>
+		<ITag type="e">
+			<_id type="a">GUID dc5f2b40-ad59-4869-a16a-b80bafc1c8a6</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">ShortName</_name>
+			<_modifiedTime type="a">4.5.2022::11:41:35</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">RhpString</_hname>
+					<_hid type="a">GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+		</ITag>
 		<IStereotype type="e">
 			<_id type="a">GUID 2835f8a8-c063-48c3-931a-9412002f52cb</_id>
 			<_myState type="a">8192</_myState>
