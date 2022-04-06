@@ -450,34 +450,41 @@ isVisible57=1
 DLLServerCompatible57=1
 
 #REM: Add pop-up menu
-name58=MBSE Method: Other\Setup project properties
+name58=MBSE Method: Other\Repair OSLC Links
 isPluginCommand58=1
 command58=InvokeExecutableMBSEHelper
-applicableTo58=Project,SysML
+applicableTo58=Project,SysML,10 Reqts Analysis - Context Diagram Package,11 Reqts Analysis - Actor Package,13 Reqts Analysis - Requirement Package,22 Funct Analysis - Feature Function Package,14 Reqts Analysis - Signals Package,34 Design Synthesis - Software Design Package,33 Design Synthesis - Subsystem Interfaces Package,32 Design Synthesis - Subsystem Package,31 Design Synthesis - System Architecture Package,12 Reqts Analysis - Use Case Package
 isVisible58=1
 DLLServerCompatible58=1
 
-name59=Allocation Wizard
-JavaMainClass59=com.ibm.rhapsody.setoolkit.AllocationWizard_Launcher
-JavaClassPath59=$OMROOT/Profiles/HarmonySE/SE Toolkit/AllocationWizard.jar
-isPlugin59=1
-helperTriggers59=
+#REM: Add pop-up menu
+name59=MBSE Method: Other\Setup project properties
+isPluginCommand59=1
+command59=InvokeExecutableMBSEHelper
+applicableTo59=Project,SysML
+isVisible59=1
+DLLServerCompatible59=1
 
-name60=SE-Toolkit\Allocation\Allocation Wizard
-isPluginCommand60=1
-command60=Allocation Wizard
-applicableTo60=Class,block,Block
-isVisible60=1
+name60=Allocation Wizard
+JavaMainClass60=com.ibm.rhapsody.setoolkit.AllocationWizard_Launcher
+JavaClassPath60=$OMROOT/Profiles/HarmonySE/SE Toolkit/AllocationWizard.jar
+isPlugin60=1
 helperTriggers60=
 
-#REM : NOTE: Harmony Toolbox Entry runs outside Rhapsody to workaround API Defect wrt Plugins and Diagram Focus
-name61=SE-Toolkit\Modeling Toolbox
-command61=javaw
-isSynced61=0
+name61=SE-Toolkit\Allocation\Allocation Wizard
+isPluginCommand61=1
+command61=Allocation Wizard
+applicableTo61=Class,block,Block
 isVisible61=1
-applicableTo61=
-arguments61="-Djava.library.path="$OMROOT/JavaAPI" -classpath "$OMROOT/JavaAPI/rhapsody.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/ModelingToolbox.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonGUITools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonRhapsodyTools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/miglayout-4.0.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/balloontip-1.2.1.jar" com.ibm.rhapsody.setoolkit.ModelingToolbox_Launcher"
+helperTriggers61=
 
+#REM : NOTE: Harmony Toolbox Entry runs outside Rhapsody to workaround API Defect wrt Plugins and Diagram Focus
+name62=SE-Toolkit\Modeling Toolbox
+command62=javaw
+isSynced62=0
+isVisible62=1
+applicableTo62=
+arguments62="-Djava.library.path="$OMROOT/JavaAPI" -classpath "$OMROOT/JavaAPI/rhapsody.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/ModelingToolbox.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonGUITools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonRhapsodyTools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/miglayout-4.0.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/balloontip-1.2.1.jar" com.ibm.rhapsody.setoolkit.ModelingToolbox_Launcher"
 initialDir62=$JavaLocation/bin
 isMacro62=0
 applicableToProfile62=

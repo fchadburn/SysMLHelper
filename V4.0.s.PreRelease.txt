@@ -657,6 +657,7 @@ V4.0.s.Rhp831.PreRelease (XX-XXX-XXXX):
 #472 05-APR-2022: ExecutableMBSE: Add a requirement diagram - system that has refinement in toolbar (F.J.Chadburn)
 #473 05-APR-2022: ExecutableMBSE: Refactored the ports for link connector creation code into separate class (F.J.Chadburn)
 #474 05-APR-2022: ExecutableMBSE: Added a short name tag to subsystem blocks (F.J.Chadburn)
+#475 06-APR-2022: ExecutableMBSE: Added OSLC Link fixer utility to the MBSE Other menu (F.J.Chadburn)
 
 Backlog/Known issues
 - Change default for diagrams to align with naming convention
