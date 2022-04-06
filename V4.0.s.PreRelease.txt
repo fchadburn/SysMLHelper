@@ -658,26 +658,27 @@ V4.0.s.Rhp831.PreRelease (XX-XXX-XXXX):
 #473 05-APR-2022: ExecutableMBSE: Refactored the ports for link connector creation code into separate class (F.J.Chadburn)
 #474 05-APR-2022: ExecutableMBSE: Added a short name tag to subsystem blocks (F.J.Chadburn)
 #475 06-APR-2022: ExecutableMBSE: Added OSLC Link fixer utility to the MBSE Other menu (F.J.Chadburn)
+#476 06-APR-2022: ExecutableMBSE: Compartments for domain, system and subsystem blocks to have appropriate defaults rather than Operation/Value Properties (F.J.Chadburn)
 
 Backlog/Known issues
+- Double-click a function block to create an ibd - functional
 - Change default for diagrams to align with naming convention
 - Get metamodel profile to deal with General::Graphics::AdditionalCompartments better
 - Right-click system and subsystem block and select related classifiers based on usages/parts
-- Compartments on a BDD - System don't really need the Operations and Value Properties
 - Autocreate subsystem packages based on the BDD
 - Add callout notation support
-- Need to be able to have flows from input flow port/flow outs on border of the function block
 - Automatically rename function block with a number?
 - Automatically add related class if bdd is created as child of a class, since it is probably going to start with the block at top
 - Is RMM causing profile to unload?
 - Right-click Function Block and choose start link, to create derivation to 
 - Add ability to right-click a use case and move to new package
-- When I created a separatre scenario package the project properties were not set.
+- When I created a seperate scenario package the project properties were not set, check this
 - Can you show generalizations in a compartment
 - Can we put Rational and Problem on any diagram
 - Create relationship table using a context pattern to report through the function/subsystem relationships
 - Add a populate blocks to a bdd right click, recurse through the part hiearachy.
 - Get populate parts tree view to grey out elements already on diagram?
+- Populate parts helper needs to allow for child to be unticked with parent still ticked
 - Get helper to build package hierarchy from the nested parts hioerarchy for subsystems
 - Add a right-click helper to create/sync olsc links for all relations shown on a diagram
 - Automatically name statecharts when they are created, STM - <Block name>, as statechart_3 doesn't really help as a name
@@ -696,7 +697,6 @@ Backlog/Known issues
 - Import from file option for Blocks/Actors perhaps?
 - Add ability to roll up transitions where you're looking at the entry action.
 - When you use set operation it cannot roll up traceability
-- Get standard Executable profile to0 auto-populate ports when a connector is drawn
 - Use of Harmony toolkit before switching to this one changes the display options
 - Resolve issue with comma's used in the csv file that is exported to DOORS NG
 - Get the panel diagram population of test bench to be auto set
@@ -706,14 +706,13 @@ Backlog/Known issues
 - Add reference sequence diagram capability to add new menus
 - Where requirement is created from event and action get helper to trace both, not just the action 
 - Get populate requirements on sd to draw dependencies or anchors to the elements they trace to
-- Tweak the default compartments for the BDD - Simple
 - Change icons for IBD - Simple to reflect the SysML ones
 - Auto-move for InterfaceBlock?
 - Hide TriggeredOperations/Constructor/Destructor perhaps?
 - Move icons into the Icon package and ensure they're all controlled files so that Save As works cleanly
 - Move projects into separate root folders for cleanliness of plug-and-play
 - Get the auto-generate ports/interfaces for connector to determine if there is a subsystem interfaces package in the model for events etc?
-- Incorporate short-hand names with subsystems
+- Incorporate short-hand names with subsystems into a table and use with auto interface and port creation, if present
 - Add a decent ICD-like table for showing messages carried on Interface Blocks with direction etc
 - Do you need to generate menus with a version later than V8.3.1 to ensure compatibility?
 - Ensure that hep file allows for right-click of System Block, System Usage etc for some of the general features.
