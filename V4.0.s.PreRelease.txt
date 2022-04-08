@@ -659,10 +659,10 @@ V4.0.s.Rhp831.PreRelease (XX-XXX-XXXX):
 #474 05-APR-2022: ExecutableMBSE: Added a short name tag to subsystem blocks (F.J.Chadburn)
 #475 06-APR-2022: ExecutableMBSE: Added OSLC Link fixer utility to the MBSE Other menu (F.J.Chadburn)
 #476 06-APR-2022: ExecutableMBSE: Compartments for domain, system and subsystem blocks to have appropriate defaults rather than Operation/Value Properties (F.J.Chadburn)
+#477 08-APR-2022: ExecutableMBSE: Changed default name properties for diagrams to align with naming conventions, e.g., bdd - albeit that Rhapsody imposes lowercase (F.J.Chadburn)
 
 Backlog/Known issues
 - Double-click a function block to create an ibd - functional
-- Change default for diagrams to align with naming convention
 - Get metamodel profile to deal with General::Graphics::AdditionalCompartments better
 - Right-click system and subsystem block and select related classifiers based on usages/parts
 - Autocreate subsystem packages based on the BDD
