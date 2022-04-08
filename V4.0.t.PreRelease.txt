@@ -663,6 +663,10 @@ V4.0.s.Rhp831.PreRelease (08-APR-2022):
 #478 08-APR-2022: ExecutableMBSE: Right-click Function Block and choose start link to create traceability to requirement on a diagram (F.J.Chadburn)
 #479 08-APR-2022: ExecutableMBSE: Allow feature function package to own working copy use case package to enable a working activity diagram to be used in the process (F.J.Chadburn) 
 
+V4.0.t.Rhp831.PreRelease (XX-XXX-XXXX):
+#480 08-APR-2022: ExecutableMBSE: Allow function blocks to own parallel gateway and decision usage parts (F.J.Chadburn)
+#481 08-APR-2022: ExecutableMBSE: Change default ReferenceUnitPath setup by script on project to Relative (F.J.Chadburn)
+
 Backlog/Known issues
 - Double-click a function block to create an ibd - functional
 - Get metamodel profile to deal with General::Graphics::AdditionalCompartments better
