@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import com.mbsetraining.sysmlhelper.common.BaseContext;
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
 public class DiagramElementList extends HashSet<DiagramElementInfo> {
@@ -15,12 +15,12 @@ public class DiagramElementList extends HashSet<DiagramElementInfo> {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	protected BaseContext _context;
+	protected ExecutableMBSE_Context _context;
 	
 	public DiagramElementList(
 			List<IRPModelElement> theModelEls,
 			List<IRPGraphElement> theGraphEls,
-			BaseContext context ) {
+			ExecutableMBSE_Context context ) {
 		
 		_context = context;
 		
@@ -84,29 +84,33 @@ public class DiagramElementList extends HashSet<DiagramElementInfo> {
 			
 			IRPModelElement theEl = DiagramElementInfo.getElement();
 			
-			boolean isADiagramSatisfyMetaClass = 
-					doesElementMatchOneOfTheTypes(
-							theEl, theSatisfyStatechartDiagramMetaClasses );
+			// We assume that function block is a Satisfy dependency source
+			if( !theEl.getUserDefinedMetaClass().equals( _context.FUNCTION_BLOCK ) ){
+				
+				boolean isADiagramSatisfyMetaClass = 
+						doesElementMatchOneOfTheTypes(
+								theEl, theSatisfyStatechartDiagramMetaClasses );
 
-			boolean isANonDiagramSatisfyMetaClass = 
-					doesElementMatchOneOfTheTypes(
-							theEl, theSatisfyNonDiagramMetaClasses );
-			
-			if( !isADiagramSatisfyMetaClass && !isANonDiagramSatisfyMetaClass ){
+				boolean isANonDiagramSatisfyMetaClass = 
+						doesElementMatchOneOfTheTypes(
+								theEl, theSatisfyNonDiagramMetaClasses );
 				
-				isMatchFoundForAll = false;
-				break;
-				
-			} else if( isADiagramSatisfyMetaClass && 
-					   !(theEl.getOwner() instanceof IRPStatechart) ){
+				if( !isADiagramSatisfyMetaClass && !isANonDiagramSatisfyMetaClass ){
 					
-				isMatchFoundForAll = false;
-				//_context.debug( _context.elInfo( theEl.getOwner() ) + " is the owner of " + _context.elInfo( theEl ) );
-				break;
+					isMatchFoundForAll = false;
+					break;
+					
+				} else if( isADiagramSatisfyMetaClass && 
+						   !(theEl.getOwner() instanceof IRPStatechart) ){
+						
+					isMatchFoundForAll = false;
+					//_context.debug( _context.elInfo( theEl.getOwner() ) + " is the owner of " + _context.elInfo( theEl ) );
+					break;
+				}
 			}
 		}
 		
-		//_context.debug( "areElementsAllSatisfyDependencySources is returning " + isMatchFoundForAll );
+		_context.debug( "areElementsAllSatisfyDependencySources is returning " + isMatchFoundForAll );
 		
 		return isMatchFoundForAll;
 	}

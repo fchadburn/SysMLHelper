@@ -11,7 +11,7 @@
 			<_id type="a">GUID 801c8dc2-1109-41eb-8815-e3fb68b9a344</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">IconsPkg</_name>
-			<_modifiedTime type="a">3.24.2022::14:18:50</_modifiedTime>
+			<_modifiedTime type="a">4.8.2022::12:44:46</_modifiedTime>
 			<_defaultComposite type="s">GUID 64eceb80-328e-445f-90f1-4b11f0a04bea</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
@@ -39,6 +39,8 @@
 				<value>GUID b4d52db6-9207-4717-b117-4a5b61b92308</value>
 				<value>GUID 86d8148a-dd27-453d-8dc4-07e351119dc5</value>
 				<value>GUID aebd1385-d565-4ec3-a578-21b60532bdb9</value>
+				<value>GUID 5a0f34c4-94d5-4752-a3df-2235f44f075d</value>
+				<value>GUID 36dbc847-16e1-41f5-9c51-a675c204621e</value>
 				<value>GUID 64eceb80-328e-445f-90f1-4b11f0a04bea</value>
 			</AggregatesList>
 		</ISubsystem>
@@ -209,6 +211,20 @@
 			<_modifiedTime type="a">3.24.2022::14:18:50</_modifiedTime>
 			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
 			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\SubsystemPackage.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID 5a0f34c4-94d5-4752-a3df-2235f44f075d</_id>
+			<_name type="a">UseCasePackage.ico</_name>
+			<_modifiedTime type="a">4.8.2022::12:44:37</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\UseCasePackage.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID 36dbc847-16e1-41f5-9c51-a675c204621e</_id>
+			<_name type="a">UseCasePackages.ico</_name>
+			<_modifiedTime type="a">4.8.2022::12:44:46</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\UseCasePackages.ico</_LastKnownFullPath>
 		</IEmbededFile>
 		<IClass type="e">
 			<_id type="a">GUID 64eceb80-328e-445f-90f1-4b11f0a04bea</_id>

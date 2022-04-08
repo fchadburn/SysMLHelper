@@ -660,6 +660,8 @@ V4.0.s.Rhp831.PreRelease (XX-XXX-XXXX):
 #475 06-APR-2022: ExecutableMBSE: Added OSLC Link fixer utility to the MBSE Other menu (F.J.Chadburn)
 #476 06-APR-2022: ExecutableMBSE: Compartments for domain, system and subsystem blocks to have appropriate defaults rather than Operation/Value Properties (F.J.Chadburn)
 #477 08-APR-2022: ExecutableMBSE: Changed default name properties for diagrams to align with naming conventions, e.g., bdd - albeit that Rhapsody imposes lowercase (F.J.Chadburn)
+#478 08-APR-2022: ExecutableMBSE: Right-click Function Block and choose start link to create traceability to requirement on a diagram (F.J.Chadburn)
+#479 08-APR-2022: ExecutableMBSE: Allow feature function package to own working copy use case package to enable a working activity diagram to be used in the process (F.J.Chadburn) 
 
 Backlog/Known issues
 - Double-click a function block to create an ibd - functional
@@ -670,7 +672,6 @@ Backlog/Known issues
 - Automatically rename function block with a number?
 - Automatically add related class if bdd is created as child of a class, since it is probably going to start with the block at top
 - Is RMM causing profile to unload?
-- Right-click Function Block and choose start link, to create derivation to 
 - Add ability to right-click a use case and move to new package
 - When I created a seperate scenario package the project properties were not set, check this
 - Can you show generalizations in a compartment

@@ -69,7 +69,7 @@ DLLServerCompatible8=1
 name9=MBSE Method: Requirements Analysis\Start link to a requirement
 isPluginCommand9=1
 command9=InvokeExecutableMBSEHelper
-applicableTo9=State,Transition,Comment,AcceptEventAction,SendAction,AcceptTimeEvent,Constraint,Precondition,Postcondition,ControlFlow,Attribute,ValueProperty,Operation,Event,Reception,FlowPort,UseCase,Requirement,Test Case,TestCase,Use Case Precondition,Use Case Postcondition
+applicableTo9=State,Transition,Comment,AcceptEventAction,SendAction,AcceptTimeEvent,Constraint,Precondition,Postcondition,ControlFlow,Attribute,ValueProperty,Operation,Event,Reception,FlowPort,UseCase,Requirement,Test Case,TestCase,Use Case Precondition,Use Case Postcondition,Function Block
 isVisible9=1
 DLLServerCompatible9=1
 
