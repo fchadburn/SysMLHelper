@@ -666,21 +666,24 @@ V4.0.s.Rhp831.PreRelease (08-APR-2022):
 V4.0.t.Rhp831.PreRelease (XX-XXX-XXXX):
 #480 08-APR-2022: ExecutableMBSE: Allow function blocks to own parallel gateway and decision usage parts (F.J.Chadburn)
 #481 08-APR-2022: ExecutableMBSE: Change default ReferenceUnitPath setup by script on project to Relative (F.J.Chadburn)
+#482 11-APR-2022: ExecutableMBSE: Initial implementation of Start Usage, Final Usage, and Flow Final Usage to the drawing toolbar for IBD - Functional (F.J.Chadburn)
+#483 11-APR-2022: ExecutableMBSE: Renamed Parallel Gateway to Parallel Gateway Usage to increase consistency of type names for IBD - Functional toolbar (F.J.Chadburn)
 
 Backlog/Known issues
+- Autodraw of flow connector is not positioning in and out flows very well 
+- Input and Output ports are not showing on ibd - functional by default
+- Automatically rename function usages with a number?
+- Create relationship table using a context pattern to report through the function/subsystem relationships
 - Double-click a function block to create an ibd - functional
 - Get metamodel profile to deal with General::Graphics::AdditionalCompartments better
 - Right-click system and subsystem block and select related classifiers based on usages/parts
 - Autocreate subsystem packages based on the BDD
 - Add callout notation support
-- Automatically rename function block with a number?
 - Automatically add related class if bdd is created as child of a class, since it is probably going to start with the block at top
 - Is RMM causing profile to unload?
 - Add ability to right-click a use case and move to new package
 - When I created a seperate scenario package the project properties were not set, check this
 - Can you show generalizations in a compartment
-- Can we put Rational and Problem on any diagram
-- Create relationship table using a context pattern to report through the function/subsystem relationships
 - Add a populate blocks to a bdd right click, recurse through the part hiearachy.
 - Get populate parts tree view to grey out elements already on diagram?
 - Populate parts helper needs to allow for child to be unticked with parent still ticked

@@ -85,8 +85,38 @@ Subject Format
 		Property Line.LineStyle Int "0"
 		Property Line.LineWidth Int "1"
 	end
-	Metaclass ParallelGateway
+	Metaclass ParallelGatewayUsage
 		Property DefaultSize String "0,0,48,48"
+		Property Fill.FillColor Color "255,255,255"
+		Property Font.Font String "Tahoma"
+		Property Font.Size Int "8"
+		Property Font.Weight@Child.NameCompartment@Name Int "700"
+		Property Line.LineColor Color "109,163,217"
+		Property Line.LineStyle Int "0"
+		Property Line.LineWidth Int "1"
+	end
+	Metaclass StartUsage
+		Property DefaultSize String "0,0,32,32"
+		Property Fill.FillColor Color "255,255,255"
+		Property Font.Font String "Tahoma"
+		Property Font.Size Int "8"
+		Property Font.Weight@Child.NameCompartment@Name Int "700"
+		Property Line.LineColor Color "109,163,217"
+		Property Line.LineStyle Int "0"
+		Property Line.LineWidth Int "1"
+	end
+	Metaclass FinalUsage
+		Property DefaultSize String "0,0,32,32"
+		Property Fill.FillColor Color "255,255,255"
+		Property Font.Font String "Tahoma"
+		Property Font.Size Int "8"
+		Property Font.Weight@Child.NameCompartment@Name Int "700"
+		Property Line.LineColor Color "109,163,217"
+		Property Line.LineStyle Int "0"
+		Property Line.LineWidth Int "1"
+	end
+	Metaclass FlowFinalUsage
+		Property DefaultSize String "0,0,32,32"
 		Property Fill.FillColor Color "255,255,255"
 		Property Font.Font String "Tahoma"
 		Property Font.Size Int "8"
@@ -373,7 +403,58 @@ Subject ObjectModelGe
 		Property ShowRedefinesLabel Bool "True"
 		Property QuickNavigationCategories String "MainBehavior,MainDiagram,Hyperlinks,Diagrams"
 	end
-	Metaclass ParallelGateway
+	Metaclass ParallelGatewayUsage
+		Property ShowAttributes Enum "All,None,Public,Explicit" "None"
+		Property ShowOperations Enum "All,None,Public,Explicit" "None"
+		Property ShowStereotype Enum "Label,Bitmap,None" "None"
+		Property ShowStereotypeOfClass Bool "True"
+		Property ShowName Enum  "Full_path,Relative,Name_only,Type,Label,None" "None"
+		Property ShowType Bool "False"
+		Property ShowPorts Bool "True"
+		Property ShowPortsInterfaces Bool "False"
+		Property PortsSingleLabelLayout Enum "Off,Internal,External" "Off"
+		Property MultilineNameCompartment Bool "False"
+		Property Compartments MultiLine ""
+		Property ShowInheritedAttributes Bool "False"
+		Property ShowInheritedOperations Bool "False"
+		Property ShowRedefinesLabel Bool "True"
+		Property QuickNavigationCategories String "MainBehavior,MainDiagram,Hyperlinks,Diagrams"
+	end
+	Metaclass StartUsage
+		Property ShowAttributes Enum "All,None,Public,Explicit" "None"
+		Property ShowOperations Enum "All,None,Public,Explicit" "None"
+		Property ShowStereotype Enum "Label,Bitmap,None" "None"
+		Property ShowStereotypeOfClass Bool "True"
+		Property ShowName Enum  "Full_path,Relative,Name_only,Type,Label,None" "None"
+		Property ShowType Bool "False"
+		Property ShowPorts Bool "True"
+		Property ShowPortsInterfaces Bool "False"
+		Property PortsSingleLabelLayout Enum "Off,Internal,External" "Off"
+		Property MultilineNameCompartment Bool "False"
+		Property Compartments MultiLine ""
+		Property ShowInheritedAttributes Bool "False"
+		Property ShowInheritedOperations Bool "False"
+		Property ShowRedefinesLabel Bool "True"
+		Property QuickNavigationCategories String "MainBehavior,MainDiagram,Hyperlinks,Diagrams"
+	end
+	Metaclass FinalUsage
+		Property ShowAttributes Enum "All,None,Public,Explicit" "None"
+		Property ShowOperations Enum "All,None,Public,Explicit" "None"
+		Property ShowStereotype Enum "Label,Bitmap,None" "None"
+		Property ShowStereotypeOfClass Bool "True"
+		Property ShowName Enum  "Full_path,Relative,Name_only,Type,Label,None" "None"
+		Property ShowType Bool "False"
+		Property ShowPorts Bool "True"
+		Property ShowPortsInterfaces Bool "False"
+		Property PortsSingleLabelLayout Enum "Off,Internal,External" "Off"
+		Property MultilineNameCompartment Bool "False"
+		Property Compartments MultiLine ""
+		Property ShowInheritedAttributes Bool "False"
+		Property ShowInheritedOperations Bool "False"
+		Property ShowRedefinesLabel Bool "True"
+		Property QuickNavigationCategories String "MainBehavior,MainDiagram,Hyperlinks,Diagrams"
+	end
+	Metaclass FlowFinalUsage
 		Property ShowAttributes Enum "All,None,Public,Explicit" "None"
 		Property ShowOperations Enum "All,None,Public,Explicit" "None"
 		Property ShowStereotype Enum "Label,Bitmap,None" "None"

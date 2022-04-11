@@ -84,9 +84,24 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				afterAddForDecisionUsage( (IRPInstance) modelElement );
 
 			} else if( modelElement instanceof IRPInstance && 
-					_context.hasStereotypeCalled( _context.NEW_TERM_FOR_PARALLEL_GATEWAY, modelElement )){
+					_context.hasStereotypeCalled( _context.NEW_TERM_FOR_PARALLEL_GATEWAY_USAGE, modelElement )){
 
 				afterAddForParallelGateway( (IRPInstance) modelElement );
+			
+			} else if( modelElement instanceof IRPInstance && 
+					_context.hasStereotypeCalled( _context.NEW_TERM_FOR_START_USAGE, modelElement )){
+
+				afterAddForStartUsage( (IRPInstance) modelElement );
+
+			} else if( modelElement instanceof IRPInstance && 
+					_context.hasStereotypeCalled( _context.NEW_TERM_FOR_FINAL_USAGE, modelElement )){
+
+				afterAddForFinalUsage( (IRPInstance) modelElement );
+
+			} else if( modelElement instanceof IRPInstance && 
+					_context.hasStereotypeCalled( _context.NEW_TERM_FOR_FLOW_FINAL_USAGE, modelElement )){
+
+				afterAddForFlowFinalUsage( (IRPInstance) modelElement );
 				
 			} else if( theUserDefinedMetaClass.equals( "Object" ) ){
 
@@ -447,6 +462,76 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			theResizer.performResizing();
 		}
 	}
+	
+	private void afterAddForStartUsage(
+			IRPInstance theInstance ){
+
+		IRPGraphElement theGraphEl = getGraphElFor( theInstance );		
+		
+		// Only do this for parts, not directed compositions
+		if( theGraphEl instanceof IRPGraphNode ){
+			
+			GraphNodeResizer theResizer = new GraphNodeResizer( (IRPGraphNode) theGraphEl, _context);
+			theResizer.performResizing();
+			
+			GraphNodeInfo theNodeInfo = new GraphNodeInfo( (IRPGraphNode) theGraphEl, _context );
+			
+			_context.debug( "afterAddForStartUsage found a graphNode for " + _context.elInfo( theGraphEl.getModelObject() ) );
+
+			IRPSysMLPort theOutPort = (IRPSysMLPort) theInstance.addNewAggr( "SysMLPort", "" );
+			theOutPort.changeTo( _context.FLOW_OUTPUT );	
+			_context.setPortDirectionFor( theOutPort, "Out", "Untyped" );
+			IRPGraphElement thePortGraphEl = getGraphElFor( theOutPort );
+			thePortGraphEl.setGraphicalProperty( "Position", theNodeInfo.getTopRightX() + "," + theNodeInfo.getMiddleY() );
+		}
+	}
+	
+	private void afterAddForFinalUsage(
+			IRPInstance theInstance ){
+
+		IRPGraphElement theGraphEl = getGraphElFor( theInstance );		
+		
+		// Only do this for parts, not directed compositions
+		if( theGraphEl instanceof IRPGraphNode ){
+			
+			GraphNodeResizer theResizer = new GraphNodeResizer( (IRPGraphNode) theGraphEl, _context);
+			theResizer.performResizing();
+			
+			GraphNodeInfo theNodeInfo = new GraphNodeInfo( (IRPGraphNode) theGraphEl, _context );
+			
+			_context.debug( "afterAddForFinalUsage found a graphNode for " + _context.elInfo( theGraphEl.getModelObject() ) );
+
+			IRPSysMLPort theOutPort = (IRPSysMLPort) theInstance.addNewAggr( "SysMLPort", "" );
+			theOutPort.changeTo( _context.FLOW_INPUT );	
+			_context.setPortDirectionFor( theOutPort, "In", "Untyped" );
+			IRPGraphElement thePortGraphEl = getGraphElFor( theOutPort );
+			thePortGraphEl.setGraphicalProperty( "Position", theNodeInfo.getTopLeftX() + "," + theNodeInfo.getMiddleY() );
+		}
+	}
+	
+	private void afterAddForFlowFinalUsage(
+			IRPInstance theInstance ){
+
+		IRPGraphElement theGraphEl = getGraphElFor( theInstance );		
+		
+		// Only do this for parts, not directed compositions
+		if( theGraphEl instanceof IRPGraphNode ){
+			
+			GraphNodeResizer theResizer = new GraphNodeResizer( (IRPGraphNode) theGraphEl, _context);
+			theResizer.performResizing();
+			
+			GraphNodeInfo theNodeInfo = new GraphNodeInfo( (IRPGraphNode) theGraphEl, _context );
+			
+			_context.debug( "afterAddForFlowFinalUsage found a graphNode for " + _context.elInfo( theGraphEl.getModelObject() ) );
+
+			IRPSysMLPort theOutPort = (IRPSysMLPort) theInstance.addNewAggr( "SysMLPort", "" );
+			theOutPort.changeTo( _context.FLOW_INPUT );	
+			_context.setPortDirectionFor( theOutPort, "In", "Untyped" );
+			IRPGraphElement thePortGraphEl = getGraphElFor( theOutPort );
+			thePortGraphEl.setGraphicalProperty( "Position", theNodeInfo.getTopLeftX() + "," + theNodeInfo.getMiddleY() );
+		}
+	}
+	
 	
 	private void afterAddForDecisionUsage(
 			IRPInstance theInstance ){
