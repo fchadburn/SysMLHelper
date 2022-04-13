@@ -668,6 +668,7 @@ V4.0.t.Rhp831.PreRelease (XX-XXX-XXXX):
 #481 08-APR-2022: ExecutableMBSE: Change default ReferenceUnitPath setup by script on project to Relative (F.J.Chadburn)
 #482 11-APR-2022: ExecutableMBSE: Initial implementation of Start Usage, Final Usage, and Flow Final Usage to the drawing toolbar for IBD - Functional (F.J.Chadburn)
 #483 11-APR-2022: ExecutableMBSE: Renamed Parallel Gateway to Parallel Gateway Usage to increase consistency of type names for IBD - Functional toolbar (F.J.Chadburn)
+#484 13-APR-2022: ExecutableMBSE: Added time event usage tool to the drawing toolbar for ibd - functional using label for time condition (F.J.Chadburn)
 
 Backlog/Known issues
 - Autodraw of flow connector is not positioning in and out flows very well 
