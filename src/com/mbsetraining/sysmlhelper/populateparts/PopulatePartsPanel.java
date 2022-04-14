@@ -109,8 +109,8 @@ public class PopulatePartsPanel extends ExecutableMBSEBasePanel {
 			}
 		}
 
-		_context.debug( "theSelectedEl is " + _context.elInfo( _rootModelEl ) );
-		_context.debug( "the diagram is " + _context.elInfo( _diagram ) );
+		//_context.debug( "theSelectedEl is " + _context.elInfo( _rootModelEl ) );
+		//_context.debug( "the diagram is " + _context.elInfo( _diagram ) );
 
 		JPanel theContentPanel = createContent( _rootModelEl );
 		theContentPanel.setAlignmentX( Component.LEFT_ALIGNMENT );
@@ -212,7 +212,7 @@ public class PopulatePartsPanel extends ExecutableMBSEBasePanel {
 		try {
 			if( checkValidity( false ) ){
 
-				_context.debug("performAction was invoked");
+				_context.debug( "PopulatePartsPanel.performAction invoked" );
 
 				TreeModel theModel = _tree.getModel();
 
@@ -227,96 +227,106 @@ public class PopulatePartsPanel extends ExecutableMBSEBasePanel {
 
 				populateParts( node, _rootGraphNode );
 			}
-		} catch (Exception e) {
-			_context.error( "Exception in performAction, e=" + e.getMessage() );
+
+		} catch( Exception e ){
+			_context.error( "Exception in PopulatePartsPanel.performAction, e=" + e.getMessage() );
 		}
+	}
+
+	Dimension getDefaultSizeFor( 
+			IRPModelElement theEl ){
+
+		IRPStereotype theNewTerm = theEl.getNewTermStereotype();
+
+		String theDefaultSizeString = null;
+
+		if( theNewTerm != null ){
+			theDefaultSizeString = _diagram.getPropertyValue( 
+					"Format." + theNewTerm.getName() + ".DefaultSize" );
+		} else {
+			theDefaultSizeString = _diagram.getPropertyValue( 
+					"Format." + theEl.getMetaClass() + ".DefaultSize" );					
+		}
+
+		if( theDefaultSizeString == null ){
+			_context.error( "Unable to find default size for " + _context.elInfo( theEl ) ); 
+		}
+
+		String[] theSplit = theDefaultSizeString.split(",");
+		int width = Integer.parseInt( theSplit[2] );
+		int height = Integer.parseInt( theSplit[3] );
+
+		Dimension theDefaultSize = new Dimension( width, height );
+
+		return theDefaultSize;		
 	}
 
 	Dimension calculateDimensionOf( 
 			DefaultMutableTreeNode theNode ){
 
-		int width = 0;
-		int height = 0;
+		Dimension theDimension;
 
 		ModelElInfo theUserObject = (ModelElInfo) theNode.getUserObject();
 
-		if( _tree.isSelected( theNode ) && theNode.isLeaf() ){
+		List<DefaultMutableTreeNode> theChildNodes = _tree.getSelectedChildren( theNode );
 
-			String theDefaultSize = null;
+		if( _tree.isSelected( theNode ) && 
+				theChildNodes.isEmpty() ){
 
-			if( theUserObject._part != null ){
-
-				IRPStereotype theNewTerm = theUserObject._part.getNewTermStereotype();
-
-				if( theNewTerm != null ){
-					theDefaultSize = _diagram.getPropertyValue( 
-							"Format." + theNewTerm.getName() + ".DefaultSize" );
-				} else {
-					_context.debug( "calculateDimensionOf for " + theUserObject.toString() + 
-							" is using default size as " + _context.elInfo( theUserObject._part ) + 
-							" did not have a new term stereotype" );
-
-					theDefaultSize = _diagram.getPropertyValue( 
-							"Format.Object.DefaultSize" );					
-				}
-
-			} else if( theUserObject._classifier != null ){
-
-				IRPStereotype theNewTerm = theUserObject._classifier.getNewTermStereotype();
-
-				if( theNewTerm != null ){
-					theDefaultSize = _diagram.getPropertyValue( 
-							"Format." + theNewTerm.getName() + ".DefaultSize" );
-				} else {
-					_context.debug( "calculateDimensionOf for " + theUserObject.toString() + 
-							" is using default size as " + _context.elInfo( theUserObject._part ) + 
-							" did not have a new term stereotype" );
-
-					theDefaultSize = _diagram.getPropertyValue( 
-							"Format.Class.DefaultSize" );					
-				}
-			}
-
-			if( theDefaultSize == null ){
-				_context.error( "Unable to find default size for " + _context.elInfo( theUserObject._part ) ); 
-			}
-
-			String[] theSplit = theDefaultSize.split(",");
-			width = Integer.parseInt( theSplit[2] );
-			height = Integer.parseInt( theSplit[3] );
+			theDimension = getDefaultSizeFor( theUserObject );
 
 		} else {
 
-			height += _yTop;
+			if( theChildNodes.isEmpty() ){
 
-			List<DefaultMutableTreeNode> theChildNodes = _tree.getSelectedChildren( theNode );
+				theDimension = getDefaultSizeFor(theUserObject);
 
-			for( Iterator<DefaultMutableTreeNode> iterator = theChildNodes.iterator(); iterator.hasNext();) {
+			} else {
 
-				DefaultMutableTreeNode theChildNode = (DefaultMutableTreeNode) iterator.next();
+				theDimension = new Dimension( 0, _yTop );
 
-				Dimension theChildsDimension = calculateDimensionOf( theChildNode );					
-				height += theChildsDimension.height;
+				for( Iterator<DefaultMutableTreeNode> iterator = theChildNodes.iterator(); iterator.hasNext();) {
 
-				int proposedWidth = theChildsDimension.width + _xLeft + _xRight;
+					DefaultMutableTreeNode theChildNode = (DefaultMutableTreeNode) iterator.next();
 
-				if( width < proposedWidth ){
-					width = proposedWidth;
-				}
+					Dimension theChildsDimension = calculateDimensionOf( theChildNode );	
 
-				if( iterator.hasNext() ){
-					height += _yGap;
-				} else {
-					height += _yBottom;
+					theDimension.height += theChildsDimension.height;
+
+					int proposedWidth = theChildsDimension.width + _xLeft + _xRight;
+
+					if( theDimension.width < proposedWidth ){
+						theDimension.width = proposedWidth;
+					}
+
+					if( iterator.hasNext() ){
+						theDimension.height += _yGap;
+					} else {
+						theDimension.height += _yBottom;
+					}
 				}
 			}
 		}
 
-		Dimension theDimension = new Dimension( width, height );
-
 		return theDimension;
 	}
 
+	private Dimension getDefaultSizeFor(
+			ModelElInfo theUserObject ){
+
+		Dimension theDimension = null;
+
+		if( theUserObject._part != null ){
+
+			theDimension = getDefaultSizeFor( theUserObject._part );
+
+		} else if( theUserObject._classifier != null ){
+
+			theDimension = getDefaultSizeFor( theUserObject._classifier );
+		}
+
+		return theDimension;
+	}
 
 	public void populateParts(
 			DefaultMutableTreeNode theTreeNode,
@@ -391,7 +401,7 @@ public class PopulatePartsPanel extends ExecutableMBSEBasePanel {
 }
 
 /**
- * Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2018-2022  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

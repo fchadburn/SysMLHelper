@@ -22,6 +22,17 @@ import com.telelogic.rhapsody.core.*;
 
 public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener {
 
+	public static void main(String[] args) {
+		String appID = RhapsodyAppServer.getActiveRhapsodyApplication().getApplicationConnectionString();
+		
+		ExecutableMBSE_Context theContext = new ExecutableMBSE_Context(appID);
+		
+		List<IRPGraphElement> theSelectedGraphEls = theContext.getSelectedGraphElements();
+		
+		for (IRPGraphElement irpGraphElement : theSelectedGraphEls) {
+			theContext.dumpGraphicalPropertiesFor(irpGraphElement);
+		}
+	}
 	private ExecutableMBSE_Context _context;
 
 	public ExecutableMBSE_RPApplicationListener( 
@@ -107,6 +118,11 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 					_context.hasStereotypeCalled( _context.NEW_TERM_FOR_FLOW_FINAL_USAGE, modelElement )){
 
 				afterAddForFlowFinalUsage( (IRPInstance) modelElement );
+			
+			} else if( modelElement instanceof IRPStructureDiagram && 
+					_context.hasStereotypeCalled( _context.NEW_TERM_FOR_IBD_FUNCTIONAL, modelElement )){
+
+				afterAddForInternalBlockDiagramFunctional( (IRPStructureDiagram) modelElement );
 				
 			} else if( theUserDefinedMetaClass.equals( "Object" ) ){
 
@@ -562,6 +578,21 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		}
 	}
 	
+	private void afterAddForInternalBlockDiagramFunctional(
+			IRPStructureDiagram theDiagram ){		
+		
+		_context.info( "afterAddForInternalBlockDiagramFunctional for " + _context.elInfo( theDiagram ) );
+		
+		@SuppressWarnings("unchecked")
+		List<IRPGraphElement> theGraphEls = theDiagram.getGraphicalElements().toList();
+		
+		for (IRPGraphElement theGraphEl : theGraphEls) {
+			
+			_context.info( "Found graph el tied to " + _context.elInfo( theGraphEl.getModelObject() ) );
+			_context.dumpGraphicalPropertiesFor( theGraphEl );
+		}
+		
+	}
 	
 	private void afterAddForDecisionUsage(
 			IRPInstance theInstance ){
@@ -867,7 +898,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 					fromSysMLPort = (IRPSysMLPort) fromClassifierEl.addNewAggr( "SysMLPort", fromPortName );
 					_context.setPortDirectionFor( fromSysMLPort, "Out", "Untyped" );
 					fromSysMLPort.changeTo( _context.FLOW_OUTPUT );
-			
+					
 					fromPortNode = _context.addGraphNodeFor( 
 							fromSysMLPort, theDiagram, theGraphEdgeInfo.getStartX(), theGraphEdgeInfo.getStartY() );
 				} else {

@@ -669,8 +669,10 @@ V4.0.t.Rhp831.PreRelease (XX-XXX-XXXX):
 #482 11-APR-2022: ExecutableMBSE: Initial implementation of Start Usage, Final Usage, and Flow Final Usage to the drawing toolbar for IBD - Functional (F.J.Chadburn)
 #483 11-APR-2022: ExecutableMBSE: Renamed Parallel Gateway to Parallel Gateway Usage to increase consistency of type names for IBD - Functional toolbar (F.J.Chadburn)
 #484 13-APR-2022: ExecutableMBSE: Added time event usage tool to the drawing toolbar for ibd - functional using label for time condition (F.J.Chadburn)
+#485 14-APR-2022: ExecutableMBSE: Populate parts helper needs to allow for child to be unticked with parent still ticked (F.J.Chadburn)
 
 Backlog/Known issues
+- Change default size of function usages
 - Autodraw of flow connector is not positioning in and out flows very well 
 - Input and Output ports are not showing on ibd - functional by default
 - Automatically rename function usages with a number?
@@ -687,7 +689,6 @@ Backlog/Known issues
 - Can you show generalizations in a compartment
 - Add a populate blocks to a bdd right click, recurse through the part hiearachy.
 - Get populate parts tree view to grey out elements already on diagram?
-- Populate parts helper needs to allow for child to be unticked with parent still ticked
 - Get helper to build package hierarchy from the nested parts hioerarchy for subsystems
 - Add a right-click helper to create/sync olsc links for all relations shown on a diagram
 - Automatically name statecharts when they are created, STM - <Block name>, as statechart_3 doesn't really help as a name

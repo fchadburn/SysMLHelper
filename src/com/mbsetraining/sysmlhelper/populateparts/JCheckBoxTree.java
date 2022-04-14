@@ -59,20 +59,35 @@ public class JCheckBoxTree extends JTree {
 			}
 		};
 		// Calling checking mechanism on mouse click
-		this.addMouseListener(new MouseListener() {
-			public void mouseClicked(MouseEvent arg0) {
+		this.addMouseListener( new MouseListener() {
+			
+			public void mouseClicked( MouseEvent arg0 ){
+				
 				TreePath tp = _selfPointer.getPathForLocation(arg0.getX(), arg0.getY());
-				if (tp == null) {
+				
+				if( tp == null ){
 					return;
 				}
-				boolean checkMode = ! nodesCheckingState.get(tp)._isSelected;
-				checkSubTree(tp, checkMode);
-				updatePredecessorsWithCheckMode(tp, checkMode);
-				// Firing the check change event
-				fireCheckChangeEvent(new CheckChangeEvent(new Object()));
-				// Repainting tree after the data structures were updated
-				_selfPointer.repaint();                          
-			}           
+				
+				boolean isChecked = ! nodesCheckingState.get( tp )._isSelected;
+				
+				if( arg0.getClickCount() == 1 && 
+						arg0.getButton() == MouseEvent.BUTTON1 ){
+					
+					checkSubTree( tp, isChecked );
+					
+					if( isChecked ){						
+						updatePredecessorsWithCheckMode( tp, isChecked, true );
+					}
+					
+					// Firing the check change event
+					fireCheckChangeEvent( new CheckChangeEvent( new Object() ) );
+					
+					// Repainting tree after the data structures were updated
+					_selfPointer.repaint();					
+				}
+			}    
+			
 			public void mouseEntered(MouseEvent arg0) {         
 			}           
 			public void mouseExited(MouseEvent arg0) {              
@@ -240,7 +255,10 @@ public class JCheckBoxTree extends JTree {
 	}
 
 	// When a node is checked/unchecked, updating the states of the predecessors
-	protected void updatePredecessorsWithCheckMode(TreePath tp, boolean check) {
+	protected void updatePredecessorsWithCheckMode(
+			TreePath tp, 
+			boolean check,
+			boolean isRecursively ) {
 		TreePath parentPath = tp.getParentPath();
 		// If it is the root, stop the recursive calls and return
 		if (parentPath == null) {
@@ -268,8 +286,11 @@ public class JCheckBoxTree extends JTree {
 		} else {
 			checkedPaths.remove(parentPath);
 		}
-		// Go to upper predecessor
-		updatePredecessorsWithCheckMode(parentPath, check);
+		
+		if( isRecursively ){
+			// Go to upper predecessor
+			updatePredecessorsWithCheckMode(parentPath, check, isRecursively);			
+		}
 	}
 
 	// Recursively checks/unchecks a subtree
