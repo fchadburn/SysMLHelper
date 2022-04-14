@@ -1658,7 +1658,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">4.13.2022::8:28:0</_modifiedTime>
+			<_modifiedTime type="a">4.14.2022::15:18:21</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -10765,7 +10765,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 99d433ee-75c1-40c0-8ef0-8ea14c3d7d23</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileInfo</_name>
-			<_modifiedTime type="a">4.8.2022::21:14:4</_modifiedTime>
+			<_modifiedTime type="a">4.14.2022::15:18:21</_modifiedTime>
 			<_lastID type="a">3</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -10783,7 +10783,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 00c06448-4cf5-4b58-a462-af1a3bccd935</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileDate</_name>
-			<_modifiedTime type="a">4.8.2022::21:14:4</_modifiedTime>
+			<_modifiedTime type="a">4.14.2022::15:18:21</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IType</_hm2Class>
@@ -10794,13 +10794,13 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</_typeOf>
 			<_isOrdered type="a">0</_isOrdered>
 			<AggregatesList type="e">
-				<value>GUID b2a4d361-6475-4dd2-9055-a91e337af7fe</value>
+				<value>GUID 47963841-b80c-45cc-a6c6-7509652d3c30</value>
 			</AggregatesList>
 		</ITag>
 		<ILiteralSpecification type="e">
-			<_id type="a">GUID b2a4d361-6475-4dd2-9055-a91e337af7fe</_id>
-			<_modifiedTime type="a">4.8.2022::21:14:4</_modifiedTime>
-			<_value type="a">2022/04/08 22:13:00</_value>
+			<_id type="a">GUID 47963841-b80c-45cc-a6c6-7509652d3c30</_id>
+			<_modifiedTime type="a">4.14.2022::15:18:21</_modifiedTime>
+			<_value type="a">2022/04/14 16:18:00</_value>
 		</ILiteralSpecification>
 		<ITag type="e">
 			<_id type="a">GUID c783ee62-7cd8-4f71-8651-25132d0e1150</_id>
@@ -16929,13 +16929,14 @@ Query</_Value>
 			<_id type="a">GUID f4cbf55d-b74b-4ef3-9920-6eb8450bb6c2</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_TablesAndMatrices</_name>
-			<_modifiedTime type="a">2.23.2022::8:13:20</_modifiedTime>
+			<_modifiedTime type="a">4.14.2022::15:13:0</_modifiedTime>
 			<_defaultComposite type="s">GUID aace3563-7387-48b2-b252-564f3c63fcfc</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
 				<value>GUID aace3563-7387-48b2-b252-564f3c63fcfc</value>
 				<value>GUID b79471f7-d7b6-4b8f-b0aa-73635856bd5c</value>
 				<value>GUID e077fcf1-591a-4048-86c9-e41aeb061c50</value>
+				<value>GUID ac0448fb-9f62-4205-af6f-61b0e81841c9</value>
 				<value>GUID 23956648-4810-4b41-8d14-1b51e6d19725</value>
 				<value>GUID b4be15e3-be9e-4b22-82be-8f91eaab9259</value>
 				<value>GUID 41bbc743-af05-42c9-8ac2-f49a22d6a621</value>
@@ -17289,6 +17290,182 @@ Query</_Value>
 					
 				</IRPYRawContainer>
 			</TableToElementTypes>
+		</ITableLayout>
+		<ITableLayout type="e">
+			<_id type="a">GUID ac0448fb-9f62-4205-af6f-61b0e81841c9</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">2</size>
+						<IPropertySubject type="e">
+							<_Name type="a">General</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Graphics</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">TableHeaderMenuAlignment</_Name>
+													<_Value type="a">Right</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">Left,Right</_ExtraTypeInfo>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">2</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">TableLayout</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">3</size>
+												<IProperty type="e">
+													<_Name type="a">CollapseFirstColumn</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ContextPattern</_Name>
+													<_Value type="a">{pkg}Package*,{uc}UseCase,{feature}HyperLink:.stereotype(Feature Block),{function usage}Function Usage,{function block}Type:,{req}Satisfaction:</_Value>
+													<_Type type="a">MultiLine</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ContextTableColumnNameFormat</_Name>
+													<_Value type="a">$(Property) in $(Context)</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+									<IPropertyMetaclass type="e">
+										<_Name type="a">TableView</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">ChangeSelectionOnEnterTo</_Name>
+													<_Value type="a">down</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">left, right, up, down</_ExtraTypeInfo>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">TableL - Use case feature function satisfactions</_name>
+			<_modifiedTime type="a">4.14.2022::15:13:0</_modifiedTime>
+			<DataColumns type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">5</size>
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID ac0448fb-9f62-4205-af6f-61b0e81841c9</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">General.Name</TableDataDefinitionName>
+						<_columnName type="a">Use Case</_columnName>
+						<_contextPatternLabel type="a">uc</_contextPatternLabel>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID ac0448fb-9f62-4205-af6f-61b0e81841c9</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">General.Name</TableDataDefinitionName>
+						<_columnName type="a">Feature Block</_columnName>
+						<_contextPatternLabel type="a">feature</_contextPatternLabel>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID ac0448fb-9f62-4205-af6f-61b0e81841c9</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">General.Name</TableDataDefinitionName>
+						<_columnName type="a">Function Block</_columnName>
+						<_contextPatternLabel type="a">function block</_contextPatternLabel>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID ac0448fb-9f62-4205-af6f-61b0e81841c9</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">General.Name</TableDataDefinitionName>
+						<_columnName type="a">Requirement (Satisfaction)</_columnName>
+						<_contextPatternLabel type="a">req</_contextPatternLabel>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID ac0448fb-9f62-4205-af6f-61b0e81841c9</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Requirement.Specification</TableDataDefinitionName>
+						<_columnName type="a">Specification</_columnName>
+						<_contextPatternLabel type="a">req</_contextPatternLabel>
+					</TableDataDefinition>
+					
+				</IRPYRawContainer>
+			</DataColumns>
 		</ITableLayout>
 		<ITableInstance type="e">
 			<_id type="a">GUID 23956648-4810-4b41-8d14-1b51e6d19725</_id>

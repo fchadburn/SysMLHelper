@@ -671,8 +671,11 @@ V4.0.t.Rhp831.PreRelease (XX-XXX-XXXX):
 #484 13-APR-2022: ExecutableMBSE: Added time event usage tool to the drawing toolbar for ibd - functional using label for time condition (F.J.Chadburn)
 #485 14-APR-2022: ExecutableMBSE: Populate parts helper needs to allow for child to be unticked with parent still ticked (F.J.Chadburn)
 #486 14-APR-2022: ExecutableMBSE: Add right-click to select classifiers of parts owned by a block to ease BDD drawing (F.J.Chadburn)
+#487 14-APR-2022: ExecutableMBSE: Add the TableL - Use case feature function satisfactions context pattern layout for viewing requirements (F.J.Chadburn)
 
 Backlog/Known issues
+- Copy AD doesn't work if activity diagram is pulled into separate package
+- Right-click a function block to create new requirement
 - Change default size of function usages
 - Autodraw of flow connector is not positioning in and out flows very well 
 - Input and Output ports are not showing on ibd - functional by default
