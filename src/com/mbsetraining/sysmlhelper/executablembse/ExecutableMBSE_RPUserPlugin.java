@@ -13,6 +13,7 @@ import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.DependencySelector;
 import com.mbsetraining.sysmlhelper.common.LayoutHelper;
 import com.mbsetraining.sysmlhelper.common.NestedActivityDiagram;
+import com.mbsetraining.sysmlhelper.common.PartSelector;
 import com.mbsetraining.sysmlhelper.common.RequirementsHelper;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.contextdiagram.CreateContextPackagePanel;
@@ -367,6 +368,17 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					theSelector.selectDependentElementsFor( 
 							theCombinedSet, "deriveReqt" );
 
+				} else if( menuItem.equals( _settings.getString(
+						"executablembseplugin.SelectChildClassifiersMenu" ) ) ){
+
+					Set<IRPModelElement> theCombinedSet = 
+							_context.getSetOfElementsFromCombiningThe(
+									theSelectedEls, theSelectedGraphEls );
+
+					PartSelector theSelector = new PartSelector( _context );
+
+					theSelector.selectPartsFor(theCombinedSet, false );
+					
 				} else if (menuItem.equals(_settings.getString(
 						"executablembseplugin.SetupGatewayProjectMenu" ) ) ){
 

@@ -670,6 +670,7 @@ V4.0.t.Rhp831.PreRelease (XX-XXX-XXXX):
 #483 11-APR-2022: ExecutableMBSE: Renamed Parallel Gateway to Parallel Gateway Usage to increase consistency of type names for IBD - Functional toolbar (F.J.Chadburn)
 #484 13-APR-2022: ExecutableMBSE: Added time event usage tool to the drawing toolbar for ibd - functional using label for time condition (F.J.Chadburn)
 #485 14-APR-2022: ExecutableMBSE: Populate parts helper needs to allow for child to be unticked with parent still ticked (F.J.Chadburn)
+#486 14-APR-2022: ExecutableMBSE: Add right-click to select classifiers of parts owned by a block to ease BDD drawing (F.J.Chadburn)
 
 Backlog/Known issues
 - Change default size of function usages
@@ -680,7 +681,6 @@ Backlog/Known issues
 - Double-click a function block to create an ibd - functional
 - Get metamodel profile to deal with General::Graphics::AdditionalCompartments better
 - Right-click system and subsystem block and select related classifiers based on usages/parts
-- Autocreate subsystem packages based on the BDD
 - Add callout notation support
 - Automatically add related class if bdd is created as child of a class, since it is probably going to start with the block at top
 - Is RMM causing profile to unload?

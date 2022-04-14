@@ -1,5 +1,5 @@
 [Helpers]
-numberOfElements=69
+numberOfElements=70
 
 #REM: Definition of the plug-in
 name1=InvokeExecutableMBSEHelper
@@ -449,116 +449,124 @@ applicableTo57=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Acto
 isVisible57=1
 DLLServerCompatible57=1
 
-#REM: Add pop-up menu
-name58=MBSE Method: Other\Repair OSLC Links
+#REM: Add pop-up menu 
+name58=MBSE Method: Other\Select Classifiers Of Parts
 isPluginCommand58=1
 command58=InvokeExecutableMBSEHelper
-applicableTo58=Project,SysML,10 Reqts Analysis - Context Diagram Package,11 Reqts Analysis - Actor Package,13 Reqts Analysis - Requirement Package,22 Funct Analysis - Feature Function Package,14 Reqts Analysis - Signals Package,34 Design Synthesis - Software Design Package,33 Design Synthesis - Subsystem Interfaces Package,32 Design Synthesis - Subsystem Package,31 Design Synthesis - System Architecture Package,12 Reqts Analysis - Use Case Package
+applicableTo58=Actor,Block,Class,System Block,Subsystem Block,Domain Block,Feature Block,Function Block,Software Component,C++ Class,Use Case
 isVisible58=1
 DLLServerCompatible58=1
 
 #REM: Add pop-up menu
-name59=MBSE Method: Other\Setup project properties
+name59=MBSE Method: Other\Repair OSLC Links
 isPluginCommand59=1
 command59=InvokeExecutableMBSEHelper
-applicableTo59=Project,SysML
+applicableTo59=Project,SysML,10 Reqts Analysis - Context Diagram Package,11 Reqts Analysis - Actor Package,13 Reqts Analysis - Requirement Package,22 Funct Analysis - Feature Function Package,14 Reqts Analysis - Signals Package,34 Design Synthesis - Software Design Package,33 Design Synthesis - Subsystem Interfaces Package,32 Design Synthesis - Subsystem Package,31 Design Synthesis - System Architecture Package,12 Reqts Analysis - Use Case Package
 isVisible59=1
 DLLServerCompatible59=1
 
-name60=Allocation Wizard
-JavaMainClass60=com.ibm.rhapsody.setoolkit.AllocationWizard_Launcher
-JavaClassPath60=$OMROOT/Profiles/HarmonySE/SE Toolkit/AllocationWizard.jar
-isPlugin60=1
-helperTriggers60=
+#REM: Add pop-up menu
+name60=MBSE Method: Other\Setup project properties
+isPluginCommand60=1
+command60=InvokeExecutableMBSEHelper
+applicableTo60=Project,SysML
+isVisible60=1
+DLLServerCompatible60=1
 
-name61=SE-Toolkit\Allocation\Allocation Wizard
-isPluginCommand61=1
-command61=Allocation Wizard
-applicableTo61=Class,block,Block
-isVisible61=1
+name61=Allocation Wizard
+JavaMainClass61=com.ibm.rhapsody.setoolkit.AllocationWizard_Launcher
+JavaClassPath61=$OMROOT/Profiles/HarmonySE/SE Toolkit/AllocationWizard.jar
+isPlugin61=1
 helperTriggers61=
 
-#REM : NOTE: Harmony Toolbox Entry runs outside Rhapsody to workaround API Defect wrt Plugins and Diagram Focus
-name62=SE-Toolkit\Modeling Toolbox
-command62=javaw
-isSynced62=0
+name62=SE-Toolkit\Allocation\Allocation Wizard
+isPluginCommand62=1
+command62=Allocation Wizard
+applicableTo62=Class,block,Block,System Block,Subsystem Block,Domain Block,Feature Block,Function Block,Software Component,C++ Class,Use Case
 isVisible62=1
-applicableTo62=
-arguments62="-Djava.library.path="$OMROOT/JavaAPI" -classpath "$OMROOT/JavaAPI/rhapsody.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/ModelingToolbox.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonGUITools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonRhapsodyTools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/miglayout-4.0.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/balloontip-1.2.1.jar" com.ibm.rhapsody.setoolkit.ModelingToolbox_Launcher"
-initialDir62=$JavaLocation/bin
-isMacro62=0
-applicableToProfile62=
-Triggers62=
+helperTriggers62=
 
-name63=SE-Toolkit\Add Hyperlinks\To Selected
+#REM : NOTE: Harmony Toolbox Entry runs outside Rhapsody to workaround API Defect wrt Plugins and Diagram Focus
+name63=SE-Toolkit\Modeling Toolbox
 command63=javaw
 isSynced63=0
 isVisible63=1
-applicableTo63=Operation,Condition,flowProperty,DataType,SequenceDiagram,verify,Generalization,Parametric Diagram,Module,Dependency,Swimlane,standardPort,Attribute,ValueProperty,Project,ControlledFile,Comment,Profile,Port,CollaborationDiagram,Node,ConstraintProperty,Class,TriggeredOperation,localPrecondition,viewpoint,StructureDiagram,view,flowAttribute,localPostcondition,ObjectNode,UseCase,satisfy,Association,ComponentInstance,Constraint,Block,Stereotype,refine,Unit,RequirementsTable,Destructor,CallOperation,DefaultTransition,rationale,testCase,Object,valueBinding_D,Message,allocate,Link,Reception,conform,Constructor,UseCaseDiagram,Requirements Diagram,ComponentDiagram,Pin,Statechart,ValueType,SysML,HyperLink,AllocationsTable,Actor,ConstraintParameter,Requirement,Tag,ClassifierRole,AssociationEnd,Component,Event,PanelDiagram,PrimitiveOperation,Package Diagram,activity_D,InteractionOperand,Argument,Block Definition Diagram,BindingConnector,ObjectModelDiagram,connector,Transition,InteractionOccurrence,Flow,Type,EnumerationLiteral,CombinedFragment,ConstraintBlock,Package,Folder,File,Connector,problem,Dimension,Configuration,Internal Block Diagram,DeploymentDiagram,SysMLPort,State,flowSpecification,ExecutionOccurrence,ActivityDiagram,ReferenceActivity
-arguments3="-Djava.library.path="$OMROOT/JavaAPI" -DTab=Hyperlinks -DDirection=TO -classpath "$OMROOT/JavaAPI/rhapsody.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/ModelingToolbox.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonGUITools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonRhapsodyTools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/miglayout-4.0.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/balloontip-1.2.1.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RenameActions.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RefactorActionName.jar" com.ibm.rhapsody.setoolkit.ModelingToolbox_Launcher"
+applicableTo63=
+arguments63="-Djava.library.path="$OMROOT/JavaAPI" -classpath "$OMROOT/JavaAPI/rhapsody.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/ModelingToolbox.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonGUITools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonRhapsodyTools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/miglayout-4.0.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/balloontip-1.2.1.jar" com.ibm.rhapsody.setoolkit.ModelingToolbox_Launcher"
 initialDir63=$JavaLocation/bin
 isMacro63=0
 applicableToProfile63=
-helperTriggers63=
+Triggers63=
 
-name64=SE-Toolkit\Add Hyperlinks\From Selected
+name64=SE-Toolkit\Add Hyperlinks\To Selected
 command64=javaw
 isSynced64=0
 isVisible64=1
 applicableTo64=Operation,Condition,flowProperty,DataType,SequenceDiagram,verify,Generalization,Parametric Diagram,Module,Dependency,Swimlane,standardPort,Attribute,ValueProperty,Project,ControlledFile,Comment,Profile,Port,CollaborationDiagram,Node,ConstraintProperty,Class,TriggeredOperation,localPrecondition,viewpoint,StructureDiagram,view,flowAttribute,localPostcondition,ObjectNode,UseCase,satisfy,Association,ComponentInstance,Constraint,Block,Stereotype,refine,Unit,RequirementsTable,Destructor,CallOperation,DefaultTransition,rationale,testCase,Object,valueBinding_D,Message,allocate,Link,Reception,conform,Constructor,UseCaseDiagram,Requirements Diagram,ComponentDiagram,Pin,Statechart,ValueType,SysML,HyperLink,AllocationsTable,Actor,ConstraintParameter,Requirement,Tag,ClassifierRole,AssociationEnd,Component,Event,PanelDiagram,PrimitiveOperation,Package Diagram,activity_D,InteractionOperand,Argument,Block Definition Diagram,BindingConnector,ObjectModelDiagram,connector,Transition,InteractionOccurrence,Flow,Type,EnumerationLiteral,CombinedFragment,ConstraintBlock,Package,Folder,File,Connector,problem,Dimension,Configuration,Internal Block Diagram,DeploymentDiagram,SysMLPort,State,flowSpecification,ExecutionOccurrence,ActivityDiagram,ReferenceActivity
-arguments4="-Djava.library.path="$OMROOT/JavaAPI" -DTab=Hyperlinks -DDirection=FROM -classpath "$OMROOT/JavaAPI/rhapsody.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/ModelingToolbox.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonGUITools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonRhapsodyTools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/miglayout-4.0.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/balloontip-1.2.1.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RenameActions.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RefactorActionName.jar" com.ibm.rhapsody.setoolkit.ModelingToolbox_Launcher"
+arguments3="-Djava.library.path="$OMROOT/JavaAPI" -DTab=Hyperlinks -DDirection=TO -classpath "$OMROOT/JavaAPI/rhapsody.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/ModelingToolbox.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonGUITools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonRhapsodyTools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/miglayout-4.0.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/balloontip-1.2.1.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RenameActions.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RefactorActionName.jar" com.ibm.rhapsody.setoolkit.ModelingToolbox_Launcher"
 initialDir64=$JavaLocation/bin
 isMacro64=0
 applicableToProfile64=
 helperTriggers64=
 
-name65=SE-Toolkit\Add Dependencies\To Selected
+name65=SE-Toolkit\Add Hyperlinks\From Selected
 command65=javaw
 isSynced65=0
 isVisible65=1
 applicableTo65=Operation,Condition,flowProperty,DataType,SequenceDiagram,verify,Generalization,Parametric Diagram,Module,Dependency,Swimlane,standardPort,Attribute,ValueProperty,Project,ControlledFile,Comment,Profile,Port,CollaborationDiagram,Node,ConstraintProperty,Class,TriggeredOperation,localPrecondition,viewpoint,StructureDiagram,view,flowAttribute,localPostcondition,ObjectNode,UseCase,satisfy,Association,ComponentInstance,Constraint,Block,Stereotype,refine,Unit,RequirementsTable,Destructor,CallOperation,DefaultTransition,rationale,testCase,Object,valueBinding_D,Message,allocate,Link,Reception,conform,Constructor,UseCaseDiagram,Requirements Diagram,ComponentDiagram,Pin,Statechart,ValueType,SysML,HyperLink,AllocationsTable,Actor,ConstraintParameter,Requirement,Tag,ClassifierRole,AssociationEnd,Component,Event,PanelDiagram,PrimitiveOperation,Package Diagram,activity_D,InteractionOperand,Argument,Block Definition Diagram,BindingConnector,ObjectModelDiagram,connector,Transition,InteractionOccurrence,Flow,Type,EnumerationLiteral,CombinedFragment,ConstraintBlock,Package,Folder,File,Connector,problem,Dimension,Configuration,Internal Block Diagram,DeploymentDiagram,SysMLPort,State,flowSpecification,ExecutionOccurrence,ActivityDiagram,ReferenceActivity
-arguments5="-Djava.library.path="$OMROOT/JavaAPI" -DTab=Dependencies -DDirection=TO -classpath "$OMROOT/JavaAPI/rhapsody.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/ModelingToolbox.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonGUITools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonRhapsodyTools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/miglayout-4.0.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/balloontip-1.2.1.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RenameActions.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RefactorActionName.jar" com.ibm.rhapsody.setoolkit.ModelingToolbox_Launcher"
+arguments4="-Djava.library.path="$OMROOT/JavaAPI" -DTab=Hyperlinks -DDirection=FROM -classpath "$OMROOT/JavaAPI/rhapsody.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/ModelingToolbox.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonGUITools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonRhapsodyTools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/miglayout-4.0.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/balloontip-1.2.1.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RenameActions.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RefactorActionName.jar" com.ibm.rhapsody.setoolkit.ModelingToolbox_Launcher"
 initialDir65=$JavaLocation/bin
 isMacro65=0
 applicableToProfile65=
 helperTriggers65=
 
-name66=SE-Toolkit\Add Dependencies\From Selected
+name66=SE-Toolkit\Add Dependencies\To Selected
 command66=javaw
 isSynced66=0
 isVisible66=1
 applicableTo66=Operation,Condition,flowProperty,DataType,SequenceDiagram,verify,Generalization,Parametric Diagram,Module,Dependency,Swimlane,standardPort,Attribute,ValueProperty,Project,ControlledFile,Comment,Profile,Port,CollaborationDiagram,Node,ConstraintProperty,Class,TriggeredOperation,localPrecondition,viewpoint,StructureDiagram,view,flowAttribute,localPostcondition,ObjectNode,UseCase,satisfy,Association,ComponentInstance,Constraint,Block,Stereotype,refine,Unit,RequirementsTable,Destructor,CallOperation,DefaultTransition,rationale,testCase,Object,valueBinding_D,Message,allocate,Link,Reception,conform,Constructor,UseCaseDiagram,Requirements Diagram,ComponentDiagram,Pin,Statechart,ValueType,SysML,HyperLink,AllocationsTable,Actor,ConstraintParameter,Requirement,Tag,ClassifierRole,AssociationEnd,Component,Event,PanelDiagram,PrimitiveOperation,Package Diagram,activity_D,InteractionOperand,Argument,Block Definition Diagram,BindingConnector,ObjectModelDiagram,connector,Transition,InteractionOccurrence,Flow,Type,EnumerationLiteral,CombinedFragment,ConstraintBlock,Package,Folder,File,Connector,problem,Dimension,Configuration,Internal Block Diagram,DeploymentDiagram,SysMLPort,State,flowSpecification,ExecutionOccurrence,ActivityDiagram,ReferenceActivity
-arguments6="-Djava.library.path="$OMROOT/JavaAPI" -DTab=Dependencies -DDirection=FROM -classpath "$OMROOT/JavaAPI/rhapsody.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/ModelingToolbox.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonGUITools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonRhapsodyTools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/miglayout-4.0.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/balloontip-1.2.1.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RenameActions.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RefactorActionName.jar" com.ibm.rhapsody.setoolkit.ModelingToolbox_Launcher"
+arguments5="-Djava.library.path="$OMROOT/JavaAPI" -DTab=Dependencies -DDirection=TO -classpath "$OMROOT/JavaAPI/rhapsody.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/ModelingToolbox.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonGUITools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonRhapsodyTools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/miglayout-4.0.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/balloontip-1.2.1.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RenameActions.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RefactorActionName.jar" com.ibm.rhapsody.setoolkit.ModelingToolbox_Launcher"
 initialDir66=$JavaLocation/bin
 isMacro66=0
 applicableToProfile66=
 helperTriggers66=
 
-#REM: Add SDCleaner plugin from Harmony profile
-name67=SDCleaner
-JavaMainClass67=com.ibm.rhapsody.setoolkit.SDCleaner_Launcher
-JavaClassPath67=$OMROOT/Profiles/HarmonySE/SE Toolkit/SDCleaner.jar
-isPlugin67=1
+name67=SE-Toolkit\Add Dependencies\From Selected
+command67=javaw
+isSynced67=0
+isVisible67=1
+applicableTo67=Operation,Condition,flowProperty,DataType,SequenceDiagram,verify,Generalization,Parametric Diagram,Module,Dependency,Swimlane,standardPort,Attribute,ValueProperty,Project,ControlledFile,Comment,Profile,Port,CollaborationDiagram,Node,ConstraintProperty,Class,TriggeredOperation,localPrecondition,viewpoint,StructureDiagram,view,flowAttribute,localPostcondition,ObjectNode,UseCase,satisfy,Association,ComponentInstance,Constraint,Block,Stereotype,refine,Unit,RequirementsTable,Destructor,CallOperation,DefaultTransition,rationale,testCase,Object,valueBinding_D,Message,allocate,Link,Reception,conform,Constructor,UseCaseDiagram,Requirements Diagram,ComponentDiagram,Pin,Statechart,ValueType,SysML,HyperLink,AllocationsTable,Actor,ConstraintParameter,Requirement,Tag,ClassifierRole,AssociationEnd,Component,Event,PanelDiagram,PrimitiveOperation,Package Diagram,activity_D,InteractionOperand,Argument,Block Definition Diagram,BindingConnector,ObjectModelDiagram,connector,Transition,InteractionOccurrence,Flow,Type,EnumerationLiteral,CombinedFragment,ConstraintBlock,Package,Folder,File,Connector,problem,Dimension,Configuration,Internal Block Diagram,DeploymentDiagram,SysMLPort,State,flowSpecification,ExecutionOccurrence,ActivityDiagram,ReferenceActivity
+arguments6="-Djava.library.path="$OMROOT/JavaAPI" -DTab=Dependencies -DDirection=FROM -classpath "$OMROOT/JavaAPI/rhapsody.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/ModelingToolbox.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonGUITools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonRhapsodyTools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/miglayout-4.0.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/balloontip-1.2.1.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RenameActions.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RefactorActionName.jar" com.ibm.rhapsody.setoolkit.ModelingToolbox_Launcher"
+initialDir67=$JavaLocation/bin
+isMacro67=0
+applicableToProfile67=
 helperTriggers67=
 
-#REM: Add pop-up menu
-name68=SE-Toolkit\Straighten Messages
-isPluginCommand68=1
-command68=SDCleaner
-applicableTo68=SequenceDiagram
-isVisible68=1
+#REM: Add SDCleaner plugin from Harmony profile
+name68=SDCleaner
+JavaMainClass68=com.ibm.rhapsody.setoolkit.SDCleaner_Launcher
+JavaClassPath68=$OMROOT/Profiles/HarmonySE/SE Toolkit/SDCleaner.jar
+isPlugin68=1
 helperTriggers68=
 
-name69=SE-Toolkit\Generate Sequence Diagrams
-command69=javaw
-isSynced69=0
+#REM: Add pop-up menu
+name69=SE-Toolkit\Straighten Messages
+isPluginCommand69=1
+command69=SDCleaner
+applicableTo69=SequenceDiagram
 isVisible69=1
-applicableTo69=CallOperation,ActivityDiagramGE,MessageAction,State,ActivityDiagram,CallOperationActivity
-arguments75="-Djava.library.path="$OMROOT/JavaAPI" -DTab=GenerateSD -DDirection=FROM -classpath "$OMROOT/JavaAPI/rhapsody.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/ModelingToolbox.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonGUITools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonRhapsodyTools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/miglayout-4.0.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/balloontip-1.2.1.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RenameActions.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RefactorActionName.jar" com.ibm.rhapsody.setoolkit.ModelingToolbox_Launcher"
-initialDir69=$JavaLocation/bin
-isMacro69=0
-applicableToProfile69=
 helperTriggers69=
+
+name70=SE-Toolkit\Generate Sequence Diagrams
+command70=javaw
+isSynced70=0
+isVisible70=1
+applicableTo70=CallOperation,ActivityDiagramGE,MessageAction,State,ActivityDiagram,CallOperationActivity
+arguments70="-Djava.library.path="$OMROOT/JavaAPI" -DTab=GenerateSD -DDirection=FROM -classpath "$OMROOT/JavaAPI/rhapsody.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/ModelingToolbox.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonGUITools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonRhapsodyTools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/miglayout-4.0.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/balloontip-1.2.1.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RenameActions.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RefactorActionName.jar" com.ibm.rhapsody.setoolkit.ModelingToolbox_Launcher"
+initialDir70=$JavaLocation/bin
+isMacro70=0
+applicableToProfile70=
+helperTriggers70=
 
 #REM Copyright (C) 2018-2022  MBSE Training and Consulting Limited (www.executablembse.com)
 #REM
