@@ -118,11 +118,6 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 					_context.hasStereotypeCalled( _context.NEW_TERM_FOR_FLOW_FINAL_USAGE, modelElement )){
 
 				afterAddForFlowFinalUsage( (IRPInstance) modelElement );
-			
-			} else if( modelElement instanceof IRPStructureDiagram && 
-					_context.hasStereotypeCalled( _context.NEW_TERM_FOR_IBD_FUNCTIONAL, modelElement )){
-
-				afterAddForInternalBlockDiagramFunctional( (IRPStructureDiagram) modelElement );
 				
 			} else if( theUserDefinedMetaClass.equals( "Object" ) ){
 
@@ -576,22 +571,6 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			IRPGraphElement thePortGraphEl = getGraphElFor( theOutPort );
 			thePortGraphEl.setGraphicalProperty( "Position", theNodeInfo.getTopLeftX() + "," + theNodeInfo.getMiddleY() );
 		}
-	}
-	
-	private void afterAddForInternalBlockDiagramFunctional(
-			IRPStructureDiagram theDiagram ){		
-		
-		_context.info( "afterAddForInternalBlockDiagramFunctional for " + _context.elInfo( theDiagram ) );
-		
-		@SuppressWarnings("unchecked")
-		List<IRPGraphElement> theGraphEls = theDiagram.getGraphicalElements().toList();
-		
-		for (IRPGraphElement theGraphEl : theGraphEls) {
-			
-			_context.info( "Found graph el tied to " + _context.elInfo( theGraphEl.getModelObject() ) );
-			_context.dumpGraphicalPropertiesFor( theGraphEl );
-		}
-		
 	}
 	
 	private void afterAddForDecisionUsage(
