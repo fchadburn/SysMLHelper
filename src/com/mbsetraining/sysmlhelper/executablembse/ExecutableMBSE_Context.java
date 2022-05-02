@@ -519,13 +519,26 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		return theValue;
 	}
+	
+	public String getCSVExportSeparator(
+			IRPModelElement basedOnContext ){
 
-	public boolean getCVSExportIncludeArtifactName(
+		String theValue = basedOnContext.getPropertyValue(
+				"ExecutableMBSEProfile.RequirementsAnalysis.CSVExportSeparator" );
+
+		if( theValue == null || theValue.isEmpty() ){
+			theValue = "Error";
+		}
+
+		return theValue;
+	}
+
+	public boolean getCSVExportIncludeArtifactName(
 			IRPModelElement basedOnContext ){
 
 		boolean result = getBooleanPropertyValue(
 				basedOnContext,
-				"ExecutableMBSEProfile.RequirementsAnalysis.CVSExportIncludeArtifactName" );
+				"ExecutableMBSEProfile.RequirementsAnalysis.CSVExportIncludeArtifactName" );
 
 		return result;		
 	}

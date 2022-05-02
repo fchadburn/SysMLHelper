@@ -47,23 +47,35 @@ public class ExportRequirementsToCSV {
 
 			try {
 
+				// Get controlling properties
 				String artifactTypeForCSVExport = _context.getCSVExportArtifactType( underEl );
-				boolean isNameForCVSExport = _context.getCVSExportIncludeArtifactName( underEl );
+				String separator = _context.getCSVExportSeparator( underEl );
+				boolean isNameForCVSExport = _context.getCSVExportIncludeArtifactName( underEl );
+
+				_context.debug( "exportRequirementsToCSV CSVExportSeparator=" + 
+						separator + ", CSVExportArtifactType=" + artifactTypeForCSVExport + 
+						", CVSExportIncludeArtifactName=" + isNameForCVSExport );
 
 				FileWriter myWriter = new FileWriter( theFileName );
 
+				if( !separator.equals("," ) ){
+					String info = "sep=" + separator;
+					_context.info( "Added " + info + " to export as CSVExportSeparator property is not a comma" );
+					myWriter.write( info + "\n" );
+				}
+				
 				if( isNameForCVSExport ){
-					myWriter.write( "Artifact Type,Name,Primary Text\n" );
+					myWriter.write( "Artifact Type" + separator + "Name" + separator + "Primary Text\n" );
 				} else {
-					myWriter.write( "Artifact Type,Primary Text\n" );
+					myWriter.write( "Artifact Type" + separator + "Primary Text\n" );
 				}
 
 				for (IRPRequirement theReqt : theReqts) {
 
 					if( isNameForCVSExport ){
-						myWriter.write( artifactTypeForCSVExport + "," + theReqt.getName() + "," + theReqt.getSpecification() + "\n" );
+						myWriter.write( artifactTypeForCSVExport + separator + theReqt.getName() + separator + theReqt.getSpecification() + "\n" );
 					} else {
-						myWriter.write( artifactTypeForCSVExport + "," + theReqt.getSpecification() + "\n" );
+						myWriter.write( artifactTypeForCSVExport + separator + theReqt.getSpecification() + "\n" );
 					}
 				}
 

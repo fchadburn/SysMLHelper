@@ -672,8 +672,11 @@ V4.0.t.Rhp831.PreRelease (XX-XXX-XXXX):
 #485 14-APR-2022: ExecutableMBSE: Populate parts helper needs to allow for child to be unticked with parent still ticked (F.J.Chadburn)
 #486 14-APR-2022: ExecutableMBSE: Add right-click to select classifiers of parts owned by a block to ease BDD drawing (F.J.Chadburn)
 #487 14-APR-2022: ExecutableMBSE: Add the TableL - Use case feature function satisfactions context pattern layout for viewing requirements (F.J.Chadburn)
+#488 02-MAY-2022: ExecutableMBSE: Added CSVExportSeparator property to ease import into MS Excel to get requirements into DOORS NG without comma issues (F.J.Chadburn)
 
 Backlog/Known issues
+- Check that fix dependency layout works for sysml helper profile as well as executable one
+- Default the sysml helper profile so that double-click does not operate?
 - Copy AD doesn't work if activity diagram is pulled into separate package
 - Right-click a function block to create new requirement
 - Change default size of function usages
@@ -683,7 +686,6 @@ Backlog/Known issues
 - Create relationship table using a context pattern to report through the function/subsystem relationships
 - Double-click a function block to create an ibd - functional
 - Get metamodel profile to deal with General::Graphics::AdditionalCompartments better
-- Right-click system and subsystem block and select related classifiers based on usages/parts
 - Add callout notation support
 - Automatically add related class if bdd is created as child of a class, since it is probably going to start with the block at top
 - Is RMM causing profile to unload?
@@ -711,7 +713,6 @@ Backlog/Known issues
 - Add ability to roll up transitions where you're looking at the entry action.
 - When you use set operation it cannot roll up traceability
 - Use of Harmony toolkit before switching to this one changes the display options
-- Resolve issue with comma's used in the csv file that is exported to DOORS NG
 - Get the panel diagram population of test bench to be auto set
 - If SysML stereotype is not applied on project then an error occurs in the transition roll up of requirements, hence need to add check/warning
 - Double word on event creation dialog could be improved, reqTestBedOperatorOperatorPowersOnController
