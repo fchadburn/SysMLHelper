@@ -673,8 +673,10 @@ V4.0.t.Rhp831.PreRelease (XX-XXX-XXXX):
 #486 14-APR-2022: ExecutableMBSE: Add right-click to select classifiers of parts owned by a block to ease BDD drawing (F.J.Chadburn)
 #487 14-APR-2022: ExecutableMBSE: Add the TableL - Use case feature function satisfactions context pattern layout for viewing requirements (F.J.Chadburn)
 #488 02-MAY-2022: ExecutableMBSE: Added CSVExportSeparator property to ease import into MS Excel to get requirements into DOORS NG without comma issues (F.J.Chadburn)
+#489 03-MAY-2022: ExecutableMBSE: Constrain end link panel so bleed only occurs on activitydiagramge so it doesn't color requirements on statecharts/rds unexpectadly (F.J.Chadburn)
 
 Backlog/Known issues
+- When you draw a flow from a subsystem usage Rhapsody puts the flow into the system architecture package rather than the context diagram package
 - Check that fix dependency layout works for sysml helper profile as well as executable one
 - Default the sysml helper profile so that double-click does not operate?
 - Copy AD doesn't work if activity diagram is pulled into separate package
@@ -697,7 +699,6 @@ Backlog/Known issues
 - Get helper to build package hierarchy from the nested parts hioerarchy for subsystems
 - Add a right-click helper to create/sync olsc links for all relations shown on a diagram
 - Automatically name statecharts when they are created, STM - <Block name>, as statechart_3 doesn't really help as a name
-- Bleed appearing on statechart unexpectadly
 - Add ability to right-click a use case and move to a new use case package (to spawn further development)
 - Add dialog to toggle autoshow stereotype with dontshow, so that you can easily switch to/from TC usage
 - Add helper to automatically add a default .jazzignore file to newly created project

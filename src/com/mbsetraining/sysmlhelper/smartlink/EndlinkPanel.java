@@ -212,19 +212,26 @@ public class EndlinkPanel extends ExecutableMBSEBasePanel {
 			
 			if( theModelObject instanceof IRPRequirement ){
 				
-				//_context.info( "Bleed colour to " + _context.elInfo( theModelObject ) );
+				IRPDiagram theDiagram = _endLinkGraphEl.getDiagram();
 				
-				_context.bleedColorToGraphElsRelatedTo( 
-						theModelObject, 
-						theForegroundColour, 
-						_endLinkGraphEl.getDiagram() );
+				// 0nly bleed if requirement is on activity diagram
+				if( theDiagram.getMetaClass().equals( "ActivityDiagramGE" ) ){
+					
+					_context.debug( "Bleed colour to " + _context.elInfo( theModelObject ) + 
+							" on " + _context.elInfo( theDiagram ) );
+					
+					_context.bleedColorToGraphElsRelatedTo( 
+							theModelObject, 
+							theForegroundColour, 
+							theDiagram );
+				}
 			}
 		}
 	}
 }
 
 /**
- * Copyright (C) 2017-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2017-2022  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 
