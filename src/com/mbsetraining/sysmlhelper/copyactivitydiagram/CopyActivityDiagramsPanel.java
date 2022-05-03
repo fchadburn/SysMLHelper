@@ -39,7 +39,6 @@ public class CopyActivityDiagramsPanel extends ExecutableMBSEBasePanel {
 	
 	private Map<IRPUseCase, CopyActivityDiagramsInfo> m_RadioButtonMap = new HashMap<IRPUseCase, CopyActivityDiagramsInfo>();
 	private IRPModelElement m_ToElement = null;
-	//private IRPModelElement m_UnderneathTheEl = null;
 	private JCheckBox m_ApplyMoreDetailedADCheckBox; 
 	private JCheckBox m_CopyAllCheckBox;
 	private JCheckBox m_OpenDiagramsCheckBox;
@@ -147,9 +146,7 @@ public class CopyActivityDiagramsPanel extends ExecutableMBSEBasePanel {
 				
 		IRPModelElement theSelectedEl = _context.getSelectedElement( false );
 		
-		Set<IRPPackage> thePullFromPkgs = 
-				((ExecutableMBSE_Context) _context).getPullFromPackage( 
-						theSelectedEl );
+		Set<IRPPackage> thePullFromPkgs = _context.getPullFromPackage( theSelectedEl );
 		
 		List<IRPUseCase> theUseCases = new ArrayList<IRPUseCase>();
 		

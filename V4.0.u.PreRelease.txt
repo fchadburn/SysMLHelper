@@ -663,7 +663,7 @@ V4.0.s.Rhp831.PreRelease (08-APR-2022):
 #478 08-APR-2022: ExecutableMBSE: Right-click Function Block and choose start link to create traceability to requirement on a diagram (F.J.Chadburn)
 #479 08-APR-2022: ExecutableMBSE: Allow feature function package to own working copy use case package to enable a working activity diagram to be used in the process (F.J.Chadburn) 
 
-V4.0.t.Rhp831.PreRelease (XX-XXX-XXXX):
+V4.0.t.Rhp831.PreRelease (03-MAY-2022):
 #480 08-APR-2022: ExecutableMBSE: Allow function blocks to own parallel gateway and decision usage parts (F.J.Chadburn)
 #481 08-APR-2022: ExecutableMBSE: Change default ReferenceUnitPath setup by script on project to Relative (F.J.Chadburn)
 #482 11-APR-2022: ExecutableMBSE: Initial implementation of Start Usage, Final Usage, and Flow Final Usage to the drawing toolbar for IBD - Functional (F.J.Chadburn)
@@ -675,11 +675,13 @@ V4.0.t.Rhp831.PreRelease (XX-XXX-XXXX):
 #488 02-MAY-2022: ExecutableMBSE: Added CSVExportSeparator property to ease import into MS Excel to get requirements into DOORS NG without comma issues (F.J.Chadburn)
 #489 03-MAY-2022: ExecutableMBSE: Constrain end link panel so bleed only occurs on activitydiagramge so it doesn't color requirements on statecharts/rds unexpectadly (F.J.Chadburn)
 
+V4.0.t.Rhp831.PreRelease (XX-XXX-XXXX):
+#490 03-MAY-2022: ExecutableMBSE: Get copy AD to work if activity diagrams are are hyperlinked from use case rather than owned, e.g., in separate package (F.J.Chadburn)
+
 Backlog/Known issues
 - When you draw a flow from a subsystem usage Rhapsody puts the flow into the system architecture package rather than the context diagram package
 - Check that fix dependency layout works for sysml helper profile as well as executable one
 - Default the sysml helper profile so that double-click does not operate?
-- Copy AD doesn't work if activity diagram is pulled into separate package
 - Right-click a function block to create new requirement
 - Change default size of function usages
 - Autodraw of flow connector is not positioning in and out flows very well 

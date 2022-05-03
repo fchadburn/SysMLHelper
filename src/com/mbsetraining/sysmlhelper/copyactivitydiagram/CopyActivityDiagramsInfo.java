@@ -16,15 +16,12 @@ public class CopyActivityDiagramsInfo {
 	private List<IRPFlowchart> m_NestedFlowcharts;
 	private ButtonGroup m_ButtonGroup;
 	
-	@SuppressWarnings("unchecked")
 	public CopyActivityDiagramsInfo(
 			IRPUseCase forTheUseCase ) {
 		
 		m_UseCase = forTheUseCase;
 	
-		m_NestedFlowcharts = m_UseCase.getNestedElementsByMetaClass(
-				"ActivityDiagram", 1).toList();
-
+		m_NestedFlowcharts = determinedFlowchartsFor( m_UseCase );
 		m_CopyExistingButton = new JRadioButton("Copy Existing");
 		m_CreateNewButton = new JRadioButton("Create New");
 		m_DoNothingButton = new JRadioButton("Do Nothing");
@@ -69,10 +66,35 @@ public class CopyActivityDiagramsInfo {
 		return m_NestedFlowcharts;	
 	}
 	
+	private List<IRPFlowchart> determinedFlowchartsFor(
+			IRPUseCase theUseCase ){
+		
+		@SuppressWarnings("unchecked")
+		List<IRPFlowchart> theFlowcharts = theUseCase.getNestedElementsByMetaClass(
+				"ActivityDiagram", 1).toList();
+		
+		@SuppressWarnings("unchecked")
+		List<IRPHyperLink> theHyperLinks = theUseCase.getHyperLinks().toList();
+		
+		// Cope with instance where activity diagram has been moved into a separate package and has a HyperLink instead
+		for (IRPHyperLink theHyperLink : theHyperLinks) {
+			
+			IRPModelElement theTarget = theHyperLink.getTarget();
+			
+			if( theTarget instanceof IRPFlowchart ){
+				
+				if( !theFlowcharts.contains( theTarget ) ){
+					theFlowcharts.add( (IRPFlowchart) theTarget );
+				}
+			}
+		}
+		
+		return theFlowcharts;
+	}
 }
 
 /**
- * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2016-2022  MBSE Training and Consulting Limited (www.executablembse.com)
         
     This file is part of SysMLHelperPlugin.
 
