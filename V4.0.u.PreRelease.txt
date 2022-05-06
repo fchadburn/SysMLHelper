@@ -682,6 +682,7 @@ V4.0.u.Rhp831.PreRelease (XX-XXX-XXXX):
 Backlog/Known issues
 - Add icons for remaining group categories still to do e.g. function flow diagram elements and ibds 
 - Get external signals package to be created under context diagram by default to make root browser more focused
+- Check icons in other profiles still working, e.g. functional profile
 - When you draw a flow from a subsystem usage Rhapsody puts the flow into the system architecture package rather than the context diagram package
 - Check that fix dependency layout works for sysml helper profile as well as executable one
 - Default the sysml helper profile so that double-click does not operate?
@@ -728,7 +729,6 @@ Backlog/Known issues
 - Change icons for IBD - Simple to reflect the SysML ones
 - Auto-move for InterfaceBlock?
 - Hide TriggeredOperations/Constructor/Destructor perhaps?
-- Move icons into the Icon package and ensure they're all controlled files so that Save As works cleanly
 - Move projects into separate root folders for cleanliness of plug-and-play
 - Get the auto-generate ports/interfaces for connector to determine if there is a subsystem interfaces package in the model for events etc?
 - Incorporate short-hand names with subsystems into a table and use with auto interface and port creation, if present
