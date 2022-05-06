@@ -675,10 +675,13 @@ V4.0.t.Rhp831.PreRelease (03-MAY-2022):
 #488 02-MAY-2022: ExecutableMBSE: Added CSVExportSeparator property to ease import into MS Excel to get requirements into DOORS NG without comma issues (F.J.Chadburn)
 #489 03-MAY-2022: ExecutableMBSE: Constrain end link panel so bleed only occurs on activitydiagramge so it doesn't color requirements on statecharts/rds unexpectadly (F.J.Chadburn)
 
-V4.0.t.Rhp831.PreRelease (XX-XXX-XXXX):
+V4.0.u.Rhp831.PreRelease (XX-XXX-XXXX):
 #490 03-MAY-2022: ExecutableMBSE: Get copy AD to work if activity diagrams are are hyperlinked from use case rather than owned, e.g., in separate package (F.J.Chadburn)
+#491 06-MAY-2022: ExecutableMBSE: Housekeeping of icons in IconPkg so that all are controlled files and named consistent to metaclass (F.J.Chadburn)
 
 Backlog/Known issues
+- Add icons for remaining group categories still to do e.g. function flow diagram elements and ibds 
+- Get external signals package to be created under context diagram by default to make root browser more focused
 - When you draw a flow from a subsystem usage Rhapsody puts the flow into the system architecture package rather than the context diagram package
 - Check that fix dependency layout works for sysml helper profile as well as executable one
 - Default the sysml helper profile so that double-click does not operate?
@@ -706,7 +709,6 @@ Backlog/Known issues
 - Add helper to automatically add a default .jazzignore file to newly created project
 - Improve traceability browser to have the relationship names in the tree, e.g., satisfy vs derive
 - Some menus no longer need to work for packages, rather should only work for new terms
-- Move all executable mbse icons into nested icon package
 - Hide the software package stuff
 - Can any more automation help with TestConductor/ATG initial setup?
 - BlackBox. 
