@@ -41,6 +41,7 @@ import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateOperationPanel;
 import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateOutgoingEventPanel;
 import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateTracedAttributePanel;
 import com.mbsetraining.sysmlhelper.tracedelementpanels.UpdateTracedAttributePanel;
+import com.mbsetraining.sysmlhelper.usecasemover.UseCaseMover;
 import com.mbsetraining.sysmlhelper.usecasepackage.CreateUseCasesPackagePanel;
 import com.telelogic.rhapsody.core.*;
 
@@ -748,6 +749,39 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 					RepairLinks theRepairer = new RepairLinks( _context );
 					theRepairer.repairAllDiagrams( theSelectedEl );
+					
+				} else if( menuItem.equals( _settings.getString( 
+						"executablembseplugin.MoveUseCaseIntoSeparatePkg" ) ) ){
+										
+					List<IRPUseCase> theUseCases = new ArrayList<>();
+					
+					Set<IRPModelElement> theCandidateEls = 
+							_context.getSetOfElementsFromCombiningThe( 
+									theSelectedEls, theSelectedGraphEls );
+					
+					for( IRPModelElement theCandidateEl : theCandidateEls ){
+						
+						if( theCandidateEl instanceof IRPUseCase ){
+							theUseCases.add( (IRPUseCase) theCandidateEl );
+						}
+					}
+					
+					if( theUseCases.isEmpty() ){
+						
+						_context.warning( "There were no selected use cases. Right-click a use case and try again");
+						
+					} else {
+
+						String theMsg = "Do you want to move the " + theUseCases.size() + " selected use cases \n" +
+								"into their own packages? \n";
+
+						boolean answer = UserInterfaceHelper.askAQuestion( theMsg );
+
+						if( answer ){
+							UseCaseMover theMover = new UseCaseMover( _context );
+							theMover.moveUseCasesToNewPackages( theUseCases, true );
+						}
+					}
 					
 				} else {
 					_context.warning( "Unhandled menu: " + _context.elInfo( theSelectedEl ) + " was invoked with menuItem='" + menuItem + "'");

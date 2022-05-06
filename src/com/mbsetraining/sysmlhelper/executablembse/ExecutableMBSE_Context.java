@@ -55,10 +55,14 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String DESIGN_SYNTHESIS_SUBSYSTEM_INTERFACES_PACKAGE = "33 Design Synthesis - Subsystem Interfaces Package";
 	public final String DESIGN_SYNTHESIS_LOGICAL_SYSTEM_PACKAGE = "31 Design Synthesis - System Architecture Package";
 	public final String DESIGN_SYNTHESIS_FEATURE_FUNCTION_PACKAGE = "32 Design Synthesis - Feature Function Package";
+	public final String REQUIREMENTS_DIAGRAM_SYSTEM = "Requirements Diagram - System";
 	public final String TIME_ELAPSED_BLOCK_STEREOTYPE = "TimeBlock";
 	public final String ELAPSED_TIME_GENERATOR_STEREOTYPE = "TimeGenerator";
 	public final String NEW_TERM_FOR_USE_CASE_DIAGRAM = "EnhancedUseCaseDiagram";
 	public final String NEW_TERM_FOR_SYSTEM_CONTEXT_DIAGRAM = "SystemContextDiagram";
+	public final String NEW_TERM_FOR_REQUIRMENTS_DIAGRAM_SYSTEM = "RequirementsDiagramSystem";
+	public final String NEW_TERM_FOR_TEXTUAL_ACTIVITY_DIAGRAM = "Textual Activity";
+	public final String NEW_TERM_FOR_CALL_OPERATION_ACTIVITY_DIAGRAM = "Call Operation Activity";
 	public final String NEW_TERM_FOR_ACTOR_USAGE = "ActorUsage";
 	public final String NEW_TERM_FOR_PARALLEL_GATEWAY_USAGE = "ParallelGatewayUsage";
 	public final String NEW_TERM_FOR_START_USAGE = "StartUsage";

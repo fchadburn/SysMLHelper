@@ -678,6 +678,7 @@ V4.0.t.Rhp831.PreRelease (03-MAY-2022):
 V4.0.u.Rhp831.PreRelease (XX-XXX-XXXX):
 #490 03-MAY-2022: ExecutableMBSE: Get copy AD to work if activity diagrams are are hyperlinked from use case rather than owned, e.g., in separate package (F.J.Chadburn)
 #491 06-MAY-2022: ExecutableMBSE: Housekeeping of icons in IconPkg so that all are controlled files and named consistent to metaclass (F.J.Chadburn)
+#492 06-MAY-2022: ExecutableMBSE: Add ability to right-click a use case and move to new package (F.J.Chadburn)
 
 Backlog/Known issues
 - Add icons for remaining group categories still to do e.g. function flow diagram elements and ibds 
@@ -685,27 +686,24 @@ Backlog/Known issues
 - Check icons in other profiles still working, e.g. functional profile
 - When you draw a flow from a subsystem usage Rhapsody puts the flow into the system architecture package rather than the context diagram package
 - Check that fix dependency layout works for sysml helper profile as well as executable one
-- Default the sysml helper profile so that double-click does not operate?
 - Right-click a function block to create new requirement
-- Change default size of function usages
+- Change default size of function usages so slightly less wide
 - Autodraw of flow connector is not positioning in and out flows very well 
 - Input and Output ports are not showing on ibd - functional by default
-- Automatically rename function usages with a number?
+- Consider a helper to rename function usages with a number based on left to right on diagram
 - Create relationship table using a context pattern to report through the function/subsystem relationships
 - Double-click a function block to create an ibd - functional
 - Get metamodel profile to deal with General::Graphics::AdditionalCompartments better
-- Add callout notation support
+- Add callout notation support to the diagram toolbar's perhaps?
 - Automatically add related class if bdd is created as child of a class, since it is probably going to start with the block at top
-- Is RMM causing profile to unload?
-- Add ability to right-click a use case and move to new package
-- When I created a seperate scenario package the project properties were not set, check this
+- Is EWM accept refresh causing profile to unload, any idea why?
+- Could enhanced move to new package for use cases to give more info, check-boxes for options
+- When I created a seperate scenario package model the project properties were not set, check this
 - Can you show generalizations in a compartment
-- Add a populate blocks to a bdd right click, recurse through the part hiearachy.
 - Get populate parts tree view to grey out elements already on diagram?
-- Get helper to build package hierarchy from the nested parts hioerarchy for subsystems
+- Get helper to build package hierarchy from the nested parts hierarchy for subsystems, can you reuse HarmonySE one for this?
 - Add a right-click helper to create/sync olsc links for all relations shown on a diagram
 - Automatically name statecharts when they are created, STM - <Block name>, as statechart_3 doesn't really help as a name
-- Add ability to right-click a use case and move to a new use case package (to spawn further development)
 - Add dialog to toggle autoshow stereotype with dontshow, so that you can easily switch to/from TC usage
 - Add helper to automatically add a default .jazzignore file to newly created project
 - Improve traceability browser to have the relationship names in the tree, e.g., satisfy vs derive
