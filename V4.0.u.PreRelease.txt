@@ -684,6 +684,7 @@ V4.0.u.Rhp831.PreRelease (XX-XXX-XXXX):
 #495 17-MAY-2022: ExecutableMBSE: Ensure select in browser for classifiers helper misses out on decision usages etc (F.J.Chadburn)
 #496 17-MAY-2022: ExecutableMBSE: Get select in browser for classifiers hlper to work when you right-click an ibd or bdd (F.J.Chadburn)
 #497 17-MAY-2022: ExecutableMBSE: Ensure populate parts helper misses out on decision usages etc (F.J.Chadburn)
+#498 17-MAY-2022: ExecutableMBSE: Cleaned up non-specific group icons to make browser less glitsy and remove confusion with elements (F.J.Chadburn)
 
 Backlog/Known issues
 - Get Derivations to be a default compartment for Function Blocks
