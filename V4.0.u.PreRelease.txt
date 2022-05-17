@@ -679,8 +679,14 @@ V4.0.u.Rhp831.PreRelease (XX-XXX-XXXX):
 #490 03-MAY-2022: ExecutableMBSE: Get copy AD to work if activity diagrams are are hyperlinked from use case rather than owned, e.g., in separate package (F.J.Chadburn)
 #491 06-MAY-2022: ExecutableMBSE: Housekeeping of icons in IconPkg so that all are controlled files and named consistent to metaclass (F.J.Chadburn)
 #492 06-MAY-2022: ExecutableMBSE: Add ability to right-click a use case and move to new package (F.J.Chadburn)
+#493 17-MAY-2022: ExecutableMBSE: Allow Subsystem and System Blocks to own Satisfaction relations (F.J.Chadburn)
 
 Backlog/Known issues
+- Allow Feature Funcion packages to own other feature function packages
+- Ensure populate misses out on decision usages etc
+- Get Derivations to be a default compartment for Function Blocks
+- Get End Link to ask if a Satisfaction or Derivation for Function Blocks
+- Allow System Blocks to own System Blocks?
 - Add icons for remaining group categories still to do e.g. function flow diagram elements and ibds 
 - Get external signals package to be created under context diagram by default to make root browser more focused
 - Check icons in other profiles still working, e.g. functional profile
