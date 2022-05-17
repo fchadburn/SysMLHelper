@@ -12,10 +12,10 @@ public class PartSelector {
 
 	public static void main(String[] args) {
 		String theAppID = RhapsodyAppServer.getActiveRhapsodyApplication().getApplicationConnectionString();
-		
+
 		BaseContext theContext = new ExecutableMBSE_Context(theAppID);
-		
-		
+
+
 		Set<IRPModelElement> theCombinedSet = 
 				theContext.getSetOfElementsFromCombiningThe(
 						theContext.getSelectedElements(), theContext.getSelectedGraphElements() );
@@ -24,7 +24,7 @@ public class PartSelector {
 
 		theSelector.selectPartsFor( 
 				theCombinedSet, true );
-		
+
 	}
 	BaseContext _context;
 
@@ -39,9 +39,9 @@ public class PartSelector {
 			HashSet<IRPModelElement> theElsToHighlight,
 			boolean isRecursively ){
 
-		_context.debug( _context.elInfo( theCandidate ) + " owned by " + 
-				_context.elInfo( theCandidate.getOwner() ) + 
-				" was selected for part selection");
+		//_context.debug( _context.elInfo( theCandidate ) + " owned by " + 
+		//		_context.elInfo( theCandidate.getOwner() ) + 
+		//		" was selected for part selection");
 
 		@SuppressWarnings("unchecked")
 		List<IRPInstance> theNestedElInstances = 
@@ -49,18 +49,22 @@ public class PartSelector {
 
 		for( IRPInstance theNestedInstance : theNestedElInstances ){
 
-			IRPModelElement theOtherClass = theNestedInstance.getOtherClass();
+			// Don't add implicit classes, i.e. objects with no type
+			if( theNestedInstance.isTypelessObject()==0 ){
 
-			if( theOtherClass instanceof IRPClassifier ){
-				theElsToHighlight.add( theOtherClass );
-				
-				if( isRecursively ){					
-					appendClassifiersOfPartsFor( (IRPClassifier) theOtherClass, theElsToHighlight, isRecursively );
+				IRPModelElement theOtherClass = theNestedInstance.getOtherClass();
+
+				if( theOtherClass instanceof IRPClassifier ){
+
+					theElsToHighlight.add( theOtherClass );
+
+					if( isRecursively ){					
+						appendClassifiersOfPartsFor( (IRPClassifier) theOtherClass, theElsToHighlight, isRecursively );
+					}
 				}
 			}
 		}
 	}
-
 
 	public void selectPartsFor(
 			Set<IRPModelElement> theCandidateEls,
@@ -160,7 +164,7 @@ public class PartSelector {
 }
 
 /**
- * Copyright (C) 2017-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2017-2022  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

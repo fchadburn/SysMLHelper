@@ -453,7 +453,7 @@ DLLServerCompatible57=1
 name58=MBSE Method: Other\Select Classifiers Of Parts
 isPluginCommand58=1
 command58=InvokeExecutableMBSEHelper
-applicableTo58=Actor,Block,Class,System Block,Subsystem Block,Domain Block,Feature Block,Function Block,Software Component,C++ Class,Use Case
+applicableTo58=Actor,Block,Class,System Block,Subsystem Block,Domain Block,Feature Block,Function Block,Software Component,C++ Class,Use Case,Block Definition Diagram - System,System Context Diagram,Internal Block Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - Software,Block Definition Diagram - Software
 isVisible58=1
 DLLServerCompatible58=1
 

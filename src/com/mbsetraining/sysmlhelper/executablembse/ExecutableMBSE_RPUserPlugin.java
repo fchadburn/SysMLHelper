@@ -371,7 +371,14 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.SelectChildClassifiersMenu" ) ) ){
-
+					
+					if( ( theSelectedEl instanceof IRPObjectModelDiagram ||
+							theSelectedEl instanceof IRPStructureDiagram ) &&
+							theSelectedEl.getOwner() instanceof IRPClassifier ){
+					
+						theSelectedEls.add( theSelectedEl.getOwner() );
+					}
+					
 					Set<IRPModelElement> theCombinedSet = 
 							_context.getSetOfElementsFromCombiningThe(
 									theSelectedEls, theSelectedGraphEls );

@@ -681,10 +681,11 @@ V4.0.u.Rhp831.PreRelease (XX-XXX-XXXX):
 #492 06-MAY-2022: ExecutableMBSE: Add ability to right-click a use case and move to new package (F.J.Chadburn)
 #493 17-MAY-2022: ExecutableMBSE: Allow Subsystem and System Blocks to own Satisfaction relations (F.J.Chadburn)
 #494 17-MAY-2022: ExecutableMBSE: Allow Feature Function Packages to own other Feature Function packages (F.J.Chadburn)
+#495 17-MAY-2022: ExecutableMBSE: Ensure select in browser for classifiers helper misses out on decision usages etc (F.J.Chadburn)
+#496 17-MAY-2022: ExecutableMBSE: Get select in browser for classifiers hlper to work when you right-click an ibd or bdd (F.J.Chadburn)
 
 Backlog/Known issues
-- Ensure populate misses out on decision usages etc
-- Ensure select in browser for classifiers misses out on decision usages etc
+- Ensure populate parts helper misses out on decision usages etc
 - Get Derivations to be a default compartment for Function Blocks
 - Get End Link to ask if a Satisfaction or Derivation for Function Blocks
 - Allow System Blocks to own System Blocks?
