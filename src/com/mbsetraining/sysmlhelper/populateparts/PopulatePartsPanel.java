@@ -154,7 +154,7 @@ public class PopulatePartsPanel extends ExecutableMBSEBasePanel {
 				new DefaultMutableTreeNode( 
 						new ModelElInfo( theClassifier, thePart, false, _context ) );
 
-		createNodes( top );
+		createNodes( top, false );
 
 		TreeModel treeModel = new DefaultTreeModel( top );
 		_tree = new JCheckBoxTree( _context );                
@@ -187,17 +187,18 @@ public class PopulatePartsPanel extends ExecutableMBSEBasePanel {
 	}
 
 	private void createNodes(
-			DefaultMutableTreeNode underNode ){
+			DefaultMutableTreeNode underNode,
+			boolean isIncludeTypeless ){
 
 		ModelElInfo theModelElInfo = (ModelElInfo) underNode.getUserObject();
 
-		List<ModelElInfo> theChildren = theModelElInfo.getChildren();
+		List<ModelElInfo> theChildren = theModelElInfo.getChildren( isIncludeTypeless );
 
 		for( ModelElInfo theChild : theChildren ){
 
 			DefaultMutableTreeNode theChildNode = new DefaultMutableTreeNode( theChild );
 			underNode.add( theChildNode );
-			createNodes( theChildNode );
+			createNodes( theChildNode, isIncludeTypeless );
 		}        
 	}
 
