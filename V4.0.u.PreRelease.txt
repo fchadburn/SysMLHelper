@@ -685,8 +685,12 @@ V4.0.u.Rhp831.PreRelease (XX-XXX-XXXX):
 #496 17-MAY-2022: ExecutableMBSE: Get select in browser for classifiers hlper to work when you right-click an ibd or bdd (F.J.Chadburn)
 #497 17-MAY-2022: ExecutableMBSE: Ensure populate parts helper misses out on decision usages etc (F.J.Chadburn)
 #498 17-MAY-2022: ExecutableMBSE: Cleaned up non-specific group icons to make browser less glitsy and remove confusion with elements (F.J.Chadburn)
+#499 17-MAY-2022: ExecutableMBSE: Add Derivations to a Feature Block right-click to allow derive relations to higher-level reqts/constraints (F.J.Chadburn)
 
 Backlog/Known issues
+- Adding new flow connectors on flow diagram results in existing ports displaying twice, need to find existing and move rather than re-create?
+- Review whether to split out diagrams, packages, relations, elements etc into submenus.
+- Automatically add flow in and out when you create a function block
 - Get Derivations to be a default compartment for Function Blocks
 - Get End Link to ask if a Satisfaction or Derivation for Function Blocks
 - Allow System Blocks to own System Blocks?
