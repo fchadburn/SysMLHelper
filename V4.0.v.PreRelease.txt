@@ -688,8 +688,8 @@ V4.0.u.Rhp831.PreRelease (18-MAY-2022):
 #499 17-MAY-2022: ExecutableMBSE: Add Derivations to a Feature Block right-click to allow derive relations to higher-level reqts/constraints (F.J.Chadburn)
 
 V4.0.v.Rhp831.PreRelease (XX-XXX-XXXX):
-#500 18-MAY-2022: ExecutableMBSE: Allow a Function Block to have an Activity Diagram
-#501 18-MAY-2022: ExecutableMBSE: Stop Function Block from owning a Function Block
+#500 18-MAY-2022: ExecutableMBSE: Allow a Function Block to have a Textual Activity Diagram (F.J.Chadburn)
+#501 18-MAY-2022: ExecutableMBSE: Stop Function Block from owning a Function Block (F.J.Chadburn)
 
 Backlog/Known issues
 
