@@ -1658,7 +1658,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">5.18.2022::14:7:10</_modifiedTime>
+			<_modifiedTime type="a">5.18.2022::14:36:20</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -14033,7 +14033,7 @@ Query</_Value>
 			<_id type="a">GUID ec717f1d-0b3e-427a-89fd-8b516b2337c8</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Elements</_name>
-			<_modifiedTime type="a">5.18.2022::8:6:2</_modifiedTime>
+			<_modifiedTime type="a">5.18.2022::14:36:20</_modifiedTime>
 			<_lastID type="a">15</_lastID>
 			<_defaultComposite type="s">GUID d51fb0a3-38d7-4d7a-9f45-35fd12f6ff2a</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -14725,7 +14725,7 @@ Query</_Value>
 												<size type="a">7</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Allocation,Actor Usage,Block Definition Diagram - System,Final Usage,Flow Connector,Flow Final Usage,Flow Input,Flow Output,Function Block,Function Usage,Internal Block Diagram - Functional,Parallel Gateway Usage,Requirements Diagram - System,Start Usage,Time Event Usage,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale,Derivation,Requirement,Satisfaction</_Value>
+													<_Value type="a">Allocation,Actor Usage,Block Definition Diagram - System,Final Usage,Flow Connector,Flow Final Usage,Flow Input,Flow Output,Function Usage,Internal Block Diagram - Functional,Parallel Gateway Usage,Requirements Diagram - System,Start Usage,Textual Activity,Time Event Usage,ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale,Derivation,Requirement,Satisfaction</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -14779,7 +14779,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">FunctionBlock</_name>
-			<_modifiedTime type="a">5.6.2022::7:51:50</_modifiedTime>
+			<_modifiedTime type="a">5.18.2022::14:36:20</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
