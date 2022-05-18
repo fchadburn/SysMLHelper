@@ -328,7 +328,7 @@ Subject ObjectModelGe
 		Property ShowPorts Bool "False"
 		Property ShowPortsInterfaces Bool "True"
 		Property PortsSingleLabelLayout Enum "Off,Internal,External" "Off"
-		Property Compartments MultiLine "Description,Satisfaction"
+		Property Compartments MultiLine "Description,Derivation,Satisfaction"
 		Property ShowInheritedAttributes Bool "False"
 		Property ShowInheritedOperations Bool "False"
 		Property QuickNavigationCategories String "MainBehavior,MainDiagram,Hyperlinks,Diagrams"
