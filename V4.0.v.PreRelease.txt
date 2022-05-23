@@ -694,6 +694,7 @@ V4.0.v.Rhp831.PreRelease (XX-XXX-XXXX):
 #503 23-MAY-2022: ExecutableMBSE: Feature Function package needs to own a Textual Activity also
 
 Backlog/Known issues
+- Right-click a function block to create new requirement
 - Adding new flow connectors on flow diagram results in existing ports displaying twice, need to find existing and move rather than re-create?
 - Review whether to split out diagrams, packages, relations, elements etc into submenus.
 - Automatically add flow in and out when you create a function block
@@ -704,7 +705,6 @@ Backlog/Known issues
 - Check icons in other profiles still working, e.g. functional profile
 - When you draw a flow from a subsystem usage Rhapsody puts the flow into the system architecture package rather than the context diagram package
 - Check that fix dependency layout works for sysml helper profile as well as executable one
-- Right-click a function block to create new requirement
 - Change default size of function usages so slightly less wide
 - Autodraw of flow connector is not positioning in and out flows very well 
 - Input and Output ports are not showing on ibd - functional by default
