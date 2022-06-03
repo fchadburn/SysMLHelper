@@ -694,6 +694,11 @@ V4.0.v.Rhp831.PreRelease (XX-XXX-XXXX):
 #503 23-MAY-2022: ExecutableMBSE: Feature Function package needs to own a Textual Activity also
 
 Backlog/Known issues
+- Stop requirements moving when under a function block
+- Auto-populate ownership when adding requirement to diagram
+- Add timing diagram to a child of the function block
+- Allow a requirement package to be owned by a feature function package
+- Function needs to own an internal block diagram system, so that
 - Right-click a function block to create new requirement
 - Adding new flow connectors on flow diagram results in existing ports displaying twice, need to find existing and move rather than re-create?
 - Review whether to split out diagrams, packages, relations, elements etc into submenus.
