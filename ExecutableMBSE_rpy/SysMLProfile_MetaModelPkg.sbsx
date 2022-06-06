@@ -25,7 +25,7 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">4.5.2022::11:10:8</_modifiedTime>
+			<_modifiedTime type="a">6.5.2022::19:47:23</_modifiedTime>
 			<_lastID type="a">100</_lastID>
 			<_defaultComposite type="s">GUID 17d534c9-e8e2-45c6-8b29-5c81cb4d7dea</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -500,7 +500,17 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">4.29.2021::12:7:35</_modifiedTime>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\ExecutableMBSEProfile_MetaModelPkg.sbsx</_hfilename>
+					<_hsubsystem type="a">ExecutableMBSEProfile_MetaModelPkg</_hsubsystem>
+					<_hclass type="a">FunctionBlock</_hclass>
+					<_hname type="a">MMD - FunctionBlock</_hname>
+					<_hid type="a">GUID 2c50888a-3a3d-44a2-8f3c-beb50d086c58</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">6.5.2022::19:47:23</_modifiedTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>

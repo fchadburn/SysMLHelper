@@ -693,12 +693,13 @@ V4.0.v.Rhp831.PreRelease (XX-XXX-XXXX):
 #502 18-MAY-2022: ExecutableMBSE: Add Derivations as a default compartment for Function Blocks in the prp file (F.J.Chadburn)
 #503 23-MAY-2022: ExecutableMBSE: Feature Function package needs to own a Textual Activity also (F.J.Chadburn)
 #504 03-JUN-2022: ExecutableMBSE: Allow a requirement package to be owned by a feature function package (F.J.Chadburn)
+#505 06-JUN-2022: ExecutableMBSE: Allow a timing diagram - functional to be a child of a feature function package (F.J.Chadburn)
+#506 06-JUN-2022: ExecutableMBSE: Tweak timing diagram default dsiplay options so that only specification is shown for requirements (F.J.Chadburn)
 
 Backlog/Known issues
 - Whenever a Textual Activity is created via UI get the template to be applied.
 - Stop requirements moving when under a function block
 - Auto-populate ownership when adding requirement to diagram
-- Add timing diagram to a child of the function block
 - Add a system constraint stereotype
 - Function needs to own an internal block diagram system, so that
 - Right-click a function block to create new requirement
