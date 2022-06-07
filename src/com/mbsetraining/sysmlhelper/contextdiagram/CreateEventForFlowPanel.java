@@ -85,7 +85,7 @@ public class CreateEventForFlowPanel extends ExecutableMBSEBasePanel {
 			
 			if( _elementMover.isMovePossible() ){
 				
-				_eventCreationPackage = _elementMover.get_moveToPkg();
+				_eventCreationPackage = _elementMover.get_newOwner();
 				
 				// Add events in the flow to package first
 				_existingEventEls.addAll( 

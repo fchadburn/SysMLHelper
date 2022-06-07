@@ -26,6 +26,7 @@ Subject ExecutableMBSEProfile
 		Property DefaultContextDiagramPackageName String "SystemX"
 		Property DefaultRequirementsPackageName String "RequirementsPkg"
 		Property IsEnableAutoMoveOfRequirements Bool "True"
+		Property IsKeepRequirementUnderFunctionBlock Bool "True"
 		Property IsEnableAutoMoveOfEventsOnFlowCreation Bool "True"
 		Property IsEnableAutoMoveOfEventsOnAddNewElement Bool "True"
 		Property IsEnableGatewayTypes Bool "False"

@@ -7,7 +7,7 @@ import com.telelogic.rhapsody.core.*;
 
 public class ElementMover {
 
-	final protected IRPPackage _moveToPkg;
+	protected IRPModelElement _newOwner;
 	final protected String _whereMoveToHasStereotype;
 	final protected BaseContext _context;
 	
@@ -18,9 +18,9 @@ public class ElementMover {
 		
 		_context = context;
 		_whereMoveToHasStereotype = whereMoveToHasStereotype;
-		_moveToPkg = determineMoveToPackage( basedOnEl );
+		_newOwner = determineMoveToPackage( basedOnEl );
 		
-		_context.debug( "_moveToPkg for " + whereMoveToHasStereotype + " is " + _context.elInfo( _moveToPkg ) );
+		_context.debug( "_newOwner for " + whereMoveToHasStereotype + " is " + _context.elInfo( _newOwner ) );
 	}
 	
 	protected IRPPackage determineMoveToPackage( 
@@ -93,12 +93,17 @@ public class ElementMover {
 	
 	public boolean isMovePossible(){
 	
-		return _moveToPkg != null;
+		return _newOwner != null;
 	}
 	
-	public IRPModelElement get_moveToPkg(){
+	public IRPModelElement get_newOwner(){
 		
-		return _moveToPkg;
+		return _newOwner;
+	}
+	
+	public void set_newOwner( IRPModelElement newOwner ){
+		
+		_newOwner = newOwner;
 	}
 	
 	public boolean performMove(
@@ -106,11 +111,11 @@ public class ElementMover {
 
 		boolean isSuccess = false;
 
-		if( _moveToPkg != null ){
+		if( _newOwner != null ){
 
 			// check if already element of same name
 			IRPModelElement alreadyExistingEl = 
-					_moveToPkg.findNestedElement( 
+					_newOwner.findNestedElement( 
 							ofElement.getName(),
 							ofElement.getMetaClass() );
 
@@ -119,20 +124,20 @@ public class ElementMover {
 				String uniqueName = _context.determineUniqueNameBasedOn( 
 						ofElement.getName(), 
 						ofElement.getMetaClass(), 
-						_moveToPkg );
+						_newOwner );
 
 				_context.info( "Same name as " + _context.elInfo( ofElement ) 
-						+ " already exists under " + _context.elInfo( _moveToPkg ) + 
+						+ " already exists under " + _context.elInfo( _newOwner ) + 
 						", hence element was renamed to " + uniqueName );
 
 				ofElement.setName( uniqueName );
 			}
 
 			_context.info( "Moving " + _context.elInfo( ofElement ) + 
-					" to " + _context.elInfo( _moveToPkg ) );
+					" to " + _context.elInfo( _newOwner ) );
 
 			ofElement.getProject().save();
-			ofElement.setOwner( _moveToPkg );
+			ofElement.setOwner( _newOwner );
 
 			isSuccess = true;
 			
@@ -144,7 +149,7 @@ public class ElementMover {
 }
 
 /**
- * Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2018-2022  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

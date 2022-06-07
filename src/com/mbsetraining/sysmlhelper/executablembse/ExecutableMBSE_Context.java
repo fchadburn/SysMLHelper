@@ -244,6 +244,14 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		return _isEnableAutoMoveOfRequirements;
 	}
+	
+	public Boolean getIsKeepRequirementUnderFunctionBlock(
+			IRPModelElement theContextEl ){
+
+		return getBooleanPropertyValue(
+					theContextEl,
+					"ExecutableMBSEProfile.RequirementsAnalysis.IsKeepRequirementUnderFunctionBlock" );
+	}
 
 	// Single call per session, but use lazy load
 	public List<IRPModelElement> getStereotypesForBlockPartCreation(){

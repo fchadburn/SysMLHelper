@@ -343,7 +343,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 			if( theChosenMover != null ){
 
-				IRPModelElement moveToPkg = theChosenMover.get_moveToPkg();
+				IRPModelElement moveToPkg = theChosenMover.get_newOwner();
 
 				// This delay + the save should mean that Event won't crash Rhapsody
 				boolean isContinue = UserInterfaceHelper.askAQuestion( 
@@ -709,21 +709,122 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 		return existingActorUsages;
 	}
+	
+	private IRPClassifier getParentFunctionBlockFor(
+			IRPModelElement theEl ){
+		
+		IRPClassifier theParentFunctionBlock = null;
+		
+		//_context.info( "getParentFunctionBlockFor checking " + _context.elInfo( theEl ) + 
+		//		" owned by " + _context.elInfo( theEl.getOwner() ) );
+		
+		if( theEl instanceof IRPClassifier && 
+				theEl.getUserDefinedMetaClass().equals( _context.FUNCTION_BLOCK ) ){
+			
+			theParentFunctionBlock = (IRPClassifier) theEl;
+		
+		} else if( theEl != null && 
+				!( theEl instanceof IRPProject ) ){
+						
+			theParentFunctionBlock = getParentFunctionBlockFor( theEl.getOwner() );
+		} else {
+			theParentFunctionBlock = null;
+		}
+		
+		return theParentFunctionBlock;
+	}
 
+	private IRPDiagram getDiagramFor(
+			IRPModelElement forEl ){
+		
+		@SuppressWarnings("unchecked")
+		List<IRPModelElement> theReferences = forEl.getReferences().toList();
+		List<IRPDiagram> theDiagrams = new ArrayList<>();
+		IRPDiagram theDiagram = null;
+		
+		for( IRPModelElement theReference : theReferences ){
+			
+			if( theReference instanceof IRPDiagram ){
+				theDiagrams.add( (IRPDiagram) theReference );
+			}
+		}
+		
+		if( theDiagrams.size() == 1 ){
+			theDiagram = theDiagrams.get( 0 );
+			
+		}
+		
+		return theDiagram;
+	}
+	
+	@SuppressWarnings("unchecked")
 	private void afterAddForRequirement(
 			IRPModelElement modelElement ){
 
 		// only do move if property is set
-		boolean isEnabled = 
-				_context.getIsEnableAutoMoveOfRequirements();
+		boolean isEnabled = _context.getIsEnableAutoMoveOfRequirements();
 
-		String theReqtsPkgStereotypeName = _context.REQTS_ANALYSIS_REQUIREMENT_PACKAGE;
+		if( isEnabled ){
+			
+			boolean isKeepUnderFunctionBlock = _context.
+					getIsKeepRequirementUnderFunctionBlock( modelElement );
 
-		if( isEnabled && 
-				theReqtsPkgStereotypeName != null ){
+			IRPDiagram theDiagram = getDiagramFor( modelElement );
 
-			RequirementMover theElementMover = new RequirementMover( modelElement, theReqtsPkgStereotypeName, _context );
-			theElementMover.performMove( modelElement );
+			IRPClassifier theParentFunctionBlock;
+			
+			if( theDiagram != null ){
+				theParentFunctionBlock = getParentFunctionBlockFor( theDiagram );
+			} else {	
+				theParentFunctionBlock = getParentFunctionBlockFor( modelElement );
+			}
+
+			RequirementMover theElementMover = new RequirementMover( 
+					modelElement, _context.REQTS_ANALYSIS_REQUIREMENT_PACKAGE, _context );
+			
+			if( theElementMover.isMovePossible() ){
+				
+				if( theParentFunctionBlock != null ){
+										
+					if( isKeepUnderFunctionBlock ){
+						theElementMover.set_newOwner( theParentFunctionBlock );
+					}
+					
+					theElementMover.performMove( modelElement );
+
+
+				} else {
+					theElementMover.performMove( modelElement );
+				}
+				
+			} else if( isKeepUnderFunctionBlock &&
+					theParentFunctionBlock != null &&
+					!modelElement.getOwner().equals( theParentFunctionBlock ) ){
+				
+				theElementMover.set_newOwner( theParentFunctionBlock );
+				theElementMover.performMove( modelElement );
+			}
+			
+			if( theDiagram != null &&
+					theParentFunctionBlock != null ){
+								
+				IRPCollection theCollection = _context.createNewCollection();
+				
+				List<IRPGraphElement> theGraphEls = 
+						theDiagram.getCorrespondingGraphicElements( theParentFunctionBlock ).toList();
+				
+				theGraphEls.addAll( 
+						theDiagram.getCorrespondingGraphicElements( modelElement ).toList() );
+				
+				if( theGraphEls.size() == 2 ){
+
+					for( IRPGraphElement theGraphEl : theGraphEls ){
+						theCollection.addGraphicalItem( theGraphEl );
+					}
+					
+					theDiagram.completeRelations( theCollection, 0 );
+				}
+			}
 		}
 	}
 
