@@ -6,41 +6,57 @@ import java.util.Map;
 
 import javax.swing.JOptionPane;
 
+import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
- 
+
 public class NestedActivityDiagram {
 
-	protected final static String m_Prefix = "AD - ";
+	public final static String _prefix = "act - ";
 	protected BaseContext _context;
+
+	public static void main(String[] args) {
+		
+		ExecutableMBSE_Context context = new ExecutableMBSE_Context( 
+				RhapsodyAppServer.getActiveRhapsodyApplication().getApplicationConnectionString() );
+		
+		NestedActivityDiagram theHelper = new NestedActivityDiagram(context);
+
+		IRPModelElement theEl = context.getSelectedElement( true );
+		
+		theHelper.createNestedActivityDiagram( 
+				theEl, 
+				NestedActivityDiagram._prefix + theEl.getName(),
+				"ExecutableMBSEProfile.RequirementsAnalysis.TemplateForActivityDiagram" );
+	}
 	
 	public NestedActivityDiagram(
 			BaseContext context ) {
-		
+
 		_context = context;
 	}
-	
+
 	public void renameNestedActivityDiagramsFor(
 			List<IRPModelElement> theSelectedEls){
-		
+
 		Map<IRPFlowchart, String> theNewNameMappings = new HashMap<IRPFlowchart, String>(); 
-		
+
 		List<IRPActivityDiagram> theADs = 
 				_context.buildListOfActivityDiagramsFor( theSelectedEls );
-		
+
 		_context.info( "There are " + theADs.size() + 
 				" Activity Diagrams nested under the selected list" );
 
 		for( IRPActivityDiagram theAD : theADs ){
-			
+
 			IRPModelElement theOwner = theAD.getOwner();
 			IRPModelElement theOwnersOwner = theOwner.getOwner();
-			
+
 			if( theOwner instanceof IRPFlowchart && 
-				theOwnersOwner instanceof IRPUseCase ){
-				
+					theOwnersOwner instanceof IRPUseCase ){
+
 				String theUseCaseName = theOwnersOwner.getName();
-				String thePreferredName = m_Prefix + theUseCaseName;
-				
+				String thePreferredName = _prefix + theUseCaseName;
+
 				if( theOwner.getName().equals( thePreferredName ) ){
 					_context.info( "Determined that " + _context.elInfo( theOwner ) + 
 							" already matches " + _context.elInfo( theOwnersOwner ) );
@@ -49,31 +65,31 @@ public class NestedActivityDiagram {
 				}
 			}
 		}
-		
+
 		if( theNewNameMappings.isEmpty() ){
-	
+
 			UserInterfaceHelper.showInformationDialog( 
 					"Nothing to do. The checker has determined that the " + 
-					theADs.size() + " activity diagrams are correctly named." );
-			
+							theADs.size() + " activity diagrams are correctly named." );
+
 		} else {
 			String theMsg = "The checker has determined that " + theNewNameMappings.size() + 
 					" of the " + theADs.size() + " activity diagrams require " +
 					"renaming to match the use cases:\n";
-			
+
 			int count = 0;
-			
+
 			for( Map.Entry<IRPFlowchart, String> entry : theNewNameMappings.entrySet() ){
-			
+
 				count++;
-				
+
 				if( count > 10 ){
 					theMsg = theMsg + "...\n";
 				} else {
 					theMsg = theMsg + _context.elInfo(entry.getKey()) + "\n";
 				}
 			}
-			
+
 			theMsg = theMsg + "\nDo you want to rename them?";
 
 			int response = JOptionPane.showConfirmDialog(
@@ -89,13 +105,13 @@ public class NestedActivityDiagram {
 				if (response == JOptionPane.YES_OPTION) {
 
 					for (Map.Entry<IRPFlowchart, String> entry : theNewNameMappings.entrySet()){
-						
+
 						IRPFlowchart theAD = (IRPFlowchart)entry.getKey();
-					    
-					    try {
-					    	theAD.setName( entry.getValue() );		
-						    _context.debug("Renamed " + _context.elInfo( theAD ) + " to " + entry.getValue() );
-						    
+
+						try {
+							theAD.setName( entry.getValue() );		
+							_context.debug("Renamed " + _context.elInfo( theAD ) + " to " + entry.getValue() );
+
 						} catch (Exception e) {
 							_context.debug("Error: Unable to rename " + _context.elInfo( theAD ) + " to " + entry.getValue());
 						}			    
@@ -107,85 +123,101 @@ public class NestedActivityDiagram {
 			}
 		}
 	}
-	
+
 	public void createNestedActivityDiagramsFor(
 			List<IRPModelElement> theElements ){
-		 
+
 		for( IRPModelElement theElement : theElements ){
-			
-			if( theElement instanceof IRPUseCase ){
-				
+
+			if( theElement instanceof IRPClassifier ||
+					theElement instanceof IRPPackage ){
+
 				_context.info( "Creating a nested Activity Diagram underneath " + 
 						_context.elInfo( theElement ) );
-				
+
 				createNestedActivityDiagram( 
-						(IRPUseCase)theElement, 
-						m_Prefix + theElement.getName(), 
+						theElement, 
+						_prefix + theElement.getName(), 
 						"ExecutableMBSEProfile.RequirementsAnalysis.TemplateForActivityDiagram" );
 			} 
 		}
 	}
-	
+
 	public void createNestedActivityDiagram(
-			IRPClassifier forClassifier, 
+			IRPModelElement forOwner, 
 			String withUnadornedName,
 			String basedOnPropertyKey ){
-		
+
 		String theName = withUnadornedName;
-		 
+
+		IRPFlowchart theAD;
+		
 		// check if existing AD with same name
-		IRPFlowchart theAD = (IRPFlowchart) forClassifier.findNestedElement( 
+		// This is recursive to allow for textual activity owned by package, which has an implicit class
+		theAD = (IRPFlowchart) forOwner.findNestedElementRecursive( 
 				theName, 
 				"ActivityDiagram" );
 		
 		int count = 0;
-		
+
 		while (theAD != null){
-			
-			_context.warning( _context.elInfo( forClassifier ) + " already has a nested activity diagram called " + theName );
+
 			count++;
 			theName = withUnadornedName + " " + count;
-			theAD = (IRPFlowchart) forClassifier.findNestedElement( theName , "ActivityDiagram" );
+			theAD = (IRPFlowchart) forOwner.findNestedElementRecursive( theName , "ActivityDiagram" );
 		}
 		
-		IRPModelElement theTemplate = null;
-		
-		try {
-			theTemplate = _context.getTemplateForActivityDiagram( forClassifier, basedOnPropertyKey );
-			
-		} catch (Exception e) {
-			_context.error("Exception trying to find template based on property " + basedOnPropertyKey);
+		if( count != 0 ){
+			_context.warning( _context.elInfo( forOwner ) + " already has a nested activity diagram called " + theName + " hence using " + theName + " instead" );
 		}
-		
-		IRPFlowchart theFlowchart = null;
-		
-		if( theTemplate != null ){
-			
-			try {
-				theFlowchart = (IRPFlowchart) theTemplate.clone( theName, forClassifier );
-				_context.debug( "the cloned flowchart is " + _context.elInfo( theFlowchart ) );
 
-			} catch (Exception e) {
-				_context.debug("Exception while cloning");
+		IRPModelElement theTemplate = null;
+
+		try {
+			theTemplate = _context.getTemplateForActivityDiagram( forOwner, basedOnPropertyKey );
+
+		} catch( Exception e ){
+			_context.error( "createNestedActivityDiagram exception trying to find template based on property " + basedOnPropertyKey);
+		}
+
+		IRPFlowchart theFlowchart = null;
+
+		if( theTemplate != null ){
+
+			try {
+				theFlowchart = (IRPFlowchart) theTemplate.clone( theName, forOwner );
+				//_context.debug( "the cloned flowchart is " + _context.elInfo( theFlowchart ) );
+
+			} catch( Exception e ){
+				_context.error( "Exception in createNestedActivityDiagram while cloning, e=" + e.getMessage() );
 			}
 
 		} else {
-			_context.debug("Warning, Could not find template so creating fresh AD");
-			theFlowchart = forClassifier.addActivityDiagram();
-			theFlowchart.setName( theName );
-			
-			IRPStatechartDiagram theStatechart = theFlowchart.getStatechartDiagram();
+			_context.warning( "Could not find template so creating fresh activity diagram" );
 
 			try {
+
+				if( forOwner instanceof IRPPackage ){				
+					theFlowchart = ((IRPPackage) forOwner).addActivityDiagram();
+				} else if( forOwner instanceof IRPClassifier ){
+					theFlowchart = ((IRPClassifier) forOwner).addActivityDiagram();
+				} else {
+					_context.error( "Unexpected forOwner is " + _context.elInfo( forOwner ) );
+				}
+
+				theFlowchart.setName( theName );
+
+				IRPStatechartDiagram theStatechart = theFlowchart.getStatechartDiagram();
+
 				theStatechart.createGraphics();
 
-			} catch (Exception e) {
-				_context.debug("Exception creating graphics");
+			} catch( Exception e ){
+				_context.debug("Exception in createNestedActivityDiagram, creating graphics, e=");
 			}
 		}
-		
+
 		if( theFlowchart != null ){
-			
+
 			theFlowchart.setIsAnalysisOnly( 1 ); // so that call op right-click parameter sync menus appear
 			IRPStatechartDiagram theStatechart = theFlowchart.getStatechartDiagram();
 			theStatechart.highLightElement();
@@ -195,7 +227,7 @@ public class NestedActivityDiagram {
 }
 
 /**
- * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2016-2022  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 
@@ -211,5 +243,5 @@ public class NestedActivityDiagram {
 
     You should have received a copy of the GNU General Public License
     along with SysMLHelperPlugin.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
 

@@ -26,10 +26,10 @@ isVisible3=1
 DLLServerCompatible3=1
 
 #REM: Add pop-up menu
-name4=MBSE Method: Requirements Analysis\Create nested Activity Diagram for this use case
+name4=MBSE Method: Requirements Analysis\Create nested Activity Diagram based on template
 isPluginCommand4=1
 command4=InvokeExecutableMBSEHelper
-applicableTo4=UseCase
+applicableTo4=UseCase,Function Block,22 Funct Analysis - Feature Function Package
 isVisible4=1
 DLLServerCompatible4=1
 

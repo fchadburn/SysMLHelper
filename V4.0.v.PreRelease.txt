@@ -695,9 +695,9 @@ V4.0.v.Rhp831.PreRelease (XX-XXX-XXXX):
 #504 03-JUN-2022: ExecutableMBSE: Allow a requirement package to be owned by a feature function package (F.J.Chadburn)
 #505 06-JUN-2022: ExecutableMBSE: Allow a timing diagram - functional to be a child of a feature function package (F.J.Chadburn)
 #506 06-JUN-2022: ExecutableMBSE: Tweak timing diagram default dsiplay options so that only specification is shown for requirements (F.J.Chadburn)
+#507 07-JUN-2022: ExecutableMBSE: Extend the Requirements Analysis > Create Nested Activity... to include function blocks and packages (F.J.Chadburn)
 
 Backlog/Known issues
-- Whenever a Textual Activity is created via UI get the template to be applied.
 - Stop requirements moving when under a function block
 - Auto-populate ownership when adding requirement to diagram
 - Add a system constraint stereotype

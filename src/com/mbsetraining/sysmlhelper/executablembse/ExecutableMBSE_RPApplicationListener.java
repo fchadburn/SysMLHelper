@@ -1117,7 +1117,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 				} else if( pModelElement instanceof IRPUseCase ){
 
-					String theUnadornedName = "AD - " + pModelElement.getName();
+					String theUnadornedName = NestedActivityDiagram._prefix + pModelElement.getName();
 
 					boolean theAnswer = UserInterfaceHelper.askAQuestion(
 							"This use case has no nested text-based Activity Diagram.\n"+
@@ -1130,8 +1130,8 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 						NestedActivityDiagram theHelper = new NestedActivityDiagram(_context);
 
 						theHelper.createNestedActivityDiagram( 
-								(IRPClassifier) pModelElement, 
-								"AD - " + pModelElement.getName(),
+								pModelElement, 
+								NestedActivityDiagram._prefix + pModelElement.getName(),
 								"ExecutableMBSEProfile.RequirementsAnalysis.TemplateForActivityDiagram" );
 					}
 
