@@ -20,7 +20,7 @@ public class ElementMover {
 		_whereMoveToHasStereotype = whereMoveToHasStereotype;
 		_newOwner = determineMoveToPackage( basedOnEl );
 		
-		_context.debug( "_newOwner for " + whereMoveToHasStereotype + " is " + _context.elInfo( _newOwner ) );
+		//_context.debug( "_newOwner for " + whereMoveToHasStereotype + " is " + _context.elInfo( _newOwner ) );
 	}
 	
 	protected IRPPackage determineMoveToPackage( 

@@ -687,7 +687,7 @@ V4.0.u.Rhp831.PreRelease (18-MAY-2022):
 #498 17-MAY-2022: ExecutableMBSE: Cleaned up non-specific group icons to make browser less glitsy and remove confusion with elements (F.J.Chadburn)
 #499 17-MAY-2022: ExecutableMBSE: Add Derivations to a Feature Block right-click to allow derive relations to higher-level reqts/constraints (F.J.Chadburn)
 
-V4.0.v.Rhp831.PreRelease (XX-XXX-XXXX):
+V4.0.v.Rhp831.PreRelease (07-JUN-2022):
 #500 18-MAY-2022: ExecutableMBSE: Allow a Function Block to have a Textual Activity Diagram (F.J.Chadburn)
 #501 18-MAY-2022: ExecutableMBSE: Stop Function Block from owning a Function Block (F.J.Chadburn)
 #502 18-MAY-2022: ExecutableMBSE: Add Derivations as a default compartment for Function Blocks in the prp file (F.J.Chadburn)
@@ -698,15 +698,14 @@ V4.0.v.Rhp831.PreRelease (XX-XXX-XXXX):
 #507 07-JUN-2022: ExecutableMBSE: Extend the Requirements Analysis > Create Nested Activity... to include function blocks and packages (F.J.Chadburn)
 #508 07-JUN-2022: ExecutableMBSE: Add new IsKeepRequirementUnderFunctionBlock functionality to support creating requirements under function blocks (F.J.Chadburn)
 #509 07-JUN-2022: ExecutableMBSE: Auto-populate ownership relation from function block when you add requirement to rd for a function block (F.J.Chadburn)
+#510 07-JUN-2022: ExecutableMBSE: Get End Link to ask if a Satisfaction or Derivation for Function Blocks (F.J.Chadburn)
 
 Backlog/Known issues
 - Add a system constraint stereotype
-- Function needs to own an internal block diagram system, so that
 - Right-click a function block to create new requirement
 - Adding new flow connectors on flow diagram results in existing ports displaying twice, need to find existing and move rather than re-create?
 - Review whether to split out diagrams, packages, relations, elements etc into submenus.
 - Automatically add flow in and out when you create a function block
-- Get End Link to ask if a Satisfaction or Derivation for Function Blocks
 - Allow System Blocks to own System Blocks?
 - Add icons for remaining group categories still to do e.g. function flow diagram elements and ibds 
 - Get external signals package to be created under context diagram by default to make root browser more focused

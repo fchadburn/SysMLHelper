@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.mbsetraining.sysmlhelper.common.LayoutHelper;
+import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
@@ -44,14 +45,24 @@ public class SmartLinkInfo {
 				theEndLinkEls, theEndLinkGraphEls, _context );
 		
 		_isPopulatePossible = false;
-		
-		//IRPModelElement contextEl = theEndLinkEls.get(0);
-		
+				
 		if( _startLinkElements.areElementsAllReqts() ){
 
 			_relationType = _context.getExistingStereotype(
 					"deriveReqt", _context.get_rhpPrj() );
 
+		} else if( _startLinkElements.areElementsAllMixedDeriveAndSatisfySources() ){
+			
+			String msg = "Do you want to use Satisfy rather than Derive?";
+			
+			boolean answer = UserInterfaceHelper.askAQuestion( msg );
+			
+			if( answer ){
+				_relationType = _context.getExistingStereotype( "satisfy", _context.get_rhpPrj() );
+			} else {
+				_relationType = _context.getExistingStereotype( "derive", _context.get_rhpPrj() );
+			}
+			
 		} else if( _startLinkElements.areElementsAllDeriveDependencySources() ){
 
 			_relationType = _context.getStereotypeToUseForActions();

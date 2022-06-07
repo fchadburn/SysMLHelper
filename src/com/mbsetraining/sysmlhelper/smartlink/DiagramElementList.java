@@ -33,6 +33,27 @@ public class DiagramElementList extends HashSet<DiagramElementInfo> {
 		}
 	}
 	
+	public boolean areElementsAllMixedDeriveAndSatisfySources(){
+
+		boolean isMatchFoundForAll = true;
+				
+		for( DiagramElementInfo theElInfo : this ){
+			
+			IRPModelElement theEl = theElInfo.getElement();
+			
+			if( !theEl.getUserDefinedMetaClass().equals( _context.FUNCTION_BLOCK ) ) {
+				
+				isMatchFoundForAll = false;
+				break;
+			}
+		}
+		
+		//_context.debug( "areElementsAllDeriveDependencySources is returning " + isMatchFoundForAll );
+		
+		return isMatchFoundForAll;
+
+	}
+	
 	public boolean areElementsAllDeriveDependencySources(){
 
 		final String[] activityDiagramSpecificMetaClasses = {
@@ -60,12 +81,12 @@ public class DiagramElementList extends HashSet<DiagramElementInfo> {
 				!(theEl.getOwner() instanceof IRPFlowchart) ) { // it does match but is not owned by an AD
 
 				isMatchFoundForAll = false;
-				_context.debug( _context.elInfo( theEl.getOwner() ) + " is the owner of " + _context.elInfo( theEl ) );
+				//_context.debug( _context.elInfo( theEl.getOwner() ) + " is the owner of " + _context.elInfo( theEl ) );
 				break;
 			}
 		}
 		
-		_context.debug( "areElementsAllDeriveDependencySources is returning " + isMatchFoundForAll );
+		//_context.debug( "areElementsAllDeriveDependencySources is returning " + isMatchFoundForAll );
 		
 		return isMatchFoundForAll;
 	}
@@ -255,7 +276,7 @@ public class DiagramElementList extends HashSet<DiagramElementInfo> {
 }
 
 /**
- * Copyright (C) 2017-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2017-2022  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 
