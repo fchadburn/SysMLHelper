@@ -700,6 +700,9 @@ V4.0.v.Rhp831.PreRelease (07-JUN-2022):
 #509 07-JUN-2022: ExecutableMBSE: Auto-populate ownership relation from function block when you add requirement to rd for a function block (F.J.Chadburn)
 #510 07-JUN-2022: ExecutableMBSE: Get End Link to ask if a Satisfaction or Derivation for Function Blocks (F.J.Chadburn)
 
+V4.0.w.Rhp831.PreRelease (XX-XXX-XXXX):
+#511 14-JUN-2022: ExecutableMBSE: Initial setting of numbered category names of package and diagram new terms to improve usability (F.J.Chadburn)
+
 Backlog/Known issues
 - Add a system constraint stereotype
 - Right-click a function block to create new requirement
