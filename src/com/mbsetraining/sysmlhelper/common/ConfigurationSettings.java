@@ -234,7 +234,7 @@ public class ConfigurationSettings  {
 							"The current profile version you have installed is " + theProfileVersionValue + 
 							" (" + theProfileDateValue + ")\n" +
 							"The project called " + thePrj.getName() + 
-							" is suggesting it needs " + theProjectsProfileVersionValue + 
+							" is suggesting it was set-up with " + theProjectsProfileVersionValue + 
 							" (" + theProjectsProfileDateValue + ") \n";
 
 				} else if( theProjectsProfileDate.equals( profileDate ) ){
@@ -249,7 +249,7 @@ public class ConfigurationSettings  {
 							"The current profile version you have installed is " + theProfileVersionValue + 
 							" (" + theProfileDateValue + ") \n" +
 							"The project called " + thePrj.getName() + 
-							" is suggesting it needs " + theProjectsProfileVersionValue + 
+							" is suggesting it was set-up with " + theProjectsProfileVersionValue + 
 							" (" + theProjectsProfileDateValue + ") \n\n";
 
 					if( isProvideFixingAdvice ){

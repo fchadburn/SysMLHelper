@@ -1689,7 +1689,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">6.14.2022::9:5:20</_modifiedTime>
+			<_modifiedTime type="a">6.14.2022::14:3:16</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -10796,7 +10796,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 99d433ee-75c1-40c0-8ef0-8ea14c3d7d23</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileInfo</_name>
-			<_modifiedTime type="a">6.6.2022::7:16:4</_modifiedTime>
+			<_modifiedTime type="a">6.14.2022::14:3:16</_modifiedTime>
 			<_lastID type="a">3</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -10814,7 +10814,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 00c06448-4cf5-4b58-a462-af1a3bccd935</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileDate</_name>
-			<_modifiedTime type="a">6.6.2022::7:16:4</_modifiedTime>
+			<_modifiedTime type="a">6.14.2022::14:3:8</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IType</_hm2Class>
@@ -10825,19 +10825,19 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</_typeOf>
 			<_isOrdered type="a">0</_isOrdered>
 			<AggregatesList type="e">
-				<value>GUID 89b18d7c-cfb8-4c85-90c2-520d67e0e290</value>
+				<value>GUID 00750cbb-35fd-4469-80aa-5f17d4504d63</value>
 			</AggregatesList>
 		</ITag>
 		<ILiteralSpecification type="e">
-			<_id type="a">GUID 89b18d7c-cfb8-4c85-90c2-520d67e0e290</_id>
-			<_modifiedTime type="a">6.6.2022::7:16:4</_modifiedTime>
-			<_value type="a">2022/06/06 08:15:00</_value>
+			<_id type="a">GUID 00750cbb-35fd-4469-80aa-5f17d4504d63</_id>
+			<_modifiedTime type="a">6.14.2022::14:3:8</_modifiedTime>
+			<_value type="a">2022/06/14 15:03:00</_value>
 		</ILiteralSpecification>
 		<ITag type="e">
 			<_id type="a">GUID c783ee62-7cd8-4f71-8651-25132d0e1150</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileVersion</_name>
-			<_modifiedTime type="a">6.6.2022::7:15:48</_modifiedTime>
+			<_modifiedTime type="a">6.14.2022::14:3:16</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IType</_hm2Class>
@@ -10848,13 +10848,13 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</_typeOf>
 			<_isOrdered type="a">0</_isOrdered>
 			<AggregatesList type="e">
-				<value>GUID 16ae4302-1a77-42c1-91ba-de5dc43d5a1c</value>
+				<value>GUID c76ebe6d-17b8-49b6-9e38-8171b32d53d3</value>
 			</AggregatesList>
 		</ITag>
 		<ILiteralSpecification type="e">
-			<_id type="a">GUID 16ae4302-1a77-42c1-91ba-de5dc43d5a1c</_id>
-			<_modifiedTime type="a">6.6.2022::7:15:48</_modifiedTime>
-			<_value type="a">V4.0.v.Rhp831.PreRelease</_value>
+			<_id type="a">GUID c76ebe6d-17b8-49b6-9e38-8171b32d53d3</_id>
+			<_modifiedTime type="a">6.14.2022::14:3:16</_modifiedTime>
+			<_value type="a">V4.0.w.Rhp831.PreRelease</_value>
 		</ILiteralSpecification>
 		<ITag type="e">
 			<_id type="a">GUID 6cadd9b1-62a9-477e-a2b1-45c9e04743fb</_id>
@@ -10898,7 +10898,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">AddNewMenuStructure</_Name>
-													<_Value type="a">AcceptEventAction,AcceptTimeEvent,ActivityFinal,Attribute,CallBehavior,CallOperation,ControlFlow,DecisionNode,DefaultTransition,Fork,InterruptibleRegion,MergeNode,SendAction,Structure Diagram,ExecutableMBSEProfile/10 Reqts Analysis - Context Diagram Package,ExecutableMBSEProfile/11 Reqts Analysis - Actor Package,ExecutableMBSEProfile/12 Reqts Analysis - Use Case Package,ExecutableMBSEProfile/12 Reqts Analysis - Working Copy Package,ExecutableMBSEProfile/13 Reqts Analysis - Requirement Package,ExecutableMBSEProfile/14 Reqts Analysis - Signals Package,ExecutableMBSEProfile/22 Funct Analysis - Feature Function Package,ExecutableMBSEProfile/31 Design Synthesis - System Architecture Package,ExecutableMBSEProfile/32 Design Synthesis - Subsystem Package,ExecutableMBSEProfile/33 Design Synthesis - Subsystem Interfaces Package,ExecutableMBSEProfile/34 Design Synthesis - Software Design Package,ExecutableMBSEProfile/Actor Usage,ExecutableMBSEProfile/Block Definition Diagram - Software,ExecutableMBSEProfile/Block Definition Diagram - System,ExecutableMBSEProfile/C++ Class,ExecutableMBSEProfile/Call Operation Activity,ExecutableMBSEProfile/Component Usage,ExecutableMBSEProfile/Decision Usage,ExecutableMBSEProfile/Domain Block,ExecutableMBSEProfile/Enhanced Use Case Diagram,ExecutableMBSEProfile/Feature Block,ExecutableMBSEProfile/Feature Usage,ExecutableMBSEProfile/Final Usage,ExecutableMBSEProfile/Flow Connector,ExecutableMBSEProfile/Flow Final Usage,ExecutableMBSEProfile/Flow Input,ExecutableMBSEProfile/Flow Output,ExecutableMBSEProfile/Function Block,ExecutableMBSEProfile/Function Connector,ExecutableMBSEProfile/Function Usage,ExecutableMBSEProfile/Guarded Flow Output,ExecutableMBSEProfile/Internal Block Diagram - Functional,ExecutableMBSEProfile/Internal Block Diagram - Software,ExecutableMBSEProfile/Internal Block Diagram - System,ExecutableMBSEProfile/Parallel Gateway Usage,ExecutableMBSEProfile/Requirements Diagram - System,ExecutableMBSEProfile/Software Component,ExecutableMBSEProfile/Start Usage,ExecutableMBSEProfile/Subsystem Block,ExecutableMBSEProfile/Subsystem Usage,ExecutableMBSEProfile/System Block,ExecutableMBSEProfile/System Context Diagram,ExecutableMBSEProfile/System Usage,ExecutableMBSEProfile/TableV - Context Diagram Flows,ExecutableMBSEProfile/Textual Activity,ExecutableMBSEProfile/Time Event Usage,ExecutableMBSEProfile/Timing Diagram - Functional,ExecutableMBSEProfile/Use Case Description,ExecutableMBSEProfile/Use Case Postcondition,ExecutableMBSEProfile/Use Case Precondition,Diagrams/Requirements Diagram,%0D
+													<_Value type="a">AcceptEventAction,AcceptTimeEvent,ActivityFinal,Attribute,CallBehavior,CallOperation,ControlFlow,DecisionNode,DefaultTransition,Fork,InterruptibleRegion,MergeNode,SendAction,Structure Diagram,ExecutableMBSEProfile/10 Context Package,ExecutableMBSEProfile/11 Actor Package,ExecutableMBSEProfile/12 Use Case Package,ExecutableMBSEProfile/12 Working Copy Package,ExecutableMBSEProfile/13 Requirement Package,ExecutableMBSEProfile/14 Signals Package,ExecutableMBSEProfile/22 Feature Function Package,ExecutableMBSEProfile/31 System Architecture Package,ExecutableMBSEProfile/32 Subsystem Package,ExecutableMBSEProfile/33 Subsystem Interfaces Package,ExecutableMBSEProfile/34 Software Design Package,ExecutableMBSEProfile/Actor Usage,ExecutableMBSEProfile/Block Definition Diagram - Software,ExecutableMBSEProfile/Block Definition Diagram - System,ExecutableMBSEProfile/C++ Class,ExecutableMBSEProfile/Call Operation Activity,ExecutableMBSEProfile/Component Usage,ExecutableMBSEProfile/Decision Usage,ExecutableMBSEProfile/Domain Block,ExecutableMBSEProfile/Enhanced Use Case Diagram,ExecutableMBSEProfile/Feature Block,ExecutableMBSEProfile/Feature Usage,ExecutableMBSEProfile/Final Usage,ExecutableMBSEProfile/Flow Connector,ExecutableMBSEProfile/Flow Final Usage,ExecutableMBSEProfile/Flow Input,ExecutableMBSEProfile/Flow Output,ExecutableMBSEProfile/Function Block,ExecutableMBSEProfile/Function Connector,ExecutableMBSEProfile/Function Usage,ExecutableMBSEProfile/Guarded Flow Output,ExecutableMBSEProfile/Internal Block Diagram - Functional,ExecutableMBSEProfile/Internal Block Diagram - Software,ExecutableMBSEProfile/Internal Block Diagram - System,ExecutableMBSEProfile/Parallel Gateway Usage,ExecutableMBSEProfile/Requirements Diagram - System,ExecutableMBSEProfile/Software Component,ExecutableMBSEProfile/Start Usage,ExecutableMBSEProfile/Subsystem Block,ExecutableMBSEProfile/Subsystem Usage,ExecutableMBSEProfile/System Block,ExecutableMBSEProfile/System Context Diagram,ExecutableMBSEProfile/System Usage,ExecutableMBSEProfile/TableV - Context Diagram Flows,ExecutableMBSEProfile/Textual Activity,ExecutableMBSEProfile/Time Event Usage,ExecutableMBSEProfile/Timing Diagram - Functional,ExecutableMBSEProfile/Use Case Description,ExecutableMBSEProfile/Use Case Postcondition,ExecutableMBSEProfile/Use Case Precondition,Diagrams/Requirements Diagram,%0D
 Diagrams/UseCaseDiagram,%0D
 Diagrams/Package Diagram,%0D
 Diagrams/Block Definition Diagram,%0D
@@ -11081,7 +11081,7 @@ Query</_Value>
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">10 Reqts Analysis - Context Diagram Package,11 Reqts Analysis - Actor Package,12 Reqts Analysis - Use Case Package,13 Reqts Analysis - Requirement Package,14 Reqts Analysis - Signals Package,22 Funct Analysis - Feature Function Package,31 Design Synthesis - System Architecture Package,32 Design Synthesis - Subsystem Package,33 Design Synthesis - Subsystem Interfaces Package,34 Design Synthesis - Software Design Package,Call Operation Activity,Textual Activity</_Value>
+													<_Value type="a">10 Context Package,11 Actor Package,12 Use Case Package,13 Requirement Package,14 Signals Package,22 Feature Function Package,31 System Architecture Package,32 Subsystem Package,33 Subsystem Interfaces Package,34 Software Design Package,Call Operation Activity,Textual Activity</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -11098,7 +11098,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSE</_name>
-			<_modifiedTime type="a">6.6.2022::7:22:49</_modifiedTime>
+			<_modifiedTime type="a">6.14.2022::13:28:15</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -13051,7 +13051,7 @@ Query</_Value>
 			<_id type="a">GUID d213ea00-7590-48aa-8f30-a0a61f8fcd08</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Packages</_name>
-			<_modifiedTime type="a">6.14.2022::9:7:35</_modifiedTime>
+			<_modifiedTime type="a">6.14.2022::13:28:54</_modifiedTime>
 			<_lastID type="a">2</_lastID>
 			<_defaultComposite type="s">GUID 26c8a3f9-6aee-4dff-a42f-bf1cc2880009</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -13227,7 +13227,7 @@ Query</_Value>
 												<size type="a">6</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Query,Event,Diagram View,14 Reqts Analysis - Signals Package,Actor Usage,Subsystem Usage,System Context Diagram,System Usage,TableV - Context Diagram Flows,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Flow,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
+													<_Value type="a">Query,Event,Diagram View,14 Signals Package,Actor Usage,Subsystem Usage,System Context Diagram,System Usage,TableV - Context Diagram Flows,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Flow,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -13274,7 +13274,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ContextDiagramPackage</_name>
-			<_modifiedTime type="a">6.14.2022::9:6:54</_modifiedTime>
+			<_modifiedTime type="a">6.14.2022::13:28:22</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -13341,7 +13341,7 @@ Query</_Value>
 												<size type="a">6</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Query,Diagram View,11 Reqts Analysis - Actor Package,12 Reqts Analysis - Use Case Package,13 Reqts Analysis - Requirement Package,Enhanced Use Case Diagram,Textual Activity,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Requirement,Actor,UseCase,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
+													<_Value type="a">Query,Diagram View,11 Actor Package,12 Use Case Package,13 Requirement Package,Enhanced Use Case Diagram,Textual Activity,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Requirement,Actor,UseCase,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -13388,7 +13388,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">UseCasePackage</_name>
-			<_modifiedTime type="a">6.14.2022::9:6:59</_modifiedTime>
+			<_modifiedTime type="a">6.14.2022::13:28:50</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -13663,7 +13663,7 @@ Query</_Value>
 												<size type="a">6</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Query,Event,Interface,Diagram View,SequenceDiagram,22 Funct Analysis - Feature Function Package,32 Design Synthesis - Subsystem Package,33 Design Synthesis - Subsystem Interfaces Package,Block Definition Diagram - System,C++ Class,Domain Block,Feature Usage,Flow Connector,Function Block,Software Component,Subsystem Block,System Block,Component,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,InterfaceBlock,Requirement,Actor,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
+													<_Value type="a">Query,Event,Interface,Diagram View,SequenceDiagram,22 Feature Function Package,32 Subsystem Package,33 Subsystem Interfaces Package,Block Definition Diagram - System,C++ Class,Domain Block,Feature Usage,Flow Connector,Function Block,Software Component,Subsystem Block,System Block,Component,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,InterfaceBlock,Requirement,Actor,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -13710,7 +13710,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SystemArchitecturePackage</_name>
-			<_modifiedTime type="a">6.14.2022::9:7:13</_modifiedTime>
+			<_modifiedTime type="a">6.14.2022::13:28:33</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -13787,7 +13787,7 @@ Query</_Value>
 												<size type="a">6</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Query,Event,Interface,Diagram View,SequenceDiagram,22 Funct Analysis - Feature Function Package,32 Design Synthesis - Subsystem Package,33 Design Synthesis - Subsystem Interfaces Package,Block Definition Diagram - System,C++ Class,Feature Usage,Flow Connector,Function Block,Software Component,Subsystem Block,Component,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,InterfaceBlock,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
+													<_Value type="a">Query,Event,Interface,Diagram View,SequenceDiagram,22 Feature Function Package,32 Subsystem Package,33 Subsystem Interfaces Package,Block Definition Diagram - System,C++ Class,Feature Usage,Flow Connector,Function Block,Software Component,Subsystem Block,Component,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,InterfaceBlock,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -13834,7 +13834,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SubsystemPackage</_name>
-			<_modifiedTime type="a">6.14.2022::9:7:17</_modifiedTime>
+			<_modifiedTime type="a">6.14.2022::13:28:38</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -14060,7 +14060,7 @@ Query</_Value>
 												<size type="a">6</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Query,Event,Diagram View,12 Reqts Analysis - Working Copy Package,13 Reqts Analysis - Requirement Package,22 Funct Analysis - Feature Function Package,Block Definition Diagram - System,Feature Block,Function Block,Textual Activity,Timing Diagram - Functional,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
+													<_Value type="a">Query,Event,Diagram View,12 Working Copy Package,13 Requirement Package,22 Feature Function Package,Block Definition Diagram - System,Feature Block,Function Block,Textual Activity,Timing Diagram - Functional,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -14107,7 +14107,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">FeatureFunctionPackage</_name>
-			<_modifiedTime type="a">6.14.2022::9:7:31</_modifiedTime>
+			<_modifiedTime type="a">6.14.2022::13:28:28</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -14159,7 +14159,7 @@ Query</_Value>
 												<size type="a">6</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Query,Diagram View,11 Reqts Analysis - Actor Package,12 Reqts Analysis - Use Case Package,13 Reqts Analysis - Requirement Package,Enhanced Use Case Diagram,Textual Activity,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Requirement,Actor,UseCase,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
+													<_Value type="a">Query,Diagram View,11 Actor Package,12 Use Case Package,13 Requirement Package,Enhanced Use Case Diagram,Textual Activity,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Requirement,Actor,UseCase,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -14206,7 +14206,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">WorkingCopyPackage</_name>
-			<_modifiedTime type="a">6.14.2022::9:7:35</_modifiedTime>
+			<_modifiedTime type="a">6.14.2022::13:28:54</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
