@@ -702,6 +702,8 @@ V4.0.v.Rhp831.PreRelease (07-JUN-2022):
 
 V4.0.w.Rhp831.PreRelease (XX-XXX-XXXX):
 #511 14-JUN-2022: ExecutableMBSE: Initial setting of numbered category names of package and diagram new terms to improve usability (F.J.Chadburn)
+#512 14-JUN-2022: ExecutableMBSE: Ensure that Use Case package dialog works with updated package new term names (F.J.Chadburn)
+#513 14-JUN-2022: ExecutableMBSE: Automatically add owner to diagram when creating a new block definition diagram - system under a classifier (F.J.Chadburn) 
 
 Backlog/Known issues
 - Add a system constraint stereotype

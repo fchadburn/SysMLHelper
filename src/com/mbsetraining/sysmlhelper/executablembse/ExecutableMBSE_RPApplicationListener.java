@@ -80,17 +80,17 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 						(IRPCallOperation) modelElement );
 
 			} else if( modelElement instanceof IRPInstance && 
-					_context.hasStereotypeCalled( "ActorUsage", modelElement )){
+					_context.hasStereotypeCalled( _context.NEW_TERM_FOR_ACTOR_USAGE, modelElement )){
 
 				afterAddForActorUsage( (IRPInstance) modelElement );
 
 			} else if( modelElement instanceof IRPInstance && 
-					_context.hasStereotypeCalled( "FunctionUsage", modelElement )){
+					_context.hasStereotypeCalled( _context.NEW_TERM_FOR_FUNCTION_USAGE, modelElement )){
 
 				afterAddForFunctionUsage( (IRPInstance) modelElement );
 
 			} else if( modelElement instanceof IRPInstance && 
-					_context.hasStereotypeCalled( "DecisionUsage", modelElement )){
+					_context.hasStereotypeCalled( _context.NEW_TERM_FOR_DECISION_USAGE, modelElement )){
 
 				afterAddForDecisionUsage( (IRPInstance) modelElement );
 
@@ -153,6 +153,14 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			} else if( theUserDefinedMetaClass.equals( _context.GUARDED_FLOW_OUTPUT ) ){
 
 				afterAddForGuardedFlowOutput( (IRPSysMLPort) modelElement );
+				
+			} else if( theUserDefinedMetaClass.equals( _context.GUARDED_FLOW_OUTPUT ) ){
+
+				afterAddForGuardedFlowOutput( (IRPSysMLPort) modelElement );
+				
+			} else if( theUserDefinedMetaClass.equals( _context.BLOCK_DEFINITION_DIAGRAM_SYSTEM ) ){
+				
+				afterAddForBlockDefinitionDiagramSystem( (IRPObjectModelDiagram) modelElement );
 			}
 
 		} catch( Exception e ){
@@ -164,6 +172,19 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		return doDefault;
 	}
 
+	private void afterAddForBlockDefinitionDiagramSystem(
+			IRPObjectModelDiagram theDiagram ){
+
+		IRPModelElement theOwner = theDiagram.getOwner();
+		
+		if( theOwner instanceof IRPClassifier ){
+			
+			// The resizer will deal with width and height, hence just use 50,50 to start with
+			IRPGraphNode theGraphNode = theDiagram.addNewNodeForElement( theOwner, 450, 150, 50, 50 );
+			GraphNodeResizer theResizer = new GraphNodeResizer( theGraphNode, _context );
+			theResizer.performResizing();
+		}
+	}
 
 	private void afterAddForFlowOutput(
 			IRPSysMLPort theSysMLPort ){
