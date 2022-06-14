@@ -29,8 +29,8 @@ public abstract class ExecutableMBSEBasePanel extends JPanel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-
+	private static final long serialVersionUID = -6413611438061239075L;
+	
 	protected ExecutableMBSE_Context _context;
 
 	protected ExecutableMBSEBasePanel(
@@ -88,7 +88,7 @@ public abstract class ExecutableMBSEBasePanel extends JPanel {
 					dialog.dispose();
 												
 				} catch (Exception e2) {
-					_context.error("Unhandled exception in createOKCancelPanel->theCancelButton.actionPerformed");
+					_context.error("Unhandled exception in createOKCancelPanel->theCancelButton.actionPerformed, e2=" + e2.getMessage());
 				}		
 			}	
 		});
@@ -182,7 +182,7 @@ public abstract class ExecutableMBSEBasePanel extends JPanel {
 					dialog.dispose();
 												
 				} catch (Exception e2) {
-					_context.error("Error, unhandled exception in CreateOperationPanel.createOKCancelPanel on Cancel button action listener");
+					_context.error("Error, unhandled exception in CreateOperationPanel.createOKCancelPanel on Cancel button action listener, e2=" + e2.getMessage() );
 				}
 			}	
 		});
@@ -195,7 +195,7 @@ public abstract class ExecutableMBSEBasePanel extends JPanel {
 }
 
 /**
- * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2016-2022  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 
