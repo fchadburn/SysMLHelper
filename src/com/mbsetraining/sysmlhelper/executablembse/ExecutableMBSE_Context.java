@@ -76,6 +76,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String NEW_TERM_FOR_SYSTEM_CONTEXT = "SystemUsage";
 	public final String TESTBENCH_STEREOTYPE = "Testbench";
 	public final String AUTO_RIPPLE_STEREOTYPE = "AutoRipple";
+	public final String TABLE_LAYOUT_PREFIX = "tablel - ";
 
 	protected SelectedElementContext _selectionContext;
 

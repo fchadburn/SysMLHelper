@@ -191,7 +191,11 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			_context.debug( "ExecutableMBSE_RPApplicationListener has set scope of " + 
 					_context.elInfo( theView ) + " to " + _context.elInfo( theOwner ) );
 			
+			String theProposedName = _context.TABLE_LAYOUT_PREFIX + " " + theOwner.getName();
+			String theUniqueName = _context.determineUniqueNameBasedOn( theProposedName, "TableView", theOwner );
+			
 			theView.setScope( theScopedEls );
+			theView.setName( theUniqueName );
 		}
 	}
 

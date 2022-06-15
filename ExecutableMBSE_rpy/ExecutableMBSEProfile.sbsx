@@ -1689,7 +1689,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">6.15.2022::6:53:3</_modifiedTime>
+			<_modifiedTime type="a">6.15.2022::7:42:47</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -11110,7 +11110,7 @@ Query</_Value>
 			<_id type="a">GUID 3307dbc4-6282-4d53-88b2-50e3de5ff8c2</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Diagrams</_name>
-			<_modifiedTime type="a">6.15.2022::6:37:9</_modifiedTime>
+			<_modifiedTime type="a">6.15.2022::7:24:35</_modifiedTime>
 			<_lastID type="a">6</_lastID>
 			<_defaultComposite type="s">GUID af3ccc20-8ac1-47a2-8c5f-be1a84c1550e</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -12887,10 +12887,16 @@ Query</_Value>
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">4</size>
+												<size type="a">5</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
 													<_Value type="a">ControlledFile,HyperLink,Tag,Comment,Constraint,Dependency,Problem,Rationale</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">DefaultName</_Name>
+													<_Value type="a">tablel - </_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -12925,7 +12931,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SimpleRequirementsTable</_name>
-			<_modifiedTime type="a">6.15.2022::6:37:9</_modifiedTime>
+			<_modifiedTime type="a">6.15.2022::7:24:35</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -13115,7 +13121,7 @@ Query</_Value>
 			<_id type="a">GUID d213ea00-7590-48aa-8f30-a0a61f8fcd08</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Packages</_name>
-			<_modifiedTime type="a">6.15.2022::6:35:12</_modifiedTime>
+			<_modifiedTime type="a">6.15.2022::7:42:47</_modifiedTime>
 			<_lastID type="a">2</_lastID>
 			<_defaultComposite type="s">GUID 26c8a3f9-6aee-4dff-a42f-bf1cc2880009</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -13309,7 +13315,7 @@ Query</_Value>
 												
 												<IProperty type="e">
 													<_Name type="a">DefaultName</_Name>
-													<_Value type="a">contextdiagrampkg</_Value>
+													<_Value type="a">contextpkg</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -13338,7 +13344,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ContextDiagramPackage</_name>
-			<_modifiedTime type="a">6.14.2022::13:28:22</_modifiedTime>
+			<_modifiedTime type="a">6.15.2022::7:42:47</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
