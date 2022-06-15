@@ -714,7 +714,6 @@ Backlog/Known issues
 - Adding new flow connectors on flow diagram results in existing ports displaying twice, need to find existing and move rather than re-create?
 - Review whether to split out diagrams, packages, relations, elements etc into submenus.
 - Automatically add flow in and out when you create a function block
-- Allow System Blocks to own System Blocks?
 - Add icons for remaining group categories still to do e.g. function flow diagram elements and ibds 
 - Get external signals package to be created under context diagram by default to make root browser more focused
 - Check icons in other profiles still working, e.g. functional profile
@@ -728,7 +727,6 @@ Backlog/Known issues
 - Double-click a function block to create an ibd - functional
 - Get metamodel profile to deal with General::Graphics::AdditionalCompartments better
 - Add callout notation support to the diagram toolbar's perhaps?
-- Automatically add related class if bdd is created as child of a class, since it is probably going to start with the block at top
 - Is EWM accept refresh causing profile to unload, any idea why?
 - Could enhanced move to new package for use cases to give more info, check-boxes for options
 - When I created a seperate scenario package model the project properties were not set, check this
