@@ -161,6 +161,10 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			} else if( theUserDefinedMetaClass.equals( _context.BLOCK_DEFINITION_DIAGRAM_SYSTEM ) ){
 				
 				afterAddForBlockDefinitionDiagramSystem( (IRPObjectModelDiagram) modelElement );
+				
+			} else if( theUserDefinedMetaClass.equals( _context.SIMPLE_REQUIREMENTS_TABLE ) ){
+				
+				afterAddForSimpleRequirementsTable( (IRPTableView) modelElement );
 			}
 
 		} catch( Exception e ){
@@ -170,6 +174,25 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		}
 
 		return doDefault;
+	}
+
+	private void afterAddForSimpleRequirementsTable(
+			IRPTableView theView ){
+
+		IRPModelElement theOwner = theView.getOwner();
+		
+		if( theOwner instanceof IRPPackage &&
+				theOwner.getUserDefinedMetaClass().equals( _context.REQTS_ANALYSIS_REQUIREMENT_PACKAGE ) ){
+			
+			IRPCollection theScopedEls = _context.createNewCollection();
+			theScopedEls.setSize( 1 );
+			theScopedEls.addItem( theOwner );
+			
+			_context.debug( "ExecutableMBSE_RPApplicationListener has set scope of " + 
+					_context.elInfo( theView ) + " to " + _context.elInfo( theOwner ) );
+			
+			theView.setScope( theScopedEls );
+		}
 	}
 
 	private void afterAddForBlockDefinitionDiagramSystem(
@@ -185,7 +208,6 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			theResizer.performResizing();
 		}
 	}
-
 	private void afterAddForFlowOutput(
 			IRPSysMLPort theSysMLPort ){
 

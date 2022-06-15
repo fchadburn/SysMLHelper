@@ -42,8 +42,9 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String OBJECT = "Object";
 	public final String SYSTEM_BLOCK = "System Block";
 	public final String BLOCK_DEFINITION_DIAGRAM_SYSTEM = "Block Definition Diagram - System";
+	public final String SIMPLE_REQUIREMENTS_TABLE = "TableL - Simple Requirements Table";
 
-	public final String REQTS_ANALYSIS_CONTEXT_DIAGRAM_PACKAGE = "10 Context Diagram Package";
+	public final String REQTS_ANALYSIS_CONTEXT_DIAGRAM_PACKAGE = "10 Context Package";
 	public final String REQTS_ANALYSIS_ACTOR_PACKAGE = "11 Actor Package";
 	public final String REQTS_ANALYSIS_USE_CASE_PACKAGE = "12 Use Case Package";
 	public final String REQTS_ANALYSIS_WORKING_COPY_PACKAGE = "12 Working Copy Package";
