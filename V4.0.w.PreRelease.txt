@@ -705,6 +705,7 @@ V4.0.w.Rhp831.PreRelease (XX-XXX-XXXX):
 #512 14-JUN-2022: ExecutableMBSE: Ensure that Use Case package dialog works with updated package new term names (F.J.Chadburn)
 #513 14-JUN-2022: ExecutableMBSE: Automatically add owner to diagram when creating a new block definition diagram - system under a classifier (F.J.Chadburn)
 #514 14-JUN-2022: ExecutableMBSE: Change default properties to not auto-populate the package diagram (F.J.Chadburn)
+#515 14-JUN-2022: ExecutableMBSE: Change default starting name for use case diagram from ucd to uc to align with sysml ones (F.J.Chadburn)
 
 Backlog/Known issues
 - Add a system constraint stereotype
