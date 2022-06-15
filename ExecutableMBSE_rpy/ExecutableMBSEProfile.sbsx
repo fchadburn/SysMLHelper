@@ -1689,7 +1689,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">6.15.2022::7:42:47</_modifiedTime>
+			<_modifiedTime type="a">6.15.2022::12:12:54</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -10898,7 +10898,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">AddNewMenuStructure</_Name>
-													<_Value type="a">AcceptEventAction,AcceptTimeEvent,ActivityFinal,Attribute,CallBehavior,CallOperation,ControlFlow,DecisionNode,DefaultTransition,Fork,InterruptibleRegion,MergeNode,SendAction,Structure Diagram,ExecutableMBSEProfile/10 Context Package,ExecutableMBSEProfile/11 Actor Package,ExecutableMBSEProfile/12 Use Case Package,ExecutableMBSEProfile/12 Working Copy Package,ExecutableMBSEProfile/13 Requirement Package,ExecutableMBSEProfile/14 Signals Package,ExecutableMBSEProfile/22 Feature Function Package,ExecutableMBSEProfile/31 System Architecture Package,ExecutableMBSEProfile/32 Subsystem Package,ExecutableMBSEProfile/33 Subsystem Interfaces Package,ExecutableMBSEProfile/34 Software Design Package,ExecutableMBSEProfile/Actor Usage,ExecutableMBSEProfile/Block Definition Diagram - Software,ExecutableMBSEProfile/Block Definition Diagram - System,ExecutableMBSEProfile/C++ Class,ExecutableMBSEProfile/Call Operation Activity,ExecutableMBSEProfile/Component Usage,ExecutableMBSEProfile/Decision Usage,ExecutableMBSEProfile/Domain Block,ExecutableMBSEProfile/Enhanced Use Case Diagram,ExecutableMBSEProfile/Feature Block,ExecutableMBSEProfile/Feature Usage,ExecutableMBSEProfile/Final Usage,ExecutableMBSEProfile/Flow Connector,ExecutableMBSEProfile/Flow Final Usage,ExecutableMBSEProfile/Flow Input,ExecutableMBSEProfile/Flow Output,ExecutableMBSEProfile/Function Block,ExecutableMBSEProfile/Function Connector,ExecutableMBSEProfile/Function Usage,ExecutableMBSEProfile/Guarded Flow Output,ExecutableMBSEProfile/Internal Block Diagram - Functional,ExecutableMBSEProfile/Internal Block Diagram - Software,ExecutableMBSEProfile/Internal Block Diagram - System,ExecutableMBSEProfile/Parallel Gateway Usage,ExecutableMBSEProfile/Requirements Diagram - System,ExecutableMBSEProfile/Software Component,ExecutableMBSEProfile/Start Usage,ExecutableMBSEProfile/Subsystem Block,ExecutableMBSEProfile/Subsystem Usage,ExecutableMBSEProfile/System Block,ExecutableMBSEProfile/System Context Diagram,ExecutableMBSEProfile/System Usage,ExecutableMBSEProfile/TableL - Simple Requirements Table,ExecutableMBSEProfile/TableV - Context Diagram Flows,ExecutableMBSEProfile/Textual Activity,ExecutableMBSEProfile/Time Event Usage,ExecutableMBSEProfile/Timing Diagram - Functional,ExecutableMBSEProfile/Use Case Description,ExecutableMBSEProfile/Use Case Postcondition,ExecutableMBSEProfile/Use Case Precondition,Diagrams/Requirements Diagram,%0D
+													<_Value type="a">AcceptEventAction,AcceptTimeEvent,ActivityFinal,Attribute,CallBehavior,CallOperation,Connector,ControlFlow,DecisionNode,DefaultTransition,Fork,InterruptibleRegion,MergeNode,Object,SendAction,State,Structure Diagram,ExecutableMBSEProfile/10 Context Package,ExecutableMBSEProfile/11 Actor Package,ExecutableMBSEProfile/12 Use Case Package,ExecutableMBSEProfile/12 Working Copy Package,ExecutableMBSEProfile/13 Requirement Package,ExecutableMBSEProfile/14 Signals Package,ExecutableMBSEProfile/22 Feature Function Package,ExecutableMBSEProfile/31 System Architecture Package,ExecutableMBSEProfile/32 Subsystem Package,ExecutableMBSEProfile/33 Subsystem Interfaces Package,ExecutableMBSEProfile/34 Software Design Package,ExecutableMBSEProfile/Actor Usage,ExecutableMBSEProfile/Block Definition Diagram - Software,ExecutableMBSEProfile/Block Definition Diagram - System,ExecutableMBSEProfile/C++ Class,ExecutableMBSEProfile/Call Operation Activity,ExecutableMBSEProfile/Component Usage,ExecutableMBSEProfile/Context Diagram,ExecutableMBSEProfile/Decision Usage,ExecutableMBSEProfile/Domain Block,ExecutableMBSEProfile/Enhanced Use Case Diagram,ExecutableMBSEProfile/Feature Block,ExecutableMBSEProfile/Feature Usage,ExecutableMBSEProfile/Final Usage,ExecutableMBSEProfile/Flow Connector,ExecutableMBSEProfile/Flow Final Usage,ExecutableMBSEProfile/Flow Input,ExecutableMBSEProfile/Flow Output,ExecutableMBSEProfile/Function Block,ExecutableMBSEProfile/Function Connector,ExecutableMBSEProfile/Function Usage,ExecutableMBSEProfile/Guarded Flow Output,ExecutableMBSEProfile/Internal Block Diagram - Functional,ExecutableMBSEProfile/Internal Block Diagram - Software,ExecutableMBSEProfile/Internal Block Diagram - System,ExecutableMBSEProfile/Parallel Gateway Usage,ExecutableMBSEProfile/Requirements Diagram - System,ExecutableMBSEProfile/Software Component,ExecutableMBSEProfile/Start Usage,ExecutableMBSEProfile/Subsystem Block,ExecutableMBSEProfile/Subsystem Usage,ExecutableMBSEProfile/System Block,ExecutableMBSEProfile/System Usage,ExecutableMBSEProfile/TableL - Simple Requirements Table,ExecutableMBSEProfile/TableV - Context Diagram Flows,ExecutableMBSEProfile/Textual Activity,ExecutableMBSEProfile/Time Event Usage,ExecutableMBSEProfile/Timing Diagram - Functional,ExecutableMBSEProfile/Use Case Description,ExecutableMBSEProfile/Use Case Postcondition,ExecutableMBSEProfile/Use Case Precondition,Diagrams/Requirements Diagram,%0D
 Diagrams/UseCaseDiagram,%0D
 Diagrams/Package Diagram,%0D
 Diagrams/Block Definition Diagram,%0D
@@ -11098,7 +11098,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSE</_name>
-			<_modifiedTime type="a">6.15.2022::6:34:45</_modifiedTime>
+			<_modifiedTime type="a">6.15.2022::12:10:18</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -11110,7 +11110,7 @@ Query</_Value>
 			<_id type="a">GUID 3307dbc4-6282-4d53-88b2-50e3de5ff8c2</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Diagrams</_name>
-			<_modifiedTime type="a">6.15.2022::7:24:35</_modifiedTime>
+			<_modifiedTime type="a">6.15.2022::10:52:48</_modifiedTime>
 			<_lastID type="a">6</_lastID>
 			<_defaultComposite type="s">GUID af3ccc20-8ac1-47a2-8c5f-be1a84c1550e</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -11763,7 +11763,7 @@ Query</_Value>
 												
 												<IProperty type="e">
 													<_Name type="a">DefaultName</_Name>
-													<_Value type="a">CTX - </_Value>
+													<_Value type="a">ctx - </_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -11775,13 +11775,13 @@ Query</_Value>
 												
 												<IProperty type="e">
 													<_Name type="a">Name</_Name>
-													<_Value type="a">System Context Diagram</_Value>
+													<_Value type="a">Context Diagram</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
 													<_Name type="a">PluralName</_Name>
-													<_Value type="a">54 The System Context Diagrams are...</_Value>
+													<_Value type="a">54 The Context Diagrams are...</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -11925,8 +11925,8 @@ Query</_Value>
 				</Subjects>
 			</IPropertyContainer>
 			</_properties>
-			<_name type="a">SystemContextDiagram</_name>
-			<_modifiedTime type="a">6.14.2022::9:5:44</_modifiedTime>
+			<_name type="a">ContextDiagram</_name>
+			<_modifiedTime type="a">6.15.2022::10:52:48</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -13121,7 +13121,7 @@ Query</_Value>
 			<_id type="a">GUID d213ea00-7590-48aa-8f30-a0a61f8fcd08</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Packages</_name>
-			<_modifiedTime type="a">6.15.2022::7:42:47</_modifiedTime>
+			<_modifiedTime type="a">6.15.2022::10:41:49</_modifiedTime>
 			<_lastID type="a">2</_lastID>
 			<_defaultComposite type="s">GUID 26c8a3f9-6aee-4dff-a42f-bf1cc2880009</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -13297,7 +13297,7 @@ Query</_Value>
 												<size type="a">6</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Query,Event,Diagram View,14 Signals Package,Actor Usage,Subsystem Usage,System Context Diagram,System Usage,TableV - Context Diagram Flows,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Flow,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
+													<_Value type="a">Query,Event,Diagram View,14 Signals Package,Actor Usage,Context Diagram,Subsystem Usage,System Usage,TableV - Context Diagram Flows,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Flow,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -13343,8 +13343,8 @@ Query</_Value>
 				</Subjects>
 			</IPropertyContainer>
 			</_properties>
-			<_name type="a">ContextDiagramPackage</_name>
-			<_modifiedTime type="a">6.15.2022::7:42:47</_modifiedTime>
+			<_name type="a">ContextPackage</_name>
+			<_modifiedTime type="a">6.15.2022::10:41:49</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>

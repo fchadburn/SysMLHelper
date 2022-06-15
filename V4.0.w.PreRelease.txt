@@ -708,6 +708,7 @@ V4.0.w.Rhp831.PreRelease (XX-XXX-XXXX):
 #515 15-JUN-2022: ExecutableMBSE: Change default starting name for use case diagram from ucd to uc to align with sysml ones (F.J.Chadburn)
 #516 15-JUN-2022: ExecutableMBSE: Added Simple Requirements Table to right-click for requirement packages with listener that automatically constrains scope (F.J.Chadburn)
 #517 15-JUN-2022: ExecutableMBSE: Get listener for Simple Requirements Table to autoset name if it's in a requirements package (F.J.Chadburn)
+#518 15-JUN-2022: ExecutableMBSE: Drop the system from the context diagram name, to make less verbose and more flexible since could be used for subsystems (F.J.Chadburn) 
 
 Backlog/Known issues
 - Add a system constraint stereotype

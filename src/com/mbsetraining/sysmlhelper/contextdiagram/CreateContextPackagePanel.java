@@ -89,7 +89,7 @@ public class CreateContextPackagePanel extends ExecutableMBSEBasePanel {
 		theMainPanel.setAlignmentX( Component.LEFT_ALIGNMENT );
 
 		String introText = 
-				"This helper will create a package hierarchy for simple system context diagrams underneath the " + 
+				"This helper will create a package hierarchy for simple context diagrams underneath the " + 
 						_context.elInfo( _ownerPkg ) + ". \n" +
 						"It creates a nested package structure and context diagram, imports the appropriate profiles if not present, and sets default \n" +
 						"display and other options to appropriate values for this using Rhapsody profile and property settings.\n";
