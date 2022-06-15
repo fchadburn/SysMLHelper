@@ -2684,15 +2684,39 @@ public abstract class BaseContext {
 						hasStereotypeCalled( theRelatedPackageStereotype, theDependsOn ) ){
 
 					@SuppressWarnings("unchecked")
-					List<IRPModelElement> theActorsInDependsOnActorPackage =
+					List<IRPModelElement> theDependsOnPackage =
 					theDependsOn.getNestedElementsByMetaClass( withMetaClass, 0 ).toList();
 
-					existingEls.addAll( theActorsInDependsOnActorPackage );
+					existingEls.addAll( theDependsOnPackage );
 				}
 			}
 		}
 
 		return existingEls;
+	}
+	
+	public List<IRPModelElement> getExistingElementsBasedOn(
+			IRPPackage theOwningPackage,
+			String theRelatedPackageStereotype,
+			String withMetaClass,
+			String andNewTerm ){
+
+		List<IRPModelElement> matchingEls = new ArrayList<>();
+		
+		List<IRPModelElement> existingEls = getExistingElementsBasedOn(
+				theOwningPackage, 
+				theRelatedPackageStereotype, 
+				withMetaClass );
+
+		for( IRPModelElement existingEl : existingEls ){
+			
+			if( existingEl.getUserDefinedMetaClass().equals( andNewTerm ) ){
+				
+				matchingEls.add( existingEl );
+			}
+		}
+		
+		return matchingEls;
 	}
 
 	public void moveRequirementIfNeeded(

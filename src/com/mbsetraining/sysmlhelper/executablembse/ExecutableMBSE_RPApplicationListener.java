@@ -85,6 +85,11 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				afterAddForActorUsage( (IRPInstance) modelElement );
 
 			} else if( modelElement instanceof IRPInstance && 
+					_context.hasStereotypeCalled( _context.NEW_TERM_FOR_SYSTEM_USAGE, modelElement )){
+
+				afterAddForSystemUsage( (IRPInstance) modelElement );
+				
+			} else if( modelElement instanceof IRPInstance && 
 					_context.hasStereotypeCalled( _context.NEW_TERM_FOR_FUNCTION_USAGE, modelElement )){
 
 				afterAddForFunctionUsage( (IRPInstance) modelElement );
@@ -418,14 +423,16 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		IRPPackage theOwningPackage = _context.getOwningPackageFor( modelElement );
 
 		List<IRPModelElement> existingActors = _context.getExistingElementsBasedOn( 
-				theOwningPackage, "ActorPackage", "Actor" );
+				theOwningPackage, _context.NEW_TERM_FOR_ACTOR_PACKAGE, "Actor" );
 
 		if( !existingActors.isEmpty() ){
 
 			List<IRPModelElement> elsToChooseFrom = new ArrayList<>();
 			elsToChooseFrom.addAll( existingActors );
 
-			List<IRPModelElement> existingActorUsages = getExistingActorUsagesBasedOn( theOwningPackage );
+			List<IRPModelElement> existingActorUsages = 
+					getExistingGlobalObjectsBasedOn( theOwningPackage, _context.NEW_TERM_FOR_ACTOR_USAGE );
+			
 			existingActorUsages.remove( modelElement ); // Don't include this element
 
 			elsToChooseFrom.addAll( existingActorUsages );
@@ -433,6 +440,41 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			IRPModelElement theSelectedElement =
 					UserInterfaceHelper.launchDialogToSelectElement( 
 							elsToChooseFrom, "Select existing actor or actor usage", true );
+
+			if( theSelectedElement instanceof IRPInstance ){
+
+				switchGraphNodeFor( modelElement, (IRPInstance) theSelectedElement );
+
+			} else if( theSelectedElement instanceof IRPClassifier ){
+
+				modelElement.setOtherClass( (IRPClassifier) theSelectedElement );
+			}
+		}		
+	}
+	
+	private void afterAddForSystemUsage(
+			IRPInstance modelElement ){
+
+		IRPPackage theOwningPackage = _context.getOwningPackageFor( modelElement );
+
+		List<IRPModelElement> existingEls = _context.getExistingElementsBasedOn( 
+				theOwningPackage, _context.NEW_TERM_FOR_SYSTEM_ARCHITECTURE_PACKAGE, "Class", _context.SYSTEM_BLOCK );
+
+		if( !existingEls.isEmpty() ){
+
+			List<IRPModelElement> elsToChooseFrom = new ArrayList<>();
+			elsToChooseFrom.addAll( existingEls );
+
+			List<IRPModelElement> existingActorUsages = 
+					getExistingGlobalObjectsBasedOn( theOwningPackage, _context.NEW_TERM_FOR_SYSTEM_USAGE );
+			
+			existingActorUsages.remove( modelElement ); // Don't include this element
+
+			elsToChooseFrom.addAll( existingActorUsages );
+
+			IRPModelElement theSelectedElement =
+					UserInterfaceHelper.launchDialogToSelectElement( 
+							elsToChooseFrom, "Select existing system block or system usage", true );
 
 			if( theSelectedElement instanceof IRPInstance ){
 
@@ -735,8 +777,9 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		return theGraphEl;
 	}
 
-	private List<IRPModelElement> getExistingActorUsagesBasedOn(
-			IRPPackage theOwningPackage ){
+	private List<IRPModelElement> getExistingGlobalObjectsBasedOn(
+			IRPPackage theOwningPackage,
+			String andNewTerm ){
 
 		List<IRPModelElement> existingActorUsages = new ArrayList<>();
 
@@ -748,7 +791,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 			for( IRPModelElement theCandidate : theCandidates ){
 
-				if( _context.hasStereotypeCalled( "ActorUsage", theCandidate ) ){
+				if( _context.hasStereotypeCalled( andNewTerm, theCandidate ) ){
 					existingActorUsages.add( theCandidate );
 				}
 			}

@@ -44,6 +44,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String BLOCK_DEFINITION_DIAGRAM_SYSTEM = "Block Definition Diagram - System";
 	public final String SIMPLE_REQUIREMENTS_TABLE = "TableL - Simple Requirements Table";
 
+	
 	public final String REQTS_ANALYSIS_CONTEXT_DIAGRAM_PACKAGE = "10 Context Package";
 	public final String REQTS_ANALYSIS_ACTOR_PACKAGE = "11 Actor Package";
 	public final String REQTS_ANALYSIS_USE_CASE_PACKAGE = "12 Use Case Package";
@@ -66,6 +67,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String NEW_TERM_FOR_TEXTUAL_ACTIVITY_DIAGRAM = "Textual Activity";
 	public final String NEW_TERM_FOR_CALL_OPERATION_ACTIVITY_DIAGRAM = "Call Operation Activity";
 	public final String NEW_TERM_FOR_ACTOR_USAGE = "ActorUsage";
+	public final String NEW_TERM_FOR_SYSTEM_USAGE = "SystemUsage";
 	public final String NEW_TERM_FOR_FUNCTION_USAGE = "FunctionUsage";
 	public final String NEW_TERM_FOR_DECISION_USAGE = "DecisionUsage";
 	public final String NEW_TERM_FOR_PARALLEL_GATEWAY_USAGE = "ParallelGatewayUsage";
@@ -74,6 +76,8 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String NEW_TERM_FOR_FLOW_FINAL_USAGE = "FlowFinalUsage";
 	public final String NEW_TERM_FOR_TIME_EVENT_USAGE = "TimeEventUsage";
 	public final String NEW_TERM_FOR_SYSTEM_CONTEXT = "SystemUsage";
+	public final String NEW_TERM_FOR_ACTOR_PACKAGE = "ActorPackage";
+	public final String NEW_TERM_FOR_SYSTEM_ARCHITECTURE_PACKAGE = "SystemArchitecturePackage";
 	public final String TESTBENCH_STEREOTYPE = "Testbench";
 	public final String AUTO_RIPPLE_STEREOTYPE = "AutoRipple";
 	public final String TABLE_LAYOUT_PREFIX = "tablel - ";
