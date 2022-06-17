@@ -51,13 +51,13 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String REQTS_ANALYSIS_WORKING_COPY_PACKAGE = "12 Working Copy Package";
 	public final String REQTS_ANALYSIS_REQUIREMENT_PACKAGE = "13 Requirement Package";
 	public final String REQTS_ANALYSIS_EXTERNAL_SIGNALS_PACKAGE = "14 Signals Package";
-	public final String FUNCT_ANALYSIS_SCENARIOS_PACKAGE = "21 Scenarios Package";
-	public final String FUNCT_ANALYSIS_DESIGN_PACKAGE = "22 Design Package";
-	public final String FUNCT_ANALYSIS_INTERFACES_PACKAGE = "23 Interfaces Package";
+	public final String FUNCT_ANALYSIS_SCENARIOS_PACKAGE = "21 Funct Analysis - Scenarios Package";
+	public final String FUNCT_ANALYSIS_DESIGN_PACKAGE = "22 Funct Analysis - Design Package";
+	public final String FUNCT_ANALYSIS_INTERFACES_PACKAGE = "23 Funct Analysis - Interfaces Package";
 	public final String FUNCT_ANALYSIS_TEST_PACKAGE = "24 Funct Analysis - Test Package";
+	public final String FUNCT_ANALYSIS_FEATURE_FUNCTION_PACKAGE = "22 Feature Function Package";
 	public final String DESIGN_SYNTHESIS_SUBSYSTEM_INTERFACES_PACKAGE = "33 Subsystem Interfaces Package";
 	public final String DESIGN_SYNTHESIS_LOGICAL_SYSTEM_PACKAGE = "31 System Architecture Package";
-	public final String DESIGN_SYNTHESIS_FEATURE_FUNCTION_PACKAGE = "32 Feature Function Package";
 	public final String REQUIREMENTS_DIAGRAM_SYSTEM = "Requirements Diagram - System";
 	public final String TIME_ELAPSED_BLOCK_STEREOTYPE = "TimeBlock";
 	public final String ELAPSED_TIME_GENERATOR_STEREOTYPE = "TimeGenerator";

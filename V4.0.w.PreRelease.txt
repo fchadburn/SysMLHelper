@@ -712,8 +712,10 @@ V4.0.w.Rhp831.PreRelease (XX-XXX-XXXX):
 #519 15-JUN-2022: ExecutableMBSE: Update hep file to align with change to shorter package names so that menus appear as before (F.J.Chadburn)
 #520 15-JUN-2022: ExecutableMBSE: Enable context diagram modeler to pick an existing system usage or system block similar to how actor usages work (F.J.Chadburn)
 #521 16-JUN-2022: ExecutableMBSE: Add activity diagram action to requirement and requirement to action tables to the add new menus to assist traceability analysis (F.J.Chadburn)
+#522 16-JUN-2022: ExecutableMBSE: Get listener to automatically name 'working copy' packages based on an owning feature or function package (F.J.Chadburn)
 
 Backlog/Known issues
+- Move to new function package
 - Get listener to deal to prevent duplicate traceability relations being created on diagrams
 - Add a system constraint stereotype
 - Right-click a function block to create new requirement
