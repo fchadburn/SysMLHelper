@@ -36,6 +36,7 @@ import com.mbsetraining.sysmlhelper.sequencediagram.SequenceDiagramCreator;
 import com.mbsetraining.sysmlhelper.sequencediagram.UpdateInferfacesBasedOnSequenceDiagramPanel;
 import com.mbsetraining.sysmlhelper.sequencediagram.VerificationDependencyUpdater;
 import com.mbsetraining.sysmlhelper.smartlink.EndlinkPanel;
+import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateFunctionBlock;
 import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateIncomingEventPanel;
 import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateOperationPanel;
 import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateOutgoingEventPanel;
@@ -598,6 +599,11 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 
 					}				
+					
+				} else if( menuItem.equals( _settings.getString(
+						"executablembseplugin.CreateFunctionBlockMenu" ) ) ){
+
+					CreateFunctionBlock.launchThePanel( theAppID );
 
 				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.DeriveDownstreamRequirementMenu" ) ) ){

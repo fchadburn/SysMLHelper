@@ -1,5 +1,5 @@
  [Helpers]
-numberOfElements=71
+numberOfElements=72
 
 #REM: Definition of the plug-in
 name1=InvokeExecutableMBSEHelper
@@ -170,47 +170,47 @@ isVisible22=1
 DLLServerCompatible22=1
 
 #REM: Add pop-up menu
-name23=MBSE Method: Functional Analysis\Derive downstream requirement
+name23=MBSE Method: Functional Analysis\Create a function block traced to requirement(s)
 isPluginCommand23=1
 command23=InvokeExecutableMBSEHelper
-applicableTo23=Requirement,CallOperation,AcceptEventAction,State,Operation,Event,Attribute,ValueProperty
+applicableTo23=ActivityDiagram,ObjectModelDiagram,Block Definition Diagram,Internal Block Diagram,Statechart,SequenceDiagram,UseCaseDiagram,Enhanced Use Case Diagram,Requirements Diagram,State,Transition,Comment,AcceptEventAction,SendAction,AcceptTimeEvent,Constraint,,Use Case Precondition,Use Case Postcondition,Use Case Description,Precondition,Postcondition,ControlFlow,Requirement,Block,Object,22 Funct Analysis - Design Package
 isVisible23=1
 DLLServerCompatible23=1
 
 #REM: Add pop-up menu
-name24=MBSE Method: Functional Analysis\Create new TestCase for «TestDriver»
+name24=MBSE Method: Functional Analysis\Derive downstream requirement
 isPluginCommand24=1
 command24=InvokeExecutableMBSEHelper
-applicableTo24=Block,SequenceDiagram
+applicableTo24=Requirement,CallOperation,AcceptEventAction,State,Operation,Event,Attribute,ValueProperty
 isVisible24=1
 DLLServerCompatible24=1
 
 #REM: Add pop-up menu
-name25=MBSE Method: Functional Analysis\Add new actor to package under development
+name25=MBSE Method: Functional Analysis\Create new TestCase for «TestDriver»
 isPluginCommand25=1
 command25=InvokeExecutableMBSEHelper
-applicableTo25=Package,21 Funct Analysis - Scenarios Package,24 Funct Analysis - Test Package
+applicableTo25=Block,SequenceDiagram
 isVisible25=1
 DLLServerCompatible25=1
 
 #REM: Add pop-up menu
-name26=MBSE Method: Functional Analysis\Copy activity diagrams to package under development
+name26=MBSE Method: Functional Analysis\Add new actor to package under development
 isPluginCommand26=1
 command26=InvokeExecutableMBSEHelper
-applicableTo26=12 Working Copy Package
+applicableTo26=Package,21 Funct Analysis - Scenarios Package,24 Funct Analysis - Test Package
 isVisible26=1
 DLLServerCompatible26=1
 
 #REM: Add pop-up menu
-name27=MBSE Method: Functional Analysis\Update attribute and/or check operation owned by the system
+name27=MBSE Method: Functional Analysis\Copy activity diagrams to package under development
 isPluginCommand27=1
 command27=InvokeExecutableMBSEHelper
-applicableTo27=Attribute,ValueProperty
+applicableTo27=12 Working Copy Package
 isVisible27=1
 DLLServerCompatible27=1
 
 #REM: Add pop-up menu
-nam28=MBSE Method: Functional Analysis\Create an incoming event sent by an actor to change this attribute
+name28=MBSE Method: Functional Analysis\Update attribute and/or check operation owned by the system
 isPluginCommand28=1
 command28=InvokeExecutableMBSEHelper
 applicableTo28=Attribute,ValueProperty
@@ -218,31 +218,31 @@ isVisible28=1
 DLLServerCompatible28=1
 
 #REM: Add pop-up menu
-name29=MBSE Method: Functional Analysis\Re-create «AutoShow» sequence diagram
+nam29=MBSE Method: Functional Analysis\Create an incoming event sent by an actor to change this attribute
 isPluginCommand29=1
 command29=InvokeExecutableMBSEHelper
-applicableTo29=SequenceDiagram
+applicableTo29=Attribute,ValueProperty
 isVisible29=1
 DLLServerCompatible29=1
 
 #REM: Add pop-up menu
-name30=MBSE Method: Design Synthesis\Add new block/part to package under development
+name30=MBSE Method: Functional Analysis\Re-create «AutoShow» sequence diagram
 isPluginCommand30=1
 command30=InvokeExecutableMBSEHelper
-applicableTo30=Package,Block Definition Diagram,Internal Block Diagram,21 Funct Analysis - Scenarios Package,22 Funct Analysis - Design Package
+applicableTo30=SequenceDiagram
 isVisible30=1
 DLLServerCompatible30=1
 
 #REM: Add pop-up menu
-name31=MBSE Method: Design Synthesis\Make attribute a «publish» flowport
+name31=MBSE Method: Design Synthesis\Add new block/part to package under development
 isPluginCommand31=1
 command31=InvokeExecutableMBSEHelper
-applicableTo31=Attribute,ValueProperty
+applicableTo31=Package,Block Definition Diagram,Internal Block Diagram,21 Funct Analysis - Scenarios Package,22 Funct Analysis - Design Package
 isVisible31=1
 DLLServerCompatible31=1
 
 #REM: Add pop-up menu
-name32=MBSE Method: Design Synthesis\Make attribute a «subscribe» flowport
+name32=MBSE Method: Design Synthesis\Make attribute a «publish» flowport
 isPluginCommand32=1
 command32=InvokeExecutableMBSEHelper
 applicableTo32=Attribute,ValueProperty
@@ -250,111 +250,111 @@ isVisible32=1
 DLLServerCompatible32=1
 
 #REM: Add pop-up menu
-name33=MBSE Method: Design Synthesis\Update Ports and Interfaces
+name33=MBSE Method: Design Synthesis\Make attribute a «subscribe» flowport
 isPluginCommand33=1
 command33=InvokeExecutableMBSEHelper
-applicableTo33=SequenceDiagram,Message
+applicableTo33=Attribute,ValueProperty
 isVisible33=1
 DLLServerCompatible33=1
 
 #REM: Add pop-up menu
-name34=MBSE Method: Design Synthesis\Generate Sequence Diagram
+name34=MBSE Method: Design Synthesis\Update Ports and Interfaces
 isPluginCommand34=1
 command34=InvokeExecutableMBSEHelper
-applicableTo34=Block,System Block,Domain Block
+applicableTo34=SequenceDiagram,Message
 isVisible34=1
 DLLServerCompatible34=1
 
 #REM: Add pop-up menu
-name35=MBSE Method: Design Synthesis\Auto Realize With Copy
+name35=MBSE Method: Design Synthesis\Generate Sequence Diagram
 isPluginCommand35=1
 command35=InvokeExecutableMBSEHelper
-applicableTo35=SequenceDiagram,Message
+applicableTo35=Block,System Block,Domain Block
 isVisible35=1
 DLLServerCompatible35=1
 
 #REM: Add pop-up menu
-name36=MBSE Method: Design Synthesis\Delete attribute and related elements
+name36=MBSE Method: Design Synthesis\Auto Realize With Copy
 isPluginCommand36=1
 command36=InvokeExecutableMBSEHelper
-applicableTo36=Attribute,ValueProperty,FlowPort
+applicableTo36=SequenceDiagram,Message
 isVisible36=1
 DLLServerCompatible36=1
 
-#REM: Add pop-up menu 
-name37=MBSE Method: Gateway Helpers\Setup Gateway project based on rqtf template
+#REM: Add pop-up menu
+name37=MBSE Method: Design Synthesis\Delete attribute and related elements
 isPluginCommand37=1
 command37=InvokeExecutableMBSEHelper
-applicableTo37=Project,SysML,Package
+applicableTo37=Attribute,ValueProperty,FlowPort
 isVisible37=1
 DLLServerCompatible37=1
 
-#REM: Add pop-up menu
-name38=MBSE Method: Gateway Helpers\Move unclaimed requirements ready for Gateway sync back to DOORS
+#REM: Add pop-up menu 
+name38=MBSE Method: Gateway Helpers\Setup Gateway project based on rqtf template
 isPluginCommand38=1
 command38=InvokeExecutableMBSEHelper
-applicableTo38=UseCase,12 Use Case Package,21 Funct Analysis - Scenarios Package,Package,ActivityDiagram,Textual Activity,Call Operation Activity,Requirement,UseCaseDiagram,Enhanced Use Case Diagram
+applicableTo38=Project,SysML,Package
 isVisible38=1
 DLLServerCompatible38=1
 
 #REM: Add pop-up menu
-name39=MBSE Method: Gateway Helpers\Delete the Gateway tagged as Deleted_At_High_Level requirements
+name39=MBSE Method: Gateway Helpers\Move unclaimed requirements ready for Gateway sync back to DOORS
 isPluginCommand39=1
 command39=InvokeExecutableMBSEHelper
-applicableTo39=UseCase,12 Use Case Package,13 Requirement Package,Package,ActivityDiagram,Textual Activity,Call Operation Activity,Requirement,UseCaseDiagram,Enhanced Use Case Diagram
+applicableTo39=UseCase,12 Use Case Package,21 Funct Analysis - Scenarios Package,Package,ActivityDiagram,Textual Activity,Call Operation Activity,Requirement,UseCaseDiagram,Enhanced Use Case Diagram
 isVisible39=1
 DLLServerCompatible39=1
 
 #REM: Add pop-up menu
-name40=MBSE Method: Delete Event and related elements from Model
+name40=MBSE Method: Gateway Helpers\Delete the Gateway tagged as Deleted_At_High_Level requirements
 isPluginCommand40=1
 command40=InvokeExecutableMBSEHelper
-applicableTo40=Event,Reception
+applicableTo40=UseCase,12 Use Case Package,13 Requirement Package,Package,ActivityDiagram,Textual Activity,Call Operation Activity,Requirement,UseCaseDiagram,Enhanced Use Case Diagram
 isVisible40=1
 DLLServerCompatible40=1
 
 #REM: Add pop-up menu
-name41=MBSE Method: Other\Center straight lines on diagram(s)
+name41=MBSE Method: Delete Event and related elements from Model
 isPluginCommand41=1
 command41=InvokeExecutableMBSEHelper
-applicableTo41=Generalization,Realization,AssociationEnd,Package,Dependency,Satisfaction,Derivation,Refinement,Verification,ActivityDiagram,Textual Activity,Call Operation Activity,ObjectModelDiagram,Block Definition Diagram,Internal Block Diagram,Statechart,SequenceDiagram,UseCaseDiagram,Enhanced Use Case Diagram,Block Definition Diagram - Software,Block Definition Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - System,Metamodel Diagram
+applicableTo41=Event,Reception
 isVisible41=1
 DLLServerCompatible41=1
 
 #REM: Add pop-up menu
-name42=MBSE Method: Other\Populate parts
+name42=MBSE Method: Other\Center straight lines on diagram(s)
 isPluginCommand42=1
 command42=InvokeExecutableMBSEHelper
-applicableTo42=Object,Class,Internal Block Diagram,Internal Block Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - Software,Subsystem Usage,System Usage
+applicableTo42=Generalization,Realization,AssociationEnd,Package,Dependency,Satisfaction,Derivation,Refinement,Verification,ActivityDiagram,Textual Activity,Call Operation Activity,ObjectModelDiagram,Block Definition Diagram,Internal Block Diagram,Statechart,SequenceDiagram,UseCaseDiagram,Enhanced Use Case Diagram,Block Definition Diagram - Software,Block Definition Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - System,Metamodel Diagram
 isVisible42=1
 DLLServerCompatible42=1
 
-#REM: Add pop-up menu 
-name43=MBSE Method: Other\Quick hyperlink
+#REM: Add pop-up menu
+name43=MBSE Method: Other\Populate parts
 isPluginCommand43=1
 command43=InvokeExecutableMBSEHelper
-applicableTo43=State,Block,Instance,UseCase
+applicableTo43=Object,Class,Internal Block Diagram,Internal Block Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - Software,Subsystem Usage,System Usage
 isVisible43=1
 DLLServerCompatible43=1
 
 #REM: Add pop-up menu 
-name44=MBSE Method: Other\Add a relative reference to an external unit (.sbs)
+name44=MBSE Method: Other\Quick hyperlink
 isPluginCommand44=1
 command44=InvokeExecutableMBSEHelper
-applicableTo44=Project,SysML,Package
+applicableTo44=State,Block,Instance,UseCase,Function Block,Feature Block,Domain Block,System Block,Subsystem Block,Software Component,C++ Class,
 isVisible44=1
 DLLServerCompatible44=1
 
 #REM: Add pop-up menu 
-name45=MBSE Method: Other\Select Depends On element(s)\All
+name45=MBSE Method: Other\Add a relative reference to an external unit (.sbs)
 isPluginCommand45=1
 command45=InvokeExecutableMBSEHelper
-applicableTo45=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint,System Block,Subsystem Block,Domain Block,Feature Block,Function Block,Software Component,C++ Class,Use Case Description, Use Case Precondition,Use Case Postcondition,11 Actor Package,12 Use Case Package,13 Requirement Package,10 Context Package,14 Signals Package,31 System Architecture Package,32 Subsystem Package,33 Subsystem Interfaces Package,34 Software Design Package,22 Feature Function Package,Block Definition Diagram - System,Enhanced Use Case Diagram,Context Diagram,Internal Block Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - Software,Block Definition Diagram - Software,Textual Activity,Call Operation Activity
+applicableTo45=Project,SysML,Package
 isVisible45=1
 DLLServerCompatible45=1
 
 #REM: Add pop-up menu 
-name46=MBSE Method: Other\Select Dependent element(s)\All
+name46=MBSE Method: Other\Select Depends On element(s)\All
 isPluginCommand46=1
 command46=InvokeExecutableMBSEHelper
 applicableTo46=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint,System Block,Subsystem Block,Domain Block,Feature Block,Function Block,Software Component,C++ Class,Use Case Description, Use Case Precondition,Use Case Postcondition,11 Actor Package,12 Use Case Package,13 Requirement Package,10 Context Package,14 Signals Package,31 System Architecture Package,32 Subsystem Package,33 Subsystem Interfaces Package,34 Software Design Package,22 Feature Function Package,Block Definition Diagram - System,Enhanced Use Case Diagram,Context Diagram,Internal Block Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - Software,Block Definition Diagram - Software,Textual Activity,Call Operation Activity
@@ -362,7 +362,7 @@ isVisible46=1
 DLLServerCompatible46=1
 
 #REM: Add pop-up menu 
-name47=MBSE Method: Other\Select Depends On element(s)\Derives
+name47=MBSE Method: Other\Select Dependent element(s)\All
 isPluginCommand47=1
 command47=InvokeExecutableMBSEHelper
 applicableTo47=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint,System Block,Subsystem Block,Domain Block,Feature Block,Function Block,Software Component,C++ Class,Use Case Description, Use Case Precondition,Use Case Postcondition,11 Actor Package,12 Use Case Package,13 Requirement Package,10 Context Package,14 Signals Package,31 System Architecture Package,32 Subsystem Package,33 Subsystem Interfaces Package,34 Software Design Package,22 Feature Function Package,Block Definition Diagram - System,Enhanced Use Case Diagram,Context Diagram,Internal Block Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - Software,Block Definition Diagram - Software,Textual Activity,Call Operation Activity
@@ -370,7 +370,7 @@ isVisible47=1
 DLLServerCompatible47=1
 
 #REM: Add pop-up menu 
-name48=MBSE Method: Other\Select Depends On element(s)\Satisfies
+name48=MBSE Method: Other\Select Depends On element(s)\Derives
 isPluginCommand48=1
 command48=InvokeExecutableMBSEHelper
 applicableTo48=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint,System Block,Subsystem Block,Domain Block,Feature Block,Function Block,Software Component,C++ Class,Use Case Description, Use Case Precondition,Use Case Postcondition,11 Actor Package,12 Use Case Package,13 Requirement Package,10 Context Package,14 Signals Package,31 System Architecture Package,32 Subsystem Package,33 Subsystem Interfaces Package,34 Software Design Package,22 Feature Function Package,Block Definition Diagram - System,Enhanced Use Case Diagram,Context Diagram,Internal Block Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - Software,Block Definition Diagram - Software,Textual Activity,Call Operation Activity
@@ -378,7 +378,7 @@ isVisible48=1
 DLLServerCompatible48=1
 
 #REM: Add pop-up menu 
-name49=MBSE Method: Other\Select Depends On element(s)\Verifies
+name49=MBSE Method: Other\Select Depends On element(s)\Satisfies
 isPluginCommand49=1
 command49=InvokeExecutableMBSEHelper
 applicableTo49=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint,System Block,Subsystem Block,Domain Block,Feature Block,Function Block,Software Component,C++ Class,Use Case Description, Use Case Precondition,Use Case Postcondition,11 Actor Package,12 Use Case Package,13 Requirement Package,10 Context Package,14 Signals Package,31 System Architecture Package,32 Subsystem Package,33 Subsystem Interfaces Package,34 Software Design Package,22 Feature Function Package,Block Definition Diagram - System,Enhanced Use Case Diagram,Context Diagram,Internal Block Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - Software,Block Definition Diagram - Software,Textual Activity,Call Operation Activity
@@ -386,7 +386,7 @@ isVisible49=1
 DLLServerCompatible49=1
 
 #REM: Add pop-up menu 
-name50=MBSE Method: Other\Select Depends On element(s)\Refines
+name50=MBSE Method: Other\Select Depends On element(s)\Verifies
 isPluginCommand50=1
 command50=InvokeExecutableMBSEHelper
 applicableTo50=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint,System Block,Subsystem Block,Domain Block,Feature Block,Function Block,Software Component,C++ Class,Use Case Description, Use Case Precondition,Use Case Postcondition,11 Actor Package,12 Use Case Package,13 Requirement Package,10 Context Package,14 Signals Package,31 System Architecture Package,32 Subsystem Package,33 Subsystem Interfaces Package,34 Software Design Package,22 Feature Function Package,Block Definition Diagram - System,Enhanced Use Case Diagram,Context Diagram,Internal Block Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - Software,Block Definition Diagram - Software,Textual Activity,Call Operation Activity
@@ -394,7 +394,7 @@ isVisible50=1
 DLLServerCompatible50=1
 
 #REM: Add pop-up menu 
-name51=MBSE Method: Other\Select Depends On element(s)\Derive Requirement
+name51=MBSE Method: Other\Select Depends On element(s)\Refines
 isPluginCommand51=1
 command51=InvokeExecutableMBSEHelper
 applicableTo51=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint,System Block,Subsystem Block,Domain Block,Feature Block,Function Block,Software Component,C++ Class,Use Case Description, Use Case Precondition,Use Case Postcondition,11 Actor Package,12 Use Case Package,13 Requirement Package,10 Context Package,14 Signals Package,31 System Architecture Package,32 Subsystem Package,33 Subsystem Interfaces Package,34 Software Design Package,22 Feature Function Package,Block Definition Diagram - System,Enhanced Use Case Diagram,Context Diagram,Internal Block Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - Software,Block Definition Diagram - Software,Textual Activity,Call Operation Activity
@@ -402,7 +402,7 @@ isVisible51=1
 DLLServerCompatible51=1
 
 #REM: Add pop-up menu 
-name52=MBSE Method: Other\Select Dependent element(s)\All
+name52=MBSE Method: Other\Select Depends On element(s)\Derive Requirement
 isPluginCommand52=1
 command52=InvokeExecutableMBSEHelper
 applicableTo52=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint,System Block,Subsystem Block,Domain Block,Feature Block,Function Block,Software Component,C++ Class,Use Case Description, Use Case Precondition,Use Case Postcondition,11 Actor Package,12 Use Case Package,13 Requirement Package,10 Context Package,14 Signals Package,31 System Architecture Package,32 Subsystem Package,33 Subsystem Interfaces Package,34 Software Design Package,22 Feature Function Package,Block Definition Diagram - System,Enhanced Use Case Diagram,Context Diagram,Internal Block Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - Software,Block Definition Diagram - Software,Textual Activity,Call Operation Activity
@@ -410,7 +410,7 @@ isVisible52=1
 DLLServerCompatible52=1
 
 #REM: Add pop-up menu 
-name53=MBSE Method: Other\Select Dependent element(s)\Derives
+name53=MBSE Method: Other\Select Dependent element(s)\All
 isPluginCommand53=1
 command53=InvokeExecutableMBSEHelper
 applicableTo53=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint,System Block,Subsystem Block,Domain Block,Feature Block,Function Block,Software Component,C++ Class,Use Case Description, Use Case Precondition,Use Case Postcondition,11 Actor Package,12 Use Case Package,13 Requirement Package,10 Context Package,14 Signals Package,31 System Architecture Package,32 Subsystem Package,33 Subsystem Interfaces Package,34 Software Design Package,22 Feature Function Package,Block Definition Diagram - System,Enhanced Use Case Diagram,Context Diagram,Internal Block Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - Software,Block Definition Diagram - Software,Textual Activity,Call Operation Activity
@@ -418,7 +418,7 @@ isVisible53=1
 DLLServerCompatible53=1
 
 #REM: Add pop-up menu 
-name54=MBSE Method: Other\Select Dependent element(s)\Satisfies
+name54=MBSE Method: Other\Select Dependent element(s)\Derives
 isPluginCommand54=1
 command54=InvokeExecutableMBSEHelper
 applicableTo54=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint,System Block,Subsystem Block,Domain Block,Feature Block,Function Block,Software Component,C++ Class,Use Case Description, Use Case Precondition,Use Case Postcondition,11 Actor Package,12 Use Case Package,13 Requirement Package,10 Context Package,14 Signals Package,31 System Architecture Package,32 Subsystem Package,33 Subsystem Interfaces Package,34 Software Design Package,22 Feature Function Package,Block Definition Diagram - System,Enhanced Use Case Diagram,Context Diagram,Internal Block Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - Software,Block Definition Diagram - Software,Textual Activity,Call Operation Activity
@@ -426,7 +426,7 @@ isVisible54=1
 DLLServerCompatible54=1
 
 #REM: Add pop-up menu 
-name55=MBSE Method: Other\Select Dependent element(s)\Verifies
+name55=MBSE Method: Other\Select Dependent element(s)\Satisfies
 isPluginCommand55=1
 command55=InvokeExecutableMBSEHelper
 applicableTo55=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint,System Block,Subsystem Block,Domain Block,Feature Block,Function Block,Software Component,C++ Class,Use Case Description, Use Case Precondition,Use Case Postcondition,11 Actor Package,12 Use Case Package,13 Requirement Package,10 Context Package,14 Signals Package,31 System Architecture Package,32 Subsystem Package,33 Subsystem Interfaces Package,34 Software Design Package,22 Feature Function Package,Block Definition Diagram - System,Enhanced Use Case Diagram,Context Diagram,Internal Block Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - Software,Block Definition Diagram - Software,Textual Activity,Call Operation Activity
@@ -434,7 +434,7 @@ isVisible55=1
 DLLServerCompatible55=1
 
 #REM: Add pop-up menu 
-name56=MBSE Method: Other\Select Dependent element(s)\Refines
+name56=MBSE Method: Other\Select Dependent element(s)\Verifies
 isPluginCommand56=1
 command56=InvokeExecutableMBSEHelper
 applicableTo56=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint,System Block,Subsystem Block,Domain Block,Feature Block,Function Block,Software Component,C++ Class,Use Case Description, Use Case Precondition,Use Case Postcondition,11 Actor Package,12 Use Case Package,13 Requirement Package,10 Context Package,14 Signals Package,31 System Architecture Package,32 Subsystem Package,33 Subsystem Interfaces Package,34 Software Design Package,22 Feature Function Package,Block Definition Diagram - System,Enhanced Use Case Diagram,Context Diagram,Internal Block Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - Software,Block Definition Diagram - Software,Textual Activity,Call Operation Activity
@@ -442,7 +442,7 @@ isVisible56=1
 DLLServerCompatible56=1
 
 #REM: Add pop-up menu 
-name57=MBSE Method: Other\Select Dependent element(s)\Derive Requirement
+name57=MBSE Method: Other\Select Dependent element(s)\Refines
 isPluginCommand57=1
 command57=InvokeExecutableMBSEHelper
 applicableTo57=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint,System Block,Subsystem Block,Domain Block,Feature Block,Function Block,Software Component,C++ Class,Use Case Description, Use Case Precondition,Use Case Postcondition,11 Actor Package,12 Use Case Package,13 Requirement Package,10 Context Package,14 Signals Package,31 System Architecture Package,32 Subsystem Package,33 Subsystem Interfaces Package,34 Software Design Package,22 Feature Function Package,Block Definition Diagram - System,Enhanced Use Case Diagram,Context Diagram,Internal Block Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - Software,Block Definition Diagram - Software,Textual Activity,Call Operation Activity
@@ -450,131 +450,139 @@ isVisible57=1
 DLLServerCompatible57=1
 
 #REM: Add pop-up menu 
-name58=MBSE Method: Other\Select Classifiers Of Parts
+name58=MBSE Method: Other\Select Dependent element(s)\Derive Requirement
 isPluginCommand58=1
 command58=InvokeExecutableMBSEHelper
-applicableTo58=Actor,Block,Class,System Block,Subsystem Block,Domain Block,Feature Block,Function Block,Software Component,C++ Class,Use Case,Block Definition Diagram - System,Context Diagram,Internal Block Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - Software,Block Definition Diagram - Software
+applicableTo58=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint,System Block,Subsystem Block,Domain Block,Feature Block,Function Block,Software Component,C++ Class,Use Case Description, Use Case Precondition,Use Case Postcondition,11 Actor Package,12 Use Case Package,13 Requirement Package,10 Context Package,14 Signals Package,31 System Architecture Package,32 Subsystem Package,33 Subsystem Interfaces Package,34 Software Design Package,22 Feature Function Package,Block Definition Diagram - System,Enhanced Use Case Diagram,Context Diagram,Internal Block Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - Software,Block Definition Diagram - Software,Textual Activity,Call Operation Activity
 isVisible58=1
 DLLServerCompatible58=1
 
-#REM: Add pop-up menu
-name59=MBSE Method: Other\Repair OSLC Links
+#REM: Add pop-up menu 
+name59=MBSE Method: Other\Select Classifiers Of Parts
 isPluginCommand59=1
 command59=InvokeExecutableMBSEHelper
-applicableTo59=Project,SysML,10 Context Package,11 Actor Package,13 Requirement Package,22 Feature Function Package,14 Signals Package,34 Software Design Package,33 Subsystem Interfaces Package,32 Subsystem Package,31 System Architecture Package,12 Use Case Package
+applicableTo59=Actor,Block,Class,System Block,Subsystem Block,Domain Block,Feature Block,Function Block,Software Component,C++ Class,Use Case,Block Definition Diagram - System,Context Diagram,Internal Block Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - Software,Block Definition Diagram - Software
 isVisible59=1
 DLLServerCompatible59=1
 
 #REM: Add pop-up menu
-name60=MBSE Method: Other\Setup project properties
+name60=MBSE Method: Other\Repair OSLC Links
 isPluginCommand60=1
 command60=InvokeExecutableMBSEHelper
-applicableTo60=Project,SysML
+applicableTo60=Project,SysML,10 Context Package,11 Actor Package,13 Requirement Package,22 Feature Function Package,14 Signals Package,34 Software Design Package,33 Subsystem Interfaces Package,32 Subsystem Package,31 System Architecture Package,12 Use Case Package
 isVisible60=1
 DLLServerCompatible60=1
 
 #REM: Add pop-up menu
-name61=MBSE Method: Requirements Analysis\Move To Separate Package
+name61=MBSE Method: Other\Setup project properties
 isPluginCommand61=1
 command61=InvokeExecutableMBSEHelper
-applicableTo61=UseCase
+applicableTo61=Project,SysML
 isVisible61=1
 DLLServerCompatible61=1
 
-name62=Allocation Wizard
-JavaMainClass62=com.ibm.rhapsody.setoolkit.AllocationWizard_Launcher
-JavaClassPath62=$OMROOT/Profiles/HarmonySE/SE Toolkit/AllocationWizard.jar
-isPlugin62=1
-helperTriggers62=
+#REM: Add pop-up menu
+name62=MBSE Method: Requirements Analysis\Move To Separate Package
+isPluginCommand62=1
+command62=InvokeExecutableMBSEHelper
+applicableTo62=UseCase
+isVisible62=1
+DLLServerCompatible62=1
 
-name63=SE-Toolkit\Allocation\Allocation Wizard
-isPluginCommand63=1
-command63=Allocation Wizard
-applicableTo63=Class,block,Block,System Block,Subsystem Block,Domain Block,Feature Block,Function Block,Software Component,C++ Class,Use Case
-isVisible63=1
+name63=Allocation Wizard
+JavaMainClass63=com.ibm.rhapsody.setoolkit.AllocationWizard_Launcher
+JavaClassPath63=$OMROOT/Profiles/HarmonySE/SE Toolkit/AllocationWizard.jar
+isPlugin63=1
 helperTriggers63=
 
-#REM : NOTE: Harmony Toolbox Entry runs outside Rhapsody to workaround API Defect wrt Plugins and Diagram Focus
-name64=SE-Toolkit\Modeling Toolbox
-command64=javaw
-isSynced64=0
+name64=SE-Toolkit\Allocation\Allocation Wizard
+isPluginCommand64=1
+command64=Allocation Wizard
+applicableTo64=Class,block,Block,System Block,Subsystem Block,Domain Block,Feature Block,Function Block,Software Component,C++ Class,Use Case
 isVisible64=1
-applicableTo64=
-arguments64="-Djava.library.path="$OMROOT/JavaAPI" -classpath "$OMROOT/JavaAPI/rhapsody.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/ModelingToolbox.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonGUITools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonRhapsodyTools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/miglayout-4.0.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/balloontip-1.2.1.jar" com.ibm.rhapsody.setoolkit.ModelingToolbox_Launcher"
-initialDir64=$JavaLocation/bin
-isMacro64=0
-applicableToProfile64=
-Triggers64=
+helperTriggers64=
 
-name65=SE-Toolkit\Add Hyperlinks\To Selected
+#REM : NOTE: Harmony Toolbox Entry runs outside Rhapsody to workaround API Defect wrt Plugins and Diagram Focus
+name65=SE-Toolkit\Modeling Toolbox
 command65=javaw
 isSynced65=0
 isVisible65=1
-applicableTo65=Operation,Condition,flowProperty,DataType,SequenceDiagram,verify,Generalization,Parametric Diagram,Module,Dependency,Swimlane,standardPort,Attribute,ValueProperty,Project,ControlledFile,Comment,Profile,Port,CollaborationDiagram,Node,ConstraintProperty,Class,TriggeredOperation,localPrecondition,viewpoint,StructureDiagram,view,flowAttribute,localPostcondition,ObjectNode,UseCase,satisfy,Association,ComponentInstance,Constraint,Block,Stereotype,refine,Unit,RequirementsTable,Destructor,CallOperation,DefaultTransition,rationale,testCase,Object,valueBinding_D,Message,allocate,Link,Reception,conform,Constructor,UseCaseDiagram,Requirements Diagram,ComponentDiagram,Pin,Statechart,ValueType,SysML,HyperLink,AllocationsTable,Actor,ConstraintParameter,Requirement,Tag,ClassifierRole,AssociationEnd,Component,Event,PanelDiagram,PrimitiveOperation,Package Diagram,activity_D,InteractionOperand,Argument,Block Definition Diagram,BindingConnector,ObjectModelDiagram,connector,Transition,InteractionOccurrence,Flow,Type,EnumerationLiteral,CombinedFragment,ConstraintBlock,Package,Folder,File,Connector,problem,Dimension,Configuration,Internal Block Diagram,DeploymentDiagram,SysMLPort,State,flowSpecification,ExecutionOccurrence,ActivityDiagram,ReferenceActivity
-arguments65="-Djava.library.path="$OMROOT/JavaAPI" -DTab=Hyperlinks -DDirection=TO -classpath "$OMROOT/JavaAPI/rhapsody.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/ModelingToolbox.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonGUITools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonRhapsodyTools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/miglayout-4.0.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/balloontip-1.2.1.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RenameActions.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RefactorActionName.jar" com.ibm.rhapsody.setoolkit.ModelingToolbox_Launcher"
+applicableTo65=
+arguments65="-Djava.library.path="$OMROOT/JavaAPI" -classpath "$OMROOT/JavaAPI/rhapsody.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/ModelingToolbox.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonGUITools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonRhapsodyTools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/miglayout-4.0.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/balloontip-1.2.1.jar" com.ibm.rhapsody.setoolkit.ModelingToolbox_Launcher"
 initialDir65=$JavaLocation/bin
 isMacro65=0
 applicableToProfile65=
-helperTriggers65=
+Triggers65=
 
-name66=SE-Toolkit\Add Hyperlinks\From Selected
+name66=SE-Toolkit\Add Hyperlinks\To Selected
 command66=javaw
 isSynced66=0
 isVisible66=1
 applicableTo66=Operation,Condition,flowProperty,DataType,SequenceDiagram,verify,Generalization,Parametric Diagram,Module,Dependency,Swimlane,standardPort,Attribute,ValueProperty,Project,ControlledFile,Comment,Profile,Port,CollaborationDiagram,Node,ConstraintProperty,Class,TriggeredOperation,localPrecondition,viewpoint,StructureDiagram,view,flowAttribute,localPostcondition,ObjectNode,UseCase,satisfy,Association,ComponentInstance,Constraint,Block,Stereotype,refine,Unit,RequirementsTable,Destructor,CallOperation,DefaultTransition,rationale,testCase,Object,valueBinding_D,Message,allocate,Link,Reception,conform,Constructor,UseCaseDiagram,Requirements Diagram,ComponentDiagram,Pin,Statechart,ValueType,SysML,HyperLink,AllocationsTable,Actor,ConstraintParameter,Requirement,Tag,ClassifierRole,AssociationEnd,Component,Event,PanelDiagram,PrimitiveOperation,Package Diagram,activity_D,InteractionOperand,Argument,Block Definition Diagram,BindingConnector,ObjectModelDiagram,connector,Transition,InteractionOccurrence,Flow,Type,EnumerationLiteral,CombinedFragment,ConstraintBlock,Package,Folder,File,Connector,problem,Dimension,Configuration,Internal Block Diagram,DeploymentDiagram,SysMLPort,State,flowSpecification,ExecutionOccurrence,ActivityDiagram,ReferenceActivity
-arguments66="-Djava.library.path="$OMROOT/JavaAPI" -DTab=Hyperlinks -DDirection=FROM -classpath "$OMROOT/JavaAPI/rhapsody.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/ModelingToolbox.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonGUITools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonRhapsodyTools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/miglayout-4.0.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/balloontip-1.2.1.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RenameActions.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RefactorActionName.jar" com.ibm.rhapsody.setoolkit.ModelingToolbox_Launcher"
+arguments66="-Djava.library.path="$OMROOT/JavaAPI" -DTab=Hyperlinks -DDirection=TO -classpath "$OMROOT/JavaAPI/rhapsody.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/ModelingToolbox.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonGUITools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonRhapsodyTools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/miglayout-4.0.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/balloontip-1.2.1.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RenameActions.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RefactorActionName.jar" com.ibm.rhapsody.setoolkit.ModelingToolbox_Launcher"
 initialDir66=$JavaLocation/bin
 isMacro66=0
 applicableToProfile66=
 helperTriggers66=
 
-name67=SE-Toolkit\Add Dependencies\To Selected
+name67=SE-Toolkit\Add Hyperlinks\From Selected
 command67=javaw
 isSynced67=0
 isVisible67=1
 applicableTo67=Operation,Condition,flowProperty,DataType,SequenceDiagram,verify,Generalization,Parametric Diagram,Module,Dependency,Swimlane,standardPort,Attribute,ValueProperty,Project,ControlledFile,Comment,Profile,Port,CollaborationDiagram,Node,ConstraintProperty,Class,TriggeredOperation,localPrecondition,viewpoint,StructureDiagram,view,flowAttribute,localPostcondition,ObjectNode,UseCase,satisfy,Association,ComponentInstance,Constraint,Block,Stereotype,refine,Unit,RequirementsTable,Destructor,CallOperation,DefaultTransition,rationale,testCase,Object,valueBinding_D,Message,allocate,Link,Reception,conform,Constructor,UseCaseDiagram,Requirements Diagram,ComponentDiagram,Pin,Statechart,ValueType,SysML,HyperLink,AllocationsTable,Actor,ConstraintParameter,Requirement,Tag,ClassifierRole,AssociationEnd,Component,Event,PanelDiagram,PrimitiveOperation,Package Diagram,activity_D,InteractionOperand,Argument,Block Definition Diagram,BindingConnector,ObjectModelDiagram,connector,Transition,InteractionOccurrence,Flow,Type,EnumerationLiteral,CombinedFragment,ConstraintBlock,Package,Folder,File,Connector,problem,Dimension,Configuration,Internal Block Diagram,DeploymentDiagram,SysMLPort,State,flowSpecification,ExecutionOccurrence,ActivityDiagram,ReferenceActivity
-arguments67="-Djava.library.path="$OMROOT/JavaAPI" -DTab=Dependencies -DDirection=TO -classpath "$OMROOT/JavaAPI/rhapsody.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/ModelingToolbox.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonGUITools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonRhapsodyTools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/miglayout-4.0.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/balloontip-1.2.1.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RenameActions.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RefactorActionName.jar" com.ibm.rhapsody.setoolkit.ModelingToolbox_Launcher"
+arguments67="-Djava.library.path="$OMROOT/JavaAPI" -DTab=Hyperlinks -DDirection=FROM -classpath "$OMROOT/JavaAPI/rhapsody.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/ModelingToolbox.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonGUITools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonRhapsodyTools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/miglayout-4.0.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/balloontip-1.2.1.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RenameActions.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RefactorActionName.jar" com.ibm.rhapsody.setoolkit.ModelingToolbox_Launcher"
 initialDir67=$JavaLocation/bin
 isMacro67=0
 applicableToProfile67=
 helperTriggers67=
 
-name68=SE-Toolkit\Add Dependencies\From Selected
+name68=SE-Toolkit\Add Dependencies\To Selected
 command68=javaw
 isSynced68=0
 isVisible68=1
 applicableTo68=Operation,Condition,flowProperty,DataType,SequenceDiagram,verify,Generalization,Parametric Diagram,Module,Dependency,Swimlane,standardPort,Attribute,ValueProperty,Project,ControlledFile,Comment,Profile,Port,CollaborationDiagram,Node,ConstraintProperty,Class,TriggeredOperation,localPrecondition,viewpoint,StructureDiagram,view,flowAttribute,localPostcondition,ObjectNode,UseCase,satisfy,Association,ComponentInstance,Constraint,Block,Stereotype,refine,Unit,RequirementsTable,Destructor,CallOperation,DefaultTransition,rationale,testCase,Object,valueBinding_D,Message,allocate,Link,Reception,conform,Constructor,UseCaseDiagram,Requirements Diagram,ComponentDiagram,Pin,Statechart,ValueType,SysML,HyperLink,AllocationsTable,Actor,ConstraintParameter,Requirement,Tag,ClassifierRole,AssociationEnd,Component,Event,PanelDiagram,PrimitiveOperation,Package Diagram,activity_D,InteractionOperand,Argument,Block Definition Diagram,BindingConnector,ObjectModelDiagram,connector,Transition,InteractionOccurrence,Flow,Type,EnumerationLiteral,CombinedFragment,ConstraintBlock,Package,Folder,File,Connector,problem,Dimension,Configuration,Internal Block Diagram,DeploymentDiagram,SysMLPort,State,flowSpecification,ExecutionOccurrence,ActivityDiagram,ReferenceActivity
-arguments68="-Djava.library.path="$OMROOT/JavaAPI" -DTab=Dependencies -DDirection=FROM -classpath "$OMROOT/JavaAPI/rhapsody.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/ModelingToolbox.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonGUITools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonRhapsodyTools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/miglayout-4.0.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/balloontip-1.2.1.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RenameActions.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RefactorActionName.jar" com.ibm.rhapsody.setoolkit.ModelingToolbox_Launcher"
+arguments68="-Djava.library.path="$OMROOT/JavaAPI" -DTab=Dependencies -DDirection=TO -classpath "$OMROOT/JavaAPI/rhapsody.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/ModelingToolbox.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonGUITools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonRhapsodyTools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/miglayout-4.0.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/balloontip-1.2.1.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RenameActions.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RefactorActionName.jar" com.ibm.rhapsody.setoolkit.ModelingToolbox_Launcher"
 initialDir68=$JavaLocation/bin
 isMacro68=0
 applicableToProfile68=
 helperTriggers68=
 
-#REM: Add SDCleaner plugin from Harmony profile
-name69=SDCleaner
-JavaMainClass69=com.ibm.rhapsody.setoolkit.SDCleaner_Launcher
-JavaClassPath69=$OMROOT/Profiles/HarmonySE/SE Toolkit/SDCleaner.jar
-isPlugin69=1
+name69=SE-Toolkit\Add Dependencies\From Selected
+command69=javaw
+isSynced69=0
+isVisible69=1
+applicableTo69=Operation,Condition,flowProperty,DataType,SequenceDiagram,verify,Generalization,Parametric Diagram,Module,Dependency,Swimlane,standardPort,Attribute,ValueProperty,Project,ControlledFile,Comment,Profile,Port,CollaborationDiagram,Node,ConstraintProperty,Class,TriggeredOperation,localPrecondition,viewpoint,StructureDiagram,view,flowAttribute,localPostcondition,ObjectNode,UseCase,satisfy,Association,ComponentInstance,Constraint,Block,Stereotype,refine,Unit,RequirementsTable,Destructor,CallOperation,DefaultTransition,rationale,testCase,Object,valueBinding_D,Message,allocate,Link,Reception,conform,Constructor,UseCaseDiagram,Requirements Diagram,ComponentDiagram,Pin,Statechart,ValueType,SysML,HyperLink,AllocationsTable,Actor,ConstraintParameter,Requirement,Tag,ClassifierRole,AssociationEnd,Component,Event,PanelDiagram,PrimitiveOperation,Package Diagram,activity_D,InteractionOperand,Argument,Block Definition Diagram,BindingConnector,ObjectModelDiagram,connector,Transition,InteractionOccurrence,Flow,Type,EnumerationLiteral,CombinedFragment,ConstraintBlock,Package,Folder,File,Connector,problem,Dimension,Configuration,Internal Block Diagram,DeploymentDiagram,SysMLPort,State,flowSpecification,ExecutionOccurrence,ActivityDiagram,ReferenceActivity
+arguments69="-Djava.library.path="$OMROOT/JavaAPI" -DTab=Dependencies -DDirection=FROM -classpath "$OMROOT/JavaAPI/rhapsody.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/ModelingToolbox.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonGUITools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonRhapsodyTools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/miglayout-4.0.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/balloontip-1.2.1.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RenameActions.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RefactorActionName.jar" com.ibm.rhapsody.setoolkit.ModelingToolbox_Launcher"
+initialDir69=$JavaLocation/bin
+isMacro69=0
+applicableToProfile69=
 helperTriggers69=
 
-#REM: Add pop-up menu
-name70=SE-Toolkit\Straighten Messages
-isPluginCommand70=1
-command70=SDCleaner
-applicableTo70=SequenceDiagram
-isVisible70=1
+#REM: Add SDCleaner plugin from Harmony profile
+name70=SDCleaner
+JavaMainClass70=com.ibm.rhapsody.setoolkit.SDCleaner_Launcher
+JavaClassPath70=$OMROOT/Profiles/HarmonySE/SE Toolkit/SDCleaner.jar
+isPlugin70=1
 helperTriggers70=
 
-name71=SE-Toolkit\Generate Sequence Diagrams
-command71=javaw
-isSynced71=0
+#REM: Add pop-up menu
+name71=SE-Toolkit\Straighten Messages
+isPluginCommand71=1
+command71=SDCleaner
+applicableTo71=SequenceDiagram
 isVisible71=1
-applicableTo71=CallOperation,ActivityDiagramGE,MessageAction,State,ActivityDiagram,CallOperationActivity
-arguments71="-Djava.library.path="$OMROOT/JavaAPI" -DTab=GenerateSD -DDirection=FROM -classpath "$OMROOT/JavaAPI/rhapsody.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/ModelingToolbox.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonGUITools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonRhapsodyTools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/miglayout-4.0.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/balloontip-1.2.1.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RenameActions.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RefactorActionName.jar" com.ibm.rhapsody.setoolkit.ModelingToolbox_Launcher"
-initialDir71=$JavaLocation/bin
-isMacro71=0
-applicableToProfile71=
 helperTriggers71=
+
+name72=SE-Toolkit\Generate Sequence Diagrams
+command72=javaw
+isSynced72=0
+isVisible72=1
+applicableTo72=CallOperation,ActivityDiagramGE,MessageAction,State,ActivityDiagram,CallOperationActivity
+arguments72="-Djava.library.path="$OMROOT/JavaAPI" -DTab=GenerateSD -DDirection=FROM -classpath "$OMROOT/JavaAPI/rhapsody.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/ModelingToolbox.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonGUITools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/CommonRhapsodyTools.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/miglayout-4.0.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/Common/balloontip-1.2.1.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RenameActions.jar$PathDelimiter$OMROOT/Profiles/HarmonySE/SE Toolkit/RefactorActionName.jar" com.ibm.rhapsody.setoolkit.ModelingToolbox_Launcher"
+initialDir72=$JavaLocation/bin
+isMacro72=0
+applicableToProfile72=
+helperTriggers72=
 
 #REM Copyright (C) 2018-2022  MBSE Training and Consulting Limited (www.executablembse.com)
 #REM

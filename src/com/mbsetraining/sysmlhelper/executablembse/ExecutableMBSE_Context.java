@@ -36,6 +36,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String SYSTEM_USAGE = "System Usage";
 	public final String FUNCTION_USAGE = "Function Usage";
 	public final String FUNCTION_BLOCK = "Function Block";
+	public final String FEATURE_BLOCK = "Feature Block";
 	public final String FLOW_OUTPUT = "Flow Output";
 	public final String FLOW_INPUT = "Flow Input";
 	public final String GUARDED_FLOW_OUTPUT = "Guarded Flow Output";
@@ -43,8 +44,6 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String SYSTEM_BLOCK = "System Block";
 	public final String BLOCK_DEFINITION_DIAGRAM_SYSTEM = "Block Definition Diagram - System";
 	public final String SIMPLE_REQUIREMENTS_TABLE = "TableL - Simple Requirements Table";
-
-	
 	public final String REQTS_ANALYSIS_CONTEXT_DIAGRAM_PACKAGE = "10 Context Package";
 	public final String REQTS_ANALYSIS_ACTOR_PACKAGE = "11 Actor Package";
 	public final String REQTS_ANALYSIS_USE_CASE_PACKAGE = "12 Use Case Package";
@@ -65,11 +64,15 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String NEW_TERM_FOR_SYSTEM_CONTEXT_DIAGRAM = "SystemContextDiagram";
 	public final String NEW_TERM_FOR_REQUIRMENTS_DIAGRAM_SYSTEM = "RequirementsDiagramSystem";
 	public final String NEW_TERM_FOR_TEXTUAL_ACTIVITY_DIAGRAM = "Textual Activity";
-	public final String NEW_TERM_FOR_CALL_OPERATION_ACTIVITY_DIAGRAM = "Call Operation Activity";
+	public final String NEW_TERM_FOR_CALL_OPERATION_ACTIVITY_DIAGRAM = "Call Operation Activity";	
+	public final String NEW_TERM_FOR_FEATURE_FUNCTION_PACKAGE = "FeatureFunctionPackage";
+	public final String NEW_TERM_FOR_WORKING_COPY_PACKAGE = "WorkingCopyPackage";
 	public final String NEW_TERM_FOR_ACTOR_USAGE = "ActorUsage";
 	public final String NEW_TERM_FOR_SYSTEM_USAGE = "SystemUsage";
 	public final String NEW_TERM_FOR_FUNCTION_USAGE = "FunctionUsage";
 	public final String NEW_TERM_FOR_DECISION_USAGE = "DecisionUsage";
+	public final String NEW_TERM_FOR_FEATURE_BLOCK = "FeatureBlock";
+	public final String NEW_TERM_FOR_FUNCTION_BLOCK = "FunctionBlock";
 	public final String NEW_TERM_FOR_PARALLEL_GATEWAY_USAGE = "ParallelGatewayUsage";
 	public final String NEW_TERM_FOR_START_USAGE = "StartUsage";
 	public final String NEW_TERM_FOR_FINAL_USAGE = "FinalUsage";
@@ -299,9 +302,8 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		if( _stereotypeForTestbench == null ){
 
-			_stereotypeForTestbench = getExistingStereotype( 
-					TESTBENCH_STEREOTYPE, 
-					_rhpPrj );
+			_stereotypeForTestbench = getStereotypeWith( 
+					TESTBENCH_STEREOTYPE );
 
 			if( _stereotypeForTestbench == null ){
 				super.error( "Error in getStereotypeForTestbench, no Stereotyped called " + 
@@ -316,9 +318,8 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		if( _stereotypeForTimeElapsedActor == null ){
 
-			_stereotypeForTimeElapsedActor = getExistingStereotype( 
-					ELAPSED_TIME_GENERATOR_STEREOTYPE, 
-					_rhpPrj );
+			_stereotypeForTimeElapsedActor = getStereotypeWith( 
+					ELAPSED_TIME_GENERATOR_STEREOTYPE );
 
 			if( _stereotypeForTimeElapsedActor == null ){
 				super.error( "Error in getStereotypeForTimeElapsedActor, no Stereotyped called " + 
@@ -333,9 +334,8 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		if( _stereotypeForTimeElapsedBlock == null ){
 
-			_stereotypeForTimeElapsedBlock = getExistingStereotype( 
-					TIME_ELAPSED_BLOCK_STEREOTYPE, 
-					_rhpPrj );
+			_stereotypeForTimeElapsedBlock = getStereotypeWith( 
+					TIME_ELAPSED_BLOCK_STEREOTYPE );
 
 			if( _stereotypeForTimeElapsedBlock == null ){
 				super.error( "Error in getStereotypeForTimeElapsedBlock, no Stereotyped called " + 
@@ -350,9 +350,8 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		if( _stereotypeForAutoRipple == null ){
 
-			_stereotypeForAutoRipple = getExistingStereotype( 
-					AUTO_RIPPLE_STEREOTYPE, 
-					_rhpPrj );
+			_stereotypeForAutoRipple = getStereotypeWith( 
+					AUTO_RIPPLE_STEREOTYPE );
 
 			if( _stereotypeForAutoRipple == null ){
 				super.error( "Error in getStereotypeForAutoRipple, no Stereotyped called " + 
@@ -367,9 +366,8 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		if( _newTermForUseCaseDiagram == null ){
 
-			_newTermForUseCaseDiagram = getExistingStereotype( 
-					NEW_TERM_FOR_USE_CASE_DIAGRAM, 
-					_rhpPrj );
+			_newTermForUseCaseDiagram = getStereotypeWith( 
+					NEW_TERM_FOR_USE_CASE_DIAGRAM );
 
 			if( _newTermForUseCaseDiagram == null ){
 				super.error( "Error in getNewTermForUseCaseDiagram, no Stereotyped called " + 
@@ -384,9 +382,8 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		if( _newTermForSystemContextDiagram == null ){
 
-			_newTermForSystemContextDiagram = getExistingStereotype( 
-					NEW_TERM_FOR_SYSTEM_CONTEXT_DIAGRAM, 
-					_rhpPrj );
+			_newTermForSystemContextDiagram = getStereotypeWith( 
+					NEW_TERM_FOR_SYSTEM_CONTEXT_DIAGRAM );
 
 			if( _newTermForSystemContextDiagram == null ){
 
@@ -402,9 +399,8 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		if( _newTermForActorUsage == null ){
 
-			_newTermForActorUsage = getExistingStereotype( 
-					NEW_TERM_FOR_ACTOR_USAGE, 
-					_rhpPrj );
+			_newTermForActorUsage = getStereotypeWith( 
+					NEW_TERM_FOR_ACTOR_USAGE );
 
 			if( _newTermForActorUsage == null ){
 
@@ -420,9 +416,8 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		if( _newTermForSystemContext == null ){
 
-			_newTermForSystemContext = getExistingStereotype( 
-					NEW_TERM_FOR_SYSTEM_CONTEXT, 
-					_rhpPrj );
+			_newTermForSystemContext = getStereotypeWith( 
+					NEW_TERM_FOR_SYSTEM_CONTEXT );
 
 			if( _newTermForSystemContext == null ){			
 				super.error( "Error in getNewTermForSystemContext, no Stereotyped called " + 
@@ -1108,6 +1103,48 @@ public class ExecutableMBSE_Context extends BaseContext {
 		return thePort;
 	}
 
+	public String toFunctionBlockName(
+			String theInput,
+			int max,
+			boolean areSpacesAllowed ){
+		
+		StringBuilder nameBuilder = new StringBuilder(theInput.length());    
+
+		boolean capitalizeNextChar = true;
+
+		int n = 1;
+
+		for (char c:theInput.toCharArray()) {
+			if (Character.isJavaIdentifierPart(c)){
+				if (capitalizeNextChar) {
+					nameBuilder.append(Character.toUpperCase(c));
+				} else {
+					if (n==1 && !areSpacesAllowed){
+						nameBuilder.append(Character.toUpperCase(c));
+					} else {
+						nameBuilder.append(c);
+					}
+				}
+				capitalizeNextChar = false;
+			} else if (Character.isSpaceChar(c)){
+
+				if( areSpacesAllowed ){
+					nameBuilder.append(c);
+				}
+				
+				if (n<max){
+					capitalizeNextChar = true;
+					continue;
+				} else {
+					break;
+				}
+			}
+			n++;
+		}
+
+		return nameBuilder.toString();
+	}
+	
 	public String determineBestCheckOperationNameFor(
 			IRPClassifier onTargetBlock,
 			String theAttributeName,
@@ -1442,7 +1479,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 }
 
 /**
- * Copyright (C) 2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2021-2022  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

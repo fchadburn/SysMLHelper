@@ -3,6 +3,7 @@ package com.mbsetraining.sysmlhelper.tracedelementpanels;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.util.List;
+
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
@@ -261,14 +262,16 @@ public class UpdateTracedAttributePanel extends CreateTracedElementPanel {
 
 				_context.debug( _context.elInfo( theExistingAttribute ) + " is the existing attribute");
 
+				IRPStereotype theDependencyStereotype =_context.getStereotypeToUseForFunctions();		
+
 				if( m_ExistingCheckOp == null ){
 
-					addTraceabilityDependenciesTo( theExistingAttribute, selectedReqtsList );
+					addTraceabilityDependenciesTo( theExistingAttribute, selectedReqtsList, theDependencyStereotype );
 
 					if( m_CheckOperationCheckBox.isSelected() ){
 
 						IRPOperation theCheckOp = addCheckOperationFor( theExistingAttribute, m_CheckOpName );
-						addTraceabilityDependenciesTo( theCheckOp, selectedReqtsList );	
+						addTraceabilityDependenciesTo( theCheckOp, selectedReqtsList, theDependencyStereotype );	
 						theCheckOp.highLightElement();
 					}
 
@@ -281,7 +284,7 @@ public class UpdateTracedAttributePanel extends CreateTracedElementPanel {
 						m_ExistingCheckOp.setBody("OM_RETURN( " + _chosenNameTextField.getText() + " );");
 					}
 
-					addTraceabilityDependenciesTo( m_ExistingCheckOp, selectedReqtsList );
+					addTraceabilityDependenciesTo( m_ExistingCheckOp, selectedReqtsList, theDependencyStereotype );
 				}
 			}
 		}			
@@ -289,7 +292,7 @@ public class UpdateTracedAttributePanel extends CreateTracedElementPanel {
 }
 
 /**
- * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2016-2022  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

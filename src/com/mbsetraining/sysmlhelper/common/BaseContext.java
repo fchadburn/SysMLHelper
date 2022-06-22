@@ -932,8 +932,7 @@ public abstract class BaseContext {
 			String withTheName, 
 			IRPModelElement toTheEl ){
 
-		IRPStereotype theChosenStereotype = 
-				getExistingStereotype( withTheName, toTheEl.getProject() );
+		IRPStereotype theChosenStereotype = getStereotypeWith( withTheName );
 
 		if( theChosenStereotype != null ){
 			toTheEl.setStereotype( theChosenStereotype );
@@ -2243,7 +2242,7 @@ public abstract class BaseContext {
 
 				_rhpLog.debug( "getActionTextFrom determined that " + _rhpLog.elInfo( theEl ) + " has no text" );
 			} else {
-				theSourceInfo = decapitalize( theSourceInfo );
+				theSourceInfo = decapitalize( theSourceInfo ).trim();
 			}
 		}
 
@@ -2382,11 +2381,11 @@ public abstract class BaseContext {
 					hasStereotypeCalled("deriveReqt", theDependency)){
 
 				//_rhpLog.debug("Applying " + _rhpLog.elInfo(theStereotypeToApply) + " to " + _rhpLog.elInfo(theDependency));
-				
+
 				if( theStereotypeToApply != null ){
 					theDependency.setStereotype(theStereotypeToApply);					
 				}
-				
+
 				theDependency.changeTo("Derive Requirement");
 			}
 		}
@@ -2553,9 +2552,8 @@ public abstract class BaseContext {
 		if( theStereotypeName != null && 
 				!theStereotypeName.trim().isEmpty() ){
 
-			theStereotype = getExistingStereotype( 
-					theStereotypeName, 
-					theContextEl.getProject() );
+			theStereotype = getStereotypeWith( 
+					theStereotypeName );
 
 			if( theStereotype == null ){
 				_rhpLog.error( "Error in getStereotypeBasedOn, no Stereotyped called " + theStereotypeName + " was found" );
@@ -2694,7 +2692,7 @@ public abstract class BaseContext {
 
 		return existingEls;
 	}
-	
+
 	public List<IRPModelElement> getExistingElementsBasedOn(
 			IRPPackage theOwningPackage,
 			String theRelatedPackageStereotype,
@@ -2702,20 +2700,20 @@ public abstract class BaseContext {
 			String andNewTerm ){
 
 		List<IRPModelElement> matchingEls = new ArrayList<>();
-		
+
 		List<IRPModelElement> existingEls = getExistingElementsBasedOn(
 				theOwningPackage, 
 				theRelatedPackageStereotype, 
 				withMetaClass );
 
 		for( IRPModelElement existingEl : existingEls ){
-			
+
 			if( existingEl.getUserDefinedMetaClass().equals( andNewTerm ) ){
-				
+
 				matchingEls.add( existingEl );
 			}
 		}
-		
+
 		return matchingEls;
 	}
 
@@ -2772,7 +2770,7 @@ public abstract class BaseContext {
 
 		return date;
 	}
-	
+
 	public IRPGraphEdge getCorrespondingGraphEdgeFor( 
 			IRPLink theLink ){
 
@@ -2805,7 +2803,7 @@ public abstract class BaseContext {
 
 		return theGraphEdge;
 	}
-	
+
 	public IRPGraphNode addGraphNodeFor(
 			IRPModelElement thePortEl,
 			IRPDiagram toDiagram,
@@ -2834,7 +2832,7 @@ public abstract class BaseContext {
 
 		return thePortNode;
 	}
-	
+
 	public void setPortDirectionFor(
 			IRPSysMLPort theSysMLPort,
 			String theDirection,

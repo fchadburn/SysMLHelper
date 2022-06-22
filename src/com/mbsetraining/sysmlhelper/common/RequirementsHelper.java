@@ -213,6 +213,8 @@ public class RequirementsHelper {
 			
 			theDep.addSpecificStereotype( theDependencyStereotype );
 		} else {
+			_context.error("Can't find stuff");
+
 			theDep.addStereotype("derive", "Dependency");				
 		}
 		

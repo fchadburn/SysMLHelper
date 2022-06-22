@@ -203,7 +203,9 @@ public class CreateOperationPanel extends CreateTracedElementPanel {
 				}
 			} else {
 				List<IRPRequirement> theSelectedReqtsList = _requirementSelectionPanel.getSelectedRequirementsList();
-				addTraceabilityDependenciesTo( theOperation, theSelectedReqtsList );
+				
+				IRPStereotype theDependencyStereotype =_context.getStereotypeToUseForFunctions();		
+				addTraceabilityDependenciesTo( theOperation, theSelectedReqtsList, theDependencyStereotype );
 				_context.bleedColorToElementsRelatedTo( theSelectedReqtsList );
 			}
 		}
@@ -217,7 +219,7 @@ public class CreateOperationPanel extends CreateTracedElementPanel {
 }
 
 /**
- * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2016-2022  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

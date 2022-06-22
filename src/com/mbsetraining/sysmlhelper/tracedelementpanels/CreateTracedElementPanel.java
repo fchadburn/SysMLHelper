@@ -52,7 +52,7 @@ public abstract class CreateTracedElementPanel extends JPanel {
 		_context = new ExecutableMBSE_Context( theAppID );
 		
 		_context.get_selectedContext().setContextTo( _context.getSelectedElement( true ) );
-		
+
 		//_context.debug( "CreateTracedElementPanel constructor was invoked" );
 		
 		setupRequirementsPanel();
@@ -198,6 +198,7 @@ public abstract class CreateTracedElementPanel extends JPanel {
 												
 				} catch( Exception e2 ){
 					_context.error( "Unhandled exception in CreateTracedElementPanel.createOKCancelPanel on OK button action listener, e2=" + e2.getMessage() );
+					e2.printStackTrace();
 				}
 			}
 		});
@@ -329,14 +330,10 @@ public abstract class CreateTracedElementPanel extends JPanel {
 		}
 	}
 	
-
-	
 	protected void addTraceabilityDependenciesTo(
 			IRPModelElement theElement, 
-			List<IRPRequirement> theReqtsToAdd ){
-
-		IRPStereotype theDependencyStereotype =
-				_context.getStereotypeToUseForFunctions();
+			List<IRPRequirement> theReqtsToAdd,
+			IRPStereotype theDependencyStereotype ){
 				
 		if( theDependencyStereotype != null ){
 			
@@ -555,14 +552,17 @@ public abstract class CreateTracedElementPanel extends JPanel {
 		theAttribute.setDefaultValue( andDefaultValue );
 		theAttribute.highLightElement();
 
-		addTraceabilityDependenciesTo( theAttribute, withTraceabilityReqts );
+		IRPStereotype theDependencyStereotype =
+				_context.getStereotypeToUseForFunctions();
+		
+		addTraceabilityDependenciesTo( theAttribute, withTraceabilityReqts, theDependencyStereotype );
 
 		return theAttribute;
 	}
 }
 
 /**
- * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2016-2022  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

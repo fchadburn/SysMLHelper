@@ -764,7 +764,8 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 		List<IRPRequirement> selectedReqtsList = 
 				_requirementSelectionPanel.getSelectedRequirementsList();
 
-		addTraceabilityDependenciesTo( theEvent, selectedReqtsList );
+		IRPStereotype theDependencyStereotype =_context.getStereotypeToUseForFunctions();		
+		addTraceabilityDependenciesTo( theEvent, selectedReqtsList, theDependencyStereotype );
 
 		// was an actor selected?
 		if( _sourceActor instanceof IRPClassifier ){
@@ -783,7 +784,7 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 						"Reception", 
 						_chosenNameTextField.getText() );
 
-		addTraceabilityDependenciesTo( theReception, selectedReqtsList );
+		addTraceabilityDependenciesTo( theReception, selectedReqtsList, theDependencyStereotype );
 
 		if ( _createSendEventCheckBox.isSelected() ) {
 
@@ -856,7 +857,7 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 				IRPOperation theCheckOp = 
 						addCheckOperationFor( theAttribute, _nameForCheckOperation );
 				
-				addTraceabilityDependenciesTo( theCheckOp, selectedReqtsList );	
+				addTraceabilityDependenciesTo( theCheckOp, selectedReqtsList, theDependencyStereotype );	
 				theCheckOp.highLightElement();
 			}
 
@@ -947,7 +948,7 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 }
 
 /**
- * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2016-2022  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

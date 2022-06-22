@@ -21,8 +21,8 @@ public class CreateOutgoingEventPanel extends CreateTracedElementPanel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-
+	private static final long serialVersionUID = 4051822504091342717L;
+	
 	private JCheckBox m_ActionOnDiagramIsNeededCheckBox;
 	private IRPActor m_DestinationActor;
 	private IRPPort m_DestinationActorPort;
@@ -395,7 +395,8 @@ public class CreateOutgoingEventPanel extends CreateTracedElementPanel {
 
 			List<IRPRequirement> selectedReqtsList = _requirementSelectionPanel.getSelectedRequirementsList();
 
-			addTraceabilityDependenciesTo( theEvent, selectedReqtsList );
+			IRPStereotype theDependencyStereotype =_context.getStereotypeToUseForFunctions();		
+			addTraceabilityDependenciesTo( theEvent, selectedReqtsList, theDependencyStereotype );
 
 			if( m_ActiveAgumentNeededCheckBox.isSelected() ){
 				theEvent.addArgument( "active" );
@@ -412,7 +413,7 @@ public class CreateOutgoingEventPanel extends CreateTracedElementPanel {
 			theExistingConnector.addEvent( theEvent );
 
 			IRPModelElement theReception = m_DestinationActor.addNewAggr("Reception", theEventName);
-			addTraceabilityDependenciesTo( theReception, selectedReqtsList );
+			addTraceabilityDependenciesTo( theReception, selectedReqtsList, theDependencyStereotype );
 
 			theReception.highLightElement();
 
@@ -428,7 +429,7 @@ public class CreateOutgoingEventPanel extends CreateTracedElementPanel {
 
 				informOp.highLightElement();
 
-				addTraceabilityDependenciesTo( informOp, selectedReqtsList );
+				addTraceabilityDependenciesTo( informOp, selectedReqtsList, theDependencyStereotype );
 
 				String thePortName = m_DestinationActorPort.getName();
 
@@ -451,7 +452,7 @@ public class CreateOutgoingEventPanel extends CreateTracedElementPanel {
 }
 
 /**
- * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2016-2022  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

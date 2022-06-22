@@ -343,7 +343,9 @@ public class CreateTracedAttributePanel extends CreateTracedElementPanel {
 			if( _checkOperationCheckBox.isSelected() ){
 				
 				IRPOperation theCheckOp = addCheckOperationFor( theAttribute, _checkOpName );
-				addTraceabilityDependenciesTo( theCheckOp, selectedReqtsList );	
+				
+				IRPStereotype theDependencyStereotype =_context.getStereotypeToUseForFunctions();		
+				addTraceabilityDependenciesTo( theCheckOp, selectedReqtsList, theDependencyStereotype );	
 				
 				if( _callOperationIsNeededCheckBox.isSelected() ){
 					populateCallOperationActionOnDiagram( theCheckOp );
@@ -375,7 +377,7 @@ public class CreateTracedAttributePanel extends CreateTracedElementPanel {
 }
 
 /**
- * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2016-2022  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 
