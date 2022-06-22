@@ -165,9 +165,10 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 				afterAddForGuardedFlowOutput( (IRPSysMLPort) modelElement );
 
-			} else if( theUserDefinedMetaClass.equals( _context.BLOCK_DEFINITION_DIAGRAM_SYSTEM ) ){
+			} else if( theUserDefinedMetaClass.equals( _context.BLOCK_DEFINITION_DIAGRAM_SYSTEM ) ||
+					theUserDefinedMetaClass.equals( _context.REQUIREMENTS_DIAGRAM_SYSTEM ) ){
 
-				afterAddForBlockDefinitionDiagramSystem( (IRPObjectModelDiagram) modelElement );
+				afterAddForBlockOrRequirementDiagram( (IRPObjectModelDiagram) modelElement );
 
 			} else if( theUserDefinedMetaClass.equals( _context.SIMPLE_REQUIREMENTS_TABLE ) ){
 
@@ -245,7 +246,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		}
 	}
 
-	private void afterAddForBlockDefinitionDiagramSystem(
+	private void afterAddForBlockOrRequirementDiagram(
 			IRPObjectModelDiagram theDiagram ){
 
 		IRPModelElement theOwner = theDiagram.getOwner();
