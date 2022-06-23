@@ -715,6 +715,7 @@ V4.0.w.Rhp831.PreRelease (XX-XXX-XXXX):
 #522 17-JUN-2022: ExecutableMBSE: Get listener to automatically name 'working copy' packages based on an owning feature or function package (F.J.Chadburn)
 #523 22-JUN-2022: ExecutableMBSE: Add a Create a Function Block right-click menu to automate workflow from requirement or action (F.J.Chadburn)
 #524 22-JUN-2022: ExecutableMBSE: Get listener for Requirement Diagram - System to auto-populate the owning element to speed things up (F.J.Chadburn) 
+#525 23-JUN-2022: ExecutableMBSE: Get listener to autoname bdd and ibd diagrams with owning classifier name to speed things up (F.J.Chadburn)
 
 Backlog/Known issues
 - If owner of requirement has a Tier 3 function block then dress down the Tier3 stereotype at same time

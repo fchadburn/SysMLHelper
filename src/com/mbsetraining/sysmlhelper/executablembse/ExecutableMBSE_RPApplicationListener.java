@@ -170,6 +170,11 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 				afterAddForBlockOrRequirementDiagram( (IRPObjectModelDiagram) modelElement );
 
+			} else if( theUserDefinedMetaClass.equals( _context.INTERNAL_BLOCK_DIAGRAM_SYSTEM ) ||
+					theUserDefinedMetaClass.equals( _context.INTERNAL_BLOCK_DIAGRAM_FUNCTIONAL ) ){
+				
+				afterAddForInternalBlockDiagram( (IRPStructureDiagram) modelElement );
+				
 			} else if( theUserDefinedMetaClass.equals( _context.SIMPLE_REQUIREMENTS_TABLE ) ){
 
 				afterAddForSimpleRequirementsTable( (IRPTableView) modelElement );
@@ -257,6 +262,38 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			IRPGraphNode theGraphNode = theDiagram.addNewNodeForElement( theOwner, 450, 150, 50, 50 );
 			GraphNodeResizer theResizer = new GraphNodeResizer( theGraphNode, _context );
 			theResizer.performResizing();
+		}		    
+		
+		setDiagramNameToOwningClassifierIfAppropriate( theDiagram, theOwner );
+	}
+	
+	private void afterAddForInternalBlockDiagram(
+			IRPStructureDiagram theDiagram ){
+
+		IRPModelElement theOwner = theDiagram.getOwner();    
+		setDiagramNameToOwningClassifierIfAppropriate( theDiagram, theOwner );
+	}
+
+	private void setDiagramNameToOwningClassifierIfAppropriate(
+			IRPDiagram theDiagram, 
+			IRPModelElement theOwner ){
+		
+		if( theOwner instanceof IRPClassifier ){
+
+			Pattern pattern = Pattern.compile( "(.*)_\\d+$");
+		    Matcher matcher = pattern.matcher( theDiagram.getName() );
+		    boolean matchFound = matcher.find();
+		    
+		    if( matchFound ){
+				
+				String preFix = matcher.group(1);
+				
+				String theProposedName = preFix + theOwner.getName();		
+				String theUniqueName = _context.
+						determineUniqueNameBasedOn( theProposedName, theDiagram.getMetaClass(), theOwner );
+				
+				theDiagram.setName( theUniqueName );
+			}
 		}
 	}
 
