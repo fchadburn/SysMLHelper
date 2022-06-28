@@ -717,7 +717,13 @@ V4.0.w.Rhp831.PreRelease (27-JUN-2022):
 #524 22-JUN-2022: ExecutableMBSE: Get listener for Requirement Diagram - System to auto-populate the owning element to speed things up (F.J.Chadburn) 
 #525 23-JUN-2022: ExecutableMBSE: Get listener to autoname bdd and ibd diagrams with owning classifier name to speed things up (F.J.Chadburn)
 
+V4.0.x.Rhp831.PreRelease (XX-XXX-XXXX):
+#526 28-JUN-2022: ExecutableMBSE: Add a table view to menus to show traceability from use cases to requirements and vice versa (F.J.Chadburn)
+
 Backlog/Known issues
+- Simple requirement table says its a layout when it's a view, doh
+- Table view/Layout for functions
+- Check for allocation of logical subsystem to/from physical subsystem
 - If owner of requirement has a Tier 3 function block then dress down the Tier3 stereotype at same time as requirement creation
 - Move to new function package
 - Get listener to deal to prevent duplicate traceability relations being created on diagrams
