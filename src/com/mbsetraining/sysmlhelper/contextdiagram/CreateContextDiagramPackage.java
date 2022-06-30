@@ -37,7 +37,7 @@ public class CreateContextDiagramPackage {
 		
 		IRPProject theProject = _context.get_rhpPrj();
 				
-		_context.debug( "The thePkgName is " + thePkgName );
+		//_context.debug( "The thePkgName is " + thePkgName );
 		
 		IRPPackage theContextDiagramPkg = theOwningPkg.addNestedPackage( thePkgName );
 		theContextDiagramPkg.changeTo( _context.REQTS_ANALYSIS_CONTEXT_DIAGRAM_PACKAGE );
@@ -89,8 +89,8 @@ public class CreateContextDiagramPackage {
 		
 		for( IRPActor theActor : theActors ){
 
-			_context.debug( "Adding usage for " + _context.elInfo( theActor ) + 
-					" in " + _context.elInfo( theActor.getOwner() ) );
+			//_context.debug( "Adding usage for " + _context.elInfo( theActor ) + 
+			//		" in " + _context.elInfo( theActor.getOwner() ) );
 			
 			IRPRelation theObject = theContextDiagramPkg.addImplicitObject( "" );
 			theObject.setOtherClass( theActor );
@@ -128,14 +128,14 @@ public class CreateContextDiagramPackage {
 		if( theSystemBlock instanceof IRPClassifier ){
 			
 			theDiagram = (IRPStructureDiagram) theOwningPkg.addNewAggr( 
-					"StructureDiagram", "CTX - " + theSystemBlock.getName() );
+					"StructureDiagram", _context.CONTEXT_DIAGRAM_PREFIX + theSystemBlock.getName() );
 			
 			theSystemContextEl = theOwningPkg.addImplicitObject( "" );
 			theSystemContextEl.setOtherClass( (IRPClassifier) theSystemBlock );
 		} else {
 			
 			theDiagram = (IRPStructureDiagram) theOwningPkg.addNewAggr( 
-					"StructureDiagram", "CTX - " + theName );
+					"StructureDiagram", _context.CONTEXT_DIAGRAM_PREFIX + theName );
 			
 			theSystemContextEl = theOwningPkg.addImplicitObject( theName );
 		}
@@ -144,23 +144,13 @@ public class CreateContextDiagramPackage {
 		
 		if( theStereotype != null ){
 			
-			_context.debug( "Applying " + _context.elInfo( theStereotype ) + 
-					" to " + _context.elInfo( theDiagram ) );
+			//_context.debug( "Applying " + _context.elInfo( theStereotype ) + 
+			//		" to " + _context.elInfo( theDiagram ) );
 			
 			theDiagram.setStereotype( theStereotype );
 		}
 		
 		theSystemContextEl.setStereotype( _context.getNewTermForSystemContext() );
-
-		/*
-		IRPGraphNode theNote =
-				theDiagram.addNewNodeByType( "Note", 21, 42, 156, 845 );
-		
-		String theUseCaseNoteText = _context.getUseCaseNoteText( theDiagram );
-		
-		theNote.setGraphicalProperty(
-				"Text",
-				theUseCaseNoteText );*/
 		
 		String theDefaultSystemContextSize = theDiagram.getPropertyValue( 
 				"Format." + _context.getNewTermForSystemContext().getName() + ".DefaultSize");
@@ -223,7 +213,7 @@ public class CreateContextDiagramPackage {
 }
 
 /**
- * Copyright (C) 2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2021-2022  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

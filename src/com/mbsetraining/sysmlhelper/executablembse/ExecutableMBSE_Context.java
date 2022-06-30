@@ -65,7 +65,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String TIME_ELAPSED_BLOCK_STEREOTYPE = "TimeBlock";
 	public final String ELAPSED_TIME_GENERATOR_STEREOTYPE = "TimeGenerator";
 	public final String NEW_TERM_FOR_USE_CASE_DIAGRAM = "EnhancedUseCaseDiagram";
-	public final String NEW_TERM_FOR_SYSTEM_CONTEXT_DIAGRAM = "SystemContextDiagram";
+	public final String NEW_TERM_FOR_SYSTEM_CONTEXT_DIAGRAM = "ContextDiagram";
 	public final String NEW_TERM_FOR_REQUIRMENTS_DIAGRAM_SYSTEM = "RequirementsDiagramSystem";
 	public final String NEW_TERM_FOR_TEXTUAL_ACTIVITY_DIAGRAM = "Textual Activity";
 	public final String NEW_TERM_FOR_CALL_OPERATION_ACTIVITY_DIAGRAM = "Call Operation Activity";	
@@ -88,6 +88,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String TESTBENCH_STEREOTYPE = "Testbench";
 	public final String AUTO_RIPPLE_STEREOTYPE = "AutoRipple";
 	public final String TABLE_LAYOUT_PREFIX = "tablel - ";
+	public final String CONTEXT_DIAGRAM_PREFIX = "ctx - ";
 
 	protected SelectedElementContext _selectionContext;
 
