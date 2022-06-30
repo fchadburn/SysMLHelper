@@ -26,8 +26,8 @@ public class CreateEventForFlowPanel extends ExecutableMBSEBasePanel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-
+	private static final long serialVersionUID = 6149180743852042475L;
+	
 	protected List<IRPModelElement> _existingEventEls;
 	protected JTextField _nameTextField = null;
 	protected RhapsodyComboBox _selectEventComboBox = null;
@@ -90,13 +90,13 @@ public class CreateEventForFlowPanel extends ExecutableMBSEBasePanel {
 				// Add events in the flow to package first
 				_existingEventEls.addAll( 
 						_eventCreationPackage.getNestedElementsByMetaClass( 
-								"Event", 1 ).toList() );
+								"Event", 0 ).toList() );
 			}
 		}
 		
 		_existingEventEls.addAll( 
 				thePackageForSelectedEl.getNestedElementsByMetaClass( 
-						"Event", 1 ).toList() );
+						"Event", 0 ).toList() );
 
 		_flow = (IRPFlow) _context.getSelectedElement( false );
 		
@@ -218,7 +218,7 @@ public class CreateEventForFlowPanel extends ExecutableMBSEBasePanel {
 }
 
 /**
- * Copyright (C) 2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2021-2022  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

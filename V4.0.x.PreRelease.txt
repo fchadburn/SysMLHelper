@@ -721,6 +721,7 @@ V4.0.x.Rhp831.PreRelease (XX-XXX-XXXX):
 #526 28-JUN-2022: ExecutableMBSE: Add a table view to menus to show traceability from use cases to requirements and vice versa (F.J.Chadburn)
 #527 30-JUN-2022: ExecutableMBSE: Fix context diagram auto-creation to use lower case ctx - rather than CTX - (F.J.Chadburn)
 #528 30-JUN-2022: ExecutableMBSE: Fix Context Diagram stereotype name so that new term is applied correctly during context package auto-creation (F.J.Chadburn)
+#529 30-JUN-2022: ExecutableMBSE: When drawing a flow on context diagram ensure nested signal packages don't cause duplicate events in pull-down list (F.J.Chadburn)
 
 Backlog/Known issues
 - Simple requirement table says its a layout when it's a view, doh
