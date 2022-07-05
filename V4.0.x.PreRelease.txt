@@ -724,8 +724,10 @@ V4.0.x.Rhp831.PreRelease (XX-XXX-XXXX):
 #529 30-JUN-2022: ExecutableMBSE: When drawing a flow on context diagram ensure nested signal packages don't cause duplicate events in pull-down list (F.J.Chadburn)
 #530 30-JUN-2022: ExecutableMBSE: Simple requirement table says its a layout when it's a view, doh, but fixed (F.J.Chadburn)
 #531 03-JUL-2022: ExecutableMBSE: Allow for allocation of logical subsystems to/from physical subsystems (F.J.Chadburn)
+#524 05-JUL-2022: ExecutableMBSE: Tweak naming of context diagram flow table to align with convention used for new tables (F.J.Chadburn)
 
 Backlog/Known issues
+- Maybe get metamodel to handle InitialLayoutForTables property writing
 - Get the requirement mover renaming to also apply a stereotype if there is a stereotype applied to the package
 - Table view/Layout for functions
 - If owner of requirement has a Tier 3 function block then dress down the Tier3 stereotype at same time as requirement creation

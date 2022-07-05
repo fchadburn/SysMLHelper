@@ -1689,7 +1689,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">7.3.2022::21:20:17</_modifiedTime>
+			<_modifiedTime type="a">7.5.2022::11:54:42</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -10898,7 +10898,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">AddNewMenuStructure</_Name>
-													<_Value type="a">AcceptEventAction,AcceptTimeEvent,ActivityFinal,Attribute,CallBehavior,CallOperation,Connector,ControlFlow,DecisionNode,DefaultTransition,Fork,InterruptibleRegion,MergeNode,Object,SendAction,State,Structure Diagram,ExecutableMBSEProfile/10 Context Package,ExecutableMBSEProfile/11 Actor Package,ExecutableMBSEProfile/12 Use Case Package,ExecutableMBSEProfile/12 Working Copy Package,ExecutableMBSEProfile/13 Requirement Package,ExecutableMBSEProfile/14 Signals Package,ExecutableMBSEProfile/22 Feature Function Package,ExecutableMBSEProfile/31 System Architecture Package,ExecutableMBSEProfile/32 Subsystem Package,ExecutableMBSEProfile/33 Subsystem Interfaces Package,ExecutableMBSEProfile/34 Software Design Package,ExecutableMBSEProfile/Actor Usage,ExecutableMBSEProfile/Block Definition Diagram - Software,ExecutableMBSEProfile/Block Definition Diagram - System,ExecutableMBSEProfile/C++ Class,ExecutableMBSEProfile/Call Operation Activity,ExecutableMBSEProfile/Component Usage,ExecutableMBSEProfile/Context Diagram,ExecutableMBSEProfile/Decision Usage,ExecutableMBSEProfile/Domain Block,ExecutableMBSEProfile/Enhanced Use Case Diagram,ExecutableMBSEProfile/Feature Block,ExecutableMBSEProfile/Feature Usage,ExecutableMBSEProfile/Final Usage,ExecutableMBSEProfile/Flow Connector,ExecutableMBSEProfile/Flow Final Usage,ExecutableMBSEProfile/Flow Input,ExecutableMBSEProfile/Flow Output,ExecutableMBSEProfile/Function Block,ExecutableMBSEProfile/Function Connector,ExecutableMBSEProfile/Function Usage,ExecutableMBSEProfile/Guarded Flow Output,ExecutableMBSEProfile/Internal Block Diagram - Functional,ExecutableMBSEProfile/Internal Block Diagram - Software,ExecutableMBSEProfile/Internal Block Diagram - System,ExecutableMBSEProfile/Parallel Gateway Usage,ExecutableMBSEProfile/Requirements Diagram - System,ExecutableMBSEProfile/Software Component,ExecutableMBSEProfile/Start Usage,ExecutableMBSEProfile/Subsystem Block,ExecutableMBSEProfile/Subsystem Usage,ExecutableMBSEProfile/System Block,ExecutableMBSEProfile/System Usage,ExecutableMBSEProfile/Table View - Action To Requirement,ExecutableMBSEProfile/Table View - Requirement To Action,ExecutableMBSEProfile/Table View - Requirement To Use Case,ExecutableMBSEProfile/Table View - Simple Requirements Table,ExecutableMBSEProfile/Table View - Use Case To Requirement,ExecutableMBSEProfile/TableV - Context Diagram Flows,ExecutableMBSEProfile/Textual Activity,ExecutableMBSEProfile/Time Event Usage,ExecutableMBSEProfile/Timing Diagram - Functional,ExecutableMBSEProfile/Use Case Description,ExecutableMBSEProfile/Use Case Postcondition,ExecutableMBSEProfile/Use Case Precondition,Diagrams/Requirements Diagram,%0D
+													<_Value type="a">AcceptEventAction,AcceptTimeEvent,ActivityFinal,Attribute,CallBehavior,CallOperation,Connector,ControlFlow,DecisionNode,DefaultTransition,Fork,InterruptibleRegion,MergeNode,Object,SendAction,State,Structure Diagram,ExecutableMBSEProfile/10 Context Package,ExecutableMBSEProfile/11 Actor Package,ExecutableMBSEProfile/12 Use Case Package,ExecutableMBSEProfile/12 Working Copy Package,ExecutableMBSEProfile/13 Requirement Package,ExecutableMBSEProfile/14 Signals Package,ExecutableMBSEProfile/22 Feature Function Package,ExecutableMBSEProfile/31 System Architecture Package,ExecutableMBSEProfile/32 Subsystem Package,ExecutableMBSEProfile/33 Subsystem Interfaces Package,ExecutableMBSEProfile/34 Software Design Package,ExecutableMBSEProfile/Actor Usage,ExecutableMBSEProfile/Block Definition Diagram - Software,ExecutableMBSEProfile/Block Definition Diagram - System,ExecutableMBSEProfile/C++ Class,ExecutableMBSEProfile/Call Operation Activity,ExecutableMBSEProfile/Component Usage,ExecutableMBSEProfile/Context Diagram,ExecutableMBSEProfile/Decision Usage,ExecutableMBSEProfile/Domain Block,ExecutableMBSEProfile/Enhanced Use Case Diagram,ExecutableMBSEProfile/Feature Block,ExecutableMBSEProfile/Feature Usage,ExecutableMBSEProfile/Final Usage,ExecutableMBSEProfile/Flow Connector,ExecutableMBSEProfile/Flow Final Usage,ExecutableMBSEProfile/Flow Input,ExecutableMBSEProfile/Flow Output,ExecutableMBSEProfile/Function Block,ExecutableMBSEProfile/Function Connector,ExecutableMBSEProfile/Function Usage,ExecutableMBSEProfile/Guarded Flow Output,ExecutableMBSEProfile/Internal Block Diagram - Functional,ExecutableMBSEProfile/Internal Block Diagram - Software,ExecutableMBSEProfile/Internal Block Diagram - System,ExecutableMBSEProfile/Parallel Gateway Usage,ExecutableMBSEProfile/Requirements Diagram - System,ExecutableMBSEProfile/Software Component,ExecutableMBSEProfile/Start Usage,ExecutableMBSEProfile/Subsystem Block,ExecutableMBSEProfile/Subsystem Usage,ExecutableMBSEProfile/System Block,ExecutableMBSEProfile/System Usage,ExecutableMBSEProfile/Table View - Action To Requirement,ExecutableMBSEProfile/Table View - Context Diagram Flows,ExecutableMBSEProfile/Table View - Requirement To Action,ExecutableMBSEProfile/Table View - Requirement To Use Case,ExecutableMBSEProfile/Table View - Simple Requirements Table,ExecutableMBSEProfile/Table View - Use Case To Requirement,ExecutableMBSEProfile/Textual Activity,ExecutableMBSEProfile/Time Event Usage,ExecutableMBSEProfile/Timing Diagram - Functional,ExecutableMBSEProfile/Use Case Description,ExecutableMBSEProfile/Use Case Postcondition,ExecutableMBSEProfile/Use Case Precondition,Diagrams/Requirements Diagram,%0D
 Diagrams/UseCaseDiagram,%0D
 Diagrams/Package Diagram,%0D
 Diagrams/Block Definition Diagram,%0D
@@ -11098,7 +11098,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSE</_name>
-			<_modifiedTime type="a">6.30.2022::17:17:36</_modifiedTime>
+			<_modifiedTime type="a">7.5.2022::10:11:32</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -11110,7 +11110,7 @@ Query</_Value>
 			<_id type="a">GUID 3307dbc4-6282-4d53-88b2-50e3de5ff8c2</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Diagrams</_name>
-			<_modifiedTime type="a">6.30.2022::19:9:46</_modifiedTime>
+			<_modifiedTime type="a">7.5.2022::11:54:42</_modifiedTime>
 			<_lastID type="a">9</_lastID>
 			<_defaultComposite type="s">GUID af3ccc20-8ac1-47a2-8c5f-be1a84c1550e</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -11133,7 +11133,6 @@ Query</_Value>
 				<value>GUID 20f4e2a7-e6eb-4dc4-a357-bc7f4c1bb757</value>
 				<value>GUID 36e1212b-e3fc-47b2-96a4-995ca9da3bc8</value>
 				<value>GUID af3ccc20-8ac1-47a2-8c5f-be1a84c1550e</value>
-				<value>GUID 44328a1d-efc3-421d-b594-fc026ac720ed</value>
 			</AggregatesList>
 		</ISubsystem>
 		<IStereotype type="e">
@@ -11574,19 +11573,19 @@ Query</_Value>
 												
 												<IProperty type="e">
 													<_Name type="a">InitialLayoutForTables</_Name>
-													<_Value type="a">TableL - Context Diagram Flows</_Value>
+													<_Value type="a">tablel - Context Diagram Flows</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
 													<_Name type="a">Name</_Name>
-													<_Value type="a">TableV - Context Diagram Flows</_Value>
+													<_Value type="a">Table View - Context Diagram Flows</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
 													<_Name type="a">PluralName</_Name>
-													<_Value type="a">52 The TableV - Context Diagram Flows are...</_Value>
+													<_Value type="a">52 The Context Diagram Flows Tables are...</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -11602,8 +11601,8 @@ Query</_Value>
 				</Subjects>
 			</IPropertyContainer>
 			</_properties>
-			<_name type="a">ContextDiagramFlows</_name>
-			<_modifiedTime type="a">6.14.2022::9:5:34</_modifiedTime>
+			<_name type="a">ContextDiagramFlowsTable</_name>
+			<_modifiedTime type="a">7.5.2022::11:54:42</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -13219,177 +13218,11 @@ Query</_Value>
 			</_itsStateChart>
 			<_classModifier type="a">Unspecified</_classModifier>
 		</IClass>
-		<ITableLayout type="e">
-			<_id type="a">GUID 44328a1d-efc3-421d-b594-fc026ac720ed</_id>
-			<_myState type="a">8192</_myState>
-			<_properties type="p"><IPropertyContainer type="e">
-				<Subjects type="c">
-					<IRPYRawContainer type="e">
-						<size type="a">2</size>
-						<IPropertySubject type="e">
-							<_Name type="a">General</_Name>
-							<Metaclasses type="c">
-								<IRPYRawContainer type="e">
-									<size type="a">1</size>
-									<IPropertyMetaclass type="e">
-										<_Name type="a">Graphics</_Name>
-										<Properties type="c">
-											<IRPYRawContainer type="e">
-												<size type="a">1</size>
-												<IProperty type="e">
-													<_Name type="a">TableHeaderMenuAlignment</_Name>
-													<_Value type="a">Right</_Value>
-													<_Type type="a">Enum</_Type>
-													<_ExtraTypeInfo type="a">Left,Right</_ExtraTypeInfo>
-												</IProperty>
-												
-											</IRPYRawContainer>
-										</Properties>
-									</IPropertyMetaclass>
-									
-								</IRPYRawContainer>
-							</Metaclasses>
-						</IPropertySubject>
-						
-						<IPropertySubject type="e">
-							<_Name type="a">Model</_Name>
-							<Metaclasses type="c">
-								<IRPYRawContainer type="e">
-									<size type="a">2</size>
-									<IPropertyMetaclass type="e">
-										<_Name type="a">TableLayout</_Name>
-										<Properties type="c">
-											<IRPYRawContainer type="e">
-												<size type="a">4</size>
-												<IProperty type="e">
-													<_Name type="a">CollapseFirstColumn</_Name>
-													<_Value type="a">True</_Value>
-													<_Type type="a">Bool</_Type>
-												</IProperty>
-												
-												<IProperty type="e">
-													<_Name type="a">ContextTableColumnNameFormat</_Name>
-													<_Value type="a">$(Property) in $(Context)</_Value>
-													<_Type type="a">String</_Type>
-												</IProperty>
-												
-												<IProperty type="e">
-													<_Name type="a">EnableCriteriaCheck</_Name>
-													<_Value type="a">True</_Value>
-													<_Type type="a">Bool</_Type>
-												</IProperty>
-												
-												<IProperty type="e">
-													<_Name type="a">QueryContextPattern</_Name>
-													<_Type type="a">MultiLine</_Type>
-												</IProperty>
-												
-											</IRPYRawContainer>
-										</Properties>
-									</IPropertyMetaclass>
-									
-									<IPropertyMetaclass type="e">
-										<_Name type="a">TableView</_Name>
-										<Properties type="c">
-											<IRPYRawContainer type="e">
-												<size type="a">1</size>
-												<IProperty type="e">
-													<_Name type="a">ChangeSelectionOnEnterTo</_Name>
-													<_Value type="a">down</_Value>
-													<_Type type="a">Enum</_Type>
-													<_ExtraTypeInfo type="a">left, right, up, down</_ExtraTypeInfo>
-												</IProperty>
-												
-											</IRPYRawContainer>
-										</Properties>
-									</IPropertyMetaclass>
-									
-								</IRPYRawContainer>
-							</Metaclasses>
-						</IPropertySubject>
-						
-					</IRPYRawContainer>
-				</Subjects>
-			</IPropertyContainer>
-			</_properties>
-			<_name type="a">TableL - Context Diagram Flows</_name>
-			<_modifiedTime type="a">7.15.2021::12:39:54</_modifiedTime>
-			<TableElementTypes type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">1</size>
-					<TableDataDefinition type="e">
-						<_myTable type="r">
-							<IHandle type="e">
-								<_hm2Class type="a">ITableLayout</_hm2Class>
-								<_hid type="a">GUID 44328a1d-efc3-421d-b594-fc026ac720ed</_hid>
-							</IHandle>
-						</_myTable>
-						<_modelElement type="r">
-							<IHandle type="e">
-							</IHandle>
-						</_modelElement>
-						<TableDataDefinitionName type="a">Flow</TableDataDefinitionName>
-						<_DataType type="a">1835627088</_DataType>
-					</TableDataDefinition>
-					
-				</IRPYRawContainer>
-			</TableElementTypes>
-			<DataColumns type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">3</size>
-					<TableDataDefinition type="e">
-						<_myTable type="r">
-							<IHandle type="e">
-								<_hm2Class type="a">ITableLayout</_hm2Class>
-								<_hid type="a">GUID 44328a1d-efc3-421d-b594-fc026ac720ed</_hid>
-							</IHandle>
-						</_myTable>
-						<_modelElement type="r">
-							<IHandle type="e">
-							</IHandle>
-						</_modelElement>
-						<TableDataDefinitionName type="a">RelationFrom.From element</TableDataDefinitionName>
-						<_columnName type="a">From element</_columnName>
-					</TableDataDefinition>
-					
-					<TableDataDefinition type="e">
-						<_myTable type="r">
-							<IHandle type="e">
-								<_hm2Class type="a">ITableLayout</_hm2Class>
-								<_hid type="a">GUID 44328a1d-efc3-421d-b594-fc026ac720ed</_hid>
-							</IHandle>
-						</_myTable>
-						<_modelElement type="r">
-							<IHandle type="e">
-							</IHandle>
-						</_modelElement>
-						<TableDataDefinitionName type="a">Flow.Flow items</TableDataDefinitionName>
-						<_columnName type="a">Item Flows</_columnName>
-					</TableDataDefinition>
-					
-					<TableDataDefinition type="e">
-						<_myTable type="r">
-							<IHandle type="e">
-								<_hm2Class type="a">ITableLayout</_hm2Class>
-								<_hid type="a">GUID 44328a1d-efc3-421d-b594-fc026ac720ed</_hid>
-							</IHandle>
-						</_myTable>
-						<_modelElement type="r">
-							<IHandle type="e">
-							</IHandle>
-						</_modelElement>
-						<TableDataDefinitionName type="a">RelationTo.To element</TableDataDefinitionName>
-						<_columnName type="a">To element</_columnName>
-					</TableDataDefinition>
-					
-				</IRPYRawContainer>
-			</DataColumns>
-		</ITableLayout>
 		<ISubsystem type="e">
 			<_id type="a">GUID d213ea00-7590-48aa-8f30-a0a61f8fcd08</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Packages</_name>
-			<_modifiedTime type="a">6.30.2022::17:18:14</_modifiedTime>
+			<_modifiedTime type="a">7.5.2022::10:11:32</_modifiedTime>
 			<_lastID type="a">2</_lastID>
 			<_defaultComposite type="s">GUID 26c8a3f9-6aee-4dff-a42f-bf1cc2880009</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -13565,7 +13398,7 @@ Query</_Value>
 												<size type="a">6</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Query,Event,Diagram View,14 Signals Package,Actor Usage,Context Diagram,Subsystem Usage,System Usage,TableV - Context Diagram Flows,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Flow,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
+													<_Value type="a">Query,Event,Diagram View,14 Signals Package,Actor Usage,Context Diagram,Subsystem Usage,System Usage,Table View - Context Diagram Flows,ControlledFile,HyperLink,Stereotype,Tag,Comment,Constraint,Dependency,Problem,Rationale,Flow,Requirement,CSVImporter,ExtendedTableLayout,ExtendedTableView,MatrixLayout,MatrixView,TableLayout,TableView</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -13612,7 +13445,7 @@ Query</_Value>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ContextPackage</_name>
-			<_modifiedTime type="a">6.15.2022::10:41:49</_modifiedTime>
+			<_modifiedTime type="a">7.5.2022::10:11:32</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -17529,7 +17362,7 @@ Query</_Value>
 			<_id type="a">GUID f4cbf55d-b74b-4ef3-9920-6eb8450bb6c2</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_TablesAndMatrices</_name>
-			<_modifiedTime type="a">6.30.2022::17:30:0</_modifiedTime>
+			<_modifiedTime type="a">7.5.2022::10:4:42</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_defaultComposite type="s">GUID aace3563-7387-48b2-b252-564f3c63fcfc</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -17542,6 +17375,7 @@ Query</_Value>
 				<value>GUID 6b098095-0651-427c-9c49-b089e7776900</value>
 				<value>GUID a46e8ac2-f909-4fac-a9b2-50503bd24e5b</value>
 				<value>GUID 710c967f-efe1-411d-b7a2-a8db15b6644c</value>
+				<value>GUID 44328a1d-efc3-421d-b594-fc026ac720ed</value>
 				<value>GUID 23956648-4810-4b41-8d14-1b51e6d19725</value>
 				<value>GUID b4be15e3-be9e-4b22-82be-8f91eaab9259</value>
 				<value>GUID 41bbc743-af05-42c9-8ac2-f49a22d6a621</value>
@@ -18675,6 +18509,172 @@ Query</_Value>
 						<TableDataDefinitionName type="a">General.Name</TableDataDefinitionName>
 						<_columnName type="a">Use Case</_columnName>
 						<_contextPatternLabel type="a">uc</_contextPatternLabel>
+					</TableDataDefinition>
+					
+				</IRPYRawContainer>
+			</DataColumns>
+		</ITableLayout>
+		<ITableLayout type="e">
+			<_id type="a">GUID 44328a1d-efc3-421d-b594-fc026ac720ed</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">2</size>
+						<IPropertySubject type="e">
+							<_Name type="a">General</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Graphics</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">TableHeaderMenuAlignment</_Name>
+													<_Value type="a">Right</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">Left,Right</_ExtraTypeInfo>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">2</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">TableLayout</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">4</size>
+												<IProperty type="e">
+													<_Name type="a">CollapseFirstColumn</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ContextTableColumnNameFormat</_Name>
+													<_Value type="a">$(Property) in $(Context)</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">EnableCriteriaCheck</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">QueryContextPattern</_Name>
+													<_Type type="a">MultiLine</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+									<IPropertyMetaclass type="e">
+										<_Name type="a">TableView</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">ChangeSelectionOnEnterTo</_Name>
+													<_Value type="a">down</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">left, right, up, down</_ExtraTypeInfo>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">tablel - Context Diagram Flows</_name>
+			<_modifiedTime type="a">7.5.2022::10:4:42</_modifiedTime>
+			<TableElementTypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID 44328a1d-efc3-421d-b594-fc026ac720ed</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Flow</TableDataDefinitionName>
+						<_DataType type="a">1835627088</_DataType>
+					</TableDataDefinition>
+					
+				</IRPYRawContainer>
+			</TableElementTypes>
+			<DataColumns type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">3</size>
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID 44328a1d-efc3-421d-b594-fc026ac720ed</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">RelationFrom.From element</TableDataDefinitionName>
+						<_columnName type="a">From element</_columnName>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID 44328a1d-efc3-421d-b594-fc026ac720ed</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Flow.Flow items</TableDataDefinitionName>
+						<_columnName type="a">Item Flows</_columnName>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID 44328a1d-efc3-421d-b594-fc026ac720ed</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">RelationTo.To element</TableDataDefinitionName>
+						<_columnName type="a">To element</_columnName>
 					</TableDataDefinition>
 					
 				</IRPYRawContainer>
