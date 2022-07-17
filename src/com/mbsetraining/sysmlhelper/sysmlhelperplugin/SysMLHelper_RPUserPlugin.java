@@ -104,7 +104,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.SetupRAProperties"))){
 
 					if( theSelectedEl instanceof IRPPackage ){
-						_settings.checkIfSetupProjectIsNeeded( true );
+						_settings.checkIfSetupProjectIsNeeded( true, "SysML" );
 					} else {
 						_context.error( menuItem + " invoked out of context and only works for packages" );
 					}
@@ -581,7 +581,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 }
 
 /**
- * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2016-2022  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

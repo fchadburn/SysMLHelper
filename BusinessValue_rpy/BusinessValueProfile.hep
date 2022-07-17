@@ -1,0 +1,59 @@
+ [Helpers]
+numberOfElements=5
+
+#REM: Definition of the plug-in
+name1=InvokeBusinessValueHelper
+JavaMainClass1=com.mbsetraining.sysmlhelper.businessvalueplugin.BusinessValue_RPUserPlugin
+JavaClassPath1=$OMROOT\Profiles\SysMLHelper\bin
+isPlugin1=1
+isVisible1=0
+DLLServerCompatible1=1
+
+#REM: Add pop-up menu
+name2=Business Value: Other\Center straight lines on diagram(s)
+isPluginCommand2=1
+command2=InvokeBusinessValueHelper
+applicableTo2=Generalization,Realization,AssociationEnd,Package,Dependency,Satisfaction,Derivation,Refinement,Verification,ActivityDiagram,Textual Activity,Call Operation Activity,ObjectModelDiagram,Block Definition Diagram,Internal Block Diagram,Statechart,SequenceDiagram,UseCaseDiagram,Metamodel Diagram
+isVisible2=1
+DLLServerCompatible2=1
+
+#REM: Add pop-up menu 
+name3=Business Value: Other\Select Depends On element(s)\All
+isPluginCommand3=1
+command3=InvokeBusinessValueHelper
+applicableTo3=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint
+isVisible3=1
+DLLServerCompatible3=1
+
+#REM: Add pop-up menu 
+name4=Business Value: Other\Select Dependent element(s)\All
+isPluginCommand4=1
+command4=InvokeBusinessValueHelper
+applicableTo4=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint
+isVisible4=1
+DLLServerCompatible4=1
+
+#REM: Add pop-up menu
+name5=Business Value: Other\Setup project properties
+isPluginCommand5=1
+command5=InvokeBusinessValueHelper
+applicableTo5=Project,SysML,BusinessValue
+isVisible5=1
+DLLServerCompatible5=1
+
+#REM Copyright (C) 2022  MBSE Training and Consulting Limited (www.executablembse.com)
+#REM
+#REM This file is part of SysMLHelperPlugin.
+#REM
+#REM SysMLHelperPlugin is free software: you can redistribute it and/or modify
+#REM it under the terms of the GNU General Public License as published by
+#REM the Free Software Foundation, either version 3 of the License, or
+#REM (at your option) any later version.
+#REM
+#REM SysMLHelperPlugin is distributed in the hope that it will be useful,
+#REM but WITHOUT ANY WARRANTY; without even the implied warranty of
+#REM MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#REM GNU General Public License for more details.
+#REM
+#REM You should have received a copy of the GNU General Public License
+#REM along with SysMLHelperPlugin.  If not, see <http://www.gnu.org/licenses/>.

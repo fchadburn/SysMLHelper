@@ -1,0 +1,56 @@
+Subject BusinessValueProfile
+        Metaclass General
+		Property PluginVersion String "V4.1.a.Rhp831.PreRelease"
+		Property EnableInfoLogging Bool "True"
+		Property EnableWarningLogging Bool "True"
+		Property EnableErrorLogging Bool "True"
+		Property EnableDebugLogging Bool "False"
+		Property EnableLogFile Bool "False"        
+		Property IsShowProfileVersionCheckDialogs Bool "True"
+		Property IsDoubleClickFunctionalityEnabled Bool "True"
+	end
+end
+Subject Format
+	Metaclass Goal
+		Property DefaultSize String "0,0,219,114"
+		Property Fill.FillColor Color "255,255,255"
+		Property Font.Font String "Tahoma"
+		Property Font.Size Int "8"
+		Property Font.Weight@Child.NameCompartment@Name Int "700"
+		Property Font.Italic@Child.NameCompartment@Name Int "1"
+		Property Line.LineColor Color "0,128,0"
+		Property Line.LineStyle Int "0"
+		Property Line.LineWidth Int "1"
+	end
+end
+Subject ObjectModelGe
+	Metaclass Goal
+		Property ShowAttributes Enum "All,None,Public,Explicit" "None"
+		Property ShowOperations Enum "All,None,Public,Explicit" "None"
+		Property ShowStereotype Enum "Label,Bitmap,None" "Label"
+		Property ShowName Enum  "Full_path,Relative,Name_only,Label" "Name_only"
+		Property ShowPorts Bool "False"
+		Property ShowPortsInterfaces Bool "True"
+		Property PortsSingleLabelLayout Enum "Off,Internal,External" "Off"
+		Property Compartments MultiLine "Description"
+		Property ShowInheritedAttributes Bool "False"
+		Property ShowInheritedOperations Bool "False"
+		Property QuickNavigationCategories String "MainBehavior,MainDiagram,Hyperlinks,Diagrams"
+	end
+end
+Subject ConfigurationManagement
+	Metaclass RationalTeamConcert
+		Property StoreInSeparateDirectoryActivation Enum "Disable,UserConfirmation,Automatic" "Automatic"
+		Property DeleteActivation Enum "Disable,UserConfirmation,Automatic" "Automatic"
+		Property RenameActivation Enum "Disable,UserConfirmation,Automatic" "Automatic"
+		Property MoveActivation Enum "Disable,UserConfirmation,Automatic" "Automatic"
+	end
+end
+Subject Model
+	Metaclass Project
+		Property BrowseHierarchy String "BrowseRelations"
+		Property BrowseRelationsName String "Browse Relations"
+		Property BrowseRelationsPattern String "Class!*, Dependency:*"
+	end
+end
+end

@@ -155,7 +155,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						"executablembseplugin.SetupRAProperties" ) ) ){
 
 					if( theSelectedEl instanceof IRPPackage ){
-						_settings.checkIfSetupProjectIsNeeded( true );
+						_settings.checkIfSetupProjectIsNeeded( true, "SysML" );
 						_context.cleanUpModelRemnants();
 					} else {
 						_context.error( menuItem + " invoked out of context and only works for packages" );
@@ -1166,7 +1166,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 			isContinue = UserInterfaceHelper.askAQuestion( theMsg );
 
 			if( isContinue ){
-				_settings.setupProjectWithProperties();
+				_settings.setupProjectWithProperties( "SysML" );
 			}
 		}
 		return isContinue;

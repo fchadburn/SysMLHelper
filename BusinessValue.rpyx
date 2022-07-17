@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RhapsodyArchive>
+	<MagicNumber></MagicNumber>
+	<CODE-PAGE>1252</CODE-PAGE>
+	<version>100.831.0</version>
+	<lang>C++</lang>
+	<BuildNo>9835718</BuildNo>
+	
+	<RHAPSODY-MODEL>
+	<IProject type="e">
+			<_id type="a">GUID a8481763-54ba-49d2-b7ad-ccff9237c461</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">3</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Browser</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Settings</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">ShowPredefinedPackage</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+						<IPropertySubject type="e">
+							<_Name type="a">CG</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Configuration</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">Environment</_Name>
+													<_Value type="a">Cygwin</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">MSVC,MSVCDLL,MSVCStandardLibrary,VxWorks,VxWorks6diab,VxWorks6gnu,VxWorks6diab_RTP,VxWorks6gnu_RTP,Solaris2,Cygwin,MicrosoftWinCE600,OseSfk,Linux,Solaris2GNU,QNXNeutrinoGCC, QNXNeutrinoMomentics,NucleusPLUS-PPC,WorkbenchManaged,WorkbenchManaged653,WorkbenchManaged_RTP</_ExtraTypeInfo>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+						<IPropertySubject type="e">
+							<_Name type="a">General</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Model</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">RenameUnusedFiles</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">BusinessValue</_name>
+			<_modifiedTimeWeak type="a">7.17.2022::13:42:6</_modifiedTimeWeak>
+			<_modifiedTime type="a">7.17.2022::13:42:6</_modifiedTime>
+			<_lastID type="a">10002</_lastID>
+			<_UserColors type="w">
+				<IRPYRawContainer type="e">
+					<size type="a">16</size>
+					<value>16777215</value>
+					<value>16777215</value>
+					<value>16777215</value>
+					<value>16777215</value>
+					<value>16777215</value>
+					<value>16777215</value>
+					<value>16777215</value>
+					<value>16777215</value>
+					<value>16777215</value>
+					<value>16777215</value>
+					<value>16777215</value>
+					<value>16777215</value>
+					<value>16777215</value>
+					<value>16777215</value>
+					<value>16777215</value>
+					<value>16777215</value>
+				</IRPYRawContainer>
+			</_UserColors>
+			<_defaultSubsystem type="r">
+				<ISubsystemHandle type="e">
+					<_hm2Class type="a">ISubsystem</_hm2Class>
+					<_hname type="a">NotUsedPkg</_hname>
+					<_hid type="a">GUID 9e2f2167-cd82-4f7c-a35b-3f32049a0cdd</_hid>
+				</ISubsystemHandle>
+			</_defaultSubsystem>
+			<_component type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IComponent</_hm2Class>
+					<_hid type="a">GUID ea8e0052-0ea7-4d8d-8ff4-ae3e5728efa5</_hid>
+				</IHandle>
+			</_component>
+			<Multiplicities type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">4</size>
+					<IMultiplicityItem type="e">
+						<_name type="a">1</_name>
+						<_count type="a">-1</_count>
+					</IMultiplicityItem>
+					
+					<IMultiplicityItem type="e">
+						<_name type="a">*</_name>
+						<_count type="a">-1</_count>
+					</IMultiplicityItem>
+					
+					<IMultiplicityItem type="e">
+						<_name type="a">0,1</_name>
+						<_count type="a">-1</_count>
+					</IMultiplicityItem>
+					
+					<IMultiplicityItem type="e">
+						<_name type="a">1..*</_name>
+						<_count type="a">-1</_count>
+					</IMultiplicityItem>
+					
+				</IRPYRawContainer>
+			</Multiplicities>
+			<_isImportedFromDM type="a">0</_isImportedFromDM>
+			<Diagrams type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</Diagrams>
+			<mapOslcAddedCollections type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</mapOslcAddedCollections>
+			<mapAssociationsToRemove type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</mapAssociationsToRemove>
+			<AggregatesList type="e">
+				<value>GUID 9e2f2167-cd82-4f7c-a35b-3f32049a0cdd</value>
+				<value>GUID d2ddb420-4d4b-4832-bf58-e291ae395548</value>
+				<value>GUID 66ce32f5-6908-43e4-bcd2-5191392e805b</value>
+				<value>GUID 762735e1-87d0-4ac4-8146-5006ab109531</value>
+				<value>GUID 6a4ee714-23d5-4e6c-88ee-30e8fdb301b6</value>
+				<value>GUID abe4fc71-6a1d-47e8-8505-67ff4aa469ec</value>
+				<value>GUID ea8e0052-0ea7-4d8d-8ff4-ae3e5728efa5</value>
+			</AggregatesList>
+		</IProject>
+		<ISubsystem type="e">
+			<fileName type="a">NotUsedPkg</fileName>
+			<_id type="a">GUID 9e2f2167-cd82-4f7c-a35b-3f32049a0cdd</_id>
+		</ISubsystem>
+		<IProfile type="e">
+			<fileName type="a">MetamodelProfile</fileName>
+			<_persistAs type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy</_persistAs>
+			<_id type="a">GUID d2ddb420-4d4b-4832-bf58-e291ae395548</_id>
+			<_partOfTheModelKind type="a">referenceunit</_partOfTheModelKind>
+		</IProfile>
+		<ISubsystem type="e">
+			<fileName type="a">Base_MetaModelPkg</fileName>
+			<_id type="a">GUID 66ce32f5-6908-43e4-bcd2-5191392e805b</_id>
+		</ISubsystem>
+		<IProfile type="e">
+			<fileName type="a">MetamodelSupplementaryProfile</fileName>
+			<_id type="a">GUID 762735e1-87d0-4ac4-8146-5006ab109531</_id>
+		</IProfile>
+		<ISubsystem type="e">
+			<fileName type="a">BusinessValue_MetaModelPkg</fileName>
+			<_id type="a">GUID 6a4ee714-23d5-4e6c-88ee-30e8fdb301b6</_id>
+		</ISubsystem>
+		<IProfile type="e">
+			<fileName type="a">BusinessValueProfile</fileName>
+			<_id type="a">GUID abe4fc71-6a1d-47e8-8505-67ff4aa469ec</_id>
+		</IProfile>
+		<IComponent type="e">
+			<_id type="a">GUID ea8e0052-0ea7-4d8d-8ff4-ae3e5728efa5</_id>
+			<_myState type="a">139264</_myState>
+			<_name type="a">NotUsedComponent</_name>
+			<_modifiedTimeWeak type="a">7.17.2022::13:0:43</_modifiedTimeWeak>
+			<_modifiedTime type="a">7.17.2022::13:0:43</_modifiedTime>
+			<m_buildType type="a">Executable</m_buildType>
+			<m_configActive type="r">
+				<ICodeGenConfigInfoHandle type="e">
+					<_hm2Class type="a">ICodeGenConfigInfo</_hm2Class>
+					<_hname type="a">NotUsedComponent\NotUsedConfig</_hname>
+					<_hid type="a">GUID 3290e38a-0c4b-4102-ba32-7a5d1ba84a0d</_hid>
+				</ICodeGenConfigInfoHandle>
+			</m_configActive>
+			<HandlesInMe type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">8</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">ISubsystem</_hm2Class>
+							<_hname type="a">NotUsedPkg</_hname>
+							<_hid type="a">GUID 9e2f2167-cd82-4f7c-a35b-3f32049a0cdd</_hid>
+						</IHandle>
+					
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IProfile</_hm2Class>
+							<_hname type="a">MetamodelProfile</_hname>
+							<_hid type="a">GUID d2ddb420-4d4b-4832-bf58-e291ae395548</_hid>
+						</IHandle>
+					
+					
+						<IHandle type="e">
+							<_hm2Class type="a">ISubsystem</_hm2Class>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">TestingProfileRelated</_hname>
+							<_hid type="a">GUID 619fb7cd-6070-4467-b15a-0320de8d7c40</_hid>
+						</IHandle>
+					
+					
+						<IHandle type="e">
+							<_hm2Class type="a">ISubsystem</_hm2Class>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">DDSProfileRelated</_hname>
+							<_hid type="a">GUID 78e114e6-855d-4b84-97cb-eb1f30152d2c</_hid>
+						</IHandle>
+					
+					
+						<IHandle type="e">
+							<_hm2Class type="a">ISubsystem</_hm2Class>
+							<_hname type="a">Base_MetaModelPkg</_hname>
+							<_hid type="a">GUID 66ce32f5-6908-43e4-bcd2-5191392e805b</_hid>
+						</IHandle>
+					
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IProfile</_hm2Class>
+							<_hname type="a">MetamodelSupplementaryProfile</_hname>
+							<_hid type="a">GUID 762735e1-87d0-4ac4-8146-5006ab109531</_hid>
+						</IHandle>
+					
+					
+						<IHandle type="e">
+							<_hm2Class type="a">ISubsystem</_hm2Class>
+							<_hname type="a">BusinessValue_MetaModelPkg</_hname>
+							<_hid type="a">GUID 6a4ee714-23d5-4e6c-88ee-30e8fdb301b6</_hid>
+						</IHandle>
+					
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IProfile</_hm2Class>
+							<_hname type="a">BusinessValueProfile</_hname>
+							<_hid type="a">GUID abe4fc71-6a1d-47e8-8505-67ff4aa469ec</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</HandlesInMe>
+			<VariationPoints type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</VariationPoints>
+			<SelectedVariants type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</SelectedVariants>
+			<weakCGTime type="a">7.17.2022::13:0:43</weakCGTime>
+			<strongCGTime type="a">7.17.2022::13:0:28</strongCGTime>
+			<AggregatesList type="e">
+				<value>GUID 799a4d19-74ea-4d25-8334-3303cfdf7533</value>
+				<value>GUID 3290e38a-0c4b-4102-ba32-7a5d1ba84a0d</value>
+			</AggregatesList>
+		</IComponent>
+		<IFolder type="e">
+			<_id type="a">GUID 799a4d19-74ea-4d25-8334-3303cfdf7533</_id>
+			<_myState type="a">73728</_myState>
+			<_name type="a">Files</_name>
+			<_modifiedTimeWeak type="a">7.17.2022::12:31:32</_modifiedTimeWeak>
+			<_modifiedTime type="a">7.17.2022::12:31:32</_modifiedTime>
+			<Elements type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</Elements>
+			<Files type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</Files>
+		</IFolder>
+		<ICodeGenConfigInfo type="e">
+			<_id type="a">GUID 3290e38a-0c4b-4102-ba32-7a5d1ba84a0d</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">NotUsedConfig</_name>
+			<_modifiedTimeWeak type="a">7.17.2022::13:0:43</_modifiedTimeWeak>
+			<_modifiedTime type="a">7.17.2022::13:0:43</_modifiedTime>
+			<_scopeType type="a">Explicit</_scopeType>
+			<_instrumentation type="a">Animation</_instrumentation>
+			<_timeModel type="a">RealTime</_timeModel>
+			<m_generateActors type="a">1</m_generateActors>
+			<_statechartImplementation type="a">Flat</_statechartImplementation>
+			<_checksList type="a">0 ,</_checksList>
+			<ScopeElements type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</ScopeElements>
+			<InitialInstances type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</InitialInstances>
+			<weakCGTime type="a">7.17.2022::13:0:43</weakCGTime>
+			<strongCGTime type="a">7.17.2022::13:0:43</strongCGTime>
+			<AnimScopeElements type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</AnimScopeElements>
+			<m_allInAnimScope type="a">1</m_allInAnimScope>
+			<m_generateUsecases type="a">0</m_generateUsecases>
+			<AggregatesList type="e">
+				<value>GUID d25ce48e-a81f-4fa6-aad4-2cc10bfb8e1c</value>
+				<value>GUID d6b89a3f-132d-43cf-874b-72367d62c74a</value>
+				<value>GUID 1d46172d-f8d2-4a93-9c12-b5b5fef69ca2</value>
+			</AggregatesList>
+		</ICodeGenConfigInfo>
+		<IMHyperLink type="e">
+			<_id type="a">GUID d25ce48e-a81f-4fa6-aad4-2cc10bfb8e1c</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">7.17.2022::13:0:37</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+				</INObjectHandle>
+			</_dependsOn>
+			<_linkDispName type="a">Edit Makefile</_linkDispName>
+			<_linkType type="a">FREE</_linkType>
+			<_linkTarget type="a">C:/Users/frase/IBM/Rational/Rhapsody/8.3.1x64/Share/Profiles/SysMLHelper/NotUsedComponent/NotUsedConfig/NotUsedComponent.mak</_linkTarget>
+			<isConfigurationFileHyperLink type="a">1</isConfigurationFileHyperLink>
+		</IMHyperLink>
+		<IMHyperLink type="e">
+			<_id type="a">GUID d6b89a3f-132d-43cf-874b-72367d62c74a</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">7.17.2022::13:0:37</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+				</INObjectHandle>
+			</_dependsOn>
+			<_linkDispName type="a">Edit Main File</_linkDispName>
+			<_linkType type="a">FREE</_linkType>
+			<_linkTarget type="a">C:/Users/frase/IBM/Rational/Rhapsody/8.3.1x64/Share/Profiles/SysMLHelper/NotUsedComponent/NotUsedConfig/MainNotUsedComponent</_linkTarget>
+			<isConfigurationFileHyperLink type="a">1</isConfigurationFileHyperLink>
+		</IMHyperLink>
+		<IFolder type="e">
+			<_id type="a">GUID 1d46172d-f8d2-4a93-9c12-b5b5fef69ca2</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">NotUsedConfig</_name>
+			<_modifiedTimeWeak type="a">7.17.2022::13:0:43</_modifiedTimeWeak>
+			<_modifiedTime type="a">7.17.2022::13:0:43</_modifiedTime>
+			<Elements type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</Elements>
+			<Files type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</Files>
+		</IFolder>
+		
+	</RHAPSODY-MODEL>
+	<OslcLinks type="c">
+		<IRPYRawContainer type="e">
+			<size type="a">0</size>
+		</IRPYRawContainer>
+	</OslcLinks>
+
+<INCLUDES-RHAPSODY-INDEX>false</INCLUDES-RHAPSODY-INDEX>
+</RhapsodyArchive>
+

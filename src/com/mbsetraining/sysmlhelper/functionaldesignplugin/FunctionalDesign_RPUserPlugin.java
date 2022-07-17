@@ -276,7 +276,7 @@ public class FunctionalDesign_RPUserPlugin extends RPUserPlugin {
 			isContinue = UserInterfaceHelper.askAQuestion( theMsg );
 
 			if( isContinue ){
-				_settings.setupProjectWithProperties();
+				_settings.setupProjectWithProperties( "SysML" );
 			}
 		}
 		return isContinue;
@@ -284,7 +284,7 @@ public class FunctionalDesign_RPUserPlugin extends RPUserPlugin {
 }
 
 /**
- * Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2018-2022  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

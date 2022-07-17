@@ -1,0 +1,3028 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RhapsodyArchive>
+	<MagicNumber></MagicNumber>
+	<CODE-PAGE>1252</CODE-PAGE>
+	<version>100.831.0</version>
+	<lang>C++</lang>
+	<BuildNo>9835718</BuildNo>
+	
+	<RHAPSODY-MODEL>
+	<ISubsystem type="e">
+			<_id type="a">GUID 66ce32f5-6908-43e4-bcd2-5191392e805b</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Base_MetaModelPkg</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">Metamodel Package</_hname>
+							<_hid type="a">GUID 07e3765a-4e90-466c-91d7-8783e5435485</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.25.2020::7:37:53</_modifiedTime>
+			<_lastID type="a">7</_lastID>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_defaultComposite type="s">GUID 3e326672-39e1-4622-ba2e-fb6b5f7591a8</_defaultComposite>
+			<_eventsBaseID type="a">-1</_eventsBaseID>
+			<_configurationRelatedTime type="a">6.21.2020::13:37:13</_configurationRelatedTime>
+			<AggregatesList type="e">
+				<value>GUID 3e326672-39e1-4622-ba2e-fb6b5f7591a8</value>
+				<value>GUID 83400e65-ffe1-4f22-981f-2a2f8741e428</value>
+				<value>GUID 7e3cde99-8f76-4b3b-b436-0d914ab4fcd2</value>
+				<value>GUID a0f356a5-7012-41fb-b8eb-a8c5db74fa60</value>
+				<value>GUID 334fe19e-219a-4172-b859-a9be359f98eb</value>
+				<value>GUID 43c5684f-226f-4fdb-9267-7ee0bc404c62</value>
+				<value>GUID 498ecf6b-4832-4e52-b40e-9d8a8ac48d94</value>
+				<value>GUID c0fd827a-e051-481c-9d04-6780e7ca3e6d</value>
+				<value>GUID 509dad90-ca5b-4daa-a725-8287a3d241e6</value>
+				<value>GUID 6acb1a6d-75ca-4c4c-af8f-1cff04c19c0a</value>
+				<value>GUID 231c9e8d-86a5-4419-9d0a-9b5a52ed0738</value>
+				<value>GUID d8cb7b17-4253-4263-93bc-63b98f81cdf9</value>
+				<value>GUID 3c13c5f8-47e9-4a97-875a-fd0d0d8a3a7c</value>
+				<value>GUID 66f74b40-a992-4e41-8d89-f2d03788eafe</value>
+				<value>GUID 3ac0103f-e89f-4a61-9ff1-5d3b8f5f837c</value>
+				<value>GUID a0eddad9-2b58-428e-9412-0421bd8074b8</value>
+				<value>GUID 24600348-2e89-4147-abb9-1a7b06156c1b</value>
+				<value>GUID c028cc00-0c0f-46f6-8f6d-d65da692acb3</value>
+				<value>GUID d34f5f9c-66e5-4fa2-bb6a-440e3710b219</value>
+				<value>GUID e7d9ad69-9074-4313-be7e-a4e61fa6d58c</value>
+				<value>GUID 49bdb0e0-48e4-4902-a11b-8ce454bdff50</value>
+				<value>GUID 4d350b0d-4e70-48d0-a934-7191ee256a53</value>
+				<value>GUID 7648fd0b-fee8-4a1e-a730-b97bfa419ce6</value>
+				<value>GUID 55b3e4ac-e9c5-4e99-b15d-73f346024538</value>
+				<value>GUID 0f0a6b0a-c27f-4afc-bcc0-330bc222bf99</value>
+				<value>GUID 952bd987-25e4-43ee-a251-ff851522e651</value>
+				<value>GUID aedbf005-35d2-4fc7-915c-a59b6204b74d</value>
+				<value>GUID abd3dc1d-c6f4-4c7e-ac11-f3264d6fdc8c</value>
+				<value>GUID 3e418e73-25a6-4c58-863e-05da06118993</value>
+				<value>GUID 6f1d2a18-5bb2-4717-b51e-d34ea17577a3</value>
+				<value>GUID 53f37de5-2614-497b-8c1d-ffd29ef8c61b</value>
+				<value>GUID 6e53efc9-0629-4658-a3d9-39536396fff5</value>
+				<value>GUID 48b02cd4-21a0-4669-85db-cca74eb3b6f8</value>
+				<value>GUID 0978e452-83d3-4f41-b43b-5fd2782d8e38</value>
+				<value>GUID a038bbd7-48ad-45d0-b9f1-06c8d912b9e3</value>
+				<value>GUID f5dc86cd-6025-4b53-87c8-97ca35a2be57</value>
+				<value>GUID bd7bd021-f37c-43ec-95e6-29504a1dfbff</value>
+				<value>GUID ca9bd9b7-7bb4-4771-a27f-ef415a809c52</value>
+				<value>GUID 707c42a7-500c-40bf-a538-bb54708d9a19</value>
+				<value>GUID db8fe1fc-5c0d-4a56-b5bc-0b9eea239b08</value>
+				<value>GUID a8f7832b-59f5-42aa-9ab4-6a00c961aed6</value>
+				<value>GUID 2bad5c9c-5a14-4fe5-b44e-160b6d7af930</value>
+				<value>GUID 918e501c-92e2-4f0a-9f27-6411b2739450</value>
+				<value>GUID 5fdc75fc-1dc7-48b5-ac7b-9f093d7b975f</value>
+				<value>GUID 1006a4b6-59b9-4593-9220-cfa20a8d1dc3</value>
+				<value>GUID e5cb9c87-6098-4b25-891c-b204e145c749</value>
+				<value>GUID a071cd4b-ec84-4d5f-bc5c-15ea9ae94bc7</value>
+				<value>GUID 315e142a-c2ed-416f-928e-eafcfe97b39a</value>
+				<value>GUID 90168b8a-6cef-46b8-a243-d5cff7363f95</value>
+				<value>GUID ee8eea1a-990e-4a21-ad5a-135b7612f393</value>
+				<value>GUID b75f4024-fe37-4515-9152-3bf6ee2c053a</value>
+				<value>GUID c74953d1-5fdf-44ed-9b77-d93988f2e1e8</value>
+				<value>GUID 5db63ff3-79e3-4cb1-8066-e9beb66fd9b5</value>
+				<value>GUID a51c88b9-b7fc-4c69-8788-76533a68fcca</value>
+				<value>GUID dddf4e55-fda8-4a0b-90a7-0ad2da2a0b55</value>
+				<value>GUID 0857e450-955b-467b-af95-e346a5e31e27</value>
+				<value>GUID b9540473-9074-45f5-a701-b653614277c3</value>
+				<value>GUID a5aa6ccf-ec96-4428-80cd-635e7f23fe64</value>
+				<value>GUID b3a20eeb-498f-4056-aceb-e191c2ebdc04</value>
+				<value>GUID 69338e8c-4ec3-4337-8550-1baf9d71694e</value>
+				<value>GUID 604642f5-8d0b-4cff-9c48-632093024776</value>
+				<value>GUID 1870f282-13c3-4753-bf26-fafd222ca618</value>
+				<value>GUID 40ca111d-99f3-4e06-9456-2d640a72e2f0</value>
+				<value>GUID 2bb96019-2765-4ede-82e6-0d7e80d1adb3</value>
+				<value>GUID 82042227-69dd-44ec-afe7-b47ad1b554cd</value>
+				<value>GUID 9c56ad31-b1f2-455e-a200-6411f7562943</value>
+				<value>GUID 2678ae98-aa6b-4b0c-9508-9e475ebec9aa</value>
+				<value>GUID c9936ba0-7bf7-4442-a575-ffd043951e38</value>
+			</AggregatesList>
+		</ISubsystem>
+		<IClass type="e">
+			<_id type="a">GUID 3e326672-39e1-4622-ba2e-fb6b5f7591a8</_id>
+			<_myState type="a">40960</_myState>
+			<_name type="a">TopLevel</_name>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 83400e65-ffe1-4f22-981f-2a2f8741e428</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Attributes</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">Tab</_hname>
+							<_hid type="a">GUID cc48c921-e212-4b46-b047-5021611568ed</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.21.2020::13:37:13</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 7e3cde99-8f76-4b3b-b436-0d914ab4fcd2</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Flow Ports</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">Tab</_hname>
+							<_hid type="a">GUID cc48c921-e212-4b46-b047-5021611568ed</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.21.2020::13:37:13</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID a0f356a5-7012-41fb-b8eb-a8c5db74fa60</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Operations</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">Tab</_hname>
+							<_hid type="a">GUID cc48c921-e212-4b46-b047-5021611568ed</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.21.2020::13:37:13</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 334fe19e-219a-4172-b859-a9be359f98eb</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Ports</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">Tab</_hname>
+							<_hid type="a">GUID cc48c921-e212-4b46-b047-5021611568ed</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.21.2020::13:37:13</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 43c5684f-226f-4fdb-9267-7ee0bc404c62</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">ActivityDiagram</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Diagram</_hname>
+							<_hid type="a">GUID b9141df3-c4d2-4f80-b150-d1e5d9a5cde7</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.21.2020::13:37:13</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID a368df8c-214f-49e8-8c32-d3420729b325</value>
+			</AggregatesList>
+		</IClass>
+		<IGeneralization type="e">
+			<_id type="a">GUID a368df8c-214f-49e8-8c32-d3420729b325</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID d34f5f9c-66e5-4fa2-bb6a-440e3710b219</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		<IClass type="e">
+			<_id type="a">GUID 498ecf6b-4832-4e52-b40e-9d8a8ac48d94</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">MatrixLayout</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Diagram</_hname>
+							<_hid type="a">GUID b9141df3-c4d2-4f80-b150-d1e5d9a5cde7</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.21.2020::13:37:13</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID b83b3731-dfd4-487c-be93-36df1be1f49b</value>
+			</AggregatesList>
+		</IClass>
+		<IGeneralization type="e">
+			<_id type="a">GUID b83b3731-dfd4-487c-be93-36df1be1f49b</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 3e418e73-25a6-4c58-863e-05da06118993</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		<IClass type="e">
+			<_id type="a">GUID c0fd827a-e051-481c-9d04-6780e7ca3e6d</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">MatrixView</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Diagram</_hname>
+							<_hid type="a">GUID b9141df3-c4d2-4f80-b150-d1e5d9a5cde7</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.21.2020::13:37:13</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID e4edab09-a929-4e96-ba64-cbcc6409c9f7</value>
+			</AggregatesList>
+		</IClass>
+		<IGeneralization type="e">
+			<_id type="a">GUID e4edab09-a929-4e96-ba64-cbcc6409c9f7</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 3e418e73-25a6-4c58-863e-05da06118993</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		<IClass type="e">
+			<_id type="a">GUID 509dad90-ca5b-4daa-a725-8287a3d241e6</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">ObjectModelDiagram</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Diagram</_hname>
+							<_hid type="a">GUID b9141df3-c4d2-4f80-b150-d1e5d9a5cde7</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">BasePkg</_hsubsystem>
+					<_hname type="a">MMD - Add Timing diagram</_hname>
+					<_hid type="a">GUID f494f629-abf6-42e6-8613-382aa7e967c4</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.3.2020::11:24:26</_modifiedTime>
+			<_lastID type="a">2</_lastID>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID 3174ea55-237b-40a6-9912-53c76e1fe67b</value>
+			</AggregatesList>
+		</IClass>
+		<IGeneralization type="e">
+			<_id type="a">GUID 3174ea55-237b-40a6-9912-53c76e1fe67b</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID d34f5f9c-66e5-4fa2-bb6a-440e3710b219</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		<IClass type="e">
+			<_id type="a">GUID 6acb1a6d-75ca-4c4c-af8f-1cff04c19c0a</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">StructureDiagram</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Diagram</_hname>
+							<_hid type="a">GUID b9141df3-c4d2-4f80-b150-d1e5d9a5cde7</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.21.2020::13:37:13</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID 3fffb4d0-792c-482b-aa70-e1252777219d</value>
+			</AggregatesList>
+		</IClass>
+		<IGeneralization type="e">
+			<_id type="a">GUID 3fffb4d0-792c-482b-aa70-e1252777219d</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID d34f5f9c-66e5-4fa2-bb6a-440e3710b219</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		<IClass type="e">
+			<_id type="a">GUID 231c9e8d-86a5-4419-9d0a-9b5a52ed0738</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">TableLayout</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Diagram</_hname>
+							<_hid type="a">GUID b9141df3-c4d2-4f80-b150-d1e5d9a5cde7</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.21.2020::13:37:13</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID 52826cb2-2474-4cf1-808a-09c26be62fd7</value>
+			</AggregatesList>
+		</IClass>
+		<IGeneralization type="e">
+			<_id type="a">GUID 52826cb2-2474-4cf1-808a-09c26be62fd7</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 3e418e73-25a6-4c58-863e-05da06118993</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		<IClass type="e">
+			<_id type="a">GUID d8cb7b17-4253-4263-93bc-63b98f81cdf9</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">TableView</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Diagram</_hname>
+							<_hid type="a">GUID b9141df3-c4d2-4f80-b150-d1e5d9a5cde7</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.21.2020::13:37:13</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID 03553be8-4de7-43b2-933a-c17745264f43</value>
+			</AggregatesList>
+		</IClass>
+		<IGeneralization type="e">
+			<_id type="a">GUID 03553be8-4de7-43b2-933a-c17745264f43</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 3e418e73-25a6-4c58-863e-05da06118993</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		<IClass type="e">
+			<_id type="a">GUID 3c13c5f8-47e9-4a97-875a-fd0d0d8a3a7c</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Actor</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">AutoMBSE_MetaModelPkg</_hsubsystem>
+					<_hname type="a">MMD - ActorPackages</_hname>
+					<_hid type="a">GUID f2fb8cd0-2e1b-4b64-b1bb-81b495d134b1</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">8.25.2020::7:37:53</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID 5729ccbd-cbae-46c0-8ab3-bc3f3ca2eeb0</value>
+			</AggregatesList>
+		</IClass>
+		<IGeneralization type="e">
+			<_id type="a">GUID 5729ccbd-cbae-46c0-8ab3-bc3f3ca2eeb0</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 3e418e73-25a6-4c58-863e-05da06118993</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		<IClass type="e">
+			<_id type="a">GUID 66f74b40-a992-4e41-8d89-f2d03788eafe</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">AssociationEnd</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Relation</_hname>
+							<_hid type="a">GUID 56053e54-dc2f-45a6-a2d7-48afe8ef5f92</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">AutoMBSE_MetaModelPkg</_hsubsystem>
+					<_hname type="a">MMD - Use Case Packages</_hname>
+					<_hid type="a">GUID 2a8f6d60-de0f-4963-b337-07ae89ff9a74</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">8.24.2020::9:34:12</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 3ac0103f-e89f-4a61-9ff1-5d3b8f5f837c</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Class</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">7.2.2020::17:18:59</_modifiedTime>
+			<_lastID type="a">1</_lastID>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID 6865ed6c-a010-42e1-ae85-11aeb688eebe</value>
+				<value>GUID 0f38e33e-31fe-4c0c-8dc1-4845575a2d99</value>
+			</AggregatesList>
+		</IClass>
+		<IGeneralization type="e">
+			<_id type="a">GUID 6865ed6c-a010-42e1-ae85-11aeb688eebe</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 3e418e73-25a6-4c58-863e-05da06118993</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		<IAssociationEnd type="e">
+			<_id type="a">GUID 0f38e33e-31fe-4c0c-8dc1-4845575a2d99</_id>
+			<_myState type="a">10240</_myState>
+			<_name type="a">itsAssociationEnd</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_multiplicity type="a">1</_multiplicity>
+			<_otherClass type="r">
+				<IClassifierHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 66f74b40-a992-4e41-8d89-f2d03788eafe</_hid>
+				</IClassifierHandle>
+			</_otherClass>
+			<_inverse type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_inverse>
+			<_linkType type="a">Composition</_linkType>
+			<_navigability type="a">Navigable</_navigability>
+		</IAssociationEnd>
+		<IClass type="e">
+			<_id type="a">GUID a0eddad9-2b58-428e-9412-0421bd8074b8</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Comment</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">AutoMBSE_MetaModelPkg</_hsubsystem>
+					<_hname type="a">MMD - Use Case Packages</_hname>
+					<_hid type="a">GUID 2a8f6d60-de0f-4963-b337-07ae89ff9a74</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">8.24.2020::9:19:36</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 24600348-2e89-4147-abb9-1a7b06156c1b</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Constraint</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.21.2020::13:37:13</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID c028cc00-0c0f-46f6-8f6d-d65da692acb3</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Dependency</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Relation</_hname>
+							<_hid type="a">GUID 56053e54-dc2f-45a6-a2d7-48afe8ef5f92</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">7.6.2020::9:1:23</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID d34f5f9c-66e5-4fa2-bb6a-440e3710b219</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Diagram</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">BasePkg</_hsubsystem>
+					<_hname type="a">MMD - Add Timing diagram</_hname>
+					<_hid type="a">GUID f494f629-abf6-42e6-8613-382aa7e967c4</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.3.2020::11:25:48</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID 72b9bc72-41cf-4482-89bd-9892e5c29ca3</value>
+				<value>GUID 2faca557-8a31-4b1c-b612-1696f7cc1fec</value>
+			</AggregatesList>
+		</IClass>
+		<IGeneralization type="e">
+			<_id type="a">GUID 72b9bc72-41cf-4482-89bd-9892e5c29ca3</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 3e418e73-25a6-4c58-863e-05da06118993</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		<IAssociationEnd type="e">
+			<_id type="a">GUID 2faca557-8a31-4b1c-b612-1696f7cc1fec</_id>
+			<_myState type="a">10240</_myState>
+			<_name type="a">itsDependency_1</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_multiplicity type="a">1</_multiplicity>
+			<_otherClass type="r">
+				<IClassifierHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID c028cc00-0c0f-46f6-8f6d-d65da692acb3</_hid>
+				</IClassifierHandle>
+			</_otherClass>
+			<_inverse type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_inverse>
+			<_linkType type="a">Aggreg</_linkType>
+			<_navigability type="a">Navigable</_navigability>
+		</IAssociationEnd>
+		<IClass type="e">
+			<_id type="a">GUID e7d9ad69-9074-4313-be7e-a4e61fa6d58c</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Directed Composition</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Relation</_hname>
+							<_hid type="a">GUID 56053e54-dc2f-45a6-a2d7-48afe8ef5f92</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.21.2020::13:37:13</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 49bdb0e0-48e4-4902-a11b-8ce454bdff50</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Event</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.21.2020::13:37:13</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID 91d341b7-b035-4887-a106-8bafad165748</value>
+			</AggregatesList>
+		</IClass>
+		<IGeneralization type="e">
+			<_id type="a">GUID 91d341b7-b035-4887-a106-8bafad165748</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 3e418e73-25a6-4c58-863e-05da06118993</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		<IClass type="e">
+			<_id type="a">GUID 4d350b0d-4e70-48d0-a934-7191ee256a53</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Flow</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Relation</_hname>
+							<_hid type="a">GUID 56053e54-dc2f-45a6-a2d7-48afe8ef5f92</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">AutoMBSE_MetaModelPkg</_hsubsystem>
+					<_hname type="a">MMD - Use Case Packages</_hname>
+					<_hid type="a">GUID 2a8f6d60-de0f-4963-b337-07ae89ff9a74</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">8.24.2020::9:50:33</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID 554508af-8792-4b3b-8586-ca2d02e51c1a</value>
+			</AggregatesList>
+		</IClass>
+		<IGeneralization type="e">
+			<_id type="a">GUID 554508af-8792-4b3b-8586-ca2d02e51c1a</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 3e418e73-25a6-4c58-863e-05da06118993</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		<IClass type="e">
+			<_id type="a">GUID 7648fd0b-fee8-4a1e-a730-b97bfa419ce6</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">FlowPort</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.21.2020::13:37:13</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID 9265c98a-c4cc-4119-8c63-ef8615e7d92b</value>
+			</AggregatesList>
+		</IClass>
+		<IGeneralization type="e">
+			<_id type="a">GUID 9265c98a-c4cc-4119-8c63-ef8615e7d92b</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 3e418e73-25a6-4c58-863e-05da06118993</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		<IClass type="e">
+			<_id type="a">GUID 55b3e4ac-e9c5-4e99-b15d-73f346024538</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Generalization</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Relation</_hname>
+							<_hid type="a">GUID 56053e54-dc2f-45a6-a2d7-48afe8ef5f92</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">FeatureFunction_MetamodelPkg</_hsubsystem>
+					<_hname type="a">MMD - Add Realization</_hname>
+					<_hid type="a">GUID 1eb57b59-d1ac-4bf9-a6e8-460dd725c5c4</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.6.2020::9:54:2</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 0f0a6b0a-c27f-4afc-bcc0-330bc222bf99</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Hyperlink</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Relation</_hname>
+							<_hid type="a">GUID 56053e54-dc2f-45a6-a2d7-48afe8ef5f92</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.21.2020::13:37:13</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 952bd987-25e4-43ee-a251-ff851522e651</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Interface</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.21.2020::13:37:13</_modifiedTime>
+			<_lastID type="a">1</_lastID>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID 5c924539-5ea0-4a35-a80f-17fd7e1abb63</value>
+			</AggregatesList>
+		</IClass>
+		<IGeneralization type="e">
+			<_id type="a">GUID 5c924539-5ea0-4a35-a80f-17fd7e1abb63</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 3e418e73-25a6-4c58-863e-05da06118993</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		<IClass type="e">
+			<_id type="a">GUID aedbf005-35d2-4fc7-915c-a59b6204b74d</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">ItemFlow</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.21.2020::13:37:13</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID 5ed34b25-2e2f-4540-855e-85f743208038</value>
+			</AggregatesList>
+		</IClass>
+		<IGeneralization type="e">
+			<_id type="a">GUID 5ed34b25-2e2f-4540-855e-85f743208038</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 3e418e73-25a6-4c58-863e-05da06118993</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		<IClass type="e">
+			<_id type="a">GUID abd3dc1d-c6f4-4c7e-ac11-f3264d6fdc8c</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Link</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Relation</_hname>
+							<_hid type="a">GUID 56053e54-dc2f-45a6-a2d7-48afe8ef5f92</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">7.2.2020::17:22:39</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID cf78db59-0eb2-49a5-9808-b20f732e8c87</value>
+			</AggregatesList>
+		</IClass>
+		<IGeneralization type="e">
+			<_id type="a">GUID cf78db59-0eb2-49a5-9808-b20f732e8c87</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 3e418e73-25a6-4c58-863e-05da06118993</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		<IClass type="e">
+			<_id type="a">GUID 3e418e73-25a6-4c58-863e-05da06118993</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">ModelElement</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">BasePkg</_hsubsystem>
+					<_hname type="a">metamodel diagram_3</_hname>
+					<_hid type="a">GUID 28d34d6d-40fd-4f4c-8b14-87997f25d78e</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.3.2020::14:52:46</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID 741b4e1e-6084-4880-8a79-7f53b6bd64f4</value>
+				<value>GUID 6c2562cb-c014-4bb7-a2e5-0ff3274b7eae</value>
+				<value>GUID b6d15c9f-0d1c-47e9-aa2f-b66364156c3f</value>
+				<value>GUID a7216c55-aa3e-4e42-8dd3-0521de5e838c</value>
+				<value>GUID bbc63fd0-53c9-4404-aed5-65f3c5112ee0</value>
+			</AggregatesList>
+		</IClass>
+		<IAssociationEnd type="e">
+			<_id type="a">GUID 741b4e1e-6084-4880-8a79-7f53b6bd64f4</_id>
+			<_myState type="a">10240</_myState>
+			<_name type="a">itsHyperlink</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_multiplicity type="a">1</_multiplicity>
+			<_otherClass type="r">
+				<IClassifierHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 0f0a6b0a-c27f-4afc-bcc0-330bc222bf99</_hid>
+				</IClassifierHandle>
+			</_otherClass>
+			<_inverse type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_inverse>
+			<_linkType type="a">Composition</_linkType>
+			<_navigability type="a">Navigable</_navigability>
+		</IAssociationEnd>
+		<IAssociationEnd type="e">
+			<_id type="a">GUID 6c2562cb-c014-4bb7-a2e5-0ff3274b7eae</_id>
+			<_myState type="a">10240</_myState>
+			<_name type="a">itsTag</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_multiplicity type="a">1</_multiplicity>
+			<_otherClass type="r">
+				<IClassifierHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID bd7bd021-f37c-43ec-95e6-29504a1dfbff</_hid>
+				</IClassifierHandle>
+			</_otherClass>
+			<_inverse type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_inverse>
+			<_linkType type="a">Composition</_linkType>
+			<_navigability type="a">Navigable</_navigability>
+		</IAssociationEnd>
+		<IAssociationEnd type="e">
+			<_id type="a">GUID b6d15c9f-0d1c-47e9-aa2f-b66364156c3f</_id>
+			<_myState type="a">10240</_myState>
+			<_name type="a">itsDependency</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_multiplicity type="a">1</_multiplicity>
+			<_otherClass type="r">
+				<IClassifierHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID c028cc00-0c0f-46f6-8f6d-d65da692acb3</_hid>
+				</IClassifierHandle>
+			</_otherClass>
+			<_inverse type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_inverse>
+			<_linkType type="a">Composition</_linkType>
+			<_navigability type="a">Navigable</_navigability>
+		</IAssociationEnd>
+		<IAssociationEnd type="e">
+			<_id type="a">GUID a7216c55-aa3e-4e42-8dd3-0521de5e838c</_id>
+			<_myState type="a">10240</_myState>
+			<_name type="a">itsComment</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_multiplicity type="a">1</_multiplicity>
+			<_otherClass type="r">
+				<IClassifierHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID a0eddad9-2b58-428e-9412-0421bd8074b8</_hid>
+				</IClassifierHandle>
+			</_otherClass>
+			<_inverse type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_inverse>
+			<_linkType type="a">Composition</_linkType>
+			<_navigability type="a">Navigable</_navigability>
+		</IAssociationEnd>
+		<IAssociationEnd type="e">
+			<_id type="a">GUID bbc63fd0-53c9-4404-aed5-65f3c5112ee0</_id>
+			<_myState type="a">10240</_myState>
+			<_name type="a">itsControlledFile</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_multiplicity type="a">1</_multiplicity>
+			<_otherClass type="r">
+				<IClassifierHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 69338e8c-4ec3-4337-8550-1baf9d71694e</_hid>
+				</IClassifierHandle>
+			</_otherClass>
+			<_inverse type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_inverse>
+			<_linkType type="a">Composition</_linkType>
+			<_navigability type="a">Navigable</_navigability>
+		</IAssociationEnd>
+		<IClass type="e">
+			<_id type="a">GUID 6f1d2a18-5bb2-4717-b51e-d34ea17577a3</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Object</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.21.2020::13:37:13</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID b5c052f1-3215-405a-8ed1-3fb281e1049c</value>
+			</AggregatesList>
+		</IClass>
+		<IGeneralization type="e">
+			<_id type="a">GUID b5c052f1-3215-405a-8ed1-3fb281e1049c</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 3e418e73-25a6-4c58-863e-05da06118993</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		<IClass type="e">
+			<_id type="a">GUID 53f37de5-2614-497b-8c1d-ffd29ef8c61b</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Package</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">AutoMBSE_MetaModelPkg</_hsubsystem>
+					<_hname type="a">MMD - ActorPackages</_hname>
+					<_hid type="a">GUID f2fb8cd0-2e1b-4b64-b1bb-81b495d134b1</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">8.25.2020::7:38:19</_modifiedTime>
+			<_lastID type="a">1</_lastID>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID e435365a-a464-495b-a505-abfed242ce75</value>
+				<value>GUID 322f0341-acf1-40ec-b092-eafee1146f65</value>
+				<value>GUID ded0e2ff-a1ae-4535-9e61-8e171eea671b</value>
+				<value>GUID 8077a7fb-b1e6-47b8-8fb6-f27364479fa6</value>
+				<value>GUID 5002effb-c1db-4828-9fe4-79eb9c546975</value>
+				<value>GUID b8b76b7b-cad1-4e42-8e48-a70585016c0b</value>
+				<value>GUID e4ef794a-a1d9-4294-a4ce-9ffe8056ffac</value>
+				<value>GUID e91f1901-b2ed-4076-bdc5-e0f9d6a6f774</value>
+				<value>GUID d0925fd6-562e-4398-ab56-9937660ca24c</value>
+			</AggregatesList>
+		</IClass>
+		<IGeneralization type="e">
+			<_id type="a">GUID e435365a-a464-495b-a505-abfed242ce75</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 3e418e73-25a6-4c58-863e-05da06118993</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		<IAssociationEnd type="e">
+			<_id type="a">GUID 322f0341-acf1-40ec-b092-eafee1146f65</_id>
+			<_myState type="a">10240</_myState>
+			<_name type="a">itsStereotype</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_multiplicity type="a">1</_multiplicity>
+			<_otherClass type="r">
+				<IClassifierHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID f5dc86cd-6025-4b53-87c8-97ca35a2be57</_hid>
+				</IClassifierHandle>
+			</_otherClass>
+			<_inverse type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_inverse>
+			<_linkType type="a">Composition</_linkType>
+			<_navigability type="a">Navigable</_navigability>
+		</IAssociationEnd>
+		<IAssociationEnd type="e">
+			<_id type="a">GUID ded0e2ff-a1ae-4535-9e61-8e171eea671b</_id>
+			<_myState type="a">10240</_myState>
+			<_name type="a">itsQuery</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_multiplicity type="a">1</_multiplicity>
+			<_otherClass type="r">
+				<IClassifierHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 48b02cd4-21a0-4669-85db-cca74eb3b6f8</_hid>
+				</IClassifierHandle>
+			</_otherClass>
+			<_inverse type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_inverse>
+			<_linkType type="a">Composition</_linkType>
+			<_navigability type="a">Navigable</_navigability>
+		</IAssociationEnd>
+		<IAssociationEnd type="e">
+			<_id type="a">GUID 8077a7fb-b1e6-47b8-8fb6-f27364479fa6</_id>
+			<_myState type="a">10240</_myState>
+			<_name type="a">itsRequirement</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_multiplicity type="a">1</_multiplicity>
+			<_otherClass type="r">
+				<IClassifierHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID a038bbd7-48ad-45d0-b9f1-06c8d912b9e3</_hid>
+				</IClassifierHandle>
+			</_otherClass>
+			<_inverse type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_inverse>
+			<_linkType type="a">Composition</_linkType>
+			<_navigability type="a">Navigable</_navigability>
+		</IAssociationEnd>
+		<IAssociationEnd type="e">
+			<_id type="a">GUID 5002effb-c1db-4828-9fe4-79eb9c546975</_id>
+			<_myState type="a">10240</_myState>
+			<_name type="a">itsConstraint</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_multiplicity type="a">1</_multiplicity>
+			<_otherClass type="r">
+				<IClassifierHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 24600348-2e89-4147-abb9-1a7b06156c1b</_hid>
+				</IClassifierHandle>
+			</_otherClass>
+			<_inverse type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_inverse>
+			<_linkType type="a">Composition</_linkType>
+			<_navigability type="a">Navigable</_navigability>
+		</IAssociationEnd>
+		<IAssociationEnd type="e">
+			<_id type="a">GUID b8b76b7b-cad1-4e42-8e48-a70585016c0b</_id>
+			<_myState type="a">10240</_myState>
+			<_name type="a">itsTableView</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_multiplicity type="a">1</_multiplicity>
+			<_otherClass type="r">
+				<IClassifierHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID d8cb7b17-4253-4263-93bc-63b98f81cdf9</_hid>
+				</IClassifierHandle>
+			</_otherClass>
+			<_inverse type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_inverse>
+			<_linkType type="a">Composition</_linkType>
+			<_navigability type="a">Navigable</_navigability>
+		</IAssociationEnd>
+		<IAssociationEnd type="e">
+			<_id type="a">GUID e4ef794a-a1d9-4294-a4ce-9ffe8056ffac</_id>
+			<_myState type="a">10240</_myState>
+			<_name type="a">itsTableLayout</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_multiplicity type="a">1</_multiplicity>
+			<_otherClass type="r">
+				<IClassifierHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 231c9e8d-86a5-4419-9d0a-9b5a52ed0738</_hid>
+				</IClassifierHandle>
+			</_otherClass>
+			<_inverse type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_inverse>
+			<_linkType type="a">Composition</_linkType>
+			<_navigability type="a">Navigable</_navigability>
+		</IAssociationEnd>
+		<IAssociationEnd type="e">
+			<_id type="a">GUID e91f1901-b2ed-4076-bdc5-e0f9d6a6f774</_id>
+			<_myState type="a">10240</_myState>
+			<_name type="a">itsMatrixView</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_multiplicity type="a">1</_multiplicity>
+			<_otherClass type="r">
+				<IClassifierHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID c0fd827a-e051-481c-9d04-6780e7ca3e6d</_hid>
+				</IClassifierHandle>
+			</_otherClass>
+			<_inverse type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_inverse>
+			<_linkType type="a">Composition</_linkType>
+			<_navigability type="a">Navigable</_navigability>
+		</IAssociationEnd>
+		<IAssociationEnd type="e">
+			<_id type="a">GUID d0925fd6-562e-4398-ab56-9937660ca24c</_id>
+			<_myState type="a">10240</_myState>
+			<_name type="a">itsMatrixLayout</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_multiplicity type="a">1</_multiplicity>
+			<_otherClass type="r">
+				<IClassifierHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 498ecf6b-4832-4e52-b40e-9d8a8ac48d94</_hid>
+				</IClassifierHandle>
+			</_otherClass>
+			<_inverse type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_inverse>
+			<_linkType type="a">Composition</_linkType>
+			<_navigability type="a">Navigable</_navigability>
+		</IAssociationEnd>
+		<IClass type="e">
+			<_id type="a">GUID 6e53efc9-0629-4658-a3d9-39536396fff5</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Port</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.21.2020::13:37:13</_modifiedTime>
+			<_lastID type="a">1</_lastID>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID e6023f62-c953-4e39-9113-128e3d079590</value>
+			</AggregatesList>
+		</IClass>
+		<IGeneralization type="e">
+			<_id type="a">GUID e6023f62-c953-4e39-9113-128e3d079590</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 3e418e73-25a6-4c58-863e-05da06118993</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		<IClass type="e">
+			<_id type="a">GUID 48b02cd4-21a0-4669-85db-cca74eb3b6f8</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Query</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Extension</_hname>
+							<_hid type="a">GUID 958ed6b8-4bca-45ca-8cf3-75aa63e44a06</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.24.2020::15:4:19</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 0978e452-83d3-4f41-b43b-5fd2782d8e38</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Reception</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.21.2020::13:37:13</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID a038bbd7-48ad-45d0-b9f1-06c8d912b9e3</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Requirement</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.21.2020::13:37:13</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID d80a471a-a57a-404f-a0fd-f8d1430ed55d</value>
+			</AggregatesList>
+		</IClass>
+		<IGeneralization type="e">
+			<_id type="a">GUID d80a471a-a57a-404f-a0fd-f8d1430ed55d</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 3e418e73-25a6-4c58-863e-05da06118993</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		<IClass type="e">
+			<_id type="a">GUID f5dc86cd-6025-4b53-87c8-97ca35a2be57</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Stereotype</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Extension</_hname>
+							<_hid type="a">GUID 958ed6b8-4bca-45ca-8cf3-75aa63e44a06</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.24.2020::15:5:11</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID 86bf107c-c9e3-48b9-9ca4-6a2b1971dfc1</value>
+			</AggregatesList>
+		</IClass>
+		<IGeneralization type="e">
+			<_id type="a">GUID 86bf107c-c9e3-48b9-9ca4-6a2b1971dfc1</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 3e418e73-25a6-4c58-863e-05da06118993</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		<IClass type="e">
+			<_id type="a">GUID bd7bd021-f37c-43ec-95e6-29504a1dfbff</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Tag</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Extension</_hname>
+							<_hid type="a">GUID 958ed6b8-4bca-45ca-8cf3-75aa63e44a06</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.24.2020::15:4:9</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID ca9bd9b7-7bb4-4771-a27f-ef415a809c52</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Type</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.21.2020::13:37:13</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 707c42a7-500c-40bf-a538-bb54708d9a19</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Satisfaction</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Relation</_hname>
+							<_hid type="a">GUID 56053e54-dc2f-45a6-a2d7-48afe8ef5f92</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">7.3.2020::11:23:15</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID db8fe1fc-5c0d-4a56-b5bc-0b9eea239b08</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">AcceptEventAction</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">FeatureFunction_MetamodelPkg</_hsubsystem>
+					<_hname type="a">MMD - Activity Diagram</_hname>
+					<_hid type="a">GUID 05b09373-80c9-48c3-9dd3-1f32d2228930</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.2.2020::16:2:29</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID a8f7832b-59f5-42aa-9ab4-6a00c961aed6</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">AcceptTimeEvent</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">FeatureFunction_MetamodelPkg</_hsubsystem>
+					<_hname type="a">MMD - Activity Diagram</_hname>
+					<_hid type="a">GUID 05b09373-80c9-48c3-9dd3-1f32d2228930</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.2.2020::16:2:29</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 2bad5c9c-5a14-4fe5-b44e-160b6d7af930</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Action</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">FeatureFunction_MetamodelPkg</_hsubsystem>
+					<_hname type="a">MMD - Activity Diagram</_hname>
+					<_hid type="a">GUID 05b09373-80c9-48c3-9dd3-1f32d2228930</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.2.2020::16:2:29</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 918e501c-92e2-4f0a-9f27-6411b2739450</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">ActivityFinal</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">FeatureFunction_MetamodelPkg</_hsubsystem>
+					<_hname type="a">MMD - Activity Diagram</_hname>
+					<_hid type="a">GUID 05b09373-80c9-48c3-9dd3-1f32d2228930</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.2.2020::16:2:29</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 5fdc75fc-1dc7-48b5-ac7b-9f093d7b975f</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">CallBehavior</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">FeatureFunction_MetamodelPkg</_hsubsystem>
+					<_hname type="a">MMD - Activity Diagram</_hname>
+					<_hid type="a">GUID 05b09373-80c9-48c3-9dd3-1f32d2228930</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.2.2020::16:2:29</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 1006a4b6-59b9-4593-9220-cfa20a8d1dc3</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Connector</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">FeatureFunction_MetamodelPkg</_hsubsystem>
+					<_hname type="a">MMD - Activity Diagram</_hname>
+					<_hid type="a">GUID 05b09373-80c9-48c3-9dd3-1f32d2228930</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.2.2020::16:2:29</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID e5cb9c87-6098-4b25-891c-b204e145c749</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">DecisionNode</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">FeatureFunction_MetamodelPkg</_hsubsystem>
+					<_hname type="a">MMD - Activity Diagram</_hname>
+					<_hid type="a">GUID 05b09373-80c9-48c3-9dd3-1f32d2228930</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.2.2020::16:2:29</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID a071cd4b-ec84-4d5f-bc5c-15ea9ae94bc7</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">DiagramConnector</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">FeatureFunction_MetamodelPkg</_hsubsystem>
+					<_hname type="a">MMD - Activity Diagram</_hname>
+					<_hid type="a">GUID 05b09373-80c9-48c3-9dd3-1f32d2228930</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.2.2020::16:2:29</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 315e142a-c2ed-416f-928e-eafcfe97b39a</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">FlowFinal</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">FeatureFunction_MetamodelPkg</_hsubsystem>
+					<_hname type="a">MMD - Activity Diagram</_hname>
+					<_hid type="a">GUID 05b09373-80c9-48c3-9dd3-1f32d2228930</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.2.2020::16:2:29</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 90168b8a-6cef-46b8-a243-d5cff7363f95</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Fork</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">FeatureFunction_MetamodelPkg</_hsubsystem>
+					<_hname type="a">MMD - Activity Diagram</_hname>
+					<_hid type="a">GUID 05b09373-80c9-48c3-9dd3-1f32d2228930</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.2.2020::16:2:29</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID ee8eea1a-990e-4a21-ad5a-135b7612f393</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">ForkConnector</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">FeatureFunction_MetamodelPkg</_hsubsystem>
+					<_hname type="a">MMD - Activity Diagram</_hname>
+					<_hid type="a">GUID 05b09373-80c9-48c3-9dd3-1f32d2228930</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.2.2020::16:2:29</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID b75f4024-fe37-4515-9152-3bf6ee2c053a</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">InterruptibleRegion</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">FeatureFunction_MetamodelPkg</_hsubsystem>
+					<_hname type="a">MMD - Activity Diagram</_hname>
+					<_hid type="a">GUID 05b09373-80c9-48c3-9dd3-1f32d2228930</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.2.2020::16:2:29</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID c74953d1-5fdf-44ed-9b77-d93988f2e1e8</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">JoinConnector</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">FeatureFunction_MetamodelPkg</_hsubsystem>
+					<_hname type="a">MMD - Activity Diagram</_hname>
+					<_hid type="a">GUID 05b09373-80c9-48c3-9dd3-1f32d2228930</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.2.2020::16:2:29</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 5db63ff3-79e3-4cb1-8066-e9beb66fd9b5</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">MergeNode</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">FeatureFunction_MetamodelPkg</_hsubsystem>
+					<_hname type="a">MMD - Activity Diagram</_hname>
+					<_hid type="a">GUID 05b09373-80c9-48c3-9dd3-1f32d2228930</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.2.2020::16:2:29</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID a51c88b9-b7fc-4c69-8788-76533a68fcca</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">SendAction</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">FeatureFunction_MetamodelPkg</_hsubsystem>
+					<_hname type="a">MMD - Activity Diagram</_hname>
+					<_hid type="a">GUID 05b09373-80c9-48c3-9dd3-1f32d2228930</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.2.2020::16:2:29</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID dddf4e55-fda8-4a0b-90a7-0ad2da2a0b55</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">State</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">FeatureFunction_MetamodelPkg</_hsubsystem>
+					<_hname type="a">MMD - Activity Diagram</_hname>
+					<_hid type="a">GUID 05b09373-80c9-48c3-9dd3-1f32d2228930</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.2.2020::16:2:29</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 0857e450-955b-467b-af95-e346a5e31e27</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">ControlFlow</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Relation</_hname>
+							<_hid type="a">GUID 56053e54-dc2f-45a6-a2d7-48afe8ef5f92</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">FeatureFunction_MetamodelPkg</_hsubsystem>
+					<_hname type="a">MMD - Activity Diagram</_hname>
+					<_hid type="a">GUID 05b09373-80c9-48c3-9dd3-1f32d2228930</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.2.2020::16:2:29</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID b9540473-9074-45f5-a701-b653614277c3</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">DefaultTransition</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Relation</_hname>
+							<_hid type="a">GUID 56053e54-dc2f-45a6-a2d7-48afe8ef5f92</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">FeatureFunction_MetamodelPkg</_hsubsystem>
+					<_hname type="a">MMD - Activity Diagram</_hname>
+					<_hid type="a">GUID 05b09373-80c9-48c3-9dd3-1f32d2228930</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.2.2020::16:2:29</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID a5aa6ccf-ec96-4428-80cd-635e7f23fe64</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Derivation</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Relation</_hname>
+							<_hid type="a">GUID 56053e54-dc2f-45a6-a2d7-48afe8ef5f92</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">FeatureFunction_MetamodelPkg</_hsubsystem>
+					<_hname type="a">MMD - Activity Diagram</_hname>
+					<_hid type="a">GUID 05b09373-80c9-48c3-9dd3-1f32d2228930</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.2.2020::16:2:29</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID b3a20eeb-498f-4056-aceb-e191c2ebdc04</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">InitialFlow</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Relation</_hname>
+							<_hid type="a">GUID 56053e54-dc2f-45a6-a2d7-48afe8ef5f92</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">FeatureFunction_MetamodelPkg</_hsubsystem>
+					<_hname type="a">MMD - Activity Diagram</_hname>
+					<_hid type="a">GUID 05b09373-80c9-48c3-9dd3-1f32d2228930</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.2.2020::16:2:29</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 69338e8c-4ec3-4337-8550-1baf9d71694e</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">ControlledFile</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Extension</_hname>
+							<_hid type="a">GUID 958ed6b8-4bca-45ca-8cf3-75aa63e44a06</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.24.2020::15:4:55</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 604642f5-8d0b-4cff-9c48-632093024776</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">TimingDiagram</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Diagram</_hname>
+							<_hid type="a">GUID b9141df3-c4d2-4f80-b150-d1e5d9a5cde7</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">BasePkg</_hsubsystem>
+					<_hname type="a">metamodel diagram_3</_hname>
+					<_hid type="a">GUID 28d34d6d-40fd-4f4c-8b14-87997f25d78e</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.3.2020::15:36:21</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID 14893459-f905-40c5-b3d8-2db083ef165b</value>
+			</AggregatesList>
+		</IClass>
+		<IGeneralization type="e">
+			<_id type="a">GUID 14893459-f905-40c5-b3d8-2db083ef165b</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID d34f5f9c-66e5-4fa2-bb6a-440e3710b219</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		<IClass type="e">
+			<_id type="a">GUID 1870f282-13c3-4753-bf26-fafd222ca618</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">SequenceDiagram</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Diagram</_hname>
+							<_hid type="a">GUID b9141df3-c4d2-4f80-b150-d1e5d9a5cde7</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">BasePkg</_hsubsystem>
+					<_hname type="a">metamodel diagram_3</_hname>
+					<_hid type="a">GUID 28d34d6d-40fd-4f4c-8b14-87997f25d78e</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.6.2020::9:0:41</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID 3277e880-8a5f-4c23-8b28-d2a37b6d4835</value>
+			</AggregatesList>
+		</IClass>
+		<IGeneralization type="e">
+			<_id type="a">GUID 3277e880-8a5f-4c23-8b28-d2a37b6d4835</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID d34f5f9c-66e5-4fa2-bb6a-440e3710b219</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		<IClass type="e">
+			<_id type="a">GUID 40ca111d-99f3-4e06-9456-2d640a72e2f0</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Realization</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Relation</_hname>
+							<_hid type="a">GUID 56053e54-dc2f-45a6-a2d7-48afe8ef5f92</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">FeatureFunction_MetamodelPkg</_hsubsystem>
+					<_hname type="a">MMD - Add Realization</_hname>
+					<_hid type="a">GUID 1eb57b59-d1ac-4bf9-a6e8-460dd725c5c4</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.6.2020::9:55:2</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 2bb96019-2765-4ede-82e6-0d7e80d1adb3</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">UseCase</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.22.2020::9:1:1</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 82042227-69dd-44ec-afe7-b47ad1b554cd</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">UseCaseDiagram</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Diagram</_hname>
+							<_hid type="a">GUID b9141df3-c4d2-4f80-b150-d1e5d9a5cde7</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.22.2020::9:2:14</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID 0f0d6508-f174-409d-a128-e6d2307645de</value>
+			</AggregatesList>
+		</IClass>
+		<IGeneralization type="e">
+			<_id type="a">GUID 0f0d6508-f174-409d-a128-e6d2307645de</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID d34f5f9c-66e5-4fa2-bb6a-440e3710b219</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		<IClass type="e">
+			<_id type="a">GUID 9c56ad31-b1f2-455e-a200-6411f7562943</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Include</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Relation</_hname>
+							<_hid type="a">GUID 56053e54-dc2f-45a6-a2d7-48afe8ef5f92</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">AutoMBSE_MetaModelPkg</_hsubsystem>
+					<_hname type="a">MMD - Use Case Packages</_hname>
+					<_hid type="a">GUID 2a8f6d60-de0f-4963-b337-07ae89ff9a74</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">8.24.2020::9:35:13</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 2678ae98-aa6b-4b0c-9508-9e475ebec9aa</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Extend</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Relation</_hname>
+							<_hid type="a">GUID 56053e54-dc2f-45a6-a2d7-48afe8ef5f92</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">AutoMBSE_MetaModelPkg</_hsubsystem>
+					<_hname type="a">MMD - Use Case Packages</_hname>
+					<_hid type="a">GUID 2a8f6d60-de0f-4963-b337-07ae89ff9a74</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">8.24.2020::9:35:16</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID c9936ba0-7bf7-4442-a575-ffd043951e38</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">System Border</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\..\..\Metamodel.rpy</_hfilename>
+					<_hsubsystem type="a">AutoMBSE_MetaModelPkg</_hsubsystem>
+					<_hname type="a">MMD - Use Case Packages</_hname>
+					<_hid type="a">GUID 2a8f6d60-de0f-4963-b337-07ae89ff9a74</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">8.24.2020::9:48:50</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		
+	</RHAPSODY-MODEL>
+	<OslcLinks type="c">
+		<IRPYRawContainer type="e">
+			<size type="a">0</size>
+		</IRPYRawContainer>
+	</OslcLinks>
+
+<INCLUDES-RHAPSODY-INDEX>false</INCLUDES-RHAPSODY-INDEX>
+</RhapsodyArchive>
+

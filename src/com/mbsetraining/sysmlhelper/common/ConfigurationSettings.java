@@ -27,16 +27,6 @@ public class ConfigurationSettings  {
 		
 		BaseContext _context = new ExecutableMBSE_Context( theAppID );
 		_context.cleanUpModelRemnants();
-
-/*		ConfigurationSettings _settings = new ConfigurationSettings(
-				"ExecutableMBSE.properties", 
-				"ExecutableMBSE_MessagesBundle",
-				"ExecutableMBSE" , 
-				_context );
-		
-		_settings.setPropertiesValuesRequestedInConfigFile( 
-				_context.get_rhpPrj(),
-				"setPropertyForExecutableMBSEModel" );*/
 	}
 	
 	public ConfigurationSettings(
@@ -154,7 +144,8 @@ public class ConfigurationSettings  {
 	}
 
 	public void checkIfSetupProjectIsNeeded(
-			boolean isUserDialogEnabled ) {
+			boolean isUserDialogEnabled,
+			String withNewTerm ) {
 
 		boolean isSetupNeeded = checkIfSetupProjectIsNeeded( isUserDialogEnabled, false );
 
@@ -171,7 +162,7 @@ public class ConfigurationSettings  {
 		boolean answer = UserInterfaceHelper.askAQuestion( theMsg );
 
 		if( answer ){
-			setupProjectWithProperties();
+			setupProjectWithProperties( withNewTerm );
 		}
 	}
 
@@ -204,7 +195,7 @@ public class ConfigurationSettings  {
 						" (" + theProfileDateValue + ") \n";
 
 				if( isProvideFixingAdvice ){
-					theMsg += "It is recommended to right-click and run MBSE Method > Setup project properties command \n" +
+					theMsg += "It is recommended to right-click and run the Profile's Setup project properties command \n" +
 							"to update the project to the latest profile before proceeding \n";
 				}
 
@@ -253,7 +244,7 @@ public class ConfigurationSettings  {
 							" (" + theProjectsProfileDateValue + ") \n\n";
 
 					if( isProvideFixingAdvice ){
-						theMsg += "It is recommended to right-click and run MBSE Method > Set-up project properties command \n" +
+						theMsg += "It is recommended to right-click and run the profile's Set-up project properties command \n" +
 								"to update the project to the latest profile before proceeding \n";
 					}
 
@@ -278,17 +269,18 @@ public class ConfigurationSettings  {
 		return isProfileNeedsUpdate;
 	}
 
-	public void setupProjectWithProperties(){
+	public void setupProjectWithProperties(
+			String withNewTerm ){
 
 		IRPProject thePrj = _context.get_rhpPrj();
 
 		IRPStereotype theNewTermStereotype = thePrj.getNewTermStereotype();
 
 		if( theNewTermStereotype == null || 
-				!theNewTermStereotype.getName().equals( "SysML" ) ){
+				!theNewTermStereotype.getName().equals( withNewTerm ) ){
 
-			_context.info( "Performing a Change to > SysML on " + _context.elInfo( thePrj ) );
-			thePrj.changeTo( "SysML" );
+			_context.info( "Performing a Change to > '" + withNewTerm + "' on " + _context.elInfo( thePrj ) );
+			thePrj.changeTo( withNewTerm );
 		}
 
 		if( _profileInfo.isValid() ){
@@ -310,7 +302,7 @@ public class ConfigurationSettings  {
 }
 
 /**
- * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2016-2022  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 
