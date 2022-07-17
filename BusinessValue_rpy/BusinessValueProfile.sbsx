@@ -1666,10 +1666,10 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">BusinessValueProfile</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::14:41:23</_modifiedTimeWeak>
-			<_modifiedTime type="a">7.17.2022::14:41:23</_modifiedTime>
+			<_modifiedTimeWeak type="a">7.17.2022::19:55:2</_modifiedTimeWeak>
+			<_modifiedTime type="a">7.17.2022::19:55:2</_modifiedTime>
 			<_lastID type="a">28</_lastID>
-			<weakCGTime type="a">7.17.2022::14:41:23</weakCGTime>
+			<weakCGTime type="a">7.17.2022::19:55:2</weakCGTime>
 			<strongCGTime type="a">7.17.2022::13:45:0</strongCGTime>
 			<_defaultComposite type="s">GUID 377dbcc2-9abb-48b8-bbd5-721dc9c0b50e</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -1691,17 +1691,144 @@
 			<_id type="a">GUID 2122c8f1-fe60-4d4d-8093-257bad45e49a</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Diagrams</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::13:41:50</_modifiedTimeWeak>
-			<_modifiedTime type="a">7.17.2022::13:41:50</_modifiedTime>
-			<weakCGTime type="a">7.17.2022::13:41:50</weakCGTime>
+			<_modifiedTimeWeak type="a">7.17.2022::19:49:12</_modifiedTimeWeak>
+			<_modifiedTime type="a">7.17.2022::19:49:12</_modifiedTime>
+			<_lastID type="a">1</_lastID>
+			<weakCGTime type="a">7.17.2022::19:49:12</weakCGTime>
 			<strongCGTime type="a">7.17.2022::13:41:50</strongCGTime>
 			<_defaultComposite type="s">GUID 67e15d31-98ae-4189-adfc-cbdfb51ef0e6</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<_configurationRelatedTime type="a">1.2.1990::0:0:0</_configurationRelatedTime>
 			<AggregatesList type="e">
+				<value>GUID 5b5f1a6c-723a-40f1-b39c-a494f7a78c04</value>
 				<value>GUID 67e15d31-98ae-4189-adfc-cbdfb51ef0e6</value>
 			</AggregatesList>
 		</ISubsystem>
+		<IStereotype type="e">
+			<_id type="a">GUID 5b5f1a6c-723a-40f1-b39c-a494f7a78c04</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">2</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Stereotype</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">3</size>
+												<IProperty type="e">
+													<_Name type="a">Aggregates</_Name>
+													<_Value type="a">Comment,ControlledFile,Tag,Dependency,Hyperlink</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">DrawingToolbar</_Name>
+													<_Value type="a">Tier 1 Goal - Company,Tier 2 Goal - Division and Product Line,Tier 3 Goal - Instrument Design,Needs,Measured By,Dependency</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">Name</_Name>
+													<_Value type="a">Business Value Diagram</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+						<IPropertySubject type="e">
+							<_Name type="a">ObjectModelGe</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Composition</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">8</size>
+												<IProperty type="e">
+													<_Name type="a">RepresentParts</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ShowSourceMultiplicity</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ShowSourceQualifier</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ShowSourceRole</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ShowTargetMultiplicity</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ShowTargetQualifier</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ShowTargetRole</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">line_style</_Name>
+													<_Value type="a">straight_arrows</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">straight_arrows,rectilinear_arrows,spline_arrows,rounded_rectilinear_arrows</_ExtraTypeInfo>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">BusinessValueDiagram</_name>
+			<_modifiedTimeWeak type="a">7.17.2022::19:49:12</_modifiedTimeWeak>
+			<_modifiedTime type="a">7.17.2022::19:49:12</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>ObjectModelDiagram</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+			<_newTerm type="a">1</_newTerm>
+		</IStereotype>
 		<IClass type="e">
 			<_id type="a">GUID 67e15d31-98ae-4189-adfc-cbdfb51ef0e6</_id>
 			<_myState type="a">40960</_myState>
@@ -1720,16 +1847,19 @@
 			<_id type="a">GUID 09dffe12-36f6-473e-bdf6-5cb62c6c3a09</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Elements</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::13:41:50</_modifiedTimeWeak>
-			<_modifiedTime type="a">7.17.2022::13:41:50</_modifiedTime>
-			<_lastID type="a">2</_lastID>
-			<weakCGTime type="a">7.17.2022::13:41:50</weakCGTime>
+			<_modifiedTimeWeak type="a">7.17.2022::19:55:2</_modifiedTimeWeak>
+			<_modifiedTime type="a">7.17.2022::19:55:2</_modifiedTime>
+			<_lastID type="a">9</_lastID>
+			<weakCGTime type="a">7.17.2022::19:55:2</weakCGTime>
 			<strongCGTime type="a">7.17.2022::13:41:50</strongCGTime>
 			<_defaultComposite type="s">GUID a127d213-1e2c-4469-88b1-c86142ec1544</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<_configurationRelatedTime type="a">7.17.2022::12:51:21</_configurationRelatedTime>
 			<AggregatesList type="e">
 				<value>GUID e02f2775-6cd7-4153-864d-6c85ac90e235</value>
+				<value>GUID 552f40aa-f6f5-4dfa-bf89-ae78eb05a398</value>
+				<value>GUID 496af07d-60f7-4e1d-918d-b8291deace27</value>
+				<value>GUID c61b43fb-26d4-4982-b12a-3f45de68727d</value>
 				<value>GUID a127d213-1e2c-4469-88b1-c86142ec1544</value>
 			</AggregatesList>
 		</ISubsystem>
@@ -1749,10 +1879,34 @@
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">1</size>
+												<size type="a">5</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Comment,ControlledFile,Tag,Dependency,Hyperlink</_Value>
+													<_Value type="a">Measured By,Needs,Comment,ControlledFile,Tag,Dependency,Hyperlink</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">BrowserGroupIcon</_Name>
+													<_Value type="a">IconsPkg\Tier1Goals.ico</_Value>
+													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">BrowserIcon</_Name>
+													<_Value type="a">IconsPkg\Tier1Goal.ico</_Value>
+													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">Name</_Name>
+													<_Value type="a">Tier 1 Goal - Company</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">PluralName</_Name>
+													<_Value type="a">The Tier 1 Goals are..</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -1768,13 +1922,242 @@
 				</Subjects>
 			</IPropertyContainer>
 			</_properties>
-			<_name type="a">Goal</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::12:52:15</_modifiedTimeWeak>
-			<_modifiedTime type="a">7.17.2022::12:52:15</_modifiedTime>
+			<_name type="a">Tier1Goal</_name>
+			<_modifiedTimeWeak type="a">7.17.2022::19:48:59</_modifiedTimeWeak>
+			<_modifiedTime type="a">7.17.2022::19:48:59</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
 					<value>Class</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+			<_newTerm type="a">1</_newTerm>
+		</IStereotype>
+		<IStereotype type="e">
+			<_id type="a">GUID 552f40aa-f6f5-4dfa-bf89-ae78eb05a398</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Stereotype</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">3</size>
+												<IProperty type="e">
+													<_Name type="a">Aggregates</_Name>
+													<_Value type="a">Measured By,Needs,Comment,ControlledFile,Tag,Dependency,Hyperlink</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">Name</_Name>
+													<_Value type="a">Tier 2 Goal - Division and Product Line</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">PluralName</_Name>
+													<_Value type="a">The Tier 2 Goals are...</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">Tier2Goal</_name>
+			<_modifiedTimeWeak type="a">7.17.2022::19:49:9</_modifiedTimeWeak>
+			<_modifiedTime type="a">7.17.2022::19:49:9</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>Class</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+			<_newTerm type="a">1</_newTerm>
+		</IStereotype>
+		<IStereotype type="e">
+			<_id type="a">GUID 496af07d-60f7-4e1d-918d-b8291deace27</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Stereotype</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">3</size>
+												<IProperty type="e">
+													<_Name type="a">Aggregates</_Name>
+													<_Value type="a">Measured By,Needs,Comment,ControlledFile,Tag,Dependency,Hyperlink</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">Name</_Name>
+													<_Value type="a">Tier 3 Goal - Instrument Design</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">PluralName</_Name>
+													<_Value type="a">The Tier 3 Goals are...</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">Tier3Goal</_name>
+			<_modifiedTimeWeak type="a">7.17.2022::19:49:10</_modifiedTimeWeak>
+			<_modifiedTime type="a">7.17.2022::19:49:10</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>Class</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+			<_newTerm type="a">1</_newTerm>
+		</IStereotype>
+		<IStereotype type="e">
+			<_id type="a">GUID c61b43fb-26d4-4982-b12a-3f45de68727d</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">2</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Format</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Object</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">3</size>
+												<IProperty type="e">
+													<_Name type="a">Line.LineColor</_Name>
+													<_Value type="a">255,0,0</_Value>
+													<_Type type="a">Color</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">Line.LineStyle</_Name>
+													<_Value type="a">1</_Value>
+													<_Type type="a">Int</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">Line.LineWidth</_Name>
+													<_Value type="a">0</_Value>
+													<_Type type="a">Int</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Stereotype</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">6</size>
+												<IProperty type="e">
+													<_Name type="a">Aggregates</_Name>
+													<_Value type="a">Comment,ControlledFile,Tag,Dependency,Hyperlink</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">BrowserGroupIcon</_Name>
+													<_Value type="a">IconsPkg\MeasuredBys.ico</_Value>
+													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">BrowserIcon</_Name>
+													<_Value type="a">IconsPkg\MeasuredBy.ico</_Value>
+													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">DrawingShape</_Name>
+													<_Value type="a">RoundedBox</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">Default,BasicBox,RoundedBox</_ExtraTypeInfo>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">Name</_Name>
+													<_Value type="a">Measured By</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">PluralName</_Name>
+													<_Value type="a">Measured By's</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">MeasuredBy</_name>
+			<_modifiedTimeWeak type="a">7.17.2022::19:55:2</_modifiedTimeWeak>
+			<_modifiedTime type="a">7.17.2022::19:55:2</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>Object</value>
 				</IRPYRawContainer>
 			</_m2Classes>
 			<_newTerm type="a">1</_newTerm>
@@ -1797,10 +2180,10 @@
 			<_id type="a">GUID 621c8c7b-b2b6-4dfa-a81c-5e1043ae48a8</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Packages</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::13:41:50</_modifiedTimeWeak>
-			<_modifiedTime type="a">7.17.2022::13:41:50</_modifiedTime>
+			<_modifiedTimeWeak type="a">7.17.2022::19:15:52</_modifiedTimeWeak>
+			<_modifiedTime type="a">7.17.2022::19:15:52</_modifiedTime>
 			<_lastID type="a">2</_lastID>
-			<weakCGTime type="a">7.17.2022::13:41:50</weakCGTime>
+			<weakCGTime type="a">7.17.2022::19:15:52</weakCGTime>
 			<strongCGTime type="a">7.17.2022::13:41:50</strongCGTime>
 			<_defaultComposite type="s">GUID b4c5961a-68c0-4098-9a97-708329ac354f</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -1829,7 +2212,7 @@
 												<size type="a">4</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Goal,Comment,ControlledFile,Tag,Dependency,Hyperlink</_Value>
+													<_Value type="a">Business Value Diagram,Tier 1 Goal - Company,Tier 2 Goal - Division and Product Line,Tier 3 Goal - Instrument Design,Comment,ControlledFile,Tag,Dependency,Hyperlink</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -1864,8 +2247,8 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">BusinessValuePackage</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::12:55:40</_modifiedTimeWeak>
-			<_modifiedTime type="a">7.17.2022::12:55:40</_modifiedTime>
+			<_modifiedTimeWeak type="a">7.17.2022::19:15:52</_modifiedTimeWeak>
+			<_modifiedTime type="a">7.17.2022::19:15:52</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -1921,17 +2304,33 @@
 			<_id type="a">GUID f0eecd3d-625e-4c60-a3e9-02bba92ffc43</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Relations</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::13:41:50</_modifiedTimeWeak>
-			<_modifiedTime type="a">7.17.2022::13:41:50</_modifiedTime>
-			<weakCGTime type="a">7.17.2022::13:41:50</weakCGTime>
+			<_modifiedTimeWeak type="a">7.17.2022::19:17:48</_modifiedTimeWeak>
+			<_modifiedTime type="a">7.17.2022::19:17:48</_modifiedTime>
+			<_lastID type="a">1</_lastID>
+			<weakCGTime type="a">7.17.2022::19:17:48</weakCGTime>
 			<strongCGTime type="a">7.17.2022::13:41:50</strongCGTime>
 			<_defaultComposite type="s">GUID 875d66ec-589e-4b06-ab77-07e1642e9917</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<_configurationRelatedTime type="a">1.2.1990::0:0:0</_configurationRelatedTime>
 			<AggregatesList type="e">
+				<value>GUID 0548a1a6-74ad-4288-8655-4a67ef0ead75</value>
 				<value>GUID 875d66ec-589e-4b06-ab77-07e1642e9917</value>
 			</AggregatesList>
 		</ISubsystem>
+		<IStereotype type="e">
+			<_id type="a">GUID 0548a1a6-74ad-4288-8655-4a67ef0ead75</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Needs</_name>
+			<_modifiedTimeWeak type="a">7.17.2022::19:17:48</_modifiedTimeWeak>
+			<_modifiedTime type="a">7.17.2022::19:17:48</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>Dependency</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+			<_newTerm type="a">1</_newTerm>
+		</IStereotype>
 		<IClass type="e">
 			<_id type="a">GUID 875d66ec-589e-4b06-ab77-07e1642e9917</_id>
 			<_myState type="a">40960</_myState>
@@ -2023,7 +2422,7 @@
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">AddNewMenuStructure</_Name>
-													<_Value type="a">Business Value Package,Goal,UML Element/Comment,UML Extension/ControlledFile,UML Extension/Tag,UML Relation/Dependency,UML Relation/Hyperlink</_Value>
+													<_Value type="a">Business Value Diagram,Business Value Package,Measured By,Needs,Tier 1 Goal - Company,Tier 2 Goal - Division and Product Line,Tier 3 Goal - Instrument Design,UML Element/Comment,UML Extension/ControlledFile,UML Extension/Tag,UML Relation/Dependency,UML Relation/Hyperlink</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -2064,8 +2463,8 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">BusinessValue</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::13:41:54</_modifiedTimeWeak>
-			<_modifiedTime type="a">7.17.2022::13:41:54</_modifiedTime>
+			<_modifiedTimeWeak type="a">7.17.2022::19:49:6</_modifiedTimeWeak>
+			<_modifiedTime type="a">7.17.2022::19:49:6</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>

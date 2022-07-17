@@ -25,10 +25,10 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
-			<_modifiedTime type="a">8.25.2020::7:37:53</_modifiedTime>
+			<_modifiedTimeWeak type="a">7.17.2022::18:46:46</_modifiedTimeWeak>
+			<_modifiedTime type="a">7.17.2022::18:46:46</_modifiedTime>
 			<_lastID type="a">7</_lastID>
-			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<weakCGTime type="a">7.17.2022::18:46:46</weakCGTime>
 			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
 			<_defaultComposite type="s">GUID 3e326672-39e1-4622-ba2e-fb6b5f7591a8</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -889,9 +889,19 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">7.17.2022::12:34:36</_modifiedTimeWeak>
-			<_modifiedTime type="a">6.21.2020::13:37:13</_modifiedTime>
-			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
+			<_modifiedTimeWeak type="a">7.17.2022::18:46:46</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\BusinessValue_MetaModelPkg.sbsx</_hfilename>
+					<_hsubsystem type="a">BusinessValue_MetaModelPkg</_hsubsystem>
+					<_hclass type="a">BusinessValueDiagram</_hclass>
+					<_hname type="a">mmd- BusinessValueDiagram</_hname>
+					<_hid type="a">GUID 5f07170f-3b74-41f1-a8d3-fb4f3c5edfb6</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">7.17.2022::18:46:46</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::18:46:46</weakCGTime>
 			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">

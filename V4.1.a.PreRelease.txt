@@ -727,7 +727,8 @@ V4.0.x.Rhp831.PreRelease (12-JUL-2022):
 #532 05-JUL-2022: ExecutableMBSE: Tweak naming of context diagram flow table to align with convention used for new tables (F.J.Chadburn)
 
 V4.1.a.Rhp831.PreRelease (XX-XXX-XXXX):
-#533 17-JUL-2022: BusinessValue: Initial implementation of Business Value profile utilizing the SysMLHelper metamodeling framework (F.J.Chadburn)
+#533 17-JUL-2022: BusinessValue: Initial implementation of base Business Value profile utilizing the SysMLHelper metamodeling framework (F.J.Chadburn)
+#534 17-JUL-2022: BusinessValue: Initial business value diagram strawman implementation (F.J.Chadburn)
 
 Backlog/Known issues
 - Maybe get metamodel to handle InitialLayoutForTables property writing

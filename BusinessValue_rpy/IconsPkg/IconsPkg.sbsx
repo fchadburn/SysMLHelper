@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RhapsodyArchive>
+	<MagicNumber></MagicNumber>
+	<CODE-PAGE>1252</CODE-PAGE>
+	<version>100.831.0</version>
+	<lang>C++</lang>
+	<BuildNo>9835718</BuildNo>
+	
+	<RHAPSODY-MODEL>
+	<ISubsystem type="e">
+			<_id type="a">GUID 9e2f2167-cd82-4f7c-a35b-3f32049a0cdd</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">IconsPkg</_name>
+			<_modifiedTimeWeak type="a">7.17.2022::19:44:10</_modifiedTimeWeak>
+			<_modifiedTime type="a">7.17.2022::19:44:10</_modifiedTime>
+			<weakCGTime type="a">7.17.2022::19:44:10</weakCGTime>
+			<strongCGTime type="a">7.17.2022::19:31:28</strongCGTime>
+			<_defaultComposite type="s">GUID 87f8b82e-e33b-4ab8-8fe1-a4a9f73b305d</_defaultComposite>
+			<_eventsBaseID type="a">-1</_eventsBaseID>
+			<_configurationRelatedTime type="a">1.2.1990::0:0:0</_configurationRelatedTime>
+			<AggregatesList type="e">
+				<value>GUID 9eae60e7-6c2e-4ae7-bde1-2fab3370f04c</value>
+				<value>GUID 6f7c7986-cd51-427b-ad60-c6950ae58175</value>
+				<value>GUID 3944e36a-ac63-4f1d-bb0c-38deac490c6f</value>
+				<value>GUID a53e0773-8d68-43f2-8a37-2ae7951d8030</value>
+				<value>GUID 87f8b82e-e33b-4ab8-8fe1-a4a9f73b305d</value>
+			</AggregatesList>
+		</ISubsystem>
+		<IEmbededFile type="e">
+			<_id type="a">GUID 9eae60e7-6c2e-4ae7-bde1-2fab3370f04c</_id>
+			<_name type="a">Tier1Goal.ico</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">7.17.2022::19:34:28</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\BusinessValue_rpy\IconsPkg\Tier1Goal.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID 6f7c7986-cd51-427b-ad60-c6950ae58175</_id>
+			<_name type="a">Tier1Goals.ico</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">7.17.2022::19:34:37</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\BusinessValue_rpy\IconsPkg\Tier1Goals.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID 3944e36a-ac63-4f1d-bb0c-38deac490c6f</_id>
+			<_name type="a">MeasuredBy.ico</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">7.17.2022::19:43:36</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\BusinessValue_rpy\IconsPkg\MeasuredBy.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID a53e0773-8d68-43f2-8a37-2ae7951d8030</_id>
+			<_name type="a">MeasuredBys.ico</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">7.17.2022::19:44:10</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\BusinessValue_rpy\IconsPkg\MeasuredBys.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IClass type="e">
+			<_id type="a">GUID 87f8b82e-e33b-4ab8-8fe1-a4a9f73b305d</_id>
+			<_myState type="a">40960</_myState>
+			<_name type="a">TopLevel</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<weakCGTime type="a">1.2.1990::0:0:0</weakCGTime>
+			<strongCGTime type="a">1.2.1990::0:0:0</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		
+	</RHAPSODY-MODEL>
+	<OslcLinks type="c">
+		<IRPYRawContainer type="e">
+			<size type="a">0</size>
+		</IRPYRawContainer>
+	</OslcLinks>
+
+<INCLUDES-RHAPSODY-INDEX>false</INCLUDES-RHAPSODY-INDEX>
+</RhapsodyArchive>
+
