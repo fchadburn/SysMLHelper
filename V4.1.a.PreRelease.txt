@@ -730,6 +730,7 @@ V4.1.a.Rhp831.PreRelease (XX-XXX-XXXX):
 #533 17-JUL-2022: BusinessValue: Initial implementation of base Business Value profile utilizing the SysMLHelper metamodeling framework (F.J.Chadburn)
 #534 17-JUL-2022: BusinessValue: Initial business value diagram strawman implementation (F.J.Chadburn)
 #535 18-JUL-2022: BusinessValue: Tweaks to compartments and icons as a result of Visio import testing (F.J.Chadburn)
+#536 18-JUL-2022: BusinessValue: Widen business value package to include queries, table views/layouts and matrix views/layouts {F.J.Chadburn)
 
 Backlog/Known issues
 - Maybe get metamodel to handle InitialLayoutForTables property writing
