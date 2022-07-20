@@ -48,6 +48,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String SIMPLE_REQUIREMENTS_TABLE = "Table View - Simple Requirements Table";
 	public final String USE_CASE_TO_REQUIREMENT_TABLE = "Table View - Use Case To Requirement";
 	public final String REQUIREMENT_TO_USE_CASE_TABLE = "Table View - Requirement To Use Case";
+	public final String CONTEXT_DIAGRAM_FLOWS_TABLE = "Table View - Context Diagram Flows";
 	public final String REQTS_ANALYSIS_CONTEXT_DIAGRAM_PACKAGE = "10 Context Package";
 	public final String REQTS_ANALYSIS_ACTOR_PACKAGE = "11 Actor Package";
 	public final String REQTS_ANALYSIS_USE_CASE_PACKAGE = "12 Use Case Package";
@@ -87,7 +88,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String NEW_TERM_FOR_SYSTEM_ARCHITECTURE_PACKAGE = "SystemArchitecturePackage";
 	public final String TESTBENCH_STEREOTYPE = "Testbench";
 	public final String AUTO_RIPPLE_STEREOTYPE = "AutoRipple";
-	public final String TABLE_LAYOUT_PREFIX = "tablel - ";
+	public final String TABLE_VIEW_PREFIX = "table view - ";
 	public final String CONTEXT_DIAGRAM_PREFIX = "ctx - ";
 
 	protected SelectedElementContext _selectionContext;

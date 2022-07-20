@@ -731,6 +731,9 @@ V4.1.a.Rhp831.PreRelease (XX-XXX-XXXX):
 #534 17-JUL-2022: BusinessValue: Initial business value diagram strawman implementation (F.J.Chadburn)
 #535 18-JUL-2022: BusinessValue: Tweaks to compartments and icons as a result of Visio import testing (F.J.Chadburn)
 #536 18-JUL-2022: BusinessValue: Widen business value package to include queries, table views/layouts and matrix views/layouts {F.J.Chadburn)
+#537 19-JUL-2022: BusinessValue: Differentiate Tier1, Tier2 and Tier3 goals with different colour icons {F.J.Chadburn)
+#538 20-JUL-2022: ExecutableMBSE: Allow context diagram flows table to be scoped under signals package for better model segregation (F.J.Chadburn)
+#539 20-JUL-2022: ExecutableMBSE: Fix the default prefix for simple requirement table rename in listerner to table view rather than tablel (F.J.Chadburn)
 
 Backlog/Known issues
 - Maybe get metamodel to handle InitialLayoutForTables property writing

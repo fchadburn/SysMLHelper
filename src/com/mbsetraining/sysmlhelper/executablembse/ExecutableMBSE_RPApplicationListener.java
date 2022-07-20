@@ -1,6 +1,7 @@
 package com.mbsetraining.sysmlhelper.executablembse;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -177,12 +178,26 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				
 			} else if( theUserDefinedMetaClass.equals( _context.SIMPLE_REQUIREMENTS_TABLE ) ){
 
-				afterAddForSimpleRequirementsTable( (IRPTableView) modelElement );
-			
+				setScopeOfTableToOwningPackageIfOwnerIs( 
+						new String[]{ _context.REQTS_ANALYSIS_REQUIREMENT_PACKAGE },
+						(IRPTableView) modelElement,
+						true );
+				
+			} else if( theUserDefinedMetaClass.equals( _context.CONTEXT_DIAGRAM_FLOWS_TABLE ) ){
+				
+				setScopeOfTableToOwningPackageIfOwnerIs( 
+						new String[]{ _context.REQTS_ANALYSIS_CONTEXT_DIAGRAM_PACKAGE,
+								_context.REQTS_ANALYSIS_EXTERNAL_SIGNALS_PACKAGE },
+						(IRPTableView) modelElement,
+						true );
+				
 			} else if( theUserDefinedMetaClass.equals( _context.REQUIREMENT_TO_USE_CASE_TABLE ) ||
 					theUserDefinedMetaClass.equals( _context.USE_CASE_TO_REQUIREMENT_TABLE ) ){
 
-				setScopeOfTableToOwningPackageIfAppropriate( (IRPTableView) modelElement  );
+				setScopeOfTableToOwningPackageIfOwnerIs( 
+						new String[]{ _context.REQTS_ANALYSIS_REQUIREMENT_PACKAGE }, 
+						(IRPTableView) modelElement,
+						false );
 				
 			} else if( modelElement instanceof IRPPackage &&
 					_context.hasStereotypeCalled( _context.REQTS_ANALYSIS_WORKING_COPY_PACKAGE, modelElement ) ){
@@ -232,35 +247,17 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			}
 		}		
 	}
-
-	private void afterAddForSimpleRequirementsTable(
-			IRPTableView theView ){
-
+	
+	private void setScopeOfTableToOwningPackageIfOwnerIs(
+			String[] theUserDefinedMetaClasses,
+			IRPTableView theView,
+			boolean isRename ){
+		
 		IRPModelElement theOwner = theView.getOwner();
 
 		if( theOwner instanceof IRPPackage &&
-				theOwner.getUserDefinedMetaClass().equals( _context.REQTS_ANALYSIS_REQUIREMENT_PACKAGE ) ){
-
-			IRPCollection theScopedEls = _context.createNewCollection();
-			theScopedEls.setSize( 1 );
-			theScopedEls.addItem( theOwner );
-
-			_context.debug( "ExecutableMBSE_RPApplicationListener has set scope of " + 
-					_context.elInfo( theView ) + " to " + _context.elInfo( theOwner ) );
-
-			String theProposedName = _context.TABLE_LAYOUT_PREFIX + " " + theOwner.getName();
-			String theUniqueName = _context.determineUniqueNameBasedOn( theProposedName, "TableView", theOwner );
-
-			theView.setScope( theScopedEls );
-			theView.setName( theUniqueName );
-		}
-	}
-	private void setScopeOfTableToOwningPackageIfAppropriate(
-			IRPTableView theView) {
-		IRPModelElement theOwner = theView.getOwner();
-
-		if( theOwner instanceof IRPPackage &&
-				theOwner.getUserDefinedMetaClass().equals( _context.REQTS_ANALYSIS_REQUIREMENT_PACKAGE ) ){
+				Arrays.stream( theUserDefinedMetaClasses ).
+				anyMatch(theOwner.getUserDefinedMetaClass()::contains ) ){
 
 			IRPCollection theScopedEls = _context.createNewCollection();
 			theScopedEls.setSize( 1 );
@@ -270,6 +267,14 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 					_context.elInfo( theView ) + " to " + _context.elInfo( theOwner ) );
 
 			theView.setScope( theScopedEls );
+			
+			if( isRename ){
+				
+				String theProposedName = _context.TABLE_VIEW_PREFIX + " " + theOwner.getName();
+				String theUniqueName = _context.determineUniqueNameBasedOn( theProposedName, "TableView", theOwner );
+
+				theView.setName( theUniqueName );
+			}
 		}
 	}
 
