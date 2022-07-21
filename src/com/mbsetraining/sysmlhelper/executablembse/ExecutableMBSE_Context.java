@@ -48,6 +48,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String SIMPLE_REQUIREMENTS_TABLE = "Table View - Simple Requirements Table";
 	public final String USE_CASE_TO_REQUIREMENT_TABLE = "Table View - Use Case To Requirement";
 	public final String REQUIREMENT_TO_USE_CASE_TABLE = "Table View - Requirement To Use Case";
+	public final String REQUIREMENT_TO_FUNCTION_BLOCK_TABLE = "Table View - Requirement To Function Block";
 	public final String CONTEXT_DIAGRAM_FLOWS_TABLE = "Table View - Context Diagram Flows";
 	public final String REQTS_ANALYSIS_CONTEXT_DIAGRAM_PACKAGE = "10 Context Package";
 	public final String REQTS_ANALYSIS_ACTOR_PACKAGE = "11 Actor Package";

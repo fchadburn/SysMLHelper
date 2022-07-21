@@ -192,7 +192,8 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 						true );
 				
 			} else if( theUserDefinedMetaClass.equals( _context.REQUIREMENT_TO_USE_CASE_TABLE ) ||
-					theUserDefinedMetaClass.equals( _context.USE_CASE_TO_REQUIREMENT_TABLE ) ){
+					theUserDefinedMetaClass.equals( _context.USE_CASE_TO_REQUIREMENT_TABLE ) ||
+					theUserDefinedMetaClass.equals( _context.REQUIREMENT_TO_FUNCTION_BLOCK_TABLE ) ){
 
 				setScopeOfTableToOwningPackageIfOwnerIs( 
 						new String[]{ _context.REQTS_ANALYSIS_REQUIREMENT_PACKAGE }, 
