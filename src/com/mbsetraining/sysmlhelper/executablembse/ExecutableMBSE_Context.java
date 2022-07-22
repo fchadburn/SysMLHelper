@@ -91,6 +91,8 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String AUTO_RIPPLE_STEREOTYPE = "AutoRipple";
 	public final String TABLE_VIEW_PREFIX = "table view - ";
 	public final String CONTEXT_DIAGRAM_PREFIX = "ctx - ";
+	public final String POST_FIX_FOR_FEATURE_FUNCTION_PKG = "_FeaturePkg";
+	public final String POST_FIX_FOR_FEATURE_FUNCTION_WORKING_COPY_PKG = "_WorkingCopyFeaturePkg";
 
 	protected SelectedElementContext _selectionContext;
 

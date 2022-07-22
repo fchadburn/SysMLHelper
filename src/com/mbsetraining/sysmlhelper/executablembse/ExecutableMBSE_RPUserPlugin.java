@@ -26,6 +26,7 @@ import com.mbsetraining.sysmlhelper.doorsng.RepairLinks;
 import com.mbsetraining.sysmlhelper.doorsng.SwitchRhapsodyRequirementsToDNG;
 import com.mbsetraining.sysmlhelper.eventdeletor.EventDeletor;
 import com.mbsetraining.sysmlhelper.executablembse.CreateFunctionalExecutablePackagePanel;
+import com.mbsetraining.sysmlhelper.featurefunctionpkgcreator.FeatureFunctionPkgCreator;
 import com.mbsetraining.sysmlhelper.gateway.CreateGatewayProjectPanel;
 import com.mbsetraining.sysmlhelper.gateway.MarkedAsDeletedPanel;
 import com.mbsetraining.sysmlhelper.gateway.MoveRequirements;
@@ -795,7 +796,39 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 							theMover.moveUseCasesToNewPackages( theUseCases, true );
 						}
 					}
+
+				} else if( menuItem.equals( _settings.getString( 
+						"executablembseplugin.CreateFeatureFunctionPkg" ) ) ){
+										
+					List<IRPUseCase> theUseCases = new ArrayList<>();
 					
+					Set<IRPModelElement> theCandidateEls = 
+							_context.getSetOfElementsFromCombiningThe( 
+									theSelectedEls, theSelectedGraphEls );
+					
+					for( IRPModelElement theCandidateEl : theCandidateEls ){
+						
+						if( theCandidateEl instanceof IRPUseCase ){
+							theUseCases.add( (IRPUseCase) theCandidateEl );
+						}
+					}
+					
+					if( theUseCases.isEmpty() ){
+						
+						_context.warning( "There were no selected use cases. Right-click a use case and try again");
+						
+					} else {
+
+						String theMsg = "Do you want to create feature function packages for the " + 
+								theUseCases.size() + " selected use cases? \n";
+
+						boolean answer = UserInterfaceHelper.askAQuestion( theMsg );
+
+						if( answer ){
+							FeatureFunctionPkgCreator theCreator = new FeatureFunctionPkgCreator( _context );
+							theCreator.createFeatureFunctionPkgs( theUseCases );
+						}
+					}
 				} else {
 					_context.warning( "Unhandled menu: " + _context.elInfo( theSelectedEl ) + " was invoked with menuItem='" + menuItem + "'");
 				}
