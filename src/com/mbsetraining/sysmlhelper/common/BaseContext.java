@@ -2223,8 +2223,15 @@ public abstract class BaseContext {
 
 		} else if (theEl instanceof IRPRequirement){
 
-			IRPRequirement theReqt = (IRPRequirement)theEl;
-			theSourceInfo = theReqt.getSpecification();
+			theSourceInfo =  theEl.getName();
+			
+			// use specification text if requirement name is just a number or is default
+			if( theSourceInfo.matches( "\\d+" ) || 
+					theSourceInfo.matches( "requirement_\\d+") ){
+				
+				IRPRequirement theReqt = (IRPRequirement)theEl;
+				theSourceInfo = theReqt.getSpecification();
+			}
 
 		} else if (theEl instanceof IRPConstraint){
 

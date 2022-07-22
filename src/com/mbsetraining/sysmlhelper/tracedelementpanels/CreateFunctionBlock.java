@@ -96,9 +96,7 @@ public class CreateFunctionBlock extends CreateTracedElementPanel {
 		if( theSourceText == null ){
 			theSourceText = "function_name";
 		}
-		
-//		_context.debug( "CreateFunctionBlock::createCommonContent called with text '" + theSourceText + "'" );
-		
+				
 		String theProposedName = _context.determineUniqueNameBasedOn( 
 				_context.toFunctionBlockName( theSourceText, 40, true ).trim(), 
 				"Class", 

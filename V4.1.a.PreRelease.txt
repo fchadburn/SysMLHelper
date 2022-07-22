@@ -737,8 +737,11 @@ V4.1.a.Rhp831.PreRelease (XX-XXX-XXXX):
 #540 21-JUL-2022: ExecutableMBSE: Added RequirementToFunctionBlockTable to right-click menu for requirements packages to enable coverage gaps to be identified (F.J.Chadburn)
 #541 21-JUL-2022: ExecutableMBSE: Get listener to auto-set the initial scope for RequirementToFunctionBlockTable if owned by requirements package (F.J.Chadburn)
 #542 22-JUL-2022: ExecutableMBSE: Automate steps in method to create a feature function package from right-clicking a use case (F.J.Chadburn)
+#543 22-JUL-2022: ExecutableMBSE: Get function block creator on a right-click of requirement to use the requirement name rather than the text
 
 Backlog/Known issues
+- Unexpected pop up asking to select the context setting when adding a function block if more than one featrue function package exists
+- Review whether to put diagrams on right-click menu above the executable mbse one to make clearer/easier 
 - Maybe get metamodel to handle InitialLayoutForTables property writing
 - Get the requirement mover renaming to also apply a stereotype if there is a stereotype applied to the package
 - If owner of requirement has a Tier 3 function block then dress down the Tier3 stereotype at same time as requirement creation
