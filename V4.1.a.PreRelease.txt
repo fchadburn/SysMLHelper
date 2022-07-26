@@ -737,7 +737,8 @@ V4.1.a.Rhp831.PreRelease (XX-XXX-XXXX):
 #540 21-JUL-2022: ExecutableMBSE: Added RequirementToFunctionBlockTable to right-click menu for requirements packages to enable coverage gaps to be identified (F.J.Chadburn)
 #541 21-JUL-2022: ExecutableMBSE: Get listener to auto-set the initial scope for RequirementToFunctionBlockTable if owned by requirements package (F.J.Chadburn)
 #542 22-JUL-2022: ExecutableMBSE: Automate steps in method to create a feature function package from right-clicking a use case (F.J.Chadburn)
-#543 22-JUL-2022: ExecutableMBSE: Get function block creator on a right-click of requirement to use the requirement name rather than the text
+#543 22-JUL-2022: ExecutableMBSE: Get function block creator on a right-click of requirement to use the requirement name rather than the text (F.J.Chadburn)
+#544 26-JUL-2022: ExecutableMBSE: Allow flow input and flow output tools in the ibd - system diagram to ease subsystem to function wiring workflow (F.J.Chadburn)
 
 Backlog/Known issues
 - Unexpected pop up asking to select the context setting when adding a function block if more than one featrue function package exists
