@@ -1,5 +1,5 @@
  [Helpers]
-numberOfElements=5
+numberOfElements=6
 
 #REM: Definition of the plug-in
 name1=InvokeBusinessValueHelper
@@ -40,6 +40,14 @@ command5=InvokeBusinessValueHelper
 applicableTo5=Project,SysML,BusinessValue
 isVisible5=1
 DLLServerCompatible5=1
+
+#REM: Add pop-up menu
+name6=Business Value: Other\Convert to note
+isPluginCommand6=1
+command6=InvokeBusinessValueHelper
+applicableTo6=Tier 1 Goal - Company,Tier 2 Goal - Division and Product Line,Tier 3 Goal - Instrument Design
+isVisible6=1
+DLLServerCompatible6=1
 
 #REM Copyright (C) 2022  MBSE Training and Consulting Limited (www.executablembse.com)
 #REM

@@ -742,8 +742,12 @@ V4.1.a.Rhp831.PreRelease (27-JUL-2022):
 #545 27-JUL-2022: ExecutableMBSE: Revert menus to standard rather than new term timing diagrams whilst toolbar issue for condition mark is resolved (F.J.Chadburn)
 #546 27-JUL-2022: ExecutableMBSE: Allow timing diagram on system architecture/subsystem packages in addition to feature function package (F.J.Chadburn)
 
+V4.1.b.Rhp831.PreRelease (XX-XXX-XXXX):
+#547 28-JUL-2022: ExecutableMBSE: Fixed unexpected pop up asking to select the context setting when adding if more than one target package exists (F.J.Chadburn)
+#548 28-JUL-2022: BusinessValue: Add the Convert to note menu command to assist manual fixing of Visio imported elements that are not classes post import (F.J.Chadburn)
+
 Backlog/Known issues
-- Unexpected pop up asking to select the context setting when adding a function block if more than one featrue function package exists
+- Move Tier1,2 and Logical/Function stereotypes into profile and add menu to enable migration from local to referenced profile
 - Review whether to put diagrams on right-click menu above the executable mbse one to make clearer/easier 
 - Maybe get metamodel to handle InitialLayoutForTables property writing
 - Get the requirement mover renaming to also apply a stereotype if there is a stereotype applied to the package

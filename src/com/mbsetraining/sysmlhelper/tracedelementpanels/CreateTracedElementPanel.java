@@ -53,7 +53,7 @@ public abstract class CreateTracedElementPanel extends JPanel {
 		
 		_context.get_selectedContext().setContextTo( _context.getSelectedElement( true ) );
 
-		//_context.debug( "CreateTracedElementPanel constructor was invoked" );
+		_context.debug( "CreateTracedElementPanel constructor was invoked" );
 		
 		setupRequirementsPanel();
 	}

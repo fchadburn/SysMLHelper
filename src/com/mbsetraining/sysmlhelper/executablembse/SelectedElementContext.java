@@ -41,32 +41,26 @@ public class SelectedElementContext {
 			IRPModelElement theElement ){
 
 		try {
-			
-			_selectedGraphEls = _context.getSelectedGraphElements();
-
 			_selectedEl = theElement;
-
-			if( _selectedGraphEls != null && 
+			_selectedGraphEls = _context.getSelectedGraphElements();
+			
+			if( _selectedEl instanceof IRPRequirement &&
 					!_selectedGraphEls.isEmpty() ){
-
-				IRPGraphElement selectedGraphEl = _selectedGraphEls.get( 0 );
-
-				IRPModelElement theModelObject = selectedGraphEl.getModelObject();
-
-				if( theModelObject != null ){				
-					_selectedEl = theModelObject;
-				}
+				
+				IRPGraphElement theGraphEl = _selectedGraphEls.get( 0 );
+				
+				_rootContextPackage = getContextSettingsPackageBasedOn( theGraphEl.getDiagram() );
+			} else {
+				_rootContextPackage = getContextSettingsPackageBasedOn( _selectedEl );
 			}
-
-			_rootContextPackage = getContextSettingsPackageBasedOn( _selectedEl );
 
 			if( _rootContextPackage instanceof IRPPackage
 					&& _context.hasStereotypeCalled(
 							_context.FUNCT_ANALYSIS_SCENARIOS_PACKAGE,
 							_rootContextPackage ) ){
 
-				_context.debug("SelectedElementContext has determined "
-						+ _context.elInfo(_rootContextPackage));
+				_context.debug( "SelectedElementContext _rootContextPackage is "
+						+ _context.elInfo( _rootContextPackage ) );
 
 				_packageForActorsAndTest = getPkgNamedInTagUnder(
 						_rootContextPackage, tagNameForPackageForActorsAndTest );
@@ -86,8 +80,8 @@ public class SelectedElementContext {
 							_context.NEW_TERM_FOR_FEATURE_FUNCTION_PACKAGE,
 							_rootContextPackage)) {
 
-				_context.debug( "SelectedElementContext has determined "
-						+ _context.elInfo( _rootContextPackage ) + " is the root context package" );
+				_context.debug( "SelectedElementContext _rootContextPackage is "
+						+ _context.elInfo( _rootContextPackage ) );
 
 				_packageForFunctionBlocks = getPkgNamedInTagUnder(
 						_rootContextPackage, tagNameForPackageForFunctionBlocks );
@@ -505,11 +499,13 @@ public class SelectedElementContext {
 
 		} else if (theContextEl instanceof IRPPackage
 				&& _context.hasStereotypeCalled(
-						_context.REQTS_ANALYSIS_USE_CASE_PACKAGE, theContextEl)) {
+						_context.REQTS_ANALYSIS_USE_CASE_PACKAGE, 
+						theContextEl)) {
 
 			@SuppressWarnings("unchecked")
-			List<IRPModelElement> theReferences = theContextEl.getReferences()
-			.toList();
+			List<IRPModelElement> theReferences = theContextEl.getReferences().toList();
+			
+			List<IRPModelElement> theCandidates = new ArrayList<>();
 
 			for (IRPModelElement theReference : theReferences) {
 
@@ -523,7 +519,7 @@ public class SelectedElementContext {
 									_context.FUNCT_ANALYSIS_SCENARIOS_PACKAGE,
 									theDependent)) {
 
-						theSettingsPkg = (IRPPackage) theDependent;
+						theCandidates.add( theDependent );
 
 					} else if (theDependent instanceof IRPPackage
 							&& _context
@@ -531,7 +527,7 @@ public class SelectedElementContext {
 									_context.FUNCT_ANALYSIS_FEATURE_FUNCTION_PACKAGE,
 									theDependent)) {
 
-						theSettingsPkg = (IRPPackage) theDependent;
+						theCandidates.add( theDependent );
 
 					} else if (theDependent instanceof IRPPackage
 							&& _context
@@ -539,15 +535,42 @@ public class SelectedElementContext {
 									_context.REQTS_ANALYSIS_WORKING_COPY_PACKAGE,
 									theDependent)) {
 
-						theSettingsPkg = getContextSettingsPackageBasedOn(theDependent);
-					}
+						IRPModelElement theLinkedPackage =
+								getContextSettingsPackageBasedOn( theDependent );
+						
+						if( theLinkedPackage instanceof IRPPackage ){
+							theCandidates.add( theLinkedPackage );
+
+						}
+					}	
 				}
 			}
+			
+			if( theCandidates.size() == 1 ){
+				
+				theSettingsPkg = (IRPPackage) theCandidates.get(0);
+				
+			} else if( theCandidates.size() > 1 ){
+				
+				_context.debug( "There are " + theCandidates.size() + " "
+						+ _context.FUNCT_ANALYSIS_FEATURE_FUNCTION_PACKAGE + " or " 
+						+ _context.FUNCT_ANALYSIS_SCENARIOS_PACKAGE 	
+						+ " packages, so you will have to choose one?");
+
+				IRPModelElement theUserSelectedPkg = UserInterfaceHelper
+						.launchDialogToSelectElement(theCandidates,
+								"Choose which settings to use", true);
+
+				if (theUserSelectedPkg != null) {
+					theSettingsPkg = (IRPPackage) theUserSelectedPkg;
+				}
+			}
+			
+
 
 		} else {
 
-			_context.debug("Recursing to look at owner of "
-					+ _context.elInfo(theContextEl));
+			//_context.debug( "Recursing to owner of " + _context.elInfo( theContextEl ) );
 
 			// recurse
 			theSettingsPkg = getContextSettingsPackageBasedOn(theContextEl

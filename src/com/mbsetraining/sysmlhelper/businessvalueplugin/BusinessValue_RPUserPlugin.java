@@ -94,6 +94,19 @@ public class BusinessValue_RPUserPlugin extends RPUserPlugin {
 					}
 					
 				} else if( menuItem.equals( _settings.getString(
+						"businessvalueplugin.ConvertToNode" ) ) ){
+
+					IRPGraphElement theGraphEl = _context.getSelectedGraphEl();
+					
+					if( theGraphEl instanceof IRPGraphNode ){						
+						ConvertToNote theConverter = new ConvertToNote( 
+								(IRPGraphNode) theGraphEl, _context );
+						theConverter.performConversion();
+					} else {
+						UserInterfaceHelper.showWarningDialog( "You need to select a class for this to work");
+					}
+					
+				} else if( menuItem.equals( _settings.getString(
 						"businessvalueplugin.SelectDependsOnElementsMenu" ) ) ){
 
 					Set<IRPModelElement> theCombinedSet = 
