@@ -969,7 +969,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 			IRPDiagram theDiagram = getDiagramFor( modelElement );
 
-			IRPClassifier theParentFunctionBlock;
+			IRPClassifier theParentFunctionBlock = null;
 
 			if( theDiagram != null ){
 				theParentFunctionBlock = getParentFunctionBlockFor( theDiagram );
@@ -990,7 +990,6 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 					theElementMover.performMove( modelElement );
 
-
 				} else {
 					theElementMover.performMove( modelElement );
 				}
@@ -1003,24 +1002,40 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				theElementMover.performMove( modelElement );
 			}
 
-			if( theDiagram != null &&
-					theParentFunctionBlock != null ){
+			if( theParentFunctionBlock != null ){
+				
+				try {
+					//_context.debug( "Adding satisfy dependency from " + 
+					//		_context.elInfo( theParentFunctionBlock ) + " to " + 
+					//		_context.elInfo( modelElement ) );
+					
+					IRPDependency theDependency = theParentFunctionBlock.addDependencyTo( modelElement );
+					theDependency.setStereotype( _context.getStereotypeForSatisfaction() );
+					
+				} catch( Exception e ){
+					_context.info( "Unable to apply satisfy dependency from " + 
+							_context.elInfo( theParentFunctionBlock ) + " to " + 
+							_context.elInfo( modelElement ) + ", e=" + e.getMessage() );
+				}
+				
+				if( theDiagram != null ){
 
-				IRPCollection theCollection = _context.createNewCollection();
+					IRPCollection theCollection = _context.createNewCollection();
 
-				List<IRPGraphElement> theGraphEls = 
-						theDiagram.getCorrespondingGraphicElements( theParentFunctionBlock ).toList();
+					List<IRPGraphElement> theGraphEls = 
+							theDiagram.getCorrespondingGraphicElements( theParentFunctionBlock ).toList();
 
-				theGraphEls.addAll( 
-						theDiagram.getCorrespondingGraphicElements( modelElement ).toList() );
+					theGraphEls.addAll( 
+							theDiagram.getCorrespondingGraphicElements( modelElement ).toList() );
 
-				if( theGraphEls.size() == 2 ){
+					if( theGraphEls.size() == 2 ){
 
-					for( IRPGraphElement theGraphEl : theGraphEls ){
-						theCollection.addGraphicalItem( theGraphEl );
+						for( IRPGraphElement theGraphEl : theGraphEls ){
+							theCollection.addGraphicalItem( theGraphEl );
+						}
+
+						theDiagram.completeRelations( theCollection, 0 );
 					}
-
-					theDiagram.completeRelations( theCollection, 0 );
 				}
 			}
 		}

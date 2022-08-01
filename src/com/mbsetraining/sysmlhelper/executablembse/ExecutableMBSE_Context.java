@@ -131,6 +131,9 @@ public class ExecutableMBSE_Context extends BaseContext {
 	protected IRPStereotype _newTermForSystemContextDiagram;
 	protected IRPStereotype _newTermForActorUsage;
 	protected IRPStereotype _newTermForSystemContext;
+	protected IRPStereotype _stereotypeForDerivation;
+	protected IRPStereotype _stereotypeForSatisfaction;
+	protected IRPStereotype _stereotypeForVerification;
 
 	public ExecutableMBSE_Context(
 			String theAppID ){
@@ -144,7 +147,40 @@ public class ExecutableMBSE_Context extends BaseContext {
 				"ExecutableMBSEProfile.General.UserDefinedMetaClassesAsSeparateUnit", 
 				"ExecutableMBSEProfile.General.AllowPluginToControlUnitGranularity" );
 	}
+	
+	// Generally single call per session, so use lazy load
+	public IRPStereotype getStereotypeForDerivation(){
 
+		if( _stereotypeForDerivation == null ){
+
+			_stereotypeForDerivation = getExistingStereotype( "derive", _rhpPrj );;
+		}
+
+		return _stereotypeForDerivation;
+	}
+	
+	// Generally single call per session, so use lazy load
+	public IRPStereotype getStereotypeForSatisfaction(){
+
+		if( _stereotypeForSatisfaction == null ){
+
+			_stereotypeForSatisfaction = getExistingStereotype( "satisfy", _rhpPrj );;
+		}
+
+		return _stereotypeForSatisfaction;
+	}
+
+	// Generally single call per session, so use lazy load
+	public IRPStereotype getStereotypeForVerification(){
+
+		if( _stereotypeForVerification == null ){
+
+			_stereotypeForVerification = getExistingStereotype( "verify", _rhpPrj );;
+		}
+
+		return _stereotypeForVerification;
+	}
+	
 	// Generally single call per session, so use lazy load
 	public String getDefaultExternalSignalsPackageName(){
 

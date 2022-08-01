@@ -746,6 +746,7 @@ V4.1.b.Rhp831.PreRelease (XX-XXX-XXXX):
 #547 28-JUL-2022: ExecutableMBSE: Fixed unexpected pop up asking to select the context setting when adding if more than one target package exists (F.J.Chadburn)
 #548 28-JUL-2022: BusinessValue: Add the Convert to note menu command to assist manual fixing of Visio imported elements that are not classes post import (F.J.Chadburn)
 #549 01-AUG-2022: ExecutableMBSE: Fix hep so that Center straight lines on diagram(s) works for Requirements Diagram - System as well (F.J.Chadburn)
+#550 01-AUG-2022: ExecutableMBSE: Requirements Diagram - System listener improvements to get nested requirements to automatically have Satisfaction relations (F.J.Chadburn)
 
 Backlog/Known issues
 - Move Tier1,2 and Logical/Function stereotypes into profile and add menu to enable migration from local to referenced profile

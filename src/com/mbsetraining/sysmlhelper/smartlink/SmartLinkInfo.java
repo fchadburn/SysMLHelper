@@ -58,9 +58,9 @@ public class SmartLinkInfo {
 			boolean answer = UserInterfaceHelper.askAQuestion( msg );
 			
 			if( answer ){
-				_relationType = _context.getExistingStereotype( "satisfy", _context.get_rhpPrj() );
+				_relationType = _context.getStereotypeForSatisfaction();
 			} else {
-				_relationType = _context.getExistingStereotype( "derive", _context.get_rhpPrj() );
+				_relationType = _context.getStereotypeForDerivation();
 			}
 			
 		} else if( _startLinkElements.areElementsAllDeriveDependencySources() ){
@@ -73,7 +73,7 @@ public class SmartLinkInfo {
 
 		} else if( _startLinkElements.areElementsAllVerificationDependencySources() ){
 
-			_relationType = _context.getExistingStereotype( "verify", _context.get_rhpPrj() );
+			_relationType = _context.getStereotypeForVerification();
 			
 		} else if( _startLinkElements.areElementsAllSatisfyDependencySources() ){
 
