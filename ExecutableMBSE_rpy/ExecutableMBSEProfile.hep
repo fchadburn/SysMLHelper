@@ -333,7 +333,7 @@ DLLServerCompatible42=1
 name43=MBSE Method: Other\Center straight lines on diagram(s)
 isPluginCommand43=1
 command43=InvokeExecutableMBSEHelper
-applicableTo43=Generalization,Realization,AssociationEnd,Package,Dependency,Satisfaction,Derivation,Refinement,Verification,ActivityDiagram,Textual Activity,Call Operation Activity,ObjectModelDiagram,Block Definition Diagram,Internal Block Diagram,Statechart,SequenceDiagram,UseCaseDiagram,Enhanced Use Case Diagram,Block Definition Diagram - Software,Block Definition Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - System,Metamodel Diagram
+applicableTo43=Generalization,Realization,AssociationEnd,Package,Dependency,Satisfaction,Derivation,Refinement,Verification,ActivityDiagram,Textual Activity,Call Operation Activity,ObjectModelDiagram,Block Definition Diagram,Internal Block Diagram,Statechart,SequenceDiagram,UseCaseDiagram,Enhanced Use Case Diagram,Block Definition Diagram - Software,Block Definition Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - System,Requirements Diagram - System,Metamodel Diagram
 isVisible43=1
 DLLServerCompatible43=1
 
