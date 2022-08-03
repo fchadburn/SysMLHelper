@@ -747,12 +747,12 @@ V4.1.b.Rhp831.PreRelease (XX-XXX-XXXX):
 #548 28-JUL-2022: BusinessValue: Add the Convert to note menu command to assist manual fixing of Visio imported elements that are not classes post import (F.J.Chadburn)
 #549 01-AUG-2022: ExecutableMBSE: Fix hep so that Center straight lines on diagram(s) works for Requirements Diagram - System as well (F.J.Chadburn)
 #550 01-AUG-2022: ExecutableMBSE: Requirements Diagram - System listener improvements to get nested requirements to automatically have Satisfaction relations (F.J.Chadburn)
+#551 03-AUG-2022: ExecutableMBSE: Widden requirement mover to auto-apply stereotypes applied to owning package that are also applicable to requirements (F.J.Chadburn)
 
 Backlog/Known issues
 - Move Tier1,2 and Logical/Function stereotypes into profile and add menu to enable migration from local to referenced profile
 - Review whether to put diagrams on right-click menu above the executable mbse one to make clearer/easier 
 - Maybe get metamodel to handle InitialLayoutForTables property writing
-- Get the requirement mover renaming to also apply a stereotype if there is a stereotype applied to the package
 - If owner of requirement has a Tier 3 function block then dress down the Tier3 stereotype at same time as requirement creation
 - Move to new function package
 - Get listener to deal to prevent duplicate traceability relations being created on diagrams

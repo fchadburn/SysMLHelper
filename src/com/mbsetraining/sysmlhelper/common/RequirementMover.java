@@ -1,12 +1,13 @@
 package com.mbsetraining.sysmlhelper.common;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.telelogic.rhapsody.core.*;
 
 public class RequirementMover extends ElementMover {
 
-	private IRPStereotype _moveToStereotype = null;
+	private List<IRPStereotype> _moveToStereotypes = null;
 	
 	public RequirementMover(
 			IRPModelElement theElement,
@@ -15,13 +16,13 @@ public class RequirementMover extends ElementMover {
 		
 		super( theElement, whereMoveToHasStereotype, context );
 		
-		_moveToStereotype = getMoveToStereotype( _newOwner );
+		_moveToStereotypes = getMoveToStereotypes( _newOwner );
 	}
 	
-	private IRPStereotype getMoveToStereotype( 
+	private List<IRPStereotype> getMoveToStereotypes( 
 			IRPModelElement basedOnPackage ){
 		
-		IRPStereotype theMoveToStereotype = null;
+		List<IRPStereotype> theMoveToStereotypes = new ArrayList<IRPStereotype>();
 		
 		if( basedOnPackage instanceof IRPPackage ){
 
@@ -29,16 +30,23 @@ public class RequirementMover extends ElementMover {
 			List<IRPStereotype> theStereotypes = basedOnPackage.getStereotypes().toList();
 			
 			for( IRPStereotype theStereotype : theStereotypes ){
+			
+				String theMetaclasses = theStereotype.getOfMetaClass();
 				
-				if( theStereotype.getName().startsWith( "from" ) ){
-					theMoveToStereotype = theStereotype;
-					_context.debug( "Found move to " + _context.elInfo( theStereotype ) );
+				//_context.info( "theMetaclasses were: " + theMetaclasses );
+						
+				if( theStereotype.getIsNewTerm()== 0 &&
+						theMetaclasses.contains( "Requirement" ) ){
+					
+					theMoveToStereotypes.add( theStereotype );
+					//_context.info( "Found move to " + _context.elInfo( theStereotype ) );
+					
 					break;
 				}
 			}
 		}
 		
-		return theMoveToStereotype;
+		return theMoveToStereotypes;
 	}
 
 	public boolean performMove(
@@ -48,15 +56,19 @@ public class RequirementMover extends ElementMover {
 		
 		if( isSuccess ){
 			
-			if( _moveToStereotype != null ){
-				try {
-					theElement.setStereotype( _moveToStereotype );
+			if( !_moveToStereotypes.isEmpty() ){
+				
+				for( IRPStereotype _moveToStereotype : _moveToStereotypes ){
 					
-				} catch( Exception e ){
-					_context.error( "Error in RequirementsMover.performMove, " +
-							"unable exception trying to apply " + 
-							_context.elInfo( _moveToStereotype ) + 
-							" to " + _context.elInfo( theElement ) );
+					try {
+						theElement.setStereotype( _moveToStereotype );
+						
+					} catch( Exception e ){
+						_context.error( "Error in RequirementsMover.performMove, " +
+								"unable exception trying to apply " + 
+								_context.elInfo( _moveToStereotype ) + 
+								" to " + _context.elInfo( theElement ) );
+					}
 				}
 			}
 		}
