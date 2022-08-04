@@ -1689,7 +1689,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">7.28.2022::16:22:52</_modifiedTime>
+			<_modifiedTime type="a">8.3.2022::15:52:54</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -16828,7 +16828,8 @@ Query</_Value>
 			<_id type="a">GUID 1b9ff970-e96a-4e94-bb8a-e59c10d32465</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Supplementary</_name>
-			<_modifiedTime type="a">2.23.2022::8:8:12</_modifiedTime>
+			<_modifiedTime type="a">8.3.2022::15:55:10</_modifiedTime>
+			<_lastID type="a">3</_lastID>
 			<_defaultComposite type="s">GUID 6baa030c-3af4-4672-bf84-b34b967b94af</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
@@ -16839,6 +16840,13 @@ Query</_Value>
 				<value>GUID b2a22dfc-eac8-4e06-ae01-41ed5e1b7fe1</value>
 				<value>GUID 8d2ff742-0459-4aad-b4f7-82047a2330e5</value>
 				<value>GUID d2bf8f28-ec11-4096-86a8-11e063c79c32</value>
+				<value>GUID ac9af64c-f3cb-469f-b5b0-d2cffefe4946</value>
+				<value>GUID 4182f246-5a0b-4bea-9f8f-3b330a38029d</value>
+				<value>GUID 01c4aff4-0de7-45e5-ba4b-3ffccc818399</value>
+				<value>GUID 4be24200-c07e-42c7-8c01-73942bcd3848</value>
+				<value>GUID e912aa50-71fe-4ec1-88c8-ad0716c44a4a</value>
+				<value>GUID 02a1c2ec-ec7b-48fb-873c-96d6f9aaa9be</value>
+				<value>GUID f03fdcf0-da9a-4b29-99bd-1065f9ecb549</value>
 				<value>GUID 6baa030c-3af4-4672-bf84-b34b967b94af</value>
 			</AggregatesList>
 		</ISubsystem>
@@ -17164,6 +17172,319 @@ Query</_Value>
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
 					<value>Class</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+		</IStereotype>
+		<IStereotype type="e">
+			<_id type="a">GUID ac9af64c-f3cb-469f-b5b0-d2cffefe4946</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Logical</_name>
+			<_modifiedTime type="a">8.3.2022::15:47:49</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">7</size>
+					<value>Class</value>
+					<value>Object</value>
+					<value>ObjectModelDiagram</value>
+					<value>Package</value>
+					<value>Port</value>
+					<value>StructureDiagram</value>
+					<value>SysMLPort</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+		</IStereotype>
+		<IStereotype type="e">
+			<_id type="a">GUID 4182f246-5a0b-4bea-9f8f-3b330a38029d</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Format</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">5</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Class</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">Line.LineColor</_Name>
+													<_Value type="a">0,0,0</_Value>
+													<_Type type="a">Color</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Object</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">Line.LineColor</_Name>
+													<_Value type="a">0,0,0</_Value>
+													<_Type type="a">Color</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Package</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">Line.LineColor</_Name>
+													<_Value type="a">0,0,0</_Value>
+													<_Type type="a">Color</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Port</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">Line.LineColor</_Name>
+													<_Value type="a">0,0,0</_Value>
+													<_Type type="a">Color</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+									<IPropertyMetaclass type="e">
+										<_Name type="a">SysMLPort</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">Line.LineColor</_Name>
+													<_Value type="a">0,0,0</_Value>
+													<_Type type="a">Color</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">Physical</_name>
+			<_modifiedTime type="a">8.3.2022::15:50:52</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">7</size>
+					<value>Class</value>
+					<value>Object</value>
+					<value>ObjectModelDiagram</value>
+					<value>Package</value>
+					<value>Port</value>
+					<value>StructureDiagram</value>
+					<value>SysMLPort</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+		</IStereotype>
+		<IStereotype type="e">
+			<_id type="a">GUID 01c4aff4-0de7-45e5-ba4b-3ffccc818399</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Tier0</_name>
+			<_modifiedTime type="a">8.3.2022::15:54:39</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">26</size>
+					<value>ActivityDiagram</value>
+					<value>Class</value>
+					<value>CommunicationDiagram</value>
+					<value>ComponentDiagram</value>
+					<value>DeploymentDiagram</value>
+					<value>Event</value>
+					<value>MatrixLayout</value>
+					<value>MatrixView</value>
+					<value>Object</value>
+					<value>ObjectModelDiagram</value>
+					<value>Operation</value>
+					<value>Package</value>
+					<value>PanelDiagram</value>
+					<value>Port</value>
+					<value>Reception</value>
+					<value>Requirement</value>
+					<value>SequenceDiagram</value>
+					<value>Statechart</value>
+					<value>StructureDiagram</value>
+					<value>SysMLPort</value>
+					<value>TableLayout</value>
+					<value>TableView</value>
+					<value>TimingDiagram</value>
+					<value>TriggeredOperation</value>
+					<value>UseCase</value>
+					<value>UseCaseDiagram</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+		</IStereotype>
+		<IStereotype type="e">
+			<_id type="a">GUID 4be24200-c07e-42c7-8c01-73942bcd3848</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Tier1</_name>
+			<_modifiedTime type="a">8.3.2022::15:54:46</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">26</size>
+					<value>ActivityDiagram</value>
+					<value>Class</value>
+					<value>CommunicationDiagram</value>
+					<value>ComponentDiagram</value>
+					<value>DeploymentDiagram</value>
+					<value>Event</value>
+					<value>MatrixLayout</value>
+					<value>MatrixView</value>
+					<value>Object</value>
+					<value>ObjectModelDiagram</value>
+					<value>Operation</value>
+					<value>Package</value>
+					<value>PanelDiagram</value>
+					<value>Port</value>
+					<value>Reception</value>
+					<value>Requirement</value>
+					<value>SequenceDiagram</value>
+					<value>Statechart</value>
+					<value>StructureDiagram</value>
+					<value>SysMLPort</value>
+					<value>TableLayout</value>
+					<value>TableView</value>
+					<value>TimingDiagram</value>
+					<value>TriggeredOperation</value>
+					<value>UseCase</value>
+					<value>UseCaseDiagram</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+		</IStereotype>
+		<IStereotype type="e">
+			<_id type="a">GUID e912aa50-71fe-4ec1-88c8-ad0716c44a4a</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Tier2</_name>
+			<_modifiedTime type="a">8.3.2022::15:54:52</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">26</size>
+					<value>ActivityDiagram</value>
+					<value>Class</value>
+					<value>CommunicationDiagram</value>
+					<value>ComponentDiagram</value>
+					<value>DeploymentDiagram</value>
+					<value>Event</value>
+					<value>MatrixLayout</value>
+					<value>MatrixView</value>
+					<value>Object</value>
+					<value>ObjectModelDiagram</value>
+					<value>Operation</value>
+					<value>Package</value>
+					<value>PanelDiagram</value>
+					<value>Port</value>
+					<value>Reception</value>
+					<value>Requirement</value>
+					<value>SequenceDiagram</value>
+					<value>Statechart</value>
+					<value>StructureDiagram</value>
+					<value>SysMLPort</value>
+					<value>TableLayout</value>
+					<value>TableView</value>
+					<value>TimingDiagram</value>
+					<value>TriggeredOperation</value>
+					<value>UseCase</value>
+					<value>UseCaseDiagram</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+		</IStereotype>
+		<IStereotype type="e">
+			<_id type="a">GUID 02a1c2ec-ec7b-48fb-873c-96d6f9aaa9be</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Tier3</_name>
+			<_modifiedTime type="a">8.3.2022::15:55:2</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">26</size>
+					<value>ActivityDiagram</value>
+					<value>Class</value>
+					<value>CommunicationDiagram</value>
+					<value>ComponentDiagram</value>
+					<value>DeploymentDiagram</value>
+					<value>Event</value>
+					<value>MatrixLayout</value>
+					<value>MatrixView</value>
+					<value>Object</value>
+					<value>ObjectModelDiagram</value>
+					<value>Operation</value>
+					<value>Package</value>
+					<value>PanelDiagram</value>
+					<value>Port</value>
+					<value>Reception</value>
+					<value>Requirement</value>
+					<value>SequenceDiagram</value>
+					<value>Statechart</value>
+					<value>StructureDiagram</value>
+					<value>SysMLPort</value>
+					<value>TableLayout</value>
+					<value>TableView</value>
+					<value>TimingDiagram</value>
+					<value>TriggeredOperation</value>
+					<value>UseCase</value>
+					<value>UseCaseDiagram</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+		</IStereotype>
+		<IStereotype type="e">
+			<_id type="a">GUID f03fdcf0-da9a-4b29-99bd-1065f9ecb549</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Tier4</_name>
+			<_modifiedTime type="a">8.3.2022::15:55:10</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">26</size>
+					<value>ActivityDiagram</value>
+					<value>Class</value>
+					<value>CommunicationDiagram</value>
+					<value>ComponentDiagram</value>
+					<value>DeploymentDiagram</value>
+					<value>Event</value>
+					<value>MatrixLayout</value>
+					<value>MatrixView</value>
+					<value>Object</value>
+					<value>ObjectModelDiagram</value>
+					<value>Operation</value>
+					<value>Package</value>
+					<value>PanelDiagram</value>
+					<value>Port</value>
+					<value>Reception</value>
+					<value>Requirement</value>
+					<value>SequenceDiagram</value>
+					<value>Statechart</value>
+					<value>StructureDiagram</value>
+					<value>SysMLPort</value>
+					<value>TableLayout</value>
+					<value>TableView</value>
+					<value>TimingDiagram</value>
+					<value>TriggeredOperation</value>
+					<value>UseCase</value>
+					<value>UseCaseDiagram</value>
 				</IRPYRawContainer>
 			</_m2Classes>
 		</IStereotype>

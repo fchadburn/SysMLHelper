@@ -702,22 +702,32 @@ public abstract class BaseContext {
 		try {
 			String theValue = theContextEl.getPropertyValue( 
 					thePropertyKey );
+			
+			theNewTerms = getListFromString( theValue );
 
-			if( theValue != null && !theValue.isEmpty() ){
-
-				String[] split = theValue.split( "," );
-
-				for( int i = 0; i < split.length; i++ ){
-					String theNewTerm = split[ i ].trim();
-					theNewTerms.add( theNewTerm );
-				}
-			}
 		} catch( Exception e ){
 			error( "Exception in getListFromCommaSeparatedString, e=" + e.getMessage() );
 		}
 
-
 		return theNewTerms;
+	}
+
+	public List<String> getListFromString(
+			String theValue ){
+
+		List<String> theList = new ArrayList<>();
+
+		if( theValue != null && !theValue.isEmpty() ){
+
+			String[] split = theValue.split( "," );
+
+			for( int i = 0; i < split.length; i++ ){
+				String theNewTerm = split[ i ].trim();
+				theList.add( theNewTerm );
+			}
+		}
+
+		return theList;
 	}
 
 	public IRPPackage getOwningPackageFor(
@@ -2224,11 +2234,11 @@ public abstract class BaseContext {
 		} else if (theEl instanceof IRPRequirement){
 
 			theSourceInfo =  theEl.getName();
-			
+
 			// use specification text if requirement name is just a number or is default
 			if( theSourceInfo.matches( "\\d+" ) || 
 					theSourceInfo.matches( "requirement_\\d+") ){
-				
+
 				IRPRequirement theReqt = (IRPRequirement)theEl;
 				theSourceInfo = theReqt.getSpecification();
 			}

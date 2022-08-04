@@ -37,6 +37,7 @@ import com.mbsetraining.sysmlhelper.sequencediagram.SequenceDiagramCreator;
 import com.mbsetraining.sysmlhelper.sequencediagram.UpdateInferfacesBasedOnSequenceDiagramPanel;
 import com.mbsetraining.sysmlhelper.sequencediagram.VerificationDependencyUpdater;
 import com.mbsetraining.sysmlhelper.smartlink.EndlinkPanel;
+import com.mbsetraining.sysmlhelper.switchstereotypes.SwitchStereotype;
 import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateFunctionBlock;
 import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateIncomingEventPanel;
 import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateOperationPanel;
@@ -373,14 +374,14 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.SelectChildClassifiersMenu" ) ) ){
-					
+
 					if( ( theSelectedEl instanceof IRPObjectModelDiagram ||
 							theSelectedEl instanceof IRPStructureDiagram ) &&
 							theSelectedEl.getOwner() instanceof IRPClassifier ){
-					
+
 						theSelectedEls.add( theSelectedEl.getOwner() );
 					}
-					
+
 					Set<IRPModelElement> theCombinedSet = 
 							_context.getSetOfElementsFromCombiningThe(
 									theSelectedEls, theSelectedGraphEls );
@@ -388,7 +389,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					PartSelector theSelector = new PartSelector( _context );
 
 					theSelector.selectPartsFor(theCombinedSet, false );
-					
+
 				} else if (menuItem.equals(_settings.getString(
 						"executablembseplugin.SetupGatewayProjectMenu" ) ) ){
 
@@ -600,7 +601,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 
 					}				
-					
+
 				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.CreateFunctionBlockMenu" ) ) ){
 
@@ -763,27 +764,36 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 					RepairLinks theRepairer = new RepairLinks( _context );
 					theRepairer.repairAllDiagrams( theSelectedEl );
-					
+
+				} else if( menuItem.equals( _settings.getString( 
+						"executablembseplugin.SwitchStereotype" ) ) ){
+
+					if( theSelectedEl instanceof IRPStereotype ){
+						
+						SwitchStereotype theSwitcher = new SwitchStereotype( _context );
+						theSwitcher.switchStereotypeFrom( (IRPStereotype) theSelectedEl );
+					}
+
 				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.MoveUseCaseIntoSeparatePkg" ) ) ){
-										
+
 					List<IRPUseCase> theUseCases = new ArrayList<>();
-					
+
 					Set<IRPModelElement> theCandidateEls = 
 							_context.getSetOfElementsFromCombiningThe( 
 									theSelectedEls, theSelectedGraphEls );
-					
+
 					for( IRPModelElement theCandidateEl : theCandidateEls ){
-						
+
 						if( theCandidateEl instanceof IRPUseCase ){
 							theUseCases.add( (IRPUseCase) theCandidateEl );
 						}
 					}
-					
+
 					if( theUseCases.isEmpty() ){
-						
+
 						_context.warning( "There were no selected use cases. Right-click a use case and try again");
-						
+
 					} else {
 
 						String theMsg = "Do you want to move the " + theUseCases.size() + " selected use cases \n" +
@@ -799,24 +809,24 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.CreateFeatureFunctionPkg" ) ) ){
-										
+
 					List<IRPUseCase> theUseCases = new ArrayList<>();
-					
+
 					Set<IRPModelElement> theCandidateEls = 
 							_context.getSetOfElementsFromCombiningThe( 
 									theSelectedEls, theSelectedGraphEls );
-					
+
 					for( IRPModelElement theCandidateEl : theCandidateEls ){
-						
+
 						if( theCandidateEl instanceof IRPUseCase ){
 							theUseCases.add( (IRPUseCase) theCandidateEl );
 						}
 					}
-					
+
 					if( theUseCases.isEmpty() ){
-						
+
 						_context.warning( "There were no selected use cases. Right-click a use case and try again");
-						
+
 					} else {
 
 						String theMsg = "Do you want to create feature function packages for the " + 

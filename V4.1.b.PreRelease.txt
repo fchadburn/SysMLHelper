@@ -748,9 +748,10 @@ V4.1.b.Rhp831.PreRelease (XX-XXX-XXXX):
 #549 01-AUG-2022: ExecutableMBSE: Fix hep so that Center straight lines on diagram(s) works for Requirements Diagram - System as well (F.J.Chadburn)
 #550 01-AUG-2022: ExecutableMBSE: Requirements Diagram - System listener improvements to get nested requirements to automatically have Satisfaction relations (F.J.Chadburn)
 #551 03-AUG-2022: ExecutableMBSE: Widden requirement mover to auto-apply stereotypes applied to owning package that are also applicable to requirements (F.J.Chadburn)
+#552 04-AUG-2022: ExecutableMBSE: Added supplementary Tier0,1,2,4 and Logical/Physical stereotypes into profile (F.J.Chadburn)
+#553 04-AUG-2022: ExecutableMBSE: Added right-click Switch Stereotypes menu to stereotype to automate migration of stereotype usage from local to referenced profile (F.J.Chadburn)
 
 Backlog/Known issues
-- Move Tier1,2 and Logical/Function stereotypes into profile and add menu to enable migration from local to referenced profile
 - Review whether to put diagrams on right-click menu above the executable mbse one to make clearer/easier 
 - Maybe get metamodel to handle InitialLayoutForTables property writing
 - If owner of requirement has a Tier 3 function block then dress down the Tier3 stereotype at same time as requirement creation
