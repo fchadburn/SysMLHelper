@@ -93,7 +93,27 @@ Subject Model
 	Metaclass Project
 		Property BrowseHierarchy String "BrowseRelations"
 		Property BrowseRelationsName String "Browse Relations"
-		Property BrowseRelationsPattern String "Class!*, Dependency:*"
+		Property BrowseRelationsPattern String "Package+,Tier 1 Goal - Company,Needs:*"
+	end
+	Metaclass Package
+		Property BrowseHierarchy String "BrowseRelations"
+		Property BrowseRelationsName String "Browse Relations"
+		Property BrowseRelationsPattern String "Package*,Tier 1 Goal - Company,Needs:*"
+	end
+	Metaclass Tier1Goal
+		Property BrowseHierarchy String "BrowseRelations"
+		Property BrowseRelationsName String "Browse Relations"
+		Property BrowseRelationsPattern String "Needs:*"
+	end
+	Metaclass Tier2Goal
+		Property BrowseHierarchy String "BrowseRelations"
+		Property BrowseRelationsName String "Browse Relations"
+		Property BrowseRelationsPattern String "Needs:*"
+	end
+	Metaclass Tier3Goal
+		Property BrowseHierarchy String "BrowseRelations"
+		Property BrowseRelationsName String "Browse Relations"
+		Property BrowseRelationsPattern String "Needs:*"
 	end
 end
 end
