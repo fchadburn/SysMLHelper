@@ -1666,10 +1666,10 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">BusinessValueProfile</_name>
-			<_modifiedTimeWeak type="a">7.19.2022::12:43:14</_modifiedTimeWeak>
-			<_modifiedTime type="a">7.19.2022::12:43:14</_modifiedTime>
+			<_modifiedTimeWeak type="a">8.9.2022::15:49:13</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.9.2022::15:49:13</_modifiedTime>
 			<_lastID type="a">28</_lastID>
-			<weakCGTime type="a">7.19.2022::12:43:14</weakCGTime>
+			<weakCGTime type="a">8.9.2022::15:49:13</weakCGTime>
 			<strongCGTime type="a">7.17.2022::13:45:0</strongCGTime>
 			<_defaultComposite type="s">GUID 377dbcc2-9abb-48b8-bbd5-721dc9c0b50e</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -1691,10 +1691,10 @@
 			<_id type="a">GUID 2122c8f1-fe60-4d4d-8093-257bad45e49a</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Diagrams</_name>
-			<_modifiedTimeWeak type="a">7.18.2022::9:2:10</_modifiedTimeWeak>
-			<_modifiedTime type="a">7.18.2022::9:2:10</_modifiedTime>
+			<_modifiedTimeWeak type="a">8.9.2022::8:2:34</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.9.2022::8:2:34</_modifiedTime>
 			<_lastID type="a">1</_lastID>
-			<weakCGTime type="a">7.18.2022::9:2:10</weakCGTime>
+			<weakCGTime type="a">8.9.2022::8:2:34</weakCGTime>
 			<strongCGTime type="a">7.17.2022::13:41:50</strongCGTime>
 			<_defaultComposite type="s">GUID 67e15d31-98ae-4189-adfc-cbdfb51ef0e6</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -1729,7 +1729,7 @@
 												
 												<IProperty type="e">
 													<_Name type="a">DrawingToolbar</_Name>
-													<_Value type="a">Tier 1 Goal - Company,Tier 2 Goal - Division and Product Line,Tier 3 Goal - Instrument Design,Needs,Measured By,Dependency</_Value>
+													<_Value type="a">Tier 1 Goal,Tier 2 Goal,Tier 3 Goal,Needs,Measured By,Dependency</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -1825,8 +1825,8 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">BusinessValueDiagram</_name>
-			<_modifiedTimeWeak type="a">7.18.2022::9:2:10</_modifiedTimeWeak>
-			<_modifiedTime type="a">7.18.2022::9:2:10</_modifiedTime>
+			<_modifiedTimeWeak type="a">8.9.2022::8:2:34</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.9.2022::8:2:34</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -1853,10 +1853,10 @@
 			<_id type="a">GUID 09dffe12-36f6-473e-bdf6-5cb62c6c3a09</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Elements</_name>
-			<_modifiedTimeWeak type="a">7.19.2022::12:43:31</_modifiedTimeWeak>
-			<_modifiedTime type="a">7.19.2022::12:43:31</_modifiedTime>
+			<_modifiedTimeWeak type="a">8.9.2022::15:35:23</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.9.2022::15:35:23</_modifiedTime>
 			<_lastID type="a">9</_lastID>
-			<weakCGTime type="a">7.19.2022::12:43:31</weakCGTime>
+			<weakCGTime type="a">8.9.2022::15:35:23</weakCGTime>
 			<strongCGTime type="a">7.17.2022::13:41:50</strongCGTime>
 			<_defaultComposite type="s">GUID a127d213-1e2c-4469-88b1-c86142ec1544</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -1909,7 +1909,7 @@
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">5</size>
+												<size type="a">6</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
 													<_Value type="a">Measured By,Needs,Comment,ControlledFile,Tag,Dependency,Hyperlink</_Value>
@@ -1929,8 +1929,14 @@
 												</IProperty>
 												
 												<IProperty type="e">
+													<_Name type="a">HideTabsInFeaturesDialog</_Name>
+													<_Value type="a">Attributes,Flow Ports,Operations,Ports</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
 													<_Name type="a">Name</_Name>
-													<_Value type="a">Tier 1 Goal - Company</_Value>
+													<_Value type="a">Tier 1 Goal</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -1953,8 +1959,8 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Tier1Goal</_name>
-			<_modifiedTimeWeak type="a">7.19.2022::12:43:14</_modifiedTimeWeak>
-			<_modifiedTime type="a">7.19.2022::12:43:14</_modifiedTime>
+			<_modifiedTimeWeak type="a">8.9.2022::15:35:3</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.9.2022::15:35:3</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -1979,7 +1985,7 @@
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">5</size>
+												<size type="a">6</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
 													<_Value type="a">Measured By,Needs,Comment,ControlledFile,Tag,Dependency,Hyperlink</_Value>
@@ -1999,8 +2005,14 @@
 												</IProperty>
 												
 												<IProperty type="e">
+													<_Name type="a">HideTabsInFeaturesDialog</_Name>
+													<_Value type="a">Attributes,Operations,Flow Ports,Ports</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
 													<_Name type="a">Name</_Name>
-													<_Value type="a">Tier 2 Goal - Division and Product Line</_Value>
+													<_Value type="a">Tier 2 Goal</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -2023,8 +2035,8 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Tier2Goal</_name>
-			<_modifiedTimeWeak type="a">7.18.2022::9:3:27</_modifiedTimeWeak>
-			<_modifiedTime type="a">7.18.2022::9:3:27</_modifiedTime>
+			<_modifiedTimeWeak type="a">8.9.2022::15:35:21</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.9.2022::15:35:21</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -2073,7 +2085,7 @@
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">5</size>
+												<size type="a">6</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
 													<_Value type="a">Measured By,Needs,Comment,ControlledFile,Tag,Dependency,Hyperlink</_Value>
@@ -2093,8 +2105,14 @@
 												</IProperty>
 												
 												<IProperty type="e">
+													<_Name type="a">HideTabsInFeaturesDialog</_Name>
+													<_Value type="a">Attributes,Operations,Flow Ports,Ports</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
 													<_Name type="a">Name</_Name>
-													<_Value type="a">Tier 3 Goal - Instrument Design</_Value>
+													<_Value type="a">Tier 3 Goal</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -2117,8 +2135,8 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Tier3Goal</_name>
-			<_modifiedTimeWeak type="a">7.19.2022::12:43:31</_modifiedTimeWeak>
-			<_modifiedTime type="a">7.19.2022::12:43:31</_modifiedTime>
+			<_modifiedTimeWeak type="a">8.9.2022::15:35:23</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.9.2022::15:35:23</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -2258,10 +2276,10 @@
 			<_id type="a">GUID 621c8c7b-b2b6-4dfa-a81c-5e1043ae48a8</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Packages</_name>
-			<_modifiedTimeWeak type="a">7.18.2022::16:51:16</_modifiedTimeWeak>
-			<_modifiedTime type="a">7.18.2022::16:51:16</_modifiedTime>
+			<_modifiedTimeWeak type="a">8.9.2022::8:2:30</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.9.2022::8:2:30</_modifiedTime>
 			<_lastID type="a">2</_lastID>
-			<weakCGTime type="a">7.18.2022::16:51:16</weakCGTime>
+			<weakCGTime type="a">8.9.2022::8:2:30</weakCGTime>
 			<strongCGTime type="a">7.17.2022::13:41:50</strongCGTime>
 			<_defaultComposite type="s">GUID b4c5961a-68c0-4098-9a97-708329ac354f</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -2290,7 +2308,7 @@
 												<size type="a">4</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Business Value Diagram,Tier 1 Goal - Company,Tier 2 Goal - Division and Product Line,Tier 3 Goal - Instrument Design,MatrixLayout,MatrixView,TableLayout,TableView,Comment,ControlledFile,Query,Stereotype,Tag,Dependency,Hyperlink</_Value>
+													<_Value type="a">Business Value Diagram,Tier 1 Goal,Tier 2 Goal,Tier 3 Goal,MatrixLayout,MatrixView,TableLayout,TableView,Comment,ControlledFile,Query,Stereotype,Tag,Dependency,Hyperlink</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -2325,8 +2343,8 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">BusinessValuePackage</_name>
-			<_modifiedTimeWeak type="a">7.18.2022::16:51:16</_modifiedTimeWeak>
-			<_modifiedTime type="a">7.18.2022::16:51:16</_modifiedTime>
+			<_modifiedTimeWeak type="a">8.9.2022::8:2:30</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.9.2022::8:2:30</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -2593,7 +2611,7 @@
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">AdditionalCompartments</_Name>
-													<_Value type="a">AllocatedFrom, AllocatedTo,Needs,Measured By</_Value>
+													<_Value type="a">AllocatedFrom, AllocatedTo,Needs,MeasuredBy</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -2608,7 +2626,7 @@
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">AddNewMenuStructure</_Name>
-													<_Value type="a">Business Value Diagram,Business Value Package,Measured By,Needs,Tier 1 Goal - Company,Tier 2 Goal - Division and Product Line,Tier 3 Goal - Instrument Design,UML Diagram/MatrixLayout,UML Diagram/MatrixView,UML Diagram/TableLayout,UML Diagram/TableView,UML Element/Comment,UML Extension/ControlledFile,UML Extension/Query,UML Extension/Stereotype,UML Extension/Tag,UML Relation/Dependency,UML Relation/Hyperlink</_Value>
+													<_Value type="a">Business Value Diagram,Business Value Package,Measured By,Needs,Tier 1 Goal,Tier 2 Goal,Tier 3 Goal,UML Diagram/MatrixLayout,UML Diagram/MatrixView,UML Diagram/TableLayout,UML Diagram/TableView,UML Element/Comment,UML Extension/ControlledFile,UML Extension/Query,UML Extension/Stereotype,UML Extension/Tag,UML Relation/Dependency,UML Relation/Hyperlink</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -2649,8 +2667,8 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">BusinessValue</_name>
-			<_modifiedTimeWeak type="a">7.18.2022::16:51:14</_modifiedTimeWeak>
-			<_modifiedTime type="a">7.18.2022::16:51:14</_modifiedTime>
+			<_modifiedTimeWeak type="a">8.9.2022::15:49:13</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.9.2022::15:49:13</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -2663,8 +2681,8 @@
 			<_id type="a">GUID e4da8e4e-6b00-474a-ac4d-576677eecf5e</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileInfo</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::14:41:23</_modifiedTimeWeak>
-			<_modifiedTime type="a">7.17.2022::14:41:23</_modifiedTime>
+			<_modifiedTimeWeak type="a">8.9.2022::8:4:44</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.9.2022::8:4:44</_modifiedTime>
 			<_lastID type="a">3</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -2682,8 +2700,8 @@
 			<_id type="a">GUID eb4a186b-8210-4906-97c9-a3ec82660fc0</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileDate</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::14:41:14</_modifiedTimeWeak>
-			<_modifiedTime type="a">7.17.2022::14:41:14</_modifiedTime>
+			<_modifiedTimeWeak type="a">8.9.2022::8:4:44</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.9.2022::8:4:44</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IType</_hm2Class>
@@ -2694,21 +2712,21 @@
 			</_typeOf>
 			<_isOrdered type="a">0</_isOrdered>
 			<AggregatesList type="e">
-				<value>GUID 8dbb8d29-f370-4890-98aa-01e7fef4c18c</value>
+				<value>GUID 8ec81d35-4e56-4f20-812d-5e707fde114a</value>
 			</AggregatesList>
 		</ITag>
 		<ILiteralSpecification type="e">
-			<_id type="a">GUID 8dbb8d29-f370-4890-98aa-01e7fef4c18c</_id>
-			<_modifiedTimeWeak type="a">7.17.2022::14:41:14</_modifiedTimeWeak>
-			<_modifiedTime type="a">7.17.2022::14:41:14</_modifiedTime>
-			<_value type="a">2022/07/17 15:40:00</_value>
+			<_id type="a">GUID 8ec81d35-4e56-4f20-812d-5e707fde114a</_id>
+			<_modifiedTimeWeak type="a">8.9.2022::8:4:44</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.9.2022::8:4:44</_modifiedTime>
+			<_value type="a">2022/08/09 09:04:00</_value>
 		</ILiteralSpecification>
 		<ITag type="e">
 			<_id type="a">GUID 4f06104f-b6a9-40e5-9791-9f0e682043b4</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileVersion</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::14:41:23</_modifiedTimeWeak>
-			<_modifiedTime type="a">7.17.2022::14:41:23</_modifiedTime>
+			<_modifiedTimeWeak type="a">8.9.2022::8:4:31</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.9.2022::8:4:31</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IType</_hm2Class>
@@ -2719,14 +2737,14 @@
 			</_typeOf>
 			<_isOrdered type="a">0</_isOrdered>
 			<AggregatesList type="e">
-				<value>GUID 60ac6358-2388-4944-a447-b9cded5d1ae0</value>
+				<value>GUID 05bb6f9e-ec82-4b19-820a-92c2906edee7</value>
 			</AggregatesList>
 		</ITag>
 		<ILiteralSpecification type="e">
-			<_id type="a">GUID 60ac6358-2388-4944-a447-b9cded5d1ae0</_id>
-			<_modifiedTimeWeak type="a">7.17.2022::14:41:23</_modifiedTimeWeak>
-			<_modifiedTime type="a">7.17.2022::14:41:23</_modifiedTime>
-			<_value type="a">V4.1.a.Rhp831.PreRelease</_value>
+			<_id type="a">GUID 05bb6f9e-ec82-4b19-820a-92c2906edee7</_id>
+			<_modifiedTimeWeak type="a">8.9.2022::8:4:31</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.9.2022::8:4:31</_modifiedTime>
+			<_value type="a">V4.1.b.Rhp831.PreRelease</_value>
 		</ILiteralSpecification>
 		<ITag type="e">
 			<_id type="a">GUID 8817bbe5-68db-4077-aa95-eb70f05f1c02</_id>

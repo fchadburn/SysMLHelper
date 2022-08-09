@@ -1,6 +1,6 @@
 Subject BusinessValueProfile
         Metaclass General
-		Property PluginVersion String "V4.1.a.Rhp831.PreRelease"
+		Property PluginVersion String "V4.1.b.Rhp831.PreRelease"
 		Property EnableInfoLogging Bool "True"
 		Property EnableWarningLogging Bool "True"
 		Property EnableErrorLogging Bool "True"
@@ -93,16 +93,16 @@ Subject Model
 	Metaclass Project
 		Property BrowseHierarchy String "BrowseRelationsDown,BrowseRelationsUp"
 		Property BrowseRelationsDownName String "Browse Child Needs"
-		Property BrowseRelationsDownPattern String "Package+,Tier 1 Goal - Company,Needs:*"
+		Property BrowseRelationsDownPattern String "Package+,Tier 1 Goal,Needs:*"
 		Property BrowseRelationsUpName String "Browse Parental Needs"
-		Property BrowseRelationsUpPattern String "Package+,Tier 3 Goal - Instrument Design,pluginMethod:getParentalNeeds"
+		Property BrowseRelationsUpPattern String "Package+,Tier 3 Goal,pluginMethod:getParentalNeeds"
 	end
 	Metaclass Package
 		Property BrowseHierarchy String "BrowseRelationsDown,BrowseRelationsUp"
 		Property BrowseRelationsDownName String "Browse Child Needs"
-		Property BrowseRelationsDownPattern String "Package*,Tier 1 Goal - Company,Needs:*"
+		Property BrowseRelationsDownPattern String "Package*,Tier 1 Goal,Needs:*"
 		Property BrowseRelationsUpName String "Browse Parental Needs"
-		Property BrowseRelationsUpPattern String "Package*,Tier 3 Goal - Instrument Design,pluginMethod:getParentalNeeds"
+		Property BrowseRelationsUpPattern String "Package*,Tier 3 Goal,pluginMethod:getParentalNeeds"
 	end
 	Metaclass Tier1Goal
 		Property BrowseHierarchy String "BrowseRelationsDown,BrowseRelationsUp"
