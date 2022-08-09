@@ -91,29 +91,39 @@ Subject ConfigurationManagement
 end
 Subject Model
 	Metaclass Project
-		Property BrowseHierarchy String "BrowseRelations"
-		Property BrowseRelationsName String "Browse Relations"
-		Property BrowseRelationsPattern String "Package+,Tier 1 Goal - Company,Needs:*"
+		Property BrowseHierarchy String "BrowseRelationsDown,BrowseRelationsUp"
+		Property BrowseRelationsDownName String "Browse Child Needs"
+		Property BrowseRelationsDownPattern String "Package+,Tier 1 Goal - Company,Needs:*"
+		Property BrowseRelationsUpName String "Browse Parental Needs"
+		Property BrowseRelationsUpPattern String "Package+,Tier 3 Goal - Instrument Design,pluginMethod:getParentalNeeds"
 	end
 	Metaclass Package
-		Property BrowseHierarchy String "BrowseRelations"
-		Property BrowseRelationsName String "Browse Relations"
-		Property BrowseRelationsPattern String "Package*,Tier 1 Goal - Company,Needs:*"
+		Property BrowseHierarchy String "BrowseRelationsDown,BrowseRelationsUp"
+		Property BrowseRelationsDownName String "Browse Child Needs"
+		Property BrowseRelationsDownPattern String "Package*,Tier 1 Goal - Company,Needs:*"
+		Property BrowseRelationsUpName String "Browse Parental Needs"
+		Property BrowseRelationsUpPattern String "Package*,Tier 3 Goal - Instrument Design,pluginMethod:getParentalNeeds"
 	end
 	Metaclass Tier1Goal
-		Property BrowseHierarchy String "BrowseRelations"
-		Property BrowseRelationsName String "Browse Relations"
-		Property BrowseRelationsPattern String "Needs:*"
+		Property BrowseHierarchy String "BrowseRelationsDown,BrowseRelationsUp"
+		Property BrowseRelationsDownName String "Browse Child Needs"
+		Property BrowseRelationsDownPattern String "Needs:*"
+		Property BrowseRelationsUpName String "Browse Parental Needs"
+		Property BrowseRelationsUpPattern String "pluginMethod:getParentalNeeds*"
 	end
 	Metaclass Tier2Goal
-		Property BrowseHierarchy String "BrowseRelations"
-		Property BrowseRelationsName String "Browse Relations"
-		Property BrowseRelationsPattern String "Needs:*"
+		Property BrowseHierarchy String "BrowseRelationsDown,BrowseRelationsUp"
+		Property BrowseRelationsDownName String "Browse Child Needs"
+		Property BrowseRelationsDownPattern String "Needs:*"
+		Property BrowseRelationsUpName String "Browse Parental Needs"
+		Property BrowseRelationsUpPattern String "pluginMethod:getParentalNeeds*"
 	end
 	Metaclass Tier3Goal
-		Property BrowseHierarchy String "BrowseRelations"
-		Property BrowseRelationsName String "Browse Relations"
-		Property BrowseRelationsPattern String "Needs:*"
+		Property BrowseHierarchy String "BrowseRelationsDown,BrowseRelationsUp"
+		Property BrowseRelationsDownName String "Browse Child Needs"
+		Property BrowseRelationsDownPattern String "Needs:*"
+		Property BrowseRelationsUpName String "Browse Parental Needs"
+		Property BrowseRelationsUpPattern String "pluginMethod:getParentalNeeds*"
 	end
 end
 end

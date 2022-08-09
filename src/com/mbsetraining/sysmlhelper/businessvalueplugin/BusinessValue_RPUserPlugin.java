@@ -1,5 +1,6 @@
 package com.mbsetraining.sysmlhelper.businessvalueplugin;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -256,6 +257,34 @@ public class BusinessValue_RPUserPlugin extends RPUserPlugin {
 			}
 		}
 		return isContinue;
+	}
+	
+	// This static method is used in context pattern in profile
+	@SuppressWarnings("unused")
+	private static void getParentalNeeds(
+			IRPModelElement forEl, IRPCollection theResults ){
+
+		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
+				
+		if( forEl instanceof IRPClass ){
+			
+			@SuppressWarnings("unchecked")
+			List<IRPModelElement> theReferences = forEl.getReferences().toList();
+
+			for (IRPModelElement theReference : theReferences) {
+
+				if( theReference instanceof IRPDependency ){
+					IRPDependency theDependency = (IRPDependency)theReference;
+					
+					IRPModelElement theDependent= theDependency.getDependent();
+
+					if( theDependent instanceof IRPClass &
+							theDependent != forEl ){
+						theResults.addItem( theDependent );
+					}
+				}
+			}
+		}
 	}
 }
 
