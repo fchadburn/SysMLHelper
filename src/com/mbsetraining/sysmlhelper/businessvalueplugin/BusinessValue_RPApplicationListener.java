@@ -24,6 +24,7 @@ import com.telelogic.rhapsody.core.*;
 
 public class BusinessValue_RPApplicationListener extends RPApplicationListener {
 
+	public static final String METACLASS_FOR_MEASURED_BY = "Measured By";
 	private BusinessValue_Context _context;
 
 	public BusinessValue_RPApplicationListener( 
@@ -41,7 +42,11 @@ public class BusinessValue_RPApplicationListener extends RPApplicationListener {
 		boolean doDefault = false;
 
 		try {
-			//String theUserDefinedMetaClass = modelElement.getUserDefinedMetaClass();
+			String theUserDefinedMetaClass = modelElement.getUserDefinedMetaClass();
+			
+			if( theUserDefinedMetaClass.equals( METACLASS_FOR_MEASURED_BY ) ){
+				afterAddElementForMeasureBy( (IRPAttribute) modelElement );
+			}
 
 		} catch( Exception e ){
 			_context.error( "BusinessValue_RPApplicationListener.afterAddElement, " +
@@ -52,6 +57,17 @@ public class BusinessValue_RPApplicationListener extends RPApplicationListener {
 		return doDefault;
 	}
 
+	public void afterAddElementForMeasureBy(
+			IRPAttribute theAttribute ){
+	
+		IRPClassifier theClassifier = _context.getMeasuredByDefaultClass();
+		
+		if( theClassifier != null ){
+			
+			theAttribute.setType( theClassifier );
+		}
+	}
+	
 	private IRPDiagram getDiagramFor(
 			IRPModelElement forEl ){
 

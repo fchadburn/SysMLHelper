@@ -13,7 +13,31 @@
 			<_properties type="p"><IPropertyContainer type="e">
 				<Subjects type="c">
 					<IRPYRawContainer type="e">
-						<size type="a">3</size>
+						<size type="a">5</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Activity</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">General</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">AutoSelectControlOrObjectFlow</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
 						<IPropertySubject type="e">
 							<_Name type="a">Browser</_Name>
 							<Metaclasses type="c">
@@ -42,7 +66,7 @@
 							<_Name type="a">CG</_Name>
 							<Metaclasses type="c">
 								<IRPYRawContainer type="e">
-									<size type="a">1</size>
+									<size type="a">2</size>
 									<IPropertyMetaclass type="e">
 										<_Name type="a">Configuration</_Name>
 										<Properties type="c">
@@ -59,6 +83,67 @@
 										</Properties>
 									</IPropertyMetaclass>
 									
+									<IPropertyMetaclass type="e">
+										<_Name type="a">General</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">IncrementalCodeGenAcrossSession</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+						<IPropertySubject type="e">
+							<_Name type="a">ConfigurationManagement</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">RationalTeamConcert</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">4</size>
+												<IProperty type="e">
+													<_Name type="a">DeleteActivation</_Name>
+													<_Value type="a">Automatic</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">Disable,UserConfirmation,Automatic</_ExtraTypeInfo>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">MoveActivation</_Name>
+													<_Value type="a">Automatic</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">Disable,UserConfirmation,Automatic</_ExtraTypeInfo>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">RenameActivation</_Name>
+													<_Value type="a">Automatic</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">Disable,UserConfirmation,Automatic</_ExtraTypeInfo>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">StoreInSeparateDirectoryActivation</_Name>
+													<_Value type="a">Automatic</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">Disable,UserConfirmation,Automatic</_ExtraTypeInfo>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
 								</IRPYRawContainer>
 							</Metaclasses>
 						</IPropertySubject>
@@ -67,15 +152,123 @@
 							<_Name type="a">General</_Name>
 							<Metaclasses type="c">
 								<IRPYRawContainer type="e">
-									<size type="a">1</size>
+									<size type="a">2</size>
 									<IPropertyMetaclass type="e">
-										<_Name type="a">Model</_Name>
+										<_Name type="a">Graphics</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
 												<size type="a">1</size>
 												<IProperty type="e">
+													<_Name type="a">SmartRouting</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Model</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">16</size>
+												<IProperty type="e">
+													<_Name type="a">AutoSaveInterval</_Name>
+													<_Value type="a">5</_Value>
+													<_Type type="a">Int</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">BackUps</_Name>
+													<_Value type="a">None</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">None,One,Two</_ExtraTypeInfo>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">BlockIsSavedUnit</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ClassIsSavedUnit</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ComponentIsSavedUnit</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">DiagramIsSavedUnit</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">FileIsSavedUnit</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">HighlightElementsInActiveComponentScope</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">NamesRegExp</_Name>
+													<_Value type="a">^(.*)$</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ObjectIsSavedUnit</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">PackageIsSavedUnit</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ReferenceUnitPath</_Name>
+													<_Value type="a">Relative</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">Absolute, Relative</_ExtraTypeInfo>
+												</IProperty>
+												
+												<IProperty type="e">
 													<_Name type="a">RenameUnusedFiles</_Name>
 													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ShowHoveringToolbar</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ShowModelTooltipInGE</_Name>
+													<_Value type="a">Simple</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">Enhanced,Simple</_ExtraTypeInfo>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">SupportIncrementalModelSynchronization</_Name>
+													<_Value type="a">False</_Value>
 													<_Type type="a">Bool</_Type>
 												</IProperty>
 												
@@ -92,8 +285,20 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">BusinessValue</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::19:35:37</_modifiedTimeWeak>
-			<_modifiedTime type="a">7.17.2022::19:35:37</_modifiedTime>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hsubsystem type="a">BusinessValueProfile</_hsubsystem>
+							<_hname type="a">BusinessValue</_hname>
+							<_hid type="a">GUID d14744a8-7334-494b-8a7e-c4e140adac04</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">8.10.2022::15:24:39</_modifiedTime>
 			<_lastID type="a">10002</_lastID>
 			<_UserColors type="w">
 				<IRPYRawContainer type="e">
@@ -171,6 +376,9 @@
 				</IRPYRawContainer>
 			</mapAssociationsToRemove>
 			<AggregatesList type="e">
+				<value>GUID dfdf4e87-1936-4218-98ce-05b9e26e737b</value>
+				<value>GUID 8d271a5a-6d75-4a1f-a987-cd7fefd34d60</value>
+				<value>GUID a014886d-377d-4a45-ae0f-fb8f836b5280</value>
 				<value>GUID 9e2f2167-cd82-4f7c-a35b-3f32049a0cdd</value>
 				<value>GUID d2ddb420-4d4b-4832-bf58-e291ae395548</value>
 				<value>GUID 66ce32f5-6908-43e4-bcd2-5191392e805b</value>
@@ -180,6 +388,102 @@
 				<value>GUID ea8e0052-0ea7-4d8d-8ff4-ae3e5728efa5</value>
 			</AggregatesList>
 		</IProject>
+		<ITag type="e">
+			<_id type="a">GUID dfdf4e87-1936-4218-98ce-05b9e26e737b</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">ProfileDate</_name>
+			<_modifiedTime type="a">8.10.2022::15:24:39</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">RhpString</_hname>
+					<_hid type="a">GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hsubsystem type="a">BusinessValueProfile</_hsubsystem>
+					<_hclass type="a">ProfileInfo</_hclass>
+					<_hname type="a">ProfileDate</_hname>
+					<_hid type="a">GUID eb4a186b-8210-4906-97c9-a3ec82660fc0</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 81d418ee-08ea-4d15-a719-1061d6d71fb4</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 81d418ee-08ea-4d15-a719-1061d6d71fb4</_id>
+			<_modifiedTime type="a">8.10.2022::15:24:39</_modifiedTime>
+			<_value type="a">2022/08/09 09:04:00</_value>
+		</ILiteralSpecification>
+		<ITag type="e">
+			<_id type="a">GUID 8d271a5a-6d75-4a1f-a987-cd7fefd34d60</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">ProfileVersion</_name>
+			<_modifiedTime type="a">8.10.2022::15:24:39</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">RhpString</_hname>
+					<_hid type="a">GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hsubsystem type="a">BusinessValueProfile</_hsubsystem>
+					<_hclass type="a">ProfileInfo</_hclass>
+					<_hname type="a">ProfileVersion</_hname>
+					<_hid type="a">GUID 4f06104f-b6a9-40e5-9791-9f0e682043b4</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 29e242bf-83f2-4a3a-8696-d82d67859a67</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 29e242bf-83f2-4a3a-8696-d82d67859a67</_id>
+			<_modifiedTime type="a">8.10.2022::15:24:39</_modifiedTime>
+			<_value type="a">V4.1.b.Rhp831.PreRelease</_value>
+		</ILiteralSpecification>
+		<ITag type="e">
+			<_id type="a">GUID a014886d-377d-4a45-ae0f-fb8f836b5280</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">ProfileProperties</_name>
+			<_modifiedTime type="a">8.10.2022::15:24:39</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">RhpString</_hname>
+					<_hid type="a">GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hsubsystem type="a">BusinessValueProfile</_hsubsystem>
+					<_hclass type="a">ProfileInfo</_hclass>
+					<_hname type="a">ProfileProperties</_hname>
+					<_hid type="a">GUID 8817bbe5-68db-4077-aa95-eb70f05f1c02</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 84dc090f-4221-4a86-8c34-cc61f26a7bdc</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 84dc090f-4221-4a86-8c34-cc61f26a7bdc</_id>
+			<_modifiedTime type="a">8.10.2022::15:24:39</_modifiedTime>
+			<_value type="a">setPropertyForBusinessValueModel</_value>
+		</ILiteralSpecification>
 		<ISubsystem type="e">
 			<fileName type="a">IconsPkg</fileName>
 			<_persistAs type="a">IconsPkg</_persistAs>
@@ -211,7 +515,6 @@
 			<_id type="a">GUID ea8e0052-0ea7-4d8d-8ff4-ae3e5728efa5</_id>
 			<_myState type="a">139264</_myState>
 			<_name type="a">NotUsedComponent</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::13:0:43</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.17.2022::13:0:43</_modifiedTime>
 			<m_buildType type="a">Executable</m_buildType>
 			<m_configActive type="r">
@@ -294,8 +597,6 @@
 					<size type="a">0</size>
 				</IRPYRawContainer>
 			</SelectedVariants>
-			<weakCGTime type="a">7.17.2022::13:0:43</weakCGTime>
-			<strongCGTime type="a">7.17.2022::13:0:28</strongCGTime>
 			<AggregatesList type="e">
 				<value>GUID 799a4d19-74ea-4d25-8334-3303cfdf7533</value>
 				<value>GUID 3290e38a-0c4b-4102-ba32-7a5d1ba84a0d</value>
@@ -305,7 +606,6 @@
 			<_id type="a">GUID 799a4d19-74ea-4d25-8334-3303cfdf7533</_id>
 			<_myState type="a">73728</_myState>
 			<_name type="a">Files</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::12:31:32</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.17.2022::12:31:32</_modifiedTime>
 			<Elements type="c">
 				<IRPYRawContainer type="e">
@@ -322,7 +622,6 @@
 			<_id type="a">GUID 3290e38a-0c4b-4102-ba32-7a5d1ba84a0d</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">NotUsedConfig</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::13:0:43</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.17.2022::13:0:43</_modifiedTime>
 			<_scopeType type="a">Explicit</_scopeType>
 			<_instrumentation type="a">Animation</_instrumentation>
@@ -340,8 +639,6 @@
 					<size type="a">0</size>
 				</IRPYRawContainer>
 			</InitialInstances>
-			<weakCGTime type="a">7.17.2022::13:0:43</weakCGTime>
-			<strongCGTime type="a">7.17.2022::13:0:43</strongCGTime>
 			<AnimScopeElements type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">0</size>
@@ -357,7 +654,6 @@
 		</ICodeGenConfigInfo>
 		<IMHyperLink type="e">
 			<_id type="a">GUID d25ce48e-a81f-4fa6-aad4-2cc10bfb8e1c</_id>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.17.2022::13:0:37</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -370,7 +666,6 @@
 		</IMHyperLink>
 		<IMHyperLink type="e">
 			<_id type="a">GUID d6b89a3f-132d-43cf-874b-72367d62c74a</_id>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.17.2022::13:0:37</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -385,7 +680,6 @@
 			<_id type="a">GUID 1d46172d-f8d2-4a93-9c12-b5b5fef69ca2</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">NotUsedConfig</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::13:0:43</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.17.2022::13:0:43</_modifiedTime>
 			<Elements type="c">
 				<IRPYRawContainer type="e">

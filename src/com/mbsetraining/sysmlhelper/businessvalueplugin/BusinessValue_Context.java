@@ -1,11 +1,15 @@
 package com.mbsetraining.sysmlhelper.businessvalueplugin;
 
 import com.mbsetraining.sysmlhelper.common.BaseContext;
+import com.telelogic.rhapsody.core.IRPClass;
+import com.telelogic.rhapsody.core.IRPModelElement;
 import com.telelogic.rhapsody.core.IRPPackage;
 
 public class BusinessValue_Context extends BaseContext {
 
+	private static final String DEFAULT_CLASS_FULL_NAME = "- in BusinessValueProfile::_Templates";
 	protected Boolean _isShowProfileVersionCheckDialogs;
+	protected IRPClass _measuredByDefaultType;
 
 	public final String BUSINESS_VALUE_NEW_TERM = "BusinessValue";
 	
@@ -38,6 +42,23 @@ public class BusinessValue_Context extends BaseContext {
 		}
 		
 		return _isShowProfileVersionCheckDialogs;
+	}
+	
+	public IRPClass getMeasuredByDefaultClass(){
+		
+		if( _measuredByDefaultType == null ){
+			
+			IRPModelElement theClassEl = _rhpPrj.
+					findElementsByFullName( DEFAULT_CLASS_FULL_NAME, "Class" );
+			
+			if( theClassEl instanceof IRPClass ){
+				_measuredByDefaultType = (IRPClass) theClassEl;
+			} else {
+				warning( "getMeasuredByDefaultClass was unable to find " + DEFAULT_CLASS_FULL_NAME );
+			}
+		}
+		
+		return _measuredByDefaultType;
 	}
 }
 

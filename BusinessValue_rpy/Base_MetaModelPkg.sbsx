@@ -25,10 +25,10 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">8.9.2022::15:18:16</_modifiedTimeWeak>
-			<_modifiedTime type="a">8.9.2022::15:18:16</_modifiedTime>
-			<_lastID type="a">7</_lastID>
-			<weakCGTime type="a">8.9.2022::15:18:16</weakCGTime>
+			<_modifiedTimeWeak type="a">8.10.2022::11:41:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.10.2022::11:41:36</_modifiedTime>
+			<_lastID type="a">9</_lastID>
+			<weakCGTime type="a">8.10.2022::11:41:36</weakCGTime>
 			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
 			<_defaultComposite type="s">GUID 3e326672-39e1-4622-ba2e-fb6b5f7591a8</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -102,6 +102,8 @@
 				<value>GUID 9c56ad31-b1f2-455e-a200-6411f7562943</value>
 				<value>GUID 2678ae98-aa6b-4b0c-9508-9e475ebec9aa</value>
 				<value>GUID c9936ba0-7bf7-4442-a575-ffd043951e38</value>
+				<value>GUID 41c54921-01fc-4414-a0c1-474d01c94523</value>
+				<value>GUID 0650d650-3bdd-49c3-8e1f-6dbde5ea39b3</value>
 			</AggregatesList>
 		</ISubsystem>
 		<IClass type="e">
@@ -3129,6 +3131,82 @@
 			<_modifiedTime type="a">8.24.2020::9:48:50</_modifiedTime>
 			<weakCGTime type="a">7.17.2022::12:34:36</weakCGTime>
 			<strongCGTime type="a">7.17.2022::12:34:36</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 41c54921-01fc-4414-a0c1-474d01c94523</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Attribute</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">8.10.2022::11:42:15</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\BusinessValue_MetaModelPkg.sbsx</_hfilename>
+					<_hsubsystem type="a">BusinessValue_MetaModelPkg</_hsubsystem>
+					<_hclass type="a">BusinessValuePackage</_hclass>
+					<_hname type="a">mmd - BusinessValuePackage</_hname>
+					<_hid type="a">GUID 048d177e-b4e0-4d40-a9d0-6889d0c9b336</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">8.10.2022::11:42:15</_modifiedTime>
+			<weakCGTime type="a">8.10.2022::11:42:15</weakCGTime>
+			<strongCGTime type="a">8.10.2022::11:37:0</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 0650d650-3bdd-49c3-8e1f-6dbde5ea39b3</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Variable</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile</_hsubsystem>
+							<_hname type="a">UML Element</_hname>
+							<_hid type="a">GUID c546edaf-0940-491b-9aec-a3d87afcaf95</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">8.10.2022::11:42:3</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\BusinessValue_MetaModelPkg.sbsx</_hfilename>
+					<_hsubsystem type="a">BusinessValue_MetaModelPkg</_hsubsystem>
+					<_hclass type="a">BusinessValuePackage</_hclass>
+					<_hname type="a">mmd - BusinessValuePackage</_hname>
+					<_hid type="a">GUID 048d177e-b4e0-4d40-a9d0-6889d0c9b336</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">8.10.2022::11:42:3</_modifiedTime>
+			<weakCGTime type="a">8.10.2022::11:42:3</weakCGTime>
+			<strongCGTime type="a">8.10.2022::11:41:57</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>

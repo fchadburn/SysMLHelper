@@ -754,6 +754,8 @@ V4.1.b.Rhp831.PreRelease (XX-XXX-XXXX):
 #555 08-AUG-2022: BusinessValue: Added callback to extend browse hierarchy menus to have both child and parental needs options (F.J.Chadburn)
 #556 09-AUG-2022: BusinessValue: Refinement of Goal icons to align category icons and improve accessibility for color blindness (F.J.Chadburn)
 #557 09-AUG-2022: BusinessValue: Simplified features dialog for goals to remove redundant class tabs (F.J.Chadburn)
+#558 10-AUG-2022: BusinessValue: Added spreadsheetimporter package although not committed poi bits to git, just use in Eclipse (F.J.Chadburn)
+#559 10-AUG-2022: BusinessValue: Switched MeasuredBy metaclass from Object to Attribute to make easier to add/see in tabs and compartments (F.J.Chadburn)
 
 Backlog/Known issues
 - Review whether to put diagrams on right-click menu above the executable mbse one to make clearer/easier 
