@@ -742,7 +742,7 @@ V4.1.a.Rhp831.PreRelease (27-JUL-2022):
 #545 27-JUL-2022: ExecutableMBSE: Revert menus to standard rather than new term timing diagrams whilst toolbar issue for condition mark is resolved (F.J.Chadburn)
 #546 27-JUL-2022: ExecutableMBSE: Allow timing diagram on system architecture/subsystem packages in addition to feature function package (F.J.Chadburn)
 
-V4.1.b.Rhp831.PreRelease (XX-XXX-XXXX):
+V4.1.b.Rhp831.PreRelease (16-AUG-2022):
 #547 28-JUL-2022: ExecutableMBSE: Fixed unexpected pop up asking to select the context setting when adding if more than one target package exists (F.J.Chadburn)
 #548 28-JUL-2022: BusinessValue: Add the Convert to note menu command to assist manual fixing of Visio imported elements that are not classes post import (F.J.Chadburn)
 #549 01-AUG-2022: ExecutableMBSE: Fix hep so that Center straight lines on diagram(s) works for Requirements Diagram - System as well (F.J.Chadburn)
