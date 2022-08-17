@@ -1,8 +1,5 @@
 package com.mbsetraining.sysmlhelper.businessvalueplugin;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -314,7 +311,7 @@ public class BusinessValue_RPUserPlugin extends RPUserPlugin {
 			
 			Set<IRPModelElement> theParents = new LinkedHashSet<IRPModelElement>();
 			
-			appendParents( (IRPClass) forEl, BusinessValue_Context.TIER1_GOAL_USER_DEFINIED_TYPE, theParents );			
+			appendParents( (IRPClass) forEl, BusinessValue_Context.METACLASS_FOR_TIER_1_GOAL, theParents );			
 		}
 	}
 	
@@ -327,7 +324,7 @@ public class BusinessValue_RPUserPlugin extends RPUserPlugin {
 			
 			Set<IRPModelElement> theParents = new LinkedHashSet<IRPModelElement>();
 			
-			appendParents( (IRPClass) forEl, BusinessValue_Context.TIER2_GOAL_USER_DEFINIED_TYPE, theParents );			
+			appendParents( (IRPClass) forEl, BusinessValue_Context.METACLASS_FOR_TIER_2_GOAL, theParents );			
 		}
 	}
 	
@@ -340,7 +337,7 @@ public class BusinessValue_RPUserPlugin extends RPUserPlugin {
 			
 			Set<IRPModelElement> theParents = new LinkedHashSet<IRPModelElement>();
 			
-			appendParents( (IRPClass) forEl, BusinessValue_Context.TIER3_GOAL_USER_DEFINIED_TYPE, theParents );
+			appendParents( (IRPClass) forEl, BusinessValue_Context.METACLASS_FOR_TIER_3_GOAL, theParents );
 			
 			for (IRPModelElement theParent : theParents) {
 				theResults.addItem( theParent );

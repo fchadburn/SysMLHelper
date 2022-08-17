@@ -750,7 +750,7 @@ V4.1.b.Rhp831.PreRelease (16-AUG-2022):
 #551 03-AUG-2022: ExecutableMBSE: Widden requirement mover to auto-apply stereotypes applied to owning package that are also applicable to requirements (F.J.Chadburn)
 #552 04-AUG-2022: ExecutableMBSE: Added supplementary Tier0,1,2,4 and Logical/Physical stereotypes into profile (F.J.Chadburn)
 #553 04-AUG-2022: ExecutableMBSE: Added right-click Switch Stereotypes menu to stereotype to automate migration of stereotype usage from local to referenced profile (F.J.Chadburn)
-#554 08-AUG-2022: BusinessValue: Initial attempt at getting BrowseRelations browse hiearchy menu working on right-click (F.J.Chadburn)
+#554 08-AUG-2022: BusinessValue: Initial attempt at getting BrowseRelations browse hierarchy menu working on right-click (F.J.Chadburn)
 #555 08-AUG-2022: BusinessValue: Added callback to extend browse hierarchy menus to have both child and parental needs options (F.J.Chadburn)
 #556 09-AUG-2022: BusinessValue: Refinement of Goal icons to align category icons and improve accessibility for color blindness (F.J.Chadburn)
 #557 09-AUG-2022: BusinessValue: Simplified features dialog for goals to remove redundant class tabs (F.J.Chadburn)
@@ -759,6 +759,7 @@ V4.1.b.Rhp831.PreRelease (16-AUG-2022):
 
 V4.1.c.Rhp831.PreRelease (XX-XXX-XXXX):
 #560 17-AUG-2022: BusinessValue: Refinement of Excel to get elements at top and left of Visio diagram to come in as notes rather than classes (F.J.Chadburn)
+#561 17-AUG-2022: BusinessValue: Utilize the Hyperlinks, display options and properties to provide icon of goal in top right of graph node (F.J.Chadburn) 
 
 Backlog/Known issues
 - Review whether to put diagrams on right-click menu above the executable mbse one to make clearer/easier 

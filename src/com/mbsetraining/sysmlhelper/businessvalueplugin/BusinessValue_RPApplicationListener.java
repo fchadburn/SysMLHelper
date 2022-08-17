@@ -4,27 +4,15 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
-import com.mbsetraining.sysmlhelper.common.ElementMover;
-import com.mbsetraining.sysmlhelper.common.GraphEdgeInfo;
-import com.mbsetraining.sysmlhelper.common.GraphNodeInfo;
 import com.mbsetraining.sysmlhelper.common.NestedActivityDiagram;
-import com.mbsetraining.sysmlhelper.common.RequirementMover;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
-import com.mbsetraining.sysmlhelper.contextdiagram.CreateEventForFlowPanel;
-import com.mbsetraining.sysmlhelper.graphelementhelpers.GraphNodeResizer;
-import com.mbsetraining.sysmlhelper.portcreator.PortsForLinksCreator;
-import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateOperationPanel;
 import com.telelogic.rhapsody.core.*;
 
 public class BusinessValue_RPApplicationListener extends RPApplicationListener {
-
-	public static final String METACLASS_FOR_MEASURED_BY = "Measured By";
+	
 	private BusinessValue_Context _context;
 
 	public BusinessValue_RPApplicationListener( 
@@ -44,8 +32,14 @@ public class BusinessValue_RPApplicationListener extends RPApplicationListener {
 		try {
 			String theUserDefinedMetaClass = modelElement.getUserDefinedMetaClass();
 			
-			if( theUserDefinedMetaClass.equals( METACLASS_FOR_MEASURED_BY ) ){
+			if( theUserDefinedMetaClass.equals( BusinessValue_Context.METACLASS_FOR_MEASURED_BY ) ){
 				afterAddElementForMeasureBy( (IRPAttribute) modelElement );
+				
+			} else if( theUserDefinedMetaClass.equals( BusinessValue_Context.METACLASS_FOR_TIER_1_GOAL ) ||
+				theUserDefinedMetaClass.equals( BusinessValue_Context.METACLASS_FOR_TIER_2_GOAL ) ||
+				theUserDefinedMetaClass.equals( BusinessValue_Context.METACLASS_FOR_TIER_3_GOAL ) ){
+				
+				afterAddElementForGoals( (IRPClass) modelElement );
 			}
 
 		} catch( Exception e ){
@@ -66,6 +60,12 @@ public class BusinessValue_RPApplicationListener extends RPApplicationListener {
 			
 			theAttribute.setType( theClassifier );
 		}
+	}
+	
+	public void afterAddElementForGoals(
+			IRPClass theGoal ){
+		
+		_context.addHyperLink( theGoal, theGoal );
 	}
 	
 	private IRPDiagram getDiagramFor(

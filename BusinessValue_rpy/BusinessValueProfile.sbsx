@@ -1666,7 +1666,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">BusinessValueProfile</_name>
-			<_modifiedTime type="a">8.10.2022::15:50:19</_modifiedTime>
+			<_modifiedTime type="a">8.17.2022::11:58:38</_modifiedTime>
 			<_lastID type="a">29</_lastID>
 			<_defaultComposite type="s">GUID 377dbcc2-9abb-48b8-bbd5-721dc9c0b50e</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -1688,7 +1688,7 @@
 			<_id type="a">GUID 2122c8f1-fe60-4d4d-8093-257bad45e49a</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Diagrams</_name>
-			<_modifiedTime type="a">8.10.2022::15:50:49</_modifiedTime>
+			<_modifiedTime type="a">8.17.2022::11:45:47</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_defaultComposite type="s">GUID 67e15d31-98ae-4189-adfc-cbdfb51ef0e6</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -1713,7 +1713,13 @@
 										<_Name type="a">Graphics</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">1</size>
+												<size type="a">2</size>
+												<IProperty type="e">
+													<_Name type="a">EnableQuickNavigation</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
 												<IProperty type="e">
 													<_Name type="a">WrapNameCompartmentText</_Name>
 													<_Value type="a">True</_Value>
@@ -1779,7 +1785,7 @@
 										<_Name type="a">Class</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">2</size>
+												<size type="a">3</size>
 												<IProperty type="e">
 													<_Name type="a">ShowAttributes</_Name>
 													<_Value type="a">All</_Value>
@@ -1792,6 +1798,13 @@
 													<_Value type="a">None</_Value>
 													<_Type type="a">Enum</_Type>
 													<_ExtraTypeInfo type="a">All,None,Public,Explicit</_ExtraTypeInfo>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ShowStereotype</_Name>
+													<_Value type="a">None</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">Label,Bitmap,None</_ExtraTypeInfo>
 												</IProperty>
 												
 											</IRPYRawContainer>
@@ -1865,7 +1878,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">BusinessValueDiagram</_name>
-			<_modifiedTime type="a">8.10.2022::15:50:49</_modifiedTime>
+			<_modifiedTime type="a">8.17.2022::11:45:47</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -1889,7 +1902,7 @@
 			<_id type="a">GUID 09dffe12-36f6-473e-bdf6-5cb62c6c3a09</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Elements</_name>
-			<_modifiedTime type="a">8.10.2022::15:43:43</_modifiedTime>
+			<_modifiedTime type="a">8.17.2022::11:59:38</_modifiedTime>
 			<_lastID type="a">9</_lastID>
 			<_defaultComposite type="s">GUID a127d213-1e2c-4469-88b1-c86142ec1544</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -1907,7 +1920,7 @@
 			<_properties type="p"><IPropertyContainer type="e">
 				<Subjects type="c">
 					<IRPYRawContainer type="e">
-						<size type="a">3</size>
+						<size type="a">4</size>
 						<IPropertySubject type="e">
 							<_Name type="a">Format</_Name>
 							<Metaclasses type="c">
@@ -2010,12 +2023,36 @@
 							</Metaclasses>
 						</IPropertySubject>
 						
+						<IPropertySubject type="e">
+							<_Name type="a">ObjectModelGe</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Class</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">QuickNavigationCategories</_Name>
+													<_Value type="a">Hyperlinks</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
 					</IRPYRawContainer>
 				</Subjects>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Tier1Goal</_name>
-			<_modifiedTime type="a">8.10.2022::15:8:50</_modifiedTime>
+			<_modifiedTime type="a">8.17.2022::11:45:17</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -2030,7 +2067,31 @@
 			<_properties type="p"><IPropertyContainer type="e">
 				<Subjects type="c">
 					<IRPYRawContainer type="e">
-						<size type="a">1</size>
+						<size type="a">3</size>
+						<IPropertySubject type="e">
+							<_Name type="a">General</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Graphics</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">WrapNameCompartmentText</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
 						<IPropertySubject type="e">
 							<_Name type="a">Model</_Name>
 							<Metaclasses type="c">
@@ -2085,12 +2146,36 @@
 							</Metaclasses>
 						</IPropertySubject>
 						
+						<IPropertySubject type="e">
+							<_Name type="a">ObjectModelGe</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Class</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">QuickNavigationCategories</_Name>
+													<_Value type="a">Hyperlinks</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
 					</IRPYRawContainer>
 				</Subjects>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Tier2Goal</_name>
-			<_modifiedTime type="a">8.10.2022::14:53:10</_modifiedTime>
+			<_modifiedTime type="a">8.17.2022::11:59:13</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -2105,7 +2190,7 @@
 			<_properties type="p"><IPropertyContainer type="e">
 				<Subjects type="c">
 					<IRPYRawContainer type="e">
-						<size type="a">2</size>
+						<size type="a">4</size>
 						<IPropertySubject type="e">
 							<_Name type="a">Format</_Name>
 							<Metaclasses type="c">
@@ -2120,6 +2205,30 @@
 													<_Name type="a">Line.LineColor</_Name>
 													<_Value type="a">0,128,0</_Value>
 													<_Type type="a">Color</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+						<IPropertySubject type="e">
+							<_Name type="a">General</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Graphics</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">WrapNameCompartmentText</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
 												</IProperty>
 												
 											</IRPYRawContainer>
@@ -2184,12 +2293,36 @@
 							</Metaclasses>
 						</IPropertySubject>
 						
+						<IPropertySubject type="e">
+							<_Name type="a">ObjectModelGe</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Class</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">QuickNavigationCategories</_Name>
+													<_Value type="a">Hyperlinks</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
 					</IRPYRawContainer>
 				</Subjects>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Tier3Goal</_name>
-			<_modifiedTime type="a">8.10.2022::14:53:12</_modifiedTime>
+			<_modifiedTime type="a">8.17.2022::11:59:38</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>

@@ -304,6 +304,8 @@ public class RowInfo {
 		
 		_modelEl = thePackage.addClass( uniqueName );
 		
+		_context.addHyperLink( _modelEl, _modelEl );
+		
 		_context.info( getInfo() );
 		_context.info( getParsedInfo() );
 

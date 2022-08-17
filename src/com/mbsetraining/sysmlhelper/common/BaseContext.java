@@ -2868,6 +2868,15 @@ public abstract class BaseContext {
 			theSysMLPort.setPortDirection( theDirection );
 		}
 	}
+	
+	public void addHyperLink( 
+			IRPModelElement fromElement, 
+			IRPModelElement toElement ){
+	
+		IRPHyperLink theHyperLink = (IRPHyperLink) fromElement.addNewAggr("HyperLink", "");
+		theHyperLink.setDisplayOption( HYPNameType.RP_HYP_NAMETEXT, "" );
+		theHyperLink.setTarget( toElement );
+	}
 }
 
 /**
