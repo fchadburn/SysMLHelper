@@ -757,6 +757,9 @@ V4.1.b.Rhp831.PreRelease (16-AUG-2022):
 #558 10-AUG-2022: BusinessValue: Added spreadsheetimporter package although not committed poi bits to git, just use in Eclipse (F.J.Chadburn)
 #559 10-AUG-2022: BusinessValue: Switched MeasuredBy metaclass from Object to Attribute to make easier to add/see in tabs and compartments (F.J.Chadburn)
 
+V4.1.c.Rhp831.PreRelease (XX-XXX-XXXX):
+#560 17-AUG-2022: BusinessValue: Refinement of Excel to get elements at top and left of Visio diagram to come in as notes rather than classes (F.J.Chadburn)
+
 Backlog/Known issues
 - Review whether to put diagrams on right-click menu above the executable mbse one to make clearer/easier 
 - Maybe get metamodel to handle InitialLayoutForTables property writing

@@ -1,6 +1,9 @@
 package com.mbsetraining.sysmlhelper.businessvalueplugin;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -263,8 +266,6 @@ public class BusinessValue_RPUserPlugin extends RPUserPlugin {
 	@SuppressWarnings("unused")
 	private static void getParentalNeeds(
 			IRPModelElement forEl, IRPCollection theResults ){
-
-		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
 				
 		if( forEl instanceof IRPClass ){
 			
@@ -286,10 +287,147 @@ public class BusinessValue_RPUserPlugin extends RPUserPlugin {
 			}
 		}
 	}
+	
+	// This static method is used in context pattern in profile
+	@SuppressWarnings("unused")
+	private static void getGoals(
+			IRPModelElement forEl, IRPCollection theResults ){
+				
+		if( forEl instanceof IRPClass ){
+			
+			Set<IRPModelElement> theParents = new LinkedHashSet<IRPModelElement>();
+			
+			appendParents( (IRPClass) forEl, theParents );		
+			
+			for (IRPModelElement theParent : theParents) {
+				theResults.addItem( theParent );
+			}
+		}
+	}
+	
+	// This static method is used in context pattern in profile
+	@SuppressWarnings("unused")
+	private static void getTier1Parents(
+			IRPModelElement forEl, IRPCollection theResults ){
+				
+		if( forEl instanceof IRPClass ){
+			
+			Set<IRPModelElement> theParents = new LinkedHashSet<IRPModelElement>();
+			
+			appendParents( (IRPClass) forEl, BusinessValue_Context.TIER1_GOAL_USER_DEFINIED_TYPE, theParents );			
+		}
+	}
+	
+	// This static method is used in context pattern in profile
+	@SuppressWarnings("unused")
+	private static void getTier2Parents(
+			IRPModelElement forEl, IRPCollection theResults ){
+				
+		if( forEl instanceof IRPClass ){
+			
+			Set<IRPModelElement> theParents = new LinkedHashSet<IRPModelElement>();
+			
+			appendParents( (IRPClass) forEl, BusinessValue_Context.TIER2_GOAL_USER_DEFINIED_TYPE, theParents );			
+		}
+	}
+	
+	// This static method is used in context pattern in profile
+	@SuppressWarnings("unused")
+	private static void getTier3Parents(
+			IRPModelElement forEl, IRPCollection theResults ){
+				
+		if( forEl instanceof IRPClass ){
+			
+			Set<IRPModelElement> theParents = new LinkedHashSet<IRPModelElement>();
+			
+			appendParents( (IRPClass) forEl, BusinessValue_Context.TIER3_GOAL_USER_DEFINIED_TYPE, theParents );
+			
+			for (IRPModelElement theParent : theParents) {
+				theResults.addItem( theParent );
+			}
+		}
+	}
+		
+	private static void appendParents( 
+			IRPClass forClass,
+			String thatHaveNewTermStereotype,
+			Set<IRPModelElement> toParents ){
+		
+		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
+		
+		theRhpApp.writeToOutputWindow( "", "appendParents invoked for " + 
+				forClass.getUserDefinedMetaClass() + " called " + forClass.getName() + "\n" );
+		
+		@SuppressWarnings("unchecked")
+		List<IRPModelElement> theReferences = forClass.getReferences().toList();
+
+		for( IRPModelElement theReference : theReferences ){
+
+			if( theReference instanceof IRPDependency &&
+					theReference.getUserDefinedMetaClass().equals( 
+							BusinessValue_Context.NEEDS_NEW_TERM ) ){
+				
+				IRPDependency theDependency = (IRPDependency)theReference;
+				
+				IRPModelElement theDependent = theDependency.getDependent();
+
+				theRhpApp.writeToOutputWindow( "", "appendParents found that " + 
+						forClass.getName() + " has dependent parent " +  theDependent.getUserDefinedMetaClass() + " called " + theDependent.getName() + "\n" );
+				
+				//if( theDependent.getUserDefinedMetaClass().equals( 
+				//		thatHaveNewTermStereotype )&
+				//		theDependent != forClass ){
+					
+					toParents.add( theDependent );
+					
+					appendParents( (IRPClass) theDependent, thatHaveNewTermStereotype, toParents);
+				//}
+			}
+		}		
+	}	
+	
+	private static void appendParents( 
+			IRPClass forClass,
+			Set<IRPModelElement> toParents ){
+		
+		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
+		
+		theRhpApp.writeToOutputWindow( "", "appendParents invoked for " + 
+				forClass.getUserDefinedMetaClass() + " called " + forClass.getName() + "\n" );
+		
+		@SuppressWarnings("unchecked")
+		List<IRPModelElement> theReferences = forClass.getReferences().toList();
+
+		for( IRPModelElement theReference : theReferences ){
+
+			if( theReference instanceof IRPDependency &&
+					theReference.getUserDefinedMetaClass().equals( 
+							BusinessValue_Context.NEEDS_NEW_TERM ) ){
+				
+				IRPDependency theDependency = (IRPDependency)theReference;
+				
+				IRPModelElement theDependent = theDependency.getDependent();
+
+				theRhpApp.writeToOutputWindow( "", "appendParents found " + 
+						forClass.getName() + " has parent " +  theDependent.getUserDefinedMetaClass() + " called " + theDependent.getName() + "\n" );
+				
+				if( theDependent != forClass &&
+						!toParents.contains(theDependent)){
+					
+					toParents.add( theDependent );
+
+					appendParents( (IRPClass) theDependent, toParents);
+
+				} else {
+					theRhpApp.writeToOutputWindow( "", "appendParents found recursion\n" );
+				}
+			}
+		}		
+	}	
 }
 
 /**
- * Copyright (C) 2018-2022  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2022  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

@@ -125,7 +125,8 @@ public class RowList extends HashMap<String, RowInfo> {
 					record.addAttributeToDiagram( theRootPkg, theDiagram, this );
 					record.setStereotype( _measuredByStereotype );
 									
-				} else{
+				} else if( record._name.contains("Standardization across Product Lines, Brand Commonality") || 
+						( record._yPosition > 230 && record._xPosition > 170 ) ){
 					
 					//if( hasRelationToOrFrom( record ) ){						
 						record.addClassToDiagram( theRootPkg, theDiagram, this );
@@ -143,10 +144,9 @@ public class RowList extends HashMap<String, RowInfo> {
 							
 							record.setStereotype( _tier3GoalStereotype );
 						}
-						
-					//} else {
-					//	record.addNoteToDiagram( theRootPkg, theDiagram, this );
-					//}
+				} else {
+					
+					record.addNoteToDiagram( theRootPkg, theDiagram, this );
 				}
 			}
 		}

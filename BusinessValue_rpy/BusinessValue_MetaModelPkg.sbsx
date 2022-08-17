@@ -25,14 +25,10 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">8.10.2022::14:52:19</_modifiedTimeWeak>
-			<_modifiedTime type="a">8.10.2022::14:52:19</_modifiedTime>
+			<_modifiedTime type="a">8.17.2022::11:25:56</_modifiedTime>
 			<_lastID type="a">14</_lastID>
-			<weakCGTime type="a">8.10.2022::14:52:19</weakCGTime>
-			<strongCGTime type="a">7.17.2022::12:45:3</strongCGTime>
 			<_defaultComposite type="s">GUID 5d35e38b-8c73-4c56-91ca-dc6f917272ca</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
-			<_configurationRelatedTime type="a">7.17.2022::19:14:14</_configurationRelatedTime>
 			<AggregatesList type="e">
 				<value>GUID 5d35e38b-8c73-4c56-91ca-dc6f917272ca</value>
 				<value>GUID a2a33d28-2a38-4622-b36b-5670fb8de08a</value>
@@ -51,10 +47,7 @@
 			<_id type="a">GUID 5d35e38b-8c73-4c56-91ca-dc6f917272ca</_id>
 			<_myState type="a">40960</_myState>
 			<_name type="a">TopLevel</_name>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
-			<weakCGTime type="a">1.2.1990::0:0:0</weakCGTime>
-			<strongCGTime type="a">1.2.1990::0:0:0</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -79,7 +72,6 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">8.10.2022::14:52:19</_modifiedTimeWeak>
 			<_theMainDiagram type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IDiagram</_hm2Class>
@@ -88,8 +80,6 @@
 			</_theMainDiagram>
 			<_modifiedTime type="a">8.10.2022::14:52:19</_modifiedTime>
 			<_lastID type="a">6</_lastID>
-			<weakCGTime type="a">8.10.2022::14:52:19</weakCGTime>
-			<strongCGTime type="a">7.17.2022::18:36:15</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -108,7 +98,6 @@
 			<_id type="a">GUID c79fa25b-7c0d-4488-aaec-fe468e676d55</_id>
 			<_myState type="a">2048</_myState>
 			<_name type="a">Tier1Goal</_name>
-			<_modifiedTimeWeak type="a">8.9.2022::15:34:43</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.9.2022::15:34:43</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -144,7 +133,6 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">8.9.2022::15:34:43</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.9.2022::15:34:43</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -180,7 +168,6 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">8.9.2022::15:34:44</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.9.2022::15:34:44</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -216,7 +203,6 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">8.9.2022::15:34:44</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.9.2022::15:34:44</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -572,7 +558,6 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.10.2022::14:52:31</_modifiedTime>
 			<_lastModifiedTime type="a">8.10.2022::14:52:31</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
@@ -2171,7 +2156,6 @@
 		</CGIInheritance>
 		<IGeneralization type="e">
 			<_id type="a">GUID 2fe62d9f-1629-48b2-8b20-efa62e9c5c7d</_id>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -2200,7 +2184,6 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">7.17.2022::13:41:54</_modifiedTimeWeak>
 			<_theMainDiagram type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IDiagram</_hm2Class>
@@ -2209,8 +2192,6 @@
 			</_theMainDiagram>
 			<_modifiedTime type="a">7.17.2022::13:41:54</_modifiedTime>
 			<_lastID type="a">2</_lastID>
-			<weakCGTime type="a">7.17.2022::13:41:54</weakCGTime>
-			<strongCGTime type="a">7.17.2022::12:46:48</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -2226,7 +2207,6 @@
 			<_id type="a">GUID 13310b92-2e93-4358-866a-c7a01ffb2294</_id>
 			<_myState type="a">2048</_myState>
 			<_name type="a">BusinessValue</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::12:47:22</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.17.2022::12:47:22</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -2549,7 +2529,6 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.17.2022::13:41:54</_modifiedTime>
 			<_lastModifiedTime type="a">7.17.2022::13:41:54</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
@@ -3199,7 +3178,6 @@
 			<_id type="a">GUID 83352fb7-32e9-4336-9dd8-4d8e788bb1aa</_id>
 			<_myState type="a">10240</_myState>
 			<_name type="a">itsBusinessValuePackage</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::12:49:57</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.17.2022::12:49:57</_modifiedTime>
 			<_multiplicity type="a">1</_multiplicity>
 			<_otherClass type="r">
@@ -3233,17 +3211,14 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">8.10.2022::11:42:37</_modifiedTimeWeak>
 			<_theMainDiagram type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IDiagram</_hm2Class>
 					<_hid type="a">GUID 048d177e-b4e0-4d40-a9d0-6889d0c9b336</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">8.10.2022::11:42:37</_modifiedTime>
+			<_modifiedTime type="a">8.17.2022::11:25:56</_modifiedTime>
 			<_lastID type="a">2</_lastID>
-			<weakCGTime type="a">8.10.2022::11:42:37</weakCGTime>
-			<strongCGTime type="a">7.17.2022::12:49:27</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -3272,7 +3247,6 @@
 			<_id type="a">GUID c125f641-4125-495c-9a54-c383cfee26eb</_id>
 			<_myState type="a">2048</_myState>
 			<_name type="a">BusinessValuePackage</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::12:49:43</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.17.2022::12:49:43</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -3661,9 +3635,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">8.10.2022::11:42:37</_modifiedTime>
-			<_lastModifiedTime type="a">8.10.2022::11:42:37</_lastModifiedTime>
+			<_modifiedTime type="a">8.17.2022::11:25:56</_modifiedTime>
+			<_lastModifiedTime type="a">8.17.2022::11:25:56</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -7151,11 +7124,11 @@
 					<m_nOrientationCtrlPt type="a">7</m_nOrientationCtrlPt>
 				</CGIText>
 			</m_rpn>
-			<m_arrow type="a">1 980 144  </m_arrow>
+			<m_arrow type="a">1 980 137  </m_arrow>
 			<m_anglePoint1 type="a">0 0 </m_anglePoint1>
 			<m_anglePoint2 type="a">0 0 </m_anglePoint2>
 			<m_line_style type="a">2</m_line_style>
-			<m_SourcePort type="a">1061 522 </m_SourcePort>
+			<m_SourcePort type="a">1061 474 </m_SourcePort>
 			<m_TargetPort type="a">433 329 </m_TargetPort>
 			<m_pInverseModelObject type="r">
 				<IAssociationEndHandle type="e">
@@ -7454,7 +7427,6 @@
 		</CGIAssociationEnd>
 		<IGeneralization type="e">
 			<_id type="a">GUID 9cf25951-88ac-4249-b4f3-4e0c5105efd6</_id>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -7472,7 +7444,6 @@
 			<_id type="a">GUID 2027f024-8cac-49c3-8e7c-14dd5e4cda94</_id>
 			<_myState type="a">10240</_myState>
 			<_name type="a">itsTier1Goal</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::18:36:15</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.17.2022::18:36:15</_modifiedTime>
 			<_multiplicity type="a">1</_multiplicity>
 			<_otherClass type="r">
@@ -7492,7 +7463,6 @@
 			<_id type="a">GUID e681f6b8-48dd-457f-bff2-83031b202936</_id>
 			<_myState type="a">10240</_myState>
 			<_name type="a">itsTier2Goal</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::18:40:49</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.17.2022::18:40:49</_modifiedTime>
 			<_multiplicity type="a">1</_multiplicity>
 			<_otherClass type="r">
@@ -7512,7 +7482,6 @@
 			<_id type="a">GUID 4c4c81ed-23b3-481d-9638-82ab4c09f7c8</_id>
 			<_myState type="a">10240</_myState>
 			<_name type="a">itsTier3Goal</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::18:40:54</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.17.2022::18:40:54</_modifiedTime>
 			<_multiplicity type="a">1</_multiplicity>
 			<_otherClass type="r">
@@ -7532,7 +7501,6 @@
 			<_id type="a">GUID 685de487-1a0a-49b0-8529-bbc4e3aa2311</_id>
 			<_myState type="a">10240</_myState>
 			<_name type="a">itsBusinessValueDiagram</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::18:41:3</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.17.2022::18:41:3</_modifiedTime>
 			<_multiplicity type="a">1</_multiplicity>
 			<_otherClass type="r">
@@ -7552,7 +7520,6 @@
 			<_id type="a">GUID 8a552fcb-d53f-46aa-9de5-151a6c3f8753</_id>
 			<_myState type="a">10240</_myState>
 			<_name type="a">itsQuery</_name>
-			<_modifiedTimeWeak type="a">7.18.2022::16:49:55</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.18.2022::16:49:55</_modifiedTime>
 			<_multiplicity type="a">1</_multiplicity>
 			<_otherClass type="r">
@@ -7575,7 +7542,6 @@
 			<_id type="a">GUID 055090e9-c594-4914-a8ad-41b3d1907897</_id>
 			<_myState type="a">10240</_myState>
 			<_name type="a">itsStereotype</_name>
-			<_modifiedTimeWeak type="a">7.18.2022::16:49:59</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.18.2022::16:49:59</_modifiedTime>
 			<_multiplicity type="a">1</_multiplicity>
 			<_otherClass type="r">
@@ -7598,7 +7564,6 @@
 			<_id type="a">GUID 85f13ae8-f712-41c7-872d-c04fa6c9c650</_id>
 			<_myState type="a">10240</_myState>
 			<_name type="a">itsMatrixLayout</_name>
-			<_modifiedTimeWeak type="a">7.18.2022::16:50:2</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.18.2022::16:50:2</_modifiedTime>
 			<_multiplicity type="a">1</_multiplicity>
 			<_otherClass type="r">
@@ -7621,7 +7586,6 @@
 			<_id type="a">GUID a31ce4e2-9883-490f-8373-fd809a4b9b82</_id>
 			<_myState type="a">10240</_myState>
 			<_name type="a">itsMatrixView</_name>
-			<_modifiedTimeWeak type="a">7.18.2022::16:50:5</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.18.2022::16:50:5</_modifiedTime>
 			<_multiplicity type="a">1</_multiplicity>
 			<_otherClass type="r">
@@ -7644,7 +7608,6 @@
 			<_id type="a">GUID e92a9a68-b2e5-4064-921f-84249c759cde</_id>
 			<_myState type="a">10240</_myState>
 			<_name type="a">itsTableLayout</_name>
-			<_modifiedTimeWeak type="a">7.18.2022::16:50:9</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.18.2022::16:50:9</_modifiedTime>
 			<_multiplicity type="a">1</_multiplicity>
 			<_otherClass type="r">
@@ -7667,7 +7630,6 @@
 			<_id type="a">GUID 2ffa171b-cc99-4745-8aff-29bf62d44c4f</_id>
 			<_myState type="a">10240</_myState>
 			<_name type="a">itsTableView</_name>
-			<_modifiedTimeWeak type="a">7.18.2022::16:50:12</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.18.2022::16:50:12</_modifiedTime>
 			<_multiplicity type="a">1</_multiplicity>
 			<_otherClass type="r">
@@ -7690,7 +7652,6 @@
 			<_id type="a">GUID 09b6e506-def9-4753-ad68-35502479a398</_id>
 			<_myState type="a">10240</_myState>
 			<_name type="a">itsMeasuredBy</_name>
-			<_modifiedTimeWeak type="a">8.10.2022::11:35:47</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.10.2022::11:35:47</_modifiedTime>
 			<_multiplicity type="a">1</_multiplicity>
 			<_otherClass type="r">
@@ -7710,7 +7671,6 @@
 			<_id type="a">GUID c1348861-e51d-4a8d-8050-09820f0ce68b</_id>
 			<_myState type="a">10240</_myState>
 			<_name type="a">itsAttribute</_name>
-			<_modifiedTimeWeak type="a">8.10.2022::11:42:22</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.10.2022::11:42:22</_modifiedTime>
 			<_multiplicity type="a">1</_multiplicity>
 			<_otherClass type="r">
@@ -7733,7 +7693,6 @@
 			<_id type="a">GUID d54f4600-11c0-4bea-b836-7be2ec14500d</_id>
 			<_myState type="a">10240</_myState>
 			<_name type="a">itsVariable</_name>
-			<_modifiedTimeWeak type="a">8.10.2022::11:42:37</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.10.2022::11:42:37</_modifiedTime>
 			<_multiplicity type="a">1</_multiplicity>
 			<_otherClass type="r">
@@ -7770,7 +7729,6 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">8.10.2022::14:52:26</_modifiedTimeWeak>
 			<_theMainDiagram type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IDiagram</_hm2Class>
@@ -7779,8 +7737,6 @@
 			</_theMainDiagram>
 			<_modifiedTime type="a">8.10.2022::14:52:26</_modifiedTime>
 			<_lastID type="a">6</_lastID>
-			<weakCGTime type="a">8.10.2022::14:52:26</weakCGTime>
-			<strongCGTime type="a">7.17.2022::18:37:37</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -7799,7 +7755,6 @@
 			<_id type="a">GUID dc3d21d5-b31b-42cc-a9c5-e1cdcbbc7570</_id>
 			<_myState type="a">2048</_myState>
 			<_name type="a">Tier2Goal</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::18:36:57</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.17.2022::18:36:57</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -7835,7 +7790,6 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">8.9.2022::15:32:59</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.9.2022::15:32:59</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -7871,7 +7825,6 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">8.9.2022::15:33:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.9.2022::15:33:0</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -7907,7 +7860,6 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">8.9.2022::15:33:2</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.9.2022::15:33:2</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -8263,7 +8215,6 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.10.2022::14:52:29</_modifiedTime>
 			<_lastModifiedTime type="a">8.10.2022::14:52:29</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
@@ -9834,7 +9785,6 @@
 		</CGIInheritance>
 		<IGeneralization type="e">
 			<_id type="a">GUID d91d2ec8-b02c-4c4e-8a91-412468e22b83</_id>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -9863,7 +9813,6 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">8.10.2022::14:52:46</_modifiedTimeWeak>
 			<_theMainDiagram type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IDiagram</_hm2Class>
@@ -9872,8 +9821,6 @@
 			</_theMainDiagram>
 			<_modifiedTime type="a">8.10.2022::14:52:46</_modifiedTime>
 			<_lastID type="a">4</_lastID>
-			<weakCGTime type="a">8.10.2022::14:52:46</weakCGTime>
-			<strongCGTime type="a">7.17.2022::18:39:33</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -9892,7 +9839,6 @@
 			<_id type="a">GUID e53b0cbf-cd54-4746-be8c-709d990a9239</_id>
 			<_myState type="a">2048</_myState>
 			<_name type="a">Tier3Goal</_name>
-			<_modifiedTimeWeak type="a">8.9.2022::15:23:47</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.9.2022::15:23:47</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -9928,7 +9874,6 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">8.9.2022::15:23:48</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.9.2022::15:23:48</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -9964,7 +9909,6 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">8.9.2022::15:23:49</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.9.2022::15:23:49</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -10000,7 +9944,6 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">8.9.2022::15:23:48</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.9.2022::15:23:48</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -10356,7 +10299,6 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.10.2022::14:52:48</_modifiedTime>
 			<_lastModifiedTime type="a">8.10.2022::14:52:48</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
@@ -11923,7 +11865,6 @@
 		</CGIInheritance>
 		<IGeneralization type="e">
 			<_id type="a">GUID 3b3e9d12-e290-4f7f-8df0-d3f22637e956</_id>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -11952,7 +11893,6 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">7.17.2022::19:48:50</_modifiedTimeWeak>
 			<_theMainDiagram type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IDiagram</_hm2Class>
@@ -11961,8 +11901,6 @@
 			</_theMainDiagram>
 			<_modifiedTime type="a">7.17.2022::19:48:50</_modifiedTime>
 			<_lastID type="a">2</_lastID>
-			<weakCGTime type="a">7.17.2022::19:48:50</weakCGTime>
-			<strongCGTime type="a">7.17.2022::18:39:26</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -11983,7 +11921,6 @@
 			<_id type="a">GUID bd31f0eb-997a-4b90-a66c-9f9e366963a2</_id>
 			<_myState type="a">2048</_myState>
 			<_name type="a">BusinessValueDiagram</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::18:40:12</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.17.2022::18:40:12</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -12372,7 +12309,6 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.17.2022::19:48:54</_modifiedTime>
 			<_lastModifiedTime type="a">7.17.2022::19:48:54</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
@@ -14150,7 +14086,6 @@
 		</CGIAssociationEnd>
 		<IGeneralization type="e">
 			<_id type="a">GUID 1eaf52e5-b40c-4100-b2b2-d1d29d3cdded</_id>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -14168,7 +14103,6 @@
 			<_id type="a">GUID 8caf961c-7df3-4293-a1d9-2d2ed7ec948b</_id>
 			<_myState type="a">10240</_myState>
 			<_name type="a">itsTier1Goal</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::18:41:19</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.17.2022::18:41:19</_modifiedTime>
 			<_multiplicity type="a">1</_multiplicity>
 			<_otherClass type="r">
@@ -14188,7 +14122,6 @@
 			<_id type="a">GUID 4fbd148e-c831-438e-8728-d2e93520c43e</_id>
 			<_myState type="a">10240</_myState>
 			<_name type="a">itsTier2Goal</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::18:41:23</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.17.2022::18:41:23</_modifiedTime>
 			<_multiplicity type="a">1</_multiplicity>
 			<_otherClass type="r">
@@ -14208,7 +14141,6 @@
 			<_id type="a">GUID 99b00e75-a060-44df-a524-32653ad4a343</_id>
 			<_myState type="a">10240</_myState>
 			<_name type="a">itsTier3Goal</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::18:41:29</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.17.2022::18:41:29</_modifiedTime>
 			<_multiplicity type="a">1</_multiplicity>
 			<_otherClass type="r">
@@ -14228,7 +14160,6 @@
 			<_id type="a">GUID 5d3a1b60-534f-4cfd-ae5e-5a166e466357</_id>
 			<_myState type="a">10240</_myState>
 			<_name type="a">itsNeeds</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::19:20:31</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.17.2022::19:20:31</_modifiedTime>
 			<_multiplicity type="a">1</_multiplicity>
 			<_otherClass type="r">
@@ -14248,7 +14179,6 @@
 			<_id type="a">GUID a68b2673-403c-4be2-a15d-e34fe03c6d83</_id>
 			<_myState type="a">10240</_myState>
 			<_name type="a">itsMeasuredBy</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::19:48:50</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.17.2022::19:48:50</_modifiedTime>
 			<_multiplicity type="a">1</_multiplicity>
 			<_otherClass type="r">
@@ -14282,7 +14212,6 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">7.17.2022::19:18:51</_modifiedTimeWeak>
 			<_theMainDiagram type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IDiagram</_hm2Class>
@@ -14291,8 +14220,6 @@
 			</_theMainDiagram>
 			<_modifiedTime type="a">7.17.2022::19:18:51</_modifiedTime>
 			<_lastID type="a">2</_lastID>
-			<weakCGTime type="a">7.17.2022::19:18:51</weakCGTime>
-			<strongCGTime type="a">7.17.2022::19:18:7</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -14307,7 +14234,6 @@
 			<_id type="a">GUID 1c10eaef-c1cb-46a3-abd5-35054e24fff0</_id>
 			<_myState type="a">2048</_myState>
 			<_name type="a">Needs</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::19:18:51</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.17.2022::19:18:51</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -14564,7 +14490,6 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.17.2022::19:18:55</_modifiedTime>
 			<_lastModifiedTime type="a">7.17.2022::19:18:55</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
@@ -14980,7 +14905,6 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">7.17.2022::19:47:30</_modifiedTimeWeak>
 			<_theMainDiagram type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IDiagram</_hm2Class>
@@ -14989,8 +14913,6 @@
 			</_theMainDiagram>
 			<_modifiedTime type="a">7.17.2022::19:47:30</_modifiedTime>
 			<_lastID type="a">2</_lastID>
-			<weakCGTime type="a">7.17.2022::19:47:30</weakCGTime>
-			<strongCGTime type="a">7.17.2022::19:46:55</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -15006,7 +14928,6 @@
 			<_id type="a">GUID 1d70520e-aacd-43b6-9bd4-74ee57ab1beb</_id>
 			<_myState type="a">2048</_myState>
 			<_name type="a">MeasuredBy</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::19:47:19</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.17.2022::19:47:19</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -15329,7 +15250,6 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.17.2022::19:47:30</_modifiedTime>
 			<_lastModifiedTime type="a">7.17.2022::19:47:30</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
@@ -15831,7 +15751,6 @@
 		</CGIInheritance>
 		<IGeneralization type="e">
 			<_id type="a">GUID 4701c682-6acf-43ed-acf0-6ffd10181a78</_id>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -15849,7 +15768,6 @@
 			<_id type="a">GUID af490cd9-e47b-4cb3-a941-1aec11c2b82e</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Goal</_name>
-			<_modifiedTimeWeak type="a">8.9.2022::15:23:38</_modifiedTimeWeak>
 			<_theMainDiagram type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IDiagram</_hm2Class>
@@ -15858,8 +15776,6 @@
 			</_theMainDiagram>
 			<_modifiedTime type="a">8.9.2022::15:23:38</_modifiedTime>
 			<_lastID type="a">4</_lastID>
-			<weakCGTime type="a">8.9.2022::15:23:38</weakCGTime>
-			<strongCGTime type="a">8.9.2022::15:17:11</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -15873,7 +15789,6 @@
 		</IClass>
 		<IGeneralization type="e">
 			<_id type="a">GUID 6003754f-5475-4174-9df4-60fff0b396f5</_id>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
@@ -15891,7 +15806,6 @@
 			<_id type="a">GUID e9ea9e1e-97ed-4be9-ba8e-4a53b876e478</_id>
 			<_myState type="a">10240</_myState>
 			<_name type="a">itsMeasuredBy</_name>
-			<_modifiedTimeWeak type="a">8.9.2022::15:17:18</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.9.2022::15:17:18</_modifiedTime>
 			<_multiplicity type="a">1</_multiplicity>
 			<_otherClass type="r">
@@ -15911,7 +15825,6 @@
 			<_id type="a">GUID 75ad2eec-d5fa-49c4-8a55-911b1105ead9</_id>
 			<_myState type="a">10240</_myState>
 			<_name type="a">itsNeeds</_name>
-			<_modifiedTimeWeak type="a">8.9.2022::15:17:27</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.9.2022::15:17:27</_modifiedTime>
 			<_multiplicity type="a">1</_multiplicity>
 			<_otherClass type="r">
@@ -15931,7 +15844,6 @@
 			<_id type="a">GUID 59dfba58-297f-422f-92df-428d49c8097e</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">tablev - render profile properties</_name>
-			<_modifiedTimeWeak type="a">7.17.2022::12:50:42</_modifiedTimeWeak>
 			<_modifiedTime type="a">7.17.2022::12:50:42</_modifiedTime>
 			<LayoutHandle type="r">
 				<IHandle type="e">

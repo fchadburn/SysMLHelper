@@ -11,7 +11,13 @@ public class BusinessValue_Context extends BaseContext {
 	protected Boolean _isShowProfileVersionCheckDialogs;
 	protected IRPClass _measuredByDefaultType;
 
-	public final String BUSINESS_VALUE_NEW_TERM = "BusinessValue";
+	public final static String BUSINESS_VALUE_NEW_TERM = "BusinessValue";
+	public final static String NEEDS_NEW_TERM = "Needs";
+	public final static String TIER1_GOAL_USER_DEFINIED_TYPE = "Tier 1 Goal";
+	public final static String TIER2_GOAL_USER_DEFINIED_TYPE = "Tier 2 Goal";
+	public final static String TIER3_GOAL_USER_DEFINIED_TYPE = "Tier 3 Goal";
+	public final static String TIER2_GOAL_NEW_TERM = "Tier2Goal";
+	public final static String TIER3_GOAL_NEW_TERM = "Tier3Goal";
 	
 	public BusinessValue_Context(
 			String theAppID ){
