@@ -761,6 +761,9 @@ V4.1.c.Rhp831.PreRelease (16-SEP-2022):
 #560 17-AUG-2022: BusinessValue: Refinement of Excel to get elements at top and left of Visio diagram to come in as notes rather than classes (F.J.Chadburn)
 #561 17-AUG-2022: BusinessValue: Utilize the Hyperlinks, display options and properties to provide icon of goal in top right of graph node (F.J.Chadburn) 
 
+V4.1.d.Rhp831.PreRelease (XX-XXX-XXXX):
+#562 20-SEP-2022: BusinessValue: Checkpoint of code to work out directed graph paths (F.J.Chadburn)
+
 Backlog/Known issues
 - Review whether to put diagrams on right-click menu above the executable mbse one to make clearer/easier 
 - Maybe get metamodel to handle InitialLayoutForTables property writing
