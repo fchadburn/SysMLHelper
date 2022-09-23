@@ -1666,10 +1666,15 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">BusinessValueProfile</_name>
-			<_modifiedTime type="a">9.16.2022::8:17:16</_modifiedTime>
-			<_lastID type="a">29</_lastID>
+			<_modifiedTime type="a">9.23.2022::9:39:7</_modifiedTime>
+			<_lastID type="a">32</_lastID>
 			<_defaultComposite type="s">GUID 377dbcc2-9abb-48b8-bbd5-721dc9c0b50e</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
+			<TableLayouts type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</TableLayouts>
 			<AggregatesList type="e">
 				<value>GUID 2122c8f1-fe60-4d4d-8093-257bad45e49a</value>
 				<value>GUID 09dffe12-36f6-473e-bdf6-5cb62c6c3a09</value>
@@ -1681,6 +1686,7 @@
 				<value>GUID d14744a8-7334-494b-8a7e-c4e140adac04</value>
 				<value>GUID e4da8e4e-6b00-474a-ac4d-576677eecf5e</value>
 				<value>GUID 547800b8-0ec1-41fe-9b69-32ed2456679a</value>
+				<value>GUID 5443d85b-ca6d-40c1-bf5f-8d637043ce9a</value>
 				<value>GUID 377dbcc2-9abb-48b8-bbd5-721dc9c0b50e</value>
 			</AggregatesList>
 		</IProfile>
@@ -2959,6 +2965,50 @@
 			</_itsStateChart>
 			<_classModifier type="a">Unspecified</_classModifier>
 		</IClass>
+		<IStereotype type="e">
+			<_id type="a">GUID 5443d85b-ca6d-40c1-bf5f-8d637043ce9a</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Query</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">ShowInBrowserFilterList</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">ShowInBrowserFilterList</_name>
+			<_modifiedTime type="a">9.23.2022::9:39:7</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>TableLayout</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+		</IStereotype>
 		<IClass type="e">
 			<_id type="a">GUID 377dbcc2-9abb-48b8-bbd5-721dc9c0b50e</_id>
 			<_myState type="a">40960</_myState>

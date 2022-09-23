@@ -32,6 +32,9 @@ Subject ConfigurationManagement
 	end
 end
 Subject Model
+	Metaclass Query
+		Property ShowInBrowserFilterList Boolean "False"
+	end
 	Metaclass Project
 		Property BrowseHierarchy String "BrowseRelationsDown,BrowseRelationsUp"
 		Property BrowseRelationsDownName String "Browse Child Needs"
