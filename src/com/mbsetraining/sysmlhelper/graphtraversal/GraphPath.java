@@ -2,6 +2,7 @@ package com.mbsetraining.sysmlhelper.graphtraversal;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.telelogic.rhapsody.core.*;
@@ -93,9 +94,29 @@ public class GraphPath extends ArrayList<Node>{
 					}
 				}
 				
+				List<IRPModelElement> measuredBys = _context.findElementsWithMetaClassAndStereotype( "Attribute", "MeasuredBy", theNode._modelEl, 0 );
+				
+				for (IRPModelElement measuredBy : measuredBys) {
+					_context.getExistingOrAddNewDependency( 
+							fromEl, measuredBy, withTheStereotype );
+				}
+				
 				previousNode = theNode;
 			}
 		}
+	}
+	
+	String getLastNodeName(){
+		
+		String theLastNodeName = "";
+		
+		int size = this.size();
+		
+		Node lastNode = this.get( size-1 );
+		
+		theLastNodeName = lastNode._modelEl.getName();
+		
+		return theLastNodeName;
 	}
 }
 

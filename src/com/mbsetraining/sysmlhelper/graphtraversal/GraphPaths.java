@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import com.mbsetraining.sysmlhelper.businessvalueplugin.BusinessValue_Context;
 import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.telelogic.rhapsody.core.*;
 
@@ -16,14 +17,108 @@ public class GraphPaths extends ArrayList<GraphPath>{
 
 	BaseContext _context;
 
+	
+	public static void main(String[] args) {
+		
+    	IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
+    	BusinessValue_Context context = new BusinessValue_Context( theRhpApp.getApplicationConnectionString() );
+    	
+    	IRPModelElement theSelectedEl = context.getSelectedElement(false);
+    	
+		context.info( "theSelectedEl is " + context.elInfo( theSelectedEl ) );
+
+    	if( theSelectedEl instanceof IRPTableLayout ){
+    		IRPTableLayout theLayout = (IRPTableLayout)theSelectedEl;
+    		IRPTableLayout theQueryToUse = theLayout.getToElementTypesQueryToUse();
+    		
+    		context.info( context.elInfo( theQueryToUse ) );
+    		
+    		@SuppressWarnings("unchecked")
+			List<Object> theProperties = theLayout.getOverriddenProperties(0).toList();
+    		
+    		for (Object object : theProperties) {
+				context.info( object.toString() );
+			}
+
+    		
+    	} else if( theSelectedEl instanceof IRPObjectModelDiagram ){
+    		
+    		IRPObjectModelDiagram basedOnDiagram = (IRPObjectModelDiagram)theSelectedEl;
+    		
+    		//theDiagram.createDiagramView(owner, customViews)
+    		context.info( "theSelectedEl is not a table view" );
+    		
+    		int min = 1;
+
+    		int max = 5;
+    		    		
+			IRPPackage thePkg = context.getOwningPackageFor( basedOnDiagram );
+
+    		for (int i = min; i <= max; i++) {
+        		String theName = "MaxShldrVal" + String.format( "%03d", i);
+
+    			IRPModelElement theCustomView = context.findElementWithMetaClassAndName("Package", theName, thePkg);
+    			
+    			if( theCustomView != null ){
+    				
+    				IRPCollection customViews = context.createNewCollection();
+    				customViews.setSize(1);
+    				customViews.addItem(theCustomView);
+    				
+        			IRPDiagram theDiagramEl = basedOnDiagram.createDiagramView( basedOnDiagram.getOwner(), customViews );
+        			theDiagramEl.setName( theName );
+        			
+    			}
+    			
+
+  
+
+			}
+ 
+    	}
+	}
+	
 	public void createPathVisualizationElements(
 			String withTheName,
-			IRPPackage underThePackage ){
+			IRPPackage underThePackage,
+			IRPModelElement theDependencyStereotypeEl,
+			IRPDiagram basedOnDiagram,
+			GraphPath thePath ){
 		
 		IRPModelElement theQueryEl = findOrAddElement( withTheName, "TableLayout", underThePackage );
 		theQueryEl.changeTo( "Query" );
 		
-		/*
+		String theEnableCriteriaCheckValue = null;
+		
+		try {
+			theEnableCriteriaCheckValue = theQueryEl.getPropertyValue( "Model.TableLayout.EnableCriteriaCheck" );
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		if( theEnableCriteriaCheckValue == null ){
+			theQueryEl.addProperty( "Model.TableLayout.EnableCriteriaCheck", "Bool", "True" );
+		} else if( !theEnableCriteriaCheckValue.equals( "True" ) ){
+			theQueryEl.setPropertyValue( "Model.TableLayout.EnableCriteriaCheck", "True" );
+		}
+		
+		String theQueryContextPatternValue = null;
+		
+		try {
+			theQueryContextPatternValue = theQueryEl.getPropertyValue( "Model.TableLayout.QueryContextPattern" );
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		if( theQueryContextPatternValue == null ){
+
+			theQueryEl.addProperty( "Model.TableLayout.QueryContextPattern", "String", "" );
+		} else if( !theQueryContextPatternValue.equals( "" ) ){
+			theQueryEl.setPropertyValue( "Model.TableLayout.QueryContextPattern", "" );
+		}
+
 		IRPStereotype theQueryStereotype = _context.getStereotypeCalled( "Query", theQueryEl );
 		_context.info( "Found " + _context.elInfo( theQueryStereotype ) );
 		
@@ -39,12 +134,29 @@ public class GraphPaths extends ArrayList<GraphPath>{
 		
 		IRPTag theUnresolved = theQueryStereotype.getTag( "Unresolved" );
 		theQueryEl.setTagValue( theUnresolved, "ShowUnresolved" );
-		*/
 		
 		IRPModelElement theCustomViewEl = findOrAddElement( withTheName, "Package", underThePackage );
 		theCustomViewEl.changeTo( "CustomView" );
-				
-		/*
+/*		
+		IRPCollection customViews = _context.createNewCollection();
+		customViews.setSize(1);
+		customViews.addItem( theCustomViewEl );*/
+		/*		
+		IRPModelElement theDiagramEl = _context.findElementWithMetaClassAndName( "ObjectModelDiagram", withTheName, basedOnDiagram.getOwner() );
+		
+		if( theDiagramEl instanceof IRPDiagram ){
+			
+			_context.info( "Found " + _context.elInfo( theDiagramEl ) );
+
+			IRPDiagram theDiagram = (IRPDiagram) theDiagramEl;
+			theDiagram.setCustomViews( customViews );
+			
+		} else {
+			
+			theDiagramEl = basedOnDiagram.createDiagramView( basedOnDiagram.getOwner(), customViews );
+			theDiagramEl.setName( withTheName );
+		}*/
+		
 		IRPTag theCriteria = theCustomViewEl.getTag( "Criteria" );
 		
 		if( theCriteria == null ){
@@ -58,7 +170,14 @@ public class GraphPaths extends ArrayList<GraphPath>{
 			theCriteriaType = (IRPTag) theCustomViewEl.addNewAggr( "Tag", "CriteriaType" );
 		}
 		
-		theCustomViewEl.setTagValue( theCriteriaType, "Queries" );*/
+		theCustomViewEl.setTagValue( theCriteriaType, "Queries" );
+				
+		if( theCustomViewEl != null ){
+			
+			IRPDiagram theDiagramEl = basedOnDiagram.createDiagramView( basedOnDiagram.getOwner(), null );
+			theDiagramEl.setName( withTheName + " - " + _context.toLegalClassName( thePath.getLastNodeName() ) );
+			
+		}
 	}
 
 	private IRPModelElement findOrAddElement( 
@@ -114,7 +233,8 @@ public class GraphPaths extends ArrayList<GraphPath>{
 	
 	public void createDependenciesAndPathVisualization(
 			String withClassName,
-			IRPPackage underThePackage ){
+			IRPPackage underThePackage,
+			IRPDiagram basedOnDiagram ){
 		
 		if( this.isEmpty() ){
 			_context.warning( "Unable to createDependencies as there are no graph paths " );
@@ -150,7 +270,7 @@ public class GraphPaths extends ArrayList<GraphPath>{
 				
 				thePath.createDependencies( theClass, theDependencyStereotype );			
 				
-				createPathVisualizationElements( thePathName, underThePackage );	
+				createPathVisualizationElements( thePathName, underThePackage, theDependencyStereotypeEl, basedOnDiagram, thePath );	
 			}
 		}
 	}

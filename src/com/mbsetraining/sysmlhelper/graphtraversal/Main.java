@@ -1,8 +1,10 @@
 package com.mbsetraining.sysmlhelper.graphtraversal;
 
 import java.util.List;
+
 import com.mbsetraining.sysmlhelper.businessvalueplugin.BusinessValue_Context;
 import com.mbsetraining.sysmlhelper.common.BaseContext;
+import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.*;
 
 class Main {
@@ -28,6 +30,7 @@ class Main {
     	if( theGraphNodes.size() == 1 ){
     		
     		IRPGraphNode theSelectedGraphNode = theGraphNodes.get( 0 );
+    		IRPDiagram theSourceDiagram = theSelectedGraphNode.getDiagram();
     		
     		Node startNode = new Node( theSelectedGraphNode.getModelObject(), context );
 
@@ -43,7 +46,9 @@ class Main {
     		IRPPackage thePackage = context.getOwningPackageFor( theSelectedGraphNode.getModelObject() );
     		
     		if( thePackage != null ){
-    			allPaths.createDependenciesAndPathVisualization( "MaxShldrValue", thePackage );
+    			
+    			allPaths.createDependenciesAndPathVisualization( 
+    					"MaxShldrVal", thePackage, theSourceDiagram );
     		}
     		
        	}
