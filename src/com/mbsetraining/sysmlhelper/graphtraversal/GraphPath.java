@@ -63,23 +63,57 @@ public class GraphPath extends ArrayList<Node>{
 	}
 	
 	public void createDependencies(
-			IRPModelElement fromEl ){
+			IRPModelElement fromEl,
+			IRPStereotype withTheStereotype ){
 		
 		if( this.isEmpty() ){
 			_context.warning( "Unable to createDependencies as graph path is empty" );
 		} else {
 			Iterator<Node> iterator = this.iterator();
 			
+			Node previousNode = null;
+			
 			while( iterator.hasNext() ){
 				
-				Node theNode = (Node) iterator.next();
-				IRPModelElement theModelEl = theNode._modelEl;
+				Node theNode = (Node) iterator.next();			
 				
-				_context.info( "Adding dependency from " + fromEl.getName() + " to " + 
-						theModelEl.getName() + " (" + theModelEl.getUserDefinedMetaClass() + ")" );
-
-				fromEl.addDependencyTo( theModelEl ); 
+				_context.getExistingOrAddNewDependency( 
+						fromEl, theNode._modelEl, withTheStereotype );
+								
+				if( previousNode != null ){
+					
+					for( IRPDependency theDependency : previousNode._relations ){	
+						
+						IRPModelElement theDependsOn = theDependency.getDependsOn();
+						
+						if( theDependsOn.equals( theNode._modelEl ) ){
+							_context.getExistingOrAddNewDependency( 
+									fromEl, theDependency, withTheStereotype );
+						}
+					}
+				}
+				
+				previousNode = theNode;
 			}
 		}
 	}
 }
+
+/**
+ * Copyright (C) 2022  MBSE Training and Consulting Limited (www.executablembse.com)
+
+    This file is part of SysMLHelperPlugin.
+
+    SysMLHelperPlugin is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    SysMLHelperPlugin is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with SysMLHelperPlugin.  If not, see <http://www.gnu.org/licenses/>.
+ */

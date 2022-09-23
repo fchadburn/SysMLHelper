@@ -2709,6 +2709,43 @@ public abstract class BaseContext {
 
 		return existingEls;
 	}
+	
+	public IRPDependency getExistingDependency(
+			IRPModelElement fromEl, 
+			IRPModelElement toEl ){
+		
+		IRPDependency theExistingDependency = null;
+		
+		List<IRPDependency> theExistingDependencies = new ArrayList<>();
+		
+		@SuppressWarnings("unchecked")
+		List<IRPDependency> theCandidates = fromEl.getDependencies().toList();
+		
+		for( IRPDependency theCandidate : theCandidates ){
+			
+			IRPModelElement theDependsOn = theCandidate.getDependsOn();
+			
+			if( theDependsOn.equals( toEl ) ){
+				theExistingDependencies.add( theCandidate );
+			}
+		}
+		
+		int size = theExistingDependencies.size();
+		
+		if( size == 1 ){
+			theExistingDependency = theExistingDependencies.get( 0 );
+		
+		} else if( size > 1 ) {
+			
+			warning( "getExistingDependency found " + size + " dependencies from " + 
+					elInfo( fromEl ) + " to " + elInfo( toEl ) + 
+					", hence is returning the first one");
+			
+			theExistingDependency = theExistingDependencies.get( 0 );
+		}
+		
+		return theExistingDependency;
+	}
 
 	public List<IRPModelElement> getExistingElementsBasedOn(
 			IRPPackage theOwningPackage,
@@ -2876,6 +2913,49 @@ public abstract class BaseContext {
 		IRPHyperLink theHyperLink = (IRPHyperLink) fromElement.addNewAggr("HyperLink", "");
 		theHyperLink.setDisplayOption( HYPNameType.RP_HYP_NAMETEXT, "" );
 		theHyperLink.setTarget( toElement );
+	}
+	
+	public IRPDependency getExistingOrAddNewDependency(
+			IRPModelElement fromEl,
+			IRPModelElement toEl,
+			IRPStereotype withTheStereotype ){
+		
+		info( "Adding dependency to " + toEl.getName() + 
+				" (" + toEl.getUserDefinedMetaClass() + ") from " + fromEl.getName() + 
+				" with " + elInfo( withTheStereotype ) );
+		
+		IRPDependency theDependency = getExistingDependency( fromEl, toEl );
+		
+		if( theDependency == null ){
+			theDependency = fromEl.addDependencyTo( toEl ); 
+		}
+		
+		addStereotypeIfNeeded( withTheStereotype, theDependency );
+		
+		return theDependency;
+	}
+
+	public void addStereotypeIfNeeded(
+			IRPStereotype withStereotype,
+			IRPModelElement toTheEl ){
+		
+		if( withStereotype != null ){
+			
+			boolean isFound = false;
+			
+			@SuppressWarnings("unchecked")
+			List<IRPStereotype> theExistingStereotypes = toTheEl.getStereotypes().toList();
+			
+			for( IRPStereotype theExistingStereotype : theExistingStereotypes ){
+				if( theExistingStereotype.equals( withStereotype ) ){
+					isFound = false;
+				}
+			}
+			
+			if( !isFound ){						
+				toTheEl.addSpecificStereotype( withStereotype );
+			}
+		}
 	}
 }
 

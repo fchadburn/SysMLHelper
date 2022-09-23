@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.mbsetraining.sysmlhelper.businessvalueplugin.BusinessValue_Context;
 import com.mbsetraining.sysmlhelper.common.BaseContext;
-import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.*;
 
 public class GraphPaths extends ArrayList<GraphPath>{
@@ -17,23 +15,6 @@ public class GraphPaths extends ArrayList<GraphPath>{
 	private static final long serialVersionUID = 5176021867376333578L;
 
 	BaseContext _context;
-	
-	public static void main(String[] args) {
-		
-    	IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
-    	BusinessValue_Context context = new BusinessValue_Context( theRhpApp.getApplicationConnectionString() );
-    	
-    	IRPModelElement theSelectedEl = context.getSelectedElement(true);
-    	
-    	if( theSelectedEl instanceof IRPModelElement ){
-    		
-    		IRPPackage thePackage = context.getOwningPackageFor(theSelectedEl);
-    		
-    		GraphPaths theGraphPaths = new GraphPaths(context);
-    		
-    		theGraphPaths.createPathVisualizationElements( "P1", thePackage );
-    	}
-	}
 
 	public void createPathVisualizationElements(
 			String withTheName,
@@ -42,16 +23,9 @@ public class GraphPaths extends ArrayList<GraphPath>{
 		IRPModelElement theQueryEl = findOrAddElement( withTheName, "TableLayout", underThePackage );
 		theQueryEl.changeTo( "Query" );
 		
+		/*
 		IRPStereotype theQueryStereotype = _context.getStereotypeCalled( "Query", theQueryEl );
-		
 		_context.info( "Found " + _context.elInfo( theQueryStereotype ) );
-		
-		IRPModelElement theDependencyStereotypeEl = findOrAddElement( withTheName, "Stereotype", underThePackage );
-
-		if( theDependencyStereotypeEl instanceof IRPStereotype ){
-			IRPStereotype theDependencyStereotype = (IRPStereotype)theDependencyStereotypeEl;
-			theDependencyStereotype.addMetaClass( "Dependency" );
-		}
 		
 		IRPTag theRelRef_StereotypeTag = theQueryStereotype.getTag( "RelRef_Stereotype" );
 		_context.info( "Found " + _context.elInfo( theRelRef_StereotypeTag ) );
@@ -65,10 +39,12 @@ public class GraphPaths extends ArrayList<GraphPath>{
 		
 		IRPTag theUnresolved = theQueryStereotype.getTag( "Unresolved" );
 		theQueryEl.setTagValue( theUnresolved, "ShowUnresolved" );
+		*/
 		
-		IRPModelElement theCustomViewEl = findOrAddElement( withTheName + "View", "Package", underThePackage );
+		IRPModelElement theCustomViewEl = findOrAddElement( withTheName, "Package", underThePackage );
 		theCustomViewEl.changeTo( "CustomView" );
 				
+		/*
 		IRPTag theCriteria = theCustomViewEl.getTag( "Criteria" );
 		
 		if( theCriteria == null ){
@@ -82,7 +58,7 @@ public class GraphPaths extends ArrayList<GraphPath>{
 			theCriteriaType = (IRPTag) theCustomViewEl.addNewAggr( "Tag", "CriteriaType" );
 		}
 		
-		theCustomViewEl.setTagValue( theCriteriaType, "Queries" );
+		theCustomViewEl.setTagValue( theCriteriaType, "Queries" );*/
 	}
 
 	private IRPModelElement findOrAddElement( 
@@ -137,52 +113,71 @@ public class GraphPaths extends ArrayList<GraphPath>{
 	}
 	
 	public void createDependenciesAndPathVisualization(
+			String withClassName,
 			IRPPackage underThePackage ){
 		
 		if( this.isEmpty() ){
-			_context.warning( "Unable to createDependencies as there are no graph paths" );
+			_context.warning( "Unable to createDependencies as there are no graph paths " );
 		} else {
+						
+			IRPModelElement theClass = getOrCreateNewDependencyOwningClass( 
+					underThePackage, withClassName, true );
 			
-			int count = 1;
+			theClass.highLightElement();
+			
+			int count = 0;
+			
 			Iterator<GraphPath> iterator = this.iterator();
 			
 			while( iterator.hasNext() ){
 				
+				count++;
+
 				GraphPath thePath = (GraphPath) iterator.next();
 				
-				String theName = "P" + count;
+				String thePathName = withClassName + String.format( "%03d", count );
+							
+				_context.info( "Adding dependencies for " + thePathName );
+
+				IRPStereotype theDependencyStereotype = null;
 				
-				IRPModelElement theClass = underThePackage.findAllByName( theName, "Class" );
-				
-				if( theClass instanceof IRPClass ){
-					
-					@SuppressWarnings("unchecked")
-					List<IRPModelElement> theDependencies = theClass.getDependencies().toList();
-					
-					if( !theDependencies.isEmpty() ){
-						
-						boolean answer = true;
-						//UserInterfaceHelper.askAQuestion( 
-						//		"Do you want to clean the existing dependencies for " + 
-						//		_context.elInfo( theClass ) );
-						
-						if( answer ){
-							deleteFromModel( theDependencies );
-						}
-					}
+				IRPModelElement theDependencyStereotypeEl = findOrAddElement( thePathName, "Stereotype", underThePackage );
+
+				if( theDependencyStereotypeEl instanceof IRPStereotype ){
+					theDependencyStereotype = (IRPStereotype)theDependencyStereotypeEl;
+					theDependencyStereotype.addMetaClass( "Dependency" );
 				}
 				
-				if( theClass == null ){
-					theClass = underThePackage.addClass( theName );
-				}
-								
-				thePath.createDependencies( theClass );			
+				thePath.createDependencies( theClass, theDependencyStereotype );			
 				
-				createPathVisualizationElements( theName, underThePackage );
-				
-				count++;
+				createPathVisualizationElements( thePathName, underThePackage );	
 			}
 		}
+	}
+
+	private IRPModelElement getOrCreateNewDependencyOwningClass(
+			IRPPackage underThePackage,
+			String withTheName,
+			boolean withDependencyCleanupWanted ){
+		
+		IRPModelElement theClass = underThePackage.findAllByName( withTheName, "Class" );
+		
+		if( theClass instanceof IRPClass ){
+			
+			@SuppressWarnings("unchecked")
+			List<IRPModelElement> theDependencies = theClass.getDependencies().toList();
+			
+			if( !theDependencies.isEmpty() ){
+				
+				if( withDependencyCleanupWanted ){
+					deleteFromModel( theDependencies );
+				}
+			}
+		} else {
+			theClass = underThePackage.addClass( withTheName );
+		}
+		
+		return theClass;
 	}
 
 	private void deleteFromModel( 
@@ -197,3 +192,22 @@ public class GraphPaths extends ArrayList<GraphPath>{
 		}
 	}
 }
+
+/**
+ * Copyright (C) 2022  MBSE Training and Consulting Limited (www.executablembse.com)
+
+    This file is part of SysMLHelperPlugin.
+
+    SysMLHelperPlugin is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    SysMLHelperPlugin is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with SysMLHelperPlugin.  If not, see <http://www.gnu.org/licenses/>.
+ */

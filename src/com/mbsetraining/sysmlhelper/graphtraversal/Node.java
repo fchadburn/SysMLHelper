@@ -14,25 +14,8 @@ public class Node {
 	protected List<IRPDependency> _relations;
 	protected BaseContext _context;
 
-	public IRPModelElement get_modelEl() {
-		return _modelEl;
-	}
 
-	/*
-	public Node(
-			IRPGraphNode graphNode, 
-			BaseContext context) {
-
-		_graphNodes = new ArrayList<>();
-
-		this._graphNodes.add( graphNode );
-		this._context = context;
-		this._modelEl = graphNode.getModelObject();
-		this._neighbors = new ArrayList<>();	
-
-		_context.info( "Created " + toString() );
-	}*/
-
+	
 	public Node(
 			IRPModelElement modelEl, 
 			BaseContext context) {
@@ -73,29 +56,10 @@ public class Node {
 		return theString;
 
 	}
-
-	/*
-	public List<IRPModelElement> determineDependsOnElements(){
-
-		List<IRPModelElement> theDependsOnEls = new ArrayList<>();
-
-		IRPModelElement theModelEl = this._modelEl;
-
-		@SuppressWarnings("unchecked")
-		List<IRPDependency> theDependencies = theModelEl.getDependencies().toList();
-
-		for( IRPDependency theDependency : theDependencies ){
-
-			IRPModelElement theTarget = theDependency.getDependsOn();
-
-			if( theTarget instanceof IRPModelElement ){
-
-				theDependsOnEls.add( theTarget );
-			}
-		}	
-
-		return theDependsOnEls;
-	}*/
+	
+	public IRPModelElement get_modelEl() {
+		return _modelEl;
+	}
 	
 	public List<IRPDependency> determineEdgeElements(){
 
@@ -142,9 +106,6 @@ public class Node {
 			}
 
 			allPaths.add( newPath );
-						
-			currentPath.dumpInfo();
-			currentPath.remove( this );
 
 		} else {
 					
@@ -164,22 +125,26 @@ public class Node {
 				}
 			}
 		}
-	}
-	
-	public void addDependenciesFrom( 
-			IRPModelElement fromEl ){
-				
-		_context.info( "Adding dependency from " + fromEl.getName() + " to " + 
-				_modelEl.getName() + " (" + _modelEl.getUserDefinedMetaClass() + ")" );
-
-		fromEl.addDependencyTo( _modelEl ); 
 		
-		for( IRPDependency relationEl : _relations ){
-			
-			_context.info( "Adding dependency from " + fromEl.getName() + " to " + 
-					relationEl.getName() + " (" + relationEl.getUserDefinedMetaClass() + ")" );
-
-			fromEl.addDependencyTo( relationEl ); 
-		}
+		currentPath.remove( this );
 	}
 }
+
+/**
+ * Copyright (C) 2022  MBSE Training and Consulting Limited (www.executablembse.com)
+
+    This file is part of SysMLHelperPlugin.
+
+    SysMLHelperPlugin is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    SysMLHelperPlugin is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with SysMLHelperPlugin.  If not, see <http://www.gnu.org/licenses/>.
+ */

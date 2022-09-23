@@ -764,6 +764,7 @@ V4.1.c.Rhp831.PreRelease (16-SEP-2022):
 V4.1.d.Rhp831.PreRelease (XX-XXX-XXXX):
 #562 20-SEP-2022: BusinessValue: Checkpoint of code to work out directed graph paths (F.J.Chadburn)
 #563 23-SEP-2022: BusinessValue: To cope with large number of Queries, default ShowInBrowserFilterList property so only shown when stereotype applied (F.J.Chadburn)
+#564 23-SEP-2022: BusinessValue: Checkpoint of directed graph paths work, able to create custom views on diagram and in browser (F.J.Chadburn)
 
 Backlog/Known issues
 - Review whether to put diagrams on right-click menu above the executable mbse one to make clearer/easier 
