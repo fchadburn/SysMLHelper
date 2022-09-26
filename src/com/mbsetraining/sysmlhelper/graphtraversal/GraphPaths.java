@@ -157,13 +157,7 @@ public class GraphPaths extends ArrayList<GraphPath>{
 			theDiagramEl.setName( withTheName );
 		}*/
 		
-		IRPTag theCriteria = theCustomViewEl.getTag( "Criteria" );
-		
-		if( theCriteria == null ){
-			theCriteria = (IRPTag) theCustomViewEl.addNewAggr( "Tag", "Criteria" );
-		}
-		theCustomViewEl.setTagValue( theCriteria, withTheName );
-		
+
 		IRPTag theCriteriaType = theCustomViewEl.getTag( "CriteriaType" );
 
 		if( theCriteriaType == null ){			
@@ -171,6 +165,17 @@ public class GraphPaths extends ArrayList<GraphPath>{
 		}
 		
 		theCustomViewEl.setTagValue( theCriteriaType, "Queries" );
+		
+		/* Doesn't work
+
+		IRPTag theCriteria = theCustomViewEl.getTag( "Criteria" );
+		
+		if( theCriteria == null ){
+			theCriteria = (IRPTag) theCustomViewEl.addNewAggr( "Tag", "Criteria" );
+		}
+		theCustomViewEl.setTagValue( theCriteria, withTheName );*/
+		
+
 				
 		if( theCustomViewEl != null ){
 			
@@ -232,7 +237,7 @@ public class GraphPaths extends ArrayList<GraphPath>{
 	}
 	
 	public void createDependenciesAndPathVisualization(
-			String withClassName,
+			IRPClass theClass,
 			IRPPackage underThePackage,
 			IRPDiagram basedOnDiagram ){
 		
@@ -240,11 +245,8 @@ public class GraphPaths extends ArrayList<GraphPath>{
 			_context.warning( "Unable to createDependencies as there are no graph paths " );
 		} else {
 						
-			IRPModelElement theClass = getOrCreateNewDependencyOwningClass( 
-					underThePackage, withClassName, true );
-			
-			theClass.highLightElement();
-			
+			deleteAllDependenciesOwnedBy( theClass );
+						
 			int count = 0;
 			
 			Iterator<GraphPath> iterator = this.iterator();
@@ -255,7 +257,7 @@ public class GraphPaths extends ArrayList<GraphPath>{
 
 				GraphPath thePath = (GraphPath) iterator.next();
 				
-				String thePathName = withClassName + String.format( "%03d", count );
+				String thePathName = theClass.getName() + String.format( "%03d", count );
 							
 				_context.info( "Adding dependencies for " + thePathName );
 
@@ -275,29 +277,16 @@ public class GraphPaths extends ArrayList<GraphPath>{
 		}
 	}
 
-	private IRPModelElement getOrCreateNewDependencyOwningClass(
-			IRPPackage underThePackage,
-			String withTheName,
-			boolean withDependencyCleanupWanted ){
+	public void deleteAllDependenciesOwnedBy(
+			IRPModelElement theClass ){
 		
-		IRPModelElement theClass = underThePackage.findAllByName( withTheName, "Class" );
+		@SuppressWarnings("unchecked")
+		List<IRPModelElement> theDependencies = theClass.getDependencies().toList();
 		
-		if( theClass instanceof IRPClass ){
+		if( !theDependencies.isEmpty() ){
 			
-			@SuppressWarnings("unchecked")
-			List<IRPModelElement> theDependencies = theClass.getDependencies().toList();
-			
-			if( !theDependencies.isEmpty() ){
-				
-				if( withDependencyCleanupWanted ){
-					deleteFromModel( theDependencies );
-				}
-			}
-		} else {
-			theClass = underThePackage.addClass( withTheName );
+			deleteFromModel( theDependencies );
 		}
-		
-		return theClass;
 	}
 
 	private void deleteFromModel( 

@@ -8,6 +8,7 @@ import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.DependencySelector;
 import com.mbsetraining.sysmlhelper.common.LayoutHelper;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.graphtraversal.CreateClassForGraphPathCapturePanel;
 import com.telelogic.rhapsody.core.*;
 
 public class BusinessValue_RPUserPlugin extends RPUserPlugin {
@@ -88,10 +89,29 @@ public class BusinessValue_RPUserPlugin extends RPUserPlugin {
 						"businessvalueplugin.SetupProjectProperties" ) ) ){
 
 					if( theSelectedEl instanceof IRPPackage ){
-						_settings.checkIfSetupProjectIsNeeded( true, _context.BUSINESS_VALUE_NEW_TERM );
+						_settings.checkIfSetupProjectIsNeeded( true, BusinessValue_Context.BUSINESS_VALUE_NEW_TERM );
 						_context.cleanUpModelRemnants();
 					} else {
 						_context.error( menuItem + " invoked out of context and only works for packages" );
+					}
+					
+				} else if( menuItem.equals( _settings.getString(
+						"businessvalueplugin.BuildPathVisualization" ) ) ){
+
+					IRPModelElement theModelEl = _context.getSelectedElement(true);
+					IRPGraphElement theGraphNode = _context.getSelectedGraphEl();
+
+					if( theModelEl instanceof IRPClass &&
+							theGraphNode instanceof IRPGraphNode ){			
+						
+						IRPDiagram theDiagram = theGraphNode.getDiagram();
+
+						CreateClassForGraphPathCapturePanel.launchThePanel(
+								theAppID, 
+								theSelectedEl.getGUID(), 
+								theDiagram.getGUID() );
+					} else {
+						UserInterfaceHelper.showWarningDialog( "You need to select a class on a diagram for this to work");
 					}
 					
 				} else if( menuItem.equals( _settings.getString(
@@ -237,7 +257,6 @@ public class BusinessValue_RPUserPlugin extends RPUserPlugin {
 		return theOwningPackage;
 	}
 
-
 	private boolean checkAndPerformProfileSetupIfNeeded() {
 
 		boolean isContinue = true;
@@ -253,7 +272,7 @@ public class BusinessValue_RPUserPlugin extends RPUserPlugin {
 			isContinue = UserInterfaceHelper.askAQuestion( theMsg );
 
 			if( isContinue ){
-				_settings.setupProjectWithProperties( _context.BUSINESS_VALUE_NEW_TERM );
+				_settings.setupProjectWithProperties( BusinessValue_Context.BUSINESS_VALUE_NEW_TERM );
 			}
 		}
 		return isContinue;
