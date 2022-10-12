@@ -255,7 +255,7 @@ UNDER DEV RELEASE 2.1.e (02-APR-2017):
 
 UNDER DEV RELEASE 2.1.f (29-MAY-2017):
 #178 29-MAY-2017: Update hep files so menus appear for ValueProperty (8.2) replacement of Attributes (F.J.Chadburn)
-#179 29-MAY-2017: Added new Functional Analysis menu to Re-create «AutoShow» sequence diagram (F.J.Chadburn)
+#179 29-MAY-2017: Added new Functional Analysis menu to Re-create ï¿½AutoShowï¿½ sequence diagram (F.J.Chadburn)
 #180 29-MAY-2017: Added new Design Synthesis menu to Delete attribute and related elements (F.J.Chadburn)
 #181 29-MAY-2017: Replace dialog with Log message in cleanUpAutoRippleDependencies (F.J.Chadburn)
 #182 29-MAY-2017: Tweak to keep attribute selected after switching to publish or subscribe flow-port (F.J.Chadburn)
@@ -263,7 +263,7 @@ UNDER DEV RELEASE 2.1.f (29-MAY-2017):
 #184 29-MAY-2017: Create a connector between pElapsedTime port when creating block hierarchy (F.J.Chadburn)
 #185 29-MAY-2017: Change Block hierarchy creation to use implicit not explicit names for parts (F.J.Chadburn)
 #186 29-MAY-2017: Add context string to getBlockUnderDev to make it clearer for user when selecting (F.J.Chadburn)
-#187 29-MAY-2017: Provide option to re-create «AutoShow» sequence diagram when adding new actor (F.J.Chadburn)
+#187 29-MAY-2017: Provide option to re-create ï¿½AutoShowï¿½ sequence diagram when adding new actor (F.J.Chadburn)
 #188 29-MAY-2017: Tweak Derive downstream requirement to work on right-clicking reqt on IBD or UCD (F.J.Chadburn)
 #189 29-MAY-2017: Updated hep files so create event, attribute, or operations menus appear more widely (F.J.Chadburn)
 
@@ -271,7 +271,7 @@ UNDER DEV RELEASE 2.1.g (05-JUN-2017):
 #190 05-JUN-2017: Added compiler-related Config.properties to improve control when using 64bit Rhp (F.J.Chadburn)
 #191 05-JUN-2017: Carriage return improvements to .properties files to make easier to edit (F.J.Chadburn)
 #192 05-JUN-2017: Widened DeleteAttributeAndRelatedElementsMenu support to work with flow-ports as well (F.J.Chadburn)
-#193 05-JUN-2017: Added Transitions to «AutoRipple» list so they're also cleaned up when attribute is deleted (F.J.Chadburn)
+#193 05-JUN-2017: Added Transitions to ï¿½AutoRippleï¿½ list so they're also cleaned up when attribute is deleted (F.J.Chadburn)
 #194 05-JUN-2017: Added _NoWebify configuration to FunctionalBlock creation to ease usage with 64bit Rhp (F.J.Chadburn)
 #195 05-JUN-2017: Modified FunctionalBlockPackage creation to create BDD in BlockPkg to ease white box method (F.J.Chadburn)
 #196 05-JUN-2017: Enhanced create traced element dialogs to be context aware for blocks/parts (F.J.Chadburn)
@@ -299,7 +299,7 @@ UNDER DEV RELEASE 2.1.j (04-JUL-2017):
 #212 04-JUL-2017: Added a MergeActors helper, currently only invoked via Eclipse (F.J.Chadburn)
 
 UNDER DEV RELEASE 2.1.k (09-JUL-2017):
-#213 09-JUL-2017: Add dialogs to auto-connect «publish»/«subscribe» FlowPorts for white-box simulation (F.J.Chadburn)
+#213 09-JUL-2017: Add dialogs to auto-connect ï¿½publishï¿½/ï¿½subscribeï¿½ FlowPorts for white-box simulation (F.J.Chadburn)
 #214 09-JUL-2017: Tweak Link from TimeActor to be a new term "connector" when creating block hierarchy (F.J.Chadburn)
 #215 09-JUL-2017: Change GlobalPreferencesProfile so that Link name is not shown on IBDs by default (F.J.Chadburn)
 #216 09-JUL-2017: Added a new Add Block/Part command added to the Functional Analysis menus (F.J.Chadburn)
@@ -767,6 +767,7 @@ V4.1.d.Rhp831.PreRelease (XX-XXX-XXXX):
 #564 23-SEP-2022: BusinessValue: Checkpoint of directed graph paths work, able to create custom views on diagram and in browser (F.J.Chadburn)
 #565 23-SEP-2022: BusinessValue: More automation to create diagram views of graphical paths and ensure that measured by attributes are included (F.J.Chadburn) 
 #566 12-OCT-2022: ExecutableMBSE: Corrected versioning for ExecutableMBSE profile (F.J.Chadburn)
+#567 12-OCT-2022: ExecutableMBSE: Switched dev environment to Eclipse Version: 2022-09 (4.25.0) with 1.8 (F.J.Chadburn)
 
 Backlog/Known issues
 - Review whether to put diagrams on right-click menu above the executable mbse one to make clearer/easier 
