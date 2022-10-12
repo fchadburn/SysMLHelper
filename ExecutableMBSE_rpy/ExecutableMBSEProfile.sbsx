@@ -4,7 +4,7 @@
 	<CODE-PAGE>1252</CODE-PAGE>
 	<version>100.831.0</version>
 	<lang>C++</lang>
-	<BuildNo>9835718</BuildNo>
+	<BuildNo>9835550</BuildNo>
 	
 	<RHAPSODY-MODEL>
 	<IProfile type="e">
@@ -613,7 +613,7 @@
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">AutoReferences</_Name>
-													<_Value type="a">$OMROOT\Profiles\SysML\SysMLProfile_rpy\SysML.sbs,$OMROOT\Profiles\SysMLHelper\ExecutableMBSE_rpy\BasePkg.sbsx</_Value>
+													<_Value type="a">$OMROOT\Profiles\SysML\SysMLProfile_rpy\SysML.sbs,$OMROOT\Profiles\SysML\SysMLProfile_rpy\SysML.sbsx,$OMROOT\Profiles\SysMLHelper\ExecutableMBSE_rpy\BasePkg.sbsx</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -1689,7 +1689,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">9.16.2022::8:25:25</_modifiedTime>
+			<_modifiedTime type="a">10.12.2022::11:59:7</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -2676,22 +2676,6 @@
 			<m_drawBehavior type="a">4096</m_drawBehavior>
 			<m_transform type="a">3.58796 0 0 7.59848 20 11 </m_transform>
 			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
-			<m_AdditionalLabel type="p">
-				<CGIText type="e">
-					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
-					<m_color type="p">
-						<IColor type="e">
-							<m_fgColor type="a">0</m_fgColor>
-							<m_bgColor type="a">0</m_bgColor>
-							<m_bgFlag type="a">0</m_bgFlag>
-						</IColor>
-					</m_color>
-					<m_position type="a">1 0 0  </m_position>
-					<m_nIdent type="a">0</m_nIdent>
-					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
-					<m_nOrientationCtrlPt type="a">1</m_nOrientationCtrlPt>
-				</CGIText>
-			</m_AdditionalLabel>
 			<m_polygon type="a">4 0 0  0 132  216 132  216 0  </m_polygon>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
@@ -4282,22 +4266,6 @@ Tips:\par%0D
 			<m_drawBehavior type="a">4096</m_drawBehavior>
 			<m_transform type="a">3.58796 0 0 7.5303 20 20 </m_transform>
 			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
-			<m_AdditionalLabel type="p">
-				<CGIText type="e">
-					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
-					<m_color type="p">
-						<IColor type="e">
-							<m_fgColor type="a">0</m_fgColor>
-							<m_bgColor type="a">0</m_bgColor>
-							<m_bgFlag type="a">0</m_bgFlag>
-						</IColor>
-					</m_color>
-					<m_position type="a">1 0 0  </m_position>
-					<m_nIdent type="a">0</m_nIdent>
-					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
-					<m_nOrientationCtrlPt type="a">1</m_nOrientationCtrlPt>
-				</CGIText>
-			</m_AdditionalLabel>
 			<m_polygon type="a">4 0 0  0 132  216 132  216 0  </m_polygon>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
@@ -5186,22 +5154,6 @@ Tips:\par%0D
 				<m_drawBehavior type="a">4096</m_drawBehavior>
 				<m_transform type="a">5.10648 0 0 9.33333 20 20 </m_transform>
 				<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
-				<m_AdditionalLabel type="p">
-					<CGIText type="e">
-						<m_style type="a">Arial; 10 0 0 0 1 </m_style>
-						<m_color type="p">
-							<IColor type="e">
-								<m_fgColor type="a">0</m_fgColor>
-								<m_bgColor type="a">0</m_bgColor>
-								<m_bgFlag type="a">0</m_bgFlag>
-							</IColor>
-						</m_color>
-						<m_position type="a">1 0 0  </m_position>
-						<m_nIdent type="a">0</m_nIdent>
-						<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
-						<m_nOrientationCtrlPt type="a">1</m_nOrientationCtrlPt>
-					</CGIText>
-				</m_AdditionalLabel>
 				<m_polygon type="a">4 0 0  0 132  216 132  216 0  </m_polygon>
 				<m_nNameFormat type="a">0</m_nNameFormat>
 				<m_nIsNameFormat type="a">0</m_nIsNameFormat>
@@ -5733,22 +5685,6 @@ Tips:\par%0D
 			<m_drawBehavior type="a">4096</m_drawBehavior>
 			<m_transform type="a">4.31944 0 0 5.75 20 20 </m_transform>
 			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
-			<m_AdditionalLabel type="p">
-				<CGIText type="e">
-					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
-					<m_color type="p">
-						<IColor type="e">
-							<m_fgColor type="a">0</m_fgColor>
-							<m_bgColor type="a">0</m_bgColor>
-							<m_bgFlag type="a">0</m_bgFlag>
-						</IColor>
-					</m_color>
-					<m_position type="a">1 0 0  </m_position>
-					<m_nIdent type="a">0</m_nIdent>
-					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
-					<m_nOrientationCtrlPt type="a">1</m_nOrientationCtrlPt>
-				</CGIText>
-			</m_AdditionalLabel>
 			<m_polygon type="a">4 0 0  0 132  216 132  216 0  </m_polygon>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
@@ -6587,22 +6523,6 @@ Tips:\par%0D
 			<m_drawBehavior type="a">4096</m_drawBehavior>
 			<m_transform type="a">3.27315 0 0 3.63636 20 20 </m_transform>
 			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
-			<m_AdditionalLabel type="p">
-				<CGIText type="e">
-					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
-					<m_color type="p">
-						<IColor type="e">
-							<m_fgColor type="a">0</m_fgColor>
-							<m_bgColor type="a">0</m_bgColor>
-							<m_bgFlag type="a">0</m_bgFlag>
-						</IColor>
-					</m_color>
-					<m_position type="a">1 0 0  </m_position>
-					<m_nIdent type="a">0</m_nIdent>
-					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
-					<m_nOrientationCtrlPt type="a">1</m_nOrientationCtrlPt>
-				</CGIText>
-			</m_AdditionalLabel>
 			<m_polygon type="a">4 0 0  0 132  216 132  216 0  </m_polygon>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
@@ -7809,22 +7729,6 @@ setElapsedTime( params-&gt;value );</_body>
 				<m_drawBehavior type="a">4096</m_drawBehavior>
 				<m_transform type="a">5.66204 0 0 4.23485 20 20 </m_transform>
 				<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
-				<m_AdditionalLabel type="p">
-					<CGIText type="e">
-						<m_style type="a">Arial; 10 0 0 0 1 </m_style>
-						<m_color type="p">
-							<IColor type="e">
-								<m_fgColor type="a">0</m_fgColor>
-								<m_bgColor type="a">0</m_bgColor>
-								<m_bgFlag type="a">0</m_bgFlag>
-							</IColor>
-						</m_color>
-						<m_position type="a">1 0 0  </m_position>
-						<m_nIdent type="a">0</m_nIdent>
-						<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
-						<m_nOrientationCtrlPt type="a">1</m_nOrientationCtrlPt>
-					</CGIText>
-				</m_AdditionalLabel>
 				<m_polygon type="a">4 0 0  0 132  216 132  216 0  </m_polygon>
 				<m_nNameFormat type="a">0</m_nNameFormat>
 				<m_nIsNameFormat type="a">0</m_nIsNameFormat>
@@ -8896,22 +8800,6 @@ setElapsedTime( params-&gt;value );</m_str>
 			<m_drawBehavior type="a">4096</m_drawBehavior>
 			<m_transform type="a">3.25463 0 0 3.63636 2 20 </m_transform>
 			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
-			<m_AdditionalLabel type="p">
-				<CGIText type="e">
-					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
-					<m_color type="p">
-						<IColor type="e">
-							<m_fgColor type="a">0</m_fgColor>
-							<m_bgColor type="a">0</m_bgColor>
-							<m_bgFlag type="a">0</m_bgFlag>
-						</IColor>
-					</m_color>
-					<m_position type="a">1 0 0  </m_position>
-					<m_nIdent type="a">0</m_nIdent>
-					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
-					<m_nOrientationCtrlPt type="a">1</m_nOrientationCtrlPt>
-				</CGIText>
-			</m_AdditionalLabel>
 			<m_polygon type="a">4 0 0  0 132  216 132  216 0  </m_polygon>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
@@ -10281,22 +10169,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<m_drawBehavior type="a">4096</m_drawBehavior>
 			<m_transform type="a">3.25463 0 0 3.65909 20 20 </m_transform>
 			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
-			<m_AdditionalLabel type="p">
-				<CGIText type="e">
-					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
-					<m_color type="p">
-						<IColor type="e">
-							<m_fgColor type="a">0</m_fgColor>
-							<m_bgColor type="a">0</m_bgColor>
-							<m_bgFlag type="a">0</m_bgFlag>
-						</IColor>
-					</m_color>
-					<m_position type="a">1 0 0  </m_position>
-					<m_nIdent type="a">0</m_nIdent>
-					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
-					<m_nOrientationCtrlPt type="a">1</m_nOrientationCtrlPt>
-				</CGIText>
-			</m_AdditionalLabel>
 			<m_polygon type="a">4 0 0  0 132  216 132  216 0  </m_polygon>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
@@ -10796,7 +10668,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 99d433ee-75c1-40c0-8ef0-8ea14c3d7d23</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileInfo</_name>
-			<_modifiedTime type="a">9.16.2022::8:25:25</_modifiedTime>
+			<_modifiedTime type="a">10.12.2022::11:58:30</_modifiedTime>
 			<_lastID type="a">3</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -10814,7 +10686,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 00c06448-4cf5-4b58-a462-af1a3bccd935</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileDate</_name>
-			<_modifiedTime type="a">9.16.2022::8:25:17</_modifiedTime>
+			<_modifiedTime type="a">10.12.2022::11:58:24</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IType</_hm2Class>
@@ -10825,19 +10697,19 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</_typeOf>
 			<_isOrdered type="a">0</_isOrdered>
 			<AggregatesList type="e">
-				<value>GUID ae1a9050-f8c7-404e-ae76-b549deb6484e</value>
+				<value>GUID 61992bc3-101c-4b39-b560-652fc4a44ec9</value>
 			</AggregatesList>
 		</ITag>
 		<ILiteralSpecification type="e">
-			<_id type="a">GUID ae1a9050-f8c7-404e-ae76-b549deb6484e</_id>
-			<_modifiedTime type="a">9.16.2022::8:25:17</_modifiedTime>
-			<_value type="a">2022/09/16 09:16:09</_value>
+			<_id type="a">GUID 61992bc3-101c-4b39-b560-652fc4a44ec9</_id>
+			<_modifiedTime type="a">10.12.2022::11:58:24</_modifiedTime>
+			<_value type="a">2022/10/12 12:57:00</_value>
 		</ILiteralSpecification>
 		<ITag type="e">
 			<_id type="a">GUID c783ee62-7cd8-4f71-8651-25132d0e1150</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileVersion</_name>
-			<_modifiedTime type="a">9.16.2022::8:25:25</_modifiedTime>
+			<_modifiedTime type="a">10.12.2022::11:58:30</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IType</_hm2Class>
@@ -10848,13 +10720,13 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</_typeOf>
 			<_isOrdered type="a">0</_isOrdered>
 			<AggregatesList type="e">
-				<value>GUID 6a49fe92-c12f-4ad4-b75f-42def137b240</value>
+				<value>GUID 50f60274-aedd-447f-83ba-d1143b8c3325</value>
 			</AggregatesList>
 		</ITag>
 		<ILiteralSpecification type="e">
-			<_id type="a">GUID 6a49fe92-c12f-4ad4-b75f-42def137b240</_id>
-			<_modifiedTime type="a">9.16.2022::8:25:25</_modifiedTime>
-			<_value type="a">V4.1.c.Rhp831.PreRelease</_value>
+			<_id type="a">GUID 50f60274-aedd-447f-83ba-d1143b8c3325</_id>
+			<_modifiedTime type="a">10.12.2022::11:58:30</_modifiedTime>
+			<_value type="a">V4.1.d.Rhp831.PreRelease</_value>
 		</ILiteralSpecification>
 		<ITag type="e">
 			<_id type="a">GUID 6cadd9b1-62a9-477e-a2b1-45c9e04743fb</_id>
