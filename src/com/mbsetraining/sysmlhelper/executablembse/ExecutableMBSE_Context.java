@@ -92,6 +92,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String TABLE_VIEW_PREFIX = "table view - ";
 	public final String CONTEXT_DIAGRAM_PREFIX = "ctx - ";
 	public final String USE_CASE_DIAGRAM_PREFIX = "uc - ";
+	public final String STATE_MACHINE_DIAGRAM_PREFIX = "stm - ";
 	public final String POST_FIX_FOR_FEATURE_FUNCTION_PKG = "_FeaturePkg";
 	public final String POST_FIX_FOR_FEATURE_FUNCTION_WORKING_COPY_PKG = "_WorkingCopyFeaturePkg";
 

@@ -247,7 +247,7 @@ public class CreateNewBlockPartPanel extends ExecutableMBSEBasePanel {
 				IRPStatechart theStatechart = theBlock.getStatechart();
 				
 				if( theStatechart != null ){
-					theStatechart.setName( "STM - " + theName );				
+					theStatechart.setName( _context.STATE_MACHINE_DIAGRAM_PREFIX + theName );				
 					_context.info( "Created " + _context.elInfo( theBlock ) + 
 							" with " + _context.elInfo( theStatechart ) );
 
@@ -335,7 +335,7 @@ public class CreateNewBlockPartPanel extends ExecutableMBSEBasePanel {
 }
 
 /**
- * Copyright (C) 2017-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2017-2022  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

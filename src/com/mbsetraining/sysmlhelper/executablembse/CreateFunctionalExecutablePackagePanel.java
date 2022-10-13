@@ -742,7 +742,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 
 			if( theStatechart != null ){
 
-				theLogicalSystemBlock.getStatechart().setName( "STM - " + theName );
+				theLogicalSystemBlock.getStatechart().setName( _context.STATE_MACHINE_DIAGRAM_PREFIX + theName );
 
 				theStatechart.highLightElement();
 				theStatechart.openDiagram();
@@ -783,7 +783,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 }
 
 /**
- * Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2018-2022  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 
