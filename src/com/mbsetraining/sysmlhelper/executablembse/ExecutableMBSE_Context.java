@@ -93,6 +93,8 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String CONTEXT_DIAGRAM_PREFIX = "ctx - ";
 	public final String USE_CASE_DIAGRAM_PREFIX = "uc - ";
 	public final String STATE_MACHINE_DIAGRAM_PREFIX = "stm - ";
+	public final String BLOCK_DEFINITION_DIAGRAM_PREFIX = "bdd - ";
+	public final String INTERNAL_BLOCK_DIAGRAM_PREFIX = "ibd - ";
 	public final String POST_FIX_FOR_FEATURE_FUNCTION_PKG = "_FeaturePkg";
 	public final String POST_FIX_FOR_FEATURE_FUNCTION_WORKING_COPY_PKG = "_WorkingCopyFeaturePkg";
 

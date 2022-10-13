@@ -764,13 +764,13 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 			theDiagramHelper.createBDDFor(
 					theSystemAssemblyBlock,
 					theBlockPkg,
-					"BDD - " + theSystemAssemblyBlock.getName(),
+					_context.BLOCK_DEFINITION_DIAGRAM_PREFIX + theSystemAssemblyBlock.getName(),
 					"Block Definition Diagram",
 					_excludeMetaClasses );
 
 			theDiagramHelper.createIBDFor( 
 					theSystemAssemblyBlock, 
-					"IBD - " + theSystemAssemblyBlock.getName(),
+					_context.INTERNAL_BLOCK_DIAGRAM_PREFIX + theSystemAssemblyBlock.getName(),
 					"Internal Block Diagram" );
 
 			_context.autoPopulateProjectPackageDiagramIfNeeded();

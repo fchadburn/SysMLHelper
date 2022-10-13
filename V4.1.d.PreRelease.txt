@@ -771,6 +771,7 @@ V4.1.d.Rhp831.PreRelease (XX-XXX-XXXX):
 #568 12-OCT-2022: ExecutableMBSE: Auto-reference the SysML.sbsx as well as SysML.sbs to cope with a 9.0.1 iFix 003 change while still work with earlier (F.J.Chadburn)
 #569 13-OCT-2022: ExecutableMBSE: When helper creates a uc diagram then prefix name with uc lower-case rather than upper case UCD to align with SysML (F.J.Chadburn)
 #570 13-OCT-2022: ExecutableMBSE: When helper creates a stm diagram then prefix name with stm lower-case rather than upper case STM to align with other default naming (F.J.Chadburn)
+#571 13-OCT-2022: ExecutableMBSE: When helper creates a bdd/ibd diagram then prefix name with lower-case rather than upper case to align default naming (F.J.Chadburn)
 
 Backlog/Known issues
 - Review other prefixes such as panel and table diagram to ensure helper and defaults are aligned to lower-case
