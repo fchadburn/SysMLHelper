@@ -99,7 +99,7 @@ public class CreateUseCasesPackage {
 			IRPPackage theUseCasePkg ) {
 		
 		IRPUseCaseDiagram theUCD = 
-				theUseCasePkg.addUseCaseDiagram( "UCD - " + theName );
+				theUseCasePkg.addUseCaseDiagram( _context.USE_CASE_DIAGRAM_PREFIX + theName );
 		
 		IRPStereotype theStereotype = _context.getNewTermForUseCaseDiagram();
 		

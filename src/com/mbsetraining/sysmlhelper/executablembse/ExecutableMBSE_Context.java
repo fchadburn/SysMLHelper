@@ -91,6 +91,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String AUTO_RIPPLE_STEREOTYPE = "AutoRipple";
 	public final String TABLE_VIEW_PREFIX = "table view - ";
 	public final String CONTEXT_DIAGRAM_PREFIX = "ctx - ";
+	public final String USE_CASE_DIAGRAM_PREFIX = "uc - ";
 	public final String POST_FIX_FOR_FEATURE_FUNCTION_PKG = "_FeaturePkg";
 	public final String POST_FIX_FOR_FEATURE_FUNCTION_WORKING_COPY_PKG = "_WorkingCopyFeaturePkg";
 
@@ -1222,11 +1223,11 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 				if( theElementsOwner.equals( theAttributeOwner )){
 					theExistingFlowPort = (IRPSysMLPort)theEl;
-					//super.debug( super.elInfo( theExistingFlowPort ) + " was found based on «AutoRipple» dependency" );					
+					//super.debug( super.elInfo( theExistingFlowPort ) + " was found based on ï¿½AutoRippleï¿½ dependency" );					
 				} else {
 					//super.debug( "Warning, in getExistingFlowPort() for " + 
 					//		super.elInfo( forTheAttribute ) + ":" + super.elInfo( theEl ) + 
-					//		" was found based on «AutoRipple» dependency" );	
+					//		" was found based on ï¿½AutoRippleï¿½ dependency" );	
 
 					//super.debug("However, it is incorrectly owned by " + super.elInfo( theElementsOwner ) + 
 					//		" hence relation needs to be deleted");
@@ -1270,11 +1271,11 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 				if( theElementsOwner.equals( theAttributeOwner )){
 					theExistingCheckOp = (IRPOperation)theEl;
-					//super.debug( super.elInfo( theExistingCheckOp ) + " was found based on «AutoRipple» dependency" );					
+					//super.debug( super.elInfo( theExistingCheckOp ) + " was found based on ï¿½AutoRippleï¿½ dependency" );					
 				} else {
 					//super.debug( "Warning, in getExistingCheckOp() for " + 
 					//		super.elInfo( forTheAttribute ) + ":" + super.elInfo( theEl ) + 
-					//		" was found based on «AutoRipple» dependency" );	
+					//		" was found based on ï¿½AutoRippleï¿½ dependency" );	
 
 					//super.debug( "However, it is incorrectly owned by " + super.elInfo( theElementsOwner ) + 
 					//		" hence relation needs to be deleted");

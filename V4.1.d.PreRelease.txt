@@ -769,6 +769,7 @@ V4.1.d.Rhp831.PreRelease (XX-XXX-XXXX):
 #566 12-OCT-2022: ExecutableMBSE: Corrected versioning for ExecutableMBSE profile (F.J.Chadburn)
 #567 12-OCT-2022: ExecutableMBSE: Switched dev environment to Eclipse Version: 2022-09 (4.25.0) with 1.8 (F.J.Chadburn)
 #568 12-OCT-2022: ExecutableMBSE: Auto-reference the SysML.sbsx as well as SysML.sbs to cope with a 9.0.1 iFix 003 change while still work with earlier (F.J.Chadburn)
+#569 13-OCT-2022: ExecutableMBSE: When helper creates a uc diagram then prefix name with uc lower-case rather than upper case UCD to align with SysML (F.J.Chadburn)
 
 Backlog/Known issues
 - Review whether to put diagrams on right-click menu above the executable mbse one to make clearer/easier 
