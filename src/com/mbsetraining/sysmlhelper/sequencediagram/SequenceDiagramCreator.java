@@ -11,35 +11,6 @@ public class SequenceDiagramCreator {
 
 	protected ExecutableMBSE_Context _context;
 
-	public static void main(String[] args) {
-
-		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
-
-		IRPModelElement theSelectedEl = theRhpApp.getSelectedElement();
-
-		if( theSelectedEl instanceof IRPClass ){
-
-			ExecutableMBSE_Context theContext = new ExecutableMBSE_Context( theRhpApp.getApplicationConnectionString() );
-			SequenceDiagramCreator theHelper = new SequenceDiagramCreator( theContext );
-
-			IRPPackage theOwningPkg = theContext.getOwningPackageFor( theSelectedEl );
-
-			theHelper.createSequenceDiagramFor( 
-					(IRPClass) theSelectedEl, 
-					theOwningPkg, 
-					"SD - " + theSelectedEl.getName(),
-					false,
-					true,
-					false );
-
-		} else if( theSelectedEl instanceof IRPSequenceDiagram ){
-
-			ExecutableMBSE_Context theContext = new ExecutableMBSE_Context( theRhpApp.getApplicationConnectionString() );
-			SequenceDiagramCreator theHelper = new SequenceDiagramCreator( theContext );
-			theHelper.updateLifelinesToMatchPartsInActiveBuildingBlock( (IRPSequenceDiagram) theSelectedEl );
-		}
-	}
-
 	public SequenceDiagramCreator(
 			ExecutableMBSE_Context context ) {
 
@@ -392,7 +363,7 @@ public class SequenceDiagramCreator {
 }
 
 /**
- * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2016-2022  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

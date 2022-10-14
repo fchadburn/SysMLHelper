@@ -186,7 +186,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						theCreator.createSequenceDiagramFor( 
 								(IRPClass)theSelectedEl, 
 								_context.getOwningPackageFor(theSelectedEl), 
-								"SD - " + theSelectedEl.getName(), 
+								_context.SEQUENCE_DIAGRAM_PREFIX + theSelectedEl.getName(), 
 								false, 
 								true,
 								false );

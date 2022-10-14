@@ -730,7 +730,7 @@ public class CreateFunctionalExecutablePackagePanel extends ExecutableMBSEBasePa
 			IRPSequenceDiagram theSD = theHelper.createSequenceDiagramFor(
 					theSystemAssemblyBlock, 
 					theRootPkg, 
-					"SD - " + theName,
+					_context.SEQUENCE_DIAGRAM_PREFIX + theName,
 					_context.getIsCreateSDWithAutoShowApplied(),
 					false,
 					false );
