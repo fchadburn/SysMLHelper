@@ -1320,7 +1320,15 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			_context.debug( "afterAddForLink invoked for  " + _context.elInfo( theLink ) + 
 					" owned by " + _context.elInfo( theLink.getOwner() ) );
 
-			if( (theLink.getUserDefinedMetaClass().equals( 
+			if( theLink.getFromPort() != null || 
+					theLink.getToPort() != null || 
+					theLink.getFromSysMLPort() != null || 
+					theLink.getToSysMLPort() != null ){
+				
+				//_context.debug( "skip link due to ports for  " + _context.elInfo( theLink ) + 
+				//		" owned by " + _context.elInfo( theLink.getOwner() ) );
+				
+			} else if( (theLink.getUserDefinedMetaClass().equals( 
 					_context.FLOW_CONNECTOR ) &&
 					fromUserDefinedMetaClass.equals( 
 							_context.FUNCTION_USAGE ) &&
