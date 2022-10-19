@@ -6,6 +6,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.telelogic.rhapsody.core.IRPClassifier;
@@ -13,18 +15,116 @@ import com.telelogic.rhapsody.core.IRPDependency;
 import com.telelogic.rhapsody.core.IRPModelElement;
 import com.telelogic.rhapsody.core.IRPRelation;
 import com.telelogic.rhapsody.core.IRPStereotype;
+import com.telelogic.rhapsody.core.RhapsodyAppServer;
 
 public class MetaModelBuilder {
-	
+
+	public static void main(String[] args) {
+
+		// keep the application interface for later use
+		Metamodel_Context context = new Metamodel_Context( 
+				RhapsodyAppServer.getActiveRhapsodyApplication().getApplicationConnectionString() );
+
+		try {
+			IRPModelElement theSysMLStereotype =context.get_rhpPrj().findElementsByFullName( "SysML::SysML", "Stereotype" );
+
+			String theDefaultProperties = null;
+			List<String> theDefaultTokens = new ArrayList<>();
+
+			if( theSysMLStereotype instanceof IRPStereotype ){
+
+				theDefaultProperties = theSysMLStereotype.getPropertyValueExplicit( 
+						"General.Model.AddNewMenuStructureContent" );
+
+				Matcher m = Pattern.compile("(.*)$|/(.*),")
+						.matcher( theDefaultProperties );
+
+				while (m.find()) {
+					String theGroup = m.group(2);
+
+					if( theGroup != null && 
+							!theGroup.isEmpty() && 
+							!theGroup.equals("rpy_separator") ){
+
+						context.info( "Found " + theGroup );
+						theDefaultTokens.add( theGroup );
+					} else {
+
+						theGroup = m.group(1);
+
+						if( theGroup != null && 
+								!theGroup.isEmpty() && 
+								!theGroup.equals("rpy_separator") ){
+
+							context.info( "Found " + theGroup );
+							theDefaultTokens.add( theGroup ); 
+						}	 
+					}
+
+				}
+			}
+		} catch (Exception e) {
+			context.error( "e=" + e.getMessage());
+		}
+
+		context.info( "... Finished" );
+
+	}
+
+	private List<String> getDefaultTokensFromSysML(
+			String theDefaultProperties ){
+
+		_context.info( "getDefaultTokensFromSysML was invoked... ");
+
+		List<String> theDefaultTokens = new ArrayList<>();
+
+		try {
+			Matcher m = Pattern.compile("(.*)$|/(.*),")
+					.matcher( theDefaultProperties );
+
+			while (m.find()) {
+				String theGroup = m.group(2);
+
+				if( theGroup != null && 
+						!theGroup.isEmpty() && 
+						!theGroup.equals("rpy_separator") ){
+
+					//_context.info( "Found " + theGroup );
+					theDefaultTokens.add( theGroup );
+				} else {
+
+					theGroup = m.group(1);
+
+					if( theGroup != null && 
+							!theGroup.isEmpty() && 
+							!theGroup.equals("rpy_separator") ){
+
+						//_context.info( "Found " + theGroup );
+						theDefaultTokens.add( theGroup ); 
+					}	 
+				}
+
+			}
+
+		} catch( Exception e ){
+			_context.error( "Exception in getDefaultTokensFromSysML, e=" + e.getMessage());
+		}
+
+		_context.info( "getDefaultTokensFromSysML found " + theDefaultTokens.size() + 
+				" existing element types in the SysML profile" );
+
+		return theDefaultTokens;
+	}
+
 	private String[] _metaModelSingleRelationProperties = { 
-			"PartMetaclassName" };
-	
+	"PartMetaclassName" };
+
 	private String[] _metaModelMultipleRelationProperties = { 
 			"AllowedTypes", 
 			"Sources", 
 			"Targets", 
-			"HideTabsInFeaturesDialog" };
-	
+	"HideTabsInFeaturesDialog" };
+
 	private List<String> _baseDiagramMetaClasses = Arrays.asList(
 			"ObjectModelDiagram", 
 			"StructureDiagram", 
@@ -39,13 +139,13 @@ public class MetaModelBuilder {
 			"PanelDiagram" );
 
 	private BaseContext _context;
-	
+
 	public MetaModelBuilder( 
 			BaseContext context ){
-		
+
 		_context = context;
 	}
-	
+
 	public String aggregatesList(
 			String guid ){
 
@@ -61,7 +161,7 @@ public class MetaModelBuilder {
 				retval = "Error!!!";
 			}
 
-		} catch (Exception e) {
+		} catch( Exception e ){
 			_context.debug("Exception in aggregatesList, e=" + e.getMessage());
 		}
 
@@ -193,11 +293,48 @@ public class MetaModelBuilder {
 
 		List<MenuItem> theCompositions = new ArrayList<>();
 
+
 		appendComprisingOfElementFor( theEl, theCompositions, "Composition", true );
 
-		//		SortedMap<Integer, String> sm = new TreeMap<Integer, String>(); 
+		List<MenuItem> theFilteredMenuItems = new ArrayList<>();
 
-		retval = getCommaSeparatedString( theCompositions, true, true ).replaceAll("Automotive Element/zHiddenFlowPort,", ""); 
+		IRPModelElement theSysMLStereotype = _context.get_rhpPrj().
+				findElementsByFullName( "SysML::SysML", "Stereotype" );
+
+		String theDefaultProperties = null;
+		
+		List<String> theDefaultTokens = new ArrayList<>();
+
+		if( theSysMLStereotype instanceof IRPStereotype ){
+
+			theDefaultProperties = theSysMLStereotype.getPropertyValueExplicit( 
+					"General.Model.AddNewMenuStructureContent" );
+
+			theDefaultTokens = getDefaultTokensFromSysML( theDefaultProperties );
+		}
+
+		if( theDefaultTokens.isEmpty() ){
+			theFilteredMenuItems = theCompositions;
+		} else {			
+			for( MenuItem menuItem : theCompositions ){
+
+				String theName = menuItem.getName();
+
+				if( theDefaultTokens.contains( theName ) ){
+					_context.info( "Filtering out " + theName );
+
+				} else {
+					_context.debug( "Filtering in " + theName );
+					theFilteredMenuItems.add( menuItem );
+				}
+			}
+		}
+
+		retval = getCommaSeparatedString( theFilteredMenuItems, true, true ).replaceAll("Automotive Element/zHiddenFlowPort,", ""); 
+
+		if( theDefaultProperties != null ){	
+			retval += "," + theDefaultProperties;
+		}
 
 		_context.setStringPropertyValueInRhp( 
 				theStereotype, "General.Model.AddNewMenuStructure", retval );						
@@ -239,7 +376,7 @@ public class MetaModelBuilder {
 			return o1.get_Subheading().compareTo( o2.get_Subheading() );
 		}
 	}
-	
+
 	private String getCommaSeparatedString(
 			List<MenuItem> theMenuItems,
 			boolean isAddSubmenu,
@@ -422,3 +559,22 @@ public class MetaModelBuilder {
 		return theRelatedEls;
 	}
 }
+
+/**
+ * Copyright (C) 2020-2022  MBSE Training and Consulting Limited (www.executablembse.com)
+
+    This file is part of SysMLHelperPlugin.
+
+    SysMLHelperPlugin is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    SysMLHelperPlugin is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with SysMLHelperPlugin.  If not, see <http://www.gnu.org/licenses/>.
+*/

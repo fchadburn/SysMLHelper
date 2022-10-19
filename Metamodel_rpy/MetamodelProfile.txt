@@ -1,1 +1,1 @@
-This MetamodelProfile (V0.1) developed by MBSE Training and Consulting Ltd supports the creation and maintenance of domain-specific models.
+This MetamodelProfile (V4.1.d.Rhp831.PreRelease) developed by MBSE Training and Consulting Ltd supports the creation and maintenance of domain-specific models.

@@ -4,7 +4,7 @@
 	<CODE-PAGE>1252</CODE-PAGE>
 	<version>100.831.0</version>
 	<lang>C++</lang>
-	<BuildNo>9835718</BuildNo>
+	<BuildNo>9835550</BuildNo>
 	
 	<RHAPSODY-MODEL>
 	<IProfile type="e">
@@ -26,7 +26,7 @@
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">PropertyFile</_Name>
-													<_Value type="a">$OMROOT\Profiles\MBSEProfiles\Metamodel\Metamodel_rpy\MetamodelProfile.prp</_Value>
+													<_Value type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\MetamodelProfile.prp</_Value>
 													<_Type type="a">File</_Type>
 												</IProperty>
 												
@@ -43,11 +43,11 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">MetamodelProfile</_name>
-			<_modifiedTimeWeak type="a">4.29.2021::12:28:50</_modifiedTimeWeak>
-			<_modifiedTime type="a">4.29.2021::12:28:50</_modifiedTime>
+			<_modifiedTimeWeak type="a">10.19.2022::12:31:37</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.19.2022::12:31:37</_modifiedTime>
 			<_lastID type="a">9</_lastID>
-			<weakCGTime type="a">4.29.2021::12:28:50</weakCGTime>
-			<strongCGTime type="a">4.4.2020::11:7:37</strongCGTime>
+			<weakCGTime type="a">10.19.2022::12:31:37</weakCGTime>
+			<strongCGTime type="a">10.19.2022::12:31:37</strongCGTime>
 			<_defaultComposite type="s">GUID 595c7ecd-0dc0-45ad-b9cd-99ae751be6da</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<_configurationRelatedTime type="a">6.21.2020::13:31:17</_configurationRelatedTime>
