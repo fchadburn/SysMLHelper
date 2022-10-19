@@ -777,6 +777,7 @@ V4.1.d.Rhp831.PreRelease (19-OCT-2022):
 #574 19-OCT-2022: Metamodel: Encapsulate fixes to bring code across from MBSEProfiles folder that should be here (F.J.Chadburn)
 #575 19-OCT-2022: ExecutableMBSE: Allow Flow to drawing toolbar for the internal block diagram - system (F.J.Chadburn)
 #576 19-OCT-2022: ExecutableMBSE: When drawing connector on ibd - system don't launch a dialog if ports are already existing (F.J.Chadburn)
+#577 19-OCT-2022: ExecutableMBSE: Allow metamodel to contain flows owned by system architecture packages (F.J.Chadburn)
 
 Backlog/Known issues
 - Want a new type of a block for flowing element to be defined

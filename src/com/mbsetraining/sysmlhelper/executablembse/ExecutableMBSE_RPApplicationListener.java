@@ -1055,7 +1055,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			} catch( Exception e ){
 				_context.warning( "Exception in afterAddForFlow trying to move " + _context.elInfo( modelElement ) + 
 						" owned by " + _context.elInfo( modelElement.getOwner() ) + 
-						" to " + _context.elInfo( theOwningPkg ) );
+						" to " + _context.elInfo( theOwningPkg ) + ", e=" + e.getMessage() );
 			}
 		}
 
