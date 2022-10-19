@@ -64,16 +64,16 @@ public class PortsForLinksCreator {
 				//_context.debug( "fromClassifierEl = " + _context.elInfo( fromClassifierEl ) );
 				//_context.debug( "toClassifierEl = " + _context.elInfo( toClassifierEl ) );
 
-				String toClassifierName = _context.capitalize( toClassifierEl.getName().replace( " ", "" ) );
-				String fromClassifierName = _context.capitalize( fromClassifierEl.getName().replace( " ", "" ) );
-
+				String toName = getPortAppropriateNameFor( toClassifierEl );
+				String fromName = getPortAppropriateNameFor( fromClassifierEl );
+				
 				String fromPortName = _context.determineUniqueNameBasedOn( 
-						"p" + toClassifierName, 
+						"p" + toName, 
 						"Port", 
 						fromClassifierEl );
 
 				String toPortName = _context.determineUniqueNameBasedOn( 
-						"p" + fromClassifierName, 
+						"p" + fromName, 
 						"Port", 
 						toClassifierEl );
 
@@ -83,7 +83,7 @@ public class PortsForLinksCreator {
 
 				String fromInterfaceName =
 						_context.determineUniqueNameBasedOn( 
-								"I" + fromClassifierName, 
+								"I" + fromName, 
 								"Class", 
 								theOwningPkg );
 
@@ -95,7 +95,7 @@ public class PortsForLinksCreator {
 
 				String toInterfaceName =
 						_context.determineUniqueNameBasedOn( 
-								"I" + toClassifierName, 
+								"I" + toName, 
 								"Class", 
 								theOwningPkg );
 
@@ -207,6 +207,20 @@ public class PortsForLinksCreator {
 		}
 	}
 
+	private String getPortAppropriateNameFor( 
+			IRPModelElement theEl ) {
+	
+		String theName = _context.getStringForTagCalled( "ShortName", theEl, null );
+		
+		if( theName == null || theName.isEmpty() ) {
+			theName = theEl.getName();
+		}
+		
+		theName = _context.capitalize( theName.replace( " ", "" ) );
+		
+		return theName;
+	}
+	
 	private void autoCreateProxyPorts(){
 
 		IRPGraphEdge theGraphEdge = _context.getCorrespondingGraphEdgeFor( _link );
@@ -226,16 +240,16 @@ public class PortsForLinksCreator {
 				//_context.debug( "fromClassifierEl = " + _context.elInfo( fromClassifierEl ) );
 				//_context.debug( "toClassifierEl = " + _context.elInfo( toClassifierEl ) );
 
-				String toClassifierName = _context.capitalize( toClassifierEl.getName().replace( " ", "" ) );
-				String fromClassifierName = _context.capitalize( fromClassifierEl.getName().replace( " ", "" ) );
+				String toName = getPortAppropriateNameFor( toClassifierEl );
+				String fromName = getPortAppropriateNameFor( fromClassifierEl );
 
 				String fromPortName = _context.determineUniqueNameBasedOn( 
-						"p" + toClassifierName, 
+						"p" + toName, 
 						"Port", 
 						fromClassifierEl );
 
 				String toPortName = _context.determineUniqueNameBasedOn( 
-						"p" + fromClassifierName, 
+						"p" + fromName, 
 						"Port", 
 						toClassifierEl );
 
@@ -245,7 +259,7 @@ public class PortsForLinksCreator {
 
 				String theInterfaceBlockName =
 						_context.determineUniqueNameBasedOn( 
-								"IB_" + fromClassifierName + "_To_" + toClassifierName, 
+								"IB_" + fromName + "_To_" + toName, 
 								"Class", 
 								theOwningPkg );
 
@@ -305,16 +319,16 @@ public class PortsForLinksCreator {
 				//_context.debug( "fromClassifierEl = " + _context.elInfo( fromClassifierEl ) );
 				//_context.debug( "toClassifierEl = " + _context.elInfo( toClassifierEl ) );
 
-				String toClassifierName = _context.capitalize( toClassifierEl.getName().replace( " ", "" ) );
-				String fromClassifierName = _context.capitalize( fromClassifierEl.getName().replace( " ", "" ) );
-
+				String toName = getPortAppropriateNameFor( toClassifierEl );
+				String fromName = getPortAppropriateNameFor( fromClassifierEl );
+				
 				String fromPortName = _context.determineUniqueNameBasedOn( 
-						"p" + toClassifierName, 
+						"p" + toName, 
 						"Port", 
 						fromClassifierEl );
 
 				String toPortName = _context.determineUniqueNameBasedOn( 
-						"p" + fromClassifierName, 
+						"p" + fromName, 
 						"Port", 
 						toClassifierEl );
 

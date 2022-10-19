@@ -773,8 +773,13 @@ V4.1.d.Rhp831.PreRelease (XX-XXX-XXXX):
 #570 13-OCT-2022: ExecutableMBSE: When helper creates a stm diagram then prefix name with stm lower-case rather than upper case STM to align with other default naming (F.J.Chadburn)
 #571 13-OCT-2022: ExecutableMBSE: When helper creates a bdd/ibd diagram then prefix name with lower-case rather than upper case to align default naming (F.J.Chadburn)
 #572 14-OCT-2022: ExecutableMBSE: When helper creates a sequence diagram then prefix name with lower-case seq - rather than upper case SD - to align with SysML naming (F.J.Chadburn)
+#573 19-OCT-2022: ExecutableMBSE: Get the auto port creation when drawing a link to name things based on ShortName tags on classifiers if present (F.J.Chadburn) 
 
 Backlog/Known issues
+- Draw connector between ports still launches a dialog when it shouldn't
+- Add Flow to connector
+- Want a new type of a block for flowing element to be defined
+- Add Flow to the drawing toolbar for ibd - system?
 - Review other prefixes such as panel and table diagram to ensure helper and defaults are aligned to lower-case
 - Review whether to put diagrams on right-click menu above the executable mbse one to make clearer/easier 
 - Maybe get metamodel to handle InitialLayoutForTables property writing
