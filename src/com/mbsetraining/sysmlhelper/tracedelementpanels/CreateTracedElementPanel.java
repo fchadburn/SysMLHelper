@@ -93,13 +93,13 @@ public abstract class CreateTracedElementPanel extends JPanel {
 		
 		if (tracedToReqts.isEmpty()){	
 			_requirementSelectionPanel = new RequirementSelectionPanel( 
-					"There are no requirements to establish «satisfy» dependencies to",
+					"There are no requirements to establish ï¿½satisfyï¿½ dependencies to",
 					tracedToReqts, 
 					tracedToReqts,
 					_context );
 		} else {
 			_requirementSelectionPanel = new RequirementSelectionPanel( 
-					"With «satisfy» dependencies to:",
+					"With Â«satisfyÂ» dependencies to:",
 					tracedToReqts, 
 					tracedToReqts,
 					_context );
@@ -346,8 +346,8 @@ public abstract class CreateTracedElementPanel extends JPanel {
 			for( IRPRequirement theReqt : theReqtsToAdd ) {
 				
 				if( theExistingTracedReqts.contains( theReqt ) ){
-					//_context.debug( _context.elInfo( theElement ) + " already has a «" + theStereotypeName + 
-					//		"» dependency to " + _context.elInfo( theReqt ) + 
+					//_context.debug( _context.elInfo( theElement ) + " already has a Â«" + theStereotypeName + 
+					//		"Â» dependency to " + _context.elInfo( theReqt ) + 
 					//		", so doing nothing" );
 					
 				} else if( theReqt.isRemote()== 1 ){
@@ -364,8 +364,8 @@ public abstract class CreateTracedElementPanel extends JPanel {
 					}
 					
 				} else {					
-					//_context.debug( _context.elInfo( theElement ) + " does not have a «" + theStereotypeName + 
-					//		"» dependency to " + _context.elInfo( theReqt ) + 
+					//_context.debug( _context.elInfo( theElement ) + " does not have a Â«" + theStereotypeName + 
+					//		"Â» dependency to " + _context.elInfo( theReqt ) + 
 					//		", so adding one" );
 					
 					IRPDependency theDep = theElement.addDependencyTo( theReqt );

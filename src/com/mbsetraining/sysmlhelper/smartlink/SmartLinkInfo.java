@@ -197,7 +197,7 @@ public class SmartLinkInfo {
 			theMsg+="Create ";
 		}
 		
-		theMsg+= "<span style=\"font-weight:bold\">«" +  _relationType.getName() + "»</span>";
+		theMsg+= "<span style=\"font-weight:bold\">Â«" +  _relationType.getName() + "Â»</span>";
 		
 		if( _startLinkElements.size() == 1 && _endLinkElements.size()==1 ){
 			theMsg+=" dependency from:</p>";
