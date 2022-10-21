@@ -35,9 +35,11 @@ public class GraphNodeResizer {
 				theDefaultSize = getDefaultSize( theNewTerm.getName(), theGraphNode.getDiagram() );
 			}
 			
+			String theBaseClass = theModelObject.getMetaClass();
+			
 			// if not got a default size yet then use the base metaclass to find it
 			if( theDefaultSize == null ){
-				theDefaultSize = getDefaultSize( theModelObject.getMetaClass(), theGraphNode.getDiagram() );
+				theDefaultSize = getDefaultSize( theBaseClass, theGraphNode.getDiagram() );
 			}
 			
 			if( theDefaultSize != null ){

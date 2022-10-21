@@ -4,14 +4,14 @@
 	<CODE-PAGE>1252</CODE-PAGE>
 	<version>100.831.0</version>
 	<lang>C++</lang>
-	<BuildNo>9835718</BuildNo>
+	<BuildNo>9835550</BuildNo>
 	
 	<RHAPSODY-MODEL>
 	<ISubsystem type="e">
 			<_id type="a">GUID 801c8dc2-1109-41eb-8815-e3fb68b9a344</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">IconsPkg</_name>
-			<_modifiedTime type="a">5.6.2022::7:48:40</_modifiedTime>
+			<_modifiedTime type="a">10.21.2022::9:7:16</_modifiedTime>
 			<_defaultComposite type="s">GUID 64eceb80-328e-445f-90f1-4b11f0a04bea</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
@@ -83,6 +83,8 @@
 				<value>GUID 0231b668-ab3e-4144-9b6e-2243893a2e00</value>
 				<value>GUID 64f13379-212a-434b-9955-a4292943e515</value>
 				<value>GUID 8e4b9976-6b5e-450e-acc9-ee7893a6283c</value>
+				<value>GUID 373f9eaf-22dc-4d4f-a0a5-ac9ce4428548</value>
+				<value>GUID e196ed6f-47bf-4334-b18d-e95821586997</value>
 				<value>GUID 64eceb80-328e-445f-90f1-4b11f0a04bea</value>
 			</AggregatesList>
 		</ISubsystem>
@@ -561,6 +563,20 @@
 			<_modifiedTime type="a">5.6.2022::7:48:40</_modifiedTime>
 			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
 			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\UseCasePackages.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID 373f9eaf-22dc-4d4f-a0a5-ac9ce4428548</_id>
+			<_name type="a">ViewAndViewpointPackage.ico</_name>
+			<_modifiedTime type="a">10.21.2022::9:7:8</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\ViewAndViewpointPackage.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID e196ed6f-47bf-4334-b18d-e95821586997</_id>
+			<_name type="a">ViewAndViewpointPackages.ico</_name>
+			<_modifiedTime type="a">10.21.2022::9:7:16</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\ViewAndViewpointPackages.ico</_LastKnownFullPath>
 		</IEmbededFile>
 		<IClass type="e">
 			<_id type="a">GUID 64eceb80-328e-445f-90f1-4b11f0a04bea</_id>

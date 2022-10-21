@@ -25,7 +25,6 @@ import com.mbsetraining.sysmlhelper.doorsng.ExportRequirementsToCSV;
 import com.mbsetraining.sysmlhelper.doorsng.RepairLinks;
 import com.mbsetraining.sysmlhelper.doorsng.SwitchRhapsodyRequirementsToDNG;
 import com.mbsetraining.sysmlhelper.eventdeletor.EventDeletor;
-import com.mbsetraining.sysmlhelper.executablembse.CreateFunctionalExecutablePackagePanel;
 import com.mbsetraining.sysmlhelper.featurefunctionpkgcreator.FeatureFunctionPkgCreator;
 import com.mbsetraining.sysmlhelper.gateway.CreateGatewayProjectPanel;
 import com.mbsetraining.sysmlhelper.gateway.MarkedAsDeletedPanel;
@@ -46,6 +45,7 @@ import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateTracedAttributePan
 import com.mbsetraining.sysmlhelper.tracedelementpanels.UpdateTracedAttributePanel;
 import com.mbsetraining.sysmlhelper.usecasemover.UseCaseMover;
 import com.mbsetraining.sysmlhelper.usecasepackage.CreateUseCasesPackagePanel;
+import com.mbsetraining.sysmlhelper.viewviewpoint.ViewStructureCreationPanel;
 import com.telelogic.rhapsody.core.*;
 
 public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
@@ -838,6 +838,17 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 							FeatureFunctionPkgCreator theCreator = new FeatureFunctionPkgCreator( _context );
 							theCreator.createFeatureFunctionPkgs( theUseCases );
 						}
+					}
+					
+				} else if( menuItem.equals( _settings.getString(
+						"executablembseplugin.CreateViewStructureMenu" ) ) ){
+
+					if( theSelectedEl.getUserDefinedMetaClass().equals( _context.VIEW_AND_VIEWPOINT_PACKAGE ) ){
+
+						ViewStructureCreationPanel.launchThePanel( theAppID );
+
+					} else {
+						_context.error( menuItem + " invoked out of context and only works for " + _context.VIEW_AND_VIEWPOINT_PACKAGE );
 					}
 				} else {
 					_context.warning( "Unhandled menu: " + _context.elInfo( theSelectedEl ) + " was invoked with menuItem='" + menuItem + "'");

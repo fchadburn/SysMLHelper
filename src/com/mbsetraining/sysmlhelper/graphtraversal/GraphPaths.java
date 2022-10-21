@@ -85,7 +85,7 @@ public class GraphPaths extends ArrayList<GraphPath>{
 			IRPDiagram basedOnDiagram,
 			GraphPath thePath ){
 		
-		IRPModelElement theQueryEl = findOrAddElement( withTheName, "TableLayout", underThePackage );
+		IRPModelElement theQueryEl = _context.findOrAddElement( withTheName, "TableLayout", underThePackage );
 		theQueryEl.changeTo( "Query" );
 		
 		String theEnableCriteriaCheckValue = null;
@@ -135,7 +135,7 @@ public class GraphPaths extends ArrayList<GraphPath>{
 		IRPTag theUnresolved = theQueryStereotype.getTag( "Unresolved" );
 		theQueryEl.setTagValue( theUnresolved, "ShowUnresolved" );
 		
-		IRPModelElement theCustomViewEl = findOrAddElement( withTheName, "Package", underThePackage );
+		IRPModelElement theCustomViewEl = _context.findOrAddElement( withTheName, "Package", underThePackage );
 		theCustomViewEl.changeTo( "CustomView" );
 /*		
 		IRPCollection customViews = _context.createNewCollection();
@@ -183,24 +183,6 @@ public class GraphPaths extends ArrayList<GraphPath>{
 			theDiagramEl.setName( withTheName + " - " + _context.toLegalClassName( thePath.getLastNodeName() ) );
 			
 		}
-	}
-
-	private IRPModelElement findOrAddElement( 
-			String withTheName, 
-			String andMetaclass, 
-			IRPPackage toThePackage) {
-		
-		IRPModelElement theEl = toThePackage.findAllByName( withTheName, andMetaclass );
-		
-		if( theEl != null ){
-			
-			_context.info( "Found " + _context.elInfo( theEl ) );
-		} else {
-			
-			theEl = toThePackage.addNewAggr( andMetaclass, withTheName );
-		}
-		
-		return theEl;
 	}
 	
 	public GraphPaths(
@@ -263,7 +245,7 @@ public class GraphPaths extends ArrayList<GraphPath>{
 
 				IRPStereotype theDependencyStereotype = null;
 				
-				IRPModelElement theDependencyStereotypeEl = findOrAddElement( thePathName, "Stereotype", underThePackage );
+				IRPModelElement theDependencyStereotypeEl = _context.findOrAddElement( thePathName, "Stereotype", underThePackage );
 
 				if( theDependencyStereotypeEl instanceof IRPStereotype ){
 					theDependencyStereotype = (IRPStereotype)theDependencyStereotypeEl;

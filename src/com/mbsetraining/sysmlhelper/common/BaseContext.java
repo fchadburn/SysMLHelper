@@ -1293,8 +1293,8 @@ public abstract class BaseContext {
 
 			if( theExistingDependencies.size() > 1 ){
 
-				_rhpLog.warning( "Duplicate «" + stereotypeName + 
-						"» dependencies to " + _rhpLog.elInfo( toElement ) + 
+				_rhpLog.warning( "Duplicate Â«" + stereotypeName + 
+						"Â» dependencies to " + _rhpLog.elInfo( toElement ) + 
 						" were found on " + _rhpLog.elInfo( fromElement ) );
 			}
 
@@ -1390,11 +1390,11 @@ public abstract class BaseContext {
 			theDependency = fromElement.addDependencyTo( toElement );
 			theDependency.setStereotype( theStereotype );
 
-			//_rhpLog.debug( "Added a «" + theStereotype.getName() + "» dependency to " + 
+			//_rhpLog.debug( "Added a Â«" + theStereotype.getName() + "Â» dependency to " + 
 			//		_rhpLog.elInfo( fromElement ) + 
 			//		" (to " + _rhpLog.elInfo( toElement ) + ")" );				
 		} else {
-			//_rhpLog.debug( "Skipped adding a «" + theStereotype.getName() + "» dependency to " + _rhpLog.elInfo( fromElement ) + 
+			//_rhpLog.debug( "Skipped adding a Â«" + theStereotype.getName() + "Â» dependency to " + _rhpLog.elInfo( fromElement ) + 
 			//		" (to " + _rhpLog.elInfo( toElement ) + 
 			//		") as " + isExistingFoundCount + " already exists" );
 		}
@@ -2956,6 +2956,24 @@ public abstract class BaseContext {
 				toTheEl.addSpecificStereotype( withStereotype );
 			}
 		}
+	}
+	
+	public IRPModelElement findOrAddElement( 
+			String withTheName, 
+			String andMetaclass, 
+			IRPPackage toThePackage) {
+		
+		IRPModelElement theEl = toThePackage.findAllByName( withTheName, andMetaclass );
+		
+		if( theEl != null ){
+			
+			info( "Found " + elInfo( theEl ) );
+		} else {
+			
+			theEl = toThePackage.addNewAggr( andMetaclass, withTheName );
+		}
+		
+		return theEl;
 	}
 }
 

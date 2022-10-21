@@ -63,6 +63,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String FUNCT_ANALYSIS_FEATURE_FUNCTION_PACKAGE = "22 Feature Function Package";
 	public final String DESIGN_SYNTHESIS_SUBSYSTEM_INTERFACES_PACKAGE = "33 Subsystem Interfaces Package";
 	public final String DESIGN_SYNTHESIS_LOGICAL_SYSTEM_PACKAGE = "31 System Architecture Package";
+	public final String VIEW_AND_VIEWPOINT_PACKAGE = "41 View and Viewpoint Package";
 	public final String REQUIREMENTS_DIAGRAM_SYSTEM = "Requirements Diagram - System";
 	public final String TIME_ELAPSED_BLOCK_STEREOTYPE = "TimeBlock";
 	public final String ELAPSED_TIME_GENERATOR_STEREOTYPE = "TimeGenerator";
@@ -96,6 +97,11 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String BLOCK_DEFINITION_DIAGRAM_PREFIX = "bdd - ";
 	public final String INTERNAL_BLOCK_DIAGRAM_PREFIX = "ibd - ";
 	public final String SEQUENCE_DIAGRAM_PREFIX = "seq - ";
+	public final String VIEW_PREFIX = "view - ";
+	public final String VIEWPOINT_PREFIX = "viewpoint - ";
+	public final String CUSTOMERVIEW_PREFIX = "customv - ";
+	public final String QUERY_PREFIX = "query - ";
+	public final String VIEWPOINT_DIAGRAM_PREFIX = "vvd - ";
 	public final String POST_FIX_FOR_FEATURE_FUNCTION_PKG = "_FeaturePkg";
 	public final String POST_FIX_FOR_FEATURE_FUNCTION_WORKING_COPY_PKG = "_WorkingCopyFeaturePkg";
 
