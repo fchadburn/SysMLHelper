@@ -199,15 +199,14 @@ public class ViewStructureCreationPanel extends ExecutableMBSEBasePanel {
 			} else if( !theQueryContextPatternValue.equals( "" ) ){
 				theQueryEl.setPropertyValue( "Model.TableLayout.QueryContextPattern", "" );
 			}
-
-			IRPStereotype theQueryStereotype = _context.getStereotypeCalled( "Query", theQueryEl );
-			_context.info( "Found " + _context.elInfo( theQueryStereotype ) );
 			
-			IRPTag theConform_ViewpointTag = theQueryStereotype.getTag( "Conform_Viewpoint" );
-			_context.info( "Found " + _context.elInfo( theConform_ViewpointTag ) );
+			/*
+			IRPTag theConform_ViewpointTag = (IRPTag) theQueryEl.addNewAggr( "Tag", "Conform_Viewpoint" );
+			theConform_ViewpointTag.setValue( theViewpointName );
 			
-			IRPTag theOr_And_VeiwpointTag = theQueryStereotype.getTag( "Or_And_Veiwpoint" );
-			_context.info( "Found " + _context.elInfo( theOr_And_VeiwpointTag ) );
+			IRPTag theOr_And_VeiwpointTag = (IRPTag) theQueryEl.addNewAggr( "Tag", "Or_And_Veiwpoint" );
+			theOr_And_VeiwpointTag.setValue( "and" );
+			*/
 			
 			/*
 			IRPTag theRelRef_StereotypeTag = theQueryStereotype.getTag( "RelRef_Stereotype" );

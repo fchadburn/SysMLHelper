@@ -783,8 +783,11 @@ V4.1.e.Rhp831.PreRelease (XX-XXX-XXXX):
 #578 21-OCT-2022: ExecutableMBSE: Checkpoint for initial support to menus for new term package for views and viewpoints and a corresponding diagram (F.J.Chadburn)
 #579 21-OCT-2022: ExecutableMBSE: Allow all model elements to own a Conform from SysML to give option to use Rhapsody's standard view/viewpoints (F.J.Chadburn)
 #580 21-OCT-2022: ExecutableMBSE: Repair Guillemet symbols in dialogs for stereotypes that went odd during move to later eclipse environment (F.J.Chadburn)
+#581 22-OCT-2022: ExecutableMBSE: Added some viewpoint properties to make them display better when auto-drawing view and viewpoint diagram (F.J.Chadburn)
 
 Backlog/Known issues
+- Need customview to select the query
+- Need query to select the viewpoint
 - Want a new type of a block for flowing element to be defined
 - Add Flow to the drawing toolbar for ibd - system?
 - Review other prefixes such as panel and table diagram to ensure helper and defaults are aligned to lower-case

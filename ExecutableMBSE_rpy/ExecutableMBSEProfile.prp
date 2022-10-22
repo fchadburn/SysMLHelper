@@ -237,6 +237,15 @@ Subject Format
 		Property Line.LineColor Color "109,163,217"
 		Property Line.LineWidth Int "1"
 	end
+	Metaclass viewpoint
+		Property DefaultSize String "0,0,216,151"
+		Property Fill.FillColor Color "255,255,255"
+		Property Font.Font String "Tahoma"
+		Property Font.Size Int "8"
+		Property Font.Weight@Child.NameCompartment@Name Int "700"
+		Property Line.LineColor Color "109,163,217"
+		Property Line.LineWidth Int "1"
+	end
 end
 Subject ObjectModelGe
 	Metaclass flowPort
@@ -507,6 +516,19 @@ Subject ObjectModelGe
 		Property ShowInheritedAttributes Bool "False"
 		Property ShowInheritedOperations Bool "False"
 		Property ShowRedefinesLabel Bool "True"
+		Property QuickNavigationCategories String "MainBehavior,MainDiagram,Hyperlinks,Diagrams"
+	end
+	Metaclass viewpoint
+		Property ShowAttributes Enum "All,None,Public,Explicit" "None"
+		Property ShowOperations Enum "All,None,Public,Explicit" "None"
+		Property ShowStereotype Enum "Label,Bitmap,None" "Label"
+		Property ShowName Enum  "Full_path,Relative,Name_only,Label" "Name_only"
+		Property ShowPorts Bool "False"
+		Property ShowPortsInterfaces Bool "True"
+		Property PortsSingleLabelLayout Enum "Off,Internal,External" "Off"
+		Property Compartments MultiLine "Tag"
+		Property ShowInheritedAttributes Bool "False"
+		Property ShowInheritedOperations Bool "False"
 		Property QuickNavigationCategories String "MainBehavior,MainDiagram,Hyperlinks,Diagrams"
 	end
 end
