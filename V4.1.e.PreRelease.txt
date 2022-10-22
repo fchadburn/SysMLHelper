@@ -784,6 +784,7 @@ V4.1.e.Rhp831.PreRelease (XX-XXX-XXXX):
 #579 21-OCT-2022: ExecutableMBSE: Allow all model elements to own a Conform from SysML to give option to use Rhapsody's standard view/viewpoints (F.J.Chadburn)
 #580 21-OCT-2022: ExecutableMBSE: Repair Guillemet symbols in dialogs for stereotypes that went odd during move to later eclipse environment (F.J.Chadburn)
 #581 22-OCT-2022: ExecutableMBSE: Added some viewpoint properties to make them display better when auto-drawing view and viewpoint diagram (F.J.Chadburn)
+#582 22-OCT-2022: ExecutableMBSE: Added menus to select DependsOn and Dependent elements for dependencies with import stereotype to support use with views (F.J.Chadburn)
 
 Backlog/Known issues
 - Need customview to select the query

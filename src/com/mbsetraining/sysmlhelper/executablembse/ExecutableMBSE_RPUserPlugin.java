@@ -371,7 +371,31 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 					theSelector.selectDependentElementsFor( 
 							theCombinedSet, "deriveReqt" );
+					
+				} else if( menuItem.equals( _settings.getString(
+						"executablembseplugin.SelectDependsOnImportOnlyElementsMenu" ) ) ){
 
+					Set<IRPModelElement> theCombinedSet = 
+							_context.getSetOfElementsFromCombiningThe(
+									theSelectedEls, theSelectedGraphEls );
+
+					DependencySelector theSelector = new DependencySelector( _context );
+
+					theSelector.selectDependsOnElementsFor( 
+							theCombinedSet, "import" );
+
+				} else if( menuItem.equals( _settings.getString(
+						"executablembseplugin.SelectDependentImportOnlyElementsMenu" ) ) ){
+
+					Set<IRPModelElement> theCombinedSet = 
+							_context.getSetOfElementsFromCombiningThe(
+									theSelectedEls, theSelectedGraphEls );
+
+					DependencySelector theSelector = new DependencySelector( _context );
+
+					theSelector.selectDependentElementsFor( 
+							theCombinedSet, "import" );
+					
 				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.SelectChildClassifiersMenu" ) ) ){
 
