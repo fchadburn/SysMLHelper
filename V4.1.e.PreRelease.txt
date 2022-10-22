@@ -785,6 +785,7 @@ V4.1.e.Rhp831.PreRelease (XX-XXX-XXXX):
 #580 21-OCT-2022: ExecutableMBSE: Repair Guillemet symbols in dialogs for stereotypes that went odd during move to later eclipse environment (F.J.Chadburn)
 #581 22-OCT-2022: ExecutableMBSE: Added some viewpoint properties to make them display better when auto-drawing view and viewpoint diagram (F.J.Chadburn)
 #582 22-OCT-2022: ExecutableMBSE: Added menus to select DependsOn and Dependent elements for dependencies with import stereotype to support use with views (F.J.Chadburn)
+#583 22-OCT-2022: ExecutableMBSE: Capitalized view and viewpoint in .hep file so that MBSE Method: Other selection of DependsOn elements works with them (F.J.Chadburn)
 
 Backlog/Known issues
 - Need customview to select the query
