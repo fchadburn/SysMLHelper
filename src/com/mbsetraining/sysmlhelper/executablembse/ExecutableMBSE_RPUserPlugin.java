@@ -45,6 +45,7 @@ import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateTracedAttributePan
 import com.mbsetraining.sysmlhelper.tracedelementpanels.UpdateTracedAttributePanel;
 import com.mbsetraining.sysmlhelper.usecasemover.UseCaseMover;
 import com.mbsetraining.sysmlhelper.usecasepackage.CreateUseCasesPackagePanel;
+import com.mbsetraining.sysmlhelper.viewviewpoint.ImportIntoViewPanel;
 import com.mbsetraining.sysmlhelper.viewviewpoint.ViewStructureCreationPanel;
 import com.telelogic.rhapsody.core.*;
 
@@ -507,7 +508,30 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 								theAppID, 
 								_startLinkGuids );
 					}
+					
+				} else if( menuItem.equals( _settings.getString( 
+						"executablembseplugin.AddToView" ) ) ){
 
+					List<IRPModelElement> theCandidateViews = _context.getElementsInProjectThatMatch( "Package", "View" );
+					
+					if( theCandidateViews.isEmpty() ) {
+						
+						UserInterfaceHelper.showInformationDialog( 
+								"There are no Views in the project. Create a " + _context.VIEW_AND_VIEWPOINT_PACKAGE + " first, and then use the helper menu /n" + 
+								"to create a named View structure before running this command.");
+					} else {
+						
+						IRPModelElement theChosenView = UserInterfaceHelper.
+								launchDialogToSelectElement( theCandidateViews, "Choose the view", true );
+
+						if( theChosenView != null ) {
+
+							List<String> theSelectedElGUIDs = new ArrayList<>();
+							theSelectedElGUIDs.add( theChosenView.getGUID() );
+							ImportIntoViewPanel.launchThePanel( theAppID, theSelectedElGUIDs );
+						}
+					}
+										
 				} else if (menuItem.equals( _settings.getString( 
 						"executablembseplugin.RollUpTraceabilityUpToTransitionLevel" ) ) ){
 

@@ -1,13 +1,13 @@
-package com.mbsetraining.sysmlhelper.smartlink;
+package com.mbsetraining.sysmlhelper.executablembse;
 
 import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.telelogic.rhapsody.core.*;
 
 public class RelationInfo {
 	
-	private DiagramElementInfo m_StartElement;
-	private DiagramElementInfo m_EndElement;
-	private IRPStereotype m_RelationType;
+	private DiagramElementInfo _startElInfo;
+	private DiagramElementInfo _endElInfo;
+	private IRPStereotype _relationStereotype;
 	private BaseContext _context;
 	
 	public RelationInfo(
@@ -18,42 +18,42 @@ public class RelationInfo {
 				
 		_context = context;
 		
-		this.m_StartElement = fromStartElement;
-		this.m_EndElement = toEndElement;
-		this.m_RelationType = withRelationType;
+		this._startElInfo = fromStartElement;
+		this._endElInfo = toEndElement;
+		this._relationStereotype = withRelationType;
 	}
 	
 	public DiagramElementInfo getStartElement() {
-		return m_StartElement;
+		return _startElInfo;
 	}
 	
 	public DiagramElementInfo getEndElement() {
-		return m_EndElement;
+		return _endElInfo;
 	}
 	
 	public IRPStereotype getRelationType() {
-		return m_RelationType;
+		return _relationStereotype;
 	}
 	
 	public int getExistingCount(){
 		
 		return _context.countStereotypedDependencies(
-				m_StartElement.getElement(),
-				m_EndElement.getElement(),
-				m_RelationType.getName() );
+				_startElInfo.getElement(),
+				_endElInfo.getElement(),
+				_relationStereotype.getName() );
 	}
 	
 	public IRPDependency getExistingStereotypedDependency(){
 		
 		return _context.getExistingStereotypedDependency(
-				m_StartElement.getElement(),
-				m_EndElement.getElement(),
-				m_RelationType.getName() );
+				_startElInfo.getElement(),
+				_endElInfo.getElement(),
+				_relationStereotype.getName() );
 	}
 }
 
 /**
- * Copyright (C) 2017-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2017-2022  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

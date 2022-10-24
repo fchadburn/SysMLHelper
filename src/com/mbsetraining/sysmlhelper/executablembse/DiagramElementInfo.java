@@ -1,4 +1,4 @@
-package com.mbsetraining.sysmlhelper.smartlink;
+package com.mbsetraining.sysmlhelper.executablembse;
 
 import java.util.HashSet;
 import java.util.List;
@@ -8,48 +8,47 @@ import com.telelogic.rhapsody.core.*;
 
 public class DiagramElementInfo {
 
-	private IRPModelElement m_Element = null;
-	
-	public IRPModelElement getElement() {
-		return m_Element;
-	}
+	private IRPModelElement _element = null;
+	private Set<IRPGraphElement> _graphEls = new HashSet<IRPGraphElement>();
 
-	private Set<IRPGraphElement> m_GraphEls = new HashSet<IRPGraphElement>();
+	public IRPModelElement getElement() {
+		return _element;
+	}
 	
 	public DiagramElementInfo(
 			IRPModelElement theModelEl,
 			List<IRPGraphElement> theGraphEls ){
 		
-		m_Element = theModelEl;
+		_element = theModelEl;
 		
 		for( IRPGraphElement theCandidateGraphEl : theGraphEls ){
 			
-			if( theCandidateGraphEl.getModelObject().equals( theModelEl ) ){
+			IRPModelElement theModelObject = theCandidateGraphEl.getModelObject();
+			
+			if( theModelObject != null &&
+					theCandidateGraphEl.getModelObject().equals( theModelEl ) ){
 				
-				m_GraphEls.add( theCandidateGraphEl );
+				_graphEls.add( theCandidateGraphEl );
 			}
 		}
 	}
 	
 	public boolean isThereAGraphElement(){
 		
-		return !m_GraphEls.isEmpty();
+		return !_graphEls.isEmpty();
 		
 	}
 	
 	public Set<IRPGraphElement> getGraphEls(){
 		
-		return m_GraphEls;
+		return _graphEls;
 	}
 	
 }
 
 /**
- * Copyright (C) 2017  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2017-2022  MBSE Training and Consulting Limited (www.executablembse.com)
 
-    Change history:
-    #163 05-FEB-2017: Add new menus to Smart link: Start and Smart link: End (F.J.Chadburn)
-    
     This file is part of SysMLHelperPlugin.
 
     SysMLHelperPlugin is free software: you can redistribute it and/or modify

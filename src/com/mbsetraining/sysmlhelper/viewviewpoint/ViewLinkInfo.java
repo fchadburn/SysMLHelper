@@ -1,18 +1,17 @@
-package com.mbsetraining.sysmlhelper.smartlink;
+package com.mbsetraining.sysmlhelper.viewviewpoint;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import com.mbsetraining.sysmlhelper.common.LayoutHelper;
-import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.DiagramElementInfo;
 import com.mbsetraining.sysmlhelper.executablembse.DiagramElementList;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.mbsetraining.sysmlhelper.executablembse.RelationInfo;
 import com.telelogic.rhapsody.core.*;
 
-public class SmartLinkInfo {
+public class ViewLinkInfo {
 
 	private DiagramElementList _startLinkElements;
 	private DiagramElementList _endLinkElements;
@@ -22,7 +21,7 @@ public class SmartLinkInfo {
 	private Set<RelationInfo> _relationInfos;
 	private ExecutableMBSE_Context _context;
 	
-	public SmartLinkInfo(
+	public ViewLinkInfo(
 			List<IRPModelElement> theStartLinkEls,
 			List<IRPGraphElement> theStartLinkGraphEls,
 			List<IRPModelElement> theEndLinkEls,
@@ -49,44 +48,7 @@ public class SmartLinkInfo {
 		
 		_isPopulatePossible = false;
 				
-		if( _startLinkElements.areElementsAllReqts() ){
-
-			_relationType = _context.getExistingStereotype(
-					"deriveReqt", _context.get_rhpPrj() );
-
-		} else if( _startLinkElements.areElementsAllMixedDeriveAndSatisfySources() ){
-			
-			String msg = "Do you want to use Satisfy rather than Derive?";
-			
-			boolean answer = UserInterfaceHelper.askAQuestion( msg );
-			
-			if( answer ){
-				_relationType = _context.getStereotypeForSatisfaction();
-			} else {
-				_relationType = _context.getStereotypeForDerivation();
-			}
-			
-		} else if( _startLinkElements.areElementsAllDeriveDependencySources() ){
-
-			_relationType = _context.getStereotypeToUseForActions();
-
-		} else if( _startLinkElements.areElementsAllRefinementDependencySources() ){
-
-			_relationType = _context.getStereotypeToUseForUseCases();
-
-		} else if( _startLinkElements.areElementsAllVerificationDependencySources() ){
-
-			_relationType = _context.getStereotypeForVerification();
-			
-		} else if( _startLinkElements.areElementsAllSatisfyDependencySources() ){
-
-			_relationType = _context.getStereotypeToUseForFunctions();
-
-		} else {
-
-			_relationType = null;
-			_context.error( "Unable to find relation type" );
-		}
+		_relationType = _context.getExistingStereotype( "import", _context.get_rhpPrj() );
 		
 		_context.debug( "SmartLinkInfo: Determined that relation type needed is " + 
 				_context.elInfo( _relationType ) );
@@ -296,6 +258,8 @@ public class SmartLinkInfo {
 			performPopulateOnDiagram(
 					theRelationInfo,
 					false );
+			
+			theDependency.highLightElement();
 		}
 	}
 	

@@ -1,11 +1,10 @@
-package com.mbsetraining.sysmlhelper.smartlink;
+package com.mbsetraining.sysmlhelper.executablembse;
 
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
 public class DiagramElementList extends HashSet<DiagramElementInfo> {
@@ -13,8 +12,7 @@ public class DiagramElementList extends HashSet<DiagramElementInfo> {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-
+	private static final long serialVersionUID = -256557672376881579L;
 	protected ExecutableMBSE_Context _context;
 	
 	public DiagramElementList(
