@@ -790,11 +790,11 @@ V4.1.e.Rhp831.PreRelease (XX-XXX-XXXX):
 #585 25-OCT-2022: ExecutableMBSE: Added new MBSE Other\Remove from View... right-click menu to speed up removing diagram elements from views (F.J.Chadburn)
 #586 27-OCT-2022: ExecutableMBSE: Added a customv - All Elements to provide a back-bone upon which custom views can be used to add highlighting formats (F.J.Chadburn) 
 #587 27-OCT-2022: ExecutableMBSE: Switched view structure creator to use Rhapsody's "standard content" to fix issue with getting query/custom view settings auto-set (F.J.Chadburn)
+#588 27-OCT-2022: ExecutableMBSE: Stop profile from allowing name of block to have spaces when doing an executable scenario package (F.J.Chadburn)
+#589 27-OCT-2022: ExecutableMBSE: Get view structure creator to work for, and allow Views to be children of, all package types (F.J.Chadburn)
 
 Backlog/Known issues
 - hep file applicable tos need looking at where they have lower case base type
-- After creating View structure make sure the customview and the query are highlighted so that manual fixup steps are quicker to before
-- Stop executablembse profile from allowing name of block to have spaces when doing an executable scenario package
 - Want a new type of a block for flowing element to be defined
 - Add Flow to the drawing toolbar for ibd - system?
 - Review other prefixes such as panel and table diagram to ensure helper and defaults are aligned to lower-case

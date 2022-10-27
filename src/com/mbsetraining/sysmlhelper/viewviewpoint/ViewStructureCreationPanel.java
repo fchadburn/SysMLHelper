@@ -113,7 +113,7 @@ public class ViewStructureCreationPanel extends ExecutableMBSEBasePanel {
 
 		boolean isLegalName = _context.isLegalName( theChosenName, _rootPackage );
 
-		if (!isLegalName){
+		if( !isLegalName ){
 
 			errorMsg += theChosenName + " is not legal as an identifier\n";				
 			isValid = false;
@@ -164,13 +164,17 @@ public class ViewStructureCreationPanel extends ExecutableMBSEBasePanel {
 				_context.setBoolPropertyValueInRhp(theEl, "Model.Query.ShowInBrowserFilterList", true );
 			}
 			
+			IRPModelElement theCustomViewEl = theView.findNestedElement( _context.CUSTOMV_VIEW_STRUCTURE, "Package" );
+			
+			if( theCustomViewEl != null ) {
+				theCustomViewEl.highLightElement();
+			}
+			
 			_context.renameNestedElement( _context.VIEWPOINT_VIEW_STRUCTURE, "Class", theView, theViewpointName );
 			_context.renameNestedElement( _context.CUSTOMV_VIEW_STRUCTURE, "Package", theView, theCustomViewName );
 			_context.renameNestedElement( _context.VIEW_AND_VIEWPOINT_DIAGRAM_VIEW_STRUCTURE, "ObjectModelDiagram", theView, theViewpointDiagramName );
 			_context.renameNestedElement( _context.QUERY_VIEW_STRUCTURE, "Query", theView, theQueryName );
-			
-			theView.highLightElement();
-			
+						
 		} else {
 			_context.error( "Error in ViewStructureCreationPanel.performAction, checkValidity returned false" );
 		}		

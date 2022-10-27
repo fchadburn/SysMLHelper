@@ -774,6 +774,16 @@ public abstract class BaseContext {
 
 		return isLegal;
 	}
+	
+	public boolean isLegalClassName(
+			String theName ){
+
+		String theRegEx = "^(([a-zA-Z_][a-zA-Z0-9_]*)|(operator.+))$";
+
+		boolean isLegal = theName.matches( theRegEx );
+
+		return isLegal;
+	}
 
 	public String toLegalClassName(String theInput) {
 

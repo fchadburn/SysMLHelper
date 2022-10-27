@@ -25,6 +25,7 @@ import com.mbsetraining.sysmlhelper.doorsng.ExportRequirementsToCSV;
 import com.mbsetraining.sysmlhelper.doorsng.RepairLinks;
 import com.mbsetraining.sysmlhelper.doorsng.SwitchRhapsodyRequirementsToDNG;
 import com.mbsetraining.sysmlhelper.eventdeletor.EventDeletor;
+import com.mbsetraining.sysmlhelper.executablescenariopackage.CreateFunctionalExecutablePackagePanel;
 import com.mbsetraining.sysmlhelper.featurefunctionpkgcreator.FeatureFunctionPkgCreator;
 import com.mbsetraining.sysmlhelper.gateway.CreateGatewayProjectPanel;
 import com.mbsetraining.sysmlhelper.gateway.MarkedAsDeletedPanel;
@@ -879,12 +880,12 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.CreateViewStructureMenu" ) ) ){
 
-					if( theSelectedEl.getUserDefinedMetaClass().equals( _context.VIEW_AND_VIEWPOINT_PACKAGE ) ){
+					if( theSelectedEl instanceof IRPPackage ){
 
 						ViewStructureCreationPanel.launchThePanel( theAppID );
 
 					} else {
-						_context.error( menuItem + " invoked out of context and only works for " + _context.VIEW_AND_VIEWPOINT_PACKAGE );
+						_context.error( menuItem + " invoked out of context and only works for packages" );
 					}
 				} else {
 					_context.warning( "Unhandled menu: " + _context.elInfo( theSelectedEl ) + " was invoked with menuItem='" + menuItem + "'");

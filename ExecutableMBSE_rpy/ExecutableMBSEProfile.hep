@@ -620,7 +620,7 @@ helperTriggers76=
 name77=MBSE Method: Other\Create a View structure...
 isPluginCommand77=1
 command77=InvokeExecutableMBSEHelper
-applicableTo77=Package,41 View and Viewpoint Package
+applicableTo77=Package,41 View and Viewpoint Package,SysML,11 Actor Package,12 Use Case Package,13 Requirement Package,10 Context Package,14 Signals Package,31 System Architecture Package,32 Subsystem Package,33 Subsystem Interfaces Package,34 Software Design Package,22 Feature Function Package
 isVisible77=1
 DLLServerCompatible77=1
 
