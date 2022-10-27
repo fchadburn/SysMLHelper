@@ -14,7 +14,7 @@ import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
-public class ImportIntoViewPanel extends ExecutableMBSEBasePanel {
+public class AddToViewPanel extends ExecutableMBSEBasePanel {
 
 	/**
 	 * 
@@ -56,7 +56,7 @@ public class ImportIntoViewPanel extends ExecutableMBSEBasePanel {
 	// Cannot pass Rhapsody elements to separate thread hence need to send GUID strings instead
 	public static void launchThePanel(
 			final String theAppID,
-			final List<String> theStartLinkGUIDs ){
+			final List<String> theSelectedElGUIDs ){
 
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 
@@ -69,10 +69,10 @@ public class ImportIntoViewPanel extends ExecutableMBSEBasePanel {
 
 				frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 
-				ImportIntoViewPanel thePanel = 
-						new ImportIntoViewPanel( 
+				AddToViewPanel thePanel = 
+						new AddToViewPanel( 
 								theAppID,
-								theStartLinkGUIDs );
+								theSelectedElGUIDs );
 
 				frame.setContentPane( thePanel );
 				frame.pack();
@@ -82,7 +82,7 @@ public class ImportIntoViewPanel extends ExecutableMBSEBasePanel {
 		});
 	}
 	
-	public ImportIntoViewPanel(
+	public AddToViewPanel(
 			String theAppID,
 			List<String> theStartLinkGUIDs ){
 
@@ -149,7 +149,7 @@ public class ImportIntoViewPanel extends ExecutableMBSEBasePanel {
 			setLayout( new BorderLayout(10,10) );
 			setBorder( BorderFactory.createEmptyBorder( 10, 10, 10, 10 ) );
 
-			add( new JLabel( _smartLinkInfo.getDescriptionHTML() ), BorderLayout.PAGE_START );
+			add( new JLabel( _smartLinkInfo.getAddToViewDescriptionHTML() ), BorderLayout.PAGE_START );
 
 			if( _smartLinkInfo.getIsPopulatePossible() ){
 

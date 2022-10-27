@@ -787,8 +787,13 @@ V4.1.e.Rhp831.PreRelease (XX-XXX-XXXX):
 #582 22-OCT-2022: ExecutableMBSE: Added menus to select DependsOn and Dependent elements for dependencies with import stereotype to support use with views (F.J.Chadburn)
 #583 22-OCT-2022: ExecutableMBSE: Capitalized view and viewpoint in .hep file so that MBSE Method: Other selection of DependsOn elements works with them (F.J.Chadburn)
 #584 24-OCT-2022: ExecutableMBSE: Added new MBSE Other\Add to View... right-click menu to speed up adding diagram elements to views (F.J.Chadburn)
+#585 25-OCT-2022: ExecutableMBSE: Added new MBSE Other\Remove from View... right-click menu to speed up removing diagram elements from views (F.J.Chadburn)
 
 Backlog/Known issues
+- hep file applicable tos need looking at where they have lower case base type
+- After creating View structure make sure the customview and the query are highlighted so that manual fixup steps are quicker to before
+- Get customv_all_elements in profile
+- Stop executablembse profile from allowing name of block to have spaces when doing an executable scenario package
 - Need customview to select the query
 - Need query to select the viewpoint
 - Want a new type of a block for flowing element to be defined

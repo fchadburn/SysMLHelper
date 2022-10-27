@@ -17,7 +17,8 @@ public class ViewLinkInfo {
 	private DiagramElementList _endLinkElements;
 	private IRPStereotype _relationType;
 	private boolean _isPopulatePossible;	
-	private int _countRelationsNeeded;
+	private int _countNeededRelations;
+	private int _countExistingRelations;
 	private Set<RelationInfo> _relationInfos;
 	private ExecutableMBSE_Context _context;
 	
@@ -50,9 +51,6 @@ public class ViewLinkInfo {
 				
 		_relationType = _context.getExistingStereotype( "import", _context.get_rhpPrj() );
 		
-		_context.debug( "SmartLinkInfo: Determined that relation type needed is " + 
-				_context.elInfo( _relationType ) );
-		
 		if( _relationType != null ){
 			
 			for( DiagramElementInfo theStartLinkEl : _startLinkElements ){
@@ -76,12 +74,14 @@ public class ViewLinkInfo {
 			}
 		}
 		
-		_countRelationsNeeded = 0;
+		_countNeededRelations = 0;
 		
 		for( RelationInfo relationInfo : _relationInfos ){
 			
 			if( relationInfo.getExistingStereotypedDependency() == null ){
-				_countRelationsNeeded++;
+				_countNeededRelations++;
+			} else {
+				_countExistingRelations++;
 			}
 		}		
 	}
@@ -150,7 +150,7 @@ public class ViewLinkInfo {
 		return isPopulatePossible;
 	}
 	
-	public String getDescriptionHTML(){
+	public String getAddToViewDescriptionHTML(){
 		
 		String theMsg = "<html><div style=\"width:300px;\">";
 		
@@ -196,9 +196,9 @@ public class ViewLinkInfo {
 		theMsg+= ")</p>";
 		theMsg+="<p></p>";
 		
-		if( _countRelationsNeeded > 0 ){
+		if( _countNeededRelations > 0 ){
 			
-			theMsg+= "<p style=\"text-align:center;font-weight:normal\">" + _countRelationsNeeded + " new dependencies will be created" + "</p>";
+			theMsg+= "<p style=\"text-align:center;font-weight:normal\">" + _countNeededRelations + " new dependencies will be created" + "</p>";
 			
 		} else if ( getIsPopulatePossible()==false ){
 			
@@ -217,6 +217,68 @@ public class ViewLinkInfo {
 		return theMsg;
 	}
 	
+	public String getRemoveFromViewDescriptionHTML(){
+		
+		String theMsg = "<html><div style=\"width:300px;\">";
+		
+		theMsg+= "<p style=\"text-align:center;font-weight:normal\">";
+		
+		if( _startLinkElements.size() == 1 && _endLinkElements.size()==1 ){
+			theMsg+="Remove the ";
+		} else {
+			theMsg+="Remove ";
+		}
+		
+		theMsg+= "<span style=\"font-weight:bold\">«" +  _relationType.getName() + "»</span>";
+		
+		if( _startLinkElements.size() == 1 && _endLinkElements.size()==1 ){
+			theMsg+=" dependency from:</p>";
+		} else {
+			theMsg+=" dependencies from:</p>";
+		}
+		
+		theMsg+="<p></p>";
+		theMsg+="<p style=\"text-align:center;font-weight:normal\">";
+		
+		if( _startLinkElements.size() == 1 ){
+			theMsg+= _startLinkElements.size() + " element (a ";
+		} else {
+			theMsg+= _startLinkElements.size() + " elements (a "; 
+		}
+
+		theMsg+= _startLinkElements.getCommaSeparatedListOfElementsHTML( 3 );
+		theMsg+=")</p>";
+		theMsg+="<p></p>";
+		theMsg+="<p style=\"text-align:center;font-weight:normal\">to:</p>";
+		theMsg+="<p></p>";
+		theMsg+="<p style=\"text-align:center;font-weight:normal\">";
+		
+		if( _endLinkElements.size() == 1 ){
+			theMsg+= _endLinkElements.size() + " element (a  ";
+		} else {
+			theMsg+= _endLinkElements.size() + " elements (a  ";
+		}
+		
+		theMsg+= _endLinkElements.getCommaSeparatedListOfElementsHTML( 3 );						
+		theMsg+= ")</p>";
+		theMsg+="<p></p>";
+		
+		if( _countExistingRelations > 0 ){
+			
+			theMsg+= "<p style=\"text-align:center;font-weight:normal\">" + _countExistingRelations + " existing dependencies will be deleted" + "</p>";
+			
+		} else {
+			
+			theMsg+= "<p style=\"text-align:center;font-weight:normal\">" + "Nothing to do, i.e. as no import dependencies for these were found" + "</p>";
+		}
+		
+		theMsg+="<p></p>";
+		theMsg+="<p></p>";
+		theMsg+="</div></html>";
+		
+		return theMsg;
+	}
+	
 	public boolean getIsPopulatePossible(){
 		
 		return _isPopulatePossible;
@@ -224,7 +286,7 @@ public class ViewLinkInfo {
 	
 	public boolean getAreNewRelationsNeeded(){
 		
-		return ( _countRelationsNeeded > 0 );
+		return ( _countNeededRelations > 0 );
 	}
 	
 	protected boolean isDeriveDependencyNeeded(){
@@ -260,6 +322,32 @@ public class ViewLinkInfo {
 					false );
 			
 			theDependency.highLightElement();
+		}
+	}
+	
+	public void removeDependencies(){
+		
+		for( RelationInfo theRelationInfo : _relationInfos ){
+			
+			IRPDependency theDependency = 
+					theRelationInfo.getExistingStereotypedDependency();
+			
+			if( theDependency != null ){
+				theDependency.deleteFromProject();
+			}			
+		}
+	}
+	
+	public void highlightDependencies(){
+		
+		for( RelationInfo theRelationInfo : _relationInfos ){
+			
+			IRPDependency theDependency = 
+					theRelationInfo.getExistingStereotypedDependency();
+			
+			if( theDependency != null ){
+				theDependency.highLightElement();
+			}			
 		}
 	}
 	
