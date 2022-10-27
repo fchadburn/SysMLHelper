@@ -41,7 +41,7 @@ public class RemoveFromViewPanel extends ExecutableMBSEBasePanel {
 			ExecutableMBSE_Context theContext ){
 
 		List<String> theExcludedNames = new ArrayList<>();
-		theExcludedNames.add( "view - ViewStructure" );
+		theExcludedNames.add( theContext.VIEW_TBD );
 
 		List<IRPModelElement> theCandidateViews = theContext.getElementsInProjectThatMatch( 
 				"Package", "View", theExcludedNames );

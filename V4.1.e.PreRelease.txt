@@ -792,6 +792,7 @@ V4.1.e.Rhp831.PreRelease (XX-XXX-XXXX):
 #587 27-OCT-2022: ExecutableMBSE: Switched view structure creator to use Rhapsody's "standard content" to fix issue with getting query/custom view settings auto-set (F.J.Chadburn)
 #588 27-OCT-2022: ExecutableMBSE: Stop profile from allowing name of block to have spaces when doing an executable scenario package (F.J.Chadburn)
 #589 27-OCT-2022: ExecutableMBSE: Get view structure creator to work for, and allow Views to be children of, all package types (F.J.Chadburn)
+#590 27-OCT-2022: ExecutableMBSE: Additional query and custom view support for 'explicit only' view of viewpoints where children not considered (F.J.Chadburn)
 
 Backlog/Known issues
 - hep file applicable tos need looking at where they have lower case base type

@@ -41,7 +41,7 @@ public class ViewStructureCreationPanel extends ExecutableMBSEBasePanel {
 
 				JFrame.setDefaultLookAndFeelDecorated( true );
 
-				JFrame frame = new JFrame( "Create a View/Viewpoint/CustomView structure" );
+				JFrame frame = new JFrame( "Create a View/Viewpoint/Query/CustomView structure" );
 
 				frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 
@@ -144,8 +144,10 @@ public class ViewStructureCreationPanel extends ExecutableMBSEBasePanel {
 			String theViewName = _context.VIEW_PREFIX + theName;
 			String theViewpointName = _context.VIEWPOINT_PREFIX + theName;
 			String theCustomViewName = _context.CUSTOMERVIEW_PREFIX + theName;
+			String theCustomViewExplicitOnlyName = _context.CUSTOMERVIEW_PREFIX + theName + " explicit only";
 			String theViewpointDiagramName = _context.VIEWPOINT_DIAGRAM_PREFIX + theName;
 			String theQueryName = _context.QUERY_PREFIX + theName;
+			String theQueryExplicitOnlyName = _context.QUERY_PREFIX + theName + " explicit only";
 
 			_context.debug( "Creating View with name " + theViewName + 
 					" under " + _context.elInfo( _rootPackage ) );
@@ -157,23 +159,26 @@ public class ViewStructureCreationPanel extends ExecutableMBSEBasePanel {
 			
 			_context.applyExistingStereotype( _context.VIEW_STRUCTURE_STEREOTYPE, theView );
 			
-			IRPModelElement theEl = theView.findNestedElement( _context.QUERY_VIEW_STRUCTURE, "Query" );
+			IRPModelElement theEl = theView.findNestedElement( _context.QUERY_TBD, "Query" );
 			
 			if( theEl != null ) {
 				// The standard context query has this turned off so that the template doesn't affect model
 				_context.setBoolPropertyValueInRhp(theEl, "Model.Query.ShowInBrowserFilterList", true );
 			}
 			
-			IRPModelElement theCustomViewEl = theView.findNestedElement( _context.CUSTOMV_VIEW_STRUCTURE, "Package" );
+			IRPModelElement theCustomViewEl = theView.findNestedElement( _context.CUSTOMV_TBD, "Package" );
 			
 			if( theCustomViewEl != null ) {
 				theCustomViewEl.highLightElement();
 			}
 			
-			_context.renameNestedElement( _context.VIEWPOINT_VIEW_STRUCTURE, "Class", theView, theViewpointName );
-			_context.renameNestedElement( _context.CUSTOMV_VIEW_STRUCTURE, "Package", theView, theCustomViewName );
-			_context.renameNestedElement( _context.VIEW_AND_VIEWPOINT_DIAGRAM_VIEW_STRUCTURE, "ObjectModelDiagram", theView, theViewpointDiagramName );
-			_context.renameNestedElement( _context.QUERY_VIEW_STRUCTURE, "Query", theView, theQueryName );
+			_context.renameNestedElement( _context.VIEWPOINT_TBD, "Class", theView, theViewpointName );
+			_context.renameNestedElement( _context.CUSTOMV_TBD, "Package", theView, theCustomViewName );
+			_context.renameNestedElement( _context.CUSTOMV_TBD_EXPLICIT_ONLY, "Package", theView, theCustomViewExplicitOnlyName );
+			_context.renameNestedElement( _context.VIEW_AND_VIEWPOINT_DIAGRAM_TBD, "ObjectModelDiagram", theView, theViewpointDiagramName );
+			_context.renameNestedElement( _context.QUERY_TBD, "Query", theView, theQueryName );
+			_context.renameNestedElement( _context.QUERYTBD_EXPLICIT_ONLY, "Query", theView, theQueryExplicitOnlyName );
+			_context.renameNestedElement( _context.STEREOTYPE_TBD, "Stereotype", theView, theName );
 						
 		} else {
 			_context.error( "Error in ViewStructureCreationPanel.performAction, checkValidity returned false" );

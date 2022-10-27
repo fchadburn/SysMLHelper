@@ -1037,7 +1037,7 @@ public abstract class BaseContext {
 		@SuppressWarnings("unchecked")
 		List <IRPStereotype> theStereotypes = onTheEl.getStereotypes().toList();
 
-		for (IRPStereotype theStereotype : theStereotypes) {
+		for( IRPStereotype theStereotype : theStereotypes ){
 
 			String theStereotypeName = theStereotype.getName();
 

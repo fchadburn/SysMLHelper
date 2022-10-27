@@ -1689,7 +1689,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">10.27.2022::11:45:29</_modifiedTime>
+			<_modifiedTime type="a">10.27.2022::14:4:6</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -1716,7 +1716,7 @@
 			<_id type="a">GUID f825da1e-3d3d-409d-927a-c62820d97e7c</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Templates</_name>
-			<_modifiedTime type="a">10.27.2022::9:14:55</_modifiedTime>
+			<_modifiedTime type="a">10.27.2022::14:4:6</_modifiedTime>
 			<_defaultComposite type="s">GUID fa08a209-d10e-4b0d-bee3-3c7ebad1e988</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
@@ -1921,7 +1921,7 @@
 		<ISubsystem type="e">
 			<_id type="a">GUID 1a8557b5-88eb-4ce6-aeb0-20bd0449db1e</_id>
 			<_myState type="a">8192</_myState>
-			<_name type="a">view - ViewStructure</_name>
+			<_name type="a">view - TBD</_name>
 			<Stereotypes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -1936,23 +1936,26 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">10.27.2022::9:14:55</_modifiedTime>
-			<_lastID type="a">1</_lastID>
+			<_modifiedTime type="a">10.27.2022::14:4:6</_modifiedTime>
+			<_lastID type="a">4</_lastID>
 			<_defaultComposite type="s">GUID a71c5cb7-aeb8-4718-a7e1-c48b5e6955d4</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
 				<value>GUID c8eb9bd5-8342-427b-8239-dff1d8e17785</value>
 				<value>GUID bce6cb8c-b1d1-428a-a72c-3df73060f66b</value>
 				<value>GUID a5e0e8c3-314f-4571-840e-912757b070cd</value>
+				<value>GUID 0c07ccfa-6397-4e5b-990e-a25ac42f71a8</value>
+				<value>GUID b1f9d38d-975b-4b3f-b397-32df59fb9e2d</value>
 				<value>GUID a71c5cb7-aeb8-4718-a7e1-c48b5e6955d4</value>
 				<value>GUID 738adaf4-39e3-42b7-8815-278ca9ad2207</value>
 				<value>GUID b9a97e26-eac8-4a44-8b43-19491874fcc0</value>
+				<value>GUID 0acf44a8-a33d-452e-8b45-6332b6c3c699</value>
 			</AggregatesList>
 		</ISubsystem>
 		<IDependency type="e">
 			<_id type="a">GUID c8eb9bd5-8342-427b-8239-dff1d8e17785</_id>
 			<_myState type="a">2048</_myState>
-			<_name type="a">viewpoint _ ViewStructure</_name>
+			<_name type="a">viewpoint _ TBD</_name>
 			<Stereotypes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -1967,7 +1970,7 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">10.27.2022::7:43:28</_modifiedTime>
+			<_modifiedTime type="a">10.27.2022::14:2:33</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
 					<_hm2Class type="a">IClass</_hm2Class>
@@ -1984,7 +1987,7 @@
 		<ISubsystem type="e">
 			<_id type="a">GUID bce6cb8c-b1d1-428a-a72c-3df73060f66b</_id>
 			<_myState type="a">8192</_myState>
-			<_name type="a">customv - ViewStructure</_name>
+			<_name type="a">customv - TBD</_name>
 			<Stereotypes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -1998,7 +2001,7 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">10.27.2022::7:44:36</_modifiedTime>
+			<_modifiedTime type="a">10.27.2022::14:2:10</_modifiedTime>
 			<_defaultComposite type="s">GUID a452c605-c04f-409c-8961-72799fa3a09f</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
@@ -2293,7 +2296,7 @@
 				</Subjects>
 			</IPropertyContainer>
 			</_properties>
-			<_name type="a">vvd - ViewStructure</_name>
+			<_name type="a">vvd - TBD</_name>
 			<Stereotypes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -2305,8 +2308,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">10.27.2022::9:14:55</_modifiedTime>
-			<_lastModifiedTime type="a">10.27.2022::9:14:55</_lastModifiedTime>
+			<_modifiedTime type="a">10.27.2022::14:2:33</_modifiedTime>
+			<_lastModifiedTime type="a">10.27.2022::14:2:33</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -2503,7 +2506,7 @@
 			<m_pParent type="s">GUID 00c65b67-86aa-4f30-9304-65338c1fddfe</m_pParent>
 			<m_name type="p">
 				<CGIText type="e">
-					<m_str type="a">view - ViewStructure</m_str>
+					<m_str type="a">view - TBD</m_str>
 					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
 					<m_color type="p">
 						<IColor type="e">
@@ -2585,7 +2588,7 @@
 			<m_pParent type="s">GUID 00c65b67-86aa-4f30-9304-65338c1fddfe</m_pParent>
 			<m_name type="p">
 				<CGIText type="e">
-					<m_str type="a">viewpoint - ViewStructure</m_str>
+					<m_str type="a">viewpoint - TBD</m_str>
 					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
 					<m_color type="p">
 						<IColor type="e">
@@ -2693,6 +2696,106 @@
 			<m_ShowName type="a">0</m_ShowName>
 			<m_ShowStereotype type="a">1</m_ShowStereotype>
 		</CGIInheritance>
+		<IStereotype type="e">
+			<_id type="a">GUID 0c07ccfa-6397-4e5b-990e-a25ac42f71a8</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">TBD</_name>
+			<_modifiedTime type="a">10.27.2022::13:49:34</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>Dependency</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+		</IStereotype>
+		<ISubsystem type="e">
+			<_id type="a">GUID b1f9d38d-975b-4b3f-b397-32df59fb9e2d</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">customv - TBD explicit only</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+							<_hname type="a">CustomView</_hname>
+							<_hid type="a">GUID 3691d096-b2e5-414d-b2b4-4fde08d44190</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.27.2022::14:4:6</_modifiedTime>
+			<_defaultComposite type="s">GUID a5f875dc-8efe-4172-808a-1cc7c583db21</_defaultComposite>
+			<_eventsBaseID type="a">-1</_eventsBaseID>
+			<AggregatesList type="e">
+				<value>GUID 0077dc0d-851a-4787-9093-5affa3b3d967</value>
+				<value>GUID ba9b1ae9-c9b4-4b7f-82ec-4543b395d004</value>
+				<value>GUID a5f875dc-8efe-4172-808a-1cc7c583db21</value>
+			</AggregatesList>
+		</ISubsystem>
+		<ITag type="e">
+			<_id type="a">GUID 0077dc0d-851a-4787-9093-5affa3b3d967</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">CriteriaType</_name>
+			<_modifiedTime type="a">1.1.1970::0:0:0</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">RhpString</_hname>
+					<_hid type="a">GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<AggregatesList type="e">
+				<value>GUID 9a76c707-4f3d-4ab7-8af0-2354d9a93c3d</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 9a76c707-4f3d-4ab7-8af0-2354d9a93c3d</_id>
+			<_modifiedTime type="a">1.1.1970::0:0:0</_modifiedTime>
+			<_value type="a">Queries</_value>
+		</ILiteralSpecification>
+		<ITag type="e">
+			<_id type="a">GUID ba9b1ae9-c9b4-4b7f-82ec-4543b395d004</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Criteria</_name>
+			<_modifiedTime type="a">10.27.2022::14:4:6</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">RhpString</_hname>
+					<_hid type="a">GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<AggregatesList type="e">
+				<value>GUID 89cebcd3-9ee0-4e13-ba3d-c165780f3803</value>
+			</AggregatesList>
+		</ITag>
+		<IInstanceValue type="e">
+			<_id type="a">GUID 89cebcd3-9ee0-4e13-ba3d-c165780f3803</_id>
+			<_modifiedTime type="a">1.1.1970::0:0:0</_modifiedTime>
+			<_value type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITableLayout</_hm2Class>
+					<_hid type="a">GUID 0acf44a8-a33d-452e-8b45-6332b6c3c699</_hid>
+				</IHandle>
+			</_value>
+		</IInstanceValue>
+		<IClass type="e">
+			<_id type="a">GUID a5f875dc-8efe-4172-808a-1cc7c583db21</_id>
+			<_myState type="a">40960</_myState>
+			<_name type="a">TopLevel</_name>
+			<_modifiedTime type="a">1.1.1970::0:0:0</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
 		<IClass type="e">
 			<_id type="a">GUID a71c5cb7-aeb8-4718-a7e1-c48b5e6955d4</_id>
 			<_myState type="a">40960</_myState>
@@ -2707,7 +2810,7 @@
 		<IClass type="e">
 			<_id type="a">GUID 738adaf4-39e3-42b7-8815-278ca9ad2207</_id>
 			<_myState type="a">8192</_myState>
-			<_name type="a">viewpoint - ViewStructure</_name>
+			<_name type="a">viewpoint - TBD</_name>
 			<Stereotypes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -2722,7 +2825,7 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">10.27.2022::7:43:28</_modifiedTime>
+			<_modifiedTime type="a">10.27.2022::14:2:33</_modifiedTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -2784,7 +2887,7 @@
 				</Subjects>
 			</IPropertyContainer>
 			</_properties>
-			<_name type="a">query - ViewStructure</_name>
+			<_name type="a">query - TBD</_name>
 			<Stereotypes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -2798,7 +2901,7 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">10.27.2022::7:44:9</_modifiedTime>
+			<_modifiedTime type="a">10.27.2022::14:2:16</_modifiedTime>
 			<AggregatesList type="e">
 				<value>GUID 21bf3048-8e1b-4103-9888-e7b087ce1ec6</value>
 				<value>GUID 80291f2a-1108-4b79-8b65-4d0a70423b37</value>
@@ -2855,6 +2958,201 @@
 				</IHandle>
 			</_value>
 		</IInstanceValue>
+		<ITableLayout type="e">
+			<_id type="a">GUID 0acf44a8-a33d-452e-8b45-6332b6c3c699</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">TableLayout</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">2</size>
+												<IProperty type="e">
+													<_Name type="a">EnableCriteriaCheck</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">QueryContextPattern</_Name>
+													<_Type type="a">MultiLine</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">query - TBD explicit only</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+							<_hname type="a">Query</_hname>
+							<_hid type="a">GUID 4c77a3b1-822f-466e-bd06-76145c9e3b88</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.27.2022::14:3:31</_modifiedTime>
+			<AggregatesList type="e">
+				<value>GUID 29f96a4a-14ab-4e3d-b9f6-3d3ed98b4d8b</value>
+				<value>GUID 84e8754b-285e-40a8-938a-86e252e9c985</value>
+				<value>GUID 9d88767b-3b28-47a7-b7b5-6275ea194cc2</value>
+				<value>GUID 33a66181-881c-4038-9d91-97dc0396316b</value>
+			</AggregatesList>
+		</ITableLayout>
+		<ITag type="e">
+			<_id type="a">GUID 29f96a4a-14ab-4e3d-b9f6-3d3ed98b4d8b</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Unresolved</_name>
+			<_modifiedTime type="a">10.27.2022::14:2:49</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">SearchUnresolvedEnum</_hname>
+					<_hid type="a">GUID 693e6225-b80c-4632-b3d8-9b2c5873c915</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hclass type="a">Query</_hclass>
+					<_hname type="a">Unresolved</_hname>
+					<_hid type="a">GUID 85fc1107-7bf5-4799-ad09-c0fc8d2f8109</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 5ced7aa7-b13b-4783-b492-988a5b56cd61</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 5ced7aa7-b13b-4783-b492-988a5b56cd61</_id>
+			<_modifiedTime type="a">10.27.2022::14:2:49</_modifiedTime>
+			<_value type="a">ShowUnresolved</_value>
+		</ILiteralSpecification>
+		<ITag type="e">
+			<_id type="a">GUID 84e8754b-285e-40a8-938a-86e252e9c985</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">RelRef_How_Related</_name>
+			<_modifiedTime type="a">10.27.2022::14:2:49</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">SearchRelRefHowRelatedEnum</_hname>
+					<_hid type="a">GUID 1f51c8cc-5b4f-4e36-a391-d8a3d29b610a</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hclass type="a">Query</_hclass>
+					<_hname type="a">RelRef_How_Related</_hname>
+					<_hid type="a">GUID f135968b-beae-4e26-8834-174d58eac9df</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 587c5063-4be6-483f-afe3-77d951d9c1bc</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 587c5063-4be6-483f-afe3-77d951d9c1bc</_id>
+			<_modifiedTime type="a">10.27.2022::14:2:49</_modifiedTime>
+			<_value type="a">IncomingRelations</_value>
+		</ILiteralSpecification>
+		<ITag type="e">
+			<_id type="a">GUID 9d88767b-3b28-47a7-b7b5-6275ea194cc2</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">RelRef_Metatype</_name>
+			<_modifiedTime type="a">10.27.2022::14:2:49</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">RhpString</_hname>
+					<_hid type="a">GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hclass type="a">Query</_hclass>
+					<_hname type="a">RelRef_Metatype</_hname>
+					<_hid type="a">GUID 290c2612-b019-493a-941a-7a1fa6a005ac</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 39c24c44-ecd9-4bff-8200-ebeb10099bf1</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 39c24c44-ecd9-4bff-8200-ebeb10099bf1</_id>
+			<_modifiedTime type="a">10.27.2022::14:2:49</_modifiedTime>
+			<_value type="a">Dependency</_value>
+		</ILiteralSpecification>
+		<ITag type="e">
+			<_id type="a">GUID 33a66181-881c-4038-9d91-97dc0396316b</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">RelRef_Stereotype</_name>
+			<_modifiedTime type="a">10.27.2022::14:2:49</_modifiedTime>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hclass type="a">Query</_hclass>
+					<_hname type="a">RelRef_Stereotype</_hname>
+					<_hid type="a">GUID 8ac3c90d-24d4-467a-bf4f-0d452df7f6e2</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID f27fed20-676c-4a6a-8465-89962996bbbf</value>
+				<value>GUID 57e50bbb-84ad-4963-94ce-f022b361335b</value>
+			</AggregatesList>
+		</ITag>
+		<IInstanceValue type="e">
+			<_id type="a">GUID f27fed20-676c-4a6a-8465-89962996bbbf</_id>
+			<_modifiedTime type="a">1.1.1970::0:0:0</_modifiedTime>
+			<_value type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IStereotype</_hm2Class>
+					<_hid type="a">GUID 0c07ccfa-6397-4e5b-990e-a25ac42f71a8</_hid>
+				</IHandle>
+			</_value>
+		</IInstanceValue>
+		<IType type="e">
+			<_id type="a">GUID 57e50bbb-84ad-4963-94ce-f022b361335b</_id>
+			<_myState type="a">8192</_myState>
+			<_modifiedTime type="a">1.1.1970::0:0:0</_modifiedTime>
+			<_declaration type="a">Stereotype</_declaration>
+			<_kind type="a">Language</_kind>
+		</IType>
 		<IClass type="e">
 			<_id type="a">GUID fa08a209-d10e-4b0d-bee3-3c7ebad1e988</_id>
 			<_myState type="a">40960</_myState>
@@ -17778,7 +18076,7 @@ Query</_Value>
 			<_id type="a">GUID 1b9ff970-e96a-4e94-bb8a-e59c10d32465</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Supplementary</_name>
-			<_modifiedTime type="a">10.27.2022::7:46:48</_modifiedTime>
+			<_modifiedTime type="a">10.27.2022::14:1:55</_modifiedTime>
 			<_lastID type="a">4</_lastID>
 			<_defaultComposite type="s">GUID 6baa030c-3af4-4672-bf84-b34b967b94af</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -18443,7 +18741,7 @@ Query</_Value>
 			<_id type="a">GUID aa3c4d29-1f08-48e3-b8fc-794b3302cea3</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ViewStructure</_name>
-			<_modifiedTime type="a">10.27.2022::7:46:48</_modifiedTime>
+			<_modifiedTime type="a">10.27.2022::14:1:55</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -18457,7 +18755,7 @@ Query</_Value>
 		<IDependency type="e">
 			<_id type="a">GUID f4e1b4eb-e561-42f1-bb6a-cb7579135bfe</_id>
 			<_myState type="a">2048</_myState>
-			<_name type="a">view _ ViewStructure</_name>
+			<_name type="a">view _ TBD</_name>
 			<Stereotypes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -18471,7 +18769,7 @@ Query</_Value>
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">10.27.2022::7:46:48</_modifiedTime>
+			<_modifiedTime type="a">10.27.2022::14:1:55</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
 					<_hm2Class type="a">ISubsystem</_hm2Class>

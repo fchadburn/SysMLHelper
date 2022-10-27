@@ -105,11 +105,15 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String VIEW_STRUCTURE_STEREOTYPE = "ViewStructure";
 	public final String POST_FIX_FOR_FEATURE_FUNCTION_PKG = "_FeaturePkg";
 	public final String POST_FIX_FOR_FEATURE_FUNCTION_WORKING_COPY_PKG = "_WorkingCopyFeaturePkg";
-	public final String CUSTOMV_VIEW_STRUCTURE = "customv - ViewStructure";
-	public final String VIEWPOINT_VIEW_STRUCTURE = "viewpoint - ViewStructure";
-	public final String VIEW_AND_VIEWPOINT_DIAGRAM_VIEW_STRUCTURE = "vvd - ViewStructure";
-	public final String QUERY_VIEW_STRUCTURE = "query - ViewStructure";
-	
+	public final String CUSTOMV_TBD = "customv - TBD";
+	public final String VIEW_TBD = "view - TBD";
+	public final String CUSTOMV_TBD_EXPLICIT_ONLY = "customv - TBD explicit only";
+	public final String VIEWPOINT_TBD = "viewpoint - TBD";
+	public final String VIEW_AND_VIEWPOINT_DIAGRAM_TBD = "vvd - TBD";
+	public final String QUERY_TBD = "query - TBD";
+	public final String QUERYTBD_EXPLICIT_ONLY = "query - TBD explicit only";
+	public final String STEREOTYPE_TBD = "TBD";
+
 	protected SelectedElementContext _selectionContext;
 
 	protected String _defaultExternalSignalsPackageName;

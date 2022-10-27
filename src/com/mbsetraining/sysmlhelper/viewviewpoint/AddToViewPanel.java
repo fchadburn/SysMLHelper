@@ -28,6 +28,8 @@ public class AddToViewPanel extends ExecutableMBSEBasePanel {
 	private List<IRPModelElement> _endLinkEls;
 	private List<IRPGraphElement> _endLinkGraphEls;
 	
+	private IRPStereotype _viewStereotype;
+	
 	public static void main(String[] args) {
 	
 		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
@@ -43,7 +45,7 @@ public class AddToViewPanel extends ExecutableMBSEBasePanel {
 			ExecutableMBSE_Context theContext ){
 
 		List<String> theExcludedNames = new ArrayList<>();
-		theExcludedNames.add( "view - ViewStructure" );
+		theExcludedNames.add( theContext.VIEW_TBD );
 
 		List<IRPModelElement> theCandidateViews = theContext.getElementsInProjectThatMatch( 
 				"Package", "View", theExcludedNames );
@@ -109,6 +111,17 @@ public class AddToViewPanel extends ExecutableMBSEBasePanel {
 				_context.error( "Unable to find start link element with GUID " + theGUID );
 			} else {
 				_startLinkEls.add( theStartLinkEl );
+				
+				if( theStartLinkGUIDs.size() == 1 ) {
+										
+					String theStereotypeName = theStartLinkEl.getName().replaceFirst( _context.VIEW_PREFIX, "" ); 
+					
+					_viewStereotype = _context.getExistingStereotype( theStereotypeName, theStartLinkEl.getProject() );
+					
+					if( _viewStereotype == null ) {
+						_context.warning( "Unable to find a view stereotype with the name " + theStereotypeName );
+					}
+				}
 			}
 		}
 		
@@ -219,6 +232,24 @@ public class AddToViewPanel extends ExecutableMBSEBasePanel {
 
 					_smartLinkInfo.createDependencies( 
 							_populateOnDiagramCheckBox.isSelected() );
+					
+					if( _startLinkEls.size() == 1 && 
+							_viewStereotype != null ) {
+						
+						IRPModelElement theView = _startLinkEls.get( 0 );
+						
+						@SuppressWarnings("unchecked")
+						List<IRPDependency> theDependencies = theView.getDependencies().toList();
+						
+						for( IRPDependency theDependency : theDependencies ){
+							
+							if( !_context.hasStereotypeCalled( 
+									_viewStereotype.getName(), theDependency ) ) {
+								
+								theDependency.addSpecificStereotype( _viewStereotype );
+							};
+						}
+					}
 				}
 								
 			} else {
