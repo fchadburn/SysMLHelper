@@ -794,7 +794,6 @@ V4.1.e.Rhp831.PreRelease (XX-XXX-XXXX):
 Backlog/Known issues
 - hep file applicable tos need looking at where they have lower case base type
 - After creating View structure make sure the customview and the query are highlighted so that manual fixup steps are quicker to before
-- Get customv_all_elements in profile
 - Stop executablembse profile from allowing name of block to have spaces when doing an executable scenario package
 - Want a new type of a block for flowing element to be defined
 - Add Flow to the drawing toolbar for ibd - system?
