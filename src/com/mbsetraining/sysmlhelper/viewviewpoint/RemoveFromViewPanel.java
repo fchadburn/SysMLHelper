@@ -25,61 +25,69 @@ public class RemoveFromViewPanel extends ExecutableMBSEBasePanel {
 	private List<IRPGraphElement> _startLinkGraphEls;
 	private List<IRPModelElement> _endLinkEls;
 	private List<IRPGraphElement> _endLinkGraphEls;
-	
+
 	public static void main(String[] args) {
-	
+
 		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
 		String theAppID = theRhpApp.getApplicationConnectionString(); 
-		
-		ExecutableMBSE_Context _context = new ExecutableMBSE_Context( theAppID );
-	
-		List<IRPModelElement> theCandidateViews = _context.getElementsInProjectThatMatch("Package", "View");
-		
+
+		ExecutableMBSE_Context theContext = new ExecutableMBSE_Context( theAppID );
+		launchThePanel( theAppID, theContext );
+	}
+
+	// Cannot pass Rhapsody elements to separate thread hence need to send GUID strings instead
+	public static void launchThePanel(
+			final String theAppID,
+			ExecutableMBSE_Context theContext ){
+
+		List<String> theExcludedNames = new ArrayList<>();
+		theExcludedNames.add( "view - ViewStructure" );
+
+		List<IRPModelElement> theCandidateViews = theContext.getElementsInProjectThatMatch( 
+				"Package", "View", theExcludedNames );
+
 		if( theCandidateViews.isEmpty() ) {
-			
+
+			UserInterfaceHelper.showInformationDialog( 
+					"There are no Views in the project. Create a " + theContext.VIEW_AND_VIEWPOINT_PACKAGE + 
+					" first, and then \n" + "use the helper menu " + 
+					"to create a named View structure before running this command.");
 		} else {
-			
+
 			IRPModelElement theChosenView = UserInterfaceHelper.
-					launchDialogToSelectElement(theCandidateViews, "Choose the view", true);
+					launchDialogToSelectElement( theCandidateViews, "Choose the view", true );
 
 			if( theChosenView != null ) {
 
 				List<String> theSelectedElGUIDs = new ArrayList<>();
 				theSelectedElGUIDs.add( theChosenView.getGUID() );
-				launchThePanel( theAppID, theSelectedElGUIDs );
+
+				javax.swing.SwingUtilities.invokeLater(new Runnable() {
+
+					@Override
+					public void run() {
+
+						JFrame.setDefaultLookAndFeelDecorated( true );
+
+						JFrame frame = new JFrame( "Remove from a view" );
+
+						frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
+
+						RemoveFromViewPanel thePanel = 
+								new RemoveFromViewPanel( 
+										theAppID,
+										theSelectedElGUIDs );
+
+						frame.setContentPane( thePanel );
+						frame.pack();
+						frame.setLocationRelativeTo( null );
+						frame.setVisible( true );
+					}
+				});		
 			}
 		}
 	}
-	
-	// Cannot pass Rhapsody elements to separate thread hence need to send GUID strings instead
-	public static void launchThePanel(
-			final String theAppID,
-			final List<String> theSelectedElGUIDs ){
 
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
-
-			@Override
-			public void run() {
-
-				JFrame.setDefaultLookAndFeelDecorated( true );
-
-				JFrame frame = new JFrame( "Remove from a view" );
-
-				frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
-
-				RemoveFromViewPanel thePanel = 
-						new RemoveFromViewPanel( 
-								theAppID,
-								theSelectedElGUIDs );
-
-				frame.setContentPane( thePanel );
-				frame.pack();
-				frame.setLocationRelativeTo( null );
-				frame.setVisible( true );
-			}
-		});
-	}
-	
 	public RemoveFromViewPanel(
 			String theAppID,
 			List<String> theStartLinkGUIDs ){
@@ -92,38 +100,38 @@ public class RemoveFromViewPanel extends ExecutableMBSEBasePanel {
 		_startLinkGraphEls = new ArrayList<IRPGraphElement>();
 
 		for( String theGUID : theStartLinkGUIDs ){	
-			
+
 			IRPModelElement theStartLinkEl = _context.get_rhpPrj().findElementByGUID( theGUID );
-			
+
 			if( theStartLinkEl == null ){
 				_context.error( "Unable to find start link element with GUID " + theGUID );
 			} else {
 				_startLinkEls.add( theStartLinkEl );
 			}
 		}
-		
+
 		_endLinkEls = _context.getSelectedElements();
 		_endLinkGraphEls = _context.getSelectedGraphElements();
-		
+
 		for( IRPGraphElement theEndGraphEl : _endLinkGraphEls ){
-			
+
 			IRPDiagram theDiagram = theEndGraphEl.getDiagram();
-			
+
 			for( IRPModelElement startLinkEl : _startLinkEls ){
-				
+
 				@SuppressWarnings("unchecked")
 				List<IRPGraphElement> theGraphEls = 
-						theDiagram.getCorrespondingGraphicElements( startLinkEl ).toList();
-			
+				theDiagram.getCorrespondingGraphicElements( startLinkEl ).toList();
+
 				for (IRPGraphElement theGraphEl : theGraphEls) {
-					
+
 					if( !_startLinkGraphEls.contains( theGraphEl ) ){
 						_startLinkGraphEls.add( theGraphEl );
 					}
 				}
 			}
 		}
-		
+
 		for( IRPModelElement theStartLinkEl : _startLinkEls ){
 
 			if( _endLinkEls.contains( theStartLinkEl ) ){
@@ -144,7 +152,7 @@ public class RemoveFromViewPanel extends ExecutableMBSEBasePanel {
 			setBorder( BorderFactory.createEmptyBorder( 10, 10, 10, 10 ) );
 
 			add( new JLabel( _smartLinkInfo.getRemoveFromViewDescriptionHTML() ), BorderLayout.PAGE_START );
-			
+
 			_smartLinkInfo.highlightDependencies();
 		}
 
@@ -194,7 +202,7 @@ public class RemoveFromViewPanel extends ExecutableMBSEBasePanel {
 			if( checkValidity( false ) ){
 
 				_smartLinkInfo.removeDependencies();
-								
+
 			} else {
 				_context.error( "Error in RemoveFromViewPanel.performAction, " +
 						"checkValidity returned false" );

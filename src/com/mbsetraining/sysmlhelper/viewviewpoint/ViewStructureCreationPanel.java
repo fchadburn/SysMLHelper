@@ -152,80 +152,25 @@ public class ViewStructureCreationPanel extends ExecutableMBSEBasePanel {
 
 			IRPPackage theView = (IRPPackage) _rootPackage.addNewAggr( "View", theViewName );
 			
-			IRPClass theViewpoint = (IRPClass) theView.addNewAggr( "Viewpoint", theViewpointName );
+			// A standard content ViewStructure stereotype will create the structure with an expected naming to be able to 
+			// set up the query and custom view settings (as API doesn't seem to allow this). We will then modify this
 			
-			IRPDependency theDependency = theView.addDependencyTo(theViewpoint);
-			theDependency.changeTo( "Conform" );
-						
-			IRPPackage theCustomView = (IRPPackage) theView.addNewAggr( "CustomView", theCustomViewName );
-			IRPTag theCriteriaType = theCustomView.getTag( "CriteriaType" );
-
-			if( theCriteriaType == null ){			
-				theCriteriaType = (IRPTag) theCustomView.addNewAggr( "Tag", "CriteriaType" );
+			_context.applyExistingStereotype( _context.VIEW_STRUCTURE_STEREOTYPE, theView );
+			
+			IRPModelElement theEl = theView.findNestedElement( _context.QUERY_VIEW_STRUCTURE, "Query" );
+			
+			if( theEl != null ) {
+				// The standard context query has this turned off so that the template doesn't affect model
+				_context.setBoolPropertyValueInRhp(theEl, "Model.Query.ShowInBrowserFilterList", true );
 			}
 			
-			theCustomView.setTagValue( theCriteriaType, "Queries" );
+			_context.renameNestedElement( _context.VIEWPOINT_VIEW_STRUCTURE, "Class", theView, theViewpointName );
+			_context.renameNestedElement( _context.CUSTOMV_VIEW_STRUCTURE, "Package", theView, theCustomViewName );
+			_context.renameNestedElement( _context.VIEW_AND_VIEWPOINT_DIAGRAM_VIEW_STRUCTURE, "ObjectModelDiagram", theView, theViewpointDiagramName );
+			_context.renameNestedElement( _context.QUERY_VIEW_STRUCTURE, "Query", theView, theQueryName );
 			
-			IRPModelElement theQueryEl = _context.findOrAddElement( theQueryName, "TableLayout", theView );
-			theQueryEl.changeTo( "Query" );
+			theView.highLightElement();
 			
-			String theEnableCriteriaCheckValue = null;
-			
-			try {
-				theEnableCriteriaCheckValue = theQueryEl.getPropertyValue( "Model.TableLayout.EnableCriteriaCheck" );
-
-			} catch (Exception e) {
-				// TODO: handle exception
-			}
-			
-			if( theEnableCriteriaCheckValue == null ){
-				theQueryEl.addProperty( "Model.TableLayout.EnableCriteriaCheck", "Bool", "True" );
-			} else if( !theEnableCriteriaCheckValue.equals( "True" ) ){
-				theQueryEl.setPropertyValue( "Model.TableLayout.EnableCriteriaCheck", "True" );
-			}
-			
-			String theQueryContextPatternValue = null;
-			
-			try {
-				theQueryContextPatternValue = theQueryEl.getPropertyValue( "Model.TableLayout.QueryContextPattern" );
-
-			} catch (Exception e) {
-				// TODO: handle exception
-			}
-			
-			if( theQueryContextPatternValue == null ){
-
-				theQueryEl.addProperty( "Model.TableLayout.QueryContextPattern", "String", "" );
-			} else if( !theQueryContextPatternValue.equals( "" ) ){
-				theQueryEl.setPropertyValue( "Model.TableLayout.QueryContextPattern", "" );
-			}
-			
-			/*
-			IRPTag theConform_ViewpointTag = (IRPTag) theQueryEl.addNewAggr( "Tag", "Conform_Viewpoint" );
-			theConform_ViewpointTag.setValue( theViewpointName );
-			
-			IRPTag theOr_And_VeiwpointTag = (IRPTag) theQueryEl.addNewAggr( "Tag", "Or_And_Veiwpoint" );
-			theOr_And_VeiwpointTag.setValue( "and" );
-			*/
-			
-			/*
-			IRPTag theRelRef_StereotypeTag = theQueryStereotype.getTag( "RelRef_Stereotype" );
-			_context.info( "Found " + _context.elInfo( theRelRef_StereotypeTag ) );
-			theQueryEl.setTagElementValue( theRelRef_StereotypeTag, theDependencyStereotypeEl );
-			
-			IRPTag theRelRef_Metatype = theQueryStereotype.getTag( "RelRef_Metatype" );
-			theQueryEl.setTagValue( theRelRef_Metatype, "Dependency" );
-
-			IRPTag theRelRef_How_Related = theQueryStereotype.getTag( "RelRef_How_Related" );
-			theQueryEl.setTagValue( theRelRef_How_Related, "IncomingRelations" );
-			
-			IRPTag theUnresolved = theQueryStereotype.getTag( "Unresolved" );
-			theQueryEl.setTagValue( theUnresolved, "ShowUnresolved" );
-			*/
-			
-			createViewViewpointDiagramBasedOn( theView, theView, theViewpointDiagramName );
-			
-			//theView.highLightElement();
 		} else {
 			_context.error( "Error in ViewStructureCreationPanel.performAction, checkValidity returned false" );
 		}		

@@ -223,7 +223,8 @@ public abstract class BaseContext {
 
 	public List<IRPModelElement> getElementsInProjectThatMatch(
 			String theBaseMetaClass, 
-			String theUserDefinedMetaClass ){
+			String theUserDefinedMetaClass,
+			List<String> excludedNames ){
 
 		List<IRPModelElement> matches = new ArrayList<>();
 
@@ -231,10 +232,13 @@ public abstract class BaseContext {
 		List<IRPModelElement> theCandidates = this.get_rhpPrj().getNestedElementsByMetaClass( 
 				theBaseMetaClass, 1 ).toList();
 
-		for (IRPModelElement theCandidate : theCandidates) {
+		for( IRPModelElement theCandidate : theCandidates ){
 
 			if( theCandidate.getUserDefinedMetaClass().equals( theUserDefinedMetaClass ) ){
-				matches.add( theCandidate );
+				
+				if( !excludedNames.contains( theCandidate.getName() ) ) {					
+					matches.add( theCandidate );
+				}
 			}
 		}
 
@@ -1211,6 +1215,21 @@ public abstract class BaseContext {
 		}
 
 		return theFilteredList;
+	}
+	
+	public void renameNestedElement(
+			String withExistingName,
+			String andMetaclass,
+			IRPPackage underTheEl,
+			String toNewName ){
+		
+		IRPModelElement theEl = underTheEl.findNestedElement( withExistingName, andMetaclass );
+		
+		if( theEl != null ) {
+			theEl.setName( toNewName );
+		} else {				
+			error( "renameNestedElement was unable to find " + withExistingName + " with metaclass " + andMetaclass );
+		}
 	}
 
 	public void copyRequirementTraceabilityFrom(

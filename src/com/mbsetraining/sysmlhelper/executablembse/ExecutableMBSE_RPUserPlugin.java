@@ -512,50 +512,14 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					
 				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.AddToView" ) ) ){
-
-					List<IRPModelElement> theCandidateViews = _context.getElementsInProjectThatMatch( "Package", "View" );
 					
-					if( theCandidateViews.isEmpty() ) {
-						
-						UserInterfaceHelper.showInformationDialog( 
-								"There are no Views in the project. Create a " + _context.VIEW_AND_VIEWPOINT_PACKAGE + " first, and then \nuse the helper menu " + 
-								"to create a named View structure before running this command.");
-					} else {
-						
-						IRPModelElement theChosenView = UserInterfaceHelper.
-								launchDialogToSelectElement( theCandidateViews, "Choose the view", true );
-
-						if( theChosenView != null ) {
-
-							List<String> theSelectedElGUIDs = new ArrayList<>();
-							theSelectedElGUIDs.add( theChosenView.getGUID() );
-							AddToViewPanel.launchThePanel( theAppID, theSelectedElGUIDs );
-						}
-					}
+					AddToViewPanel.launchThePanel( theAppID, _context );
 
 				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.RemoveFromView" ) ) ){
 
-					List<IRPModelElement> theCandidateViews = _context.getElementsInProjectThatMatch( "Package", "View" );
-					
-					if( theCandidateViews.isEmpty() ) {
-						
-						UserInterfaceHelper.showInformationDialog( 
-								"There are no Views in the project. Create a " + _context.VIEW_AND_VIEWPOINT_PACKAGE + " first, and then \nuse the helper menu " + 
-								"to create a named View structure before running this command.");
-						} else {
-						
-						IRPModelElement theChosenView = UserInterfaceHelper.
-								launchDialogToSelectElement( theCandidateViews, "Choose the view", true );
+					RemoveFromViewPanel.launchThePanel( theAppID, _context );
 
-						if( theChosenView != null ) {
-
-							List<String> theSelectedElGUIDs = new ArrayList<>();
-							theSelectedElGUIDs.add( theChosenView.getGUID() );
-							RemoveFromViewPanel.launchThePanel( theAppID, theSelectedElGUIDs );
-						}
-					}
-					
 				} else if (menuItem.equals( _settings.getString( 
 						"executablembseplugin.RollUpTraceabilityUpToTransitionLevel" ) ) ){
 

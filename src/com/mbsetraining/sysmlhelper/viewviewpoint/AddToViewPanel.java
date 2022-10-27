@@ -33,53 +33,61 @@ public class AddToViewPanel extends ExecutableMBSEBasePanel {
 		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
 		String theAppID = theRhpApp.getApplicationConnectionString(); 
 		
-		ExecutableMBSE_Context _context = new ExecutableMBSE_Context( theAppID );
-	
-		List<IRPModelElement> theCandidateViews = _context.getElementsInProjectThatMatch("Package", "View");
-		
-		if( theCandidateViews.isEmpty() ) {
-			
-		} else {
-			
-			IRPModelElement theChosenView = UserInterfaceHelper.
-					launchDialogToSelectElement(theCandidateViews, "Choose the view", true);
-
-			if( theChosenView != null ) {
-
-				List<String> theSelectedElGUIDs = new ArrayList<>();
-				theSelectedElGUIDs.add( theChosenView.getGUID() );
-				launchThePanel( theAppID, theSelectedElGUIDs );
-			}
-		}
+		ExecutableMBSE_Context theContext = new ExecutableMBSE_Context( theAppID );
+		launchThePanel( theAppID, theContext );
 	}
 	
 	// Cannot pass Rhapsody elements to separate thread hence need to send GUID strings instead
 	public static void launchThePanel(
 			final String theAppID,
-			final List<String> theSelectedElGUIDs ){
+			ExecutableMBSE_Context theContext ){
 
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+		List<String> theExcludedNames = new ArrayList<>();
+		theExcludedNames.add( "view - ViewStructure" );
 
-			@Override
-			public void run() {
+		List<IRPModelElement> theCandidateViews = theContext.getElementsInProjectThatMatch( 
+				"Package", "View", theExcludedNames );
 
-				JFrame.setDefaultLookAndFeelDecorated( true );
+		if( theCandidateViews.isEmpty() ) {
 
-				JFrame frame = new JFrame( "Add to a view" );
+			UserInterfaceHelper.showInformationDialog( 
+					"There are no Views in the project. Create a " + theContext.VIEW_AND_VIEWPOINT_PACKAGE + 
+					" first, and then \n" + "use the helper menu " + 
+					"to create a named View structure before running this command.");
+		} else {
 
-				frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
+			IRPModelElement theChosenView = UserInterfaceHelper.
+					launchDialogToSelectElement( theCandidateViews, "Choose the view", true );
 
-				AddToViewPanel thePanel = 
-						new AddToViewPanel( 
-								theAppID,
-								theSelectedElGUIDs );
+			if( theChosenView != null ) {
 
-				frame.setContentPane( thePanel );
-				frame.pack();
-				frame.setLocationRelativeTo( null );
-				frame.setVisible( true );
+				List<String> theSelectedElGUIDs = new ArrayList<>();
+				theSelectedElGUIDs.add( theChosenView.getGUID() );
+
+				javax.swing.SwingUtilities.invokeLater(new Runnable() {
+
+					@Override
+					public void run() {
+
+						JFrame.setDefaultLookAndFeelDecorated( true );
+
+						JFrame frame = new JFrame( "Add to a view" );
+
+						frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
+
+						AddToViewPanel thePanel = 
+								new AddToViewPanel( 
+										theAppID,
+										theSelectedElGUIDs );
+
+						frame.setContentPane( thePanel );
+						frame.pack();
+						frame.setLocationRelativeTo( null );
+						frame.setVisible( true );
+					}
+				});
 			}
-		});
+		}
 	}
 	
 	public AddToViewPanel(
