@@ -1,0 +1,2562 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RhapsodyArchive>
+	<MagicNumber></MagicNumber>
+	<CODE-PAGE>1252</CODE-PAGE>
+	<version>100.831.0</version>
+	<lang>C++</lang>
+	<BuildNo>9835550</BuildNo>
+	
+	<RHAPSODY-MODEL>
+	<ISubsystem type="e">
+			<_id type="a">GUID 058864fd-bbda-4654-aa4f-ba22039d99a3</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">SysMLMetaModelPkg</_name>
+			<_modifiedTime type="a">10.31.2022::8:14:52</_modifiedTime>
+			<_defaultComposite type="s">GUID 24d6afd4-bf13-4847-9a72-80e50e932801</_defaultComposite>
+			<_eventsBaseID type="a">-1</_eventsBaseID>
+			<AggregatesList type="e">
+				<value>GUID 24d6afd4-bf13-4847-9a72-80e50e932801</value>
+				<value>GUID 0baa031c-ec41-41e3-b47b-17dd1e8b87ba</value>
+				<value>GUID e71201f8-2ceb-4d71-a026-f0adb8902c76</value>
+				<value>GUID 4f3ef12b-6fca-4d3f-b7a1-64417bef19da</value>
+				<value>GUID 0ada1ea5-b3de-42d8-a162-5c95a3989772</value>
+				<value>GUID 3c5350f1-340b-436e-bd3d-dca32a7e3599</value>
+				<value>GUID 061fe99b-60ff-46b3-b2dd-300dde1b99b0</value>
+				<value>GUID 518cbb21-9006-44f8-acb2-7d48d2ad770f</value>
+				<value>GUID 6cdad949-11bd-4290-8cb1-8618837eb6ce</value>
+				<value>GUID e8e93d47-9bd5-4597-b642-91c037df069d</value>
+				<value>GUID 72a92379-e968-4cad-b452-75c06fe86f15</value>
+				<value>GUID 157f58bb-0daf-4b45-b8c6-093f60c94f66</value>
+				<value>GUID c621695b-0bc1-4c67-b7b1-b41cdb9732a4</value>
+				<value>GUID be6f0e7a-9369-4671-b7fc-2c382c47e031</value>
+				<value>GUID 7c114a94-24ae-44e5-a0e0-d6365c62775e</value>
+				<value>GUID 5c091b4d-8907-4bf3-a0f9-9e194daee202</value>
+				<value>GUID e38d7633-2802-43da-83cd-c811bf2dc4c1</value>
+				<value>GUID b55e34aa-8505-4514-9937-f5e8a85b8f31</value>
+				<value>GUID ca4ff951-c9a0-4c2c-b739-086be3da63cc</value>
+				<value>GUID e7e8fbed-11c2-428a-b108-517e3fd18209</value>
+				<value>GUID 0872bc7a-9408-46dd-b342-cfee10f11028</value>
+				<value>GUID e9ff97dd-1515-48fe-9b54-cbfa582bd6d6</value>
+				<value>GUID dea5211f-ffc5-4ac5-af4f-3ffc6a7a0c75</value>
+				<value>GUID d66a4ba8-a179-46c1-8b48-f2511d919cf8</value>
+				<value>GUID 74ece08b-d246-4c54-ae69-fe451b5cad2b</value>
+				<value>GUID 1a5a1bb9-a231-416d-8fd4-e62816e2d8f8</value>
+				<value>GUID 12836f7c-1e4f-414f-aea6-253f61df641d</value>
+				<value>GUID cdda3f39-aa6f-4009-97a0-59eee40224d6</value>
+				<value>GUID d99a0eb3-a547-4257-a967-2b270d668857</value>
+				<value>GUID 25393857-e118-4491-9248-c42171c94a81</value>
+				<value>GUID c89a29b9-7b89-4db2-bb30-7e3ff6e22c00</value>
+				<value>GUID 0bcc3574-e2d6-4364-8314-3185900ef80a</value>
+				<value>GUID c03732ce-87dd-480b-9433-7f88163239e0</value>
+				<value>GUID 431a0440-5cc3-458d-bbe6-48280cb27ff2</value>
+				<value>GUID fdccb79c-5133-4e39-9369-59258752fb1c</value>
+				<value>GUID c061abdb-5883-41ac-ac52-a52d2f878539</value>
+				<value>GUID 89267659-371a-411b-a2dc-ded89608fd1f</value>
+				<value>GUID 24f6193d-d6bf-4102-97ae-985cc89f6460</value>
+				<value>GUID 3b96e3e9-19b5-4879-b786-bfa2fc074083</value>
+				<value>GUID d21b1718-a54d-4ebb-9b7a-7b98c3ab0890</value>
+				<value>GUID f7b0ce50-a23a-4c03-9777-7b95680a9d35</value>
+				<value>GUID 2e5572a5-1300-45a3-a8ed-e61c8467669e</value>
+				<value>GUID 914bd599-5812-4aa9-a0e2-a97739f3e6f3</value>
+				<value>GUID 95bf53e2-17ff-4959-9fbb-964a1ca41dfb</value>
+				<value>GUID 89d9a7db-6ae2-4df9-9d3d-03525af1e75c</value>
+				<value>GUID d9e3fcff-2b45-4754-9a7c-1e92c180c9fd</value>
+				<value>GUID 9cf85622-68ab-4aa2-ba73-82bfeb2d619e</value>
+				<value>GUID 03f9f85e-c9f8-4707-bdf4-6ca3bbe2fb08</value>
+				<value>GUID fb9b575a-83d2-43b0-8213-948e1dd4043d</value>
+				<value>GUID 140634a8-45d1-480a-8fbc-e4998867f90f</value>
+				<value>GUID 317a6a3e-87de-4f56-8ee1-47b954d53350</value>
+				<value>GUID e3ac06e3-8b95-481e-a176-64f5a8846ed0</value>
+				<value>GUID 89c73217-0a40-4767-a770-e075257f6d09</value>
+				<value>GUID ad9779e5-cd37-41aa-aa04-e617234dd68f</value>
+				<value>GUID 5f559798-cfc4-46e9-bb79-7412bc5e61f1</value>
+				<value>GUID 348b242a-636f-4c7d-83de-399774da62b6</value>
+				<value>GUID 19a92369-f331-4575-a91c-ba91b96526ae</value>
+				<value>GUID 08740ff0-c333-43fb-8499-700f091b5e0a</value>
+				<value>GUID 24705805-2dcb-4527-938b-b6f6874dcf8e</value>
+				<value>GUID 0f8232a4-c10c-4613-8cca-dee441845807</value>
+				<value>GUID d90e5d45-c514-40f2-8bbe-2aa2aaf3122d</value>
+				<value>GUID 8ca4c4ba-a118-4565-aa98-338ec8e9809d</value>
+				<value>GUID 0190e0aa-f43c-4917-b831-7d6afbf7f0c4</value>
+				<value>GUID 420197f0-fd50-4063-bf68-b45f921ee8b1</value>
+				<value>GUID 55ac2d4c-3474-4899-9b18-045e08e9c75d</value>
+				<value>GUID aced26ad-8415-48a0-a5e2-7a55a81f5e8b</value>
+				<value>GUID 1ba62330-fe6b-4a3c-8b33-bdf9919964b2</value>
+				<value>GUID d4751c25-eea3-4661-804c-8b853dc2de63</value>
+				<value>GUID bbea4ff4-e809-4f62-b0d8-88b01107e0db</value>
+				<value>GUID 800285a4-6686-4021-9ab9-2c901af16f81</value>
+				<value>GUID 1f58f752-4486-4f9f-bb08-093631cd5ed3</value>
+				<value>GUID 9661875a-e140-40ed-a2e3-0cf12c2448a9</value>
+				<value>GUID 2a069145-aaf6-4e98-80f4-169df63af357</value>
+				<value>GUID 348bae90-a05e-4b6d-8e71-13252dc8ed96</value>
+				<value>GUID 37f717cd-ff21-4234-a892-b26fe3e318c5</value>
+				<value>GUID fc20e2cd-af5d-4bd7-8809-7ee0b8fd8b7c</value>
+				<value>GUID 0643a3fc-625b-47b3-b34e-34bb19cc1dd5</value>
+				<value>GUID 5e21994e-adad-44d6-81c7-8087c6638698</value>
+				<value>GUID a22ddbcc-26f4-48b0-a2d4-8da3e851f294</value>
+				<value>GUID 4e756bdf-d035-4281-b58a-15be0c5616c6</value>
+				<value>GUID c407b64c-c759-4124-b1e7-b4ad5ee58a2d</value>
+				<value>GUID de897a65-66e8-4b1e-975a-ca4dccb51190</value>
+				<value>GUID a6707ff4-d725-4aa5-9f82-3ece8af69721</value>
+				<value>GUID b4bec890-89c6-4488-a970-c39770dde0e9</value>
+				<value>GUID 3947ba1c-7b59-4c9b-b080-94457b4ddc74</value>
+				<value>GUID 6e5527ad-4c73-49af-ba83-0b02c166056c</value>
+				<value>GUID b6c7b686-50f4-4ce9-9e34-6134d740190b</value>
+				<value>GUID 83c875b7-09af-46f5-9333-23b8f3c62b2f</value>
+				<value>GUID c9f7a697-18fa-4f9b-9aed-4feddc8a9e3a</value>
+				<value>GUID 44d5d6cc-0eee-4213-b3f7-3bed2dc3a9e7</value>
+				<value>GUID e6dd5f23-b643-4898-a02d-076ac62cb2a0</value>
+				<value>GUID b898c1da-6e93-4ac2-9173-c2d20ef067f9</value>
+				<value>GUID 555dc954-054b-4e92-8e02-b17d24571a49</value>
+				<value>GUID 0d6dc6d8-25a2-4486-9ce5-af4956509089</value>
+				<value>GUID f00ea9a5-d39b-4717-9afd-a62614f6108c</value>
+				<value>GUID 40f3d669-da4f-4cb9-a2b6-ff49a443b87e</value>
+				<value>GUID 60ba8a5e-8f88-43d3-af2f-60266fed5c44</value>
+				<value>GUID 5c3aad61-29ed-4d52-8d73-650344519c30</value>
+				<value>GUID 067735c3-445e-4de7-b799-5ffc16a286d4</value>
+			</AggregatesList>
+		</ISubsystem>
+		<IClass type="e">
+			<_id type="a">GUID 24d6afd4-bf13-4847-9a72-80e50e932801</_id>
+			<_myState type="a">40960</_myState>
+			<_name type="a">TopLevel</_name>
+			<_modifiedTime type="a">1.1.1970::0:0:0</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 0baa031c-ec41-41e3-b47b-17dd1e8b87ba</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Requirements Diagram</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">SysML View</_hname>
+							<_hid type="a">GUID 1682856c-40f4-49e9-ba7e-33005944364d</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:14:4</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID e71201f8-2ceb-4d71-a026-f0adb8902c76</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">UseCaseDiagram</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">SysML View</_hname>
+							<_hid type="a">GUID 1682856c-40f4-49e9-ba7e-33005944364d</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:14:4</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 4f3ef12b-6fca-4d3f-b7a1-64417bef19da</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Package Diagram</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">SysML View</_hname>
+							<_hid type="a">GUID 1682856c-40f4-49e9-ba7e-33005944364d</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:14:4</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 0ada1ea5-b3de-42d8-a162-5c95a3989772</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Block Definition Diagram</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">SysML View</_hname>
+							<_hid type="a">GUID 1682856c-40f4-49e9-ba7e-33005944364d</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:14:4</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 3c5350f1-340b-436e-bd3d-dca32a7e3599</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Internal Block Diagram</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">SysML View</_hname>
+							<_hid type="a">GUID 1682856c-40f4-49e9-ba7e-33005944364d</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:14:4</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 061fe99b-60ff-46b3-b2dd-300dde1b99b0</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Parametric Diagram</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">SysML View</_hname>
+							<_hid type="a">GUID 1682856c-40f4-49e9-ba7e-33005944364d</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:14:4</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 518cbb21-9006-44f8-acb2-7d48d2ad770f</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">ActivityDiagram</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">SysML View</_hname>
+							<_hid type="a">GUID 1682856c-40f4-49e9-ba7e-33005944364d</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:14:4</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 6cdad949-11bd-4290-8cb1-8618837eb6ce</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Package</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">SysML Element</_hname>
+							<_hid type="a">GUID f22cbd94-9d60-47dc-b83f-68916711a4f3</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:14:44</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID e8e93d47-9bd5-4597-b642-91c037df069d</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Block</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">SysML Element</_hname>
+							<_hid type="a">GUID f22cbd94-9d60-47dc-b83f-68916711a4f3</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:14:44</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 72a92379-e968-4cad-b452-75c06fe86f15</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Part</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">SysML Element</_hname>
+							<_hid type="a">GUID f22cbd94-9d60-47dc-b83f-68916711a4f3</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:14:44</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 157f58bb-0daf-4b45-b8c6-093f60c94f66</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">ChangeStructuralFeatureEvent</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">SysML Element</_hname>
+							<_hid type="a">GUID f22cbd94-9d60-47dc-b83f-68916711a4f3</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:14:44</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID c621695b-0bc1-4c67-b7b1-b41cdb9732a4</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">DataType</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">SysML Element</_hname>
+							<_hid type="a">GUID f22cbd94-9d60-47dc-b83f-68916711a4f3</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:14:44</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID be6f0e7a-9369-4671-b7fc-2c382c47e031</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">ValueType</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">SysML Element</_hname>
+							<_hid type="a">GUID f22cbd94-9d60-47dc-b83f-68916711a4f3</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:14:44</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 7c114a94-24ae-44e5-a0e0-d6365c62775e</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Unit</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">SysML Element</_hname>
+							<_hid type="a">GUID f22cbd94-9d60-47dc-b83f-68916711a4f3</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:14:44</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 5c091b4d-8907-4bf3-a0f9-9e194daee202</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Dimension</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">SysML Element</_hname>
+							<_hid type="a">GUID f22cbd94-9d60-47dc-b83f-68916711a4f3</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:14:44</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID e38d7633-2802-43da-83cd-c811bf2dc4c1</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">TriggeredOperation</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">SysML Element</_hname>
+							<_hid type="a">GUID f22cbd94-9d60-47dc-b83f-68916711a4f3</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:14:44</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID b55e34aa-8505-4514-9937-f5e8a85b8f31</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">BindingConnector</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">SysML Relation</_hname>
+							<_hid type="a">GUID 2bd2954d-b87c-4593-9d68-6678b1c4edad</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:16:13</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID ca4ff951-c9a0-4c2c-b739-086be3da63cc</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">InstanceSpecification</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">SysML Element</_hname>
+							<_hid type="a">GUID f22cbd94-9d60-47dc-b83f-68916711a4f3</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:14:44</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID e7e8fbed-11c2-428a-b108-517e3fd18209</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Port</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">SysML Element</_hname>
+							<_hid type="a">GUID f22cbd94-9d60-47dc-b83f-68916711a4f3</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:14:44</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 0872bc7a-9408-46dd-b342-cfee10f11028</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">FlowPort</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">SysML Element</_hname>
+							<_hid type="a">GUID f22cbd94-9d60-47dc-b83f-68916711a4f3</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:14:44</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID e9ff97dd-1515-48fe-9b54-cbfa582bd6d6</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">FullPort</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">SysML Element</_hname>
+							<_hid type="a">GUID f22cbd94-9d60-47dc-b83f-68916711a4f3</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:14:44</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID dea5211f-ffc5-4ac5-af4f-3ffc6a7a0c75</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">FlowSpecification</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">SysML Element</_hname>
+							<_hid type="a">GUID f22cbd94-9d60-47dc-b83f-68916711a4f3</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:14:44</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID d66a4ba8-a179-46c1-8b48-f2511d919cf8</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">FlowProperty</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">SysML Element</_hname>
+							<_hid type="a">GUID f22cbd94-9d60-47dc-b83f-68916711a4f3</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:14:44</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 74ece08b-d246-4c54-ae69-fe451b5cad2b</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">FlowItem</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">SysML Element</_hname>
+							<_hid type="a">GUID f22cbd94-9d60-47dc-b83f-68916711a4f3</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:14:44</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 1a5a1bb9-a231-416d-8fd4-e62816e2d8f8</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">TestCase</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">SysML Element</_hname>
+							<_hid type="a">GUID f22cbd94-9d60-47dc-b83f-68916711a4f3</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:14:44</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 12836f7c-1e4f-414f-aea6-253f61df641d</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Validation</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\TestingProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::TestingProfileRelated</_hsubsystem>
+							<_hname type="a">TestingProfile</_hname>
+							<_hid type="a">GUID bbfef898-63a3-44c3-938d-8683441f2606</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:17:11</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID cdda3f39-aa6f-4009-97a0-59eee40224d6</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Derive Requirement</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">SysML Relation</_hname>
+							<_hid type="a">GUID 2bd2954d-b87c-4593-9d68-6678b1c4edad</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:16:13</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID d99a0eb3-a547-4257-a967-2b270d668857</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">ConstraintBlock</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">SysML Element</_hname>
+							<_hid type="a">GUID f22cbd94-9d60-47dc-b83f-68916711a4f3</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:14:44</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 25393857-e118-4491-9248-c42171c94a81</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">ConstraintProperty</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">SysML Element</_hname>
+							<_hid type="a">GUID f22cbd94-9d60-47dc-b83f-68916711a4f3</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:14:44</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID c89a29b9-7b89-4db2-bb30-7e3ff6e22c00</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">ConstraintParameter</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">SysML Element</_hname>
+							<_hid type="a">GUID f22cbd94-9d60-47dc-b83f-68916711a4f3</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:14:44</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 0bcc3574-e2d6-4364-8314-3185900ef80a</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Profile</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">UML Extension</_hname>
+							<_hid type="a">GUID d719935d-03df-476f-951a-11bb108b8b19</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:15:15</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID c03732ce-87dd-480b-9433-7f88163239e0</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Configuration</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">UML Extension</_hname>
+							<_hid type="a">GUID d719935d-03df-476f-951a-11bb108b8b19</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:15:55</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 431a0440-5cc3-458d-bbe6-48280cb27ff2</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">File</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">UML Extension</_hname>
+							<_hid type="a">GUID d719935d-03df-476f-951a-11bb108b8b19</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:15:55</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID fdccb79c-5133-4e39-9369-59258752fb1c</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Metrics Layout</_name>
+			<_modifiedTime type="a">10.31.2022::8:10:53</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID c061abdb-5883-41ac-ac52-a52d2f878539</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Metrics View</_name>
+			<_modifiedTime type="a">10.31.2022::8:10:53</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 89267659-371a-411b-a2dc-ded89608fd1f</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">TestObjective</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\TestingProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::TestingProfileRelated</_hsubsystem>
+							<_hname type="a">TestingProfile</_hname>
+							<_hid type="a">GUID bbfef898-63a3-44c3-938d-8683441f2606</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:13:41</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 24f6193d-d6bf-4102-97ae-985cc89f6460</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">TestPackage</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\TestingProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::TestingProfileRelated</_hsubsystem>
+							<_hname type="a">TestingProfile</_hname>
+							<_hid type="a">GUID bbfef898-63a3-44c3-938d-8683441f2606</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:13:10</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 3b96e3e9-19b5-4879-b786-bfa2fc074083</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">TestRequirementMatrix</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\TestingProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::TestingProfileRelated</_hsubsystem>
+							<_hname type="a">TestingProfile</_hname>
+							<_hid type="a">GUID bbfef898-63a3-44c3-938d-8683441f2606</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:13:10</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID d21b1718-a54d-4ebb-9b7a-7b98c3ab0890</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">TestResultTable</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\TestingProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::TestingProfileRelated</_hsubsystem>
+							<_hname type="a">TestingProfile</_hname>
+							<_hid type="a">GUID bbfef898-63a3-44c3-938d-8683441f2606</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:13:10</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID f7b0ce50-a23a-4c03-9777-7b95680a9d35</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">TestCase1</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\TestingProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::TestingProfileRelated</_hsubsystem>
+							<_hname type="a">TestingProfile</_hname>
+							<_hid type="a">GUID bbfef898-63a3-44c3-938d-8683441f2606</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:13:10</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 2e5572a5-1300-45a3-a8ed-e61c8467669e</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">TestContext</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\TestingProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::TestingProfileRelated</_hsubsystem>
+							<_hname type="a">TestingProfile</_hname>
+							<_hid type="a">GUID bbfef898-63a3-44c3-938d-8683441f2606</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:13:10</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 914bd599-5812-4aa9-a0e2-a97739f3e6f3</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">SUT</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\TestingProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::TestingProfileRelated</_hsubsystem>
+							<_hname type="a">TestingProfile</_hname>
+							<_hid type="a">GUID bbfef898-63a3-44c3-938d-8683441f2606</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:13:10</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 95bf53e2-17ff-4959-9fbb-964a1ca41dfb</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">TestComponent</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\TestingProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::TestingProfileRelated</_hsubsystem>
+							<_hname type="a">TestingProfile</_hname>
+							<_hid type="a">GUID bbfef898-63a3-44c3-938d-8683441f2606</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:13:10</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 89d9a7db-6ae2-4df9-9d3d-03525af1e75c</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">TestActor</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\TestingProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::TestingProfileRelated</_hsubsystem>
+							<_hname type="a">TestingProfile</_hname>
+							<_hid type="a">GUID bbfef898-63a3-44c3-938d-8683441f2606</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:13:10</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID d9e3fcff-2b45-4754-9a7c-1e92c180c9fd</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">TestConfiguration</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\TestingProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::TestingProfileRelated</_hsubsystem>
+							<_hname type="a">TestingProfile</_hname>
+							<_hid type="a">GUID bbfef898-63a3-44c3-938d-8683441f2606</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:13:10</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 9cf85622-68ab-4aa2-ba73-82bfeb2d619e</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">TestContext Diagram</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\TestingProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::TestingProfileRelated</_hsubsystem>
+							<_hname type="a">TestingProfile</_hname>
+							<_hid type="a">GUID bbfef898-63a3-44c3-938d-8683441f2606</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:13:10</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 03f9f85e-c9f8-4707-bdf4-6ca3bbe2fb08</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">TestObjective1</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\TestingProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::TestingProfileRelated</_hsubsystem>
+							<_hname type="a">TestingProfile</_hname>
+							<_hid type="a">GUID bbfef898-63a3-44c3-938d-8683441f2606</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:13:10</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID fb9b575a-83d2-43b0-8213-948e1dd4043d</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">TestScenario</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\TestingProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::TestingProfileRelated</_hsubsystem>
+							<_hname type="a">TestingProfile</_hname>
+							<_hid type="a">GUID bbfef898-63a3-44c3-938d-8683441f2606</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:13:10</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 140634a8-45d1-480a-8fbc-e4998867f90f</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">ScenarioRequirementFull</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\TestingProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::TestingProfileRelated</_hsubsystem>
+							<_hname type="a">TestingProfile</_hname>
+							<_hid type="a">GUID bbfef898-63a3-44c3-938d-8683441f2606</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:13:10</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 317a6a3e-87de-4f56-8ee1-47b954d53350</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">ScenarioRequirementPartial</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\TestingProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::TestingProfileRelated</_hsubsystem>
+							<_hname type="a">TestingProfile</_hname>
+							<_hid type="a">GUID bbfef898-63a3-44c3-938d-8683441f2606</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:13:10</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID e3ac06e3-8b95-481e-a176-64f5a8846ed0</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">ScenarioRequirementTable</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\TestingProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::TestingProfileRelated</_hsubsystem>
+							<_hname type="a">TestingProfile</_hname>
+							<_hid type="a">GUID bbfef898-63a3-44c3-938d-8683441f2606</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:13:10</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 89c73217-0a40-4767-a770-e075257f6d09</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">SDMapping</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\TestingProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::TestingProfileRelated</_hsubsystem>
+							<_hname type="a">TestingProfile</_hname>
+							<_hid type="a">GUID bbfef898-63a3-44c3-938d-8683441f2606</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:13:10</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID ad9779e5-cd37-41aa-aa04-e617234dd68f</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">SDMappingsTable</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\TestingProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::TestingProfileRelated</_hsubsystem>
+							<_hname type="a">TestingProfile</_hname>
+							<_hid type="a">GUID bbfef898-63a3-44c3-938d-8683441f2606</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:13:10</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 5f559798-cfc4-46e9-bb79-7412bc5e61f1</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">SDInstanceRealizationMapPair</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\TestingProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::TestingProfileRelated</_hsubsystem>
+							<_hname type="a">TestingProfile</_hname>
+							<_hid type="a">GUID bbfef898-63a3-44c3-938d-8683441f2606</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:13:10</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 348b242a-636f-4c7d-83de-399774da62b6</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">SDInstanceRealizationMerge</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\TestingProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::TestingProfileRelated</_hsubsystem>
+							<_hname type="a">TestingProfile</_hname>
+							<_hid type="a">GUID bbfef898-63a3-44c3-938d-8683441f2606</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:13:10</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 19a92369-f331-4575-a91c-ba91b96526ae</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">SDInstanceRealizationMergeOrigin</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\TestingProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::TestingProfileRelated</_hsubsystem>
+							<_hname type="a">TestingProfile</_hname>
+							<_hid type="a">GUID bbfef898-63a3-44c3-938d-8683441f2606</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:13:10</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 08740ff0-c333-43fb-8499-700f091b5e0a</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">SDInstanceRealizationSplit</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\TestingProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::TestingProfileRelated</_hsubsystem>
+							<_hname type="a">TestingProfile</_hname>
+							<_hid type="a">GUID bbfef898-63a3-44c3-938d-8683441f2606</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:13:10</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 24705805-2dcb-4527-938b-b6f6874dcf8e</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">SDInstanceRealizationSplitTarget</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\TestingProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::TestingProfileRelated</_hsubsystem>
+							<_hname type="a">TestingProfile</_hname>
+							<_hid type="a">GUID bbfef898-63a3-44c3-938d-8683441f2606</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:13:10</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 0f8232a4-c10c-4613-8cca-dee441845807</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">dataReader</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID d90e5d45-c514-40f2-8bbe-2aa2aaf3122d</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">dataWriter</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 8ca4c4ba-a118-4565-aa98-338ec8e9809d</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">deadlineQosPolicy</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 0190e0aa-f43c-4917-b831-7d6afbf7f0c4</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">domainParticipant</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 420197f0-fd50-4063-bf68-b45f921ee8b1</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">doQosPolicy</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 55ac2d4c-3474-4899-9b18-045e08e9c75d</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">dsQosPolicy</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID aced26ad-8415-48a0-a5e2-7a55a81f5e8b</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">durabilityQosPolicy</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 1ba62330-fe6b-4a3c-8b33-bdf9919964b2</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">efQosPolicy</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID d4751c25-eea3-4661-804c-8b853dc2de63</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">gdQosPolicy</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID bbea4ff4-e809-4f62-b0d8-88b01107e0db</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">historyQosPolicy</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 800285a4-6686-4021-9ab9-2c901af16f81</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">key</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 1f58f752-4486-4f9f-bb08-093631cd5ed3</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">lbQosPolicy</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 9661875a-e140-40ed-a2e3-0cf12c2448a9</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">lifespanQosPolicy</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 2a069145-aaf6-4e98-80f4-169df63af357</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">livelinessQosPolicy</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 348bae90-a05e-4b6d-8e71-13252dc8ed96</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">osQosPolicy</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 37f717cd-ff21-4234-a892-b26fe3e318c5</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">ownershipQosPolicy</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID fc20e2cd-af5d-4bd7-8809-7ee0b8fd8b7c</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">partitionQosPolicy</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 0643a3fc-625b-47b3-b34e-34bb19cc1dd5</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">presentationQosPolicy</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 5e21994e-adad-44d6-81c7-8087c6638698</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">publisher</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID a22ddbcc-26f4-48b0-a2d4-8da3e851f294</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">rdlQosPolicy</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 4e756bdf-d035-4281-b58a-15be0c5616c6</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">reliabilityQoSPolicy</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID c407b64c-c759-4124-b1e7-b4ad5ee58a2d</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">rlQosPolicy</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID de897a65-66e8-4b1e-975a-ca4dccb51190</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">subscriber</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID a6707ff4-d725-4aa5-9f82-3ece8af69721</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">tbfQosPolicy</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID b4bec890-89c6-4488-a970-c39770dde0e9</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">tdQoSPolicy</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 3947ba1c-7b59-4c9b-b080-94457b4ddc74</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">topic</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 6e5527ad-4c73-49af-ba83-0b02c166056c</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">topicStruct</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID b6c7b686-50f4-4ce9-9e34-6134d740190b</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">tpQosPolicy</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 83c875b7-09af-46f5-9333-23b8f3c62b2f</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">udQosPolicy</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID c9f7a697-18fa-4f9b-9aed-4feddc8a9e3a</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">wdlQosPolicy</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 44d5d6cc-0eee-4213-b3f7-3bed2dc3a9e7</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">ddsDiagram</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID e6dd5f23-b643-4898-a02d-076ac62cb2a0</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">guardCondition</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID b898c1da-6e93-4ac2-9173-c2d20ef067f9</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">guardConditionLink</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 555dc954-054b-4e92-8e02-b17d24571a49</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">idlType</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 0d6dc6d8-25a2-4486-9ce5-af4956509089</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">listener</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID f00ea9a5-d39b-4717-9afd-a62614f6108c</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">qualityOfService</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 40f3d669-da4f-4cb9-a2b6-ff49a443b87e</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">queryCondition</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 60ba8a5e-8f88-43d3-af2f-60266fed5c44</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">readCondition</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 5c3aad61-29ed-4d52-8d73-650344519c30</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">statusCondition</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 067735c3-445e-4de7-b799-5ffc16a286d4</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">waitSet</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">$OMROOT\Profiles\SysMLHelper\Metamodel_rpy\DDSProfileRelated.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfile::DDSProfileRelated</_hsubsystem>
+							<_hname type="a">DDS</_hname>
+							<_hid type="a">GUID ead6329b-af35-4153-8640-bb9e283d0e7a</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">10.31.2022::8:12:31</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		
+	</RHAPSODY-MODEL>
+	<OslcLinks type="c">
+		<IRPYRawContainer type="e">
+			<size type="a">0</size>
+		</IRPYRawContainer>
+	</OslcLinks>
+
+<INCLUDES-RHAPSODY-INDEX>false</INCLUDES-RHAPSODY-INDEX>
+</RhapsodyArchive>
+

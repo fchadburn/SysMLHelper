@@ -25,6 +25,13 @@ class MenuItem {
 
 		_subheading = getSubmenuString( theMetaClass );
 	}
+	
+	MenuItem( String name, String subheading ){
+		
+		_name = name;
+		_subheading = subheading + "/";
+	}
+
 
 	public String getName() {
 		return _name;

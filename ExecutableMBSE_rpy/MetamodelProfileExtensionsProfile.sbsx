@@ -4,42 +4,35 @@
 	<CODE-PAGE>1252</CODE-PAGE>
 	<version>100.831.0</version>
 	<lang>C++</lang>
-	<BuildNo>9835718</BuildNo>
+	<BuildNo>9835550</BuildNo>
 	
 	<RHAPSODY-MODEL>
 	<IProfile type="e">
 			<_id type="a">GUID 4f2b6707-5798-4c1e-aa4b-c08bda2216fb</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">MetamodelProfileExtensionsProfile</_name>
-			<_modifiedTime type="a">12.27.2021::17:47:45</_modifiedTime>
-			<_lastID type="a">5</_lastID>
+			<_modifiedTime type="a">10.28.2022::21:55:10</_modifiedTime>
+			<_lastID type="a">7</_lastID>
 			<_defaultComposite type="s">GUID 5acfea5e-557e-4311-ba12-6023a21b8426</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
 				<value>GUID 0d931adc-d7f1-4642-94fa-e2a2f89d3dd6</value>
-				<value>GUID 0775b38f-d678-4575-851a-bc02ac3b4018</value>
 				<value>GUID 39a1bf6f-d970-41b9-af9c-b4b35b14bb10</value>
+				<value>GUID e0b0ba72-f55f-48d8-89a6-25f2319a0748</value>
+				<value>GUID 0775b38f-d678-4575-851a-bc02ac3b4018</value>
 				<value>GUID a8165107-5800-41c4-a18e-921c2d3d5b70</value>
+				<value>GUID 1682856c-40f4-49e9-ba7e-33005944364d</value>
+				<value>GUID f22cbd94-9d60-47dc-b83f-68916711a4f3</value>
+				<value>GUID 2bd2954d-b87c-4593-9d68-6678b1c4edad</value>
+				<value>GUID d719935d-03df-476f-951a-11bb108b8b19</value>
 				<value>GUID 5acfea5e-557e-4311-ba12-6023a21b8426</value>
 			</AggregatesList>
 		</IProfile>
 		<IStereotype type="e">
 			<_id type="a">GUID 0d931adc-d7f1-4642-94fa-e2a2f89d3dd6</_id>
 			<_myState type="a">8192</_myState>
-			<_name type="a">MBSE Element</_name>
-			<_modifiedTime type="a">4.29.2021::17:17:40</_modifiedTime>
-			<_m2Classes type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">1</size>
-					<value>Class</value>
-				</IRPYRawContainer>
-			</_m2Classes>
-		</IStereotype>
-		<IStereotype type="e">
-			<_id type="a">GUID 0775b38f-d678-4575-851a-bc02ac3b4018</_id>
-			<_myState type="a">8192</_myState>
-			<_name type="a">MBSE Diagram</_name>
-			<_modifiedTime type="a">5.10.2021::8:34:28</_modifiedTime>
+			<_name type="a">MBSEProfile Element</_name>
+			<_modifiedTime type="a">10.28.2022::16:11:18</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -50,8 +43,32 @@
 		<IStereotype type="e">
 			<_id type="a">GUID 39a1bf6f-d970-41b9-af9c-b4b35b14bb10</_id>
 			<_myState type="a">8192</_myState>
-			<_name type="a">MBSE Relation</_name>
-			<_modifiedTime type="a">5.10.2021::8:34:32</_modifiedTime>
+			<_name type="a">MBSEProfile Relation</_name>
+			<_modifiedTime type="a">10.28.2022::16:11:24</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>Class</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+		</IStereotype>
+		<IStereotype type="e">
+			<_id type="a">GUID e0b0ba72-f55f-48d8-89a6-25f2319a0748</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">MBSEProfile Package</_name>
+			<_modifiedTime type="a">10.28.2022::16:11:28</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>Class</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+		</IStereotype>
+		<IStereotype type="e">
+			<_id type="a">GUID 0775b38f-d678-4575-851a-bc02ac3b4018</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">MBSEProfile View</_name>
+			<_modifiedTime type="a">10.28.2022::16:11:12</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -64,6 +81,54 @@
 			<_myState type="a">8192</_myState>
 			<_name type="a">ExecutableMBSEProfile</_name>
 			<_modifiedTime type="a">12.27.2021::17:44:36</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>Class</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+		</IStereotype>
+		<IStereotype type="e">
+			<_id type="a">GUID 1682856c-40f4-49e9-ba7e-33005944364d</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">SysML View</_name>
+			<_modifiedTime type="a">10.28.2022::16:11:34</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>Class</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+		</IStereotype>
+		<IStereotype type="e">
+			<_id type="a">GUID f22cbd94-9d60-47dc-b83f-68916711a4f3</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">SysML Element</_name>
+			<_modifiedTime type="a">10.28.2022::14:8:27</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>Class</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+		</IStereotype>
+		<IStereotype type="e">
+			<_id type="a">GUID 2bd2954d-b87c-4593-9d68-6678b1c4edad</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">SysML Relation</_name>
+			<_modifiedTime type="a">10.28.2022::14:8:49</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>Class</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+		</IStereotype>
+		<IStereotype type="e">
+			<_id type="a">GUID d719935d-03df-476f-951a-11bb108b8b19</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">UML Extension</_name>
+			<_modifiedTime type="a">10.28.2022::14:44:1</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>

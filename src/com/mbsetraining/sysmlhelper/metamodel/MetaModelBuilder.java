@@ -10,9 +10,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.mbsetraining.sysmlhelper.common.BaseContext;
+import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.telelogic.rhapsody.core.IRPClass;
 import com.telelogic.rhapsody.core.IRPClassifier;
 import com.telelogic.rhapsody.core.IRPDependency;
 import com.telelogic.rhapsody.core.IRPModelElement;
+import com.telelogic.rhapsody.core.IRPPackage;
+import com.telelogic.rhapsody.core.IRPProject;
 import com.telelogic.rhapsody.core.IRPRelation;
 import com.telelogic.rhapsody.core.IRPStereotype;
 import com.telelogic.rhapsody.core.RhapsodyAppServer;
@@ -25,95 +29,68 @@ public class MetaModelBuilder {
 		Metamodel_Context context = new Metamodel_Context( 
 				RhapsodyAppServer.getActiveRhapsodyApplication().getApplicationConnectionString() );
 
-		try {
-			IRPModelElement theSysMLStereotype =context.get_rhpPrj().findElementsByFullName( "SysML::SysML", "Stereotype" );
+		MetaModelBuilder theBuilder = new MetaModelBuilder( context );
 
-			String theDefaultProperties = null;
-			List<String> theDefaultTokens = new ArrayList<>();
+		IRPProject theRhpPrj = context.get_rhpPrj();
+
+		theBuilder.setGeneralModelAddNewMenuStructurePropertyOn( theRhpPrj.getNewTermStereotype(), context.getSelectedElement(false) );
+
+		context.info( "... Finished" );
+	}
+
+	private MenuItems getDefaultMenuItemsFromSysML(){
+
+		_context.info( "getDefaultTokensFromSysML was invoked... ");
+
+		MenuItems theSysMLMenuItems = new MenuItems( _context );
+
+		try {
+			IRPModelElement theSysMLStereotype = _context.get_rhpPrj().
+					findElementsByFullName( "SysML::SysML", "Stereotype" );
 
 			if( theSysMLStereotype instanceof IRPStereotype ){
 
-				theDefaultProperties = theSysMLStereotype.getPropertyValueExplicit( 
+				String theDefaultProperties = theSysMLStereotype.getPropertyValueExplicit( 
 						"General.Model.AddNewMenuStructureContent" );
 
-				Matcher m = Pattern.compile("(.*)$|/(.*),")
+				Matcher m = Pattern.compile("(.*)$|(.*)/(.*),")
 						.matcher( theDefaultProperties );
 
-				while (m.find()) {
-					String theGroup = m.group(2);
+				while( m.find() ){
+					String theFirstToken = m.group(2);
 
-					if( theGroup != null && 
-							!theGroup.isEmpty() && 
-							!theGroup.equals("rpy_separator") ){
+					String theSecondToken = m.group(3);
 
-						context.info( "Found " + theGroup );
-						theDefaultTokens.add( theGroup );
+					if( theSecondToken != null && 
+							!theSecondToken.isEmpty() && 
+							!theSecondToken.equals("rpy_separator") ){
+
+						//_context.info( "Found " + theGroup );
+						theSysMLMenuItems.add( new MenuItem( theSecondToken, theFirstToken ) );
 					} else {
 
-						theGroup = m.group(1);
+						theSecondToken = m.group(3);
 
-						if( theGroup != null && 
-								!theGroup.isEmpty() && 
-								!theGroup.equals("rpy_separator") ){
+						if( theSecondToken != null && 
+								!theSecondToken.isEmpty() && 
+								!theSecondToken.equals("rpy_separator") ){
 
-							context.info( "Found " + theGroup );
-							theDefaultTokens.add( theGroup ); 
+							//_context.info( "Found " + theGroup );
+							theSysMLMenuItems.add( new MenuItem( theSecondToken, "" ) ); 
 						}	 
 					}
 
 				}
 			}
-		} catch (Exception e) {
-			context.error( "e=" + e.getMessage());
-		}
-
-		context.info( "... Finished" );
-
-	}
-
-	private List<String> getDefaultTokensFromSysML(
-			String theDefaultProperties ){
-
-		_context.info( "getDefaultTokensFromSysML was invoked... ");
-
-		List<String> theDefaultTokens = new ArrayList<>();
-
-		try {
-			Matcher m = Pattern.compile("(.*)$|/(.*),")
-					.matcher( theDefaultProperties );
-
-			while (m.find()) {
-				String theGroup = m.group(2);
-
-				if( theGroup != null && 
-						!theGroup.isEmpty() && 
-						!theGroup.equals("rpy_separator") ){
-
-					//_context.info( "Found " + theGroup );
-					theDefaultTokens.add( theGroup );
-				} else {
-
-					theGroup = m.group(1);
-
-					if( theGroup != null && 
-							!theGroup.isEmpty() && 
-							!theGroup.equals("rpy_separator") ){
-
-						//_context.info( "Found " + theGroup );
-						theDefaultTokens.add( theGroup ); 
-					}	 
-				}
-
-			}
 
 		} catch( Exception e ){
-			_context.error( "Exception in getDefaultTokensFromSysML, e=" + e.getMessage());
+			_context.error( "Exception in getDefaultMenuItemsFromSysML, e=" + e.getMessage());
 		}
 
-		_context.info( "getDefaultTokensFromSysML found " + theDefaultTokens.size() + 
+		_context.info( "getDefaultMenuItemsFromSysML found " + theSysMLMenuItems.size() + 
 				" existing element types in the SysML profile" );
 
-		return theDefaultTokens;
+		return theSysMLMenuItems;
 	}
 
 	private String[] _metaModelSingleRelationProperties = { 
@@ -199,7 +176,7 @@ public class MetaModelBuilder {
 				// All the base diagram types
 				if( _baseDiagramMetaClasses.contains( theMetaClassesAppliedTo ) ){
 
-					List<MenuItem> theAggregates = new ArrayList<>();
+					MenuItems theAggregates = new MenuItems( _context );
 
 					appendComprisingOfElementFor( theEl, theAggregates, "Aggregation", false );
 
@@ -282,66 +259,130 @@ public class MetaModelBuilder {
 					thePropertyValue );
 		}
 	}
+	
+	public void createMetamodelClassesFor(
+			MenuItems theMenuItems,
+			IRPClass withDirectedCompositionsFrom ) {
+			
+		IRPPackage theOwningPkg = _context.
+				getOwningPackageFor( _context.getSelectedElement( false ) );
+		
+		if( theOwningPkg instanceof IRPPackage ) {
+			
+			String theUniquePackageName = _context.
+					determineUniqueNameBasedOn( "SysMLMetaModelPkg", "Package", theOwningPkg );
+			
+			IRPPackage theNestedPkg = theOwningPkg.addNestedPackage( theUniquePackageName );
+			
+			for( MenuItem menuItem : theMenuItems ){
+								
+				String theName = _context.
+						determineUniqueNameBasedOn( menuItem.getName(), "Class", theNestedPkg );
+				
+				IRPClass theClass = theNestedPkg.addClass( theName );
+				
+				/**
+			 	 * Adds a new directed association to the classifier.
+			 	 * @param otherClassifier the classifier that the current classifier should be associated with
+			 	 * @param roleName the role name to use for the association end
+			 	 * @param linkType used to determine the type of association to create. The strings that can be used for this parameter are Association, Aggregation and Composition (parameter is case-sensitive).
+			 	 * @param multiplicity the multiplicity to use for the association end. You can use strings such as "1" or "14" to specify a specific number, or you can use one of the values listed in the Features dialog for attributes: "0,1", "*", or "1..*".
+			 	 * @param linkName if you want to create an association class, use this parameter to specify the name of the class. If you do not want to create an association class, use an empty string as the value of this parameter.
+			 	 * @return the association that was created
+			 	 */
+				IRPRelation theRelation = withDirectedCompositionsFrom.
+						addUnidirectionalRelationTo( theClass, "", "Association", "1", "" );
+		
+				theRelation.setRelationType( "Composition" );
+			}
+		}
+	}
 
-	private String setGeneralModelAddNewMenuStructurePropertyOn(
+	public String setGeneralModelAddNewMenuStructurePropertyOn(
 			IRPStereotype theStereotype, 
 			IRPModelElement theEl ){
 
-		String retval;
+		String retval = null;
 
 		_context.debug( "aggregatesList is trying determine Add New Menu Structure for project...");
 
-		List<MenuItem> theCompositions = new ArrayList<>();
-
-
-		appendComprisingOfElementFor( theEl, theCompositions, "Composition", true );
-
-		List<MenuItem> theFilteredMenuItems = new ArrayList<>();
-
-		IRPModelElement theSysMLStereotype = _context.get_rhpPrj().
-				findElementsByFullName( "SysML::SysML", "Stereotype" );
-
-		String theDefaultProperties = null;
+		MenuItems theExecutableMBSEMenus = new MenuItems( _context );
 		
-		List<String> theDefaultTokens = new ArrayList<>();
+		appendComprisingOfElementFor( theEl, theExecutableMBSEMenus, "Composition", true );
 
-		if( theSysMLStereotype instanceof IRPStereotype ){
+		_context.debug( "theExecutableMBSEMenus ...");
+		theExecutableMBSEMenus.dumpList();
+		_context.debug( "... theExecutableMBSEMenus.");
 
-			theDefaultProperties = theSysMLStereotype.getPropertyValueExplicit( 
-					"General.Model.AddNewMenuStructureContent" );
+		MenuItems theSysMLMenus = getDefaultMenuItemsFromSysML();
 
-			theDefaultTokens = getDefaultTokensFromSysML( theDefaultProperties );
+		_context.debug( "theSysMLMenus (unfiltered) ...");
+		theSysMLMenus.dumpList();
+		_context.debug( "... theSysMLMenus.");
+		
+		// Remove the menus in SysML that have been re-expressed in the profile
+		removeMenuItemsFrom( theSysMLMenus, theExecutableMBSEMenus );
+
+		_context.debug( "theSysMLMenus (filtered) ...");
+		theSysMLMenus.dumpList();
+		_context.debug( "... theSysMLMenus.");
+		
+		boolean answer = false;
+		
+		if( !theSysMLMenus.isEmpty() ) {
+			
+			answer = UserInterfaceHelper.askAQuestion( 
+					"There are " + theSysMLMenus.size() + " residual menus not catered for, \n" + 
+					"do you want to create classes for these and fix profile before trying again?" );
 		}
+		
+		if( answer ) {
+			createMetamodelClassesFor( theSysMLMenus, (IRPClass) theEl );	
+		} else {	
+			addMenuItemsTo( theExecutableMBSEMenus, theSysMLMenus );
 
-		if( theDefaultTokens.isEmpty() ){
-			theFilteredMenuItems = theCompositions;
-		} else {			
-			for( MenuItem menuItem : theCompositions ){
+			_context.debug( "theExecutableMBSEMenus (final) ...");
+			theExecutableMBSEMenus.dumpList();
+			_context.debug( "... theExecutableMBSEMenus (final).");
 
-				String theName = menuItem.getName();
+			retval = getCommaSeparatedString( theExecutableMBSEMenus, true, true ).replaceAll("Automotive Element/zHiddenFlowPort,", ""); 
 
-				if( theDefaultTokens.contains( theName ) ){
-					_context.info( "Filtering out " + theName );
-
-				} else {
-					_context.debug( "Filtering in " + theName );
-					theFilteredMenuItems.add( menuItem );
-				}
+			if( theStereotype != null ) {			
+				_context.setStringPropertyValueInRhp( 
+						theStereotype, "General.Model.AddNewMenuStructure", retval );						
 			}
 		}
-
-		retval = getCommaSeparatedString( theFilteredMenuItems, true, true ).replaceAll("Automotive Element/zHiddenFlowPort,", ""); 
-
-		if( theDefaultProperties != null ){	
-			retval += "," + theDefaultProperties;
-		}
-
-		_context.setStringPropertyValueInRhp( 
-				theStereotype, "General.Model.AddNewMenuStructure", retval );						
 
 		_context.debug( "... aggregatesList has completed determining Add New Menu Structure.");
 
 		return retval;
+	}
+
+	private void addMenuItemsTo(
+			MenuItems theMenuItems, 
+			MenuItems theMenuItemsToAdd ){
+		
+		for( MenuItem menuItem : theMenuItemsToAdd ){
+			theMenuItems.add( menuItem );
+		}
+	}
+
+	private void removeMenuItemsFrom(
+			MenuItems theMenuItems,
+			MenuItems theMenuItemsToRemove ) {
+		
+		for( MenuItem menuItem : theMenuItemsToRemove ){
+
+			String theName = menuItem.getName();
+
+			if( theMenuItems.isMenuItemPresent( theName ) ){
+				_context.info( "Filtering out " + theName );
+				theMenuItems.removeElement( theName );
+
+			} else {
+				_context.debug( "Keeping " + theName );
+			}
+		}
 	}
 
 	private String setModelStereotypeAggregatesPropertyOn(
@@ -350,7 +391,7 @@ public class MetaModelBuilder {
 
 		String retval;
 
-		List<MenuItem> theCompositions = new ArrayList<>();
+		MenuItems theCompositions = new MenuItems( _context );
 
 		appendComprisingOfElementFor( el, theCompositions, "Composition", false );
 
@@ -378,7 +419,7 @@ public class MetaModelBuilder {
 	}
 
 	private String getCommaSeparatedString(
-			List<MenuItem> theMenuItems,
+			MenuItems theMenuItems,
 			boolean isAddSubmenu,
 			boolean isSort ){
 
@@ -431,7 +472,7 @@ public class MetaModelBuilder {
 
 	private void appendComprisingOfElementFor( 
 			IRPModelElement theEl, 
-			List<MenuItem> theComprisingMenuItems,
+			MenuItems theComprisingMenuItems,
 			String withRelationType,
 			boolean recursive ){
 
@@ -577,4 +618,4 @@ public class MetaModelBuilder {
 
     You should have received a copy of the GNU General Public License
     along with SysMLHelperPlugin.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
