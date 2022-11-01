@@ -794,7 +794,7 @@ V4.1.e.Rhp831.PreRelease (27-OCT-2022):
 #589 27-OCT-2022: ExecutableMBSE: Get view structure creator to work for, and allow Views to be children of, all package types (F.J.Chadburn)
 #590 27-OCT-2022: ExecutableMBSE: Additional query and custom view support for 'explicit only' view of viewpoints where children not considered (F.J.Chadburn)
 
-V4.2.a.Rhp831.PreRelease (XX-XXX-XXXX):
+V4.2.a.Rhp831.PreRelease (01-NOV-2022):
 #591 31-OCT-2022: Metamodel: Improvements to read SysML menu property and allow metamorphosis by metamodel into new structure (F.J.Chadburn) 
 #592 31-OCT-2022: ExecutableMBSE: First version of with new 'add new' menu structure using the Element/Relation/View submenu pattern (F.J.Chadburn)
 #593 31-OCT-2022: ExecutableMBSE: Metamodel housekeeping to remove duplicate classes used in construction of add SysML new menu (F.J.Chadburn)
