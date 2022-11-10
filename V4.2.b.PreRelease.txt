@@ -799,13 +799,15 @@ V4.2.a.Rhp831.PreRelease (01-NOV-2022):
 #592 31-OCT-2022: ExecutableMBSE: First version of with new 'add new' menu structure using the Element/Relation/View submenu pattern (F.J.Chadburn)
 #593 31-OCT-2022: ExecutableMBSE: Metamodel housekeeping to remove duplicate classes used in construction of add SysML new menu (F.J.Chadburn)
 
-V4.2.b.Rhp831.PreRelease (XX-XXX-XXXX):
+V4.2.b.Rhp831.PreRelease (10-NOV-2022):
 #594 10-NOV-2022: ExecutableMBSE: Fix 9.0.1 issue with DecisionUsage not working on ibd - func because it was not an aggregate of Function Block (F.J.Chadburn)
 #595 10-NOV-2022: ExecutableMBSE: Allow functional flow modeling on ibd - system to widen expressive power to provide behavior & structure on a single diagram (F.J.Chadburn)
 #596 10-NOV-2022: ExecutableMBSE: Allow function connectors to have a target which is a guarded flow output so both work on the combined ibd - system (F.J.Chadburn)  
 #597 10-NOV-2022: ExecutableMBSE: Improve toolbar order for the ibd - system diagram so that tools are better grouped for usability (F.J.Chadburn)
+#598 10-NOV-2022: ExecutableMBSE: Checkpoint of a new function usage selection dialog (not quite working yet) (F.J.Chadburn)
 
 Backlog/Known issues
+- Get populate to populate logic and connectors if parts are puplated that link to them.
 - Add different icons for Flow Connector and Function Connectors so that clearer in toolbar
 - hep file applicable tos need looking at where they have lower case base type
 - Want a new type of a block for flowing element to be defined

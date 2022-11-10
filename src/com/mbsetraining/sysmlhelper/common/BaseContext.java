@@ -2703,19 +2703,27 @@ public abstract class BaseContext {
 	}
 
 	public List<IRPModelElement> getExistingElementsBasedOn(
-			IRPPackage theOwningPackage,
+			IRPModelElement theOwningEl,
 			String theRelatedPackageStereotype,
 			String withMetaClass ){
 
 		List<IRPModelElement> existingEls = new ArrayList<>();
 
+		@SuppressWarnings("unchecked")
+		List<IRPModelElement> theElsInOwningPackage =
+				theOwningEl.getNestedElementsByMetaClass( withMetaClass, 0 ).toList();
+
+		existingEls.addAll( theElsInOwningPackage );
+		
+		IRPPackage theOwningPackage;
+		
+		if( theOwningEl instanceof IRPPackage ) {
+			theOwningPackage = (IRPPackage) theOwningEl;
+		} else {
+			theOwningPackage = getOwningPackageFor(theOwningEl);
+		}
+		
 		if( theOwningPackage != null ){
-
-			@SuppressWarnings("unchecked")
-			List<IRPModelElement> theElsInOwningPackage =
-			theOwningPackage.getNestedElementsByMetaClass( withMetaClass, 0 ).toList();
-
-			existingEls.addAll( theElsInOwningPackage );
 
 			@SuppressWarnings("unchecked")
 			List<IRPDependency> theDependencies = theOwningPackage.getDependencies().toList();
@@ -2777,7 +2785,7 @@ public abstract class BaseContext {
 	}
 
 	public List<IRPModelElement> getExistingElementsBasedOn(
-			IRPPackage theOwningPackage,
+			IRPModelElement theOwningEl,
 			String theRelatedPackageStereotype,
 			String withMetaClass,
 			String andNewTerm ){
@@ -2785,7 +2793,7 @@ public abstract class BaseContext {
 		List<IRPModelElement> matchingEls = new ArrayList<>();
 
 		List<IRPModelElement> existingEls = getExistingElementsBasedOn(
-				theOwningPackage, 
+				theOwningEl, 
 				theRelatedPackageStereotype, 
 				withMetaClass );
 
