@@ -77,6 +77,16 @@ Subject ExecutableMBSEProfile
 	end
 end
 Subject Format
+	Metaclass DiagramFrame
+		Property DefaultSize String "20,20,590,500"
+		Property Fill.FillColor Color "255,255,255"
+		Property Fill.Transparent_Fill Int "0"
+		Property Font.Font String "Tahoma"
+		Property Font.Size Int "8"
+		Property Font.Weight@Child.NameCompartment@Name Int "700"
+		Property Line.LineColor Color "194,192,192"
+		Property Line.LineWidth Int "1"
+	end
 	Metaclass DecisionUsage
 		Property DefaultSize String "0,0,77,48"
 		Property Fill.FillColor Color "255,255,255"
@@ -153,6 +163,7 @@ Subject Format
 	end
 	Metaclass SubsystemUsage
 		Property DefaultSize String "0,34,390,62"
+		Property Fill.FillColor Color "247,247,247"
 		Property Font.Font String "Tahoma"
 		Property Font.Size Int "8"
 		Property Font.Weight@Child.NameCompartment@Name Int "700"

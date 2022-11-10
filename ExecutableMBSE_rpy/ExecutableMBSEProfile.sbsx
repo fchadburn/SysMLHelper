@@ -1689,7 +1689,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">11.10.2022::9:7:3</_modifiedTime>
+			<_modifiedTime type="a">11.10.2022::10:45:47</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -12059,7 +12059,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 3307dbc4-6282-4d53-88b2-50e3de5ff8c2</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Diagrams</_name>
-			<_modifiedTime type="a">11.10.2022::9:0:41</_modifiedTime>
+			<_modifiedTime type="a">11.10.2022::9:56:13</_modifiedTime>
 			<_lastID type="a">10</_lastID>
 			<_defaultComposite type="s">GUID af3ccc20-8ac1-47a2-8c5f-be1a84c1550e</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -12904,12 +12904,24 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 										<_Name type="a">Graphics</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">1</size>
+												<size type="a">3</size>
+												<IProperty type="e">
+													<_Name type="a">AllowObjectReparenting</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
 												<IProperty type="e">
 													<_Name type="a">DefaultBoxView</_Name>
 													<_Value type="a">Structured</_Value>
 													<_Type type="a">Enum</_Type>
 													<_ExtraTypeInfo type="a">Specification,Structured,Default</_ExtraTypeInfo>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">UpdateModelFromGraphicChange</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
 												</IProperty>
 												
 											</IRPYRawContainer>
@@ -12932,7 +12944,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 												<size type="a">5</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Comment,Constraint,Problem,Rationale,Conform,Dependency,ControlledFile,HyperLink,Tag</_Value>
+													<_Value type="a">Final Usage,Comment,Constraint,Problem,Rationale,Conform,Dependency,ControlledFile,HyperLink,Tag</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -12944,7 +12956,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 												
 												<IProperty type="e">
 													<_Name type="a">DrawingToolbar</_Name>
-													<_Value type="a">ProxyPort,Connector,Dependency,Function Connector,Flow Input,Flow Output,Flow</_Value>
+													<_Value type="a">ProxyPort,Connector,Dependency,Function Connector,Flow Input,Flow Output,Flow,Function Usage,Decision Usage,Start Usage,Flow Final Usage,Time Event Usage,Parallel Gateway Usage,Flow Connector</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -12997,7 +13009,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">InternalBlockDiagramSystem</_name>
-			<_modifiedTime type="a">10.28.2022::14:48:16</_modifiedTime>
+			<_modifiedTime type="a">11.10.2022::9:56:4</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -13022,12 +13034,24 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 										<_Name type="a">Graphics</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">2</size>
+												<size type="a">4</size>
+												<IProperty type="e">
+													<_Name type="a">AllowObjectReparenting</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
 												<IProperty type="e">
 													<_Name type="a">DefaultBoxView</_Name>
 													<_Value type="a">Structured</_Value>
 													<_Type type="a">Enum</_Type>
 													<_ExtraTypeInfo type="a">Specification,Structured,Default</_ExtraTypeInfo>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">UpdateModelFromGraphicChange</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
@@ -13121,7 +13145,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">InternalBlockDiagramFunctional</_name>
-			<_modifiedTime type="a">10.28.2022::14:48:15</_modifiedTime>
+			<_modifiedTime type="a">11.10.2022::9:51:5</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -14148,7 +14172,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">RequirementToFunctionBlockTable</_name>
-			<_modifiedTime type="a">11.10.2022::9:0:41</_modifiedTime>
+			<_modifiedTime type="a">11.10.2022::9:56:13</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -15525,7 +15549,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID ec717f1d-0b3e-427a-89fd-8b516b2337c8</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Elements</_name>
-			<_modifiedTime type="a">11.10.2022::9:0:36</_modifiedTime>
+			<_modifiedTime type="a">11.10.2022::9:26:53</_modifiedTime>
 			<_lastID type="a">15</_lastID>
 			<_defaultComposite type="s">GUID d51fb0a3-38d7-4d7a-9f45-35fd12f6ff2a</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -15906,7 +15930,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 												<size type="a">6</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Component Usage,Function Usage,Subsystem Usage,Function Connector,Block Definition Diagram - System,Internal Block Diagram - System,Comment,Constraint,Object,Operation,Problem,ProxyPort,Rationale,Reception,ValueProperty,Allocation,Conform,Dependency,Flow,Generalization,Satisfaction,Statechart,ControlledFile,HyperLink,Tag</_Value>
+													<_Value type="a">Component Usage,Decision Usage,Final Usage,Flow Final Usage,Function Usage,Parallel Gateway Usage,Start Usage,Subsystem Usage,Time Event Usage,Flow Connector,Function Connector,Block Definition Diagram - System,Internal Block Diagram - System,Comment,Constraint,Object,Operation,Problem,ProxyPort,Rationale,Reception,ValueProperty,Allocation,Conform,Dependency,Flow,Generalization,Satisfaction,Statechart,ControlledFile,HyperLink,Tag</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -15953,7 +15977,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SubsystemBlock</_name>
-			<_modifiedTime type="a">10.30.2022::8:58:4</_modifiedTime>
+			<_modifiedTime type="a">11.10.2022::9:26:53</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
