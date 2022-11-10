@@ -1689,7 +1689,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">11.10.2022::10:45:47</_modifiedTime>
+			<_modifiedTime type="a">11.10.2022::12:52:12</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -12059,7 +12059,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 3307dbc4-6282-4d53-88b2-50e3de5ff8c2</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Diagrams</_name>
-			<_modifiedTime type="a">11.10.2022::9:56:13</_modifiedTime>
+			<_modifiedTime type="a">11.10.2022::12:52:23</_modifiedTime>
 			<_lastID type="a">10</_lastID>
 			<_defaultComposite type="s">GUID af3ccc20-8ac1-47a2-8c5f-be1a84c1550e</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -14172,7 +14172,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">RequirementToFunctionBlockTable</_name>
-			<_modifiedTime type="a">11.10.2022::9:56:13</_modifiedTime>
+			<_modifiedTime type="a">11.10.2022::12:52:23</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -17790,7 +17790,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 1ed082fc-a722-40c7-819a-784f0ab68e62</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Relations</_name>
-			<_modifiedTime type="a">10.28.2022::14:48:18</_modifiedTime>
+			<_modifiedTime type="a">11.10.2022::12:52:12</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_defaultComposite type="s">GUID 6d41af48-18e4-4504-919f-6182efce13ce</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -17900,7 +17900,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 												
 												<IProperty type="e">
 													<_Name type="a">Targets</_Name>
-													<_Value type="a">Flow Input,Flow Output</_Value>
+													<_Value type="a">Flow Input,Flow Output,Guarded Flow Output</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -17917,7 +17917,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">FunctionConnector</_name>
-			<_modifiedTime type="a">10.28.2022::14:48:18</_modifiedTime>
+			<_modifiedTime type="a">11.10.2022::12:52:12</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>

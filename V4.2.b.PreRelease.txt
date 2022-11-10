@@ -802,6 +802,7 @@ V4.2.a.Rhp831.PreRelease (01-NOV-2022):
 V4.2.b.Rhp831.PreRelease (XX-XXX-XXXX):
 #594 10-NOV-2022: ExecutableMBSE: Fix 9.0.1 issue with DecisionUsage not working on ibd - func because it was not an aggregate of Function Block (F.J.Chadburn)
 #595 10-NOV-2022: ExecutableMBSE: Allow functional flow modeling on ibd - system to widen expressive power to provide behavior & structure on a single diagram (F.J.Chadburn)
+#596 10-NOV-2022: ExecutableMBSE: Allow function connectors to have a target which is a guarded flow output so both work on the combined ibd - system (F.J.Chadburn)  
 
 Backlog/Known issues
 - hep file applicable tos need looking at where they have lower case base type
