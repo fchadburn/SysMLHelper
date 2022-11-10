@@ -799,6 +799,9 @@ V4.2.a.Rhp831.PreRelease (01-NOV-2022):
 #592 31-OCT-2022: ExecutableMBSE: First version of with new 'add new' menu structure using the Element/Relation/View submenu pattern (F.J.Chadburn)
 #593 31-OCT-2022: ExecutableMBSE: Metamodel housekeeping to remove duplicate classes used in construction of add SysML new menu (F.J.Chadburn)
 
+V4.2.b.Rhp831.PreRelease (XX-XXX-XXXX):
+#594 10-NOV-2022: ExecutableMBSE: Fix 9.0.1 issue with DecisionUsage not working on ibd - func because it was not an aggregate of Function Block (F.J.Chadburn)
+
 Backlog/Known issues
 - hep file applicable tos need looking at where they have lower case base type
 - Want a new type of a block for flowing element to be defined
