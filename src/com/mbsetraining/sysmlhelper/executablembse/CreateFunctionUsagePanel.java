@@ -94,13 +94,13 @@ public class CreateFunctionUsagePanel extends ExecutableMBSEBasePanel {
 		_context.debug( "CreateFunctionUsagePanel constructor was invoked" );
 
 		_sourceDiagram = (IRPDiagram) _context.get_rhpPrj().findElementByGUID( onDiagramGUID );
-		
+
 		_sourceElement = (IRPInstance) _context.get_rhpPrj().findElementByGUID( theElementGUID );
-		
+
 		IRPCollection theGraphEls = _sourceDiagram.getCorrespondingGraphicElements( _context.getSelectedElement( true ) );
-		
+
 		_graphNode = (IRPGraphNode) theGraphEls.getItem(1);
-		
+
 		_existingEls = new ArrayList<IRPModelElement>();
 
 		_owningPackage = _context.getOwningPackageFor( _context.getSelectedElement( false ) );
@@ -108,7 +108,7 @@ public class CreateFunctionUsagePanel extends ExecutableMBSEBasePanel {
 		//_context.info( "_sourceDiagram: "  + _context.elInfo( _sourceDiagram ) );
 		//_context.info( "_graphNode.ModelObject: "  + _context.elInfo( _graphNode.getModelObject() ) );
 		//_context.info( "_creationPackage: "  + _context.elInfo( _creationPackage ) );
-		
+
 		_existingEls.addAll( determineElsToChooseFrom() );
 
 		setLayout( new BorderLayout(10,10) );
@@ -119,20 +119,20 @@ public class CreateFunctionUsagePanel extends ExecutableMBSEBasePanel {
 
 	private List<IRPModelElement> determineElsToChooseFrom(){
 
-		List<IRPModelElement> theElsToChooseFrom = _context.getExistingElementsBasedOn(
-				_owningPackage,
-				_context.FUNCT_ANALYSIS_FEATURE_FUNCTION_PACKAGE,
-				"Class",
-				_context.FUNCTION_BLOCK );
-
 		IRPModelElement theOwner = _sourceElement.getOwner();
 
-		theElsToChooseFrom.addAll( _context.getExistingElementsBasedOn(
+		List<IRPModelElement> theElsToChooseFrom = _context.getExistingElementsBasedOn(
 				theOwner,
 				_context.FUNCT_ANALYSIS_FEATURE_FUNCTION_PACKAGE,
 				"Object",
-				_context.FUNCTION_USAGE ) );
-		
+				_context.FUNCTION_USAGE );
+
+		theElsToChooseFrom.addAll( _context.getExistingElementsBasedOn(
+				_owningPackage,
+				_context.FUNCT_ANALYSIS_FEATURE_FUNCTION_PACKAGE,
+				"Class",
+				_context.FUNCTION_BLOCK ) );
+
 		// We want to make it hard to add elements already on diagram, hence we remove that choice
 		@SuppressWarnings("unchecked")
 		List<IRPModelElement> theElsOnDiagram = _sourceDiagram.getElementsInDiagram().toList();
@@ -165,7 +165,7 @@ public class CreateFunctionUsagePanel extends ExecutableMBSEBasePanel {
 			}
 		});
 
-		JLabel theLeadText = new JLabel( "Create " + _context.FUNCTION_USAGE + " called:  " );
+		JLabel theLeadText = new JLabel( "Create " + _context.FUNCTION_BLOCK + " called:  " );
 
 		thePanel.add( theLeadText );
 		thePanel.add( _nameTextField );
@@ -191,7 +191,7 @@ public class CreateFunctionUsagePanel extends ExecutableMBSEBasePanel {
 		boolean isLegalName = _context.isLegalName( theChosenName, _owningPackage );
 
 		IRPModelElement theSelectedEl = _selectElComboBox.getSelectedRhapsodyItem(); 
-
+		
 		if (!isLegalName){
 
 			errorMsg += theChosenName + " is not legal as an identifier representing an function usage\n";				
@@ -202,11 +202,31 @@ public class CreateFunctionUsagePanel extends ExecutableMBSEBasePanel {
 			errorMsg += "Please choose a valid name for the Block";
 			isValid = false;
 
-		} else if( theSelectedEl == null && _context.isElementNameUnique(		
+		} else if( theSelectedEl == null && !_context.isElementNameUnique(		
 				theChosenName, "Class", _owningPackage, 1 ) ){
 
-			errorMsg += "Unable to proceed as the name '" + theChosenName + "' is not unique";
-			isValid = false;
+			List<IRPModelElement> theExistingEls = _context.
+					findElementsWithMetaClassStereotypeAndName(
+							"Class", 
+							 _context.FUNCTION_BLOCK, 
+							theChosenName, 
+							_owningPackage );
+			
+			if( theExistingEls.size() == 1 ) {
+				
+				IRPModelElement theExistingEl = theExistingEls.get(0);
+				boolean answer = UserInterfaceHelper.
+						askAQuestion( _context.elInfo( theExistingEl ) + " already exists. Do you want to use this instead?" );
+			
+				if( answer ) {
+					_selectElComboBox.setSelectedRhapsodyItem( theExistingEl );
+				} else {
+					
+					errorMsg += "Unable to proceed as the name '" + theChosenName + "' is not unique";
+					isValid = false;
+				}
+			}
+
 		}
 
 		if( isMessageEnabled && 
@@ -232,7 +252,7 @@ public class CreateFunctionUsagePanel extends ExecutableMBSEBasePanel {
 						" owned by " + _context.elInfo( theSelectedEl.getOwner() ) );
 
 				_sourceElement.setOtherClass( (IRPClassifier) theSelectedEl );
-				
+
 				theSelectedEl.highLightElement();
 
 			} else if( theSelectedEl instanceof IRPInstance ){
@@ -241,7 +261,7 @@ public class CreateFunctionUsagePanel extends ExecutableMBSEBasePanel {
 						" owned by " + _context.elInfo( theSelectedEl.getOwner() ) );
 
 				switchElementOnDiagramTo( theSelectedEl );
-				
+
 			} else {
 
 				String theChosenName = _nameTextField.getText();
@@ -251,12 +271,13 @@ public class CreateFunctionUsagePanel extends ExecutableMBSEBasePanel {
 
 				IRPClassifier theClassifier = (IRPClass) _owningPackage.addNewAggr( "Class", theChosenName );
 				theClassifier.changeTo( _context.FUNCTION_BLOCK );
-				
+
 				IRPModelElement theOwner = _sourceElement.getOwner();
 				IRPInstance theInstance = (IRPInstance) theOwner.addNewAggr( "Object", "" );
-				
+				theInstance.changeTo( _context.FUNCTION_USAGE );
+				theInstance.setOtherClass( theClassifier );
+
 				switchElementOnDiagramTo( theInstance );				
-				
 			}
 
 		} else {
@@ -266,10 +287,10 @@ public class CreateFunctionUsagePanel extends ExecutableMBSEBasePanel {
 
 	private void switchElementOnDiagramTo(
 			IRPModelElement theSelectedEl ) {
-		
+
 		GraphNodeInfo theInfo = new GraphNodeInfo( _graphNode, _context );
 		IRPDiagram theDiagram = _graphNode.getDiagram();	
-		
+
 		int h = theInfo.getHeight();
 		int w = theInfo.getWidth();
 
@@ -284,22 +305,22 @@ public class CreateFunctionUsagePanel extends ExecutableMBSEBasePanel {
 				40);
 
 		IRPModelElement theEl = _graphNode.getModelObject();
-		
+
 		theGraphNode.setGraphicalProperty("Height", Integer.toString( h ) );
 		theGraphNode.setGraphicalProperty("Width", Integer.toString( w ) );
-		
+
 		IRPCollection theCollection = _context.createNewCollection();
 		theCollection.addGraphicalItem(_graphNode);
-		
+
 		theDiagram.removeGraphElements(theCollection);
-		
+
 		if( theEl != null ) {
 			theEl.deleteFromProject();
 		}
-		
+
 		IRPInstance theInstance = (IRPInstance) theSelectedEl;
 		theInstance.highLightElement();
-		
+
 		IRPClassifier theClassifier = (IRPClass) theInstance.getOtherClass();
 		theClassifier.highLightElement();
 	}
