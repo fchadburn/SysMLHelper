@@ -806,6 +806,9 @@ V4.2.b.Rhp831.PreRelease (10-NOV-2022):
 #597 10-NOV-2022: ExecutableMBSE: Improve toolbar order for the ibd - system diagram so that tools are better grouped for usability (F.J.Chadburn)
 #598 10-NOV-2022: ExecutableMBSE: Checkpoint of a new function usage selection dialog (not quite working yet) (F.J.Chadburn)
 
+V4.2.c.Rhp831.PreRelease (XX-XXX-XXXX):
+#599 11-NOV-2022: ExecutableMBSE: New function usage selection dialog added to ease drawing function flow models using ibds (F.J.Chadburn)
+
 Backlog/Known issues
 - Get populate to populate logic and connectors if parts are puplated that link to them.
 - Add different icons for Flow Connector and Function Connectors so that clearer in toolbar

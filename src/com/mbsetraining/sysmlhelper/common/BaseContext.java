@@ -3012,6 +3012,35 @@ public abstract class BaseContext {
 		
 		return theEl;
 	}
+	
+
+	public IRPGraphElement getGraphElIfOnlyOneExistsFor( 
+			IRPModelElement modelElement ){
+
+		@SuppressWarnings("unchecked")
+		List<IRPModelElement> theReferences = modelElement.getReferences().toList();
+
+		IRPGraphElement theGraphEl = null;
+
+		for( IRPModelElement theReference : theReferences) {
+
+			if( theReference instanceof IRPDiagram ){
+
+				IRPDiagram theDiagram = (IRPDiagram)theReference;
+
+				@SuppressWarnings("unchecked")
+				List<IRPGraphElement> theGraphEls = 
+				theDiagram.getCorrespondingGraphicElements( modelElement ).toList();
+
+				if( theGraphEls.size() == 1 ){					
+					theGraphEl = theGraphEls.get( 0 );
+				}				
+			}
+		}
+
+		return theGraphEl;
+	}
+
 }
 
 /**

@@ -599,13 +599,19 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 	private void afterAddForFunctionUsage(
 			IRPInstance theInstance ){
 
-		IRPGraphElement theGraphEl = getGraphElFor( theInstance );
+		IRPGraphElement theGraphEl = _context.getGraphElIfOnlyOneExistsFor( theInstance );
 
 		// Only do this for parts, not directed compositions
 		if( theGraphEl instanceof IRPGraphNode ){
 
 			_context.debug( "afterAddForFunctionUsage found a graphNode for " + _context.elInfo( theGraphEl.getModelObject() ) );
 
+			CreateFunctionUsagePanel.launchThePanel( 
+					_context.get_rhpAppID(), 
+					theInstance.getGUID(), 
+					theGraphEl.getDiagram().getGUID() );
+			
+			/*
 			IRPPackage theOwningPackage = _context.getOwningPackageFor( theInstance );
 
 			List<IRPModelElement> elsToChooseFrom = _context.findElementsWithMetaClassAndStereotype( 
@@ -659,14 +665,14 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 						theInstance.setOtherClass( (IRPClassifier) theSelectedElement );
 					}			
 				}
-			}		
+			}	*/	
 		}
 	}
 
 	private void afterAddForParallelGateway(
 			IRPInstance theInstance ){
 
-		IRPGraphElement theGraphEl = getGraphElFor( theInstance );		
+		IRPGraphElement theGraphEl = _context.getGraphElIfOnlyOneExistsFor( theInstance );		
 
 		// Only do this for parts, not directed compositions
 		if( theGraphEl instanceof IRPGraphNode ){
@@ -679,7 +685,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 	private void afterAddForStartUsage(
 			IRPInstance theInstance ){
 
-		IRPGraphElement theGraphEl = getGraphElFor( theInstance );		
+		IRPGraphElement theGraphEl = _context.getGraphElIfOnlyOneExistsFor( theInstance );		
 
 		// Only do this for parts, not directed compositions
 		if( theGraphEl instanceof IRPGraphNode ){
@@ -694,7 +700,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			IRPSysMLPort thePort = (IRPSysMLPort) theInstance.addNewAggr( "SysMLPort", "" );
 			thePort.changeTo( _context.FLOW_OUTPUT );	
 			_context.setPortDirectionFor( thePort, "Out", "Untyped" );
-			IRPGraphElement thePortGraphEl = getGraphElFor( thePort );
+			IRPGraphElement thePortGraphEl = _context.getGraphElIfOnlyOneExistsFor( thePort );
 			thePortGraphEl.setGraphicalProperty( "Position", theNodeInfo.getTopRightX() + "," + theNodeInfo.getMiddleY() );
 		}
 	}
@@ -702,7 +708,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 	private void afterAddForFinalUsage(
 			IRPInstance theInstance ){
 
-		IRPGraphElement theGraphEl = getGraphElFor( theInstance );		
+		IRPGraphElement theGraphEl = _context.getGraphElIfOnlyOneExistsFor( theInstance );		
 
 		// Only do this for parts, not directed compositions
 		if( theGraphEl instanceof IRPGraphNode ){
@@ -717,7 +723,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			IRPSysMLPort thePort = (IRPSysMLPort) theInstance.addNewAggr( "SysMLPort", "" );
 			thePort.changeTo( _context.FLOW_INPUT );	
 			_context.setPortDirectionFor( thePort, "In", "Untyped" );
-			IRPGraphElement thePortGraphEl = getGraphElFor( thePort );
+			IRPGraphElement thePortGraphEl = _context.getGraphElIfOnlyOneExistsFor( thePort );
 			thePortGraphEl.setGraphicalProperty( "Position", theNodeInfo.getTopLeftX() + "," + theNodeInfo.getMiddleY() );
 		}
 	}
@@ -725,7 +731,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 	private void afterAddForTimeEventUsage(
 			IRPInstance theInstance ){
 
-		IRPGraphElement theGraphEl = getGraphElFor( theInstance );		
+		IRPGraphElement theGraphEl = _context.getGraphElIfOnlyOneExistsFor( theInstance );		
 
 		// Only do this for parts, not directed compositions
 		if( theGraphEl instanceof IRPGraphNode ){
@@ -742,7 +748,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			IRPSysMLPort thePort = (IRPSysMLPort) theInstance.addNewAggr( "SysMLPort", "" );
 			thePort.changeTo( _context.FLOW_OUTPUT );	
 			_context.setPortDirectionFor( thePort, "Out", "Untyped" );
-			IRPGraphElement thePortGraphEl = getGraphElFor( thePort );
+			IRPGraphElement thePortGraphEl = _context.getGraphElIfOnlyOneExistsFor( thePort );
 			thePortGraphEl.setGraphicalProperty( "Position", theNodeInfo.getTopRightX() + "," + theNodeInfo.getMiddleY() );
 		}
 	}
@@ -750,7 +756,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 	private void afterAddForFlowFinalUsage(
 			IRPInstance theInstance ){
 
-		IRPGraphElement theGraphEl = getGraphElFor( theInstance );		
+		IRPGraphElement theGraphEl = _context.getGraphElIfOnlyOneExistsFor( theInstance );		
 
 		// Only do this for parts, not directed compositions
 		if( theGraphEl instanceof IRPGraphNode ){
@@ -765,7 +771,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			IRPSysMLPort theOutPort = (IRPSysMLPort) theInstance.addNewAggr( "SysMLPort", "" );
 			theOutPort.changeTo( _context.FLOW_INPUT );	
 			_context.setPortDirectionFor( theOutPort, "In", "Untyped" );
-			IRPGraphElement thePortGraphEl = getGraphElFor( theOutPort );
+			IRPGraphElement thePortGraphEl = _context.getGraphElIfOnlyOneExistsFor( theOutPort );
 			thePortGraphEl.setGraphicalProperty( "Position", theNodeInfo.getTopLeftX() + "," + theNodeInfo.getMiddleY() );
 		}
 	}
@@ -773,7 +779,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 	private void afterAddForDecisionUsage(
 			IRPInstance theInstance ){
 
-		IRPGraphElement theGraphEl = getGraphElFor( theInstance );		
+		IRPGraphElement theGraphEl = _context.getGraphElIfOnlyOneExistsFor( theInstance );		
 
 		// Only do this for parts, not directed compositions
 		if( theGraphEl instanceof IRPGraphNode ){
@@ -788,7 +794,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			IRPSysMLPort theInPort = (IRPSysMLPort) theInstance.addNewAggr("SysMLPort", "");
 			theInPort.changeTo( _context.FLOW_INPUT );	
 			_context.setPortDirectionFor( theInPort, "In", "Untyped" );	
-			IRPGraphElement theInPortGraphEl = getGraphElFor( theInPort );
+			IRPGraphElement theInPortGraphEl = _context.getGraphElIfOnlyOneExistsFor( theInPort );
 			//_context.dumpGraphicalPropertiesFor( theInPortGraphEl );
 			theInPortGraphEl.setGraphicalProperty( "Position", theDecisionNodeInfo.getTopLeftX() + "," + theDecisionNodeInfo.getMiddleY() );
 			theInPortGraphEl.setGraphicalProperty( "ShowName", "None" );
@@ -796,13 +802,13 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			IRPSysMLPort theCondPort = (IRPSysMLPort) theInstance.addNewAggr("SysMLPort", "[put condition here]");
 			theCondPort.changeTo( _context.GUARDED_FLOW_OUTPUT );	
 			_context.setPortDirectionFor( theCondPort, "Out", "Untyped" );
-			IRPGraphElement theCondPortGraphEl = getGraphElFor( theCondPort );
+			IRPGraphElement theCondPortGraphEl = _context.getGraphElIfOnlyOneExistsFor( theCondPort );
 			theCondPortGraphEl.setGraphicalProperty( "Position", theDecisionNodeInfo.getTopRightX() + "," + theDecisionNodeInfo.getMiddleY() );
 
 			IRPSysMLPort theElsePort = (IRPSysMLPort) theInstance.addNewAggr("SysMLPort", "[else]");
 			theElsePort.changeTo( _context.GUARDED_FLOW_OUTPUT );	
 			_context.setPortDirectionFor( theElsePort, "Out", "Untyped" );
-			IRPGraphElement theElsePortGraphEl = getGraphElFor( theElsePort );
+			IRPGraphElement theElsePortGraphEl = _context.getGraphElIfOnlyOneExistsFor( theElsePort );
 			theElsePortGraphEl.setGraphicalProperty( "Position", theDecisionNodeInfo.getMiddleX() + "," + theDecisionNodeInfo.getBottomLeftY() );
 		}
 	}
@@ -811,7 +817,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			IRPInstance modelElement,
 			IRPInstance toTheElement ) {
 
-		IRPGraphElement theGraphEl = getGraphElFor( modelElement );
+		IRPGraphElement theGraphEl = _context.getGraphElIfOnlyOneExistsFor( modelElement );
 
 		if( theGraphEl instanceof IRPGraphNode ){
 
@@ -856,33 +862,6 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				toTheElement.highLightElement();
 			}
 		}
-	}
-
-	private IRPGraphElement getGraphElFor( 
-			IRPInstance modelElement ){
-
-		@SuppressWarnings("unchecked")
-		List<IRPModelElement> theReferences = modelElement.getReferences().toList();
-
-		IRPGraphElement theGraphEl = null;
-
-		for( IRPModelElement theReference : theReferences) {
-
-			if( theReference instanceof IRPDiagram ){
-
-				IRPDiagram theDiagram = (IRPDiagram)theReference;
-
-				@SuppressWarnings("unchecked")
-				List<IRPGraphElement> theGraphEls = 
-				theDiagram.getCorrespondingGraphicElements( modelElement ).toList();
-
-				if( theGraphEls.size() == 1 ){					
-					theGraphEl = theGraphEls.get( 0 );
-				}				
-			}
-		}
-
-		return theGraphEl;
 	}
 
 	private List<IRPModelElement> getExistingGlobalObjectsBasedOn(
