@@ -2957,9 +2957,9 @@ public abstract class BaseContext {
 			IRPModelElement toEl,
 			IRPStereotype withTheStereotype ){
 		
-		info( "Adding dependency to " + toEl.getName() + 
-				" (" + toEl.getUserDefinedMetaClass() + ") from " + fromEl.getName() + 
-				" with " + elInfo( withTheStereotype ) );
+		//info( "Adding dependency to " + toEl.getName() + 
+		//		" (" + toEl.getUserDefinedMetaClass() + ") from " + fromEl.getName() + 
+		//		" with " + elInfo( withTheStereotype ) );
 		
 		IRPDependency theDependency = getExistingDependency( fromEl, toEl );
 		

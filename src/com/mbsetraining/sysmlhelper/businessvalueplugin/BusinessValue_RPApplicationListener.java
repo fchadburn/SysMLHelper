@@ -32,7 +32,7 @@ public class BusinessValue_RPApplicationListener extends RPApplicationListener {
 		try {
 			String theUserDefinedMetaClass = modelElement.getUserDefinedMetaClass();
 			
-			if( theUserDefinedMetaClass.equals( BusinessValue_Context.METACLASS_FOR_MEASURED_BY ) ){
+			if( theUserDefinedMetaClass.equals( _context.METACLASS_FOR_MEASURED_BY ) ){
 				afterAddElementForMeasureBy( (IRPAttribute) modelElement );
 				
 			} else if( theUserDefinedMetaClass.equals( BusinessValue_Context.METACLASS_FOR_TIER_1_GOAL ) ||

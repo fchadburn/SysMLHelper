@@ -5,7 +5,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.mbsetraining.sysmlhelper.businessvalueplugin.BusinessValue_Context;
-import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.telelogic.rhapsody.core.*;
 
 public class GraphPaths extends ArrayList<GraphPath>{
@@ -15,180 +14,18 @@ public class GraphPaths extends ArrayList<GraphPath>{
 	 */
 	private static final long serialVersionUID = 5176021867376333578L;
 
-	BaseContext _context;
-
-	
-	public static void main(String[] args) {
-		
-    	IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
-    	BusinessValue_Context context = new BusinessValue_Context( theRhpApp.getApplicationConnectionString() );
-    	
-    	IRPModelElement theSelectedEl = context.getSelectedElement(false);
-    	
-		context.info( "theSelectedEl is " + context.elInfo( theSelectedEl ) );
-
-    	if( theSelectedEl instanceof IRPTableLayout ){
-    		IRPTableLayout theLayout = (IRPTableLayout)theSelectedEl;
-    		IRPTableLayout theQueryToUse = theLayout.getToElementTypesQueryToUse();
-    		
-    		context.info( context.elInfo( theQueryToUse ) );
-    		
-    		@SuppressWarnings("unchecked")
-			List<Object> theProperties = theLayout.getOverriddenProperties(0).toList();
-    		
-    		for (Object object : theProperties) {
-				context.info( object.toString() );
-			}
-
-    		
-    	} else if( theSelectedEl instanceof IRPObjectModelDiagram ){
-    		
-    		IRPObjectModelDiagram basedOnDiagram = (IRPObjectModelDiagram)theSelectedEl;
-    		
-    		//theDiagram.createDiagramView(owner, customViews)
-    		context.info( "theSelectedEl is not a table view" );
-    		
-    		int min = 1;
-
-    		int max = 5;
-    		    		
-			IRPPackage thePkg = context.getOwningPackageFor( basedOnDiagram );
-
-    		for (int i = min; i <= max; i++) {
-        		String theName = "MaxShldrVal" + String.format( "%03d", i);
-
-    			IRPModelElement theCustomView = context.findElementWithMetaClassAndName("Package", theName, thePkg);
-    			
-    			if( theCustomView != null ){
-    				
-    				IRPCollection customViews = context.createNewCollection();
-    				customViews.setSize(1);
-    				customViews.addItem(theCustomView);
-    				
-        			IRPDiagram theDiagramEl = basedOnDiagram.createDiagramView( basedOnDiagram.getOwner(), customViews );
-        			theDiagramEl.setName( theName );
-        			
-    			}
-    			
-
-  
-
-			}
- 
-    	}
-	}
-	
-	public void createPathVisualizationElements(
-			String withTheName,
-			IRPPackage underThePackage,
-			IRPModelElement theDependencyStereotypeEl,
-			IRPDiagram basedOnDiagram,
-			GraphPath thePath ){
-		
-		IRPModelElement theQueryEl = _context.findOrAddElement( withTheName, "TableLayout", underThePackage );
-		theQueryEl.changeTo( "Query" );
-		
-		String theEnableCriteriaCheckValue = null;
-		
-		try {
-			theEnableCriteriaCheckValue = theQueryEl.getPropertyValue( "Model.TableLayout.EnableCriteriaCheck" );
-
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		
-		if( theEnableCriteriaCheckValue == null ){
-			theQueryEl.addProperty( "Model.TableLayout.EnableCriteriaCheck", "Bool", "True" );
-		} else if( !theEnableCriteriaCheckValue.equals( "True" ) ){
-			theQueryEl.setPropertyValue( "Model.TableLayout.EnableCriteriaCheck", "True" );
-		}
-		
-		String theQueryContextPatternValue = null;
-		
-		try {
-			theQueryContextPatternValue = theQueryEl.getPropertyValue( "Model.TableLayout.QueryContextPattern" );
-
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		
-		if( theQueryContextPatternValue == null ){
-
-			theQueryEl.addProperty( "Model.TableLayout.QueryContextPattern", "String", "" );
-		} else if( !theQueryContextPatternValue.equals( "" ) ){
-			theQueryEl.setPropertyValue( "Model.TableLayout.QueryContextPattern", "" );
-		}
-
-		IRPStereotype theQueryStereotype = _context.getStereotypeCalled( "Query", theQueryEl );
-		_context.info( "Found " + _context.elInfo( theQueryStereotype ) );
-		
-		IRPTag theRelRef_StereotypeTag = theQueryStereotype.getTag( "RelRef_Stereotype" );
-		_context.info( "Found " + _context.elInfo( theRelRef_StereotypeTag ) );
-		theQueryEl.setTagElementValue( theRelRef_StereotypeTag, theDependencyStereotypeEl );
-		
-		IRPTag theRelRef_Metatype = theQueryStereotype.getTag( "RelRef_Metatype" );
-		theQueryEl.setTagValue( theRelRef_Metatype, "Dependency" );
-
-		IRPTag theRelRef_How_Related = theQueryStereotype.getTag( "RelRef_How_Related" );
-		theQueryEl.setTagValue( theRelRef_How_Related, "IncomingRelations" );
-		
-		IRPTag theUnresolved = theQueryStereotype.getTag( "Unresolved" );
-		theQueryEl.setTagValue( theUnresolved, "ShowUnresolved" );
-		
-		IRPModelElement theCustomViewEl = _context.findOrAddElement( withTheName, "Package", underThePackage );
-		theCustomViewEl.changeTo( "CustomView" );
-/*		
-		IRPCollection customViews = _context.createNewCollection();
-		customViews.setSize(1);
-		customViews.addItem( theCustomViewEl );*/
-		/*		
-		IRPModelElement theDiagramEl = _context.findElementWithMetaClassAndName( "ObjectModelDiagram", withTheName, basedOnDiagram.getOwner() );
-		
-		if( theDiagramEl instanceof IRPDiagram ){
-			
-			_context.info( "Found " + _context.elInfo( theDiagramEl ) );
-
-			IRPDiagram theDiagram = (IRPDiagram) theDiagramEl;
-			theDiagram.setCustomViews( customViews );
-			
-		} else {
-			
-			theDiagramEl = basedOnDiagram.createDiagramView( basedOnDiagram.getOwner(), customViews );
-			theDiagramEl.setName( withTheName );
-		}*/
-		
-
-		IRPTag theCriteriaType = theCustomViewEl.getTag( "CriteriaType" );
-
-		if( theCriteriaType == null ){			
-			theCriteriaType = (IRPTag) theCustomViewEl.addNewAggr( "Tag", "CriteriaType" );
-		}
-		
-		theCustomViewEl.setTagValue( theCriteriaType, "Queries" );
-		
-		/* Doesn't work
-
-		IRPTag theCriteria = theCustomViewEl.getTag( "Criteria" );
-		
-		if( theCriteria == null ){
-			theCriteria = (IRPTag) theCustomViewEl.addNewAggr( "Tag", "Criteria" );
-		}
-		theCustomViewEl.setTagValue( theCriteria, withTheName );*/
-		
-
-				
-		if( theCustomViewEl != null ){
-			
-			IRPDiagram theDiagramEl = basedOnDiagram.createDiagramView( basedOnDiagram.getOwner(), null );
-			theDiagramEl.setName( withTheName + " - " + _context.toLegalClassName( thePath.getLastNodeName() ) );
-			
-		}
-	}
+	protected BusinessValue_Context _context;
+	protected String _name;
+	protected IRPDiagram _sourceDiagram;
 	
 	public GraphPaths(
-			BaseContext context ){
+			BusinessValue_Context context,
+			String name,
+			IRPDiagram sourceDiagram ){
 		
 		_context = context;
+		_name = name;
+		_sourceDiagram = sourceDiagram;
 	}
 	
 	public void dumpInfo(){
@@ -218,6 +55,156 @@ public class GraphPaths extends ArrayList<GraphPath>{
 
 	}
 	
+	public IRPPackage createViewStructure(
+			String theName,
+			IRPPackage rootPackage ) {
+		
+		String theViewName = _context.VIEW_PREFIX + theName;
+		String theViewpointName = _context.VIEWPOINT_PREFIX + theName;
+		String theCustomViewExplicitOnlyName = _context.CUSTOMERVIEW_PREFIX + theName;
+		String theViewpointDiagramName = _context.VIEWPOINT_DIAGRAM_PREFIX + theName;
+		String theQueryExplicitOnlyName = _context.QUERY_PREFIX + theName;
+
+		_context.info( "Creating View with name " + theViewName + 
+				" under " + _context.elInfo( rootPackage ) );
+
+		IRPPackage theView = (IRPPackage) rootPackage.addNewAggr( "View", theViewName );
+		
+		// A standard content ViewStructure stereotype will create the structure with an expected naming to be able to 
+		// set up the query and custom view settings (as API doesn't seem to allow this). We will then modify this
+		
+		_context.applyExistingStereotype( _context.VIEW_STRUCTURE_STEREOTYPE, theView );
+		
+		IRPModelElement theEl = theView.findNestedElement( _context.QUERYTBD_EXPLICIT_ONLY, "Query" );
+		
+		if( theEl != null ) {
+			// The standard context query has this turned off so that the template doesn't affect model
+			//_context.setBoolPropertyValueInRhp(theEl, "Model.Query.ShowInBrowserFilterList", false );
+		}
+				
+		_context.renameNestedElement( _context.VIEWPOINT_TBD, "Class", theView, theViewpointName );
+		_context.renameNestedElement( _context.CUSTOMV_TBD_EXPLICIT_ONLY, "Package", theView, theCustomViewExplicitOnlyName );
+		_context.renameNestedElement( _context.VIEW_AND_VIEWPOINT_DIAGRAM_TBD, "ObjectModelDiagram", theView, theViewpointDiagramName );
+		_context.renameNestedElement( _context.QUERYTBD_EXPLICIT_ONLY, "Query", theView, theQueryExplicitOnlyName );
+		_context.renameNestedElement( _context.STEREOTYPE_TBD, "Stereotype", theView, theName );
+			
+		createDiagramView(theView, (IRPObjectModelDiagram) _sourceDiagram);
+		
+		return theView;
+	}
+
+	private void createDiagramView(
+			IRPPackage theView, 
+			IRPObjectModelDiagram theSourceDiagram ) {
+		
+		//IRPModelElement theCustomV = theView.findNestedElement( _context.CUSTOMV_TBD_EXPLICIT_ONLY, "Package" );
+		
+		//IRPCollection theCollection = _context.createNewCollection();
+		//theCollection.setSize(1);
+		//theCollection.setModelElement( 0,theCustomV );
+		
+		//IRPDiagram theDiagramView = theSourceDiagram.createDiagramView( theSourceDiagram.getOwner(), null);
+		//theDiagramView.setCustomViews(theCollection);
+	}
+	
+	public IRPPackage createSingleViewStructureUnder(
+			IRPPackage theRootPkg ) {
+		
+		IRPPackage theViewStructure = null;
+		
+		if( this.isEmpty() ){
+			
+			_context.warning( "Unable to createSingleViewStructureUnder as there are no graph paths " );
+			
+		} else {
+								
+			theViewStructure = createViewStructure( _name, theRootPkg );
+
+			IRPStereotype theDependencyStereotype = null;
+
+			IRPModelElement theDependencyStereotypeEl = _context.findOrAddElement( _name, "Stereotype", theViewStructure );
+
+			if( theDependencyStereotypeEl instanceof IRPStereotype ){
+				
+				theDependencyStereotype = (IRPStereotype)theDependencyStereotypeEl;
+				theDependencyStereotype.addMetaClass( "Dependency" );
+			} else {
+				_context.error( "Unable to find stereotype with name " + _name );
+			}
+						
+			IRPStereotype theImportStereotype = _context.getStereotypeWith( "import" );
+
+			Iterator<GraphPath> iterator = this.iterator();
+			
+			while( iterator.hasNext() ){
+				
+				GraphPath theGraphPath = (GraphPath) iterator.next();
+				
+				_context.info( "Adding dependencies for " + theGraphPath.toString() );
+
+				if( theImportStereotype == null ) {
+					_context.error( "Unable to find <<import>> stereotype. Is SysML profile present?");
+				} else {
+					
+					theGraphPath.createDependencies( theViewStructure, theImportStereotype );		
+				}
+						
+				if( theDependencyStereotype == null ) {
+					_context.error( "Unable to find stereotype.");
+				} else {
+					theGraphPath.createDependencies( theViewStructure, theDependencyStereotype );		
+				}
+			}
+		}
+		
+		return theViewStructure;
+	}
+	
+	/*
+	public void createViewStructuresUnder(
+			IRPPackage theRootPkg ) {
+		
+		if( this.isEmpty() ){
+			_context.warning( "Unable to createDependencies as there are no graph paths " );
+		} else {
+												
+			int count = 0;
+			
+			Iterator<GraphPath> iterator = this.iterator();
+			
+			while( iterator.hasNext() ){
+				
+				count++;
+
+				GraphPath theGraphPath = (GraphPath) iterator.next();
+				
+				String thePathName = theGraphPath.getLastNodeName() + String.format( "%03d", count );
+
+				_context.info( "Adding dependencies for " + thePathName );
+
+				IRPPackage fromView = createViewStructure( thePathName, theRootPkg );
+
+				IRPStereotype theConformStereotype = _context.getStereotypeWith( "Conform" );
+				
+				if( theConformStereotype == null ) {
+					_context.error( "Unable to find conform stereotype. Is SysML profile present?");
+				}
+						
+				IRPStereotype theDependencyStereotype = null;
+				
+				IRPModelElement theDependencyStereotypeEl = _context.findOrAddElement( thePathName, "Stereotype", fromView );
+
+				if( theDependencyStereotypeEl instanceof IRPStereotype ){
+					theDependencyStereotype = (IRPStereotype)theDependencyStereotypeEl;
+					theDependencyStereotype.addMetaClass( "Dependency" );
+				}
+				
+				theGraphPath.createDependencies( fromView, theDependencyStereotype );		
+			}
+		}
+	}*/
+	
+	/*
 	public void createDependenciesAndPathVisualization(
 			IRPClass theClass,
 			IRPPackage underThePackage,
@@ -257,7 +244,7 @@ public class GraphPaths extends ArrayList<GraphPath>{
 				createPathVisualizationElements( thePathName, underThePackage, theDependencyStereotypeEl, basedOnDiagram, thePath );	
 			}
 		}
-	}
+	}*/
 
 	public void deleteAllDependenciesOwnedBy(
 			IRPModelElement theClass ){
@@ -281,6 +268,33 @@ public class GraphPaths extends ArrayList<GraphPath>{
 			IRPModelElement theEl = (IRPModelElement) iterator.next();
 			theEl.deleteFromProject();
 		}
+	}
+	
+	public GraphPaths getGraphPathsThatInclude(
+			IRPModelElement theModelEl,
+			String withTheAssignedName ) {
+		
+		GraphPaths theGraphPaths = new GraphPaths( _context, withTheAssignedName, _sourceDiagram );
+		
+		int origSize = this.size();
+		
+		Iterator<GraphPath> iterator = this.iterator();
+		
+		while( iterator.hasNext() ){
+
+			GraphPath theGraphPath = (GraphPath) iterator.next();
+
+			if( theGraphPath.doesPathInclude( theModelEl ) ) {
+				theGraphPaths.add( theGraphPath );
+			}
+		}
+		
+		int finalSize = theGraphPaths.size();
+		
+		_context.info( "getGraphPathsThatInclude has removed " + 
+				(origSize - finalSize) + " paths leaving " + finalSize );
+		
+		return theGraphPaths;
 	}
 }
 

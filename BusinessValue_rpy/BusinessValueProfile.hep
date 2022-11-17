@@ -45,7 +45,7 @@ DLLServerCompatible5=1
 name6=Business Value: Other\Build path visualization
 isPluginCommand6=1
 command6=InvokeBusinessValueHelper
-applicableTo6=Tier 1 Goal,Tier 2 Goal,Tier 3 Goal
+applicableTo6=Tier 1 Goal,Tier 2 Goal,Tier 3 Goal,Business Value Diagram
 isVisible6=1
 DLLServerCompatible6=1
 

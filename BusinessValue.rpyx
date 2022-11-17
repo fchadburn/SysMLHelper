@@ -4,7 +4,7 @@
 	<CODE-PAGE>1252</CODE-PAGE>
 	<version>100.831.0</version>
 	<lang>C++</lang>
-	<BuildNo>9835718</BuildNo>
+	<BuildNo>9835550</BuildNo>
 	
 	<RHAPSODY-MODEL>
 	<IProject type="e">
@@ -285,20 +285,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">BusinessValue</_name>
-			<Stereotypes type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">1</size>
-					
-						<IHandle type="e">
-							<_hm2Class type="a">IStereotype</_hm2Class>
-							<_hsubsystem type="a">BusinessValueProfile</_hsubsystem>
-							<_hname type="a">BusinessValue</_hname>
-							<_hid type="a">GUID d14744a8-7334-494b-8a7e-c4e140adac04</_hid>
-						</IHandle>
-					
-				</IRPYRawContainer>
-			</Stereotypes>
-			<_modifiedTime type="a">9.23.2022::9:37:0</_modifiedTime>
+			<_modifiedTime type="a">11.14.2022::13:31:17</_modifiedTime>
 			<_lastID type="a">10002</_lastID>
 			<_UserColors type="w">
 				<IRPYRawContainer type="e">
@@ -392,7 +379,7 @@
 			<_id type="a">GUID dfdf4e87-1936-4218-98ce-05b9e26e737b</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileDate</_name>
-			<_modifiedTime type="a">9.23.2022::9:37:0</_modifiedTime>
+			<_modifiedTime type="a">11.14.2022::11:1:39</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IType</_hm2Class>
@@ -412,19 +399,19 @@
 				</IHandle>
 			</_base>
 			<AggregatesList type="e">
-				<value>GUID 1b2de6bd-8474-4983-92e4-ea4594009b18</value>
+				<value>GUID f1508e1b-1c06-464f-b4e3-dd3e3216c055</value>
 			</AggregatesList>
 		</ITag>
 		<ILiteralSpecification type="e">
-			<_id type="a">GUID 1b2de6bd-8474-4983-92e4-ea4594009b18</_id>
-			<_modifiedTime type="a">9.23.2022::9:37:0</_modifiedTime>
-			<_value type="a">2022/09/23 10:36:00</_value>
+			<_id type="a">GUID f1508e1b-1c06-464f-b4e3-dd3e3216c055</_id>
+			<_modifiedTime type="a">11.14.2022::11:1:39</_modifiedTime>
+			<_value type="a">2022/11/14 11:01:00</_value>
 		</ILiteralSpecification>
 		<ITag type="e">
 			<_id type="a">GUID 8d271a5a-6d75-4a1f-a987-cd7fefd34d60</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileVersion</_name>
-			<_modifiedTime type="a">9.23.2022::9:36:48</_modifiedTime>
+			<_modifiedTime type="a">11.14.2022::10:59:17</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IType</_hm2Class>
@@ -444,13 +431,13 @@
 				</IHandle>
 			</_base>
 			<AggregatesList type="e">
-				<value>GUID 1df0645a-7f9b-415c-a6ca-edb8117a0082</value>
+				<value>GUID acb30463-737a-4b8f-b954-a5fab1153d8f</value>
 			</AggregatesList>
 		</ITag>
 		<ILiteralSpecification type="e">
-			<_id type="a">GUID 1df0645a-7f9b-415c-a6ca-edb8117a0082</_id>
-			<_modifiedTime type="a">9.23.2022::9:36:48</_modifiedTime>
-			<_value type="a">V4.1.d.Rhp831.PreRelease</_value>
+			<_id type="a">GUID acb30463-737a-4b8f-b954-a5fab1153d8f</_id>
+			<_modifiedTime type="a">11.14.2022::10:59:17</_modifiedTime>
+			<_value type="a">V4.2.c.Rhp831.PreRelease</_value>
 		</ILiteralSpecification>
 		<ITag type="e">
 			<_id type="a">GUID a014886d-377d-4a45-ae0f-fb8f836b5280</_id>

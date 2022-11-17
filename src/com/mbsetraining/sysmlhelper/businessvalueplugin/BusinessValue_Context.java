@@ -11,15 +11,29 @@ public class BusinessValue_Context extends BaseContext {
 	protected Boolean _isShowProfileVersionCheckDialogs;
 	protected IRPClass _measuredByDefaultType;
 
-	public final static String BUSINESS_VALUE_NEW_TERM = "BusinessValue";
+	public final String BUSINESS_VALUE_NEW_TERM = "BusinessValue";
 	public final static String NEEDS_NEW_TERM = "Needs";
-	public final static String TIER2_GOAL_NEW_TERM = "Tier2Goal";
-	public final static String TIER3_GOAL_NEW_TERM = "Tier3Goal";
-	public static final String METACLASS_FOR_MEASURED_BY = "Measured By";
-	public static final String METACLASS_FOR_TIER_1_GOAL = "Tier 1 Goal";
-	public static final String METACLASS_FOR_TIER_2_GOAL = "Tier 2 Goal";
-	public static final String METACLASS_FOR_TIER_3_GOAL = "Tier 3 Goal";
-	
+	public final String TIER2_GOAL_NEW_TERM = "Tier2Goal";
+	public final String TIER3_GOAL_NEW_TERM = "Tier3Goal";
+	public final String METACLASS_FOR_MEASURED_BY = "Measured By";
+	public final static String METACLASS_FOR_TIER_1_GOAL = "Tier 1 Goal";
+	public final static String METACLASS_FOR_TIER_2_GOAL = "Tier 2 Goal";
+	public final static String METACLASS_FOR_TIER_3_GOAL = "Tier 3 Goal";
+	public final String VIEW_PREFIX = "view - ";
+	public final String VIEWPOINT_PREFIX = "viewpoint - ";
+	public final String CUSTOMERVIEW_PREFIX = "customv - ";
+	public final String QUERY_PREFIX = "query - ";
+	public final String VIEWPOINT_DIAGRAM_PREFIX = "vvd - ";
+	public final String VIEW_STRUCTURE_STEREOTYPE = "ViewStructure";
+	public final String CUSTOMV_TBD = "customv - TBD";
+	public final String VIEW_TBD = "view - TBD";
+	public final String CUSTOMV_TBD_EXPLICIT_ONLY = "customv - TBD explicit only";
+	public final String VIEWPOINT_TBD = "viewpoint - TBD";
+	public final String VIEW_AND_VIEWPOINT_DIAGRAM_TBD = "vvd - TBD";
+	public final String QUERY_TBD = "query - TBD";
+	public final String QUERYTBD_EXPLICIT_ONLY = "query - TBD explicit only";
+	public final String STEREOTYPE_TBD = "TBD";
+
 	public BusinessValue_Context(
 			String theAppID ){
 

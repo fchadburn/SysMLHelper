@@ -22,7 +22,7 @@ public class GraphPath extends ArrayList<Node>{
 		_context = context;
 	}
 	
-	public void dumpInfo(){
+	public String toString() {
 		
 		String msg = "";
 		
@@ -44,7 +44,12 @@ public class GraphPath extends ArrayList<Node>{
 			}
 		}
 		
-		_context.info( msg );
+		return msg;
+	}
+	
+	public void dumpInfo(){
+		
+		_context.info( toString() );
 	}
 	
 	public boolean hasBeenVisited(
@@ -78,8 +83,7 @@ public class GraphPath extends ArrayList<Node>{
 				
 				Node theNode = (Node) iterator.next();			
 				
-				_context.getExistingOrAddNewDependency( 
-						fromEl, theNode._modelEl, withTheStereotype );
+				_context.getExistingOrAddNewDependency(fromEl, theNode._modelEl, withTheStereotype);
 								
 				if( previousNode != null ){
 					
@@ -88,8 +92,8 @@ public class GraphPath extends ArrayList<Node>{
 						IRPModelElement theDependsOn = theDependency.getDependsOn();
 						
 						if( theDependsOn.equals( theNode._modelEl ) ){
-							_context.getExistingOrAddNewDependency( 
-									fromEl, theDependency, withTheStereotype );
+							
+							_context.getExistingOrAddNewDependency(fromEl, theDependency, withTheStereotype);
 						}
 					}
 				}
@@ -97,8 +101,7 @@ public class GraphPath extends ArrayList<Node>{
 				List<IRPModelElement> measuredBys = _context.findElementsWithMetaClassAndStereotype( "Attribute", "MeasuredBy", theNode._modelEl, 0 );
 				
 				for (IRPModelElement measuredBy : measuredBys) {
-					_context.getExistingOrAddNewDependency( 
-							fromEl, measuredBy, withTheStereotype );
+					_context.getExistingOrAddNewDependency(fromEl, measuredBy, withTheStereotype);
 				}
 				
 				previousNode = theNode;
@@ -106,7 +109,7 @@ public class GraphPath extends ArrayList<Node>{
 		}
 	}
 	
-	String getLastNodeName(){
+	public String getLastNodeName(){
 		
 		String theLastNodeName = "";
 		
@@ -117,6 +120,26 @@ public class GraphPath extends ArrayList<Node>{
 		theLastNodeName = lastNode._modelEl.getName();
 		
 		return theLastNodeName;
+	}
+	
+	public boolean doesPathInclude( 
+			IRPModelElement theEl ) {
+		
+		boolean doesPathInclude = false;
+		
+		Iterator<Node> iterator = this.iterator();
+				
+		while( iterator.hasNext() ){
+			
+			Node theNode = (Node) iterator.next();		
+			
+			if( theNode.get_modelEl().equals( theEl ) ) {
+				doesPathInclude = true;
+				break;
+			}
+		}
+		
+		return doesPathInclude;
 	}
 }
 
