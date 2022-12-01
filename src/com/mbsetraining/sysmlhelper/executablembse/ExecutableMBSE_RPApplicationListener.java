@@ -30,12 +30,12 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 		ExecutableMBSE_Context theContext = new ExecutableMBSE_Context(appID);
 
-		List<IRPGraphElement> theSelectedGraphEls = theContext.getSelectedGraphElements();
-
-		for (IRPGraphElement irpGraphElement : theSelectedGraphEls) {
-			theContext.dumpGraphicalPropertiesFor(irpGraphElement);
-		}
+		ExecutableMBSE_RPApplicationListener theListener = 
+				new ExecutableMBSE_RPApplicationListener( "ExecutableMBSE", theContext );
+		
+		theListener.afterAddElement( theContext.getSelectedElement( false ) );
 	}
+	
 	private ExecutableMBSE_Context _context;
 
 	public ExecutableMBSE_RPApplicationListener( 

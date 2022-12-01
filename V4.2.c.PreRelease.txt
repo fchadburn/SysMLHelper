@@ -806,12 +806,19 @@ V4.2.b.Rhp831.PreRelease (10-NOV-2022):
 #597 10-NOV-2022: ExecutableMBSE: Improve toolbar order for the ibd - system diagram so that tools are better grouped for usability (F.J.Chadburn)
 #598 10-NOV-2022: ExecutableMBSE: Checkpoint of a new function usage selection dialog (not quite working yet) (F.J.Chadburn)
 
-V4.2.c.Rhp831.PreRelease (XX-XXX-XXXX):
+V4.2.c.Rhp831.PreRelease (01-DEC-2022):
 #599 11-NOV-2022: ExecutableMBSE: New function usage selection dialog added to ease drawing function flow models using ibds (F.J.Chadburn)
 #600 11-NOV-2022: ExecutableMBSE: Fix to function usage selection dialog to enable creation of new Block/Usages (F.J.Chadburn) 
 #601 17-NOV-2022: BusinessValue: Major reworking to use Views/Viewpoints from SysML and combine paths in custom views (F.J.Chadburn)
 
 Backlog/Known issues
+- Add a table to set subsystem tag names
+- When you double-click a package, don't bother opening up the select diagram to open idalog, as this confuses new users and is a less obvious workflow
+- Get profile to say UML/SysML Element rather than just SysML Element etc
+- Move View related menus into its own category
+- Could get autonaming of packages to help with naming post-fix convention
+- Consider renaming Domain Block to System Block. 
+- Why does FlowConnector stereotyyupe show
 - Get populate to populate logic and connectors if parts are puplated that link to them.
 - Add different icons for Flow Connector and Function Connectors so that clearer in toolbar
 - hep file applicable tos need looking at where they have lower case base type
