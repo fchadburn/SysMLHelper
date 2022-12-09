@@ -376,7 +376,7 @@ Subject ObjectModelGe
 		Property ShowInheritedOperations Bool "False"
 		Property QuickNavigationCategories String "MainBehavior,MainDiagram,Hyperlinks,Diagrams"
 	end
-	Metaclass DomainBlock
+	Metaclass ContextBlock
 		Property ShowAttributes Enum "All,None,Public,Explicit" "None"
 		Property ShowOperations Enum "All,None,Public,Explicit" "None"
 		Property ShowStereotype Enum "Label,Bitmap,None" "Label"

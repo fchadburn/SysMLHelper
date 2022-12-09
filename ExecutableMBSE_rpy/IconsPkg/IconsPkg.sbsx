@@ -11,7 +11,7 @@
 			<_id type="a">GUID 801c8dc2-1109-41eb-8815-e3fb68b9a344</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">IconsPkg</_name>
-			<_modifiedTime type="a">10.21.2022::9:7:16</_modifiedTime>
+			<_modifiedTime type="a">12.9.2022::8:43:42</_modifiedTime>
 			<_defaultComposite type="s">GUID 64eceb80-328e-445f-90f1-4b11f0a04bea</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
@@ -23,6 +23,8 @@
 				<value>GUID 8034860a-b968-4082-9012-21de91040251</value>
 				<value>GUID 668f6920-34fb-4981-8b84-46ec6e3c3447</value>
 				<value>GUID 7744453e-acfe-4cbd-ab56-bba8146494a2</value>
+				<value>GUID 533cb9be-4d10-4876-b944-81c28c1f1574</value>
+				<value>GUID db5482c8-beee-45e4-ba4b-cf30db99f6fd</value>
 				<value>GUID b0f035bc-7086-4ffd-abef-38b5eb7205fc</value>
 				<value>GUID 1a79a3bc-0fb2-4408-966c-455ca65344c0</value>
 				<value>GUID 62598746-a171-49af-bc31-9474ed155f2f</value>
@@ -30,8 +32,6 @@
 				<value>GUID 80f65167-9fa3-4d66-bd39-5b45da69d40d</value>
 				<value>GUID 2700d839-3551-44f0-9931-98563793c12c</value>
 				<value>GUID abb90e22-7c0d-45fb-9a8a-12be28fdc682</value>
-				<value>GUID 0914d0c2-3d8f-4b11-b97d-8fabc43d986f</value>
-				<value>GUID 97724b14-bc9c-49dd-9f63-9e7ca4a28b11</value>
 				<value>GUID 7a4211bd-f69a-45af-918d-79166003996e</value>
 				<value>GUID 4a69fd4e-64d4-4223-9c43-ca6e3a4ffba9</value>
 				<value>GUID 533ed991-6a82-400b-9af0-ee3ebc02ae15</value>
@@ -145,6 +145,20 @@
 			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\BlockDefinitionDiagramSystems.ico</_LastKnownFullPath>
 		</IEmbededFile>
 		<IEmbededFile type="e">
+			<_id type="a">GUID 533cb9be-4d10-4876-b944-81c28c1f1574</_id>
+			<_name type="a">ContextBlock.ico</_name>
+			<_modifiedTime type="a">12.9.2022::8:42:50</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\ContextBlock.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID db5482c8-beee-45e4-ba4b-cf30db99f6fd</_id>
+			<_name type="a">ContextBlocks.ico</_name>
+			<_modifiedTime type="a">12.9.2022::8:43:17</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\ContextBlocks.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
 			<_id type="a">GUID b0f035bc-7086-4ffd-abef-38b5eb7205fc</_id>
 			<_name type="a">ContextDiagramPackage.ico</_name>
 			<_modifiedTime type="a">5.4.2022::11:37:37</_modifiedTime>
@@ -192,20 +206,6 @@
 			<_modifiedTime type="a">5.4.2022::11:39:47</_modifiedTime>
 			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
 			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\DecisionUsageDiagramImage.ico</_LastKnownFullPath>
-		</IEmbededFile>
-		<IEmbededFile type="e">
-			<_id type="a">GUID 0914d0c2-3d8f-4b11-b97d-8fabc43d986f</_id>
-			<_name type="a">DomainBlock.ico</_name>
-			<_modifiedTime type="a">5.6.2022::7:9:45</_modifiedTime>
-			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
-			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\DomainBlock.ico</_LastKnownFullPath>
-		</IEmbededFile>
-		<IEmbededFile type="e">
-			<_id type="a">GUID 97724b14-bc9c-49dd-9f63-9e7ca4a28b11</_id>
-			<_name type="a">DomainBlocks.ico</_name>
-			<_modifiedTime type="a">5.6.2022::7:9:45</_modifiedTime>
-			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
-			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\DomainBlocks.ico</_LastKnownFullPath>
 		</IEmbededFile>
 		<IEmbededFile type="e">
 			<_id type="a">GUID 7a4211bd-f69a-45af-918d-79166003996e</_id>
