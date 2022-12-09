@@ -814,6 +814,7 @@ V4.2.c.Rhp831.PreRelease (01-DEC-2022):
 V4.2.d.Rhp831.PreRelease (XX-XXX-XXXX):
 #602 09-DEC-2022: ExecutableMBSE: Renamed DomainBlock to ContextBlock due to confusion with some users over the term Domain (F.J.Chadburn)
 #603 09-DEC-2022: ExecutableMBSE: Added new Table View - Subsystem Table to the right-click to ease shortname tag setting for Subsystem Blocks (F.J.Chadburn)
+#604 09-DEC-2022: ExecutableMBSE: Adjusted Add New menus to say 'Diagram Or View' rather than just 'View' so they're elevated and easier to spot (F.J.Chadburn)
 
 Backlog/Known issues
 - Unexpected dialog appears when you draw a directed composition from domain block to a system block
