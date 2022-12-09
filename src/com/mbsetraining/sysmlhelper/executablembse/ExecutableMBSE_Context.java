@@ -46,6 +46,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String INTERNAL_BLOCK_DIAGRAM_SYSTEM = "Internal Block Diagram - System";
 	public final String INTERNAL_BLOCK_DIAGRAM_FUNCTIONAL = "Internal Block Diagram - Functional";
 	public final String SIMPLE_REQUIREMENTS_TABLE = "Table View - Simple Requirements Table";
+	public final String SUBSYSTEM_TABLE = "Table View - Subsystem Table";
 	public final String USE_CASE_TO_REQUIREMENT_TABLE = "Table View - Use Case To Requirement";
 	public final String REQUIREMENT_TO_USE_CASE_TABLE = "Table View - Requirement To Use Case";
 	public final String REQUIREMENT_TO_FUNCTION_BLOCK_TABLE = "Table View - Requirement To Function Block";
@@ -63,6 +64,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String FUNCT_ANALYSIS_FEATURE_FUNCTION_PACKAGE = "22 Feature Function Package";
 	public final String DESIGN_SYNTHESIS_SUBSYSTEM_INTERFACES_PACKAGE = "33 Subsystem Interfaces Package";
 	public final String DESIGN_SYNTHESIS_LOGICAL_SYSTEM_PACKAGE = "31 System Architecture Package";
+	public final String DESIGN_SYNTHESIS_SUBSYSTEM_PACKAGE = "32 Subsystem Package";
 	public final String VIEW_AND_VIEWPOINT_PACKAGE = "41 View and Viewpoint Package";
 	public final String REQUIREMENTS_DIAGRAM_SYSTEM = "Requirements Diagram - System";
 	public final String TIME_ELAPSED_BLOCK_STEREOTYPE = "TimeBlock";

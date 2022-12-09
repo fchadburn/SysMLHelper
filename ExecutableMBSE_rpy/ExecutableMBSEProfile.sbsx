@@ -1689,7 +1689,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">12.9.2022::8:49:37</_modifiedTime>
+			<_modifiedTime type="a">12.9.2022::9:25:27</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -12006,7 +12006,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">AddNewMenuStructure</_Name>
-													<_Value type="a">Metrics Layout,Metrics View,DDS/dataReader,DDS/dataWriter,DDS/ddsDiagram,DDS/deadlineQosPolicy,DDS/doQosPolicy,DDS/domainParticipant,DDS/dsQosPolicy,DDS/durabilityQosPolicy,DDS/efQosPolicy,DDS/gdQosPolicy,DDS/guardCondition,DDS/guardConditionLink,DDS/historyQosPolicy,DDS/idlType,DDS/key,DDS/lbQosPolicy,DDS/lifespanQosPolicy,DDS/listener,DDS/livelinessQosPolicy,DDS/osQosPolicy,DDS/ownershipQosPolicy,DDS/partitionQosPolicy,DDS/presentationQosPolicy,DDS/publisher,DDS/qualityOfService,DDS/queryCondition,DDS/rdlQosPolicy,DDS/readCondition,DDS/reliabilityQoSPolicy,DDS/rlQosPolicy,DDS/statusCondition,DDS/subscriber,DDS/tbfQosPolicy,DDS/tdQoSPolicy,DDS/topic,DDS/topicStruct,DDS/tpQosPolicy,DDS/udQosPolicy,DDS/waitSet,DDS/wdlQosPolicy,MBSEProfile Element/Actor Usage,MBSEProfile Element/C++ Class,MBSEProfile Element/Component Usage,MBSEProfile Element/Context Block,MBSEProfile Element/Decision Usage,MBSEProfile Element/Feature Block,MBSEProfile Element/Feature Usage,MBSEProfile Element/Final Usage,MBSEProfile Element/Flow Final Usage,MBSEProfile Element/Flow Input,MBSEProfile Element/Flow Output,MBSEProfile Element/Function Block,MBSEProfile Element/Function Usage,MBSEProfile Element/Guarded Flow Output,MBSEProfile Element/Parallel Gateway Usage,MBSEProfile Element/Software Component,MBSEProfile Element/Start Usage,MBSEProfile Element/Subsystem Block,MBSEProfile Element/Subsystem Usage,MBSEProfile Element/System Block,MBSEProfile Element/System Usage,MBSEProfile Element/Time Event Usage,MBSEProfile Element/Use Case Description,MBSEProfile Element/Use Case Postcondition,MBSEProfile Element/Use Case Precondition,MBSEProfile Package/10 Context Package,MBSEProfile Package/11 Actor Package,MBSEProfile Package/12 Use Case Package,MBSEProfile Package/12 Working Copy Package,MBSEProfile Package/13 Requirement Package,MBSEProfile Package/14 Signals Package,MBSEProfile Package/22 Feature Function Package,MBSEProfile Package/31 System Architecture Package,MBSEProfile Package/32 Subsystem Package,MBSEProfile Package/33 Subsystem Interfaces Package,MBSEProfile Package/34 Software Design Package,MBSEProfile Package/41 View and Viewpoint Package,MBSEProfile Relation/Flow Connector,MBSEProfile Relation/Function Connector,MBSEProfile View/Block Definition Diagram - Software,MBSEProfile View/Block Definition Diagram - System,MBSEProfile View/Call Operation Activity,MBSEProfile View/Context Diagram,MBSEProfile View/Enhanced Use Case Diagram,MBSEProfile View/Internal Block Diagram - Functional,MBSEProfile View/Internal Block Diagram - Software,MBSEProfile View/Internal Block Diagram - System,MBSEProfile View/Requirements Diagram - System,MBSEProfile View/Table View - Action To Requirement,MBSEProfile View/Table View - Context Diagram Flows,MBSEProfile View/Table View - Requirement To Action,MBSEProfile View/Table View - Requirement To Function Block,MBSEProfile View/Table View - Simple Requirements Table,MBSEProfile View/Table View - Use Case To Requirement,MBSEProfile View/Textual Activity,MBSEProfile View/View and Viewpoint Diagram,SysML Element/AcceptEventAction,SysML Element/AcceptTimeEvent,SysML Element/ActivityFinal,SysML Element/Actor,SysML Element/Attribute,SysML Element/Block,SysML Element/CallBehavior,SysML Element/CallOperation,SysML Element/ChangeStructuralFeatureEvent,SysML Element/Comment,SysML Element/Constraint,SysML Element/ConstraintBlock,SysML Element/ConstraintParameter,SysML Element/ConstraintProperty,SysML Element/Constructor,SysML Element/DataType,SysML Element/DecisionNode,SysML Element/Destructor,SysML Element/Dimension,SysML Element/Event,SysML Element/FlowItem,SysML Element/FlowPort,SysML Element/FlowProperty,SysML Element/FlowSpecification,SysML Element/Fork,SysML Element/FullPort,SysML Element/InstanceSpecification,SysML Element/Interface,SysML Element/InterfaceBlock,SysML Element/InterruptibleRegion,SysML Element/MergeNode,SysML Element/Object,SysML Element/Operation,SysML Element/Package,SysML Element/Part,SysML Element/Port,SysML Element/Problem,SysML Element/ProxyPort,SysML Element/Rationale,SysML Element/Reception,SysML Element/Requirement,SysML Element/SendAction,SysML Element/State,SysML Element/TriggeredOperation,SysML Element/Unit,SysML Element/UseCase,SysML Element/ValueProperty,SysML Element/ValueType,SysML Element/View,SysML Element/Viewpoint,SysML Relation/Allocation,SysML Relation/AssociationEnd,SysML Relation/BindingConnector,SysML Relation/Conform,SysML Relation/Connector,SysML Relation/ControlFlow,SysML Relation/DefaultTransition,SysML Relation/Dependency,SysML Relation/Derivation,SysML Relation/Derive Requirement,SysML Relation/Flow,SysML Relation/Generalization,SysML Relation/Realization,SysML Relation/Refinement,SysML Relation/Satisfaction,SysML View/ActivityDiagram,SysML View/AllocationsTable,SysML View/Block Definition Diagram,SysML View/ExtendedTableLayout,SysML View/ExtendedTableView,SysML View/Internal Block Diagram,SysML View/MatrixView,SysML View/Package Diagram,SysML View/PanelDiagram,SysML View/Parametric Diagram,SysML View/Remote Requirements Table,SysML View/Requirements Coverage Table,SysML View/Requirements Diagram,SysML View/RequirementsTable,SysML View/SequenceDiagram,SysML View/Statechart,SysML View/Structure Diagram,SysML View/TableView,SysML View/TimingDiagram,SysML View/UseCaseDiagram,TestingProfile/SDInstanceRealizationMapPair,TestingProfile/SDInstanceRealizationMerge,TestingProfile/SDInstanceRealizationMergeOrigin,TestingProfile/SDInstanceRealizationSplit,TestingProfile/SDInstanceRealizationSplitTarget,TestingProfile/SDMapping,TestingProfile/SDMappingsTable,TestingProfile/SUT,TestingProfile/ScenarioRequirementFull,TestingProfile/ScenarioRequirementPartial,TestingProfile/ScenarioRequirementTable,TestingProfile/TestActor,TestingProfile/TestCase,TestingProfile/TestComponent,TestingProfile/TestConfiguration,TestingProfile/TestContext,TestingProfile/TestContext Diagram,TestingProfile/TestObjective,TestingProfile/TestObjective1,TestingProfile/TestPackage,TestingProfile/TestRequirementMatrix,TestingProfile/TestResultTable,TestingProfile/TestScenario,TestingProfile/Validation,UML Extension/CSVImporter,UML Extension/Component,UML Extension/Configuration,UML Extension/ControlledFile,UML Extension/CustomView,UML Extension/Diagram View,UML Extension/File,UML Extension/HyperLink,UML Extension/MatrixLayout,UML Extension/Profile,UML Extension/Query,UML Extension/Stereotype,UML Extension/TableLayout,UML Extension/Tag</_Value>
+													<_Value type="a">Metrics Layout,Metrics View,DDS/dataReader,DDS/dataWriter,DDS/ddsDiagram,DDS/deadlineQosPolicy,DDS/doQosPolicy,DDS/domainParticipant,DDS/dsQosPolicy,DDS/durabilityQosPolicy,DDS/efQosPolicy,DDS/gdQosPolicy,DDS/guardCondition,DDS/guardConditionLink,DDS/historyQosPolicy,DDS/idlType,DDS/key,DDS/lbQosPolicy,DDS/lifespanQosPolicy,DDS/listener,DDS/livelinessQosPolicy,DDS/osQosPolicy,DDS/ownershipQosPolicy,DDS/partitionQosPolicy,DDS/presentationQosPolicy,DDS/publisher,DDS/qualityOfService,DDS/queryCondition,DDS/rdlQosPolicy,DDS/readCondition,DDS/reliabilityQoSPolicy,DDS/rlQosPolicy,DDS/statusCondition,DDS/subscriber,DDS/tbfQosPolicy,DDS/tdQoSPolicy,DDS/topic,DDS/topicStruct,DDS/tpQosPolicy,DDS/udQosPolicy,DDS/waitSet,DDS/wdlQosPolicy,MBSEProfile Element/Actor Usage,MBSEProfile Element/C++ Class,MBSEProfile Element/Component Usage,MBSEProfile Element/Context Block,MBSEProfile Element/Decision Usage,MBSEProfile Element/Feature Block,MBSEProfile Element/Feature Usage,MBSEProfile Element/Final Usage,MBSEProfile Element/Flow Final Usage,MBSEProfile Element/Flow Input,MBSEProfile Element/Flow Output,MBSEProfile Element/Function Block,MBSEProfile Element/Function Usage,MBSEProfile Element/Guarded Flow Output,MBSEProfile Element/Parallel Gateway Usage,MBSEProfile Element/Software Component,MBSEProfile Element/Start Usage,MBSEProfile Element/Subsystem Block,MBSEProfile Element/Subsystem Usage,MBSEProfile Element/System Block,MBSEProfile Element/System Usage,MBSEProfile Element/Time Event Usage,MBSEProfile Element/Use Case Description,MBSEProfile Element/Use Case Postcondition,MBSEProfile Element/Use Case Precondition,MBSEProfile Package/10 Context Package,MBSEProfile Package/11 Actor Package,MBSEProfile Package/12 Use Case Package,MBSEProfile Package/12 Working Copy Package,MBSEProfile Package/13 Requirement Package,MBSEProfile Package/14 Signals Package,MBSEProfile Package/22 Feature Function Package,MBSEProfile Package/31 System Architecture Package,MBSEProfile Package/32 Subsystem Package,MBSEProfile Package/33 Subsystem Interfaces Package,MBSEProfile Package/34 Software Design Package,MBSEProfile Package/41 View and Viewpoint Package,MBSEProfile Relation/Flow Connector,MBSEProfile Relation/Function Connector,MBSEProfile View/Block Definition Diagram - Software,MBSEProfile View/Block Definition Diagram - System,MBSEProfile View/Call Operation Activity,MBSEProfile View/Context Diagram,MBSEProfile View/Enhanced Use Case Diagram,MBSEProfile View/Internal Block Diagram - Functional,MBSEProfile View/Internal Block Diagram - Software,MBSEProfile View/Internal Block Diagram - System,MBSEProfile View/Requirements Diagram - System,MBSEProfile View/Table View - Action To Requirement,MBSEProfile View/Table View - Context Diagram Flows,MBSEProfile View/Table View - Requirement To Action,MBSEProfile View/Table View - Requirement To Function Block,MBSEProfile View/Table View - Simple Requirements Table,MBSEProfile View/Table View - Subsystem Table,MBSEProfile View/Table View - Use Case To Requirement,MBSEProfile View/Textual Activity,MBSEProfile View/View and Viewpoint Diagram,SysML Element/AcceptEventAction,SysML Element/AcceptTimeEvent,SysML Element/ActivityFinal,SysML Element/Actor,SysML Element/Attribute,SysML Element/Block,SysML Element/CallBehavior,SysML Element/CallOperation,SysML Element/ChangeStructuralFeatureEvent,SysML Element/Comment,SysML Element/Constraint,SysML Element/ConstraintBlock,SysML Element/ConstraintParameter,SysML Element/ConstraintProperty,SysML Element/Constructor,SysML Element/DataType,SysML Element/DecisionNode,SysML Element/Destructor,SysML Element/Dimension,SysML Element/Event,SysML Element/FlowItem,SysML Element/FlowPort,SysML Element/FlowProperty,SysML Element/FlowSpecification,SysML Element/Fork,SysML Element/FullPort,SysML Element/InstanceSpecification,SysML Element/Interface,SysML Element/InterfaceBlock,SysML Element/InterruptibleRegion,SysML Element/MergeNode,SysML Element/Object,SysML Element/Operation,SysML Element/Package,SysML Element/Part,SysML Element/Port,SysML Element/Problem,SysML Element/ProxyPort,SysML Element/Rationale,SysML Element/Reception,SysML Element/Requirement,SysML Element/SendAction,SysML Element/State,SysML Element/TriggeredOperation,SysML Element/Unit,SysML Element/UseCase,SysML Element/ValueProperty,SysML Element/ValueType,SysML Element/View,SysML Element/Viewpoint,SysML Relation/Allocation,SysML Relation/AssociationEnd,SysML Relation/BindingConnector,SysML Relation/Conform,SysML Relation/Connector,SysML Relation/ControlFlow,SysML Relation/DefaultTransition,SysML Relation/Dependency,SysML Relation/Derivation,SysML Relation/Derive Requirement,SysML Relation/Flow,SysML Relation/Generalization,SysML Relation/Realization,SysML Relation/Refinement,SysML Relation/Satisfaction,SysML View/ActivityDiagram,SysML View/AllocationsTable,SysML View/Block Definition Diagram,SysML View/ExtendedTableLayout,SysML View/ExtendedTableView,SysML View/Internal Block Diagram,SysML View/MatrixView,SysML View/Package Diagram,SysML View/PanelDiagram,SysML View/Parametric Diagram,SysML View/Remote Requirements Table,SysML View/Requirements Coverage Table,SysML View/Requirements Diagram,SysML View/RequirementsTable,SysML View/SequenceDiagram,SysML View/Statechart,SysML View/Structure Diagram,SysML View/TableView,SysML View/TimingDiagram,SysML View/UseCaseDiagram,TestingProfile/SDInstanceRealizationMapPair,TestingProfile/SDInstanceRealizationMerge,TestingProfile/SDInstanceRealizationMergeOrigin,TestingProfile/SDInstanceRealizationSplit,TestingProfile/SDInstanceRealizationSplitTarget,TestingProfile/SDMapping,TestingProfile/SDMappingsTable,TestingProfile/SUT,TestingProfile/ScenarioRequirementFull,TestingProfile/ScenarioRequirementPartial,TestingProfile/ScenarioRequirementTable,TestingProfile/TestActor,TestingProfile/TestCase,TestingProfile/TestComponent,TestingProfile/TestConfiguration,TestingProfile/TestContext,TestingProfile/TestContext Diagram,TestingProfile/TestObjective,TestingProfile/TestObjective1,TestingProfile/TestPackage,TestingProfile/TestRequirementMatrix,TestingProfile/TestResultTable,TestingProfile/TestScenario,TestingProfile/Validation,UML Extension/CSVImporter,UML Extension/Component,UML Extension/Configuration,UML Extension/ControlledFile,UML Extension/CustomView,UML Extension/Diagram View,UML Extension/File,UML Extension/HyperLink,UML Extension/MatrixLayout,UML Extension/Profile,UML Extension/Query,UML Extension/Stereotype,UML Extension/TableLayout,UML Extension/Tag</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -12047,7 +12047,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSE</_name>
-			<_modifiedTime type="a">12.9.2022::8:46:48</_modifiedTime>
+			<_modifiedTime type="a">12.9.2022::9:20:41</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -12059,8 +12059,8 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 3307dbc4-6282-4d53-88b2-50e3de5ff8c2</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Diagrams</_name>
-			<_modifiedTime type="a">12.9.2022::8:47:7</_modifiedTime>
-			<_lastID type="a">10</_lastID>
+			<_modifiedTime type="a">12.9.2022::9:25:16</_modifiedTime>
+			<_lastID type="a">11</_lastID>
 			<_defaultComposite type="s">GUID af3ccc20-8ac1-47a2-8c5f-be1a84c1550e</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
@@ -12082,6 +12082,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 				<value>GUID 20f4e2a7-e6eb-4dc4-a357-bc7f4c1bb757</value>
 				<value>GUID 36e1212b-e3fc-47b2-96a4-995ca9da3bc8</value>
 				<value>GUID a693ad65-006f-4ff1-8b10-2c3f8bf99710</value>
+				<value>GUID e89510e5-f4fc-4fdf-9790-81dd8d376eef</value>
 				<value>GUID af3ccc20-8ac1-47a2-8c5f-be1a84c1550e</value>
 			</AggregatesList>
 		</ISubsystem>
@@ -14172,7 +14173,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">RequirementToFunctionBlockTable</_name>
-			<_modifiedTime type="a">12.9.2022::8:47:7</_modifiedTime>
+			<_modifiedTime type="a">12.9.2022::9:25:16</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -14244,6 +14245,75 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</_m2Classes>
 			<_newTerm type="a">1</_newTerm>
 		</IStereotype>
+		<IStereotype type="e">
+			<_id type="a">GUID e89510e5-f4fc-4fdf-9790-81dd8d376eef</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Stereotype</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">5</size>
+												<IProperty type="e">
+													<_Name type="a">Aggregates</_Name>
+													<_Value type="a">Comment,Constraint,Problem,Rationale,Conform,Dependency,ControlledFile,HyperLink,Tag</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">DefaultName</_Name>
+													<_Value type="a">tablev - </_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">InitialLayoutForTables</_Name>
+													<_Value type="a">tablel - Subsystems</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">Name</_Name>
+													<_Value type="a">Table View - Subsystem Table</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">PluralName</_Name>
+													<_Value type="a">67 The Subsystem Tables are...</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">SubsystemTable</_name>
+			<_modifiedTime type="a">12.9.2022::9:20:20</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>TableView</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+			<_newTerm type="a">1</_newTerm>
+		</IStereotype>
 		<IClass type="e">
 			<_id type="a">GUID af3ccc20-8ac1-47a2-8c5f-be1a84c1550e</_id>
 			<_myState type="a">40960</_myState>
@@ -14259,7 +14329,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID d213ea00-7590-48aa-8f30-a0a61f8fcd08</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Packages</_name>
-			<_modifiedTime type="a">12.9.2022::8:46:52</_modifiedTime>
+			<_modifiedTime type="a">12.9.2022::9:20:44</_modifiedTime>
 			<_lastID type="a">3</_lastID>
 			<_defaultComposite type="s">GUID 26c8a3f9-6aee-4dff-a42f-bf1cc2880009</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -14872,7 +14942,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 												<size type="a">6</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">C++ Class,Context Block,Feature Usage,Function Block,Software Component,Subsystem Block,System Block,22 Feature Function Package,32 Subsystem Package,33 Subsystem Interfaces Package,Flow Connector,Block Definition Diagram - System,Actor,Comment,Constraint,Event,Interface,InterfaceBlock,Problem,Rationale,Requirement,View,Conform,Dependency,Flow,ExtendedTableLayout,ExtendedTableView,MatrixView,SequenceDiagram,TableView,TimingDiagram,CSVImporter,Component,ControlledFile,Diagram View,HyperLink,MatrixLayout,Query,Stereotype,TableLayout,Tag</_Value>
+													<_Value type="a">C++ Class,Context Block,Feature Usage,Function Block,Software Component,Subsystem Block,System Block,22 Feature Function Package,32 Subsystem Package,33 Subsystem Interfaces Package,Flow Connector,Block Definition Diagram - System,Table View - Subsystem Table,Actor,Comment,Constraint,Event,Interface,InterfaceBlock,Problem,Rationale,Requirement,View,Conform,Dependency,Flow,ExtendedTableLayout,ExtendedTableView,MatrixView,SequenceDiagram,TableView,TimingDiagram,CSVImporter,Component,ControlledFile,Diagram View,HyperLink,MatrixLayout,Query,Stereotype,TableLayout,Tag</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -14919,7 +14989,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SystemArchitecturePackage</_name>
-			<_modifiedTime type="a">12.9.2022::8:46:52</_modifiedTime>
+			<_modifiedTime type="a">12.9.2022::9:20:44</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -14996,7 +15066,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 												<size type="a">6</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">C++ Class,Feature Usage,Function Block,Software Component,Subsystem Block,22 Feature Function Package,32 Subsystem Package,33 Subsystem Interfaces Package,Flow Connector,Block Definition Diagram - System,Comment,Constraint,Event,Interface,InterfaceBlock,Problem,Rationale,Requirement,View,Conform,Dependency,ExtendedTableLayout,ExtendedTableView,MatrixView,SequenceDiagram,TableView,TimingDiagram,CSVImporter,Component,ControlledFile,Diagram View,HyperLink,MatrixLayout,Query,Stereotype,TableLayout,Tag</_Value>
+													<_Value type="a">C++ Class,Feature Usage,Function Block,Software Component,Subsystem Block,22 Feature Function Package,32 Subsystem Package,33 Subsystem Interfaces Package,Flow Connector,Block Definition Diagram - System,Table View - Subsystem Table,Comment,Constraint,Event,Interface,InterfaceBlock,Problem,Rationale,Requirement,View,Conform,Dependency,ExtendedTableLayout,ExtendedTableView,MatrixView,SequenceDiagram,TableView,TimingDiagram,CSVImporter,Component,ControlledFile,Diagram View,HyperLink,MatrixLayout,Query,Stereotype,TableLayout,Tag</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -15043,7 +15113,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SubsystemPackage</_name>
-			<_modifiedTime type="a">10.31.2022::9:12:48</_modifiedTime>
+			<_modifiedTime type="a">12.9.2022::9:20:44</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -18843,8 +18913,8 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID f4cbf55d-b74b-4ef3-9920-6eb8450bb6c2</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_TablesAndMatrices</_name>
-			<_modifiedTime type="a">7.21.2022::15:6:28</_modifiedTime>
-			<_lastID type="a">1</_lastID>
+			<_modifiedTime type="a">12.9.2022::9:2:54</_modifiedTime>
+			<_lastID type="a">2</_lastID>
 			<_defaultComposite type="s">GUID aace3563-7387-48b2-b252-564f3c63fcfc</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
@@ -18858,6 +18928,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 				<value>GUID 710c967f-efe1-411d-b7a2-a8db15b6644c</value>
 				<value>GUID 44328a1d-efc3-421d-b594-fc026ac720ed</value>
 				<value>GUID 78e4506c-03e3-42d8-aa35-80a94969d152</value>
+				<value>GUID bcad420a-445b-45a9-b7c0-02825059f7b4</value>
 				<value>GUID 23956648-4810-4b41-8d14-1b51e6d19725</value>
 				<value>GUID b4be15e3-be9e-4b22-82be-8f91eaab9259</value>
 				<value>GUID 41bbc743-af05-42c9-8ac2-f49a22d6a621</value>
@@ -20342,6 +20413,175 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 						<TableDataDefinitionName type="a">General.Stereotypes</TableDataDefinitionName>
 						<_columnName type="a">Stereotypes (of Function Block)</_columnName>
 						<_contextPatternLabel type="a">func</_contextPatternLabel>
+					</TableDataDefinition>
+					
+				</IRPYRawContainer>
+			</DataColumns>
+		</ITableLayout>
+		<ITableLayout type="e">
+			<_id type="a">GUID bcad420a-445b-45a9-b7c0-02825059f7b4</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">2</size>
+						<IPropertySubject type="e">
+							<_Name type="a">General</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Graphics</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">TableHeaderMenuAlignment</_Name>
+													<_Value type="a">Right</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">Left,Right</_ExtraTypeInfo>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">2</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">TableLayout</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">4</size>
+												<IProperty type="e">
+													<_Name type="a">CollapseFirstColumn</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ContextTableColumnNameFormat</_Name>
+													<_Value type="a">$(Property) in $(Context)</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">EnableCriteriaCheck</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">QueryContextPattern</_Name>
+													<_Type type="a">MultiLine</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+									<IPropertyMetaclass type="e">
+										<_Name type="a">TableView</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">ChangeSelectionOnEnterTo</_Name>
+													<_Value type="a">down</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">left, right, up, down</_ExtraTypeInfo>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">tablel - Subsystems</_name>
+			<_modifiedTime type="a">12.9.2022::9:2:54</_modifiedTime>
+			<TableElementTypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID bcad420a-445b-45a9-b7c0-02825059f7b4</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Subsystem Block</TableDataDefinitionName>
+						<_DataType type="a">1768710981</_DataType>
+					</TableDataDefinition>
+					
+				</IRPYRawContainer>
+			</TableElementTypes>
+			<DataColumns type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">3</size>
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID bcad420a-445b-45a9-b7c0-02825059f7b4</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">General.Name</TableDataDefinitionName>
+						<_columnName type="a">Name</_columnName>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID bcad420a-445b-45a9-b7c0-02825059f7b4</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITag</_hm2Class>
+								<_hid type="a">GUID dc5f2b40-ad59-4869-a16a-b80bafc1c8a6</_hid>
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">ShortName</TableDataDefinitionName>
+						<_DataType type="a">6</_DataType>
+						<_columnName type="a">ShortName</_columnName>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID bcad420a-445b-45a9-b7c0-02825059f7b4</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">General.Description</TableDataDefinitionName>
+						<_columnName type="a">Description</_columnName>
 					</TableDataDefinition>
 					
 				</IRPYRawContainer>
