@@ -78,7 +78,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 		}
 
 		final String legalNotice = 
-				"Copyright (C) 2015-2022  MBSE Training and Consulting Limited (www.executablembse.com)"
+				"Copyright (C) 2015-2023  MBSE Training and Consulting Limited (www.executablembse.com)"
 						+ "\n"
 						+ "SysMLHelperPlugin is free software: you can redistribute it and/or modify "
 						+ "it under the terms of the GNU General Public License as published by "
@@ -1265,7 +1265,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 }
 
 /**
- * Copyright (C) 2018-2022  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2018-2023  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 
