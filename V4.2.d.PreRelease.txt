@@ -816,12 +816,14 @@ V4.2.d.Rhp831.PreRelease (XX-XXX-XXXX):
 #603 09-DEC-2022: ExecutableMBSE: Added new Table View - Subsystem Table to the right-click to ease shortname tag setting for Subsystem Blocks (F.J.Chadburn)
 #604 09-DEC-2022: ExecutableMBSE: Adjusted Add New menus to say 'Diagram Or View' rather than just 'View' so they're elevated and easier to spot (F.J.Chadburn)
 #605 01-JAN-2023: ExecutableMBSE: Move the View and Viewpoint menus into a separate MBSE Method: View and Viewpoint submenu to make easier to find (F.J.Chadburn)
+#606 10-JAN-2023: ExecutableMBSE: Add initial support for data object and item block for use in functional flow diagrams (F.J.Chadburn)
 
 Backlog/Known issues
+- Does it make sense for ports to be shown in function flow
+- Select a set of function usages and roll them into a function block
 - Unexpected dialog appears when you draw a directed composition from domain block to a system block
-- When you double-click a package, don't bother opening up the select diagram to open idalog, as this confuses new users and is a less obvious workflow
+- When you double-click a package, don't bother opening up the select diagram to open dialog, as this confuses new users and is a less obvious workflow
 - Get profile to say UML/SysML Element rather than just SysML Element etc
-- Move View related menus into its own category
 - Could get autonaming of packages to help with naming post-fix convention
 - Why does FlowConnector stereotyyupe show
 - Get populate to populate logic and connectors if parts are puplated that link to them.

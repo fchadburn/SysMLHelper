@@ -32,10 +32,10 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 		ExecutableMBSE_RPApplicationListener theListener = 
 				new ExecutableMBSE_RPApplicationListener( "ExecutableMBSE", theContext );
-		
+
 		theListener.afterAddElement( theContext.getSelectedElement( false ) );
 	}
-	
+
 	private ExecutableMBSE_Context _context;
 
 	public ExecutableMBSE_RPApplicationListener( 
@@ -123,6 +123,11 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				afterAddForTimeEventUsage( (IRPInstance) modelElement );
 
 			} else if( modelElement instanceof IRPInstance && 
+					_context.hasStereotypeCalled( _context.NEW_TERM_FOR_DATA_OBJECT, modelElement )){
+
+				afterAddForDataObjectUsage( (IRPInstance) modelElement );
+
+			} else if( modelElement instanceof IRPInstance && 
 					_context.hasStereotypeCalled( _context.NEW_TERM_FOR_FLOW_FINAL_USAGE, modelElement )){
 
 				afterAddForFlowFinalUsage( (IRPInstance) modelElement );
@@ -173,9 +178,9 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 			} else if( theUserDefinedMetaClass.equals( _context.INTERNAL_BLOCK_DIAGRAM_SYSTEM ) ||
 					theUserDefinedMetaClass.equals( _context.INTERNAL_BLOCK_DIAGRAM_FUNCTIONAL ) ){
-				
+
 				afterAddForInternalBlockDiagram( (IRPStructureDiagram) modelElement );
-				
+
 			} else if( theUserDefinedMetaClass.equals( _context.SIMPLE_REQUIREMENTS_TABLE ) ){
 
 				setScopeOfTableToOwningPackageIfOwnerIs( 
@@ -190,15 +195,15 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 								_context.DESIGN_SYNTHESIS_SUBSYSTEM_PACKAGE },
 						(IRPTableView) modelElement,
 						true );
-				
+
 			} else if( theUserDefinedMetaClass.equals( _context.CONTEXT_DIAGRAM_FLOWS_TABLE ) ){
-				
+
 				setScopeOfTableToOwningPackageIfOwnerIs( 
 						new String[]{ _context.REQTS_ANALYSIS_CONTEXT_DIAGRAM_PACKAGE,
 								_context.REQTS_ANALYSIS_EXTERNAL_SIGNALS_PACKAGE },
 						(IRPTableView) modelElement,
 						true );
-				
+
 			} else if( theUserDefinedMetaClass.equals( _context.REQUIREMENT_TO_USE_CASE_TABLE ) ||
 					theUserDefinedMetaClass.equals( _context.USE_CASE_TO_REQUIREMENT_TABLE ) ||
 					theUserDefinedMetaClass.equals( _context.REQUIREMENT_TO_FUNCTION_BLOCK_TABLE ) ){
@@ -207,7 +212,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 						new String[]{ _context.REQTS_ANALYSIS_REQUIREMENT_PACKAGE }, 
 						(IRPTableView) modelElement,
 						false );
-				
+
 			} else if( modelElement instanceof IRPPackage &&
 					_context.hasStereotypeCalled( _context.REQTS_ANALYSIS_WORKING_COPY_PACKAGE, modelElement ) ){
 
@@ -234,19 +239,19 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			String theOwnersName = theOwner.getName();
 
 			Pattern pattern = Pattern.compile( "(.*)_(.*Pkg)" );
-			
+
 			Matcher matcher = pattern.matcher( theOwnersName );
 
 			boolean matchFound = matcher.find();
-			
+
 			if( matchFound ){
 
 				String theProposedName = null;
-				
+
 				if( matcher.group(2) != null ){
-					
+
 					theProposedName = matcher.group(1) + "_WorkingCopy" + matcher.group(2);
-					
+
 					String theUniqueName = _context.determineUniqueNameBasedOn( theProposedName, "Package", theOwner );
 
 					_context.debug( "Renamed " + _context.elInfo( thePkg ) + " to " + theUniqueName );
@@ -256,12 +261,12 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			}
 		}		
 	}
-	
+
 	private void setScopeOfTableToOwningPackageIfOwnerIs(
 			String[] theUserDefinedMetaClasses,
 			IRPTableView theView,
 			boolean isRename ){
-		
+
 		IRPModelElement theOwner = theView.getOwner();
 
 		if( theOwner instanceof IRPPackage &&
@@ -276,9 +281,9 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 					_context.elInfo( theView ) + " to " + _context.elInfo( theOwner ) );
 
 			theView.setScope( theScopedEls );
-			
+
 			if( isRename ){
-				
+
 				String theProposedName = _context.TABLE_VIEW_PREFIX + " " + theOwner.getName();
 				String theUniqueName = _context.determineUniqueNameBasedOn( theProposedName, "TableView", theOwner );
 
@@ -299,10 +304,10 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			GraphNodeResizer theResizer = new GraphNodeResizer( theGraphNode, _context );
 			theResizer.performResizing();
 		}		    
-		
+
 		setDiagramNameToOwningClassifierIfAppropriate( theDiagram, theOwner );
 	}
-	
+
 	private void afterAddForInternalBlockDiagram(
 			IRPStructureDiagram theDiagram ){
 
@@ -313,21 +318,21 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 	private void setDiagramNameToOwningClassifierIfAppropriate(
 			IRPDiagram theDiagram, 
 			IRPModelElement theOwner ){
-		
+
 		if( theOwner instanceof IRPClassifier ){
 
 			Pattern pattern = Pattern.compile( "(.*)_\\d+$");
-		    Matcher matcher = pattern.matcher( theDiagram.getName() );
-		    boolean matchFound = matcher.find();
-		    
-		    if( matchFound ){
-				
+			Matcher matcher = pattern.matcher( theDiagram.getName() );
+			boolean matchFound = matcher.find();
+
+			if( matchFound ){
+
 				String preFix = matcher.group(1);
-				
+
 				String theProposedName = preFix + theOwner.getName();		
 				String theUniqueName = _context.
 						determineUniqueNameBasedOn( theProposedName, theDiagram.getMetaClass(), theOwner );
-				
+
 				theDiagram.setName( theUniqueName );
 			}
 		}
@@ -618,7 +623,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 					_context.get_rhpAppID(), 
 					theInstance.getGUID(), 
 					theGraphEl.getDiagram().getGUID() );
-			
+
 			/*
 			IRPPackage theOwningPackage = _context.getOwningPackageFor( theInstance );
 
@@ -736,6 +741,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		}
 	}
 
+
 	private void afterAddForTimeEventUsage(
 			IRPInstance theInstance ){
 
@@ -758,6 +764,19 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			_context.setPortDirectionFor( thePort, "Out", "Untyped" );
 			IRPGraphElement thePortGraphEl = _context.getGraphElIfOnlyOneExistsFor( thePort );
 			thePortGraphEl.setGraphicalProperty( "Position", theNodeInfo.getTopRightX() + "," + theNodeInfo.getMiddleY() );
+		}
+	}
+
+	private void afterAddForDataObjectUsage(
+			IRPInstance theInstance ){
+
+		IRPGraphElement theGraphEl = _context.getGraphElIfOnlyOneExistsFor( theInstance );		
+
+		// Only do this for parts, not directed compositions
+		if( theGraphEl instanceof IRPGraphNode ){
+
+			GraphNodeResizer theResizer = new GraphNodeResizer( (IRPGraphNode) theGraphEl, _context);
+			theResizer.performResizing();
 		}
 	}
 
@@ -899,12 +918,14 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			IRPModelElement theEl ){
 
 		IRPClassifier theParentFunctionBlock = null;
+		String theUserDefinedMetaClass = theEl.getUserDefinedMetaClass();
 
 		//_context.info( "getParentFunctionBlockFor checking " + _context.elInfo( theEl ) + 
 		//		" owned by " + _context.elInfo( theEl.getOwner() ) );
 
 		if( theEl instanceof IRPClassifier && 
-				theEl.getUserDefinedMetaClass().equals( _context.FUNCTION_BLOCK ) ){
+				( theUserDefinedMetaClass.equals( _context.FUNCTION_BLOCK ) || 
+						theUserDefinedMetaClass.equals( _context.ITEM_BLOCK ) ) ){
 
 			theParentFunctionBlock = (IRPClassifier) theEl;
 
@@ -990,21 +1011,21 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			}
 
 			if( theParentFunctionBlock != null ){
-				
+
 				try {
 					//_context.debug( "Adding satisfy dependency from " + 
 					//		_context.elInfo( theParentFunctionBlock ) + " to " + 
 					//		_context.elInfo( modelElement ) );
-					
+
 					IRPDependency theDependency = theParentFunctionBlock.addDependencyTo( modelElement );
 					theDependency.setStereotype( _context.getStereotypeForSatisfaction() );
-					
+
 				} catch( Exception e ){
 					_context.info( "Unable to apply satisfy dependency from " + 
 							_context.elInfo( theParentFunctionBlock ) + " to " + 
 							_context.elInfo( modelElement ) + ", e=" + e.getMessage() );
 				}
-				
+
 				if( theDiagram != null ){
 
 					IRPCollection theCollection = _context.createNewCollection();
@@ -1311,22 +1332,22 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 					theLink.getToPort() != null || 
 					theLink.getFromSysMLPort() != null || 
 					theLink.getToSysMLPort() != null ){
-				
+
 				//_context.debug( "skip link due to ports for  " + _context.elInfo( theLink ) + 
 				//		" owned by " + _context.elInfo( theLink.getOwner() ) );
-				
+
 			} else if( (theLink.getUserDefinedMetaClass().equals( 
 					_context.FLOW_CONNECTOR ) &&
 					fromUserDefinedMetaClass.equals( 
 							_context.FUNCTION_USAGE ) &&
+					toUserDefinedMetaClass.equals( 
+							_context.FUNCTION_USAGE ) || 
+					(theLink.getUserDefinedMetaClass().equals( 
+							_context.FLOW_CONNECTOR ) &&
+							fromUserDefinedMetaClass.equals( 
+									_context.FUNCTION_BLOCK ) &&
 							toUserDefinedMetaClass.equals( 
-									_context.FUNCTION_USAGE ) || 
-									(theLink.getUserDefinedMetaClass().equals( 
-											_context.FLOW_CONNECTOR ) &&
-											fromUserDefinedMetaClass.equals( 
-													_context.FUNCTION_BLOCK ) &&
-													toUserDefinedMetaClass.equals( 
-															_context.FUNCTION_BLOCK )) ) ){
+									_context.FUNCTION_BLOCK )) ) ){
 
 				boolean isContinue = false;
 
@@ -1357,14 +1378,14 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 					_context.SUBSYSTEM_USAGE ) &&
 					toUserDefinedMetaClass.equals( 
 							_context.SUBSYSTEM_USAGE ) ) ||
-							( fromUserDefinedMetaClass.equals( 
-									_context.SYSTEM_USAGE ) &&
-									toUserDefinedMetaClass.equals( 
-											_context.OBJECT ) ) ||
-											( toUserDefinedMetaClass.equals( 
-													_context.SYSTEM_USAGE ) &&
-													fromUserDefinedMetaClass.equals( 
-															_context.OBJECT ) )){
+					( fromUserDefinedMetaClass.equals( 
+							_context.SYSTEM_USAGE ) &&
+							toUserDefinedMetaClass.equals( 
+									_context.OBJECT ) ) ||
+					( toUserDefinedMetaClass.equals( 
+							_context.SYSTEM_USAGE ) &&
+							fromUserDefinedMetaClass.equals( 
+									_context.OBJECT ) )){
 
 				PortsForLinksCreator theCreator = new PortsForLinksCreator( _context, theLink );
 				theCreator.createPortsBasedOnPropertyPolicies();

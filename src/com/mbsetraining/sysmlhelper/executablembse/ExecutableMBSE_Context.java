@@ -36,6 +36,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String SYSTEM_USAGE = "System Usage";
 	public final String FUNCTION_USAGE = "Function Usage";
 	public final String FUNCTION_BLOCK = "Function Block";
+	public final String ITEM_BLOCK = "Item Block";
 	public final String FEATURE_BLOCK = "Feature Block";
 	public final String FLOW_OUTPUT = "Flow Output";
 	public final String FLOW_INPUT = "Flow Input";
@@ -87,6 +88,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String NEW_TERM_FOR_FINAL_USAGE = "FinalUsage";
 	public final String NEW_TERM_FOR_FLOW_FINAL_USAGE = "FlowFinalUsage";
 	public final String NEW_TERM_FOR_TIME_EVENT_USAGE = "TimeEventUsage";
+	public final String NEW_TERM_FOR_DATA_OBJECT = "DataObject";
 	public final String NEW_TERM_FOR_SYSTEM_CONTEXT = "SystemUsage";
 	public final String NEW_TERM_FOR_ACTOR_PACKAGE = "ActorPackage";
 	public final String NEW_TERM_FOR_SYSTEM_ARCHITECTURE_PACKAGE = "SystemArchitecturePackage";
@@ -94,6 +96,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String AUTO_RIPPLE_STEREOTYPE = "AutoRipple";
 	public final String TABLE_VIEW_PREFIX = "table view - ";
 	public final String CONTEXT_DIAGRAM_PREFIX = "ctx - ";
+	public final String REQUIREMENTS_DIAGRAM_PREFIX = "req - ";
 	public final String USE_CASE_DIAGRAM_PREFIX = "uc - ";
 	public final String STATE_MACHINE_DIAGRAM_PREFIX = "stm - ";
 	public final String BLOCK_DEFINITION_DIAGRAM_PREFIX = "bdd - ";

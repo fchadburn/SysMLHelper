@@ -103,7 +103,9 @@ public class UseCaseMover {
 			
 			if( theRequirementDiagrams.isEmpty() ){
 				
-				IRPDiagram theRD = (IRPDiagram) theUseCase.addNewAggr( "ObjectModelDiagram", "RD - " + theOriginalName );
+				IRPDiagram theRD = (IRPDiagram) theUseCase.addNewAggr( 
+						"ObjectModelDiagram", _context.REQUIREMENTS_DIAGRAM_PREFIX + theOriginalName );
+				
 				theRD.changeTo( _context.REQUIREMENTS_DIAGRAM_SYSTEM );
 
 				String theUseCaseSize = theRD.getPropertyValue( 
