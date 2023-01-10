@@ -817,6 +817,7 @@ V4.2.d.Rhp831.PreRelease (XX-XXX-XXXX):
 #604 09-DEC-2022: ExecutableMBSE: Adjusted Add New menus to say 'Diagram Or View' rather than just 'View' so they're elevated and easier to spot (F.J.Chadburn)
 #605 01-JAN-2023: ExecutableMBSE: Move the View and Viewpoint menus into a separate MBSE Method: View and Viewpoint submenu to make easier to find (F.J.Chadburn)
 #606 10-JAN-2023: ExecutableMBSE: Add initial support for data object and item block for use in functional flow diagrams (F.J.Chadburn)
+#607 10-JAN-2023: ExecutableMBSE: See General::Graphics::AdditionalCompartments on function usages to include flow input and flow outputs (F.J.Chadburn)
 
 Backlog/Known issues
 - Does it make sense for ports to be shown in function flow
