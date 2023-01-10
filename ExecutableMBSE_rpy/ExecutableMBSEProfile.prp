@@ -544,7 +544,7 @@ Subject ObjectModelGe
 		Property ShowOperations Enum "All,None,Public,Explicit" "None"
 		Property ShowStereotype Enum "Label,Bitmap,None" "Label"
 		Property ShowStereotypeOfClass Bool "True"
-		Property ShowName Enum  "Full_path,Relative,Name_only,Type,Label,None" "Label"
+		Property ShowName Enum  "Full_path,Relative,Name_only,Type,Label,None" "Type"
 		Property ShowType Bool "False"
 		Property ShowPorts Bool "True"
 		Property ShowPortsInterfaces Bool "False"
