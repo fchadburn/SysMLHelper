@@ -19,12 +19,14 @@ import com.mbsetraining.sysmlhelper.common.RhapsodyComboBox;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.telelogic.rhapsody.core.*;
 
-public class CreateFunctionUsagePanel extends ExecutableMBSEBasePanel {
+public class CreateUsageBlockPanel extends ExecutableMBSEBasePanel {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 2477351662768784240L;
+	protected String _usageUserDefinedMetaClass;
+	protected String _blockUserDefinedMetaClass;
 	protected List<IRPModelElement> _existingEls;
 	protected JTextField _nameTextField = null;
 	protected RhapsodyComboBox _selectElComboBox = null;
@@ -50,11 +52,18 @@ public class CreateFunctionUsagePanel extends ExecutableMBSEBasePanel {
 
 			IRPDiagram theDiagram = theGraphNode.getDiagram();
 
-			launchThePanel(theAppID, theSelectedEl.getGUID(), theDiagram.getGUID());
+			launchThePanel(
+					context.FUNCTION_USAGE, 
+					context.FEATURE_BLOCK, 
+					theAppID, 
+					theSelectedEl.getGUID(), 
+					theDiagram.getGUID());
 		}
 	}
 
 	public static void launchThePanel(
+			String theUsageUserDefinedMetaClass,
+			String theBlockUserDefinedMetaClass,
 			String theAppID,
 			String theElementGUID,
 			String onDiagramGUID ){
@@ -66,12 +75,14 @@ public class CreateFunctionUsagePanel extends ExecutableMBSEBasePanel {
 
 				JFrame.setDefaultLookAndFeelDecorated( true );
 
-				JFrame frame = new JFrame( "Create or select a function usage" );
+				JFrame frame = new JFrame( "Create or select a " + theUsageUserDefinedMetaClass);
 
 				frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 
-				CreateFunctionUsagePanel thePanel = 
-						new CreateFunctionUsagePanel( 
+				CreateUsageBlockPanel thePanel = 
+						new CreateUsageBlockPanel( 
+								theUsageUserDefinedMetaClass,
+								theBlockUserDefinedMetaClass,
 								theAppID, 
 								theElementGUID,
 								onDiagramGUID );
@@ -84,7 +95,9 @@ public class CreateFunctionUsagePanel extends ExecutableMBSEBasePanel {
 		});
 	}
 
-	public CreateFunctionUsagePanel( 
+	public CreateUsageBlockPanel( 
+			String theUsageUserDefinedMetaClass,
+			String theBlockUserDefinedMetaClass,
 			String theAppID,
 			String theElementGUID,
 			String onDiagramGUID ){
@@ -93,16 +106,15 @@ public class CreateFunctionUsagePanel extends ExecutableMBSEBasePanel {
 
 		_context.debug( "CreateFunctionUsagePanel constructor was invoked" );
 
+		_usageUserDefinedMetaClass = theUsageUserDefinedMetaClass;
+		_blockUserDefinedMetaClass = theBlockUserDefinedMetaClass;	
 		_sourceDiagram = (IRPDiagram) _context.get_rhpPrj().findElementByGUID( onDiagramGUID );
-
 		_sourceElement = (IRPInstance) _context.get_rhpPrj().findElementByGUID( theElementGUID );
 
 		IRPCollection theGraphEls = _sourceDiagram.getCorrespondingGraphicElements( _context.getSelectedElement( true ) );
 
 		_graphNode = (IRPGraphNode) theGraphEls.getItem(1);
-
 		_existingEls = new ArrayList<IRPModelElement>();
-
 		_owningPackage = _context.getOwningPackageFor( _context.getSelectedElement( false ) );
 
 		//_context.info( "_sourceDiagram: "  + _context.elInfo( _sourceDiagram ) );
@@ -125,18 +137,18 @@ public class CreateFunctionUsagePanel extends ExecutableMBSEBasePanel {
 				theOwner,
 				_context.FUNCT_ANALYSIS_FEATURE_FUNCTION_PACKAGE,
 				"Object",
-				_context.FUNCTION_USAGE );
+				_usageUserDefinedMetaClass );
 
 		theElsToChooseFrom.addAll( _context.getExistingElementsBasedOn(
 				_owningPackage,
 				_context.FUNCT_ANALYSIS_FEATURE_FUNCTION_PACKAGE,
 				"Class",
-				_context.FUNCTION_BLOCK ) );
+				_blockUserDefinedMetaClass ) );
 
 		// We want to make it hard to add elements already on diagram, hence we remove that choice
 		@SuppressWarnings("unchecked")
 		List<IRPModelElement> theElsOnDiagram = _sourceDiagram.getElementsInDiagram().toList();
-		theElsToChooseFrom.removeAll(theElsOnDiagram);
+		theElsToChooseFrom.removeAll( theElsOnDiagram );
 
 		return theElsToChooseFrom;
 	}
@@ -165,7 +177,7 @@ public class CreateFunctionUsagePanel extends ExecutableMBSEBasePanel {
 			}
 		});
 
-		JLabel theLeadText = new JLabel( "Create " + _context.FUNCTION_BLOCK + " called:  " );
+		JLabel theLeadText = new JLabel( "Create " + _blockUserDefinedMetaClass + " called:  " );
 
 		thePanel.add( theLeadText );
 		thePanel.add( _nameTextField );
@@ -194,7 +206,7 @@ public class CreateFunctionUsagePanel extends ExecutableMBSEBasePanel {
 		
 		if (!isLegalName){
 
-			errorMsg += theChosenName + " is not legal as an identifier representing an function usage\n";				
+			errorMsg += theChosenName + " is not legal as an identifier representing an " + _blockUserDefinedMetaClass + "\n";				
 			isValid = false;
 
 		} else if ( theSelectedEl == null && theChosenName.contains( _blankName ) ){
@@ -270,11 +282,11 @@ public class CreateFunctionUsagePanel extends ExecutableMBSEBasePanel {
 						" under " + _context.elInfo( _owningPackage ) );
 
 				IRPClassifier theClassifier = (IRPClass) _owningPackage.addNewAggr( "Class", theChosenName );
-				theClassifier.changeTo( _context.FUNCTION_BLOCK );
+				theClassifier.changeTo( _blockUserDefinedMetaClass );
 
 				IRPModelElement theOwner = _sourceElement.getOwner();
 				IRPInstance theInstance = (IRPInstance) theOwner.addNewAggr( "Object", "" );
-				theInstance.changeTo( _context.FUNCTION_USAGE );
+				theInstance.changeTo( _usageUserDefinedMetaClass );
 				theInstance.setOtherClass( theClassifier );
 
 				switchElementOnDiagramTo( theInstance );				
@@ -327,7 +339,7 @@ public class CreateFunctionUsagePanel extends ExecutableMBSEBasePanel {
 }
 
 /**
- * Copyright (C) 2022  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2022-2023  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

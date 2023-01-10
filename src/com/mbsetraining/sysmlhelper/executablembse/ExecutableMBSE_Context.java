@@ -37,6 +37,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String FUNCTION_USAGE = "Function Usage";
 	public final String FUNCTION_BLOCK = "Function Block";
 	public final String ITEM_BLOCK = "Item Block";
+	public final String DATA_OBJECT = "Data Object";
 	public final String FEATURE_BLOCK = "Feature Block";
 	public final String FLOW_OUTPUT = "Flow Output";
 	public final String FLOW_INPUT = "Flow Input";

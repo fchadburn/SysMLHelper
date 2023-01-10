@@ -608,7 +608,6 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		}		
 	}
 
-
 	private void afterAddForFunctionUsage(
 			IRPInstance theInstance ){
 
@@ -619,66 +618,12 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 			_context.debug( "afterAddForFunctionUsage found a graphNode for " + _context.elInfo( theGraphEl.getModelObject() ) );
 
-			CreateFunctionUsagePanel.launchThePanel( 
+			CreateUsageBlockPanel.launchThePanel( 
+					_context.FUNCTION_USAGE,
+					_context.FUNCTION_BLOCK,
 					_context.get_rhpAppID(), 
 					theInstance.getGUID(), 
 					theGraphEl.getDiagram().getGUID() );
-
-			/*
-			IRPPackage theOwningPackage = _context.getOwningPackageFor( theInstance );
-
-			List<IRPModelElement> elsToChooseFrom = _context.findElementsWithMetaClassAndStereotype( 
-					"Class", "FunctionBlock", theOwningPackage, 1 );
-
-			if( !elsToChooseFrom.isEmpty() ){
-
-				IRPModelElement theSelectedElement =
-						UserInterfaceHelper.launchDialogToSelectElement( 
-								elsToChooseFrom, "Select existing function block to type the function usage with", true );
-
-				if( theSelectedElement instanceof IRPClassifier ){
-
-					IRPModelElement theOwner = theInstance.getOwner();
-
-					IRPInstance theExistingInstance = null;
-
-					@SuppressWarnings("unchecked")
-					List<IRPInstance> theCandidates = 
-					theOwner.getNestedElementsByMetaClass( "Instance", 0 ).toList();
-
-					for( IRPInstance theCandidate : theCandidates ){
-
-						IRPClassifier theClassifier = theCandidate.getOtherClass();
-
-						if( theClassifier != null && 
-								theClassifier.equals( theSelectedElement ) ){
-
-							theExistingInstance = theCandidate;
-							break;
-						}
-					}
-
-					if( theExistingInstance instanceof IRPInstance ){
-
-						boolean isContinue = UserInterfaceHelper.askAQuestion( 
-								"There is a FunctionUsage for " + 
-										_context.elInfo( theSelectedElement ) + " already.\n" +
-								"Do you want to populate this one, rather than create a new one?" );
-
-						if( isContinue ){						
-
-							switchGraphNodeFor( theInstance, theExistingInstance );
-
-						} else {
-							theInstance.setOtherClass( (IRPClassifier) theSelectedElement );
-						}
-
-					} else {
-
-						theInstance.setOtherClass( (IRPClassifier) theSelectedElement );
-					}			
-				}
-			}	*/	
 		}
 	}
 
@@ -777,6 +722,13 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 			GraphNodeResizer theResizer = new GraphNodeResizer( (IRPGraphNode) theGraphEl, _context);
 			theResizer.performResizing();
+			
+			CreateUsageBlockPanel.launchThePanel( 
+					_context.DATA_OBJECT,
+					_context.ITEM_BLOCK,
+					_context.get_rhpAppID(), 
+					theInstance.getGUID(), 
+					theGraphEl.getDiagram().getGUID() );
 		}
 	}
 
