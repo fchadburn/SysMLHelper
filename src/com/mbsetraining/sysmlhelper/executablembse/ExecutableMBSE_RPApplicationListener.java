@@ -699,7 +699,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 			GraphNodeResizer theResizer = new GraphNodeResizer( (IRPGraphNode) theGraphEl, _context);
 			theResizer.performResizing();
-			
+
 			CreateUsageBlockPanel.launchThePanel( 
 					_context.DATA_OBJECT,
 					_context.ITEM_BLOCK,
@@ -1189,32 +1189,42 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 					theLink.deleteFromProject();
 
-					// Only launch the create event dialog if it was a non-port to non-port connector that was drawn
-					if( isToPortCreationNeeded && 
+					if( fromSysMLPort instanceof IRPSysMLPort &&
+							fromSysMLPort.getOwner().getUserDefinedMetaClass().equals( _context.ITEM_BLOCK ) &&
+							fromSysMLPort.getType().getName().equals( "Untyped" ) &&
+							toSysMLPort instanceof IRPSysMLPort &&
+							toSysMLPort.getType().getName().equals( "Untyped" ) ) {
+
+						IRPClassifier theItemBlock = (IRPClassifier) fromSysMLPort.getOwner();
+
+						_context.info( "Setting " + _context.elInfo( fromSysMLPort ) + " to " + _context.elInfo( theItemBlock ) );
+						fromSysMLPort.setType( theItemBlock );
+
+						_context.info( "Setting " + _context.elInfo( toSysMLPort ) + " to " + _context.elInfo( theItemBlock ) );
+						toSysMLPort.setType( theItemBlock );
+						
+					} else if( toSysMLPort instanceof IRPSysMLPort &&
+								toSysMLPort.getOwner().getUserDefinedMetaClass().equals( _context.ITEM_BLOCK ) &&
+								toSysMLPort.getType().getName().equals( "Untyped" ) &&
+								fromSysMLPort instanceof IRPSysMLPort &&
+								fromSysMLPort.getType().getName().equals( "Untyped" ) ) {
+
+						IRPClassifier theItemBlock = (IRPClassifier) toSysMLPort.getOwner();
+
+						_context.info( "Setting " + _context.elInfo( fromSysMLPort ) + " to " + _context.elInfo( theItemBlock ) );
+						fromSysMLPort.setType( theItemBlock );
+
+						_context.info( "Setting " + _context.elInfo( toSysMLPort ) + " to " + _context.elInfo( theItemBlock ) );
+						toSysMLPort.setType( theItemBlock );
+							
+					} else if( isToPortCreationNeeded && 
 							isFromPortCreationNeeded ){
 
+						// Only launch the create event dialog if it was a non-port to non-port connector that was drawn
 						CreateEventForFlowConnectorPanel.launchThePanel( 
 								_context.get_rhpAppID(), 
 								newLink.getGUID(),
 								theDiagram.getGUID() );			
-					} else {
-						
-						/* WORK IN PROGRESS
-						_context.info( "isFromPortCreationNeeded = " + isFromPortCreationNeeded );
-						_context.info( "isFromPortTypeNeeded = " + isFromPortTypeNeeded );
-						_context.info( "isToPortCreationNeeded = " + isToPortCreationNeeded );
-						_context.info( "isToPortTypeNeeded = " + isToPortTypeNeeded );
-						_context.info( "fromPortType = " + _context.elInfo( fromPortType ) );
-						_context.info( "toPortType = " + _context.elInfo( toPortType ) );
-
-						if( !isFromPortCreationNeeded && 
-								fromPortType.getName().equals( "Untyped" ) &&
-								fromSysMLPort instanceof IRPSysMLPort &&
-								fromSysMLPort.getOwner().getUserDefinedMetaClass().equals( _context.ITEM_BLOCK ) ) {
-						
-							_context.info( "Use Item Block" );
-
-						}*/
 					}
 
 				} catch( Exception e ){
@@ -1602,7 +1612,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 }
 
 /**
- * Copyright (C) 2018-2022  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2018-2023  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

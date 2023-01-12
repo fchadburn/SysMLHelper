@@ -823,6 +823,7 @@ V4.2.d.Rhp831.PreRelease (XX-XXX-XXXX):
 #610 12-JAN-2023: ExecutableMBSE: Add icons for Flow Connector so it's easier to pick correct one when drawing functional flows (F.J.Chadburn)
 #611 12-JAN-2023: ExecutableMBSE: Allow flow input and flow output ports to be typed by Item Blocks, if needed (F.J.Chadburn)
 #612 12-JAN-2023: ExecutableMBSE: Get feature function package creator to create the initial bdd for the feature at same time (F.J.Chadburn) 
+#613 12-JAN-2023: ExecutableMBSE: Listener will type flow input/output's by the Item Block if one present when the flow connector is drawn (F.J.Chadburn)
 
 Backlog/Known issues
 - Does it make sense for ports to be shown in function flow
