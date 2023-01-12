@@ -811,7 +811,7 @@ V4.2.c.Rhp831.PreRelease (01-DEC-2022):
 #600 11-NOV-2022: ExecutableMBSE: Fix to function usage selection dialog to enable creation of new Block/Usages (F.J.Chadburn) 
 #601 17-NOV-2022: BusinessValue: Major reworking to use Views/Viewpoints from SysML and combine paths in custom views (F.J.Chadburn)
 
-V4.2.d.Rhp831.PreRelease (XX-XXX-XXXX):
+V4.2.d.Rhp831.PreRelease (12-JAN-2023):
 #602 09-DEC-2022: ExecutableMBSE: Renamed DomainBlock to ContextBlock due to confusion with some users over the term Domain (F.J.Chadburn)
 #603 09-DEC-2022: ExecutableMBSE: Added new Table View - Subsystem Table to the right-click to ease shortname tag setting for Subsystem Blocks (F.J.Chadburn)
 #604 09-DEC-2022: ExecutableMBSE: Adjusted Add New menus to say 'Diagram Or View' rather than just 'View' so they're elevated and easier to spot (F.J.Chadburn)
