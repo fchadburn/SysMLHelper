@@ -553,36 +553,42 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 	private void afterAddForSystemUsage(
 			IRPInstance modelElement ){
 
-		IRPPackage theOwningPackage = _context.getOwningPackageFor( modelElement );
+		// Listener only operates on context diagram to avoid issues when drawing compositions on bdds
+		if( _context.isElementOnlyOnOneDiagramWith( 
+				_context.CONTEXT_DIAGRAM, modelElement ) ){
 
-		List<IRPModelElement> existingEls = _context.getExistingElementsBasedOn( 
-				theOwningPackage, _context.NEW_TERM_FOR_SYSTEM_ARCHITECTURE_PACKAGE, "Class", _context.SYSTEM_BLOCK );
+			IRPPackage theOwningPackage = _context.getOwningPackageFor( modelElement );
 
-		if( !existingEls.isEmpty() ){
+			List<IRPModelElement> elsToChooseFrom = 
+					_context.getExistingElementsBasedOn( 
+							theOwningPackage, 
+							_context.NEW_TERM_FOR_SYSTEM_ARCHITECTURE_PACKAGE, 
+							"Class", 
+							_context.SYSTEM_BLOCK );
+			
+			elsToChooseFrom.addAll(
+					getExistingGlobalObjectsBasedOn( 
+							theOwningPackage, _context.NEW_TERM_FOR_SYSTEM_USAGE ) );
 
-			List<IRPModelElement> elsToChooseFrom = new ArrayList<>();
-			elsToChooseFrom.addAll( existingEls );
+			elsToChooseFrom.remove( modelElement ); // Don't include this element
 
-			List<IRPModelElement> existingActorUsages = 
-					getExistingGlobalObjectsBasedOn( theOwningPackage, _context.NEW_TERM_FOR_SYSTEM_USAGE );
+			if( !elsToChooseFrom.isEmpty() ){
 
-			existingActorUsages.remove( modelElement ); // Don't include this element
+				IRPModelElement theSelectedElement =
+						UserInterfaceHelper.launchDialogToSelectElement( 
+								elsToChooseFrom, "Select existing " + _context.SYSTEM_BLOCK + 
+								" or " + _context.SYSTEM_USAGE, true );
 
-			elsToChooseFrom.addAll( existingActorUsages );
+				if( theSelectedElement instanceof IRPInstance ){
 
-			IRPModelElement theSelectedElement =
-					UserInterfaceHelper.launchDialogToSelectElement( 
-							elsToChooseFrom, "Select existing system block or system usage", true );
+					switchGraphNodeFor( modelElement, (IRPInstance) theSelectedElement );
 
-			if( theSelectedElement instanceof IRPInstance ){
+				} else if( theSelectedElement instanceof IRPClassifier ){
 
-				switchGraphNodeFor( modelElement, (IRPInstance) theSelectedElement );
-
-			} else if( theSelectedElement instanceof IRPClassifier ){
-
-				modelElement.setOtherClass( (IRPClassifier) theSelectedElement );
-			}
-		}		
+					modelElement.setOtherClass( (IRPClassifier) theSelectedElement );
+				}
+			}		
+		}
 	}
 
 	private void afterAddForFunctionUsage(
@@ -977,7 +983,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			}
 		}
 	}
-	
+
 	private void afterAddForFlow(
 			IRPFlow modelElement ){
 
@@ -996,10 +1002,10 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 						" to " + _context.elInfo( theOwningPkg ) + ", e=" + e.getMessage() );
 			}
 		}
-		
+
 		if( _context.isElementOnlyOnOneDiagramWith( 
 				_context.CONTEXT_DIAGRAM, modelElement ) ) {
-			
+
 			CreateEventForFlowPanel.launchThePanel( _context.get_rhpAppID() );
 		}
 	}
@@ -1205,12 +1211,12 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 						_context.info( "Setting " + _context.elInfo( toSysMLPort ) + " to " + _context.elInfo( theItemBlock ) );
 						toSysMLPort.setType( theItemBlock );
-						
+
 					} else if( toSysMLPort instanceof IRPSysMLPort &&
-								toSysMLPort.getOwner().getUserDefinedMetaClass().equals( _context.ITEM_BLOCK ) &&
-								toSysMLPort.getType().getName().equals( "Untyped" ) &&
-								fromSysMLPort instanceof IRPSysMLPort &&
-								fromSysMLPort.getType().getName().equals( "Untyped" ) ) {
+							toSysMLPort.getOwner().getUserDefinedMetaClass().equals( _context.ITEM_BLOCK ) &&
+							toSysMLPort.getType().getName().equals( "Untyped" ) &&
+							fromSysMLPort instanceof IRPSysMLPort &&
+							fromSysMLPort.getType().getName().equals( "Untyped" ) ) {
 
 						IRPClassifier theItemBlock = (IRPClassifier) toSysMLPort.getOwner();
 
@@ -1219,7 +1225,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 						_context.info( "Setting " + _context.elInfo( toSysMLPort ) + " to " + _context.elInfo( theItemBlock ) );
 						toSysMLPort.setType( theItemBlock );
-							
+
 					} else if( isToPortCreationNeeded && 
 							isFromPortCreationNeeded ){
 
