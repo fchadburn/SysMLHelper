@@ -977,7 +977,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			}
 		}
 	}
-
+	
 	private void afterAddForFlow(
 			IRPFlow modelElement ){
 
@@ -990,16 +990,19 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				modelElement.setOwner( theOwningPkg );	
 
 			} catch( Exception e ){
-				_context.warning( "Exception in afterAddForFlow trying to move " + _context.elInfo( modelElement ) + 
+				_context.warning( "Exception in afterAddForFlow trying to move " + 
+						_context.elInfo( modelElement ) + 
 						" owned by " + _context.elInfo( modelElement.getOwner() ) + 
 						" to " + _context.elInfo( theOwningPkg ) + ", e=" + e.getMessage() );
 			}
 		}
-
-		CreateEventForFlowPanel.launchThePanel( _context.get_rhpAppID() );
+		
+		if( _context.isElementOnlyOnOneDiagramWith( 
+				_context.CONTEXT_DIAGRAM, modelElement ) ) {
+			
+			CreateEventForFlowPanel.launchThePanel( _context.get_rhpAppID() );
+		}
 	}
-
-
 
 	private void afterAddForFlowConnector(
 			IRPLink theLink ){

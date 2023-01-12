@@ -3065,6 +3065,25 @@ public abstract class BaseContext {
 			}
 		}
 	}
+	
+	public boolean isElementOnlyOnOneDiagramWith(
+			String theUserDefinedMetaClass,
+			IRPModelElement modelElement ) {
+		
+		boolean isElementOnlyOnOneDiagramWith = false;
+		
+		IRPGraphElement theGraphEl = getGraphElIfOnlyOneExistsFor( modelElement );
+
+		if( theGraphEl != null ){
+			IRPDiagram theDiagram = theGraphEl.getDiagram();
+			
+			if( theDiagram.getUserDefinedMetaClass().equals( theUserDefinedMetaClass ) ) {				
+				isElementOnlyOnOneDiagramWith = true;
+			}
+		}
+		
+		return isElementOnlyOnOneDiagramWith;
+	}
 }
 
 /**

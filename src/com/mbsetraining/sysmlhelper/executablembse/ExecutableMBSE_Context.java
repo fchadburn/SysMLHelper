@@ -44,6 +44,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String GUARDED_FLOW_OUTPUT = "Guarded Flow Output";
 	public final String OBJECT = "Object";
 	public final String SYSTEM_BLOCK = "System Block";
+	public final String CONTEXT_DIAGRAM = "Context Diagram";
 	public final String BLOCK_DEFINITION_DIAGRAM_SYSTEM = "Block Definition Diagram - System";
 	public final String INTERNAL_BLOCK_DIAGRAM_SYSTEM = "Internal Block Diagram - System";
 	public final String INTERNAL_BLOCK_DIAGRAM_FUNCTIONAL = "Internal Block Diagram - Functional";
