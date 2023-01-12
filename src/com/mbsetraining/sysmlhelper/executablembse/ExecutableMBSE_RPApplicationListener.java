@@ -305,37 +305,14 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			theResizer.performResizing();
 		}		    
 
-		setDiagramNameToOwningClassifierIfAppropriate( theDiagram, theOwner );
+		_context.setDiagramNameToOwningClassifierIfAppropriate( theDiagram, theOwner );
 	}
 
 	private void afterAddForInternalBlockDiagram(
 			IRPStructureDiagram theDiagram ){
 
 		IRPModelElement theOwner = theDiagram.getOwner();    
-		setDiagramNameToOwningClassifierIfAppropriate( theDiagram, theOwner );
-	}
-
-	private void setDiagramNameToOwningClassifierIfAppropriate(
-			IRPDiagram theDiagram, 
-			IRPModelElement theOwner ){
-
-		if( theOwner instanceof IRPClassifier ){
-
-			Pattern pattern = Pattern.compile( "(.*)_\\d+$");
-			Matcher matcher = pattern.matcher( theDiagram.getName() );
-			boolean matchFound = matcher.find();
-
-			if( matchFound ){
-
-				String preFix = matcher.group(1);
-
-				String theProposedName = preFix + theOwner.getName();		
-				String theUniqueName = _context.
-						determineUniqueNameBasedOn( theProposedName, theDiagram.getMetaClass(), theOwner );
-
-				theDiagram.setName( theUniqueName );
-			}
-		}
+		_context.setDiagramNameToOwningClassifierIfAppropriate( theDiagram, theOwner );
 	}
 
 	private void afterAddForFlowOutput(
@@ -1220,6 +1197,24 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 								_context.get_rhpAppID(), 
 								newLink.getGUID(),
 								theDiagram.getGUID() );			
+					} else {
+						
+						/* WORK IN PROGRESS
+						_context.info( "isFromPortCreationNeeded = " + isFromPortCreationNeeded );
+						_context.info( "isFromPortTypeNeeded = " + isFromPortTypeNeeded );
+						_context.info( "isToPortCreationNeeded = " + isToPortCreationNeeded );
+						_context.info( "isToPortTypeNeeded = " + isToPortTypeNeeded );
+						_context.info( "fromPortType = " + _context.elInfo( fromPortType ) );
+						_context.info( "toPortType = " + _context.elInfo( toPortType ) );
+
+						if( !isFromPortCreationNeeded && 
+								fromPortType.getName().equals( "Untyped" ) &&
+								fromSysMLPort instanceof IRPSysMLPort &&
+								fromSysMLPort.getOwner().getUserDefinedMetaClass().equals( _context.ITEM_BLOCK ) ) {
+						
+							_context.info( "Use Item Block" );
+
+						}*/
 					}
 
 				} catch( Exception e ){

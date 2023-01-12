@@ -822,6 +822,7 @@ V4.2.d.Rhp831.PreRelease (XX-XXX-XXXX):
 #609 10-JAN-2023: ExceutableMBSE: Add listener support to enable data object and item blocks to be created at same time on functional flows (F.J.Chadburn)
 #610 12-JAN-2023: ExecutableMBSE: Add icons for Flow Connector so it's easier to pick correct one when drawing functional flows (F.J.Chadburn)
 #611 12-JAN-2023: ExecutableMBSE: Allow flow input and flow output ports to be typed by Item Blocks, if needed (F.J.Chadburn)
+#612 12-JAN-2023: ExecutableMBSE: Get feature function package creator to create the initial bdd for the feature at same time (F.J.Chadburn) 
 
 Backlog/Known issues
 - Does it make sense for ports to be shown in function flow
@@ -830,9 +831,9 @@ Backlog/Known issues
 - When you double-click a package, don't bother opening up the select diagram to open dialog, as this confuses new users and is a less obvious workflow
 - Get profile to say UML/SysML Element rather than just SysML Element etc
 - Could get autonaming of packages to help with naming post-fix convention
-- Why does FlowConnector stereotyyupe show
-- Get populate to populate logic and connectors if parts are puplated that link to them.
-- Add different icons for Flow Connector and Function Connectors so that clearer in toolbar
+- Why does FlowConnector stereotype show in certain models?
+- Get populate to populate logic and connectors if parts are populated that link to them.
+- Add different icon for Function Connectors so that clearer in toolbar
 - hep file applicable tos need looking at where they have lower case base type
 - Want a new type of a block for flowing element to be defined
 - Add Flow to the drawing toolbar for ibd - system?

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
+import com.mbsetraining.sysmlhelper.graphelementhelpers.GraphNodeResizer;
 import com.telelogic.rhapsody.core.*;
 
 public class FeatureFunctionPkgCreator {
@@ -88,14 +89,25 @@ public class FeatureFunctionPkgCreator {
 				addDependencyBetween( theWorkingCopyPkg, theUseCaseOwnerPkg );
 		
 		theDependency.highLightElement();
+		
+		IRPObjectModelDiagram theDiagram = 
+				(IRPObjectModelDiagram) theFeature.addNewAggr( "ObjectModelDiagram", "" );
+		
+		theDiagram.changeTo( _context.BLOCK_DEFINITION_DIAGRAM_SYSTEM );
+		
+		_context.setDiagramNameToOwningClassifierIfAppropriate( theDiagram, theFeature );
 
+		// The resizer will deal with width and height, hence just use 50,50 to start with
+		IRPGraphNode theGraphNode = theDiagram.addNewNodeForElement( theFeature, 450, 150, 50, 50 );
+		GraphNodeResizer theResizer = new GraphNodeResizer( theGraphNode, _context );
+		theResizer.performResizing();
+		
 		theFeature.highLightElement();
 	}
-
 }
 
 /**
- * Copyright (C) 2022  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2022-2023  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

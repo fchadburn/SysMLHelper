@@ -13,6 +13,8 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
@@ -3040,11 +3042,33 @@ public abstract class BaseContext {
 
 		return theGraphEl;
 	}
+	
+	public void setDiagramNameToOwningClassifierIfAppropriate(
+			IRPDiagram theDiagram, 
+			IRPModelElement theOwner ){
 
+		if( theOwner instanceof IRPClassifier ){
+
+			Pattern pattern = Pattern.compile( "(.*)_\\d+$");
+			Matcher matcher = pattern.matcher( theDiagram.getName() );
+			boolean matchFound = matcher.find();
+
+			if( matchFound ){
+
+				String preFix = matcher.group(1);
+
+				String theProposedName = preFix + theOwner.getName();		
+				String theUniqueName = determineUniqueNameBasedOn( 
+						theProposedName, theDiagram.getMetaClass(), theOwner );
+
+				theDiagram.setName( theUniqueName );
+			}
+		}
+	}
 }
 
 /**
- * Copyright (C) 2021-2022  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2021-2023  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 
