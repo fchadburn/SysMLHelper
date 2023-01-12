@@ -820,6 +820,8 @@ V4.2.d.Rhp831.PreRelease (XX-XXX-XXXX):
 #607 10-JAN-2023: ExecutableMBSE: See General::Graphics::AdditionalCompartments on function usages to include flow input and flow outputs (F.J.Chadburn)
 #608 10-JAN-2023: ExecutableMBSE: Tighten up AllowedTypes to filter pick-lists, e.g. subsystem usage can only be typed by subsystem block (F.J.Chadburn)
 #609 10-JAN-2023: ExceutableMBSE: Add listener support to enable data object and item blocks to be created at same time on functional flows (F.J.Chadburn)
+#610 12-JAN-2023: ExecutableMBSE: Add icons for Flow Connector so it's easier to pick correct one when drawing functional flows (F.J.Chadburn)
+#611 12-JAN-2023: ExecutableMBSE: Allow flow input and flow output ports to be typed by Item Blocks, if needed (F.J.Chadburn)
 
 Backlog/Known issues
 - Does it make sense for ports to be shown in function flow

@@ -11,7 +11,7 @@
 			<_id type="a">GUID 801c8dc2-1109-41eb-8815-e3fb68b9a344</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">IconsPkg</_name>
-			<_modifiedTime type="a">1.5.2023::15:42:9</_modifiedTime>
+			<_modifiedTime type="a">1.11.2023::15:14:24</_modifiedTime>
 			<_defaultComposite type="s">GUID 64eceb80-328e-445f-90f1-4b11f0a04bea</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
@@ -41,6 +41,8 @@
 				<value>GUID 78a5d702-3461-4338-b799-9607bcd76550</value>
 				<value>GUID 307b2628-4ff4-4636-9842-80d48be087d6</value>
 				<value>GUID 58c3b385-12eb-4f28-8034-b08ff05fdb85</value>
+				<value>GUID 4958d2c1-5a6e-4379-aa76-9c2c7e120710</value>
+				<value>GUID 8016b3cd-7338-4d49-b490-e5e53dfaf46e</value>
 				<value>GUID 965160bc-fa43-4d48-bc27-29b7919027ff</value>
 				<value>GUID ac6607b8-6f8d-499f-a6c4-a30f82563b13</value>
 				<value>GUID a22e2683-e39b-4e54-8c11-b1b63543d798</value>
@@ -274,6 +276,20 @@
 			<_modifiedTime type="a">5.6.2022::7:11:3</_modifiedTime>
 			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
 			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\FinalUsageDiagramImage.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID 4958d2c1-5a6e-4379-aa76-9c2c7e120710</_id>
+			<_name type="a">FlowConnector.ico</_name>
+			<_modifiedTime type="a">1.11.2023::15:13:26</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\FlowConnector.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID 8016b3cd-7338-4d49-b490-e5e53dfaf46e</_id>
+			<_name type="a">FlowConnectors.ico</_name>
+			<_modifiedTime type="a">1.11.2023::15:13:59</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\FlowConnectors.ico</_LastKnownFullPath>
 		</IEmbededFile>
 		<IEmbededFile type="e">
 			<_id type="a">GUID 965160bc-fa43-4d48-bc27-29b7919027ff</_id>

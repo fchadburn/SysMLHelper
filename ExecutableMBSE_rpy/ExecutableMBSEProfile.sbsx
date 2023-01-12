@@ -1689,7 +1689,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">1.10.2023::17:8:7</_modifiedTime>
+			<_modifiedTime type="a">1.12.2023::8:48:42</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -12059,7 +12059,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 3307dbc4-6282-4d53-88b2-50e3de5ff8c2</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Diagrams</_name>
-			<_modifiedTime type="a">1.10.2023::17:3:43</_modifiedTime>
+			<_modifiedTime type="a">1.11.2023::16:37:30</_modifiedTime>
 			<_lastID type="a">11</_lastID>
 			<_defaultComposite type="s">GUID af3ccc20-8ac1-47a2-8c5f-be1a84c1550e</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -14173,7 +14173,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">RequirementToFunctionBlockTable</_name>
-			<_modifiedTime type="a">1.10.2023::17:3:43</_modifiedTime>
+			<_modifiedTime type="a">1.11.2023::16:37:30</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -15619,7 +15619,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID ec717f1d-0b3e-427a-89fd-8b516b2337c8</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Elements</_name>
-			<_modifiedTime type="a">1.10.2023::17:3:37</_modifiedTime>
+			<_modifiedTime type="a">1.11.2023::16:37:25</_modifiedTime>
 			<_lastID type="a">15</_lastID>
 			<_defaultComposite type="s">GUID d51fb0a3-38d7-4d7a-9f45-35fd12f6ff2a</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -16721,7 +16721,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 												
 												<IProperty type="e">
 													<_Name type="a">AllowedTypes</_Name>
-													<_Value type="a">Event</_Value>
+													<_Value type="a">Event,Item Block</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -16762,7 +16762,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">FlowInput</_name>
-			<_modifiedTime type="a">1.5.2023::17:9:16</_modifiedTime>
+			<_modifiedTime type="a">1.11.2023::16:37:25</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -16796,7 +16796,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 												
 												<IProperty type="e">
 													<_Name type="a">AllowedTypes</_Name>
-													<_Value type="a">Event</_Value>
+													<_Value type="a">Event,Item Block</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -16837,7 +16837,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">FlowOutput</_name>
-			<_modifiedTime type="a">10.28.2022::14:48:17</_modifiedTime>
+			<_modifiedTime type="a">1.11.2023::16:37:25</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -18110,7 +18110,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 1ed082fc-a722-40c7-819a-784f0ab68e62</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Relations</_name>
-			<_modifiedTime type="a">1.5.2023::18:13:36</_modifiedTime>
+			<_modifiedTime type="a">1.11.2023::15:15:45</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_defaultComposite type="s">GUID 6d41af48-18e4-4504-919f-6182efce13ce</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -18136,11 +18136,23 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">4</size>
+												<size type="a">6</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
 													<_Value type="a">Comment,Constraint,Problem,Rationale,Conform,Dependency,ControlledFile,HyperLink,Tag</_Value>
 													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">BrowserGroupIcon</_Name>
+													<_Value type="a">IconsPkg\FlowConnectors.ico</_Value>
+													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">BrowserIcon</_Name>
+													<_Value type="a">IconsPkg\FlowConnector.ico</_Value>
+													<_Type type="a">File</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
@@ -18174,7 +18186,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">FlowConnector</_name>
-			<_modifiedTime type="a">1.5.2023::18:13:36</_modifiedTime>
+			<_modifiedTime type="a">1.11.2023::15:15:45</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
