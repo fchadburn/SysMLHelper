@@ -11,7 +11,7 @@
 			<_id type="a">GUID 801c8dc2-1109-41eb-8815-e3fb68b9a344</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">IconsPkg</_name>
-			<_modifiedTime type="a">1.11.2023::15:14:24</_modifiedTime>
+			<_modifiedTime type="a">1.29.2023::14:21:20</_modifiedTime>
 			<_defaultComposite type="s">GUID 64eceb80-328e-445f-90f1-4b11f0a04bea</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
@@ -92,6 +92,14 @@
 				<value>GUID d62e2136-f784-4237-a4ae-21fbb23a64e7</value>
 				<value>GUID c03a8404-9344-42fa-84b8-03d7f1f1c72d</value>
 				<value>GUID a954b4b0-0b1e-4ce3-afeb-1aafbcad6ed2</value>
+				<value>GUID ed4f2acc-1648-4d2a-a075-dfc09306b25d</value>
+				<value>GUID 764f8bb0-cc6a-4383-9cf6-49bfe6eb3351</value>
+				<value>GUID 5f6cb033-2d4c-4447-b8fa-d3944387c6fd</value>
+				<value>GUID 60bf6dbc-a6ce-4d60-b7a1-e930d27c0bd9</value>
+				<value>GUID 7af53590-d8c6-4c50-8b20-a2a932a114bb</value>
+				<value>GUID 317a6895-480f-44d9-81d7-1a47ac21bd05</value>
+				<value>GUID 9c184cbe-1704-41a2-b6f7-407f20f4bdb0</value>
+				<value>GUID cb25c989-c32d-466d-a419-a9f2f80acf7e</value>
 				<value>GUID 64eceb80-328e-445f-90f1-4b11f0a04bea</value>
 			</AggregatesList>
 		</ISubsystem>
@@ -633,6 +641,62 @@
 			<_modifiedTime type="a">1.5.2023::15:42:9</_modifiedTime>
 			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
 			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\ItemBlocks.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID ed4f2acc-1648-4d2a-a075-dfc09306b25d</_id>
+			<_name type="a">FunctionalArchitecturePackage.ico</_name>
+			<_modifiedTime type="a">1.29.2023::14:20:5</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\FunctionalArchitecturePackage.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID 764f8bb0-cc6a-4383-9cf6-49bfe6eb3351</_id>
+			<_name type="a">FunctionalArchitecturePackages.ico</_name>
+			<_modifiedTime type="a">1.29.2023::13:38:15</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\FunctionalArchitecturePackages.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID 5f6cb033-2d4c-4447-b8fa-d3944387c6fd</_id>
+			<_name type="a">LogicalArchitecturePackage.ico</_name>
+			<_modifiedTime type="a">1.29.2023::14:19:1</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\LogicalArchitecturePackage.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID 60bf6dbc-a6ce-4d60-b7a1-e930d27c0bd9</_id>
+			<_name type="a">LogicalArchitecturePackages.ico</_name>
+			<_modifiedTime type="a">1.29.2023::14:20:24</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\LogicalArchitecturePackages.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID 7af53590-d8c6-4c50-8b20-a2a932a114bb</_id>
+			<_name type="a">OperationalArchitecturePackage.ico</_name>
+			<_modifiedTime type="a">1.29.2023::14:20:47</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\OperationalArchitecturePackage.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID 317a6895-480f-44d9-81d7-1a47ac21bd05</_id>
+			<_name type="a">OperationalArchitecturePackages.ico</_name>
+			<_modifiedTime type="a">1.29.2023::14:20:57</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\OperationalArchitecturePackages.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID 9c184cbe-1704-41a2-b6f7-407f20f4bdb0</_id>
+			<_name type="a">PhysicalArchitecturePackage.ico</_name>
+			<_modifiedTime type="a">1.29.2023::14:21:10</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\PhysicalArchitecturePackage.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID cb25c989-c32d-466d-a419-a9f2f80acf7e</_id>
+			<_name type="a">PhysicalArchitecturePackages.ico</_name>
+			<_modifiedTime type="a">1.29.2023::14:21:20</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\PhysicalArchitecturePackages.ico</_LastKnownFullPath>
 		</IEmbededFile>
 		<IClass type="e">
 			<_id type="a">GUID 64eceb80-328e-445f-90f1-4b11f0a04bea</_id>

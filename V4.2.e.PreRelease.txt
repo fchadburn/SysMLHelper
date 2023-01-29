@@ -831,8 +831,11 @@ V4.2.e.Rhp831.PreRelease (XX-XXX-XXXX): TBD
 #616 27-JAN-2023: ExecutableMBSE: From 9.0.1 testing, fix default size for subsystem block so it's same size as system block when dropped on bdd (F.J.Chadburn)
 #617 27-JAN-2023: ExecutableMBSE: Add menu to create requirement diagram - system under a system block or a subsystem block (F.J.Chadburn)
 #618 29-JAN-2023: ExecutableMBSE: Allow requirements to be owned by system and subsystem blocks so that auto move functionality could be block specific (F.J.Chadburn)
+#619 29-JAN-2023: ExecutableMBSE: Initial introduction of super-package types and their icons, e.g., operational/functional/logical/physical architecture packages (F.J.Chadburn)
 
 Backlog/Known issues
+- Move component into UnusedPkg so that it's not at root of model, i.e. doesn't split C and D
+- Work out a way of getting a hyperlink icon on a use case to go to activity diagram
 - For Requirement filter if Note is anchored to element then requirement doesn't filter out stays on diagram, is there a way to improve this
 - Does it make sense for ports to be shown in function flow
 - Select a set of function usages and roll them into a function block
