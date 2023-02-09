@@ -25,6 +25,7 @@ import com.telelogic.rhapsody.core.*;
 
 public abstract class BaseContext {
 
+	private static final String UNUSED_PKG = "UnusedPkg";
 	private static final String NOT_USED_COMP = "NotUsedComp";
 	private static final String NOT_USED_CONFIG = "NotUsedConfig";
 
@@ -2006,33 +2007,66 @@ public abstract class BaseContext {
 		deleteIfPresent( "Model1", "ObjectModelDiagram", _rhpPrj );
 		deleteIfPresent( "Default", "Package", _rhpPrj );
 
-		IRPModelElement theDefaultComponent = 
-				_rhpPrj.findElementsByFullName( "DefaultComponent", "Component" );
-
-		if( theDefaultComponent != null ){
-
-			try {
-				theDefaultComponent.setName( NOT_USED_COMP );
-
-			} catch( Exception e ){
-				error( "Unable to change name of " + elInfo( theDefaultComponent ) + 
-						" to " + NOT_USED_COMP + ", e=" + e.getMessage()  );
+		IRPModelElement theNotUsedComponent = 
+				_rhpPrj.findElementsByFullName( NOT_USED_COMP, "Component" );
+		
+		if( theNotUsedComponent != null ) {
+			
+			// Move to unused pkg if already in model
+			if( theNotUsedComponent.getOwner().equals( _rhpPrj  ) ) {
+				
+				IRPModelElement theUnusedPkg = getExistingOrCreateNewUnusedPkg();
+				
+				theNotUsedComponent.setOwner( theUnusedPkg );
 			}
+			
+		} else {
+			
+			IRPModelElement theDefaultComponent = 
+					_rhpPrj.findElementsByFullName( "DefaultComponent", "Component" );
 
-			IRPModelElement theDefaultConfig = 
-					theDefaultComponent.findNestedElement( "DefaultConfig", "Configuration" );
-
-			if( theDefaultConfig != null ){
+			if( theDefaultComponent != null ){
 
 				try {
-					theDefaultConfig.setName( NOT_USED_CONFIG );
+					theDefaultComponent.setName( NOT_USED_COMP );
+					
+					IRPModelElement theUnusedPkg = getExistingOrCreateNewUnusedPkg();
+
+					theDefaultComponent.setName( NOT_USED_COMP );
+					theDefaultComponent.setOwner( theUnusedPkg );
 
 				} catch( Exception e ){
-					error( "Unable to change name of " + elInfo( theDefaultConfig ) + 
-							" to " + NOT_USED_CONFIG + ", e=" + e.getMessage()  );
-				}			
+					error( "Unable to change name of " + elInfo( theDefaultComponent ) + 
+							" to " + NOT_USED_COMP + ", e=" + e.getMessage()  );
+				}
+
+				IRPModelElement theDefaultConfig = 
+						theDefaultComponent.findNestedElement( "DefaultConfig", "Configuration" );
+
+				if( theDefaultConfig != null ){
+
+					try {
+						theDefaultConfig.setName( NOT_USED_CONFIG );
+
+					} catch( Exception e ){
+						error( "Unable to change name of " + elInfo( theDefaultConfig ) + 
+								" to " + NOT_USED_CONFIG + ", e=" + e.getMessage()  );
+					}			
+				}
 			}
 		}
+	}
+
+	private IRPModelElement getExistingOrCreateNewUnusedPkg() {
+		
+		IRPModelElement theUnusedPkg = 
+				_rhpPrj.findElementsByFullName( UNUSED_PKG, "Package" );
+		
+		if( theUnusedPkg == null ) {
+			theUnusedPkg = _rhpPrj.addPackage( UNUSED_PKG );
+		}
+		
+		return theUnusedPkg;
 	}
 
 	public String getStringForTagCalled( 
