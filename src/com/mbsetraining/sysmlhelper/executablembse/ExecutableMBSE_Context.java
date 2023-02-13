@@ -94,6 +94,8 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String NEW_TERM_FOR_SYSTEM_CONTEXT = "SystemUsage";
 	public final String NEW_TERM_FOR_ACTOR_PACKAGE = "ActorPackage";
 	public final String NEW_TERM_FOR_SYSTEM_ARCHITECTURE_PACKAGE = "SystemArchitecturePackage";
+	public final String NEW_TERM_FOR_SCENARIOS_PACKAGE = "ScenariosPackage";
+	public final String NEW_TERM_FOR_DESIGN_PACKAGE = "22 Funct Analysis - Design Package";
 	public final String TESTBENCH_STEREOTYPE = "Testbench";
 	public final String AUTO_RIPPLE_STEREOTYPE = "AutoRipple";
 	public final String TABLE_VIEW_PREFIX = "table view - ";

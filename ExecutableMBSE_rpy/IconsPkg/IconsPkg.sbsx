@@ -11,7 +11,7 @@
 			<_id type="a">GUID 801c8dc2-1109-41eb-8815-e3fb68b9a344</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">IconsPkg</_name>
-			<_modifiedTime type="a">1.29.2023::14:21:20</_modifiedTime>
+			<_modifiedTime type="a">2.13.2023::14:11:37</_modifiedTime>
 			<_defaultComposite type="s">GUID 64eceb80-328e-445f-90f1-4b11f0a04bea</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
@@ -100,6 +100,10 @@
 				<value>GUID 317a6895-480f-44d9-81d7-1a47ac21bd05</value>
 				<value>GUID 9c184cbe-1704-41a2-b6f7-407f20f4bdb0</value>
 				<value>GUID cb25c989-c32d-466d-a419-a9f2f80acf7e</value>
+				<value>GUID d25fe11b-1cb2-4c28-9627-fcdc50e7e8da</value>
+				<value>GUID 6973a033-e8f7-4ee3-a2ef-cecd36b3c16d</value>
+				<value>GUID f41e221a-49e4-4a56-beb1-1769345f3580</value>
+				<value>GUID 3041ba50-84aa-4b4c-be72-533d1ce957dd</value>
 				<value>GUID 64eceb80-328e-445f-90f1-4b11f0a04bea</value>
 			</AggregatesList>
 		</ISubsystem>
@@ -697,6 +701,34 @@
 			<_modifiedTime type="a">1.29.2023::14:21:20</_modifiedTime>
 			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
 			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\PhysicalArchitecturePackages.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID d25fe11b-1cb2-4c28-9627-fcdc50e7e8da</_id>
+			<_name type="a">ScenariosPackage.ico</_name>
+			<_modifiedTime type="a">2.13.2023::13:44:39</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\ScenariosPackage.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID 6973a033-e8f7-4ee3-a2ef-cecd36b3c16d</_id>
+			<_name type="a">ScenariosPackages.ico</_name>
+			<_modifiedTime type="a">2.13.2023::13:44:52</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\ScenariosPackages.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID f41e221a-49e4-4a56-beb1-1769345f3580</_id>
+			<_name type="a">DesignPackage.ico</_name>
+			<_modifiedTime type="a">2.13.2023::14:11:28</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\DesignPackage.ico</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID 3041ba50-84aa-4b4c-be72-533d1ce957dd</_id>
+			<_name type="a">DesignPackages.ico</_name>
+			<_modifiedTime type="a">2.13.2023::14:11:37</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\IconsPkg\DesignPackages.ico</_LastKnownFullPath>
 		</IEmbededFile>
 		<IClass type="e">
 			<_id type="a">GUID 64eceb80-328e-445f-90f1-4b11f0a04bea</_id>

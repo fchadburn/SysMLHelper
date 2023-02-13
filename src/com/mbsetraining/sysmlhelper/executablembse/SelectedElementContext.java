@@ -911,21 +911,21 @@ public class SelectedElementContext {
 		if (theRootPackage != null) {
 
 			setElementTagValueOn(theRootPackage,
-					_context.FUNCT_ANALYSIS_SCENARIOS_PACKAGE,
+					_context.NEW_TERM_FOR_SCENARIOS_PACKAGE,
 					tagNameForAssemblyBlockUnderDev, theAssemblyBlockUnderDev);
 
 			setElementTagValueOn(theRootPackage,
-					_context.FUNCT_ANALYSIS_SCENARIOS_PACKAGE,
+					_context.NEW_TERM_FOR_SCENARIOS_PACKAGE,
 					tagNameForPackageForActorsAndTest,
 					thePackageForActorsAndTest);
 
 			setElementTagValueOn(theRootPackage,
-					_context.FUNCT_ANALYSIS_SCENARIOS_PACKAGE,
+					_context.NEW_TERM_FOR_SCENARIOS_PACKAGE,
 					tagNameForPackageForEventsAndInterfaces,
 					thePackageForEventsAndInterfaces);
 
 			setElementTagValueOn(theRootPackage,
-					_context.FUNCT_ANALYSIS_SCENARIOS_PACKAGE,
+					_context.NEW_TERM_FOR_SCENARIOS_PACKAGE,
 					tagNameForPackageForBlocks, thePackageForBlocks);
 		}
 	}
