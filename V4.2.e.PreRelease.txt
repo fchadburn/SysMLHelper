@@ -833,9 +833,9 @@ V4.2.e.Rhp831.PreRelease (XX-XXX-XXXX): TBD
 #618 29-JAN-2023: ExecutableMBSE: Allow requirements to be owned by system and subsystem blocks so that auto move functionality could be block specific (F.J.Chadburn)
 #619 29-JAN-2023: ExecutableMBSE: Initial introduction of super-package types and their icons, e.g., operational/functional/logical/physical architecture packages (F.J.Chadburn)
 #620 09-FEB-2023: ExecutableMBSE: Move component into UnusedPkg so that it's not at root of model, i.e. doesn't split C and D (F.J.Chadburn)
+#621 13-FEB-2023: ExecutableMBSE: When you create textual activity via the add new menu, get it to be created with template rather than needing to use MBSE menu (F.J.Chadburn)
 
 Backlog/Known issues
-- When you create textual activity via the add new menu, get it to be created with the template
 - Work out a way of getting a hyperlink icon on a use case to go to activity diagram
 - For Requirement filter if Note is anchored to element then requirement doesn't filter out stays on diagram, is there a way to improve this
 - Does it make sense for ports to be shown in function flow

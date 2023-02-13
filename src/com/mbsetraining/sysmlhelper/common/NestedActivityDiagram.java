@@ -146,7 +146,7 @@ public class NestedActivityDiagram {
 	public void createNestedActivityDiagram(
 			IRPModelElement forOwner, 
 			String withUnadornedName,
-			String basedOnPropertyKey ){
+			String theTemplateName ){
 
 		String theName = withUnadornedName;
 
@@ -171,14 +171,7 @@ public class NestedActivityDiagram {
 			_context.warning( _context.elInfo( forOwner ) + " already has a nested activity diagram called " + theName + " hence using " + theName + " instead" );
 		}
 
-		IRPModelElement theTemplate = null;
-
-		try {
-			theTemplate = _context.getTemplateForActivityDiagram( forOwner, basedOnPropertyKey );
-
-		} catch( Exception e ){
-			_context.error( "createNestedActivityDiagram exception trying to find template based on property " + basedOnPropertyKey);
-		}
+		IRPModelElement theTemplate = _context.getTemplateForActivityDiagram( forOwner, theTemplateName );
 
 		IRPFlowchart theFlowchart = null;
 
@@ -212,7 +205,7 @@ public class NestedActivityDiagram {
 				theStatechart.createGraphics();
 
 			} catch( Exception e ){
-				_context.debug("Exception in createNestedActivityDiagram, creating graphics, e=");
+				_context.debug( "Exception in createNestedActivityDiagram, creating graphics, e=");
 			}
 		}
 
@@ -227,7 +220,7 @@ public class NestedActivityDiagram {
 }
 
 /**
- * Copyright (C) 2016-2022  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2016-2023  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

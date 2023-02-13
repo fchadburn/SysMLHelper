@@ -97,6 +97,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String TESTBENCH_STEREOTYPE = "Testbench";
 	public final String AUTO_RIPPLE_STEREOTYPE = "AutoRipple";
 	public final String TABLE_VIEW_PREFIX = "table view - ";
+	public final String ACTIVITY_DIAGRAM_PREFIX = "act - ";
 	public final String CONTEXT_DIAGRAM_PREFIX = "ctx - ";
 	public final String REQUIREMENTS_DIAGRAM_PREFIX = "req - ";
 	public final String USE_CASE_DIAGRAM_PREFIX = "uc - ";
@@ -149,6 +150,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	protected String _autoGenerationOfPortsForLinksPolicy;
 	protected String _autoGenerationOfPortsForLinksDefaultType;
 	protected String _bleedForegroundColor;
+	protected String _templateForActivityDiagramValue;
 
 	protected IRPStereotype _stereotypeForTestbench;
 	protected IRPStereotype _stereotypeForTimeElapsedActor;
@@ -893,6 +895,20 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		return _isPopulateOptionHidden;
 	}
+	
+	public String getTemplateForActivityDiagramValue(){
+
+		
+		if( _templateForActivityDiagramValue == null ){		
+			
+			_templateForActivityDiagramValue = getStringPropertyValueFromRhp(
+					_rhpPrj,
+					"ExecutableMBSEProfile.RequirementsAnalysis.TemplateForActivityDiagram" ,
+					"template_for_act" );			
+		}
+
+		return _templateForActivityDiagramValue;
+	}
 
 	public boolean getIsCreateParametricSubpackageSelected(){
 
@@ -1551,7 +1567,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 }
 
 /**
- * Copyright (C) 2021-2022  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2021-2023  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

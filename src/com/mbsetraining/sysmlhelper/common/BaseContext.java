@@ -1594,25 +1594,27 @@ public abstract class BaseContext {
 
 	public IRPFlowchart getTemplateForActivityDiagram(
 			IRPModelElement basedOnContext,
-			String basedOnPropertyKey ){
+			String theTemplateName ){
 
 		IRPFlowchart theTemplate = null;
 
-		String theTemplateName = 
-				basedOnContext.getPropertyValue( 
-						basedOnPropertyKey );
+		try {
 
-		if( theTemplateName != null && 
-				!theTemplateName.trim().isEmpty() ){
+			if( theTemplateName != null && 
+					!theTemplateName.trim().isEmpty() ){
 
-			theTemplate = (IRPFlowchart) basedOnContext.getProject().findNestedElementRecursive(
-					theTemplateName, 
-					"ActivityDiagram" );
+				theTemplate = (IRPFlowchart) basedOnContext.getProject().findNestedElementRecursive(
+						theTemplateName, 
+						"ActivityDiagram" );
 
-			if( theTemplate == null ){
-				_rhpLog.warning( "Warning, unable to find template called " + 
-						theTemplateName + " named in TemplateForActivityDiagram property" );
+				if( theTemplate == null ){
+					_rhpLog.warning( "Warning, unable to find template called " + 
+							theTemplateName + " named in TemplateForActivityDiagram property" );
+				}
 			}
+			
+		} catch( Exception e ){
+			_rhpLog.error( "Exception in getTemplateForActivityDiagram, e=" + e.getMessage() );
 		}
 
 		_rhpLog.debug( "getTemplateForActivityDiagram, found " + _rhpLog.elInfo( theTemplate ) );
@@ -1774,6 +1776,33 @@ public abstract class BaseContext {
 			_rhpLog.info(theGraphicalProperty.getKey() + "=" + theGraphicalProperty.getValue());
 		}
 		_rhpLog.info("---------------------------"); 
+	}
+	
+	public void dumpGraphicalPropertiesFor(
+			IRPDiagram theDiagram ) {
+		
+		if( theDiagram != null ) {
+			
+			@SuppressWarnings("unchecked")
+			List<IRPGraphElement> theGraphEls = theDiagram.getGraphicalElements().toList();
+			
+			_rhpLog.info( "There are " + theGraphEls.size() + " graph elements" );
+
+			int count = 0;
+
+			for( IRPGraphElement theGraphEl : theGraphEls ){
+				
+				count++;
+				
+				_rhpLog.info( "========================================================" );
+				_rhpLog.info( count + "." );
+				_rhpLog.info( "========================================================" );
+
+				dumpGraphicalPropertiesFor( theGraphEl );
+			}
+		}
+		
+		_rhpLog.info( "========================================================" );
 	}
 
 	public String buildStringFromModelEls(

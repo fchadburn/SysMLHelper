@@ -33,7 +33,25 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		ExecutableMBSE_RPApplicationListener theListener = 
 				new ExecutableMBSE_RPApplicationListener( "ExecutableMBSE", theContext );
 
-		theListener.afterAddElement( theContext.getSelectedElement( false ) );
+		IRPModelElement theSelectedEl = theContext.getSelectedElement( false );
+		theListener.afterAddElement( theSelectedEl );
+		
+		if( theSelectedEl instanceof IRPDiagram ) {
+			
+			IRPDiagram theDiagram = (IRPDiagram)theSelectedEl;
+
+			// 4,32,32,204,32,204,998,32,998
+			IRPGraphNode theNoteNode =
+					theDiagram.addNewNodeByType( 
+							"Note", 62, 62, 172, 966 );
+			
+			theNoteNode.setGraphicalProperty( 
+					"TextDisplayMode",
+					"Specification" );
+			
+			theNoteNode.setGraphicalProperty(
+					"Text",
+					"Hello" );		}
 	}
 
 	private ExecutableMBSE_Context _context;
@@ -82,6 +100,11 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				afterAddForCallOperation( 
 						(IRPCallOperation) modelElement );
 
+			} else if( modelElement instanceof IRPFlowchart && 
+					_context.hasStereotypeCalled( _context.NEW_TERM_FOR_TEXTUAL_ACTIVITY_DIAGRAM, modelElement )){
+				
+				afterAddForTextualActivity( (IRPFlowchart) modelElement );
+				
 			} else if( modelElement instanceof IRPInstance && 
 					_context.hasStereotypeCalled( _context.NEW_TERM_FOR_ACTOR_USAGE, modelElement )){
 
@@ -260,6 +283,157 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				}
 			}
 		}		
+	}
+	
+	private void afterAddForTextualActivity(
+			IRPFlowchart theDiagram ){
+
+		// Need to programmatically create the diagram as cloning and
+		// deleting old one results in Rhapsody closing
+		
+		IRPModelElement theOwner = theDiagram.getOwner();
+		
+		if( theOwner.getName().equals("TopLevel") &&
+				theOwner.getOwner() instanceof IRPPackage ) {
+		
+			theOwner = theOwner.getOwner();
+		}
+		
+		//_context.info( "theOwner is + " + _context.elInfo( theOwner ) );
+
+		String theProposedName = _context.ACTIVITY_DIAGRAM_PREFIX + theOwner.getName().replaceAll(" -\\s*(\\d*)$", "");
+		
+		String theUniqueName = 
+				_context.determineUniqueNameBasedOn( 
+						theProposedName, "ActivityDiagram", theOwner );
+		
+		//_context.info( "theUniqueName is + " + theUniqueName );
+		
+		theDiagram.setName( theUniqueName );
+		
+		// Create the graph elements
+		
+		IRPState theRootState = theDiagram.getRootState();
+		
+		IRPAcceptEventAction theAcceptEvent = 
+				theDiagram.addAcceptEventAction( "<Type text-based Use Case Trigger>", theRootState );
+		
+		IRPTransition theDefaultTransition = theAcceptEvent.createDefaultTransition( theRootState );
+
+		IRPState theAction = (IRPState) theDiagram.addNewAggr( "State", "" );
+		theAction.setStateType("Action");
+		theAction.setName( "action_0" );
+		
+		IRPTransition theTransition = theAcceptEvent.addTransition( theAction );
+		
+		IRPConstraint thePreConditionConstraint = (IRPConstraint) theDiagram.addNewAggr( "Constraint", "UC pre-conditions" );
+		thePreConditionConstraint.setSpecification( "<type any pre-conditions else delete from model>" );
+		thePreConditionConstraint.changeTo( "Use Case Precondition" );
+		
+		IRPState theTerminationState = theRootState.addState( "" );
+		theTerminationState.setStateType( "LocalTermination" );
+		theTerminationState.setName( "activityfinal" );
+		
+		IRPConstraint thePostConditionConstraint = (IRPConstraint) theDiagram.addNewAggr( "Constraint", "UC post-conditions" );
+		thePostConditionConstraint.setSpecification( "<type any post-conditions else delete from model>" );
+		thePostConditionConstraint.changeTo( "Use Case Postcondition" );	
+		
+		// Create the graph elements
+		
+		IRPActivityDiagram theAD = theDiagram.getFlowchartDiagram();
+		
+		// 4,286,152,669,152,669,192,286,192
+		IRPGraphNode theAcceptEventNode = 
+				theAD.addNewNodeForElement( 
+						theAcceptEvent, 286, 152, 383, 40 );
+	
+		// 2,481,113,481,152
+		IRPGraphEdge theDefaultTransitionEdge = 
+				theAD.addNewEdgeForElement(
+						theDefaultTransition, null, 481, 113, theAcceptEventNode, 481, 152 );
+		
+		// 4,402,235,558,235,558,306,402,306
+		IRPGraphNode theActionNode = 
+				theAD.addNewNodeForElement( 
+						theAction, 402, 235, 156, 71 );
+		
+		// 2,480,192,480,235
+		@SuppressWarnings("unused")
+		IRPGraphEdge theTransitionEdge = 
+				theAD.addNewEdgeForElement(
+						theTransition, theAcceptEventNode, 480, 192, theActionNode, 480, 235 );
+		
+		// 4,551,21,769,21,769,109,551,109
+		IRPGraphNode thePreConditionConstraintNode = 
+				theAD.addNewNodeForElement( 
+						thePreConditionConstraint, 551, 21, 218, 88 );
+		
+		// 2,50,0,551,48
+		@SuppressWarnings("unused")
+		IRPGraphEdge theAnchorToPreCondition = 
+				theAD.addNewEdgeByType( 
+						"Anchor", theDefaultTransitionEdge, 552, 217, thePreConditionConstraintNode, 481, 121 );
+		
+		// Height=26, Width=25, Position=475,910
+		IRPGraphNode theTerminationStateNode =
+				theAD.addNewNodeForElement( 
+						theTerminationState, 475, 910, 25, 26 );
+		
+		// 4,567,900,785,900,785,1004,567,1004
+		IRPGraphNode thePostConditionConstraintNode = 
+				theAD.addNewNodeForElement( 
+						thePostConditionConstraint, 567, 900, 218, 104 );
+		
+		// SourcePosition=500,925, TargetPosition=567,941
+		@SuppressWarnings("unused")
+		IRPGraphEdge theAnchorToPostCondition = 
+				theAD.addNewEdgeByType( 
+						"Anchor", theTerminationStateNode, 500, 925, thePostConditionConstraintNode, 567, 941 );
+
+		String theNoteText = "A use case is a set of sequences of actions, including variants, that yield an observable result of value to an actor. In SysML we can capture use case steps using a simplified Activity Diagram (similar to a flow chart).\r\n"
+				+ "\r\n"
+				+ "Tips:\r\n"
+				+ "\r\n"
+				+ "1. Start with a sunny day scenario. Typically, a trigger from an actor will initiate the use case. We can capture interactions with Actors as Accept/Send Events/Actions and capture things the system does as text-based Actions. \r\n"
+				+ "\r\n"
+				+ "2. Once we have a sunny day scenario, we can capture the rainy days, i.e. what happens when things go wrong (alternative or exception flows). We can capture alternate flows using decision nodes. If necessary, precede the decision node with an action to state the check. \r\n"
+				+ "\r\n"
+				+ "3. As a convention use Guard conditions on control flows to capture conditions causing a flow to be taken, e.g., [vehicle is moving].\r\n"
+				+ "\r\n"
+				+ "4. Interruptible regions with Accept Events can also be useful, e.g., to show an interrupt that terminates a set of actions, together with the resulting flow to an action outside.\r\n"
+				+ "\r\n"
+				+ "5.  Verify the use case steps with stakeholders. Is this what you expect?\r\n"
+				+ "\r\n"
+				+ "6. Once verified steps, create requirements for each step and trace from the action to the requirement, e.g., using a «derive» dependency.\r\n"
+				+ "\r\n"
+				+ "7. Rules have been relaxed on this diagram to allow free-flowing text. Take care not to move diagram into an area of the model that does not allow this.\r\n"
+				+ "\r\n"
+				+ "8. The right-click menu provides a mechanism to check the diagram for traceability completeness. This will also rename the actions in the browser. Run this periodically.\r\n"
+				+ "\r\n"
+				+ "9. A menu command is also provided to move the requirements you create into the RequirementsPkg, ready for Gateway sync with DOORS\r\n"
+				+ "\r\n"
+				+ "10. Delete this note, if you want!\r\n";
+				
+		// 4,32,32,204,32,204,998,32,998
+		IRPGraphNode theNoteNode =
+				theAD.addNewNodeByType( 
+						"Note", 32, 32, 172, 966 );
+		
+		theNoteNode.setGraphicalProperty( 
+				"TextDisplayMode",
+				"Specification" );
+		
+		theNoteNode.setGraphicalProperty(
+				"Text",
+				theNoteText );
+		
+		theNoteNode.setGraphicalProperty( 
+				"TextFontName",
+				"Tahoma" );
+
+		theNoteNode.setGraphicalProperty( 
+				"TextFontSize",
+				"8" );
 	}
 
 	private void setScopeOfTableToOwningPackageIfOwnerIs(
@@ -1422,13 +1596,20 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 					if( theAnswer == true ){
 
 						_context.debug( "User chose to create a new activity diagram" );
+						
+						IRPFlowchart fc = ((IRPUseCase) pModelElement).addActivityDiagram();
+						fc.changeTo( _context.NEW_TERM_FOR_TEXTUAL_ACTIVITY_DIAGRAM );
+						fc.createGraphics();
+						
+						afterAddForTextualActivity( fc );
+						
+						if( fc != null ){
 
-						NestedActivityDiagram theHelper = new NestedActivityDiagram(_context);
-
-						theHelper.createNestedActivityDiagram( 
-								pModelElement, 
-								NestedActivityDiagram._prefix + pModelElement.getName(),
-								"ExecutableMBSEProfile.RequirementsAnalysis.TemplateForActivityDiagram" );
+							fc.setIsAnalysisOnly( 1 ); // so that call op right-click parameter sync menus appear
+							IRPStatechartDiagram theStatechart = fc.getStatechartDiagram();
+							theStatechart.highLightElement();
+							fc.setAsMainBehavior();
+						}
 					}
 
 					theReturn = true; // don't launch the Features  window									

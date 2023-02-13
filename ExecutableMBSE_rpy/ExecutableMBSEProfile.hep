@@ -26,14 +26,6 @@ isVisible3=1
 DLLServerCompatible3=1
 
 #REM: Add pop-up menu
-name4=MBSE Method: Requirements Analysis\Create nested Activity Diagram based on template
-isPluginCommand4=1
-command4=InvokeExecutableMBSEHelper
-applicableTo4=UseCase,Function Block,22 Feature Function Package
-isVisible4=1
-DLLServerCompatible4=1
-
-#REM: Add pop-up menu
 name5=MBSE Method: Requirements Analysis\Perform traceability checks for elements on Activity Diagram
 isPluginCommand5=1
 command5=InvokeExecutableMBSEHelper
@@ -58,7 +50,7 @@ isVisible7=1
 DLLServerCompatible7=1
 
 #REM: Add pop-up menu
-name8=MBSE Method: Requirements Analysis\Update nested activity diagram name(s) to reflect use case name(s)
+name8=MBSE Method: Requirements Analysis\Rename activity diagrams to reflect owning use case
 isPluginCommand8=1
 command8=InvokeExecutableMBSEHelper
 applicableTo8=UseCase,12 Use Case Package,Package,ActivityDiagram,Textual Activity,Call Operation Activity,UseCaseDiagram,Enhanced Use Case Diagram

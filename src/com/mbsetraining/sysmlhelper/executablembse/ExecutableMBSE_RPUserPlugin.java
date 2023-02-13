@@ -430,12 +430,6 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					_context.browseAndAddUnit( theSelectedEl.getProject(), true );
 
 				} else if( menuItem.equals( _settings.getString( 
-						"executablembseplugin.CreateNestedADMenu" ) ) ){
-
-					NestedActivityDiagram theHelper = new NestedActivityDiagram(_context);
-					theHelper.createNestedActivityDiagramsFor( theSelectedEls );
-
-				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.ReportOnNamingAndTraceabilityMenu" ) ) ){
 
 					ActivityDiagramChecker.launchPanelsFor( theSelectedEls, _context );
