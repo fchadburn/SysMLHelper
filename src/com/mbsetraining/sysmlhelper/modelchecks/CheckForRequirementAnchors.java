@@ -1,4 +1,4 @@
-package com.mbsetraining.sysmlhelper.modelchecking;
+package com.mbsetraining.sysmlhelper.modelchecks;
 
 import java.util.List;
 
