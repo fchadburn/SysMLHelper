@@ -836,6 +836,9 @@ V4.2.e.Rhp831.PreRelease (14-FEB-2023):
 #621 13-FEB-2023: ExecutableMBSE: When you create textual activity via the add new menu, get it to be created with template rather than needing to use MBSE menu (F.J.Chadburn)
 #622 13-FEB-2023: ExecutableMBSE: First move of the scenarios package and its children into the full metamodel, including right-click menus (F.J.Chadburn)
 
+V4.2.f.Rhp831.PreRelease (XX-XXX-XXXX):
+#623 01-MAR-2023: ExecutableMBSE: Added model check to warn of requirements that own anchors to model elements rather than other way round (F.J.Chadburn) 
+
 Backlog/Known issues
 - Interfaces Package doesn't have unique icon yet
 - Work out a way of getting a hyperlink icon on a use case to go to activity diagram

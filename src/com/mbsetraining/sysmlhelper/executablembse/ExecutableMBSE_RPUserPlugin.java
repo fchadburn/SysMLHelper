@@ -30,6 +30,7 @@ import com.mbsetraining.sysmlhelper.featurefunctionpkgcreator.FeatureFunctionPkg
 import com.mbsetraining.sysmlhelper.gateway.CreateGatewayProjectPanel;
 import com.mbsetraining.sysmlhelper.gateway.MarkedAsDeletedPanel;
 import com.mbsetraining.sysmlhelper.gateway.MoveRequirements;
+import com.mbsetraining.sysmlhelper.modelchecking.CheckForRequirementAnchors;
 import com.mbsetraining.sysmlhelper.populateparts.PopulatePartsPanel;
 import com.mbsetraining.sysmlhelper.pubsubportcreation.PortCreator;
 import com.mbsetraining.sysmlhelper.rolluptraceabilitytotransition.RollUpTraceabilityToTheTransitionPanel;
@@ -57,6 +58,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 	protected ConfigurationSettings _settings;
 	protected ExecutableMBSE_RPApplicationListener _listener = null;
 	protected List<String> _startLinkGuids = new ArrayList<>();
+	protected CheckForRequirementAnchors _checkForAnchors;
 
 	// called when plug-in is loaded
 	public void RhpPluginInit(
@@ -108,6 +110,9 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 		_context.info( "The ExecutableMBSE profile version is " + _context.getPluginVersion() );
 
 		_settings.checkIfSetupProjectIsNeeded( false, true );
+		
+		_checkForAnchors = new CheckForRequirementAnchors( 
+				_context.get_rhpApp().getExternalCheckerRegistry() );
 	}
 
 	// called when the plug-in pop-up menu  is selected
