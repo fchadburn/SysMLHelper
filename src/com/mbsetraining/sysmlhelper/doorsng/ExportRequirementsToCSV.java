@@ -2,7 +2,10 @@ package com.mbsetraining.sysmlhelper.doorsng;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map.Entry;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -19,9 +22,29 @@ public class ExportRequirementsToCSV {
 
 		_context = context;
 	}
-
-	public void exportRequirementsToCSVUnderSelectedEl(){
-		exportRequirementsToCSV( _context.getSelectedElement( false ), 1 );
+	
+	public static void main(String[] args) {
+		
+		ExecutableMBSE_Context theContext = new ExecutableMBSE_Context( 
+				RhapsodyAppServer.getActiveRhapsodyApplication().getApplicationConnectionString() );
+		
+		ExportRequirementsToCSV theExporter = new ExportRequirementsToCSV( theContext );
+		
+		theExporter.exportRequirementsToCSV( theContext.getSelectedElement( false ), 0 );	
+	}
+	
+	private String removeCSVIncompatibleCharsFrom(
+			String theString ) {
+		
+		String theResult = theString.replaceAll( "\\r", "<CR>" );
+		theResult = theResult.replaceAll( "\\n", "<LF>" );
+		
+		if( !theString.equals( theResult ) ) {
+		
+			_context.warning( "Removed CRLF characters from " + theResult );
+		}
+		
+		return theResult;
 	}
 
 	public void exportRequirementsToCSV(
@@ -33,16 +56,38 @@ public class ExportRequirementsToCSV {
 				"Requirement", recursive ).toList();
 
 		_context.debug( "There are " + theReqts.size() + " requirements under " + _context.elInfo( underEl ) );
-
-		for (IRPRequirement theReqt : theReqts) {
-			_context.debug( _context.elInfo( theReqt ) );
+		
+		List<String> theAdditionalHeadings = new ArrayList<>();
+		
+		for( IRPRequirement theReqt : theReqts ){
+			
+			AnnotationMap theAnnotationMap = new AnnotationMap( theReqt, _context );
+			
+			if( !theAnnotationMap.isEmpty() ) {
+				
+				String msg = _context.elInfo( theReqt ) + " has";
+				
+				for( Entry<String, List<IRPAnnotation>>  nodeId : theAnnotationMap.entrySet() ){
+					
+					String theKey = nodeId.getKey();
+					
+					if( !theAdditionalHeadings.contains( theKey ) ){
+						theAdditionalHeadings.add( theKey );
+					}
+				
+					List<IRPAnnotation> value = nodeId.getValue();
+							
+					msg += " " + nodeId.getKey() + " (" + value.size() + ")";		
+				}
+				
+				_context.info( msg );
+			}
 		}
 
 		String theFileName = chooseAFileToImport( underEl.getName() + ".csv" );
 
-		if( theFileName == null ){
+		if( theFileName != null ){
 
-		} else {
 			_context.info( "User chose " + theFileName + " to export " + theReqts.size() + " requirements" );
 
 			try {
@@ -52,8 +97,8 @@ public class ExportRequirementsToCSV {
 				String separator = _context.getCSVExportSeparator( underEl );
 				boolean isNameForCVSExport = _context.getCSVExportIncludeArtifactName( underEl );
 
-				_context.debug( "exportRequirementsToCSV CSVExportSeparator=" + 
-						separator + ", CSVExportArtifactType=" + artifactTypeForCSVExport + 
+				_context.debug( "exportRequirementsToCSV CSVExportSeparator=" + separator + 
+						", CSVExportArtifactType=" + artifactTypeForCSVExport + 
 						", CVSExportIncludeArtifactName=" + isNameForCVSExport );
 
 				FileWriter myWriter = new FileWriter( theFileName );
@@ -64,19 +109,61 @@ public class ExportRequirementsToCSV {
 					myWriter.write( info + "\n" );
 				}
 				
+				String theHeadingLine = "";
+				
 				if( isNameForCVSExport ){
-					myWriter.write( "Artifact Type" + separator + "Name" + separator + "Primary Text\n" );
+					theHeadingLine = "Artifact Type" + separator + "Name" + separator + "Primary Text";
 				} else {
-					myWriter.write( "Artifact Type" + separator + "Primary Text\n" );
+					theHeadingLine = "Artifact Type" + separator + "Primary Text";
 				}
+				
+				for( String theAdditionalHeading : theAdditionalHeadings ){
+					theHeadingLine += separator + theAdditionalHeading;
+				}
+				
+				theHeadingLine += "\n";
+						
+				myWriter.write( theHeadingLine );
 
-				for (IRPRequirement theReqt : theReqts) {
+				for( IRPRequirement theReqt : theReqts ){
+
+					String theLine = "";
+					
+					String theSpecification = removeCSVIncompatibleCharsFrom( theReqt.getSpecification() );
 
 					if( isNameForCVSExport ){
-						myWriter.write( artifactTypeForCSVExport + separator + theReqt.getName() + separator + theReqt.getSpecification() + "\n" );
+						theLine = artifactTypeForCSVExport + separator + theReqt.getName() + separator + theSpecification;
 					} else {
-						myWriter.write( artifactTypeForCSVExport + separator + theReqt.getSpecification() + "\n" );
+						theLine = artifactTypeForCSVExport + separator + theSpecification;
 					}
+					
+					AnnotationMap theAnnotationMap = new AnnotationMap( theReqt, _context );
+
+					for( String theAdditionalHeading : theAdditionalHeadings ){
+						
+						theLine += separator;
+
+						List<IRPAnnotation> theSpecificAnnotations = theAnnotationMap.get( theAdditionalHeading );
+						
+						Iterator<IRPAnnotation> iterator = theSpecificAnnotations.iterator();
+						
+						while( iterator.hasNext() ){
+							
+							IRPAnnotation theSpecificAnnotation = (IRPAnnotation) iterator.next();
+							
+							String theDescription = removeCSVIncompatibleCharsFrom( theSpecificAnnotation.getDescription() );
+							
+							if( theSpecificAnnotations.size() <= 1 ) {
+								theLine += theDescription;
+							} else {
+								theLine += theDescription + "(" + theSpecificAnnotation.getName() + ")";	
+							}
+						}		
+					}
+					
+					theLine += "\n";
+					
+					myWriter.write( theLine );
 				}
 
 				myWriter.close();
@@ -150,7 +237,7 @@ public class ExportRequirementsToCSV {
 }
 
 /**
- * Copyright (C) 2020-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2020-2023  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

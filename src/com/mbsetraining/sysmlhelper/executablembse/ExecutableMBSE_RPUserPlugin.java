@@ -481,9 +481,10 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						"executablembseplugin.ExportRequirementsToCsvForImportIntoDOORSNG" ) ) ){
 
 					ExportRequirementsToCSV theExporter = new ExportRequirementsToCSV( _context );
-
-					theExporter.exportRequirementsToCSVUnderSelectedEl();
-
+					
+					theExporter.exportRequirementsToCSV( 
+							_context.getSelectedElement( false ), 1 );
+					
 				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.SwitchRequirementsToDOORSNG" ) ) ){
 
