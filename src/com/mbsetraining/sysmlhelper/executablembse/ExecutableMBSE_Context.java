@@ -1566,6 +1566,20 @@ public class ExecutableMBSE_Context extends BaseContext {
 			theGraphEl.setGraphicalProperty( "ForegroundColor", theForegroundColor );
 		}
 	}
+	
+	public String removeCSVIncompatibleCharsFrom(
+			String theString ) {
+		
+		String theResult = theString.replaceAll( "\\r", "<CR>" );
+		theResult = theResult.replaceAll( "\\n", "<LF>" );
+		
+		if( !theString.equals( theResult ) ) {
+		
+			warning( "Removed CRLF characters from " + theResult );
+		}
+		
+		return theResult;
+	}
 }
 
 /**

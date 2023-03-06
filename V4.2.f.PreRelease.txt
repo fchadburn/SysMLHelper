@@ -840,7 +840,8 @@ V4.2.f.Rhp831.PreRelease (XX-XXX-XXXX):
 #623 01-MAR-2023: ExecutableMBSE: Added model check to warn of requirements that own anchors to model elements rather than other way round (F.J.Chadburn) 
 #624 01-MAR-2023: ExecutableMBSE: Added model check (info) for requirement child elements, to help with situational awareness prior to DNG swap out (F.J.Chadburn) 
 #625 06-MAR-2023: ExecutableMBSE: Get csv export of requirements to include columns for comments and new term comments such as Rationale/Problem in SysML (F.J.Chadburn)
-#626 06-MAR-2023: ExecutableMBSEL Improve csv export of requirements to remove /r (CR) and /n (LF) chars from export to enable csv to work (F.J.Chadburn)
+#626 06-MAR-2023: ExecutableMBSE: Improve csv export of requirements to remove \r (CR) and \n (LF) chars from export to enable csv to work (F.J.Chadburn)
+#627 06-MAR-2023: ExecutableMBSE: Added model check (warning) for requirements with \n, \r or ; in specification hence won't export to csv well (F.J.Chadburn)
 
 Backlog/Known issues
 - Interfaces Package doesn't have unique icon yet

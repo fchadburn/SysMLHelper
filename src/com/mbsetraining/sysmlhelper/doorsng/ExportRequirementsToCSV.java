@@ -32,20 +32,6 @@ public class ExportRequirementsToCSV {
 		
 		theExporter.exportRequirementsToCSV( theContext.getSelectedElement( false ), 0 );	
 	}
-	
-	private String removeCSVIncompatibleCharsFrom(
-			String theString ) {
-		
-		String theResult = theString.replaceAll( "\\r", "<CR>" );
-		theResult = theResult.replaceAll( "\\n", "<LF>" );
-		
-		if( !theString.equals( theResult ) ) {
-		
-			_context.warning( "Removed CRLF characters from " + theResult );
-		}
-		
-		return theResult;
-	}
 
 	public void exportRequirementsToCSV(
 			IRPModelElement underEl,
@@ -129,7 +115,8 @@ public class ExportRequirementsToCSV {
 
 					String theLine = "";
 					
-					String theSpecification = removeCSVIncompatibleCharsFrom( theReqt.getSpecification() );
+					String theSpecification = _context.
+							removeCSVIncompatibleCharsFrom( theReqt.getSpecification() );
 
 					if( isNameForCVSExport ){
 						theLine = artifactTypeForCSVExport + separator + theReqt.getName() + separator + theSpecification;
@@ -151,7 +138,8 @@ public class ExportRequirementsToCSV {
 							
 							IRPAnnotation theSpecificAnnotation = (IRPAnnotation) iterator.next();
 							
-							String theDescription = removeCSVIncompatibleCharsFrom( theSpecificAnnotation.getDescription() );
+							String theDescription = _context.
+									removeCSVIncompatibleCharsFrom( theSpecificAnnotation.getDescription() );
 							
 							if( theSpecificAnnotations.size() <= 1 ) {
 								theLine += theDescription;
