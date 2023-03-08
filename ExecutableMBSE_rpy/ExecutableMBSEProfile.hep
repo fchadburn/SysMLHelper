@@ -637,7 +637,7 @@ name80=MBSE Method: Requirements Analysis\Switch anchored comments to dependenci
 isPluginCommand80=1
 command80=InvokeExecutableMBSEHelper
 applicableTo80=13 Requirement Package,Package
-isVisible80=1
+isVisible80=0
 DLLServerCompatible80=1
 
 #REM Copyright (C) 2018-2023  MBSE Training and Consulting Limited (www.executablembse.com)
