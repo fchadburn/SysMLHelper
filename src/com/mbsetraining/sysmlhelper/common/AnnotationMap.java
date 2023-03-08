@@ -1,10 +1,9 @@
-package com.mbsetraining.sysmlhelper.doorsng;
+package com.mbsetraining.sysmlhelper.common;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.telelogic.rhapsody.core.*;
 
 public class AnnotationMap extends HashMap<String, List<IRPAnnotation>> {

@@ -10,6 +10,7 @@ import java.util.Map.Entry;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import com.mbsetraining.sysmlhelper.common.AnnotationMap;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
