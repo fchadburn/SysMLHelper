@@ -1546,7 +1546,10 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		boolean theReturn = false;
 
 		try {	
-			if( _context.getIsDoubleClickFunctionalityEnabled() ){
+			// Don't override double-click for packages to minimise issues with 
+			// new users accidentally popping up the dialog 
+			if( _context.getIsDoubleClickFunctionalityEnabled() &&
+					!( pModelElement instanceof IRPPackage ) ){
 
 				List<IRPModelElement> optionsList = null;
 
