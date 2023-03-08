@@ -1,5 +1,5 @@
 [Helpers]
-numberOfElements=79
+numberOfElements=80
 
 #REM: Definition of the plug-in
 name1=InvokeExecutableMBSEHelper
@@ -631,6 +631,14 @@ initialDir79=$JavaLocation/bin
 isMacro79=0
 applicableToProfile79=
 helperTriggers79=
+
+#REM: Add pop-up menu
+name80=MBSE Method: Requirements Analysis\Switch anchored comments to dependencies
+isPluginCommand80=1
+command80=InvokeExecutableMBSEHelper
+applicableTo80=13 Requirement Package,Package
+isVisible80=1
+DLLServerCompatible80=1
 
 #REM Copyright (C) 2018-2023  MBSE Training and Consulting Limited (www.executablembse.com)
 #REM

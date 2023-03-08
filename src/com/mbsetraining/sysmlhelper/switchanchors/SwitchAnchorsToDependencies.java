@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 import com.mbsetraining.sysmlhelper.common.BaseContext;
+import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
@@ -59,42 +60,55 @@ public class SwitchAnchorsToDependencies {
 		
 		_context.info( "There are " + theAnnotationsToConvert.size() + " anchors to convert" );
 		
-		IRPStereotype theTraceStereotype = _context.getStereotypeWith( "trace" );
+		boolean answer = false;
 		
-		for( Map.Entry<IRPAnnotation, IRPRequirement> entry : theAnnotationsToConvert.entrySet() ){
-			
-			IRPAnnotation theAnnotation = entry.getKey();
-			IRPRequirement theRequirement = entry.getValue();
-			
-			IRPDependency theAddedDependency = _context.addStereotypedDependencyIfOneDoesntExist(
-					theAnnotation, theRequirement, theTraceStereotype );
-			
-			if( theAddedDependency != null ) {
-				
-				_context.info( "Added " + _context.elInfo( theAddedDependency ) + " from " + 
-						_context.elInfo( theAnnotation ) + " to " + _context.elInfo( theRequirement ) );
-			}
+		if( theAnnotationsToConvert.isEmpty() ) {
+			UserInterfaceHelper.showInformationDialog( "There are no anchors to convert found" );
+		} else {			
+			answer = UserInterfaceHelper.askAQuestion( 
+					"There are " + theAnnotationsToConvert.size() + " anchors to convert.\n\n" + 
+					"Do you want to proceed?" );
 		}
 		
-		for (IRPRequirement theRequirementWithAnnotations : theRequirementsWithAnnotations) {
+		if( answer ) {
 			
-			List<IRPDiagram> theDiagrams = getRelatedDiagrams( theRequirementWithAnnotations );
+			IRPStereotype theTraceStereotype = _context.getStereotypeWith( "trace" );
 			
-			for( IRPDiagram theDiagram : theDiagrams ){
+			for( Map.Entry<IRPAnnotation, IRPRequirement> entry : theAnnotationsToConvert.entrySet() ){
 				
-				IRPCollection theGraphElsCollection = theDiagram.
-						getCorrespondingGraphicElements( theRequirementWithAnnotations );
+				IRPAnnotation theAnnotation = entry.getKey();
+				IRPRequirement theRequirement = entry.getValue();
 				
-				theDiagram.completeRelations( theGraphElsCollection, 1 );
+				IRPDependency theAddedDependency = _context.addStereotypedDependencyIfOneDoesntExist(
+						theAnnotation, theRequirement, theTraceStereotype );
+				
+				if( theAddedDependency != null ) {
+					
+					_context.info( "Added " + _context.elInfo( theAddedDependency ) + " from " + 
+							_context.elInfo( theAnnotation ) + " to " + _context.elInfo( theRequirement ) );
+				}
 			}
-		}
-		
-		for( Map.Entry<IRPAnnotation, IRPRequirement> entry : theAnnotationsToConvert.entrySet() ){
 			
-			IRPAnnotation theAnnotation = entry.getKey();
-			IRPRequirement theRequirement = entry.getValue();
+			for (IRPRequirement theRequirementWithAnnotations : theRequirementsWithAnnotations) {
+				
+				List<IRPDiagram> theDiagrams = getRelatedDiagrams( theRequirementWithAnnotations );
+				
+				for( IRPDiagram theDiagram : theDiagrams ){
+					
+					IRPCollection theGraphElsCollection = theDiagram.
+							getCorrespondingGraphicElements( theRequirementWithAnnotations );
+					
+					theDiagram.completeRelations( theGraphElsCollection, 1 );
+				}
+			}
 			
-			theAnnotation.removeAnchor( theRequirement );
+			for( Map.Entry<IRPAnnotation, IRPRequirement> entry : theAnnotationsToConvert.entrySet() ){
+				
+				IRPAnnotation theAnnotation = entry.getKey();
+				IRPRequirement theRequirement = entry.getValue();
+				
+				theAnnotation.removeAnchor( theRequirement );
+			}
 		}
 	}
 	

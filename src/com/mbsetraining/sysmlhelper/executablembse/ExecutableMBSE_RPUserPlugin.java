@@ -40,6 +40,7 @@ import com.mbsetraining.sysmlhelper.sequencediagram.SequenceDiagramCreator;
 import com.mbsetraining.sysmlhelper.sequencediagram.UpdateInferfacesBasedOnSequenceDiagramPanel;
 import com.mbsetraining.sysmlhelper.sequencediagram.VerificationDependencyUpdater;
 import com.mbsetraining.sysmlhelper.smartlink.EndlinkPanel;
+import com.mbsetraining.sysmlhelper.switchanchors.SwitchAnchorsToDependencies;
 import com.mbsetraining.sysmlhelper.switchstereotypes.SwitchStereotype;
 import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateFunctionBlock;
 import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateIncomingEventPanel;
@@ -890,6 +891,17 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					if( theSelectedEl instanceof IRPPackage ){
 
 						ViewStructureCreationPanel.launchThePanel( theAppID );
+
+					} else {
+						_context.error( menuItem + " invoked out of context and only works for packages" );
+					}
+				} else if( menuItem.equals( _settings.getString(
+						"executablembseplugin.SwitchAnchorsToDependencies" ) ) ){
+
+					if( theSelectedEl instanceof IRPPackage ){
+
+						SwitchAnchorsToDependencies theSwitcher = new SwitchAnchorsToDependencies( _context );
+						theSwitcher.performSwitch( theSelectedEl, 1 );
 
 					} else {
 						_context.error( menuItem + " invoked out of context and only works for packages" );
