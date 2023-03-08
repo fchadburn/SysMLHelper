@@ -843,6 +843,7 @@ V4.2.f.Rhp831.PreRelease (XX-XXX-XXXX):
 #626 06-MAR-2023: ExecutableMBSE: Improve csv export of requirements to remove \r (CR) and \n (LF) chars from export to enable csv to work (F.J.Chadburn)
 #627 06-MAR-2023: ExecutableMBSE: Added model check (warning) for requirements with \n, \r or ; in specification hence won't export to csv well (F.J.Chadburn)
 #628 08-MAR-2023: ExecutableMBSE: Added Java code to switch anchors to trace dependencies, so enable easier switch to DNG in future (F.J.Chadburn)
+#629 08-MAR-2023: ExecutableMBSE: Get csv export of requirements to include columns for comments where an incoming trace dependency exists (F.J.Chadburn)
 
 Backlog/Known issues
 - Interfaces Package doesn't have unique icon yet

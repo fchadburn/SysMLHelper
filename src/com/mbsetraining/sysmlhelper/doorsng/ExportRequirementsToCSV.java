@@ -115,12 +115,13 @@ public class ExportRequirementsToCSV {
 				for( IRPRequirement theReqt : theReqts ){
 
 					String theLine = "";
+					String theName = theReqt.getName();
 					
 					String theSpecification = _context.
 							removeCSVIncompatibleCharsFrom( theReqt.getSpecification() );
 
 					if( isNameForCVSExport ){
-						theLine = artifactTypeForCSVExport + separator + theReqt.getName() + separator + theSpecification;
+						theLine = artifactTypeForCSVExport + separator + theName + separator + theSpecification;
 					} else {
 						theLine = artifactTypeForCSVExport + separator + theSpecification;
 					}
@@ -130,8 +131,9 @@ public class ExportRequirementsToCSV {
 					for( String theAdditionalHeading : theAdditionalHeadings ){
 						
 						theLine += separator;
-
-						List<IRPAnnotation> theSpecificAnnotations = theAnnotationMap.get( theAdditionalHeading );
+						
+						List<IRPAnnotation> theSpecificAnnotations = theAnnotationMap.
+								getOrDefault( theAdditionalHeading, new ArrayList<>() );
 						
 						Iterator<IRPAnnotation> iterator = theSpecificAnnotations.iterator();
 						

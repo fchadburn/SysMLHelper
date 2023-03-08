@@ -29,20 +29,39 @@ public class AnnotationMap extends HashMap<String, List<IRPAnnotation>> {
 			
 			if( theReference instanceof IRPAnnotation ) {
 				
-				IRPAnnotation theAnnotation = (IRPAnnotation)theReference;
+				putAnnotationInMapIfNotBlank( theReference );
 				
-				String theText = theAnnotation.getDescription();
+			} else if( theReference instanceof IRPDependency ) {
 				
-				if( !theText.isEmpty() ) {
-					String theUserDefinedMetaclass = theReference.getUserDefinedMetaClass();
-					
-					List<IRPAnnotation> theAnnotations = this.getOrDefault( theUserDefinedMetaclass, new ArrayList<>() );
-					
-					//_context.info( _context.elInfo( theReference ) );
-					theAnnotations.add( (IRPAnnotation) theReference );
-					this.put( theUserDefinedMetaclass, theAnnotations );
+				IRPDependency theDependency = (IRPDependency)theReference;
+				IRPModelElement theDependent = theDependency.getDependent();
+				
+				if( theDependent instanceof IRPAnnotation ) {
+					putAnnotationInMapIfNotBlank( theDependent );
 				}
 			}
+		}
+	}
+
+	private void putAnnotationInMapIfNotBlank(
+			IRPModelElement theReference ){
+		
+		IRPAnnotation theAnnotation = (IRPAnnotation)theReference;
+		
+		String theText = theAnnotation.getDescription();
+		
+		if( theText.isEmpty() ){
+			
+			_context.info( "Ignoring " + _context.elInfo( theReference ) + " as its Description is empty" );
+			
+		} else {
+			String theUserDefinedMetaclass = theReference.getUserDefinedMetaClass();
+			
+			List<IRPAnnotation> theAnnotations = this.getOrDefault( theUserDefinedMetaclass, new ArrayList<>() );
+			
+			//_context.info( _context.elInfo( theReference ) );
+			theAnnotations.add( (IRPAnnotation) theReference );
+			this.put( theUserDefinedMetaclass, theAnnotations );
 		}
 	}
 	
