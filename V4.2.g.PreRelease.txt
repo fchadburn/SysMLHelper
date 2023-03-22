@@ -849,6 +849,7 @@ V4.2.f.Rhp831.PreRelease (08-MAR-2023):
 
 V4.2.g.Rhp831.PreRelease (XX-XXX-XXXX):
 #632 22-MAR-2023: ExecutableMBSE: Added Dependency tool to context diagram drawing toolbar for adding relations to requirements, if needed (F.J.Chadburn)
+#633 22-MAR-2023: ExecutableMBSE: Added Table View - Requirement to Action menu to the requirements package as seems appropriate in workflow (F.J.Chadburn)
 			
 Backlog/Known issues
 - Interfaces Package doesn't have unique icon yet
