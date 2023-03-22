@@ -846,6 +846,9 @@ V4.2.f.Rhp831.PreRelease (08-MAR-2023):
 #629 08-MAR-2023: ExecutableMBSE: Get csv export of requirements to include columns for comments where an incoming trace dependency exists (F.J.Chadburn)
 #630 08-MAR-2023: ExecutableMBSE: Added SwitchAnchorsToDependencies to hep file and plugin (default to not show, hence user needs to tweak .hep file (F.J.Chadburn)
 #631 08-MAR-2023: ExecutableMBSE: Don't override double-click for packages to minimise issues with  new users accidentally popping up the open diagram dialog (F.J.Chadburn)
+
+V4.2.g.Rhp831.PreRelease (XX-XXX-XXXX):
+#632 22-MAR-2023: ExecutableMBSE: Added Dependency tool to context diagram drawing toolbar for adding relations to requirements, if needed (F.J.Chadburn)
 			
 Backlog/Known issues
 - Interfaces Package doesn't have unique icon yet
