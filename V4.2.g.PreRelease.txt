@@ -850,8 +850,12 @@ V4.2.f.Rhp831.PreRelease (08-MAR-2023):
 V4.2.g.Rhp831.PreRelease (XX-XXX-XXXX):
 #632 22-MAR-2023: ExecutableMBSE: Added Dependency tool to context diagram drawing toolbar for adding relations to requirements, if needed (F.J.Chadburn)
 #633 22-MAR-2023: ExecutableMBSE: Added Table View - Requirement to Action menu to the requirements package as seems appropriate in workflow (F.J.Chadburn)
+#634 23-MAR-2023: ExecutableMBSE: Set ExecutableMBSE::RequirementsAnalysis::CSVExportIncludeArtifactName property to True by default (F.J.Chadburn)
 			
 Backlog/Known issues
+- Get export to csv to warn if requirements or comments have newlines.
+- Set the name property by default
+- Get export to csv to give a more user-friendly dialog if file is locked/open in Excel, e.g., "TestDNGImport. This file is in use. Enter a new name or close the file that's open, and try again"
 - Interfaces Package doesn't have unique icon yet
 - Work out a way of getting a hyperlink icon on a use case to go to activity diagram
 - For Requirement filter if Note is anchored to element then requirement doesn't filter out stays on diagram, is there a way to improve this
