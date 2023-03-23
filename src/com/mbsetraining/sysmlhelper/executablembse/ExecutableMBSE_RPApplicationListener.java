@@ -240,6 +240,10 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 				afterAddNewRequirementToActionTable( (IRPTableView) modelElement );
 
+			} else if( theUserDefinedMetaClass.equals( _context.ACTION_TO_REQUIREMENT_TABLE ) ) {
+
+				afterAddNewActionToRequirementTable( (IRPTableView) modelElement );
+				
 			} else if( modelElement instanceof IRPPackage &&
 					_context.hasStereotypeCalled( _context.REQTS_ANALYSIS_WORKING_COPY_PACKAGE, modelElement ) ){
 
@@ -264,48 +268,73 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				Arrays.stream( new String[]{ _context.REQTS_ANALYSIS_REQUIREMENT_PACKAGE } ).
 				anyMatch( theOwner.getUserDefinedMetaClass()::contains ) ){
 
-			@SuppressWarnings("unchecked")
-			List<IRPModelElement> theReferences = theOwner.getReferences().toList();
-
-			List<IRPModelElement> theScopingEls = new ArrayList<>();
-
-			for( IRPModelElement theReference : theReferences ){
-
-				if( theReference instanceof IRPDependency ){
-
-					IRPDependency theDependency = (IRPDependency) theReference;
-					IRPModelElement theDependent = theDependency.getDependent();
-
-					if( theDependent instanceof IRPPackage &&
-							Arrays.stream( new String[]{ _context.REQTS_ANALYSIS_USE_CASE_PACKAGE } ).
-							anyMatch( theDependent.getUserDefinedMetaClass()::contains ) ) {
-
-						theScopingEls.add( theDependency.getDependent() );
-					}
-				}
-			}
-
-			if( !theScopingEls.isEmpty() ) {
-				
-				IRPCollection theScopedCollection = _context.createNewCollection();
-				theScopedCollection.setSize( theScopingEls.size() );
-				
-				for( IRPModelElement theScopeEl : theScopingEls ){
-					
-					_context.debug( "ExecutableMBSE_RPApplicationListener is setting scope of " + 
-							_context.elInfo( theView ) + " to " + _context.elInfo( theScopeEl ) );
-					
-					theScopedCollection.addItem( theScopeEl );
-				}
-
-				theView.setScope( theScopedCollection );
-			}
+			setScopeToDependentUseCasePackages( theView, theOwner );
 		}
 		
 		String theProposedName = _context.TABLE_VIEW_PREFIX + " Requirement To Action";
 		String theUniqueName = _context.determineUniqueNameBasedOn( theProposedName, "TableView", theOwner );
 
 		theView.setName( theUniqueName );
+	}
+
+	private void afterAddNewActionToRequirementTable(
+			IRPTableView theView ){
+		
+		IRPModelElement theOwner = theView.getOwner();
+
+		if( theOwner instanceof IRPPackage &&
+				Arrays.stream( new String[]{ _context.REQTS_ANALYSIS_REQUIREMENT_PACKAGE } ).
+				anyMatch( theOwner.getUserDefinedMetaClass()::contains ) ){
+
+			setScopeToDependentUseCasePackages( theView, theOwner );
+		}
+		
+		String theProposedName = _context.TABLE_VIEW_PREFIX + " Action To Requirement";
+		String theUniqueName = _context.determineUniqueNameBasedOn( theProposedName, "TableView", theOwner );
+
+		theView.setName( theUniqueName );
+	}
+	
+	private void setScopeToDependentUseCasePackages(
+			IRPTableView theView, 
+			IRPModelElement theOwner ){
+		
+		@SuppressWarnings("unchecked")
+		List<IRPModelElement> theReferences = theOwner.getReferences().toList();
+
+		List<IRPModelElement> theScopingEls = new ArrayList<>();
+
+		for( IRPModelElement theReference : theReferences ){
+
+			if( theReference instanceof IRPDependency ){
+
+				IRPDependency theDependency = (IRPDependency) theReference;
+				IRPModelElement theDependent = theDependency.getDependent();
+
+				if( theDependent instanceof IRPPackage &&
+						Arrays.stream( new String[]{ _context.REQTS_ANALYSIS_USE_CASE_PACKAGE } ).
+						anyMatch( theDependent.getUserDefinedMetaClass()::contains ) ) {
+
+					theScopingEls.add( theDependency.getDependent() );
+				}
+			}
+		}
+
+		if( !theScopingEls.isEmpty() ) {
+			
+			IRPCollection theScopedCollection = _context.createNewCollection();
+			theScopedCollection.setSize( theScopingEls.size() );
+			
+			for( IRPModelElement theScopeEl : theScopingEls ){
+				
+				_context.debug( "ExecutableMBSE_RPApplicationListener is setting scope of " + 
+						_context.elInfo( theView ) + " to " + _context.elInfo( theScopeEl ) );
+				
+				theScopedCollection.addItem( theScopeEl );
+			}
+
+			theView.setScope( theScopedCollection );
+		}
 	}
 
 	private void afterAddForWorkingCopyPackage(
