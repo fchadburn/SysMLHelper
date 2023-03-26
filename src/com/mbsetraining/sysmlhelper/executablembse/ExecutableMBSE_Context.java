@@ -1569,7 +1569,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 		}
 	}
 	
-	public String removeCSVIncompatibleCharsFrom(
+	public String replaceCSVIncompatibleCharsFrom(
 			String theString ) {
 		
 		String theResult = theString.replaceAll( "\\r", "<CR>" );

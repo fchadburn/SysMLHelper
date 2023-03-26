@@ -48,9 +48,18 @@ public class ExportRequirementsToCSV {
 		} else {
 			_context.debug( "There are " + theReqts.size() + " requirements under " + _context.elInfo( underEl ) );
 			
+			List<IRPRequirement> theReqtsWithNewLines = new ArrayList<>();
+			
 			List<String> theAdditionalHeadings = new ArrayList<>();
 			
 			for( IRPRequirement theReqt : theReqts ){
+				
+				String theSpec = theReqt.getSpecification();
+				
+				if( theSpec.contains( "\r" ) || theSpec.contains( "\n" ) ) {
+					
+					theReqtsWithNewLines.add( theReqt );
+				}
 				
 				AnnotationMap theAnnotationMap = new AnnotationMap( theReqt, _context );
 				
@@ -72,6 +81,26 @@ public class ExportRequirementsToCSV {
 					}
 					
 					_context.info( msg );
+				}
+			}
+			
+			if( !theReqtsWithNewLines.isEmpty() ) {
+				
+				boolean answer = UserInterfaceHelper.askAQuestion( theReqtsWithNewLines.size() + " of the " + 
+						theReqts.size() + " requirements have newline or linefeed characters: \n" +
+						getStringFor( theReqtsWithNewLines, 1 ) + "\n" +
+						"This means that they won't export to csv and roundtrip into DOORS NG correctly.\n\n" +
+						"Do you want to fix the model to remove these before proceeding?" );
+				
+				if( answer ) {
+					for( IRPRequirement theReqtWithNewLines : theReqtsWithNewLines ){
+						
+						String theSpec = theReqtWithNewLines.getSpecification().
+								replaceAll( "\\r", "" ).replaceAll( "\\n", "" );
+						
+						_context.info( "Removing newlines from " + _context.elInfo( theReqtWithNewLines ) );
+						theReqtWithNewLines.setSpecification( theSpec  );
+					}
 				}
 			}
 
@@ -168,7 +197,7 @@ public class ExportRequirementsToCSV {
 								String theName = theReqt.getName();
 								
 								String theSpecification = _context.
-										removeCSVIncompatibleCharsFrom( theReqt.getSpecification() );
+										replaceCSVIncompatibleCharsFrom( theReqt.getSpecification() );
 
 								if( isNameForCVSExport ){
 									theLine = artifactTypeForCSVExport + separator + theName + separator + theSpecification;
@@ -192,7 +221,7 @@ public class ExportRequirementsToCSV {
 										IRPAnnotation theSpecificAnnotation = (IRPAnnotation) iterator.next();
 										
 										String theDescription = _context.
-												removeCSVIncompatibleCharsFrom( theSpecificAnnotation.getDescription() );
+												replaceCSVIncompatibleCharsFrom( theSpecificAnnotation.getDescription() );
 										
 										if( theSpecificAnnotations.size() <= 1 ) {
 											theLine += theDescription;
@@ -283,6 +312,30 @@ public class ExportRequirementsToCSV {
 		public String getDescription() {
 			return "*" + fileType;
 		}
+	}
+	
+	
+	public String getStringFor( 
+			List<IRPRequirement> theEls,
+			int max ) {
+		
+		int count = 0;
+		
+		String theString = "";
+		
+		for( IRPModelElement theEl : theEls ){
+			count++;
+			theString += theEl.getName() + "\n";
+			
+			if( count == max && 
+					count != theEls.size() ){
+				
+				theString += "...\n";
+				break;
+			}
+		}
+		
+		return theString;
 	}
 }
 
