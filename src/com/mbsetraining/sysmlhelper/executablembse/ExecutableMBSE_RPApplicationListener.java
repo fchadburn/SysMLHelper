@@ -100,6 +100,10 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				afterAddForCallOperation( 
 						(IRPCallOperation) modelElement );
 
+			} else if( modelElement instanceof IRPStatechart ) {
+				
+				afterAddForStatechart( (IRPStatechart) modelElement );
+				
 			} else if( modelElement instanceof IRPFlowchart && 
 					_context.hasStereotypeCalled( _context.NEW_TERM_FOR_TEXTUAL_ACTIVITY_DIAGRAM, modelElement )){
 
@@ -552,6 +556,19 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		}
 	}
 
+	private void afterAddForStatechart(
+			IRPStatechart theStatechart ){
+		
+		IRPModelElement theOwner = theStatechart.getOwner();	    
+
+		String theProposedName =  _context.STATE_MACHINE_DIAGRAM_PREFIX  + theOwner.getName();		
+		
+		String theUniqueName = _context.determineUniqueNameBasedOn( 
+				theProposedName, theStatechart.getMetaClass(), theOwner );
+
+		theStatechart.setName( theUniqueName );		
+	}
+	
 	private void afterAddForBlockOrRequirementDiagram(
 			IRPObjectModelDiagram theDiagram ){
 
