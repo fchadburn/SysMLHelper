@@ -859,6 +859,7 @@ V4.2.g.Rhp831.PreRelease (26-MAR-2023):
 	
 V4.2.h.Rhp831.PreRelease (XX-XXX-XXXX):
 #640 02-APR-2023: ExecutableMBSE: Automatically name statecharts when they are created, stm - <Block name>, as statechart_3 doesn't really help as a name (F.J.Chadburn)
+#641 07-APR-2023: ExecutableMBSE: Add options to create context diagram package and signals package when creating the use case package structure (F.J.Chadburn) 
 		
 Backlog/Known issues
 - Interfaces Package doesn't have unique icon yet
@@ -903,7 +904,6 @@ Backlog/Known issues
 - Get populate parts tree view to grey out elements already on diagram?
 - Get helper to build package hierarchy from the nested parts hierarchy for subsystems, can you reuse HarmonySE one for this?
 - Add a right-click helper to create/sync olsc links for all relations shown on a diagram
-- 
 - Add dialog to toggle autoshow stereotype with dontshow, so that you can easily switch to/from TC usage
 - Add helper to automatically add a default .jazzignore file to newly created project
 - Improve traceability browser to have the relationship names in the tree, e.g., satisfy vs derive
@@ -911,7 +911,7 @@ Backlog/Known issues
 - Hide the software package stuff
 - Can any more automation help with TestConductor/ATG initial setup?
 - BlackBox. 
-- Right-click of requirmeent in browser did not work when creating an event
+- Right-click of requirement in browser did not work when creating an event
 - Better Wizard for building up a white-box model
 - Import from file option for Blocks/Actors perhaps?
 - Add ability to roll up transitions where you're looking at the entry action.

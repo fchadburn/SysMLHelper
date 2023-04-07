@@ -18,9 +18,13 @@ import javax.swing.GroupLayout.SequentialGroup;
 import javax.swing.border.EmptyBorder;
 
 import com.mbsetraining.sysmlhelper.common.RhapsodyComboBox;
+import com.mbsetraining.sysmlhelper.executablembse.AutoPackageDiagram;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
+import com.mbsetraining.sysmlhelper.usecasepackage.CreateActorPkg;
 import com.mbsetraining.sysmlhelper.usecasepackage.CreateActorPkgChooser;
+import com.mbsetraining.sysmlhelper.usecasepackage.CreateRequirementsPkg;
 import com.mbsetraining.sysmlhelper.usecasepackage.CreateRequirementsPkgChooser;
+import com.mbsetraining.sysmlhelper.usecasepackage.CreateActorPkg.CreateActorPkgOption;
 import com.telelogic.rhapsody.core.*;
 
 public class CreateContextPackagePanel extends ExecutableMBSEBasePanel {
@@ -28,12 +32,11 @@ public class CreateContextPackagePanel extends ExecutableMBSEBasePanel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-
+	private static final long serialVersionUID = 6513253713132959527L;
 	private IRPPackage _ownerPkg;
 	private CreateActorPkgChooser _createActorChooser;
 	private CreateRequirementsPkgChooser _createRequirementsPkgChooser;
-	private CreateExternalSignalsPkgChooser _createExternalSignalsPkgChooser;
+	private CreateSignalsPkgChooser _createExternalSignalsPkgChooser;
 	private JTextField _nameTextField;
 	protected RhapsodyComboBox _selectClassComboBox = null;
 
@@ -133,7 +136,7 @@ public class CreateContextPackagePanel extends ExecutableMBSEBasePanel {
 				false,
 				_context );
 
-		_createExternalSignalsPkgChooser = new CreateExternalSignalsPkgChooser( 
+		_createExternalSignalsPkgChooser = new CreateSignalsPkgChooser( 
 				_ownerPkg, 
 				_context );
 		
@@ -230,37 +233,106 @@ public class CreateContextPackagePanel extends ExecutableMBSEBasePanel {
 
 			IRPModelElement theSystemBlock = _selectClassComboBox.getSelectedRhapsodyItem();
 			
-			String theUnadornedName;
+			String theContextElementName;
+			
+			ContextDiagramCreator theCreator = new ContextDiagramCreator( _context );
+			IRPPackage theContextPkg;
+			IRPRelation theContextEl;
 			
 			if( theSystemBlock instanceof IRPClassifier ){
 				
-				theUnadornedName = theSystemBlock.getName();
+				theContextElementName = theSystemBlock.getName();				
+				theContextPkg = theCreator.createContextPackage( _ownerPkg, theContextElementName );
+				theContextEl = theContextPkg.addImplicitObject( "" );
+				theContextEl.setOtherClass( (IRPClassifier) theSystemBlock );
 			} else {
-				theUnadornedName = _nameTextField.getText(); 
+				theContextElementName = _nameTextField.getText(); 
+				theContextPkg = theCreator.createContextPackage( _ownerPkg, theContextElementName );
+				theContextEl = theContextPkg.addImplicitObject( theContextElementName );		
+			}	
+											
+			@SuppressWarnings("unused")
+			CreateRequirementsPkg theCreateRequirementsPkg = new CreateRequirementsPkg( 
+					_createRequirementsPkgChooser.getReqtsPkgChoice(), 
+					theContextPkg, 
+					_createRequirementsPkgChooser.getReqtsPkgOptionalName(), 
+					_createRequirementsPkgChooser.getExistingReqtsPkgIfChosen(),
+					_context );
+			
+			CreateActorPkg theActorPkgCreator = new CreateActorPkg( _context );
+			
+			CreateActorPkgOption theActorPkgChoice = _createActorChooser.getCreateActorPkgOption();
+			
+			IRPProject theProject = _context.get_rhpPrj();
+
+			if( theActorPkgChoice == CreateActorPkgOption.CreateNew ){
+				
+				theActorPkgCreator.createNew( theProject, _createActorChooser.getActorsPkgNameIfChosen(), theContextPkg );
+			
+			} else if( theActorPkgChoice == CreateActorPkgOption.CreateNewButEmpty ){
+				
+				theActorPkgCreator.createNewButEmpty( theProject, _createActorChooser.getActorsPkgNameIfChosen(), theContextPkg );
+				
+			} else if( theActorPkgChoice == CreateActorPkgOption.InstantiateFromExisting ){
+				
+				theActorPkgCreator.instantiateFromExisting( 
+						theContextPkg, 
+						_createActorChooser.getActorsPkgNameIfChosen() + theContextElementName, 
+						theContextPkg, 
+						_createActorChooser.getExistingActorPkgIfChosen(), 
+						theContextElementName );
+				
+			} else if( theActorPkgChoice == CreateActorPkgOption.UseExisting ){
+				
+				theActorPkgCreator.useExisting( _createActorChooser.getExistingActorPkgIfChosen() );
 			}
 			
-			@SuppressWarnings("unused")
-			CreateContextDiagramPackage theCreator = new CreateContextDiagramPackage(
-					theUnadornedName, // theContextDiagramPackageName
-					theSystemBlock,
-					_ownerPkg, // theOwningPkg
-					_createRequirementsPkgChooser.getReqtsPkgChoice(), // theReqtsPkgChoice
-					_createRequirementsPkgChooser.getReqtsPkgOptionalName(), // theReqtsPkgOptionalName
-					_createRequirementsPkgChooser.getExistingReqtsPkgIfChosen(), // theExistingReqtsPkgIfChosen
-					_createActorChooser.getCreateActorPkgOption(), // theActorPkgChoice
-					_createActorChooser.getActorsPkgNameIfChosen(), // theActorsPkgNameOption
-					_createActorChooser.getExistingActorPkgIfChosen(), // theExistingActorsPkgOption
-					theUnadornedName, // theActorPkgPrefixOption
-					_createExternalSignalsPkgChooser.getCreateExternalSignalsPkgOption(),
-					_createExternalSignalsPkgChooser.getExternalSignalsPkgNameIfChosen(),
-					_createExternalSignalsPkgChooser.getExistingExternalSignalsPkgIfChosen(),
-					_context );
+			ExternalSignalsPkgCreator theSignalsPkgCreator = new ExternalSignalsPkgCreator( _context );
+
+			String theSignalsPkgChoice = (String) _createExternalSignalsPkgChooser._userChoiceComboBox.getSelectedItem();
+
+			if( theSignalsPkgChoice.equals( _createExternalSignalsPkgChooser._doNothingOption ) ){	
+				
+				// Do nothing
+				
+			} else if( theSignalsPkgChoice.equals( _createExternalSignalsPkgChooser._createNewButEmptyOption ) ){
+			
+				IRPPackage theSignalsPkg = theSignalsPkgCreator.createExternalSignalsPackage(
+						theProject, 
+						_createExternalSignalsPkgChooser.getExternalSignalsPkgNameIfChosen() );
+				
+				
+				theContextPkg.addDependencyTo( theSignalsPkg );
+				
+			} else if( theSignalsPkgChoice.contains( _createExternalSignalsPkgChooser._existingPkgPrefix ) ){
+				
+				IRPPackage theSignalsPkg = _createExternalSignalsPkgChooser.getExistingExternalSignalsPkgIfChosen();
+				theContextPkg.addDependencyTo( theSignalsPkg );				
+			}
+			
+			List<IRPActor> theActors = theActorPkgCreator.getActors();
+			
+			IRPDiagram theDiagram = theCreator.
+					createContextDiagram( theContextPkg, theActors, theContextElementName, theContextEl );
+			
+			theDiagram.highLightElement();
+					
+			_context.deleteIfPresent( "Structure1", "StructureDiagram", theProject );
+			_context.deleteIfPresent( "Model1", "ObjectModelDiagram", theProject );
+			_context.deleteIfPresent( "Default", "Package", theProject );
+			
+			if( _context.getIsAutoPopulatePackageDiagram( theProject ) ){
+				AutoPackageDiagram theAPD = new AutoPackageDiagram( _context );
+				theAPD.drawDiagram();
+			}
+				    			
+			theProject.save();
 		}
 	}
 }
 
 /**
- * Copyright (C) 2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2021-2023  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

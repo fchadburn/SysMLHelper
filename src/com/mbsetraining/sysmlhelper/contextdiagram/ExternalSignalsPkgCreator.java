@@ -3,42 +3,18 @@ package com.mbsetraining.sysmlhelper.contextdiagram;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
-public class CreateExternalSignalsPkg {
+public class ExternalSignalsPkgCreator {
 	
 	protected IRPPackage _externalSignalPkg;
 	protected ExecutableMBSE_Context _context;
 	
-	public enum CreateExternalSignalsPkgOption {
-		DoNothing,
-	    CreateNewButEmpty,
-	    UseExisting
-	}
-	
-	CreateExternalSignalsPkg(
-			CreateExternalSignalsPkgOption theCreatePkgOption,
-			IRPPackage thePkgOwner,
-			String thePkgName,
-			IRPPackage theFlowFromPkg,
-			IRPPackage theOptionalExistingPkg,
+	public ExternalSignalsPkgCreator(
 			ExecutableMBSE_Context theContext ){
 		
-		_context = theContext;
-		
-		if( theCreatePkgOption == CreateExternalSignalsPkgOption.CreateNewButEmpty ){
-
-			_externalSignalPkg = createExternalSignalsPackage( 
-					thePkgOwner, 
-					thePkgName );
-
-		} else if( theCreatePkgOption == CreateExternalSignalsPkgOption.UseExisting ){
-			
-			_externalSignalPkg = theOptionalExistingPkg;
-		}
-		
-		theFlowFromPkg.addDependencyTo( _externalSignalPkg );
+		_context = theContext;	
 	}
 
-	private IRPPackage createExternalSignalsPackage(
+	public IRPPackage createExternalSignalsPackage(
 			IRPPackage underThePackage,
 			String withTheName ){
 		
@@ -51,7 +27,7 @@ public class CreateExternalSignalsPkg {
 }
 
 /**
- * Copyright (C) 2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2021-2023  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

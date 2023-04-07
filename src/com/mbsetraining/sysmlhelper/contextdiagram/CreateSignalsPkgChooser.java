@@ -7,25 +7,24 @@ import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
-import com.mbsetraining.sysmlhelper.contextdiagram.CreateExternalSignalsPkg.CreateExternalSignalsPkgOption;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
-public class CreateExternalSignalsPkgChooser {
+public class CreateSignalsPkgChooser {
 
-	private JComboBox<Object> _userChoiceComboBox = new JComboBox<Object>();
-	private JTextField _nameTextField = new JTextField();
-	private IRPPackage _ownerPkg = null;
-	private IRPProject _project = null;
-	private final String _doNothingOption = "Skip creation of a shared external signals package";
-	private final String _createNewButEmptyOption = "Create new empty external signals package";
-	private final String _existingPkgPrefix = "Use external signals from existing package called ";
-	private final String m_None = "<None>";
-	private List<IRPModelElement> _existingPkgs;
+	public JComboBox<Object> _userChoiceComboBox = new JComboBox<Object>();
+	public JTextField _nameTextField = new JTextField();
+	public final String _doNothingOption = "Skip creation of a shared external signals package";
+	public final String _createNewButEmptyOption = "Create new empty external signals package";
+	public final String _existingPkgPrefix = "Use external signals from existing package called ";
+	protected IRPPackage _ownerPkg = null;
+	protected IRPProject _project = null;
+	protected final String _none = "<None>";
+	protected List<IRPModelElement> _existingPkgs;
 	
 	private ExecutableMBSE_Context _context;
 	
-	public CreateExternalSignalsPkgChooser(
+	public CreateSignalsPkgChooser(
 			final IRPPackage theOwnerPkg,
 			ExecutableMBSE_Context context ){
 		
@@ -79,7 +78,7 @@ public class CreateExternalSignalsPkgChooser {
 		    	
 		    	if( selectedValue.equals( _doNothingOption ) ){
 		    		
-		    		_nameTextField.setText( m_None );
+		    		_nameTextField.setText( _none );
 		    		_nameTextField.setEnabled( false );
 		    		
 		    	} else if( selectedValue.equals( _createNewButEmptyOption ) ){
@@ -91,6 +90,10 @@ public class CreateExternalSignalsPkgChooser {
 		    		_nameTextField.setText( theUniqueName );
 		    		_nameTextField.setEnabled( true );	
 		    		
+		    	} else if( selectedValue.contains( _existingPkgPrefix ) ) {
+		    		
+		    		_nameTextField.setText( _none );
+		    		_nameTextField.setEnabled( false );
 		    	}
 		    	
 		    	_context.debug( selectedValue + " was selected" );
@@ -135,32 +138,13 @@ public class CreateExternalSignalsPkgChooser {
 		return theExistingPkg;
 	}
 	
-	public CreateExternalSignalsPkg.CreateExternalSignalsPkgOption getCreateExternalSignalsPkgOption(){
-		
-		CreateExternalSignalsPkgOption theOption = null;
-		
-		String theUserChoice = (String) _userChoiceComboBox.getSelectedItem();
-		
-		if( theUserChoice.equals( _createNewButEmptyOption ) ){
-			theOption = CreateExternalSignalsPkgOption.CreateNewButEmpty;
-		} else if( theUserChoice.contains( _existingPkgPrefix )){
-			theOption = CreateExternalSignalsPkgOption.UseExisting;
-		} else if( theUserChoice.contains(_doNothingOption)){
-			theOption = CreateExternalSignalsPkgOption.DoNothing;
-		} else {
-			_context.error("Error in getCreateExternalSignalsPkgOption, unhandled option = " + theUserChoice);
-		}
-	
-		return theOption;
-	}
-	
 	public String getExternalSignalsPkgNameIfChosen(){
 		return _nameTextField.getText();
 	}
 }
 
 /**
- * Copyright (C) 2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2021-2023  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 
