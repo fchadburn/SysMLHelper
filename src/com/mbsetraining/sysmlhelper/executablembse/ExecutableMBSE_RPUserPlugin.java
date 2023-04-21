@@ -495,7 +495,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					SwitchRhapsodyRequirementsToDNG theSwitcher = 
 							new SwitchRhapsodyRequirementsToDNG( _context );
 
-					theSwitcher.SwitchRequirements();
+					theSwitcher.switchRequirements();
 
 				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.StartLinkMenu" ) ) ){

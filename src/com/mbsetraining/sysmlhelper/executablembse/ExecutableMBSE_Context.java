@@ -167,6 +167,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	protected IRPStereotype _stereotypeForDerivation;
 	protected IRPStereotype _stereotypeForSatisfaction;
 	protected IRPStereotype _stereotypeForVerification;
+	protected IRPStereotype _stereotypeForTrace;
 
 	public ExecutableMBSE_Context(
 			String theAppID ){
@@ -212,6 +213,17 @@ public class ExecutableMBSE_Context extends BaseContext {
 		}
 
 		return _stereotypeForVerification;
+	}
+	
+	// use lazy load
+	public IRPStereotype getStereotypeForTrace(){
+
+		if( _stereotypeForTrace == null ){
+
+			_stereotypeForTrace = getExistingStereotype( "trace", _rhpPrj );;
+		}
+
+		return _stereotypeForTrace;
 	}
 	
 	// Generally single call per session, so use lazy load

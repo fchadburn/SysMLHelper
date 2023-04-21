@@ -2812,6 +2812,24 @@ public abstract class BaseContext {
 		return existingEls;
 	}
 	
+	public List<IRPDependency> getDependenciesTo(
+			IRPModelElement theEl ){
+
+		List<IRPDependency> theDependencies = new ArrayList<>();
+
+		@SuppressWarnings("unchecked")
+		List<IRPModelElement> theReferences = theEl.getReferences().toList();
+
+		for( IRPModelElement theReference : theReferences ){
+
+			if( theReference instanceof IRPDependency ){
+				theDependencies.add( (IRPDependency) theReference );
+			}
+		}
+
+		return theDependencies;
+	}
+	
 	public IRPDependency getExistingDependency(
 			IRPModelElement fromEl, 
 			IRPModelElement toEl ){

@@ -859,7 +859,9 @@ V4.2.g.Rhp831.PreRelease (26-MAR-2023):
 	
 V4.2.h.Rhp831.PreRelease (XX-XXX-XXXX):
 #640 02-APR-2023: ExecutableMBSE: Automatically name statecharts when they are created, stm - <Block name>, as statechart_3 doesn't really help as a name (F.J.Chadburn)
-#641 07-APR-2023: ExecutableMBSE: Add options to create context diagram package and signals package when creating the use case package structure (F.J.Chadburn) 
+#641 07-APR-2023: ExecutableMBSE: Add options to create context diagram package and signals package when creating the use case package structure (F.J.Chadburn)
+#642 21-APR-2023: ExecutableMBSE: Add menu to automatically establish trace dependencies to remote requirements to facilitate surrogate approach to DNG reqts (F.J.Chadburn) 
+#643 21-APR-2023: ExecutableMBSE: Add model check for requirements that have dependencies on DOORS NG requirements to warn if specification text differs (F.J.Chadburn)
 		
 Backlog/Known issues
 - Interfaces Package doesn't have unique icon yet
