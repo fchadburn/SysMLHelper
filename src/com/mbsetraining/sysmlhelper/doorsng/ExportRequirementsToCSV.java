@@ -18,21 +18,76 @@ import com.telelogic.rhapsody.core.*;
 public class ExportRequirementsToCSV {
 
 	ExecutableMBSE_Context _context;
-	
+
 	public ExportRequirementsToCSV(
 			ExecutableMBSE_Context context ) {
 
 		_context = context;
 	}
-	
+
 	public static void main(String[] args) {
-		
+
 		ExecutableMBSE_Context theContext = new ExecutableMBSE_Context( 
 				RhapsodyAppServer.getActiveRhapsodyApplication().getApplicationConnectionString() );
-		
+
 		ExportRequirementsToCSV theExporter = new ExportRequirementsToCSV( theContext );
-		
+
 		theExporter.exportRequirementsToCSV( theContext.getSelectedElement( false ), 0 );	
+	}
+
+	public List<IRPRequirement> getRemoteRequirementsTracedFrom(
+			IRPRequirement  theReqt ){
+
+		List<IRPRequirement> theRemoteReqts = new ArrayList<>();
+
+		@SuppressWarnings("unchecked")
+		List<IRPDependency> theRemoteDependencies = theReqt.getRemoteDependencies().toList();
+
+		for( IRPDependency theRemoteDependency : theRemoteDependencies ){
+
+			IRPModelElement theDependsOn = theRemoteDependency.getDependsOn();
+
+			if( theDependsOn instanceof IRPRequirement ){
+
+				theRemoteReqts.add( (IRPRequirement) theDependsOn );
+			}
+		}
+
+		return theRemoteReqts;
+	}
+
+	public List<IRPRequirement> getReqtsThatDontTraceOrTraceToChangedRemoteReqtsIn(
+			List<IRPRequirement>  theCandidateReqts ){
+
+		List<IRPRequirement> theReqtsThatDontTrace = new ArrayList<>();
+
+		for( IRPRequirement theCandidateReqt : theCandidateReqts ){
+
+			List<IRPRequirement> theRemoteRequirements = getRemoteRequirementsTracedFrom( theCandidateReqt );
+
+			boolean isMatchFound = false;
+
+			if( theRemoteRequirements.size() > 1 ){
+
+				_context.warning( _context.elInfo( theCandidateReqt ) + " traces to " + theRemoteRequirements.size() + 
+						" remote requirements, when expecting 0 or 1 hence I'm unable to determine which to use" );
+
+			} else if( theRemoteRequirements.size() == 1 ){
+
+				String theRemoteSpec = theRemoteRequirements.get( 0 ).getSpecification();
+				String theSpec = theCandidateReqt.getSpecification();
+
+				if( theSpec.equals( theRemoteSpec ) ){
+					isMatchFound = true;
+				}
+			}	
+
+			if( !isMatchFound ){
+				theReqtsThatDontTrace.add( theCandidateReqt );
+			}
+		}
+
+		return theReqtsThatDontTrace;
 	}
 
 	public void exportRequirementsToCSV(
@@ -44,209 +99,257 @@ public class ExportRequirementsToCSV {
 				"Requirement", recursive ).toList();
 
 		if( theReqts.isEmpty() ) {
+
 			UserInterfaceHelper.showWarningDialog( "There are no requirements under " + _context.elInfo( underEl ) + " to export" );
+
 		} else {
-			_context.debug( "There are " + theReqts.size() + " requirements under " + _context.elInfo( underEl ) );
-			
-			List<IRPRequirement> theReqtsWithNewLines = new ArrayList<>();
-			
-			List<String> theAdditionalHeadings = new ArrayList<>();
-			
-			for( IRPRequirement theReqt : theReqts ){
-				
-				String theSpec = theReqt.getSpecification();
-				
-				if( theSpec.contains( "\r" ) || theSpec.contains( "\n" ) ) {
-					
-					theReqtsWithNewLines.add( theReqt );
-				}
-				
-				AnnotationMap theAnnotationMap = new AnnotationMap( theReqt, _context );
-				
-				if( !theAnnotationMap.isEmpty() ) {
-					
-					String msg = _context.elInfo( theReqt ) + " has";
-					
-					for( Entry<String, List<IRPAnnotation>>  nodeId : theAnnotationMap.entrySet() ){
-						
-						String theKey = nodeId.getKey();
-						
-						if( !theAdditionalHeadings.contains( theKey ) ){
-							theAdditionalHeadings.add( theKey );
-						}
-					
-						List<IRPAnnotation> value = nodeId.getValue();
-								
-						msg += " " + nodeId.getKey() + " (" + value.size() + ")";		
-					}
-					
-					_context.info( msg );
-				}
-			}
-			
-			if( !theReqtsWithNewLines.isEmpty() ) {
-				
-				boolean answer = UserInterfaceHelper.askAQuestion( theReqtsWithNewLines.size() + " of the " + 
-						theReqts.size() + " requirements have newline or linefeed characters: \n" +
-						getStringFor( theReqtsWithNewLines, 1 ) + "\n" +
-						"This means that they won't export to csv and roundtrip into DOORS NG correctly.\n\n" +
-						"Do you want to fix the model to remove these before proceeding?" );
-				
-				if( answer ) {
-					for( IRPRequirement theReqtWithNewLines : theReqtsWithNewLines ){
-						
-						String theSpec = theReqtWithNewLines.getSpecification().
-								replaceAll( "\\r", "" ).replaceAll( "\\n", "" );
-						
-						_context.info( "Removing newlines from " + _context.elInfo( theReqtWithNewLines ) );
-						theReqtWithNewLines.setSpecification( theSpec  );
-					}
+
+			List<IRPRequirement> theReqtsThatDontTrace = getReqtsThatDontTraceOrTraceToChangedRemoteReqtsIn( theReqts );
+
+			int diff = theReqts.size() - theReqtsThatDontTrace.size();
+
+			if( diff != 0 ){
+
+				boolean answer = UserInterfaceHelper.askAQuestion( diff + " of the " + theReqts.size() + 
+						" requirements under " + _context.elInfo( underEl) + " \nalready trace to remote requirements with matching specification text. \n\n" + 
+						"Shall I restrict the csv export to only the " + theReqtsThatDontTrace.size() + " requirements that are new or have changed?");
+
+				if( answer ){
+					theReqts = theReqtsThatDontTrace;
 				}
 			}
 
-			String theFilename = underEl.getName() + ".csv";
-			File theFile = chooseAFileToImport( theFilename );
-			
-			if( theFile == null ) {
-				
-				UserInterfaceHelper.showWarningDialog( 
-						"No file was selected to export requirement to" );
-					
+			exportToCSV( underEl, theReqts );
+		}
+	}
+
+	public String getIdentifierFromTracedRemoteRequirement(
+			IRPRequirement forReqt ){
+
+		String theIdentifier = "";
+
+		List<IRPRequirement> theRemoteReqts = getRemoteRequirementsTracedFrom( forReqt );
+
+		if( theRemoteReqts.size() > 1 ){
+
+			_context.warning( _context.elInfo( forReqt ) + " has " + theRemoteReqts.size() + " remote requirements when expecting 0 or 1");
+
+		} else if( theRemoteReqts.size() == 1 ){
+
+			IRPRequirement theRemoteReqt = theRemoteReqts.get( 0 );
+
+			theIdentifier= theRemoteReqt.getRequirementID();
+		}
+
+		return theIdentifier;
+	}
+
+	private void exportToCSV(
+			IRPModelElement underEl, 
+			List<IRPRequirement> theReqts ){
+
+		_context.debug( "There are " + theReqts.size() + " requirements under " + _context.elInfo( underEl ) );
+
+		List<IRPRequirement> theReqtsWithNewLines = new ArrayList<>();
+
+		List<String> theAdditionalHeadings = new ArrayList<>();
+
+		for( IRPRequirement theReqt : theReqts ){
+
+			String theSpec = theReqt.getSpecification();
+
+			if( theSpec.contains( "\r" ) || theSpec.contains( "\n" ) ) {
+
+				theReqtsWithNewLines.add( theReqt );
+			}
+
+			AnnotationMap theAnnotationMap = new AnnotationMap( theReqt, _context );
+
+			if( !theAnnotationMap.isEmpty() ) {
+
+				String msg = _context.elInfo( theReqt ) + " has";
+
+				for( Entry<String, List<IRPAnnotation>>  nodeId : theAnnotationMap.entrySet() ){
+
+					String theKey = nodeId.getKey();
+
+					if( !theAdditionalHeadings.contains( theKey ) ){
+						theAdditionalHeadings.add( theKey );
+					}
+
+					List<IRPAnnotation> value = nodeId.getValue();
+
+					msg += " " + nodeId.getKey() + " (" + value.size() + ")";		
+				}
+
+				_context.info( msg );
+			}
+		}
+
+		if( !theReqtsWithNewLines.isEmpty() ) {
+
+			boolean answer = UserInterfaceHelper.askAQuestion( theReqtsWithNewLines.size() + " of the " + 
+					theReqts.size() + " requirements have newline or linefeed characters: \n" +
+					getStringFor( theReqtsWithNewLines, 1 ) + "\n" +
+					"This means that they won't export to csv and roundtrip into DOORS NG correctly.\n\n" +
+					"Do you want to fix the model to remove these before proceeding?" );
+
+			if( answer ) {
+				for( IRPRequirement theReqtWithNewLines : theReqtsWithNewLines ){
+
+					String theSpec = theReqtWithNewLines.getSpecification().
+							replaceAll( "\\r", "" ).replaceAll( "\\n", "" );
+
+					_context.info( "Removing newlines from " + _context.elInfo( theReqtWithNewLines ) );
+					theReqtWithNewLines.setSpecification( theSpec  );
+				}
+			}
+		}
+
+		String theFilename = underEl.getName() + ".csv";
+		File theFile = chooseAFileToImport( theFilename );
+
+		if( theFile == null ) {
+
+			UserInterfaceHelper.showWarningDialog( 
+					"No file was selected to export requirement to" );
+
+		} else {
+
+			// Get controlling properties
+			String artifactTypeForCSVExport = _context.getCSVExportArtifactType( underEl );
+			String separator = _context.getCSVExportSeparator( underEl );
+			boolean isNameForCVSExport = _context.getCSVExportIncludeArtifactName( underEl );
+
+			_context.debug( "exportRequirementsToCSV CSVExportSeparator=" + separator + 
+					", CSVExportArtifactType=" + artifactTypeForCSVExport + 
+					", CVSExportIncludeArtifactName=" + isNameForCVSExport );
+
+			String theMsg = "Based on the ExecutableMBSEProfile::RequirementsAnalysis properties for this package this helper will export " + theReqts.size();
+
+			if( theReqts.size() == 1 ) {
+				theMsg += " requirement.";
 			} else {
-				
-				// Get controlling properties
-				String artifactTypeForCSVExport = _context.getCSVExportArtifactType( underEl );
-				String separator = _context.getCSVExportSeparator( underEl );
-				boolean isNameForCVSExport = _context.getCSVExportIncludeArtifactName( underEl );
+				theMsg += " requirements.";
+			}
 
-				_context.debug( "exportRequirementsToCSV CSVExportSeparator=" + separator + 
-						", CSVExportArtifactType=" + artifactTypeForCSVExport + 
-						", CVSExportIncludeArtifactName=" + isNameForCVSExport );
+			theMsg += "\n\nSource: " + _context.elInfo( underEl ) + 
+					" \n" + "Target: " + theFile.getAbsolutePath() + "\n" +
+					"Artifact Type: " + artifactTypeForCSVExport + "\n";
 
-				String theMsg = "Based on the ExecutableMBSEProfile::RequirementsAnalysis properties for this package this helper will export " + theReqts.size();
-				
-				if( theReqts.size() == 1 ) {
-					theMsg += " requirement.";
-				} else {
-					theMsg += " requirements.";
-				}
-				
-				theMsg += "\n\nSource: " + _context.elInfo( underEl ) + 
-						" \n" + "Target: " + theFile.getAbsolutePath() + "\n" +
-						"Artifact Type: " + artifactTypeForCSVExport + "\n";
-				
-				if( isNameForCVSExport ) {
-					theMsg += "Name column: True";
-				} else {
-					theMsg += "Name column: False";
-				}
-				
-				theMsg += "\n\nDo you want to proceed? ";
-				
-				boolean answer = UserInterfaceHelper.askAQuestion( theMsg );
-				
-				if( answer ) {
-					
-					_context.info( theFile.getAbsolutePath() + " (Target File)");
+			if( isNameForCVSExport ) {
+				theMsg += "Name column: True";
+			} else {
+				theMsg += "Name column: False";
+			}
+
+			theMsg += "\n\nOnce exported, prior to import into DOORS Next, first open in Microsoft Excel and check the contents, then Save As to .xlsx \nto create the file to import." + 
+					"\n\nDo you want to proceed? ";
+
+			boolean answer = UserInterfaceHelper.askAQuestion( theMsg );
+
+			if( answer ) {
+
+				_context.info( theFile.getAbsolutePath() + " (Target File)");
+
+				try {
+
+					boolean isContinue = true;
+
+					FileWriter myWriter = null;
 
 					try {
 
-						boolean isContinue = true;
-						
-						FileWriter myWriter = null;
-						
-						try {
-							
-							myWriter = new FileWriter( theFile );
+						myWriter = new FileWriter( theFile );
 
-							String info = "sep=" + separator;
-							_context.info( "Added " + info + " to export as CSVExportSeparator property" );
-							
-							myWriter.write( info + "\n" );
+						String info = "sep=" + separator;
+						_context.info( "Added " + info + " to export as CSVExportSeparator property" );
 
-						} catch( Exception e ) {
-							
-							isContinue = false;
-							
-							UserInterfaceHelper.showWarningDialog( 
-									"Unable to export requirements to " + theFile.getAbsolutePath() + " \n" +
-									"File is not writable. If it's open in another program, close it and try again." );						
-						}
-						
-						if( isContinue ) {
-							
-							String theHeadingLine = "";
-							
-							if( isNameForCVSExport ){
-								theHeadingLine = "Artifact Type" + separator + "Name" + separator + "Primary Text";
-							} else {
-								theHeadingLine = "Artifact Type" + separator + "Primary Text";
-							}
-							
-							for( String theAdditionalHeading : theAdditionalHeadings ){
-								theHeadingLine += separator + theAdditionalHeading;
-							}
-							
-							theHeadingLine += "\n";
-									
-							myWriter.write( theHeadingLine );
+						myWriter.write( info + "\n" );
 
-							for( IRPRequirement theReqt : theReqts ){
+					} catch( Exception e ) {
 
-								String theLine = "";
-								String theName = theReqt.getName();
-								
-								String theSpecification = _context.
-										replaceCSVIncompatibleCharsFrom( theReqt.getSpecification() );
+						isContinue = false;
 
-								if( isNameForCVSExport ){
-									theLine = artifactTypeForCSVExport + separator + theName + separator + theSpecification;
-								} else {
-									theLine = artifactTypeForCSVExport + separator + theSpecification;
-								}
-								
-								AnnotationMap theAnnotationMap = new AnnotationMap( theReqt, _context );
-
-								for( String theAdditionalHeading : theAdditionalHeadings ){
-									
-									theLine += separator;
-									
-									List<IRPAnnotation> theSpecificAnnotations = theAnnotationMap.
-											getOrDefault( theAdditionalHeading, new ArrayList<>() );
-									
-									Iterator<IRPAnnotation> iterator = theSpecificAnnotations.iterator();
-									
-									while( iterator.hasNext() ){
-										
-										IRPAnnotation theSpecificAnnotation = (IRPAnnotation) iterator.next();
-										
-										String theDescription = _context.
-												replaceCSVIncompatibleCharsFrom( theSpecificAnnotation.getDescription() );
-										
-										if( theSpecificAnnotations.size() <= 1 ) {
-											theLine += theDescription;
-										} else {
-											theLine += theDescription + "(" + theSpecificAnnotation.getName() + ")";	
-										}
-									}		
-								}
-								
-								theLine += "\n";
-								
-								myWriter.write( theLine );
-							}
-							
-							myWriter.close();
-
-						}
-
-
-					} catch( Exception e ){
-
-						_context.error( "Exception, e=" + e.getMessage() );
-						System.out.println( "An error occurred." );
-						e.printStackTrace();
+						UserInterfaceHelper.showWarningDialog( 
+								"Unable to export requirements to " + theFile.getAbsolutePath() + " \n" +
+								"File is not writable. If it's open in another program, close it and try again." );						
 					}
+
+					if( isContinue ) {
+
+						String theHeadingLine = "";
+
+						if( isNameForCVSExport ){
+							theHeadingLine = "Identifier" + separator + "Artifact Type" + separator + "Name" + separator + "Primary Text";
+						} else {
+							theHeadingLine = "Identifier" + separator + "Artifact Type" + separator + "Primary Text";
+						}
+
+						for( String theAdditionalHeading : theAdditionalHeadings ){
+							theHeadingLine += separator + theAdditionalHeading;
+						}
+
+						theHeadingLine += "\n";
+
+						myWriter.write( theHeadingLine );
+
+						for( IRPRequirement theReqt : theReqts ){
+
+							String theLine = "";
+							String theName = theReqt.getName();
+							String theIdentifier = getIdentifierFromTracedRemoteRequirement( theReqt );
+
+							String theSpecification = _context.
+									replaceCSVIncompatibleCharsFrom( theReqt.getSpecification() );
+
+							if( isNameForCVSExport ){
+								theLine = theIdentifier + separator + artifactTypeForCSVExport + separator + theName + separator + theSpecification;
+							} else {
+								theLine = theIdentifier + separator + artifactTypeForCSVExport + separator + theSpecification;
+							}
+
+							AnnotationMap theAnnotationMap = new AnnotationMap( theReqt, _context );
+
+							for( String theAdditionalHeading : theAdditionalHeadings ){
+
+								theLine += separator;
+
+								List<IRPAnnotation> theSpecificAnnotations = theAnnotationMap.
+										getOrDefault( theAdditionalHeading, new ArrayList<>() );
+
+								Iterator<IRPAnnotation> iterator = theSpecificAnnotations.iterator();
+
+								while( iterator.hasNext() ){
+
+									IRPAnnotation theSpecificAnnotation = (IRPAnnotation) iterator.next();
+
+									String theDescription = _context.
+											replaceCSVIncompatibleCharsFrom( theSpecificAnnotation.getDescription() );
+
+									if( theSpecificAnnotations.size() <= 1 ) {
+										theLine += theDescription;
+									} else {
+										theLine += theDescription + "(" + theSpecificAnnotation.getName() + ")";	
+									}
+								}		
+							}
+
+							theLine += "\n";
+
+							myWriter.write( theLine );
+						}
+
+						myWriter.close();
+
+					}
+
+
+				} catch( Exception e ){
+
+					_context.error( "Exception, e=" + e.getMessage() );
+					System.out.println( "An error occurred." );
+					e.printStackTrace();
 				}
 			}
 		}
@@ -299,9 +402,9 @@ public class ExportRequirementsToCSV {
 	}
 
 	public class CSVFileFilter extends javax.swing.filechooser.FileFilter {
-		
+
 		String fileType="csv";
-		
+
 		public boolean accept(File f) {
 			String name = f.getName();
 			if (f.isDirectory())
@@ -313,28 +416,28 @@ public class ExportRequirementsToCSV {
 			return "*" + fileType;
 		}
 	}
-	
-	
+
+
 	public String getStringFor( 
 			List<IRPRequirement> theEls,
 			int max ) {
-		
+
 		int count = 0;
-		
+
 		String theString = "";
-		
+
 		for( IRPModelElement theEl : theEls ){
 			count++;
 			theString += theEl.getName() + "\n";
-			
+
 			if( count == max && 
 					count != theEls.size() ){
-				
+
 				theString += "...\n";
 				break;
 			}
 		}
-		
+
 		return theString;
 	}
 }
@@ -356,4 +459,4 @@ public class ExportRequirementsToCSV {
 
     You should have received a copy of the GNU General Public License
     along with SysMLHelperPlugin.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */

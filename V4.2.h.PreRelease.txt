@@ -862,6 +862,8 @@ V4.2.h.Rhp831.PreRelease (XX-XXX-XXXX):
 #641 07-APR-2023: ExecutableMBSE: Add options to create context diagram package and signals package when creating the use case package structure (F.J.Chadburn)
 #642 21-APR-2023: ExecutableMBSE: Add menu to automatically establish trace dependencies to remote requirements to facilitate surrogate approach to DNG reqts (F.J.Chadburn) 
 #643 21-APR-2023: ExecutableMBSE: Add model check for requirements that have dependencies on DOORS NG requirements to warn if specification text differs (F.J.Chadburn)
+#644 24-APR-2023: ExceutableMBSE: Get the csv export to include Identifier of requirement if an OSLC relation exists to remote version of it (F.J.Chadburn)
+#645 24-APR-2023: ExecutableMBSE: Add additional helper info to remind users to open csv and save as Excel before importing into DOORS NG (F.J.Chadburn)
 		
 Backlog/Known issues
 - Interfaces Package doesn't have unique icon yet

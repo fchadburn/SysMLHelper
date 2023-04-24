@@ -33,6 +33,7 @@ import com.mbsetraining.sysmlhelper.gateway.MoveRequirements;
 import com.mbsetraining.sysmlhelper.modelchecks.CheckForRequirementAnchors;
 import com.mbsetraining.sysmlhelper.modelchecks.CheckForRequirementCFLRChars;
 import com.mbsetraining.sysmlhelper.modelchecks.CheckForRequirementChildren;
+import com.mbsetraining.sysmlhelper.modelchecks.CheckForRemoteRequirementSpecificationMatch;
 import com.mbsetraining.sysmlhelper.populateparts.PopulatePartsPanel;
 import com.mbsetraining.sysmlhelper.pubsubportcreation.PortCreator;
 import com.mbsetraining.sysmlhelper.rolluptraceabilitytotransition.RollUpTraceabilityToTheTransitionPanel;
@@ -64,6 +65,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 	protected CheckForRequirementAnchors _checkForRequirementAnchors;
 	protected CheckForRequirementChildren _checkForRequirementChildren;
 	protected CheckForRequirementCFLRChars _checkForRequirementCFLRChars;
+	protected CheckForRemoteRequirementSpecificationMatch _checkForRemoteRequirementSpecificationMatch;
 
 	// called when plug-in is loaded
 	public void RhpPluginInit(
@@ -121,6 +123,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 		_checkForRequirementAnchors = new CheckForRequirementAnchors( theCheckRegistry );
 		_checkForRequirementChildren = new CheckForRequirementChildren( theCheckRegistry );	
 		_checkForRequirementCFLRChars = new CheckForRequirementCFLRChars( theCheckRegistry, _context );
+		_checkForRemoteRequirementSpecificationMatch = new CheckForRemoteRequirementSpecificationMatch( theCheckRegistry, _context );
 	}
 
 	// called when the plug-in pop-up menu  is selected
@@ -497,6 +500,14 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 					theSwitcher.switchRequirements();
 
+				} else if( menuItem.equals( _settings.getString( 
+						"executablembseplugin.EstablishTraceRelationsToDNG" ) ) ){
+
+					SwitchRhapsodyRequirementsToDNG theSwitcher = 
+							new SwitchRhapsodyRequirementsToDNG( _context );
+
+					theSwitcher.establishTraceRelationsToRemoteReqts();
+					
 				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.StartLinkMenu" ) ) ){
 
