@@ -100,7 +100,8 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				afterAddForCallOperation( 
 						(IRPCallOperation) modelElement );
 
-			} else if( modelElement instanceof IRPStatechart ) {
+			} else if( modelElement instanceof IRPStatechart && 
+					!( modelElement instanceof IRPFlowchart ) ) {
 				
 				afterAddForStatechart( (IRPStatechart) modelElement );
 				
