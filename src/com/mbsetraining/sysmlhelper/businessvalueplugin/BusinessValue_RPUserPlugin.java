@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Set;
 
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
-import com.mbsetraining.sysmlhelper.common.DependencySelector;
 import com.mbsetraining.sysmlhelper.common.LayoutHelper;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
+import com.mbsetraining.sysmlhelper.dependencyhelper.DependencySelector;
 import com.mbsetraining.sysmlhelper.graphtraversal.CreateGraphPathCapturePanel;
 import com.telelogic.rhapsody.core.*;
 

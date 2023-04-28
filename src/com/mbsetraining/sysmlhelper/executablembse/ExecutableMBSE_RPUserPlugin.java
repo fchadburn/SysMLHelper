@@ -10,7 +10,6 @@ import com.mbsetraining.sysmlhelper.activitydiagram.ActivityDiagramChecker;
 import com.mbsetraining.sysmlhelper.activitydiagram.RenameActions;
 import com.mbsetraining.sysmlhelper.autorealizewithcopy.AutoRealizeWithCopyPanel;
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
-import com.mbsetraining.sysmlhelper.common.DependencySelector;
 import com.mbsetraining.sysmlhelper.common.LayoutHelper;
 import com.mbsetraining.sysmlhelper.common.NestedActivityDiagram;
 import com.mbsetraining.sysmlhelper.common.PartSelector;
@@ -21,6 +20,7 @@ import com.mbsetraining.sysmlhelper.copyactivitydiagram.CopyActivityDiagramsPane
 import com.mbsetraining.sysmlhelper.createactorpart.CreateNewActorPanel;
 import com.mbsetraining.sysmlhelper.createnewblockpart.CreateNewBlockPartPanel;
 import com.mbsetraining.sysmlhelper.createtestcase.TestCaseCreator;
+import com.mbsetraining.sysmlhelper.dependencyhelper.DependencySelector;
 import com.mbsetraining.sysmlhelper.doorsng.ExportRequirementsToCSV;
 import com.mbsetraining.sysmlhelper.doorsng.RepairLinks;
 import com.mbsetraining.sysmlhelper.doorsng.SwitchRhapsodyRequirementsToDNG;
@@ -195,15 +195,6 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						_context.error( menuItem + " invoked out of context and only works for classes, objects, or structure diagrams/ibds" );
 					}
 
-				} else if( menuItem.equals( _settings.getString(
-						"executablembseplugin.PopulateDependencies" ) ) ){
-
-					if( theSelectedGraphEls.size() != 1 ) {
-						UserInterfaceHelper.showWarningDialog( "Sorry, this option only works if you select one graph element" );
-					} else {
-						DependencySelector theSelector = new DependencySelector( _context );
-						theSelector.populateDependsOnElementsFor( _context.getSelectedGraphEl() );
-					}
 
 				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.GenerateSequenceDiagramMenu" ) ) ){
@@ -265,9 +256,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 									theSelectedEls, theSelectedGraphEls );
 
 					DependencySelector theSelector = new DependencySelector( _context );
-
-					theSelector.selectDependsOnElementsFor( 
-							theCombinedSet, null );
+					theSelector.selectDependsOnElementsFor( new ArrayList<>( theCombinedSet ) );
 
 				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.SelectDependentElementsMenu" ) ) ){
@@ -277,154 +266,20 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 									theSelectedEls, theSelectedGraphEls );
 
 					DependencySelector theSelector = new DependencySelector( _context );
-
-					theSelector.selectDependentElementsFor( 
-							theCombinedSet, null );
+					theSelector.selectDependentElementsFor( new ArrayList<>( theCombinedSet ) );
 
 				} else if( menuItem.equals( _settings.getString(
-						"executablembseplugin.SelectDependsOnDeriveOnlyElementsMenu" ) ) ){
-
-					Set<IRPModelElement> theCombinedSet = 
-							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theSelectedGraphEls );
+						"executablembseplugin.PopulateDependsOnElementsMenu" ) ) ){
 
 					DependencySelector theSelector = new DependencySelector( _context );
-
-					theSelector.selectDependsOnElementsFor( 
-							theCombinedSet, "derive" );
+					theSelector.populateDependsOnElementsFor( _context.getSelectedGraphEl() );
 
 				} else if( menuItem.equals( _settings.getString(
-						"executablembseplugin.SelectDependentDeriveOnlyElementsMenu" ) ) ){
-
-					Set<IRPModelElement> theCombinedSet = 
-							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theSelectedGraphEls );
+						"executablembseplugin.PopulateDependentElementsMenu" ) ) ){
 
 					DependencySelector theSelector = new DependencySelector( _context );
+					theSelector.populateDependentElementsFor( _context.getSelectedGraphEl() );
 
-					theSelector.selectDependentElementsFor( 
-							theCombinedSet, "derive" );
-
-				} else if( menuItem.equals( _settings.getString(
-						"executablembseplugin.SelectDependsOnSatisfyOnlyElementsMenu" ) ) ){
-
-					Set<IRPModelElement> theCombinedSet = 
-							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theSelectedGraphEls );
-
-					DependencySelector theSelector = new DependencySelector( _context );
-
-					theSelector.selectDependsOnElementsFor( 
-							theCombinedSet, "satisfy" );
-
-				} else if( menuItem.equals( _settings.getString(
-						"executablembseplugin.SelectDependentSatisfyOnlyElementsMenu" ) ) ){
-
-					Set<IRPModelElement> theCombinedSet = 
-							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theSelectedGraphEls );
-
-					DependencySelector theSelector = new DependencySelector( _context );
-
-					theSelector.selectDependentElementsFor( 
-							theCombinedSet, "satisfy" );
-
-				} else if( menuItem.equals( _settings.getString(
-						"executablembseplugin.SelectDependsOnVerifyOnlyElementsMenu" ) ) ){
-
-					Set<IRPModelElement> theCombinedSet = 
-							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theSelectedGraphEls );
-
-					DependencySelector theSelector = new DependencySelector( _context );
-
-					theSelector.selectDependsOnElementsFor( 
-							theCombinedSet, "verify" );
-
-				} else if( menuItem.equals( _settings.getString(
-						"executablembseplugin.SelectDependentVerifyOnlyElementsMenu" ) ) ){
-
-					Set<IRPModelElement> theCombinedSet = 
-							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theSelectedGraphEls );
-
-					DependencySelector theSelector = new DependencySelector( _context );
-
-					theSelector.selectDependentElementsFor( 
-							theCombinedSet, "verify" );
-
-				} else if( menuItem.equals( _settings.getString(
-						"executablembseplugin.SelectDependsOnRefineOnlyElementsMenu" ) ) ){
-
-					Set<IRPModelElement> theCombinedSet = 
-							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theSelectedGraphEls );
-
-					DependencySelector theSelector = new DependencySelector( _context );
-
-					theSelector.selectDependsOnElementsFor( 
-							theCombinedSet, "refine" );
-
-				} else if( menuItem.equals( _settings.getString(
-						"executablembseplugin.SelectDependentRefineOnlyElementsMenu" ) ) ){
-
-					Set<IRPModelElement> theCombinedSet = 
-							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theSelectedGraphEls );
-
-					DependencySelector theSelector = new DependencySelector( _context );
-
-					theSelector.selectDependentElementsFor( 
-							theCombinedSet, "refine" );
-
-				} else if( menuItem.equals( _settings.getString(
-						"executablembseplugin.SelectDependsOnDeriveReqtOnlyElementsMenu" ) ) ){
-
-					Set<IRPModelElement> theCombinedSet = 
-							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theSelectedGraphEls );
-
-					DependencySelector theSelector = new DependencySelector( _context );
-
-					theSelector.selectDependsOnElementsFor( 
-							theCombinedSet, "deriveReqt" );
-
-				} else if( menuItem.equals( _settings.getString(
-						"executablembseplugin.SelectDependentDeriveReqtOnlyElementsMenu" ) ) ){
-
-					Set<IRPModelElement> theCombinedSet = 
-							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theSelectedGraphEls );
-
-					DependencySelector theSelector = new DependencySelector( _context );
-
-					theSelector.selectDependentElementsFor( 
-							theCombinedSet, "deriveReqt" );
-					
-				} else if( menuItem.equals( _settings.getString(
-						"executablembseplugin.SelectDependsOnImportOnlyElementsMenu" ) ) ){
-
-					Set<IRPModelElement> theCombinedSet = 
-							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theSelectedGraphEls );
-
-					DependencySelector theSelector = new DependencySelector( _context );
-
-					theSelector.selectDependsOnElementsFor( 
-							theCombinedSet, "import" );
-
-				} else if( menuItem.equals( _settings.getString(
-						"executablembseplugin.SelectDependentImportOnlyElementsMenu" ) ) ){
-
-					Set<IRPModelElement> theCombinedSet = 
-							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theSelectedGraphEls );
-
-					DependencySelector theSelector = new DependencySelector( _context );
-
-					theSelector.selectDependentElementsFor( 
-							theCombinedSet, "import" );
-					
 				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.SelectChildClassifiersMenu" ) ) ){
 
