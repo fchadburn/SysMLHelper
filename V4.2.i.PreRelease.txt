@@ -870,6 +870,7 @@ V4.2.i.Rhp831.PreRelease (28-APR-2023):
 #647 28-APR-2023: ExecutableMBSE: Add a populate dependencies helper to help with populating missing requirements on diagrams (F.J.Chadburn) 
 #648 28-APR-2023: ExecutableMBSE: Re-factored select depends on and select dependent helpers to use same intelligent populate menu approach (F.J.Chadburn)
 #649 28-APR-2023: ExecutableMBSE: Cope gracefully when dependent/depends on elements can't be populated on same diagram as selected graph node (F.J.Chadburn)
+#650 28-APR-2023: BusinessValue: Updated/re-factored to make use of same populate/select dependency helpers as the ExecutableMBSE profile (F.J.Chadburn)
 		
 Backlog/Known issues
 - Add a UML package new term

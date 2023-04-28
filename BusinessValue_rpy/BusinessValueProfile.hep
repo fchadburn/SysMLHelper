@@ -1,5 +1,5 @@
 [Helpers]
-numberOfElements=7
+numberOfElements=9
 
 #REM: Definition of the plug-in
 name1=InvokeBusinessValueHelper
@@ -18,7 +18,7 @@ isVisible2=1
 DLLServerCompatible2=1
 
 #REM: Add pop-up menu 
-name3=Business Value: Other\Select Depends On element(s)\All
+name3=Business Value: Other\Select Depends On element(s)
 isPluginCommand3=1
 command3=InvokeBusinessValueHelper
 applicableTo3=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint,Tier 1 Goal,Tier 2 Goal,Tier 3 Goal
@@ -26,38 +26,54 @@ isVisible3=1
 DLLServerCompatible3=1
 
 #REM: Add pop-up menu 
-name4=Business Value: Other\Select Dependent element(s)\All
+name4=Business Value: Other\Select Dependent element(s)
 isPluginCommand4=1
 command4=InvokeBusinessValueHelper
 applicableTo4=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint,Tier 1 Goal,Tier 2 Goal,Tier 3 Goal
 isVisible4=1
 DLLServerCompatible4=1
 
-#REM: Add pop-up menu
-name5=Business Value: Other\Setup project properties
+#REM: Add pop-up menu 
+name5=Business Value: Other\Populate Depends On element(s)
 isPluginCommand5=1
 command5=InvokeBusinessValueHelper
-applicableTo5=Project,SysML,BusinessValue
+applicableTo5=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint,Tier 1 Goal,Tier 2 Goal,Tier 3 Goal
 isVisible5=1
 DLLServerCompatible5=1
 
-#REM: Add pop-up menu
-name6=Business Value: Other\Build path visualization
+#REM: Add pop-up menu 
+name6=Business Value: Other\Populate Dependent element(s)
 isPluginCommand6=1
 command6=InvokeBusinessValueHelper
-applicableTo6=Tier 1 Goal,Tier 2 Goal,Tier 3 Goal,Business Value Diagram
+applicableTo6=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,refine,Requirement,Requirements Diagram,RequirementsTable,satisfy,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,view,viewpoint,Tier 1 Goal,Tier 2 Goal,Tier 3 Goal
 isVisible6=1
 DLLServerCompatible6=1
 
 #REM: Add pop-up menu
-name7=Business Value: Other\Convert to note
+name7=Business Value: Other\Setup project properties
 isPluginCommand7=1
 command7=InvokeBusinessValueHelper
-applicableTo7=Tier 1 Goal,Tier 2 Goal,Tier 3 Goal
+applicableTo7=Project,SysML,BusinessValue
 isVisible7=1
 DLLServerCompatible7=1
 
-#REM Copyright (C) 2022  MBSE Training and Consulting Limited (www.executablembse.com)
+#REM: Add pop-up menu
+name8=Business Value: Other\Build path visualization
+isPluginCommand8=1
+command8=InvokeBusinessValueHelper
+applicableTo8=Tier 1 Goal,Tier 2 Goal,Tier 3 Goal,Business Value Diagram
+isVisible8=1
+DLLServerCompatible8=1
+
+#REM: Add pop-up menu
+name9=Business Value: Other\Convert to note
+isPluginCommand9=1
+command9=InvokeBusinessValueHelper
+applicableTo9=Tier 1 Goal,Tier 2 Goal,Tier 3 Goal
+isVisible9=1
+DLLServerCompatible9=1
+
+#REM Copyright (C) 2022-2023  MBSE Training and Consulting Limited (www.executablembse.com)
 #REM
 #REM This file is part of SysMLHelperPlugin.
 #REM

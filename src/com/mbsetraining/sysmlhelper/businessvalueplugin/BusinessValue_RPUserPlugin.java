@@ -1,5 +1,6 @@
 package com.mbsetraining.sysmlhelper.businessvalueplugin;
 
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -142,9 +143,7 @@ public class BusinessValue_RPUserPlugin extends RPUserPlugin {
 									theSelectedEls, theSelectedGraphEls );
 
 					DependencySelector theSelector = new DependencySelector( _context );
-
-					theSelector.selectDependsOnElementsFor( 
-							theCombinedSet, null );
+					theSelector.selectDependsOnElementsFor( new ArrayList<>( theCombinedSet ) );
 
 				} else if( menuItem.equals( _settings.getString(
 						"businessvalueplugin.SelectDependentElementsMenu" ) ) ){
@@ -154,9 +153,19 @@ public class BusinessValue_RPUserPlugin extends RPUserPlugin {
 									theSelectedEls, theSelectedGraphEls );
 
 					DependencySelector theSelector = new DependencySelector( _context );
+					theSelector.selectDependentElementsFor( new ArrayList<>( theCombinedSet ) );
 
-					theSelector.selectDependentElementsFor( 
-							theCombinedSet, null );
+				} else if( menuItem.equals( _settings.getString(
+						"businessvalueplugin.PopulateDependsOnElementsMenu" ) ) ){
+
+					DependencySelector theSelector = new DependencySelector( _context );
+					theSelector.populateDependsOnElementsFor( _context.getSelectedGraphEl() );
+
+				} else if( menuItem.equals( _settings.getString(
+						"businessvalueplugin.PopulateDependentElementsMenu" ) ) ){
+
+					DependencySelector theSelector = new DependencySelector( _context );
+					theSelector.populateDependentElementsFor( _context.getSelectedGraphEl() );
 
 				} else if( menuItem.equals( _settings.getString( 
 						"businessvalueplugin.CenterStraightLinesMenu" ) ) ){
@@ -450,7 +459,7 @@ public class BusinessValue_RPUserPlugin extends RPUserPlugin {
 }
 
 /**
- * Copyright (C) 2022  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2022-2023  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 
