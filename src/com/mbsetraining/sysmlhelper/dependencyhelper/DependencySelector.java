@@ -267,37 +267,9 @@ public class DependencySelector {
 			String theStereotypeName ){
 
 		IRPModelElement theModelEl = theGraphEl.getModelObject();
-		IRPDiagram theDiagram = theGraphEl.getDiagram();
 		Set<IRPModelElement> theDependsOnEls = getDependsOnElementsFor( theModelEl, theStereotypeName );
 
-		GraphElInfo theNodeInfo = new GraphElInfo( theGraphEl, _context );
-
-		List<IRPModelElement> theMissingEls = getElsNotOnDiagram( theDiagram, theDependsOnEls );
-
-		int xOffset = 200;
-		int yOffset = 200;
-		int xNudge = 20;
-		int yNudge = 20;
-		int x = theNodeInfo.getMidX() + xOffset;
-		int y = theNodeInfo.getMidY() + yOffset;
-
-		IRPCollection theCollection = _context.createNewCollection();
-		theCollection.addGraphicalItem( theGraphEl );
-
-		for( IRPModelElement theMissingEl : theMissingEls ){
-
-			IRPGraphNode theGraphNode = theDiagram.addNewNodeForElement( theMissingEl, x, y, 50, 50 );
-
-			GraphNodeResizer theResizer = new GraphNodeResizer( theGraphNode, _context );
-			theResizer.performResizing();
-
-			theCollection.addGraphicalItem( theGraphNode );
-
-			x = x + xNudge;
-			y = y + yNudge;
-		}
-
-		theDiagram.completeRelations( theCollection, 1 );
+		populateElsNotOnDiagram( theGraphEl, theDependsOnEls );
 	}
 
 	private void populateDependentElementsFor(
@@ -305,12 +277,20 @@ public class DependencySelector {
 			String theStereotypeName ){
 
 		IRPModelElement theModelEl = theGraphEl.getModelObject();
-		IRPDiagram theDiagram = theGraphEl.getDiagram();
 		Set<IRPModelElement> theDependentEls = getDependentElementsFor( theModelEl, theStereotypeName );
 
+		populateElsNotOnDiagram( theGraphEl, theDependentEls );
+	}
+
+	private void populateElsNotOnDiagram(
+			IRPGraphElement theGraphEl, 
+			Set<IRPModelElement> theCandidateEls ){
+		
+		IRPDiagram theDiagram = theGraphEl.getDiagram();
+		
 		GraphElInfo theNodeInfo = new GraphElInfo( theGraphEl, _context );
 
-		List<IRPModelElement> theMissingEls = getElsNotOnDiagram( theDiagram, theDependentEls );
+		List<IRPModelElement> theMissingEls = getElsNotOnDiagram( theDiagram, theCandidateEls );
 
 		int xOffset = 200;
 		int yOffset = 200;
@@ -324,15 +304,26 @@ public class DependencySelector {
 
 		for( IRPModelElement theMissingEl : theMissingEls ){
 
-			IRPGraphNode theGraphNode = theDiagram.addNewNodeForElement( theMissingEl, x, y, 50, 50 );
+			IRPGraphNode theGraphNode = null;
+			
+			try {
+				theGraphNode = theDiagram.addNewNodeForElement( theMissingEl, x, y, 50, 50 );
 
-			GraphNodeResizer theResizer = new GraphNodeResizer( theGraphNode, _context );
-			theResizer.performResizing();
+			} catch (Exception e) {
+				_context.warning( "Rhapsody is unable to populate " + _context.elInfo( theMissingEl ) + 
+						" on " + _context.elInfo( theDiagram ) );
+			}
 
-			theCollection.addGraphicalItem( theGraphNode );
+			if( theGraphNode != null ){
+				
+				GraphNodeResizer theResizer = new GraphNodeResizer( theGraphNode, _context );
+				theResizer.performResizing();
 
-			x = x + xNudge;
-			y = y + yNudge;
+				theCollection.addGraphicalItem( theGraphNode );
+
+				x = x + xNudge;
+				y = y + yNudge;
+			}
 		}
 
 		theDiagram.completeRelations( theCollection, 1 );
