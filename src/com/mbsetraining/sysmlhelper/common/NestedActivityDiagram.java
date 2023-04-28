@@ -146,8 +146,10 @@ public class NestedActivityDiagram {
 	public void createNestedActivityDiagram(
 			IRPModelElement forOwner, 
 			String withUnadornedName,
-			String theTemplateName ){
+			String theTemplateProperty ){
 
+		String theTemplateName = _context.getStringPropertyValueFromRhp( forOwner, theTemplateProperty, "template_for_act" );
+		
 		String theName = withUnadornedName;
 
 		IRPFlowchart theAD;
