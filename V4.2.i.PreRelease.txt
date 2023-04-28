@@ -871,8 +871,11 @@ V4.2.i.Rhp831.PreRelease (28-APR-2023):
 #648 28-APR-2023: ExecutableMBSE: Re-factored select depends on and select dependent helpers to use same intelligent populate menu approach (F.J.Chadburn)
 #649 28-APR-2023: ExecutableMBSE: Cope gracefully when dependent/depends on elements can't be populated on same diagram as selected graph node (F.J.Chadburn)
 #650 28-APR-2023: BusinessValue: Updated/re-factored to make use of same populate/select dependency helpers as the ExecutableMBSE profile (F.J.Chadburn)
+#651 28-APR-2023: SysMLHelper: Updated/re-factored to make use of same populate/select dependency helpers as the ExecutableMBSE profile (F.J.Chadburn)
 		
 Backlog/Known issues
+- Further testing needed with dependency helper and new terms
+- Textual Activity Diagram needs implementing for SysMLHelper as it's stopped working
 - Add a UML package new term
 - Interfaces Package doesn't have unique icon yet
 - Work out a way of getting a hyperlink icon on a use case to go to activity diagram

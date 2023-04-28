@@ -139,7 +139,7 @@ public class DependencySelector {
 		if( theStereotypeNames.isEmpty() ) {
 
 			UserInterfaceHelper.showInformationDialog( 
-					"No unpopulated dependencies found for the " + theModelEls.size() + " selected elements" );
+					"No depends on elements found for the " + theModelEls.size() + " selected elements" );
 		} else {	
 			theStereotypeNames.add( ALL_CHOICE );
 
@@ -199,7 +199,7 @@ public class DependencySelector {
 		if( theStereotypeNames.isEmpty() ) {
 
 			UserInterfaceHelper.showInformationDialog( 
-					"No unpopulated dependencies found for the " + theModelEls.size() + " selected elements" );
+					"No dependent elements found for the " + theModelEls.size() + " selected elements" );
 		} else {	
 			theStereotypeNames.add( ALL_CHOICE );
 

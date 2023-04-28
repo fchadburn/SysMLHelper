@@ -116,137 +116,37 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 					theHyperLink.highLightElement();
 					theHyperLink.openFeaturesDialog(0);
 
-				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.SelectDependsOnElementsMenu"))){
+				} else if( menuItem.equals( _settings.getString(
+						"sysmlhelperplugin.SelectDependsOnElementsMenu" ) ) ){
 
 					Set<IRPModelElement> theCombinedSet = 
 							_context.getSetOfElementsFromCombiningThe(
 									theSelectedEls, theSelectedGraphEls );
 
 					DependencySelector theSelector = new DependencySelector( _context );
+					theSelector.selectDependsOnElementsFor( new ArrayList<>( theCombinedSet ) );
 
-					theSelector.selectDependsOnElementsFor( 
-							theCombinedSet, null );
-
-				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.SelectDependentElementsMenu"))){
-
-					Set<IRPModelElement> theCombinedSet = 
-							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theSelectedGraphEls );
-
-					DependencySelector theSelector = new DependencySelector( _context );
-
-					theSelector.selectDependentElementsFor( 
-							theCombinedSet, null );
-
-				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.SelectDependsOnDeriveOnlyElementsMenu"))){
+				} else if( menuItem.equals( _settings.getString(
+						"sysmlhelperplugin.SelectDependentElementsMenu" ) ) ){
 
 					Set<IRPModelElement> theCombinedSet = 
 							_context.getSetOfElementsFromCombiningThe(
 									theSelectedEls, theSelectedGraphEls );
 
 					DependencySelector theSelector = new DependencySelector( _context );
+					theSelector.selectDependentElementsFor( new ArrayList<>( theCombinedSet ) );
 
-					theSelector.selectDependsOnElementsFor( 
-							theCombinedSet, "derive" );
-
-				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.SelectDependentDeriveOnlyElementsMenu"))){
-
-					Set<IRPModelElement> theCombinedSet = 
-							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theSelectedGraphEls );
+				} else if( menuItem.equals( _settings.getString(
+						"sysmlhelperplugin.PopulateDependsOnElementsMenu" ) ) ){
 
 					DependencySelector theSelector = new DependencySelector( _context );
+					theSelector.populateDependsOnElementsFor( _context.getSelectedGraphEl() );
 
-					theSelector.selectDependentElementsFor( 
-							theCombinedSet, "derive" );
-
-				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.SelectDependsOnSatisfyOnlyElementsMenu"))){
-
-					Set<IRPModelElement> theCombinedSet = 
-							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theSelectedGraphEls );
+				} else if( menuItem.equals( _settings.getString(
+						"sysmlhelperplugin.PopulateDependentElementsMenu" ) ) ){
 
 					DependencySelector theSelector = new DependencySelector( _context );
-
-					theSelector.selectDependsOnElementsFor( 
-							theCombinedSet, "satisfy" );
-
-				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.SelectDependentSatisfyOnlyElementsMenu"))){
-
-					Set<IRPModelElement> theCombinedSet = 
-							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theSelectedGraphEls );
-
-					DependencySelector theSelector = new DependencySelector( _context );
-
-					theSelector.selectDependentElementsFor( 
-							theCombinedSet, "satisfy" );
-
-				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.SelectDependsOnVerifyOnlyElementsMenu"))){
-
-					Set<IRPModelElement> theCombinedSet = 
-							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theSelectedGraphEls );
-
-					DependencySelector theSelector = new DependencySelector( _context );
-
-					theSelector.selectDependsOnElementsFor( 
-							theCombinedSet, "verify" );
-
-				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.SelectDependentVerifyOnlyElementsMenu"))){
-
-					Set<IRPModelElement> theCombinedSet = 
-							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theSelectedGraphEls );
-
-					DependencySelector theSelector = new DependencySelector( _context );
-
-					theSelector.selectDependentElementsFor( 
-							theCombinedSet, "verify" );
-
-				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.SelectDependsOnRefineOnlyElementsMenu"))){
-
-					Set<IRPModelElement> theCombinedSet = 
-							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theSelectedGraphEls );
-
-					DependencySelector theSelector = new DependencySelector( _context );
-
-					theSelector.selectDependsOnElementsFor( 
-							theCombinedSet, "refine" );
-
-				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.SelectDependentRefineOnlyElementsMenu"))){
-
-					Set<IRPModelElement> theCombinedSet = 
-							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theSelectedGraphEls );
-
-					DependencySelector theSelector = new DependencySelector( _context );
-
-					theSelector.selectDependentElementsFor( 
-							theCombinedSet, "refine" );
-
-				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.SelectDependsOnDeriveReqtOnlyElementsMenu"))){
-
-					Set<IRPModelElement> theCombinedSet = 
-							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theSelectedGraphEls );
-
-					DependencySelector theSelector = new DependencySelector( _context );
-
-					theSelector.selectDependsOnElementsFor( 
-							theCombinedSet, "deriveReqt" );
-
-				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.SelectDependentDeriveReqtOnlyElementsMenu"))){
-
-					Set<IRPModelElement> theCombinedSet = 
-							_context.getSetOfElementsFromCombiningThe(
-									theSelectedEls, theSelectedGraphEls );
-
-					DependencySelector theSelector = new DependencySelector( _context );
-
-					theSelector.selectDependentElementsFor( 
-							theCombinedSet, "deriveReqt" );
+					theSelector.populateDependentElementsFor( _context.getSelectedGraphEl() );
 
 				} else if (menuItem.equals(_settings.getString("sysmlhelperplugin.SetupGatewayProjectMenu"))){
 
@@ -581,7 +481,7 @@ public class SysMLHelper_RPUserPlugin extends RPUserPlugin {
 }
 
 /**
- * Copyright (C) 2016-2022  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2016-2023  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 
