@@ -867,8 +867,10 @@ V4.2.h.Rhp831.PreRelease (24-APR-2023):
 
 V4.2.i.Rhp831.PreRelease (XX-XXX-XXXX):
 #646 27-APR-2023: ExecutableMBSE: Fix issue introduced with 4.2.h with textual activity diagrams being called stm - rather than act - (F.J.Chadburn)
+#647 28-APR-2023: ExecutableMBSE: Add a populate dependencies helper to help with populating missing requirements on diagrams (F.J.Chadburn) 
 		
 Backlog/Known issues
+- Add a UML package new term
 - Interfaces Package doesn't have unique icon yet
 - Work out a way of getting a hyperlink icon on a use case to go to activity diagram
 - For Requirement filter if Note is anchored to element then requirement doesn't filter out stays on diagram, is there a way to improve this

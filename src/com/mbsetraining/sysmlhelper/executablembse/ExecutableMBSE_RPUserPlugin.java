@@ -196,6 +196,16 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					}
 
 				} else if( menuItem.equals( _settings.getString(
+						"executablembseplugin.PopulateDependencies" ) ) ){
+
+					if( theSelectedGraphEls.size() != 1 ) {
+						UserInterfaceHelper.showWarningDialog( "Sorry, this option only works if you select one graph element" );
+					} else {
+						DependencySelector theSelector = new DependencySelector( _context );
+						theSelector.populateDependsOnElementsFor( _context.getSelectedGraphEl() );
+					}
+
+				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.GenerateSequenceDiagramMenu" ) ) ){
 
 					if( theSelectedEl instanceof IRPClass ){
