@@ -47,7 +47,7 @@ public class RequirementsHelper {
 		
 		if( theModelObject != null ){
 			
-			String theActionText = _context.getActionTextFrom( theModelObject );
+			String theActionText = _context.getTextToFeedToReqtFrom( theModelObject );
 			
 			if( theActionText != null ){
 				List<IRPModelElement> theRelations = getElementsThatFlowInto( theModelObject, theDiagram );
@@ -81,7 +81,7 @@ public class RequirementsHelper {
 						} else if( theRelatedModelEl instanceof IRPAcceptEventAction ){
 							
 							theText+= _context.decapitalize( 
-								_context.getActionTextFrom( theRelatedModelEl ) );
+								_context.getTextToFeedToReqtFrom( theRelatedModelEl ) );
 						}
 						
 						if( theRelatedModelElIter.hasNext() ){
@@ -206,8 +206,14 @@ public class RequirementsHelper {
 
 		IRPDependency theDep = theModelObject.addDependencyTo( theReqt );
 
-		IRPStereotype theDependencyStereotype = 
-				_context.getStereotypeToUseForActions();
+		IRPStereotype theDependencyStereotype;
+		
+		if( theModelObject instanceof IRPUseCase ) {
+			theDependencyStereotype = _context.getStereotypeToUseForUseCases();
+		} else {
+			
+			theDependencyStereotype = _context.getStereotypeToUseForActions();
+		}
 		
 		if( theDependencyStereotype != null ){
 			
@@ -228,7 +234,7 @@ public class RequirementsHelper {
 }
 
 /**
- * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2016-2023  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

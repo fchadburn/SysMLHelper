@@ -37,7 +37,7 @@ DLLServerCompatible5=1
 name6=MBSE Method: Requirements Analysis\Create a new requirement
 isPluginCommand6=1
 command6=InvokeExecutableMBSEHelper
-applicableTo6=State,Transition,Comment,AcceptEventAction,SendAction,AcceptTimeEvent,Constraint,Precondition,Postcondition,ControlFlow,Use Case Precondition,Use Case Postcondition
+applicableTo6=State,Transition,Comment,AcceptEventAction,SendAction,AcceptTimeEvent,Constraint,Precondition,Postcondition,ControlFlow,Use Case Precondition,Use Case Postcondition,UseCase
 isVisible6=1
 DLLServerCompatible6=1
 

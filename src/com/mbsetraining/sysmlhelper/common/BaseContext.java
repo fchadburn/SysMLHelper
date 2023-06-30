@@ -2252,7 +2252,7 @@ public abstract class BaseContext {
 		return theBaseClasses;
 	}
 
-	public String getActionTextFrom(
+	public String getTextToFeedToReqtFrom(
 			IRPModelElement theEl ){
 
 		String theSourceInfo = null;
@@ -2341,6 +2341,10 @@ public abstract class BaseContext {
 
 			IRPConstraint theConstraint = (IRPConstraint)theEl;
 			theSourceInfo = theConstraint.getSpecification();		
+
+		} else if( theEl instanceof IRPUseCase ){
+			
+			theSourceInfo = theEl.getName();
 
 		} else {
 			_rhpLog.error("Error in getActionTextFrom, " + _rhpLog.elInfo(theEl) + " was not handled as of an unexpected type");

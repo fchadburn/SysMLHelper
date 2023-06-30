@@ -102,7 +102,7 @@ public class CreateTracedAttributePanel extends CreateTracedElementPanel {
 				String theSourceText = "attributeName";
 				
 				if( theModelObject instanceof IRPState ){
-					String theActionText = _context.getActionTextFrom( theModelObject );
+					String theActionText = _context.getTextToFeedToReqtFrom( theModelObject );
 					
 					if( theActionText != null ){
 						theSourceText = theActionText;
@@ -377,7 +377,7 @@ public class CreateTracedAttributePanel extends CreateTracedElementPanel {
 }
 
 /**
- * Copyright (C) 2016-2022  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2016-2023  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

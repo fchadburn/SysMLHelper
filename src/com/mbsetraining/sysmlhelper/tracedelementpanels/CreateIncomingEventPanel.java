@@ -130,7 +130,7 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 	
 	private void buildContent() {
 		
-		String theSourceText = _context.getActionTextFrom( 
+		String theSourceText = _context.getTextToFeedToReqtFrom( 
 				_context.get_selectedContext().getSelectedEl() );	
 
 		if( theSourceText.isEmpty() ){
@@ -948,7 +948,7 @@ public class CreateIncomingEventPanel extends CreateTracedElementPanel {
 }
 
 /**
- * Copyright (C) 2016-2022  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2016-2023  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

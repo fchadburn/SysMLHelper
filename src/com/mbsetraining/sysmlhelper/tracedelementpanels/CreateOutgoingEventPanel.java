@@ -142,7 +142,7 @@ public class CreateOutgoingEventPanel extends CreateTracedElementPanel {
 
 							} else { // thePort != null
 
-								String theSourceText = _context.getActionTextFrom( _context.get_selectedContext().getSelectedEl() );		
+								String theSourceText = _context.getTextToFeedToReqtFrom( _context.get_selectedContext().getSelectedEl() );		
 
 								if( theSourceText.isEmpty() ){
 									theSourceText = _tbd;
@@ -452,7 +452,7 @@ public class CreateOutgoingEventPanel extends CreateTracedElementPanel {
 }
 
 /**
- * Copyright (C) 2016-2022  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2016-2023  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

@@ -96,7 +96,7 @@ public class CreateOperationPanel extends CreateTracedElementPanel {
 			Set<IRPRequirement> withReqtsAlsoAdded,
 			IRPClassifier onTargetBlock ){
 		
-		String theSourceText = _context.getActionTextFrom( forSourceModelElement );	
+		String theSourceText = _context.getTextToFeedToReqtFrom( forSourceModelElement );	
 		
 		if( theSourceText == null ){
 			theSourceText = "function_name";
@@ -219,7 +219,7 @@ public class CreateOperationPanel extends CreateTracedElementPanel {
 }
 
 /**
- * Copyright (C) 2016-2022  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2016-2023  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 
