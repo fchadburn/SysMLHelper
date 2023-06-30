@@ -281,9 +281,20 @@ public class ExportRequirementsToCSV {
 						String theHeadingLine = "";
 
 						if( isNameForCVSExport ){
-							theHeadingLine = "Identifier" + separator + "Artifact Type" + separator + "Name" + separator + "Primary Text";
+							theHeadingLine = 
+									"Identifier" + separator + 
+									"isHeading" + separator +
+									"parentBinding" + separator +
+									"Artifact Type" + separator + 
+									"Name" + separator + 
+									"Primary Text";
 						} else {
-							theHeadingLine = "Identifier" + separator + "Artifact Type" + separator + "Primary Text";
+							theHeadingLine = 
+									"Identifier" + separator + 
+									"isHeading" + separator +
+									"parentBinding" + separator +
+									"Artifact Type" + separator + 
+									"Primary Text";
 						}
 
 						for( String theAdditionalHeading : theAdditionalHeadings ){
@@ -295,18 +306,32 @@ public class ExportRequirementsToCSV {
 						myWriter.write( theHeadingLine );
 
 						for( IRPRequirement theReqt : theReqts ){
-
-							String theLine = "";
-							String theName = theReqt.getName();
+							
 							String theIdentifier = getIdentifierFromTracedRemoteRequirement( theReqt );
+							String theIsHeading = "";
+							String theParentBinding = "";
+							String theName = theReqt.getName();
+							String theLine = "";
 
 							String theSpecification = _context.
 									replaceCSVIncompatibleCharsFrom( theReqt.getSpecification() );
 
 							if( isNameForCVSExport ){
-								theLine = theIdentifier + separator + artifactTypeForCSVExport + separator + theName + separator + theSpecification;
+								
+								theLine = 
+										theIdentifier + separator + 
+										theIsHeading + separator + 
+										theParentBinding + separator + 
+										artifactTypeForCSVExport + separator + 
+										theName + separator + 
+										theSpecification;
 							} else {
-								theLine = theIdentifier + separator + artifactTypeForCSVExport + separator + theSpecification;
+								theLine = 
+										theIdentifier + separator + 
+										theIsHeading + separator + 
+										theParentBinding + separator + 
+										artifactTypeForCSVExport + separator + 
+										theSpecification;
 							}
 
 							AnnotationMap theAnnotationMap = new AnnotationMap( theReqt, _context );

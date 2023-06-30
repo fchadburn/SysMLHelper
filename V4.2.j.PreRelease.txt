@@ -877,6 +877,7 @@ V4.2.i.Rhp831.PreRelease (28-APR-2023):
 V4.2.j.Rhp831.PreRelease (XX-XXX-XXXX): (TBC)
 #653 30-JUN-2023: ExecutableMBSE: Checkpoint of auto-applying naming convention to new packages, commented out as worked with 8.3.1 not 9.0.1 (F.J.Chadburn)
 #654 30-JUN-2023: ExecutableMBSE: Extend the Create new requirement menu to work for right-click of use cases (F.J.Chadburn)
+#655 30-JUN-2023: ExecutableMBSE: 7.0.2 SR1 DOORS NG wants .xslx/.csv import files to have isHeading and parentBinding columns, hence added to csv exporter (F.J.Chadburn)
 		
 Backlog/Known issues
 - Further testing needed with dependency helper and new terms
