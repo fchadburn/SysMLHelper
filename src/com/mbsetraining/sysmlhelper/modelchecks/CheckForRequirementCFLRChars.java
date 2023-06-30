@@ -9,6 +9,7 @@ import com.telelogic.rhapsody.core.RPExternalCheck;
 
 public class CheckForRequirementCFLRChars extends RPExternalCheck {
 
+	@SuppressWarnings("unused")
 	private ExecutableMBSE_Context _context;
 
 	public CheckForRequirementCFLRChars(

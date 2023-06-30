@@ -98,7 +98,7 @@ public class CreateFunctionBlock extends CreateTracedElementPanel {
 		}
 				
 		String theProposedName = _context.determineUniqueNameBasedOn( 
-				_context.toFunctionBlockName( theSourceText, 40, true ).trim(), 
+				_context.toCamelCase( theSourceText, 40, true ).trim(), 
 				"Class", 
 				_packageForFunctionBlocks );					
 		

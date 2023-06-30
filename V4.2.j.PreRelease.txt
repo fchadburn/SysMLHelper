@@ -873,6 +873,9 @@ V4.2.i.Rhp831.PreRelease (28-APR-2023):
 #650 28-APR-2023: BusinessValue: Updated/re-factored to make use of same populate/select dependency helpers as the ExecutableMBSE profile (F.J.Chadburn)
 #651 28-APR-2023: SysMLHelper: Updated/re-factored to make use of same populate/select dependency helpers as the ExecutableMBSE profile (F.J.Chadburn)
 #652 28-APR-2023: SysMLHelper: Fix template_for_act functionality so that activity diagram is created with template property (F.J.Chadburn)
+
+V4.2.j.Rhp831.PreRelease (XX-XXX-XXXX): (TBC)
+#653 30-JUN-2023: ExecutableMBSE: Checkpoint of auto-applying naming convention to new packages, commented out as worked with 8.3.1 not 9.0.1 (F.J.Chadburn)
 		
 Backlog/Known issues
 - Further testing needed with dependency helper and new terms

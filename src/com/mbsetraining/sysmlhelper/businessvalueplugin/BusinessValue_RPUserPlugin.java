@@ -273,6 +273,7 @@ public class BusinessValue_RPUserPlugin extends RPUserPlugin {
 		return theOwningPackage;
 	}
 
+	@SuppressWarnings("unused")
 	private boolean checkAndPerformProfileSetupIfNeeded() {
 
 		boolean isContinue = true;

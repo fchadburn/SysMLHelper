@@ -69,7 +69,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			IRPModelElement modelElement ){
 
 		boolean doDefault = false;
-
+		
 		try {
 			_context.setSavedInSeparateDirectoryIfAppropriateFor( 
 					modelElement );
@@ -249,10 +249,40 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 				afterAddNewActionToRequirementTable( (IRPTableView) modelElement );
 				
-			} else if( modelElement instanceof IRPPackage &&
-					_context.hasStereotypeCalled( _context.REQTS_ANALYSIS_WORKING_COPY_PACKAGE, modelElement ) ){
+			} else if( modelElement instanceof IRPPackage ) {
+				
+				if( theUserDefinedMetaClass.equals( _context.REQTS_ANALYSIS_WORKING_COPY_PACKAGE ) ){
+					
+					afterAddForWorkingCopyPackage( (IRPPackage) modelElement );
+					
+				} else if( theUserDefinedMetaClass.equals( _context.REQTS_ANALYSIS_USE_CASE_PACKAGE) ){
+				
+					afterAddForNewTermPackage( (IRPPackage ) modelElement, _context.USECASEPKG_POSTFIX, "", "" );
+				
+				} else if( theUserDefinedMetaClass.equals( _context.REQTS_ANALYSIS_REQUIREMENT_PACKAGE) ){
+					
+					afterAddForNewTermPackage( 
+							(IRPPackage ) modelElement, 
+							_context.REQUIREMENTPKG_POSTFIX, 
+							_context.REQTS_ANALYSIS_USE_CASE_PACKAGE, 
+							_context.USECASEPKG_POSTFIX );
 
-				afterAddForWorkingCopyPackage( (IRPPackage) modelElement );
+				} else if( theUserDefinedMetaClass.equals( _context.REQTS_ANALYSIS_CONTEXT_DIAGRAM_PACKAGE) ){
+					
+					afterAddForNewTermPackage( (IRPPackage ) modelElement, _context.CONTEXTPKG_POSTFIX, "", "" );
+					
+				} else if( theUserDefinedMetaClass.equals( _context.REQTS_ANALYSIS_EXTERNAL_SIGNALS_PACKAGE ) ){
+					
+					afterAddForNewTermPackage( 
+							(IRPPackage ) modelElement, 
+							_context.SIGNALPKG_POSTFIX,
+							_context.REQTS_ANALYSIS_CONTEXT_DIAGRAM_PACKAGE,
+							_context.CONTEXTPKG_POSTFIX );
+					
+				} else if( theUserDefinedMetaClass.equals( _context.DESIGN_SYNTHESIS_LOGICAL_SYSTEM_PACKAGE ) ){
+					
+					afterAddForNewTermPackage( (IRPPackage ) modelElement, _context.ARCHITECTUREPKG_POSTFIX, "", "" );
+				}
 			}
 
 		} catch( Exception e ){
@@ -375,7 +405,55 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			}
 		}		
 	}
+	
+	private void afterAddForNewTermPackage(
+			IRPPackage thePkg,
+			String thePostFixToAdd,
+			String theMetaClassToSub,
+			String thePostFixToSub ){
 
+		/*
+		IRPModelElement theOwner = thePkg.getOwner();
+
+		String theOwnersName = theOwner.getName();
+
+		if( theOwner instanceof IRPProject ){
+
+			String theProposedName = theOwnersName + thePostFixToAdd;
+			
+			String theUniqueName = _context.determineUniqueNameBasedOn(theProposedName, "Package" , theOwner );
+
+			thePkg.setName( theUniqueName );
+			
+			_context.get_rhpApp().saveAll();
+
+			_context.info( "Saved" );
+		} else if( theOwner.getUserDefinedMetaClass().equals( theMetaClassToSub ) ) {
+			
+			Pattern pattern = Pattern.compile( "(.*)(" + thePostFixToSub + ")" );
+
+			Matcher matcher = pattern.matcher( theOwnersName );
+
+			boolean matchFound = matcher.find();
+
+			if( matchFound ){
+
+				String theProposedName = null;
+
+				if( matcher.group(2) != null ){
+
+					theProposedName = matcher.group(1) + thePostFixToAdd;
+
+					String theUniqueName = _context.determineUniqueNameBasedOn( theProposedName, "Package", theOwner );
+
+					_context.debug( "Renamed " + _context.elInfo( thePkg ) + " to " + theUniqueName );
+
+					thePkg.setName( theUniqueName );
+				}
+			}
+		}*/
+	}
+	
 	private void afterAddForTextualActivity(
 			IRPFlowchart theDiagram ){
 

@@ -125,7 +125,13 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String QUERY_TBD = "query - TBD";
 	public final String QUERYTBD_EXPLICIT_ONLY = "query - TBD explicit only";
 	public final String STEREOTYPE_TBD = "TBD";
-
+	public final String USECASEPKG_POSTFIX = "_UseCasePkg";
+	public final String REQUIREMENTPKG_POSTFIX = "_RequirementPkg";
+	public final String CONTEXTPKG_POSTFIX = "_ContextPkg";
+	public final String ACTORPKG_POSTFIX = "_ActorPkg";
+	public final String SIGNALPKG_POSTFIX = "_SignalPkg";
+	public final String ARCHITECTUREPKG_POSTFIX = "_ArchitecturePkg";
+	
 	protected SelectedElementContext _selectionContext;
 
 	protected String _defaultExternalSignalsPackageName;
@@ -1207,7 +1213,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 		return thePort;
 	}
 
-	public String toFunctionBlockName(
+	public String toCamelCase(
 			String theInput,
 			int max,
 			boolean areSpacesAllowed ){

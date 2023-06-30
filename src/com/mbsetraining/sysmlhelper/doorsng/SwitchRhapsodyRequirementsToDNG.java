@@ -151,7 +151,6 @@ public class SwitchRhapsodyRequirementsToDNG {
 					" remote requirements related to " + 
 					_context.elInfo( theSelectedEl ) );
 
-			@SuppressWarnings("unchecked")
 			List<IRPRequirement> theReqts = getRequirementsThatDontTraceToRemoteRequirements( theSelectedEl );
 
 			_context.debug( "Found " + theReqts.size() + " Rhapsody-owned requirements under " + _context.elInfo( theSelectedEl ) );
