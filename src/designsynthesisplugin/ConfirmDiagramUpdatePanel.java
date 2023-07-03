@@ -137,34 +137,6 @@ public class ConfirmDiagramUpdatePanel extends ExecutableMBSEBasePanel {
 		return theDiagramCheckBoxMap;
 	}
 	
-	private Set<IRPGraphElement> getGraphElementsFor(
-			IRPModelElement theModelElement, 
-			IRPDiagram onTheDiagram ){
-		
-		Set<IRPGraphElement> theMatchingGraphEls = 
-				new HashSet<IRPGraphElement>();
-
-		@SuppressWarnings("unchecked")
-		List<IRPGraphElement> theGraphElsOnDiagram = 
-				onTheDiagram.getGraphicalElements().toList();
-				
-		for( IRPGraphElement theGraphElOnDiagram : theGraphElsOnDiagram ){
-			
-			IRPModelElement theModelObject = 
-					theGraphElOnDiagram.getModelObject();
-			
-			if( theModelObject != null &&
-				theModelObject.equals( theModelElement ) ){
-				
-				theMatchingGraphEls.add( theGraphElOnDiagram );
-			}
-			
-			_context.debug( _context.elInfo( theModelObject ) + " is on " + _context.elInfo( onTheDiagram ) );
-		}
-		
-		return theMatchingGraphEls;
-	}
-	
 	private void updateDiagramBasedOn( 
 			AutoConnectFlowPortsMap theAutoConnectFlowPortsMap,
 			IRPStructureDiagram theDiagramToUpdate ){
@@ -187,10 +159,10 @@ public class ConfirmDiagramUpdatePanel extends ExecutableMBSEBasePanel {
 					if( theFromPort != null && theToPort != null ){
 						
 						theSetOfGraphEls.addAll( 
-								getGraphElementsFor( theFromPort, theDiagramToUpdate ) );
+								_context.getGraphElementsFor( theFromPort, theDiagramToUpdate ) );
 						
 						theSetOfGraphEls.addAll( 
-								getGraphElementsFor( theToPort, theDiagramToUpdate ) );
+								_context.getGraphElementsFor( theToPort, theDiagramToUpdate ) );
 					}
 				}
 
@@ -302,7 +274,7 @@ public class ConfirmDiagramUpdatePanel extends ExecutableMBSEBasePanel {
  * Copyright (C) 2017  MBSE Training and Consulting Limited (www.executablembse.com)
 
     Change history:
-    #213 09-JUL-2017: Add dialogs to auto-connect «publish»/«subscribe» FlowPorts for white-box simulation (F.J.Chadburn)
+    #213 09-JUL-2017: Add dialogs to auto-connect ï¿½publishï¿½/ï¿½subscribeï¿½ FlowPorts for white-box simulation (F.J.Chadburn)
         
     This file is part of SysMLHelperPlugin.
 

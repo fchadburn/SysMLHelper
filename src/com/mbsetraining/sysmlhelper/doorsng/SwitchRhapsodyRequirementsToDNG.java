@@ -24,7 +24,7 @@ public class SwitchRhapsodyRequirementsToDNG {
 		
 		SwitchRhapsodyRequirementsToDNG theSwitcher = new SwitchRhapsodyRequirementsToDNG(context);
 		
-		theSwitcher.establishTraceRelationsToRemoteReqts();
+		theSwitcher.switchRequirements();
 	}
 
 	public SwitchRhapsodyRequirementsToDNG(
@@ -606,7 +606,10 @@ public class SwitchRhapsodyRequirementsToDNG {
 
 		for (IRPRequirement theCandidate : theCandidates) {
 
-			if( theCandidate.getSpecification().equals( theSpecificationText ) ){
+			_context.debug( "theCandidate         = '" + theCandidate.getSpecification() + "'" );
+			_context.debug( "theSpecificationText = '" + theSpecificationText + "'" );
+
+			if( theCandidate.getSpecification().matches( theSpecificationText ) ){
 				theMatches.add( theCandidate );
 			}
 		}

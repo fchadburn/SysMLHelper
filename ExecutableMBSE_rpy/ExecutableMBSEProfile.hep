@@ -1,5 +1,5 @@
 [Helpers]
-numberOfElements=69
+numberOfElements=70
 
 #REM: Definition of the plug-in
 name1=InvokeExecutableMBSEHelper
@@ -559,6 +559,14 @@ command69=InvokeExecutableMBSEHelper
 applicableTo69=13 Requirement Package,Package
 isVisible69=0
 DLLServerCompatible69=1
+
+#REM: Add pop-up menu
+name70=MBSE Method: Other\Clean Up Dead OSLC Links
+isPluginCommand70=1
+command70=InvokeExecutableMBSEHelper
+applicableTo70=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,Requirement,Requirements Diagram,RequirementsTable,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,System Block,Subsystem Block,Context Block,Feature Block,Function Block,Software Component,C++ Class,Use Case Description, Use Case Precondition,Use Case Postcondition,11 Actor Package,12 Use Case Package,13 Requirement Package,10 Context Package,14 Signals Package,31 System Architecture Package,32 Subsystem Package,33 Subsystem Interfaces Package,34 Software Design Package,22 Feature Function Package,Block Definition Diagram - System,Enhanced Use Case Diagram,Context Diagram,Internal Block Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - Software,Block Definition Diagram - Software,Textual Activity,Call Operation Activity,Derivation,Refinement,Satisfaction
+isVisible70=1
+DLLServerCompatible70=1
 
 #REM Copyright (C) 2018-2023  MBSE Training and Consulting Limited (www.executablembse.com)
 #REM

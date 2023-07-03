@@ -21,6 +21,7 @@ import com.mbsetraining.sysmlhelper.createactorpart.CreateNewActorPanel;
 import com.mbsetraining.sysmlhelper.createnewblockpart.CreateNewBlockPartPanel;
 import com.mbsetraining.sysmlhelper.createtestcase.TestCaseCreator;
 import com.mbsetraining.sysmlhelper.dependencyhelper.DependencySelector;
+import com.mbsetraining.sysmlhelper.doorsng.CleanUpDeadOSLCLinksPanel;
 import com.mbsetraining.sysmlhelper.doorsng.ExportRequirementsToCSV;
 import com.mbsetraining.sysmlhelper.doorsng.RepairLinks;
 import com.mbsetraining.sysmlhelper.doorsng.SwitchRhapsodyRequirementsToDNG;
@@ -782,6 +783,11 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					} else {
 						_context.error( menuItem + " invoked out of context and only works for packages" );
 					}
+				} else if( menuItem.equals( _settings.getString(
+						"executablembseplugin.CleanUpDeadOSLCLinks" ) ) ){
+
+					CleanUpDeadOSLCLinksPanel.launchThePanel( theAppID );
+					
 				} else {
 					_context.warning( "Unhandled menu: " + _context.elInfo( theSelectedEl ) + " was invoked with menuItem='" + menuItem + "'");
 				}

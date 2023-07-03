@@ -3169,6 +3169,34 @@ public abstract class BaseContext {
 		
 		return isElementOnlyOnOneDiagramWith;
 	}
+	
+	public Set<IRPGraphElement> getGraphElementsFor(
+			IRPModelElement theModelElement, 
+			IRPDiagram onTheDiagram ){
+		
+		Set<IRPGraphElement> theMatchingGraphEls = 
+				new HashSet<IRPGraphElement>();
+
+		@SuppressWarnings("unchecked")
+		List<IRPGraphElement> theGraphElsOnDiagram = 
+				onTheDiagram.getGraphicalElements().toList();
+				
+		for( IRPGraphElement theGraphElOnDiagram : theGraphElsOnDiagram ){
+			
+			IRPModelElement theModelObject = 
+					theGraphElOnDiagram.getModelObject();
+			
+			if( theModelObject != null &&
+				theModelObject.equals( theModelElement ) ){
+				
+				theMatchingGraphEls.add( theGraphElOnDiagram );
+			}
+			
+			//debug( elInfo( theModelObject ) + " is on " + elInfo( onTheDiagram ) );
+		}
+		
+		return theMatchingGraphEls;
+	}
 }
 
 /**
