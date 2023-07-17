@@ -879,6 +879,10 @@ V4.2.j.Rhp831.PreRelease (XX-XXX-XXXX): (TBC)
 #654 30-JUN-2023: ExecutableMBSE: Extend the Create new requirement menu to work for right-click of use cases (F.J.Chadburn)
 #655 30-JUN-2023: ExecutableMBSE: 7.0.2 SR1 DOORS NG wants .xslx/.csv import files to have isHeading and parentBinding columns, hence added to csv exporter (F.J.Chadburn)
 0656 03-JUL-2023: ExecutableMBSE: Add new Clean Up Dead OSLC Links panel menu option with double-click to find element in browser (F.J.Chadburn)
+0657 17-JUL-2023: ExecutableMBSE: Added plugin_method:getUntracedToRemoteRequirement for context patterns when using the surrogate DNG link approach (F.J.Chadburn)
+0658 17-JUL-2023: ExecutableMBSE: Added plugin_method:getMatchingRemoteRequirements for context patterns when using the surrogate DNG link approach (F.J.Chadburn)
+0659 17-JUL-2023: ExecutableMBSE: Added plugin_method:getNonMatchingRemoteRequirements for context patterns when using the surrogate DNG link approach (F.J.Chadburn)
+0660 17-JUL-2023: ExecutableMBSE: Added plugin_method:getTracesToUnloadedRemoteRequirements for context patterns when using the surrogate DNG link approach (F.J.Chadburn)
 		
 Backlog/Known issues
 - Further testing needed with dependency helper and new terms

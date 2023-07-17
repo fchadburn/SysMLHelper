@@ -1077,7 +1077,102 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 			}
 		}		
 	}
+	
+	void getUntracedToRemoteRequirement(IRPModelElement element, IRPCollection result) {
+		
+		if( element instanceof IRPRequirement ){
+			
+			IRPRequirement req = (IRPRequirement) element;
+			
+			@SuppressWarnings("unchecked")
+			List<IRPDependency> theRemoteDependencies = req.getRemoteDependencies().toList();
+			
+			if( theRemoteDependencies.isEmpty() ) {
+				result.addItem(element);
+			}
+		}
+	}
 
+	void getMatchingRemoteRequirements(IRPModelElement element, IRPCollection result) {
+
+		if( element instanceof IRPRequirement ){
+			
+			IRPRequirement req = (IRPRequirement) element;
+			
+			@SuppressWarnings("unchecked")
+			List<IRPDependency> theRemoteDependencies = req.getRemoteDependencies().toList();
+			
+			for( IRPDependency theRemoteDependency : theRemoteDependencies ){
+				
+				IRPModelElement theDependsOn = theRemoteDependency.getDependsOn();
+				
+				if( theDependsOn instanceof IRPRequirement ){
+					
+					IRPRequirement theOSLCRequirement = (IRPRequirement)theDependsOn;
+					
+					String theRemoteSpec = theOSLCRequirement.getSpecification();
+					String theSpec = req.getSpecification();
+										
+					if( theSpec.equals( theRemoteSpec ) ){
+						result.addItem(theDependsOn);
+					}
+				}
+			}
+		}
+	}
+	
+	void getNonMatchingRemoteRequirements(IRPModelElement element, IRPCollection result) {
+
+		if( element instanceof IRPRequirement ){
+			
+			IRPRequirement req = (IRPRequirement) element;
+			
+			@SuppressWarnings("unchecked")
+			List<IRPDependency> theRemoteDependencies = req.getRemoteDependencies().toList();
+			
+			for( IRPDependency theRemoteDependency : theRemoteDependencies ){
+				
+				IRPModelElement theDependsOn = theRemoteDependency.getDependsOn();
+				
+				if( theDependsOn instanceof IRPHyperLink ) {
+					result.addItem( theDependsOn );
+					
+				} else if( theDependsOn instanceof IRPRequirement ){
+					
+					IRPRequirement theOSLCRequirement = (IRPRequirement)theDependsOn;
+					
+					String theRemoteSpec = theOSLCRequirement.getSpecification();
+					String theSpec = req.getSpecification();
+										
+					if( !theSpec.equals( theRemoteSpec ) ){
+						result.addItem(theDependsOn);
+					}
+				}
+			}
+		}
+	}
+	
+	void getTracesToUnloadedRemoteRequirements(IRPModelElement element, IRPCollection result) {
+
+		if( element instanceof IRPRequirement ){
+			
+			IRPRequirement req = (IRPRequirement) element;
+			
+			@SuppressWarnings("unchecked")
+			List<IRPDependency> theRemoteDependencies = req.getRemoteDependencies().toList();
+			
+			for( IRPDependency theRemoteDependency : theRemoteDependencies ){
+				
+				IRPModelElement theDependsOn = theRemoteDependency.getDependsOn();
+				
+				// If depends on is hyperlink rather than requirement then it's unloaded
+				if( theDependsOn instanceof IRPHyperLink ){					
+					result.addItem(theDependsOn);
+				}
+			}
+		}
+	}
+	
 	private static List<IRPModelElement> getElementsThatTraceToRequirements(
 			IRPModelElement underTheEl ){
 

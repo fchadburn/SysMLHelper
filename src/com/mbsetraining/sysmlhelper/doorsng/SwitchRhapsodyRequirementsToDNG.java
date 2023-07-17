@@ -214,26 +214,28 @@ public class SwitchRhapsodyRequirementsToDNG {
 
 		IRPDependency theRemoteDependency = null;
 
+		String theUserDefinedMetaClass = thePreviousDependency.getUserDefinedMetaClass();
+		
 		//IRPModelElement theDependsOn = thePreviousDependency.getDependsOn();
-		//_context.debug( "theDependsOn is " + _context.elementInfo(theDependsOn));
+		//_context.debug( "theDependsOn is " + _context.elInfo(theDependsOn));
 
 		IRPModelElement theDependent = thePreviousDependency.getDependent();
-		//_context.debug( "theDependent is " + _context.elementInfo(theDependent));
+		//_context.debug( "theDependent is " + _context.elInfo(theDependent));
 
 		//linkType - one of the link types available with the requirement tool that you are using. 
 		// For example, for Doors Next Generation, the possible types are "Derives From", "Refines", "Satisfies", and "Trace".
 
-		if( thePreviousDependency.getUserDefinedMetaClass().equals( "Satisfaction" ) ){
+		if (theUserDefinedMetaClass.equals( "Satisfaction" ) ){
 
 			theRemoteDependency = addRemoteDependency(
 					toRemoteReqt, theDependent, "Satisfies" );
 
-		} else if( thePreviousDependency.getUserDefinedMetaClass().equals( "Derivation" ) ){
+		} else if( theUserDefinedMetaClass.equals( "Derivation" ) ){
 
 			theRemoteDependency = addRemoteDependency(
 					toRemoteReqt, theDependent, "Derives From" );
 
-		} else if( thePreviousDependency.getUserDefinedMetaClass().equals( "Refinement" ) ){
+		} else if( theUserDefinedMetaClass.equals( "Refinement" ) ){
 
 			theRemoteDependency = addRemoteDependency(
 					toRemoteReqt, theDependent, "Refines" );
