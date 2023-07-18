@@ -883,7 +883,10 @@ V4.2.j.Rhp831.PreRelease (17-JUL-2023):
 0658 17-JUL-2023: ExecutableMBSE: Added plugin_method:getMatchingRemoteRequirements for context patterns when using the surrogate DNG link approach (F.J.Chadburn)
 0659 17-JUL-2023: ExecutableMBSE: Added plugin_method:getNonMatchingRemoteRequirements for context patterns when using the surrogate DNG link approach (F.J.Chadburn)
 0660 17-JUL-2023: ExecutableMBSE: Added plugin_method:getTracesToUnloadedRemoteRequirements for context patterns when using the surrogate DNG link approach (F.J.Chadburn)
-		
+
+V4.2.k.Rhp831.PreRelease (XX-XXX-XXXX):
+0661 18-JUL-2023: ExecutableMBSE: Added out-of-the-box 'Surrogate Remote Requirement Traceability Report Table' to requirements package right-click to assist DNG workflows (F.J.Chadburn)
+
 Backlog/Known issues
 - Further testing needed with dependency helper and new terms
 - Textual Activity Diagram needs implementing for SysMLHelper as it's stopped working
