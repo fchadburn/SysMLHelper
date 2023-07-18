@@ -34,6 +34,8 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				new ExecutableMBSE_RPApplicationListener( "ExecutableMBSE", theContext );
 
 		IRPModelElement theSelectedEl = theContext.getSelectedElement( false );
+		
+		/*
 		theListener.afterAddElement( theSelectedEl );
 
 		if( theSelectedEl instanceof IRPDiagram ) {
@@ -51,7 +53,9 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 			theNoteNode.setGraphicalProperty(
 					"Text",
-					"Hello" );		}
+					"Hello" );		}*/
+		
+		theListener.onDoubleClick(theSelectedEl);
 	}
 
 	private ExecutableMBSE_Context _context;
@@ -1733,7 +1737,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			if( _context.getIsDoubleClickFunctionalityEnabled() &&
 					!( pModelElement instanceof IRPPackage ) ){
 
-				List<IRPModelElement> optionsList = null;
+				List<IRPModelElement> optionsList = new ArrayList<>();
 
 				if( pModelElement instanceof IRPCallOperation ){
 
@@ -1746,7 +1750,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 						IRPOperation theOp = (IRPOperation)theInterfaceItem;
 
-						optionsList = getDiagramsFor( theOp );
+						optionsList.addAll( getDiagramsFor( theOp ) );
 					}
 
 				} else if( pModelElement instanceof IRPInstance ){
@@ -1756,13 +1760,16 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 					IRPClassifier theClassifier = thePart.getOtherClass();
 
 					if( theClassifier != null ){
-						optionsList = getDiagramsFor( theClassifier );
+						optionsList.addAll( getDiagramsFor( theClassifier ) );
 					}
 				}
 
-				if (optionsList == null){
-					optionsList = getDiagramsFor( pModelElement );
+				if( pModelElement instanceof IRPTableView || 
+						pModelElement instanceof IRPMatrixView ) {
+					optionsList.add( pModelElement );
 				}
+				
+				optionsList.addAll( getDiagramsFor( pModelElement ) );
 
 				int numberOfDiagrams = optionsList.size();
 
@@ -1797,8 +1804,8 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 						}
 					}
 
-					theReturn = true; // don't launch the Features  window									
-
+					theReturn = true; // don't launch the Features  window		
+					
 				} else {
 					theReturn = false; // do default, i.e. open the features dialog
 				}	
@@ -1896,39 +1903,48 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 			if( numberOfDiagrams==1 ){
 
-				IRPDiagram theDiagramToOpen = (IRPDiagram) theListOfDiagrams.get(0);
+				IRPModelElement theElToOpen = theListOfDiagrams.get(0);
 
-				if (theDiagramToOpen != null){
+				if( theElToOpen != null ){
 
-					String theType = theDiagramToOpen.getUserDefinedMetaClass();
-					String theName = theDiagramToOpen.getName();
+					String theType = theElToOpen.getUserDefinedMetaClass();
+					String theName = theElToOpen.getName();
 
-					if (theDiagramToOpen instanceof IRPFlowchart){
+					if( theElToOpen instanceof IRPFlowchart ){
 
-						theDiagramToOpen = (IRPDiagram) theDiagramToOpen.getOwner();
+						theElToOpen = theElToOpen.getOwner();
 
+					} else if( theElToOpen instanceof IRPActivityDiagram ){
 
-					} else if (theDiagramToOpen instanceof IRPActivityDiagram){
-
-						theType = theDiagramToOpen.getOwner().getUserDefinedMetaClass();
-						theName = theDiagramToOpen.getOwner().getName();	
+						theType = theElToOpen.getOwner().getUserDefinedMetaClass();
+						theName = theElToOpen.getOwner().getName();	
 					}
 
 					JDialog.setDefaultLookAndFeelDecorated(true);
 
-					int confirm = JOptionPane.showConfirmDialog(null, 
-							"The " + relatedToModelEl.getUserDefinedMetaClass() + " called '" +
-									relatedToModelEl.getName() + "' has an associated " + theType + "\n" +
-									"called '" + theName + "'.\n\n" +
-									"Do you want to open it? (Click 'No' to open the Features dialog instead)\n\n",
-									"Confirm choice",
-									JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
-
+					int confirm;
+					
+					if( theElToOpen.equals( relatedToModelEl ) ) {
+						
+						confirm = JOptionPane.showConfirmDialog(null, 
+								"Do you want to open the " + relatedToModelEl.getUserDefinedMetaClass() + " called " + 
+										relatedToModelEl.getName() + "? \n(Click 'No' to open the Features dialog instead)\n\n",
+										"Confirm choice",
+										JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+					} else {
+						confirm = JOptionPane.showConfirmDialog(null, 
+								"The " + relatedToModelEl.getUserDefinedMetaClass() + " called '" +
+										relatedToModelEl.getName() + "' has an associated " + theType + "\n" +
+										"called '" + theName + "'.\n\n" +
+										"Do you want to open it? (Click 'No' to open the Features dialog instead)\n\n",
+										"Confirm choice",
+										JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+					}
+					
 					if (confirm == JOptionPane.YES_OPTION){
 
-						theDiagramToOpen.openDiagram();	
-						theReturn = true; // don't launch the Features  window
-
+						theReturn = openView( theElToOpen );
+						
 					} else if (confirm == JOptionPane.NO_OPTION){
 
 						theReturn = false; // open the features dialog
@@ -1941,25 +1957,49 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 			} else if ( numberOfDiagrams>1 ){
 
-				IRPModelElement theSelection = UserInterfaceHelper.launchDialogToSelectElement(
+				IRPModelElement theElToOpen = UserInterfaceHelper.launchDialogToSelectElement(
 						theListOfDiagrams, 
 						"The " + relatedToModelEl.getUserDefinedMetaClass() + " called '" +
 								relatedToModelEl.getName() + "' has " + numberOfDiagrams + " associated diagrams.\n\n" +
 								"Which one do you want to open? (Click 'Cancel' to open Features dialog instead)\n",
 								true);
 
-				if (theSelection != null && theSelection instanceof IRPDiagram){
-
-					IRPDiagram theDiagramToOpen = (IRPDiagram) theSelection;
-					theDiagramToOpen.openDiagram();
-					theReturn = true; // don't launch the Features  window
-				}
+				theReturn = openView( theElToOpen );
 			}
 
 		} catch (Exception e) {
 			_context.error( "Unhandled exception in onDoubleClick()" );
 		}
 
+		return theReturn;
+	}
+
+	private boolean openView(
+			IRPModelElement theElToOpen ){
+		
+		boolean theReturn;
+		
+		if( theElToOpen instanceof IRPDiagram ){
+			
+			((IRPDiagram) theElToOpen).openDiagram();	
+			theReturn = true; // don't launch the Features  window
+
+		} else if( theElToOpen instanceof IRPTableView ) {
+			
+			IRPTableView theTableView = (IRPTableView) theElToOpen;
+			theTableView.open();
+			theReturn = true; // don't launch the Features  window
+
+		} else if( theElToOpen instanceof IRPMatrixView ) {
+			
+			IRPMatrixView theMatrixView = (IRPMatrixView) theElToOpen;
+			theMatrixView.open();
+			theReturn = true; // don't launch the Features  window
+			
+		} else {
+			
+			theReturn = false;
+		}
 		return theReturn;
 	}
 

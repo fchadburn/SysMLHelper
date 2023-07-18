@@ -886,6 +886,7 @@ V4.2.j.Rhp831.PreRelease (17-JUL-2023):
 
 V4.2.k.Rhp831.PreRelease (XX-XXX-XXXX):
 0661 18-JUL-2023: ExecutableMBSE: Added out-of-the-box 'Surrogate Remote Requirement Traceability Report Table' to requirements package right-click to assist DNG workflows (F.J.Chadburn)
+0662 18-JUL-2023: ExecutableMBSE: Usability: Override double-click on diagram to ask user if they want to open table view or matrix view rather than features dialog (F.J.Chadburn)
 
 Backlog/Known issues
 - Further testing needed with dependency helper and new terms
