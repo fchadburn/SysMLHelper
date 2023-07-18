@@ -132,7 +132,7 @@ public class CreateContextPackagePanel extends ExecutableMBSEBasePanel {
 
 		_createRequirementsPkgChooser = new CreateRequirementsPkgChooser( 
 				_ownerPkg, 
-				_context.getDefaultRequirementsPackageName(), 
+				_context.getDefaultRequirementPackageName(), 
 				false,
 				_context );
 

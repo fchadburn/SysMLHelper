@@ -115,7 +115,7 @@ public class CreateRequirementsPkgChooser {
 						selectedValue.equals( _createNewUnderUseCasePkgOption ) ||
 						selectedValue.startsWith( _createNewUnderUseCasePkgWithStereotypeOption ) ){
 
-					updateRequirementsPkgNameBasedOn( _context.getDefaultRequirementsPackageName() );
+					updateRequirementsPkgNameBasedOn( _name );
 					_nameTextField.setEnabled( true );		
 
 				} else if( selectedValue.startsWith( _existingPkgPrefix ) ){

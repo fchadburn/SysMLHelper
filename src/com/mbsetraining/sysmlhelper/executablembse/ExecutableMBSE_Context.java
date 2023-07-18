@@ -137,7 +137,8 @@ public class ExecutableMBSE_Context extends BaseContext {
 	protected String _defaultExternalSignalsPackageName;
 	protected String _defaultContextDiagramPackageName;
 	protected String _defaultActorPackageName;
-	protected String _defaultRequirementsPackageName;
+	protected String _defaultRequirementPackageName;
+	protected String _defaultRequirementPackagePostfix;
 
 	protected Boolean _isEnableAutoMoveOfEventsOnAddNewElement;
 	protected Boolean _isEnableAutoMoveOfEventsOnFlowCreation;
@@ -267,16 +268,27 @@ public class ExecutableMBSE_Context extends BaseContext {
 	}
 
 	// Generally single call per session, so use lazy load
-	public String getDefaultRequirementsPackageName(){
+	public String getDefaultRequirementPackageName(){
 
-		if( _defaultRequirementsPackageName == null ){
-			_defaultRequirementsPackageName = _rhpPrj.getPropertyValue(
-					"ExecutableMBSEProfile.RequirementsAnalysis.DefaultRequirementsPackageName" );
+		if( _defaultRequirementPackageName == null ){
+			_defaultRequirementPackageName = _rhpPrj.getPropertyValue(
+					"ExecutableMBSEProfile.RequirementsAnalysis.DefaultRequirementPackageName" );
 		}
 
-		return _defaultRequirementsPackageName;
+		return _defaultRequirementPackageName;
 	}
 
+	// Generally single call per session, so use lazy load
+	public String getDefaultRequirementPackagePostfix(){
+
+		if( _defaultRequirementPackageName == null ){
+			_defaultRequirementPackageName = _rhpPrj.getPropertyValue(
+					"ExecutableMBSEProfile.RequirementsAnalysis.DefaultRequirementPackagePostfix" );
+		}
+
+		return _defaultRequirementPackageName;
+	}
+	
 	// Multiple calls per session, so use lazy load
 	public Boolean getIsEnableAutoMoveOfEventsOnFlowCreation(){
 
@@ -601,6 +613,19 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		String theValue = basedOnContext.getPropertyValue(
 				"ExecutableMBSEProfile.RequirementsAnalysis.DefaultUseCasePackageName" );
+
+		if( theValue == null || theValue.isEmpty() ){
+			theValue = "Error";
+		}
+
+		return theValue;
+	}
+	
+	public String getDefaultUseCasePackagePostfix(
+			IRPModelElement basedOnContext ){
+
+		String theValue = basedOnContext.getPropertyValue(
+				"ExecutableMBSEProfile.RequirementsAnalysis.DefaultUseCasePackagePostfix" );
 
 		if( theValue == null || theValue.isEmpty() ){
 			theValue = "Error";

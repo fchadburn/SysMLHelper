@@ -1,6 +1,6 @@
 Subject ExecutableMBSEProfile
         Metaclass General
-		Property PluginVersion String "V4.2.j.Rhp831.PreRelease"
+		Property PluginVersion String "V4.2.k.Rhp831.PreRelease"
 		Property EnableInfoLogging Bool "True"
 		Property EnableWarningLogging Bool "True"
 		Property EnableErrorLogging Bool "True"
@@ -22,9 +22,11 @@ Subject ExecutableMBSEProfile
 		Property DefaultActorsForUseCaseDiagram String "Driver,Environment"
 		Property DefaultActorPackageName String "ActorPkg"
 		Property DefaultUseCasePackageName String "FeatureA"
+		Property DefaultUseCasePackagePostfix String "_UseCasePkg"
 		Property DefaultExternalSignalsPackageName String "ExternalSignalsPkg"
 		Property DefaultContextDiagramPackageName String "SystemX"
-		Property DefaultRequirementsPackageName String "RequirementsPkg"
+		Property DefaultRequirementPackageName String "Requirements"
+		Property DefaultRequirementPackagePostfix String "_RequirementPkg"
 		Property IsEnableAutoMoveOfRequirements Bool "True"
 		Property IsKeepRequirementUnderFunctionBlock Bool "True"
 		Property IsEnableAutoMoveOfEventsOnFlowCreation Bool "True"

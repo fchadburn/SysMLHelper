@@ -20,6 +20,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.contextdiagram.ContextDiagramCreator;
 import com.mbsetraining.sysmlhelper.contextdiagram.ExternalSignalsPkgCreator;
 import com.mbsetraining.sysmlhelper.contextdiagram.CreateSignalsPkgChooser;
@@ -41,13 +42,15 @@ public class CreateUseCasesPackagePanel extends ExecutableMBSEBasePanel {
 	private CreateContextPkgChooser _createContextPkgChooser;
 	private CreateSignalsPkgChooser _createSignalsPkgChooser;
 	private JTextField _nameTextField;
+	private String _usecasePackagePostfix;
+	private String _requirementPackagePostfix;
 
 	public static void main(String[] args) {
 		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
 		String theRhpAppID = theRhpApp.getApplicationConnectionString();
 		launchTheDialog(theRhpAppID);
 	}
-	
+
 	public static void launchTheDialog(
 			final String theAppID ){
 
@@ -80,6 +83,8 @@ public class CreateUseCasesPackagePanel extends ExecutableMBSEBasePanel {
 		super( theAppID );
 
 		_ownerPkg = _context.get_rhpPrj();
+		_usecasePackagePostfix = _context.getDefaultUseCasePackagePostfix( _ownerPkg );
+		_requirementPackagePostfix = _context.getDefaultRequirementPackagePostfix();
 
 		setLayout( new BorderLayout() );
 		setBorder( new EmptyBorder( 0, 10, 10, 10 ) );
@@ -134,27 +139,27 @@ public class CreateUseCasesPackagePanel extends ExecutableMBSEBasePanel {
 
 		_createRequirementsPkgChooser = new CreateRequirementsPkgChooser( 
 				_ownerPkg, 
-				theName, 
+				theName + _requirementPackagePostfix, 
 				true,
 				_context );
 
 		_createContextPkgChooser = new CreateContextPkgChooser( 
 				_ownerPkg, 
 				_context );
-		
+
 		_createSignalsPkgChooser = new CreateSignalsPkgChooser( 
 				_ownerPkg, 
 				_context );
-		
+
 		_createContextPkgChooser._userChoiceComboBox.addActionListener ( new ActionListener () {
-			
-		    public void actionPerformed( ActionEvent e ){	
-		    	configureOptionsRelatedToContextPkg();
-		    }
+
+			public void actionPerformed( ActionEvent e ){	
+				configureOptionsRelatedToContextPkg();
+			}
 		});
-		
-    	configureOptionsRelatedToContextPkg();
-		
+
+		configureOptionsRelatedToContextPkg();
+
 		theColumn1ParallelGroup.addComponent( _createActorChooser.getM_UserChoiceComboBox() );    
 		theColumn1ParallelGroup.addComponent( _createRequirementsPkgChooser.getM_UserChoiceComboBox() ); 
 		theColumn1ParallelGroup.addComponent( _createContextPkgChooser.getM_UserChoiceComboBox() ); 
@@ -178,16 +183,16 @@ public class CreateUseCasesPackagePanel extends ExecutableMBSEBasePanel {
 
 		ParallelGroup theVertical3ParallelGroup = 
 				theGroupLayout.createParallelGroup( GroupLayout.Alignment.BASELINE );
-		
+
 		theVertical3ParallelGroup.addComponent( _createContextPkgChooser.getM_UserChoiceComboBox() );
 		theVertical3ParallelGroup.addComponent( _createContextPkgChooser.getM_NameTextField() );
 
 		ParallelGroup theVertical4ParallelGroup = 
 				theGroupLayout.createParallelGroup( GroupLayout.Alignment.BASELINE );
-		
+
 		theVertical4ParallelGroup.addComponent( _createSignalsPkgChooser.getM_UserChoiceComboBox() );
 		theVertical4ParallelGroup.addComponent( _createSignalsPkgChooser.getM_NameTextField() );
-		
+
 		theVerticalSequenceGroup.addGroup( theVertical1ParallelGroup );		
 		theVerticalSequenceGroup.addGroup( theVertical2ParallelGroup );		
 		theVerticalSequenceGroup.addGroup( theVertical3ParallelGroup );		
@@ -198,52 +203,52 @@ public class CreateUseCasesPackagePanel extends ExecutableMBSEBasePanel {
 
 		return thePanel;
 	}
-	
+
 	private void configureOptionsRelatedToContextPkg() {
-		
+
 		String selectedValue = _createContextPkgChooser._userChoiceComboBox.getSelectedItem().toString();
-        //_context.info( selectedValue );
-        
-        if( selectedValue.equals( _createContextPkgChooser._doNothingOption ) ){
-        	
-        	// set context package name to none
-        	_createContextPkgChooser._nameTextField.setText( _createContextPkgChooser._none );
-        	_createContextPkgChooser._nameTextField.setEnabled( false );
-    		
-    		// set default to create new package
-        	_createSignalsPkgChooser._userChoiceComboBox.setSelectedItem( _createSignalsPkgChooser._doNothingOption );
-    	
-    		_createSignalsPkgChooser.getM_UserChoiceComboBox().setEnabled( false );
-    		
-        	_createSignalsPkgChooser._nameTextField.setVisible( true );
-        	_createSignalsPkgChooser._nameTextField.setEnabled( false );	
-        	
-        } else if( selectedValue.equals( _createContextPkgChooser._createNewWithNameOption ) ){
-        	
-    		final String theDefaultContextPkgName = _context.getDefaultContextDiagramPackageName();
+		//_context.info( selectedValue );
+
+		if( selectedValue.equals( _createContextPkgChooser._doNothingOption ) ){
+
+			// set context package name to none
+			_createContextPkgChooser._nameTextField.setText( _createContextPkgChooser._none );
+			_createContextPkgChooser._nameTextField.setEnabled( false );
+
+			// set default to create new package
+			_createSignalsPkgChooser._userChoiceComboBox.setSelectedItem( _createSignalsPkgChooser._doNothingOption );
+
+			_createSignalsPkgChooser.getM_UserChoiceComboBox().setEnabled( false );
+
+			_createSignalsPkgChooser._nameTextField.setVisible( true );
+			_createSignalsPkgChooser._nameTextField.setEnabled( false );	
+
+		} else if( selectedValue.equals( _createContextPkgChooser._createNewWithNameOption ) ){
+
+			final String theDefaultContextPkgName = _context.getDefaultContextDiagramPackageName();
 
 			String theUniqueName = 
 					_context.determineUniqueNameBasedOn( 
 							theDefaultContextPkgName, "Package", _ownerPkg );
-			
+
 			_createContextPkgChooser._nameTextField.setText( theUniqueName );
 			_createContextPkgChooser._nameTextField.setEnabled( true );	
-    		
-        	_createSignalsPkgChooser._userChoiceComboBox.setSelectedItem( _createSignalsPkgChooser._createNewButEmptyOption );
-        	_createSignalsPkgChooser._nameTextField.setVisible( true );
-        	_createSignalsPkgChooser._nameTextField.setEnabled( true );	
-        	_createSignalsPkgChooser._userChoiceComboBox.setEnabled( true );
-        	
-        	
-        } else if( selectedValue.contains( _createContextPkgChooser._createNewBasedOnExistingOption ) ){
 
-        }
+			_createSignalsPkgChooser._userChoiceComboBox.setSelectedItem( _createSignalsPkgChooser._createNewButEmptyOption );
+			_createSignalsPkgChooser._nameTextField.setVisible( true );
+			_createSignalsPkgChooser._nameTextField.setEnabled( true );	
+			_createSignalsPkgChooser._userChoiceComboBox.setEnabled( true );
+
+
+		} else if( selectedValue.contains( _createContextPkgChooser._createNewBasedOnExistingOption ) ){
+
+		}
 	}
 
 	private void updateRelatedElementNames(){
 
 		_createRequirementsPkgChooser.updateRequirementsPkgNameBasedOn( 
-				_nameTextField.getText() );
+				_nameTextField.getText() + _requirementPackagePostfix );
 	}
 
 	private JPanel createTheNameThePackagePanel(
@@ -277,7 +282,8 @@ public class CreateUseCasesPackagePanel extends ExecutableMBSEBasePanel {
 
 		thePanel.add( new JLabel( "Choose a unique name:" ) );
 		thePanel.add( _nameTextField );	
-		thePanel.add( new JLabel( " (package post-fixed with Pkg will created under " + _context.elInfo(basedOnContext) + ")" ) );
+		thePanel.add( new JLabel( " (package post-fixed with " + _usecasePackagePostfix + 
+				" will created under " + _context.elInfo(basedOnContext) + ")" ) );
 
 		return thePanel;
 	}
@@ -285,8 +291,39 @@ public class CreateUseCasesPackagePanel extends ExecutableMBSEBasePanel {
 	@Override
 	protected boolean checkValidity(
 			boolean isMessageEnabled ){
-		// TODO 	
-		return true;
+
+		boolean isValid = true;
+		String errorMsg = "";
+
+		String theUseCasePackageName = _nameTextField.getText() + _usecasePackagePostfix;
+		String theReqtPackageName = _createRequirementsPkgChooser.getReqtsPkgOptionalName();
+
+		boolean isLegalName = _context.isLegalName( theUseCasePackageName, _ownerPkg );
+
+		if (!isLegalName){
+
+			errorMsg += theUseCasePackageName + " is not legal as a package name\n";				
+			isValid = false;
+
+		} else if (!_context.isElementNameUnique(
+				theUseCasePackageName, "Package", _ownerPkg, 1)){
+
+			errorMsg += "Unable to proceed as the package name '" + theUseCasePackageName + "' is not unique";
+			isValid = false;
+		
+		} else if (!_context.isElementNameUnique(
+				theReqtPackageName, "Package", _ownerPkg, 1)){
+
+			errorMsg += "Unable to proceed as the package name '" + theReqtPackageName + "' is not unique";
+			isValid = false;
+		}
+
+		if (isMessageEnabled && !isValid && errorMsg != null){
+
+			UserInterfaceHelper.showWarningDialog( errorMsg );
+		}
+
+		return isValid;		
 	}
 
 	@Override
@@ -294,18 +331,17 @@ public class CreateUseCasesPackagePanel extends ExecutableMBSEBasePanel {
 
 		if( checkValidity( false ) ){
 
-			String theUseCaseUnadornedName = _nameTextField.getText(); 
-
 			IRPProject theProject = _context.get_rhpPrj();
 			
-			String theAdornedName = theUseCaseUnadornedName + "Pkg";
-			
+			String theUseCaseUnadornedName = _nameTextField.getText(); 
+			String theAdornedName = theUseCaseUnadornedName + _usecasePackagePostfix;
+
 			//_context.debug( "The name is " + theAdornedName );
-			
+
 			IRPPackage theUseCasePkg = _ownerPkg.addNestedPackage( theAdornedName );
 			theUseCasePkg.changeTo( _context.REQTS_ANALYSIS_USE_CASE_PACKAGE );
 			_context.setSavedInSeparateDirectoryIfAppropriateFor( theUseCasePkg );
-			
+
 			@SuppressWarnings("unused")
 			CreateRequirementsPkg theCreateRequirementsPkg = new CreateRequirementsPkg( 
 					_createRequirementsPkgChooser.getReqtsPkgChoice(), 
@@ -315,29 +351,29 @@ public class CreateUseCasesPackagePanel extends ExecutableMBSEBasePanel {
 					_context );
 
 			CreateActorPkg theActorPkgCreator = new CreateActorPkg( _context );
-			
+
 			if( _createActorChooser.getCreateActorPkgOption() == CreateActorPkgOption.CreateNew ){
-				
+
 				theActorPkgCreator.createNew( theProject, _createActorChooser.getActorsPkgNameIfChosen(), theUseCasePkg );
-			
+
 			} else if( _createActorChooser.getCreateActorPkgOption() == CreateActorPkgOption.CreateNewButEmpty ){
-				
+
 				theActorPkgCreator.createNewButEmpty( theProject, _createActorChooser.getActorsPkgNameIfChosen(), theUseCasePkg );
-				
+
 			} else if( _createActorChooser.getCreateActorPkgOption() == CreateActorPkgOption.InstantiateFromExisting ){
-				
+
 				theActorPkgCreator.instantiateFromExisting( 
 						theUseCasePkg, 
 						_createActorChooser.getActorsPkgNameIfChosen() + theAdornedName, 
 						theUseCasePkg, 
 						_createActorChooser.getExistingActorPkgIfChosen(), 
 						theUseCaseUnadornedName );
-				
+
 			} else if( _createActorChooser.getCreateActorPkgOption()  == CreateActorPkgOption.UseExisting ){
-				
+
 				theActorPkgCreator.useExisting( _createActorChooser.getExistingActorPkgIfChosen() );
 			}
-			
+
 			List<IRPActor> theActors = theActorPkgCreator.getActors();
 
 			ContextDiagramCreator theCTXCreator = new ContextDiagramCreator( _context );
@@ -345,72 +381,72 @@ public class CreateUseCasesPackagePanel extends ExecutableMBSEBasePanel {
 			String theContextPkgChoice = (String) _createContextPkgChooser._userChoiceComboBox.getSelectedItem();
 
 			IRPPackage theContextPkg = null;
-			
+
 			if( theContextPkgChoice.equals( _createContextPkgChooser._doNothingOption ) ){	
-				
+
 			} else if( theContextPkgChoice.equals( _createContextPkgChooser._createNewWithNameOption) ) {
-				
+
 				String theContextElementName = _createContextPkgChooser.getM_NameTextField().getText();
 				theContextPkg = theCTXCreator.createContextPackage( _ownerPkg, theContextElementName );
 				IRPRelation theContextEl = theContextPkg.addImplicitObject( theContextElementName );
-				
+
 				IRPStructureDiagram theContextDiagram = theCTXCreator.
 						createContextDiagram( theContextPkg, theActors, theContextElementName, theContextEl );
-				
+
 				theContextDiagram.highLightElement();
-				
+
 			} else if( theContextPkgChoice.contains( _createContextPkgChooser._createNewBasedOnExistingOption ) ) {
-				
+
 				IRPClassifier theClassifier = _createContextPkgChooser.getExistingBlockIfChosen();
 				String theContextElementName = theClassifier.getName();				
 				theContextPkg = theCTXCreator.createContextPackage( _ownerPkg, theContextElementName );
 				IRPRelation theContextEl = theContextPkg.addImplicitObject( "" );
 				theContextEl.setOtherClass( (IRPClassifier) theClassifier );
-				
+
 				IRPStructureDiagram theContextDiagram = theCTXCreator.
 						createContextDiagram( theContextPkg, theActors, theContextElementName, theContextEl );
-				
+
 				theContextDiagram.highLightElement();
 			}
-			
+
 			ExternalSignalsPkgCreator theSignalsPkgCreator = new ExternalSignalsPkgCreator( _context );
 
 			String theSignalsPkgChoice = (String) _createSignalsPkgChooser._userChoiceComboBox.getSelectedItem();
 
 			if( theSignalsPkgChoice.equals( _createSignalsPkgChooser._doNothingOption ) ){	
-				
+
 				// Do nothing
-				
+
 			} else if( theSignalsPkgChoice.equals( _createSignalsPkgChooser._createNewButEmptyOption ) ){
-			
+
 				IRPPackage theSignalsPkg = theSignalsPkgCreator.createExternalSignalsPackage(
 						theProject, 
 						_createSignalsPkgChooser.getExternalSignalsPkgNameIfChosen() );
-				
-				
+
+
 				theContextPkg.addDependencyTo( theSignalsPkg );
-				
+
 			} else if( theSignalsPkgChoice.contains( _createSignalsPkgChooser._existingPkgPrefix ) ){
-				
+
 				IRPPackage theSignalsPkg = _createSignalsPkgChooser.getExistingExternalSignalsPkgIfChosen();
 				theContextPkg.addDependencyTo( theSignalsPkg );				
 			}
-			
+
 			UseCaseDiagramCreator theUCDCreator = new UseCaseDiagramCreator( _context );
 			IRPUseCaseDiagram theUCD = theUCDCreator.createUseCaseDiagram( theActors, theAdornedName, theUseCasePkg );
 			theUCD.highLightElement();
-			
+
 			_context.deleteIfPresent( "Structure1", "StructureDiagram", theProject );
 			_context.deleteIfPresent( "Model1", "ObjectModelDiagram", theProject );
 			_context.deleteIfPresent( "Default", "Package", theProject );
-			
+
 			if( _context.getIsAutoPopulatePackageDiagram( theProject ) ){
 				AutoPackageDiagram theAPD = new AutoPackageDiagram( _context );
 				theAPD.drawDiagram();
 			}
-				    			
+
 			theProject.save();
-			
+
 			_context.info( "Package structure construction of  " + _context.elInfo( theUseCasePkg ) + " has completed");	
 		}
 	}
