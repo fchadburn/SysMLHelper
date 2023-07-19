@@ -25,6 +25,7 @@ import com.mbsetraining.sysmlhelper.doorsng.CleanUpDeadOSLCLinksPanel;
 import com.mbsetraining.sysmlhelper.doorsng.ExportRequirementsToCSV;
 import com.mbsetraining.sysmlhelper.doorsng.RepairLinks;
 import com.mbsetraining.sysmlhelper.doorsng.SwitchRhapsodyRequirementsToDNG;
+import com.mbsetraining.sysmlhelper.doorsng.UpdateSurrogateRequirementsPanel;
 import com.mbsetraining.sysmlhelper.eventdeletor.EventDeletor;
 import com.mbsetraining.sysmlhelper.executablescenariopackage.CreateFunctionalExecutablePackagePanel;
 import com.mbsetraining.sysmlhelper.featurefunctionpkgcreator.FeatureFunctionPkgCreator;
@@ -373,6 +374,11 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 							new SwitchRhapsodyRequirementsToDNG( _context );
 
 					theSwitcher.establishTraceRelationsToRemoteReqts();
+
+				} else if( menuItem.equals( _settings.getString( 
+						"executablembseplugin.UpdateSurrogateBasedOnRemoteRequirementChanges" ) ) ){
+
+					UpdateSurrogateRequirementsPanel.launchThePanel( theAppID );
 					
 				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.StartLinkMenu" ) ) ){

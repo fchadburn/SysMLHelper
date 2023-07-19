@@ -3225,6 +3225,43 @@ public abstract class BaseContext {
 
 		return theMatchingStereotypes;
 	}
+	
+	public List<IRPRequirement> getRemoteRequirementsFor( 
+			IRPModelElement theEl ) {
+		
+		List<IRPRequirement> theRemoteRequirements = new ArrayList<>();
+		
+		List<IRPModelElement> theRemoteDependsOns = getRemoteDependsOnFor( theEl );
+		
+		for( IRPModelElement theRemoteDependsOn : theRemoteDependsOns ){
+			
+			if( theRemoteDependsOn instanceof IRPRequirement ) {
+				theRemoteRequirements.add( (IRPRequirement) theRemoteDependsOn );
+			}
+		}
+
+		return theRemoteRequirements;
+	}
+	
+	public List<IRPModelElement> getRemoteDependsOnFor( 
+			IRPModelElement theEl ) {
+		
+		List<IRPModelElement> theRemoteDependsOns = new ArrayList<>();
+		
+		@SuppressWarnings("unchecked")
+		List<IRPDependency> theRemoteDependencies = theEl.getRemoteDependencies().toList();
+		
+		for( IRPDependency theRemoteDependency : theRemoteDependencies ){
+			
+			IRPModelElement theDependsOn = theRemoteDependency.getDependsOn();
+			
+			if( !theRemoteDependsOns.contains( theDependsOn )) {
+				theRemoteDependsOns.add( theDependsOn );
+			}
+		}
+		
+		return theRemoteDependsOns;
+	}
 }
 
 /**
