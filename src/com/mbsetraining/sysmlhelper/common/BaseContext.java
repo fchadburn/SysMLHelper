@@ -3262,6 +3262,37 @@ public abstract class BaseContext {
 		
 		return theRemoteDependsOns;
 	}
+	
+	public List<IRPStereotype> getMoveToStereotypes( 
+			IRPModelElement basedOnPackage ){
+		
+		List<IRPStereotype> theMoveToStereotypes = new ArrayList<IRPStereotype>();
+		
+		if( basedOnPackage instanceof IRPPackage ){
+
+			@SuppressWarnings("unchecked")
+			List<IRPStereotype> theStereotypes = basedOnPackage.getStereotypes().toList();
+			
+			for( IRPStereotype theStereotype : theStereotypes ){
+			
+				String theMetaclasses = theStereotype.getOfMetaClass();
+				
+				//_context.info( "theMetaclasses were: " + theMetaclasses );
+				
+				if( theStereotype.getIsNewTerm()== 0 &&
+						( theMetaclasses.equals( "Requirement,Package" ) || 
+								theMetaclasses.equals( "Package,Requirement" ) ) ){
+					
+					theMoveToStereotypes.add( theStereotype );
+					//_context.info( "Found move to " + _context.elInfo( theStereotype ) );
+					
+					break;
+				}
+			}
+		}
+		
+		return theMoveToStereotypes;
+	}
 }
 
 /**

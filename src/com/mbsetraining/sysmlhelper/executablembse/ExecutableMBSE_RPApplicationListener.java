@@ -34,10 +34,10 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				new ExecutableMBSE_RPApplicationListener( "ExecutableMBSE", theContext );
 
 		IRPModelElement theSelectedEl = theContext.getSelectedElement( false );
-		
-		/*
+
 		theListener.afterAddElement( theSelectedEl );
 
+		/*
 		if( theSelectedEl instanceof IRPDiagram ) {
 
 			IRPDiagram theDiagram = (IRPDiagram)theSelectedEl;
@@ -53,9 +53,10 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 			theNoteNode.setGraphicalProperty(
 					"Text",
-					"Hello" );		}*/
-		
-		theListener.onDoubleClick(theSelectedEl);
+					"Hello" );		
+		}
+
+		theListener.onDoubleClick(theSelectedEl);*/
 	}
 
 	private ExecutableMBSE_Context _context;
@@ -73,7 +74,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			IRPModelElement modelElement ){
 
 		boolean doDefault = false;
-		
+
 		try {
 			_context.setSavedInSeparateDirectoryIfAppropriateFor( 
 					modelElement );
@@ -106,9 +107,9 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 			} else if( modelElement instanceof IRPStatechart && 
 					!( modelElement instanceof IRPFlowchart ) ) {
-				
+
 				afterAddForStatechart( (IRPStatechart) modelElement );
-				
+
 			} else if( modelElement instanceof IRPFlowchart && 
 					_context.hasStereotypeCalled( _context.NEW_TERM_FOR_TEXTUAL_ACTIVITY_DIAGRAM, modelElement )){
 
@@ -253,19 +254,19 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			} else if( theUserDefinedMetaClass.equals( _context.ACTION_TO_REQUIREMENT_TABLE ) ) {
 
 				afterAddNewActionToRequirementTable( (IRPTableView) modelElement );
-				
+
 			} else if( modelElement instanceof IRPPackage ) {
-				
+
 				if( theUserDefinedMetaClass.equals( _context.REQTS_ANALYSIS_WORKING_COPY_PACKAGE ) ){
-					
+
 					afterAddForWorkingCopyPackage( (IRPPackage) modelElement );
-					
+
 				} else if( theUserDefinedMetaClass.equals( _context.REQTS_ANALYSIS_USE_CASE_PACKAGE) ){
-				
+
 					afterAddForNewTermPackage( (IRPPackage ) modelElement, _context.USECASEPKG_POSTFIX, "", "" );
-				
+
 				} else if( theUserDefinedMetaClass.equals( _context.REQTS_ANALYSIS_REQUIREMENT_PACKAGE) ){
-					
+
 					afterAddForNewTermPackage( 
 							(IRPPackage ) modelElement, 
 							_context.REQUIREMENTPKG_POSTFIX, 
@@ -273,19 +274,19 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 							_context.USECASEPKG_POSTFIX );
 
 				} else if( theUserDefinedMetaClass.equals( _context.REQTS_ANALYSIS_CONTEXT_DIAGRAM_PACKAGE) ){
-					
+
 					afterAddForNewTermPackage( (IRPPackage ) modelElement, _context.CONTEXTPKG_POSTFIX, "", "" );
-					
+
 				} else if( theUserDefinedMetaClass.equals( _context.REQTS_ANALYSIS_EXTERNAL_SIGNALS_PACKAGE ) ){
-					
+
 					afterAddForNewTermPackage( 
 							(IRPPackage ) modelElement, 
 							_context.SIGNALPKG_POSTFIX,
 							_context.REQTS_ANALYSIS_CONTEXT_DIAGRAM_PACKAGE,
 							_context.CONTEXTPKG_POSTFIX );
-					
+
 				} else if( theUserDefinedMetaClass.equals( _context.DESIGN_SYNTHESIS_LOGICAL_SYSTEM_PACKAGE ) ){
-					
+
 					afterAddForNewTermPackage( (IRPPackage ) modelElement, _context.ARCHITECTUREPKG_POSTFIX, "", "" );
 				}
 			}
@@ -301,7 +302,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 	private void afterAddNewRequirementToActionTable(
 			IRPTableView theView ){
-		
+
 		IRPModelElement theOwner = theView.getOwner();
 
 		if( theOwner instanceof IRPPackage &&
@@ -310,7 +311,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 			setScopeToDependentUseCasePackages( theView, theOwner );
 		}
-		
+
 		String theProposedName = _context.TABLE_VIEW_PREFIX + " Requirement To Action";
 		String theUniqueName = _context.determineUniqueNameBasedOn( theProposedName, "TableView", theOwner );
 
@@ -319,7 +320,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 	private void afterAddNewActionToRequirementTable(
 			IRPTableView theView ){
-		
+
 		IRPModelElement theOwner = theView.getOwner();
 
 		if( theOwner instanceof IRPPackage &&
@@ -328,17 +329,17 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 			setScopeToDependentUseCasePackages( theView, theOwner );
 		}
-		
+
 		String theProposedName = _context.TABLE_VIEW_PREFIX + " Action To Requirement";
 		String theUniqueName = _context.determineUniqueNameBasedOn( theProposedName, "TableView", theOwner );
 
 		theView.setName( theUniqueName );
 	}
-	
+
 	private void setScopeToDependentUseCasePackages(
 			IRPTableView theView, 
 			IRPModelElement theOwner ){
-		
+
 		@SuppressWarnings("unchecked")
 		List<IRPModelElement> theReferences = theOwner.getReferences().toList();
 
@@ -361,15 +362,15 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		}
 
 		if( !theScopingEls.isEmpty() ) {
-			
+
 			IRPCollection theScopedCollection = _context.createNewCollection();
 			theScopedCollection.setSize( theScopingEls.size() );
-			
+
 			for( IRPModelElement theScopeEl : theScopingEls ){
-				
+
 				_context.debug( "ExecutableMBSE_RPApplicationListener is setting scope of " + 
 						_context.elInfo( theView ) + " to " + _context.elInfo( theScopeEl ) );
-				
+
 				theScopedCollection.addItem( theScopeEl );
 			}
 
@@ -410,7 +411,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			}
 		}		
 	}
-	
+
 	private void afterAddForNewTermPackage(
 			IRPPackage thePkg,
 			String thePostFixToAdd,
@@ -425,16 +426,16 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		if( theOwner instanceof IRPProject ){
 
 			String theProposedName = theOwnersName + thePostFixToAdd;
-			
+
 			String theUniqueName = _context.determineUniqueNameBasedOn(theProposedName, "Package" , theOwner );
 
 			thePkg.setName( theUniqueName );
-			
+
 			_context.get_rhpApp().saveAll();
 
 			_context.info( "Saved" );
 		} else if( theOwner.getUserDefinedMetaClass().equals( theMetaClassToSub ) ) {
-			
+
 			Pattern pattern = Pattern.compile( "(.*)(" + thePostFixToSub + ")" );
 
 			Matcher matcher = pattern.matcher( theOwnersName );
@@ -458,7 +459,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			}
 		}*/
 	}
-	
+
 	private void afterAddForTextualActivity(
 			IRPFlowchart theDiagram ){
 
@@ -642,17 +643,17 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 	private void afterAddForStatechart(
 			IRPStatechart theStatechart ){
-		
+
 		IRPModelElement theOwner = theStatechart.getOwner();	    
 
 		String theProposedName =  _context.STATE_MACHINE_DIAGRAM_PREFIX  + theOwner.getName();		
-		
+
 		String theUniqueName = _context.determineUniqueNameBasedOn( 
 				theProposedName, theStatechart.getMetaClass(), theOwner );
 
 		theStatechart.setName( theUniqueName );		
 	}
-	
+
 	private void afterAddForBlockOrRequirementDiagram(
 			IRPObjectModelDiagram theDiagram ){
 
@@ -1267,78 +1268,94 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		boolean isEnabled = _context.getIsEnableAutoMoveOfRequirements();
 
 		if( isEnabled ){
+			
+			IRPModelElement theOwner = modelElement.getOwner();
 
-			boolean isKeepUnderFunctionBlock = _context.
-					getIsKeepRequirementUnderFunctionBlock( modelElement );
+			if( theOwner.getUserDefinedMetaClass().equals( _context.REQTS_ANALYSIS_REQUIREMENT_PACKAGE ) ) {
+				
+				List<IRPStereotype> theStereotypes = _context.getMoveToStereotypes( theOwner );
+				
+				for( IRPStereotype theStereotype : theStereotypes ){
+					modelElement.addSpecificStereotype( theStereotype );							
+				}
+				
+				// Save required by 9.0.1 SR1 to get GUI to update
+				modelElement.getProject().save();
 
-			IRPDiagram theDiagram = getDiagramFor( modelElement );
+			} else {
 
-			IRPClassifier theParentFunctionBlock = null;
+				boolean isKeepUnderFunctionBlock = _context.
+						getIsKeepRequirementUnderFunctionBlock( modelElement );
 
-			if( theDiagram != null ){
-				theParentFunctionBlock = getParentFunctionBlockFor( theDiagram );
-			} else {	
-				theParentFunctionBlock = getParentFunctionBlockFor( modelElement );
-			}
+				IRPDiagram theDiagram = getDiagramFor( modelElement );
 
-			RequirementMover theElementMover = new RequirementMover( 
-					modelElement, _context.REQTS_ANALYSIS_REQUIREMENT_PACKAGE, _context );
+				IRPClassifier theParentFunctionBlock = null;
 
-			if( theElementMover.isMovePossible() ){
+				if( theDiagram != null ){
+					theParentFunctionBlock = getParentFunctionBlockFor( theDiagram );
+				} else {	
+					theParentFunctionBlock = getParentFunctionBlockFor( modelElement );
+				}
+
+				RequirementMover theElementMover = new RequirementMover( 
+						modelElement, _context.REQTS_ANALYSIS_REQUIREMENT_PACKAGE, _context );
+
+				if( theElementMover.isMovePossible() ){
+
+					if( theParentFunctionBlock != null ){
+
+						if( isKeepUnderFunctionBlock ){
+							theElementMover.set_newOwner( theParentFunctionBlock );
+						}
+
+						theElementMover.performMove( modelElement );
+
+					} else {
+						theElementMover.performMove( modelElement );
+					}
+
+				} else if( isKeepUnderFunctionBlock &&
+						theParentFunctionBlock != null &&
+						!modelElement.getOwner().equals( theParentFunctionBlock ) ){
+
+					theElementMover.set_newOwner( theParentFunctionBlock );
+					theElementMover.performMove( modelElement );
+				}
 
 				if( theParentFunctionBlock != null ){
 
-					if( isKeepUnderFunctionBlock ){
-						theElementMover.set_newOwner( theParentFunctionBlock );
+					try {
+						//_context.debug( "Adding satisfy dependency from " + 
+						//		_context.elInfo( theParentFunctionBlock ) + " to " + 
+						//		_context.elInfo( modelElement ) );
+
+						IRPDependency theDependency = theParentFunctionBlock.addDependencyTo( modelElement );
+						theDependency.setStereotype( _context.getStereotypeForSatisfaction() );
+
+					} catch( Exception e ){
+						_context.info( "Unable to apply satisfy dependency from " + 
+								_context.elInfo( theParentFunctionBlock ) + " to " + 
+								_context.elInfo( modelElement ) + ", e=" + e.getMessage() );
 					}
 
-					theElementMover.performMove( modelElement );
+					if( theDiagram != null ){
 
-				} else {
-					theElementMover.performMove( modelElement );
-				}
+						IRPCollection theCollection = _context.createNewCollection();
 
-			} else if( isKeepUnderFunctionBlock &&
-					theParentFunctionBlock != null &&
-					!modelElement.getOwner().equals( theParentFunctionBlock ) ){
+						List<IRPGraphElement> theGraphEls = 
+								theDiagram.getCorrespondingGraphicElements( theParentFunctionBlock ).toList();
 
-				theElementMover.set_newOwner( theParentFunctionBlock );
-				theElementMover.performMove( modelElement );
-			}
+						theGraphEls.addAll( 
+								theDiagram.getCorrespondingGraphicElements( modelElement ).toList() );
 
-			if( theParentFunctionBlock != null ){
+						if( theGraphEls.size() == 2 ){
 
-				try {
-					//_context.debug( "Adding satisfy dependency from " + 
-					//		_context.elInfo( theParentFunctionBlock ) + " to " + 
-					//		_context.elInfo( modelElement ) );
+							for( IRPGraphElement theGraphEl : theGraphEls ){
+								theCollection.addGraphicalItem( theGraphEl );
+							}
 
-					IRPDependency theDependency = theParentFunctionBlock.addDependencyTo( modelElement );
-					theDependency.setStereotype( _context.getStereotypeForSatisfaction() );
-
-				} catch( Exception e ){
-					_context.info( "Unable to apply satisfy dependency from " + 
-							_context.elInfo( theParentFunctionBlock ) + " to " + 
-							_context.elInfo( modelElement ) + ", e=" + e.getMessage() );
-				}
-
-				if( theDiagram != null ){
-
-					IRPCollection theCollection = _context.createNewCollection();
-
-					List<IRPGraphElement> theGraphEls = 
-							theDiagram.getCorrespondingGraphicElements( theParentFunctionBlock ).toList();
-
-					theGraphEls.addAll( 
-							theDiagram.getCorrespondingGraphicElements( modelElement ).toList() );
-
-					if( theGraphEls.size() == 2 ){
-
-						for( IRPGraphElement theGraphEl : theGraphEls ){
-							theCollection.addGraphicalItem( theGraphEl );
+							theDiagram.completeRelations( theCollection, 0 );
 						}
-
-						theDiagram.completeRelations( theCollection, 0 );
 					}
 				}
 			}
@@ -1769,7 +1786,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 						pModelElement instanceof IRPMatrixView ) {
 					optionsList.add( pModelElement );
 				}
-				
+
 				optionsList.addAll( getDiagramsFor( pModelElement ) );
 
 				int numberOfDiagrams = optionsList.size();
@@ -1806,7 +1823,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 					}
 
 					theReturn = true; // don't launch the Features  window		
-					
+
 				} else {
 					theReturn = false; // do default, i.e. open the features dialog
 				}	
@@ -1924,9 +1941,9 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 					JDialog.setDefaultLookAndFeelDecorated(true);
 
 					int confirm;
-					
+
 					if( theElToOpen.equals( relatedToModelEl ) ) {
-						
+
 						confirm = JOptionPane.showConfirmDialog(null, 
 								"Do you want to open the " + relatedToModelEl.getUserDefinedMetaClass() + " called " + 
 										relatedToModelEl.getName() + "? \n(Click 'No' to open the Features dialog instead)\n\n",
@@ -1941,11 +1958,11 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 										"Confirm choice",
 										JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
 					}
-					
+
 					if (confirm == JOptionPane.YES_OPTION){
 
 						theReturn = openView( theElToOpen );
-						
+
 					} else if (confirm == JOptionPane.NO_OPTION){
 
 						theReturn = false; // open the features dialog
@@ -1977,28 +1994,28 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 	private boolean openView(
 			IRPModelElement theElToOpen ){
-		
+
 		boolean theReturn;
-		
+
 		if( theElToOpen instanceof IRPDiagram ){
-			
+
 			((IRPDiagram) theElToOpen).openDiagram();	
 			theReturn = true; // don't launch the Features  window
 
 		} else if( theElToOpen instanceof IRPTableView ) {
-			
+
 			IRPTableView theTableView = (IRPTableView) theElToOpen;
 			theTableView.open();
 			theReturn = true; // don't launch the Features  window
 
 		} else if( theElToOpen instanceof IRPMatrixView ) {
-			
+
 			IRPMatrixView theMatrixView = (IRPMatrixView) theElToOpen;
 			theMatrixView.open();
 			theReturn = true; // don't launch the Features  window
-			
+
 		} else {
-			
+
 			theReturn = false;
 		}
 		return theReturn;

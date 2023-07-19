@@ -1,6 +1,5 @@
 package com.mbsetraining.sysmlhelper.common;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.telelogic.rhapsody.core.*;
@@ -16,37 +15,7 @@ public class RequirementMover extends ElementMover {
 		
 		super( theElement, whereMoveToHasStereotype, context );
 		
-		_moveToStereotypes = getMoveToStereotypes( _newOwner );
-	}
-	
-	private List<IRPStereotype> getMoveToStereotypes( 
-			IRPModelElement basedOnPackage ){
-		
-		List<IRPStereotype> theMoveToStereotypes = new ArrayList<IRPStereotype>();
-		
-		if( basedOnPackage instanceof IRPPackage ){
-
-			@SuppressWarnings("unchecked")
-			List<IRPStereotype> theStereotypes = basedOnPackage.getStereotypes().toList();
-			
-			for( IRPStereotype theStereotype : theStereotypes ){
-			
-				String theMetaclasses = theStereotype.getOfMetaClass();
-				
-				//_context.info( "theMetaclasses were: " + theMetaclasses );
-						
-				if( theStereotype.getIsNewTerm()== 0 &&
-						theMetaclasses.contains( "Requirement" ) ){
-					
-					theMoveToStereotypes.add( theStereotype );
-					//_context.info( "Found move to " + _context.elInfo( theStereotype ) );
-					
-					break;
-				}
-			}
-		}
-		
-		return theMoveToStereotypes;
+		_moveToStereotypes = _context.getMoveToStereotypes( _newOwner );
 	}
 
 	public boolean performMove(
