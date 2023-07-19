@@ -86,7 +86,7 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 
 			String msg = "No requirements to update (" +_requirementsThatMatch.size() + " matched, ";
 			msg += _requirementsWithUnloadedHyperlinks.size() + " traced to unloaded links, ";
-			msg += _requirementsWithNoLinks.size() + " had no links )";
+			msg += _requirementsWithNoLinks.size() + " had no links)";
 
 			theLabel = new JLabel( msg );
 			theLabel.setAlignmentX(Component.LEFT_ALIGNMENT);

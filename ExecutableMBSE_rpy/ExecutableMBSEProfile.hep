@@ -564,7 +564,7 @@ DLLServerCompatible69=1
 name70=MBSE Method: Requirements Analysis\Update surrogates based on remote requirement changes
 isPluginCommand70=1
 command70=InvokeExecutableMBSEHelper
-applicableTo70=13 Requirement Package,Package
+applicableTo70=13 Requirement Package,Package,Requirement
 isVisible70=1
 DLLServerCompatible70=1
 
