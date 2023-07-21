@@ -2,10 +2,16 @@ package com.mbsetraining.sysmlhelper.doorsng;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
+
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JDialog;
@@ -13,7 +19,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 
@@ -28,10 +36,14 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 	 */
 	private static final long serialVersionUID = -2463303852702389912L;
 
+	private List<IRPRequirement> _requirementsInScope = new ArrayList<IRPRequirement>();
 	private List<IRPRequirement> _requirementsToUpdate = new ArrayList<IRPRequirement>();
 	private List<IRPRequirement> _requirementsThatMatch = new ArrayList<IRPRequirement>();
 	private List<IRPRequirement> _requirementsWithNoLinks = new ArrayList<IRPRequirement>();
 	private List<IRPRequirement> _requirementsWithUnloadedHyperlinks = new ArrayList<IRPRequirement>();
+	private List<IRPRequirement> _remoteRequirementsThatTrace = new ArrayList<IRPRequirement>();
+	private List<IRPRequirement> _remoteRequirementsThatDontTrace = new ArrayList<IRPRequirement>();
+	private IRPPackage _owningPkg;
 
 	public static void main(String[] args) {
 
@@ -49,7 +61,7 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 
 				JFrame.setDefaultLookAndFeelDecorated( true );
 
-				String theCaption = "Update surrogate requirement(s) based on remote requirement changes";
+				String theCaption = "Update requirement(s) in model based on remote requirement links";
 
 				JFrame frame = new JFrame( theCaption );
 
@@ -76,96 +88,309 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 		setLayout( new BorderLayout(10,10) );
 		setBorder( BorderFactory.createEmptyBorder( 10, 10, 10, 10 ) );
 
-		Box theBox = Box.createVerticalBox();
-
 		determineRequirementsToUpdate( theSelectedEls ); 
 
-		JLabel theLabel;
+		if( theSelectedEls.size()==1 ) {
 
-		if( _requirementsToUpdate.isEmpty() ){
+			IRPModelElement theSelectedEl = theSelectedEls.get(0);
 
-			String msg = "No requirements to update (" +_requirementsThatMatch.size() + " matched, ";
-			msg += _requirementsWithUnloadedHyperlinks.size() + " traced to unloaded links, ";
-			msg += _requirementsWithNoLinks.size() + " had no links)";
-
-			theLabel = new JLabel( msg );
-			theLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
-			theBox.add( theLabel );
-
-		} else {
-
-			List<IRPModelElement> theFoundEls = new ArrayList<>( _requirementsToUpdate );			
-			final NamedElementMap theNamedElMap = new NamedElementMap( theFoundEls );
-
-			Object[] dataList = theNamedElMap.getFullNamesIn();
-
-			JList<Object> list = new JList<>( dataList );
-			list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-			list.addMouseListener(new MouseAdapter() {
-				public void mouseClicked(MouseEvent evt) {
-					@SuppressWarnings("rawtypes")
-					JList list = (JList)evt.getSource();
-
-					if (evt.getClickCount() >= 2) {
-
-						// Double-click detected
-						int index = list.locationToIndex(evt.getPoint());
-
-						IRPModelElement theElement = theNamedElMap.getElementAt(index);
-
-						if( theElement == null ){
-
-							JDialog.setDefaultLookAndFeelDecorated(true);
-
-							JOptionPane.showMessageDialog(
-									null, 
-									"Element no longer exists", 
-									"Warning",
-									JOptionPane.WARNING_MESSAGE);
-
-						} else {
-							theElement.highLightElement();
-						}   
-
-						_context.debug( _context.elInfo( theElement ) + " was double-clicked" );
-					}
-				}
-			});
-
-			JScrollPane theScrollPane = new JScrollPane(list);
-			theScrollPane.setBounds(1,1,16,58);
-
-			theScrollPane.setVerticalScrollBarPolicy( ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-
-			JLabel theStartLabel = new JLabel("The following " + _requirementsToUpdate.size() + 
-					" requirements need updating:\n");
-
-			theStartLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
-			theBox.add( theStartLabel );
-			theBox.add( theScrollPane );
-
-			JLabel theEndLabel = new JLabel( "Do you want to update their specification text based on remote requirements?\n" );
-			theEndLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
-			theBox.add( theEndLabel );
+			if( theSelectedEl instanceof IRPPackage ) {
+				_owningPkg = (IRPPackage)theSelectedEl;
+				determineNewRequirementsNeeded( (IRPPackage) theSelectedEl );
+			}
 		}
 
-		add( theBox, BorderLayout.CENTER );
-		add( createOKCancelPanel(), BorderLayout.PAGE_END );
+		JTabbedPane theTabbedPane = new JTabbedPane();
+
+		theTabbedPane.addTab(
+				"Update model (" + _requirementsToUpdate.size() + ")", 
+				null, 
+				createRequirementsToUpdateBox(), 
+				"Requirements to update based on text of remote specification");
+		//updatePane.setMnemonicAt(0, KeyEvent.VK_1);
+
+		if( !_remoteRequirementsThatDontTrace.isEmpty() ) {
+
+			theTabbedPane.addTab(
+					"New requirements (" + _remoteRequirementsThatDontTrace.size() + ")", 
+					null, 
+					createRemoteRequirementsThatDontTraceBox(), 
+					"Requirements linked to package but not to a requirement");
+		}
+		//updatePane.setMnemonicAt(0, KeyEvent.VK_1);
+
+		// Only show this if not empty, as a warning
+		if( !_requirementsWithNoLinks.isEmpty() ) {
+
+			theTabbedPane.addTab(
+					"Info-only: No-links (" + _requirementsWithNoLinks.size() + ")", 
+					null, 
+					createRequirementsWithNoLinksBox(), 
+					"Requirements without links to remote requirements");
+			//updatePane.setMnemonicAt(0, KeyEvent.VK_1);
+		}
+
+		if( !_requirementsWithUnloadedHyperlinks.isEmpty() ) {
+
+			theTabbedPane.addTab(
+					"Unloaded links (" + _requirementsWithUnloadedHyperlinks.size() + ")", 
+					null, 
+					createBoxBasedOn( _requirementsWithUnloadedHyperlinks ), 
+					"Requirements with HyperLinks to unloaded requirements");
+		}
+
+		add( theTabbedPane, BorderLayout.CENTER );
+		
+		int updateCount = _requirementsToUpdate.size() + _remoteRequirementsThatDontTrace.size();
+		
+		if( updateCount == 0 ) {
+			
+			add( createOKCancelPanel(), BorderLayout.PAGE_END );
+
+		} else {			
+			add( createUpdateCancelPanelWith( "Update model (" + updateCount + ")" ), BorderLayout.PAGE_END );
+		}
+	}
+
+	private Box createRequirementsToUpdateBox() {
+
+		Box theBox = Box.createVerticalBox();
+
+		JScrollPane theScrollPane = createDoubleClickableScrollPaneFor( new ArrayList<>( _requirementsToUpdate ) );
+
+		Component theStartLabel;
+
+		String msg = "";
+
+		if( _requirementsToUpdate.size() == 0 ) {
+			msg += "None of the " + _requirementsInScope.size() +" requirements in scope require their specification text \n" + 
+					"to be updated due to changes to their remote counterpart. \n\nOf these:\n" + 
+					_requirementsThatMatch.size() + " requirements have matching specification text\n";
+			
+			if( _requirementsWithNoLinks.size() > 0 ) {				
+				msg += _requirementsWithNoLinks.size() + " have no remote requirement links";
+			}
+
+		} else if( _requirementsToUpdate.size() == 1 ) {
+			msg += "There is 1 requirement that needs updating because its specification text doesn't match \n(double-click to locate in browser). ";
+
+		} else {
+			msg += "There are " + _requirementsToUpdate.size() + " requirements that need updating because their specification text doesn't match. ";
+			msg += "Double-click to locate in browser. ";
+
+		}
+
+		int unloadedCount = _requirementsWithUnloadedHyperlinks.size();
+
+		if( unloadedCount > 0 ) {
+			msg += "\n\nHowever, there are " + unloadedCount + " unloaded requirements. \n";
+			msg += "It is strongly recommended to resolve these before proceeding";
+		}
+
+		theStartLabel = createPanelWithTextCentered( msg );
+
+		theBox.add( theStartLabel );
+
+		if( _requirementsToUpdate.size() > 0 ) {
+			theBox.add( theScrollPane );
+
+		}
+
+		return theBox;
+	}
+	
+	private Box createRequirementsWithNoLinksBox() {
+
+		Box theBox = Box.createVerticalBox();
+
+		JScrollPane theScrollPane = createDoubleClickableScrollPaneFor( new ArrayList<>( _requirementsWithNoLinks ) );
+
+		Component theStartLabel;
+
+		String msg = "";
+		
+		int count = _requirementsWithNoLinks.size();
+
+		if( count == 0 ) {
+			msg += "There are no requirements without remote requirement links.";
+
+		} else if( count == 1 ) {
+			
+			if( _owningPkg instanceof IRPPackage ) {
+				msg += "There is 1 requirement in " + _owningPkg.getName() + "\nthat has no remote requirement link\n";
+			} else {
+				msg += "There is 1 requirement that has no OSLC link to a remote requirement \n";
+			}
+			
+			msg += "(double-click to locate in browser).";
+
+		} else { // plural
+			
+			if( _owningPkg instanceof IRPPackage ) {
+
+				msg += "There are " + count + " requirements in " + _owningPkg.getName() + " without remote requirement links \n";
+			} else {
+				msg += "There are " + count + " requirements without remote requirement links \n";
+
+			}
+
+			msg += "(double-click to locate in browser).";
+
+		}
+
+		theStartLabel = createPanelWithTextCentered( msg );
+
+		theBox.add( theStartLabel );
+
+		if( count > 0 ) {
+			theBox.add( theScrollPane );
+
+		}
+
+		return theBox;
+	}
+
+	private Box createRemoteRequirementsThatDontTraceBox() {
+
+		Box theBox = Box.createVerticalBox();
+
+		JScrollPane theScrollPane = createDoubleClickableScrollPaneFor( new ArrayList<>( _remoteRequirementsThatDontTrace ) );
+
+		Component theStartLabel;
+
+		String msg = "";
+		
+		int count = _remoteRequirementsThatDontTrace.size();
+
+		if( _owningPkg == null ) {
+			msg += "The remote requirements check works by looking for links from the package and \n";
+			msg += "seeing if there are any requirements that are not linked in it, hence only works \n";
+			msg += "if a package is selected and has remote requirement links";
+
+		} else if( count == 0 ) {
+			msg += "There are no remote requirements traced to " + _owningPkg.getName() + " that don't trace to requirement in it.";
+
+		} else if( count == 1 ) {
+			
+			msg += _owningPkg.getName() + " has a link to 1 remote requirement that has no corresponding \n" + 
+						"requirement in the package and hence will be created ";
+
+			msg += "(double-click to locate in browser).";
+
+		} else { // plural
+			
+			msg += _owningPkg.getName() + " has a link to " + count + " remote requirements that have no corresponding \n" + 
+					"requirements in the package and hence will be created";
+
+			msg += "(double-click to locate in browser).";
+
+		}
+
+		theStartLabel = createPanelWithTextCentered( msg );
+
+		theBox.add( theStartLabel );
+
+		if( count > 0 ) {
+			theBox.add( theScrollPane );
+
+		}
+
+		return theBox;
+	}
+	
+	private Box createBoxBasedOn( 
+			List<IRPRequirement> theRequirements ) {
+
+		Box theBox = Box.createVerticalBox();
+
+		List<IRPModelElement> theFoundEls = new ArrayList<>( theRequirements );			
+		final NamedElementMap theNamedElMap = new NamedElementMap( theFoundEls );
+
+		Object[] dataList = theNamedElMap.getFullNamesIn();
+
+		JList<Object> list = new JList<>( dataList );
+		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+		list.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt) {
+				@SuppressWarnings("rawtypes")
+				JList list = (JList)evt.getSource();
+
+				if (evt.getClickCount() >= 2) {
+
+					// Double-click detected
+					int index = list.locationToIndex(evt.getPoint());
+
+					IRPModelElement theElement = theNamedElMap.getElementAt(index);
+
+					if( theElement == null ){
+
+						JDialog.setDefaultLookAndFeelDecorated(true);
+
+						JOptionPane.showMessageDialog(
+								null, 
+								"Element no longer exists", 
+								"Warning",
+								JOptionPane.WARNING_MESSAGE);
+
+					} else {
+						theElement.highLightElement();
+					}   
+
+					_context.debug( _context.elInfo( theElement ) + " was double-clicked" );
+				}
+			}
+		});
+
+		JScrollPane theScrollPane = new JScrollPane(list);
+		theScrollPane.setBounds(1,1,16,58);
+
+		theScrollPane.setVerticalScrollBarPolicy( ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+		theBox.add( theScrollPane );
+
+		return theBox;
 	}
 
 	public void determineRequirementsToUpdate(
 			List<IRPModelElement> theSelectedEls ) {
 
+		_requirementsInScope = getNestedRequirementsFor( theSelectedEls );
+
+		for( IRPRequirement theRequirement : _requirementsInScope ){
+			determineRequirementsToUpdateBasedOn(theRequirement);
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	private List<IRPRequirement> getNestedRequirementsFor(
+			List<IRPModelElement> theSelectedEls ){
+
+		Set<IRPRequirement> theNestedRequirements = new LinkedHashSet<IRPRequirement>();
+
 		for( IRPModelElement theSelectedEl : theSelectedEls ){
 
-			@SuppressWarnings("unchecked")
-			List<IRPRequirement> theRequirements = theSelectedEl.getNestedElementsByMetaClass( "Requirement", 1 ).toList();
-
-			for( IRPRequirement theRequirement : theRequirements ){
-				determineRequirementsToUpdateBasedOn(theRequirement);
-			}			
+			theNestedRequirements.addAll( theSelectedEl.
+					getNestedElementsByMetaClass( "Requirement", 1 ).toList() );
 		}
+
+		return new ArrayList<>( theNestedRequirements );
+	}
+
+	public void determineNewRequirementsNeeded(
+			IRPPackage theRequirementPkg ) {
+
+		List<IRPRequirement> theExpectedRemoteReqts = _context.getRemoteRequirementsFor( theRequirementPkg );
+
+		for( IRPRequirement theExpectedRemoteReqt : theExpectedRemoteReqts ){
+
+			if( !_remoteRequirementsThatTrace.contains( theExpectedRemoteReqt )) {
+				_remoteRequirementsThatDontTrace.add( theExpectedRemoteReqt );
+			}
+		}
+
+		_context.debug ("determineNewRequirementsNeeded found " + _remoteRequirementsThatDontTrace.size() + " requirements missing" );
+
 	}
 
 	private void determineRequirementsToUpdateBasedOn(
@@ -174,19 +399,21 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 		List<IRPModelElement> theRemoteDependsOns = _context.getRemoteDependsOnFor( theRequirement );
 
 		if( theRemoteDependsOns.isEmpty() ) {
-			
+
 			if( !_requirementsWithNoLinks.contains( theRequirement ) ) {	
 				_context.debug( "Found " + _context.elInfo( theRequirement ) + "'s got no oslc links");
 				_requirementsWithNoLinks.add( theRequirement );
 			}
 		} else {
-			
-			for (IRPModelElement theRemoteDependsOn : theRemoteDependsOns) {
-				
+
+			for( IRPModelElement theRemoteDependsOn : theRemoteDependsOns ){
+
 				_context.info( _context.elInfo (theRequirement) + " traces to " + _context.elInfo( theRemoteDependsOn ) + 
 						" owned by " + _context.elInfo( theRemoteDependsOn.getOwner() ) );
 
 				if( theRemoteDependsOn instanceof IRPRequirement ){
+
+					_remoteRequirementsThatTrace.add( (IRPRequirement) theRemoteDependsOn );
 
 					IRPRequirement theOSLCRequirement = (IRPRequirement)theRemoteDependsOn;
 
@@ -200,7 +427,7 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 							_requirementsThatMatch.add( theRequirement );
 						}
 					} else {
-						
+
 						if( !_requirementsToUpdate.contains( theRequirement ) ) {		
 							_context.debug( "Found " + _context.elInfo( theRequirement ) + "'s spec needs updating");
 							_requirementsToUpdate.add( theRequirement );
@@ -215,7 +442,7 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 					}
 				}
 			}
-		}
+		}		
 	}
 
 	@Override
@@ -229,34 +456,95 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 		if( checkValidity( false ) ){
 
 			for( IRPRequirement theRequirement : _requirementsToUpdate ){
-
-				List<IRPRequirement> theRemoteRequirements = _context.getRemoteRequirementsFor( theRequirement );
-
-				if( theRemoteRequirements.size()!=1 ) {
-
-					_context.error( "Found " +  theRemoteRequirements.size() + " remote requirements for " + 
-							_context.elInfo(theRequirement) + " when expecting 1");
-
-				} else if( theRemoteRequirements.size()==1 ) {
-
-					IRPRequirement theOSLCRequirement = (IRPRequirement)theRemoteRequirements.get(0);
-
-					String theRemoteSpec = theOSLCRequirement.getSpecification();
-					String theSpec = theRequirement.getSpecification();
-
-					if( theSpec.equals( theRemoteSpec ) ){
-
-						_context.warning( "Found " + _context.elInfo( theRequirement ) + 
-								"'s spec already matches hence no action needed");
-
-					} else {
-						_context.info( "Updating " + _context.elInfo( theRequirement ) + "'s spec to '" + theRemoteSpec + "'" );
-
-						theRequirement.setSpecification( theRemoteSpec );
-					}
-				}
+				updateRequirementBasedOnRemoteSpecification( theRequirement );
+			}
+			
+			for( IRPRequirement theRequirement : _remoteRequirementsThatDontTrace ){
+				createRequirementBasedOn( theRequirement );
 			}
 		}
+	}
+
+	private void updateRequirementBasedOnRemoteSpecification(
+			IRPRequirement theRequirement ){
+		
+		_context.debug( "updateRequirementBasedOnRemoteSpecification was invoked for " + _context.elInfo( theRequirement ) );
+
+		List<IRPRequirement> theRemoteRequirements = _context.getRemoteRequirementsFor( theRequirement );
+
+		if( theRemoteRequirements.size()!=1 ) {
+
+			_context.error( "Found " +  theRemoteRequirements.size() + " remote requirements for " + 
+					_context.elInfo(theRequirement) + " when expecting 1");
+
+		} else if( theRemoteRequirements.size()==1 ) {
+
+			IRPRequirement theOSLCRequirement = (IRPRequirement)theRemoteRequirements.get(0);
+
+			String theRemoteSpec = theOSLCRequirement.getSpecification();
+			String theSpec = theRequirement.getSpecification();
+
+			if( theSpec.equals( theRemoteSpec ) ){
+
+				_context.warning( "Found " + _context.elInfo( theRequirement ) + 
+						"'s spec already matches hence no action needed");
+
+			} else {
+				_context.info( "Updating " + _context.elInfo( theRequirement ) + "'s spec to '" + theRemoteSpec + "'" );
+
+				theRequirement.setSpecification( theRemoteSpec );
+			}
+		}
+	}
+	
+	private void createRequirementBasedOn(
+			IRPRequirement theRemoteRequirement ){
+		
+		//_context.info( "createRequirementBasedOnRemoteLink was invoked for " + _context.elInfo( theRemoteRequirement ) );
+		
+		String theRemoteName = theRemoteRequirement.getName();
+		String theRemoteSpec = theRemoteRequirement.getSpecification();
+		String theRemoteID = theRemoteRequirement.getRequirementID();
+
+		//_context.info( "theRemoteName = " + theRemoteName);
+		//_context.info( "theRemoteSpec = " + theRemoteSpec);
+		//_context.info( "theRemoteID = " + theRemoteID);
+		
+		String theProposedName = theRemoteName.replaceAll( theRemoteID + ": ", "" );
+		theProposedName = theRemoteID + " " + theProposedName;
+		theProposedName = theProposedName.replaceAll( "\\.", "" );
+
+		int maxLength = 50;
+
+		if (theProposedName.length() <= maxLength) {
+			theProposedName = theProposedName.trim();
+		} else {
+			theProposedName = theProposedName.substring(0, maxLength).trim();
+		}
+		
+		//_context.info( "theProposedName = " + theProposedName);
+
+		theProposedName = _context.determineUniqueNameBasedOn(theProposedName, "Requirement", _owningPkg);
+		
+		IRPRequirement theRequirement = (IRPRequirement) _owningPkg.addNewAggr( "Requirement", theProposedName );
+		theRequirement.setSpecification( theRemoteSpec );
+		theRequirement.setRequirementID( theRemoteID );
+		
+		if( _owningPkg.getUserDefinedMetaClass().equals( _context.REQTS_ANALYSIS_REQUIREMENT_PACKAGE ) ) {
+			
+			List<IRPStereotype> theStereotypes = _context.getMoveToStereotypes( _owningPkg );
+			
+			for( IRPStereotype theStereotype : theStereotypes ){
+				theRequirement.addSpecificStereotype( theStereotype );							
+			}
+			
+			// Save required by 9.0.1 SR1 to get GUI to update
+			//modelElement.getProject().save();
+		}
+		
+		theRequirement.addRemoteDependencyTo( theRemoteRequirement, "Trace" ); 
+
+		//_context.info( "------------------");
 	}
 }
 

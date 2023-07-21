@@ -9,19 +9,28 @@ import java.awt.FlowLayout;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
+import com.mbsetraining.sysmlhelper.common.NamedElementMap;
 import com.telelogic.rhapsody.core.*;
 
 public abstract class ExecutableMBSEBasePanel extends JPanel {
@@ -78,6 +87,58 @@ public abstract class ExecutableMBSEBasePanel extends JPanel {
 		
 		JButton theCancelButton = new JButton("Cancel");
 		theCancelButton.setPreferredSize( new Dimension( 75,25 ) );	
+		theCancelButton.addActionListener( new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					Window dialog = SwingUtilities.windowForComponent( (Component) e.getSource() );
+					dialog.dispose();
+												
+				} catch (Exception e2) {
+					_context.error("Unhandled exception in createOKCancelPanel->theCancelButton.actionPerformed, e2=" + e2.getMessage());
+				}		
+			}	
+		});
+		
+		thePanel.setComponentOrientation( ComponentOrientation.LEFT_TO_RIGHT );
+		thePanel.add( theOKButton );
+		thePanel.add( theCancelButton );
+		
+		return thePanel;
+	}
+	
+	public JPanel createUpdateCancelPanelWith( 
+			String theUpdateText ){
+		
+		JPanel thePanel = new JPanel();
+		thePanel.setLayout( new FlowLayout() );
+		
+		JButton theOKButton = new JButton( theUpdateText );
+		theOKButton.setPreferredSize(new Dimension( 140,25 ));
+		theOKButton.addActionListener( new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					boolean isValid = checkValidity( true );
+					
+					if (isValid){
+						performAction();
+						Window dialog = SwingUtilities.windowForComponent( (Component) e.getSource() );
+						dialog.dispose();
+					}
+												
+				} catch (Exception e2) {
+					_context.error( "Unhandled exception in createOKCancelPanel->theOKButton.actionPerformed e2=" + e2.getMessage() );
+				}
+			}
+		});
+		
+		JButton theCancelButton = new JButton("Cancel");
+		theCancelButton.setPreferredSize( new Dimension( 140,25 ) );	
 		theCancelButton.addActionListener( new ActionListener() {
 			
 			@Override
@@ -164,6 +225,55 @@ public abstract class ExecutableMBSEBasePanel extends JPanel {
 		add( createCancelPanel(), BorderLayout.PAGE_END );
 	}
 	
+	protected JScrollPane createDoubleClickableScrollPaneFor( 
+			List<IRPModelElement> theEls ){
+		
+		List<IRPModelElement> theFoundEls = new ArrayList<>( theEls );			
+		final NamedElementMap theNamedElMap = new NamedElementMap( theFoundEls );
+
+		Object[] dataList = theNamedElMap.getFullNamesIn();
+
+		JList<Object> list = new JList<>( dataList );
+		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+		list.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt) {
+				@SuppressWarnings("rawtypes")
+				JList list = (JList)evt.getSource();
+
+				if (evt.getClickCount() >= 2) {
+
+					// Double-click detected
+					int index = list.locationToIndex(evt.getPoint());
+
+					IRPModelElement theElement = theNamedElMap.getElementAt(index);
+
+					if( theElement == null ){
+
+						JDialog.setDefaultLookAndFeelDecorated(true);
+
+						JOptionPane.showMessageDialog(
+								null, 
+								"Element no longer exists", 
+								"Warning",
+								JOptionPane.WARNING_MESSAGE);
+
+					} else {
+						theElement.highLightElement();
+					}   
+
+					_context.debug( _context.elInfo( theElement ) + " was double-clicked" );
+				}
+			}
+		});
+
+		JScrollPane theScrollPane = new JScrollPane(list);
+		theScrollPane.setBounds(1,1,16,58);
+
+		theScrollPane.setVerticalScrollBarPolicy( ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		return theScrollPane;
+	}
+	
 	public JPanel createCancelPanel(){
 		
 		JPanel thePanel = new JPanel();
@@ -195,7 +305,7 @@ public abstract class ExecutableMBSEBasePanel extends JPanel {
 }
 
 /**
- * Copyright (C) 2016-2022  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2016-2023  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 
