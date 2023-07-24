@@ -895,9 +895,10 @@ V4.2.k.Rhp831.PreRelease (XX-XXX-XXXX):
 0668 19-JUL-2023: ExecutableMBSE: Get listener to automatically apply the move to stereotype when a requirement is directly created in an applicable requirement package (F.J.Chadburn)
 0669 21-JUL-2023: ExecutableMBSE: Checkpoint of further refinement of the 'Update surrogates based on remote reqts..." panel with tabs which include requirements to add from remote (F.J.Chadburn)
 0670 24-JUL-2023: ExecutableMBSE: Enhanced 'Update surrogates..." dialog to automatically detect and establish links if requirements found with matching specification text (F.J.Chadburn)
+0671 24-JUL-2023: ExecutableMBSE: Added new CSVExportIncludeColumnsForLinkedAnnotations property (default = False) to minimise unexpected DNG overwrite of Rationales (F.J.Chadburn)
 
 Backlog/Known issues
-- Further testing needed with dependency helper and new terms
+- Further testing needed with dependency  helper and new terms
 - Textual Activity Diagram needs implementing for SysMLHelper as it's stopped working
 - Add a UML package new term
 - Interfaces Package doesn't have unique icon yet

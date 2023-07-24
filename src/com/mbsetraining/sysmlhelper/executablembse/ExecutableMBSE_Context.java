@@ -680,6 +680,16 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		return result;		
 	}
+	
+	public boolean getCSVExportIncludeColumnsForLinkedAnnotations(
+			IRPModelElement basedOnContext ){
+
+		boolean result = getBooleanPropertyValue(
+				basedOnContext,
+				"ExecutableMBSEProfile.RequirementsAnalysis.CSVExportIncludeColumnsForLinkedAnnotations" );
+
+		return result;		
+	}
 
 	public List<String> getDefaultActorsForMasterActorsPackage(
 			IRPPackage theContextEl ){

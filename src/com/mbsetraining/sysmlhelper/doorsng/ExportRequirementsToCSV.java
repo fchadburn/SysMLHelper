@@ -219,11 +219,14 @@ public class ExportRequirementsToCSV {
 			// Get controlling properties
 			String artifactTypeForCSVExport = _context.getCSVExportArtifactType( underEl );
 			String separator = _context.getCSVExportSeparator( underEl );
-			boolean isNameForCVSExport = _context.getCSVExportIncludeArtifactName( underEl );
+			
+			boolean isIncludeArtifactName = _context.getCSVExportIncludeArtifactName( underEl );
+			boolean isIncludeColumnsForLinkedAnnotations = _context.getCSVExportIncludeColumnsForLinkedAnnotations( underEl );
 
 			_context.debug( "exportRequirementsToCSV CSVExportSeparator=" + separator + 
 					", CSVExportArtifactType=" + artifactTypeForCSVExport + 
-					", CVSExportIncludeArtifactName=" + isNameForCVSExport );
+					", CVSExportIncludeArtifactName=" + isIncludeArtifactName +
+					", CSVExportIncludeColumnsForLinkedAnnotations=" + isIncludeColumnsForLinkedAnnotations );
 
 			String theMsg = "Based on the ExecutableMBSEProfile::RequirementsAnalysis properties for this package this helper will export " + theReqts.size();
 
@@ -237,12 +240,24 @@ public class ExportRequirementsToCSV {
 					" \n" + "Target: " + theFile.getAbsolutePath() + "\n" +
 					"Artifact Type: " + artifactTypeForCSVExport + "\n";
 
-			if( isNameForCVSExport ) {
-				theMsg += "Name column: True";
+			if( isIncludeArtifactName ) {
+				theMsg += "Include Name column: True \n";
 			} else {
-				theMsg += "Name column: False";
+				theMsg += "Include Name column: False \n";
 			}
 
+			if( isIncludeColumnsForLinkedAnnotations ) {
+				theMsg += "Include annotation columns, e.g, Rationale: True";
+			} else {
+				theMsg += "Include annotation columns, e.g, Rationale: False";
+			}
+			
+			if( !theAdditionalHeadings.isEmpty() && 
+					!isIncludeColumnsForLinkedAnnotations ) {
+				
+				theMsg += "\n\nAnnotations such as Rationale were found, but the CSVExportIncludeColumnsForLinkedAnnotations property is set to False";
+			}
+			
 			theMsg += "\n\nOnce exported, prior to import into DOORS Next, first open in Microsoft Excel and check the contents, then Save As to .xlsx \nto create the file to import." + 
 					"\n\nDo you want to proceed? ";
 
@@ -280,7 +295,7 @@ public class ExportRequirementsToCSV {
 
 						String theHeadingLine = "";
 
-						if( isNameForCVSExport ){
+						if( isIncludeArtifactName ){
 							theHeadingLine = 
 									"Identifier" + separator + 
 									"isHeading" + separator +
@@ -297,8 +312,11 @@ public class ExportRequirementsToCSV {
 									"Primary Text";
 						}
 
-						for( String theAdditionalHeading : theAdditionalHeadings ){
-							theHeadingLine += separator + theAdditionalHeading;
+						if( isIncludeColumnsForLinkedAnnotations ) {		
+							
+							for( String theAdditionalHeading : theAdditionalHeadings ){
+								theHeadingLine += separator + theAdditionalHeading;
+							}							
 						}
 
 						theHeadingLine += "\n";
@@ -316,7 +334,7 @@ public class ExportRequirementsToCSV {
 							String theSpecification = _context.
 									replaceCSVIncompatibleCharsFrom( theReqt.getSpecification() );
 
-							if( isNameForCVSExport ){
+							if( isIncludeArtifactName ){
 								
 								theLine = 
 										theIdentifier + separator + 
@@ -334,30 +352,37 @@ public class ExportRequirementsToCSV {
 										theSpecification;
 							}
 
-							AnnotationMap theAnnotationMap = new AnnotationMap( theReqt, _context );
+							if( isIncludeColumnsForLinkedAnnotations ) {
+								
+								AnnotationMap theAnnotationMap = new AnnotationMap( theReqt, _context );
 
-							for( String theAdditionalHeading : theAdditionalHeadings ){
+								for( String theAdditionalHeading : theAdditionalHeadings ){
 
-								theLine += separator;
+									theLine += separator;
 
-								List<IRPAnnotation> theSpecificAnnotations = theAnnotationMap.
-										getOrDefault( theAdditionalHeading, new ArrayList<>() );
+									List<IRPAnnotation> theSpecificAnnotations = theAnnotationMap.
+											getOrDefault( theAdditionalHeading, new ArrayList<>() );
 
-								Iterator<IRPAnnotation> iterator = theSpecificAnnotations.iterator();
+									Iterator<IRPAnnotation> iterator = theSpecificAnnotations.iterator();
 
-								while( iterator.hasNext() ){
+									while( iterator.hasNext() ){
 
-									IRPAnnotation theSpecificAnnotation = (IRPAnnotation) iterator.next();
+										IRPAnnotation theSpecificAnnotation = (IRPAnnotation) iterator.next();
 
-									String theDescription = _context.
-											replaceCSVIncompatibleCharsFrom( theSpecificAnnotation.getDescription() );
+										String theDescription = _context.
+												replaceCSVIncompatibleCharsFrom( theSpecificAnnotation.getDescription() );
 
-									if( theSpecificAnnotations.size() <= 1 ) {
-										theLine += theDescription;
-									} else {
-										theLine += theDescription + "(" + theSpecificAnnotation.getName() + ")";	
-									}
-								}		
+										if( theSpecificAnnotations.size() <= 1 ) {
+											theLine += theDescription;
+										} else {
+											theLine += theDescription + "(" + theSpecificAnnotation.getName() + ")";	
+										}
+									}		
+								}
+								
+							} else if( !theAdditionalHeadings.isEmpty() ) {
+								
+								_context.info( "Annotations such as Rationale were found but the CSVExportIncludeColumnsForLinkedAnnotations property is set to False" );
 							}
 
 							theLine += "\n";
@@ -366,9 +391,7 @@ public class ExportRequirementsToCSV {
 						}
 
 						myWriter.close();
-
 					}
-
 
 				} catch( Exception e ){
 
