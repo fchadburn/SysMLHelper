@@ -3226,10 +3226,10 @@ public abstract class BaseContext {
 		return theMatchingStereotypes;
 	}
 	
-	public List<IRPRequirement> getRemoteRequirementsFor( 
+	public Set<IRPRequirement> getRemoteRequirementsFor( 
 			IRPModelElement theEl ) {
 		
-		List<IRPRequirement> theRemoteRequirements = new ArrayList<>();
+		Set<IRPRequirement> theRemoteRequirements = new HashSet<>();
 		
 		List<IRPModelElement> theRemoteDependsOns = getRemoteDependsOnFor( theEl );
 		
@@ -3261,6 +3261,90 @@ public abstract class BaseContext {
 		}
 		
 		return theRemoteDependsOns;
+	}
+	
+	public Set<IRPRequirement> getRequirementsThatMatch(
+			String theSpecificationText,
+			Set<IRPRequirement> theCandidates ){
+
+		Set<IRPRequirement> theMatches = new HashSet<>();
+
+		for (IRPRequirement theCandidate : theCandidates) {
+
+			//debug( "theCandidate         = '" + theCandidate.getSpecification() + "'" );
+			//debug( "theSpecificationText = '" + theSpecificationText + "'" );
+
+			if( theCandidate.getSpecification().matches( theSpecificationText ) ){
+				theMatches.add( theCandidate );
+			}
+		}
+
+		return theMatches;
+	}
+	
+	public void establishTraceRelationFrom(
+			IRPRequirement theReqt,
+			IRPRequirement toRemoteReqt ) {
+
+		//		_context.debug( "switchGraphElsFor from " + _context.elementInfo( theReqt ) + 
+		//				" to " + _context.elementInfo ( toRemoteReqt ) );
+
+		//List<IRPDependency> theExistingDependencies = _context.getDependenciesTo( toRemoteReqt );
+
+		@SuppressWarnings("unchecked")
+		List<IRPDependency> theExistingDependencies = theReqt.getDependencies().toList();
+
+		List<IRPDependency> theMatchingDependencies = new ArrayList<>();
+		List<IRPDependency> theUnmatchedDependencies = new ArrayList<>();
+
+		for( IRPDependency theDependency : theExistingDependencies ){
+
+			IRPModelElement theDependsOn = theDependency.getDependsOn();
+
+			if( theDependsOn.equals( toRemoteReqt ) ) {
+				theMatchingDependencies.add( theDependency );
+			} else {
+				theUnmatchedDependencies.add( theDependency );
+			}
+		}
+
+		if( !theMatchingDependencies.isEmpty() ) {
+
+			info( theMatchingDependencies.toString() + " dependencies were found already from " + 
+					elInfo( theReqt ) + " to " + elInfo( toRemoteReqt ) );
+
+			for( IRPDependency theDependency : theMatchingDependencies ){
+				info( elInfo( theDependency ) );
+			}
+		}
+
+		addRemoteDependency( toRemoteReqt, theReqt, "Trace" );	
+
+		info( "Established OSLC trace relation from local " + elInfo( theReqt ) + " to remote " + elInfo ( toRemoteReqt ) );
+	}
+	
+	public IRPDependency addRemoteDependency(
+			IRPRequirement toRemoteReqt,
+			IRPModelElement theDependent,
+			String theType ){
+
+		IRPDependency theRemoteDependency = null;
+
+		try {
+			theRemoteDependency = theDependent.addRemoteDependencyTo( 
+					toRemoteReqt, theType );
+
+			debug( "Added remote " + theType + " from " + 
+					elInfo( theDependent ) + " to " + 
+					elInfo( toRemoteReqt ) );
+
+		} catch( Exception e ){
+			debug( "Unable to add remote " + theType + " from " + 
+					elInfo( theDependent ) + " to " + 
+					elInfo( toRemoteReqt ) + ", e=" + e.getMessage() );
+		}
+
+		return theRemoteDependency;
 	}
 	
 	public List<IRPStereotype> getMoveToStereotypes( 

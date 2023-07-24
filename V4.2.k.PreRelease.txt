@@ -894,6 +894,7 @@ V4.2.k.Rhp831.PreRelease (XX-XXX-XXXX):
 0667 19-JUL-2023: ExecutableMBSE: Refined 'Update surrogates based on remote requirement changes' panel so you can right-click multi-select specific requirements (F.J.Chadburn)
 0668 19-JUL-2023: ExecutableMBSE: Get listener to automatically apply the move to stereotype when a requirement is directly created in an applicable requirement package (F.J.Chadburn)
 0669 21-JUL-2023: ExecutableMBSE: Checkpoint of further refinement of the 'Update surrogates based on remote reqts..." panel with tabs which include requirements to add from remote (F.J.Chadburn)
+0670 24-JUL-2023: ExecutableMBSE: Enhanced 'Update surrogates..." dialog to automatically detect and establish links if requirements found with matching specification text (F.J.Chadburn)
 
 Backlog/Known issues
 - Further testing needed with dependency helper and new terms

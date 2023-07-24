@@ -16,14 +16,14 @@ public class SwitchRhapsodyRequirementsToDNG {
 
 	ExecutableMBSE_Context _context;
 
-	
+
 	public static void main(String[] args) {
 		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
-		
+
 		ExecutableMBSE_Context context = new ExecutableMBSE_Context( theRhpApp.getApplicationConnectionString() );
-		
+
 		SwitchRhapsodyRequirementsToDNG theSwitcher = new SwitchRhapsodyRequirementsToDNG(context);
-		
+
 		theSwitcher.switchRequirements();
 	}
 
@@ -60,12 +60,12 @@ public class SwitchRhapsodyRequirementsToDNG {
 			_context.debug( "Found " + theReqts.size() + " Rhapsody-owned requirements under " + _context.elInfo( theSelectedEl ) );
 
 			List<IRPModelElement> theProcessedReqts = new ArrayList<>();
-			
+
 			for (IRPRequirement theReqt : theReqts) {
 
 				String theSpec = theReqt.getSpecification();
 
-				Set<IRPRequirement> theMatches = 
+				Set<IRPRequirement> theMatches = _context.
 						getRequirementsThatMatch(theSpec, theRemoteReqts);
 
 				for (IRPRequirement theRemoteMatch : theMatches) {
@@ -77,15 +77,15 @@ public class SwitchRhapsodyRequirementsToDNG {
 
 			@SuppressWarnings("unchecked")
 			List<IRPModelElement> theRemoteDependencies = 
-					theSelectedEl.getRemoteDependencies().toList();
-			
+			theSelectedEl.getRemoteDependencies().toList();
+
 			if( theProcessedReqts.size() > 0 ){
-			
+
 				boolean answer = UserInterfaceHelper.askAQuestion( 
 						"Shall I delete the " + theProcessedReqts.size() + 
 						" requirements related to the " + theRemoteDependencies.size() + " remote dependencies " +
 						" that have been switched?" );
-				
+
 				if( answer ){
 					deleteFromModel( theProcessedReqts );
 					deleteFromModel( theRemoteDependencies );
@@ -96,40 +96,40 @@ public class SwitchRhapsodyRequirementsToDNG {
 
 	public List<IRPRequirement> getRequirementsThatDontTraceToRemoteRequirements(
 			IRPModelElement underTheEl ){
-		
+
 		List<IRPRequirement> theMatchingReqts = new ArrayList<>();
-	
+
 		@SuppressWarnings("unchecked")
 		List<IRPRequirement> theReqts = underTheEl.getNestedElementsByMetaClass( "Requirement", 1 ).toList();
 
 		for (IRPRequirement theReqt : theReqts) {
-			
+
 			@SuppressWarnings("unchecked")
 			List<IRPDependency> theDependencies = theReqt.getRemoteDependencies().toList();
-			
+
 			if( theDependencies.size() > 2 ){
 				_context.warning( _context.elInfo( theReqt ) + " has " + theDependencies.size() + 
 						" remote dependencies when expecting 0 or 1" );
 			} else if( theDependencies.size() == 1 ){
-				
+
 				IRPDependency theDependency = theDependencies.get( 0 );
-				
+
 				IRPModelElement theRemoteEl = theDependency.getDependent();
-				
+
 				_context.info( _context.elInfo( theReqt ) + " already has " + _context.elInfo( theDependency ) + 
 						" to " + _context.elInfo( theRemoteEl ) );
-				
-				
+
+
 			} else {
 				_context.info( _context.elInfo( theReqt ) + " has no remote requirement dependencies" );
 				theMatchingReqts.add( theReqt );
 			}
 		}
-		
+
 		return theMatchingReqts;
-		
+
 	}
-	
+
 	public void establishTraceRelationsToRemoteReqts(){
 
 		IRPModelElement theSelectedEl = _context.getSelectedElement( false );
@@ -156,11 +156,11 @@ public class SwitchRhapsodyRequirementsToDNG {
 			_context.debug( "Found " + theReqts.size() + " Rhapsody-owned requirements under " + _context.elInfo( theSelectedEl ) );
 
 			Map<IRPRequirement,List<IRPRequirement>> theDependencyMap = new HashMap<>();  
-			
+
 			for( IRPRequirement theReqt : theReqts ){
 				String theSpec = theReqt.getSpecification();
 				List<IRPRequirement> theMatchedReqts = new ArrayList<>(); 
-				theMatchedReqts.addAll( getRequirementsThatMatch( theSpec, theRemoteReqts ) );
+				theMatchedReqts.addAll( _context.getRequirementsThatMatch( theSpec, theRemoteReqts ) );
 
 				if( !theMatchedReqts.isEmpty() ){					
 					theDependencyMap.put(theReqt,  theMatchedReqts );			
@@ -175,35 +175,32 @@ public class SwitchRhapsodyRequirementsToDNG {
 				boolean answer = UserInterfaceHelper.askAQuestion( theDependencyMap.keySet().size() + " matches were found. Do you want to proceed?");
 
 				if( answer ){
-			
-				    for (Map.Entry<IRPRequirement, List<IRPRequirement>> entry : theDependencyMap.entrySet()) {
-				        IRPRequirement theReqt = entry.getKey();
-				       List<IRPRequirement> theRemoteMatches = entry.getValue();
-			
-				       for (IRPRequirement theRemoteReqt : theRemoteMatches) {
-				
-							establishTraceRelationFrom( theReqt, theRemoteReqt );					
+
+					for (Map.Entry<IRPRequirement, List<IRPRequirement>> entry : theDependencyMap.entrySet()) {
+						IRPRequirement theReqt = entry.getKey();
+						List<IRPRequirement> theRemoteMatches = entry.getValue();
+
+						for (IRPRequirement theRemoteReqt : theRemoteMatches) {
+							_context.establishTraceRelationFrom( theReqt, theRemoteReqt );					
+						}
+					}		
 				}
-			}		
-		}
-				
 			}
-			
+		}
 	}
-	}
-	
+
 	private void deleteFromModel(
 			List<IRPModelElement> theEls ) {
-		
+
 		Iterator<IRPModelElement> i = theEls.iterator();
 
 		while( i.hasNext() ){
-			
+
 			IRPModelElement theEl = (IRPModelElement) i.next();
-			
+
 			_context.debug( "Deleting " + _context.elInfo( theEl ) + 
 					" owned by " + _context.elInfo( theEl.getOwner() ) );
-			
+
 			theEl.deleteFromProject();
 		}
 	}
@@ -215,7 +212,7 @@ public class SwitchRhapsodyRequirementsToDNG {
 		IRPDependency theRemoteDependency = null;
 
 		String theUserDefinedMetaClass = thePreviousDependency.getUserDefinedMetaClass();
-		
+
 		//IRPModelElement theDependsOn = thePreviousDependency.getDependsOn();
 		//_context.debug( "theDependsOn is " + _context.elInfo(theDependsOn));
 
@@ -227,101 +224,35 @@ public class SwitchRhapsodyRequirementsToDNG {
 
 		if (theUserDefinedMetaClass.equals( "Satisfaction" ) ){
 
-			theRemoteDependency = addRemoteDependency(
+			theRemoteDependency = _context.addRemoteDependency(
 					toRemoteReqt, theDependent, "Satisfies" );
 
 		} else if( theUserDefinedMetaClass.equals( "Derivation" ) ){
 
-			theRemoteDependency = addRemoteDependency(
+			theRemoteDependency = _context.addRemoteDependency(
 					toRemoteReqt, theDependent, "Derives From" );
 
 		} else if( theUserDefinedMetaClass.equals( "Refinement" ) ){
 
-			theRemoteDependency = addRemoteDependency(
+			theRemoteDependency = _context.addRemoteDependency(
 					toRemoteReqt, theDependent, "Refines" );
 
 		} else if( _context.hasStereotypeCalled( "trace", thePreviousDependency ) ){
 
-			theRemoteDependency = addRemoteDependency(
+			theRemoteDependency = _context.addRemoteDependency(
 					toRemoteReqt, theDependent, "Trace" );			
 		} else {
 			_context.debug( "Warning: No stereotype found on " + 
 					_context.elInfo( thePreviousDependency ) + " to " + 
 					_context.elInfo( toRemoteReqt ) );
 
-			theRemoteDependency = addRemoteDependency(
+			theRemoteDependency = _context.addRemoteDependency(
 					toRemoteReqt, theDependent, "Trace" );		
 		}
 
 		return theRemoteDependency;
 	}
 
-	private IRPDependency addRemoteDependency(
-			IRPRequirement toRemoteReqt,
-			IRPModelElement theDependent,
-			String theType ){
-
-		IRPDependency theRemoteDependency = null;
-
-		try {
-			theRemoteDependency = theDependent.addRemoteDependencyTo( 
-					toRemoteReqt, theType );
-			
-			_context.debug( "Added remote " + theType + " from " + 
-					_context.elInfo( theDependent ) + " to " + 
-					_context.elInfo( toRemoteReqt ) );
-			
-		} catch( Exception e ){
-			_context.debug( "Unable to add remote " + theType + " from " + 
-					_context.elInfo( theDependent ) + " to " + 
-					_context.elInfo( toRemoteReqt ) + ", e=" + e.getMessage() );
-		}
-
-		return theRemoteDependency;
-	}
-
-	private void establishTraceRelationFrom(
-			IRPRequirement theReqt,
-			IRPRequirement toRemoteReqt ) {
-
-		//		_context.debug( "switchGraphElsFor from " + _context.elementInfo( theReqt ) + 
-		//				" to " + _context.elementInfo ( toRemoteReqt ) );
-
-		//List<IRPDependency> theExistingDependencies = _context.getDependenciesTo( toRemoteReqt );
-
-		@SuppressWarnings("unchecked")
-		List<IRPDependency> theExistingDependencies = theReqt.getDependencies().toList();
-		
-		List<IRPDependency> theMatchingDependencies = new ArrayList<>();
-		List<IRPDependency> theUnmatchedDependencies = new ArrayList<>();
-		
-		for( IRPDependency theDependency : theExistingDependencies ){
-			
-			IRPModelElement theDependsOn = theDependency.getDependsOn();
-			
-			if( theDependsOn.equals( toRemoteReqt ) ) {
-				theMatchingDependencies.add( theDependency );
-			} else {
-				theUnmatchedDependencies.add( theDependency );
-			}
-		}
-		
-		if( !theMatchingDependencies.isEmpty() ) {
-			
-			_context.info( theMatchingDependencies.toString() + " dependencies were found already from " + 
-					_context.elInfo( theReqt ) + " to " + _context.elInfo( toRemoteReqt ) );
-			
-			for( IRPDependency theDependency : theMatchingDependencies ){
-				_context.info( _context.elInfo( theDependency ) );
-			}
-		}
-
-		addRemoteDependency( toRemoteReqt, theReqt, "Trace" );	
-		
-		_context.info( "Established OSLC trace relation from local " + _context.elInfo( theReqt ) + 
-						" to remote " + _context.elInfo ( toRemoteReqt ) );
-	}
-	
 	private void switchGraphElsFor(
 			IRPRequirement theReqt,
 			IRPRequirement toRemoteReqt ) {
@@ -364,12 +295,12 @@ public class SwitchRhapsodyRequirementsToDNG {
 
 				@SuppressWarnings("unchecked")
 				List<IRPGraphElement> theOriginalGraphEls = 
-					theDiagram.getCorrespondingGraphicElements( theReqt ).toList();
+				theDiagram.getCorrespondingGraphicElements( theReqt ).toList();
 
 				Iterator<IRPGraphElement> i = theOriginalGraphEls.iterator();
 
 				while( i.hasNext() ){
-					
+
 					IRPGraphElement theOriginalGraphEl = (IRPGraphElement) i.next();
 
 					IRPGraphNode theNewGraphNode = createGraphNodeFor(
@@ -398,12 +329,12 @@ public class SwitchRhapsodyRequirementsToDNG {
 										(IRPDependency) theNewDependency, 
 										(IRPGraphEdge) theOriginalConnectedEdge,
 										theNewGraphNode );
-								
+
 								//theGraphElsToRemove.addGraphicalItem( theOriginalConnectedEdge );
 							}
 						}
 					}
-					
+
 					theGraphElsToRemove.addGraphicalItem( theOriginalGraphEl );
 				}
 
@@ -538,7 +469,7 @@ public class SwitchRhapsodyRequirementsToDNG {
 		_context.debug( "yTrgPosition = " + yTrgPosition );
 
 		IRPGraphElement theSourceGraphEl = basedOnGraphEdge.getSource();
-		
+
 		if( theSourceGraphEl instanceof IRPGraphNode ){
 
 			theNewEdge = theDiagram.addNewEdgeForElement(
@@ -552,32 +483,32 @@ public class SwitchRhapsodyRequirementsToDNG {
 
 		} else {
 			IRPCollection theGraphElements = _context.get_rhpApp().createNewCollection();
-			
+
 			theGraphElements.addGraphicalItem(theSourceGraphEl);
 			theGraphElements.addGraphicalItem(andRequirementGraphNode);
-			
+
 			IRPCollection theRelationsCollection = _context.get_rhpApp().createNewCollection();
 			theRelationsCollection.setSize( 1 );
 			theRelationsCollection.setString( 1, "AllRelations" );
-			
+
 			_context.debug("Attempting to populate relations to " + 
 					_context.elInfo( theSourceGraphEl.getModelObject() ) );
-			
+
 			theDiagram.populateDiagram( theGraphElements, theRelationsCollection, "among" );
-			
+
 			@SuppressWarnings("unchecked")
 			List<IRPGraphElement> theCorrespondingGraphEls =
-					theDiagram.getCorrespondingGraphicElements(theNewDependency).toList();
-			
+			theDiagram.getCorrespondingGraphicElements(theNewDependency).toList();
+
 			if( theCorrespondingGraphEls != null ){
 				_context.debug( "there are " + theCorrespondingGraphEls.size() + " graph elements related to " +
 						_context.elInfo( theNewDependency ) );
 			}
 		}
-		
+
 		return theNewEdge;
 	}
-	
+
 
 	public Set<IRPRequirement> getLinkedRemoteRequirements(
 			IRPModelElement underEl ){
@@ -587,36 +518,17 @@ public class SwitchRhapsodyRequirementsToDNG {
 		@SuppressWarnings("unchecked")
 		List<IRPDependency> theRemoteDependencies = underEl.getRemoteDependencies().toList();
 
-			for (IRPDependency theRemoteDependency : theRemoteDependencies) {
+		for (IRPDependency theRemoteDependency : theRemoteDependencies) {
 
-				IRPModelElement theDependsOn = theRemoteDependency.getDependsOn();
+			IRPModelElement theDependsOn = theRemoteDependency.getDependsOn();
 
-				if( theDependsOn instanceof IRPRequirement ){
-					theRequirements.add( (IRPRequirement) theDependsOn );
+			if( theDependsOn instanceof IRPRequirement ){
+				theRequirements.add( (IRPRequirement) theDependsOn );
 			}
 		}
 
 		return theRequirements;
 
-	}
-
-	private Set<IRPRequirement> getRequirementsThatMatch(
-			String theSpecificationText,
-			Set<IRPRequirement> theCandidates ){
-
-		Set<IRPRequirement> theMatches = new HashSet<>();
-
-		for (IRPRequirement theCandidate : theCandidates) {
-
-			_context.debug( "theCandidate         = '" + theCandidate.getSpecification() + "'" );
-			_context.debug( "theSpecificationText = '" + theSpecificationText + "'" );
-
-			if( theCandidate.getSpecification().matches( theSpecificationText ) ){
-				theMatches.add( theCandidate );
-			}
-		}
-
-		return theMatches;
 	}
 }
 
@@ -637,4 +549,4 @@ public class SwitchRhapsodyRequirementsToDNG {
 
     You should have received a copy of the GNU General Public License
     along with SysMLHelperPlugin.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
