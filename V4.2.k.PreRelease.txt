@@ -884,7 +884,7 @@ V4.2.j.Rhp831.PreRelease (17-JUL-2023):
 0659 17-JUL-2023: ExecutableMBSE: Added plugin_method:getNonMatchingRemoteRequirements for context patterns when using the surrogate DNG link approach (F.J.Chadburn)
 0660 17-JUL-2023: ExecutableMBSE: Added plugin_method:getTracesToUnloadedRemoteRequirements for context patterns when using the surrogate DNG link approach (F.J.Chadburn)
 
-V4.2.k.Rhp831.PreRelease (XX-XXX-XXXX):
+V4.2.k.Rhp831.PreRelease (26-JUL-2023):
 0661 18-JUL-2023: ExecutableMBSE: Added out-of-the-box 'Surrogate Remote Requirement Traceability Report Table' to requirements package right-click to assist DNG workflows (F.J.Chadburn)
 0662 18-JUL-2023: ExecutableMBSE: Usability: Override double-click on diagram to ask user if they want to open table view or matrix view rather than features dialog (F.J.Chadburn)
 0663 18-JUL-2023: ExecutableMBSE: Updated create use case package panel to use _RequirementPkg/_UseCasePkg post-fix naming conventions determined through new properties (F.J.Chadburn)
