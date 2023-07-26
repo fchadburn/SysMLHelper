@@ -896,6 +896,9 @@ V4.2.k.Rhp831.PreRelease (XX-XXX-XXXX):
 0669 21-JUL-2023: ExecutableMBSE: Checkpoint of further refinement of the 'Update surrogates based on remote reqts..." panel with tabs which include requirements to add from remote (F.J.Chadburn)
 0670 24-JUL-2023: ExecutableMBSE: Enhanced 'Update surrogates..." dialog to automatically detect and establish links if requirements found with matching specification text (F.J.Chadburn)
 0671 24-JUL-2023: ExecutableMBSE: Added new CSVExportIncludeColumnsForLinkedAnnotations property (default = False) to minimise unexpected DNG overwrite of Rationales (F.J.Chadburn)
+0672 26-JUL-2023: ExecutableMBSE: Add unloaded links check to 'Update surrogates...' dialog to inform user if package has unloaded links even if req'ts don't (F.J.Chadburn)
+0673 26-JUL-2023: ExecutableMBSE: Improvements from robustness testing, e.g. gety 'Update surrogates...' panel to create requirements without trace relations - due to Rhp crashing (F.J.Chadburn)
+0674 26-JUL-2023: ExecutableMBSE: Get 'Establish trace relations...' to check for IDs as part of matching and only look at specification text if no ID matches found (F.J.Chadburn)
 
 Backlog/Known issues
 - Further testing needed with dependency  helper and new terms

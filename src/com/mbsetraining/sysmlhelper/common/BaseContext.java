@@ -3264,18 +3264,39 @@ public abstract class BaseContext {
 	}
 	
 	public Set<IRPRequirement> getRequirementsThatMatch(
-			String theSpecificationText,
+			IRPRequirement theRequirement,
 			Set<IRPRequirement> theCandidates ){
+
+		String theID = theRequirement.getRequirementID();
 
 		Set<IRPRequirement> theMatches = new HashSet<>();
 
-		for (IRPRequirement theCandidate : theCandidates) {
-
-			//debug( "theCandidate         = '" + theCandidate.getSpecification() + "'" );
-			//debug( "theSpecificationText = '" + theSpecificationText + "'" );
-
-			if( theCandidate.getSpecification().matches( theSpecificationText ) ){
+		for( IRPRequirement theCandidate : theCandidates ){
+			
+			String theCandidatesID = theCandidate.getRequirementID();
+			
+			//debug( "theID         = " + theID );
+			//debug( "theCandidatesID = " + theCandidatesID );
+			
+			if( !theCandidatesID.isEmpty() && 
+					theCandidatesID.matches( theID ) ) {
+				
 				theMatches.add( theCandidate );
+			}
+		}
+		
+		if( theMatches.isEmpty() ) {
+				
+			for( IRPRequirement theCandidate : theCandidates ){
+
+				String theSpecificationText = theCandidate.getSpecification();
+				
+				debug( "theCandidate         = '" + theCandidate.getSpecification() + "'" );
+				debug( "theSpecificationText = '" + theSpecificationText + "'" );
+
+				if( theCandidate.getSpecification().matches( theSpecificationText ) ){
+					theMatches.add( theCandidate );
+				}
 			}
 		}
 
@@ -3318,9 +3339,9 @@ public abstract class BaseContext {
 			}
 		}
 
-		addRemoteDependency( toRemoteReqt, theReqt, "Trace" );	
+		info( "Adding remote trace dependency from local " + elInfo( theReqt ) + " to remote " + elInfo ( toRemoteReqt ) );
 
-		info( "Established OSLC trace relation from local " + elInfo( theReqt ) + " to remote " + elInfo ( toRemoteReqt ) );
+		addRemoteDependency( toRemoteReqt, theReqt, "Trace" );	
 	}
 	
 	public IRPDependency addRemoteDependency(
@@ -3334,9 +3355,9 @@ public abstract class BaseContext {
 			theRemoteDependency = theDependent.addRemoteDependencyTo( 
 					toRemoteReqt, theType );
 
-			debug( "Added remote " + theType + " from " + 
-					elInfo( theDependent ) + " to " + 
-					elInfo( toRemoteReqt ) );
+			//debug( "Added remote " + theType + " from " + 
+			//		elInfo( theDependent ) + " to " + 
+			//		elInfo( toRemoteReqt ) );
 
 		} catch( Exception e ){
 			debug( "Unable to add remote " + theType + " from " + 

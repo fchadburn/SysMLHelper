@@ -24,7 +24,7 @@ public class SwitchRhapsodyRequirementsToDNG {
 
 		SwitchRhapsodyRequirementsToDNG theSwitcher = new SwitchRhapsodyRequirementsToDNG(context);
 
-		theSwitcher.switchRequirements();
+		theSwitcher.establishTraceRelationsToRemoteReqts();
 	}
 
 	public SwitchRhapsodyRequirementsToDNG(
@@ -63,10 +63,8 @@ public class SwitchRhapsodyRequirementsToDNG {
 
 			for (IRPRequirement theReqt : theReqts) {
 
-				String theSpec = theReqt.getSpecification();
-
 				Set<IRPRequirement> theMatches = _context.
-						getRequirementsThatMatch(theSpec, theRemoteReqts);
+						getRequirementsThatMatch( theReqt, theRemoteReqts);
 
 				for (IRPRequirement theRemoteMatch : theMatches) {
 
@@ -158,12 +156,20 @@ public class SwitchRhapsodyRequirementsToDNG {
 			Map<IRPRequirement,List<IRPRequirement>> theDependencyMap = new HashMap<>();  
 
 			for( IRPRequirement theReqt : theReqts ){
-				String theSpec = theReqt.getSpecification();
-				List<IRPRequirement> theMatchedReqts = new ArrayList<>(); 
-				theMatchedReqts.addAll( _context.getRequirementsThatMatch( theSpec, theRemoteReqts ) );
+							
+				Set<IRPRequirement> theMatchedReqts = _context.getRequirementsThatMatch( theReqt, theRemoteReqts );
+				
+				int count = theMatchedReqts.size();
 
-				if( !theMatchedReqts.isEmpty() ){					
-					theDependencyMap.put(theReqt,  theMatchedReqts );			
+				if( count == 1 ){			
+					
+					_context.debug( "Found 1 match for local " + _context.elInfo( theReqt ) );
+					theDependencyMap.put( theReqt, new ArrayList<>( theMatchedReqts ) );		
+					
+				} else if ( count > 0 ) {
+					
+					_context.warning( "Found " + count + " matches for local " + _context.elInfo( theReqt ) );
+					theDependencyMap.put( theReqt, new ArrayList<>( theMatchedReqts ) );			
 				}
 			}
 
