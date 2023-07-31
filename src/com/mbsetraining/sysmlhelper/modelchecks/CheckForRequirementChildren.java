@@ -3,13 +3,15 @@ package com.mbsetraining.sysmlhelper.modelchecks;
 import java.util.List;
 
 import com.telelogic.rhapsody.core.IRPCollection;
+import com.telelogic.rhapsody.core.IRPDependency;
 import com.telelogic.rhapsody.core.IRPExternalCheckRegistry;
+import com.telelogic.rhapsody.core.IRPHyperLink;
 import com.telelogic.rhapsody.core.IRPModelElement;
 import com.telelogic.rhapsody.core.IRPRequirement;
 import com.telelogic.rhapsody.core.RPExternalCheck;
 
 public class CheckForRequirementChildren extends RPExternalCheck {
-
+	
 	public CheckForRequirementChildren(
 			IRPExternalCheckRegistry externalCheckerRegistry ){
 		
@@ -23,20 +25,51 @@ public class CheckForRequirementChildren extends RPExternalCheck {
 		boolean isOk = true;
 		
 		// Check if requirement is using anchors as we don't want this
-		if( ElementToCheck instanceof IRPRequirement ){
+		if( ElementToCheck instanceof IRPRequirement ){			
 			
-			IRPRequirement req = (IRPRequirement) ElementToCheck;
-			
-			@SuppressWarnings("unchecked")
-			List<IRPModelElement> theChildren = req.getNestedElements().toList();
-			
-			if( !theChildren.isEmpty() ) {
-				isOk = false;
-			}
+			isOk = !hasUndesiredChildren( (IRPRequirement) ElementToCheck );
 		}
 		
 		return isOk;
-	}	
+	}
+	
+	public boolean hasUndesiredChildren(
+			IRPRequirement theReqt ) {
+		
+		boolean hasUndesiredChildren = false;
+		
+		@SuppressWarnings("unchecked")
+		List<IRPModelElement> theChildren = theReqt.getNestedElements().toList();
+		
+		for( IRPModelElement theChild : theChildren ){
+							
+			if( theChild instanceof IRPDependency ){
+				
+				IRPDependency theDependency = (IRPDependency)theChild;
+				IRPModelElement theDependsOn = theDependency.getDependsOn();
+							
+				int isRemote = theDependsOn.isRemote();
+				
+				//_context.info( _context.elInfo( theReqt ) + " is remote = " + isRemote );
+
+				if( theDependsOn instanceof IRPHyperLink ) {
+					
+					// ignore HyperLinks as most likely to be an unloaded OSLC link which is OK
+
+				} else if( isRemote == 0 ) {
+					hasUndesiredChildren = true;
+					break;
+					
+				} // else remote links are OK as these are assumed to be surrogate requirement links
+				
+			} else {
+				hasUndesiredChildren = true;
+				break;
+			}
+		}
+		
+		return hasUndesiredChildren;
+	}
 
 	public String getDomain() {
 		return "ExecutableMBSE Profile";
@@ -47,7 +80,7 @@ public class CheckForRequirementChildren extends RPExternalCheck {
 	}
 
 	public String getName() {
-		return "Requirement has child elements";
+		return "Requirement has undesirable child elements if you wish to switch it to remote";
 	}
 
 	public String getSeverity() {
