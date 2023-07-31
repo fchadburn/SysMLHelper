@@ -900,6 +900,9 @@ V4.2.k.Rhp831.PreRelease (26-JUL-2023):
 0673 26-JUL-2023: ExecutableMBSE: Improvements from robustness testing, e.g. gety 'Update surrogates...' panel to create requirements without trace relations - due to Rhp crashing (F.J.Chadburn)
 0674 26-JUL-2023: ExecutableMBSE: Get 'Establish trace relations...' to check for IDs as part of matching and only look at specification text if no ID matches found (F.J.Chadburn)
 
+V4.2.l.Rhp831.PreRelease (XX-XXX-XXXX): TBC
+0675 31-JUL-2023: ExecutableMBSE: Fix validity checker for create use case panel so that flow into existing does not check for unique reqts name (F.J.Chadburn)
+
 Backlog/Known issues
 - Further testing needed with dependency  helper and new terms
 - Textual Activity Diagram needs implementing for SysMLHelper as it's stopped working

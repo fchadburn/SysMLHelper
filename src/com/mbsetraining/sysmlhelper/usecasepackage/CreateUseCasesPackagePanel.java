@@ -28,6 +28,7 @@ import com.mbsetraining.sysmlhelper.executablembse.AutoPackageDiagram;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.mbsetraining.sysmlhelper.usecasepackage.CreateActorPkg.CreateActorPkgOption;
+import com.mbsetraining.sysmlhelper.usecasepackage.CreateRequirementsPkg.CreateRequirementsPkgOption;
 import com.telelogic.rhapsody.core.*;
 
 public class CreateUseCasesPackagePanel extends ExecutableMBSEBasePanel {
@@ -294,24 +295,27 @@ public class CreateUseCasesPackagePanel extends ExecutableMBSEBasePanel {
 
 		boolean isValid = true;
 		String errorMsg = "";
-
+		
 		String theUseCasePackageName = _nameTextField.getText() + _usecasePackagePostfix;
 		String theReqtPackageName = _createRequirementsPkgChooser.getReqtsPkgOptionalName();
-
+		CreateRequirementsPkgOption theReqtsPkgChoice = _createRequirementsPkgChooser.getReqtsPkgChoice();
+		
 		boolean isLegalName = _context.isLegalName( theUseCasePackageName, _ownerPkg );
 
-		if (!isLegalName){
+		if( !isLegalName ){
 
 			errorMsg += theUseCasePackageName + " is not legal as a package name\n";				
 			isValid = false;
 
-		} else if (!_context.isElementNameUnique(
-				theUseCasePackageName, "Package", _ownerPkg, 1)){
+		} else if( !_context.isElementNameUnique(
+				theUseCasePackageName, "Package", _ownerPkg, 1) ){
 
-			errorMsg += "Unable to proceed as the package name '" + theUseCasePackageName + "' is not unique";
+			errorMsg += "Unable to proceed as the package name '" + theUseCasePackageName + "' is not unique ";
 			isValid = false;
 		
-		} else if (!_context.isElementNameUnique(
+		} else if( ( theReqtsPkgChoice == CreateRequirementsPkgOption.CreateUnderProject ||
+				theReqtsPkgChoice == CreateRequirementsPkgOption.CreateUnderProjectWithStereotype ) &&
+				!_context.isElementNameUnique(
 				theReqtPackageName, "Package", _ownerPkg, 1)){
 
 			errorMsg += "Unable to proceed as the package name '" + theReqtPackageName + "' is not unique";
