@@ -900,7 +900,7 @@ V4.2.k.Rhp831.PreRelease (26-JUL-2023):
 0673 26-JUL-2023: ExecutableMBSE: Improvements from robustness testing, e.g. get 'Update surrogates...' panel to create requirements without trace relations - due to Rhp crashing (F.J.Chadburn)
 0674 26-JUL-2023: ExecutableMBSE: Get 'Establish trace relations...' to check for IDs as part of matching and only look at specification text if no ID matches found (F.J.Chadburn)
 
-V4.2.l.Rhp831.PreRelease (XX-XXX-XXXX): TBC
+V4.2.l.Rhp831.PreRelease (01-AUG-2023):
 0675 31-JUL-2023: ExecutableMBSE: Fix validity checker for create use case panel so that flow into existing does not check for unique reqts name (F.J.Chadburn)
 0676 31-JUL-2023: ExecutableMBSE: Refine model check for requirement children so that it doesn't flag remote element links to surrogate reqts (F.J.Chadburn)
 0677 01-AUG-2023: ExecutableMBSE: Shift the 'Annotations such as Rationale were found' info to outside requirements loop so it only appears once (F.J.Chadburn)
@@ -909,7 +909,8 @@ V4.2.l.Rhp831.PreRelease (XX-XXX-XXXX): TBC
 0680 01-AUG-2023: ExecutableMBSE: Improve clarity that just info is provided by the 'Update surrogates...' dialog when it detects matching requirements as separate menu is needed (F.J.Chadburn)
 
 Backlog/Known issues
-- Further testing needed with dependency  helper and new terms
+- Control flow in 9.0.1 activity diagrams template check
+- Further testing needed with dependency helper and new terms
 - Textual Activity Diagram needs implementing for SysMLHelper as it's stopped working
 - Add a UML package new term
 - Interfaces Package doesn't have unique icon yet
