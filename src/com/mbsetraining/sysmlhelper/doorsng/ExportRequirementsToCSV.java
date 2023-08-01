@@ -123,7 +123,7 @@ public class ExportRequirementsToCSV {
 		}
 	}
 
-	public String getIdentifierFromTracedRemoteRequirement(
+	private String getIdentifierFromTracedRemoteRequirement(
 			IRPRequirement forReqt ){
 
 		String theIdentifier = "";
@@ -137,11 +137,49 @@ public class ExportRequirementsToCSV {
 		} else if( theRemoteReqts.size() == 1 ){
 
 			IRPRequirement theRemoteReqt = theRemoteReqts.get( 0 );
-
 			theIdentifier= theRemoteReqt.getRequirementID();
 		}
 
 		return theIdentifier;
+	}
+	
+	private String cleanRequirementName(
+			String theName,
+			String ofID ) {
+		
+		String theCleanName = theName;
+		
+		if( !ofID.isEmpty() ) {
+			
+			theCleanName = theName.replaceFirst( ":", "" ).replaceFirst( ofID, "" ).trim();
+			
+			if( !theName.equals( theCleanName ) ) {
+				_context.info( "Renamed " + theName + " to " + theCleanName );
+			}
+		}
+
+		return theCleanName;
+	}
+	
+	private String getNameFromTracedRemoteRequirement(
+			IRPRequirement forReqt,
+			String theID ){
+
+		String theName = cleanRequirementName( forReqt.getName(), theID ); 
+
+		List<IRPRequirement> theRemoteReqts = getRemoteRequirementsTracedFrom( forReqt );
+
+		if( theRemoteReqts.size() > 1 ){
+
+			_context.warning( _context.elInfo( forReqt ) + " has " + theRemoteReqts.size() + " remote requirements when expecting 0 or 1");
+
+		} else if( theRemoteReqts.size() == 1 ){
+
+			IRPRequirement theRemoteReqt = theRemoteReqts.get( 0 );
+			theName = cleanRequirementName( theRemoteReqt.getName(), theID ); 
+		}
+
+		return theName;
 	}
 
 	private void exportToCSV(
@@ -255,7 +293,7 @@ public class ExportRequirementsToCSV {
 			if( !theAdditionalHeadings.isEmpty() && 
 					!isIncludeColumnsForLinkedAnnotations ) {
 				
-				theMsg += "\n\nAnnotations such as Rationale were found, but the CSVExportIncludeColumnsForLinkedAnnotations property is set to False";
+				theMsg += "\n\nAnnotations such as Rationale were found but the CSVExportIncludeColumnsForLinkedAnnotations property is set to False";
 			}
 			
 			theMsg += "\n\nOnce exported, prior to import into DOORS Next, first open in Microsoft Excel and check the contents, then Save As to .xlsx \nto create the file to import." + 
@@ -330,7 +368,7 @@ public class ExportRequirementsToCSV {
 							String theIdentifier = getIdentifierFromTracedRemoteRequirement( theReqt );
 							String theIsHeading = "";
 							String theParentBinding = "";
-							String theName = theReqt.getName();
+							String theName = getNameFromTracedRemoteRequirement( theReqt, theIdentifier ); // Keep name same as remote if applicable to avoid changing it
 							String theLine = "";
 
 							String theSpecification = _context.

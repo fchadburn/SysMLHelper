@@ -904,11 +904,10 @@ V4.2.l.Rhp831.PreRelease (XX-XXX-XXXX): TBC
 0675 31-JUL-2023: ExecutableMBSE: Fix validity checker for create use case panel so that flow into existing does not check for unique reqts name (F.J.Chadburn)
 0676 31-JUL-2023: ExecutableMBSE: Refine model check for requirement children so that it doesn't flag remote element links to surrogate reqts (F.J.Chadburn)
 0677 01-AUG-2023: ExecutableMBSE: Shift the 'Annotations such as Rationale were found' info to outside requirements loop so it only appears once (F.J.Chadburn)
+0678 01-AUG-2023: ExecutableMBSE: Add logic to CSV export to use the artifact name of the traced remote requirement without ID in the csv if one exists to avoid changing when updating (F.J.Chadburn)
 
 Backlog/Known issues
 - Don't do match if specification text is empty
-- Get export to use name of remote artefact rather than surrogate name in the export
-- Review options for dealing with Name column in csv export when an update with new is performed, e.g., separate csv/filter out is has number etc?
 - Further testing needed with dependency  helper and new terms
 - Textual Activity Diagram needs implementing for SysMLHelper as it's stopped working
 - Add a UML package new term
