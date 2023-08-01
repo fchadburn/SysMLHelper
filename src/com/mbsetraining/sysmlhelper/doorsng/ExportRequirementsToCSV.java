@@ -322,6 +322,8 @@ public class ExportRequirementsToCSV {
 						theHeadingLine += "\n";
 
 						myWriter.write( theHeadingLine );
+						
+						boolean isAnnotationInfoNeeded = false;
 
 						for( IRPRequirement theReqt : theReqts ){
 							
@@ -380,14 +382,18 @@ public class ExportRequirementsToCSV {
 									}		
 								}
 								
-							} else if( !theAdditionalHeadings.isEmpty() ) {
-								
-								_context.info( "Annotations such as Rationale were found but the CSVExportIncludeColumnsForLinkedAnnotations property is set to False" );
+							} else if( !isAnnotationInfoNeeded && 
+									!theAdditionalHeadings.isEmpty() ) {
+								isAnnotationInfoNeeded = true;
 							}
 
 							theLine += "\n";
 
 							myWriter.write( theLine );
+						}
+						
+						if( isAnnotationInfoNeeded ){
+							_context.info( "Annotations such as Rationale were found but the CSVExportIncludeColumnsForLinkedAnnotations property is set to False" );
 						}
 
 						myWriter.close();
