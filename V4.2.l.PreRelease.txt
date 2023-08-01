@@ -897,7 +897,7 @@ V4.2.k.Rhp831.PreRelease (26-JUL-2023):
 0670 24-JUL-2023: ExecutableMBSE: Enhanced 'Update surrogates..." dialog to automatically detect and establish links if requirements found with matching specification text (F.J.Chadburn)
 0671 24-JUL-2023: ExecutableMBSE: Added new CSVExportIncludeColumnsForLinkedAnnotations property (default = False) to minimise unexpected DNG overwrite of Rationales (F.J.Chadburn)
 0672 26-JUL-2023: ExecutableMBSE: Add unloaded links check to 'Update surrogates...' dialog to inform user if package has unloaded links even if req'ts don't (F.J.Chadburn)
-0673 26-JUL-2023: ExecutableMBSE: Improvements from robustness testing, e.g. gety 'Update surrogates...' panel to create requirements without trace relations - due to Rhp crashing (F.J.Chadburn)
+0673 26-JUL-2023: ExecutableMBSE: Improvements from robustness testing, e.g. get 'Update surrogates...' panel to create requirements without trace relations - due to Rhp crashing (F.J.Chadburn)
 0674 26-JUL-2023: ExecutableMBSE: Get 'Establish trace relations...' to check for IDs as part of matching and only look at specification text if no ID matches found (F.J.Chadburn)
 
 V4.2.l.Rhp831.PreRelease (XX-XXX-XXXX): TBC
@@ -905,9 +905,10 @@ V4.2.l.Rhp831.PreRelease (XX-XXX-XXXX): TBC
 0676 31-JUL-2023: ExecutableMBSE: Refine model check for requirement children so that it doesn't flag remote element links to surrogate reqts (F.J.Chadburn)
 0677 01-AUG-2023: ExecutableMBSE: Shift the 'Annotations such as Rationale were found' info to outside requirements loop so it only appears once (F.J.Chadburn)
 0678 01-AUG-2023: ExecutableMBSE: Add logic to CSV export to use the artifact name of the traced remote requirement without ID in the csv if one exists to avoid changing when updating (F.J.Chadburn)
+0679 01-AUG-2023: ExecutableMBSE: Fix to the establish trace relation to matching specification using equals rather than matching check (F.J.Chadburn)
+0680 01-AUG-2023: ExecutableMBSE: Improve clarity that just info is provided by the 'Update surrogates...' dialog when it detects matching requirements as separate menu is needed (F.J.Chadburn)
 
 Backlog/Known issues
-- Don't do match if specification text is empty
 - Further testing needed with dependency  helper and new terms
 - Textual Activity Diagram needs implementing for SysMLHelper as it's stopped working
 - Add a UML package new term

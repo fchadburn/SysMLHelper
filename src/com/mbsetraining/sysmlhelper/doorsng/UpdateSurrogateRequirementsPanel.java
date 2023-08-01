@@ -63,7 +63,7 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 
 				JFrame.setDefaultLookAndFeelDecorated( true );
 
-				String theCaption = "Update requirement(s) in model based on remote requirement links";
+				String theCaption = "Update requirement(s) in model based on remote requirement links ";
 
 				JFrame frame = new JFrame( theCaption );
 
@@ -135,7 +135,7 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 		if( !_remoteRequirementsToEstablishTraceTo.isEmpty() ) {
 
 			theTabbedPane.addTab(
-					"Match with existing (" + _remoteRequirementsToEstablishTraceTo.size() + ")", 
+					"Info-only: Match with existing (" + _remoteRequirementsToEstablishTraceTo.size() + ")", 
 					null, 
 					createRequirementsToEstablishTraceToBox(), 
 					"Requirements in model that can be matched with external requirements");
@@ -153,7 +153,7 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 
 		add( theTabbedPane, BorderLayout.CENTER );
 
-		int updateCount = _requirementsToUpdate.size() + _remoteRequirementsThatDontTrace.size() + _remoteRequirementsToEstablishTraceTo.size();
+		int updateCount = _requirementsToUpdate.size() + _remoteRequirementsThatDontTrace.size();
 
 		if( updateCount == 0 ) {
 
@@ -314,6 +314,7 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 			}
 
 			msg += "because it has a matching specification text \n";
+			msg += "A separate 'Establish trace relations to...' right-click menu command on the package does this \n";
 			msg += "(double-click to locate in browser).";
 
 		} else { // plural
@@ -325,7 +326,8 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 				msg += "There are " + count + " requirements to establish trace relations to ";
 			}
 
-			msg += "because it has a matching specification text \n";
+			msg += "because they have matching specification text \n";
+			msg += "A separate 'Establish trace relations to...' right-click menu command on the package does this \n";
 			msg += "(double-click to locate in browser).";
 		}
 

@@ -3271,33 +3271,44 @@ public abstract class BaseContext {
 
 		Set<IRPRequirement> theMatches = new HashSet<>();
 
-		for( IRPRequirement theCandidate : theCandidates ){
+		if( !theID.isEmpty() ) {
 			
-			String theCandidatesID = theCandidate.getRequirementID();
-			
-			//debug( "theID         = " + theID );
-			//debug( "theCandidatesID = " + theCandidatesID );
-			
-			if( !theCandidatesID.isEmpty() && 
-					theCandidatesID.matches( theID ) ) {
+			for( IRPRequirement theCandidate : theCandidates ){
 				
-				theMatches.add( theCandidate );
+				String theCandidatesID = theCandidate.getRequirementID();
+				
+				//debug( "theID         = " + theID );
+				//debug( "theCandidatesID = " + theCandidatesID );
+				
+				if( !theCandidatesID.isEmpty() && 
+						theCandidatesID.equals( theID ) ) {
+					
+					theMatches.add( theCandidate );
+				}
 			}
 		}
 		
 		if( theMatches.isEmpty() ) {
 				
-			for( IRPRequirement theCandidate : theCandidates ){
+			String theSpec = theRequirement.getSpecification();
 
-				String theSpecificationText = theCandidate.getSpecification();
+			if( !theSpec.isEmpty() ) {
 				
-				debug( "theCandidate         = '" + theCandidate.getSpecification() + "'" );
-				debug( "theSpecificationText = '" + theSpecificationText + "'" );
+				for( IRPRequirement theCandidate : theCandidates ){
 
-				if( theCandidate.getSpecification().matches( theSpecificationText ) ){
-					theMatches.add( theCandidate );
+					String theCandidatesSpec = theCandidate.getSpecification();
+
+					//debug( "theSpec           = '" + theSpec + "'" );
+					//debug( "theCandidatesSpec = '" + theCandidatesSpec + "'" );
+
+					if( !theCandidatesSpec.isEmpty() &&
+							theSpec.equals( theCandidatesSpec ) ){
+						
+						theMatches.add( theCandidate );
+					}
 				}
 			}
+
 		}
 
 		return theMatches;
