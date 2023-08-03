@@ -22,6 +22,7 @@ import com.mbsetraining.sysmlhelper.createnewblockpart.CreateNewBlockPartPanel;
 import com.mbsetraining.sysmlhelper.createtestcase.TestCaseCreator;
 import com.mbsetraining.sysmlhelper.dependencyhelper.DependencySelector;
 import com.mbsetraining.sysmlhelper.doorsng.CleanUpDeadOSLCLinksPanel;
+import com.mbsetraining.sysmlhelper.doorsng.EstablishTraceRelationsToRemotes;
 import com.mbsetraining.sysmlhelper.doorsng.ExportRequirementsToCSV;
 import com.mbsetraining.sysmlhelper.doorsng.RepairLinks;
 import com.mbsetraining.sysmlhelper.doorsng.SwitchRhapsodyRequirementsToDNG;
@@ -370,10 +371,10 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.EstablishTraceRelationsToDNG" ) ) ){
 
-					SwitchRhapsodyRequirementsToDNG theSwitcher = 
-							new SwitchRhapsodyRequirementsToDNG( _context );
+					EstablishTraceRelationsToRemotes theTracer = 
+							new EstablishTraceRelationsToRemotes( _context );
 
-					theSwitcher.establishTraceRelationsToRemoteReqts();
+					theTracer.establishTraceRelationsToRemoteReqts();
 
 				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.UpdateSurrogateBasedOnRemoteRequirementChanges" ) ) ){

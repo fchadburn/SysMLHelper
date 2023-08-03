@@ -6,7 +6,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -472,8 +471,7 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 
 		List<IRPRequirement> theMissingRemoteReqts = new ArrayList<>();
 
-		Set<IRPRequirement> theExpectedRemoteReqts = _context.
-				getRemoteRequirementsFor( theRequirementPkg );
+		List<IRPRequirement> theExpectedRemoteReqts = _context.getRemoteRequirementsFor( theRequirementPkg );
 
 		for( IRPRequirement theExpectedRemoteReqt : theExpectedRemoteReqts ){
 
@@ -485,9 +483,7 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 
 		for( IRPRequirement theReqt : _requirementsWithNoLinks ){
 			
-			// convert set to list
-			Set<IRPRequirement> theMatchedReqts = new HashSet<>(); 
-			theMatchedReqts.addAll( _context.getRequirementsThatMatch( theReqt, theExpectedRemoteReqts ) );
+			List<IRPRequirement> theMatchedReqts = _context.getRequirementsThatMatch( theReqt, theExpectedRemoteReqts );
 
 			int matchCount = theMatchedReqts.size();
 
@@ -501,7 +497,7 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 					_context.warning( "Match found " + _context.elInfo( theReqt ) + " has match to " + matchCount + " remote requirements hence don't know which one to choose" );
 				}
 				
-				_remoteRequirementsToEstablishTraceTo.put( theReqt, new ArrayList<>( theMatchedReqts ) );		
+				_remoteRequirementsToEstablishTraceTo.put( theReqt, theMatchedReqts );		
 
 			} else {
 				_requirementsWithNoMatchOrLinks.add( theReqt );
@@ -590,7 +586,7 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 
 		_context.debug( "updateRequirementBasedOnRemoteSpecification was invoked for " + _context.elInfo( theRequirement ) );
 
-		List<IRPRequirement> theRemoteRequirements = new ArrayList<>( _context.getRemoteRequirementsFor( theRequirement ) );
+		List<IRPRequirement> theRemoteRequirements = _context.getRemoteRequirementsFor( theRequirement );
 
 		if( theRemoteRequirements.size()!=1 ) {
 

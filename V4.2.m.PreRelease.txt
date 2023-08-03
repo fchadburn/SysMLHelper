@@ -908,7 +908,12 @@ V4.2.l.Rhp831.PreRelease (01-AUG-2023):
 0679 01-AUG-2023: ExecutableMBSE: Fix to the establish trace relation to matching specification using equals rather than matching check (F.J.Chadburn)
 0680 01-AUG-2023: ExecutableMBSE: Improve clarity that just info is provided by the 'Update surrogates...' dialog when it detects matching requirements as separate menu is needed (F.J.Chadburn)
 
+V4.2.m.Rhp831.PreRelease (XX-XXX-XXXX):
+0681 03-AUG-2023: ExecutableMBSE: Further refinement of 'Establish trace relations...' to to cope with requirements with matching specs by trying to matching names (F.J.Chadburn)
+0682 03-AUG-2023: ExecutableMBSE: Added warning to  'Establish trace relations...' to warn if multiple matches found for establishing trace relations are found (F.J.Chadburn)
+
 Backlog/Known issues
+- Parent binding
 - Control flow in 9.0.1 activity diagrams template check
 - Further testing needed with dependency helper and new terms
 - Textual Activity Diagram needs implementing for SysMLHelper as it's stopped working

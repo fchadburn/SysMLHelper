@@ -35,27 +35,6 @@ public class ExportRequirementsToCSV {
 		theExporter.exportRequirementsToCSV( theContext.getSelectedElement( false ), 0 );	
 	}
 
-	public List<IRPRequirement> getRemoteRequirementsTracedFrom(
-			IRPRequirement  theReqt ){
-
-		List<IRPRequirement> theRemoteReqts = new ArrayList<>();
-
-		@SuppressWarnings("unchecked")
-		List<IRPDependency> theRemoteDependencies = theReqt.getRemoteDependencies().toList();
-
-		for( IRPDependency theRemoteDependency : theRemoteDependencies ){
-
-			IRPModelElement theDependsOn = theRemoteDependency.getDependsOn();
-
-			if( theDependsOn instanceof IRPRequirement ){
-
-				theRemoteReqts.add( (IRPRequirement) theDependsOn );
-			}
-		}
-
-		return theRemoteReqts;
-	}
-
 	public List<IRPRequirement> getReqtsThatDontTraceOrTraceToChangedRemoteReqtsIn(
 			List<IRPRequirement>  theCandidateReqts ){
 
@@ -63,7 +42,7 @@ public class ExportRequirementsToCSV {
 
 		for( IRPRequirement theCandidateReqt : theCandidateReqts ){
 
-			List<IRPRequirement> theRemoteRequirements = getRemoteRequirementsTracedFrom( theCandidateReqt );
+			List<IRPRequirement> theRemoteRequirements = _context.getRemoteRequirementsFor( theCandidateReqt );
 
 			boolean isMatchFound = false;
 
@@ -128,7 +107,7 @@ public class ExportRequirementsToCSV {
 
 		String theIdentifier = "";
 
-		List<IRPRequirement> theRemoteReqts = getRemoteRequirementsTracedFrom( forReqt );
+		List<IRPRequirement> theRemoteReqts = _context.getRemoteRequirementsFor( forReqt );
 
 		if( theRemoteReqts.size() > 1 ){
 
@@ -141,45 +120,6 @@ public class ExportRequirementsToCSV {
 		}
 
 		return theIdentifier;
-	}
-	
-	private String cleanRequirementName(
-			String theName,
-			String ofID ) {
-		
-		String theCleanName = theName;
-		
-		if( !ofID.isEmpty() ) {
-			
-			theCleanName = theName.replaceFirst( ":", "" ).replaceFirst( ofID, "" ).trim();
-			
-			if( !theName.equals( theCleanName ) ) {
-				_context.info( "Renamed " + theName + " to " + theCleanName );
-			}
-		}
-
-		return theCleanName;
-	}
-	
-	private String getNameFromTracedRemoteRequirement(
-			IRPRequirement forReqt,
-			String theID ){
-
-		String theName = cleanRequirementName( forReqt.getName(), theID ); 
-
-		List<IRPRequirement> theRemoteReqts = getRemoteRequirementsTracedFrom( forReqt );
-
-		if( theRemoteReqts.size() > 1 ){
-
-			_context.warning( _context.elInfo( forReqt ) + " has " + theRemoteReqts.size() + " remote requirements when expecting 0 or 1");
-
-		} else if( theRemoteReqts.size() == 1 ){
-
-			IRPRequirement theRemoteReqt = theRemoteReqts.get( 0 );
-			theName = cleanRequirementName( theRemoteReqt.getName(), theID ); 
-		}
-
-		return theName;
 	}
 
 	private void exportToCSV(
@@ -368,7 +308,7 @@ public class ExportRequirementsToCSV {
 							String theIdentifier = getIdentifierFromTracedRemoteRequirement( theReqt );
 							String theIsHeading = "";
 							String theParentBinding = "";
-							String theName = getNameFromTracedRemoteRequirement( theReqt, theIdentifier ); // Keep name same as remote if applicable to avoid changing it
+							String theName = _context.getNameFromTracedRemoteRequirement( theReqt, theIdentifier ); // Keep name same as remote if applicable to avoid changing it
 							String theLine = "";
 
 							String theSpecification = _context.

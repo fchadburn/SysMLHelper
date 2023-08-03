@@ -2,12 +2,9 @@ package com.mbsetraining.sysmlhelper.doorsng;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
@@ -16,15 +13,12 @@ public class SwitchRhapsodyRequirementsToDNG {
 
 	ExecutableMBSE_Context _context;
 
-
+	// testing only
 	public static void main(String[] args) {
 		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
-
 		ExecutableMBSE_Context context = new ExecutableMBSE_Context( theRhpApp.getApplicationConnectionString() );
-
 		SwitchRhapsodyRequirementsToDNG theSwitcher = new SwitchRhapsodyRequirementsToDNG(context);
-
-		theSwitcher.establishTraceRelationsToRemoteReqts();
+		theSwitcher.switchRequirements();
 	}
 
 	public SwitchRhapsodyRequirementsToDNG(
@@ -39,7 +33,7 @@ public class SwitchRhapsodyRequirementsToDNG {
 
 		//Logger.debug( "theSelectedEl is " + Logger.elementInfo(theSelectedEl)  );
 
-		Set<IRPRequirement> theRemoteReqts = getLinkedRemoteRequirements( theSelectedEl );
+		List<IRPRequirement> theRemoteReqts = _context.getRemoteRequirementsFor( theSelectedEl );
 
 		if( theRemoteReqts.isEmpty() ){
 
@@ -63,7 +57,7 @@ public class SwitchRhapsodyRequirementsToDNG {
 
 			for (IRPRequirement theReqt : theReqts) {
 
-				Set<IRPRequirement> theMatches = _context.
+				List<IRPRequirement> theMatches = _context.
 						getRequirementsThatMatch( theReqt, theRemoteReqts);
 
 				for (IRPRequirement theRemoteMatch : theMatches) {
@@ -89,109 +83,6 @@ public class SwitchRhapsodyRequirementsToDNG {
 					deleteFromModel( theRemoteDependencies );
 				}
 			}		
-		}
-	}
-
-	public List<IRPRequirement> getRequirementsThatDontTraceToRemoteRequirements(
-			IRPModelElement underTheEl ){
-
-		List<IRPRequirement> theMatchingReqts = new ArrayList<>();
-
-		@SuppressWarnings("unchecked")
-		List<IRPRequirement> theReqts = underTheEl.getNestedElementsByMetaClass( "Requirement", 1 ).toList();
-
-		for (IRPRequirement theReqt : theReqts) {
-
-			@SuppressWarnings("unchecked")
-			List<IRPDependency> theDependencies = theReqt.getRemoteDependencies().toList();
-
-			if( theDependencies.size() > 2 ){
-				_context.warning( _context.elInfo( theReqt ) + " has " + theDependencies.size() + 
-						" remote dependencies when expecting 0 or 1" );
-			} else if( theDependencies.size() == 1 ){
-
-				IRPDependency theDependency = theDependencies.get( 0 );
-
-				IRPModelElement theRemoteEl = theDependency.getDependent();
-
-				_context.info( _context.elInfo( theReqt ) + " already has " + _context.elInfo( theDependency ) + 
-						" to " + _context.elInfo( theRemoteEl ) );
-
-
-			} else {
-				_context.info( _context.elInfo( theReqt ) + " has no remote requirement dependencies" );
-				theMatchingReqts.add( theReqt );
-			}
-		}
-
-		return theMatchingReqts;
-
-	}
-
-	public void establishTraceRelationsToRemoteReqts(){
-
-		IRPModelElement theSelectedEl = _context.getSelectedElement( false );
-
-		//Logger.debug( "theSelectedEl is " + Logger.elementInfo(theSelectedEl)  );
-
-		Set<IRPRequirement> theRemoteReqts = getLinkedRemoteRequirements( theSelectedEl );
-
-		if( theRemoteReqts.isEmpty() ){
-
-			UserInterfaceHelper.showWarningDialog( "I was unable to find any remote requirements under " + 
-					_context.elInfo( theSelectedEl ) + "\n" +
-					"Did you log into the Remote Artefacts Package? \n"+ 
-					"You also need to establish OSLC links from " + 
-					_context.elInfo( theSelectedEl ) + " \n" +
-					"to the remote requirements you want to switch to.");
-		} else {
-			_context.debug( "Found " + theRemoteReqts.size() + 
-					" remote requirements related to " + 
-					_context.elInfo( theSelectedEl ) );
-
-			List<IRPRequirement> theReqts = getRequirementsThatDontTraceToRemoteRequirements( theSelectedEl );
-
-			_context.debug( "Found " + theReqts.size() + " Rhapsody-owned requirements under " + _context.elInfo( theSelectedEl ) );
-
-			Map<IRPRequirement,List<IRPRequirement>> theDependencyMap = new HashMap<>();  
-
-			for( IRPRequirement theReqt : theReqts ){
-							
-				Set<IRPRequirement> theMatchedReqts = _context.getRequirementsThatMatch( theReqt, theRemoteReqts );
-				
-				int count = theMatchedReqts.size();
-
-				if( count == 1 ){			
-					
-					_context.debug( "Found 1 match for local " + _context.elInfo( theReqt ) );
-					theDependencyMap.put( theReqt, new ArrayList<>( theMatchedReqts ) );		
-					
-				} else if ( count > 0 ) {
-					
-					_context.warning( "Found " + count + " matches for local " + _context.elInfo( theReqt ) );
-					theDependencyMap.put( theReqt, new ArrayList<>( theMatchedReqts ) );			
-				}
-			}
-
-			int size = theDependencyMap.keySet().size();
-
-			if( size == 0 ){
-				UserInterfaceHelper.showInformationDialog( "No matches were found." );
-			} else {
-				boolean answer = UserInterfaceHelper.askAQuestion( theDependencyMap.keySet().size() + " matches were found. Do you want to proceed?");
-
-				if( answer ){
-
-					for (Map.Entry<IRPRequirement, List<IRPRequirement>> entry : theDependencyMap.entrySet()) {
-						IRPRequirement theReqt = entry.getKey();
-						List<IRPRequirement> theRemoteMatches = entry.getValue();
-
-						for (IRPRequirement theRemoteReqt : theRemoteMatches) {
-							_context.establishTraceRelationFrom( theReqt, theRemoteReqt );					
-						}
-					}		
-				}
-			}
 		}
 	}
 
@@ -513,28 +404,6 @@ public class SwitchRhapsodyRequirementsToDNG {
 		}
 
 		return theNewEdge;
-	}
-
-
-	public Set<IRPRequirement> getLinkedRemoteRequirements(
-			IRPModelElement underEl ){
-
-		Set<IRPRequirement> theRequirements = new HashSet<>();
-
-		@SuppressWarnings("unchecked")
-		List<IRPDependency> theRemoteDependencies = underEl.getRemoteDependencies().toList();
-
-		for (IRPDependency theRemoteDependency : theRemoteDependencies) {
-
-			IRPModelElement theDependsOn = theRemoteDependency.getDependsOn();
-
-			if( theDependsOn instanceof IRPRequirement ){
-				theRequirements.add( (IRPRequirement) theDependsOn );
-			}
-		}
-
-		return theRequirements;
-
 	}
 }
 

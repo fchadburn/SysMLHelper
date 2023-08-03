@@ -3225,16 +3225,16 @@ public abstract class BaseContext {
 
 		return theMatchingStereotypes;
 	}
-	
-	public Set<IRPRequirement> getRemoteRequirementsFor( 
+
+	public List<IRPRequirement> getRemoteRequirementsFor( 
 			IRPModelElement theEl ) {
-		
-		Set<IRPRequirement> theRemoteRequirements = new HashSet<>();
-		
+
+		List<IRPRequirement> theRemoteRequirements = new ArrayList<IRPRequirement>();
+
 		List<IRPModelElement> theRemoteDependsOns = getRemoteDependsOnFor( theEl );
-		
+
 		for( IRPModelElement theRemoteDependsOn : theRemoteDependsOns ){
-			
+
 			if( theRemoteDependsOn instanceof IRPRequirement ) {
 				theRemoteRequirements.add( (IRPRequirement) theRemoteDependsOn );
 			}
@@ -3242,58 +3242,91 @@ public abstract class BaseContext {
 
 		return theRemoteRequirements;
 	}
-	
+
 	public List<IRPModelElement> getRemoteDependsOnFor( 
 			IRPModelElement theEl ) {
-		
+
 		List<IRPModelElement> theRemoteDependsOns = new ArrayList<>();
-		
+
 		@SuppressWarnings("unchecked")
 		List<IRPDependency> theRemoteDependencies = theEl.getRemoteDependencies().toList();
-		
+
 		for( IRPDependency theRemoteDependency : theRemoteDependencies ){
-			
+
 			IRPModelElement theDependsOn = theRemoteDependency.getDependsOn();
-			
+
 			if( !theRemoteDependsOns.contains( theDependsOn )) {
 				theRemoteDependsOns.add( theDependsOn );
 			}
 		}
-		
+
 		return theRemoteDependsOns;
 	}
-	
-	public Set<IRPRequirement> getRequirementsThatMatch(
-			IRPRequirement theRequirement,
-			Set<IRPRequirement> theCandidates ){
 
+	public List<IRPRequirement> getRequirementsThatMatch(
+			IRPRequirement theRequirement,
+			List<IRPRequirement> theCandidates ){
+
+		// Match with ID first
 		String theID = theRequirement.getRequirementID();
 
 		Set<IRPRequirement> theMatches = new HashSet<>();
 
 		if( !theID.isEmpty() ) {
-			
+
 			for( IRPRequirement theCandidate : theCandidates ){
-				
+
 				String theCandidatesID = theCandidate.getRequirementID();
-				
+
 				//debug( "theID         = " + theID );
 				//debug( "theCandidatesID = " + theCandidatesID );
-				
+
 				if( !theCandidatesID.isEmpty() && 
 						theCandidatesID.equals( theID ) ) {
-					
+
 					theMatches.add( theCandidate );
 				}
 			}
 		}
-		
+
+		// Match with Name second but need to strip off ID from name, as this may 
+		// be automatically added for remote requirements
 		if( theMatches.isEmpty() ) {
+
+			String theName = theRequirement.getName();
+
+			if( !theID.isEmpty() ) {
+				theName = cleanRequirementName( theName, theID ); 
+			}
+
+			for( IRPRequirement theCandidate : theCandidates ){
 				
+				String theCandidatesID = theCandidate.getRequirementID();
+
+				String theCandidatesName = theCandidate.getName();
+				
+				if( !theCandidatesID.isEmpty() ) {
+					theCandidatesName = cleanRequirementName( theCandidatesName, theCandidatesID ); 
+				}
+				
+				//debug( "theName            = '" + theName + "'" );
+				//debug( "theCandidatesName = '" + theCandidatesName + "'" );
+
+				if( !theCandidatesName.isEmpty() &&
+						theName.equals( theCandidatesName ) ){
+
+					theMatches.add( theCandidate );
+				}
+			}
+		}
+
+		// Match with Spec last
+		if( theMatches.isEmpty() ) {
+
 			String theSpec = theRequirement.getSpecification();
 
 			if( !theSpec.isEmpty() ) {
-				
+
 				for( IRPRequirement theCandidate : theCandidates ){
 
 					String theCandidatesSpec = theCandidate.getSpecification();
@@ -3303,17 +3336,90 @@ public abstract class BaseContext {
 
 					if( !theCandidatesSpec.isEmpty() &&
 							theSpec.equals( theCandidatesSpec ) ){
-						
+
 						theMatches.add( theCandidate );
 					}
 				}
 			}
-
 		}
 
-		return theMatches;
+		return new ArrayList<>( theMatches );
 	}
-	
+
+	public String cleanRequirementName(
+			String theName,
+			String ofID ) {
+
+		String theCleanName = theName;
+
+		if( !ofID.isEmpty() ) {
+
+			theCleanName = theName.replaceFirst( ":", "" ).replaceFirst( ofID, "" ).trim();
+
+			/*
+			 * if( !theName.equals( theCleanName ) ) { debug( "Renamed " + theName + " to "
+			 * + theCleanName ); }
+			 */
+		}
+
+		return theCleanName;
+	}
+
+	public String getNameFromTracedRemoteRequirement(
+			IRPRequirement forReqt,
+			String theID ){
+
+		String theName = cleanRequirementName( forReqt.getName(), theID ); 
+
+		List<IRPRequirement> theRemoteReqts = new ArrayList<>( getRemoteRequirementsFor( forReqt ) );
+
+		if( theRemoteReqts.size() > 1 ){
+
+			warning( elInfo( forReqt ) + " has " + theRemoteReqts.size() + " remote requirements when expecting 0 or 1");
+
+		} else if( theRemoteReqts.size() == 1 ){
+
+			IRPRequirement theRemoteReqt = theRemoteReqts.get( 0 );
+			theName = cleanRequirementName( theRemoteReqt.getName(), theID ); 
+		}
+
+		return theName;
+	}
+
+	public List<IRPRequirement> getRequirementsThatDontTraceToRemoteRequirements(
+			IRPModelElement underTheEl ){
+
+		List<IRPRequirement> theMatchingReqts = new ArrayList<>();
+
+		@SuppressWarnings("unchecked")
+		List<IRPRequirement> theReqts = underTheEl.getNestedElementsByMetaClass( "Requirement", 1 ).toList();
+
+		for (IRPRequirement theReqt : theReqts) {
+
+			@SuppressWarnings("unchecked")
+			List<IRPDependency> theDependencies = theReqt.getRemoteDependencies().toList();
+
+			if( theDependencies.size() > 2 ){
+				warning( elInfo( theReqt ) + " has " + theDependencies.size() + 
+						" remote dependencies when expecting 0 or 1" );
+			} else if( theDependencies.size() == 1 ){
+
+				IRPDependency theDependency = theDependencies.get( 0 );
+
+				IRPModelElement theRemoteEl = theDependency.getDependent();
+
+				debug( elInfo( theReqt ) + " already has " + elInfo( theDependency ) + 
+						" to " + elInfo( theRemoteEl ) );
+
+			} else {
+				info( elInfo( theReqt ) + " has no remote requirement dependencies" );
+				theMatchingReqts.add( theReqt );
+			}
+		}
+
+		return theMatchingReqts;
+	}
+
 	public void establishTraceRelationFrom(
 			IRPRequirement theReqt,
 			IRPRequirement toRemoteReqt ) {
@@ -3354,7 +3460,7 @@ public abstract class BaseContext {
 
 		addRemoteDependency( toRemoteReqt, theReqt, "Trace" );	
 	}
-	
+
 	public IRPDependency addRemoteDependency(
 			IRPRequirement toRemoteReqt,
 			IRPModelElement theDependent,
@@ -3378,35 +3484,35 @@ public abstract class BaseContext {
 
 		return theRemoteDependency;
 	}
-	
+
 	public List<IRPStereotype> getMoveToStereotypes( 
 			IRPModelElement basedOnPackage ){
-		
+
 		List<IRPStereotype> theMoveToStereotypes = new ArrayList<IRPStereotype>();
-		
+
 		if( basedOnPackage instanceof IRPPackage ){
 
 			@SuppressWarnings("unchecked")
 			List<IRPStereotype> theStereotypes = basedOnPackage.getStereotypes().toList();
-			
+
 			for( IRPStereotype theStereotype : theStereotypes ){
-			
+
 				String theMetaclasses = theStereotype.getOfMetaClass();
-				
+
 				//_context.info( "theMetaclasses were: " + theMetaclasses );
-				
+
 				if( theStereotype.getIsNewTerm()== 0 &&
 						( theMetaclasses.equals( "Requirement,Package" ) || 
 								theMetaclasses.equals( "Package,Requirement" ) ) ){
-					
+
 					theMoveToStereotypes.add( theStereotype );
 					//_context.info( "Found move to " + _context.elInfo( theStereotype ) );
-					
+
 					break;
 				}
 			}
 		}
-		
+
 		return theMoveToStereotypes;
 	}
 }
