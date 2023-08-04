@@ -35,7 +35,8 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 	private static final long serialVersionUID = -2463303852702389912L;
 
 	private List<IRPRequirement> _requirementsInScope = new ArrayList<IRPRequirement>();
-	private List<IRPRequirement> _requirementsToUpdate = new ArrayList<IRPRequirement>();
+	private List<IRPRequirement> _requirementsToUpdateSpec = new ArrayList<IRPRequirement>();
+	private List<IRPRequirement> _requirementsToUpdateName = new ArrayList<IRPRequirement>();
 	private List<IRPRequirement> _requirementsThatMatch = new ArrayList<IRPRequirement>();
 	private List<IRPRequirement> _requirementsWithNoLinks = new ArrayList<IRPRequirement>();
 	private List<IRPRequirement> _requirementsWithUnloadedHyperlinks = new ArrayList<IRPRequirement>();
@@ -104,12 +105,21 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 		JTabbedPane theTabbedPane = new JTabbedPane();
 
 		theTabbedPane.addTab(
-				"Update model (" + _requirementsToUpdate.size() + ")", 
+				"Update model spec (" + _requirementsToUpdateSpec.size() + ")", 
 				null, 
-				createRequirementsToUpdateBox(), 
-				"Requirements to update based on text of remote specification");
+				createRequirementsToUpdateSpecBox(), 
+				"Requirements to update specification based on the specification text of remote");
 		//updatePane.setMnemonicAt(0, KeyEvent.VK_1);
+		
+		if( !_requirementsToUpdateName.isEmpty() ) {
 
+			theTabbedPane.addTab(
+					"Update model reqt's name (" + _requirementsToUpdateName.size() + ")", 
+					null, 
+					createRequirementsToUpdateNameBox(), 
+					"Requirements to update name based on remote counterpart's name");
+		}
+		
 		if( !_remoteRequirementsThatDontTrace.isEmpty() ) {
 
 			theTabbedPane.addTab(
@@ -152,7 +162,9 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 
 		add( theTabbedPane, BorderLayout.CENTER );
 
-		int updateCount = _requirementsToUpdate.size() + _remoteRequirementsThatDontTrace.size();
+		int updateCount = _requirementsToUpdateSpec.size() + 
+				_remoteRequirementsThatDontTrace.size() +
+				_requirementsToUpdateName.size();
 
 		if( updateCount == 0 ) {
 
@@ -186,17 +198,17 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 		return theUnloadedLinks;
 	}
 
-	private Box createRequirementsToUpdateBox() {
+	private Box createRequirementsToUpdateSpecBox() {
 
 		Box theBox = Box.createVerticalBox();
 
-		JScrollPane theScrollPane = createDoubleClickableScrollPaneFor( new ArrayList<>( _requirementsToUpdate ) );
+		JScrollPane theScrollPane = createDoubleClickableScrollPaneFor( new ArrayList<>( _requirementsToUpdateSpec ) );
 
 		Component theStartLabel;
 
 		String msg = "";
 
-		if( _requirementsToUpdate.size() == 0 ) {
+		if( _requirementsToUpdateSpec.size() == 0 ) {
 			msg += "None of the " + _requirementsInScope.size() +" requirements in scope require their specification text \n" + 
 					"to be updated due to changes to their remote counterpart. \n\nOf these:\n" + 
 					_requirementsThatMatch.size() + " requirements have matching specification text\n";
@@ -205,11 +217,11 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 				msg += _requirementsWithNoLinks.size() + " have no remote requirement links";
 			}
 
-		} else if( _requirementsToUpdate.size() == 1 ) {
+		} else if( _requirementsToUpdateSpec.size() == 1 ) {
 			msg += "There is 1 requirement that needs updating because its specification text doesn't match \n(double-click to locate in browser). ";
 
 		} else {
-			msg += "There are " + _requirementsToUpdate.size() + " requirements that need updating because their specification text doesn't match. ";
+			msg += "There are " + _requirementsToUpdateSpec.size() + " requirements that need updating because their specification text doesn't match. ";
 			msg += "Double-click to locate in browser. ";
 
 		}
@@ -229,7 +241,45 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 
 		theBox.add( theStartLabel );
 
-		if( _requirementsToUpdate.size() > 0 ) {
+		if( _requirementsToUpdateSpec.size() > 0 ) {
+			theBox.add( theScrollPane );
+		}
+
+		return theBox;
+	}
+	
+	private Box createRequirementsToUpdateNameBox() {
+
+		Box theBox = Box.createVerticalBox();
+
+		JScrollPane theScrollPane = createDoubleClickableScrollPaneFor( new ArrayList<>( _requirementsToUpdateName ) );
+
+		Component theStartLabel;
+
+		String msg = "";
+
+		if( _requirementsToUpdateName.size() == 0 ) {
+			msg += "None of the " + _requirementsInScope.size() +" requirements in scope require their name \n" + 
+					"to be updated due to changes to their remote counterpart. ";
+
+			if( _requirementsWithNoLinks.size() > 0 ) {				
+				msg += _requirementsWithNoLinks.size() + " have no remote requirement links";
+			}
+
+		} else if( _requirementsToUpdateName.size() == 1 ) {
+			msg += "There is 1 requirement that needs its name updating to match the remote name \n(double-click to locate in browser). ";
+
+		} else {
+			msg += "There are " + _requirementsToUpdateName.size() + " name's of requirements to update to match the remote names. ";
+			msg += "Double-click to locate in browser. ";
+
+		}
+
+		theStartLabel = createPanelWithTextCentered( msg );
+
+		theBox.add( theStartLabel );
+
+		if( _requirementsToUpdateName.size() > 0 ) {
 			theBox.add( theScrollPane );
 		}
 
@@ -447,7 +497,7 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 		_requirementsInScope = getNestedRequirementsFor( theSelectedEls );
 
 		for( IRPRequirement theRequirement : _requirementsInScope ){
-			determineRequirementsToUpdateBasedOn(theRequirement);
+			determineRequirementsToUpdateBasedOn( theRequirement );
 		}
 	}
 
@@ -564,9 +614,24 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 						}
 					} else {
 
-						if( !_requirementsToUpdate.contains( theRequirement ) ) {		
+						if( !_requirementsToUpdateSpec.contains( theRequirement ) ) {		
 							_context.debug( "Found " + _context.elInfo( theRequirement ) + "'s spec needs updating");
-							_requirementsToUpdate.add( theRequirement );
+							_requirementsToUpdateSpec.add( theRequirement );
+						}
+					}
+					
+					String theRemoteName = theOSLCRequirement.getName();
+					String theRemoteID = theOSLCRequirement.getRequirementID();
+					
+					String theProposedName = determineRequirementNameBasedOn( theRemoteName, theRemoteID );
+					
+					String theName = theRequirement.getName();
+					
+					if( !theName.equals( theProposedName ) ){
+
+						if( !_requirementsToUpdateName.contains( theRequirement ) ) {		
+							_context.debug( "Found " + _context.elInfo( theRequirement ) + "'s name needs updating");
+							_requirementsToUpdateName.add( theRequirement );
 						}
 					}
 
@@ -612,6 +677,41 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 			}
 		}
 	}
+	
+	private void updateRequirementBasedOnRemoteName(
+			IRPRequirement theRequirement ){
+
+		_context.debug( "updateRequirementBasedOnRemoteName was invoked for " + _context.elInfo( theRequirement ) );
+
+		List<IRPRequirement> theRemoteRequirements = _context.getRemoteRequirementsFor( theRequirement );
+
+		if( theRemoteRequirements.size()!=1 ) {
+
+			_context.error( "Found " +  theRemoteRequirements.size() + " remote requirements for " + 
+					_context.elInfo( theRequirement ) + " when expecting 1");
+
+		} else if( theRemoteRequirements.size()==1 ) {
+
+			IRPRequirement theOSLCRequirement = (IRPRequirement)theRemoteRequirements.get(0);
+
+			String theRemoteName = theOSLCRequirement.getName();
+			String theRemoteID = theOSLCRequirement.getRequirementID();
+			
+			String theProposedName = determineRequirementNameBasedOn( theRemoteName, theRemoteID );
+			String theName = theRequirement.getName();
+
+			if( theName.equals( theProposedName ) ){
+
+				_context.warning( "Found " + _context.elInfo( theRequirement ) + 
+						"'s name already matches remote hence no action needed");
+
+			} else {
+				_context.info( "Updating " + _context.elInfo( theRequirement ) + "'s name to '" + theProposedName + "'" );
+
+				theRequirement.setName( theProposedName );
+			}
+		}
+	}
 
 	private void createRequirementBasedOn(
 			IRPRequirement theRemoteRequirement ){
@@ -622,27 +722,7 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 		String theRemoteSpec = theRemoteRequirement.getSpecification();
 		String theRemoteID = theRemoteRequirement.getRequirementID();
 
-		String theProposedName = theRemoteName.replaceAll( theRemoteID + ": ", "" );
-		theProposedName = theRemoteID + " " + theProposedName;
-
-		//_context.info( "theRemoteName = " + theRemoteName);
-		//_context.info( "theRemoteSpec = " + theRemoteSpec);
-		//_context.info( "theRemoteID = " + theRemoteID);
-
-		//_context.info( "theProposedName (before) = " + theProposedName);
-
-		theProposedName = theProposedName.replaceAll( "[\\W+]", "_" );
-		theProposedName = theProposedName.trim().replaceAll("_+", " ");
-
-		//_context.info( "theProposedName (after) = " + theProposedName);
-
-		int maxLength = 50;
-
-		if (theProposedName.length() <= maxLength) {
-			theProposedName = theProposedName.trim();
-		} else {
-			theProposedName = theProposedName.substring(0, maxLength).trim();
-		}
+		String theProposedName = determineRequirementNameBasedOn( theRemoteName, theRemoteID );
 
 		//_context.info( "theProposedName = " + theProposedName);
 
@@ -680,6 +760,30 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 		//_context.info( "------------------");
 	}
 
+	private String determineRequirementNameBasedOn(
+			String theRemoteName, 
+			String theRemoteID ){
+		
+		String theProposedName = theRemoteName.replaceAll( theRemoteID + ": ", "" );
+		
+		// Remote text may come from text of requirement if no name is specified for remote reqt
+		// Some characters Rhapsody doesn't like such as brackets and dot (.)
+		// Safest thing is to just allow alphanumeric and _,-, and spaces
+		theProposedName = theProposedName.replaceAll( "[^a-zA-Z0-9-\\s_]+", " " ).trim();
+
+		theProposedName = theRemoteID + " " + theProposedName;
+
+		int maxLength = 50;
+
+		if (theProposedName.length() <= maxLength) {
+			theProposedName = theProposedName.trim();
+		} else {
+			theProposedName = theProposedName.substring(0, maxLength).trim();
+		}
+		
+		return theProposedName;
+	}
+
 	@Override
 	protected boolean checkValidity(boolean isMessageEnabled) {
 		return true;
@@ -692,8 +796,12 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 
 			if( checkValidity( false ) ){
 
-				for( IRPRequirement theRequirement : _requirementsToUpdate ){
+				for( IRPRequirement theRequirement : _requirementsToUpdateSpec ){
 					updateRequirementBasedOnRemoteSpecification( theRequirement );
+				}
+				
+				for( IRPRequirement theRequirement : _requirementsToUpdateName ){
+					updateRequirementBasedOnRemoteName( theRequirement );
 				}
 
 				for( IRPRequirement theRequirement : _remoteRequirementsThatDontTrace ){
@@ -719,8 +827,8 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 				// Save required by 9.0.1 SR1 to get GUI to update
 				//				theRemoteRequirement.getProject().save();
 			}
-		} catch (Exception e) {
-			UserInterfaceHelper.showWarningDialog("Exception, e=" + e.getMessage());
+		} catch( Exception e ){
+			UserInterfaceHelper.showWarningDialog( "Exception, e=" + e.getMessage() );
 		}
 
 	}

@@ -911,9 +911,11 @@ V4.2.l.Rhp831.PreRelease (01-AUG-2023):
 V4.2.m.Rhp831.PreRelease (XX-XXX-XXXX):
 0681 03-AUG-2023: ExecutableMBSE: Further refinement of 'Establish trace relations...' to to cope with requirements with matching specs by trying to matching names (F.J.Chadburn)
 0682 03-AUG-2023: ExecutableMBSE: Added warning to  'Establish trace relations...' to warn if multiple matches found for establishing trace relations are found (F.J.Chadburn)
+0683 04-AUG-2023: ExecutableMBSE: Extend 'Update surrogates based on remote...' to report and update requirement names in Rhapsody based on remote changes (F.J.Chadburn)
 
 Backlog/Known issues
 - Parent binding
+- Update name
 - Control flow in 9.0.1 activity diagrams template check
 - Further testing needed with dependency helper and new terms
 - Textual Activity Diagram needs implementing for SysMLHelper as it's stopped working
