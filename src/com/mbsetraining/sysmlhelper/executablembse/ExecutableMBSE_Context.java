@@ -268,6 +268,16 @@ public class ExecutableMBSE_Context extends BaseContext {
 		return _defaultActorPackageName;
 	}
 
+	// Allow user to change in session
+	public List<String> getStereotypeNamesForRequirementsPkgFromUseCases(){
+
+		List<String> theStereotypeNames = getListFromCommaSeparatedString(
+				_rhpPrj, 
+				"ExecutableMBSEProfile.RequirementsAnalysis.StereotypeNamesForRequirementsPkgFromUseCases" );	
+
+		return theStereotypeNames;
+	}
+	
 	// Generally single call per session, so use lazy load
 	public String getDefaultRequirementPackageName(){
 

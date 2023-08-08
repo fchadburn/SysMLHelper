@@ -28,7 +28,7 @@ import com.mbsetraining.sysmlhelper.executablembse.AutoPackageDiagram;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.mbsetraining.sysmlhelper.usecasepackage.CreateActorPkg.CreateActorPkgOption;
-import com.mbsetraining.sysmlhelper.usecasepackage.CreateRequirementsPkg.CreateRequirementsPkgOption;
+import com.mbsetraining.sysmlhelper.usecasepackage.CreateRequirementsPkgChooser.CreateRequirementsPkgOption;
 import com.telelogic.rhapsody.core.*;
 
 public class CreateUseCasesPackagePanel extends ExecutableMBSEBasePanel {
@@ -99,8 +99,7 @@ public class CreateUseCasesPackagePanel extends ExecutableMBSEBasePanel {
 		theReqtsAnalysisPanel.setAlignmentX( Component.LEFT_ALIGNMENT );
 
 		String introText = 
-				"This helper will create a package hierarchy for simple activity-based use case analysis underneath the " + 
-						_context.elInfo( _ownerPkg ) + ". \n" +
+				"This helper will create a package hierarchy for simple activity-based use case analysis underneath the project. \n" + 
 						"It creates a nested package structure and use case diagram, imports the appropriate profiles if not present, and sets default \n" +
 						"display and other options to appropriate values for this using Rhapsody profile and property settings.\n";
 
@@ -168,8 +167,8 @@ public class CreateUseCasesPackagePanel extends ExecutableMBSEBasePanel {
 		theColumn2ParallelGroup.addComponent( _createActorChooser.getM_NameTextField() );   
 		theColumn2ParallelGroup.addComponent( _createRequirementsPkgChooser.getM_NameTextField() );   
 		theColumn2ParallelGroup.addComponent( _createContextPkgChooser.getM_NameTextField() );   
-		theColumn2ParallelGroup.addComponent( _createSignalsPkgChooser.getM_NameTextField() );   
-
+		theColumn2ParallelGroup.addComponent( _createSignalsPkgChooser.getM_NameTextField() );
+		
 		ParallelGroup theVertical1ParallelGroup = 
 				theGroupLayout.createParallelGroup( GroupLayout.Alignment.BASELINE );
 
@@ -298,7 +297,7 @@ public class CreateUseCasesPackagePanel extends ExecutableMBSEBasePanel {
 		
 		String theUseCasePackageName = _nameTextField.getText() + _usecasePackagePostfix;
 		String theReqtPackageName = _createRequirementsPkgChooser.getReqtsPkgOptionalName();
-		CreateRequirementsPkgOption theReqtsPkgChoice = _createRequirementsPkgChooser.getReqtsPkgChoice();
+		CreateRequirementsPkgChooser.CreateRequirementsPkgOption theReqtsPkgChoice = _createRequirementsPkgChooser.getReqtsPkgChoice();
 		
 		boolean isLegalName = _context.isLegalName( theUseCasePackageName, _ownerPkg );
 
@@ -346,14 +345,8 @@ public class CreateUseCasesPackagePanel extends ExecutableMBSEBasePanel {
 			theUseCasePkg.changeTo( _context.REQTS_ANALYSIS_USE_CASE_PACKAGE );
 			_context.setSavedInSeparateDirectoryIfAppropriateFor( theUseCasePkg );
 
-			@SuppressWarnings("unused")
-			CreateRequirementsPkg theCreateRequirementsPkg = new CreateRequirementsPkg( 
-					_createRequirementsPkgChooser.getReqtsPkgChoice(), 
-					theUseCasePkg, 
-					_createRequirementsPkgChooser.getReqtsPkgOptionalName(), 
-					_createRequirementsPkgChooser.getExistingReqtsPkgIfChosen(),
-					_context );
-
+			_createRequirementsPkgChooser.createRequirementsPackage( theUseCasePkg );
+			
 			CreateActorPkg theActorPkgCreator = new CreateActorPkg( _context );
 
 			if( _createActorChooser.getCreateActorPkgOption() == CreateActorPkgOption.CreateNew ){
@@ -451,7 +444,7 @@ public class CreateUseCasesPackagePanel extends ExecutableMBSEBasePanel {
 
 			theProject.save();
 
-			_context.info( "Package structure construction of  " + _context.elInfo( theUseCasePkg ) + " has completed");	
+			_context.info( "Package structure construction of " + _context.elInfo( theUseCasePkg ) + " has completed");	
 		}
 	}
 }

@@ -3300,15 +3300,15 @@ public abstract class BaseContext {
 			}
 
 			for( IRPRequirement theCandidate : theCandidates ){
-				
+
 				String theCandidatesID = theCandidate.getRequirementID();
 
 				String theCandidatesName = theCandidate.getName();
-				
+
 				if( !theCandidatesID.isEmpty() ) {
 					theCandidatesName = cleanRequirementName( theCandidatesName, theCandidatesID ); 
 				}
-				
+
 				//debug( "theName            = '" + theName + "'" );
 				//debug( "theCandidatesName = '" + theCandidatesName + "'" );
 
@@ -3497,13 +3497,13 @@ public abstract class BaseContext {
 
 			for( IRPStereotype theStereotype : theStereotypes ){
 
-				String theMetaclasses = theStereotype.getOfMetaClass();
+				List<String> theMetaclasses = getListFromString( theStereotype.getOfMetaClass() );
 
 				//_context.info( "theMetaclasses were: " + theMetaclasses );
 
 				if( theStereotype.getIsNewTerm()== 0 &&
-						( theMetaclasses.equals( "Requirement,Package" ) || 
-								theMetaclasses.equals( "Package,Requirement" ) ) ){
+						theMetaclasses.contains( "Requirement" )  &&
+						theMetaclasses.contains( "Package" ) ){
 
 					theMoveToStereotypes.add( theStereotype );
 					//_context.info( "Found move to " + _context.elInfo( theStereotype ) );

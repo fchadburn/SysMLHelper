@@ -22,7 +22,6 @@ import com.mbsetraining.sysmlhelper.executablembse.AutoPackageDiagram;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
 import com.mbsetraining.sysmlhelper.usecasepackage.CreateActorPkg;
 import com.mbsetraining.sysmlhelper.usecasepackage.CreateActorPkgChooser;
-import com.mbsetraining.sysmlhelper.usecasepackage.CreateRequirementsPkg;
 import com.mbsetraining.sysmlhelper.usecasepackage.CreateRequirementsPkgChooser;
 import com.mbsetraining.sysmlhelper.usecasepackage.CreateActorPkg.CreateActorPkgOption;
 import com.telelogic.rhapsody.core.*;
@@ -251,13 +250,7 @@ public class CreateContextPackagePanel extends ExecutableMBSEBasePanel {
 				theContextEl = theContextPkg.addImplicitObject( theContextElementName );		
 			}	
 											
-			@SuppressWarnings("unused")
-			CreateRequirementsPkg theCreateRequirementsPkg = new CreateRequirementsPkg( 
-					_createRequirementsPkgChooser.getReqtsPkgChoice(), 
-					theContextPkg, 
-					_createRequirementsPkgChooser.getReqtsPkgOptionalName(), 
-					_createRequirementsPkgChooser.getExistingReqtsPkgIfChosen(),
-					_context );
+			_createRequirementsPkgChooser.createRequirementsPackage( theContextPkg );
 			
 			CreateActorPkg theActorPkgCreator = new CreateActorPkg( _context );
 			
