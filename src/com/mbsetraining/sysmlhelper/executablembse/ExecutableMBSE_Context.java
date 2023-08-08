@@ -132,7 +132,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String ACTORPKG_POSTFIX = "_ActorPkg";
 	public final String SIGNALPKG_POSTFIX = "_SignalPkg";
 	public final String ARCHITECTUREPKG_POSTFIX = "_ArchitecturePkg";
-	
+
 	protected SelectedElementContext _selectionContext;
 
 	protected String _defaultExternalSignalsPackageName;
@@ -155,7 +155,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	protected Boolean _isCreateSDWithTestDriverLifeline;
 	protected Boolean _isShowProfileVersionCheckDialogs;
 	protected Boolean _isDoubleClickFunctionalityEnabled;
-	
+
 	protected List<String> _storeUnitInSeparateDirectoryNewTerms;
 	protected List<String> _dontCreateSeparateUnitNewTerms;
 	protected List<IRPModelElement> _stereotypesForBlockPartCreation;
@@ -189,7 +189,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 				"ExecutableMBSEProfile.General.UserDefinedMetaClassesAsSeparateUnit", 
 				"ExecutableMBSEProfile.General.AllowPluginToControlUnitGranularity" );
 	}
-	
+
 	// Generally single call per session, so use lazy load
 	public IRPStereotype getStereotypeForDerivation(){
 
@@ -200,7 +200,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		return _stereotypeForDerivation;
 	}
-	
+
 	// Generally single call per session, so use lazy load
 	public IRPStereotype getStereotypeForSatisfaction(){
 
@@ -222,7 +222,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		return _stereotypeForVerification;
 	}
-	
+
 	// use lazy load
 	public IRPStereotype getStereotypeForTrace(){
 
@@ -233,7 +233,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		return _stereotypeForTrace;
 	}
-	
+
 	// Generally single call per session, so use lazy load
 	public String getDefaultExternalSignalsPackageName(){
 
@@ -277,7 +277,28 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		return theStereotypeNames;
 	}
-	
+
+	// Allow user to change in session
+	public IRPStereotype getStereotypeTemplateForRequirementsPkgFromUseCases(){
+
+		IRPStereotype theStereotypeTemplate = null;
+
+		List<IRPModelElement> theStereotypes = getStereotypesBasedOnProperty(
+				_rhpPrj, 
+				"ExecutableMBSEProfile.RequirementsAnalysis.StereotypeTemplateForRequirementsPkgFromUseCases" );		
+
+		if( theStereotypes.size() == 1 ) {
+
+			IRPModelElement theEl = theStereotypes.get( 0 );
+
+			if( theEl instanceof IRPStereotype ) {
+				theStereotypeTemplate = (IRPStereotype) theEl;
+			}
+		}
+
+		return theStereotypeTemplate;
+	}
+
 	// Generally single call per session, so use lazy load
 	public String getDefaultRequirementPackageName(){
 
@@ -299,7 +320,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		return _defaultRequirementPackageName;
 	}
-	
+
 	// Multiple calls per session, so use lazy load
 	public Boolean getIsEnableAutoMoveOfEventsOnFlowCreation(){
 
@@ -375,13 +396,13 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		return _isEnableAutoMoveOfRequirements;
 	}
-	
+
 	public Boolean getIsKeepRequirementUnderFunctionBlock(
 			IRPModelElement theContextEl ){
 
 		return getBooleanPropertyValue(
-					theContextEl,
-					"ExecutableMBSEProfile.RequirementsAnalysis.IsKeepRequirementUnderFunctionBlock" );
+				theContextEl,
+				"ExecutableMBSEProfile.RequirementsAnalysis.IsKeepRequirementUnderFunctionBlock" );
 	}
 
 	// Single call per session, but use lazy load
@@ -400,20 +421,20 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		if( _isShowProfileVersionCheckDialogs == null ){	
 			_isShowProfileVersionCheckDialogs = getBooleanPropertyValue(
-				_rhpPrj,
-				"ExecutableMBSEProfile.General.IsShowProfileVersionCheckDialogs" );
+					_rhpPrj,
+					"ExecutableMBSEProfile.General.IsShowProfileVersionCheckDialogs" );
 		}
-		
+
 		return _isShowProfileVersionCheckDialogs;
 	}
-	
+
 	// This is called on double-click 
 	public Boolean getIsDoubleClickFunctionalityEnabled(){
-		
+
 		_isDoubleClickFunctionalityEnabled = getBooleanPropertyValue(
-					_rhpPrj,
-					"ExecutableMBSEProfile.General.IsDoubleClickFunctionalityEnabled" );
-		
+				_rhpPrj,
+				"ExecutableMBSEProfile.General.IsDoubleClickFunctionalityEnabled" );
+
 		return _isDoubleClickFunctionalityEnabled;
 	}
 
@@ -631,7 +652,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		return theValue;
 	}
-	
+
 	public String getDefaultUseCasePackagePostfix(
 			IRPModelElement basedOnContext ){
 
@@ -667,7 +688,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		return theValue;
 	}
-	
+
 	public String getCSVExportSeparator(
 			IRPModelElement basedOnContext ){
 
@@ -690,7 +711,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		return result;		
 	}
-	
+
 	public boolean getCSVExportIncludeColumnsForLinkedAnnotations(
 			IRPModelElement basedOnContext ){
 
@@ -810,7 +831,8 @@ public class ExecutableMBSE_Context extends BaseContext {
 			String theStereotypeList = forContextEl.getPropertyValue(
 					thePropertyKey );
 
-			if( theStereotypeList != null){
+			if( theStereotypeList != null && 
+					!theStereotypeList.isEmpty() ){
 
 				String[] split = theStereotypeList.split(",");
 
@@ -822,7 +844,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 					if( theStereotypeCandidates.size() == 0 ){
 
-						super.warning( "Unable to find " + theString + " specified in " + 
+						super.warning( "Unable to find stereotype " + theString + " specified in " + 
 								thePropertyKey + " property" );
 
 					} else if( theStereotypeCandidates.size() == 1 ){
@@ -833,7 +855,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 						for( IRPModelElement theStereotypeCandidate : theStereotypeCandidates ){
 
 							String theFullName = theStereotypeCandidate.getFullPathName();
-							super.debug (theFullName);
+							//super.debug (theFullName);
 
 							if( theFullName.startsWith( "ExecutableMBSEProfile" ) ){
 								theStereotypes.add( theStereotypeCandidate );
@@ -963,12 +985,12 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		return _isPopulateOptionHidden;
 	}
-	
+
 	public String getTemplateForActivityDiagramValue(){
 
-		
+
 		if( _templateForActivityDiagramValue == null ){		
-			
+
 			_templateForActivityDiagramValue = getStringPropertyValueFromRhp(
 					_rhpPrj,
 					"ExecutableMBSEProfile.RequirementsAnalysis.TemplateForActivityDiagram" ,
@@ -1069,7 +1091,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 	public String getAutoGenerationOfPortsForLinksPolicy(
 			IRPModelElement forContextEl ){
-		
+
 		_autoGenerationOfPortsForLinksPolicy = getStringPropertyValueFromRhp(
 				forContextEl,
 				"ExecutableMBSEProfile.DesignSynthesis.AutoGenerationOfPortsForLinksPolicy",
@@ -1077,10 +1099,10 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		return _autoGenerationOfPortsForLinksPolicy;
 	}
-	
+
 	public String getAutoGenerationOfPortsForLinksDefaultType(
 			IRPModelElement forContextEl ){
-		
+
 		_autoGenerationOfPortsForLinksDefaultType = getStringPropertyValueFromRhp(
 				forContextEl,
 				"ExecutableMBSEProfile.DesignSynthesis.AutoGenerationOfPortsForLinksDefaultType",
@@ -1263,7 +1285,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 			String theInput,
 			int max,
 			boolean areSpacesAllowed ){
-		
+
 		StringBuilder nameBuilder = new StringBuilder(theInput.length());    
 
 		boolean capitalizeNextChar = true;
@@ -1287,7 +1309,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 				if( areSpacesAllowed ){
 					nameBuilder.append(c);
 				}
-				
+
 				if (n<max){
 					capitalizeNextChar = true;
 					continue;
@@ -1300,7 +1322,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		return nameBuilder.toString();
 	}
-	
+
 	public String determineBestCheckOperationNameFor(
 			IRPClassifier onTargetBlock,
 			String theAttributeName,
@@ -1542,21 +1564,21 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		return theElapsedTimePart;
 	}
-	
+
 	public boolean isOwnedUnderPackageHierarchy( 
 			String withPackageStereotypeName, 
 			IRPModelElement theElement ){
-		
+
 		boolean isOwnedUnderHierarchy = false;
-		
+
 		IRPModelElement theOwner = theElement.getOwner();
-		
+
 		if( theOwner != null ){
-			
+
 			IRPPackage theOwningPkg = getOwningPackageFor( theOwner );
-			
+
 			if( theOwningPkg != null ){
-				
+
 				if( hasStereotypeCalled(
 						withPackageStereotypeName, 
 						theOwningPkg ) ){
@@ -1568,10 +1590,10 @@ public class ExecutableMBSE_Context extends BaseContext {
 				}
 			}
 		}
-		
+
 		return isOwnedUnderHierarchy;
 	}
-	
+
 	public void bleedColorToElementsRelatedTo(
 			List<IRPRequirement> theSelectedReqts ){
 
@@ -1582,12 +1604,12 @@ public class ExecutableMBSE_Context extends BaseContext {
 				theSelectedGraphEl.getDiagram() instanceof IRPActivityDiagram ){
 
 			for( IRPGraphElement theGraphEl : get_selectedContext().get_selectedGraphEls() ) {
-				
+
 				bleedColorToElementsRelatedTo( theGraphEl, theSelectedReqts );
 			}
 		}
 	}
-	
+
 	private void bleedColorToElementsRelatedTo(
 			IRPGraphElement theGraphEl,
 			List<IRPRequirement> theSelectedReqts ){
@@ -1632,18 +1654,18 @@ public class ExecutableMBSE_Context extends BaseContext {
 			theGraphEl.setGraphicalProperty( "ForegroundColor", theForegroundColor );
 		}
 	}
-	
+
 	public String replaceCSVIncompatibleCharsFrom(
 			String theString ) {
-		
+
 		String theResult = theString.replaceAll( "\\r", "<CR>" );
 		theResult = theResult.replaceAll( "\\n", "<LF>" );
-		
+
 		if( !theString.equals( theResult ) ) {
-		
+
 			warning( "Removed CRLF characters from " + theResult );
 		}
-		
+
 		return theResult;
 	}
 }

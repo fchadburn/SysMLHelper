@@ -1689,7 +1689,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">8.3.2023::8:47:48</_modifiedTime>
+			<_modifiedTime type="a">8.8.2023::15:43:32</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -1712,7 +1712,8 @@
 			<_id type="a">GUID f825da1e-3d3d-409d-927a-c62820d97e7c</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Templates</_name>
-			<_modifiedTime type="a">10.28.2022::14:48:18</_modifiedTime>
+			<_modifiedTime type="a">8.8.2023::15:43:53</_modifiedTime>
+			<_lastID type="a">3</_lastID>
 			<_defaultComposite type="s">GUID fa08a209-d10e-4b0d-bee3-3c7ebad1e988</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
@@ -1721,6 +1722,8 @@
 				<value>GUID 8e1ab178-5c64-479e-a5aa-2e97533262e9</value>
 				<value>GUID 47f804ea-8363-4da9-96ce-cd278c9f4f13</value>
 				<value>GUID 1a8557b5-88eb-4ce6-aeb0-20bd0449db1e</value>
+				<value>GUID dda6a4c6-0d25-476b-9ad7-f596825ca0c0</value>
+				<value>GUID fb85b00f-73f8-43b4-934c-a7cab564454a</value>
 				<value>GUID fa08a209-d10e-4b0d-bee3-3c7ebad1e988</value>
 				<value>GUID 52e4f427-425b-40c0-a33d-31247a3a4dd8</value>
 				<value>GUID 3220e1b0-9175-428d-b092-788efda27ab0</value>
@@ -3149,6 +3152,92 @@
 			<_declaration type="a">Stereotype</_declaration>
 			<_kind type="a">Language</_kind>
 		</IType>
+		<IStereotype type="e">
+			<_id type="a">GUID dda6a4c6-0d25-476b-9ad7-f596825ca0c0</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Format</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Requirement</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">Line.LineColor</_Name>
+													<_Value type="a">255,0,255</_Value>
+													<_Type type="a">Color</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">template_pink</_name>
+			<_modifiedTime type="a">8.8.2023::15:8:25</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</_m2Classes>
+		</IStereotype>
+		<IStereotype type="e">
+			<_id type="a">GUID fb85b00f-73f8-43b4-934c-a7cab564454a</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Format</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Requirement</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">Line.LineColor</_Name>
+													<_Value type="a">0,128,0</_Value>
+													<_Type type="a">Color</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">template_green</_name>
+			<_modifiedTime type="a">8.8.2023::15:43:53</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</_m2Classes>
+		</IStereotype>
 		<IClass type="e">
 			<_id type="a">GUID fa08a209-d10e-4b0d-bee3-3c7ebad1e988</_id>
 			<_myState type="a">40960</_myState>
@@ -11531,7 +11620,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 99d433ee-75c1-40c0-8ef0-8ea14c3d7d23</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileInfo</_name>
-			<_modifiedTime type="a">8.3.2023::8:47:48</_modifiedTime>
+			<_modifiedTime type="a">8.8.2023::15:7:56</_modifiedTime>
 			<_lastID type="a">3</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -11549,7 +11638,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 00c06448-4cf5-4b58-a462-af1a3bccd935</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileDate</_name>
-			<_modifiedTime type="a">8.3.2023::8:47:48</_modifiedTime>
+			<_modifiedTime type="a">8.8.2023::15:7:56</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IType</_hm2Class>
@@ -11560,13 +11649,13 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</_typeOf>
 			<_isOrdered type="a">0</_isOrdered>
 			<AggregatesList type="e">
-				<value>GUID 0f1610c1-9c88-4ac5-ae0a-b3a9f70f01bb</value>
+				<value>GUID c966f29f-b914-4470-82bd-098e771afa61</value>
 			</AggregatesList>
 		</ITag>
 		<ILiteralSpecification type="e">
-			<_id type="a">GUID 0f1610c1-9c88-4ac5-ae0a-b3a9f70f01bb</_id>
-			<_modifiedTime type="a">8.3.2023::8:47:48</_modifiedTime>
-			<_value type="a">2023/08/03 09:47:00</_value>
+			<_id type="a">GUID c966f29f-b914-4470-82bd-098e771afa61</_id>
+			<_modifiedTime type="a">8.8.2023::15:7:56</_modifiedTime>
+			<_value type="a">2023/08/08 16:07:00</_value>
 		</ILiteralSpecification>
 		<ITag type="e">
 			<_id type="a">GUID c783ee62-7cd8-4f71-8651-25132d0e1150</_id>

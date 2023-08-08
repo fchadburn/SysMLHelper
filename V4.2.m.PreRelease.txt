@@ -913,6 +913,7 @@ V4.2.m.Rhp831.PreRelease (XX-XXX-XXXX):
 0682 03-AUG-2023: ExecutableMBSE: Added warning to  'Establish trace relations...' to warn if multiple matches found for establishing trace relations are found (F.J.Chadburn)
 0683 04-AUG-2023: ExecutableMBSE: Extend 'Update surrogates based on remote...' to report and update requirement names in Rhapsody based on remote changes (F.J.Chadburn)
 0684 08-AUG-2023: ExecutableMBSE: Added ability to automatically create/apply stereotype during requirements package creation based on a stereotype name property (F.J.Chadburn)
+0685 08-AUG-2023: ExecutableMBSE: Added ability to specify pink/green format template for new stereotypes created during requirements package creation based on a property (F.J.Chadburn) 
 
 Backlog/Known issues
 - Parent binding

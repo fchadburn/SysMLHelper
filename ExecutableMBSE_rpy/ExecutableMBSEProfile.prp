@@ -57,6 +57,7 @@ Subject ExecutableMBSEProfile
 		Property CSVExportSeparator String ";"
 		Property BleedForegroundColor String "255,0,0"
 		Property StereotypeNamesForRequirementsPkgFromUseCases String "Stakeholder Requirement"
+		Property StereotypeTemplateForRequirementsPkgFromUseCases String "template_pink"
 	end
 	Metaclass FunctionalAnalysis
 		Property TraceabilityTypeToUseForFunctions String "satisfy"

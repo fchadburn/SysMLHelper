@@ -378,25 +378,45 @@ public class CreateRequirementsPkgChooser {
 
 			String theStereotypeName = getStereotypeNameIfChosen(); // or theName?
 
-			IRPModelElement theFoundStereotype = 
-					theProject.findAllByName( theStereotypeName , "Stereotype" );
+			createIfNecessaryAndApplyStereotypeTo( theReqtsPkg, theStereotypeName );
+		}
+	}
 
-			IRPStereotype theStereotype = null;
+	private void createIfNecessaryAndApplyStereotypeTo(
+			IRPPackage theReqtsPkg,
+			String theStereotypeName ){
+		
+		IRPStereotype theFoundStereotype = (IRPStereotype) _context.get_rhpPrj().
+				findAllByName( theStereotypeName , "Stereotype" );
 
-			if( theFoundStereotype == null ){
-				theStereotype = theReqtsPkg.addStereotype( theStereotypeName, "Package" );
+		IRPStereotype theStereotype = null;
 
-				theStereotype.addMetaClass( "Dependency" );
-				theStereotype.addMetaClass( "HyperLink" );
-				theStereotype.addMetaClass( "Requirement" );
-				theStereotype.addMetaClass( "Type" );
-
-				theStereotype.setOwner( theReqtsPkg );
-				theStereotype.highLightElement();
+		if( theFoundStereotype == null ){
+			
+			IRPStereotype theTemplateStereotype = _context.getStereotypeTemplateForRequirementsPkgFromUseCases();
+			
+			if( theTemplateStereotype != null ) {
+				
+				theStereotype = (IRPStereotype) theTemplateStereotype.clone( theStereotypeName, theReqtsPkg );
+				theStereotype.addMetaClass( "Package" );
+				
+				theReqtsPkg.addSpecificStereotype( theStereotype );
 
 			} else {
 				theStereotype = theReqtsPkg.addStereotype( theStereotypeName, "Package" );
 			}
+
+			
+			theStereotype.addMetaClass( "Dependency" );
+			theStereotype.addMetaClass( "HyperLink" );
+			theStereotype.addMetaClass( "Requirement" );
+			theStereotype.addMetaClass( "Type" );
+
+			theStereotype.setOwner( theReqtsPkg );
+			theStereotype.highLightElement();
+
+		} else {
+			theReqtsPkg.addSpecificStereotype( theFoundStereotype );
 		}
 	}
 	
