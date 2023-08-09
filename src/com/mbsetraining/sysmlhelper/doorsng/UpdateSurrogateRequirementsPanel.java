@@ -5,12 +5,7 @@ import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JDialog;
@@ -34,18 +29,9 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 	 */
 	private static final long serialVersionUID = -2463303852702389912L;
 
-	private List<IRPRequirement> _requirementsInScope = new ArrayList<IRPRequirement>();
-	private List<IRPRequirement> _requirementsToUpdateSpec = new ArrayList<IRPRequirement>();
-	private List<IRPRequirement> _requirementsToUpdateName = new ArrayList<IRPRequirement>();
-	private List<IRPRequirement> _requirementsThatMatch = new ArrayList<IRPRequirement>();
-	private List<IRPRequirement> _requirementsWithNoLinks = new ArrayList<IRPRequirement>();
-	private List<IRPRequirement> _requirementsWithUnloadedHyperlinks = new ArrayList<IRPRequirement>();
-	private List<IRPRequirement> _remoteRequirementsThatTrace = new ArrayList<IRPRequirement>();
-	private List<IRPRequirement> _remoteRequirementsThatDontTrace = new ArrayList<IRPRequirement>();
-	private Map<IRPRequirement, List<IRPRequirement>> _remoteRequirementsToEstablishTraceTo = new HashMap<>();  
-	private List<IRPRequirement> _requirementsWithNoMatchOrLinks = new ArrayList<IRPRequirement>();
 
 	private IRPPackage _owningPkg;
+	private RemoteRequirementAssessment _assessment;
 
 	public static void main(String[] args) {
 
@@ -90,40 +76,40 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 		setLayout( new BorderLayout(10,10) );
 		setBorder( BorderFactory.createEmptyBorder( 10, 10, 10, 10 ) );
 
-		determineRequirementsToUpdate( theSelectedEls ); 
+		_assessment = new RemoteRequirementAssessment( _context );
+		_assessment.determineRequirementsToUpdate( theSelectedEls ); 
 
 		if( theSelectedEls.size()==1 ) {
-
-			IRPModelElement theSelectedEl = theSelectedEls.get(0);
-
+			
+			IRPModelElement theSelectedEl = theSelectedEls.get( 0 );
+			
 			if( theSelectedEl instanceof IRPPackage ) {
 				_owningPkg = (IRPPackage)theSelectedEl;
-				determineNewRequirementsNeeded( (IRPPackage) theSelectedEl );
 			}
 		}
-
+		
 		JTabbedPane theTabbedPane = new JTabbedPane();
 
 		theTabbedPane.addTab(
-				"Update model spec (" + _requirementsToUpdateSpec.size() + ")", 
+				"Update model spec (" + _assessment._requirementsToUpdateSpec.size() + ")", 
 				null, 
 				createRequirementsToUpdateSpecBox(), 
 				"Requirements to update specification based on the specification text of remote");
 		//updatePane.setMnemonicAt(0, KeyEvent.VK_1);
 		
-		if( !_requirementsToUpdateName.isEmpty() ) {
+		if( !_assessment._requirementsToUpdateName.isEmpty() ) {
 
 			theTabbedPane.addTab(
-					"Update model reqt's name (" + _requirementsToUpdateName.size() + ")", 
+					"Update model reqt's name (" + _assessment._requirementsToUpdateName.size() + ")", 
 					null, 
 					createRequirementsToUpdateNameBox(), 
 					"Requirements to update name based on remote counterpart's name");
 		}
 		
-		if( !_remoteRequirementsThatDontTrace.isEmpty() ) {
+		if( !_assessment._remoteRequirementsThatDontTrace.isEmpty() ) {
 
 			theTabbedPane.addTab(
-					"New requirements (" + _remoteRequirementsThatDontTrace.size() + ")", 
+					"New requirements (" + _assessment._remoteRequirementsThatDontTrace.size() + ")", 
 					null, 
 					createRemoteRequirementsThatDontTraceBox(), 
 					"Requirements linked to package but not to a requirement");
@@ -131,40 +117,40 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 		//updatePane.setMnemonicAt(0, KeyEvent.VK_1);
 
 		// Only show this if not empty, as a warning
-		if( !_requirementsWithNoMatchOrLinks.isEmpty() ) {
+		if( !_assessment._requirementsWithNoMatchOrLinks.isEmpty() ) {
 
 			theTabbedPane.addTab(
-					"Info-only: No-links (" + _requirementsWithNoMatchOrLinks.size() + ")", 
+					"Info-only: No-links (" + _assessment._requirementsWithNoMatchOrLinks.size() + ")", 
 					null, 
 					createRequirementsWithNoLinksBox(), 
 					"Requirements without links to remote requirements");
 			//updatePane.setMnemonicAt(0, KeyEvent.VK_1);
 		}
 
-		if( !_remoteRequirementsToEstablishTraceTo.isEmpty() ) {
+		if( !_assessment._remoteRequirementsToEstablishTraceTo.isEmpty() ) {
 
 			theTabbedPane.addTab(
-					"Info-only: Match with existing (" + _remoteRequirementsToEstablishTraceTo.size() + ")", 
+					"Info-only: Match with existing (" + _assessment._remoteRequirementsToEstablishTraceTo.size() + ")", 
 					null, 
 					createRequirementsToEstablishTraceToBox(), 
 					"Requirements in model that can be matched with external requirements");
 			//updatePane.setMnemonicAt(0, KeyEvent.VK_1);
 		}
 
-		if( !_requirementsWithUnloadedHyperlinks.isEmpty() ) {
+		if( !_assessment._requirementsWithUnloadedHyperlinks.isEmpty() ) {
 
 			theTabbedPane.addTab(
-					"Unloaded links (" + _requirementsWithUnloadedHyperlinks.size() + ")", 
+					"Unloaded links (" + _assessment._requirementsWithUnloadedHyperlinks.size() + ")", 
 					null, 
-					createBoxBasedOn( _requirementsWithUnloadedHyperlinks ), 
+					createBoxBasedOn( _assessment._requirementsWithUnloadedHyperlinks ), 
 					"Requirements with HyperLinks to unloaded requirements");
 		}
 
 		add( theTabbedPane, BorderLayout.CENTER );
 
-		int updateCount = _requirementsToUpdateSpec.size() + 
-				_remoteRequirementsThatDontTrace.size() +
-				_requirementsToUpdateName.size();
+		int updateCount = _assessment._requirementsToUpdateSpec.size() + 
+				_assessment._remoteRequirementsThatDontTrace.size() +
+				_assessment._requirementsToUpdateName.size();
 
 		if( updateCount == 0 ) {
 
@@ -202,31 +188,31 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 
 		Box theBox = Box.createVerticalBox();
 
-		JScrollPane theScrollPane = createDoubleClickableScrollPaneFor( new ArrayList<>( _requirementsToUpdateSpec ) );
+		JScrollPane theScrollPane = createDoubleClickableScrollPaneFor( new ArrayList<>( _assessment._requirementsToUpdateSpec ) );
 
 		Component theStartLabel;
 
 		String msg = "";
 
-		if( _requirementsToUpdateSpec.size() == 0 ) {
-			msg += "None of the " + _requirementsInScope.size() +" requirements in scope require their specification text \n" + 
+		if( _assessment._requirementsToUpdateSpec.size() == 0 ) {
+			msg += "None of the " + _assessment._requirementsInScope.size() +" requirements in scope require their specification text \n" + 
 					"to be updated due to changes to their remote counterpart. \n\nOf these:\n" + 
-					_requirementsThatMatch.size() + " requirements have matching specification text\n";
+					_assessment._requirementsThatMatch.size() + " requirements have matching specification text\n";
 
-			if( _requirementsWithNoLinks.size() > 0 ) {				
-				msg += _requirementsWithNoLinks.size() + " have no remote requirement links";
+			if( _assessment._requirementsWithNoLinks.size() > 0 ) {				
+				msg += _assessment._requirementsWithNoLinks.size() + " have no remote requirement links";
 			}
 
-		} else if( _requirementsToUpdateSpec.size() == 1 ) {
+		} else if( _assessment._requirementsToUpdateSpec.size() == 1 ) {
 			msg += "There is 1 requirement that needs updating because its specification text doesn't match \n(double-click to locate in browser). ";
 
 		} else {
-			msg += "There are " + _requirementsToUpdateSpec.size() + " requirements that need updating because their specification text doesn't match. ";
+			msg += "There are " + _assessment._requirementsToUpdateSpec.size() + " requirements that need updating because their specification text doesn't match. ";
 			msg += "Double-click to locate in browser. ";
 
 		}
 
-		int unloadedReqtsCount = _requirementsWithUnloadedHyperlinks.size();
+		int unloadedReqtsCount = _assessment._requirementsWithUnloadedHyperlinks.size();
 
 		if( _owningPkg instanceof IRPPackage ) {
 			unloadedReqtsCount += getUnloadedLinksFor( _owningPkg ).size();
@@ -241,7 +227,7 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 
 		theBox.add( theStartLabel );
 
-		if( _requirementsToUpdateSpec.size() > 0 ) {
+		if( _assessment._requirementsToUpdateSpec.size() > 0 ) {
 			theBox.add( theScrollPane );
 		}
 
@@ -252,25 +238,25 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 
 		Box theBox = Box.createVerticalBox();
 
-		JScrollPane theScrollPane = createDoubleClickableScrollPaneFor( new ArrayList<>( _requirementsToUpdateName ) );
+		JScrollPane theScrollPane = createDoubleClickableScrollPaneFor( new ArrayList<>( _assessment._requirementsToUpdateName ) );
 
 		Component theStartLabel;
 
 		String msg = "";
 
-		if( _requirementsToUpdateName.size() == 0 ) {
-			msg += "None of the " + _requirementsInScope.size() +" requirements in scope require their name \n" + 
+		if( _assessment._requirementsToUpdateName.size() == 0 ) {
+			msg += "None of the " + _assessment._requirementsInScope.size() +" requirements in scope require their name \n" + 
 					"to be updated due to changes to their remote counterpart. ";
 
-			if( _requirementsWithNoLinks.size() > 0 ) {				
-				msg += _requirementsWithNoLinks.size() + " have no remote requirement links";
+			if( _assessment._requirementsWithNoLinks.size() > 0 ) {				
+				msg += _assessment._requirementsWithNoLinks.size() + " have no remote requirement links";
 			}
 
-		} else if( _requirementsToUpdateName.size() == 1 ) {
+		} else if( _assessment._requirementsToUpdateName.size() == 1 ) {
 			msg += "There is 1 requirement that needs its name updating to match the remote name \n(double-click to locate in browser). ";
 
 		} else {
-			msg += "There are " + _requirementsToUpdateName.size() + " name's of requirements to update to match the remote names. ";
+			msg += "There are " + _assessment._requirementsToUpdateName.size() + " name's of requirements to update to match the remote names. ";
 			msg += "Double-click to locate in browser. ";
 
 		}
@@ -279,7 +265,7 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 
 		theBox.add( theStartLabel );
 
-		if( _requirementsToUpdateName.size() > 0 ) {
+		if( _assessment._requirementsToUpdateName.size() > 0 ) {
 			theBox.add( theScrollPane );
 		}
 
@@ -290,13 +276,13 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 
 		Box theBox = Box.createVerticalBox();
 
-		JScrollPane theScrollPane = createDoubleClickableScrollPaneFor( new ArrayList<>( _requirementsWithNoMatchOrLinks ) );
+		JScrollPane theScrollPane = createDoubleClickableScrollPaneFor( new ArrayList<>( _assessment._requirementsWithNoMatchOrLinks ) );
 
 		Component theStartLabel;
 
 		String msg = "";
 
-		int count = _requirementsWithNoMatchOrLinks.size();
+		int count = _assessment._requirementsWithNoMatchOrLinks.size();
 
 		if( count == 0 ) {
 			msg += "There are no requirements without remote requirement links.";
@@ -341,7 +327,7 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 
 		Box theBox = Box.createVerticalBox();
 
-		List<IRPRequirement> theReqts = new ArrayList<>( _remoteRequirementsToEstablishTraceTo.keySet() );
+		List<IRPRequirement> theReqts = new ArrayList<>( _assessment._remoteRequirementsToEstablishTraceTo.keySet() );
 
 		JScrollPane theScrollPane = createDoubleClickableScrollPaneFor( new ArrayList<>( theReqts ) );
 
@@ -395,13 +381,13 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 
 		Box theBox = Box.createVerticalBox();
 
-		JScrollPane theScrollPane = createDoubleClickableScrollPaneFor( new ArrayList<>( _remoteRequirementsThatDontTrace ) );
+		JScrollPane theScrollPane = createDoubleClickableScrollPaneFor( new ArrayList<>( _assessment._remoteRequirementsThatDontTrace ) );
 
 		Component theStartLabel;
 
 		String msg = "";
 
-		int count = _remoteRequirementsThatDontTrace.size();
+		int count = _assessment._remoteRequirementsThatDontTrace.size();
 
 		if( _owningPkg == null ) {
 			msg += "The remote requirements check works by looking for links from the package and \n";
@@ -491,160 +477,7 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 		return theBox;
 	}
 
-	public void determineRequirementsToUpdate(
-			List<IRPModelElement> theSelectedEls ) {
 
-		_requirementsInScope = getNestedRequirementsFor( theSelectedEls );
-
-		for( IRPRequirement theRequirement : _requirementsInScope ){
-			determineRequirementsToUpdateBasedOn( theRequirement );
-		}
-	}
-
-	@SuppressWarnings("unchecked")
-	private List<IRPRequirement> getNestedRequirementsFor(
-			List<IRPModelElement> theSelectedEls ){
-
-		Set<IRPRequirement> theNestedRequirements = new LinkedHashSet<IRPRequirement>();
-
-		for( IRPModelElement theSelectedEl : theSelectedEls ){
-
-			theNestedRequirements.addAll( theSelectedEl.
-					getNestedElementsByMetaClass( "Requirement", 1 ).toList() );
-		}
-
-		return new ArrayList<>( theNestedRequirements );
-	}
-
-	public void determineNewRequirementsNeeded(
-			IRPPackage theRequirementPkg ) {
-
-		List<IRPRequirement> theMissingRemoteReqts = new ArrayList<>();
-
-		List<IRPRequirement> theExpectedRemoteReqts = _context.getRemoteRequirementsFor( theRequirementPkg );
-
-		for( IRPRequirement theExpectedRemoteReqt : theExpectedRemoteReqts ){
-
-			if( !_remoteRequirementsThatTrace.contains( theExpectedRemoteReqt )) {
-				//_context.debug( "Found that remote " + _context.elInfo( theExpectedRemoteReqt ) + " doesn't have traceability yet" );
-				theMissingRemoteReqts.add( theExpectedRemoteReqt );
-			}
-		}
-
-		for( IRPRequirement theReqt : _requirementsWithNoLinks ){
-			
-			List<IRPRequirement> theMatchedReqts = _context.getRequirementsThatMatch( theReqt, theExpectedRemoteReqts );
-
-			int matchCount = theMatchedReqts.size();
-
-			if( matchCount > 0 ) {
-
-				for (IRPRequirement theMatchedReqt : theMatchedReqts) {
-					_context.debug( "Found that spec of unlinked " + _context.elInfo( theReqt ) + " matches remote " + _context.elInfo( theMatchedReqt ) );
-				}
-
-				if( matchCount > 1 ) {
-					_context.warning( "Match found " + _context.elInfo( theReqt ) + " has match to " + matchCount + " remote requirements hence don't know which one to choose" );
-				}
-				
-				_remoteRequirementsToEstablishTraceTo.put( theReqt, theMatchedReqts );		
-
-			} else {
-				_requirementsWithNoMatchOrLinks.add( theReqt );
-			}
-		}
-
-		for( IRPRequirement theMissingRemoteReqt : theMissingRemoteReqts ){
-			
-			boolean isFound = false;
-			
-			for (Map.Entry<IRPRequirement, List<IRPRequirement>> entry : _remoteRequirementsToEstablishTraceTo.entrySet()) {
-				
-				List<IRPRequirement> theValue = entry.getValue();
-				
-				if( theValue.contains( theMissingRemoteReqt ) ) {
-					isFound = true;
-					break;
-				}
-			}
-
-			if( !isFound ) {
-				_remoteRequirementsThatDontTrace.add( theMissingRemoteReqt );
-			}
-		}
-
-		//int size = _remoteRequirementsToEstablishTraceTo.keySet().size();
-
-		//_context.debug ( "determineNewRequirementsNeeded found " + size + " unlinked remote reqts have matches " + 
-		//		"to requirements with same spec text and " +  _remoteRequirementsThatDontTrace.size() + " requirements do not" );
-	}
-
-	private void determineRequirementsToUpdateBasedOn(
-			IRPRequirement theRequirement ){
-
-		List<IRPModelElement> theRemoteDependsOns = _context.getRemoteDependsOnFor( theRequirement );
-
-		if( theRemoteDependsOns.isEmpty() ) {
-
-			if( !_requirementsWithNoLinks.contains( theRequirement ) ) {	
-				//_context.debug( "Found " + _context.elInfo( theRequirement ) + "'s got no oslc links");
-				_requirementsWithNoLinks.add( theRequirement );
-			}
-		} else {
-
-			for( IRPModelElement theRemoteDependsOn : theRemoteDependsOns ){
-
-				//_context.debug( _context.elInfo ( theRequirement ) + " traces to " + _context.elInfo( theRemoteDependsOn ) + 
-				//		" owned by " + _context.elInfo( theRemoteDependsOn.getOwner() ) );
-
-				if( theRemoteDependsOn instanceof IRPRequirement ){
-
-					_remoteRequirementsThatTrace.add( (IRPRequirement) theRemoteDependsOn );
-
-					IRPRequirement theOSLCRequirement = (IRPRequirement)theRemoteDependsOn;
-
-					String theRemoteSpec = theOSLCRequirement.getSpecification();
-					String theSpec = theRequirement.getSpecification();
-
-					if( theSpec.equals( theRemoteSpec ) ){
-
-						if( !_requirementsThatMatch.contains( theRequirement ) ) {	
-							_context.debug( "Found " + _context.elInfo( theRequirement ) + "'s spec matches");
-							_requirementsThatMatch.add( theRequirement );
-						}
-					} else {
-
-						if( !_requirementsToUpdateSpec.contains( theRequirement ) ) {		
-							_context.debug( "Found " + _context.elInfo( theRequirement ) + "'s spec needs updating");
-							_requirementsToUpdateSpec.add( theRequirement );
-						}
-					}
-					
-					String theRemoteName = theOSLCRequirement.getName();
-					String theRemoteID = theOSLCRequirement.getRequirementID();
-					
-					String theProposedName = determineRequirementNameBasedOn( theRemoteName, theRemoteID );
-					
-					String theName = theRequirement.getName();
-					
-					if( !theName.equals( theProposedName ) ){
-
-						if( !_requirementsToUpdateName.contains( theRequirement ) ) {		
-							_context.debug( "Found " + _context.elInfo( theRequirement ) + "'s name needs updating");
-							_requirementsToUpdateName.add( theRequirement );
-						}
-					}
-
-				} else if( theRemoteDependsOn instanceof IRPHyperLink ) {
-
-					if( !_requirementsWithUnloadedHyperlinks.contains( theRequirement ) ) {					
-						_context.debug( "Found " + _context.elInfo( theRequirement ) + "'s oslc link is unloaded");
-						_requirementsWithUnloadedHyperlinks.add( theRequirement );
-					}
-				}
-			}
-		}		
-	}
 
 	private void updateRequirementBasedOnRemoteSpecification(
 			IRPRequirement theRequirement ){
@@ -697,7 +530,7 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 			String theRemoteName = theOSLCRequirement.getName();
 			String theRemoteID = theOSLCRequirement.getRequirementID();
 			
-			String theProposedName = determineRequirementNameBasedOn( theRemoteName, theRemoteID );
+			String theProposedName = _context.determineRequirementNameBasedOn( theRemoteName, theRemoteID );
 			String theName = theRequirement.getName();
 
 			if( theName.equals( theProposedName ) ){
@@ -722,7 +555,7 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 		String theRemoteSpec = theRemoteRequirement.getSpecification();
 		String theRemoteID = theRemoteRequirement.getRequirementID();
 
-		String theProposedName = determineRequirementNameBasedOn( theRemoteName, theRemoteID );
+		String theProposedName = _context.determineRequirementNameBasedOn( theRemoteName, theRemoteID );
 
 		//_context.info( "theProposedName = " + theProposedName);
 
@@ -734,7 +567,6 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 
 		theRequirement.setSpecification( theRemoteSpec );
 		theRequirement.setRequirementID( theRemoteID );
-
 
 		if( _owningPkg.getUserDefinedMetaClass().equals(
 				_context.REQTS_ANALYSIS_REQUIREMENT_PACKAGE ) ) {
@@ -749,39 +581,14 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 			List<IRPRequirement> theRemoteReqts = new ArrayList<>();
 			theRemoteReqts.add( theRemoteRequirement );
 			
-			_remoteRequirementsToEstablishTraceTo.put( theRequirement, theRemoteReqts );
+			_assessment._remoteRequirementsToEstablishTraceTo.put( theRequirement, theRemoteReqts );
 		}
 
 		//theRequirement.addRemoteDependencyTo( theRemoteRequirement, "Trace" );
 
 		//_context.get_rhpPrj().save();
 
-
 		//_context.info( "------------------");
-	}
-
-	private String determineRequirementNameBasedOn(
-			String theRemoteName, 
-			String theRemoteID ){
-		
-		String theProposedName = theRemoteName.replaceAll( theRemoteID + ": ", "" );
-		
-		// Remote text may come from text of requirement if no name is specified for remote reqt
-		// Some characters Rhapsody doesn't like such as brackets and dot (.)
-		// Safest thing is to just allow alphanumeric and _,-, and spaces
-		theProposedName = theProposedName.replaceAll( "[^a-zA-Z0-9-\\s_]+", " " ).trim();
-
-		theProposedName = theRemoteID + " " + theProposedName;
-
-		int maxLength = 50;
-
-		if (theProposedName.length() <= maxLength) {
-			theProposedName = theProposedName.trim();
-		} else {
-			theProposedName = theProposedName.substring(0, maxLength).trim();
-		}
-		
-		return theProposedName;
 	}
 
 	@Override
@@ -796,15 +603,15 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 
 			if( checkValidity( false ) ){
 
-				for( IRPRequirement theRequirement : _requirementsToUpdateSpec ){
+				for( IRPRequirement theRequirement : _assessment._requirementsToUpdateSpec ){
 					updateRequirementBasedOnRemoteSpecification( theRequirement );
 				}
 				
-				for( IRPRequirement theRequirement : _requirementsToUpdateName ){
+				for( IRPRequirement theRequirement : _assessment._requirementsToUpdateName ){
 					updateRequirementBasedOnRemoteName( theRequirement );
 				}
 
-				for( IRPRequirement theRequirement : _remoteRequirementsThatDontTrace ){
+				for( IRPRequirement theRequirement : _assessment._remoteRequirementsThatDontTrace ){
 					createRequirementBasedOn( theRequirement );
 				}
 

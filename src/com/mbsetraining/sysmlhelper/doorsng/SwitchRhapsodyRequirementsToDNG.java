@@ -11,14 +11,20 @@ import com.telelogic.rhapsody.core.*;
 
 public class SwitchRhapsodyRequirementsToDNG {
 
-	ExecutableMBSE_Context _context;
+	private ExecutableMBSE_Context _context;
+	private RemoteRequirementAssessment _assessment;
 
 	// testing only
 	public static void main(String[] args) {
 		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
 		ExecutableMBSE_Context context = new ExecutableMBSE_Context( theRhpApp.getApplicationConnectionString() );
 		SwitchRhapsodyRequirementsToDNG theSwitcher = new SwitchRhapsodyRequirementsToDNG(context);
-		theSwitcher.switchRequirements();
+
+		IRPModelElement theSelectedEl = context.getSelectedElement( false );
+
+		if( theSelectedEl instanceof IRPPackage ) {
+			theSwitcher.switchRequirementsFor( (IRPPackage) theSelectedEl );
+		}
 	}
 
 	public SwitchRhapsodyRequirementsToDNG(
@@ -27,62 +33,117 @@ public class SwitchRhapsodyRequirementsToDNG {
 		_context = context;
 	}
 
-	public void switchRequirements(){
+	public void switchRequirementsFor( 
+			IRPPackage theRequirementsPkg ) {
 
-		IRPModelElement theSelectedEl = _context.getSelectedElement( false );
+		_assessment = new RemoteRequirementAssessment( _context );
 
-		//Logger.debug( "theSelectedEl is " + Logger.elementInfo(theSelectedEl)  );
+		List<IRPModelElement> theEls = new ArrayList<>();
+		theEls.add( theRequirementsPkg );
 
-		List<IRPRequirement> theRemoteReqts = _context.getRemoteRequirementsFor( theSelectedEl );
+		_assessment.determineRequirementsToUpdate( theEls );
 
-		if( theRemoteReqts.isEmpty() ){
+		boolean isContinue = true;
 
-			UserInterfaceHelper.showWarningDialog( "I was unable to find any remote requirements under " + 
-					_context.elInfo( theSelectedEl ) + "\n" +
-					"Did you log into the Remote Artefacts Package? \n"+ 
-					"You also need to establish OSLC links from " + 
-					_context.elInfo( theSelectedEl ) + " \n" +
-					"to the remote requirements you want to switch to.");
-		} else {
-			_context.debug( "Found " + theRemoteReqts.size() + 
-					" remote requirements related to " + 
-					_context.elInfo( theSelectedEl ) );
+		int unloadedLinkCount = _assessment._requirementsWithUnloadedHyperlinks.size();
+		int tracedReqtsCount = _assessment._requirementsThatTrace.size();
 
-			@SuppressWarnings("unchecked")
-			List<IRPRequirement> theReqts = theSelectedEl.getNestedElementsByMetaClass("Requirement", 1).toList();
+		if( unloadedLinkCount > 0 ) {
+			
+			if( tracedReqtsCount > 0 ){
+				
+				isContinue = UserInterfaceHelper.askAQuestion( 
+						"There are " + unloadedLinkCount + " unloaded links under " + theRequirementsPkg.getName() + "\n" + 
+						"You should make sure you've logged into the Remote Artefacts Package before proceeding \n\n" +
+						"Do you want to proceed anyway?" );
 
-			_context.debug( "Found " + theReqts.size() + " Rhapsody-owned requirements under " + _context.elInfo( theSelectedEl ) );
+				if( !isContinue ){
+					_context.debug( "User chose to cancel." ); 
+				}
+				
+			} else {
+				
+				String msg = "I was unable to find any requirements under " + theRequirementsPkg.getName() + " needing a switch. \n";
 
+				if( unloadedLinkCount == 1 ) {
+					msg += "However, there is " + unloadedLinkCount + " unloaded link related to a requirement under " + theRequirementsPkg.getName() + ". \n\n";
+				} else {
+					msg += "However, there are " + unloadedLinkCount + " unloaded links related to requirements under " + theRequirementsPkg.getName() + ". \n\n";
+				}
+
+				msg += "It's suggested to make sure you've logged into the Remote Artefacts Package and then try again.";
+
+				UserInterfaceHelper.showWarningDialog( msg );
+
+				isContinue = false;				
+			}
+			
+		} else if( tracedReqtsCount == 0 ){
+			
+			UserInterfaceHelper.showWarningDialog( "I was unable to find any requirements under " + 
+					theRequirementsPkg.getName() + " needing a switch. \n\n" +
+					"Did you run the establish trace relations command first "+ 
+					"to establish OSLC links to the remote requirements you want to switch to?");
+			
+			isContinue = false;				
+		}
+
+		if( isContinue ){
+			
+			_context.debug( "Found " + _assessment._remoteRequirementsThatTrace.size() + 
+						" remote requirements to switch under " + 
+						_context.elInfo( theRequirementsPkg ) );
+			
+			String msg = "";
+			
+			if( tracedReqtsCount == 1 ) {
+				msg += "There is " + tracedReqtsCount + " requirement under " + theRequirementsPkg.getName() + " with a link to a remote requirement. \n\n";
+				msg += "Do you want to proceed with switching it to a remote requirement?";
+
+			} else {
+				msg += "There are " + tracedReqtsCount + " requirements under " + theRequirementsPkg.getName() + " with links to remote requirements. \n\n";
+				msg += "Do you want to proceed with switching them to remote requirements?";
+			}
+			
+			isContinue = UserInterfaceHelper.askAQuestion( msg );
+
+			if( !isContinue ){
+				_context.debug( "User chose to cancel." ); 				
+			}
+			
+		}
+		
+		if( isContinue ){
+			
 			List<IRPModelElement> theProcessedReqts = new ArrayList<>();
 
-			for (IRPRequirement theReqt : theReqts) {
-
-				List<IRPRequirement> theMatches = _context.
-						getRequirementsThatMatch( theReqt, theRemoteReqts);
-
-				for (IRPRequirement theRemoteMatch : theMatches) {
-
-					switchGraphElsFor( theReqt, theRemoteMatch );					
-					theProcessedReqts.add( theReqt );
+			for( IRPRequirement reqtThatTraces : _assessment._requirementsThatTrace ) {
+				
+				List<IRPRequirement> theRemoteDependsOns = _context.getRemoteRequirementsFor( reqtThatTraces );
+				
+				if( theRemoteDependsOns.size() == 1 ) {
+					
+					IRPModelElement theRemoteDependsOn = theRemoteDependsOns.get( 0 );
+					switchGraphElsFor( reqtThatTraces, (IRPRequirement) theRemoteDependsOn );					
+					theProcessedReqts.add( reqtThatTraces );
 				}
 			}
 
-			@SuppressWarnings("unchecked")
-			List<IRPModelElement> theRemoteDependencies = 
-			theSelectedEl.getRemoteDependencies().toList();
-
 			if( theProcessedReqts.size() > 0 ){
+				
+				@SuppressWarnings("unchecked")
+				List<IRPModelElement> theRemoteDependencies = 
+						theRequirementsPkg.getRemoteDependencies().toList();
 
 				boolean answer = UserInterfaceHelper.askAQuestion( 
 						"Shall I delete the " + theProcessedReqts.size() + 
-						" requirements related to the " + theRemoteDependencies.size() + " remote dependencies " +
-						" that have been switched?" );
+						" local requirements that have been switched?" );
 
 				if( answer ){
 					deleteFromModel( theProcessedReqts );
 					deleteFromModel( theRemoteDependencies );
 				}
-			}		
+			}	
 		}
 	}
 
@@ -360,10 +421,10 @@ public class SwitchRhapsodyRequirementsToDNG {
 		String xTrgPosition = trgSplit[0];
 		String yTrgPosition = trgSplit[1];
 
-		_context.debug( "xSrcPosition = " + xSrcPosition );
-		_context.debug( "ySrcPosition = " + ySrcPosition );
-		_context.debug( "xTrgPosition = " + xTrgPosition );
-		_context.debug( "yTrgPosition = " + yTrgPosition );
+		//_context.debug( "xSrcPosition = " + xSrcPosition );
+		//_context.debug( "ySrcPosition = " + ySrcPosition );
+		//_context.debug( "xTrgPosition = " + xTrgPosition );
+		//_context.debug( "yTrgPosition = " + yTrgPosition );
 
 		IRPGraphElement theSourceGraphEl = basedOnGraphEdge.getSource();
 

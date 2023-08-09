@@ -81,8 +81,17 @@ public class EstablishTraceRelationsToRemotes {
 			int size = theDependencyMap.keySet().size();
 
 			if( size == 0 ){
-				UserInterfaceHelper.showInformationDialog( "No matches were found." );
-			} else {
+				
+				if( theReqts.isEmpty() ) {
+					
+					UserInterfaceHelper.showInformationDialog( "No requirements were found needing trace relations" );
+
+				} else if( theReqts.size() == 1 ){					
+					UserInterfaceHelper.showInformationDialog( "No matches were found for the 1 requirement needing a trace relation" );
+				} else {
+					UserInterfaceHelper.showInformationDialog( "No matches were found for the " + theReqts.size() + " requirements needing trace relations" );
+				}
+			} else { 
 				
 				String msg;
 				

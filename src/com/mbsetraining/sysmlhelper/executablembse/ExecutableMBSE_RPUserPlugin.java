@@ -363,10 +363,13 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.SwitchRequirementsToDOORSNG" ) ) ){
 
-					SwitchRhapsodyRequirementsToDNG theSwitcher = 
-							new SwitchRhapsodyRequirementsToDNG( _context );
+					if( theSelectedEl instanceof IRPPackage ) {
+						
+						SwitchRhapsodyRequirementsToDNG theSwitcher = 
+								new SwitchRhapsodyRequirementsToDNG( _context );
 
-					theSwitcher.switchRequirements();
+						theSwitcher.switchRequirementsFor( (IRPPackage) theSelectedEl );
+					}
 
 				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.EstablishTraceRelationsToDNG" ) ) ){
