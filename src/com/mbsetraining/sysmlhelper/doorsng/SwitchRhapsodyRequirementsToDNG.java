@@ -49,21 +49,23 @@ public class SwitchRhapsodyRequirementsToDNG {
 		int tracedReqtsCount = _assessment._requirementsThatTrace.size();
 
 		if( unloadedLinkCount > 0 ) {
-			
+
 			if( tracedReqtsCount > 0 ){
-				
+
 				isContinue = UserInterfaceHelper.askAQuestion( 
 						"There are " + unloadedLinkCount + " unloaded links under " + theRequirementsPkg.getName() + "\n" + 
-						"You should make sure you've logged into the Remote Artefacts Package before proceeding \n\n" +
+								"You should make sure you've logged into the Remote Artefacts Package before proceeding \n\n" +
 						"Do you want to proceed anyway?" );
 
 				if( !isContinue ){
 					_context.debug( "User chose to cancel." ); 
 				}
-				
+
 			} else {
-				
-				String msg = "I was unable to find any requirements under " + theRequirementsPkg.getName() + " needing a switch. \n";
+
+				String msg = "This helper works by looking for local requirements that have OSLC links to remote requirements. \n\n";
+
+				msg += "I was unable to find any requirements under " + theRequirementsPkg.getName() + " needing a switch. \n";
 
 				if( unloadedLinkCount == 1 ) {
 					msg += "However, there is " + unloadedLinkCount + " unloaded link related to a requirement under " + theRequirementsPkg.getName() + ". \n\n";
@@ -71,31 +73,32 @@ public class SwitchRhapsodyRequirementsToDNG {
 					msg += "However, there are " + unloadedLinkCount + " unloaded links related to requirements under " + theRequirementsPkg.getName() + ". \n\n";
 				}
 
-				msg += "It's suggested to make sure you've logged into the Remote Artefacts Package and then try again.";
+				msg += "It's suggested to make sure you've logged into the Remote Artefacts Package and then try again. \n";
+				msg += "You should also establish and check the trace relations to remote requirements. \n";
 
 				UserInterfaceHelper.showWarningDialog( msg );
 
 				isContinue = false;				
 			}
-			
+
 		} else if( tracedReqtsCount == 0 ){
-			
+
 			UserInterfaceHelper.showWarningDialog( "I was unable to find any requirements under " + 
 					theRequirementsPkg.getName() + " needing a switch. \n\n" +
 					"Did you run the establish trace relations command first "+ 
 					"to establish OSLC links to the remote requirements you want to switch to?");
-			
+
 			isContinue = false;				
 		}
 
 		if( isContinue ){
-			
+
 			_context.debug( "Found " + _assessment._remoteRequirementsThatTrace.size() + 
-						" remote requirements to switch under " + 
-						_context.elInfo( theRequirementsPkg ) );
-			
+					" remote requirements to switch under " + 
+					_context.elInfo( theRequirementsPkg ) );
+
 			String msg = "";
-			
+
 			if( tracedReqtsCount == 1 ) {
 				msg += "There is " + tracedReqtsCount + " local requirement under " + theRequirementsPkg.getName() + " with an OSLC link to a remote requirement. \n\n";
 				msg += "Do you want to proceed with switching it to its remote requirement counterpart? This will update all the diagrams  ";
@@ -106,25 +109,25 @@ public class SwitchRhapsodyRequirementsToDNG {
 				msg += "Do you want to proceed with switching them to their remote requirement counterparts? This will update all the diagrams ";
 				msg += "\nthey're on. After the switch you'll be given a choice whether to delete the local requirement(s).";
 			}
-			
+
 			isContinue = UserInterfaceHelper.askAQuestion( msg );
 
 			if( !isContinue ){
 				_context.debug( "User chose to cancel." ); 				
 			}
-			
+
 		}
-		
+
 		if( isContinue ){
-			
+
 			List<IRPModelElement> theProcessedReqts = new ArrayList<>();
 
 			for( IRPRequirement reqtThatTraces : _assessment._requirementsThatTrace ) {
-				
+
 				List<IRPRequirement> theRemoteDependsOns = _context.getRemoteRequirementsFor( reqtThatTraces );
-				
+
 				if( theRemoteDependsOns.size() == 1 ) {
-					
+
 					IRPModelElement theRemoteDependsOn = theRemoteDependsOns.get( 0 );
 					switchGraphElsFor( reqtThatTraces, (IRPRequirement) theRemoteDependsOn );					
 					theProcessedReqts.add( reqtThatTraces );
@@ -132,10 +135,10 @@ public class SwitchRhapsodyRequirementsToDNG {
 			}
 
 			if( theProcessedReqts.size() > 0 ){
-				
+
 				@SuppressWarnings("unchecked")
 				List<IRPModelElement> theRemoteDependencies = 
-						theRequirementsPkg.getRemoteDependencies().toList();
+				theRequirementsPkg.getRemoteDependencies().toList();
 
 				boolean answer = UserInterfaceHelper.askAQuestion( 
 						"Shall I delete the " + theProcessedReqts.size() + 
@@ -200,7 +203,8 @@ public class SwitchRhapsodyRequirementsToDNG {
 		} else if( _context.hasStereotypeCalled( "trace", thePreviousDependency ) ){
 
 			theRemoteDependency = _context.addRemoteDependency(
-					toRemoteReqt, theDependent, "Trace" );			
+					toRemoteReqt, theDependent, "Trace" );		
+
 		} else {
 			_context.debug( "Warning: No stereotype found on " + 
 					_context.elInfo( thePreviousDependency ) + " to " + 
@@ -254,8 +258,8 @@ public class SwitchRhapsodyRequirementsToDNG {
 				IRPCollection theGraphElsToRemove = _context.get_rhpApp().createNewCollection();
 
 				@SuppressWarnings("unchecked")
-				List<IRPGraphElement> theOriginalGraphEls = 
-				theDiagram.getCorrespondingGraphicElements( theReqt ).toList();
+				List<IRPGraphElement> theOriginalGraphEls = theDiagram.
+				getCorrespondingGraphicElements( theReqt ).toList();
 
 				Iterator<IRPGraphElement> i = theOriginalGraphEls.iterator();
 
@@ -440,28 +444,21 @@ public class SwitchRhapsodyRequirementsToDNG {
 					Integer.parseInt( yTrgPosition ) );
 
 		} else { // graph edge, hence no direct to populate
-			
-			IRPCollection theGraphElements = _context.get_rhpApp().createNewCollection();
 
-			theGraphElements.addGraphicalItem( theSourceGraphEl );
-			theGraphElements.addGraphicalItem( andRequirementGraphNode );
-
-			IRPCollection theRelationsCollection = _context.get_rhpApp().createNewCollection();
-			theRelationsCollection.setSize( 1 );
-			theRelationsCollection.setString( 1, "AllRelations" );
-
-			_context.debug( "Attempting to populate relations to " + 
+			_context.debug( "Attempting to complete relations to " + 
 					_context.elInfo( theSourceGraphEl.getModelObject() ) );
 
-			theDiagram.populateDiagram( theGraphElements, theRelationsCollection, "among" );
+			IRPCollection theGraphElements = _context.get_rhpApp().createNewCollection();
+			theGraphElements.addGraphicalItem( theSourceGraphEl );
+
+			theDiagram.completeRelations( theGraphElements, 1 );
 
 			@SuppressWarnings("unchecked")
-			List<IRPGraphElement> theCorrespondingGraphEls = theDiagram.
-				getCorrespondingGraphicElements( theNewDependency ).toList();
+			List<IRPGraphElement> theCorrespondingGraphEls = theDiagram.getCorrespondingGraphicElements( theNewDependency ).toList();
 
 			if( theCorrespondingGraphEls != null ){
-				_context.debug( "there are " + theCorrespondingGraphEls.size() + " graph elements related to " +
-						_context.elInfo( theNewDependency ) );
+				_context.debug( theCorrespondingGraphEls.size() + " graph elements related to " +
+						_context.elInfo( theNewDependency ) + " were populated on " + _context.elInfo( theDiagram ) );
 			}
 		}
 
