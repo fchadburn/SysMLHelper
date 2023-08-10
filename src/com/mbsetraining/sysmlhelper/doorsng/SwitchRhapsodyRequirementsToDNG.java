@@ -97,12 +97,14 @@ public class SwitchRhapsodyRequirementsToDNG {
 			String msg = "";
 			
 			if( tracedReqtsCount == 1 ) {
-				msg += "There is " + tracedReqtsCount + " requirement under " + theRequirementsPkg.getName() + " with a link to a remote requirement. \n\n";
-				msg += "Do you want to proceed with switching it to a remote requirement?";
+				msg += "There is " + tracedReqtsCount + " local requirement under " + theRequirementsPkg.getName() + " with an OSLC link to a remote requirement. \n\n";
+				msg += "Do you want to proceed with switching it to its remote requirement counterpart? This will update all the diagrams  ";
+				msg += "\nit's on. After the switch you'll be given a choice whether to delete the local requirement(s).";
 
 			} else {
-				msg += "There are " + tracedReqtsCount + " requirements under " + theRequirementsPkg.getName() + " with links to remote requirements. \n\n";
-				msg += "Do you want to proceed with switching them to remote requirements?";
+				msg += "There are " + tracedReqtsCount + " local requirements under " + theRequirementsPkg.getName() + " with OSLC links to remote requirements. \n\n";
+				msg += "Do you want to proceed with switching them to their remote requirement counterparts? This will update all the diagrams ";
+				msg += "\nthey're on. After the switch you'll be given a choice whether to delete the local requirement(s).";
 			}
 			
 			isContinue = UserInterfaceHelper.askAQuestion( msg );
@@ -226,7 +228,7 @@ public class SwitchRhapsodyRequirementsToDNG {
 		Map<IRPDependency,IRPDependency> theDependencyMap = new HashMap<>();  
 		List<IRPDependency> unmappedDependencies = new ArrayList<>();  
 
-		for (IRPDependency theExistingDependency : theExistingDependencies) {
+		for( IRPDependency theExistingDependency : theExistingDependencies ){
 
 			IRPDependency theRemoteDependency = 
 					createRemoteDependencyBasedOn( 
@@ -275,8 +277,7 @@ public class SwitchRhapsodyRequirementsToDNG {
 						IRPModelElement theOldDependency = 
 								theOriginalConnectedEdge.getModelObject();
 
-						if( theOldDependency != null && 
-								theOldDependency instanceof IRPDependency ){
+						if( theOldDependency instanceof IRPDependency ){
 
 							IRPDependency theNewDependency = theDependencyMap.get( theOldDependency );
 
@@ -366,10 +367,10 @@ public class SwitchRhapsodyRequirementsToDNG {
 		String xPosition = split[0];
 		String yPosition = split[1];
 
-		_context.debug( "theHeight = " + nHeight );
-		_context.debug( "theWidth = " + nWidth );
-		_context.debug( "xPos = " + xPosition );
-		_context.debug( "yPos = " + yPosition );
+		//_context.debug( "theHeight = " + nHeight );
+		//_context.debug( "theWidth = " + nWidth );
+		//_context.debug( "xPos = " + xPosition );
+		//_context.debug( "yPos = " + yPosition );
 
 		IRPGraphNode theNode = theDiagram.addNewNodeForElement(
 				toModelEl, 
@@ -397,20 +398,19 @@ public class SwitchRhapsodyRequirementsToDNG {
 				" to " + _context.elInfo( theNewDependency ) );
 
 		/*
-		@SuppressWarnings("unchecked")
-		List<IRPGraphicalProperty> theGraphProperties =
-				basedOnGraphEdge.getAllGraphicalProperties().toList();
+		 * @SuppressWarnings("unchecked") List<IRPGraphicalProperty> theGraphProperties
+		 * = basedOnGraphEdge.getAllGraphicalProperties().toList();
+		 * 
+		 * for( IRPGraphicalProperty theGraphProperty : theGraphProperties ){
+		 * 
+		 * String theKey = theGraphProperty.getKey(); String theValue =
+		 * theGraphProperty.getValue();
+		 * 
+		 * _context.debug( theKey + " = " + theValue ); }
+		 */
 
-		for( IRPGraphicalProperty theGraphProperty : theGraphProperties ){
-
-			String theKey = theGraphProperty.getKey();
-			String theValue = theGraphProperty.getValue();
-
-			_context.debug( theKey + " = " + theValue );
-		}*/
-
-		String srcPosition = basedOnGraphEdge.getGraphicalProperty("SourcePosition").getValue();
-		String trgPosition = basedOnGraphEdge.getGraphicalProperty("TargetPosition").getValue();
+		String srcPosition = basedOnGraphEdge.getGraphicalProperty( "SourcePosition" ).getValue();
+		String trgPosition = basedOnGraphEdge.getGraphicalProperty( "TargetPosition" ).getValue();
 
 		String srcSplit[] = srcPosition.split(",");
 		String trgSplit[] = trgPosition.split(",");
@@ -439,24 +439,25 @@ public class SwitchRhapsodyRequirementsToDNG {
 					Integer.parseInt( xTrgPosition ), 
 					Integer.parseInt( yTrgPosition ) );
 
-		} else {
+		} else { // graph edge, hence no direct to populate
+			
 			IRPCollection theGraphElements = _context.get_rhpApp().createNewCollection();
 
-			theGraphElements.addGraphicalItem(theSourceGraphEl);
-			theGraphElements.addGraphicalItem(andRequirementGraphNode);
+			theGraphElements.addGraphicalItem( theSourceGraphEl );
+			theGraphElements.addGraphicalItem( andRequirementGraphNode );
 
 			IRPCollection theRelationsCollection = _context.get_rhpApp().createNewCollection();
 			theRelationsCollection.setSize( 1 );
 			theRelationsCollection.setString( 1, "AllRelations" );
 
-			_context.debug("Attempting to populate relations to " + 
+			_context.debug( "Attempting to populate relations to " + 
 					_context.elInfo( theSourceGraphEl.getModelObject() ) );
 
 			theDiagram.populateDiagram( theGraphElements, theRelationsCollection, "among" );
 
 			@SuppressWarnings("unchecked")
-			List<IRPGraphElement> theCorrespondingGraphEls =
-			theDiagram.getCorrespondingGraphicElements(theNewDependency).toList();
+			List<IRPGraphElement> theCorrespondingGraphEls = theDiagram.
+				getCorrespondingGraphicElements( theNewDependency ).toList();
 
 			if( theCorrespondingGraphEls != null ){
 				_context.debug( "there are " + theCorrespondingGraphEls.size() + " graph elements related to " +

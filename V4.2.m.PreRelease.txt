@@ -915,9 +915,9 @@ V4.2.m.Rhp831.PreRelease (XX-XXX-XXXX):
 0684 08-AUG-2023: ExecutableMBSE: Added ability to automatically create/apply stereotype during requirements package creation based on a stereotype name property (F.J.Chadburn)
 0685 08-AUG-2023: ExecutableMBSE: Added ability to specify pink/green format template for new stereotypes created during requirements package creation based on a property (F.J.Chadburn)
 0686 09-AUG-2023: ExecutableMBSE: Switch 'Switch requirements to DOORS NG' command to use previously establish traced dependencies so it's more integrated into workflow (F.J.Chadburn) 
+0687 10-AUG-2023: ExecutableMBSE: Fix category name of plural 'Table View - Surrogate Remote Requirement Traceability Report' table views (F.J.Chadburn)
 
 Backlog/Known issues
-- Category name of surrogate table is wrong
 - Parent binding
 - Update name
 - Control flow in 9.0.1 activity diagrams template check
