@@ -3420,6 +3420,29 @@ public abstract class BaseContext {
 		return theMatchingReqts;
 	}
 	
+	public List<IRPHyperLink> getUnloadedLinksFor( 
+			IRPModelElement theEl ){
+
+		List<IRPHyperLink> theUnloadedLinks = new ArrayList<>();
+
+		List<IRPModelElement> theRemoteDependsOns = getRemoteDependsOnFor( theEl );
+
+		if( theRemoteDependsOns.isEmpty() ) {
+
+			//debug( "getUnloadedLinksFor found " + elInfo( theEl ) + "'s got no oslc links");
+		} else {
+
+			for( IRPModelElement theRemoteDependsOn : theRemoteDependsOns ){
+
+				if( theRemoteDependsOn instanceof IRPHyperLink ) {
+					theUnloadedLinks.add( (IRPHyperLink) theRemoteDependsOn );
+				}
+			}
+		}
+
+		return theUnloadedLinks;
+	}
+	
 	public String determineRequirementNameBasedOn(
 			String theRemoteName, 
 			String theRemoteID ){

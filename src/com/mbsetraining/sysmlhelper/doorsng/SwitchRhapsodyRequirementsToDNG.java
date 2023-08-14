@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
@@ -122,16 +124,13 @@ public class SwitchRhapsodyRequirementsToDNG {
 
 			List<IRPModelElement> theProcessedReqts = new ArrayList<>();
 
-			for( IRPRequirement reqtThatTraces : _assessment._requirementsThatTrace ) {
+			for( Entry<IRPRequirement, IRPRequirement> entry : _assessment._requirementsThatTrace.entrySet() ){
+				
+				IRPRequirement theLocalReqt = entry.getKey();
+				IRPRequirement theRemoteReqt = entry.getValue();
 
-				List<IRPRequirement> theRemoteDependsOns = _context.getRemoteRequirementsFor( reqtThatTraces );
-
-				if( theRemoteDependsOns.size() == 1 ) {
-
-					IRPModelElement theRemoteDependsOn = theRemoteDependsOns.get( 0 );
-					switchGraphElsFor( reqtThatTraces, (IRPRequirement) theRemoteDependsOn );					
-					theProcessedReqts.add( reqtThatTraces );
-				}
+				switchGraphElsFor( theLocalReqt, theRemoteReqt );					
+				theProcessedReqts.add( theLocalReqt );
 			}
 
 			if( theProcessedReqts.size() > 0 ){

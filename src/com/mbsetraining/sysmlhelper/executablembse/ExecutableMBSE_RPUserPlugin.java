@@ -26,6 +26,7 @@ import com.mbsetraining.sysmlhelper.doorsng.EstablishTraceRelationsToRemotes;
 import com.mbsetraining.sysmlhelper.doorsng.ExportRequirementsToCSV;
 import com.mbsetraining.sysmlhelper.doorsng.RepairLinks;
 import com.mbsetraining.sysmlhelper.doorsng.SwitchRhapsodyRequirementsToDNG;
+import com.mbsetraining.sysmlhelper.doorsng.SynchronizeLinksBasedOnSurrogate;
 import com.mbsetraining.sysmlhelper.doorsng.UpdateSurrogateRequirementsPanel;
 import com.mbsetraining.sysmlhelper.eventdeletor.EventDeletor;
 import com.mbsetraining.sysmlhelper.executablescenariopackage.CreateFunctionalExecutablePackagePanel;
@@ -383,6 +384,17 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						"executablembseplugin.UpdateSurrogateBasedOnRemoteRequirementChanges" ) ) ){
 
 					UpdateSurrogateRequirementsPanel.launchThePanel( theAppID );
+					
+				} else if( menuItem.equals( _settings.getString( 
+						"executablembseplugin.SynchronizeLinksBasedOnSurrogate" ) ) ){
+
+					if( theSelectedEl instanceof IRPPackage ) {
+						
+						SynchronizeLinksBasedOnSurrogate theSynchronizer = 
+								new SynchronizeLinksBasedOnSurrogate( _context );
+						
+						theSynchronizer.synchronizeLinksFromLocalToRemote( (IRPPackage) theSelectedEl );	
+					}
 					
 				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.StartLinkMenu" ) ) ){

@@ -1,5 +1,7 @@
 package com.mbsetraining.sysmlhelper.doorsng;
 
+import java.util.List;
+
 import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.telelogic.rhapsody.core.*;
 
@@ -24,7 +26,7 @@ public class LinkInfo {
 	
 	public String getInfo(){
 		
-		return _type + " needed from " + 
+		return _type + " from " + 
 				_context.elInfo( _sourceEl ) + 
 				" to " + _context.elInfo( _targetEl );
 	}
@@ -34,6 +36,17 @@ public class LinkInfo {
 		addRemoteDependency( _targetEl, _sourceEl, _type );
 	}
 	
+	public void deleteLink(){
+		
+		List<IRPDependency> theExistingDependencies = _context.
+				getExistingStereotypedDependencies( _sourceEl, _targetEl, _type );
+
+		for( IRPDependency theDependency : theExistingDependencies ){
+			theDependency.deleteFromProject();
+		}
+	}
+	
+	// "Derives From", "Refines", "Satisfies", and "Trace".
 	private IRPDependency addRemoteDependency(
 			IRPRequirement toRemoteReqt,
 			IRPModelElement theDependent,
@@ -57,10 +70,29 @@ public class LinkInfo {
 
 		return theRemoteDependency;
 	}
+	
+	public void dumpInfo() {
+		
+		_context.info( getInfo() );
+	}
+	
+	public boolean isEquivalentTo( 
+			LinkInfo theLinkInfo ) {
+		
+		boolean isEquivalentTo = false;
+		
+		if( _sourceEl.equals( theLinkInfo._sourceEl ) &&
+				_type.equals( theLinkInfo._type ) ){
+			
+			isEquivalentTo = true;
+		}
+		
+		return isEquivalentTo;
+	}
 }
 
 /**
- * Copyright (C) 2022  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2022-2023  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

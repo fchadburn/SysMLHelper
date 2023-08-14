@@ -21,7 +21,7 @@ public class RemoteRequirementAssessment {
 	protected List<IRPRequirement> _requirementsThatMatch = new ArrayList<IRPRequirement>();
 	protected List<IRPRequirement> _requirementsWithNoLinks = new ArrayList<IRPRequirement>();
 	protected List<IRPRequirement> _requirementsWithUnloadedHyperlinks = new ArrayList<IRPRequirement>();
-	protected List<IRPRequirement> _requirementsThatTrace = new ArrayList<IRPRequirement>();
+	protected Map<IRPRequirement, IRPRequirement> _requirementsThatTrace = new HashMap<IRPRequirement,IRPRequirement>();
 	protected List<IRPRequirement> _remoteRequirementsThatTrace = new ArrayList<IRPRequirement>();
 	protected List<IRPRequirement> _remoteRequirementsThatDontTrace = new ArrayList<IRPRequirement>();
 	protected Map<IRPRequirement, List<IRPRequirement>> _remoteRequirementsToEstablishTraceTo = new HashMap<>();  
@@ -156,8 +156,10 @@ public class RemoteRequirementAssessment {
 
 				if( theRemoteDependsOn instanceof IRPRequirement ){
 
-					_remoteRequirementsThatTrace.add( (IRPRequirement) theRemoteDependsOn );
-					_requirementsThatTrace.add( theRequirement );
+					IRPRequirement theRemoteReqt = (IRPRequirement) theRemoteDependsOn;
+					
+					_remoteRequirementsThatTrace.add( theRemoteReqt );
+					_requirementsThatTrace.put( theRequirement, theRemoteReqt );
 
 					IRPRequirement theOSLCRequirement = (IRPRequirement)theRemoteDependsOn;
 

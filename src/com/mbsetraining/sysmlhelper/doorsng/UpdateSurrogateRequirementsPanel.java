@@ -161,29 +161,6 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 		}
 	}
 
-	private List<IRPHyperLink> getUnloadedLinksFor( 
-			IRPModelElement theEl ){
-
-		List<IRPHyperLink> theUnloadedLinks = new ArrayList<>();
-
-		List<IRPModelElement> theRemoteDependsOns = _context.getRemoteDependsOnFor( theEl );
-
-		if( theRemoteDependsOns.isEmpty() ) {
-
-			_context.debug( "getUnloadedLinksFor found " + _context.elInfo( theEl ) + "'s got no oslc links");
-		} else {
-
-			for( IRPModelElement theRemoteDependsOn : theRemoteDependsOns ){
-
-				if( theRemoteDependsOn instanceof IRPHyperLink ) {
-					theUnloadedLinks.add( (IRPHyperLink) theRemoteDependsOn );
-				}
-			}
-		}
-
-		return theUnloadedLinks;
-	}
-
 	private Box createRequirementsToUpdateSpecBox() {
 
 		Box theBox = Box.createVerticalBox();
@@ -192,6 +169,21 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 
 		Component theStartLabel;
 
+		String msg = createUpdateMessage();
+
+		theStartLabel = createPanelWithTextCentered( msg );
+
+		theBox.add( theStartLabel );
+
+		if( _assessment._requirementsToUpdateSpec.size() > 0 ) {
+			theBox.add( theScrollPane );
+		}
+
+		return theBox;
+	}
+
+	private String createUpdateMessage() {
+		
 		String msg = "";
 
 		if( _assessment._requirementsToUpdateSpec.size() == 0 ) {
@@ -215,23 +207,15 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 		int unloadedReqtsCount = _assessment._requirementsWithUnloadedHyperlinks.size();
 
 		if( _owningPkg instanceof IRPPackage ) {
-			unloadedReqtsCount += getUnloadedLinksFor( _owningPkg ).size();
+			unloadedReqtsCount += _context.getUnloadedLinksFor( _owningPkg ).size();
 		}
 
 		if( unloadedReqtsCount > 0 ) {
 			msg += "\n\nHowever, there are " + unloadedReqtsCount + " unloaded links on the requirements or the package. \n";
 			msg += "It is strongly recommended to resolve these before proceeding";
 		}
-
-		theStartLabel = createPanelWithTextCentered( msg );
-
-		theBox.add( theStartLabel );
-
-		if( _assessment._requirementsToUpdateSpec.size() > 0 ) {
-			theBox.add( theScrollPane );
-		}
-
-		return theBox;
+		
+		return msg;
 	}
 	
 	private Box createRequirementsToUpdateNameBox() {

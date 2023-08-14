@@ -918,7 +918,11 @@ V4.2.m.Rhp831.PreRelease (10-AUG-2023):
 0687 10-AUG-2023: ExecutableMBSE: Fix category name of plural 'Table View - Surrogate Remote Requirement Traceability Report' table views (F.J.Chadburn)
 0688 10-AUG-2023: ExecutableMBSE: Fixed 'Switch Rhapsody Requirements To DNG' to use complete relations rather than populate to remove issues with activity diagram layout changes (F.J.Chadburn)
 
+V4.2.n.Rhp831.PreRelease (XX-XXX-XXXX): TBD
+0689 14-AUG-2023: ExecutableMBSE: First implementation of 'Synchronise remote links based on local surrogate traceability' menu to provide visibility of traceability in DOORS NG (F.J.Chadburn)
+
 Backlog/Known issues
+- Switch master the other way!
 - Parent binding
 - Control flow in 9.0.1 activity diagrams template check
 - Further testing needed with dependency helper and new terms
