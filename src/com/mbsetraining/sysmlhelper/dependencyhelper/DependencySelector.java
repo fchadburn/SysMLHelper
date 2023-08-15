@@ -41,93 +41,107 @@ public class DependencySelector {
 	public void populateDependsOnElementsFor( 
 			IRPGraphElement theGraphEl ){
 
-		IRPModelElement theModelEl = theGraphEl.getModelObject();
-		IRPDiagram theDiagram = theGraphEl.getDiagram();
-		List<String> theStereotypeNames = new ArrayList<>();
+		if( theGraphEl == null ) {
 
-		@SuppressWarnings("unchecked")
-		List<IRPDependency> theDependencies = theModelEl.getNestedElementsByMetaClass( "Dependency", 0 ).toList();
-
-		for( IRPDependency theDependency : theDependencies ){
+			UserInterfaceHelper.showWarningDialog( 
+					"This only works when you select a graph element on a diagram." );
+		} else {
+			IRPModelElement theModelEl = theGraphEl.getModelObject();
+			IRPDiagram theDiagram = theGraphEl.getDiagram();
+			List<String> theStereotypeNames = new ArrayList<>();
 
 			@SuppressWarnings("unchecked")
-			List<IRPGraphElement> theGraphEls = 
-			theDiagram.getCorrespondingGraphicElements( theDependency ).toList();
+			List<IRPDependency> theDependencies = theModelEl.getNestedElementsByMetaClass( "Dependency", 0 ).toList();
 
-			if( theGraphEls.isEmpty() ) {
-				harvestStereotypeNamesFor( theDependency, theStereotypeNames );
-			}			
-		}
+			for( IRPDependency theDependency : theDependencies ){
 
-		if( theStereotypeNames.isEmpty() ) {
+				@SuppressWarnings("unchecked")
+				List<IRPGraphElement> theGraphEls = 
+				theDiagram.getCorrespondingGraphicElements( theDependency ).toList();
 
-			UserInterfaceHelper.showInformationDialog( 
-					"No unpopulated dependencies found for \n" + _context.elInfo( theModelEl ) );
+				if( theGraphEls.isEmpty() ) {
+					harvestStereotypeNamesFor( theDependency, theStereotypeNames );
+				}			
+			}
 
-		} else {	
-			theStereotypeNames.add( ALL_CHOICE );
+			if( theStereotypeNames.isEmpty() ) {
 
-			Object[] options = theStereotypeNames.toArray();
+				UserInterfaceHelper.showInformationDialog( 
+						"No unpopulated dependencies found for \n" + _context.elInfo( theModelEl ) );
 
-			String selection = (String) JOptionPane.showInputDialog(
-					null,
-					"Choose relation",
-					"Populate on diagram, if not present",
-					JOptionPane.QUESTION_MESSAGE,
-					null,
-					options,
-					options[0]);
+			} else {	
+				theStereotypeNames.add( ALL_CHOICE );
 
-			populateDependsOnElementsFor( theGraphEl, selection );
+				Object[] options = theStereotypeNames.toArray();
+
+				String selection = (String) JOptionPane.showInputDialog(
+						null,
+						"Choose relation",
+						"Populate on diagram, if not present",
+						JOptionPane.QUESTION_MESSAGE,
+						null,
+						options,
+						options[0]);
+
+				populateDependsOnElementsFor( theGraphEl, selection );
+			}
 		}
 	}
 
 	public void populateDependentElementsFor( 
 			IRPGraphElement theGraphEl ){
 
-		IRPModelElement theModelEl = theGraphEl.getModelObject();
-		IRPDiagram theDiagram = theGraphEl.getDiagram();
-		List<String> theStereotypeNames = new ArrayList<>();
+		if( theGraphEl == null ) {
+			
+			UserInterfaceHelper.showWarningDialog( 
+					"This only works when you select a graph element on a diagram." );
+			
+		} else {
+			
+			IRPModelElement theModelEl = theGraphEl.getModelObject();
+			IRPDiagram theDiagram = theGraphEl.getDiagram();
+			List<String> theStereotypeNames = new ArrayList<>();
 
-		@SuppressWarnings("unchecked")
-		List<IRPModelElement> theReferences = theModelEl.getReferences().toList();
+			@SuppressWarnings("unchecked")
+			List<IRPModelElement> theReferences = theModelEl.getReferences().toList();
 
-		for( IRPModelElement theReference : theReferences ){
+			for( IRPModelElement theReference : theReferences ){
 
-			if( theReference instanceof IRPDependency ) {
+				if( theReference instanceof IRPDependency ) {
 
-				IRPDependency theDependency = (IRPDependency) theReference;
-				
-				@SuppressWarnings("unchecked")
-				List<IRPGraphElement> theGraphEls = 
-				theDiagram.getCorrespondingGraphicElements( theReference ).toList();
+					IRPDependency theDependency = (IRPDependency) theReference;
 
-				if( theGraphEls.isEmpty() ) {
-					harvestStereotypeNamesFor( theDependency, theStereotypeNames );					
+					@SuppressWarnings("unchecked")
+					List<IRPGraphElement> theGraphEls = 
+					theDiagram.getCorrespondingGraphicElements( theReference ).toList();
+
+					if( theGraphEls.isEmpty() ) {
+						harvestStereotypeNamesFor( theDependency, theStereotypeNames );					
+					}
 				}
 			}
-		}
 
-		if( theStereotypeNames.isEmpty() ) {
+			if( theStereotypeNames.isEmpty() ) {
 
-			UserInterfaceHelper.showInformationDialog( 
-					"No unpopulated dependencies found for \n" + _context.elInfo( theModelEl ) );
+				UserInterfaceHelper.showInformationDialog( 
+						"No unpopulated dependencies found for \n" + _context.elInfo( theModelEl ) );
 
-		} else {	
-			theStereotypeNames.add( ALL_CHOICE );
+			} else {	
+				theStereotypeNames.add( ALL_CHOICE );
 
-			Object[] options = theStereotypeNames.toArray();
+				Object[] options = theStereotypeNames.toArray();
 
-			String selection = (String) JOptionPane.showInputDialog(
-					null,
-					"Choose relation",
-					"Populate on diagram, if not present",
-					JOptionPane.QUESTION_MESSAGE,
-					null,
-					options,
-					options[0]);
+				String selection = (String) JOptionPane.showInputDialog(
+						null,
+						"Choose relation",
+						"Populate on diagram, if not present",
+						JOptionPane.QUESTION_MESSAGE,
+						null,
+						options,
+						options[0]);
 
-			populateDependentElementsFor( theGraphEl, selection );
+				populateDependentElementsFor( theGraphEl, selection );
+			}
 		}
 	}
 
@@ -285,9 +299,9 @@ public class DependencySelector {
 	private void populateElsNotOnDiagram(
 			IRPGraphElement theGraphEl, 
 			Set<IRPModelElement> theCandidateEls ){
-		
+
 		IRPDiagram theDiagram = theGraphEl.getDiagram();
-		
+
 		GraphElInfo theNodeInfo = new GraphElInfo( theGraphEl, _context );
 
 		List<IRPModelElement> theMissingEls = getElsNotOnDiagram( theDiagram, theCandidateEls );
@@ -305,7 +319,7 @@ public class DependencySelector {
 		for( IRPModelElement theMissingEl : theMissingEls ){
 
 			IRPGraphNode theGraphNode = null;
-			
+
 			try {
 				theGraphNode = theDiagram.addNewNodeForElement( theMissingEl, x, y, 50, 50 );
 
@@ -315,7 +329,7 @@ public class DependencySelector {
 			}
 
 			if( theGraphNode != null ){
-				
+
 				GraphNodeResizer theResizer = new GraphNodeResizer( theGraphNode, _context );
 				theResizer.performResizing();
 

@@ -922,6 +922,7 @@ V4.2.n.Rhp831.PreRelease (XX-XXX-XXXX): TBD
 0689 14-AUG-2023: ExecutableMBSE: First implementation of 'Synchronise remote links based on local surrogate traceability' menu to provide visibility of traceability in DOORS NG (F.J.Chadburn)
 0690 15-AUG-2023: ExecutableMBSE: Refined 'Synchronise remote links...' to provide a bit more information and use a set rather than list so that duplicate links on local are ignored (F.J.Chadburn)
 0691 15-AUG-2023: ExecutableMBSE: Added check so that only legal OSLC types are considered in the 'Synchronise remote links...' menu option (F.J.Chadburn)
+0692 15-AUG-2023: ExecutableMBSE: Added check to populate depends on and dependent elements helpers to warn user that they need to select a diagram element if one is not selected (F.J.Chadburn)
 
 Backlog/Known issues
 - Switch master the other way!
