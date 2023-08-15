@@ -1,16 +1,22 @@
 package com.mbsetraining.sysmlhelper.doorsng;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.mbsetraining.sysmlhelper.common.BaseContext;
 import com.telelogic.rhapsody.core.*;
 
 public class LinkInfo {
 
-	BaseContext _context;
-	IRPModelElement _sourceEl;
-	IRPRequirement _targetEl;
-	String _type;
+	// @param linkType - one of the link types available with the requirement tool that you are using. 
+	public static Set<String> LEGAL_OSLC_TYPES = new HashSet<>(Arrays.asList( "Derivation", "Refinement", "Satisfaction", "Trace" ) );
+	
+	protected BaseContext _context;
+	protected IRPModelElement _sourceEl;
+	protected IRPRequirement _targetEl;
+	protected String _type;
 	
 	public LinkInfo(
 			IRPModelElement sourceEl,

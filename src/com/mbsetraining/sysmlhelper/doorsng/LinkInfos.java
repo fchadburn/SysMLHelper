@@ -15,7 +15,7 @@ public class LinkInfos extends HashSet<LinkInfo> {
 	 * 
 	 */
 	private static final long serialVersionUID = 4672140081964785445L;
-	
+
 	private ExecutableMBSE_Context _context;
 	private boolean _isIncludeReqtToReqt;
 	private boolean _isIncludePkgToReqt;
@@ -25,75 +25,97 @@ public class LinkInfos extends HashSet<LinkInfo> {
 			boolean isIncludeReqtToReqt,
 			boolean isIncludePkgToReqt,
 			ExecutableMBSE_Context context ) {
-		
+
 		_context = context;
 		_isIncludeReqtToReqt = isIncludeReqtToReqt;
 		_isIncludePkgToReqt = isIncludePkgToReqt;
-		
+
 		addLinkInfosFor( theRequirement );
 	}
-	
+
 	public LinkInfos( 
 			boolean isIncludeReqtToReqt,
 			boolean isIncludePkgToReqt,
 			ExecutableMBSE_Context context ) {
-		
+
 		_context = context;
 		_isIncludeReqtToReqt = isIncludeReqtToReqt;
 		_isIncludePkgToReqt = isIncludePkgToReqt;
 	}
-	
+
+	private String getLinkTypeFor(
+			IRPDependency theDependency ) {
+
+		String theLinkType = theDependency.getUserDefinedMetaClass();
+
+		if( theLinkType.equals( "Dependency" ) ){
+
+			if( _context.hasStereotypeCalled( "trace", theDependency ) ) {
+				theLinkType = "Trace";
+			}
+		}
+
+		return theLinkType;
+	}
+
 	public void addLinkInfosFor( 
 			IRPRequirement theRequirement ) {
-				
+
 		@SuppressWarnings("unchecked")
 		List<IRPModelElement> theReferences = theRequirement.getReferences().toList();
-		
+
 		for( IRPModelElement theReference : theReferences ){
-			
+
 			if( theReference instanceof IRPDependency ) {
-				
-				IRPModelElement theDependent = ((IRPDependency) theReference).getDependent();
-				//_context.info( _context.elInfo( theReference ) + " is a Dependency reference from " + _context.elInfo( theDependent ) );
-				
-				String theType = theReference.getUserDefinedMetaClass();
-				
+
+				IRPDependency theDependency = (IRPDependency) theReference;
+
+				IRPModelElement theDependent = theDependency.getDependent();
+				//_context.info( _context.elInfo( theDependency ) + " is a Dependency reference from " + _context.elInfo( theDependent ) );
+
+				String theType = getLinkTypeFor( theDependency );
+
 				if( !_isIncludeReqtToReqt && 
 						theDependent instanceof IRPRequirement ){
-					
+
 					_context.debug( "Ignoring " +  _context.elInfo( theReference ) + " from " + _context.elInfo( theDependent ) );
 
 				} else if( !_isIncludePkgToReqt && 
 						theDependent instanceof IRPPackage ){
-					
+
 					_context.debug( "Ignoring " +  _context.elInfo( theReference ) + " from " + _context.elInfo( theDependent ) );
+					
+				} else if( !LinkInfo.LEGAL_OSLC_TYPES.contains( theType ) ) {
+
+					theReference.highLightElement();
+					_context.warning( "Ignoring " +  _context.elInfo( theReference ) + " from " + _context.elInfo( theDependent ) + " as not a legal OSLC type" );
 
 				} else {
-					
+
 					LinkInfo theLinkInfo = new LinkInfo( theDependent, theRequirement, theType, _context );					
 					this.add( theLinkInfo );
 				}
 			}
 		}
 	}
-	
+
 	public boolean isEquivalentPresentFor( 
 			LinkInfo theLinkInfo ) {
-		
+
 		boolean isEquivalentPresent = false;
-		
+
 		for( LinkInfo theCandidateLinkInfo : this ){
-						
+
 			if( theCandidateLinkInfo.isEquivalentTo( theLinkInfo ) ) {
 				isEquivalentPresent = true;
 			}
 		}
-		
+
 		return isEquivalentPresent;
 	}
-	
+
 	public void dumpInfo() {
-		
+
 		for( LinkInfo theLinkInfo : this ){
 			theLinkInfo.dumpInfo();
 		}
@@ -117,4 +139,4 @@ public class LinkInfos extends HashSet<LinkInfo> {
 
     You should have received a copy of the GNU General Public License
     along with SysMLHelperPlugin.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
