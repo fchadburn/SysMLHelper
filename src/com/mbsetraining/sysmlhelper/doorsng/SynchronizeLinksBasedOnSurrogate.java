@@ -1,9 +1,7 @@
 package com.mbsetraining.sysmlhelper.doorsng;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
 
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
@@ -18,10 +16,11 @@ public class SynchronizeLinksBasedOnSurrogate {
 
 	protected ExecutableMBSE_Context _context;
 	protected RemoteRequirementAssessment _assessment;
+	protected int _linksFoundOnLocal = 0;
 	protected int _linksToAddCount = 0;
 	protected int _linksToDeleteCount = 0;
-	protected Map<IRPRequirement, List<LinkInfo>> _linksNotNeededOnRemote = new HashMap<>();
-	protected Map<IRPRequirement, List<LinkInfo>> _linksMissingOnRemote = new HashMap<>();
+	protected RequirementToLinkInfosMap _linksNotNeededOnRemote;
+	protected RequirementToLinkInfosMap _linksMissingOnRemote;
 	
 	// testing only
 	public static void main(String[] args) {
@@ -95,18 +94,20 @@ public class SynchronizeLinksBasedOnSurrogate {
 			
 			determineMissingAndToBeDeletedLinks();
 			
+			msg += _linksFoundOnLocal + " link(s) were checked. \n";
+			
 			if( _linksToAddCount == 0 && _linksToDeleteCount == 0 ) {
-				msg += "No links were found that needed to be synchronized. \n";
+				msg += "No links to remotes were found that needed to be synchronized (i.e. added or deleted). \n";
 				
 				UserInterfaceHelper.showInformationDialog( msg );
 			} else {
-				
+								
 				if( _linksToAddCount > 0 ) {
-					msg += _linksToAddCount + " links to local were found to add that are not present on the remote. \n";
+					msg += _linksToAddCount + " link(s) to local were found to add that are not present on the remote. \n";
 				}
 				
 				if( _linksToDeleteCount > 0 ) {
-					msg += _linksToDeleteCount + " links to remote were found to delete that are not present on the local. \n";
+					msg += _linksToDeleteCount + " link(s) to remote were found to delete that are not present on the local. \n";
 				}
 				
 				msg += "Do you want to proceed with synchronizing links?";
@@ -120,6 +121,9 @@ public class SynchronizeLinksBasedOnSurrogate {
 					
 				} else {
 					_context.info( "User chose to cancel" );
+					
+					_context.info( _linksToAddCount + " missing remote requirement links were found that need creating:" );	
+					_linksMissingOnRemote.dumpInfo();
 				}
 			}
 		}
@@ -127,6 +131,10 @@ public class SynchronizeLinksBasedOnSurrogate {
 
 	private void determineMissingAndToBeDeletedLinks() {
 
+		_linksMissingOnRemote = new RequirementToLinkInfosMap( _context );
+		_linksNotNeededOnRemote = new RequirementToLinkInfosMap( _context );
+		_linksFoundOnLocal = 0;
+		
 		for( Entry<IRPRequirement, IRPRequirement> entry : _assessment._requirementsThatTrace.entrySet() ){
 			
 			IRPRequirement theLocalReqt = entry.getKey();
@@ -135,6 +143,9 @@ public class SynchronizeLinksBasedOnSurrogate {
 			//_context.info( _context.elInfo( theLocalReqt ) + " maps to " + _context.elInfo( theRemoteReqt ) );	
 
 			LinkInfos theLocalReqtLinkInfos = new LinkInfos( theLocalReqt, false, false, _context );
+			
+			_linksFoundOnLocal += theLocalReqtLinkInfos.size();
+			
 			LinkInfos theRemoteReqtLinkInfos = new LinkInfos( theRemoteReqt, false, false, _context );
 			
 			LinkInfos theMissingRemoteLinkInfos = new LinkInfos( false, false, _context );
@@ -185,13 +196,18 @@ public class SynchronizeLinksBasedOnSurrogate {
 	
 	private void addMissingLinks() {
 
-		_context.info( _linksToAddCount + " missing remote requirement links were found that need creating" );	
+		if( _linksToAddCount == 1 ) {
+			_context.info( "1 link was found to be missing to remotes (out of " + _linksFoundOnLocal + ")" );	
 
-		for( Entry<IRPRequirement, List<LinkInfo>> entry : _linksMissingOnRemote.entrySet() ){
+		} else if( _linksToAddCount > 1 ) {
+			_context.info( _linksToAddCount + " links were found to be missing to remotes (out of " + _linksFoundOnLocal + ")" );	
+		}
+
+		for( Entry<IRPRequirement, LinkInfos> entry : _linksMissingOnRemote.entrySet() ){
 			
-			List<LinkInfo> theLinkInfos = entry.getValue();
+			LinkInfos theLinkInfos = entry.getValue();
 			
-			for (LinkInfo linkInfo : theLinkInfos) {
+			for( LinkInfo linkInfo : theLinkInfos ){
 				
 				_context.info( "Creating " + linkInfo.getInfo() );
 				linkInfo.createLink();
@@ -201,11 +217,18 @@ public class SynchronizeLinksBasedOnSurrogate {
 	
 	private void deleteNotNeededLinks() {
 
-		_context.info( _linksToDeleteCount + " unnecessary remote requirement links were found that need deleting" );	
+		if( _linksToDeleteCount == 1 ) {
+			_context.info( "1 link was found to delete to remotes (based on " + 
+					_linksFoundOnLocal + " local links that were found)" );	
 
-		for( Entry<IRPRequirement, List<LinkInfo>> entry : _linksNotNeededOnRemote.entrySet() ){
+		} else if( _linksToDeleteCount > 1 ) {
+			_context.info( _linksToDeleteCount + " links were found to delete to remotes (based on " + 
+					_linksFoundOnLocal + " local links that were found)" );	
+		}
+		
+		for( Entry<IRPRequirement, LinkInfos> entry : _linksNotNeededOnRemote.entrySet() ){
 			
-			List<LinkInfo> theLinkInfos = entry.getValue();
+			LinkInfos theLinkInfos = entry.getValue();
 			
 			for( LinkInfo linkInfo : theLinkInfos ){
 				

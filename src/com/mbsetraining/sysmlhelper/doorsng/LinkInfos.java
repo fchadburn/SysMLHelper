@@ -1,6 +1,6 @@
 package com.mbsetraining.sysmlhelper.doorsng;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
@@ -9,7 +9,7 @@ import com.telelogic.rhapsody.core.IRPModelElement;
 import com.telelogic.rhapsody.core.IRPPackage;
 import com.telelogic.rhapsody.core.IRPRequirement;
 
-public class LinkInfos extends ArrayList<LinkInfo> {
+public class LinkInfos extends HashSet<LinkInfo> {
 
 	/**
 	 * 
