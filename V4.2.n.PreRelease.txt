@@ -924,11 +924,11 @@ V4.2.n.Rhp831.PreRelease (XX-XXX-XXXX): TBD
 0691 15-AUG-2023: ExecutableMBSE: Added check so that only legal OSLC types are considered in the 'Synchronise remote links...' menu option (F.J.Chadburn)
 0692 15-AUG-2023: ExecutableMBSE: Added check to populate depends on and dependent elements helpers to warn user that they need to select a diagram element if one is not selected (F.J.Chadburn)
 0693 15-AUG-2023: ExecutableMBSE: Added new 'Delete Child OSLC Links' option to the MBSE Method: Other menu to make it easier to remove links from the requirements package, if desired (F.J.Chadburn)
+0694 16-AUG-2023: ExecutableMBSE: Fix to apply ControlFlow stereotype to the transition when creating textual activity diagram (F.J.Chadburn)
 
 Backlog/Known issues
 - Switch master the other way!
 - Parent binding
-- Control flow in 9.0.1 activity diagrams template check
 - Further testing needed with dependency helper and new terms
 - Textual Activity Diagram needs implementing for SysMLHelper as it's stopped working
 - Add a UML package new term

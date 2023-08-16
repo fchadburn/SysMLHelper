@@ -463,12 +463,14 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 	private void afterAddForTextualActivity(
 			IRPFlowchart theDiagram ){
 
+		//_context.info( "afterAddForTextualActivity " + _context.elInfo( theDiagram ) );
+		
 		// Need to programmatically create the diagram as cloning and
 		// deleting old one results in Rhapsody closing
 
 		IRPModelElement theOwner = theDiagram.getOwner();
 
-		if( theOwner.getName().equals("TopLevel") &&
+		if( theOwner.getName().equals( "TopLevel" ) &&
 				theOwner.getOwner() instanceof IRPPackage ) {
 
 			theOwner = theOwner.getOwner();
@@ -493,13 +495,14 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		IRPAcceptEventAction theAcceptEvent = 
 				theDiagram.addAcceptEventAction( "<Type text-based Use Case Trigger>", theRootState );
 
-		IRPTransition theDefaultTransition = theAcceptEvent.createDefaultTransition( theRootState );
+		IRPTransition theDefaultTransition = theAcceptEvent.createDefaultTransition( theRootState );		
 
 		IRPState theAction = (IRPState) theDiagram.addNewAggr( "State", "" );
 		theAction.setStateType("Action");
 		theAction.setName( "action_0" );
 
-		IRPTransition theTransition = theAcceptEvent.addTransition( theAction );
+		IRPTransition theTransition = theAcceptEvent.addTransition( theAction );	
+		theTransition.setStereotype( _context.getStereotypeForControlFlow() );
 
 		IRPConstraint thePreConditionConstraint = (IRPConstraint) theDiagram.addNewAggr( "Constraint", "UC pre-conditions" );
 		thePreConditionConstraint.setSpecification( "<type any pre-conditions else delete from model>" );

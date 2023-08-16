@@ -176,6 +176,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	protected IRPStereotype _stereotypeForSatisfaction;
 	protected IRPStereotype _stereotypeForVerification;
 	protected IRPStereotype _stereotypeForTrace;
+	protected IRPStereotype _stereotypeForControlFlow;
 
 	public ExecutableMBSE_Context(
 			String theAppID ){
@@ -188,6 +189,17 @@ public class ExecutableMBSE_Context extends BaseContext {
 				"ExecutableMBSEProfile.General.PluginVersion", 
 				"ExecutableMBSEProfile.General.UserDefinedMetaClassesAsSeparateUnit", 
 				"ExecutableMBSEProfile.General.AllowPluginToControlUnitGranularity" );
+	}
+	
+	// Generally single call per session, so use lazy load
+	public IRPStereotype getStereotypeForControlFlow(){
+
+		if( _stereotypeForControlFlow == null ){
+
+			_stereotypeForControlFlow = getExistingStereotype( "ControlFlow", _rhpPrj );;
+		}
+
+		return _stereotypeForControlFlow;
 	}
 
 	// Generally single call per session, so use lazy load
