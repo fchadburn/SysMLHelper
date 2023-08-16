@@ -1689,7 +1689,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">8.14.2023::12:59:10</_modifiedTime>
+			<_modifiedTime type="a">8.16.2023::7:55:41</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -19656,7 +19656,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID f4cbf55d-b74b-4ef3-9920-6eb8450bb6c2</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_TablesAndMatrices</_name>
-			<_modifiedTime type="a">7.18.2023::8:7:10</_modifiedTime>
+			<_modifiedTime type="a">8.16.2023::7:55:41</_modifiedTime>
 			<_lastID type="a">3</_lastID>
 			<_defaultComposite type="s">GUID aace3563-7387-48b2-b252-564f3c63fcfc</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -21347,12 +21347,18 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 										<_Name type="a">Graphics</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">1</size>
+												<size type="a">2</size>
 												<IProperty type="e">
 													<_Name type="a">TableHeaderMenuAlignment</_Name>
 													<_Value type="a">Right</_Value>
 													<_Type type="a">Enum</_Type>
 													<_ExtraTypeInfo type="a">Left,Right</_ExtraTypeInfo>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">TableMatrixColWidth</_Name>
+													<_Value type="a">;100;100;;;;;</_Value>
+													<_Type type="a">String</_Type>
 												</IProperty>
 												
 											</IRPYRawContainer>
@@ -21420,7 +21426,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">tablel - Surrogate Remote Requirement Traceability Report</_name>
-			<_modifiedTime type="a">7.18.2023::8:7:10</_modifiedTime>
+			<_modifiedTime type="a">8.16.2023::7:55:41</_modifiedTime>
 			<DataColumns type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">7</size>
