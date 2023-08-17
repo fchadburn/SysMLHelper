@@ -103,7 +103,7 @@ public class SynchronizeLinksToDiagram {
 			
 			if( diagramsWithLinks > 0 ) {
 				msg += linksOkCount + " link(s) were found that are present and correct across " + diagramsWithLinks + 
-						" of the " + theDiagrams.size() + " diagrams found. \n";
+						" of the " + theDiagrams.size() + " diagrams found to have requirements. \n";
 				
 				String theDiagramString = _context.buildStringFromModelEls( new ArrayList<>( _diagramsWithReqts ), 5 );
 
