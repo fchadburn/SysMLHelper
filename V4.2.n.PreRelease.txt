@@ -918,7 +918,7 @@ V4.2.m.Rhp831.PreRelease (10-AUG-2023):
 0687 10-AUG-2023: ExecutableMBSE: Fix category name of plural 'Table View - Surrogate Remote Requirement Traceability Report' table views (F.J.Chadburn)
 0688 10-AUG-2023: ExecutableMBSE: Fixed 'Switch Rhapsody Requirements To DNG' to use complete relations rather than populate to remove issues with activity diagram layout changes (F.J.Chadburn)
 
-V4.2.n.Rhp831.PreRelease (XX-XXX-XXXX): TBD
+V4.2.n.Rhp831.PreRelease (17-AUG-2023):
 0689 14-AUG-2023: ExecutableMBSE: First implementation of 'Synchronise remote links based on local surrogate traceability' menu to provide visibility of traceability in DOORS NG (F.J.Chadburn)
 0690 15-AUG-2023: ExecutableMBSE: Refined 'Synchronise remote links...' to provide a bit more information and use a set rather than list so that duplicate links on local are ignored (F.J.Chadburn)
 0691 15-AUG-2023: ExecutableMBSE: Added check so that only legal OSLC types are considered in the 'Synchronise remote links...' menu option (F.J.Chadburn)
@@ -926,8 +926,11 @@ V4.2.n.Rhp831.PreRelease (XX-XXX-XXXX): TBD
 0693 15-AUG-2023: ExecutableMBSE: Added new 'Delete Child OSLC Links' option to the MBSE Method: Other menu to make it easier to remove links from the requirements package, if desired (F.J.Chadburn)
 0694 16-AUG-2023: ExecutableMBSE: Fix to apply ControlFlow stereotype to the transition when creating textual activity diagram (F.J.Chadburn)
 0695 16-AUG-2023: ExecutableMBSE: Add default widths to columns for specification text in tablel - Surrogate Remote Requirement Traceability Report template so columns don't spread out (F.J.Chadburn) 
+0696 17-AUG-2023: ExecutableMBSE: First implementation of new right-click 'Synchronise remote links based on presence on diagram' menu to work with DOORS NG workflows (F.J.Chadburn)
+0697 17-AUG-2023: ExecutableMBSE: Ensure that existing helpers such as 'Populate depends on' work on the new term Requirements Diagram - System type as found to be missing (F.J.Chadburn)
 
 Backlog/Known issues
+- Nested Requirement package(s)?
 - Switch master the other way!
 - Parent binding
 - Further testing needed with dependency helper and new terms

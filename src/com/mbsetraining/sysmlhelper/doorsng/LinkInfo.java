@@ -69,7 +69,7 @@ public class LinkInfo {
 					_context.elInfo( toRemoteReqt ) );
 
 		} catch( Exception e ){
-			_context.debug( "Unable to add remote " + theType + " from " + 
+			_context.warning( "Unable to add remote " + theType + " from " + 
 					_context.elInfo( theDependent ) + " to " + 
 					_context.elInfo( toRemoteReqt ) + ", e=" + e.getMessage() );
 		}

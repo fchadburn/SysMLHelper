@@ -108,6 +108,7 @@ public class LinkInfos extends HashSet<LinkInfo> {
 
 			if( theCandidateLinkInfo.isEquivalentTo( theLinkInfo ) ) {
 				isEquivalentPresent = true;
+				break;
 			}
 		}
 
