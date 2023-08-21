@@ -1,5 +1,7 @@
 package com.mbsetraining.sysmlhelper.executablembse;
 
+import java.awt.Desktop;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -1828,6 +1830,37 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 					theReturn = true; // don't launch the Features  window		
 
 				} else {
+					
+					if( pModelElement instanceof IRPRequirement ) {
+						
+						IRPRequirement theReqt = (IRPRequirement) pModelElement;
+						
+						String theURI = "";
+
+						if( pModelElement.isRemote()==1 ) {
+							theURI = theReqt.getRemoteURI();
+						} else {
+							List<IRPRequirement> theRemoteReqts = _context.getRemoteRequirementsFor( theReqt );
+							
+							if( theRemoteReqts.size()==1 ) {
+								IRPRequirement theRemoteReqt = theRemoteReqts.get( 0 );
+								
+								theURI = theRemoteReqt.getRemoteURI();
+							}
+						}
+						
+						if( !theURI.isEmpty() && 
+								Desktop.isDesktopSupported() && 
+								Desktop.getDesktop().isSupported( Desktop.Action.BROWSE ) ){
+							
+							boolean answer = UserInterfaceHelper.askAQuestion( "Open remote requirement in browser?" );
+							
+							if( answer ) {								
+							    Desktop.getDesktop().browse(new URI( theURI ));
+							}
+						}
+					}
+					
 					theReturn = false; // do default, i.e. open the features dialog
 				}	
 			}
