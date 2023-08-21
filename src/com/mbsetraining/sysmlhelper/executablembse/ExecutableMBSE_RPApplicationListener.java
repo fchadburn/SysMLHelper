@@ -1831,23 +1831,26 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 				} else {
 					
+					IRPRequirement theRemoteReqt = null;
+					
 					if( pModelElement instanceof IRPRequirement ) {
+												
+						theRemoteReqt = getRemoteRequirementRelatedTo( pModelElement );
 						
-						IRPRequirement theReqt = (IRPRequirement) pModelElement;
+					} else if( pModelElement instanceof IRPDependency ) {
 						
-						String theURI = "";
-
-						if( pModelElement.isRemote()==1 ) {
-							theURI = theReqt.getRemoteURI();
-						} else {
-							List<IRPRequirement> theRemoteReqts = _context.getRemoteRequirementsFor( theReqt );
-							
-							if( theRemoteReqts.size()==1 ) {
-								IRPRequirement theRemoteReqt = theRemoteReqts.get( 0 );
-								
-								theURI = theRemoteReqt.getRemoteURI();
-							}
+						IRPDependency theDependency = (IRPDependency)pModelElement;
+						
+						IRPModelElement theDependsOn = theDependency.getDependsOn();
+						
+						if( theDependsOn instanceof IRPRequirement ) {							
+							theRemoteReqt = getRemoteRequirementRelatedTo( theDependsOn );
 						}
+					}
+					
+					if( theRemoteReqt != null) {
+						
+						String theURI = theRemoteReqt.getRemoteURI();
 						
 						if( !theURI.isEmpty() && 
 								Desktop.isDesktopSupported() && 
@@ -1870,6 +1873,28 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		}
 
 		return theReturn;
+	}
+
+	private IRPRequirement getRemoteRequirementRelatedTo(
+			IRPModelElement theModelEl  ){
+		
+		IRPRequirement theRemoteReqt = null;
+		
+		if( theModelEl.isRemote()==1 ) {
+			
+			if( theModelEl instanceof IRPRequirement ) {
+				theRemoteReqt = (IRPRequirement) theModelEl;
+			}
+			
+		} else {
+			List<IRPRequirement> theRemoteReqts = _context.getRemoteRequirementsFor( theModelEl );
+			
+			if( theRemoteReqts.size()==1 ) {
+				theRemoteReqt = theRemoteReqts.get( 0 );
+			}
+		}
+		
+		return theRemoteReqt;
 	}
 
 	private static Set<IRPDiagram> getHyperLinkDiagramsFor(
