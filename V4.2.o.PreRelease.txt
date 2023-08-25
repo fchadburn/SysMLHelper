@@ -930,12 +930,12 @@ V4.2.n.Rhp831.PreRelease (17-AUG-2023):
 0697 17-AUG-2023: ExecutableMBSE: Ensure that existing helpers such as 'Populate depends on' work on the new term Requirements Diagram - System type as found to be missing (F.J.Chadburn)
 0698 17-AUG-2023: ExecutableMBSE: Tidy up MBSE Method right-click menu ordering in hep file to consolidate all the latest menus (F.J.Chadburn)
 
-V4.2.o.Rhp831.PreRelease (21-AUG-2023):
+V4.2.o.Rhp831.PreRelease (XX-XXX-XXXX):
 0699 21-AUG-2023: ExecutableMBSE: First implementation of double-click to open related remote requirement in browser (F.J.Chadburn)
 0700 21-AUG-2023: ExecutableMBSE: Extend open browser for remote requirements on double-click to work with dependency relations as well (F.J.Chadburn)
+0701 25-AUG-2023: ExecutableMBSE: Allow Requirement packages to own Requirement packages (F.J.Chadburn)
 
 Backlog/Known issues
-- Nested Requirement package(s)?
 - Switch master the other way!
 - Parent binding
 - Further testing needed with dependency helper and new terms
