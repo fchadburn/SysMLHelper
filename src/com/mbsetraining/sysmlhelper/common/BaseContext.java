@@ -1435,7 +1435,8 @@ public abstract class BaseContext {
 	}
 
 	public Set<IRPRequirement> getRequirementsThatTraceFrom(
-			IRPModelElement theElement, boolean withWarning){
+			IRPModelElement theElement, 
+			boolean withWarning ){
 
 		Set<IRPRequirement> theReqts = new HashSet<IRPRequirement>();
 
@@ -1446,23 +1447,46 @@ public abstract class BaseContext {
 
 			IRPModelElement theDependsOn = theDependency.getDependsOn();
 
-			if (theDependsOn != null && theDependsOn instanceof IRPRequirement){
+			if( theDependsOn instanceof IRPRequirement ){
 
-				IRPRequirement theReqt = (IRPRequirement)theDependsOn; 
+				IRPRequirement theReqt = (IRPRequirement) theDependsOn; 
 
-				if (!theReqts.contains( theReqt )){
+				if( !theReqts.contains( theReqt ) ){
 
 					theReqts.add( (IRPRequirement) theDependsOn );
 
-				} else if (withWarning){
+				} else if( withWarning ){
 
 					_rhpLog.warning( "Duplicate dependency to " + _rhpLog.elInfo( theDependsOn ) + 
-							" was found on " + _rhpLog.elInfo( theElement ));
+							" was found on " + _rhpLog.elInfo( theElement ) );
 				} 			
 			}
 		}
 
 		return theReqts;
+	}
+	
+	public List<IRPModelElement> getElementsThatDependOn(
+			IRPRequirement theReqt,
+			String withRelationType ){
+
+		List<IRPModelElement> theElementsThatTrace = new ArrayList<>();
+
+		@SuppressWarnings("unchecked")
+		List<IRPModelElement> theReferences = theReqt.getReferences().toList();
+
+		for( IRPModelElement theReference : theReferences ){
+
+			if( theReference instanceof IRPDependency &&
+					hasStereotypeCalled( withRelationType, theReference ) ){
+
+				IRPDependency theDependency = (IRPDependency)theReference;
+				IRPModelElement theDependent = theDependency.getDependent();
+				theElementsThatTrace.add( theDependent );
+			}
+		}	
+
+		return theElementsThatTrace;
 	}
 
 	public Set<IRPRequirement> getRequirementsThatTraceFromWithStereotype(

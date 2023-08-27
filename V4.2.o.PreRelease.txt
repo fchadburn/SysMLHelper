@@ -934,10 +934,12 @@ V4.2.o.Rhp831.PreRelease (XX-XXX-XXXX):
 0699 21-AUG-2023: ExecutableMBSE: First implementation of double-click to open related remote requirement in browser (F.J.Chadburn)
 0700 21-AUG-2023: ExecutableMBSE: Extend open browser for remote requirements on double-click to work with dependency relations as well (F.J.Chadburn)
 0701 25-AUG-2023: ExecutableMBSE: Allow Requirement packages to own Requirement packages (F.J.Chadburn)
+0702 27-AUG-2023: ExecutableMBSE: Switch CSV export to make use of same Remote Requirement Assessment class as the update and establish trace helpers use (F.J.Chadburn)
+0703 27-AUG-2023: ExecutableMBSE: Export parent binding number in CSV based on OSLC trace relation by owning package or traced function/feature block (F.J.Chadburn)
 
 Backlog/Known issues
 - Switch master the other way!
-- Parent binding
+- Export of Function and Feature blocks as headings
 - Further testing needed with dependency helper and new terms
 - Add a UML package new term
 - Interfaces Package doesn't have unique icon yet

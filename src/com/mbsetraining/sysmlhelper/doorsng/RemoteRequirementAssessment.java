@@ -2,12 +2,13 @@ package com.mbsetraining.sysmlhelper.doorsng;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashSet;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
+import com.telelogic.rhapsody.core.IRPDependency;
 import com.telelogic.rhapsody.core.IRPHyperLink;
 import com.telelogic.rhapsody.core.IRPModelElement;
 import com.telelogic.rhapsody.core.IRPPackage;
@@ -26,28 +27,32 @@ public class RemoteRequirementAssessment {
 	protected List<IRPRequirement> _remoteRequirementsThatDontTrace = new ArrayList<IRPRequirement>();
 	protected Map<IRPRequirement, List<IRPRequirement>> _remoteRequirementsToEstablishTraceTo = new HashMap<>();  
 	protected List<IRPRequirement> _requirementsWithNoMatchOrLinks = new ArrayList<IRPRequirement>();
-
-	private ExecutableMBSE_Context _context;
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-	}
+	protected List<IRPModelElement> _requirementOwnersInScope = new ArrayList<IRPModelElement>();
+	protected Map<IRPRequirement, IRPRequirement> _requirementsRemoteParentMap = new HashMap<>();  
+	protected Set<IRPModelElement> _elementsConsideredHeadings = new HashSet<>();
+	protected ExecutableMBSE_Context _context;
 
 	public RemoteRequirementAssessment( 
 			ExecutableMBSE_Context context ) {
-		
+
 		_context = context;
 	}
-	
+
 	public void determineRequirementsToUpdate(
 			List<IRPModelElement> theSelectedEls ) {
 
-		_requirementsInScope = getNestedRequirementsFor( theSelectedEls );
+		addNestedRequirementsToRequirementsInScopeFor( theSelectedEls );
+
+		_requirementOwnersInScope = getRequirementOwnersInScopeFor( theSelectedEls );
+				
+		addRequirementsWithSatisfactionsToRequirementsInScopeFrom( _requirementOwnersInScope );
+		
+		addToRemoteParentMapIfNecessary( _requirementsInScope );
 
 		for( IRPRequirement theRequirement : _requirementsInScope ){
 			determineRequirementsToUpdateBasedOn( theRequirement );
 		}
-		
+
 		if( theSelectedEls.size()==1 ) {
 
 			IRPModelElement theSelectedEl = theSelectedEls.get(0);
@@ -58,23 +63,114 @@ public class RemoteRequirementAssessment {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
-	private List<IRPRequirement> getNestedRequirementsFor(
+	private void addRequirementsWithSatisfactionsToRequirementsInScopeFrom(
+			List<IRPModelElement> theEls ){
+
+		for( IRPModelElement theEl : theEls ){
+
+			@SuppressWarnings("unchecked")
+			List<IRPDependency> theDependencies = theEl.getDependencies().toList();
+
+			for( IRPDependency theDependency : theDependencies ){
+
+				if( _context.hasStereotypeCalled( "Satisfaction",  theDependency ) ) {
+
+					IRPModelElement theDependsOn = theDependency.getDependsOn();
+
+					if( theDependsOn instanceof IRPRequirement ){
+
+						IRPRequirement theRequirement = (IRPRequirement) theDependsOn;
+
+						if( !_requirementsInScope.contains( theRequirement ) ){
+							_requirementsInScope.add( theRequirement );
+						}				
+						
+						boolean isSuccess = addToRemoteParentParentMap( theRequirement, theEl );
+						
+						if( isSuccess ) {
+							_elementsConsideredHeadings.add( theEl );
+						}
+					}
+				}
+			}
+		}
+	}
+
+	private List<IRPModelElement> getRequirementOwnersInScopeFor(
 			List<IRPModelElement> theSelectedEls ){
 
-		Set<IRPRequirement> theNestedRequirements = new LinkedHashSet<IRPRequirement>();
+		List<IRPModelElement> theOwnersInScope = new ArrayList<>();
 
 		for( IRPModelElement theSelectedEl : theSelectedEls ){
 
-			theNestedRequirements.addAll( theSelectedEl.
-					getNestedElementsByMetaClass( "Requirement", 1 ).toList() );
+			List<IRPModelElement> theCandidates = _context.findElementsWithMetaClassAndStereotype(
+					"Class", _context.NEW_TERM_FOR_FEATURE_BLOCK, theSelectedEl, 1 );
+
+			theCandidates.addAll(_context.findElementsWithMetaClassAndStereotype(
+					"Class", _context.NEW_TERM_FOR_FUNCTION_BLOCK, theSelectedEl, 1 ) );
+
+			for( IRPModelElement  theCandidate : theCandidates ){
+				if( !theOwnersInScope.contains( theCandidate ) ) {
+					theOwnersInScope.add( theCandidate );
+				}
+			}
 		}
 
-		return new ArrayList<>( theNestedRequirements );
+		return theOwnersInScope;
+	}
+
+	private void addNestedRequirementsToRequirementsInScopeFor(
+			List<IRPModelElement> theSelectedEls ){
+
+		for( IRPModelElement theSelectedEl : theSelectedEls ){
+
+			@SuppressWarnings("unchecked")
+			List<IRPRequirement> theReqts = theSelectedEl.
+					getNestedElementsByMetaClass( "Requirement", 1 ).toList();
+			
+			for (IRPRequirement theReqt : theReqts) {
+				
+				if( !_requirementsInScope.contains( theReqt ) ) {
+					_requirementsInScope.add( theReqt );
+				}
+			}
+		}
+	}
+
+	private void addToRemoteParentMapIfNecessary(
+			List<IRPRequirement> theRequirements ){
+		
+		for( IRPRequirement theRequirement : theRequirements ){
+			
+			IRPModelElement theOwner = theRequirement.getOwner();
+			
+			boolean isSuccess = addToRemoteParentParentMap( theRequirement, theOwner );	
+			
+			if( isSuccess ) {
+				_elementsConsideredHeadings.add( theOwner );
+			}
+		}
+	}
+
+	private boolean addToRemoteParentParentMap(
+			IRPRequirement theRequirement, 
+			IRPModelElement theOwner ){
+		
+		boolean isSuccess = false;
+		
+		List<IRPRequirement> theRemoteReqts = _context.getRemoteRequirementsFor( theOwner );
+		
+		if( theRemoteReqts.size() == 1 ) {
+			IRPRequirement theRemoteReqt = theRemoteReqts.get(0);
+			_requirementsRemoteParentMap.put( theRequirement, theRemoteReqt );
+			isSuccess = true;
+		}
+		
+		return isSuccess;
 	}
 
 	public void determineNewRequirementsNeeded(
-			IRPPackage theRequirementPkg ) {
+			IRPPackage theRequirementPkg ){
 
 		List<IRPRequirement> theMissingRemoteReqts = new ArrayList<>();
 
@@ -89,7 +185,7 @@ public class RemoteRequirementAssessment {
 		}
 
 		for( IRPRequirement theReqt : _requirementsWithNoLinks ){
-			
+
 			List<IRPRequirement> theMatchedReqts = _context.getRequirementsThatMatch( theReqt, theExpectedRemoteReqts );
 
 			int matchCount = theMatchedReqts.size();
@@ -97,13 +193,15 @@ public class RemoteRequirementAssessment {
 			if( matchCount > 0 ) {
 
 				for (IRPRequirement theMatchedReqt : theMatchedReqts) {
-					_context.debug( "Found that spec of unlinked " + _context.elInfo( theReqt ) + " matches remote " + _context.elInfo( theMatchedReqt ) );
+					_context.debug( "Found that spec of unlinked " + _context.elInfo( theReqt ) + 
+							" matches remote " + _context.elInfo( theMatchedReqt ) );
 				}
 
 				if( matchCount > 1 ) {
-					_context.warning( "Match found " + _context.elInfo( theReqt ) + " has match to " + matchCount + " remote requirements hence don't know which one to choose" );
+					_context.warning( "Match found " + _context.elInfo( theReqt ) + " has match to " + 
+							matchCount + " remote requirements hence don't know which one to choose" );
 				}
-				
+
 				_remoteRequirementsToEstablishTraceTo.put( theReqt, theMatchedReqts );		
 
 			} else {
@@ -112,13 +210,13 @@ public class RemoteRequirementAssessment {
 		}
 
 		for( IRPRequirement theMissingRemoteReqt : theMissingRemoteReqts ){
-			
+
 			boolean isFound = false;
-			
+
 			for (Map.Entry<IRPRequirement, List<IRPRequirement>> entry : _remoteRequirementsToEstablishTraceTo.entrySet()) {
-				
+
 				List<IRPRequirement> theValue = entry.getValue();
-				
+
 				if( theValue.contains( theMissingRemoteReqt ) ) {
 					isFound = true;
 					break;
@@ -157,7 +255,7 @@ public class RemoteRequirementAssessment {
 				if( theRemoteDependsOn instanceof IRPRequirement ){
 
 					IRPRequirement theRemoteReqt = (IRPRequirement) theRemoteDependsOn;
-					
+
 					_remoteRequirementsThatTrace.add( theRemoteReqt );
 					_requirementsThatTrace.put( theRequirement, theRemoteReqt );
 
@@ -179,14 +277,14 @@ public class RemoteRequirementAssessment {
 							_requirementsToUpdateSpec.add( theRequirement );
 						}
 					}
-					
+
 					String theRemoteName = theOSLCRequirement.getName();
 					String theRemoteID = theOSLCRequirement.getRequirementID();
-					
+
 					String theProposedName = _context.determineRequirementNameBasedOn( theRemoteName, theRemoteID );
-					
+
 					String theName = theRequirement.getName();
-					
+
 					if( !theName.equals( theProposedName ) ){
 
 						if( !_requirementsToUpdateName.contains( theRequirement ) ) {		

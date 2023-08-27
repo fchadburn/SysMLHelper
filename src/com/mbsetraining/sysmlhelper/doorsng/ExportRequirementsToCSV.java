@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
-
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -17,12 +16,14 @@ import com.telelogic.rhapsody.core.*;
 
 public class ExportRequirementsToCSV {
 
-	ExecutableMBSE_Context _context;
+	protected ExecutableMBSE_Context _context;
+	protected RemoteRequirementAssessment _assessment;
 
 	public ExportRequirementsToCSV(
 			ExecutableMBSE_Context context ) {
 
 		_context = context;
+		_assessment = new RemoteRequirementAssessment( _context );
 	}
 
 	public static void main(String[] args) {
@@ -32,73 +33,49 @@ public class ExportRequirementsToCSV {
 
 		ExportRequirementsToCSV theExporter = new ExportRequirementsToCSV( theContext );
 
-		theExporter.exportRequirementsToCSV( theContext.getSelectedElement( false ), 0 );	
-	}
-
-	public List<IRPRequirement> getReqtsThatDontTraceOrTraceToChangedRemoteReqtsIn(
-			List<IRPRequirement>  theCandidateReqts ){
-
-		List<IRPRequirement> theReqtsThatDontTrace = new ArrayList<>();
-
-		for( IRPRequirement theCandidateReqt : theCandidateReqts ){
-
-			List<IRPRequirement> theRemoteRequirements = _context.getRemoteRequirementsFor( theCandidateReqt );
-
-			boolean isMatchFound = false;
-
-			if( theRemoteRequirements.size() > 1 ){
-
-				_context.warning( _context.elInfo( theCandidateReqt ) + " traces to " + theRemoteRequirements.size() + 
-						" remote requirements, when expecting 0 or 1 hence I'm unable to determine which to use" );
-
-			} else if( theRemoteRequirements.size() == 1 ){
-
-				String theRemoteSpec = theRemoteRequirements.get( 0 ).getSpecification();
-				String theSpec = theCandidateReqt.getSpecification();
-
-				if( theSpec.equals( theRemoteSpec ) ){
-					isMatchFound = true;
-				}
-			}	
-
-			if( !isMatchFound ){
-				theReqtsThatDontTrace.add( theCandidateReqt );
-			}
-		}
-
-		return theReqtsThatDontTrace;
+		theExporter.exportRequirementsToCSV( theContext.getSelectedElement( false ), 1 );	
 	}
 
 	public void exportRequirementsToCSV(
 			IRPModelElement underEl,
 			int recursive ){
 
-		@SuppressWarnings("unchecked")
-		List<IRPRequirement> theReqts = underEl.getNestedElementsByMetaClass( 
-				"Requirement", recursive ).toList();
+		List<IRPModelElement> theSelectedEls = new ArrayList<>();
+		theSelectedEls.add( underEl );
+		_assessment.determineRequirementsToUpdate( theSelectedEls );
 
-		if( theReqts.isEmpty() ) {
+		int inScopeCount = _assessment._requirementsInScope.size();
+
+		if( inScopeCount == 0 ){
 
 			UserInterfaceHelper.showWarningDialog( "There are no requirements under " + _context.elInfo( underEl ) + " to export" );
 
 		} else {
 
-			List<IRPRequirement> theReqtsThatDontTrace = getReqtsThatDontTraceOrTraceToChangedRemoteReqtsIn( theReqts );
+			int missingOrChangedCount = _assessment._requirementsWithNoLinks.size() + 
+					_assessment._requirementsToUpdateSpec.size();
+			
+			int diff = inScopeCount - missingOrChangedCount;
 
-			int diff = theReqts.size() - theReqtsThatDontTrace.size();
+			if( diff > 0 ){
 
-			if( diff != 0 ){
-
-				boolean answer = UserInterfaceHelper.askAQuestion( diff + " of the " + theReqts.size() + 
+				boolean answer = UserInterfaceHelper.askAQuestion( diff + " of the " + inScopeCount + 
 						" requirements under " + _context.elInfo( underEl) + " \nalready trace to remote requirements with matching specification text. \n\n" + 
-						"Shall I restrict the csv export to only the " + theReqtsThatDontTrace.size() + " requirements that are new or have changed?");
+						"Shall I restrict the csv export to only the " + missingOrChangedCount + " requirements that are new or have changed?");
 
 				if( answer ){
-					theReqts = theReqtsThatDontTrace;
-				}
-			}
+					
+					List<IRPRequirement> theReqts = new ArrayList<>();
+					theReqts.addAll( _assessment._requirementsWithNoLinks );
+					theReqts.addAll( _assessment._requirementsToUpdateSpec );
 
-			exportToCSV( underEl, theReqts );
+					exportToCSV( underEl, theReqts );
+				} else {
+					exportToCSV( underEl, _assessment._requirementsInScope );
+				}
+			} else {
+				exportToCSV( underEl, _assessment._requirementsInScope );
+			}
 		}
 	}
 
@@ -120,6 +97,21 @@ public class ExportRequirementsToCSV {
 		}
 
 		return theIdentifier;
+	}
+
+	private String getParentBinding(
+			IRPRequirement forReqt ){
+
+		String theParentBinding = "";
+		
+		IRPRequirement theRemoteParent = _assessment._requirementsRemoteParentMap.get( forReqt );
+		
+		if( theRemoteParent != null ) {
+			_context.debug( "The  remote parent for " + _context.elInfo( forReqt ) + " is " + _context.elInfo( theRemoteParent ) );
+			theParentBinding = theRemoteParent.getRequirementID();
+		}
+
+		return theParentBinding;
 	}
 
 	private void exportToCSV(
@@ -195,14 +187,14 @@ public class ExportRequirementsToCSV {
 		} else {
 
 			// Get controlling properties
-			String artifactTypeForCSVExport = _context.getCSVExportArtifactType( underEl );
+			String artifactType = _context.getCSVExportArtifactType( underEl );
 			String separator = _context.getCSVExportSeparator( underEl );
-			
+
 			boolean isIncludeArtifactName = _context.getCSVExportIncludeArtifactName( underEl );
 			boolean isIncludeColumnsForLinkedAnnotations = _context.getCSVExportIncludeColumnsForLinkedAnnotations( underEl );
 
 			_context.debug( "exportRequirementsToCSV CSVExportSeparator=" + separator + 
-					", CSVExportArtifactType=" + artifactTypeForCSVExport + 
+					", CSVExportArtifactType=" + artifactType + 
 					", CVSExportIncludeArtifactName=" + isIncludeArtifactName +
 					", CSVExportIncludeColumnsForLinkedAnnotations=" + isIncludeColumnsForLinkedAnnotations );
 
@@ -216,7 +208,7 @@ public class ExportRequirementsToCSV {
 
 			theMsg += "\n\nSource: " + _context.elInfo( underEl ) + 
 					" \n" + "Target: " + theFile.getAbsolutePath() + "\n" +
-					"Artifact Type: " + artifactTypeForCSVExport + "\n";
+					"Artifact Type: " + artifactType + "\n";
 
 			if( isIncludeArtifactName ) {
 				theMsg += "Include Name column: True \n";
@@ -229,13 +221,13 @@ public class ExportRequirementsToCSV {
 			} else {
 				theMsg += "Include annotation columns, e.g, Rationale: False";
 			}
-			
+
 			if( !theAdditionalHeadings.isEmpty() && 
 					!isIncludeColumnsForLinkedAnnotations ) {
-				
+
 				theMsg += "\n\nAnnotations such as Rationale were found but the CSVExportIncludeColumnsForLinkedAnnotations property is set to False";
 			}
-			
+
 			theMsg += "\n\nOnce exported, prior to import into DOORS Next, first open in Microsoft Excel and check the contents, then Save As to .xlsx \nto create the file to import." + 
 					"\n\nDo you want to proceed? ";
 
@@ -271,27 +263,19 @@ public class ExportRequirementsToCSV {
 
 					if( isContinue ) {
 
-						String theHeadingLine = "";
+						String theHeadingLine = "id" + separator;
 
 						if( isIncludeArtifactName ){
-							theHeadingLine = 
-									"Identifier" + separator + 
-									"isHeading" + separator +
-									"parentBinding" + separator +
-									"Artifact Type" + separator + 
-									"Name" + separator + 
-									"Primary Text";
-						} else {
-							theHeadingLine = 
-									"Identifier" + separator + 
-									"isHeading" + separator +
-									"parentBinding" + separator +
-									"Artifact Type" + separator + 
-									"Primary Text";
+							theHeadingLine += "Name" + separator;			
 						}
+						
+						theHeadingLine += "Primary Text" + separator;
+						theHeadingLine += "isHeading" + separator;
+						theHeadingLine += "parentBinding" + separator;
+						theHeadingLine += "Artifact Type";
 
 						if( isIncludeColumnsForLinkedAnnotations ) {		
-							
+
 							for( String theAdditionalHeading : theAdditionalHeadings ){
 								theHeadingLine += separator + theAdditionalHeading;
 							}							
@@ -300,40 +284,39 @@ public class ExportRequirementsToCSV {
 						theHeadingLine += "\n";
 
 						myWriter.write( theHeadingLine );
-						
+
 						boolean isAnnotationInfoNeeded = false;
 
 						for( IRPRequirement theReqt : theReqts ){
+
+							String theLine = "";
 							
 							String theIdentifier = getIdentifierFromTracedRemoteRequirement( theReqt );
-							String theIsHeading = "";
-							String theParentBinding = "";
 							String theName = _context.getNameFromTracedRemoteRequirement( theReqt, theIdentifier ); // Keep name same as remote if applicable to avoid changing it
-							String theLine = "";
+							String theParentBinding = getParentBinding( theReqt );
 
-							String theSpecification = _context.
+							String thePrimaryText = _context.
 									replaceCSVIncompatibleCharsFrom( theReqt.getSpecification() );
 
+							theLine += theIdentifier + separator;
+							
 							if( isIncludeArtifactName ){
-								
-								theLine = 
-										theIdentifier + separator + 
-										theIsHeading + separator + 
-										theParentBinding + separator + 
-										artifactTypeForCSVExport + separator + 
-										theName + separator + 
-										theSpecification;
-							} else {
-								theLine = 
-										theIdentifier + separator + 
-										theIsHeading + separator + 
-										theParentBinding + separator + 
-										artifactTypeForCSVExport + separator + 
-										theSpecification;
+								theLine += theName + separator;
 							}
+							
+							theLine += thePrimaryText + separator;
+							
+							if( _assessment._elementsConsideredHeadings.contains( theReqt ) ) {
+								theLine += "true" + separator;
+							} else {
+								theLine += "false" + separator;
+							}
+							
+							theLine += theParentBinding + separator;
+							theLine += artifactType;
 
 							if( isIncludeColumnsForLinkedAnnotations ) {
-								
+
 								AnnotationMap theAnnotationMap = new AnnotationMap( theReqt, _context );
 
 								for( String theAdditionalHeading : theAdditionalHeadings ){
@@ -359,7 +342,7 @@ public class ExportRequirementsToCSV {
 										}
 									}		
 								}
-								
+
 							} else if( !isAnnotationInfoNeeded && 
 									!theAdditionalHeadings.isEmpty() ) {
 								isAnnotationInfoNeeded = true;
@@ -369,7 +352,7 @@ public class ExportRequirementsToCSV {
 
 							myWriter.write( theLine );
 						}
-						
+
 						if( isAnnotationInfoNeeded ){
 							_context.info( "Annotations such as Rationale were found but the CSVExportIncludeColumnsForLinkedAnnotations property is set to False" );
 						}
