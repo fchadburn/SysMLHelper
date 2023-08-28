@@ -84,11 +84,21 @@ public class CreateRequirementsPkgChooser {
 							theAvailableTypeTemplate.getSectionName() + _createNewUnderUseCasePkgWithStereotypeOptionPost );
 		}
 
+		String theFirstOptionWithPackageStereotype = null;
+		
 		for( String thePackageStereotype : _packageStereotypeNames ){
 
-			_userChoiceComboBox.addItem( 
+			String createNewUnderProjectWithStereotypeOptionString =
 					_createNewUnderProjectWithStereotypeOptionPre + 
-					thePackageStereotype + _createNewUnderProjectWithStereotypeOptionPost );
+					thePackageStereotype + _createNewUnderProjectWithStereotypeOptionPost;
+					
+			if( theFirstOptionWithPackageStereotype == null ) {
+				theFirstOptionWithPackageStereotype = 
+						createNewUnderProjectWithStereotypeOptionString;
+			}
+			
+			_userChoiceComboBox.addItem( 
+					createNewUnderProjectWithStereotypeOptionString );
 			
 			_userChoiceComboBox.addItem( 
 					_createNewUnderUseCasePkgWithStereotypeOptionPre + 
@@ -103,7 +113,12 @@ public class CreateRequirementsPkgChooser {
 		if( _existingPkgs.isEmpty() || isDefaultToNewUnderProject ){	
 
 			// set default to create new package
-			_userChoiceComboBox.setSelectedItem( _createNewUnderProjectOption );
+			if( theFirstOptionWithPackageStereotype != null ) {
+				
+				_userChoiceComboBox.setSelectedItem( theFirstOptionWithPackageStereotype );
+			} else {				
+				_userChoiceComboBox.setSelectedItem( _createNewUnderProjectOption );
+			}
 
 			String theUniqueName = 
 					_context.determineUniqueNameBasedOn( 
