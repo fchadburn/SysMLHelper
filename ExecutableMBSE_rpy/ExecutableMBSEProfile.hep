@@ -157,7 +157,7 @@ DLLServerCompatible19=1
 name20=MBSE Method: Requirements Analysis\Synchronise remote links based on presence on diagram
 isPluginCommand20=1
 command20=InvokeExecutableMBSEHelper
-applicableTo20=13 Requirement Package,Package,ActivityDiagram,Actor,Block,Block Definition Diagram,CollaborationDiagram,ConstraintBlock,DeploymentDiagram,Internal Block Diagram,ObjectModelDiagram,Operation,Package Diagram,PanelDiagram,Parametric Diagram,Project,Requirement,Requirements Diagram,Requirements Diagram - System,SequenceDiagram,Statechart,StructureDiagram,UseCaseDiagram,System Block,Subsystem Block,Context Block,Feature Block,Function Block,Software Component,C++ Class,11 Actor Package,12 Use Case Package,13 Requirement Package,10 Context Package,14 Signals Package,31 System Architecture Package,32 Subsystem Package,33 Subsystem Interfaces Package,34 Software Design Package,22 Feature Function Package,Block Definition Diagram - System,Enhanced Use Case Diagram,Context Diagram,Internal Block Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - Software,Block Definition Diagram - Software,Textual Activity,Call Operation Activity,SysML
+applicableTo20=ActivityDiagram,Block Definition Diagram,CollaborationDiagram,DeploymentDiagram,Internal Block Diagram,ObjectModelDiagram,Package Diagram,PanelDiagram,Parametric Diagram,Project,Requirements Diagram,Requirements Diagram - System,SequenceDiagram,Statechart,StructureDiagram,UseCaseDiagram,Block Definition Diagram - System,Enhanced Use Case Diagram,Context Diagram,Internal Block Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - Software,Block Definition Diagram - Software,Textual Activity,SysML
 isVisible20=1
 DLLServerCompatible20=1
 
