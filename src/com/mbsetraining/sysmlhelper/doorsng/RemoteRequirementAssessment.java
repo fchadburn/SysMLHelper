@@ -16,19 +16,21 @@ import com.telelogic.rhapsody.core.IRPRequirement;
 
 public class RemoteRequirementAssessment {
 
-	protected List<IRPRequirement> _requirementsInScope = new ArrayList<IRPRequirement>();
-	protected List<IRPRequirement> _requirementsToUpdateSpec = new ArrayList<IRPRequirement>();
-	protected List<IRPRequirement> _requirementsToUpdateName = new ArrayList<IRPRequirement>();
-	protected List<IRPRequirement> _requirementsThatMatch = new ArrayList<IRPRequirement>();
-	protected List<IRPRequirement> _requirementsWithNoLinks = new ArrayList<IRPRequirement>();
-	protected List<IRPRequirement> _requirementsWithUnloadedHyperlinks = new ArrayList<IRPRequirement>();
-	protected Map<IRPRequirement, IRPRequirement> _requirementsThatTrace = new HashMap<IRPRequirement,IRPRequirement>();
-	protected List<IRPRequirement> _remoteRequirementsThatTrace = new ArrayList<IRPRequirement>();
-	protected List<IRPRequirement> _remoteRequirementsThatDontTrace = new ArrayList<IRPRequirement>();
+	protected List<IRPRequirement> _requirementsInScope = new ArrayList<>();
+	protected List<IRPRequirement> _requirementsToUpdateSpec = new ArrayList<>();
+	protected List<IRPRequirement> _requirementsToUpdateName = new ArrayList<>();
+	protected List<IRPRequirement> _requirementsThatMatch = new ArrayList<>();
+	protected List<IRPRequirement> _requirementsWithNoLinks = new ArrayList<>();
+	protected List<IRPRequirement> _requirementsWithUnloadedHyperlinks = new ArrayList<>();
+	protected Map<IRPRequirement, IRPRequirement> _requirementsThatTrace = new HashMap<>();
+	protected List<IRPRequirement> _remoteRequirementsThatTrace = new ArrayList<>();
+	protected List<IRPRequirement> _remoteRequirementsThatDontTrace = new ArrayList<>();
 	protected Map<IRPRequirement, List<IRPRequirement>> _remoteRequirementsToEstablishTraceTo = new HashMap<>();  
-	protected List<IRPRequirement> _requirementsWithNoMatchOrLinks = new ArrayList<IRPRequirement>();
-	protected List<IRPModelElement> _requirementOwnersInScope = new ArrayList<IRPModelElement>();
-	protected Map<IRPRequirement, IRPRequirement> _requirementsRemoteParentMap = new HashMap<>();  
+	protected List<IRPRequirement> _requirementsWithNoMatchOrLinks = new ArrayList<>();
+	protected List<IRPModelElement> _requirementOwnersInScope = new ArrayList<>();
+	protected Map<IRPModelElement, IRPRequirement> _requirementOwnersThatTrace = new HashMap<>();
+	protected List<IRPModelElement> _requirementOwnersThatDontTrace = new ArrayList<>();
+	protected Map<IRPModelElement, IRPRequirement> _requirementsRemoteParentMap = new HashMap<>();  
 	protected Set<IRPModelElement> _elementsConsideredHeadings = new HashSet<>();
 	protected ExecutableMBSE_Context _context;
 
@@ -41,11 +43,11 @@ public class RemoteRequirementAssessment {
 	public void determineRequirementsToUpdate(
 			List<IRPModelElement> theSelectedEls ) {
 
-		addNestedRequirementsToRequirementsInScopeFor( theSelectedEls );
+		addNestedRequirementsInScopeFor( theSelectedEls );
 
-		_requirementOwnersInScope = getRequirementOwnersInScopeFor( theSelectedEls );
+		addRequirementOwnersInScopeFor( theSelectedEls );
 				
-		addRequirementsWithSatisfactionsToRequirementsInScopeFrom( _requirementOwnersInScope );
+		addRequirementsWithSatisfactionsInScopeFrom( _requirementOwnersInScope );
 		
 		addToRemoteParentMapIfNecessary( _requirementsInScope );
 
@@ -63,7 +65,7 @@ public class RemoteRequirementAssessment {
 		}
 	}
 
-	private void addRequirementsWithSatisfactionsToRequirementsInScopeFrom(
+	private void addRequirementsWithSatisfactionsInScopeFrom(
 			List<IRPModelElement> theEls ){
 
 		for( IRPModelElement theEl : theEls ){
@@ -96,30 +98,33 @@ public class RemoteRequirementAssessment {
 		}
 	}
 
-	private List<IRPModelElement> getRequirementOwnersInScopeFor(
+	private void addRequirementOwnersInScopeFor(
 			List<IRPModelElement> theSelectedEls ){
-
-		List<IRPModelElement> theOwnersInScope = new ArrayList<>();
 
 		for( IRPModelElement theSelectedEl : theSelectedEls ){
 
-			List<IRPModelElement> theCandidates = _context.findElementsWithMetaClassAndStereotype(
-					"Class", _context.NEW_TERM_FOR_FEATURE_BLOCK, theSelectedEl, 1 );
-
-			theCandidates.addAll(_context.findElementsWithMetaClassAndStereotype(
-					"Class", _context.NEW_TERM_FOR_FUNCTION_BLOCK, theSelectedEl, 1 ) );
+			List<IRPModelElement> theCandidates =_context.
+					findElementsWithMetaClassAndStereotype( 
+							"Class", _context.NEW_TERM_FOR_FUNCTION_BLOCK, theSelectedEl, 1 );
 
 			for( IRPModelElement  theCandidate : theCandidates ){
-				if( !theOwnersInScope.contains( theCandidate ) ) {
-					theOwnersInScope.add( theCandidate );
+				
+				if( !_requirementOwnersInScope.contains( theCandidate ) ) {
+					_requirementOwnersInScope.add( theCandidate );
+					
+					IRPRequirement theRemoteReqt = _context.getRemoteRequirementFor(theCandidate);
+					
+					if( theRemoteReqt != null ) {
+						_requirementOwnersThatTrace.put( theCandidate, theRemoteReqt );
+					} else {
+						_requirementOwnersThatDontTrace.add( theCandidate );
+					}
 				}
 			}
 		}
-
-		return theOwnersInScope;
 	}
 
-	private void addNestedRequirementsToRequirementsInScopeFor(
+	private void addNestedRequirementsInScopeFor(
 			List<IRPModelElement> theSelectedEls ){
 
 		for( IRPModelElement theSelectedEl : theSelectedEls ){
@@ -153,15 +158,14 @@ public class RemoteRequirementAssessment {
 	}
 
 	private boolean addToRemoteParentParentMap(
-			IRPRequirement theRequirement, 
+			IRPModelElement theRequirement, 
 			IRPModelElement theOwner ){
 		
 		boolean isSuccess = false;
 		
-		List<IRPRequirement> theRemoteReqts = _context.getRemoteRequirementsFor( theOwner );
+		IRPRequirement theRemoteReqt = _context.getRemoteRequirementFor( theOwner );
 		
-		if( theRemoteReqts.size() == 1 ) {
-			IRPRequirement theRemoteReqt = theRemoteReqts.get(0);
+		if( theRemoteReqt != null ) {
 			_requirementsRemoteParentMap.put( theRequirement, theRemoteReqt );
 			isSuccess = true;
 		}

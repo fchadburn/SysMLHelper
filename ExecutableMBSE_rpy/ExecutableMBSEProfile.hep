@@ -109,7 +109,7 @@ DLLServerCompatible13=1
 name14=MBSE Method: Requirements Analysis\Export requirements to csv for import into DOORS NG
 isPluginCommand14=1
 command14=InvokeExecutableMBSEHelper
-applicableTo14=13 Requirement Package,Package
+applicableTo14=13 Requirement Package,22 Feature Function Package,Package
 isVisible14=1
 DLLServerCompatible14=1
 

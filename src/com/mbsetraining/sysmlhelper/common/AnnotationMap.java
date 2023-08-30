@@ -17,7 +17,7 @@ public class AnnotationMap extends HashMap<String, List<IRPAnnotation>> {
 	protected BaseContext _context;
 	
 	public AnnotationMap(
-			IRPRequirement forEl,
+			IRPModelElement forEl,
 			BaseContext context ) {
 
 		_context = context;

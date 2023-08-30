@@ -3266,6 +3266,25 @@ public abstract class BaseContext {
 
 		return theRemoteRequirements;
 	}
+	
+	public IRPRequirement getRemoteRequirementFor(
+			IRPModelElement theEl ) {
+		
+		IRPRequirement theRemoteRequirement = null;
+		
+		List<IRPRequirement> theRemoteReqts = getRemoteRequirementsFor( theEl );
+
+		if( theRemoteReqts.size() > 1 ){
+
+			warning( elInfo( theEl ) + " has " + theRemoteReqts.size() + " remote requirements when expecting 0 or 1");
+
+		} else if( theRemoteReqts.size() == 1 ){
+			
+			theRemoteRequirement = theRemoteReqts.get( 0 );
+		}
+		
+		return theRemoteRequirement;
+	}
 
 	public List<IRPModelElement> getRemoteDependsOnFor( 
 			IRPModelElement theEl ) {
@@ -3390,16 +3409,16 @@ public abstract class BaseContext {
 	}
 
 	public String getNameFromTracedRemoteRequirement(
-			IRPRequirement forReqt,
+			IRPModelElement forModelEl,
 			String theID ){
 
-		String theName = cleanRequirementName( forReqt.getName(), theID ); 
+		String theName = cleanRequirementName( forModelEl.getName(), theID ); 
 
-		List<IRPRequirement> theRemoteReqts = new ArrayList<>( getRemoteRequirementsFor( forReqt ) );
+		List<IRPRequirement> theRemoteReqts = new ArrayList<>( getRemoteRequirementsFor( forModelEl ) );
 
 		if( theRemoteReqts.size() > 1 ){
 
-			warning( elInfo( forReqt ) + " has " + theRemoteReqts.size() + " remote requirements when expecting 0 or 1");
+			warning( elInfo( forModelEl ) + " has " + theRemoteReqts.size() + " remote requirements when expecting 0 or 1");
 
 		} else if( theRemoteReqts.size() == 1 ){
 

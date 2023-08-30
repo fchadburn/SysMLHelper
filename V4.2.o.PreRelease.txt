@@ -938,6 +938,7 @@ V4.2.o.Rhp831.PreRelease (XX-XXX-XXXX):
 0703 27-AUG-2023: ExecutableMBSE: Export parent binding number in CSV based on OSLC trace relation by owning package or traced function/feature block (F.J.Chadburn)
 0704 28-AUG-2023: ExecutableMBSE: Default to create the req'ts package stereotype in the create use case package and context package menus as it's the most common/valuable choice (F.J.Chadburn)
 0705 28-AUG-2023: ExecutableMBSE: Polished properties for default name of Requirement Diagram - System to 'req - ' rather than 'rd - ' to align with SysML abbreviations (F.J.Chadburn)
+0706 30-AUG-2023: ExecutableMBSE: First implementation of right-click of feature function package to export requirements and function blocks to csv (F.J.Chadburn)
 
 Backlog/Known issues
 - Switch master the other way!

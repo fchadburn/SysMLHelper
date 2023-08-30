@@ -3,8 +3,10 @@ package com.mbsetraining.sysmlhelper.doorsng;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -19,13 +21,7 @@ public class ExportRequirementsToCSV {
 	protected ExecutableMBSE_Context _context;
 	protected RemoteRequirementAssessment _assessment;
 
-	public ExportRequirementsToCSV(
-			ExecutableMBSE_Context context ) {
-
-		_context = context;
-		_assessment = new RemoteRequirementAssessment( _context );
-	}
-
+	// For testing only
 	public static void main(String[] args) {
 
 		ExecutableMBSE_Context theContext = new ExecutableMBSE_Context( 
@@ -34,6 +30,13 @@ public class ExportRequirementsToCSV {
 		ExportRequirementsToCSV theExporter = new ExportRequirementsToCSV( theContext );
 
 		theExporter.exportRequirementsToCSV( theContext.getSelectedElement( false ), 1 );	
+	}
+	
+	public ExportRequirementsToCSV(
+			ExecutableMBSE_Context context ) {
+
+		_context = context;
+		_assessment = new RemoteRequirementAssessment( _context );
 	}
 
 	public void exportRequirementsToCSV(
@@ -44,137 +47,116 @@ public class ExportRequirementsToCSV {
 		theSelectedEls.add( underEl );
 		_assessment.determineRequirementsToUpdate( theSelectedEls );
 
-		int inScopeCount = _assessment._requirementsInScope.size();
+		boolean isContinue = true;
+
+		int inScopeCount = 
+				_assessment._requirementsInScope.size() +
+				_assessment._requirementOwnersInScope.size();
+
+		List<IRPModelElement> theEls = new ArrayList<>();
 
 		if( inScopeCount == 0 ){
 
-			UserInterfaceHelper.showWarningDialog( "There are no requirements under " + _context.elInfo( underEl ) + " to export" );
+			UserInterfaceHelper.showWarningDialog( "There are no requirement artifacts under " + _context.elInfo( underEl ) + " to export" );
+			isContinue = false;
+		}
 
-		} else {
+		int unloadedCount = _assessment._requirementsWithUnloadedHyperlinks.size();
 
-			int missingOrChangedCount = _assessment._requirementsWithNoLinks.size() + 
-					_assessment._requirementsToUpdateSpec.size();
-			
-			int diff = inScopeCount - missingOrChangedCount;
+		if( unloadedCount > 0 ) {
 
-			if( diff > 0 ){
+			isContinue = UserInterfaceHelper.askAQuestion( "There are " + unloadedCount + " unloaded requirement links under " + 
+					_context.elInfo( underEl ) + ". \nAre you sure you want to continue rather than log into the remote package first?" );
+		}
 
-				boolean answer = UserInterfaceHelper.askAQuestion( diff + " of the " + inScopeCount + 
-						" requirements under " + _context.elInfo( underEl) + " \nalready trace to remote requirements with matching specification text. \n\n" + 
-						"Shall I restrict the csv export to only the " + missingOrChangedCount + " requirements that are new or have changed?");
+		if( isContinue ) {
+
+			if( !_assessment._requirementOwnersInScope.isEmpty() &&
+					_assessment._requirementOwnersThatDontTrace.size() > 0 ) {
+
+				boolean answer = UserInterfaceHelper.askAQuestion( _assessment._requirementOwnersThatDontTrace.size() + 
+						" of the " + _assessment._requirementOwnersInScope.size() + " requirement owners under " + 
+						_context.elInfo( underEl) + " \ndon't trace to remote requirements. \n\n" + 
+						"Do you want to export just the " + _assessment._requirementOwnersThatDontTrace.size() + 
+						" requirement owners and " + _assessment._requirementsWithNoLinks.size() + " requirements with no links? \n"+
+						"(these will be generated with temporary ids so that structure can be imported with new element creation only)");
 
 				if( answer ){
-					
-					List<IRPRequirement> theReqts = new ArrayList<>();
-					theReqts.addAll( _assessment._requirementsWithNoLinks );
-					theReqts.addAll( _assessment._requirementsToUpdateSpec );
 
-					exportToCSV( underEl, theReqts );
+					theEls.addAll( _assessment._requirementOwnersThatDontTrace );
+					theEls.addAll( _assessment._requirementsWithNoLinks );
+
 				} else {
-					exportToCSV( underEl, _assessment._requirementsInScope );
+
+					theEls.addAll( _assessment._requirementsInScope );
 				}
+
 			} else {
-				exportToCSV( underEl, _assessment._requirementsInScope );
+
+				// No structure
+
+				int missingOrChangedCount = 
+						_assessment._requirementsWithNoLinks.size() + 
+						_assessment._requirementsToUpdateSpec.size();
+
+				int diff = inScopeCount - missingOrChangedCount;
+
+
+				if( diff > 0 ){
+
+					boolean answer = UserInterfaceHelper.askAQuestion( diff + " of the " + inScopeCount + 
+							" requirements under " + _context.elInfo( underEl) + 
+							" \nalready trace to remote requirements with matching specification text. \n\n" + 
+							"Shall I restrict the csv export to only the " + missingOrChangedCount + 
+							" that are known to be new or changed (rather than all)?");
+
+					if( answer ){
+
+						theEls.addAll( _assessment._requirementsWithNoLinks );
+						theEls.addAll( _assessment._requirementsToUpdateSpec );
+
+					} else {
+
+						theEls.addAll( _assessment._requirementsInScope );
+					}
+
+				} else {
+					theEls.addAll( _assessment._requirementsInScope );
+				}
+
 			}
+		}
+
+		if( !theEls.isEmpty() ) {
+			exportToCSV( underEl, theEls );
 		}
 	}
 
 	private String getIdentifierFromTracedRemoteRequirement(
-			IRPRequirement forReqt ){
+			IRPModelElement forModelEl ){
 
 		String theIdentifier = "";
 
-		List<IRPRequirement> theRemoteReqts = _context.getRemoteRequirementsFor( forReqt );
+		IRPRequirement theRemoteReqt = _context.getRemoteRequirementFor( forModelEl );
 
-		if( theRemoteReqts.size() > 1 ){
-
-			_context.warning( _context.elInfo( forReqt ) + " has " + theRemoteReqts.size() + " remote requirements when expecting 0 or 1");
-
-		} else if( theRemoteReqts.size() == 1 ){
-
-			IRPRequirement theRemoteReqt = theRemoteReqts.get( 0 );
+		if( theRemoteReqt != null ){
 			theIdentifier= theRemoteReqt.getRequirementID();
 		}
 
 		return theIdentifier;
 	}
 
-	private String getParentBinding(
-			IRPRequirement forReqt ){
-
-		String theParentBinding = "";
-		
-		IRPRequirement theRemoteParent = _assessment._requirementsRemoteParentMap.get( forReqt );
-		
-		if( theRemoteParent != null ) {
-			_context.debug( "The  remote parent for " + _context.elInfo( forReqt ) + " is " + _context.elInfo( theRemoteParent ) );
-			theParentBinding = theRemoteParent.getRequirementID();
-		}
-
-		return theParentBinding;
-	}
-
 	private void exportToCSV(
 			IRPModelElement underEl, 
-			List<IRPRequirement> theReqts ){
+			List<IRPModelElement> theSourceEls ) {
 
-		_context.debug( "There are " + theReqts.size() + " requirements under " + _context.elInfo( underEl ) );
+		_context.debug( "There are " + theSourceEls.size() + " requirements under " + _context.elInfo( underEl ) );
 
-		List<IRPRequirement> theReqtsWithNewLines = new ArrayList<>();
+		boolean isFirstTimeExport = isFirstTimeExport( theSourceEls );
 
-		List<String> theAdditionalHeadings = new ArrayList<>();
+		cleanNewLinesFrom( theSourceEls );
 
-		for( IRPRequirement theReqt : theReqts ){
-
-			String theSpec = theReqt.getSpecification();
-
-			if( theSpec.contains( "\r" ) || theSpec.contains( "\n" ) ) {
-
-				theReqtsWithNewLines.add( theReqt );
-			}
-
-			AnnotationMap theAnnotationMap = new AnnotationMap( theReqt, _context );
-
-			if( !theAnnotationMap.isEmpty() ) {
-
-				String msg = _context.elInfo( theReqt ) + " has";
-
-				for( Entry<String, List<IRPAnnotation>>  nodeId : theAnnotationMap.entrySet() ){
-
-					String theKey = nodeId.getKey();
-
-					if( !theAdditionalHeadings.contains( theKey ) ){
-						theAdditionalHeadings.add( theKey );
-					}
-
-					List<IRPAnnotation> value = nodeId.getValue();
-
-					msg += " " + nodeId.getKey() + " (" + value.size() + ")";		
-				}
-
-				_context.info( msg );
-			}
-		}
-
-		if( !theReqtsWithNewLines.isEmpty() ) {
-
-			boolean answer = UserInterfaceHelper.askAQuestion( theReqtsWithNewLines.size() + " of the " + 
-					theReqts.size() + " requirements have newline or linefeed characters: \n" +
-					getStringFor( theReqtsWithNewLines, 1 ) + "\n" +
-					"This means that they won't export to csv and roundtrip into DOORS NG correctly.\n\n" +
-					"Do you want to fix the model to remove these before proceeding?" );
-
-			if( answer ) {
-				for( IRPRequirement theReqtWithNewLines : theReqtsWithNewLines ){
-
-					String theSpec = theReqtWithNewLines.getSpecification().
-							replaceAll( "\\r", "" ).replaceAll( "\\n", "" );
-
-					_context.info( "Removing newlines from " + _context.elInfo( theReqtWithNewLines ) );
-					theReqtWithNewLines.setSpecification( theSpec  );
-				}
-			}
-		}
+		List<String> theAnnotationHeadings = getAnnotationHeadingsFrom( theSourceEls );
 
 		String theFilename = underEl.getName() + ".csv";
 		File theFile = chooseAFileToImport( theFilename );
@@ -188,19 +170,20 @@ public class ExportRequirementsToCSV {
 
 			// Get controlling properties
 			String artifactType = _context.getCSVExportArtifactType( underEl );
+			_context.debug( "CSVExportArtifactType = " + artifactType );
+
 			String separator = _context.getCSVExportSeparator( underEl );
+			_context.debug( "CSVExportSeparator = " + separator );
 
 			boolean isIncludeArtifactName = _context.getCSVExportIncludeArtifactName( underEl );
+			_context.debug( "CVSExportIncludeArtifactName = " + isIncludeArtifactName );
+
 			boolean isIncludeColumnsForLinkedAnnotations = _context.getCSVExportIncludeColumnsForLinkedAnnotations( underEl );
+			_context.debug( "CSVExportIncludeColumnsForLinkedAnnotations = " + isIncludeColumnsForLinkedAnnotations );
 
-			_context.debug( "exportRequirementsToCSV CSVExportSeparator=" + separator + 
-					", CSVExportArtifactType=" + artifactType + 
-					", CVSExportIncludeArtifactName=" + isIncludeArtifactName +
-					", CSVExportIncludeColumnsForLinkedAnnotations=" + isIncludeColumnsForLinkedAnnotations );
+			String theMsg = "Based on the ExecutableMBSEProfile::RequirementsAnalysis properties for this package this helper will export " + theSourceEls.size();
 
-			String theMsg = "Based on the ExecutableMBSEProfile::RequirementsAnalysis properties for this package this helper will export " + theReqts.size();
-
-			if( theReqts.size() == 1 ) {
+			if( theSourceEls.size() == 1 ) {
 				theMsg += " requirement.";
 			} else {
 				theMsg += " requirements.";
@@ -222,7 +205,7 @@ public class ExportRequirementsToCSV {
 				theMsg += "Include annotation columns, e.g, Rationale: False";
 			}
 
-			if( !theAdditionalHeadings.isEmpty() && 
+			if( !theAnnotationHeadings.isEmpty() && 
 					!isIncludeColumnsForLinkedAnnotations ) {
 
 				theMsg += "\n\nAnnotations such as Rationale were found but the CSVExportIncludeColumnsForLinkedAnnotations property is set to False";
@@ -268,7 +251,7 @@ public class ExportRequirementsToCSV {
 						if( isIncludeArtifactName ){
 							theHeadingLine += "Name" + separator;			
 						}
-						
+
 						theHeadingLine += "Primary Text" + separator;
 						theHeadingLine += "isHeading" + separator;
 						theHeadingLine += "parentBinding" + separator;
@@ -276,8 +259,8 @@ public class ExportRequirementsToCSV {
 
 						if( isIncludeColumnsForLinkedAnnotations ) {		
 
-							for( String theAdditionalHeading : theAdditionalHeadings ){
-								theHeadingLine += separator + theAdditionalHeading;
+							for( String theAnnotationHeading : theAnnotationHeadings ){
+								theHeadingLine += separator + theAnnotationHeading;
 							}							
 						}
 
@@ -287,39 +270,84 @@ public class ExportRequirementsToCSV {
 
 						boolean isAnnotationInfoNeeded = false;
 
-						for( IRPRequirement theReqt : theReqts ){
+						// Used to store Ids when no parent finding found
+						Map<IRPModelElement,String> theNewHeadingIdMap = new HashMap<>();
 
-							String theLine = "";
+						for( IRPModelElement theSourceEl : theSourceEls ){
+
+							String theIdentifier = getIdentifierFromTracedRemoteRequirement( theSourceEl );
 							
-							String theIdentifier = getIdentifierFromTracedRemoteRequirement( theReqt );
-							String theName = _context.getNameFromTracedRemoteRequirement( theReqt, theIdentifier ); // Keep name same as remote if applicable to avoid changing it
-							String theParentBinding = getParentBinding( theReqt );
+							if( theIdentifier.isEmpty() && 
+									isFirstTimeExport ) {
 
-							String thePrimaryText = _context.
-									replaceCSVIncompatibleCharsFrom( theReqt.getSpecification() );
+								int newId = theNewHeadingIdMap.size() + 1;
+								theIdentifier = Integer.toString( newId );
+								theNewHeadingIdMap.put( theSourceEl, theIdentifier );
+							}
 
-							theLine += theIdentifier + separator;
-							
+							String theName;
+
+							if( theSourceEl instanceof IRPRequirement ) {
+
+								theName = _context.getNameFromTracedRemoteRequirement( theSourceEl, theIdentifier );
+							} else {
+								theName = "";
+							}
+
+							String theParentBinding;
+
+							IRPRequirement theRemoteParent = _assessment._requirementsRemoteParentMap.get( theSourceEl );
+
+							if( theRemoteParent != null ) {
+								
+								_context.debug( "The  remote parent for " + _context.elInfo( theSourceEl ) + " is " + _context.elInfo( theRemoteParent ) );
+								theParentBinding = theRemoteParent.getRequirementID();
+								
+							} else if( theNewHeadingIdMap.containsKey( theSourceEl.getOwner() ) ) {
+								
+								theParentBinding = theNewHeadingIdMap.get( theSourceEl.getOwner() );
+								
+							} else {
+								theParentBinding = "";
+							}
+
+							String thePrimaryText;
+
+							if( theSourceEl instanceof IRPRequirement ) {
+
+								IRPRequirement theReqt = (IRPRequirement)theSourceEl;
+
+								thePrimaryText = _context.
+										replaceCSVIncompatibleCharsFrom( theReqt.getSpecification() );
+							} else {
+								// Keep name same as remote if applicable to avoid changing it;
+								thePrimaryText = _context.
+										getNameFromTracedRemoteRequirement( theSourceEl, theIdentifier ); 
+							}
+
+							String theLine = theIdentifier + separator;
+
 							if( isIncludeArtifactName ){
 								theLine += theName + separator;
 							}
-							
+
 							theLine += thePrimaryText + separator;
-							
-							if( _assessment._elementsConsideredHeadings.contains( theReqt ) ) {
-								theLine += "true" + separator;
-							} else {
+
+							// isHeading
+							if( theSourceEl instanceof IRPRequirement ) {
 								theLine += "false" + separator;
+							} else {
+								theLine += "true" + separator;								
 							}
-							
+
 							theLine += theParentBinding + separator;
 							theLine += artifactType;
 
 							if( isIncludeColumnsForLinkedAnnotations ) {
 
-								AnnotationMap theAnnotationMap = new AnnotationMap( theReqt, _context );
+								AnnotationMap theAnnotationMap = new AnnotationMap( theSourceEl, _context );
 
-								for( String theAdditionalHeading : theAdditionalHeadings ){
+								for( String theAdditionalHeading : theAnnotationHeadings ){
 
 									theLine += separator;
 
@@ -344,7 +372,7 @@ public class ExportRequirementsToCSV {
 								}
 
 							} else if( !isAnnotationInfoNeeded && 
-									!theAdditionalHeadings.isEmpty() ) {
+									!theAnnotationHeadings.isEmpty() ) {
 								isAnnotationInfoNeeded = true;
 							}
 
@@ -368,6 +396,107 @@ public class ExportRequirementsToCSV {
 				}
 			}
 		}
+	}
+
+	private boolean isFirstTimeExport(
+			List<IRPModelElement> theSourceEls ){
+
+		boolean isFirstTimeExport = true;
+
+		if( isFirstTimeExport ) {
+
+			for( IRPModelElement theSourceEl : theSourceEls ){
+
+				String theId = getIdentifierFromTracedRemoteRequirement( theSourceEl );
+
+				if( !theId.isEmpty() ) {
+					isFirstTimeExport = false;
+					break;
+				}
+			}
+		}
+
+		return isFirstTimeExport;
+	}
+
+	private void cleanNewLinesFrom(
+			List<IRPModelElement> theEls ){
+
+		List<IRPModelElement> theElsWithNewLines = new ArrayList<>();
+
+		for( IRPModelElement theEl : theEls ){
+
+			if( theEl instanceof IRPRequirement ){
+
+				IRPRequirement theReqt = (IRPRequirement)theEl;
+
+				String theSpec = theReqt.getSpecification();
+
+				if( theSpec.contains( "\r" ) || theSpec.contains( "\n" ) ) {
+
+					theElsWithNewLines.add( theEl );
+				}
+			}
+		}
+
+		if( !theElsWithNewLines.isEmpty() ) {
+
+			boolean answer = UserInterfaceHelper.askAQuestion( theElsWithNewLines.size() + " of the " + 
+					theEls.size() + " requirements have newline or linefeed characters: \n" +
+					getStringFor( theElsWithNewLines, 1 ) + "\n" +
+					"This means that they won't export to csv and roundtrip into DOORS NG correctly.\n\n" +
+					"Do you want to fix the model to remove these before proceeding?" );
+
+			if( answer ) {
+
+				for( IRPModelElement theElWithNewLines : theElsWithNewLines ){
+
+					if( theElWithNewLines instanceof IRPRequirement ) {
+
+						IRPRequirement theReqt = (IRPRequirement) theElWithNewLines;
+
+						String theSpec = theReqt.getSpecification().
+								replaceAll( "\\r", "" ).replaceAll( "\\n", "" );
+
+						_context.info( "Removing newlines from " + _context.elInfo( theReqt ) );
+						theReqt.setSpecification( theSpec  );
+					}
+				}
+			}
+		}		
+	}
+
+	private List<String> getAnnotationHeadingsFrom(
+			List<IRPModelElement> theEls ){
+
+		List<String> theAnnotationHeadings = new ArrayList<>();
+
+		for( IRPModelElement theEl : theEls ){
+
+			AnnotationMap theAnnotationMap = new AnnotationMap( theEl, _context );
+
+			if( !theAnnotationMap.isEmpty() ) {
+
+				String msg = _context.elInfo( theEl ) + " has";
+
+				for( Entry<String, List<IRPAnnotation>>  nodeId : theAnnotationMap.entrySet() ){
+
+					String theKey = nodeId.getKey();
+
+					if( !theAnnotationHeadings.contains( theKey ) ){
+						theAnnotationHeadings.add( theKey );
+					}
+
+					List<IRPAnnotation> value = nodeId.getValue();
+
+					msg += " " + nodeId.getKey() + " (" + value.size() + ")";		
+				}
+
+				_context.info( msg );
+			}
+		}
+
+		return theAnnotationHeadings;
 	}
 
 	private File chooseAFileToImport(
@@ -434,7 +563,7 @@ public class ExportRequirementsToCSV {
 
 
 	public String getStringFor( 
-			List<IRPRequirement> theEls,
+			List<IRPModelElement> theEls,
 			int max ) {
 
 		int count = 0;
