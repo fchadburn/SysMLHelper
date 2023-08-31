@@ -940,6 +940,8 @@ V4.2.o.Rhp831.PreRelease (XX-XXX-XXXX):
 0705 28-AUG-2023: ExecutableMBSE: Polished properties for default name of Requirement Diagram - System to 'req - ' rather than 'rd - ' to align with SysML abbreviations (F.J.Chadburn)
 0706 30-AUG-2023: ExecutableMBSE: First implementation of right-click of feature function package to export requirements and function blocks to csv (F.J.Chadburn)
 0707 30-AUG-2023: ExecutableMBSE: Reduce 'Synchronise remote links based on presence on diagram' menu so only available on model and diagrams, to avoid overloading users (F.J.Chadburn)
+0708 31-AUG-2023: ExecutableMBSE: Fix issue with Table View - Requirement to Use Case not appearing in right-click menu for requirements packages (F.J.Chadburn)
+0709 31-AUG-2023: ExecutableMBSE: Added better default column widths for Requirement to Action/Action to Requirement/Requirement to Use Case/Use Case to Requirement tables (F.J.Chadburn) 
 
 Backlog/Known issues
 - Switch master the other way!
