@@ -341,7 +341,13 @@ public class ExportRequirementsToCSV {
 							}
 
 							theLine += theParentBinding + separator;
-							theLine += artifactType;
+							
+							if( theSourceEl instanceof IRPRequirement ) {
+
+								theLine += artifactType;
+							} else {
+								theLine += "Heading";
+							}
 
 							if( isIncludeColumnsForLinkedAnnotations ) {
 
