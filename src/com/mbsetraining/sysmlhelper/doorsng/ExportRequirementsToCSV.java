@@ -74,12 +74,27 @@ public class ExportRequirementsToCSV {
 			if( !_assessment._requirementOwnersInScope.isEmpty() &&
 					_assessment._requirementOwnersThatDontTrace.size() > 0 ) {
 
-				boolean answer = UserInterfaceHelper.askAQuestion( _assessment._requirementOwnersThatDontTrace.size() + 
+				int reqtsThatDontTraceCount = _assessment._requirementsThatDontTrace.size();
+				
+				String msg = _assessment._requirementOwnersThatDontTrace.size() + 
 						" of the " + _assessment._requirementOwnersInScope.size() + " requirement owners under " + 
-						_context.elInfo( underEl) + " \ndon't trace to remote requirements. \n\n" + 
-						"Do you want to export just the " + _assessment._requirementOwnersThatDontTrace.size() + 
-						" requirement owners and " + _assessment._requirementsThatDontTrace.size() + " requirements with no links? \n"+
-						"(these will be generated with temporary ids so that structure can be imported with new element creation only)");
+						_context.elInfo( underEl) + " \ndon't trace to remote requirements. \n\n";
+				
+				msg += "Tip: After exporting, open the csv, change font to Ariel 10 and save as .xlsx for import into DOORS Next\n\n";
+
+				if( reqtsThatDontTraceCount > 0 ) {
+					
+					msg += "Do you want to export just the " + _assessment._requirementOwnersThatDontTrace.size() + 
+							" requirement owners and " + _assessment._requirementsThatDontTrace.size() + " requirements with no links? \n"+
+							"(these will be generated with temporary ids so that structure can be imported with new element creation only)";
+				} else {
+					
+					msg += "Do you want to export just the " + _assessment._requirementOwnersThatDontTrace.size() + 
+							" requirement owners with no links?";
+				}
+				
+				
+				boolean answer = UserInterfaceHelper.askAQuestion( msg );
 
 				if( answer ){
 
@@ -137,7 +152,7 @@ public class ExportRequirementsToCSV {
 
 		String theIdentifier = "";
 
-		IRPRequirement theRemoteReqt = _context.getRemoteRequirementFor( forModelEl );
+		IRPRequirement theRemoteReqt = _context.getSingleRemoteRequirementFor( forModelEl );
 
 		if( theRemoteReqt != null ){
 			theIdentifier= theRemoteReqt.getRequirementID();
@@ -300,7 +315,7 @@ public class ExportRequirementsToCSV {
 
 							if( theRemoteParent != null ) {
 								
-								_context.debug( "The  remote parent for " + _context.elInfo( theSourceEl ) + " is " + _context.elInfo( theRemoteParent ) );
+								_context.debug( "The remote parent for " + _context.elInfo( theSourceEl ) + " is " + _context.elInfo( theRemoteParent ) );
 								theParentBinding = theRemoteParent.getRequirementID();
 								
 							} else if( theNewHeadingIdMap.containsKey( theSourceEl.getOwner() ) ) {

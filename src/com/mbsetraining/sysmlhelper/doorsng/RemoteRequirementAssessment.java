@@ -117,7 +117,7 @@ public class RemoteRequirementAssessment {
 				if( !_requirementOwnersInScope.contains( theCandidate ) ) {
 					_requirementOwnersInScope.add( theCandidate );
 					
-					IRPRequirement theRemoteReqt = _context.getRemoteRequirementFor( theCandidate );
+					IRPRequirement theRemoteReqt = _context.getSingleRemoteRequirementFor( theCandidate );
 					
 					if( theRemoteReqt != null ) {
 						
@@ -186,7 +186,7 @@ public class RemoteRequirementAssessment {
 		
 		boolean isSuccess = false;
 		
-		IRPRequirement theRemoteReqt = _context.getRemoteRequirementFor( theOwner );
+		IRPRequirement theRemoteReqt = _context.getSingleRemoteRequirementFor( theOwner );
 		
 		if( theRemoteReqt != null ) {
 			_requirementsRemoteParentMap.put( theRequirement, theRemoteReqt );

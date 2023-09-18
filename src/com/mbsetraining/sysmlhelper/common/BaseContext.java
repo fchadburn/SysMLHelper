@@ -3267,18 +3267,14 @@ public abstract class BaseContext {
 		return theRemoteRequirements;
 	}
 
-	public IRPRequirement getRemoteRequirementFor(
+	public IRPRequirement getSingleRemoteRequirementFor(
 			IRPModelElement theEl ) {
 
 		IRPRequirement theRemoteRequirement = null;
 
 		List<IRPRequirement> theRemoteReqts = getRemoteRequirementsFor( theEl );
 
-		if( theRemoteReqts.size() > 1 ){
-
-			warning( elInfo( theEl ) + " has " + theRemoteReqts.size() + " remote requirements when expecting 0 or 1");
-
-		} else if( theRemoteReqts.size() == 1 ){
+		if( theRemoteReqts.size() == 1 ){
 
 			theRemoteRequirement = theRemoteReqts.get( 0 );
 		}
