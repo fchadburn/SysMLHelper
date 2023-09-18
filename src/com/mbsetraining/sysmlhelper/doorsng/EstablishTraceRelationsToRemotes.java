@@ -1,5 +1,6 @@
 package com.mbsetraining.sysmlhelper.doorsng;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +14,9 @@ import com.telelogic.rhapsody.core.RhapsodyAppServer;
 
 public class EstablishTraceRelationsToRemotes {
 
-	ExecutableMBSE_Context _context;
+	protected ExecutableMBSE_Context _context;
+	protected RemoteRequirementAssessment _assessment;
+	
 
 	// testing only
 	public static void main(String[] args) {
@@ -28,17 +31,21 @@ public class EstablishTraceRelationsToRemotes {
 			ExecutableMBSE_Context context ) {
 
 		_context = context;
+		_assessment = new RemoteRequirementAssessment( _context );
 	}
 	
 	public void establishTraceRelationsToRemoteReqts(){
 
 		IRPModelElement theSelectedEl = _context.getSelectedElement( false );
-
+		List<IRPModelElement> theSelectedEls = new ArrayList<>();
+		theSelectedEls.add( theSelectedEl );
+		_assessment.determineRequirementsToUpdate( theSelectedEls );
+		
 		//Logger.debug( "theSelectedEl is " + Logger.elementInfo(theSelectedEl)  );
-
-		List<IRPRequirement> theRemoteReqts = _context.getRemoteRequirementsFor( theSelectedEl );
-
-		if( theRemoteReqts.isEmpty() ){
+		
+		boolean isContinue = true;
+		
+		if( _assessment._remoteRequirementsOwnedByPackage.isEmpty() ){
 
 			UserInterfaceHelper.showWarningDialog( "I was unable to find any remote requirements under " + 
 					_context.elInfo( theSelectedEl ) + "\n" +
@@ -46,50 +53,57 @@ public class EstablishTraceRelationsToRemotes {
 					"You also need to establish OSLC links from " + 
 					_context.elInfo( theSelectedEl ) + " \n" +
 					"to the remote requirements you want to switch to.");
-		} else {
-			_context.debug( "Found " + theRemoteReqts.size() + 
-					" remote requirements related to " + 
-					_context.elInfo( theSelectedEl ) );
-
-			List<IRPRequirement> theReqts = _context.getRequirementsThatDontTraceToRemoteRequirements( theSelectedEl );
-
-			_context.debug( "Found " + theReqts.size() + " Rhapsody-owned requirements under " + _context.elInfo( theSelectedEl ) + " with no remote reqts");
-
-			Map<IRPRequirement,List<IRPRequirement>> theDependencyMap = new HashMap<>();  
 			
-			int duplicateCount = 0;
+		} else {
+			
+			_context.info( "Found " + _assessment._requirementsThatDontTrace.size() + " Rhapsody-owned requirements under " + 
+					_context.elInfo( theSelectedEl ) + " with no remote reqts");
 
-			for( IRPRequirement theReqt : theReqts ){
-							
-				List<IRPRequirement> theMatchedReqts = _context.getRequirementsThatMatch( theReqt, theRemoteReqts );
+			int matchesCount = _assessment._remoteRequirementsToEstablishTraceTo.keySet().size();
+			
+			if( matchesCount > 0 ) {
 				
-				int count = theMatchedReqts.size();
+				String msg  = matchesCount + " matches were found. ";			
+				msg += "\n\nDo you want to proceed with adding trace relations?\n";
+				
+				boolean answer = UserInterfaceHelper.askAQuestion( msg );
 
-				if( count == 1 ){			
-					
-					_context.debug( "Found 1 match for local " + _context.elInfo( theReqt ) );
-					theDependencyMap.put( theReqt, theMatchedReqts );		
-					
-				} else if ( count > 0 ) {
-					
-					_context.warning( "Found " + count + " matches for local " + _context.elInfo( theReqt ) );
-					theDependencyMap.put( theReqt, theMatchedReqts );	
-					duplicateCount++;
+				if( answer ){
+
+					for( Map.Entry<IRPModelElement, List<IRPRequirement>> entry : 
+						_assessment._remoteRequirementsToEstablishTraceTo.entrySet() ){
+						
+						IRPModelElement theEl = entry.getKey();
+						List<IRPRequirement> theRemoteMatches = entry.getValue();
+
+						for( IRPRequirement theRemoteReqt : theRemoteMatches ){
+							_context.establishTraceRelationFrom( theEl, theRemoteReqt );					
+						}
+					}		
 				}
+			} else {
+				
+				String msg = "There are " + _assessment._remoteRequirementsOwnedByPackage.size() + 
+						" remote requirement links owned by " + _context.elInfo( theSelectedEl ) + "\n" + 
+						"No matches were found to establish trace relations to. ";
+				
+				UserInterfaceHelper.showInformationDialog( msg );
 			}
+			
+			/*
 
 			int size = theDependencyMap.keySet().size();
 
 			if( size == 0 ){
 				
-				if( theReqts.isEmpty() ) {
+				if( _assessment._requirementsThatDontTrace.isEmpty() ) {
 					
 					UserInterfaceHelper.showInformationDialog( "No requirements were found needing trace relations" );
 
-				} else if( theReqts.size() == 1 ){					
+				} else if( _assessment._requirementsThatDontTrace.size() == 1 ){					
 					UserInterfaceHelper.showInformationDialog( "No matches were found for the 1 requirement needing a trace relation" );
 				} else {
-					UserInterfaceHelper.showInformationDialog( "No matches were found for the " + theReqts.size() + " requirements needing trace relations" );
+					UserInterfaceHelper.showInformationDialog( "No matches were found for the " + _assessment._requirementsThatDontTrace.size() + " requirements needing trace relations" );
 				}
 			} else { 
 				
@@ -117,7 +131,7 @@ public class EstablishTraceRelationsToRemotes {
 						}
 					}		
 				}
-			}
+			}*/
 		}
 	}
 }

@@ -78,13 +78,13 @@ public class ExportRequirementsToCSV {
 						" of the " + _assessment._requirementOwnersInScope.size() + " requirement owners under " + 
 						_context.elInfo( underEl) + " \ndon't trace to remote requirements. \n\n" + 
 						"Do you want to export just the " + _assessment._requirementOwnersThatDontTrace.size() + 
-						" requirement owners and " + _assessment._requirementsWithNoLinks.size() + " requirements with no links? \n"+
+						" requirement owners and " + _assessment._requirementsThatDontTrace.size() + " requirements with no links? \n"+
 						"(these will be generated with temporary ids so that structure can be imported with new element creation only)");
 
 				if( answer ){
 
 					theEls.addAll( _assessment._requirementOwnersThatDontTrace );
-					theEls.addAll( _assessment._requirementsWithNoLinks );
+					theEls.addAll( _assessment._requirementsThatDontTrace );
 
 				} else {
 
@@ -96,7 +96,7 @@ public class ExportRequirementsToCSV {
 				// No structure
 
 				int missingOrChangedCount = 
-						_assessment._requirementsWithNoLinks.size() + 
+						_assessment._requirementsThatDontTrace.size() + 
 						_assessment._requirementsToUpdateSpec.size();
 
 				int diff = inScopeCount - missingOrChangedCount;
@@ -112,7 +112,7 @@ public class ExportRequirementsToCSV {
 
 					if( answer ){
 
-						theEls.addAll( _assessment._requirementsWithNoLinks );
+						theEls.addAll( _assessment._requirementsThatDontTrace );
 						theEls.addAll( _assessment._requirementsToUpdateSpec );
 
 					} else {

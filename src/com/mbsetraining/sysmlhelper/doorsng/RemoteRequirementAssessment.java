@@ -20,16 +20,21 @@ public class RemoteRequirementAssessment {
 	protected List<IRPRequirement> _requirementsToUpdateSpec = new ArrayList<>();
 	protected List<IRPRequirement> _requirementsToUpdateName = new ArrayList<>();
 	protected List<IRPRequirement> _requirementsThatMatch = new ArrayList<>();
-	protected List<IRPRequirement> _requirementsWithNoLinks = new ArrayList<>();
+	protected List<IRPRequirement> _requirementsThatDontTrace = new ArrayList<>();
 	protected List<IRPRequirement> _requirementsWithUnloadedHyperlinks = new ArrayList<>();
 	protected Map<IRPRequirement, IRPRequirement> _requirementsThatTrace = new HashMap<>();
 	protected List<IRPRequirement> _remoteRequirementsThatTrace = new ArrayList<>();
 	protected List<IRPRequirement> _remoteRequirementsThatDontTrace = new ArrayList<>();
-	protected Map<IRPRequirement, List<IRPRequirement>> _remoteRequirementsToEstablishTraceTo = new HashMap<>();  
+	protected List<IRPRequirement> _remoteRequirementsOwnedByPackage = new ArrayList<>();
+	protected Map<IRPModelElement, List<IRPRequirement>> _remoteRequirementsToEstablishTraceTo = new HashMap<>();  
 	protected List<IRPRequirement> _requirementsWithNoMatchOrLinks = new ArrayList<>();
 	protected List<IRPModelElement> _requirementOwnersInScope = new ArrayList<>();
 	protected Map<IRPModelElement, IRPRequirement> _requirementOwnersThatTrace = new HashMap<>();
 	protected List<IRPModelElement> _requirementOwnersThatDontTrace = new ArrayList<>();
+	protected List<IRPModelElement> _requirementOwnersToUpdateName = new ArrayList<>();
+	protected List<IRPModelElement> _requirementOwnersWithNoMatchOrLinks = new ArrayList<>();
+
+	protected List<IRPRequirement> _remoteRequirementOwnersThatTrace = new ArrayList<>();
 	protected Map<IRPModelElement, IRPRequirement> _requirementsRemoteParentMap = new HashMap<>();  
 	protected Set<IRPModelElement> _elementsConsideredHeadings = new HashSet<>();
 	protected ExecutableMBSE_Context _context;
@@ -49,7 +54,7 @@ public class RemoteRequirementAssessment {
 				
 		addRequirementsWithSatisfactionsInScopeFrom( _requirementOwnersInScope );
 		
-		addToRemoteParentMapIfNecessary( _requirementsInScope );
+		addOwnersToRemoteParentMapIfNecessary( _requirementsInScope );
 
 		for( IRPRequirement theRequirement : _requirementsInScope ){
 			determineRequirementsToUpdateBasedOn( theRequirement );
@@ -87,7 +92,7 @@ public class RemoteRequirementAssessment {
 							_requirementsInScope.add( theRequirement );
 						}				
 						
-						boolean isSuccess = addToRemoteParentParentMap( theRequirement, theEl );
+						boolean isSuccess = addToRemoteParentMap( theRequirement, theEl );
 						
 						if( isSuccess ) {
 							_elementsConsideredHeadings.add( theEl );
@@ -112,10 +117,28 @@ public class RemoteRequirementAssessment {
 				if( !_requirementOwnersInScope.contains( theCandidate ) ) {
 					_requirementOwnersInScope.add( theCandidate );
 					
-					IRPRequirement theRemoteReqt = _context.getRemoteRequirementFor(theCandidate);
+					IRPRequirement theRemoteReqt = _context.getRemoteRequirementFor( theCandidate );
 					
 					if( theRemoteReqt != null ) {
+						
+						_remoteRequirementOwnersThatTrace.add( theRemoteReqt );
 						_requirementOwnersThatTrace.put( theCandidate, theRemoteReqt );
+						
+						String theRemoteName = theRemoteReqt.getName();
+						String theRemoteID = theRemoteReqt.getRequirementID();
+
+						String theProposedName = _context.determineRequirementNameBasedOn( theRemoteName, theRemoteID );
+
+						String theName = theCandidate.getName();
+
+						if( !theName.equals( theProposedName ) ){
+
+							if( !_requirementOwnersToUpdateName.contains( theCandidate ) ) {		
+								_context.debug( "Found " + _context.elInfo( theCandidate ) + "'s name needs updating");
+								_requirementOwnersToUpdateName.add( theCandidate );
+							}
+						}
+						
 					} else {
 						_requirementOwnersThatDontTrace.add( theCandidate );
 					}
@@ -142,14 +165,14 @@ public class RemoteRequirementAssessment {
 		}
 	}
 
-	private void addToRemoteParentMapIfNecessary(
+	private void addOwnersToRemoteParentMapIfNecessary(
 			List<IRPRequirement> theRequirements ){
 		
 		for( IRPRequirement theRequirement : theRequirements ){
 			
 			IRPModelElement theOwner = theRequirement.getOwner();
 			
-			boolean isSuccess = addToRemoteParentParentMap( theRequirement, theOwner );	
+			boolean isSuccess = addToRemoteParentMap( theRequirement, theOwner );	
 			
 			if( isSuccess ) {
 				_elementsConsideredHeadings.add( theOwner );
@@ -157,7 +180,7 @@ public class RemoteRequirementAssessment {
 		}
 	}
 
-	private boolean addToRemoteParentParentMap(
+	private boolean addToRemoteParentMap(
 			IRPModelElement theRequirement, 
 			IRPModelElement theOwner ){
 		
@@ -178,26 +201,30 @@ public class RemoteRequirementAssessment {
 
 		List<IRPRequirement> theMissingRemoteReqts = new ArrayList<>();
 
-		List<IRPRequirement> theExpectedRemoteReqts = _context.getRemoteRequirementsFor( theRequirementPkg );
+		_remoteRequirementsOwnedByPackage = _context.getRemoteRequirementsFor( theRequirementPkg );
 
-		for( IRPRequirement theExpectedRemoteReqt : theExpectedRemoteReqts ){
+		for( IRPRequirement theExpectedRemoteReqt : _remoteRequirementsOwnedByPackage ){
 
-			if( !_remoteRequirementsThatTrace.contains( theExpectedRemoteReqt )) {
-				//_context.debug( "Found that remote " + _context.elInfo( theExpectedRemoteReqt ) + " doesn't have traceability yet" );
+			if( !_remoteRequirementsThatTrace.contains( theExpectedRemoteReqt ) &&
+					!_remoteRequirementOwnersThatTrace.contains( theExpectedRemoteReqt ) ){
+				
+				//_context.info( "Found that remote " + _context.elInfo( theExpectedRemoteReqt ) + " doesn't have traceability yet" );
 				theMissingRemoteReqts.add( theExpectedRemoteReqt );
 			}
 		}
 
-		for( IRPRequirement theReqt : _requirementsWithNoLinks ){
+		for( IRPRequirement theReqt : _requirementsThatDontTrace ){
 
-			List<IRPRequirement> theMatchedReqts = _context.getRequirementsThatMatch( theReqt, theExpectedRemoteReqts );
+			//_context.info( "Checking " + _context.elInfo( theReqt ) );
+			
+			List<IRPRequirement> theMatchedReqts = _context.getRequirementsThatMatch( theReqt, _remoteRequirementsOwnedByPackage );
 
 			int matchCount = theMatchedReqts.size();
 
 			if( matchCount > 0 ) {
 
-				for (IRPRequirement theMatchedReqt : theMatchedReqts) {
-					_context.debug( "Found that spec of unlinked " + _context.elInfo( theReqt ) + 
+				for( IRPRequirement theMatchedReqt : theMatchedReqts ){
+					_context.debug( "Found that unlinked " + _context.elInfo( theReqt ) + 
 							" matches remote " + _context.elInfo( theMatchedReqt ) );
 				}
 
@@ -212,12 +239,39 @@ public class RemoteRequirementAssessment {
 				_requirementsWithNoMatchOrLinks.add( theReqt );
 			}
 		}
+		
+		for( IRPModelElement theEl : _requirementOwnersThatDontTrace ){
+
+			//_context.info( "Checking " + _context.elInfo( theEl ) );
+			
+			List<IRPRequirement> theMatchedReqts = _context.getRequirementsThatMatch( theEl, _remoteRequirementsOwnedByPackage );
+
+			int matchCount = theMatchedReqts.size();
+
+			if( matchCount > 0 ) {
+
+				for( IRPRequirement theMatchedReqt : theMatchedReqts ){
+					_context.debug( "Found that unlinked " + _context.elInfo( theEl ) + 
+							" matches remote " + _context.elInfo( theMatchedReqt ) );
+				}
+
+				if( matchCount > 1 ) {
+					_context.warning( "Match found " + _context.elInfo( theEl ) + " has match to " + 
+							matchCount + " remote requirements hence don't know which one to choose" );
+				}
+
+				_remoteRequirementsToEstablishTraceTo.put( theEl, theMatchedReqts );		
+
+			} else {
+				_requirementOwnersWithNoMatchOrLinks.add( theEl );
+			}
+		}
 
 		for( IRPRequirement theMissingRemoteReqt : theMissingRemoteReqts ){
 
 			boolean isFound = false;
 
-			for (Map.Entry<IRPRequirement, List<IRPRequirement>> entry : _remoteRequirementsToEstablishTraceTo.entrySet()) {
+			for( Map.Entry<IRPModelElement, List<IRPRequirement>> entry : _remoteRequirementsToEstablishTraceTo.entrySet() ){
 
 				List<IRPRequirement> theValue = entry.getValue();
 
@@ -245,9 +299,9 @@ public class RemoteRequirementAssessment {
 
 		if( theRemoteDependsOns.isEmpty() ) {
 
-			if( !_requirementsWithNoLinks.contains( theRequirement ) ) {	
+			if( !_requirementsThatDontTrace.contains( theRequirement ) ) {	
 				//_context.debug( "Found " + _context.elInfo( theRequirement ) + "'s got no oslc links");
-				_requirementsWithNoLinks.add( theRequirement );
+				_requirementsThatDontTrace.add( theRequirement );
 			}
 		} else {
 

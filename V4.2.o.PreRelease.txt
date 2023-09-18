@@ -943,10 +943,14 @@ V4.2.o.Rhp831.PreRelease (XX-XXX-XXXX):
 0708 31-AUG-2023: ExecutableMBSE: Fix issue with Table View - Requirement to Use Case not appearing in right-click menu for requirements packages (F.J.Chadburn)
 0709 31-AUG-2023: ExecutableMBSE: Added better default column widths for Requirement to Action/Action to Requirement/Requirement to Use Case/Use Case to Requirement tables (F.J.Chadburn) 
 0710 01-SEP-2023: ExecutableMBSE: Fix csv export so that function blocks exported as isHeading artifacts have Heading as their Artifact type (F.J.Chadburn)
+0711 18-SEP-2023: ExecutableMBSE: Added update of requirement owner names to the 'Update surrogates based on remote..' dialog (F.J.Chadburn)
+0712 18-SEP-2023: ExecutableMBSE: Added requirement owners to the remote requirements to establish trace to report for the 'Update surrogates based on remote..' dialog (F.J.Chadburn)
+0713 18-SEP-2023: ExecutableMBSE: Added requirement owners to the 'Establish trace relations...' menu command top allow function blocks to act as headings in DOORS Next (F.J.Chadburn)
 
 Backlog/Known issues
+- Problem with inconsistent reporting of differences between DNG reqt and Rhapsody reqt, possibly related to carriage returns? Maybe need to clean/trim to avoid it happening. 
+- Tailoring how to get DOORS NG attributes as tags
 - Switch master the other way!
-- Further testing needed with dependency helper and new terms
 - Add a UML package new term
 - Interfaces Package doesn't have unique icon yet
 - Work out a way of getting a hyperlink icon on a use case to go to activity diagram

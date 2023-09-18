@@ -1465,7 +1465,7 @@ public abstract class BaseContext {
 
 		return theReqts;
 	}
-	
+
 	public List<IRPModelElement> getElementsThatDependOn(
 			IRPRequirement theReqt,
 			String withRelationType ){
@@ -3266,12 +3266,12 @@ public abstract class BaseContext {
 
 		return theRemoteRequirements;
 	}
-	
+
 	public IRPRequirement getRemoteRequirementFor(
 			IRPModelElement theEl ) {
-		
+
 		IRPRequirement theRemoteRequirement = null;
-		
+
 		List<IRPRequirement> theRemoteReqts = getRemoteRequirementsFor( theEl );
 
 		if( theRemoteReqts.size() > 1 ){
@@ -3279,10 +3279,10 @@ public abstract class BaseContext {
 			warning( elInfo( theEl ) + " has " + theRemoteReqts.size() + " remote requirements when expecting 0 or 1");
 
 		} else if( theRemoteReqts.size() == 1 ){
-			
+
 			theRemoteRequirement = theRemoteReqts.get( 0 );
 		}
-		
+
 		return theRemoteRequirement;
 	}
 
@@ -3304,6 +3304,45 @@ public abstract class BaseContext {
 		}
 
 		return theRemoteDependsOns;
+	}
+
+	public List<IRPRequirement> getRequirementsThatMatch(
+			IRPModelElement theEl,
+			List<IRPRequirement> theCandidates ){
+
+		Set<IRPRequirement> theMatches = new HashSet<>();
+
+		// Match with Name second but need to strip off ID from name, as this may 
+		// be automatically added for remote requirements
+
+		String theName = theEl.getName();
+
+		/*
+			if( !theID.isEmpty() ) {
+				theName = cleanRequirementName( theName, theID ); 
+			}*/
+
+		for( IRPRequirement theCandidate : theCandidates ){
+
+			String theCandidatesID = theCandidate.getRequirementID();
+
+			String theCandidatesName = theCandidate.getName();
+
+			if( !theCandidatesID.isEmpty() ) {
+				theCandidatesName = cleanRequirementName( theCandidatesName, theCandidatesID ); 
+			}
+
+			//debug( "theName            = '" + theName + "'" );
+			//debug( "theCandidatesName = '" + theCandidatesName + "'" );
+
+			if( !theCandidatesName.isEmpty() &&
+					theName.equals( theCandidatesName ) ){
+
+				theMatches.add( theCandidate );
+			}
+		}
+
+		return new ArrayList<>( theMatches );
 	}
 
 	public List<IRPRequirement> getRequirementsThatMatch(
@@ -3462,7 +3501,7 @@ public abstract class BaseContext {
 
 		return theMatchingReqts;
 	}
-	
+
 	public List<IRPHyperLink> getUnloadedLinksFor( 
 			IRPModelElement theEl ){
 
@@ -3485,13 +3524,13 @@ public abstract class BaseContext {
 
 		return theUnloadedLinks;
 	}
-	
+
 	public String determineRequirementNameBasedOn(
 			String theRemoteName, 
 			String theRemoteID ){
-		
+
 		String theProposedName = theRemoteName.replaceAll( theRemoteID + ": ", "" );
-		
+
 		// Remote text may come from text of requirement if no name is specified for remote reqt
 		// Some characters Rhapsody doesn't like such as brackets and dot (.)
 		// Safest thing is to just allow alphanumeric and _,-, and spaces
@@ -3504,23 +3543,18 @@ public abstract class BaseContext {
 		if (theProposedName.length() <= maxLength) {
 			theProposedName = theProposedName.trim();
 		} else {
-			theProposedName = theProposedName.substring(0, maxLength).trim();
+			theProposedName = theProposedName.substring( 0, maxLength ).trim();
 		}
-		
+
 		return theProposedName;
 	}
 
 	public void establishTraceRelationFrom(
-			IRPRequirement theReqt,
+			IRPModelElement theEl,
 			IRPRequirement toRemoteReqt ) {
 
-		//		_context.debug( "switchGraphElsFor from " + _context.elementInfo( theReqt ) + 
-		//				" to " + _context.elementInfo ( toRemoteReqt ) );
-
-		//List<IRPDependency> theExistingDependencies = _context.getDependenciesTo( toRemoteReqt );
-
 		@SuppressWarnings("unchecked")
-		List<IRPDependency> theExistingDependencies = theReqt.getDependencies().toList();
+		List<IRPDependency> theExistingDependencies = theEl.getDependencies().toList();
 
 		List<IRPDependency> theMatchingDependencies = new ArrayList<>();
 		List<IRPDependency> theUnmatchedDependencies = new ArrayList<>();
@@ -3539,16 +3573,16 @@ public abstract class BaseContext {
 		if( !theMatchingDependencies.isEmpty() ) {
 
 			info( theMatchingDependencies.toString() + " dependencies were found already from " + 
-					elInfo( theReqt ) + " to " + elInfo( toRemoteReqt ) );
+					elInfo( theEl ) + " to " + elInfo( toRemoteReqt ) );
 
 			for( IRPDependency theDependency : theMatchingDependencies ){
 				info( elInfo( theDependency ) );
 			}
 		}
 
-		info( "Adding remote trace dependency from local " + elInfo( theReqt ) + " to remote " + elInfo ( toRemoteReqt ) );
+		info( "Adding remote trace dependency from local " + elInfo( theEl ) + " to remote " + elInfo ( toRemoteReqt ) );
 
-		addRemoteDependency( toRemoteReqt, theReqt, "Trace" );	
+		addRemoteDependency( toRemoteReqt, theEl, "Trace" );	
 	}
 
 	public IRPDependency addRemoteDependency(

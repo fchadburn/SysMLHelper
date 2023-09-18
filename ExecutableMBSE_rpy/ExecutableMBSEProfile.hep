@@ -125,7 +125,7 @@ DLLServerCompatible15=1
 name16=MBSE Method: Requirements Analysis\Establish trace relations to DOORS NG equivalent
 isPluginCommand16=1
 command16=InvokeExecutableMBSEHelper
-applicableTo16=13 Requirement Package,Package
+applicableTo16=13 Requirement Package,22 Feature Function Package,Package
 isVisible16=1
 DLLServerCompatible16=1
 
@@ -149,7 +149,7 @@ DLLServerCompatible18=1
 name19=MBSE Method: Requirements Analysis\Update surrogates based on remote requirement changes
 isPluginCommand19=1
 command19=InvokeExecutableMBSEHelper
-applicableTo19=13 Requirement Package,Package,Requirement
+applicableTo19=13 Requirement Package,22 Feature Function Package,Package,Requirement
 isVisible19=1
 DLLServerCompatible19=1
 
@@ -165,7 +165,7 @@ DLLServerCompatible20=1
 name21=MBSE Method: Requirements Analysis\Synchronise remote links based on local surrogate traceability
 isPluginCommand21=1
 command21=InvokeExecutableMBSEHelper
-applicableTo21=13 Requirement Package,Package,Requirement
+applicableTo21=13 Requirement Package,22 Feature Function Package,Package,Requirement
 isVisible21=1
 DLLServerCompatible21=1
 
