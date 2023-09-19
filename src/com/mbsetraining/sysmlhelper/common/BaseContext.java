@@ -3523,18 +3523,17 @@ public abstract class BaseContext {
 
 	public String determineRequirementNameBasedOn(
 			String theRemoteName, 
-			String theRemoteID ){
+			String theRemoteID,
+			int maxLength ){
 
 		String theProposedName = theRemoteName.replaceAll( theRemoteID + ": ", "" );
 
 		// Remote text may come from text of requirement if no name is specified for remote reqt
 		// Some characters Rhapsody doesn't like such as brackets and dot (.)
 		// Safest thing is to just allow alphanumeric and _,-, and spaces
-		theProposedName = theProposedName.replaceAll( "[^a-zA-Z0-9-\\s_]+", " " ).trim();
+		theProposedName = theProposedName.replaceAll( "[^a-zA-Z0-9-\\s_.]+", " " ).trim();
 
 		theProposedName = theRemoteID + " " + theProposedName;
-
-		int maxLength = 50;
 
 		if (theProposedName.length() <= maxLength) {
 			theProposedName = theProposedName.trim();

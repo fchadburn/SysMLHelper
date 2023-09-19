@@ -39,6 +39,7 @@ import com.mbsetraining.sysmlhelper.gateway.MoveRequirements;
 import com.mbsetraining.sysmlhelper.modelchecks.CheckForRequirementAnchors;
 import com.mbsetraining.sysmlhelper.modelchecks.CheckForRequirementCFLRChars;
 import com.mbsetraining.sysmlhelper.modelchecks.CheckForRequirementChildren;
+import com.mbsetraining.sysmlhelper.modelchecks.CheckForRequirementNameLength;
 import com.mbsetraining.sysmlhelper.modelchecks.CheckForRemoteRequirementSpecificationMatch;
 import com.mbsetraining.sysmlhelper.populateparts.PopulatePartsPanel;
 import com.mbsetraining.sysmlhelper.pubsubportcreation.PortCreator;
@@ -72,6 +73,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 	protected CheckForRequirementChildren _checkForRequirementChildren;
 	protected CheckForRequirementCFLRChars _checkForRequirementCFLRChars;
 	protected CheckForRemoteRequirementSpecificationMatch _checkForRemoteRequirementSpecificationMatch;
+	protected CheckForRequirementNameLength _checkForRequirementNameLength;
 
 	// called when plug-in is loaded
 	public void RhpPluginInit(
@@ -130,6 +132,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 		_checkForRequirementChildren = new CheckForRequirementChildren( theCheckRegistry );	
 		_checkForRequirementCFLRChars = new CheckForRequirementCFLRChars( theCheckRegistry, _context );
 		_checkForRemoteRequirementSpecificationMatch = new CheckForRemoteRequirementSpecificationMatch( theCheckRegistry, _context );
+		_checkForRequirementNameLength = new CheckForRequirementNameLength( theCheckRegistry, _context );
 	}
 
 	// called when the plug-in pop-up menu  is selected

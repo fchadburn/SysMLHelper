@@ -947,8 +947,12 @@ V4.2.o.Rhp831.PreRelease (XX-XXX-XXXX):
 0712 18-SEP-2023: ExecutableMBSE: Added requirement owners to the remote requirements to establish trace to report for the 'Update surrogates based on remote..' dialog (F.J.Chadburn)
 0713 18-SEP-2023: ExecutableMBSE: Added requirement owners to the 'Establish trace relations...' menu command top allow function blocks to act as headings in DOORS Next (F.J.Chadburn)
 0714 18-SEP-2023: ExecutableMBSE: Remove warning generated when assessing requirement ownership because requirement package has multiple trace links (F.J.Chadburn)
+0715 19-SEP-2023: ExecutableMBSE: Added model check to warn if the name of requirement exceeds characters visible for remote artifact if roundtripped from DOORS Next (F.J.Chadburn)
+0716 19-SEP-2023: ExecutableMBSE: Added warning to the export to csv, if name of requirement exceeds characters visible for remote artifact if roundtripped from DOORS Next (F.J.Chadburn)
+0717 19-SEP-2023: ExecutableMBSE: Added info tab to 'Update surrogates based on remote...' dialog to provide list of requirements where need exceeds characters visible for remote reqt (F.J.Chadburn)
 
 Backlog/Known issues
+- Ensure that spec check does a trim, in case this is cause of spec differences. 
 - Problem with inconsistent reporting of differences between DNG reqt and Rhapsody reqt, possibly related to carriage returns? Maybe need to clean/trim to avoid it happening. 
 - Tailoring how to get DOORS NG attributes as tags
 - Switch master the other way!

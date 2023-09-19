@@ -68,6 +68,18 @@ public class ExportRequirementsToCSV {
 			isContinue = UserInterfaceHelper.askAQuestion( "There are " + unloadedCount + " unloaded requirement links under " + 
 					_context.elInfo( underEl ) + ". \nAre you sure you want to continue rather than log into the remote package first?" );
 		}
+		
+		int maxNameLengthFails = _assessment._requirementsExceedingNameLengthMax.size();
+		
+		if( isContinue && 
+				maxNameLengthFails > 0 ) {
+			
+			isContinue = UserInterfaceHelper.askAQuestion( maxNameLengthFails + " of the elements under " + 
+					_context.elInfo( underEl ) + " \nhave names that are too long to roundtrip with DOORS Next. " + 
+					"\n\nAre you sure you want to continue rather than fix the model names first?" +
+					"\n\nTip: Choose No and run the 'Update surrogates based on...' menu to navigate to them. \nYou can change their names to be less that " +
+					_context.getRequirementNameLengthMax() + " chars before retrying the export.");
+		}
 
 		if( isContinue ) {
 

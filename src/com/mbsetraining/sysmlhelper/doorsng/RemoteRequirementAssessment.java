@@ -13,10 +13,12 @@ import com.telelogic.rhapsody.core.IRPHyperLink;
 import com.telelogic.rhapsody.core.IRPModelElement;
 import com.telelogic.rhapsody.core.IRPPackage;
 import com.telelogic.rhapsody.core.IRPRequirement;
+import com.telelogic.rhapsody.core.RhapsodyAppServer;
 
 public class RemoteRequirementAssessment {
 
 	protected List<IRPRequirement> _requirementsInScope = new ArrayList<>();
+	protected List<IRPModelElement> _requirementsExceedingNameLengthMax = new ArrayList<>();
 	protected List<IRPRequirement> _requirementsToUpdateSpec = new ArrayList<>();
 	protected List<IRPRequirement> _requirementsToUpdateName = new ArrayList<>();
 	protected List<IRPRequirement> _requirementsThatMatch = new ArrayList<>();
@@ -33,16 +35,18 @@ public class RemoteRequirementAssessment {
 	protected List<IRPModelElement> _requirementOwnersThatDontTrace = new ArrayList<>();
 	protected List<IRPModelElement> _requirementOwnersToUpdateName = new ArrayList<>();
 	protected List<IRPModelElement> _requirementOwnersWithNoMatchOrLinks = new ArrayList<>();
-
 	protected List<IRPRequirement> _remoteRequirementOwnersThatTrace = new ArrayList<>();
 	protected Map<IRPModelElement, IRPRequirement> _requirementsRemoteParentMap = new HashMap<>();  
 	protected Set<IRPModelElement> _elementsConsideredHeadings = new HashSet<>();
 	protected ExecutableMBSE_Context _context;
+	protected int _requirementNameMaxLength;
 
+	
 	public RemoteRequirementAssessment( 
 			ExecutableMBSE_Context context ) {
 
 		_context = context;
+		_requirementNameMaxLength = _context.getRequirementNameLengthMax();
 	}
 
 	public void determineRequirementsToUpdate(
@@ -52,6 +56,8 @@ public class RemoteRequirementAssessment {
 
 		addRequirementOwnersInScopeFor( theSelectedEls );
 				
+		checkNameLengthOfRequirementsFor( _requirementsInScope );
+		
 		addRequirementsWithSatisfactionsInScopeFrom( _requirementOwnersInScope );
 		
 		addOwnersToRemoteParentMapIfNecessary( _requirementsInScope );
@@ -127,7 +133,9 @@ public class RemoteRequirementAssessment {
 						String theRemoteName = theRemoteReqt.getName();
 						String theRemoteID = theRemoteReqt.getRequirementID();
 
-						String theProposedName = _context.determineRequirementNameBasedOn( theRemoteName, theRemoteID );
+						String theProposedName = _context.
+								determineRequirementNameBasedOn( 
+										theRemoteName, theRemoteID, _requirementNameMaxLength );
 
 						String theName = theCandidate.getName();
 
@@ -161,6 +169,23 @@ public class RemoteRequirementAssessment {
 				if( !_requirementsInScope.contains( theReqt ) ) {
 					_requirementsInScope.add( theReqt );
 				}
+			}
+		}
+	}
+	
+	private void checkNameLengthOfRequirementsFor(
+			List<IRPRequirement> theEls ) {
+		
+		int maxLength = _context.getRequirementNameLengthMax();
+		
+		for( IRPModelElement theEl : theEls ){
+
+			int length = theEl.getName().length();
+
+			if( length > maxLength &&
+					!_requirementsExceedingNameLengthMax.contains( theEl ) ) {
+				
+				_requirementsExceedingNameLengthMax.add( theEl );
 			}
 		}
 	}
@@ -339,9 +364,17 @@ public class RemoteRequirementAssessment {
 					String theRemoteName = theOSLCRequirement.getName();
 					String theRemoteID = theOSLCRequirement.getRequirementID();
 
-					String theProposedName = _context.determineRequirementNameBasedOn( theRemoteName, theRemoteID );
+					//_context.debug( "theRemoteName   is " + theRemoteName + " for " + _context.elInfo( theRequirement ) );
+
+					String theProposedName = _context.
+							determineRequirementNameBasedOn( 
+									theRemoteName, theRemoteID, _requirementNameMaxLength );
+
+					//_context.debug( "theProposedName is " + theProposedName + " for " + _context.elInfo( theRequirement ) );
 
 					String theName = theRequirement.getName();
+
+					//_context.debug( "theName         is " + theName + " for " + _context.elInfo( theRequirement ) );
 
 					if( !theName.equals( theProposedName ) ){
 

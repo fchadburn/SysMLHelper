@@ -32,7 +32,8 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 
 	private IRPPackage _owningPkg;
 	private RemoteRequirementAssessment _assessment;
-
+	private int _requirementNameMaxLength;
+	
 	public static void main(String[] args) {
 
 		String theRhpAppID = RhapsodyAppServer.getActiveRhapsodyApplication().getApplicationConnectionString();
@@ -70,6 +71,8 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 			String theAppID ){
 
 		super( theAppID );
+		
+		_requirementNameMaxLength = _context.getRequirementNameLengthMax();
 
 		List<IRPModelElement> theSelectedEls = _context.getSelectedElements();
 
@@ -143,6 +146,16 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 					null, 
 					createRequirementsToEstablishTraceToBox(), 
 					"Requirements in model that can be matched with external requirements");
+			//updatePane.setMnemonicAt(0, KeyEvent.VK_1);
+		}
+		
+		if( !_assessment._requirementsExceedingNameLengthMax.isEmpty() ) {
+
+			theTabbedPane.addTab(
+					"Info-only: Names too long (" + _assessment._requirementsExceedingNameLengthMax.size() + ")", 
+					null, 
+					createRequirementsExceedingNameLengthBox(), 
+					"Requirements or owners with names exceeding the " + _context.getRequirementNameLengthMax() + " chars roundtrip max");
 			//updatePane.setMnemonicAt(0, KeyEvent.VK_1);
 		}
 
@@ -341,6 +354,57 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 			}
 
 			msg += "nor matching remote specification \n";
+			msg += "(double-click to locate in browser).";
+		}
+
+		theStartLabel = createPanelWithTextCentered( msg );
+
+		theBox.add( theStartLabel );
+
+		if( count > 0 ) {
+			theBox.add( theScrollPane );
+		}
+
+		return theBox;
+	}
+	
+	private Box createRequirementsExceedingNameLengthBox() {
+
+		Box theBox = Box.createVerticalBox();
+
+		JScrollPane theScrollPane = createDoubleClickableScrollPaneFor( new ArrayList<>( _assessment._requirementsExceedingNameLengthMax ) );
+
+		Component theStartLabel;
+
+		String msg = "";
+		
+		String postMsg = " exceeding the max length of " + _context.getRequirementNameLengthMax() + " for a name\n";
+
+		int count = _assessment._requirementsExceedingNameLengthMax.size();
+
+		if( count == 0 ) {
+			msg += "There are no requirements " + postMsg;
+
+		} else if( count == 1 ) {
+
+			if( _owningPkg instanceof IRPPackage ) {
+				msg += "There is 1 requirement in " + _owningPkg.getName() + postMsg;
+			} else {
+				msg += "There is 1 requirement " + postMsg;
+			}
+
+			msg += "(double-click to locate in browser).";
+
+		} else { // plural
+
+			if( _owningPkg instanceof IRPPackage ) {
+
+				msg += "There are " + count + " requirements in " + _owningPkg.getName() + "\n "+ postMsg;
+			} else {
+				msg += "There are " + count + " requirements " + postMsg;
+
+			}
+
 			msg += "(double-click to locate in browser).";
 		}
 
@@ -562,7 +626,9 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 			String theRemoteName = theOSLCRequirement.getName();
 			String theRemoteID = theOSLCRequirement.getRequirementID();
 			
-			String theProposedName = _context.determineRequirementNameBasedOn( theRemoteName, theRemoteID );
+			String theProposedName = _context.
+					determineRequirementNameBasedOn( theRemoteName, theRemoteID, _requirementNameMaxLength );
+			
 			String theName = theEl.getName();
 
 			if( theName.equals( theProposedName ) ){
@@ -587,7 +653,9 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 		String theRemoteSpec = theRemoteRequirement.getSpecification();
 		String theRemoteID = theRemoteRequirement.getRequirementID();
 
-		String theProposedName = _context.determineRequirementNameBasedOn( theRemoteName, theRemoteID );
+		String theProposedName = _context.
+				determineRequirementNameBasedOn( 
+						theRemoteName, theRemoteID, _requirementNameMaxLength );
 
 		//_context.info( "theProposedName = " + theProposedName);
 

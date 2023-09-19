@@ -164,6 +164,8 @@ public class ExecutableMBSE_Context extends BaseContext {
 	protected String _bleedForegroundColor;
 	protected String _templateForActivityDiagramValue;
 
+	protected Integer _requirementNameLengthMax;
+	
 	protected IRPStereotype _stereotypeForTestbench;
 	protected IRPStereotype _stereotypeForTimeElapsedActor;
 	protected IRPStereotype _stereotypeForTimeElapsedBlock;
@@ -701,6 +703,23 @@ public class ExecutableMBSE_Context extends BaseContext {
 		return theValue;
 	}
 
+	public int getRequirementNameLengthMax(){
+
+		if( _requirementNameLengthMax == null ){
+			
+			String theValue = _rhpPrj.getPropertyValue(
+					"ExecutableMBSEProfile.RequirementsAnalysis.RequirementNameLengthMax" );
+
+			if( theValue == null || theValue.isEmpty() ){
+				theValue = "Error";
+			} else {
+				_requirementNameLengthMax = Integer.parseInt( theValue );
+			}			
+		}
+
+		return _requirementNameLengthMax;
+	}
+	
 	public String getCSVExportSeparator(
 			IRPModelElement basedOnContext ){
 
