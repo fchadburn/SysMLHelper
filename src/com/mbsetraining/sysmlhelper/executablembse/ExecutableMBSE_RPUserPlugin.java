@@ -1122,7 +1122,10 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 		}		
 	}
 	
-	void getUntracedToRemoteRequirement(IRPModelElement element, IRPCollection result) {
+	// Used in context pattern tables
+	void getUntracedToRemoteRequirement(
+			IRPModelElement element, 
+			IRPCollection result ){
 		
 		if( element instanceof IRPRequirement ){
 			
@@ -1132,12 +1135,15 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 			List<IRPDependency> theRemoteDependencies = req.getRemoteDependencies().toList();
 			
 			if( theRemoteDependencies.isEmpty() ) {
-				result.addItem(element);
+				result.addItem( element );
 			}
 		}
 	}
 
-	void getMatchingRemoteRequirements(IRPModelElement element, IRPCollection result) {
+	// Used in context pattern tables
+	void getMatchingRemoteRequirements(
+			IRPModelElement element, 
+			IRPCollection result ){
 
 		if( element instanceof IRPRequirement ){
 			
@@ -1154,18 +1160,22 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					
 					IRPRequirement theOSLCRequirement = (IRPRequirement)theDependsOn;
 					
-					String theRemoteSpec = theOSLCRequirement.getSpecification();
-					String theSpec = req.getSpecification();
-										
+					// Added trim here on supposition that sometimes DOORS NG is including new lines at the end, sometimes not.
+					String theRemoteSpec = theOSLCRequirement.getSpecification().trim();
+					String theSpec = req.getSpecification().trim();
+					
 					if( theSpec.equals( theRemoteSpec ) ){
-						result.addItem(theDependsOn);
+						result.addItem( theDependsOn );
 					}
 				}
 			}
 		}
 	}
 	
-	void getNonMatchingRemoteRequirements(IRPModelElement element, IRPCollection result) {
+	// Used in context pattern tables
+	void getNonMatchingRemoteRequirements(
+			IRPModelElement element, 
+			IRPCollection result ){
 
 		if( element instanceof IRPRequirement ){
 			
@@ -1185,18 +1195,22 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					
 					IRPRequirement theOSLCRequirement = (IRPRequirement)theDependsOn;
 					
-					String theRemoteSpec = theOSLCRequirement.getSpecification();
-					String theSpec = req.getSpecification();
+					// Added trim here on supposition that sometimes DOORS NG is including new lines at the end, sometimes not.
+					String theRemoteSpec = theOSLCRequirement.getSpecification().trim();
+					String theSpec = req.getSpecification().trim();
 										
 					if( !theSpec.equals( theRemoteSpec ) ){
-						result.addItem(theDependsOn);
+						result.addItem( theDependsOn );
 					}
 				}
 			}
 		}
 	}
 	
-	void getTracesToUnloadedRemoteRequirements(IRPModelElement element, IRPCollection result) {
+	// Used in context pattern tables
+	void getTracesToUnloadedRemoteRequirements(
+			IRPModelElement element, 
+			IRPCollection result ){
 
 		if( element instanceof IRPRequirement ){
 			
@@ -1211,7 +1225,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 				
 				// If depends on is hyperlink rather than requirement then it's unloaded
 				if( theDependsOn instanceof IRPHyperLink ){					
-					result.addItem(theDependsOn);
+					result.addItem( theDependsOn );
 				}
 			}
 		}

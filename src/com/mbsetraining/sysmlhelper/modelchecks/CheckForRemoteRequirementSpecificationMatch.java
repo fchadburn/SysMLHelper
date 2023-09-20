@@ -44,8 +44,9 @@ public class CheckForRemoteRequirementSpecificationMatch extends RPExternalCheck
 					
 					IRPRequirement theOSLCRequirement = (IRPRequirement)theDependsOn;
 					
-					String theRemoteSpec = theOSLCRequirement.getSpecification();
-					String theSpec = req.getSpecification();
+					// Added trim here on supposition that sometimes DOORS NG is including new lines at the end, sometimes not.
+					String theRemoteSpec = theOSLCRequirement.getSpecification().trim();
+					String theSpec = req.getSpecification().trim();
 										
 					if( !theSpec.equals( theRemoteSpec ) ){
 						isOk = false;
