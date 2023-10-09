@@ -738,35 +738,8 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.MoveUseCaseIntoSeparatePkg" ) ) ){
 
-					List<IRPUseCase> theUseCases = new ArrayList<>();
-
-					Set<IRPModelElement> theCandidateEls = 
-							_context.getSetOfElementsFromCombiningThe( 
-									theSelectedEls, theSelectedGraphEls );
-
-					for( IRPModelElement theCandidateEl : theCandidateEls ){
-
-						if( theCandidateEl instanceof IRPUseCase ){
-							theUseCases.add( (IRPUseCase) theCandidateEl );
-						}
-					}
-
-					if( theUseCases.isEmpty() ){
-
-						_context.warning( "There were no selected use cases. Right-click a use case and try again");
-
-					} else {
-
-						String theMsg = "Do you want to move the " + theUseCases.size() + " selected use cases \n" +
-								"into their own packages? \n";
-
-						boolean answer = UserInterfaceHelper.askAQuestion( theMsg );
-
-						if( answer ){
-							UseCaseMover theMover = new UseCaseMover( _context );
-							theMover.moveUseCasesToNewPackages( theUseCases, true );
-						}
-					}
+					UseCaseMover theMover = new UseCaseMover( _context );
+					theMover.performMoveUseCasesIfConfirmed();
 
 				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.CreateFeatureFunctionPkg" ) ) ){

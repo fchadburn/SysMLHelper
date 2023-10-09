@@ -957,8 +957,10 @@ V4.2.p.Rhp831.PreRelease (XX-XXX-XXXX): TBC
 0720 09-OCT-2023: ExecutableMBSE: Allow a flow connector to be drawn to a parallel gateway and offer to create flow port (F.J.Chadburn)
 0721 09-OCT-2023: ExecutableMBSE: Give more info when adding flow connector as to which blocks port will be added (F.J.Chadburn)
 0722 09-OCT-2023: ExecutableMBSE: When drawing a flow connector get port to be correctly positioned where line was drawn (F.J.Chadburn)
+0723 09-OCT-2023: ExecutableMBSE: Refinement of the Move To Separate Package functionality to add _UseCasePkg post fix & not create activity package/req (F.J.Chadburn)
 
 Backlog/Known issues
+- Get move to functionality for use cases to add the post fix _UseCasePkg convention
 - Tailoring how to get DOORS NG attributes as tags
 - Switch master the other way!
 - Add a UML package new term

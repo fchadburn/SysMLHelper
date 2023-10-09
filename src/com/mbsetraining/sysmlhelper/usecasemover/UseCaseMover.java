@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
@@ -42,12 +43,46 @@ public class UseCaseMover {
 		_context = context;
 	}
 	
-	public void moveUseCasesToNewPackages(
+	public void performMoveUseCasesIfConfirmed() {
+		
+		List<IRPUseCase> theUseCases = new ArrayList<>();
+
+		List<IRPModelElement> theSelectedEls = _context.getSelectedElements();
+		List<IRPGraphElement> theSelectedGraphEls = _context.getSelectedGraphElements();
+		
+		Set<IRPModelElement> theCandidateEls = 
+				_context.getSetOfElementsFromCombiningThe( 
+						theSelectedEls, theSelectedGraphEls );
+
+		for( IRPModelElement theCandidateEl : theCandidateEls ){
+
+			if( theCandidateEl instanceof IRPUseCase ){
+				theUseCases.add( (IRPUseCase) theCandidateEl );
+			}
+		}
+
+		if( theUseCases.isEmpty() ){
+
+			_context.warning( "There were no selected use cases. Right-click a use case and try again");
+
+		} else {
+
+			String theMsg = "Do you want to move the " + theUseCases.size() + " selected use cases \n" +
+					"into their own packages? \n";
+
+			boolean answer = UserInterfaceHelper.askAQuestion( theMsg );
+
+			if( answer ){
+				UseCaseMover theMover = new UseCaseMover( _context );
+				theMover.moveUseCasesToNewPackages( theUseCases, true );
+			}
+		}
+	}
+	private void moveUseCasesToNewPackages(
 			List<IRPUseCase> theUseCases,
 			boolean isNestedBelow ){
 	
 		for( IRPUseCase theUseCase : theUseCases ){
-			
 			moveUseCaseToNewPackage( theUseCase, isNestedBelow );
 		}
 	}
@@ -57,6 +92,7 @@ public class UseCaseMover {
 			boolean isNestedBelow ){
 		
 		String theOriginalName = theUseCase.getName();
+		String thePostFix = _context.getDefaultUseCasePackagePostfix( theUseCase );
 		
 		String theCamelCaseName = _context.toLegalClassName( theOriginalName );
 		
@@ -68,19 +104,23 @@ public class UseCaseMover {
 			theOwningPkg = (IRPPackage) _context.getOwningPackageFor( theUseCase ).getOwner();
 		}
 
-		String theUniqueName = _context.determineUniqueNameForPackageBasedOn( theCamelCaseName, theOwningPkg) + "Pkg";
+		String theUniqueName = _context.determineUniqueNameForPackageBasedOn( 
+				theCamelCaseName, theOwningPkg) + thePostFix;
 		
 		_context.debug( "Moving " + _context.elInfo( theUseCase ) + " to " + theUniqueName );
 
 		IRPPackage theNewPkg = theOwningPkg.addNestedPackage( theUniqueName );
 		theNewPkg.changeTo( _context.REQTS_ANALYSIS_USE_CASE_PACKAGE );
 		
+		theNewPkg.highLightElement();
+		
 		theUseCase.setOwner( theNewPkg );	
 				
-		addOrModifyNestedRequirementDiagramsIfNeeded( theUseCase, theOriginalName );
-		moveNestedActivityDiagramsToNestedPkg( theUseCase );
+		//addOrModifyNestedRequirementDiagramsIfNeeded( theUseCase, theOriginalName );
+		//moveNestedActivityDiagramsToNestedPkg( theUseCase );
 	}
-
+	
+	/*
 	private void addOrModifyNestedRequirementDiagramsIfNeeded(
 			IRPUseCase theUseCase, 
 			String theOriginalName ){
@@ -166,11 +206,11 @@ public class UseCaseMover {
 				_context.debug( "Added" + _context.elInfo( theHyperLink ) + " to " + _context.elInfo( theUseCase ) );
 			}
 		}
-	}
+	}*/
 }
 
 /**
- * Copyright (C) 2022  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2022-2023  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 
