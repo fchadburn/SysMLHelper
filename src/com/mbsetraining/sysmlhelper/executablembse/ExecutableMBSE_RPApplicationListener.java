@@ -1491,12 +1491,12 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				String msg = "You have drawn a " + _context.FLOW_CONNECTOR + " \n";
 
 				if ( isFromPortCreationNeeded && isToPortCreationNeeded ){
-					msg = "Do you want to automatically create " + _context.FLOW_OUTPUT + " and " +
-							_context.FLOW_INPUT + " ports?";
+					msg = "Do you want to automatically create a " + _context.FLOW_OUTPUT + " port on " + fromClassifierEl.getName() + 
+							" \nand a " + _context.FLOW_INPUT + " port on " + toClassifierEl.getName() + "?";
 				} else if( isFromPortCreationNeeded ){
-					msg = "Do you want to automatically create a " + _context.FLOW_OUTPUT + " port?";
+					msg = "Do you want to automatically create a " + _context.FLOW_OUTPUT + " port on " + fromClassifierEl.getName() + "?";
 				} else if( isToPortCreationNeeded ){
-					msg = "Do you want to automatically create a " + _context.FLOW_INPUT + " port?";
+					msg = "Do you want to automatically create a " + _context.FLOW_INPUT + " port on " + toClassifierEl.getName() + "?";
 				}
 
 				isContinue = UserInterfaceHelper.askAQuestion( msg );

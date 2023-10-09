@@ -955,11 +955,10 @@ V4.2.o.Rhp831.PreRelease (20-SEP-2023):
 V4.2.p.Rhp831.PreRelease (XX-XXX-XXXX): TBC
 0719 09-OCT-2023: ExecutableMBSE: Change colour of flow connector to same blue as flow ports to visually different it from other connector types (F.J.Chadburn)
 0720 09-OCT-2023: ExecutableMBSE: Allow a flow connector to be drawn to a parallel gateway and offer to create flow port (F.J.Chadburn)
+0721 09-OCT-2023: ExecutableMBSE: Give more info when adding flow connector as to which blocks port will be added (F.J.Chadburn)
 
 Backlog/Known issues
 - When drawing a flow connector get port to be correctly positioned when mouse drop was
-- Give more info when adding flow connector as to which blocks port will be added
-- Add property to enable user to choose to automatically add flow ports 
 - Tailoring how to get DOORS NG attributes as tags
 - Switch master the other way!
 - Add a UML package new term
