@@ -958,9 +958,9 @@ V4.2.p.Rhp831.PreRelease (XX-XXX-XXXX): TBC
 0721 09-OCT-2023: ExecutableMBSE: Give more info when adding flow connector as to which blocks port will be added (F.J.Chadburn)
 0722 09-OCT-2023: ExecutableMBSE: When drawing a flow connector get port to be correctly positioned where line was drawn (F.J.Chadburn)
 0723 09-OCT-2023: ExecutableMBSE: Refinement of the Move To Separate Package functionality to add _UseCasePkg post fix & not create activity package/req (F.J.Chadburn)
+0724 09-OCT-2023: ExecutableMBSE: Move To Separate Package functionality added to menu for function blocks (F.J.Chadburn)
 
 Backlog/Known issues
-- Get move to functionality for use cases to add the post fix _UseCasePkg convention
 - Tailoring how to get DOORS NG attributes as tags
 - Switch master the other way!
 - Add a UML package new term
@@ -980,7 +980,6 @@ Backlog/Known issues
 - Review other prefixes such as panel and table diagram to ensure helper and defaults are aligned to lower-case
 - Maybe get metamodel to handle InitialLayoutForTables property writing
 - If owner of requirement has a Tier 3 function block then dress down the Tier3 stereotype at same time as requirement creation
-- Move to new function package
 - Get listener to deal to prevent duplicate traceability relations being created on diagrams
 - Add a system constraint stereotype
 - Right-click a function block to create new requirement

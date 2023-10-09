@@ -40,6 +40,7 @@ import com.mbsetraining.sysmlhelper.modelchecks.CheckForRequirementAnchors;
 import com.mbsetraining.sysmlhelper.modelchecks.CheckForRequirementCFLRChars;
 import com.mbsetraining.sysmlhelper.modelchecks.CheckForRequirementChildren;
 import com.mbsetraining.sysmlhelper.modelchecks.CheckForRequirementNameLength;
+import com.mbsetraining.sysmlhelper.movetoseparatepackage.MoveToSeparatePackage;
 import com.mbsetraining.sysmlhelper.modelchecks.CheckForRemoteRequirementSpecificationMatch;
 import com.mbsetraining.sysmlhelper.populateparts.PopulatePartsPanel;
 import com.mbsetraining.sysmlhelper.pubsubportcreation.PortCreator;
@@ -56,7 +57,6 @@ import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateOperationPanel;
 import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateOutgoingEventPanel;
 import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateTracedAttributePanel;
 import com.mbsetraining.sysmlhelper.tracedelementpanels.UpdateTracedAttributePanel;
-import com.mbsetraining.sysmlhelper.usecasemover.UseCaseMover;
 import com.mbsetraining.sysmlhelper.usecasepackage.CreateUseCasesPackagePanel;
 import com.mbsetraining.sysmlhelper.viewviewpoint.AddToViewPanel;
 import com.mbsetraining.sysmlhelper.viewviewpoint.RemoveFromViewPanel;
@@ -738,9 +738,25 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.MoveUseCaseIntoSeparatePkg" ) ) ){
 
-					UseCaseMover theMover = new UseCaseMover( _context );
-					theMover.performMoveUseCasesIfConfirmed();
+					MoveToSeparatePackage theMover = new MoveToSeparatePackage( 
+							_context, 
+							"UseCase", 
+							_context.REQTS_ANALYSIS_USE_CASE_PACKAGE, 
+							_context.getDefaultUseCasePackagePostfix( _context.get_rhpPrj() ) );
+					
+					theMover.performMoveIfConfirmed();
 
+				} else if( menuItem.equals( _settings.getString( 
+						"executablembseplugin.MoveFunctionIntoSeparatePkg" ) ) ){
+
+					MoveToSeparatePackage theMover = new MoveToSeparatePackage( 
+							_context, 
+							_context.FUNCTION_BLOCK, 
+							_context.FUNCT_ANALYSIS_FEATURE_FUNCTION_PACKAGE, 
+							"_FunctionPkg" );
+					
+					theMover.performMoveIfConfirmed();
+					
 				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.CreateFeatureFunctionPkg" ) ) ){
 
