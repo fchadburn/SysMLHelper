@@ -1689,7 +1689,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">10.9.2023::9:0:22</_modifiedTime>
+			<_modifiedTime type="a">10.9.2023::9:21:14</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -18655,7 +18655,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 1ed082fc-a722-40c7-819a-784f0ab68e62</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Relations</_name>
-			<_modifiedTime type="a">10.9.2023::9:0:22</_modifiedTime>
+			<_modifiedTime type="a">10.9.2023::9:21:14</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_defaultComposite type="s">GUID 6d41af48-18e4-4504-919f-6182efce13ce</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -18732,13 +18732,13 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 												
 												<IProperty type="e">
 													<_Name type="a">Sources</_Name>
-													<_Value type="a">Flow Output,Function Usage,Guarded Flow Output,Flow Input,Data Object</_Value>
+													<_Value type="a">Flow Output,Function Usage,Guarded Flow Output,Flow Input,Data Object,Parallel Gateway Usage</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
 													<_Name type="a">Targets</_Name>
-													<_Value type="a">Flow Input,Function Usage,Flow Output,Data Object</_Value>
+													<_Value type="a">Flow Input,Function Usage,Flow Output,Data Object,Parallel Gateway Usage</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -18755,7 +18755,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">FlowConnector</_name>
-			<_modifiedTime type="a">10.9.2023::9:0:22</_modifiedTime>
+			<_modifiedTime type="a">10.9.2023::9:21:14</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
