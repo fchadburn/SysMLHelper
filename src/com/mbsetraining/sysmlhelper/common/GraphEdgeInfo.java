@@ -14,27 +14,50 @@ public class GraphEdgeInfo {
 		
 		_context = context;
 		_graphEdge = theGraphEdge;
-		_polygonInfo = new PolygonInfo( _graphEdge, _context );
 	}
 	
 	public int getStartX(){
 		
-		return _polygonInfo.getValueAt( 1 );
+		IRPGraphicalProperty theGraphicalProperty = 
+				_graphEdge.getGraphicalProperty( "SourcePosition" );
+		
+		String theValue = theGraphicalProperty.getValue();		
+		String[] xY = theValue.split(",");
+		
+		return Integer.parseInt( xY[ 0 ] );
 	}
 	
 	public int getStartY(){
 		
-		return _polygonInfo.getValueAt( 2 );
+		IRPGraphicalProperty theGraphicalProperty = 
+				_graphEdge.getGraphicalProperty( "SourcePosition" );
+		
+		String theValue = theGraphicalProperty.getValue();		
+		String[] xY = theValue.split(",");
+		
+		return Integer.parseInt( xY[ 1 ] );	
 	}
 
 	public int getEndX(){
 		
-		return _polygonInfo.getValueAt( 3 );
+		IRPGraphicalProperty theGraphicalProperty = 
+				_graphEdge.getGraphicalProperty( "TargetPosition" );
+		
+		String theValue = theGraphicalProperty.getValue();		
+		String[] xY = theValue.split(",");
+		
+		return Integer.parseInt( xY[ 0 ] );	
 	}
 	
 	public int getEndY(){
 		
-		return _polygonInfo.getValueAt( 4 );
+		IRPGraphicalProperty theGraphicalProperty = 
+				_graphEdge.getGraphicalProperty( "TargetPosition" );
+		
+		String theValue = theGraphicalProperty.getValue();		
+		String[] xY = theValue.split(",");
+		
+		return Integer.parseInt( xY[ 1 ] );	
 	}
 	
 	public int getMidX(){
@@ -111,7 +134,7 @@ public class GraphEdgeInfo {
 }
 
 /**
- * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2016-2023  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 
