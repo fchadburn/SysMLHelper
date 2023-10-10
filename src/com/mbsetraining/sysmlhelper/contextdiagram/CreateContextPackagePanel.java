@@ -20,9 +20,9 @@ import javax.swing.border.EmptyBorder;
 import com.mbsetraining.sysmlhelper.common.RhapsodyComboBox;
 import com.mbsetraining.sysmlhelper.executablembse.AutoPackageDiagram;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
+import com.mbsetraining.sysmlhelper.requirementpackage.CreateRequirementsPkgChooser;
 import com.mbsetraining.sysmlhelper.usecasepackage.CreateActorPkg;
 import com.mbsetraining.sysmlhelper.usecasepackage.CreateActorPkgChooser;
-import com.mbsetraining.sysmlhelper.usecasepackage.CreateRequirementsPkgChooser;
 import com.mbsetraining.sysmlhelper.usecasepackage.CreateActorPkg.CreateActorPkgOption;
 import com.telelogic.rhapsody.core.*;
 

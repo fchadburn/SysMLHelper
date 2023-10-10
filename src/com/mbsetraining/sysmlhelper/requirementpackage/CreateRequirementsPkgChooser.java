@@ -1,4 +1,4 @@
-package com.mbsetraining.sysmlhelper.usecasepackage;
+package com.mbsetraining.sysmlhelper.requirementpackage;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

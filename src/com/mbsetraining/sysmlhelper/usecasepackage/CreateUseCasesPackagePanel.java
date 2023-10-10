@@ -26,9 +26,9 @@ import com.mbsetraining.sysmlhelper.contextdiagram.ExternalSignalsPkgCreator;
 import com.mbsetraining.sysmlhelper.contextdiagram.CreateSignalsPkgChooser;
 import com.mbsetraining.sysmlhelper.executablembse.AutoPackageDiagram;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
-import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
+import com.mbsetraining.sysmlhelper.requirementpackage.CreateRequirementsPkgChooser;
+import com.mbsetraining.sysmlhelper.requirementpackage.CreateRequirementsPkgChooser.CreateRequirementsPkgOption;
 import com.mbsetraining.sysmlhelper.usecasepackage.CreateActorPkg.CreateActorPkgOption;
-import com.mbsetraining.sysmlhelper.usecasepackage.CreateRequirementsPkgChooser.CreateRequirementsPkgOption;
 import com.telelogic.rhapsody.core.*;
 
 public class CreateUseCasesPackagePanel extends ExecutableMBSEBasePanel {
@@ -92,7 +92,7 @@ public class CreateUseCasesPackagePanel extends ExecutableMBSEBasePanel {
 
 		String theUniqueName = 
 				_context.determineUniqueNameForPackageBasedOn(
-						((ExecutableMBSE_Context) _context).getDefaultUseCasePackageName( _ownerPkg ),
+						_context.getDefaultUseCasePackageName( _ownerPkg ),
 						_ownerPkg );
 
 		JPanel theReqtsAnalysisPanel = createContent( theUniqueName );

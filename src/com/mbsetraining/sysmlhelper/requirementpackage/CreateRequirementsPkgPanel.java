@@ -1,4 +1,4 @@
-package com.mbsetraining.sysmlhelper.usecasepackage;
+package com.mbsetraining.sysmlhelper.requirementpackage;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -14,15 +14,19 @@ import javax.swing.border.EmptyBorder;
 
 import com.mbsetraining.sysmlhelper.executablembse.AutoPackageDiagram;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
-import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
 public class CreateRequirementsPkgPanel extends ExecutableMBSEBasePanel {
-
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 7464178722451860048L;
+
+	public static void main(String[] args) {
+		CreateRequirementsPkgPanel.launchTheDialog(
+				RhapsodyAppServer.getActiveRhapsodyApplication().getApplicationConnectionString() );
+	}
 
 	private IRPPackage _ownerPkg;
 	private CreateRequirementsPkgChooser _createRequirementsPkgChooser;
@@ -65,7 +69,7 @@ public class CreateRequirementsPkgPanel extends ExecutableMBSEBasePanel {
 
 		String theUniqueName = 
 				_context.determineUniqueNameForPackageBasedOn(
-						((ExecutableMBSE_Context) _context).getDefaultUseCasePackageName( _ownerPkg ),
+						_context.getDefaultUseCasePackageName( _ownerPkg ),
 						_ownerPkg );
 
 		JPanel theReqtsAnalysisPanel = createContent( theUniqueName );
@@ -104,11 +108,13 @@ public class CreateRequirementsPkgPanel extends ExecutableMBSEBasePanel {
 		theHorizSequenceGroup.addGroup( theColumn1ParallelGroup );
 		theHorizSequenceGroup.addGroup( theColumn2ParallelGroup );
 
+		String requirementPackagePostfix = _context.getDefaultRequirementPackagePostfix();
+
 		_createRequirementsPkgChooser = new CreateRequirementsPkgChooser( 
 				_ownerPkg, 
-				theName,
+				theName + requirementPackagePostfix,
 				true,
-				((ExecutableMBSE_Context) _context) );
+				_context );
 
 		theColumn1ParallelGroup.addComponent( _createRequirementsPkgChooser.getM_UserChoiceComboBox() ); 
 		theColumn2ParallelGroup.addComponent( _createRequirementsPkgChooser.getM_NameTextField() );   
@@ -141,15 +147,11 @@ public class CreateRequirementsPkgPanel extends ExecutableMBSEBasePanel {
 
 		if( checkValidity( false ) ){
 
-			//			CreateRequirementsPkg m_CreateRequirementsPkgChooser.performActionAndReturnRequirementsPkg( 
-			//					m_OwnerPkg );
+			_createRequirementsPkgChooser.createRequirementsPackage(_ownerPkg);
 
-			_context.deleteIfPresent( "Structure1", "StructureDiagram", _context.get_rhpPrj() );
-			_context.deleteIfPresent( "Model1", "ObjectModelDiagram", _context.get_rhpPrj() );
-			_context.deleteIfPresent( "Default", "Package", _context.get_rhpPrj() );
-
-			if( ((ExecutableMBSE_Context) _context).getIsAutoPopulatePackageDiagram( _context.get_rhpPrj() ) ){
-				AutoPackageDiagram theAPD = new AutoPackageDiagram( ((ExecutableMBSE_Context) _context) );
+			if( _context.getIsAutoPopulatePackageDiagram( _context.get_rhpPrj() ) ){
+				
+				AutoPackageDiagram theAPD = new AutoPackageDiagram( _context );
 				theAPD.drawDiagram();
 			}
 		}
@@ -157,7 +159,7 @@ public class CreateRequirementsPkgPanel extends ExecutableMBSEBasePanel {
 }
 
 /**
- * Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2018-2023  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

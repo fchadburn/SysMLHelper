@@ -44,6 +44,7 @@ import com.mbsetraining.sysmlhelper.movetoseparatepackage.MoveToSeparatePackage;
 import com.mbsetraining.sysmlhelper.modelchecks.CheckForRemoteRequirementSpecificationMatch;
 import com.mbsetraining.sysmlhelper.populateparts.PopulatePartsPanel;
 import com.mbsetraining.sysmlhelper.pubsubportcreation.PortCreator;
+import com.mbsetraining.sysmlhelper.requirementpackage.CreateRequirementsPkgPanel;
 import com.mbsetraining.sysmlhelper.rolluptraceabilitytotransition.RollUpTraceabilityToTheTransitionPanel;
 import com.mbsetraining.sysmlhelper.sequencediagram.SequenceDiagramCreator;
 import com.mbsetraining.sysmlhelper.sequencediagram.UpdateInferfacesBasedOnSequenceDiagramPanel;
@@ -167,7 +168,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					}
 
 				} else if( menuItem.equals( _settings.getString(
-						"executablembseplugin.CreateRAStructureMenu" ) ) ){
+						"executablembseplugin.CreateUseCaseStructureMenu" ) ) ){
 
 					if( theSelectedEl instanceof IRPPackage ){
 
@@ -181,6 +182,21 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						_context.error( menuItem + " invoked out of context and only works for packages" );
 					}
 
+				} else if( menuItem.equals( _settings.getString(
+						"executablembseplugin.CreateRequirementPackageMenu" ) ) ){
+
+					if( theSelectedEl instanceof IRPPackage ){
+
+						boolean isContinue = checkAndPerformProfileSetupIfNeeded();
+
+						if( isContinue ){
+							CreateRequirementsPkgPanel.launchTheDialog( theAppID );
+						}	
+
+					} else {
+						_context.error( menuItem + " invoked out of context and only works for packages" );
+					}
+					
 				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.SetupRAProperties" ) ) ){
 
