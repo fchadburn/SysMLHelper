@@ -962,6 +962,7 @@ V4.2.p.Rhp831.PreRelease (XX-XXX-XXXX): TBC
 0725 10-OCT-2023: ExecutableMBSE: Allow requirement packages to be children of system architecture packages and subsystem packages (F.J.Chadburn)
 0726 10-OCT-2023: ExecutableMBSE: Move To Separate Package now support for subsystem blocks to speed up model structure creation (F.J.Chadburn)
 0737 10-OCT-2023: ExecutableMBSE: Create Feature Function Package for use case now opens the feature bdd and puts related use case on it (F.J.Chadburn)
+0738 10-OCT-2023: ExecutableMNSE: Enable the smart-routing feature for the ibds to make them easier to draw by reducing effort drawing connectors (F.J.Chadburn)
 
 Backlog/Known issues
 - Tailoring how to get DOORS NG attributes as tags
