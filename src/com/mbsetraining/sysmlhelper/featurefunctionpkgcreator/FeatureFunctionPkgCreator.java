@@ -98,11 +98,21 @@ public class FeatureFunctionPkgCreator {
 		_context.setDiagramNameToOwningClassifierIfAppropriate( theDiagram, theFeature );
 
 		// The resizer will deal with width and height, hence just use 50,50 to start with
-		IRPGraphNode theGraphNode = theDiagram.addNewNodeForElement( theFeature, 450, 150, 50, 50 );
-		GraphNodeResizer theResizer = new GraphNodeResizer( theGraphNode, _context );
-		theResizer.performResizing();
+		IRPGraphNode theFeatureGraphNode = theDiagram.addNewNodeForElement( theFeature, 450, 150, 50, 50 );
+		GraphNodeResizer theFeatureResizer = new GraphNodeResizer( theFeatureGraphNode, _context );
+		theFeatureResizer.performResizing();
 		
-		theFeature.highLightElement();
+		// The resizer will deal with width and height, hence just use 50,50 to start with
+		IRPGraphNode theUseCaseGraphNode = theDiagram.addNewNodeForElement( theUseCase, 150, 100, 50, 50 );
+		GraphNodeResizer theUseCaseResizer = new GraphNodeResizer( theUseCaseGraphNode, _context );
+		theUseCaseResizer.performResizing();
+		
+		IRPCollection theGraphElsToComplete = _context.get_rhpApp().createNewCollection();
+		theGraphElsToComplete.addGraphicalItem( theFeatureGraphNode );
+		theDiagram.completeRelations( theGraphElsToComplete, 1 );
+		
+		theDiagram.openDiagram();
+		theDiagram.highLightElement();
 	}
 }
 
