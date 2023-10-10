@@ -758,6 +758,17 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					theMover.performMoveIfConfirmed();
 					
 				} else if( menuItem.equals( _settings.getString( 
+						"executablembseplugin.MoveSubsystemIntoSeparatePkg" ) ) ){
+
+					MoveToSeparatePackage theMover = new MoveToSeparatePackage( 
+							_context, 
+							_context.SUBSYSTEM_BLOCK, 
+							_context.DESIGN_SYNTHESIS_SUBSYSTEM_PACKAGE, 
+							"_SubsystemPkg" );
+					
+					theMover.performMoveIfConfirmed();
+					
+				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.CreateFeatureFunctionPkg" ) ) ){
 
 					List<IRPUseCase> theUseCases = new ArrayList<>();
