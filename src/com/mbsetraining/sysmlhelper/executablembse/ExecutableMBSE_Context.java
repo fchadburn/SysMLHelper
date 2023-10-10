@@ -292,6 +292,16 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		return theStereotypeNames;
 	}
+	
+	// Allow user to change in session
+	public List<String> getStereotypeNamesForRequirementsPkgFromActivityDiagrams(){
+
+		List<String> theStereotypeNames = getListFromCommaSeparatedString(
+				_rhpPrj, 
+				"ExecutableMBSEProfile.RequirementsAnalysis.StereotypeNamesForRequirementsPkgFromActivityDiagrams" );	
+
+		return theStereotypeNames;
+	}
 
 	// Allow user to change in session
 	public IRPStereotype getStereotypeTemplateForRequirementsPkgFromUseCases(){
@@ -314,6 +324,27 @@ public class ExecutableMBSE_Context extends BaseContext {
 		return theStereotypeTemplate;
 	}
 
+	// Allow user to change in session
+	public IRPStereotype getStereotypeTemplateForRequirementsPkgFromActivityDiagrams(){
+
+		IRPStereotype theStereotypeTemplate = null;
+
+		List<IRPModelElement> theStereotypes = getStereotypesBasedOnProperty(
+				_rhpPrj, 
+				"ExecutableMBSEProfile.RequirementsAnalysis.StereotypeTemplateForRequirementsPkgFromActivityDiagrams" );		
+
+		if( theStereotypes.size() == 1 ) {
+
+			IRPModelElement theEl = theStereotypes.get( 0 );
+
+			if( theEl instanceof IRPStereotype ) {
+				theStereotypeTemplate = (IRPStereotype) theEl;
+			}
+		}
+
+		return theStereotypeTemplate;
+	}
+	
 	// Generally single call per session, so use lazy load
 	public String getDefaultRequirementPackageName(){
 

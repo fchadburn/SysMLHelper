@@ -58,6 +58,8 @@ Subject ExecutableMBSEProfile
 		Property BleedForegroundColor String "255,0,0"
 		Property StereotypeNamesForRequirementsPkgFromUseCases String "Stakeholder Requirement"
 		Property StereotypeTemplateForRequirementsPkgFromUseCases String "template_pink"
+		Property StereotypeNamesForRequirementsPkgFromActivityDiagrams String "System Requirement"
+		Property StereotypeTemplateForRequirementsPkgFromActivityDiagrams String "template_green"
 		Property RequirementNameLengthMax Int "38"
 	end
 	Metaclass FunctionalAnalysis

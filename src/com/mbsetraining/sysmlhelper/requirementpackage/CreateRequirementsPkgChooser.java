@@ -40,6 +40,8 @@ public class CreateRequirementsPkgChooser {
 	private final String _cone = "<None>";
 	private String _name;
 	private List<IRPModelElement> _existingPkgs;
+	private List<String> _stereotypesForUseCaseRequirements;
+	private List<String> _stereotypesForActivityDiagramRequirements;
 
 	private ExecutableMBSE_Context _context;
 
@@ -71,7 +73,11 @@ public class CreateRequirementsPkgChooser {
 		_userChoiceComboBox.addItem( _createNewUnderProjectOption );
 		_userChoiceComboBox.addItem( _createNewUnderUseCasePkgOption );
 
-		_packageStereotypeNames = _context.getStereotypeNamesForRequirementsPkgFromUseCases();
+		_stereotypesForUseCaseRequirements = _context.getStereotypeNamesForRequirementsPkgFromUseCases();
+		_stereotypesForActivityDiagramRequirements = _context.getStereotypeNamesForRequirementsPkgFromActivityDiagrams();
+
+		_packageStereotypeNames.addAll( _stereotypesForUseCaseRequirements ); // E.g. Stakeholder Requirement
+		_packageStereotypeNames.addAll( _stereotypesForActivityDiagramRequirements ); // E.g. System Requirement
 
 		for( GatewayFileSection theAvailableTypeTemplate : _availableTypeTemplates ){
 
@@ -408,7 +414,13 @@ public class CreateRequirementsPkgChooser {
 
 		if( theFoundStereotype == null ){
 			
-			IRPStereotype theTemplateStereotype = _context.getStereotypeTemplateForRequirementsPkgFromUseCases();
+			IRPStereotype theTemplateStereotype = null;
+			
+			if( _stereotypesForUseCaseRequirements.contains( theStereotypeName ) ) {
+				theTemplateStereotype = _context.getStereotypeTemplateForRequirementsPkgFromUseCases();
+			} else if( _stereotypesForActivityDiagramRequirements.contains( theStereotypeName ) ) {
+				theTemplateStereotype = _context.getStereotypeTemplateForRequirementsPkgFromActivityDiagrams();
+			}
 			
 			if( theTemplateStereotype != null ) {
 				
@@ -420,8 +432,7 @@ public class CreateRequirementsPkgChooser {
 			} else {
 				theStereotype = theReqtsPkg.addStereotype( theStereotypeName, "Package" );
 			}
-
-			
+	
 			theStereotype.addMetaClass( "Dependency" );
 			theStereotype.addMetaClass( "HyperLink" );
 			theStereotype.addMetaClass( "Requirement" );
