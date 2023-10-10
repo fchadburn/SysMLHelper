@@ -959,6 +959,7 @@ V4.2.p.Rhp831.PreRelease (XX-XXX-XXXX): TBC
 0722 09-OCT-2023: ExecutableMBSE: When drawing a flow connector get port to be correctly positioned where line was drawn (F.J.Chadburn)
 0723 09-OCT-2023: ExecutableMBSE: Refinement of the Move To Separate Package functionality to add _UseCasePkg post fix & not create activity package/req (F.J.Chadburn)
 0724 09-OCT-2023: ExecutableMBSE: Move To Separate Package functionality added to menu for function blocks (F.J.Chadburn)
+0725 10-OCT-2023: ExecutableMBSE: Allow requirement packages to be children of system architecture packages and subsystem packages (F.J.Chadburn)
 
 Backlog/Known issues
 - Tailoring how to get DOORS NG attributes as tags
