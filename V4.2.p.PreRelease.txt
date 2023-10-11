@@ -965,10 +965,12 @@ V4.2.p.Rhp831.PreRelease (XX-XXX-XXXX): TBC
 0738 10-OCT-2023: ExecutableMBSE: Enable the smart-routing feature for the ibds to make them easier to draw by reducing effort drawing connectors (F.J.Chadburn)
 0739 10-OCT-2023: ExecutableMBSE: Added Create Requirement Package Structure option & tweak to name of peer Create Structure menu names (F.J.Chadburn)
 0740 10-OCT-2023: ExecutableMBSE: Improve workflow with ability to create System Requirement stereotype when creating requirement packages (F.J.Chadburn)
+0741 11-OCT-2023: ExecutableMBSE: Tweak of display options for internal block diagram - system so that name wrapping occurs on function usages (F.J.Chadburn)
 
 Backlog/Known issues
+- Consider simplifying connector drawing so that it doesn't matter which way function connectors go, e.g., get plugin to handle the reverse if direction (F.J.Chadburn)
 - Tailoring how to get DOORS NG attributes as tags
-- Switch master the other way!
+- Switch requirement master the other way, e.g., making remote requirements become local requirements!
 - Add a UML package new term
 - Interfaces Package doesn't have unique icon yet
 - Work out a way of getting a hyperlink icon on a use case to go to activity diagram
