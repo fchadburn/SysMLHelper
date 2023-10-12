@@ -968,7 +968,12 @@ V4.2.p.Rhp831.PreRelease (11-OCT-2023):
 0741 11-OCT-2023: ExecutableMBSE: Tweak of display options for internal block diagram - system so that name wrapping occurs on function usages (F.J.Chadburn)
 0742 11-OCT-2023: ExecutableMBSE: Renamed function connector to subsystem/function connector and added icon and tooltip to make usage clearer (F.J.Chadburn)
 
+V4.2.q.Rhp831.PreRelease (XX-XXX-XXXX): TBD
+0743 12-OCT-2023: ExecutableMBSE: Allow connectors to be drawn between subsystems owned by subsystems to give user option of deep nesting (F.J.Chadburn)
+
 Backlog/Known issues
+- Add a warning if not all ports are showing on an ibd
+- Get populate parts to be sensitive to type of diagram so that user has option to populate the 
 - Consider simplifying connector drawing so that it doesn't matter which way function connectors go, e.g., get plugin to handle the reverse if direction (F.J.Chadburn)
 - Tailoring how to get DOORS NG attributes as tags
 - Switch requirement master the other way, e.g., making remote requirements become local requirements!
