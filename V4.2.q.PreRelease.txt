@@ -971,10 +971,10 @@ V4.2.p.Rhp831.PreRelease (11-OCT-2023):
 V4.2.q.Rhp831.PreRelease (XX-XXX-XXXX): TBD
 0743 12-OCT-2023: ExecutableMBSE: Allow connectors to be drawn between subsystems owned by subsystems to give user option of deep nesting (F.J.Chadburn)
 0744 12-OCT-2023: ExecutableMBSE: Add a BPMN inspired accept event usage to the internal block diagrams to replicate accept event actions on activity diagrams (F.J.Chadburn)
+0745 12-OCT-2023: ExecutableMBSE: Allow user to choose whether to include logic elements (untyped parts) if the populate parts panel detects they are present (F.J.Chadburn)
 
 Backlog/Known issues
 - Add a warning if not all ports are showing on an ibd
-- Get populate parts to be sensitive to type of diagram so that user has option to populate the 
 - Consider simplifying connector drawing so that it doesn't matter which way function connectors go, e.g., get plugin to handle the reverse if direction (F.J.Chadburn)
 - Tailoring how to get DOORS NG attributes as tags
 - Switch requirement master the other way, e.g., making remote requirements become local requirements!

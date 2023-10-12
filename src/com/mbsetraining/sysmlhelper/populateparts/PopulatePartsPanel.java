@@ -38,6 +38,7 @@ public class PopulatePartsPanel extends ExecutableMBSEBasePanel {
 	private final int _yBottom = 30;
 	private final int _xLeft = 30;
 	private final int _xRight = 30;
+	private Boolean _isIncludeTypeless;
 
 	/**
 	 * @param args
@@ -154,7 +155,7 @@ public class PopulatePartsPanel extends ExecutableMBSEBasePanel {
 				new DefaultMutableTreeNode( 
 						new ModelElInfo( theClassifier, thePart, false, _context ) );
 
-		createNodes( top, false );
+		createNodes( top );
 
 		TreeModel treeModel = new DefaultTreeModel( top );
 		_tree = new JCheckBoxTree( _context );                
@@ -185,20 +186,53 @@ public class PopulatePartsPanel extends ExecutableMBSEBasePanel {
 
 		return thePanel;
 	}
+	
+	private boolean isContainsTypeless(
+			List<ModelElInfo> theList ) {
+		
+		boolean isContainsTypeless = false;
+		
+		for (Iterator<ModelElInfo> iterator = theList.iterator(); iterator.hasNext();) {
+			
+			ModelElInfo modelElInfo = (ModelElInfo) iterator.next();
+			
+			if( modelElInfo._part.isTypelessObject() == 1 ) {
+				isContainsTypeless = true;
+				break;
+			}
+		}
+		
+		return isContainsTypeless;
+	}
 
 	private void createNodes(
-			DefaultMutableTreeNode underNode,
-			boolean isIncludeTypeless ){
+			DefaultMutableTreeNode underNode ){
 
 		ModelElInfo theModelElInfo = (ModelElInfo) underNode.getUserObject();
 
-		List<ModelElInfo> theChildren = theModelElInfo.getChildren( isIncludeTypeless );
+		List<ModelElInfo> theChildren;
+		
+		if( _isIncludeTypeless == null ) {
+			theChildren = theModelElInfo.getChildren( true );
+			
+			if( isContainsTypeless( theChildren ) ){
+				_isIncludeTypeless = UserInterfaceHelper.askAQuestion( 
+						"The parts tree includes logic elements. Do you want to include these in populate tree?");
+				
+				if( !_isIncludeTypeless ) {
+					theChildren = theModelElInfo.getChildren( false );
+				}
+			}
+			
+		} else {
+			theChildren = theModelElInfo.getChildren( _isIncludeTypeless );
+		}
 
 		for( ModelElInfo theChild : theChildren ){
 
 			DefaultMutableTreeNode theChildNode = new DefaultMutableTreeNode( theChild );
 			underNode.add( theChildNode );
-			createNodes( theChildNode, isIncludeTypeless );
+			createNodes( theChildNode );
 		}        
 	}
 
@@ -402,7 +436,7 @@ public class PopulatePartsPanel extends ExecutableMBSEBasePanel {
 }
 
 /**
- * Copyright (C) 2018-2022  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2018-2023  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 
