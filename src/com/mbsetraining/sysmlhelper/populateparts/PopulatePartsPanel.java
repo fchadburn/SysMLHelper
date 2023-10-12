@@ -398,37 +398,59 @@ public class PopulatePartsPanel extends ExecutableMBSEBasePanel {
 
 				} else {
 					IRPInstance thePart = theUserObject._part;
+					
+					IRPCollection theExistingGraphEls = _diagram.getCorrespondingGraphicElements( thePart );
+									
+					IRPGraphNode theChildsGraphNode = null;
+					
+					if( theExistingGraphEls.getCount() != 0 ) {
+						
+						_context.warning( "Skipping populate for " + _context.elInfo( thePart ) + " as it is already populated on " + _context.elInfo( _diagram ) );
+						
+						if( theExistingGraphEls.getCount() == 1 ) {
+							
+							Object theObject = theExistingGraphEls.getItem(1);
+							
+							if( theObject instanceof IRPGraphNode ) {
+								theChildsGraphNode = (IRPGraphNode)theObject;
+							}
+						}
+					} else {
+						
+						Dimension theChildsDimension = calculateDimensionOf( theChildNode );			
 
-					Dimension theChildsDimension = calculateDimensionOf( theChildNode );			
+						_context.debug( "Adding graph node for " + theUserObject.toString() + 
+								" at x=" + x + ", y=" + y + 
+								", height=" + theChildsDimension.height + 
+								", width=" + theChildsDimension.width );
 
-					_context.debug( "Adding graph node for " + theUserObject.toString() + 
-							" at x=" + x + ", y=" + y + 
-							", height=" + theChildsDimension.height + 
-							", width=" + theChildsDimension.width );
+						theChildsGraphNode = _diagram.addNewNodeForElement(
+								thePart, 
+								x, 
+								y, 
+								theChildsDimension.width, 
+								theChildsDimension.height );
 
-					IRPGraphNode theChildsGraphNode = _diagram.addNewNodeForElement(
-							thePart, 
-							x, 
-							y, 
-							theChildsDimension.width, 
-							theChildsDimension.height );
+						IRPCollection theCollection = 
+								_context.get_rhpApp().createNewCollection();
 
-					IRPCollection theCollection = 
-							_context.get_rhpApp().createNewCollection();
+						theCollection.addGraphicalItem( theChildsGraphNode );	    
 
-					theCollection.addGraphicalItem( theChildsGraphNode );	    
+						_context.debug( "Invoking complete relations for " + theCollection.getCount() + " elements" );
 
-					_context.debug( "Invoking complete relations for " + theCollection.getCount() + " elements" );
+						_diagram.completeRelations(
+								theCollection, 
+								1);
 
-					_diagram.completeRelations(
-							theCollection, 
-							1);
+						if( iterator.hasNext() ){
+							y += theChildsDimension.getHeight() + _yGap;
+						}
 
-					if( iterator.hasNext() ){
-						y += theChildsDimension.getHeight() + _yGap;
 					}
-
-					populateParts( theChildNode, theChildsGraphNode );
+					
+					if( theChildsGraphNode != null ) {
+						populateParts( theChildNode, theChildsGraphNode );
+					}
 				}
 			}		
 		}

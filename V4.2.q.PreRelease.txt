@@ -972,6 +972,7 @@ V4.2.q.Rhp831.PreRelease (XX-XXX-XXXX): TBD
 0743 12-OCT-2023: ExecutableMBSE: Allow connectors to be drawn between subsystems owned by subsystems to give user option of deep nesting (F.J.Chadburn)
 0744 12-OCT-2023: ExecutableMBSE: Add a BPMN inspired accept event usage to the internal block diagrams to replicate accept event actions on activity diagrams (F.J.Chadburn)
 0745 12-OCT-2023: ExecutableMBSE: Allow user to choose whether to include logic elements (untyped parts) if the populate parts panel detects they are present (F.J.Chadburn)
+0746 12-OCT-2023: ExecutableMBSE: Change the populate parts helper so that it doesn't add graph nodes that already exist on the diagram (F.J.Chadburn)
 
 Backlog/Known issues
 - Add a warning if not all ports are showing on an ibd
