@@ -78,6 +78,7 @@ Subject ExecutableMBSEProfile
 		Property IsSendEventViaPanelOptionEnabled Bool "True"
 		Property IsSendEventViaPanelWantedByDefault Bool "True"
 		Property IsCallOperationSupportEnabled Bool "True"
+		Property IsCreateEventForFlowConnectorPanelEnabled Bool "False"
 	end
 	Metaclass DesignSynthesis
 		Property AutoGenerationOfPortsForLinksPolicy Enum "Never,Always,UserDialog" "UserDialog"

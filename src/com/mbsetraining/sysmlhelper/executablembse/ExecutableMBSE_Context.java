@@ -392,6 +392,15 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		return _isEnableAutoMoveOfEventsOnFlowConnectorCreation;
 	}
+	
+	public Boolean getIsCreateEventForFlowConnectorPanelEnabled(){
+
+		boolean isEnabled = getBooleanPropertyValue(
+					_rhpPrj,
+					"ExecutableMBSEProfile.FunctionalAnalysis.IsCreateEventForFlowConnectorPanelEnabled" );
+
+		return isEnabled;
+	}
 
 	// Multiple calls per session, so use lazy load
 	public Boolean getIsEnableAutoMoveOfEventsOnAddNewElement(){

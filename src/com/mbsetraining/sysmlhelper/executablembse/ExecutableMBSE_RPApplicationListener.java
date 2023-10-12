@@ -1640,11 +1640,14 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 					} else if( isToPortCreationNeeded && 
 							isFromPortCreationNeeded ){
 
-						// Only launch the create event dialog if it was a non-port to non-port connector that was drawn
-						CreateEventForFlowConnectorPanel.launchThePanel( 
-								_context.get_rhpAppID(), 
-								newLink.getGUID(),
-								theDiagram.getGUID() );			
+						if( _context.getIsCreateEventForFlowConnectorPanelEnabled() ) {
+							
+							// Only launch the create event dialog if it was a non-port to non-port connector that was drawn
+							CreateEventForFlowConnectorPanel.launchThePanel( 
+									_context.get_rhpAppID(), 
+									newLink.getGUID(),
+									theDiagram.getGUID() );		
+						}
 					}
 
 				} catch( Exception e ){

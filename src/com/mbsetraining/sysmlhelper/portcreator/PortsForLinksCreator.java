@@ -199,10 +199,13 @@ public class PortsForLinksCreator {
 
 				_link.deleteFromProject();
 
-				CreateEventForFlowConnectorPanel.launchThePanel( 
-						_context.get_rhpAppID(), 
-						newLink.getGUID(),
-						theDiagram.getGUID() );
+				if( _context.getIsCreateEventForFlowConnectorPanelEnabled() ) {
+					
+					CreateEventForFlowConnectorPanel.launchThePanel( 
+							_context.get_rhpAppID(), 
+							newLink.getGUID(),
+							theDiagram.getGUID() );
+				}
 			}
 		}
 	}
@@ -396,7 +399,7 @@ public class PortsForLinksCreator {
 }
 
 /**
- * Copyright (C) 2022  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2022-2023  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 
