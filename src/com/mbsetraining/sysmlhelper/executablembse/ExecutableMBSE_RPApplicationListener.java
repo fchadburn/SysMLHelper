@@ -148,6 +148,11 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				afterAddForStartUsage( (IRPInstance) modelElement );
 
 			} else if( modelElement instanceof IRPInstance && 
+					_context.hasStereotypeCalled( _context.NEW_TERM_FOR_ACCEPT_EVENT_USAGE, modelElement )){
+
+				afterAddForAcceptEventUsage( (IRPInstance) modelElement );
+				
+			} else if( modelElement instanceof IRPInstance && 
 					_context.hasStereotypeCalled( _context.NEW_TERM_FOR_FINAL_USAGE, modelElement )){
 
 				afterAddForFinalUsage( (IRPInstance) modelElement );
@@ -1013,6 +1018,29 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		}
 	}
 
+	private void afterAddForAcceptEventUsage(
+			IRPInstance theInstance ){
+
+		IRPGraphElement theGraphEl = _context.getGraphElIfOnlyOneExistsFor( theInstance );		
+
+		// Only do this for parts, not directed compositions
+		if( theGraphEl instanceof IRPGraphNode ){
+
+			GraphNodeResizer theResizer = new GraphNodeResizer( (IRPGraphNode) theGraphEl, _context);
+			theResizer.performResizing();
+
+			GraphNodeInfo theNodeInfo = new GraphNodeInfo( (IRPGraphNode) theGraphEl, _context );
+
+			_context.debug( "afterAddForAcceptEventUsage found a graphNode for " + _context.elInfo( theGraphEl.getModelObject() ) );
+
+			IRPSysMLPort thePort = (IRPSysMLPort) theInstance.addNewAggr( "SysMLPort", "" );
+			thePort.changeTo( _context.FLOW_OUTPUT );	
+			_context.setPortDirectionFor( thePort, "Out", "Untyped" );
+			IRPGraphElement thePortGraphEl = _context.getGraphElIfOnlyOneExistsFor( thePort );
+			thePortGraphEl.setGraphicalProperty( "Position", theNodeInfo.getTopRightX() + "," + theNodeInfo.getMiddleY() );
+		}
+	}
+	
 	private void afterAddForFinalUsage(
 			IRPInstance theInstance ){
 
