@@ -980,6 +980,7 @@ V4.2.r.Rhp831.PreRelease (XX-XXX-XXXX): TBD
 0749 18-OCT-2023: ExecutableMBSE: Allow Function Usages to own Allocation relations (F.J.Chadburn)
 0750 18-OCT-2023: ExecutableMBSE: Usability tweak to requirement package panel to remove the create under package option as only launched under project anyway (F.J.Chadburn)
 0751 18-OCT-2023: ExecutableMBSE: Tweak property for Default size of Function Block so it's smaller and same size as the System/Subsystem Blocks when put on bdd (F.J.Chadburn)
+0752 18-OCT-2023: ExecutableMBSE: Tweak to hep file to make helper menus applicable to Ports to also be applicable to ProxyPorts as stopped this was missing (F.J.Chadburn)
 
 Backlog/Known issues
 - When you double click in populate parts tree get it to highlight the element on the diagram
