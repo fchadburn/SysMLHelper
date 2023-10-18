@@ -133,6 +133,7 @@ public class CreateContextPackagePanel extends ExecutableMBSEBasePanel {
 				_ownerPkg, 
 				_context.getDefaultRequirementPackageName(), 
 				false,
+				true,
 				_context );
 
 		_createExternalSignalsPkgChooser = new CreateSignalsPkgChooser( 

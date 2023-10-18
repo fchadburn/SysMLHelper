@@ -141,6 +141,7 @@ public class CreateUseCasesPackagePanel extends ExecutableMBSEBasePanel {
 				_ownerPkg, 
 				theName + _requirementPackagePostfix, 
 				true,
+				true,
 				_context );
 
 		_createContextPkgChooser = new CreateContextPkgChooser( 

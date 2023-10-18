@@ -33,7 +33,7 @@ public class CreateRequirementsPkgChooser {
 	private final String _createNewUnderProjectOption = "Create new requirements package under project";
 	private final String _createNewUnderProjectWithStereotypeOptionPre = "Create new «";
 	private final String _createNewUnderProjectWithStereotypeOptionPost = "» requirements package under project";
-	private final String _createNewUnderUseCasePkgOption = "Create new requirements package under owning package";
+	private final String _createNewUnderOwningPkgOption = "Create new requirements package under owning package";
 	private final String _createNewUnderUseCasePkgWithStereotypeOptionPre = "Create new «";
 	private final String _createNewUnderUseCasePkgWithStereotypeOptionPost = "» requirements package under owning package";
 	private final String _existingPkgPrefix = "Flow requirements to existing package called ";
@@ -49,6 +49,7 @@ public class CreateRequirementsPkgChooser {
 			IRPPackage theOwnerPkg,
 			String theName,
 			boolean isDefaultToNewUnderProject,
+			boolean isGiveUnderPackageOption,
 			ExecutableMBSE_Context context ){
 
 		_context = context;
@@ -71,7 +72,11 @@ public class CreateRequirementsPkgChooser {
 
 		_userChoiceComboBox.addItem( _doNothingOption );	
 		_userChoiceComboBox.addItem( _createNewUnderProjectOption );
-		_userChoiceComboBox.addItem( _createNewUnderUseCasePkgOption );
+
+		// Don't give option to create under owning package for requirement package on its own
+		if( isGiveUnderPackageOption ) {
+			_userChoiceComboBox.addItem( _createNewUnderOwningPkgOption );
+		}
 
 		_stereotypesForUseCaseRequirements = _context.getStereotypeNamesForRequirementsPkgFromUseCases();
 		_stereotypesForActivityDiagramRequirements = _context.getStereotypeNamesForRequirementsPkgFromActivityDiagrams();
@@ -84,31 +89,37 @@ public class CreateRequirementsPkgChooser {
 			_userChoiceComboBox.addItem( 
 					_createNewUnderProjectWithStereotypeOptionPre + "from" +
 							theAvailableTypeTemplate.getSectionName() + _createNewUnderProjectWithStereotypeOptionPost );
-			
-			_userChoiceComboBox.addItem( 
-					_createNewUnderUseCasePkgWithStereotypeOptionPre + "from" +
-							theAvailableTypeTemplate.getSectionName() + _createNewUnderUseCasePkgWithStereotypeOptionPost );
+
+			// Don't give option to create under owning package for requirement package on its own
+			if( isGiveUnderPackageOption ) {
+				_userChoiceComboBox.addItem( 
+						_createNewUnderUseCasePkgWithStereotypeOptionPre + "from" +
+								theAvailableTypeTemplate.getSectionName() + _createNewUnderUseCasePkgWithStereotypeOptionPost );
+			}
 		}
 
 		String theFirstOptionWithPackageStereotype = null;
-		
+
 		for( String thePackageStereotype : _packageStereotypeNames ){
 
 			String createNewUnderProjectWithStereotypeOptionString =
 					_createNewUnderProjectWithStereotypeOptionPre + 
 					thePackageStereotype + _createNewUnderProjectWithStereotypeOptionPost;
-					
+
 			if( theFirstOptionWithPackageStereotype == null ) {
 				theFirstOptionWithPackageStereotype = 
 						createNewUnderProjectWithStereotypeOptionString;
 			}
-			
+
 			_userChoiceComboBox.addItem( 
 					createNewUnderProjectWithStereotypeOptionString );
-			
-			_userChoiceComboBox.addItem( 
-					_createNewUnderUseCasePkgWithStereotypeOptionPre + 
-					thePackageStereotype + _createNewUnderUseCasePkgWithStereotypeOptionPost );
+
+			// Don't give option to create under owning package for requirement package on its own
+			if( isGiveUnderPackageOption ) {
+				_userChoiceComboBox.addItem( 
+						_createNewUnderUseCasePkgWithStereotypeOptionPre + 
+						thePackageStereotype + _createNewUnderUseCasePkgWithStereotypeOptionPost );
+			}
 		}
 
 		for( IRPModelElement theExistingReqtsPkg : _existingPkgs ){
@@ -120,7 +131,7 @@ public class CreateRequirementsPkgChooser {
 
 			// set default to create new package
 			if( theFirstOptionWithPackageStereotype != null ) {
-				
+
 				_userChoiceComboBox.setSelectedItem( theFirstOptionWithPackageStereotype );
 			} else {				
 				_userChoiceComboBox.setSelectedItem( _createNewUnderProjectOption );
@@ -156,7 +167,7 @@ public class CreateRequirementsPkgChooser {
 				} else if( selectedValue.equals( _createNewUnderProjectOption ) ||
 						( selectedValue.startsWith( _createNewUnderProjectWithStereotypeOptionPre ) && 
 								selectedValue.endsWith( _createNewUnderProjectWithStereotypeOptionPost ) ) ||
-						selectedValue.equals( _createNewUnderUseCasePkgOption ) ||
+						selectedValue.equals( _createNewUnderOwningPkgOption ) ||
 						( selectedValue.startsWith( _createNewUnderUseCasePkgWithStereotypeOptionPre ) && 
 								selectedValue.endsWith( _createNewUnderUseCasePkgWithStereotypeOptionPost ) ) ){
 
@@ -259,7 +270,7 @@ public class CreateRequirementsPkgChooser {
 		} else if( ( theUserChoice.startsWith( _createNewUnderProjectWithStereotypeOptionPre ) && 
 				theUserChoice.endsWith( _createNewUnderProjectWithStereotypeOptionPost ) ) ){
 			theOption = CreateRequirementsPkgOption.CreateUnderProjectWithStereotype;
-		} else if( theUserChoice.equals( _createNewUnderUseCasePkgOption ) ){
+		} else if( theUserChoice.equals( _createNewUnderOwningPkgOption ) ){
 			theOption = CreateRequirementsPkgOption.CreateUnderUseCasePkg;
 		} else if( ( theUserChoice.startsWith( _createNewUnderUseCasePkgWithStereotypeOptionPre ) && 
 				theUserChoice.endsWith( _createNewUnderUseCasePkgWithStereotypeOptionPost ) ) ){
@@ -322,7 +333,7 @@ public class CreateRequirementsPkgChooser {
 
 			theStereotypeName = theUserChoice.replaceAll( _createNewUnderProjectWithStereotypeOptionPre, "" );
 			theStereotypeName = theStereotypeName.replaceAll( _createNewUnderProjectWithStereotypeOptionPost, "" );
-			
+
 		} else if( ( theUserChoice.startsWith( _createNewUnderUseCasePkgWithStereotypeOptionPre ) && 
 				theUserChoice.endsWith( _createNewUnderUseCasePkgWithStereotypeOptionPost ) ) ){
 
@@ -353,22 +364,22 @@ public class CreateRequirementsPkgChooser {
 		if( selectedValue.equals( _createNewUnderProjectOption ) ||
 				( selectedValue.startsWith( _createNewUnderProjectWithStereotypeOptionPre ) &&
 						selectedValue.endsWith( _createNewUnderProjectWithStereotypeOptionPost ) ) ||
-				selectedValue.equals( _createNewUnderUseCasePkgOption ) ||
+				selectedValue.equals( _createNewUnderOwningPkgOption ) ||
 				( selectedValue.startsWith( _createNewUnderUseCasePkgWithStereotypeOptionPre ) &&
 						selectedValue.endsWith( _createNewUnderUseCasePkgWithStereotypeOptionPost ) ) ){
 
 			_nameTextField.setText( _name );
 		}
 	}
-	
+
 	public void createRequirementsPackage(
 			IRPPackage theUseCasePkg ){
-		
+
 		CreateRequirementsPkgOption theReqtsPkgChoice = getReqtsPkgChoice();
-		
+
 		IRPPackage theReqtsPkg = null;
 		IRPProject theProject = theUseCasePkg.getProject();
-		
+
 		if( theReqtsPkgChoice == CreateRequirementsPkgOption.CreateUnderProject ||
 				theReqtsPkgChoice == CreateRequirementsPkgOption.CreateUnderProjectWithStereotype ){
 
@@ -376,7 +387,7 @@ public class CreateRequirementsPkgChooser {
 					theUseCasePkg, 
 					getReqtsPkgOptionalName(), 
 					theProject );
-			
+
 		} else if( theReqtsPkgChoice == CreateRequirementsPkgOption.CreateUnderUseCasePkg ||
 				theReqtsPkgChoice == CreateRequirementsPkgOption.CreateUnderUseCasePkgWithStereotype ){
 
@@ -406,33 +417,33 @@ public class CreateRequirementsPkgChooser {
 	private void createIfNecessaryAndApplyStereotypeTo(
 			IRPPackage theReqtsPkg,
 			String theStereotypeName ){
-		
+
 		IRPStereotype theFoundStereotype = (IRPStereotype) _context.get_rhpPrj().
 				findAllByName( theStereotypeName , "Stereotype" );
 
 		IRPStereotype theStereotype = null;
 
 		if( theFoundStereotype == null ){
-			
+
 			IRPStereotype theTemplateStereotype = null;
-			
+
 			if( _stereotypesForUseCaseRequirements.contains( theStereotypeName ) ) {
 				theTemplateStereotype = _context.getStereotypeTemplateForRequirementsPkgFromUseCases();
 			} else if( _stereotypesForActivityDiagramRequirements.contains( theStereotypeName ) ) {
 				theTemplateStereotype = _context.getStereotypeTemplateForRequirementsPkgFromActivityDiagrams();
 			}
-			
+
 			if( theTemplateStereotype != null ) {
-				
+
 				theStereotype = (IRPStereotype) theTemplateStereotype.clone( theStereotypeName, theReqtsPkg );
 				theStereotype.addMetaClass( "Package" );
-				
+
 				theReqtsPkg.addSpecificStereotype( theStereotype );
 
 			} else {
 				theStereotype = theReqtsPkg.addStereotype( theStereotypeName, "Package" );
 			}
-	
+
 			theStereotype.addMetaClass( "Dependency" );
 			theStereotype.addMetaClass( "HyperLink" );
 			theStereotype.addMetaClass( "Requirement" );
@@ -445,7 +456,7 @@ public class CreateRequirementsPkgChooser {
 			theReqtsPkg.addSpecificStereotype( theFoundStereotype );
 		}
 	}
-	
+
 	public IRPPackage createReqtsPackageWithDependencyTo(
 			IRPPackage theFlowFromPkg, 
 			String theName,

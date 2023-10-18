@@ -114,6 +114,7 @@ public class CreateRequirementsPkgPanel extends ExecutableMBSEBasePanel {
 				_ownerPkg, 
 				theName + requirementPackagePostfix,
 				true,
+				false,
 				_context );
 
 		theColumn1ParallelGroup.addComponent( _createRequirementsPkgChooser.getM_UserChoiceComboBox() ); 
