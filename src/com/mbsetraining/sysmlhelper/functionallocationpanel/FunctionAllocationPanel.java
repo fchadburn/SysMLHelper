@@ -28,7 +28,16 @@ import com.telelogic.rhapsody.core.*;
 public class FunctionAllocationPanel extends ExecutableMBSEBasePanel {
 
 	private final List<String> _userDefinedMetaClassesForAllocation = 
-			Arrays.asList( "Function Usage" );
+			Arrays.asList( 
+					"Function Usage", 
+					"Start Usage", 
+					"Final Usage", 
+					"Flow Final Usage", 
+					"Time Event Usage", 
+					"Data Object", 
+					"Accept Event Usage", 
+					"Parallel Gateway Usage", 
+					"Decision Usage" );
 	
 	/**
 	 * 
@@ -45,11 +54,11 @@ public class FunctionAllocationPanel extends ExecutableMBSEBasePanel {
 		
 		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
 		ExecutableMBSE_Context theContext = new ExecutableMBSE_Context( theRhpApp.getApplicationConnectionString() );
-		launchThePanel(  theContext );
+		launchThePanel(  theContext.get_rhpAppID() );
 	}
 	
 	public static void launchThePanel(
-			ExecutableMBSE_Context context ){
+			String theAppID ){
 
 		javax.swing.SwingUtilities.invokeLater( new Runnable() {
 
@@ -68,7 +77,7 @@ public class FunctionAllocationPanel extends ExecutableMBSEBasePanel {
 				// Cannot pass any Rhapsody elements or context in this
 				FunctionAllocationPanel thePanel = 
 						new FunctionAllocationPanel( 
-								context.get_rhpAppID() );
+								theAppID );
 
 				frame.setContentPane( thePanel );
 				frame.pack();
@@ -209,7 +218,7 @@ public class FunctionAllocationPanel extends ExecutableMBSEBasePanel {
 
 	private void buildAllocationPanelContent() {
 		
-		// Add radio buttons for all the usages
+		// Add choice panels for all the usages
 		for( IRPInstance theUsage : _functionUsages ){	
 
 			//_context.debug( "theCandidatePart is " + _context.elInfo( theCandidatePart ) );
@@ -224,6 +233,8 @@ public class FunctionAllocationPanel extends ExecutableMBSEBasePanel {
 					theUsage, 
 					theFlowPortInfo );
 		}
+		
+		
 
 		setLayout( new BorderLayout( 10, 10 ) );
 		setBorder( BorderFactory.createEmptyBorder( 10, 10, 10, 10 ) );
@@ -340,7 +351,7 @@ public class FunctionAllocationPanel extends ExecutableMBSEBasePanel {
 				for( Entry<IRPInstance, FunctionAllocationInfo> entry : _radioButtonMap.entrySet() ){
 
 					FunctionAllocationInfo theInfo = entry.getValue();
-					theInfo.performAction();
+					theInfo.performAllocationOfUsages();
 				}
 			} else {
 				_context.error( "AutoConnectFlowPortsPanel.performAction, checkValidity returned false" );

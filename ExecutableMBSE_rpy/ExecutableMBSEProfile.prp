@@ -288,6 +288,9 @@ Subject Format
 	end
 end
 Subject ObjectModelGe
+	Metaclass ObjectModelGe
+		Property Fillcolor Color "50,243,243"
+	end
 	Metaclass flowPort
 		Property ShowName Enum "Name,NameAndType,Type,Label,None" "Name"
 		Property ShowStereotype Enum "Label,None" "None"

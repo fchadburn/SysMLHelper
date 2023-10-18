@@ -29,8 +29,9 @@ public class FunctionAllocationInfo {
 	protected List<IRPModelElement> _allocationChoices;
 	protected RhapsodyComboBox _allocationChoicesComboBox;
 	protected JLabel _statusLabel;
-	protected List<IRPModelElement> _existingAllocationsUsingDependencies;
-	protected List<IRPModelElement> _existingAllocationsUsingParts;
+	protected List<IRPModelElement> _existingBlockAllocationsUsingDependencies;
+	protected List<IRPModelElement> _existingBlockAllocationsUsingParts;
+	protected List<IRPInstance> _usagesInTargetArchitecture;
 
 	public FunctionAllocationInfo(
 			IRPInstance usageToAllocate,
@@ -65,7 +66,7 @@ public class FunctionAllocationInfo {
 	
 	private void determineExistingAllocationsUsingDependencies() {
 		
-		_existingAllocationsUsingDependencies = new ArrayList<>();
+		_existingBlockAllocationsUsingDependencies = new ArrayList<>();
 
 		List<IRPModelElement> existingAllocatedToEls = new ArrayList<>( _context.
 				getElementsThatHaveStereotypedDependenciesFrom( _usageToAllocate, "Allocation" ) );
@@ -80,7 +81,7 @@ public class FunctionAllocationInfo {
 					
 					_context.info( "Existing allocation of " + _context.elInfo( _usageToAllocate ) + " using a usage found for " + _context.elInfo( existingAllocatedToEl ) );
 
-					_existingAllocationsUsingDependencies.add( existingAllocatedToEl );
+					_existingBlockAllocationsUsingDependencies.add( existingAllocatedToEl );
 					_allocationChoicesComboBox.setSelectedRhapsodyItem( existingAllocatedToEl );
 				}
 			}
@@ -89,8 +90,9 @@ public class FunctionAllocationInfo {
 	
 	private void determineExistingAllocationsUsingParts() {
 		
-		_existingAllocationsUsingParts = new ArrayList<>();
+		_existingBlockAllocationsUsingParts = new ArrayList<>();
 		
+		// These will be function blocks
 		for( IRPModelElement allocationChoice : _allocationChoices ){
 			
 			@SuppressWarnings("unchecked")
@@ -103,7 +105,8 @@ public class FunctionAllocationInfo {
 					IRPModelElement theCandidate = thePart.getOtherClass();
 
 					if( theCandidate.equals( _usageToAllocate.getOtherClass() ) ) {
-						_existingAllocationsUsingParts.add( allocationChoice );
+						_existingBlockAllocationsUsingParts.add( allocationChoice );
+						_usagesInTargetArchitecture.add( thePart );
 						_allocationChoicesComboBox.setSelectedRhapsodyItem( allocationChoice );
 					}
 				}
@@ -117,8 +120,8 @@ public class FunctionAllocationInfo {
 		
 		IRPModelElement theChosenEl = _allocationChoicesComboBox.getSelectedRhapsodyItem();
 		
-		int dependencyCount = _existingAllocationsUsingDependencies.size();
-		int partCount = _existingAllocationsUsingParts.size();
+		int dependencyCount = _existingBlockAllocationsUsingDependencies.size();
+		int partCount = _existingBlockAllocationsUsingParts.size();
 
 		if( theChosenEl == null ) {
 			
@@ -130,7 +133,7 @@ public class FunctionAllocationInfo {
 			
 		} else {
 			
-			if( _existingAllocationsUsingParts.contains(theChosenEl)) {
+			if( _existingBlockAllocationsUsingParts.contains(theChosenEl)) {
 				theMsg += "Already allocated.";
 			} else {
 				theMsg += "New usage needed";
@@ -141,25 +144,25 @@ public class FunctionAllocationInfo {
 		return theMsg;
 	}
 
-	public void performAction() {
+	public void performAllocationOfUsages() {
 		
 		IRPModelElement theChosenEl = _allocationChoicesComboBox.getSelectedRhapsodyItem();
 
 		_context.info( "performAction invoked for " + _context.elInfo( _usageToAllocate ) + " with selection of " + _context.elInfo( theChosenEl ) );
 
-		for (IRPModelElement existingAllocation : _existingAllocationsUsingParts) {
+		for (IRPModelElement existingAllocation : _existingBlockAllocationsUsingParts) {
 			_context.info( _context.elInfo( existingAllocation ) + " is an existing allocation using parts" );
 
 		}
 		
-		for (IRPModelElement existingAllocation : _existingAllocationsUsingDependencies) {
+		for (IRPModelElement existingAllocation : _existingBlockAllocationsUsingDependencies) {
 			_context.info( _context.elInfo( existingAllocation ) + " is an existing allocation using dependencies" );
 
 		}
 
 		if( theChosenEl instanceof IRPClassifier ) {
 			
-			if( _existingAllocationsUsingParts.contains( theChosenEl ) ){
+			if( _existingBlockAllocationsUsingParts.contains( theChosenEl ) ){
 				_context.info( "No action necessary as " + _context.elInfo( theChosenEl ) + 
 						" already has a usage typed by " + _context.elInfo( _usageToAllocate.getOtherClass() ) );
 			} else {
@@ -170,49 +173,11 @@ public class FunctionAllocationInfo {
 				thePart.setOtherClass( _usageToAllocate.getOtherClass() );
 				thePart.changeTo( _usageToAllocate.getUserDefinedMetaClass() );
 				
+				_usagesInTargetArchitecture.add( thePart );
+				
 				_context.info( "Created " + _context.elInfo( thePart ) + " under " + _context.elInfo( allocatedSubsystem ) );
 			}
 		}
-
-		/*
-		switch( _allocationStatus ) {
-		
-		case UNDECIDED:
-			_context.info( "No choice" );
-			break;
-		
-		case NOT_ALLOCATED:
-			_context.info( "Skipping" );
-			break;
-		
-		case ALLOCATION_DEPENDENCY_BUT_NO_PART:
-			
-			_context.info( "Create part" );
-			
-			IRPModelElement theSelectedEl = _allocationChoicesComboBox.getSelectedRhapsodyItem();
-			
-			if( theSelectedEl instanceof IRPClassifier ) {
-				
-				IRPClassifier allocatedSubsystem = (IRPClassifier) theSelectedEl;
-				
-				IRPInstance thePart = (IRPInstance) allocatedSubsystem.addNewAggr( "Part", "" ); 
-				thePart.setOtherClass( _usageToAllocate.getOtherClass() );
-				thePart.changeTo( _usageToAllocate.getUserDefinedMetaClass() );
-				
-				_context.info( "Created " + _context.elInfo( thePart ) + " under " + _context.elInfo( allocatedSubsystem ) );
-			}
-			
-			break;
-		
-		case ALREADY_ALLOCATED_WITH_PART:
-			_context.info( "Skipping" );
-			break;
-		
-		case MULTIPLE_ALLOCATION_ERROR:
-			_context.info( "Skipping" );
-			break;
-		}*/
-
 	}
 }
 

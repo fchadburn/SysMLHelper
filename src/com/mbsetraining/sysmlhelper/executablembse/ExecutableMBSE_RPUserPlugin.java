@@ -33,6 +33,7 @@ import com.mbsetraining.sysmlhelper.doorsng.UpdateSurrogateRequirementsPanel;
 import com.mbsetraining.sysmlhelper.eventdeletor.EventDeletor;
 import com.mbsetraining.sysmlhelper.executablescenariopackage.CreateFunctionalExecutablePackagePanel;
 import com.mbsetraining.sysmlhelper.featurefunctionpkgcreator.FeatureFunctionPkgCreator;
+import com.mbsetraining.sysmlhelper.functionallocationpanel.FunctionAllocationPanel;
 import com.mbsetraining.sysmlhelper.gateway.CreateGatewayProjectPanel;
 import com.mbsetraining.sysmlhelper.gateway.MarkedAsDeletedPanel;
 import com.mbsetraining.sysmlhelper.gateway.MoveRequirements;
@@ -847,6 +848,11 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						"executablembseplugin.DeleteChildOSLCLinks" ) ) ){
 
 					DeleteChildOSLCLinksPanel.launchThePanel( theAppID );
+
+				} else if( menuItem.equals( _settings.getString(
+						"executablembseplugin.AllocateFunctionBlocksMenu" ) ) ){
+
+					FunctionAllocationPanel.launchThePanel( theAppID );
 					
 				} else {
 					_context.warning( "Unhandled menu: " + _context.elInfo( theSelectedEl ) + " was invoked with menuItem='" + menuItem + "'");
