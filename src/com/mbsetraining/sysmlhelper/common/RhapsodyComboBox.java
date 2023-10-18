@@ -8,40 +8,41 @@ import javax.swing.JComboBox;
 import com.telelogic.rhapsody.core.IRPModelElement;
 
 public class RhapsodyComboBox extends JComboBox<Object>{
-	 
+	
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 871276583137927861L;
+	protected List<IRPModelElement> _elementChoices;
+	protected List<String> _nameChoices;
 	
-	private List<IRPModelElement> m_List = null;
-	List<String> nameList;
-	
-	public RhapsodyComboBox(List<IRPModelElement> inList, Boolean isFullPathRequested){
+	public RhapsodyComboBox(
+			List<IRPModelElement> inList, 
+			Boolean isFullPathRequested ){
 		
 		super();
 		
-		m_List = inList;
+		_elementChoices = inList;
 		
-		nameList = new ArrayList<String>();
+		_nameChoices = new ArrayList<String>();
 		
-		for (int i = 0; i < m_List.size(); i++) {
-			if (isFullPathRequested){
-				nameList.add(i, m_List.get(i).getFullPathName());
+		for( int i = 0; i < _elementChoices.size(); i++ ){
+			
+			if( isFullPathRequested ){
+				_nameChoices.add( i, _elementChoices.get(i).getFullPathName() );
 			} else {
-				nameList.add(i, m_List.get(i).getName());
+				_nameChoices.add( i, _elementChoices.get(i).getName() );
 			}
 		} 	
 		
+		insertItemAt( "Nothing", 0 );
 		
-		insertItemAt("Nothing", 0);
-		
-		for (String theName : nameList) {
+		for( String theName : _nameChoices ){
 			this.addItem( theName );
 		}
 		
-		this.setSelectedItem("Nothing");
-		
+		this.setSelectedItem( "Nothing" );
 	}
 	
 	public IRPModelElement getSelectedRhapsodyItem(){
@@ -51,8 +52,8 @@ public class RhapsodyComboBox extends JComboBox<Object>{
 		Object theSelectedItem = this.getSelectedItem();	
 		
 		if (!theSelectedItem.equals("Nothing")){
-			int index = nameList.indexOf(theSelectedItem);		
-			theModelEl = m_List.get(index);
+			int index = _nameChoices.indexOf(theSelectedItem);		
+			theModelEl = _elementChoices.get(index);
 		}
 
 		return theModelEl;
@@ -61,9 +62,9 @@ public class RhapsodyComboBox extends JComboBox<Object>{
 	public void setSelectedRhapsodyItem(
 			IRPModelElement toTheElement ){
 				
-		for( int i = 0; i < m_List.size(); i++ ){
+		for( int i = 0; i < _elementChoices.size(); i++ ){
 
-			IRPModelElement theElement = m_List.get( i );
+			IRPModelElement theElement = _elementChoices.get( i );
 			
 			if( theElement != null && 
 				theElement.equals( toTheElement ) ){
@@ -80,7 +81,7 @@ public class RhapsodyComboBox extends JComboBox<Object>{
 }
 
 /**
- * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2016-2023  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

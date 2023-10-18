@@ -975,9 +975,18 @@ V4.2.q.Rhp831.PreRelease (12-OCT-2023):
 0746 12-OCT-2023: ExecutableMBSE: Change the populate parts helper so that it doesn't add graph nodes that already exist on the diagram (F.J.Chadburn)
 0747 12-OCT-2023: ExecutableMBSE: Added IsCreateEventForFlowConnectorPanelEnabled property to control helper panel when a flow connector is drawn, default to off (F.J.Chadburn)
 
+V4.2.r.Rhp831.PreRelease (XX-XXX-XXXX): TBD
+0748 18-OCT-2023: ExecutableMBSE: Initial checkpoint of function usage allocation to architecture panel under dev (F.J.Chadburn)
+
 Backlog/Known issues
+- When you double click in populate parts tree get it to highlight the element on the diagram
+- Default size of Function Block is too big. Make it smaller.
+- Some interest relationship tables may be possible.
 - Add a warning if not all ports are showing on an ibd
-- Consider simplifying connector drawing so that it doesn't matter which way function connectors go, e.g., get plugin to handle the reverse if direction (F.J.Chadburn)
+- Crash when putting a flow on a flow connector
+- Add checks to mimize risk that functions are not used.
+- Make sure View and Viewpoint bits work
+- Consider simplifying connector drawing so that it doesn't matter which way function connectors go, e.g., get plugin to handle the reverse if direction
 - Tailoring how to get DOORS NG attributes as tags
 - Switch requirement master the other way, e.g., making remote requirements become local requirements!
 - Add a UML package new term
