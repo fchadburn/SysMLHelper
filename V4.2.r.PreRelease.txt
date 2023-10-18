@@ -983,6 +983,7 @@ V4.2.r.Rhp831.PreRelease (XX-XXX-XXXX): TBD
 0752 18-OCT-2023: ExecutableMBSE: Tweak to hep file to make helper menus applicable to Ports to also be applicable to ProxyPorts as stopped this was missing (F.J.Chadburn)
 0753 18-OCT-2023: ExecutableMBSE: Ensure View and Viewpoint power feature with custom views works for new term elements on function flow ibds (F.J.Chadburn) 
 0754 18-OCT-2023: ExecutableMBSE: Add Allocate Function Blocks... into the menus to enable testing & development of allocation functionality (F.J.Chadburn)
+0755 18-OCT-2023: ExecutableMBSE: Explicitly turned off General::Graphics::AllowObjectReparenting in ibds as causing unseen/inconsistent changes to usage ownerships (F.J.Chadburn)
 
 Backlog/Known issues
 - When you double click in populate parts tree get it to highlight the element on the diagram
