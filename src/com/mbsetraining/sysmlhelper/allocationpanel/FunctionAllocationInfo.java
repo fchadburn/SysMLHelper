@@ -1,12 +1,12 @@
-package com.mbsetraining.sysmlhelper.functionallocationpanel;
+package com.mbsetraining.sysmlhelper.allocationpanel;
 
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 
 import com.mbsetraining.sysmlhelper.common.RhapsodyComboBox;
@@ -23,11 +23,10 @@ public class FunctionAllocationInfo {
 	}
 
 	protected ExecutableMBSE_Context _context;
-
-	//protected String _allocatedFromString;
 	protected IRPInstance _usageToAllocate;
 	protected List<IRPModelElement> _allocationChoices;
 	protected RhapsodyComboBox _allocationChoicesComboBox;
+	protected JLabel _nameLabel;
 	protected JLabel _statusLabel;
 	protected List<IRPModelElement> _existingBlockAllocationsUsingDependencies;
 	protected List<IRPModelElement> _existingBlockAllocationsUsingParts;
@@ -35,15 +34,14 @@ public class FunctionAllocationInfo {
 
 	public FunctionAllocationInfo(
 			IRPInstance usageToAllocate,
-			List<IRPModelElement> allocationChoices,
 			ExecutableMBSE_Context context ) {
 
 		_context = context;
 		_usageToAllocate = usageToAllocate;
-
-		if( _usageToAllocate.isTypelessObject() == 1 ) {
-			_context.warning( "Found that " + _context.elInfo( _usageToAllocate ) + " is a typeless part" );
-		}
+	}
+	
+	public void buildContentFor(
+			List<IRPModelElement> allocationChoices ){
 		
 		_allocationChoices = allocationChoices;
 		_allocationChoicesComboBox = new RhapsodyComboBox( _allocationChoices, false );
@@ -58,8 +56,62 @@ public class FunctionAllocationInfo {
 		});
 		
 		_statusLabel = new JLabel( getStatusString() );
+		
+		_statusLabel.addMouseListener( new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+				_context.debug( "Highlighting " + _context.elInfo(_usageToAllocate) + " on the diagram." );
+				_usageToAllocate.highLightElement();
+			}
+		});
+		
+		_nameLabel = new JLabel( getUsageName() );
+		
+		_nameLabel.addMouseListener( new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+				_context.debug( "Highlighting " + _context.elInfo(_usageToAllocate) + " on the diagram." );
+				_context.get_rhpApp().highLightElement(_usageToAllocate);
+			}
+		});
 	}
-	
+				
 	public String getUsageName() {
 		return _usageToAllocate.getName() + ":" + _usageToAllocate.getOtherClass().getName();
 	}

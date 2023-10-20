@@ -8,6 +8,7 @@ import requirementsanalysisplugin.PopulateRelatedRequirementsPanel;
 
 import com.mbsetraining.sysmlhelper.activitydiagram.ActivityDiagramChecker;
 import com.mbsetraining.sysmlhelper.activitydiagram.RenameActions;
+import com.mbsetraining.sysmlhelper.allocationpanel.FunctionAllocationPanel;
 import com.mbsetraining.sysmlhelper.autorealizewithcopy.AutoRealizeWithCopyPanel;
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.LayoutHelper;
@@ -33,7 +34,6 @@ import com.mbsetraining.sysmlhelper.doorsng.UpdateSurrogateRequirementsPanel;
 import com.mbsetraining.sysmlhelper.eventdeletor.EventDeletor;
 import com.mbsetraining.sysmlhelper.executablescenariopackage.CreateFunctionalExecutablePackagePanel;
 import com.mbsetraining.sysmlhelper.featurefunctionpkgcreator.FeatureFunctionPkgCreator;
-import com.mbsetraining.sysmlhelper.functionallocationpanel.FunctionAllocationPanel;
 import com.mbsetraining.sysmlhelper.gateway.CreateGatewayProjectPanel;
 import com.mbsetraining.sysmlhelper.gateway.MarkedAsDeletedPanel;
 import com.mbsetraining.sysmlhelper.gateway.MoveRequirements;
