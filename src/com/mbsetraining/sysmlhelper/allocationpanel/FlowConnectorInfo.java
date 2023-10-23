@@ -6,6 +6,7 @@ import com.telelogic.rhapsody.core.*;
 public class FlowConnectorInfo {
 	
 	protected ExecutableMBSE_Context _context;
+	protected FunctionAllocationMap _functionAllocationMap;
 	protected IRPLink _srcLink;
 	protected IRPInstance _srcFromInstance;
 	protected IRPInstance _srcToInstance;
@@ -18,10 +19,11 @@ public class FlowConnectorInfo {
 
 	public FlowConnectorInfo(
 			IRPLink theLink,
-			FunctionAllocationMap theFunctionAllocationMap,
+			FunctionAllocationMap functionAllocationMap,
 			ExecutableMBSE_Context context ){
 		
 		_context = context;
+		_functionAllocationMap = functionAllocationMap;
 		_srcLink = theLink;
 		_srcFromInstance = _srcLink.getFrom();
 		_srcToInstance = _srcLink.getTo();
@@ -36,6 +38,23 @@ public class FlowConnectorInfo {
 		_context.info( "_srcToInstance   = " + _context.elInfo( _srcToInstance ) );
 		_context.info( "_srcFromPort     = " + _context.elInfo( _srcFromPort ) );
 		_context.info( "_srcToPort       = " + _context.elInfo( _srcToPort ) );
+	}
+	
+	public boolean isMappable() {
+		
+		boolean isMappable = true;
+		
+		if( !_functionAllocationMap.containsKey( _srcFromInstance ) ) {
+			_context.info( "Unable to map " + _context.elInfo( _srcLink ) + " as " + _context.elInfo( _srcFromInstance ) + " is not in mapping" );
+			isMappable = false;
+		}
+		
+		if( !_functionAllocationMap.containsKey( _srcToInstance ) ) {
+			_context.info( "Unable to map " + _context.elInfo( _srcLink ) + " as " + _context.elInfo( _srcToInstance ) + " is not in mapping" );
+			isMappable = false;
+		}
+		
+		return isMappable;
 	}
 }
 

@@ -144,26 +144,10 @@ public class SwitchRhapsodyRequirementsToDNG {
 						" local requirements that have been switched?" );
 
 				if( answer ){
-					deleteFromModel( theProcessedReqts );
-					deleteFromModel( theRemoteDependencies );
+					_context.deleteAllFromModel( theProcessedReqts );
+					_context.deleteAllFromModel( theRemoteDependencies );
 				}
 			}	
-		}
-	}
-
-	private void deleteFromModel(
-			List<IRPModelElement> theEls ) {
-
-		Iterator<IRPModelElement> i = theEls.iterator();
-
-		while( i.hasNext() ){
-
-			IRPModelElement theEl = (IRPModelElement) i.next();
-
-			_context.debug( "Deleting " + _context.elInfo( theEl ) + 
-					" owned by " + _context.elInfo( theEl.getOwner() ) );
-
-			theEl.deleteFromProject();
 		}
 	}
 

@@ -3,7 +3,6 @@ package com.mbsetraining.sysmlhelper.allocationpanel;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -31,6 +30,8 @@ public class FunctionAllocationPanel extends ExecutableMBSEBasePanel {
 	private static final long serialVersionUID = 1814353152453871188L;
 	
 	protected FunctionAllocationMap _functionAllocationMap;
+	protected ConnectorAllocationMap _connectorAllocationMap;
+
 	protected IRPClass _selectedClass = null;
 	protected List<IRPModelElement> _allocateToEls;
 	
@@ -77,6 +78,7 @@ public class FunctionAllocationPanel extends ExecutableMBSEBasePanel {
 		super( theAppID );
 		
 		_functionAllocationMap = new FunctionAllocationMap( _context );
+		_connectorAllocationMap = new ConnectorAllocationMap( _context );
 						
 		if( _functionAllocationMap.isEmpty() ) {
 			
@@ -117,7 +119,7 @@ public class FunctionAllocationPanel extends ExecutableMBSEBasePanel {
 
 				} else {
 					
-					_allocateToEls = getAllocateToBlocksFor( _selectedClass );
+					_allocateToEls = _context.getClassifiersOfPartsOwnedBy( _selectedClass );
 					
 					_functionAllocationMap.buildContentWithChoicesFor( _allocateToEls );
 					
@@ -135,26 +137,6 @@ public class FunctionAllocationPanel extends ExecutableMBSEBasePanel {
 				}
 			}
 		}
-	}
-	
-	private List<IRPModelElement> getAllocateToBlocksFor(
-			IRPClass theClass ){
-		
-		List<IRPModelElement> theAllocateToBlocks = new ArrayList<>();
-		
-		@SuppressWarnings("unchecked")
-		List<IRPInstance> theParts =  theClass.getNestedElementsByMetaClass( "Part", 1 ).toList();
-		
-		for( IRPInstance thePart : theParts ){
-			
-			if( thePart.isTypelessObject()==0 ) {
-				
-				IRPClassifier theOtherClass = thePart.getOtherClass();
-				theAllocateToBlocks.add( theOtherClass );
-			}
-		}
-		
-		return theAllocateToBlocks;
 	}
 
 	private void buildAllocationPanelContent() {
@@ -185,11 +167,11 @@ public class FunctionAllocationPanel extends ExecutableMBSEBasePanel {
 			}
 
 			String theIntroMsg = 
-					"This is the intro message'";
+					"This helper will allocate functiion blocks to a system by creating both dependencies and usages. ";
 
 			theBox.add( new JLabel( theIntroMsg ) );
 			theBox.add( new JLabel( "   " ) );
-			theBox.add( new JLabel( "Do you want to auto-connect to attribute(s) in the following and set them to �subscribe�:\n") );
+			theBox.add( new JLabel( "Do you want to allocate of the usages of the following as parts of a system:\n") );
 			theBox.add( new JLabel( "   " ) );
 
 			theBox.add( theScrollPane );
@@ -276,42 +258,14 @@ public class FunctionAllocationPanel extends ExecutableMBSEBasePanel {
 					theInfo.performAllocationOfUsages();
 				}
 				
-				//processTransferOfLinks();
-				
 			} else {
-				_context.error( "AutoConnectFlowPortsPanel.performAction, checkValidity returned false" );
+				_context.error( "FunctionAllocationPanel.performAction, checkValidity returned false" );
 			}	
 
 		} catch( Exception e ){
-			_context.error( "AutoConnectFlowPortsPanel.performAction, unhandled exception was detected, e=" + e.getMessage() );
+			_context.error( "FunctionAllocationPanel.performAction, unhandled exception was detected, e=" + e.getMessage() );
 		}
 
-	}
-
-	private void processTransferOfLinks() {
-		
-		@SuppressWarnings("unchecked")
-		List<IRPLink> theLinks = _selectedClass.getLinks().toList();
-		
-		for( IRPLink theLink : theLinks ){
-			processTransferOfLink(theLink);
-		}
-	}
-
-	private void processTransferOfLink(
-			IRPLink theLink ){
-		
-		_context.info( _context.elInfo( theLink ) + " has following attributes" );
-		
-		IRPSysMLPort fromPort = theLink.getFromSysMLPort();
-		IRPInstance fromInstance = theLink.getFrom();
-		
-		String fromDirection = fromPort.getPortDirection(); // In, Out, InOut
-		
-		IRPSysMLPort toPort = theLink.getToSysMLPort();
-		IRPInstance toInstance = theLink.getTo();
-		
-		String toDirection = toPort.getPortDirection();
 	}
 }
 

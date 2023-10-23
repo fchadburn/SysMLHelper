@@ -3634,6 +3634,41 @@ public abstract class BaseContext {
 
 		return theMoveToStereotypes;
 	}
+	
+	public List<IRPModelElement> getClassifiersOfPartsOwnedBy(
+			IRPClass theClass ){
+		
+		List<IRPModelElement> theClassifiers = new ArrayList<>();
+		
+		@SuppressWarnings("unchecked")
+		List<IRPInstance> theParts =  theClass.getNestedElementsByMetaClass( "Part", 1 ).toList();
+		
+		for( IRPInstance thePart : theParts ){
+			
+			if( thePart.isTypelessObject()==0 ) {
+				
+				IRPClassifier theOtherClass = thePart.getOtherClass();
+				theClassifiers.add( theOtherClass );
+			}
+		}
+		
+		return theClassifiers;
+	}
+	
+	public void deleteAllFromModel(
+			List<IRPModelElement> theEls ) {
+
+		Iterator<IRPModelElement> i = theEls.iterator();
+
+		while( i.hasNext() ){
+
+			IRPModelElement theEl = (IRPModelElement) i.next();
+
+			debug( "Deleting " + elInfo( theEl ) + " owned by " + elInfo( theEl.getOwner() ) );
+
+			theEl.deleteFromProject();
+		}
+	}
 }
 
 /**

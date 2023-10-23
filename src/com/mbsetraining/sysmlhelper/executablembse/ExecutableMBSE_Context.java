@@ -181,6 +181,8 @@ public class ExecutableMBSE_Context extends BaseContext {
 	protected IRPStereotype _stereotypeForVerification;
 	protected IRPStereotype _stereotypeForTrace;
 	protected IRPStereotype _stereotypeForControlFlow;
+	protected IRPStereotype _stereotypeForAllocation;
+
 
 	public ExecutableMBSE_Context(
 			String theAppID ){
@@ -248,6 +250,17 @@ public class ExecutableMBSE_Context extends BaseContext {
 		}
 
 		return _stereotypeForTrace;
+	}
+	
+	// use lazy load
+	public IRPStereotype getStereotypeForAllocation(){
+
+		if( _stereotypeForAllocation == null ){
+
+			_stereotypeForAllocation = getExistingStereotype( "allocate", _rhpPrj );;
+		}
+
+		return _stereotypeForAllocation;
 	}
 
 	// Generally single call per session, so use lazy load

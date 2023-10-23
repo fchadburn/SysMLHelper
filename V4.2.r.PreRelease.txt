@@ -986,10 +986,11 @@ V4.2.r.Rhp831.PreRelease (XX-XXX-XXXX): TBD
 0755 18-OCT-2023: ExecutableMBSE: Explicitly turned off General::Graphics::AllowObjectReparenting in ibds as causing unseen/inconsistent changes to usage ownerships (F.J.Chadburn)
 0756 18-OCT-2023: ExecutableMBSE: Tweak icons on internal block diagram so control node backgrounds are same colour as diagram background, i.e., white (F.J.Chadburn)
 0757 20-OCT-2023: ExecutableMBSE: Checkpoint of function allocation panel with re-factoring to put building logic into function allocation map (F.J.Chadburn)
+0758 23-OCT-2023: ExecutableMBSE: Function allocation panel working with basic block allocation and re-allocation (F.J.Chadburn)
 
 Backlog/Known issues
 - When you double click in populate parts tree get it to highlight the element on the diagram
-- Some interest relationship tables may be possible.
+- Some interesting relationship tables may be possible.
 - Add a warning if not all ports are showing on an ibd
 - Crash when putting a flow on a flow connector
 - Add checks to minimise risk that functions are not used.
