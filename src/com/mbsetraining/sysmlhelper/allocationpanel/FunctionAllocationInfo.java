@@ -161,9 +161,15 @@ public class FunctionAllocationInfo {
 
 						if( isSetInitialValue ) {
 							_allocationChoicesComboBox.setSelectedRhapsodyItem( theOwner );
-							_currentAllocatedUsages.add( theInstance );
+							
+							if( !_currentAllocatedUsages.contains( theInstance ) ) {
+								_currentAllocatedUsages.add( theInstance );
+							} else {
+								_context.debug( "Detected that currentAllocationUsages list of " + _currentAllocatedUsages.size() +
+										" already contains " + _context.elInfo( theInstance) + " hence not adding again" );
+							}
 						}
-
+						
 						IRPModelElement theChosenEl = _allocationChoicesComboBox.getSelectedRhapsodyItem();
 
 						if( theChosenEl == null || 
@@ -190,28 +196,48 @@ public class FunctionAllocationInfo {
 			} else if( theDependsOn instanceof IRPClassifier &&
 					_allocationChoices.contains( theDependsOn ) ) {
 
-				_context.debug( "Existing Allocation dependency found from " + _context.elInfo( _usageToAllocate ) + 
-						" to " + _context.elInfo( theDependsOn ) );
-
-				_validAllocationDependencies.add( theDependency );
-
 				if( isSetInitialValue ) {
-					_allocationChoicesComboBox.setSelectedRhapsodyItem( theDependsOn );
-				}			
+
+					_context.debug( "Existing allocation dependency valid from " + _context.elInfo( _usageToAllocate ) + " to " + _context.elInfo( theDependsOn ) );
+					_validAllocationDependencies.add( theDependency );
+					
+					if( isSetInitialValue ) {
+						_allocationChoicesComboBox.setSelectedRhapsodyItem( theDependsOn );
+					}	
+					
+				} else {
+					
+					IRPModelElement theChosenEl = _allocationChoicesComboBox.getSelectedRhapsodyItem();
+
+					if( theChosenEl == null || !theChosenEl.equals( theDependsOn ) ) {
+						
+						_context.debug( "Existing allocation dependency invalid from " + _context.elInfo( _usageToAllocate ) + " to " + _context.elInfo( theDependsOn ) );
+						_invalidAllocationDependencies.add( theDependency );
+					} else {
+						_context.debug( "Existing allocation dependency valid from  " + _context.elInfo( _usageToAllocate ) + " to " + _context.elInfo( theDependsOn ) );
+						_validAllocationDependencies.add( theDependency );
+					}
+
+					if( isSetInitialValue ) {
+						_allocationChoicesComboBox.setSelectedRhapsodyItem( theDependsOn );
+					}			
+				}
+						
 
 			} else {
-				_context.debug( "Ignoring existing Allocation dependency found from " + _context.elInfo( _usageToAllocate ) + " to " + 
+				_context.debug( "Ignoring existing Allocation dependency found from  " + _context.elInfo( _usageToAllocate ) + " to " + 
 						_context.elInfo( theDependsOn ) + " as not in scope of current system selection" );
 			}
 		}
-
-		IRPModelElement theChosenEl = _allocationChoicesComboBox.getSelectedRhapsodyItem();
+		
 
 		for( IRPInstance currentAllocationUsage : _currentAllocatedUsages ){
 
 			IRPModelElement theOwner = currentAllocationUsage.getOwner();
 
 			if( currentAllocationUsage.isTypelessObject()==0 ) {
+
+				IRPModelElement theChosenEl = _allocationChoicesComboBox.getSelectedRhapsodyItem();
 
 				if( theOwner.equals( theChosenEl ) ){
 

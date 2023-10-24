@@ -989,6 +989,7 @@ V4.2.r.Rhp831.PreRelease (XX-XXX-XXXX): TBD
 0758 23-OCT-2023: ExecutableMBSE: Function allocation panel working with basic block allocation and re-allocation (F.J.Chadburn)
 0759 24-OCT-2023: ExecutableMBSE: Logic usage allocation now working in basic form with the allocation panel (F.J.Chadburn)
 0760 24-OCT-2023: ExecutableMBSE: Double-click usability enhancement to highlight target element if user double-clicks right-hand side status text (F.J.Chadburn) 
+0761 24-OCT-2023: ExecutableMBSE: Fix issue with dependencies not being deleted correctly when switching allocation from existing (F.J.Chadburn)
 
 Backlog/Known issues
 - When you double click in populate parts tree get it to highlight the element on the diagram
