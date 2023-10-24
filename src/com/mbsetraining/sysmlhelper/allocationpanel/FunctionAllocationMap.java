@@ -35,7 +35,6 @@ public class FunctionAllocationMap extends HashMap<IRPInstance, FunctionAllocati
 		List<IRPInstance> theElsToMap = getElementsForMapping();
 		
 		for( IRPInstance theElToMap : theElsToMap ){
-			_context.info( _context.elInfo( theElToMap ) );
 			
 			FunctionAllocationInfo theFlowPortInfo = 
 					new FunctionAllocationInfo( 

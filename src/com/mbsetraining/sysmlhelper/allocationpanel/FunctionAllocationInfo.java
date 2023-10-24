@@ -79,8 +79,15 @@ public class FunctionAllocationInfo {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				_context.debug( "Highlighting" + _context.elInfo(_usageToAllocate) + " on the diagram." );
-				_usageToAllocate.highLightElement();
+				if( !_currentAllocatedUsages.isEmpty() ) {
+					
+					for( IRPInstance currentAllocatedUsage : _currentAllocatedUsages ) {
+						currentAllocatedUsage.highLightElement();
+					}
+					
+				} else {
+					_usageToAllocate.highLightElement();
+				}
 			}
 		});
 
@@ -107,8 +114,7 @@ public class FunctionAllocationInfo {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				_context.debug( "Highlighting " + _context.elInfo(_usageToAllocate) + " on the diagram." );
-				_context.get_rhpApp().highLightElement(_usageToAllocate);
+				_usageToAllocate.highLightElement();
 			}
 		});
 	}
@@ -120,7 +126,7 @@ public class FunctionAllocationInfo {
 	private void updateAssessmentOfAllocations(
 			boolean isSetInitialValue ) {
 
-		_context.info( "updateAssessmentOfAllocations invoked for " + _context.elInfo( _usageToAllocate ) );
+		_context.debug( "updateAssessmentOfAllocations invoked for " + _context.elInfo( _usageToAllocate ) );
 		
 		_invalidAllocatedUsages.clear();
 		_validAllocatedUsages.clear();
@@ -136,7 +142,7 @@ public class FunctionAllocationInfo {
 			IRPDependency theDependency = (IRPDependency) allocationDependencyEl;
 			IRPModelElement theDependsOn = theDependency.getDependsOn();
 
-			_context.info( _context.elInfo( _usageToAllocate ) + " has allocate to " + _context.elInfo( theDependsOn ) );
+			//_context.debug( _context.elInfo( _usageToAllocate ) + " has allocate to " + _context.elInfo( theDependsOn ) );
 
 			if( _usageToAllocate.isTypelessObject()==1 ){
 
@@ -149,7 +155,7 @@ public class FunctionAllocationInfo {
 
 					if(  _allocationChoices.contains( theOwner ) ) {
 
-						_context.info( "Existing inferred Allocation dependency found from " + 
+						_context.debug( "Existing inferred Allocation dependency found from " + 
 								_context.elInfo( _usageToAllocate ) + " to " + _context.elInfo( theDependsOn ) + 
 								" owned by " + _context.elInfo( theOwner ) );
 
@@ -172,19 +178,19 @@ public class FunctionAllocationInfo {
 
 
 					} else {
-						_context.info( "Ignoring existing Allocation dependency found from " + _context.elInfo( _usageToAllocate ) + " to " + 
+						_context.debug( "Ignoring existing Allocation dependency found from " + _context.elInfo( _usageToAllocate ) + " to " + 
 								_context.elInfo( theDependsOn ) + " as not in scope of current system selection" );
 					}
 
 				} else {
-					_context.info( "Ignoring existing Allocation dependency found from " + _context.elInfo( _usageToAllocate ) + " to " + 
+					_context.debug( "Ignoring existing Allocation dependency found from " + _context.elInfo( _usageToAllocate ) + " to " + 
 							_context.elInfo( theDependsOn ) + " as not to a usage/instance");					
 				}
 
 			} else if( theDependsOn instanceof IRPClassifier &&
 					_allocationChoices.contains( theDependsOn ) ) {
 
-				_context.info( "Existing Allocation dependency found from " + _context.elInfo( _usageToAllocate ) + 
+				_context.debug( "Existing Allocation dependency found from " + _context.elInfo( _usageToAllocate ) + 
 						" to " + _context.elInfo( theDependsOn ) );
 
 				_validAllocationDependencies.add( theDependency );
@@ -194,7 +200,7 @@ public class FunctionAllocationInfo {
 				}			
 
 			} else {
-				_context.info( "Ignoring existing Allocation dependency found from " + _context.elInfo( _usageToAllocate ) + " to " + 
+				_context.debug( "Ignoring existing Allocation dependency found from " + _context.elInfo( _usageToAllocate ) + " to " + 
 						_context.elInfo( theDependsOn ) + " as not in scope of current system selection" );
 			}
 		}
@@ -209,23 +215,23 @@ public class FunctionAllocationInfo {
 
 				if( theOwner.equals( theChosenEl ) ){
 
-					_context.info( "Existing allocation usage valid for " + _context.elInfo( _usageToAllocate ) + " to " + _context.elInfo( theOwner ) );
+					_context.debug( "Existing allocation usage valid for " + _context.elInfo( _usageToAllocate ) + " to " + _context.elInfo( theOwner ) );
 
 					if( !_validAllocatedUsages.contains( currentAllocationUsage ) ) {
 						_validAllocatedUsages.add( currentAllocationUsage );
 
 					} else {
-						_context.info( "Existing allocation usage duplicate from " + _context.elInfo( _usageToAllocate ) + " to " + _context.elInfo( theOwner ) );
+						_context.debug( "Existing allocation usage duplicate from " + _context.elInfo( _usageToAllocate ) + " to " + _context.elInfo( theOwner ) );
 						_invalidAllocatedUsages.add( currentAllocationUsage );
 					}
 				} else {
-					_context.info( "Existing allocation usage invalid from " + _context.elInfo( _usageToAllocate ) + " to " + _context.elInfo( theOwner ) );
+					_context.debug( "Existing allocation usage invalid from " + _context.elInfo( _usageToAllocate ) + " to " + _context.elInfo( theOwner ) );
 					_invalidAllocatedUsages.add( currentAllocationUsage );
 				}
 
 			} else {
 
-				_context.info( "Existing allocation usage is typeless from  " + _context.elInfo( _usageToAllocate ) + " to " + _context.elInfo( theOwner ) );
+				_context.debug( "Existing allocation usage is typeless from  " + _context.elInfo( _usageToAllocate ) + " to " + _context.elInfo( theOwner ) );
 			}
 		}
 	}
@@ -233,7 +239,7 @@ public class FunctionAllocationInfo {
 	public List<IRPInstance> getUsagesInSystemScopeFor(
 			IRPInstance theUsageToAllocate ){
 
-		_context.info( "getUsagesInSystemScopeFor invoked for " + _context.elInfo( theUsageToAllocate ) );
+		//_context.info( "getUsagesInSystemScopeFor invoked for " + _context.elInfo( theUsageToAllocate ) );
 		
 		List<IRPInstance> theInstances = new ArrayList<>();
 
@@ -250,8 +256,8 @@ public class FunctionAllocationInfo {
 
 			for( IRPModelElement theReference : theReferences ){
 
-				_context.info( _context.elInfo( theReference ) + " owned by " + _context.elInfo( theReference.getOwner() ) + 
-						" is a reference for " + _context.elInfo( _usageToAllocate ) );
+				//_context.info( _context.elInfo( theReference ) + " owned by " + _context.elInfo( theReference.getOwner() ) + 
+				//		" is a reference for " + _context.elInfo( _usageToAllocate ) );
 
 				if( theReference instanceof IRPInstance ){
 
@@ -260,8 +266,8 @@ public class FunctionAllocationInfo {
 
 					if( _allocationChoices.contains( theOwner ) ) {
 
-						_context.info( _context.elInfo( theReference ) + " owned by " + theReference.getOwner() + 
-								" is a reference for " + _context.elInfo( _usageToAllocate ) );
+						//_context.info( _context.elInfo( theReference ) + " owned by " + theReference.getOwner() + 
+						//		" is a reference for " + _context.elInfo( _usageToAllocate ) );
 						
 						theInstances.add( theInstance );				
 					}
@@ -272,56 +278,17 @@ public class FunctionAllocationInfo {
 		return theInstances;
 	}
 
-	/*
-	private void updateAllocationUsageInfo() {
-
-		IRPModelElement theChosenEl = _allocationChoicesComboBox.getSelectedRhapsodyItem();
-
-		for( IRPInstance currentAllocationUsage : _currentAllocatedUsages ){
-
-			IRPModelElement theOwner = currentAllocationUsage.getOwner();
-
-			if( currentAllocationUsage.isTypelessObject()==0 ) {
-
-				if( theOwner.equals( theChosenEl ) ){
-
-					_context.info( "Existing allocation usage valid for " + _context.elInfo( _usageToAllocate ) + " to " + _context.elInfo( theOwner ) );
-
-					if( !_validAllocatedUsages.contains( currentAllocationUsage ) ) {
-						_validAllocatedUsages.add( currentAllocationUsage );
-
-					} else {
-						_context.info( "Existing allocation usage duplicate from " + _context.elInfo( _usageToAllocate ) + " to " + _context.elInfo( theOwner ) );
-						_invalidAllocatedUsages.add( currentAllocationUsage );
-					}
-				} else {
-					_context.info( "Existing allocation usage invalid from " + _context.elInfo( _usageToAllocate ) + " to " + _context.elInfo( theOwner ) );
-					_invalidAllocatedUsages.add( currentAllocationUsage );
-				}
-
-			} else {
-
-				_context.info( "Existing allocation usage is typeless from " + _context.elInfo( _usageToAllocate ) + " to " + _context.elInfo( theOwner ) );
-			}
-		}
-	}*/
-
-	private void initializeAllocationUsingPartsInfo() {
-
-
-	}
-
 	public String getStatusString() {
 
 		String theMsg = "";
 
 		IRPModelElement theChosenEl = _allocationChoicesComboBox.getSelectedRhapsodyItem();
 
-		_context.info( "getStatusString invoked for " + _context.elInfo( _usageToAllocate ) + " with choice " + _context.elInfo( theChosenEl ) );
+		//_context.debug( "getStatusString invoked for " + _context.elInfo( _usageToAllocate ) + " with choice " + _context.elInfo( theChosenEl ) );
 
-		for (IRPInstance _currentAllocatedUsage : _currentAllocatedUsages) {
-			_context.info( _context.elInfo( _currentAllocatedUsage ) + " is owned by " + _context.elInfo( _currentAllocatedUsage.getOwner() ) );
-		}
+		//for (IRPInstance _currentAllocatedUsage : _currentAllocatedUsages) {
+		//	_context.info( _context.elInfo( _currentAllocatedUsage ) + " is owned by " + _context.elInfo( _currentAllocatedUsage.getOwner() ) );
+		//}
 
 		int validDependenciesCount =  _validAllocationDependencies.size();
 		int invalidDependenciesCount =  _invalidAllocationDependencies.size();
@@ -365,13 +332,13 @@ public class FunctionAllocationInfo {
 
 		IRPModelElement theChosenEl = _allocationChoicesComboBox.getSelectedRhapsodyItem();
 
-		_context.info( "performAllocationOfUsages of " + _context.elInfo( _usageToAllocate ) + " => " + _context.elInfo( theChosenEl ) );
+		_context.debug( "performAllocationOfUsages of " + _context.elInfo( _usageToAllocate ) + " => " + _context.elInfo( theChosenEl ) );
 
 		if( theChosenEl instanceof IRPClassifier ) {
 
 			if( !_validAllocatedUsages.isEmpty() ){
 
-				_context.info( "No action necessary as " + _context.elInfo( theChosenEl ) + 
+				_context.debug( "No action necessary as " + _context.elInfo( theChosenEl ) + 
 						" already has a usage typed by " + _context.elInfo( _usageToAllocate.getOtherClass() ) );
 			} else {
 
