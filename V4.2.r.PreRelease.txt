@@ -975,7 +975,7 @@ V4.2.q.Rhp831.PreRelease (12-OCT-2023):
 0746 12-OCT-2023: ExecutableMBSE: Change the populate parts helper so that it doesn't add graph nodes that already exist on the diagram (F.J.Chadburn)
 0747 12-OCT-2023: ExecutableMBSE: Added IsCreateEventForFlowConnectorPanelEnabled property to control helper panel when a flow connector is drawn, default to off (F.J.Chadburn)
 
-V4.2.r.Rhp831.PreRelease (XX-XXX-XXXX): TBD
+V4.2.r.Rhp831.PreRelease (24-OCT-2023):
 0748 18-OCT-2023: ExecutableMBSE: Initial checkpoint of function usage allocation to architecture panel under dev (F.J.Chadburn)
 0749 18-OCT-2023: ExecutableMBSE: Allow Function Usages to own Allocation relations (F.J.Chadburn)
 0750 18-OCT-2023: ExecutableMBSE: Usability tweak to requirement package panel to remove the create under package option as only launched under project anyway (F.J.Chadburn)
