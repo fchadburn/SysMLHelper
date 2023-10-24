@@ -56,6 +56,27 @@ public class FlowConnectorInfo {
 		
 		return isMappable;
 	}
+	
+	public boolean performMapping() {
+		
+		boolean isMappable = true;
+		
+		FunctionAllocationInfo fromInstanceInfo = _functionAllocationMap.get( _srcFromInstance );
+		
+		if( fromInstanceInfo == null ) {
+			_context.info( "Unable to map " + _context.elInfo( _srcLink ) + " as " + _context.elInfo( _srcFromInstance ) + " is not in mapping" );
+			isMappable = false;
+		}
+		
+		FunctionAllocationInfo toInstanceInfo = _functionAllocationMap.get( _srcToInstance );
+
+		if( toInstanceInfo == null ) {
+			_context.info( "Unable to map " + _context.elInfo( _srcLink ) + " as " + _context.elInfo( _srcToInstance ) + " is not in mapping" );
+			isMappable = false;
+		}
+		
+		return isMappable;
+	}
 }
 
 /**

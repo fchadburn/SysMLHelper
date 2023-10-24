@@ -132,6 +132,8 @@ public class FunctionAllocationPanel extends ExecutableMBSEBasePanel {
 								"You need to select a " + _context.SYSTEM_BLOCK + " that owns the parts you want to allocate to." );
 					} else {
 						
+						//_connectorAllocationMap.buildConnectorAllocationMapBasedOn( _functionAllocationMap );
+
 						buildAllocationPanelContent();
 					}
 				}
@@ -208,7 +210,7 @@ public class FunctionAllocationPanel extends ExecutableMBSEBasePanel {
 			theValue._nameLabel.setMinimumSize( new Dimension( 150, 22 ) );
 			theValue._nameLabel.setBorder( BorderFactory.createEmptyBorder( 0, 10, 0, 10 ) );
 
-			theValue._statusLabel.setMinimumSize( new Dimension( 150, 22 ) );
+			theValue._statusLabel.setMinimumSize( new Dimension( 310, 22 ) );
 			theValue._statusLabel.setBorder( BorderFactory.createEmptyBorder( 0, 0, 0, 10 ) );
 			
 			theColumn1ParallelGroup.addComponent( theValue._nameLabel );  
@@ -257,6 +259,13 @@ public class FunctionAllocationPanel extends ExecutableMBSEBasePanel {
 					FunctionAllocationInfo theInfo = entry.getValue();
 					theInfo.performAllocationOfUsages();
 				}
+				
+				/*
+				for( Entry<IRPLink, FlowConnectorInfo> entry : _connectorAllocationMap.entrySet() ){
+
+					FlowConnectorInfo theInfo = entry.getValue();
+					theInfo.performMapping();
+				}*/
 				
 			} else {
 				_context.error( "FunctionAllocationPanel.performAction, checkValidity returned false" );
