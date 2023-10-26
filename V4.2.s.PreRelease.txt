@@ -993,12 +993,16 @@ V4.2.r.Rhp831.PreRelease (24-OCT-2023):
 
 V4.2.s.Rhp831.PreRelease (XX-XXX-XXXX): TBC
 0762 26-OCT-2023: ExecutableMBSE: Change default property for AutoGenerationOfPortsForLinksPolicy to Always to speed up usability/reduce pop-ups (F.J.Chadburn)
+0763 26-OCT-2023: ExecutableMBSE: Fix crash putting a flow on a flow connector by allowing Flows to be owned by feature and function blocks and package (F.J.Chadburn)
 
 Backlog/Known issues
+- Get IBD to be automatically created under Feature when you create a feature function package
+- Get double-click diagram opener to put ibds ahread of bdds
+- Get Return key to act as OK on dialogs.
+- Add populate classifiers of parts helper to menus
 - When you double click in populate parts tree get it to highlight the element on the diagram
 - Some interesting relationship tables may be possible.
 - Add a warning if not all ports are showing on an ibd
-- Crash when putting a flow on a flow connector
 - Add checks to minimise risk that functions are not used.
 - Consider simplifying connector drawing so that it doesn't matter which way function connectors go, e.g., get plugin to handle the reverse if direction
 - Tailoring how to get DOORS NG attributes as tags
