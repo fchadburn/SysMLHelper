@@ -991,6 +991,9 @@ V4.2.r.Rhp831.PreRelease (24-OCT-2023):
 0760 24-OCT-2023: ExecutableMBSE: Double-click usability enhancement to highlight target element if user double-clicks right-hand side status text (F.J.Chadburn) 
 0761 24-OCT-2023: ExecutableMBSE: Fix issue with dependencies not being deleted correctly when switching allocation from existing (F.J.Chadburn)
 
+V4.2.s.Rhp831.PreRelease (XX-XXX-XXXX): TBC
+0762 26-OCT-2023: ExecutableMBSE: Change default property for AutoGenerationOfPortsForLinksPolicy to Always to speed up usability/reduce pop-ups (F.J.Chadburn)
+
 Backlog/Known issues
 - When you double click in populate parts tree get it to highlight the element on the diagram
 - Some interesting relationship tables may be possible.

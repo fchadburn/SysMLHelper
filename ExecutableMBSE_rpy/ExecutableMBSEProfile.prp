@@ -1,6 +1,6 @@
 Subject ExecutableMBSEProfile
         Metaclass General
-		Property PluginVersion String "V4.2.r.Rhp831.PreRelease"
+		Property PluginVersion String "V4.2.s.Rhp831.PreRelease"
 		Property EnableInfoLogging Bool "True"
 		Property EnableWarningLogging Bool "True"
 		Property EnableErrorLogging Bool "True"
@@ -81,7 +81,7 @@ Subject ExecutableMBSEProfile
 		Property IsCreateEventForFlowConnectorPanelEnabled Bool "False"
 	end
 	Metaclass DesignSynthesis
-		Property AutoGenerationOfPortsForLinksPolicy Enum "Never,Always,UserDialog" "UserDialog"
+		Property AutoGenerationOfPortsForLinksPolicy Enum "Never,Always,UserDialog" "Always"
 		Property AutoGenerationOfPortsForLinksDefaultType Enum "No,StandardPorts,ProxyPorts,RapidPorts" "StandardPorts"
 	end
 end
