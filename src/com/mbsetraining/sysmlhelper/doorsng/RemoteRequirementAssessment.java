@@ -13,7 +13,6 @@ import com.telelogic.rhapsody.core.IRPHyperLink;
 import com.telelogic.rhapsody.core.IRPModelElement;
 import com.telelogic.rhapsody.core.IRPPackage;
 import com.telelogic.rhapsody.core.IRPRequirement;
-import com.telelogic.rhapsody.core.RhapsodyAppServer;
 
 public class RemoteRequirementAssessment {
 
@@ -344,10 +343,8 @@ public class RemoteRequirementAssessment {
 
 					IRPRequirement theOSLCRequirement = (IRPRequirement)theRemoteDependsOn;
 
-					String theRemoteSpec = theOSLCRequirement.getSpecification();
-					String theSpec = theRequirement.getSpecification();
-
-					if( theSpec.equals( theRemoteSpec ) ){
+					if( _context.isRequirementSpecificationMatchingFor(
+							theRequirement, theOSLCRequirement ) ){
 
 						if( !_requirementsThatMatch.contains( theRequirement ) ) {	
 							_context.debug( "Found " + _context.elInfo( theRequirement ) + "'s spec matches");

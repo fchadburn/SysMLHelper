@@ -590,16 +590,17 @@ public class UpdateSurrogateRequirementsPanel extends ExecutableMBSEBasePanel{
 		} else if( theRemoteRequirements.size()==1 ) {
 
 			IRPRequirement theOSLCRequirement = (IRPRequirement)theRemoteRequirements.get(0);
-
-			String theRemoteSpec = theOSLCRequirement.getSpecification();
-			String theSpec = theRequirement.getSpecification();
-
-			if( theSpec.equals( theRemoteSpec ) ){
+			
+			if( _context.isRequirementSpecificationMatchingFor(
+					theRequirement, theOSLCRequirement ) ){
 
 				_context.warning( "Found " + _context.elInfo( theRequirement ) + 
 						"'s spec already matches hence no action needed");
 
 			} else {
+				
+				String theRemoteSpec = theOSLCRequirement.getSpecification();
+
 				_context.info( "Updating " + _context.elInfo( theRequirement ) + "'s spec to '" + theRemoteSpec + "'" );
 
 				theRequirement.setSpecification( theRemoteSpec );

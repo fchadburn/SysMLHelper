@@ -465,7 +465,7 @@ public class ExportRequirementsToCSV {
 
 				String theSpec = theReqt.getSpecification();
 
-				if( theSpec.contains( "\r" ) || theSpec.contains( "\n" ) ) {
+				if( theSpec.contains( "\r" ) || theSpec.contains( "\n" ) || theSpec.contains( "\\u00A0" ) ) {
 
 					theElsWithNewLines.add( theEl );
 				}
@@ -475,7 +475,7 @@ public class ExportRequirementsToCSV {
 		if( !theElsWithNewLines.isEmpty() ) {
 
 			boolean answer = UserInterfaceHelper.askAQuestion( theElsWithNewLines.size() + " of the " + 
-					theEls.size() + " requirements have newline or linefeed characters: \n" +
+					theEls.size() + " requirements have newline, non-breaking whitespace or linefeed characters: \n" +
 					getStringFor( theElsWithNewLines, 1 ) + "\n" +
 					"This means that they won't export to csv and roundtrip into DOORS NG correctly.\n\n" +
 					"Do you want to fix the model to remove these before proceeding?" );
@@ -488,10 +488,10 @@ public class ExportRequirementsToCSV {
 
 						IRPRequirement theReqt = (IRPRequirement) theElWithNewLines;
 
-						String theSpec = theReqt.getSpecification().
+						String theSpec = theReqt.getSpecification().replaceAll("\\u00A0", " ").
 								replaceAll( "\\r", "" ).replaceAll( "\\n", "" );
 
-						_context.info( "Removing newlines from " + _context.elInfo( theReqt ) );
+						_context.info( "Removing newlines/non-breaking whitespace from " + _context.elInfo( theReqt ) );
 						theReqt.setSpecification( theSpec  );
 					}
 				}

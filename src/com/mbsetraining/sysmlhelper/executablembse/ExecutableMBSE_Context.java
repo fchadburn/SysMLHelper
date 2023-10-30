@@ -157,6 +157,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	protected Boolean _isCreateSDWithTestDriverLifeline;
 	protected Boolean _isShowProfileVersionCheckDialogs;
 	protected Boolean _isDoubleClickFunctionalityEnabled;
+	protected Boolean _isIgnoreNonVisibleSpaceCharsInSpecMatches;
 
 	protected List<String> _storeUnitInSeparateDirectoryNewTerms;
 	protected List<String> _dontCreateSeparateUnitNewTerms;
@@ -1060,6 +1061,17 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		return _isPopulateWantedByDefault;
 	}
+	
+	public boolean getIsIgnoreNonVisibleSpaceCharsInSpecMatches() {
+		
+		if( _isIgnoreNonVisibleSpaceCharsInSpecMatches == null ){
+			_isIgnoreNonVisibleSpaceCharsInSpecMatches = getBooleanPropertyValue(
+					_rhpPrj, 
+					"ExecutableMBSEProfile.RequirementsAnalysis.IsIgnoreNonVisibleSpaceCharsInSpecMatches" );
+		}
+
+		return _isIgnoreNonVisibleSpaceCharsInSpecMatches;
+	}
 
 	public boolean getIsPopulateOptionHidden(){
 
@@ -1753,6 +1765,136 @@ public class ExecutableMBSE_Context extends BaseContext {
 		}
 
 		return theResult;
+	}
+	
+	public List<IRPRequirement> getRequirementsThatMatch(
+			IRPRequirement theRequirement,
+			List<IRPRequirement> theCandidates ){
+
+		// Match with ID first
+		String theID = theRequirement.getRequirementID();
+
+		Set<IRPRequirement> theMatches = new HashSet<>();
+
+		if( !theID.isEmpty() ) {
+
+			for( IRPRequirement theCandidate : theCandidates ){
+
+				String theCandidatesID = theCandidate.getRequirementID();
+
+				//debug( "theID         = " + theID );
+				//debug( "theCandidatesID = " + theCandidatesID );
+
+				if( !theCandidatesID.isEmpty() && 
+						theCandidatesID.equals( theID ) ) {
+
+					theMatches.add( theCandidate );
+				}
+			}
+		}
+
+		// Match with Name second but need to strip off ID from name, as this may 
+		// be automatically added for remote requirements
+		if( theMatches.isEmpty() ) {
+
+			String theName = theRequirement.getName();
+
+			if( !theID.isEmpty() ) {
+				theName = cleanRequirementName( theName, theID ); 
+			}
+
+			for( IRPRequirement theCandidate : theCandidates ){
+
+				String theCandidatesID = theCandidate.getRequirementID();
+
+				String theCandidatesName = theCandidate.getName();
+
+				if( !theCandidatesID.isEmpty() ) {
+					theCandidatesName = cleanRequirementName( theCandidatesName, theCandidatesID ); 
+				}
+
+				//debug( "theName            = '" + theName + "'" );
+				//debug( "theCandidatesName = '" + theCandidatesName + "'" );
+
+				if( !theCandidatesName.isEmpty() &&
+						theName.equals( theCandidatesName ) ){
+
+					theMatches.add( theCandidate );
+				}
+			}
+		}
+
+		// Match with Spec last
+		if( theMatches.isEmpty() ) {
+
+			String theSpec = theRequirement.getSpecification();
+
+			if( !theSpec.isEmpty() ) {
+
+				for( IRPRequirement theCandidate : theCandidates ){
+
+					String theCandidatesSpec = theCandidate.getSpecification();
+
+					//debug( "theSpec           = '" + theSpec + "'" );
+					//debug( "theCandidatesSpec = '" + theCandidatesSpec + "'" );
+					
+					if( !theCandidatesSpec.isEmpty() &&
+							isRequirementSpecificationMatchingFor( 
+									theRequirement, theCandidate ) ){
+
+						theMatches.add( theCandidate );
+					}
+				}
+			}
+		}
+
+		return new ArrayList<>( theMatches );
+	}
+	
+	public boolean isRequirementSpecificationMatchingFor(
+			IRPRequirement theReqt,
+			IRPRequirement andOtherReqt ){
+		
+		boolean isMatching = false;
+		
+		boolean isIgnoreWhiteSpaceDiffs = 
+				getIsIgnoreNonVisibleSpaceCharsInSpecMatches();
+		
+		// First do compare with exact text, incl. non-breaking white space
+		String theReqtSpec = theReqt.getSpecification();
+		String andOtherReqtSpec = andOtherReqt.getSpecification();
+							
+		if( theReqtSpec.equals( andOtherReqtSpec ) ){
+			isMatching = true;
+		}
+		
+		if( !isMatching && 
+				isIgnoreWhiteSpaceDiffs ) {
+			
+			// The check will strip out comparison of white characters such as non-breaking space characters
+			// that may be in the remote requirement.
+			String theCleanReqtSpec = theReqtSpec.replaceAll("\\u00A0"," ").trim();
+			String andCleanOtherReqtSpec = andOtherReqtSpec.replaceAll("\\u00A0"," ").trim();
+								
+			if( theCleanReqtSpec.equals( andCleanOtherReqtSpec ) ){
+				
+				isMatching = true;
+				
+				if( !theCleanReqtSpec.equals( theReqtSpec ) ){
+					
+					warning( "Non-breaking spaces chars for " + theReqt.getFullPathNameIn() + 
+							" were ignored when comparing specs" );
+				}
+
+				if( !andCleanOtherReqtSpec.equals( andOtherReqtSpec ) ){
+					
+					warning( "Non-breaking spaces chars for " + andOtherReqt.getFullPathNameIn() + 
+							" were ignored when comparing specs" );
+				}
+			}
+		}
+		
+		return isMatching;
 	}
 }
 

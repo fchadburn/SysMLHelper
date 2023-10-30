@@ -994,10 +994,13 @@ V4.2.r.Rhp831.PreRelease (24-OCT-2023):
 V4.2.s.Rhp831.PreRelease (XX-XXX-XXXX): TBC
 0762 26-OCT-2023: ExecutableMBSE: Change default property for AutoGenerationOfPortsForLinksPolicy to Always to speed up usability/reduce pop-ups (F.J.Chadburn)
 0763 26-OCT-2023: ExecutableMBSE: Fix crash putting a flow on a flow connector by allowing Flows to be owned by feature and function blocks and package (F.J.Chadburn)
+0764 30-OCT-2023: ExecutableMBSE: Added property to enable requirement specification matching to ignore white space char diffs from non-breaking space chars (F.J.Chadburn)
 
 Backlog/Known issues
 - Get IBD to be automatically created under Feature when you create a feature function package
 - Get double-click diagram opener to put ibds ahread of bdds
+- Combine ibd system and functional so one ibd does both. Refator toolbar to put flows at the top
+- Links/connector not getting created with correct metaclass between subsystems?
 - Get Return key to act as OK on dialogs.
 - Add populate classifiers of parts helper to menus
 - When you double click in populate parts tree get it to highlight the element on the diagram

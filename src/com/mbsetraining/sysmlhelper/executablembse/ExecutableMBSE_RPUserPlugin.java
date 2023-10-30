@@ -1182,11 +1182,9 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					
 					IRPRequirement theOSLCRequirement = (IRPRequirement)theDependsOn;
 					
-					// Added trim here on supposition that sometimes DOORS NG is including new lines at the end, sometimes not.
-					String theRemoteSpec = theOSLCRequirement.getSpecification().trim();
-					String theSpec = req.getSpecification().trim();
-					
-					if( theSpec.equals( theRemoteSpec ) ){
+					if( _context.isRequirementSpecificationMatchingFor(
+							req, theOSLCRequirement ) ) {
+						
 						result.addItem( theDependsOn );
 					}
 				}
@@ -1217,11 +1215,9 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					
 					IRPRequirement theOSLCRequirement = (IRPRequirement)theDependsOn;
 					
-					// Added trim here on supposition that sometimes DOORS NG is including new lines at the end, sometimes not.
-					String theRemoteSpec = theOSLCRequirement.getSpecification().trim();
-					String theSpec = req.getSpecification().trim();
-										
-					if( !theSpec.equals( theRemoteSpec ) ){
+					if( !_context.isRequirementSpecificationMatchingFor(
+							req, theOSLCRequirement ) ) {
+						
 						result.addItem( theDependsOn );
 					}
 				}
