@@ -487,8 +487,9 @@ public class ExportRequirementsToCSV {
 					if( theElWithNewLines instanceof IRPRequirement ) {
 
 						IRPRequirement theReqt = (IRPRequirement) theElWithNewLines;
+						String theNonVisibleWhiteSpace = _context.getNonVisibleWhiteSpaceCharsRegEx();
 
-						String theSpec = theReqt.getSpecification().replaceAll("\\u00A0", " ").
+						String theSpec = theReqt.getSpecification().replaceAll( theNonVisibleWhiteSpace, " ").
 								replaceAll( "\\r", "" ).replaceAll( "\\n", "" );
 
 						_context.info( "Removing newlines/non-breaking whitespace from " + _context.elInfo( theReqt ) );

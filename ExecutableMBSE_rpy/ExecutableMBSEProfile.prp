@@ -33,6 +33,7 @@ Subject ExecutableMBSEProfile
 		Property IsEnableAutoMoveOfEventsOnAddNewElement Bool "True"
 		Property IsEnableGatewayTypes Bool "False"
 		Property IsIgnoreNonVisibleSpaceCharsInSpecMatches Bool "True"
+		Property NonVisibleWhiteSpaceCharsRegEx String "\\u00A0"
 		Property UseCaseNoteText String "Draw use cases and actors.
 
 1. A use case is a set of sequences of actions, including variants, that yield an observable result of value to an actor.

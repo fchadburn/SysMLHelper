@@ -142,6 +142,8 @@ public class ExecutableMBSE_Context extends BaseContext {
 	protected String _defaultActorPackageName;
 	protected String _defaultRequirementPackageName;
 	protected String _defaultRequirementPackagePostfix;
+	
+	protected String _nonVisibleWhiteSpaceCharsRegEx;
 
 	protected Boolean _isEnableAutoMoveOfEventsOnAddNewElement;
 	protected Boolean _isEnableAutoMoveOfEventsOnFlowCreation;
@@ -296,6 +298,16 @@ public class ExecutableMBSE_Context extends BaseContext {
 		}
 
 		return _defaultActorPackageName;
+	}
+	
+	public String getNonVisibleWhiteSpaceCharsRegEx() {
+		
+		if( _nonVisibleWhiteSpaceCharsRegEx == null ){
+			_nonVisibleWhiteSpaceCharsRegEx = _rhpPrj.getPropertyValue(
+					"ExecutableMBSEProfile.RequirementsAnalysis.NonVisibleWhiteSpaceCharsRegEx" );
+		}
+
+		return _nonVisibleWhiteSpaceCharsRegEx;
 	}
 
 	// Allow user to change in session
@@ -1851,6 +1863,8 @@ public class ExecutableMBSE_Context extends BaseContext {
 		return new ArrayList<>( theMatches );
 	}
 	
+	
+	
 	public boolean isRequirementSpecificationMatchingFor(
 			IRPRequirement theReqt,
 			IRPRequirement andOtherReqt ){
@@ -1871,10 +1885,12 @@ public class ExecutableMBSE_Context extends BaseContext {
 		if( !isMatching && 
 				isIgnoreWhiteSpaceDiffs ) {
 			
+			String theNonVisibleWhiteSpace = getNonVisibleWhiteSpaceCharsRegEx();
+			
 			// The check will strip out comparison of white characters such as non-breaking space characters
 			// that may be in the remote requirement.
-			String theCleanReqtSpec = theReqtSpec.replaceAll("\\u00A0"," ").trim();
-			String andCleanOtherReqtSpec = andOtherReqtSpec.replaceAll("\\u00A0"," ").trim();
+			String theCleanReqtSpec = theReqtSpec.replaceAll( theNonVisibleWhiteSpace," " ).trim();
+			String andCleanOtherReqtSpec = andOtherReqtSpec.replaceAll( theNonVisibleWhiteSpace," ").trim();
 								
 			if( theCleanReqtSpec.equals( andCleanOtherReqtSpec ) ){
 				

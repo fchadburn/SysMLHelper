@@ -996,6 +996,7 @@ V4.2.s.Rhp831.PreRelease (XX-XXX-XXXX): TBC
 0763 26-OCT-2023: ExecutableMBSE: Fix crash putting a flow on a flow connector by allowing Flows to be owned by feature and function blocks and package (F.J.Chadburn)
 0764 30-OCT-2023: ExecutableMBSE: Added property to enable requirement specification matching to ignore white space char diffs from non-breaking space chars (F.J.Chadburn)
 0765 31-OCT-2023: ExecutableMBSE: Checkpoint of allocation wizard creating internal flow connectors in the allocated architecture (F.J.Chadburn)
+0766 31-OCT-2023: ExecutableMBSE: Added NonVisibleWhiteSpaceCharsRegEx property to enable tweaking of requirement specification matching without needing s/w change (F.J.Chadburn)
 
 Backlog/Known issues
 - Get IBD to be automatically created under Feature when you create a feature function package
