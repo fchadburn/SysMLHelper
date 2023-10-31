@@ -132,7 +132,7 @@ public class FunctionAllocationPanel extends ExecutableMBSEBasePanel {
 								"You need to select a " + _context.SYSTEM_BLOCK + " that owns the parts you want to allocate to." );
 					} else {
 						
-						//_connectorAllocationMap.buildConnectorAllocationMapBasedOn( _functionAllocationMap );
+						_connectorAllocationMap.buildConnectorAllocationMapBasedOn( _functionAllocationMap );
 
 						buildAllocationPanelContent();
 					}
@@ -260,12 +260,11 @@ public class FunctionAllocationPanel extends ExecutableMBSEBasePanel {
 					theInfo.performAllocationOfUsages();
 				}
 				
-				/*
 				for( Entry<IRPLink, FlowConnectorInfo> entry : _connectorAllocationMap.entrySet() ){
 
 					FlowConnectorInfo theInfo = entry.getValue();
 					theInfo.performMapping();
-				}*/
+				}
 				
 			} else {
 				_context.error( "FunctionAllocationPanel.performAction, checkValidity returned false" );

@@ -391,7 +391,7 @@ public class FunctionAllocationInfo {
 						thePart.setStereotype( theStereotype );
 					}
 				}
-
+				
 				_context.info( "Created " + _context.elInfo( thePart ) + " under " + _context.elInfo( allocatedSubsystem ) );
 
 				cleanUpPreviousAllocationsIfNeeded();
@@ -409,6 +409,8 @@ public class FunctionAllocationInfo {
 							theChosenEl, 
 							_context.getStereotypeForAllocation() );	
 				}
+				
+				_validAllocatedUsages.add( thePart );
 			}
 
 		} else if( theChosenEl instanceof IRPInstance ) {
