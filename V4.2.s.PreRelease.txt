@@ -997,9 +997,9 @@ V4.2.s.Rhp831.PreRelease (XX-XXX-XXXX): TBC
 0764 30-OCT-2023: ExecutableMBSE: Added property to enable requirement specification matching to ignore white space char diffs from non-breaking space chars (F.J.Chadburn)
 0765 31-OCT-2023: ExecutableMBSE: Checkpoint of allocation wizard creating internal flow connectors in the allocated architecture (F.J.Chadburn)
 0766 31-OCT-2023: ExecutableMBSE: Added NonVisibleWhiteSpaceCharsRegEx property to enable tweaking of requirement specification matching without needing s/w change (F.J.Chadburn)
+0767 31-OCT-2023: ExecutableMBSE: Get IBD to be automatically created under Feature when you create a feature function package (F.J.Chadburn)
 
 Backlog/Known issues
-- Get IBD to be automatically created under Feature when you create a feature function package
 - Get double-click diagram opener to put ibds ahread of bdds
 - Combine ibd system and functional so one ibd does both. Refator toolbar to put flows at the top
 - Links/connector not getting created with correct metaclass between subsystems?

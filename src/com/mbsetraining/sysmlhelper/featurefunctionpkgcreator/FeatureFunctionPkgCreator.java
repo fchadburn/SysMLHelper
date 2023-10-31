@@ -90,19 +90,33 @@ public class FeatureFunctionPkgCreator {
 		
 		theDependency.highLightElement();
 		
+		IRPStructureDiagram ibd = addInternalBlockDiagram( theFeature );
+		ibd.openDiagram();
+		ibd.highLightElement();
+		
+		IRPObjectModelDiagram bdd = addBlockDefinitionDiagram( theUseCase, theFeature );
+		
+		bdd.openDiagram();
+		bdd.highLightElement();
+	}
+
+	private IRPObjectModelDiagram addBlockDefinitionDiagram(
+			IRPUseCase theUseCase, 
+			IRPClass underTheFeature ){
+		
 		IRPObjectModelDiagram theDiagram = 
-				(IRPObjectModelDiagram) theFeature.addNewAggr( "ObjectModelDiagram", "" );
+				(IRPObjectModelDiagram) underTheFeature.addNewAggr( "ObjectModelDiagram", "" );
 		
 		theDiagram.changeTo( _context.BLOCK_DEFINITION_DIAGRAM_SYSTEM );
 		
-		_context.setDiagramNameToOwningClassifierIfAppropriate( theDiagram, theFeature );
+		_context.setDiagramNameToOwningClassifierIfAppropriate( theDiagram, underTheFeature );
 
-		// The resizer will deal with width and height, hence just use 50,50 to start with
-		IRPGraphNode theFeatureGraphNode = theDiagram.addNewNodeForElement( theFeature, 450, 150, 50, 50 );
+		// The re-sizer will deal with width and height, hence just use 50,50 to start with
+		IRPGraphNode theFeatureGraphNode = theDiagram.addNewNodeForElement( underTheFeature, 450, 150, 50, 50 );
 		GraphNodeResizer theFeatureResizer = new GraphNodeResizer( theFeatureGraphNode, _context );
 		theFeatureResizer.performResizing();
 		
-		// The resizer will deal with width and height, hence just use 50,50 to start with
+		// The re-sizer will deal with width and height, hence just use 50,50 to start with
 		IRPGraphNode theUseCaseGraphNode = theDiagram.addNewNodeForElement( theUseCase, 150, 100, 50, 50 );
 		GraphNodeResizer theUseCaseResizer = new GraphNodeResizer( theUseCaseGraphNode, _context );
 		theUseCaseResizer.performResizing();
@@ -111,8 +125,20 @@ public class FeatureFunctionPkgCreator {
 		theGraphElsToComplete.addGraphicalItem( theFeatureGraphNode );
 		theDiagram.completeRelations( theGraphElsToComplete, 1 );
 		
-		theDiagram.openDiagram();
-		theDiagram.highLightElement();
+		return theDiagram;
+	}
+	
+	private IRPStructureDiagram addInternalBlockDiagram(
+			IRPClass underTheFeature ){
+		
+		IRPStructureDiagram theDiagram = 
+				(IRPStructureDiagram) underTheFeature.addNewAggr( "StructureDiagram", "" );
+		
+		theDiagram.changeTo( _context.INTERNAL_BLOCK_DIAGRAM_FUNCTIONAL );
+		
+		_context.setDiagramNameToOwningClassifierIfAppropriate( theDiagram, underTheFeature );
+
+		return theDiagram;
 	}
 }
 
