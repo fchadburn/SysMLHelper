@@ -25,8 +25,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">10.28.2022::14:44:41</_modifiedTime>
-			<_lastID type="a">26</_lastID>
+			<_modifiedTime type="a">11.3.2023::7:45:40</_modifiedTime>
+			<_lastID type="a">27</_lastID>
 			<_defaultComposite type="s">GUID ed3fccd8-9776-4e76-be65-fed29cadd8e4</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
@@ -55,6 +55,7 @@
 				<value>GUID e7c92ce3-2cc3-45c5-a25a-f280e52f7240</value>
 				<value>GUID 412e5798-07e4-4c68-8222-a8fb8380c72b</value>
 				<value>GUID 85b222f6-524a-4a1f-bc7d-7719222e8200</value>
+				<value>GUID 369d11ac-f095-4612-a1dc-0ab67c79e2cd</value>
 			</AggregatesList>
 		</ISubsystem>
 		<IClass type="e">
@@ -165,7 +166,7 @@
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
 							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
-							<_hname type="a">SysML View</_hname>
+							<_hname type="a">SysML Diagram Or View</_hname>
 							<_hid type="a">GUID 1682856c-40f4-49e9-ba7e-33005944364d</_hid>
 						</IHandle>
 					
@@ -722,6 +723,41 @@
 				</IHandle>
 			</_theMainDiagram>
 			<_modifiedTime type="a">10.28.2022::14:47:46</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 369d11ac-f095-4612-a1dc-0ab67c79e2cd</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Link</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\MetamodelProfileExtensionsProfile.sbsx</_hfilename>
+							<_hsubsystem type="a">MetamodelProfileExtensionsProfile</_hsubsystem>
+							<_hname type="a">SysML Element</_hname>
+							<_hid type="a">GUID f22cbd94-9d60-47dc-b83f-68916711a4f3</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\ExecutableMBSEProfile_MetaModelPkg.sbsx</_hfilename>
+					<_hsubsystem type="a">ExecutableMBSEProfile_MetaModelPkg</_hsubsystem>
+					<_hclass type="a">SystemBlock</_hclass>
+					<_hname type="a">MMD - SystemBlock</_hname>
+					<_hid type="a">GUID 6bb33f5f-b32e-49af-aaa1-5233776e9e88</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">11.3.2023::7:46:3</_modifiedTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>

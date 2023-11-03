@@ -64,8 +64,8 @@ public class PortsForLinksCreator {
 				//_context.debug( "fromClassifierEl = " + _context.elInfo( fromClassifierEl ) );
 				//_context.debug( "toClassifierEl = " + _context.elInfo( toClassifierEl ) );
 
-				String toName = getPortAppropriateNameFor( toClassifierEl );
-				String fromName = getPortAppropriateNameFor( fromClassifierEl );
+				String toName = _context.getPortAppropriateNameFor( toClassifierEl );
+				String fromName = _context.getPortAppropriateNameFor( fromClassifierEl );
 				
 				String fromPortName = _context.determineUniqueNameBasedOn( 
 						"p" + toName, 
@@ -209,20 +209,6 @@ public class PortsForLinksCreator {
 			}
 		}
 	}
-
-	private String getPortAppropriateNameFor( 
-			IRPModelElement theEl ) {
-	
-		String theName = _context.getStringForTagCalled( "ShortName", theEl, null );
-		
-		if( theName == null || theName.isEmpty() ) {
-			theName = theEl.getName();
-		}
-		
-		theName = _context.capitalize( theName.replace( " ", "" ) );
-		
-		return theName;
-	}
 	
 	private void autoCreateProxyPorts(){
 
@@ -243,8 +229,10 @@ public class PortsForLinksCreator {
 				//_context.debug( "fromClassifierEl = " + _context.elInfo( fromClassifierEl ) );
 				//_context.debug( "toClassifierEl = " + _context.elInfo( toClassifierEl ) );
 
-				String toName = getPortAppropriateNameFor( toClassifierEl );
-				String fromName = getPortAppropriateNameFor( fromClassifierEl );
+				IRPPackage theOwningPkg = _context.getOwningPackageFor( theDiagram );
+
+				String toName = _context.getPortAppropriateNameFor( toClassifierEl );
+				String fromName = _context.getPortAppropriateNameFor( fromClassifierEl );
 
 				String fromPortName = _context.determineUniqueNameBasedOn( 
 						"p" + toName, 
@@ -255,11 +243,7 @@ public class PortsForLinksCreator {
 						"p" + fromName, 
 						"Port", 
 						toClassifierEl );
-
-				GraphEdgeInfo theGraphEdgeInfo = new GraphEdgeInfo( theGraphEdge, _context ); 
-
-				IRPPackage theOwningPkg = _context.getOwningPackageFor( theDiagram );
-
+				
 				String theInterfaceBlockName =
 						_context.determineUniqueNameBasedOn( 
 								"IB_" + fromName + "_To_" + toName, 
@@ -274,8 +258,6 @@ public class PortsForLinksCreator {
 				fromPort.changeTo( "ProxyPort" );
 				fromPort.setOtherClass( theInterfaceBlock );
 
-				IRPGraphNode fromPortNode = _context.addGraphNodeFor( 
-						fromPort, theDiagram, theGraphEdgeInfo.getStartX(), theGraphEdgeInfo.getStartY() );
 
 				IRPPort toPort = (IRPPort) toClassifierEl.addNewAggr( "Port", toPortName );		
 				//_context.debug( "Created toPort as " + _context.elInfo( toPort ) );
@@ -283,12 +265,17 @@ public class PortsForLinksCreator {
 				toPort.setOtherClass( theInterfaceBlock );
 				toPort.setIsReversed( 1 );
 
+				GraphEdgeInfo theGraphEdgeInfo = new GraphEdgeInfo( theGraphEdge, _context ); 
+
 				IRPGraphNode toPortNode = _context.addGraphNodeFor( 
 						toPort, theDiagram, theGraphEdgeInfo.getEndX(), theGraphEdgeInfo.getEndY() );					
 
 				IRPLink newLink = _link.getFrom().addLinkToElement( _link.getTo(), null, fromPort, toPort );
 				_context.debug( "Created " + _context.elInfo( newLink ) );
 
+				IRPGraphNode fromPortNode = _context.addGraphNodeFor( 
+						fromPort, theDiagram, theGraphEdgeInfo.getStartX(), theGraphEdgeInfo.getStartY() );
+				
 				theDiagram.addNewEdgeForElement( 
 						newLink, 
 						fromPortNode, 
@@ -322,8 +309,8 @@ public class PortsForLinksCreator {
 				//_context.debug( "fromClassifierEl = " + _context.elInfo( fromClassifierEl ) );
 				//_context.debug( "toClassifierEl = " + _context.elInfo( toClassifierEl ) );
 
-				String toName = getPortAppropriateNameFor( toClassifierEl );
-				String fromName = getPortAppropriateNameFor( fromClassifierEl );
+				String toName = _context.getPortAppropriateNameFor( toClassifierEl );
+				String fromName = _context.getPortAppropriateNameFor( fromClassifierEl );
 				
 				String fromPortName = _context.determineUniqueNameBasedOn( 
 						"p" + toName, 

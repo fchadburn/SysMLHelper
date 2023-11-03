@@ -27,6 +27,8 @@ public class FunctionAllocationMap extends HashMap<IRPInstance, FunctionAllocati
 	 */
 	private static final long serialVersionUID = 3298437951727162862L;
 	protected ExecutableMBSE_Context _context;
+	protected IRPClass _systemRootEl;
+	protected List<IRPModelElement> _allocateToEls;
 
 	public FunctionAllocationMap(
 			ExecutableMBSE_Context context ){
@@ -45,13 +47,17 @@ public class FunctionAllocationMap extends HashMap<IRPInstance, FunctionAllocati
 		}
 	}
 	
-	public void buildContentWithChoicesFor(
-			List<IRPModelElement> allocateToEls ) {
+	public void buildContentWithChoicesFor( 
+			IRPClass theRootEl ) {
+		
+		_systemRootEl = theRootEl;
+		
+		_allocateToEls = _context.getClassifiersOfPartsOwnedBy( _systemRootEl );
 		
 		for( Entry<IRPInstance, FunctionAllocationInfo> entry : this.entrySet() ){
 			
 			FunctionAllocationInfo theInfo = entry.getValue();
-			theInfo.buildContentFor( allocateToEls );
+			theInfo.buildContentFor( _allocateToEls );
 		}
 	}
 

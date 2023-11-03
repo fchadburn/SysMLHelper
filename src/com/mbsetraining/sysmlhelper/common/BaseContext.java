@@ -3588,6 +3588,20 @@ public abstract class BaseContext {
 			theEl.deleteFromProject();
 		}
 	}
+	
+	public String getPortAppropriateNameFor( 
+			IRPModelElement theEl ) {
+	
+		String theName = getStringForTagCalled( "ShortName", theEl, null );
+		
+		if( theName == null || theName.isEmpty() ) {
+			theName = theEl.getName();
+		}
+		
+		theName = capitalize( theName.replace( " ", "" ) );
+		
+		return theName;
+	}
 }
 
 /**

@@ -405,7 +405,7 @@ public class PopulatePartsPanel extends ExecutableMBSEBasePanel {
 					
 					if( theExistingGraphEls.getCount() != 0 ) {
 						
-						_context.warning( "Skipping populate for " + _context.elInfo( thePart ) + " as it is already populated on " + _context.elInfo( _diagram ) );
+						_context.info( "Skipping populate for " + _context.elInfo( thePart ) + " as it is already populated on " + _context.elInfo( _diagram ) );
 						
 						if( theExistingGraphEls.getCount() == 1 ) {
 							

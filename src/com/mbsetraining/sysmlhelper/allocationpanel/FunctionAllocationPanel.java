@@ -33,7 +33,6 @@ public class FunctionAllocationPanel extends ExecutableMBSEBasePanel {
 	protected ConnectorAllocationMap _connectorAllocationMap;
 
 	protected IRPClass _selectedClass = null;
-	protected List<IRPModelElement> _allocateToEls;
 	
 	public static void main( String[] args ) {
 		
@@ -117,13 +116,11 @@ public class FunctionAllocationPanel extends ExecutableMBSEBasePanel {
 									"no " + _context.SYSTEM_BLOCK + " was selected. \n\n " +
 							"You need to select a " + _context.SYSTEM_BLOCK + " that owns the parts you want to allocate to." );
 
-				} else {
+				} else {	
 					
-					_allocateToEls = _context.getClassifiersOfPartsOwnedBy( _selectedClass );
+					_functionAllocationMap.buildContentWithChoicesFor( _selectedClass );
 					
-					_functionAllocationMap.buildContentWithChoicesFor( _allocateToEls );
-					
-					if( _allocateToEls.isEmpty() ) {
+					if( _functionAllocationMap._allocateToEls.isEmpty() ) {
 						
 						buildUnableToRunDialog( 
 								"Sorry, this helper is unable to run this command because \n" +

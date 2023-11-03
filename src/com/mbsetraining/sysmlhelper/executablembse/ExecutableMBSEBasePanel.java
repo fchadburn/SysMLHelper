@@ -64,39 +64,39 @@ public abstract class ExecutableMBSEBasePanel extends JPanel {
 		thePanel.setLayout( new FlowLayout() );
 		
 		JButton theOKButton = new JButton("OK");
-		theOKButton.setPreferredSize(new Dimension(75,25));
+		theOKButton.setPreferredSize( new Dimension( 75,25 ) );
 		theOKButton.addActionListener( new ActionListener() {
 			
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed( ActionEvent e ) {
 				
 				try {
 					boolean isValid = checkValidity( true );
 					
-					if (isValid){
+					if( isValid ){
 						performAction();
 						Window dialog = SwingUtilities.windowForComponent( (Component) e.getSource() );
 						dialog.dispose();
 					}
 												
-				} catch (Exception e2) {
+				} catch( Exception e2 ){
 					_context.error( "Unhandled exception in createOKCancelPanel->theOKButton.actionPerformed e2=" + e2.getMessage() );
 				}
 			}
 		});
 		
-		JButton theCancelButton = new JButton("Cancel");
+		JButton theCancelButton = new JButton( "Cancel" );
 		theCancelButton.setPreferredSize( new Dimension( 75,25 ) );	
 		theCancelButton.addActionListener( new ActionListener() {
 			
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed( ActionEvent e ){
 				
 				try {
 					Window dialog = SwingUtilities.windowForComponent( (Component) e.getSource() );
 					dialog.dispose();
 												
-				} catch (Exception e2) {
+				} catch( Exception e2 ){
 					_context.error("Unhandled exception in createOKCancelPanel->theCancelButton.actionPerformed, e2=" + e2.getMessage());
 				}		
 			}	
