@@ -39,10 +39,8 @@ public class ConnectorAllocationMap extends HashMap<IRPLink, FlowConnectorInfo>{
 						"Select the " + theContext.SYSTEM_BLOCK + 
 						" that represents the architecture you want to allocate functions to", 
 						true );		
-
-		List<IRPModelElement> allocateToEls = theContext.getClassifiersOfPartsOwnedBy( theSelectedClass );
 			
-		functionAllocationMap.buildContentWithChoicesFor( allocateToEls );
+		functionAllocationMap.buildContentWithChoicesFor( theSelectedClass );
 		theConnectorMap.buildConnectorAllocationMapBasedOn( functionAllocationMap );
 	}
 	
