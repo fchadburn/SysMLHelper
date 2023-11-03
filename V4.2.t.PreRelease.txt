@@ -1005,6 +1005,7 @@ V4.2.s.Rhp831.PreRelease (03-NOV-2023):
 
 V4.2.t.Rhp831.PreRelease (XX-XXX-XXXX): TBD
 0772 03-NOV-2023: ExecutableMBSE: Merge ibd - system and ibd - func into the ibd - func toolbar, to remove need for user to make a choice (F.J.Chadburn)
+0773 03-NOV-2023: ExecutableMBSE: Add Flow to the drawing toolbar for ibd - func (F.J.Chadburn)
 
 Backlog/Known issues
 - Make default size of feature ibd diagram frame to be wider.
@@ -1034,7 +1035,6 @@ Backlog/Known issues
 - Get populate to populate logic and connectors if parts are populated that link to them.
 - hep file applicable tos need looking at where they have lower case base type
 - Want a new type of a block for flowing element to be defined
-- Add Flow to the drawing toolbar for ibd - functional?
 - Review other prefixes such as panel and table diagram to ensure helper and defaults are aligned to lower-case
 - Maybe get metamodel to handle InitialLayoutForTables property writing
 - If owner of requirement has a Tier 3 function block then dress down the Tier3 stereotype at same time as requirement creation
