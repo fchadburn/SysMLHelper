@@ -254,10 +254,11 @@ public class PopulatePartsPanel extends ExecutableMBSEBasePanel {
 				DefaultMutableTreeNode node = (DefaultMutableTreeNode)theModel.getRoot();
 
 				if( _rootGraphNode != null ){
+					
 					Dimension theDimension = calculateDimensionOf( node );
-
-					_rootGraphNode.setGraphicalProperty( "Height", Integer.toString( theDimension.height ) );
-					_rootGraphNode.setGraphicalProperty( "Width", Integer.toString( theDimension.width ) );									
+					
+					setGraphPropertyToNewValueIfLarger( "Height", theDimension.height );
+					setGraphPropertyToNewValueIfLarger( "Width", theDimension.width );						
 				}
 
 				populateParts( node, _rootGraphNode );
@@ -265,6 +266,22 @@ public class PopulatePartsPanel extends ExecutableMBSEBasePanel {
 
 		} catch( Exception e ){
 			_context.error( "Exception in PopulatePartsPanel.performAction, e=" + e.getMessage() );
+		}
+	}
+	
+	private void setGraphPropertyToNewValueIfLarger(
+			String thePropertyName,
+			int theNewValue ){
+		
+		if( _rootGraphNode != null ){		
+			
+			IRPGraphicalProperty theGraphicalProperty = _rootGraphNode.getGraphicalProperty( thePropertyName );
+			String theValueStr = theGraphicalProperty.getValue();
+			int theOldValue = Integer.parseInt( theValueStr );
+			
+			if( theNewValue > theOldValue ) {
+				_rootGraphNode.setGraphicalProperty( thePropertyName, Integer.toString( theNewValue ) );
+			}
 		}
 	}
 
