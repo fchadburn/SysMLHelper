@@ -314,7 +314,7 @@ Subject ObjectModelGe
 		Property ShowInheritedAttributes Bool "False"
 		Property ShowInheritedOperations Bool "False"
 		Property ShowRedefinesLabel Bool "True"
-		Property QuickNavigationCategories String "MainBehavior,MainDiagram,Hyperlinks,Diagrams"
+		Property QuickNavigationCategories String "Hyperlinks,Diagrams,MainBehavior"
 	end
 	Metaclass SystemUsage
 		Property ShowAttributes Enum "All,None,Public,Explicit" "None"
@@ -331,7 +331,7 @@ Subject ObjectModelGe
 		Property ShowInheritedAttributes Bool "False"
 		Property ShowInheritedOperations Bool "False"
 		Property ShowRedefinesLabel Bool "True"
-		Property QuickNavigationCategories String "MainBehavior,MainDiagram,Hyperlinks,Diagrams"
+		Property QuickNavigationCategories String "Hyperlinks,Diagrams,MainBehavior"
 	end
 	Metaclass SubsystemUsage
 		Property ShowAttributes Enum "All,None,Public,Explicit" "None"
@@ -348,7 +348,7 @@ Subject ObjectModelGe
 		Property ShowInheritedAttributes Bool "False"
 		Property ShowInheritedOperations Bool "False"
 		Property ShowRedefinesLabel Bool "True"
-		Property QuickNavigationCategories String "MainBehavior,MainDiagram,Hyperlinks,Diagrams"
+		Property QuickNavigationCategories String "Hyperlinks,Diagrams,MainBehavior"
 	end
 	Metaclass FunctionUsage
 		Property ShowAttributes Enum "All,None,Public,Explicit" "None"
@@ -365,7 +365,7 @@ Subject ObjectModelGe
 		Property ShowInheritedAttributes Bool "False"
 		Property ShowInheritedOperations Bool "False"
 		Property ShowRedefinesLabel Bool "True"
-		Property QuickNavigationCategories String "MainBehavior,MainDiagram,Hyperlinks,Diagrams"
+		Property QuickNavigationCategories String "Hyperlinks,Diagrams,MainBehavior"
 	end
 	Metaclass FeatureUsage
 		Property ShowAttributes Enum "All,None,Public,Explicit" "None"
@@ -382,7 +382,7 @@ Subject ObjectModelGe
 		Property ShowInheritedAttributes Bool "False"
 		Property ShowInheritedOperations Bool "False"
 		Property ShowRedefinesLabel Bool "True"
-		Property QuickNavigationCategories String "MainBehavior,MainDiagram,Hyperlinks,Diagrams"
+		Property QuickNavigationCategories String "Hyperlinks,Diagrams,MainBehavior"
 	end
 	Metaclass FunctionBlock
 		Property ShowAttributes Enum "All,None,Public,Explicit" "None"
@@ -395,7 +395,7 @@ Subject ObjectModelGe
 		Property Compartments MultiLine "Description,Derivation,Satisfaction"
 		Property ShowInheritedAttributes Bool "False"
 		Property ShowInheritedOperations Bool "False"
-		Property QuickNavigationCategories String "MainBehavior,MainDiagram,Hyperlinks,Diagrams"
+		Property QuickNavigationCategories String "Hyperlinks,Diagrams,MainBehavior"
 	end
 	Metaclass FeatureBlock
 		Property ShowAttributes Enum "All,None,Public,Explicit" "None"
@@ -408,7 +408,7 @@ Subject ObjectModelGe
 		Property Compartments MultiLine "Description"
 		Property ShowInheritedAttributes Bool "False"
 		Property ShowInheritedOperations Bool "False"
-		Property QuickNavigationCategories String "MainBehavior,MainDiagram,Hyperlinks,Diagrams"
+		Property QuickNavigationCategories String "Hyperlinks,Diagrams,MainBehavior"
 	end
 	Metaclass ContextBlock
 		Property ShowAttributes Enum "All,None,Public,Explicit" "None"
@@ -421,7 +421,7 @@ Subject ObjectModelGe
 		Property Compartments MultiLine "System Usage,Actor Usage"
 		Property ShowInheritedAttributes Bool "False"
 		Property ShowInheritedOperations Bool "False"
-		Property QuickNavigationCategories String "MainBehavior,MainDiagram,Hyperlinks,Diagrams"
+		Property QuickNavigationCategories String "Hyperlinks,Diagrams,MainBehavior"
 	end
 	Metaclass SystemBlock
 		Property ShowAttributes Enum "All,None,Public,Explicit" "None"
@@ -434,7 +434,7 @@ Subject ObjectModelGe
 		Property Compartments MultiLine "Subsystem Usage"
 		Property ShowInheritedAttributes Bool "False"
 		Property ShowInheritedOperations Bool "False"
-		Property QuickNavigationCategories String "MainBehavior,MainDiagram,Hyperlinks,Diagrams"
+		Property QuickNavigationCategories String "Hyperlinks,Diagrams,MainBehavior"
 	end
 	Metaclass SubsystemBlock
 		Property ShowAttributes Enum "All,None,Public,Explicit" "None"
@@ -447,7 +447,7 @@ Subject ObjectModelGe
 		Property Compartments MultiLine "Function Usage"
 		Property ShowInheritedAttributes Bool "False"
 		Property ShowInheritedOperations Bool "False"
-		Property QuickNavigationCategories String "MainBehavior,MainDiagram,Hyperlinks,Diagrams"
+		Property QuickNavigationCategories String "Hyperlinks,Diagrams,MainBehavior"
 	end
 	Metaclass FlowInput
 		Property ShowName Enum  "Name,NameAndType,Type,Label,None" "None"
