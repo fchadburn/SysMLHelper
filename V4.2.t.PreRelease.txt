@@ -1007,9 +1007,9 @@ V4.2.t.Rhp831.PreRelease (XX-XXX-XXXX): TBD
 0772 03-NOV-2023: ExecutableMBSE: Merge ibd - system and ibd - func into the ibd - func toolbar, to remove need for user to make a choice (F.J.Chadburn)
 0773 03-NOV-2023: ExecutableMBSE: Add Flow to the drawing toolbar for ibd - func (F.J.Chadburn)
 0774 03-NOV-2023: ExecutableMBSE: Polished further by adding unique icon for the Subsystem Interfaces Package (F.J.Chadburn)
+0775 03-NOV-2023: ExecutableMBSE: Tweak to widen default size of diagram frame for ibd - func to ease adding elements left to right without nudging (F.J.Chadburn)
 
 Backlog/Known issues
-- Make default size of feature ibd diagram frame to be wider.
 - Get the allocation wizard to present subsystems which are nested under other subsystems
 - Decision usage ports appear on wrong side when you populate on diagram
 - Get double-click diagram opener to put ibds ahread of bdds
