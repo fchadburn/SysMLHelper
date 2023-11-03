@@ -1003,11 +1003,15 @@ V4.2.s.Rhp831.PreRelease (03-NOV-2023):
 0770 03-NOV-2023: ExecutableMBSE: Promoted Populate Parts menu up to flat level so user doesn't need to dig into MBSE Method: Other menu to find it (F.J.Chadburn)
 0771 03-NOV-2023: ExecutableMBSE: Tweaked QuickNavigationCategories for classifiers such as Feature/System/Subsystem/Function Blocks to favour ibds/hyperlinks (F.J.Chadburn) 
 
+V4.2.t.Rhp831.PreRelease (XX-XXX-XXXX): TBD
+0772 03-NOV-2023: ExecutableMBSE: Merge ibd - system and ibd - func into the ibd - func toolbar, to remove need for user to make a choice (F.J.Chadburn)
+
 Backlog/Known issues
+- Make default size of feature ibd diagram frame to be wider.
+- Get the allocation wizard to present subsystems which are nested under other subsystems
 - Decision usage ports appear on wrong side when you populate on diagram
 - Get double-click diagram opener to put ibds ahread of bdds
 - Improve ordering in the context diagram menu
-- Combine ibd system and functional so one ibd does both. Refator toolbar to put flows at the top
 - Links/connector not getting created with correct metaclass between subsystems?
 - Get Return key to act as OK on dialogs.
 - Add populate classifiers of parts helper to menus
