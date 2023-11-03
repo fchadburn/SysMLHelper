@@ -394,23 +394,23 @@ isVisible49=1
 DLLServerCompatible49=1
 
 #REM: Add pop-up menu
-name50=MBSE Method: View and Viewpoint\Create Custom View Structure...
+name50=MBSE Method: Populate parts
 isPluginCommand50=1
 command50=InvokeExecutableMBSEHelper
-applicableTo50=Package,41 View and Viewpoint Package,SysML,11 Actor Package,12 Use Case Package,13 Requirement Package,10 Context Package,14 Signals Package,31 System Architecture Package,32 Subsystem Package,33 Subsystem Interfaces Package,34 Software Design Package,22 Feature Function Package
+applicableTo50=Object,Class,Internal Block Diagram,Internal Block Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - Software,Subsystem Usage,System Usage
 isVisible50=1
 DLLServerCompatible50=1
 
 #REM: Add pop-up menu
-name51=MBSE Method: View and Viewpoint\Add to View...
+name51=MBSE Method: View and Viewpoint\Create Custom View Structure...
 isPluginCommand51=1
 command51=InvokeExecutableMBSEHelper
-applicableTo51=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,ProxyPort,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,Requirement,Requirements Diagram,Requirements Diagram - System,RequirementsTable,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,System Block,System Usage,Subsystem Block,Subsystem Usage,Context Block,Feature Block,Function Block,Function Usage,Software Component,C++ Class,Use Case Description, Use Case Precondition,Use Case Postcondition,11 Actor Package,12 Use Case Package,13 Requirement Package,10 Context Package,14 Signals Package,31 System Architecture Package,32 Subsystem Package,33 Subsystem Interfaces Package,34 Software Design Package,22 Feature Function Package,Block Definition Diagram - System,Enhanced Use Case Diagram,Context Diagram,Internal Block Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - Software,Block Definition Diagram - Software,Textual Activity,Call Operation Activity,Derivation,Refinement,Satisfaction,Decision Usage,Parallel Gateway Usage,Start Usage,Time Event Usage,Flow Final Usage,Final Usage,Flow Input,Flow Output,Guarded Flow Output,Subsystem/Function Connector,Flow Connector,Data Object,Accept Event Usage
+applicableTo51=Package,41 View and Viewpoint Package,SysML,11 Actor Package,12 Use Case Package,13 Requirement Package,10 Context Package,14 Signals Package,31 System Architecture Package,32 Subsystem Package,33 Subsystem Interfaces Package,34 Software Design Package,22 Feature Function Package
 isVisible51=1
 DLLServerCompatible51=1
 
 #REM: Add pop-up menu
-name52=MBSE Method: View and Viewpoint\Remove from View...
+name52=MBSE Method: View and Viewpoint\Add to View...
 isPluginCommand52=1
 command52=InvokeExecutableMBSEHelper
 applicableTo52=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,ProxyPort,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,Requirement,Requirements Diagram,Requirements Diagram - System,RequirementsTable,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,System Block,System Usage,Subsystem Block,Subsystem Usage,Context Block,Feature Block,Function Block,Function Usage,Software Component,C++ Class,Use Case Description, Use Case Precondition,Use Case Postcondition,11 Actor Package,12 Use Case Package,13 Requirement Package,10 Context Package,14 Signals Package,31 System Architecture Package,32 Subsystem Package,33 Subsystem Interfaces Package,34 Software Design Package,22 Feature Function Package,Block Definition Diagram - System,Enhanced Use Case Diagram,Context Diagram,Internal Block Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - Software,Block Definition Diagram - Software,Textual Activity,Call Operation Activity,Derivation,Refinement,Satisfaction,Decision Usage,Parallel Gateway Usage,Start Usage,Time Event Usage,Flow Final Usage,Final Usage,Flow Input,Flow Output,Guarded Flow Output,Subsystem/Function Connector,Flow Connector,Data Object,Accept Event Usage
@@ -418,18 +418,18 @@ isVisible52=1
 DLLServerCompatible52=1
 
 #REM: Add pop-up menu
-name53=MBSE Method: Other\Center straight lines on diagram(s)
+name53=MBSE Method: View and Viewpoint\Remove from View...
 isPluginCommand53=1
 command53=InvokeExecutableMBSEHelper
-applicableTo53=Generalization,Realization,AssociationEnd,Package,Dependency,Satisfaction,Derivation,Refinement,Verification,ActivityDiagram,Textual Activity,Call Operation Activity,ObjectModelDiagram,Block Definition Diagram,Internal Block Diagram,Statechart,SequenceDiagram,UseCaseDiagram,Enhanced Use Case Diagram,Block Definition Diagram - Software,Block Definition Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - System,Requirements Diagram,Requirements Diagram - System,Metamodel Diagram
+applicableTo53=AcceptEventAction,AcceptTimeEvent,activity_D,ActivityDiagram,Actor,allocate,AllocationsTable,Argument,Association,AssociationEnd,Attribute,BindingConnector,Block,Block Definition Diagram,CallOperation,Class,ClassifierRole,CollaborationDiagram,CombinedFragment,Comment,Component,ComponentDiagram,ComponentInstance,Condition,Configuration,conform,connector,Connector,Constraint,ConstraintBlock,ConstraintParameter,ConstraintProperty,Constructor,ControlFlow,ControlledFile,DataType,DefaultTransition,Dependency,DeploymentDiagram,Destructor,Dimension,EnumerationLiteral,Event,ExecutionOccurrence,File,Flow,flowAttribute,FlowPort,flowProperty,flowSpecification,Folder,Generalization,HyperLink,InteractionOccurrence,InteractionOperand,Internal Block Diagram,Link,localPostcondition,localPrecondition,Message,Module,Node,Object,ObjectModelDiagram,ObjectNode,Operation,Package,Package Diagram,PanelDiagram,Parametric Diagram,Pin,Port,ProxyPort,Postcondition,Precondition,PrimitiveOperation,problem,Profile,Project,rationale,Reception,ReferenceActivity,Requirement,Requirements Diagram,Requirements Diagram - System,RequirementsTable,SendAction,SequenceDiagram,standardPort,State,Statechart,Stereotype,StructureDiagram,Swimlane,SysML,SysMLPort,Tag,testCase,Transition,TriggeredOperation,Type,Unit,UseCase,UseCaseDiagram,valueBinding_D,ValueProperty,ValueType,verify,System Block,System Usage,Subsystem Block,Subsystem Usage,Context Block,Feature Block,Function Block,Function Usage,Software Component,C++ Class,Use Case Description, Use Case Precondition,Use Case Postcondition,11 Actor Package,12 Use Case Package,13 Requirement Package,10 Context Package,14 Signals Package,31 System Architecture Package,32 Subsystem Package,33 Subsystem Interfaces Package,34 Software Design Package,22 Feature Function Package,Block Definition Diagram - System,Enhanced Use Case Diagram,Context Diagram,Internal Block Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - Software,Block Definition Diagram - Software,Textual Activity,Call Operation Activity,Derivation,Refinement,Satisfaction,Decision Usage,Parallel Gateway Usage,Start Usage,Time Event Usage,Flow Final Usage,Final Usage,Flow Input,Flow Output,Guarded Flow Output,Subsystem/Function Connector,Flow Connector,Data Object,Accept Event Usage
 isVisible53=1
 DLLServerCompatible53=1
 
 #REM: Add pop-up menu
-name54=MBSE Method: Other\Populate parts
+name54=MBSE Method: Other\Center straight lines on diagram(s)
 isPluginCommand54=1
 command54=InvokeExecutableMBSEHelper
-applicableTo54=Object,Class,Internal Block Diagram,Internal Block Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - Software,Subsystem Usage,System Usage
+applicableTo54=Generalization,Realization,AssociationEnd,Package,Dependency,Satisfaction,Derivation,Refinement,Verification,ActivityDiagram,Textual Activity,Call Operation Activity,ObjectModelDiagram,Block Definition Diagram,Internal Block Diagram,Statechart,SequenceDiagram,UseCaseDiagram,Enhanced Use Case Diagram,Block Definition Diagram - Software,Block Definition Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - System,Requirements Diagram,Requirements Diagram - System,Metamodel Diagram
 isVisible54=1
 DLLServerCompatible54=1
 
