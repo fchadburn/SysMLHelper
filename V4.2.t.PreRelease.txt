@@ -1008,8 +1008,12 @@ V4.2.t.Rhp831.PreRelease (XX-XXX-XXXX): TBD
 0773 03-NOV-2023: ExecutableMBSE: Add Flow to the drawing toolbar for ibd - func (F.J.Chadburn)
 0774 03-NOV-2023: ExecutableMBSE: Polished further by adding unique icon for the Subsystem Interfaces Package (F.J.Chadburn)
 0775 03-NOV-2023: ExecutableMBSE: Tweak to widen default size of diagram frame for ibd - func to ease adding elements left to right without nudging (F.J.Chadburn)
+0776 07-NOV-2023: ExecutableMBSE: Add populate menu for composition/parts classifiers as a usability enhancement (F.J.Chadburn)
 
 Backlog/Known issues
+- Make sure requirements created on activity diagrams under functions move to same place as if have requirement diagram
+- Add populate menu for contained requirements
+- Check allocation wizard works with inheritance
 - Get the allocation wizard to present subsystems which are nested under other subsystems
 - Decision usage ports appear on wrong side when you populate on diagram
 - Get double-click diagram opener to put ibds ahread of bdds

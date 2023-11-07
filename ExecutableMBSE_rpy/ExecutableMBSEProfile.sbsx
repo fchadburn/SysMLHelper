@@ -1689,7 +1689,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">11.3.2023::15:33:42</_modifiedTime>
+			<_modifiedTime type="a">11.7.2023::11:52:10</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -11620,7 +11620,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 99d433ee-75c1-40c0-8ef0-8ea14c3d7d23</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileInfo</_name>
-			<_modifiedTime type="a">10.26.2023::13:16:1</_modifiedTime>
+			<_modifiedTime type="a">11.7.2023::11:52:10</_modifiedTime>
 			<_lastID type="a">3</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -11638,7 +11638,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 00c06448-4cf5-4b58-a462-af1a3bccd935</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileDate</_name>
-			<_modifiedTime type="a">10.26.2023::13:15:55</_modifiedTime>
+			<_modifiedTime type="a">11.7.2023::11:52:5</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IType</_hm2Class>
@@ -11647,6 +11647,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 					<_hid type="a">GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35</_hid>
 				</IHandle>
 			</_typeOf>
+			<_multiplicity type="a">*</_multiplicity>
 			<_isOrdered type="a">0</_isOrdered>
 			<AggregatesList type="e">
 				<value>GUID 40ee94b0-0bc2-4301-a28c-789dd431b107</value>
@@ -11661,7 +11662,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID c783ee62-7cd8-4f71-8651-25132d0e1150</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileVersion</_name>
-			<_modifiedTime type="a">10.26.2023::13:16:1</_modifiedTime>
+			<_modifiedTime type="a">11.7.2023::11:52:10</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IType</_hm2Class>
@@ -11672,13 +11673,13 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</_typeOf>
 			<_isOrdered type="a">0</_isOrdered>
 			<AggregatesList type="e">
-				<value>GUID 9918f1b6-5777-4f7b-9382-21e57cceee16</value>
+				<value>GUID 28003ed6-bd85-4f98-abe4-94ef5d9cb545</value>
 			</AggregatesList>
 		</ITag>
 		<ILiteralSpecification type="e">
-			<_id type="a">GUID 9918f1b6-5777-4f7b-9382-21e57cceee16</_id>
-			<_modifiedTime type="a">10.26.2023::13:16:1</_modifiedTime>
-			<_value type="a">V4.2.s.Rhp831.PreRelease</_value>
+			<_id type="a">GUID 28003ed6-bd85-4f98-abe4-94ef5d9cb545</_id>
+			<_modifiedTime type="a">11.7.2023::11:52:10</_modifiedTime>
+			<_value type="a">V4.2.t.Rhp831.PreRelease</_value>
 		</ILiteralSpecification>
 		<ITag type="e">
 			<_id type="a">GUID 6cadd9b1-62a9-477e-a2b1-45c9e04743fb</_id>

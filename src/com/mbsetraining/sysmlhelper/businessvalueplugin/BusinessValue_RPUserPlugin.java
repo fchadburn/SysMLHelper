@@ -8,7 +8,8 @@ import java.util.Set;
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.LayoutHelper;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
-import com.mbsetraining.sysmlhelper.dependencyhelper.DependencySelector;
+import com.mbsetraining.sysmlhelper.dependencyhelper.PopulateDependentElements;
+import com.mbsetraining.sysmlhelper.dependencyhelper.PopulateDependsOnElements;
 import com.mbsetraining.sysmlhelper.graphtraversal.CreateGraphPathCapturePanel;
 import com.telelogic.rhapsody.core.*;
 
@@ -142,7 +143,7 @@ public class BusinessValue_RPUserPlugin extends RPUserPlugin {
 							_context.getSetOfElementsFromCombiningThe(
 									theSelectedEls, theSelectedGraphEls );
 
-					DependencySelector theSelector = new DependencySelector( _context );
+					PopulateDependsOnElements theSelector = new PopulateDependsOnElements( _context );
 					theSelector.selectDependsOnElementsFor( new ArrayList<>( theCombinedSet ) );
 
 				} else if( menuItem.equals( _settings.getString(
@@ -152,19 +153,19 @@ public class BusinessValue_RPUserPlugin extends RPUserPlugin {
 							_context.getSetOfElementsFromCombiningThe(
 									theSelectedEls, theSelectedGraphEls );
 
-					DependencySelector theSelector = new DependencySelector( _context );
+					PopulateDependentElements theSelector = new PopulateDependentElements( _context );
 					theSelector.selectDependentElementsFor( new ArrayList<>( theCombinedSet ) );
 
 				} else if( menuItem.equals( _settings.getString(
 						"businessvalueplugin.PopulateDependsOnElementsMenu" ) ) ){
 
-					DependencySelector theSelector = new DependencySelector( _context );
+					PopulateDependsOnElements theSelector = new PopulateDependsOnElements( _context );
 					theSelector.populateDependsOnElementsFor( _context.getSelectedGraphEl() );
 
 				} else if( menuItem.equals( _settings.getString(
 						"businessvalueplugin.PopulateDependentElementsMenu" ) ) ){
 
-					DependencySelector theSelector = new DependencySelector( _context );
+					PopulateDependentElements theSelector = new PopulateDependentElements( _context );
 					theSelector.populateDependentElementsFor( _context.getSelectedGraphEl() );
 
 				} else if( menuItem.equals( _settings.getString( 

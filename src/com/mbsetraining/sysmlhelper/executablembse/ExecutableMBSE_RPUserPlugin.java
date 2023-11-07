@@ -13,7 +13,6 @@ import com.mbsetraining.sysmlhelper.autorealizewithcopy.AutoRealizeWithCopyPanel
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.LayoutHelper;
 import com.mbsetraining.sysmlhelper.common.NestedActivityDiagram;
-import com.mbsetraining.sysmlhelper.common.PartSelector;
 import com.mbsetraining.sysmlhelper.common.RequirementsHelper;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.contextdiagram.CreateContextPackagePanel;
@@ -21,7 +20,9 @@ import com.mbsetraining.sysmlhelper.copyactivitydiagram.CopyActivityDiagramsPane
 import com.mbsetraining.sysmlhelper.createactorpart.CreateNewActorPanel;
 import com.mbsetraining.sysmlhelper.createnewblockpart.CreateNewBlockPartPanel;
 import com.mbsetraining.sysmlhelper.createtestcase.TestCaseCreator;
-import com.mbsetraining.sysmlhelper.dependencyhelper.DependencySelector;
+import com.mbsetraining.sysmlhelper.dependencyhelper.PopulateClassifiersOfParts;
+import com.mbsetraining.sysmlhelper.dependencyhelper.PopulateDependentElements;
+import com.mbsetraining.sysmlhelper.dependencyhelper.PopulateDependsOnElements;
 import com.mbsetraining.sysmlhelper.doorsng.CleanUpDeadOSLCLinksPanel;
 import com.mbsetraining.sysmlhelper.doorsng.DeleteChildOSLCLinksPanel;
 import com.mbsetraining.sysmlhelper.doorsng.EstablishTraceRelationsToRemotes;
@@ -281,7 +282,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 							_context.getSetOfElementsFromCombiningThe(
 									theSelectedEls, theSelectedGraphEls );
 
-					DependencySelector theSelector = new DependencySelector( _context );
+					PopulateDependsOnElements theSelector = new PopulateDependsOnElements( _context );
 					theSelector.selectDependsOnElementsFor( new ArrayList<>( theCombinedSet ) );
 
 				} else if( menuItem.equals( _settings.getString(
@@ -291,21 +292,27 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 							_context.getSetOfElementsFromCombiningThe(
 									theSelectedEls, theSelectedGraphEls );
 
-					DependencySelector theSelector = new DependencySelector( _context );
+					PopulateDependentElements theSelector = new PopulateDependentElements( _context );
 					theSelector.selectDependentElementsFor( new ArrayList<>( theCombinedSet ) );
 
 				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.PopulateDependsOnElementsMenu" ) ) ){
 
-					DependencySelector theSelector = new DependencySelector( _context );
+					PopulateDependsOnElements theSelector = new PopulateDependsOnElements( _context );
 					theSelector.populateDependsOnElementsFor( _context.getSelectedGraphEl() );
 
 				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.PopulateDependentElementsMenu" ) ) ){
 
-					DependencySelector theSelector = new DependencySelector( _context );
+					PopulateDependentElements theSelector = new PopulateDependentElements( _context );
 					theSelector.populateDependentElementsFor( _context.getSelectedGraphEl() );
 
+				} else if( menuItem.equals( _settings.getString(
+						"executablembseplugin.PopulateClassifiersOfPartsMenu" ) ) ){
+
+					PopulateClassifiersOfParts theSelector = new PopulateClassifiersOfParts( _context );
+					theSelector.populateClassifiersFor( _context.getSelectedGraphEl() );
+					
 				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.SelectChildClassifiersMenu" ) ) ){
 
@@ -320,9 +327,8 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 							_context.getSetOfElementsFromCombiningThe(
 									theSelectedEls, theSelectedGraphEls );
 
-					PartSelector theSelector = new PartSelector( _context );
-
-					theSelector.selectPartsFor(theCombinedSet, false );
+					PopulateClassifiersOfParts theSelector = new PopulateClassifiersOfParts( _context );
+					theSelector.selectClassifiersFor( new ArrayList<>( theCombinedSet ) );
 
 				} else if (menuItem.equals(_settings.getString(
 						"executablembseplugin.SetupGatewayProjectMenu" ) ) ){
