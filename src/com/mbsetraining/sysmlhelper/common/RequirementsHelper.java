@@ -139,7 +139,7 @@ public class RequirementsHelper {
 					theGraphEls.addGraphicalItem( theGraphEl );
 					theGraphEls.addGraphicalItem( theGraphNode );
 
-					theDiagram.completeRelations( theGraphEls, 0);	
+					theDiagram.completeRelations( theGraphEls, 0 );	
 
 				} else {
 					_context.warning( "Warning in populateDependencyOnDiagram, " +

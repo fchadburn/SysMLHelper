@@ -457,10 +457,20 @@ public abstract class BaseContext {
 	public IRPStereotype getStereotypeWith( 
 			String theName ) {
 
+		IRPModelElement theModelEl = null;	
 		IRPStereotype theStereotype = null;
-		IRPModelElement theModelEl = _rhpPrj.findAllByName( theName, "Stereotype" );
+		
+		if( theName.equals( "refine" ) ){		
+			theModelEl = _rhpPrj.findElementsByFullName( "SysML::ModelElements::refine", "Stereotype" );
+		}
+
+		if( theModelEl == null ){
+			theModelEl = _rhpPrj.findAllByName( theName, "Stereotype" );
+		}
 
 		if( theModelEl != null && theModelEl instanceof IRPStereotype ){
+			
+			// info( "Found " + elInfo( theModelEl ) + " owned by " + elInfo( theModelEl.getOwner() ) );
 			theStereotype = (IRPStereotype)theModelEl;
 		} else {
 			_rhpLog.error( "Unable to find stereotype with name " + theName + " in project");
