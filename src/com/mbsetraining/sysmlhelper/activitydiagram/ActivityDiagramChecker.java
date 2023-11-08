@@ -20,6 +20,10 @@ import com.telelogic.rhapsody.core.*;
 
 public class ActivityDiagramChecker extends JFrame{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6685571891011906755L;
 	private ActionList _actionsInfos;
 	private JPanel _panel;
 	private JTable _table;
@@ -27,16 +31,13 @@ public class ActivityDiagramChecker extends JFrame{
 	private MouseListener _listener;
 	private List<ActionInfo> _checkedElements; 
 	private BaseContext _context;
-	
-	private static final long serialVersionUID = 1L;
 
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		
 		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
-		ExecutableMBSE_Context context = new ExecutableMBSE_Context(theRhpApp.getApplicationConnectionString());
+		ExecutableMBSE_Context context = new ExecutableMBSE_Context( theRhpApp.getApplicationConnectionString() );
 		ActivityDiagramChecker.launchPanelsFor( theRhpApp.getListOfSelectedElements().toList(), context );
-
 	}
 	
 	public static void launchPanelsFor(
@@ -45,12 +46,17 @@ public class ActivityDiagramChecker extends JFrame{
 
 		List<IRPActivityDiagram> theADs = context.buildListOfActivityDiagramsFor(theSelectedEls);
 
-		context.debug("There are " + theADs.size() + " Activity Diagrams nested under the selected list");
+		context.debug( "There are " + theADs.size() + " activity diagrams nested under the selected list" );
 
+		if( theADs.isEmpty() ) {
+			context.info( "Nothing to do as no activity diagrams were found for the " + theSelectedEls.size() + " selected elements" );
+		}
+		
 		for (IRPActivityDiagram theAD : theADs) {
 
 			IRPFlowchart theFC = (IRPFlowchart) theAD.getOwner();
-			context.debug("Check Activity Diagram was invoked for " + context.elInfo( theFC ));
+			
+			context.debug( "Check Activity Diagram was invoked for " + context.elInfo( theFC ) );
 
 			ActivityDiagramChecker theChecker = 
 					new ActivityDiagramChecker( context.get_rhpAppID(), theAD.getGUID() );
@@ -222,18 +228,19 @@ public class ActivityDiagramChecker extends JFrame{
 					ActionInfo theInfo = _checkedElements.get(theRow);
 					IRPModelElement theEl = theInfo.getTheElement();
 
-					_context.debug("Highlighting " + _context.elInfo(theEl) + " on the diagram.");
+					_context.debug( "Highlighting " + _context.elInfo(theEl) + " on the diagram." );
+					
 					theEl.highLightElement();
 				}
 			}
 		};
 
-		_table.addMouseListener(_listener);
+		_table.addMouseListener( _listener );
 	}
 }
 
 /**
- * Copyright (C) 2016-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2016-2023  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 
