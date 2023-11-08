@@ -34,50 +34,50 @@ isVisible4=1
 DLLServerCompatible4=1
 
 #REM: Add pop-up menu
-name5=MBSE Method: Requirements Analysis\Perform traceability checks for elements on Activity Diagram
+name5=MBSE Method: Requirements Analysis\Create a new requirement
 isPluginCommand5=1
 command5=InvokeExecutableMBSEHelper
-applicableTo5=UseCase,12 Use Case Package,Package,ActivityDiagram,Textual Activity,Call Operation Activity
+applicableTo5=State,Transition,Comment,AcceptEventAction,SendAction,AcceptTimeEvent,Constraint,Precondition,Postcondition,ControlFlow,Use Case Precondition,Use Case Postcondition,UseCase
 isVisible5=1
 DLLServerCompatible5=1
 
 #REM: Add pop-up menu
-name6=MBSE Method: Requirements Analysis\Create a new requirement
+name6=MBSE Method: Requirements Analysis\Start link to a requirement
 isPluginCommand6=1
 command6=InvokeExecutableMBSEHelper
-applicableTo6=State,Transition,Comment,AcceptEventAction,SendAction,AcceptTimeEvent,Constraint,Precondition,Postcondition,ControlFlow,Use Case Precondition,Use Case Postcondition,UseCase
+applicableTo6=State,Transition,Comment,AcceptEventAction,SendAction,AcceptTimeEvent,Constraint,Precondition,Postcondition,ControlFlow,Attribute,ValueProperty,Operation,Event,Reception,FlowPort,UseCase,Requirement,Test Case,TestCase,Use Case Precondition,Use Case Postcondition,Function Block
 isVisible6=1
 DLLServerCompatible6=1
 
 #REM: Add pop-up menu
-name7=MBSE Method: Requirements Analysis\Auto-Rename Actions
+name7=MBSE Method: Requirements Analysis\End link at a requirement
 isPluginCommand7=1
 command7=InvokeExecutableMBSEHelper
-applicableTo7=UseCase,12 Use Case Package,Package,ActivityDiagram,Textual Activity,Call Operation Activity
+applicableTo7=Requirement
 isVisible7=1
 DLLServerCompatible7=1
 
 #REM: Add pop-up menu
-name8=MBSE Method: Requirements Analysis\Rename activity diagrams to reflect owning use case
+name8=MBSE Method: Requirements Analysis\Check Activity Diagram Traceability
 isPluginCommand8=1
 command8=InvokeExecutableMBSEHelper
-applicableTo8=UseCase,12 Use Case Package,Package,ActivityDiagram,Textual Activity,Call Operation Activity,UseCaseDiagram,Enhanced Use Case Diagram
+applicableTo8=UseCase,12 Use Case Package,Package,ActivityDiagram,Textual Activity,Call Operation Activity
 isVisible8=1
 DLLServerCompatible8=1
 
 #REM: Add pop-up menu
-name9=MBSE Method: Requirements Analysis\Start link to a requirement
+name9=MBSE Method: Requirements Analysis\Auto-Rename Actions
 isPluginCommand9=1
 command9=InvokeExecutableMBSEHelper
-applicableTo9=State,Transition,Comment,AcceptEventAction,SendAction,AcceptTimeEvent,Constraint,Precondition,Postcondition,ControlFlow,Attribute,ValueProperty,Operation,Event,Reception,FlowPort,UseCase,Requirement,Test Case,TestCase,Use Case Precondition,Use Case Postcondition,Function Block
+applicableTo9=UseCase,12 Use Case Package,Package,ActivityDiagram,Textual Activity,Call Operation Activity
 isVisible9=1
 DLLServerCompatible9=1
 
 #REM: Add pop-up menu
-name10=MBSE Method: Requirements Analysis\End link at a requirement
+name10=MBSE Method: Requirements Analysis\Rename activity diagrams to reflect owning use case
 isPluginCommand10=1
 command10=InvokeExecutableMBSEHelper
-applicableTo10=Requirement
+applicableTo10=UseCase,12 Use Case Package,Package,ActivityDiagram,Textual Activity,Call Operation Activity,UseCaseDiagram,Enhanced Use Case Diagram
 isVisible10=1
 DLLServerCompatible10=1
 

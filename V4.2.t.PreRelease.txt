@@ -1009,6 +1009,8 @@ V4.2.t.Rhp831.PreRelease (XX-XXX-XXXX): TBD
 0774 03-NOV-2023: ExecutableMBSE: Polished further by adding unique icon for the Subsystem Interfaces Package (F.J.Chadburn)
 0775 03-NOV-2023: ExecutableMBSE: Tweak to widen default size of diagram frame for ibd - func to ease adding elements left to right without nudging (F.J.Chadburn)
 0776 07-NOV-2023: ExecutableMBSE: Add populate menu for composition/parts classifiers as a usability enhancement (F.J.Chadburn)
+0777 08-NOV-2023: ExecutableMBSE: Usability polish - Requirement Analysis menus reordered to a more natural order, e.e., Create a new requirement at top (F.J.Chadburn)
+0778 08-NOV-2023: ExecutableMBSE: Usability polish - Renamed Perform traceability checks for elements on Activity Diagram to Check Activity Diagram Traceability (F.J.Chadburn)
 
 Backlog/Known issues
 - Make sure requirements created on activity diagrams under functions move to same place as if have requirement diagram
