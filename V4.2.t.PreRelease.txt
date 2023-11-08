@@ -1012,6 +1012,7 @@ V4.2.t.Rhp831.PreRelease (XX-XXX-XXXX): TBD
 0777 08-NOV-2023: ExecutableMBSE: Usability polish - Requirement Analysis menus reordered to a more natural order, e.e., Create a new requirement at top (F.J.Chadburn)
 0778 08-NOV-2023: ExecutableMBSE: Usability polish - Renamed Perform traceability checks for elements on Activity Diagram to Check Activity Diagram Traceability (F.J.Chadburn)
 0779 08-NOV-2023: ExecutableMBSE: Usability polish - Provide feedback that no activity diagrams if Check Activity Diagram Traceability doesn't find any to check (F.J.Chadburn)
+0780 08-NOV-2023: ExecutableMBSE: When creating a requirement for a use case give it a default name based on the use case name (F.J.Chadburn) 
 
 Backlog/Known issues
 - Make sure requirements created on activity diagrams under functions move to same place as if have requirement diagram

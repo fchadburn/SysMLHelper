@@ -98,12 +98,18 @@ public class RequirementsHelper {
 					theReqtOwner = theDiagram.getOwner();
 				}
 
+				String theName = "";
+				
+				if( theModelObject instanceof IRPUseCase ) {
+					theName = _context.getUniqueNameBasedOn( theReqtOwner, theModelObject.getName(), "Requirement" );
+				}
+				
 				IRPDependency theDependency = 
-						addNewRequirementTracedTo( theModelObject, theReqtOwner, theText );	
+						addNewRequirementTracedTo( theModelObject, theReqtOwner, theName, theText );	
 
 				IRPRequirement theReqt = (IRPRequirement) theDependency.getDependsOn();
 
-				GraphElInfo theInfo = new GraphElInfo(theGraphEl, _context);
+				GraphElInfo theInfo = new GraphElInfo( theGraphEl, _context );
 				int x = theInfo.getMidX();
 				int y = theInfo.getMidY();
 
@@ -114,7 +120,7 @@ public class RequirementsHelper {
 
 					IRPGraphNode theStartNode = (IRPGraphNode)theGraphEl;
 
-					GraphElInfo theGraphNodeInfo = new GraphElInfo(theGraphNode, _context);
+					GraphElInfo theGraphNodeInfo = new GraphElInfo( theGraphNode, _context );
 					
 					theDiagram.addNewEdgeForElement(
 							theDependency, 
@@ -198,10 +204,12 @@ public class RequirementsHelper {
 	private IRPDependency addNewRequirementTracedTo(
 			IRPModelElement theModelObject, 
 			IRPModelElement toOwner,
-			String theText) {
+			String withName,
+			String theText ){
 		
-		IRPRequirement theReqt = (IRPRequirement) toOwner.addNewAggr("Requirement", "");
-		theReqt.setSpecification(theText);
+		IRPRequirement theReqt = (IRPRequirement) toOwner.addNewAggr( "Requirement", withName );
+		
+		theReqt.setSpecification( theText );
 		theReqt.highLightElement();	
 
 		IRPDependency theDep = theModelObject.addDependencyTo( theReqt );
@@ -219,7 +227,7 @@ public class RequirementsHelper {
 			
 			theDep.addSpecificStereotype( theDependencyStereotype );
 		} else {
-			_context.error("Can't find stuff");
+			_context.error( "addNewRequirementTracedTo did not find a stereotype to use for traceability, so defaulting to using Derivation" );
 
 			theDep.addStereotype("derive", "Dependency");				
 		}
