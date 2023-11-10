@@ -32,7 +32,8 @@ public class CreateActorPkgChooser {
 		
 		_context = context;
 		
-		final String theDefaultName = _context.getDefaultActorPackageName();
+		final String theDefaultName = _context.get_rhpPrj().getName() + 
+				_context.getDefaultActorPackagePostfix();
 		
 		_ownerPkg = theOwnerPkg;
 		_project = theOwnerPkg.getProject();
@@ -214,7 +215,7 @@ public class CreateActorPkgChooser {
 }
 
 /**
- * Copyright (C) 2018-2021  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2018-2023  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

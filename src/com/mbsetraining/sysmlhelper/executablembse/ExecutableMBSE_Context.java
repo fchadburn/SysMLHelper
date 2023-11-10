@@ -141,7 +141,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 	protected String _defaultExternalSignalsPackageName;
 	protected String _defaultContextDiagramPackageName;
-	protected String _defaultActorPackageName;
+	protected String _defaultActorPackagePostfix;
 	protected String _defaultRequirementPackageName;
 	protected String _defaultRequirementPackagePostfix;
 	
@@ -292,14 +292,14 @@ public class ExecutableMBSE_Context extends BaseContext {
 	}
 
 	// Generally single call per session, so use lazy load
-	public String getDefaultActorPackageName(){
+	public String getDefaultActorPackagePostfix(){
 
-		if( _defaultActorPackageName == null ){
-			_defaultActorPackageName = _rhpPrj.getPropertyValue(
-					"ExecutableMBSEProfile.RequirementsAnalysis.DefaultActorPackageName" );
+		if( _defaultActorPackagePostfix == null ){
+			_defaultActorPackagePostfix = _rhpPrj.getPropertyValue(
+					"ExecutableMBSEProfile.RequirementsAnalysis.DefaultActorPackagePostfix" );
 		}
 
-		return _defaultActorPackageName;
+		return _defaultActorPackagePostfix;
 	}
 	
 	public String getNonVisibleWhiteSpaceCharsRegEx() {

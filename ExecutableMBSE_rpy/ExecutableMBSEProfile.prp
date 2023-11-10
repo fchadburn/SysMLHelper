@@ -20,7 +20,7 @@ Subject ExecutableMBSEProfile
 		Property TraceabilityTypeToUseForActions String "derive"
 		Property TraceabilityTypeToUseForUseCases String "refine"
 		Property DefaultActorsForUseCaseDiagram String "Driver,Environment"
-		Property DefaultActorPackageName String "ActorPkg"
+		Property DefaultActorPackagePostfix String "_ActorPkg"
 		Property DefaultUseCasePackageName String "FeatureA"
 		Property DefaultUseCasePackagePostfix String "_UseCasePkg"
 		Property DefaultExternalSignalsPackageName String "ExternalSignalsPkg"
