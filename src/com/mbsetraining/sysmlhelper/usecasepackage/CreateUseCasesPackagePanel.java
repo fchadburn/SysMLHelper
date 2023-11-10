@@ -284,7 +284,7 @@ public class CreateUseCasesPackagePanel extends ExecutableMBSEBasePanel {
 		thePanel.add( new JLabel( "Choose a unique name:" ) );
 		thePanel.add( _nameTextField );	
 		thePanel.add( new JLabel( " (package post-fixed with " + _usecasePackagePostfix + 
-				" will created under " + _context.elInfo(basedOnContext) + ")" ) );
+				" will created under the project)" ) );
 
 		return thePanel;
 	}
