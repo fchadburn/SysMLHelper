@@ -1014,8 +1014,10 @@ V4.2.t.Rhp831.PreRelease (XX-XXX-XXXX): TBD
 0779 08-NOV-2023: ExecutableMBSE: Usability polish - Provide feedback that no activity diagrams if Check Activity Diagram Traceability doesn't find any to check (F.J.Chadburn)
 0780 08-NOV-2023: ExecutableMBSE: When creating a requirement for a use case give it a default name based on the use case name (F.J.Chadburn) 
 0781 08-NOV-2023: ExecutableMBSE: As Rhapsody has two <<refine>> stereotypes, make sure that getStereotypeWith returns the SysML profile stereotype if present (F.J.Chadburn)
+0783 10-NOV-2023: ExecutableMBSE: Refined hep file to remove unnecessary populate and view options from the projects and diagram right-click menus (F.J.Chadburn)
 
 Backlog/Known issues
+- Get helper to automatically move use case/feature/function packages under A.B.C.D architecture package, if present
 - Make sure requirements created on activity diagrams under functions move to same place as if have requirement diagram
 - Add populate menu for contained requirements
 - Check allocation wizard works with inheritance
