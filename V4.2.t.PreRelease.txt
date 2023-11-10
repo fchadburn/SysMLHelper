@@ -1016,6 +1016,7 @@ V4.2.t.Rhp831.PreRelease (XX-XXX-XXXX): TBD
 0781 08-NOV-2023: ExecutableMBSE: As Rhapsody has two <<refine>> stereotypes, make sure that getStereotypeWith returns the SysML profile stereotype if present (F.J.Chadburn)
 0783 10-NOV-2023: ExecutableMBSE: Refined hep file to remove unnecessary populate and view options from the projects and diagram right-click menus (F.J.Chadburn)
 0784 10-NOV-2023: ExecutableMBSE: Usability tweak to default name of actor package name created in use case structure to include the project name (F.J.Chadburn)
+0785 10-NOV-2023: SysMLHelper: Renamed profile .txt filename to stop users choosing SysMLHelper accidentally, as superseded by ExecutableMBSEProfile (F.J.Chadburn) 
 
 Backlog/Known issues
 - Get helper to automatically move use case/feature/function packages under A.B.C.D architecture package, if present
