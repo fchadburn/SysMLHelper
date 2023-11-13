@@ -62,7 +62,7 @@ public class CreateUseCasesPackagePanel extends ExecutableMBSEBasePanel {
 
 				JFrame.setDefaultLookAndFeelDecorated( true );
 
-				JFrame frame = new JFrame( "Populate use case package structure" );
+				JFrame frame = new JFrame( "Create use case package structure" );
 
 				frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 
