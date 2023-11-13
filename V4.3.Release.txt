@@ -1003,7 +1003,7 @@ V4.2.s.Rhp831.PreRelease (03-NOV-2023):
 0770 03-NOV-2023: ExecutableMBSE: Promoted Populate Parts menu up to flat level so user doesn't need to dig into MBSE Method: Other menu to find it (F.J.Chadburn)
 0771 03-NOV-2023: ExecutableMBSE: Tweaked QuickNavigationCategories for classifiers such as Feature/System/Subsystem/Function Blocks to favour ibds/hyperlinks (F.J.Chadburn) 
 
-V4.2.t.Rhp831.PreRelease (13-NOV-2023):
+V4.3.Release (13-NOV-2023):
 0772 03-NOV-2023: ExecutableMBSE: Merge ibd - system and ibd - func into the ibd - func toolbar, to remove need for user to make a choice (F.J.Chadburn)
 0773 03-NOV-2023: ExecutableMBSE: Add Flow to the drawing toolbar for ibd - func (F.J.Chadburn)
 0774 03-NOV-2023: ExecutableMBSE: Polished further by adding unique icon for the Subsystem Interfaces Package (F.J.Chadburn)
@@ -1019,6 +1019,7 @@ V4.2.t.Rhp831.PreRelease (13-NOV-2023):
 0785 10-NOV-2023: SysMLHelper: Renamed profile .txt filename to stop users choosing SysMLHelper accidentally, as superseded by ExecutableMBSEProfile (F.J.Chadburn) 
 0786 10-NOV-2023: ExecutableMBSE: UI tweak to remove unnecessary width of create use case package structure dialog by removing name of project (F.J.Chadburn)
 0787 13-NOV-2023: ExecutableMBSE: Changed title of use case package structure dialog to 'Create' rather than 'Populate' to align with right-click menu name (F.J.Chadburn)
+0788 13-NOV-2023: ExecutableMBSE: Added PracticalMBSE-BookI-InsulinPump-ModuleA-UseCaseStructure-V2023-11-10-1123.pdf labs, to help with user ramp ups (F.J.Chadburn)
 
 Backlog/Known issues
 - Get helper to automatically move use case/feature/function packages under A.B.C.D architecture package, if present
@@ -1031,7 +1032,6 @@ Backlog/Known issues
 - Improve ordering in the context diagram menu
 - Links/connector not getting created with correct metaclass between subsystems?
 - Get Return key to act as OK on dialogs.
-- Add populate classifiers of parts helper to menus
 - When you double click in populate parts tree get it to highlight the element on the diagram
 - Some interesting relationship tables may be possible.
 - Add a warning if not all ports are showing on an ibd
