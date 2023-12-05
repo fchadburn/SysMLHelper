@@ -1689,7 +1689,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">11.13.2023::12:27:42</_modifiedTime>
+			<_modifiedTime type="a">11.15.2023::15:58:57</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -11628,7 +11628,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 99d433ee-75c1-40c0-8ef0-8ea14c3d7d23</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileInfo</_name>
-			<_modifiedTime type="a">11.13.2023::9:5:17</_modifiedTime>
+			<_modifiedTime type="a">11.15.2023::12:6:12</_modifiedTime>
 			<_lastID type="a">3</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -11646,7 +11646,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 00c06448-4cf5-4b58-a462-af1a3bccd935</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileDate</_name>
-			<_modifiedTime type="a">11.13.2023::9:5:17</_modifiedTime>
+			<_modifiedTime type="a">11.15.2023::11:58:20</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IType</_hm2Class>
@@ -11657,19 +11657,19 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</_typeOf>
 			<_isOrdered type="a">0</_isOrdered>
 			<AggregatesList type="e">
-				<value>GUID 02b304b8-ae29-4fc6-9cd9-df1433682d4c</value>
+				<value>GUID 7381b574-3b93-43fe-b4fd-9a6ff9561689</value>
 			</AggregatesList>
 		</ITag>
 		<ILiteralSpecification type="e">
-			<_id type="a">GUID 02b304b8-ae29-4fc6-9cd9-df1433682d4c</_id>
-			<_modifiedTime type="a">11.13.2023::9:5:17</_modifiedTime>
-			<_value type="a">2023/11/13 09:05:00</_value>
+			<_id type="a">GUID 7381b574-3b93-43fe-b4fd-9a6ff9561689</_id>
+			<_modifiedTime type="a">11.15.2023::11:58:20</_modifiedTime>
+			<_value type="a">2023/11/15 11:58:00</_value>
 		</ILiteralSpecification>
 		<ITag type="e">
 			<_id type="a">GUID c783ee62-7cd8-4f71-8651-25132d0e1150</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileVersion</_name>
-			<_modifiedTime type="a">11.13.2023::9:4:29</_modifiedTime>
+			<_modifiedTime type="a">11.15.2023::12:6:12</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IType</_hm2Class>
@@ -11680,13 +11680,13 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</_typeOf>
 			<_isOrdered type="a">0</_isOrdered>
 			<AggregatesList type="e">
-				<value>GUID 4ba8f38b-9beb-4605-9e5c-09c3e6c65070</value>
+				<value>GUID 617ed429-d1a3-481e-a44f-3cd56e6f3a55</value>
 			</AggregatesList>
 		</ITag>
 		<ILiteralSpecification type="e">
-			<_id type="a">GUID 4ba8f38b-9beb-4605-9e5c-09c3e6c65070</_id>
-			<_modifiedTime type="a">11.13.2023::9:4:29</_modifiedTime>
-			<_value type="a">V4.3.Release</_value>
+			<_id type="a">GUID 617ed429-d1a3-481e-a44f-3cd56e6f3a55</_id>
+			<_modifiedTime type="a">11.15.2023::12:6:12</_modifiedTime>
+			<_value type="a">V4.3.a.Release</_value>
 		</ILiteralSpecification>
 		<ITag type="e">
 			<_id type="a">GUID 6cadd9b1-62a9-477e-a2b1-45c9e04743fb</_id>
@@ -14220,7 +14220,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID d213ea00-7590-48aa-8f30-a0a61f8fcd08</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Packages</_name>
-			<_modifiedTime type="a">11.3.2023::15:18:42</_modifiedTime>
+			<_modifiedTime type="a">11.15.2023::12:17:56</_modifiedTime>
 			<_lastID type="a">5</_lastID>
 			<_defaultComposite type="s">GUID 26c8a3f9-6aee-4dff-a42f-bf1cc2880009</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -14835,7 +14835,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 												<size type="a">6</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Block Definition Diagram - System,Table View - Subsystem Table,C++ Class,Context Block,Feature Usage,Function Block,Item Block,Software Component,Subsystem Block,System Block,13 Requirement Package,22 Feature Function Package,32 Subsystem Package,33 Subsystem Interfaces Package,Flow Connector,ExtendedTableLayout,ExtendedTableView,MatrixView,SequenceDiagram,TableView,TimingDiagram,Actor,Comment,Constraint,Event,Interface,InterfaceBlock,Problem,Rationale,Requirement,View,Conform,Dependency,Flow,CSVImporter,Component,ControlledFile,Diagram View,HyperLink,MatrixLayout,Query,Stereotype,TableLayout,Tag</_Value>
+													<_Value type="a">Block Definition Diagram - System,Table View - Subsystem Table,C++ Class,Context Block,Function Block,Item Block,Software Component,Subsystem Block,System Block,13 Requirement Package,22 Feature Function Package,32 Subsystem Package,33 Subsystem Interfaces Package,Flow Connector,ExtendedTableLayout,ExtendedTableView,MatrixView,SequenceDiagram,TableView,TimingDiagram,Actor,Comment,Constraint,Event,Interface,InterfaceBlock,Problem,Rationale,Requirement,View,Conform,Dependency,Flow,CSVImporter,Component,ControlledFile,Diagram View,HyperLink,MatrixLayout,Query,Stereotype,TableLayout,Tag</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -14882,7 +14882,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SystemArchitecturePackage</_name>
-			<_modifiedTime type="a">10.9.2023::14:7:8</_modifiedTime>
+			<_modifiedTime type="a">11.15.2023::12:17:56</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -16205,7 +16205,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID ec717f1d-0b3e-427a-89fd-8b516b2337c8</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Elements</_name>
-			<_modifiedTime type="a">11.3.2023::14:36:6</_modifiedTime>
+			<_modifiedTime type="a">11.15.2023::15:56:4</_modifiedTime>
 			<_lastID type="a">15</_lastID>
 			<_defaultComposite type="s">GUID d51fb0a3-38d7-4d7a-9f45-35fd12f6ff2a</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -16502,7 +16502,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 												<size type="a">6</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Block Definition Diagram - System,Internal Block Diagram - Functional,Requirements Diagram - System,Component Usage,Data Object,Feature Usage,Subsystem Usage,Statechart,Comment,Constraint,Operation,Problem,ProxyPort,Rationale,Reception,Requirement,ValueProperty,Allocation,Conform,Connector,Dependency,Flow,Generalization,Satisfaction,ControlledFile,HyperLink,Tag</_Value>
+													<_Value type="a">Block Definition Diagram - System,Internal Block Diagram - Functional,Requirements Diagram - System,Component Usage,Data Object,Feature Usage,Subsystem Usage,Flow Connector,Statechart,Comment,Constraint,Operation,Problem,ProxyPort,Rationale,Reception,Requirement,ValueProperty,Allocation,Conform,Connector,Dependency,Flow,Generalization,Satisfaction,ControlledFile,HyperLink,Tag</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -16549,7 +16549,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SystemBlock</_name>
-			<_modifiedTime type="a">11.3.2023::14:36:4</_modifiedTime>
+			<_modifiedTime type="a">11.15.2023::15:56:4</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>

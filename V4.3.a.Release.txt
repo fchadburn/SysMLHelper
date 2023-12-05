@@ -1021,6 +1021,9 @@ V4.3.Release (13-NOV-2023):
 0787 13-NOV-2023: ExecutableMBSE: Changed title of use case package structure dialog to 'Create' rather than 'Populate' to align with right-click menu name (F.J.Chadburn)
 0788 13-NOV-2023: ExecutableMBSE: Added PracticalMBSE-BookI-InsulinPump-ModuleA-UseCaseStructure-V2023-11-10-1123.pdf labs, to help with user ramp ups (F.J.Chadburn)
 
+V4.3.a.PreRelease (XX-XXX-XXXX):
+0789 15-NOV-2023: ExecutableMBSE: Allow System Blocks to own Flow Connectors to open up options for direct connectors between flow ports in different subsystems (F.J.Chadburn)
+
 Backlog/Known issues
 - Get helper to automatically move use case/feature/function packages under A.B.C.D architecture package, if present
 - Make sure requirements created on activity diagrams under functions move to same place as if have requirement diagram
