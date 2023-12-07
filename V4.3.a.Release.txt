@@ -1023,6 +1023,7 @@ V4.3.Release (13-NOV-2023):
 
 V4.3.a.PreRelease (XX-XXX-XXXX):
 0789 15-NOV-2023: ExecutableMBSE: Allow System Blocks to own Flow Connectors to open up options for direct connectors between flow ports in different subsystems (F.J.Chadburn)
+0790 07-DEC-2023: ExecutableMNSE: First implementation of Create Feature Package Structure... menu (F.J.Chadburn)
 
 Backlog/Known issues
 - Get helper to automatically move use case/feature/function packages under A.B.C.D architecture package, if present

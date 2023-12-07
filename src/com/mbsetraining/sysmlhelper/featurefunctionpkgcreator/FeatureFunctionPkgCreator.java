@@ -95,9 +95,39 @@ public class FeatureFunctionPkgCreator {
 		ibd.highLightElement();
 		
 		IRPObjectModelDiagram bdd = addBlockDefinitionDiagram( theUseCase, theFeature );
-		
 		bdd.openDiagram();
 		bdd.highLightElement();
+	}
+	
+	public void createFeatureFunctionPkg(
+			IRPPackage underPkg,
+			String withPackageName,
+			String andFeatureName,
+			IRPStereotype withStereotypeIfApplicable ){
+								
+		String theUniqueName = _context.determineUniqueNameBasedOn( withPackageName, "Package", underPkg );
+		
+		_context.debug( "Creating package called " + theUniqueName + " under " + _context.elInfo( underPkg ) );
+
+		IRPPackage theNewPkg = underPkg.addNestedPackage( theUniqueName );
+		theNewPkg.changeTo( _context.FUNCT_ANALYSIS_FEATURE_FUNCTION_PACKAGE );
+		
+		IRPClass theFeature = theNewPkg.addClass( andFeatureName );
+		theFeature.changeTo( _context.FEATURE_BLOCK );
+		
+		IRPStructureDiagram ibd = addInternalBlockDiagram( theFeature );
+		ibd.openDiagram();
+		ibd.highLightElement();
+		
+		IRPObjectModelDiagram bdd = addBlockDefinitionDiagram( null, theFeature );
+		bdd.openDiagram();
+		bdd.highLightElement();
+		
+		if( withStereotypeIfApplicable instanceof IRPStereotype ) {
+			
+			theNewPkg.addSpecificStereotype( withStereotypeIfApplicable );
+			theFeature.addSpecificStereotype( withStereotypeIfApplicable );
+		}		
 	}
 
 	private IRPObjectModelDiagram addBlockDefinitionDiagram(
@@ -116,11 +146,13 @@ public class FeatureFunctionPkgCreator {
 		GraphNodeResizer theFeatureResizer = new GraphNodeResizer( theFeatureGraphNode, _context );
 		theFeatureResizer.performResizing();
 		
-		// The re-sizer will deal with width and height, hence just use 50,50 to start with
-		IRPGraphNode theUseCaseGraphNode = theDiagram.addNewNodeForElement( theUseCase, 150, 100, 50, 50 );
-		GraphNodeResizer theUseCaseResizer = new GraphNodeResizer( theUseCaseGraphNode, _context );
-		theUseCaseResizer.performResizing();
-		
+		if( theUseCase != null ) {
+			// The re-sizer will deal with width and height, hence just use 50,50 to start with
+			IRPGraphNode theUseCaseGraphNode = theDiagram.addNewNodeForElement( theUseCase, 150, 100, 50, 50 );
+			GraphNodeResizer theUseCaseResizer = new GraphNodeResizer( theUseCaseGraphNode, _context );
+			theUseCaseResizer.performResizing();
+		}
+
 		IRPCollection theGraphElsToComplete = _context.get_rhpApp().createNewCollection();
 		theGraphElsToComplete.addGraphicalItem( theFeatureGraphNode );
 		theDiagram.completeRelations( theGraphElsToComplete, 1 );

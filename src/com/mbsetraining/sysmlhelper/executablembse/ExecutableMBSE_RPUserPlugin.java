@@ -34,6 +34,7 @@ import com.mbsetraining.sysmlhelper.doorsng.SynchronizeLinksToDiagram;
 import com.mbsetraining.sysmlhelper.doorsng.UpdateSurrogateRequirementsPanel;
 import com.mbsetraining.sysmlhelper.eventdeletor.EventDeletor;
 import com.mbsetraining.sysmlhelper.executablescenariopackage.CreateFunctionalExecutablePackagePanel;
+import com.mbsetraining.sysmlhelper.featurefunctionpkgcreator.CreateFeaturePkgPanel;
 import com.mbsetraining.sysmlhelper.featurefunctionpkgcreator.FeatureFunctionPkgCreator;
 import com.mbsetraining.sysmlhelper.gateway.CreateGatewayProjectPanel;
 import com.mbsetraining.sysmlhelper.gateway.MarkedAsDeletedPanel;
@@ -790,6 +791,11 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 							"_SubsystemPkg" );
 					
 					theMover.performMoveIfConfirmed();
+					
+				} else if( menuItem.equals( _settings.getString( 
+						"executablembseplugin.CreateFeaturePackageStructureMenu" ) ) ){
+					
+					CreateFeaturePkgPanel.launchTheDialog( theAppID );
 					
 				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.CreateFeatureFunctionPkg" ) ) ){

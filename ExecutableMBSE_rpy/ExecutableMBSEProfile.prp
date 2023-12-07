@@ -65,6 +65,9 @@ Subject ExecutableMBSEProfile
 		Property RequirementNameLengthMax Int "38"
 	end
 	Metaclass FunctionalAnalysis
+		Property DefaultFeaturePackageName String "FeatureA"
+		Property DefaultFeaturePackagePostfix String "_FeaturePkg"
+		Property StereotypeNamesForFeaturePkg String "Tier0"
 		Property TraceabilityTypeToUseForFunctions String "satisfy"
 		Property StereotypesForBlockCreation String "Component,Actuator,Sensor"
 		Property IsConvertToDetailedADOptionEnabled Bool "False"

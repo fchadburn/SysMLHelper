@@ -144,6 +144,8 @@ public class ExecutableMBSE_Context extends BaseContext {
 	protected String _defaultActorPackagePostfix;
 	protected String _defaultRequirementPackageName;
 	protected String _defaultRequirementPackagePostfix;
+	protected String _defaultFeaturePackageName;
+	protected String _defaultFeaturePackagePostfix;
 	
 	protected String _nonVisibleWhiteSpaceCharsRegEx;
 
@@ -323,6 +325,16 @@ public class ExecutableMBSE_Context extends BaseContext {
 	}
 	
 	// Allow user to change in session
+	public List<String> getStereotypeNamesForFeaturePkg(){
+
+		List<String> theStereotypeNames = getListFromCommaSeparatedString(
+				_rhpPrj, 
+				"ExecutableMBSEProfile.FunctionalAnalysis.StereotypeNamesForFeaturePkg" );	
+
+		return theStereotypeNames;
+	}
+	
+	// Allow user to change in session
 	public List<String> getStereotypeNamesForRequirementsPkgFromActivityDiagrams(){
 
 		List<String> theStereotypeNames = getListFromCommaSeparatedString(
@@ -388,12 +400,34 @@ public class ExecutableMBSE_Context extends BaseContext {
 	// Generally single call per session, so use lazy load
 	public String getDefaultRequirementPackagePostfix(){
 
-		if( _defaultRequirementPackageName == null ){
-			_defaultRequirementPackageName = _rhpPrj.getPropertyValue(
+		if( _defaultRequirementPackagePostfix == null ){
+			_defaultRequirementPackagePostfix = _rhpPrj.getPropertyValue(
 					"ExecutableMBSEProfile.RequirementsAnalysis.DefaultRequirementPackagePostfix" );
 		}
 
-		return _defaultRequirementPackageName;
+		return _defaultRequirementPackagePostfix;
+	}
+	
+	// Generally single call per session, so use lazy load
+	public String getDefaultFeaturePackageName(){
+
+		if( _defaultFeaturePackageName == null ){
+			_defaultFeaturePackageName = _rhpPrj.getPropertyValue(
+					"ExecutableMBSEProfile.FunctionalAnalysis.DefaultFeaturePackageName" );
+		}
+
+		return _defaultFeaturePackageName;
+	}
+
+	// Generally single call per session, so use lazy load
+	public String getDefaultFeaturePackagePostfix(){
+
+		if( _defaultFeaturePackagePostfix == null ){
+			_defaultFeaturePackagePostfix = _rhpPrj.getPropertyValue(
+					"ExecutableMBSEProfile.FunctionalAnalysis.DefaultFeaturePackagePostfix" );
+		}
+
+		return _defaultFeaturePackagePostfix;
 	}
 
 	// Multiple calls per session, so use lazy load
