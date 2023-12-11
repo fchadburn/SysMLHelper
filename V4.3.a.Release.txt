@@ -1023,7 +1023,8 @@ V4.3.Release (13-NOV-2023):
 
 V4.3.a.PreRelease (XX-XXX-XXXX):
 0789 15-NOV-2023: ExecutableMBSE: Allow System Blocks to own Flow Connectors to open up options for direct connectors between flow ports in different subsystems (F.J.Chadburn)
-0790 07-DEC-2023: ExecutableMNSE: First implementation of Create Feature Package Structure... menu (F.J.Chadburn)
+0790 07-DEC-2023: ExecutableMBSE: First implementation of Create Feature Package Structure... menu (F.J.Chadburn)
+0791 11-DEC-2023: ExecutableMBSE: First implementation of Index Diagram to assist with easing model navigation (F.J.Chadburn) 
 
 Backlog/Known issues
 - Get helper to automatically move use case/feature/function packages under A.B.C.D architecture package, if present
@@ -1046,14 +1047,11 @@ Backlog/Known issues
 - Add a UML package new term
 - Work out a way of getting a hyperlink icon on a use case to go to activity diagram
 - For Requirement filter if Note is anchored to element then requirement doesn't filter out stays on diagram, is there a way to improve this
-- Does it make sense for ports to be shown in function flow
 - Select a set of function usages and roll them into a function block
 - Get profile to say UML/SysML Element rather than just SysML Element etc
 - Could get autonaming of packages to help with naming post-fix convention
 - Why does FlowConnector stereotype show in certain models?
-- Get populate to populate logic and connectors if parts are populated that link to them.
 - hep file applicable tos need looking at where they have lower case base type
-- Want a new type of a block for flowing element to be defined
 - Review other prefixes such as panel and table diagram to ensure helper and defaults are aligned to lower-case
 - Maybe get metamodel to handle InitialLayoutForTables property writing
 - If owner of requirement has a Tier 3 function block then dress down the Tier3 stereotype at same time as requirement creation
@@ -1105,7 +1103,6 @@ Backlog/Known issues
 - Hide TriggeredOperations/Constructor/Destructor perhaps?
 - Move projects into separate root folders for cleanliness of plug-and-play
 - Get the auto-generate ports/interfaces for connector to determine if there is a subsystem interfaces package in the model for events etc?
-- Incorporate short-hand names with subsystems into a table and use with auto interface and port creation, if present
 - Add a decent ICD-like table for showing messages carried on Interface Blocks with direction etc
 - Do you need to generate menus with a version later than V8.3.1 to ensure compatibility?
 - Ensure that hep file allows for right-click of System Block, System Usage etc for some of the general features.

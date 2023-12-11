@@ -25,7 +25,7 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">2.13.2023::14:34:47</_modifiedTime>
+			<_modifiedTime type="a">12.11.2023::15:33:11</_modifiedTime>
 			<_lastID type="a">101</_lastID>
 			<_defaultComposite type="s">GUID 17d534c9-e8e2-45c6-8b29-5c81cb4d7dea</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -627,7 +627,7 @@
 					<_hid type="a">GUID 1d3f0615-de20-4854-a1f2-ad1311dfe7d6</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">10.28.2022::14:51:45</_modifiedTime>
+			<_modifiedTime type="a">12.11.2023::15:33:11</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -649,6 +649,7 @@
 				<value>GUID e83041fd-77db-4e31-a8f2-744e5dfdfa06</value>
 				<value>GUID aa00b833-a459-48a2-bc2f-271e1832844f</value>
 				<value>GUID 5ed98bc0-c9f4-40cb-9639-9a6417fece4a</value>
+				<value>GUID 72897493-a5dc-4a6a-bcd5-2f1f159b1112</value>
 			</AggregatesList>
 		</IClass>
 		<IDiagram type="e">
@@ -4064,6 +4065,28 @@
 				<IClassifierHandle type="e">
 					<_hm2Class type="a">IClass</_hm2Class>
 					<_hid type="a">GUID dd7cf341-d14c-481b-bd85-866a309a08bd</_hid>
+				</IClassifierHandle>
+			</_otherClass>
+			<_inverse type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_inverse>
+			<_linkType type="a">Composition</_linkType>
+			<_navigability type="a">Navigable</_navigability>
+		</IAssociationEnd>
+		<IAssociationEnd type="e">
+			<_id type="a">GUID 72897493-a5dc-4a6a-bcd5-2f1f159b1112</_id>
+			<_myState type="a">10240</_myState>
+			<_name type="a">itsIndexDiagram</_name>
+			<_modifiedTime type="a">12.11.2023::15:33:11</_modifiedTime>
+			<_multiplicity type="a">1</_multiplicity>
+			<_otherClass type="r">
+				<IClassifierHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hfilename type="a">.\ExecutableMBSEProfile_MetaModelPkg.sbsx</_hfilename>
+					<_hsubsystem type="a">ExecutableMBSEProfile_MetaModelPkg</_hsubsystem>
+					<_hname type="a">IndexDiagram</_hname>
+					<_hid type="a">GUID 7c6efae3-cf6f-42bc-ae3e-06a7e9d333cb</_hid>
 				</IClassifierHandle>
 			</_otherClass>
 			<_inverse type="r">
