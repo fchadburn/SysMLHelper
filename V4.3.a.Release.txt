@@ -1024,7 +1024,8 @@ V4.3.Release (13-NOV-2023):
 V4.3.a.PreRelease (XX-XXX-XXXX):
 0789 15-NOV-2023: ExecutableMBSE: Allow System Blocks to own Flow Connectors to open up options for direct connectors between flow ports in different subsystems (F.J.Chadburn)
 0790 07-DEC-2023: ExecutableMBSE: First implementation of Create Feature Package Structure... menu (F.J.Chadburn)
-0791 11-DEC-2023: ExecutableMBSE: First implementation of Index Diagram to assist with easing model navigation (F.J.Chadburn) 
+0791 11-DEC-2023: ExecutableMBSE: First implementation of Index Diagram to assist with easing model navigation (F.J.Chadburn)
+0792 11-DEC-2023: ExecutableMBSE: Update hep file so that general helpers like straightening lines work on new index diagram (F.J.Chadburn)
 
 Backlog/Known issues
 - Get helper to automatically move use case/feature/function packages under A.B.C.D architecture package, if present
