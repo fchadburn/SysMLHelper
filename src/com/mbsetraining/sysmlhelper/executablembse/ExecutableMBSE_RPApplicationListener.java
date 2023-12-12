@@ -254,6 +254,13 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 						(IRPTableView) modelElement,
 						false );
 
+			} else if( theUserDefinedMetaClass.equals( _context.ACTORS_TO_USE_CASES_TABLE )){
+
+				setScopeOfTableToOwningPackageIfOwnerIs( 
+						new String[]{ _context.REQTS_ANALYSIS_ACTOR_PACKAGE }, 
+						(IRPTableView) modelElement,
+						false );
+				
 			} else if( theUserDefinedMetaClass.equals( _context.REQUIREMENT_TO_ACTION_TABLE ) ) {
 
 				afterAddNewRequirementToActionTable( (IRPTableView) modelElement );

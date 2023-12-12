@@ -60,6 +60,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String REQUIREMENT_TO_ACTION_TABLE = "Table View - Requirement To Action";
 	public final String CONTEXT_DIAGRAM_FLOWS_TABLE = "Table View - Context Diagram Flows";
 	public final String SURROGATE_REMOTE_REQUIREMENT_TRACEABILITY_REPORT = "Table View - Surrogate Remote Requirement Traceability Report";
+	public final String ACTORS_TO_USE_CASES_TABLE = "Table View - Actors To Use Cases";
 	public final String REQTS_ANALYSIS_CONTEXT_DIAGRAM_PACKAGE = "10 Context Package";
 	public final String REQTS_ANALYSIS_ACTOR_PACKAGE = "11 Actor Package";
 	public final String REQTS_ANALYSIS_USE_CASE_PACKAGE = "12 Use Case Package";
