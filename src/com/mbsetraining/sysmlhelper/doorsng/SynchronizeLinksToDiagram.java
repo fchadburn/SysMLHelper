@@ -19,18 +19,6 @@ import com.telelogic.rhapsody.core.RhapsodyAppServer;
 
 public class SynchronizeLinksToDiagram {
 
-	private List<String> _baseDiagramMetaClasses = Arrays.asList(
-			"ObjectModelDiagram", 
-			"StructureDiagram", 
-			"UseCaseDiagram", 
-			"ActivityDiagramGE", 
-			"TimingDiagram", 
-			"SequenceDiagram",
-			"UseCaseDiagram",
-			"DeploymentDiagram",
-			"ComponentDiagram",
-			"CommunicationDiagram",
-			"PanelDiagram" );
 
 	protected ExecutableMBSE_Context _context;
 
@@ -76,7 +64,7 @@ public class SynchronizeLinksToDiagram {
 	public void synchronizeLinksToDiagram( 
 			Set<IRPModelElement> theSelectedEls ) {
 
-		List<IRPDiagram> theDiagrams = getDiagramsBasedOn( theSelectedEls );
+		List<IRPDiagram> theDiagrams = _context.getDiagramsBasedOn( theSelectedEls );
 
 		String msg = "This helper will synchronize links to remote requirements based on their presence on the diagram(s). \n";
 
@@ -155,39 +143,6 @@ public class SynchronizeLinksToDiagram {
 				}
 			}
 		}
-	}
-
-	private List<IRPDiagram> getDiagramsBasedOn( 
-			Set<IRPModelElement> theSelectedEls ){
-
-		Set<IRPDiagram> theDiagrams = new HashSet<>();
-
-		for( IRPModelElement theSelectedEl : theSelectedEls ){
-
-			if( theSelectedEl instanceof IRPDiagram ) {
-				theDiagrams.add( (IRPDiagram) theSelectedEl );
-			} else {
-
-				for( String baseMetaClass : _baseDiagramMetaClasses ){
-
-					@SuppressWarnings("unchecked")
-					List<IRPDiagram> theNestedEls = theSelectedEl.getNestedElementsByMetaClass( baseMetaClass, 1 ).toList();
-
-					for( IRPDiagram theNestedEl : theNestedEls ){
-												
-						IRPUnit theUnit = theNestedEl.getSaveUnit();
-						
-						// Only add is read/write, and not added by reference
-						if( theUnit.isReadOnly()==0 &&
-								theUnit.isReferenceUnit()==0 ) {
-							theDiagrams.add( theNestedEl );
-						}
-					}
-				}
-			}
-		}
-
-		return new ArrayList<>( theDiagrams );
 	}
 
 	private void determineMissingAndToBeDeletedLinksFor( 

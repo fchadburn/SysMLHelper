@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -28,6 +29,19 @@ public abstract class BaseContext {
 	private static final String UNUSED_PKG = "UnusedPkg";
 	private static final String NOT_USED_COMP = "NotUsedComp";
 	private static final String NOT_USED_CONFIG = "NotUsedConfig";
+
+	private List<String> _baseDiagramMetaClasses = Arrays.asList(
+			"ObjectModelDiagram", 
+			"StructureDiagram", 
+			"UseCaseDiagram", 
+			"ActivityDiagramGE", 
+			"TimingDiagram", 
+			"SequenceDiagram",
+			"UseCaseDiagram",
+			"DeploymentDiagram",
+			"ComponentDiagram",
+			"CommunicationDiagram",
+			"PanelDiagram" );
 
 	private String _pluginVersionProperty;
 	private String _userDefinedMetaClassesAsSeparateUnitProperty;
@@ -3078,9 +3092,9 @@ public abstract class BaseContext {
 			IRPModelElement toEl,
 			IRPStereotype withTheStereotype ){
 
-		//info( "Adding dependency to " + toEl.getName() + 
-		//		" (" + toEl.getUserDefinedMetaClass() + ") from " + fromEl.getName() + 
-		//		" with " + elInfo( withTheStereotype ) );
+		info( "getExistingOrAddNewDependency dependency to " + toEl.getName() + 
+				" (" + toEl.getUserDefinedMetaClass() + ") from " + fromEl.getName() + 
+				" with " + elInfo( withTheStereotype ) );
 
 		IRPDependency theDependency = getExistingDependency( fromEl, toEl );
 
@@ -3106,7 +3120,8 @@ public abstract class BaseContext {
 
 			for( IRPStereotype theExistingStereotype : theExistingStereotypes ){
 				if( theExistingStereotype.equals( withStereotype ) ){
-					isFound = false;
+					isFound = true;
+					break;
 				}
 			}
 
@@ -3611,6 +3626,39 @@ public abstract class BaseContext {
 		theName = capitalize( theName.replace( " ", "" ) );
 		
 		return theName;
+	}
+	
+	public List<IRPDiagram> getDiagramsBasedOn( 
+			Set<IRPModelElement> theSelectedEls ){
+
+		Set<IRPDiagram> theDiagrams = new HashSet<>();
+
+		for( IRPModelElement theSelectedEl : theSelectedEls ){
+
+			if( theSelectedEl instanceof IRPDiagram ) {
+				theDiagrams.add( (IRPDiagram) theSelectedEl );
+			} else {
+
+				for( String baseMetaClass : _baseDiagramMetaClasses ){
+
+					@SuppressWarnings("unchecked")
+					List<IRPDiagram> theNestedEls = theSelectedEl.getNestedElementsByMetaClass( baseMetaClass, 1 ).toList();
+
+					for( IRPDiagram theNestedEl : theNestedEls ){
+												
+						IRPUnit theUnit = theNestedEl.getSaveUnit();
+						
+						// Only add is read/write, and not added by reference
+						if( theUnit.isReadOnly()==0 &&
+								theUnit.isReferenceUnit()==0 ) {
+							theDiagrams.add( theNestedEl );
+						}
+					}
+				}
+			}
+		}
+
+		return new ArrayList<>( theDiagrams );
 	}
 }
 

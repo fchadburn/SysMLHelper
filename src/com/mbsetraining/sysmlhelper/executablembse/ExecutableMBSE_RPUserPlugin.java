@@ -23,11 +23,13 @@ import com.mbsetraining.sysmlhelper.createtestcase.TestCaseCreator;
 import com.mbsetraining.sysmlhelper.dependencyhelper.PopulateClassifiersOfParts;
 import com.mbsetraining.sysmlhelper.dependencyhelper.PopulateDependentElements;
 import com.mbsetraining.sysmlhelper.dependencyhelper.PopulateDependsOnElements;
+import com.mbsetraining.sysmlhelper.doorsng.AddOSLCDependencyLinksToPackage;
 import com.mbsetraining.sysmlhelper.doorsng.CleanUpDeadOSLCLinksPanel;
 import com.mbsetraining.sysmlhelper.doorsng.DeleteChildOSLCLinksPanel;
 import com.mbsetraining.sysmlhelper.doorsng.EstablishTraceRelationsToRemotes;
 import com.mbsetraining.sysmlhelper.doorsng.ExportRequirementsToCSV;
 import com.mbsetraining.sysmlhelper.doorsng.RepairLinks;
+import com.mbsetraining.sysmlhelper.doorsng.SwitchDNGRequirementsToRhapsody;
 import com.mbsetraining.sysmlhelper.doorsng.SwitchRhapsodyRequirementsToDNG;
 import com.mbsetraining.sysmlhelper.doorsng.SynchronizeLinksBasedOnSurrogate;
 import com.mbsetraining.sysmlhelper.doorsng.SynchronizeLinksToDiagram;
@@ -865,6 +867,24 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						"executablembseplugin.AllocateFunctionBlocksMenu" ) ) ){
 
 					FunctionAllocationPanel.launchThePanel( theAppID );
+
+				} else if( menuItem.equals( _settings.getString(
+						"executablembseplugin.AddTraceLinksToRequirementsPackageMenu" ) ) ){
+
+					Set<IRPModelElement> theCombinedSet = 
+							_context.getSetOfElementsFromCombiningThe(
+									theSelectedEls, theSelectedGraphEls );
+											
+					AddOSLCDependencyLinksToPackage theLinkCreator = new AddOSLCDependencyLinksToPackage( _context );
+					theLinkCreator.chooseAndAddOSLCLinksToPackageFor( theCombinedSet );
+					
+				} else if( menuItem.equals( _settings.getString(
+						"executablembseplugin.SwitchDOORSNGRequirementsToRhapsodyMenu" ) ) ){
+
+					if( theSelectedEl instanceof IRPPackage ) {
+						SwitchDNGRequirementsToRhapsody theSwitcher = new SwitchDNGRequirementsToRhapsody( _context );
+						theSwitcher.switchRequirementsFor( (IRPPackage) theSelectedEl );
+					}
 					
 				} else {
 					_context.warning( "Unhandled menu: " + _context.elInfo( theSelectedEl ) + " was invoked with menuItem='" + menuItem + "'");

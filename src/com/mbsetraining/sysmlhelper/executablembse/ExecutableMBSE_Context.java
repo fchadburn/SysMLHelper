@@ -187,6 +187,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	protected IRPStereotype _stereotypeForDerivation;
 	protected IRPStereotype _stereotypeForSatisfaction;
 	protected IRPStereotype _stereotypeForVerification;
+	protected IRPStereotype _stereotypeForRefinement;
 	protected IRPStereotype _stereotypeForTrace;
 	protected IRPStereotype _stereotypeForControlFlow;
 	protected IRPStereotype _stereotypeForAllocation;
@@ -210,7 +211,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		if( _stereotypeForControlFlow == null ){
 
-			_stereotypeForControlFlow = getExistingStereotype( "ControlFlow", _rhpPrj );;
+			_stereotypeForControlFlow = getExistingStereotype( "ControlFlow", _rhpPrj );
 		}
 
 		return _stereotypeForControlFlow;
@@ -221,7 +222,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		if( _stereotypeForDerivation == null ){
 
-			_stereotypeForDerivation = getExistingStereotype( "derive", _rhpPrj );;
+			_stereotypeForDerivation = getExistingStereotype( "derive", _rhpPrj );
 		}
 
 		return _stereotypeForDerivation;
@@ -232,7 +233,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		if( _stereotypeForSatisfaction == null ){
 
-			_stereotypeForSatisfaction = getExistingStereotype( "satisfy", _rhpPrj );;
+			_stereotypeForSatisfaction = getExistingStereotype( "satisfy", _rhpPrj );
 		}
 
 		return _stereotypeForSatisfaction;
@@ -243,18 +244,29 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		if( _stereotypeForVerification == null ){
 
-			_stereotypeForVerification = getExistingStereotype( "verify", _rhpPrj );;
+			_stereotypeForVerification = getExistingStereotype( "verify", _rhpPrj );
 		}
 
 		return _stereotypeForVerification;
 	}
 
+	// Generally single call per session, so use lazy load
+	public IRPStereotype getStereotypeForRefinement(){
+
+		if( _stereotypeForRefinement == null ){
+
+			_stereotypeForRefinement = getExistingStereotype( "refine", _rhpPrj );
+		}
+
+		return _stereotypeForRefinement;
+	}
+	
 	// use lazy load
 	public IRPStereotype getStereotypeForTrace(){
 
 		if( _stereotypeForTrace == null ){
 
-			_stereotypeForTrace = getExistingStereotype( "trace", _rhpPrj );;
+			_stereotypeForTrace = getExistingStereotype( "trace", _rhpPrj );
 		}
 
 		return _stereotypeForTrace;
@@ -265,7 +277,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		if( _stereotypeForAllocation == null ){
 
-			_stereotypeForAllocation = getExistingStereotype( "allocate", _rhpPrj );;
+			_stereotypeForAllocation = getExistingStereotype( "allocate", _rhpPrj );
 		}
 
 		return _stereotypeForAllocation;
@@ -1899,8 +1911,6 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		return new ArrayList<>( theMatches );
 	}
-	
-	
 	
 	public boolean isRequirementSpecificationMatchingFor(
 			IRPRequirement theReqt,

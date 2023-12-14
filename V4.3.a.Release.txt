@@ -1028,8 +1028,12 @@ V4.3.a.PreRelease (XX-XXX-XXXX):
 0792 11-DEC-2023: ExecutableMBSE: Update hep file so that general helpers like straightening lines work on new index diagram (F.J.Chadburn)
 0793 12-DEC-2023: ExecutableMBSE: Added new Actors to Use Cases table for Actor packages (F.J.Chadburn)
 0794 12-DEC-2023: ExecutableMBSE: Renamed Index Diagram to Package Diagram - Index to align a little closer to SysML terminology (F.J.Chadburn)
+0795 14-DEC-2023: ExecutableMBSE: Added diagram menu to add trace links to requirements package prior to switching master from DOORS NG to local surrogates (F.J.Chadburn)
+0796 14-DEC-2023: ExecutableMBSE: Added requirement package menu to switch master from DOORS NG to local surrogates on diagrams (based on trace link) (F.J.Chadburn)
+0797 14-DEC-2023: ExecutableMBSE: Tweak to improve ordering in the context diagram menu, flows now at top as most commonly used (F.J.Chadburn)
 
 Backlog/Known issues
+- Add right-click menu on diagram to close and reopen to refresh it after logging into requirements remote package 
 - Get helper to automatically move use case/feature/function packages under A.B.C.D architecture package, if present
 - Make sure requirements created on activity diagrams under functions move to same place as if have requirement diagram
 - Add populate menu for contained requirements
@@ -1037,7 +1041,6 @@ Backlog/Known issues
 - Get the allocation wizard to present subsystems which are nested under other subsystems
 - Decision usage ports appear on wrong side when you populate on diagram
 - Get double-click diagram opener to put ibds ahread of bdds
-- Improve ordering in the context diagram menu
 - Links/connector not getting created with correct metaclass between subsystems?
 - Get Return key to act as OK on dialogs.
 - When you double click in populate parts tree get it to highlight the element on the diagram
