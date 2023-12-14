@@ -1021,7 +1021,7 @@ V4.3.Release (13-NOV-2023):
 0787 13-NOV-2023: ExecutableMBSE: Changed title of use case package structure dialog to 'Create' rather than 'Populate' to align with right-click menu name (F.J.Chadburn)
 0788 13-NOV-2023: ExecutableMBSE: Added PracticalMBSE-BookI-InsulinPump-ModuleA-UseCaseStructure-V2023-11-10-1123.pdf labs, to help with user ramp ups (F.J.Chadburn)
 
-V4.3.a.PreRelease (XX-XXX-XXXX):
+V4.3.a.PreRelease (14-DEC-2023):
 0789 15-NOV-2023: ExecutableMBSE: Allow System Blocks to own Flow Connectors to open up options for direct connectors between flow ports in different subsystems (F.J.Chadburn)
 0790 07-DEC-2023: ExecutableMBSE: First implementation of Create Feature Package Structure... menu (F.J.Chadburn)
 0791 11-DEC-2023: ExecutableMBSE: First implementation of Index Diagram to assist with easing model navigation (F.J.Chadburn)
@@ -1049,7 +1049,6 @@ Backlog/Known issues
 - Add checks to minimise risk that functions are not used.
 - Consider simplifying connector drawing so that it doesn't matter which way function connectors go, e.g., get plugin to handle the reverse if direction
 - Tailoring how to get DOORS NG attributes as tags
-- Switch requirement master the other way, e.g., making remote requirements become local requirements!
 - Add a UML package new term
 - Work out a way of getting a hyperlink icon on a use case to go to activity diagram
 - For Requirement filter if Note is anchored to element then requirement doesn't filter out stays on diagram, is there a way to improve this
