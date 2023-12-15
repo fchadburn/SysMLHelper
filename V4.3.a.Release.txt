@@ -1032,9 +1032,9 @@ V4.3.a.PreRelease (14-DEC-2023):
 0796 14-DEC-2023: ExecutableMBSE: Added requirement package menu to switch master from DOORS NG to local surrogates on diagrams (based on trace link) (F.J.Chadburn)
 0797 14-DEC-2023: ExecutableMBSE: Tweak to improve ordering in the context diagram menu, flows now at top as most commonly used (F.J.Chadburn)
 0798 15-DEC-2023: ExecutableMBSE: Turned off Internal display of flow ports on function usages to give a more natural natural/flexible default (F.J.Chadburn)
+0799 15-DEC-2023: ExecutableMBSE: Add AllocatedTo to the Compartments property for function usages so it appears by default when toggle to specification view on ibds (F.J.Chadburn)
 
 Backlog/Known issues
-- Add Allocate to compartments to the function usages on flow diagram
 - Can you add Function Usages to the Context Diagram
 - When you draw flow connector it is not popping up with the event dialog
 - Desire to draw functions for actors to make it more like Arcadia

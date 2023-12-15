@@ -364,7 +364,7 @@ Subject ObjectModelGe
 		Property ShowPortsInterfaces Bool "False"
 		Property PortsSingleLabelLayout Enum "Off,Internal,External" "Off"
 		Property MultilineNameCompartment Bool "False"
-		Property Compartments MultiLine ""
+		Property Compartments MultiLine "AllocatedTo"
 		Property ShowInheritedAttributes Bool "False"
 		Property ShowInheritedOperations Bool "False"
 		Property ShowRedefinesLabel Bool "True"
