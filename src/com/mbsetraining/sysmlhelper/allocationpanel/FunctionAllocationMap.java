@@ -17,7 +17,7 @@ public class FunctionAllocationMap extends HashMap<IRPInstance, FunctionAllocati
 					"Final Usage", 
 					"Flow Final Usage", 
 					"Time Event Usage", 
-					"Data Object", 
+					"Item Usage", 
 					"Accept Event Usage", 
 					"Parallel Gateway Usage", 
 					"Decision Usage" );

@@ -80,11 +80,11 @@ public class FunctionAllocationInfo {
 			public void mouseClicked(MouseEvent e) {
 
 				if( !_currentAllocatedUsages.isEmpty() ) {
-					
+
 					for( IRPInstance currentAllocatedUsage : _currentAllocatedUsages ) {
 						currentAllocatedUsage.highLightElement();
 					}
-					
+
 				} else {
 					_usageToAllocate.highLightElement();
 				}
@@ -127,13 +127,13 @@ public class FunctionAllocationInfo {
 			boolean isSetInitialValue ) {
 
 		_context.debug( "updateAssessmentOfAllocations invoked for " + _context.elInfo( _usageToAllocate ) );
-		
+
 		_invalidAllocatedUsages.clear();
 		_validAllocatedUsages.clear();
-		
+
 		_invalidAllocationDependencies.clear();
 		_validAllocationDependencies.clear();
-		
+
 		List<IRPModelElement> allocationDependencyEls = _context.
 				findElementsWithMetaClassAndStereotype( "Dependency", "Allocation", _usageToAllocate, 0 );
 
@@ -161,7 +161,7 @@ public class FunctionAllocationInfo {
 
 						if( isSetInitialValue ) {
 							_allocationChoicesComboBox.setSelectedRhapsodyItem( theOwner );
-							
+
 							if( !_currentAllocatedUsages.contains( theInstance ) ) {
 								_currentAllocatedUsages.add( theInstance );
 							} else {
@@ -169,7 +169,7 @@ public class FunctionAllocationInfo {
 										" already contains " + _context.elInfo( theInstance) + " hence not adding again" );
 							}
 						}
-						
+
 						IRPModelElement theChosenEl = _allocationChoicesComboBox.getSelectedRhapsodyItem();
 
 						if( theChosenEl == null || 
@@ -200,17 +200,17 @@ public class FunctionAllocationInfo {
 
 					_context.debug( "Existing allocation dependency valid from " + _context.elInfo( _usageToAllocate ) + " to " + _context.elInfo( theDependsOn ) );
 					_validAllocationDependencies.add( theDependency );
-					
+
 					if( isSetInitialValue ) {
 						_allocationChoicesComboBox.setSelectedRhapsodyItem( theDependsOn );
 					}	
-					
+
 				} else {
-					
+
 					IRPModelElement theChosenEl = _allocationChoicesComboBox.getSelectedRhapsodyItem();
 
 					if( theChosenEl == null || !theChosenEl.equals( theDependsOn ) ) {
-						
+
 						_context.debug( "Existing allocation dependency invalid from " + _context.elInfo( _usageToAllocate ) + " to " + _context.elInfo( theDependsOn ) );
 						_invalidAllocationDependencies.add( theDependency );
 					} else {
@@ -222,14 +222,14 @@ public class FunctionAllocationInfo {
 						_allocationChoicesComboBox.setSelectedRhapsodyItem( theDependsOn );
 					}			
 				}
-						
+
 
 			} else {
 				_context.debug( "Ignoring existing Allocation dependency found from  " + _context.elInfo( _usageToAllocate ) + " to " + 
 						_context.elInfo( theDependsOn ) + " as not in scope of current system selection" );
 			}
 		}
-		
+
 
 		for( IRPInstance currentAllocationUsage : _currentAllocatedUsages ){
 
@@ -266,12 +266,12 @@ public class FunctionAllocationInfo {
 			IRPInstance theUsageToAllocate ){
 
 		//_context.info( "getUsagesInSystemScopeFor invoked for " + _context.elInfo( theUsageToAllocate ) );
-		
+
 		List<IRPInstance> theInstances = new ArrayList<>();
 
 		if( theUsageToAllocate.isTypelessObject() == 1 ){
-			
-			
+
+
 		} else {
 			// Check for usages with same class if the usage is not typeless, e.g., a function block
 
@@ -294,13 +294,13 @@ public class FunctionAllocationInfo {
 
 						//_context.info( _context.elInfo( theReference ) + " owned by " + theReference.getOwner() + 
 						//		" is a reference for " + _context.elInfo( _usageToAllocate ) );
-						
+
 						theInstances.add( theInstance );				
 					}
 				}
 			}
 		}
-		
+
 		return theInstances;
 	}
 
@@ -370,28 +370,21 @@ public class FunctionAllocationInfo {
 
 				IRPClassifier allocatedSubsystem = (IRPClassifier) theChosenEl;
 
-				IRPInstance thePart;
+				// Clone the element so that the ports it owns are also transferred, if they exist, if it's typeless
+				// This also solves issue with difficulty setting type of part of an actor
+				String theUniqueName = _context.determineUniqueNameBasedOn( 
+						_usageToAllocate.getName(), 
+						"Instance", 
+						allocatedSubsystem );
 
-				if( _usageToAllocate.isTypelessObject() == 1 ) {
+				IRPInstance thePart = (IRPInstance) _usageToAllocate.clone( theUniqueName, allocatedSubsystem );
 
-					// Clone the element so that the ports it owns are also transferred, if they exist
-					String theUniqueName = _context.determineUniqueNameBasedOn( 
-							_usageToAllocate.getName(), 
-							"Instance", 
-							allocatedSubsystem );
+				// Remove any dependency relations, incl. allocations to itself
+				@SuppressWarnings("unchecked")
+				List<IRPModelElement> theDependencies = thePart.getDependencies().toList();
 
-					thePart = (IRPInstance) _usageToAllocate.clone( theUniqueName, allocatedSubsystem );
+				_context.deleteAllFromModel( theDependencies );
 
-				} else {
-					thePart = (IRPInstance) allocatedSubsystem.addNewAggr( "Part", "" ); 
-					thePart.setOtherClass( _usageToAllocate.getOtherClass() );
-					IRPStereotype theStereotype = _usageToAllocate.getNewTermStereotype();
-
-					if( theStereotype != null ) {						
-						thePart.setStereotype( theStereotype );
-					}
-				}
-				
 				_context.info( "Created " + _context.elInfo( thePart ) + " under " + _context.elInfo( allocatedSubsystem ) );
 
 				cleanUpPreviousAllocationsIfNeeded();
@@ -409,7 +402,7 @@ public class FunctionAllocationInfo {
 							theChosenEl, 
 							_context.getStereotypeForAllocation() );	
 				}
-				
+
 				_validAllocatedUsages.add( thePart );
 			}
 

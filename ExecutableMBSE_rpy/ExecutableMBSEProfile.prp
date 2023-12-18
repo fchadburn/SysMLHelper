@@ -309,7 +309,7 @@ Subject ObjectModelGe
 		Property ShowStereotypeOfClass Bool "True"
 		Property ShowName Enum  "Full_path,Relative,Name_only,Type,Label" "Type"
 		Property ShowType Bool "True"
-		Property ShowPorts Bool "False"
+		Property ShowPorts Bool "True"
 		Property ShowPortsInterfaces Bool "False"
 		Property PortsSingleLabelLayout Enum "Off,Internal,External" "Off"
 		Property MultilineNameCompartment Bool "False"
@@ -583,7 +583,7 @@ Subject ObjectModelGe
 		Property ShowRedefinesLabel Bool "True"
 		Property QuickNavigationCategories String "MainBehavior,MainDiagram,Hyperlinks,Diagrams"
 	end
-	Metaclass DataObject
+	Metaclass ItemUsage
 		Property ShowAttributes Enum "All,None,Public,Explicit" "None"
 		Property ShowOperations Enum "All,None,Public,Explicit" "None"
 		Property ShowStereotype Enum "Label,Bitmap,None" "Label"

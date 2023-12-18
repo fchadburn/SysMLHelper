@@ -1033,8 +1033,13 @@ V4.3.a.PreRelease (14-DEC-2023):
 0797 14-DEC-2023: ExecutableMBSE: Tweak to improve ordering in the context diagram menu, flows now at top as most commonly used (F.J.Chadburn)
 0798 15-DEC-2023: ExecutableMBSE: Turned off Internal display of flow ports on function usages to give a more natural natural/flexible default (F.J.Chadburn)
 0799 15-DEC-2023: ExecutableMBSE: Add AllocatedTo to the Compartments property for function usages so it appears by default when toggle to specification view on ibds (F.J.Chadburn)
+0800 18-DEC-2023: ExecutableMBSE: Add ability for actors to be owned by system blocks so its possible to allocate functions they perform in a scenario (F.J.Chadburn)
+0801 18-DEC-2023: ExecutableMBSE: Renamed function flow elements of Data Object to Item Usage to make more consistent, also aligns better with SysML 2 terminology (F.J.Chadburn)
 
 Backlog/Known issues
+- API doesn't want to allow me to create a subsystem/function connector on an actor, hence currently a warning is given to say do this manually after function allocation
+- Double click a use case to follow dependency to feature and offer to open its feature bdd or ibd
+- If user chooses in populate parts helper not to populate logic, then skip creation of connectors between internals
 - Can you add Function Usages to the Context Diagram
 - When you draw flow connector it is not popping up with the event dialog
 - Desire to draw functions for actors to make it more like Arcadia

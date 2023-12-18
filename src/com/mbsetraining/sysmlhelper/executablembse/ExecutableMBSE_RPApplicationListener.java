@@ -27,6 +27,7 @@ import com.telelogic.rhapsody.core.*;
 
 public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener {
 
+	// For testing
 	public static void main(String[] args) {
 		String appID = RhapsodyAppServer.getActiveRhapsodyApplication().getApplicationConnectionString();
 
@@ -38,27 +39,6 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		IRPModelElement theSelectedEl = theContext.getSelectedElement( false );
 
 		theListener.afterAddElement( theSelectedEl );
-
-		/*
-		if( theSelectedEl instanceof IRPDiagram ) {
-
-			IRPDiagram theDiagram = (IRPDiagram)theSelectedEl;
-
-			// 4,32,32,204,32,204,998,32,998
-			IRPGraphNode theNoteNode =
-					theDiagram.addNewNodeByType( 
-							"Note", 62, 62, 172, 966 );
-
-			theNoteNode.setGraphicalProperty( 
-					"TextDisplayMode",
-					"Specification" );
-
-			theNoteNode.setGraphicalProperty(
-					"Text",
-					"Hello" );		
-		}
-
-		theListener.onDoubleClick(theSelectedEl);*/
 	}
 
 	private ExecutableMBSE_Context _context;
@@ -1762,6 +1742,14 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				// Allow to work for subsystem => subsystem or actor (object) => system or 
 				// system => actor (object)
 			} else if( ( fromUserDefinedMetaClass.equals( 
+					_context.ACTOR_USAGE ) &&
+					toUserDefinedMetaClass.equals( 
+							_context.SUBSYSTEM_USAGE ) ) ||
+					( fromUserDefinedMetaClass.equals( 
+					_context.SUBSYSTEM_USAGE ) &&
+					toUserDefinedMetaClass.equals( 
+							_context.ACTOR_USAGE ) ) ||
+					( fromUserDefinedMetaClass.equals( 
 					_context.SUBSYSTEM_USAGE ) &&
 					toUserDefinedMetaClass.equals( 
 							_context.SUBSYSTEM_USAGE ) ) ||

@@ -138,7 +138,7 @@ public class FlowConnectorInfo {
 							_context.error( "Exception creating link, e=" + e.getMessage() );
 						}
 					}
-					
+
 				} else {
 
 					buildConnectorsViaProxyPortBridge( fromInstance, toInstance );
@@ -147,7 +147,7 @@ public class FlowConnectorInfo {
 				_context.info( "...end performMapping" ); 
 			}
 
-			dumpInfo();
+			//dumpInfo();
 		}
 
 		return isMappable;
@@ -156,37 +156,37 @@ public class FlowConnectorInfo {
 	private List<IRPInstance> getOwningSubsystemUsagesFor(
 			IRPInstance theFunctionUsage,
 			IRPClassifier underSystemClassifier ){
-		
+
 		List<IRPInstance> theOwningSubsystemUsages = new ArrayList<>();
 		//_context.info( "theFunctionUsage = " + _context.elInfo( theFunctionUsage ) );
 
 		IRPModelElement theFunctionUsageOwner = theFunctionUsage.getOwner();
 		//_context.info( "theFunctionUsageOwner = " + _context.elInfo( theFunctionUsageOwner ) );
-		
+
 		@SuppressWarnings("unchecked")
 		List<IRPModelElement> theCandidateEls = underSystemClassifier.getNestedElementsByMetaClass( "Object", 0 ).toList();
-		
+
 		for( IRPModelElement theCandidateEl : theCandidateEls) {
-			
+
 			IRPInstance theInstance = (IRPInstance)theCandidateEl;
 			//_context.info( "theInstance = " + _context.elInfo( theInstance ) );
 
 			if( theInstance.isTypelessObject() == 0 ) {
 				IRPClassifier theClassifier = theInstance.getOtherClass();
-				
+
 				if( theClassifier.equals( theFunctionUsageOwner ) ) {
 					theOwningSubsystemUsages.add( theInstance );
 				}
 			}
 		}
-		
+
 		if( theOwningSubsystemUsages.isEmpty() ) {
-			
+
 			_context.error("getOwningSubsystemUsagesFor was unable to find any subsystems owning " + 
 					_context.elInfo( theFunctionUsage ) + " under " + _context.elInfo ( underSystemClassifier ));
-			
+
 		} else if( theOwningSubsystemUsages.size() > 1 ) {
-			
+
 			_context.warning("getOwningSubsystemUsagesFor found " + theOwningSubsystemUsages.size() + " usages " + 
 					_context.elInfo( theFunctionUsage ) + " under " + _context.elInfo ( underSystemClassifier ) + 
 					" when expecting 1" );
@@ -195,19 +195,19 @@ public class FlowConnectorInfo {
 					_context.elInfo( theFunctionUsage ) + " is used by " + _context.elInfo( theOwningSubsystemUsages.get(0) ) + 
 					" under " + _context.elInfo ( underSystemClassifier ) );
 		}
-		
+
 		return theOwningSubsystemUsages;
 	}
-	
+
 	private void buildConnectorsViaProxyPortBridge(
 			IRPInstance fromInstance, 
 			IRPInstance toInstance) {
-		
+
 		IRPModelElement fromOwner = fromInstance.getOwner();
-		_context.info( "fromOwner = " + _context.elInfo( fromOwner ) );
-		
+		_context.debug( "fromOwner = " + _context.elInfo( fromOwner ) );
+
 		IRPModelElement toOwner = toInstance.getOwner();
-		_context.info( "toOwner = " + _context.elInfo( toOwner ) );
+		_context.debug( "toOwner = " + _context.elInfo( toOwner ) );
 
 		if( fromOwner instanceof IRPClassifier && 
 				toOwner instanceof IRPClassifier ) {
@@ -219,7 +219,7 @@ public class FlowConnectorInfo {
 
 			if( theLinks.isEmpty() ) {
 
-				_context.info( "New link needed between");
+				_context.info( "New link needed between " + _context.elInfo( fromOwner ) + " and " + _context.elInfo( toOwner ) );
 
 				String toName = _context.getPortAppropriateNameFor( toOwner );
 				String fromName = _context.getPortAppropriateNameFor( fromOwner );
@@ -237,9 +237,9 @@ public class FlowConnectorInfo {
 
 				if( fromSubsystemInstances.size()==1 &&
 						fromSubsystemInstances.size()==1 ){
-					
+
 					IRPLink theLink = createConnector( fromSubsystemInstances.get( 0 ), toSubsystemInstances.get( 0 ), fromPort, toPort );
-					
+
 					theLinks.add( theLink );
 				}
 			}
@@ -266,10 +266,7 @@ public class FlowConnectorInfo {
 				}
 
 			} else {
-
 				_context.info( theLinks.size() + " links were found between  " + _context.elInfo( fromOwner ) + " and " + _context.elInfo( toOwner ) );
-
-
 			}
 		}
 	}
@@ -277,14 +274,14 @@ public class FlowConnectorInfo {
 	private IRPClass getExistingOrCreateNewInterfaceBlock(
 			String withName,
 			IRPPackage theOwningPkg ) {
-		
+
 		IRPClass theInterfaceBlock = (IRPClass) theOwningPkg.findNestedElementRecursive( withName, "Class" );
 
 		if( theInterfaceBlock == null ) {
 			theInterfaceBlock = theOwningPkg.addClass( withName );
 			theInterfaceBlock.changeTo( "InterfaceBlock" );
 		}
-		
+
 		return theInterfaceBlock;
 	}
 
@@ -293,22 +290,22 @@ public class FlowConnectorInfo {
 			IRPModelElement fromOwner, 
 			IRPClass theInterfaceBlock,
 			boolean isConjugated ){
-		
+
 		IRPPort thePort = (IRPPort) fromOwner.findNestedElement( withName, "Port" );
-		
+
 		if( thePort == null ) {
-			
+
 			thePort = (IRPPort) fromOwner.addNewAggr( "Port", withName );
-			
+
 			//_context.debug( "Created fromPort as " + _context.elInfo( fromPort ) );
 			thePort.changeTo( "ProxyPort" );
 			thePort.setOtherClass( theInterfaceBlock );
-			
+
 			if( isConjugated ) {
 				thePort.setIsReversed( 1 );
 			}
 		}
-		
+
 		return thePort;
 	}
 
@@ -317,26 +314,30 @@ public class FlowConnectorInfo {
 			IRPInstance toInstance, 
 			IRPPort fromPort, 
 			IRPPort toPort ){
-		
+
 		IRPLink theLink = null;
-		
+
 		IRPClass theOwningClass = (IRPClass) fromInstance.getOwner();
-		
-		_context.info( "createConnector invoked for: ");
-		_context.info( "theOwningClass = " + _context.elInfo( theOwningClass ) );
-		_context.info( "fromInstance = " + _context.elInfo( fromInstance ) + " owned by " + _context.elInfo( fromInstance.getOwner() ) );
-		_context.info( "toInstance = " + _context.elInfo( toInstance ) + " owned by " + _context.elInfo( toInstance.getOwner() ) );
-		_context.info( "fromPort = " + _context.elInfo( fromPort ) + " owned by " + _context.elInfo( fromPort.getOwner() ) );
-		_context.info( "toPort = " + _context.elInfo( toPort ) + " owned by " + _context.elInfo( toPort.getOwner() ) );
-		
+
+		_context.debug( "createConnector invoked for: ");
+		_context.debug( "theOwningClass = " + _context.elInfo( theOwningClass ) );
+		_context.debug( "fromInstance = " + _context.elInfo( fromInstance ) + " owned by " + _context.elInfo( fromInstance.getOwner() ) );
+		_context.debug( "toInstance = " + _context.elInfo( toInstance ) + " owned by " + _context.elInfo( toInstance.getOwner() ) );
+		_context.debug( "fromPort = " + _context.elInfo( fromPort ) + " owned by " + _context.elInfo( fromPort.getOwner() ) );
+		_context.debug( "toPort = " + _context.elInfo( toPort ) + " owned by " + _context.elInfo( toPort.getOwner() ) );
+
 		try {
 			theLink = theOwningClass.addLink( fromInstance, toInstance, null, fromPort, toPort );
 			theLink.changeTo( _context.CONNECTOR );
 
+			_context.info( "Created " + _context.elInfo( theLink ) + " between " + _context.elInfo( fromPort ) + 
+					" owned by " + _context.elInfo( fromPort.getOwner() ) + 
+					" and " + _context.elInfo( toPort ) + " owned by " + _context.elInfo( toPort.getOwner() ) );
+
 		} catch( Exception e ){
 			_context.error( "Exception in createConnector trying to create link, e=" + e.getMessage() );
 		}
-		
+
 		return theLink;
 	}
 
@@ -377,24 +378,30 @@ public class FlowConnectorInfo {
 				theConnector = theOwnerClass.addLinkToPartViaPort( ownedByInstance, toFlowPort, fromSubsystemPort, null );
 				theConnector.changeTo( _context.SUBSYSTEM_FUNCTION_CONNECTOR );
 
-				_context.info( "Created new " + _context.elInfo( theConnector ) );
-				_context.info( _context.elInfo( fromSubsystemPort ) + " owned by " + _context.elInfo( fromSubsystemPort.getOwner() ) );
-				_context.info( _context.elInfo( toFlowPort ) + " owned by " + _context.elInfo( toFlowPort.getOwner() ) );
+				_context.info( "Created new " + _context.elInfo( theConnector ) + " from " + 
+						_context.elInfo( fromSubsystemPort ) + " owned by " + _context.elInfo( fromSubsystemPort.getOwner() ) + " and " +
+						_context.elInfo( toFlowPort ) + " owned by " + _context.elInfo( toFlowPort.getOwner() ) );
 
+			} else if( theOwnerEl instanceof IRPActor ) {
+
+				_context.warning( "You need to manually create a " + _context.SUBSYSTEM_FUNCTION_CONNECTOR + " from " + 
+						_context.elInfo( fromSubsystemPort ) + " owned by " + _context.elInfo( fromSubsystemPort.getOwner() ) + " and " +
+						_context.elInfo( toFlowPort ) + " owned by " + _context.elInfo( toFlowPort.getOwner() ) + " as API doesn't allow this currently" );
 			}
+
 		} else if( theExistingLinks.size()== 1 ){
 
 			theConnector = theExistingLinks.get( 0 );
 
-			_context.info( "Found existing " + _context.elInfo( theConnector ) );
-			_context.info( _context.elInfo( fromSubsystemPort ) + " owned by " + _context.elInfo( fromSubsystemPort.getOwner() ) );
-			_context.info( _context.elInfo( toFlowPort ) + " owned by " + _context.elInfo( toFlowPort.getOwner() ) );
+			_context.info( "Found existing " + _context.elInfo( theConnector ) + " from " + 
+					_context.elInfo( fromSubsystemPort ) + " owned by " + _context.elInfo( fromSubsystemPort.getOwner() ) +
+					_context.elInfo( toFlowPort ) + " owned by " + _context.elInfo( toFlowPort.getOwner() ) );
 
 		} else {
 
-			_context.warning( "Unable to create flow connector as " + theExistingLinks.size() + " links were found between:" );
-			_context.warning( _context.elInfo( fromSubsystemPort ) + " owned by " + _context.elInfo( fromSubsystemPort.getOwner() ) );
-			_context.warning( _context.elInfo( toFlowPort ) + " owned by " + _context.elInfo( toFlowPort.getOwner() ) );
+			_context.warning( "Unable to create flow connector as " + theExistingLinks.size() + " links were found between " + 
+					_context.elInfo( fromSubsystemPort ) + " owned by " + _context.elInfo( fromSubsystemPort.getOwner() ) + " and " +
+					_context.elInfo( toFlowPort ) + " owned by " + _context.elInfo( toFlowPort.getOwner() ) );
 		}
 
 		return theConnector;
@@ -500,25 +507,25 @@ public class FlowConnectorInfo {
 
 				IRPLink theCandidateLink = (IRPLink) theCandidateEl;
 
-				_context.info( "Checking " + _context.elInfo(( theCandidateLink ) ) );
+				_context.debug( "getExistingLinks is checking " + _context.elInfo(( theCandidateLink ) ) );
 				theCandidateLink.highLightElement();
 
 				IRPPort fromCandidatePort = theCandidateLink.getFromPort();
-				_context.info( "fromCandidatePort = " + _context.elInfo( fromCandidatePort ) );
+				_context.debug( "fromCandidatePort = " + _context.elInfo( fromCandidatePort ) );
 
 				IRPSysMLPort fromCandidateSysMLPort = theCandidateLink.getFromSysMLPort();
-				_context.info( "fromCandidateSysMLPort = " + _context.elInfo( fromCandidateSysMLPort ) );
+				_context.debug( "fromCandidateSysMLPort = " + _context.elInfo( fromCandidateSysMLPort ) );
 
 				IRPPort toCandidatePort = theCandidateLink.getToPort();
-				_context.info( "toCandidatePort = " + _context.elInfo( toCandidatePort ) );
+				_context.debug( "toCandidatePort = " + _context.elInfo( toCandidatePort ) );
 
 				IRPSysMLPort toCandidateSysMLPort = theCandidateLink.getToSysMLPort();
-				_context.info( "toCandidateSysMLPort = " + _context.elInfo( toCandidateSysMLPort ) );
+				_context.debug( "toCandidateSysMLPort = " + _context.elInfo( toCandidateSysMLPort ) );
 
 				if( toCandidateSysMLPort instanceof IRPSysMLPort &&
 						toSysMLPort.equals( toCandidateSysMLPort ) ) {
 
-					_context.info( _context.elInfo( fromPort ) + " is is connected to " + _context.elInfo( toSysMLPort ) + " via " + _context.elInfo(theCandidateLink));
+					_context.debug( _context.elInfo( fromPort ) + " is connected to " + _context.elInfo( toSysMLPort ) + " via " + _context.elInfo(theCandidateLink));
 					theExistingLinks.add( theCandidateLink );
 				}
 			}
