@@ -1035,6 +1035,7 @@ V4.3.a.PreRelease (20-DEC-2023):
 0799 15-DEC-2023: ExecutableMBSE: Add AllocatedTo to the Compartments property for function usages so it appears by default when toggle to specification view on ibds (F.J.Chadburn)
 0800 18-DEC-2023: ExecutableMBSE: Add ability for actors to be owned by system blocks so its possible to allocate functions they perform in a scenario (F.J.Chadburn)
 0801 18-DEC-2023: ExecutableMBSE: Renamed function flow elements of Data Object to Item Usage to make more consistent, also aligns better with SysML 2 terminology (F.J.Chadburn)
+0802 20-DEC-2023: ExecutableMBSE: Updated included tutorial doc to PracticalMBSE-BookI-InsulinPump-ModuleA-UseCaseStructure-V2023-12-20-1132.pdf (F.J.Chadburn)
 
 Backlog/Known issues
 - API doesn't want to allow me to create a subsystem/function connector on an actor, hence currently a warning is given to say do this manually after function allocation
