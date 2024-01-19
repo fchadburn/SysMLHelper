@@ -75,6 +75,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String DESIGN_SYNTHESIS_SUBSYSTEM_INTERFACES_PACKAGE = "33 Subsystem Interfaces Package";
 	public final String DESIGN_SYNTHESIS_LOGICAL_SYSTEM_PACKAGE = "31 System Architecture Package";
 	public final String DESIGN_SYNTHESIS_SUBSYSTEM_PACKAGE = "32 Subsystem Package";
+	public final String DESIGN_SYNTHESIS_SOFTWARE_DESIGN_PACKAGE = "34 Software Design Package";
 	public final String VIEW_AND_VIEWPOINT_PACKAGE = "41 View and Viewpoint Package";
 	public final String REQUIREMENTS_DIAGRAM_SYSTEM = "Requirements Diagram - System";
 	public final String TIME_ELAPSED_BLOCK_STEREOTYPE = "TimeBlock";
@@ -1962,7 +1963,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 }
 
 /**
- * Copyright (C) 2021-2023  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2021-2024  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

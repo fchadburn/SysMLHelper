@@ -1,6 +1,6 @@
 Subject ExecutableMBSEProfile
         Metaclass General
-		Property PluginVersion String "V4.3.a.Release"
+		Property PluginVersion String "V4.3.b.PreRelease"
 		Property EnableInfoLogging Bool "True"
 		Property EnableWarningLogging Bool "True"
 		Property EnableErrorLogging Bool "True"
@@ -91,6 +91,15 @@ Subject ExecutableMBSEProfile
 	end
 end
 Subject Format
+	Metaclass ComponentUsage
+		Property DefaultSize String "0,34,390,62"
+		Property Fill.FillColor Color "255,255,255"
+		Property Font.Font String "Tahoma"
+		Property Font.Size Int "8"
+		Property Font.Weight@Child.NameCompartment@Name Int "700"
+		Property Line.LineStyle Int "0"
+		Property Line.LineWidth Int "1"
+	end
 	Metaclass DiagramFrame
 		Property DefaultSize String "20,20,590,500"
 		Property Fill.FillColor Color "255,255,255"
@@ -353,6 +362,23 @@ Subject ObjectModelGe
 		Property ShowRedefinesLabel Bool "True"
 		Property QuickNavigationCategories String "Hyperlinks,Diagrams,MainBehavior"
 	end
+	Metaclass ComponentUsage
+		Property ShowAttributes Enum "All,None,Public,Explicit" "None"
+		Property ShowOperations Enum "All,None,Public,Explicit" "None"
+		Property ShowStereotype Enum "Label,Bitmap,None" "Label"
+		Property ShowStereotypeOfClass Bool "True"
+		Property ShowName Enum  "Full_path,Relative,Name_only,Type,Label" "Type"
+		Property ShowType Bool "True"
+		Property ShowPorts Bool "True"
+		Property ShowPortsInterfaces Bool "False"
+		Property PortsSingleLabelLayout Enum "Off,Internal,External" "Off"
+		Property MultilineNameCompartment Bool "False"
+		Property Compartments MultiLine ""
+		Property ShowInheritedAttributes Bool "False"
+		Property ShowInheritedOperations Bool "False"
+		Property ShowRedefinesLabel Bool "True"
+		Property QuickNavigationCategories String "Hyperlinks,Diagrams,MainBehavior"
+	end
 	Metaclass FunctionUsage
 		Property ShowAttributes Enum "All,None,Public,Explicit" "None"
 		Property ShowOperations Enum "All,None,Public,Explicit" "None"
@@ -440,6 +466,19 @@ Subject ObjectModelGe
 		Property QuickNavigationCategories String "Hyperlinks,Diagrams,MainBehavior"
 	end
 	Metaclass SubsystemBlock
+		Property ShowAttributes Enum "All,None,Public,Explicit" "None"
+		Property ShowOperations Enum "All,None,Public,Explicit" "None"
+		Property ShowStereotype Enum "Label,Bitmap,None" "Label"
+		Property ShowName Enum  "Full_path,Relative,Name_only,Label" "Name_only"
+		Property ShowPorts Bool "False"
+		Property ShowPortsInterfaces Bool "True"
+		Property PortsSingleLabelLayout Enum "Off,Internal,External" "Off"
+		Property Compartments MultiLine "Function Usage"
+		Property ShowInheritedAttributes Bool "False"
+		Property ShowInheritedOperations Bool "False"
+		Property QuickNavigationCategories String "Hyperlinks,Diagrams,MainBehavior"
+	end
+	Metaclass SoftwareComponent
 		Property ShowAttributes Enum "All,None,Public,Explicit" "None"
 		Property ShowOperations Enum "All,None,Public,Explicit" "None"
 		Property ShowStereotype Enum "Label,Bitmap,None" "Label"

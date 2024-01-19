@@ -1765,6 +1765,12 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				PortsForLinksCreator theCreator = new PortsForLinksCreator( _context, theLink );
 				theCreator.createPortsBasedOnPropertyPolicies();
 			}
+			
+		} else if( _context.isOwnedUnderPackageHierarchy( 
+				_context.DESIGN_SYNTHESIS_SOFTWARE_DESIGN_PACKAGE, theLink ) ){
+			
+			PortsForLinksCreator theCreator = new PortsForLinksCreator( _context, theLink );
+			theCreator.createPortsBasedOnPropertyPolicies();
 		}
 	}
 
@@ -2132,7 +2138,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 }
 
 /**
- * Copyright (C) 2018-2023  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2018-2024  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

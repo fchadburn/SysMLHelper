@@ -1037,7 +1037,14 @@ V4.3.a.PreRelease (20-DEC-2023):
 0801 18-DEC-2023: ExecutableMBSE: Renamed function flow elements of Data Object to Item Usage to make more consistent, also aligns better with SysML 2 terminology (F.J.Chadburn)
 0802 20-DEC-2023: ExecutableMBSE: Updated included tutorial doc to PracticalMBSE-BookI-InsulinPump-ModuleA-UseCaseStructure-V2023-12-20-1132.pdf (F.J.Chadburn)
 
+V4.3.b.PreRelease (XX-XXX-XXXX): TBC
+0803 19-JAN-2024: ExecutableMBSE: Loosen software design package modelling so that you can hierarchically decompose software components (F.J.Chadburn)
+0804 19-JAN-2024: ExecutableMBSE: Allow software components to own full, i.e. standard, ports (F.J.Chadburn)
+
 Backlog/Known issues
+- What if the requirements have multiple stereotypes, e.g., Tier1 and User Need?
+- Getting the move links to requirements package to work on a remote requirement
+- Adding a column for remote requirement owner to the 
 - API doesn't want to allow me to create a subsystem/function connector on an actor, hence currently a warning is given to say do this manually after function allocation
 - Double click a use case to follow dependency to feature and offer to open its feature bdd or ibd
 - If user chooses in populate parts helper not to populate logic, then skip creation of connectors between internals
