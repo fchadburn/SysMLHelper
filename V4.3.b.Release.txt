@@ -1040,8 +1040,10 @@ V4.3.a.PreRelease (20-DEC-2023):
 V4.3.b.PreRelease (XX-XXX-XXXX): TBC
 0803 19-JAN-2024: ExecutableMBSE: Loosen software design package modelling so that you can hierarchically decompose software components (F.J.Chadburn)
 0804 19-JAN-2024: ExecutableMBSE: Allow software components to own full, i.e. standard, ports (F.J.Chadburn)
+0805 24-JAN-2024: ExecutableMBSE: Add new Subsystem to Function Block Requirements table for system architecture and subsystem packages (F.J.Chadburn)
 
 Backlog/Known issues
+- Consider extending context pattern for requirement to action to have a Function Block column?
 - What if the requirements have multiple stereotypes, e.g., Tier1 and User Need?
 - Getting the move links to requirements package to work on a remote requirement
 - Adding a column for remote requirement owner to the 

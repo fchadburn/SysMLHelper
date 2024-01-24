@@ -208,7 +208,8 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 						(IRPTableView) modelElement,
 						true );
 
-			} else if( theUserDefinedMetaClass.equals( _context.SUBSYSTEM_TABLE ) ){
+			} else if( theUserDefinedMetaClass.equals( _context.SUBSYSTEM_TABLE ) ||
+					theUserDefinedMetaClass.equals( _context.SUBSYSTEM_TO_FUNCTION_BLOCK_REQUIREMENTS_TABLE )){
 
 				setScopeOfTableToOwningPackageIfOwnerIs( 
 						new String[]{ _context.DESIGN_SYNTHESIS_LOGICAL_SYSTEM_PACKAGE, 

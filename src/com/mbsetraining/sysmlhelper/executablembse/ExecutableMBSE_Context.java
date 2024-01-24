@@ -53,6 +53,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String INTERNAL_BLOCK_DIAGRAM_FUNCTIONAL = "Internal Block Diagram - Functional";
 	public final String SIMPLE_REQUIREMENTS_TABLE = "Table View - Simple Requirements Table";
 	public final String SUBSYSTEM_TABLE = "Table View - Subsystem Table";
+	public final String SUBSYSTEM_TO_FUNCTION_BLOCK_REQUIREMENTS_TABLE = "Table View - Subsystem To Function Block Requirements";
 	public final String USE_CASE_TO_REQUIREMENT_TABLE = "Table View - Use Case To Requirement";
 	public final String ACTION_TO_REQUIREMENT_TABLE = "Table View - Action To Requirement";
 	public final String REQUIREMENT_TO_USE_CASE_TABLE = "Table View - Requirement To Use Case";
