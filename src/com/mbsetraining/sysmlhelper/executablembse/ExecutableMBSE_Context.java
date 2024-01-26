@@ -51,6 +51,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String BLOCK_DEFINITION_DIAGRAM_SYSTEM = "Block Definition Diagram - System";
 	public final String INTERNAL_BLOCK_DIAGRAM_SYSTEM = "Internal Block Diagram - System";
 	public final String INTERNAL_BLOCK_DIAGRAM_FUNCTIONAL = "Internal Block Diagram - Functional";
+	public final String PACKAGE_DIAGRAM_INDEX = "Package Diagram - Index";
 	public final String SIMPLE_REQUIREMENTS_TABLE = "Table View - Simple Requirements Table";
 	public final String SUBSYSTEM_TABLE = "Table View - Subsystem Table";
 	public final String SUBSYSTEM_TO_FUNCTION_BLOCK_REQUIREMENTS_TABLE = "Table View - Subsystem To Function Block Requirements";
@@ -82,6 +83,8 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String TIME_ELAPSED_BLOCK_STEREOTYPE = "TimeBlock";
 	public final String ELAPSED_TIME_GENERATOR_STEREOTYPE = "TimeGenerator";
 	public final String NEW_TERM_FOR_USE_CASE_DIAGRAM = "EnhancedUseCaseDiagram";
+	public final String NEW_TERM_FOR_PACKAGE_INDEX_DIAGRAM = "PackageDiagramIndex";
+	public final String AUTO_DRAWN_STEREOTYPE = "AutoDrawn";
 	public final String NEW_TERM_FOR_SYSTEM_CONTEXT_DIAGRAM = "ContextDiagram";
 	public final String NEW_TERM_FOR_REQUIRMENTS_DIAGRAM_SYSTEM = "RequirementsDiagramSystem";
 	public final String NEW_TERM_FOR_TEXTUAL_ACTIVITY_DIAGRAM = "Textual Activity";
@@ -139,6 +142,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String ACTORPKG_POSTFIX = "_ActorPkg";
 	public final String SIGNALPKG_POSTFIX = "_SignalPkg";
 	public final String ARCHITECTUREPKG_POSTFIX = "_ArchitecturePkg";
+	public final String PACKAGE_DIAGRAM_INDEX_PREFIX = "pkg - ";
 
 	protected SelectedElementContext _selectionContext;
 
@@ -173,6 +177,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	protected List<IRPModelElement> _stereotypesForBlockPartCreation;
 	protected String _autoGenerationOfPortsForLinksPolicy;
 	protected String _autoGenerationOfPortsForLinksDefaultType;
+	protected String _autoGenerationOfPackageDiagramContentPolicy;
 	protected String _bleedForegroundColor;
 	protected String _templateForActivityDiagramValue;
 
@@ -183,6 +188,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	protected IRPStereotype _stereotypeForTimeElapsedBlock;
 	protected IRPStereotype _stereotypeForAutoRipple;
 	protected IRPStereotype _newTermForUseCaseDiagram;
+	protected IRPStereotype _newTermForPackageIndexDiagram;
 	protected IRPStereotype _newTermForSystemContextDiagram;
 	protected IRPStereotype _newTermForActorUsage;
 	protected IRPStereotype _newTermForSystemContext;
@@ -193,7 +199,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	protected IRPStereotype _stereotypeForTrace;
 	protected IRPStereotype _stereotypeForControlFlow;
 	protected IRPStereotype _stereotypeForAllocation;
-
+	protected IRPStereotype _stereotypeForAutoDrawn;
 
 	public ExecutableMBSE_Context(
 			String theAppID ){
@@ -339,6 +345,26 @@ public class ExecutableMBSE_Context extends BaseContext {
 		return theStereotypeNames;
 	}
 	
+	// Allow user to change in session
+	public List<String> getPackageDiagramIndexUserDefinedMetaClasses(){
+
+		List<String> theStereotypeNames = getListFromCommaSeparatedString(
+				_rhpPrj, 
+				"ExecutableMBSEProfile.General.PackageDiagramIndexUserDefinedMetaClasses" );	
+
+		return theStereotypeNames;
+	}
+	
+	// Allow user to change in session
+	public List<String> getPackageDiagramIndexDiagramMetaClasses(){
+
+		List<String> theStereotypeNames = getListFromCommaSeparatedString(
+				_rhpPrj, 
+				"ExecutableMBSEProfile.General.PackageDiagramIndexDiagramMetaClasses" );	
+
+		return theStereotypeNames;
+	}
+		
 	// Allow user to change in session
 	public List<String> getStereotypeNamesForFeaturePkg(){
 
@@ -579,7 +605,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 					TESTBENCH_STEREOTYPE );
 
 			if( _stereotypeForTestbench == null ){
-				super.error( "Error in getStereotypeForTestbench, no Stereotyped called " + 
+				super.error( "Error in getStereotypeForTestbench, no Stereotype called " + 
 						TESTBENCH_STEREOTYPE + " was found" );
 			}	
 		}
@@ -595,7 +621,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 					ELAPSED_TIME_GENERATOR_STEREOTYPE );
 
 			if( _stereotypeForTimeElapsedActor == null ){
-				super.error( "Error in getStereotypeForTimeElapsedActor, no Stereotyped called " + 
+				super.error( "Error in getStereotypeForTimeElapsedActor, no Stereotype called " + 
 						ELAPSED_TIME_GENERATOR_STEREOTYPE + " was found" );
 			}	
 		}
@@ -611,7 +637,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 					TIME_ELAPSED_BLOCK_STEREOTYPE );
 
 			if( _stereotypeForTimeElapsedBlock == null ){
-				super.error( "Error in getStereotypeForTimeElapsedBlock, no Stereotyped called " + 
+				super.error( "Error in getStereotypeForTimeElapsedBlock, no Stereotype called " + 
 						TIME_ELAPSED_BLOCK_STEREOTYPE + " was found" );
 			}
 		}
@@ -627,7 +653,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 					AUTO_RIPPLE_STEREOTYPE );
 
 			if( _stereotypeForAutoRipple == null ){
-				super.error( "Error in getStereotypeForAutoRipple, no Stereotyped called " + 
+				super.error( "Error in getStereotypeForAutoRipple, no Stereotype called " + 
 						AUTO_RIPPLE_STEREOTYPE + " was found" );
 			}
 		}
@@ -643,12 +669,44 @@ public class ExecutableMBSE_Context extends BaseContext {
 					NEW_TERM_FOR_USE_CASE_DIAGRAM );
 
 			if( _newTermForUseCaseDiagram == null ){
-				super.error( "Error in getNewTermForUseCaseDiagram, no Stereotyped called " + 
+				super.error( "Error in getNewTermForUseCaseDiagram, no Stereotype called " + 
 						NEW_TERM_FOR_USE_CASE_DIAGRAM + " was found" );
 			}	
 		}
 
 		return _newTermForUseCaseDiagram;
+	}
+	
+	public IRPStereotype getNewTermForPackageIndexDiagram(){
+
+		if( _newTermForPackageIndexDiagram == null ){
+
+			_newTermForPackageIndexDiagram = getStereotypeWith( 
+					NEW_TERM_FOR_PACKAGE_INDEX_DIAGRAM );
+
+			if( _newTermForPackageIndexDiagram == null ){
+				super.error( "Error in getNewTermForPackageIndexDiagram, no Stereotype called " + 
+						NEW_TERM_FOR_PACKAGE_INDEX_DIAGRAM + " was found" );
+			}	
+		}
+
+		return _newTermForPackageIndexDiagram;
+	}
+	
+	public IRPStereotype getStereotypeForAutoDrawn(){
+
+		if( _stereotypeForAutoDrawn == null ){
+
+			_stereotypeForAutoDrawn = getStereotypeWith( 
+					AUTO_DRAWN_STEREOTYPE );
+
+			if( _stereotypeForAutoDrawn == null ){
+				super.error( "Error in getStereotypeForAutoDrawn, no Stereotype called " + 
+						AUTO_DRAWN_STEREOTYPE + " was found" );
+			}	
+		}
+
+		return _stereotypeForAutoDrawn;
 	}
 
 	public IRPStereotype getNewTermForSystemContextDiagram(){
@@ -660,7 +718,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 			if( _newTermForSystemContextDiagram == null ){
 
-				super.error( "Error in getNewTermForSystemContextDiagram, no Stereotyped called " + 
+				super.error( "Error in getNewTermForSystemContextDiagram, no Stereotype called " + 
 						NEW_TERM_FOR_SYSTEM_CONTEXT_DIAGRAM + " was found" );
 			}	
 		}
@@ -677,7 +735,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 			if( _newTermForActorUsage == null ){
 
-				super.error( "Error in getNewTermForActorUsage, no Stereotyped called " + 
+				super.error( "Error in getNewTermForActorUsage, no Stereotype called " + 
 						NEW_TERM_FOR_ACTOR_USAGE + " was found" );
 			}				
 		}
@@ -693,7 +751,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 					NEW_TERM_FOR_SYSTEM_CONTEXT );
 
 			if( _newTermForSystemContext == null ){			
-				super.error( "Error in getNewTermForSystemContext, no Stereotyped called " + 
+				super.error( "Error in getNewTermForSystemContext, no Stereotype called " + 
 						NEW_TERM_FOR_SYSTEM_CONTEXT + " was found" );
 			}		
 		}
@@ -1270,6 +1328,17 @@ public class ExecutableMBSE_Context extends BaseContext {
 				"StandardPorts" );
 
 		return _autoGenerationOfPortsForLinksDefaultType;
+	}
+	
+	public String getAutoGenerationOfPackageDiagramContentPolicy(
+			IRPModelElement forContextEl ){
+
+		_autoGenerationOfPackageDiagramContentPolicy = getStringPropertyValueFromRhp(
+				forContextEl,
+				"ExecutableMBSEProfile.General.AutoGenerationOfPackageDiagramContentPolicy",
+				"Never" );
+
+		return _autoGenerationOfPackageDiagramContentPolicy;
 	}
 
 	@Override

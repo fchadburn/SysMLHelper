@@ -21,6 +21,7 @@ import com.mbsetraining.sysmlhelper.common.RequirementMover;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.contextdiagram.CreateEventForFlowPanel;
 import com.mbsetraining.sysmlhelper.graphelementhelpers.GraphNodeResizer;
+import com.mbsetraining.sysmlhelper.packagediagram.PackageDiagramIndexCreator;
 import com.mbsetraining.sysmlhelper.portcreator.PortsForLinksCreator;
 import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateOperationPanel;
 import com.telelogic.rhapsody.core.*;
@@ -131,7 +132,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 					_context.hasStereotypeCalled( _context.NEW_TERM_FOR_ACCEPT_EVENT_USAGE, modelElement )){
 
 				afterAddForAcceptEventUsage( (IRPInstance) modelElement );
-				
+
 			} else if( modelElement instanceof IRPInstance && 
 					_context.hasStereotypeCalled( _context.NEW_TERM_FOR_FINAL_USAGE, modelElement )){
 
@@ -241,7 +242,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 						new String[]{ _context.REQTS_ANALYSIS_ACTOR_PACKAGE }, 
 						(IRPTableView) modelElement,
 						false );
-				
+
 			} else if( theUserDefinedMetaClass.equals( _context.REQUIREMENT_TO_ACTION_TABLE ) ) {
 
 				afterAddNewRequirementToActionTable( (IRPTableView) modelElement );
@@ -283,7 +284,11 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				} else if( theUserDefinedMetaClass.equals( _context.DESIGN_SYNTHESIS_LOGICAL_SYSTEM_PACKAGE ) ){
 
 					afterAddForNewTermPackage( (IRPPackage ) modelElement, _context.ARCHITECTUREPKG_POSTFIX, "", "" );
-				}
+				}	
+				
+			} else if( theUserDefinedMetaClass.equals( _context.PACKAGE_DIAGRAM_INDEX) ) {
+
+				afterAddForPackageDiagramIndex( (IRPDiagram) modelElement );
 			}
 
 		} catch( Exception e ){
@@ -459,7 +464,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			IRPFlowchart theDiagram ){
 
 		//_context.info( "afterAddForTextualActivity " + _context.elInfo( theDiagram ) );
-		
+
 		// Need to programmatically create the diagram as cloning and
 		// deleting old one results in Rhapsody closing
 
@@ -1028,7 +1033,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			thePortGraphEl.setGraphicalProperty( "Position", theNodeInfo.getTopRightX() + "," + theNodeInfo.getMiddleY() );
 		}
 	}
-	
+
 	private void afterAddForFinalUsage(
 			IRPInstance theInstance ){
 
@@ -1156,6 +1161,14 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			IRPGraphElement theElsePortGraphEl = _context.getGraphElIfOnlyOneExistsFor( theElsePort );
 			theElsePortGraphEl.setGraphicalProperty( "Position", theDecisionNodeInfo.getMiddleX() + "," + theDecisionNodeInfo.getBottomLeftY() );
 		}
+	}
+
+	private void afterAddForPackageDiagramIndex(
+			IRPDiagram theDiagram ){
+
+		IRPPackage theOwnerPkg = _context.getOwningPackageFor( theDiagram );
+		PackageDiagramIndexCreator theCreator = new PackageDiagramIndexCreator( theOwnerPkg, _context );
+		theCreator.populateContentBasedOnPolicyFor( theDiagram );
 	}
 
 	private void switchGraphNodeFor(
@@ -1289,17 +1302,17 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		boolean isEnabled = _context.getIsEnableAutoMoveOfRequirements();
 
 		if( isEnabled ){
-			
+
 			IRPModelElement theOwner = modelElement.getOwner();
 
 			if( theOwner.getUserDefinedMetaClass().equals( _context.REQTS_ANALYSIS_REQUIREMENT_PACKAGE ) ) {
-				
+
 				List<IRPStereotype> theStereotypes = _context.getMoveToStereotypes( theOwner );
-				
+
 				for( IRPStereotype theStereotype : theStereotypes ){
 					modelElement.addSpecificStereotype( theStereotype );							
 				}
-				
+
 				// Save required by 9.0.1 SR1 to get GUI to update
 				modelElement.getProject().save();
 
@@ -1629,7 +1642,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 							isFromPortCreationNeeded ){
 
 						if( _context.getIsCreateEventForFlowConnectorPanelEnabled() ) {
-							
+
 							// Only launch the create event dialog if it was a non-port to non-port connector that was drawn
 							CreateEventForFlowConnectorPanel.launchThePanel( 
 									_context.get_rhpAppID(), 
@@ -1747,13 +1760,13 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 					toUserDefinedMetaClass.equals( 
 							_context.SUBSYSTEM_USAGE ) ) ||
 					( fromUserDefinedMetaClass.equals( 
-					_context.SUBSYSTEM_USAGE ) &&
-					toUserDefinedMetaClass.equals( 
-							_context.ACTOR_USAGE ) ) ||
+							_context.SUBSYSTEM_USAGE ) &&
+							toUserDefinedMetaClass.equals( 
+									_context.ACTOR_USAGE ) ) ||
 					( fromUserDefinedMetaClass.equals( 
-					_context.SUBSYSTEM_USAGE ) &&
-					toUserDefinedMetaClass.equals( 
-							_context.SUBSYSTEM_USAGE ) ) ||
+							_context.SUBSYSTEM_USAGE ) &&
+							toUserDefinedMetaClass.equals( 
+									_context.SUBSYSTEM_USAGE ) ) ||
 					( fromUserDefinedMetaClass.equals( 
 							_context.SYSTEM_USAGE ) &&
 							toUserDefinedMetaClass.equals( 
@@ -1766,10 +1779,10 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				PortsForLinksCreator theCreator = new PortsForLinksCreator( _context, theLink );
 				theCreator.createPortsBasedOnPropertyPolicies();
 			}
-			
+
 		} else if( _context.isOwnedUnderPackageHierarchy( 
 				_context.DESIGN_SYNTHESIS_SOFTWARE_DESIGN_PACKAGE, theLink ) ){
-			
+
 			PortsForLinksCreator theCreator = new PortsForLinksCreator( _context, theLink );
 			theCreator.createPortsBasedOnPropertyPolicies();
 		}
@@ -1863,40 +1876,40 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 					theReturn = true; // don't launch the Features  window		
 
 				} else {
-					
+
 					IRPRequirement theRemoteReqt = null;
-					
+
 					if( pModelElement instanceof IRPRequirement ) {
-												
+
 						theRemoteReqt = getRemoteRequirementRelatedTo( pModelElement );
-						
+
 					} else if( pModelElement instanceof IRPDependency ) {
-						
+
 						IRPDependency theDependency = (IRPDependency)pModelElement;
-						
+
 						IRPModelElement theDependsOn = theDependency.getDependsOn();
-						
+
 						if( theDependsOn instanceof IRPRequirement ) {							
 							theRemoteReqt = getRemoteRequirementRelatedTo( theDependsOn );
 						}
 					}
-					
+
 					if( theRemoteReqt != null) {
-						
+
 						String theURI = theRemoteReqt.getRemoteURI();
-						
+
 						if( !theURI.isEmpty() && 
 								Desktop.isDesktopSupported() && 
 								Desktop.getDesktop().isSupported( Desktop.Action.BROWSE ) ){
-							
+
 							boolean answer = UserInterfaceHelper.askAQuestion( "Open remote requirement in browser?" );
-							
+
 							if( answer ) {								
-							    Desktop.getDesktop().browse(new URI( theURI ));
+								Desktop.getDesktop().browse(new URI( theURI ));
 							}
 						}
 					}
-					
+
 					theReturn = false; // do default, i.e. open the features dialog
 				}	
 			}
@@ -1910,23 +1923,23 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 	private IRPRequirement getRemoteRequirementRelatedTo(
 			IRPModelElement theModelEl  ){
-		
+
 		IRPRequirement theRemoteReqt = null;
-		
+
 		if( theModelEl.isRemote()==1 ) {
-			
+
 			if( theModelEl instanceof IRPRequirement ) {
 				theRemoteReqt = (IRPRequirement) theModelEl;
 			}
-			
+
 		} else {
 			List<IRPRequirement> theRemoteReqts = _context.getRemoteRequirementsFor( theModelEl );
-			
+
 			if( theRemoteReqts.size()==1 ) {
 				theRemoteReqt = theRemoteReqts.get( 0 );
 			}
 		}
-		
+
 		return theRemoteReqt;
 	}
 

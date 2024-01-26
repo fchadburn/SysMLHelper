@@ -482,7 +482,7 @@ public abstract class BaseContext {
 			theModelEl = _rhpPrj.findAllByName( theName, "Stereotype" );
 		}
 
-		if( theModelEl != null && theModelEl instanceof IRPStereotype ){
+		if( theModelEl instanceof IRPStereotype ){
 			
 			// info( "Found " + elInfo( theModelEl ) + " owned by " + elInfo( theModelEl.getOwner() ) );
 			theStereotype = (IRPStereotype)theModelEl;
@@ -3663,7 +3663,7 @@ public abstract class BaseContext {
 }
 
 /**
- * Copyright (C) 2021-2023  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2021-2024  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

@@ -1689,7 +1689,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">1.24.2024::11:23:58</_modifiedTime>
+			<_modifiedTime type="a">1.25.2024::12:29:40</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -19320,8 +19320,8 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 1b9ff970-e96a-4e94-bb8a-e59c10d32465</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Supplementary</_name>
-			<_modifiedTime type="a">10.27.2022::14:1:55</_modifiedTime>
-			<_lastID type="a">4</_lastID>
+			<_modifiedTime type="a">1.25.2024::12:29:40</_modifiedTime>
+			<_lastID type="a">5</_lastID>
 			<_defaultComposite type="s">GUID 6baa030c-3af4-4672-bf84-b34b967b94af</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
@@ -19340,6 +19340,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 				<value>GUID 02a1c2ec-ec7b-48fb-873c-96d6f9aaa9be</value>
 				<value>GUID f03fdcf0-da9a-4b29-99bd-1065f9ecb549</value>
 				<value>GUID aa3c4d29-1f08-48e3-b8fc-794b3302cea3</value>
+				<value>GUID b3c97eea-9a69-49da-8eaf-19cb95d396d9</value>
 				<value>GUID 6baa030c-3af4-4672-bf84-b34b967b94af</value>
 			</AggregatesList>
 		</ISubsystem>
@@ -20027,6 +20028,74 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 				</INObjectHandle>
 			</_dependent>
 		</IDependency>
+		<IStereotype type="e">
+			<_id type="a">GUID b3c97eea-9a69-49da-8eaf-19cb95d396d9</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">2</size>
+						<IPropertySubject type="e">
+							<_Name type="a">General</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Model</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">ShowModelTooltipInGE</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+						<IPropertySubject type="e">
+							<_Name type="a">ObjectModelGe</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Package</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">Compartments</_Name>
+													<_Value type="a">Description</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">AutoDrawn</_name>
+			<_modifiedTime type="a">1.25.2024::12:29:40</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>ObjectModelDiagram</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+		</IStereotype>
 		<IClass type="e">
 			<_id type="a">GUID 6baa030c-3af4-4672-bf84-b34b967b94af</_id>
 			<_myState type="a">40960</_myState>

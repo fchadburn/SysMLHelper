@@ -46,6 +46,7 @@ import com.mbsetraining.sysmlhelper.modelchecks.CheckForRequirementCFLRChars;
 import com.mbsetraining.sysmlhelper.modelchecks.CheckForRequirementChildren;
 import com.mbsetraining.sysmlhelper.modelchecks.CheckForRequirementNameLength;
 import com.mbsetraining.sysmlhelper.movetoseparatepackage.MoveToSeparatePackage;
+import com.mbsetraining.sysmlhelper.packagediagram.PackageDiagramIndexCreator;
 import com.mbsetraining.sysmlhelper.modelchecks.CheckForRemoteRequirementSpecificationMatch;
 import com.mbsetraining.sysmlhelper.populateparts.PopulatePartsPanel;
 import com.mbsetraining.sysmlhelper.pubsubportcreation.PortCreator;
@@ -101,7 +102,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 		}
 
 		final String legalNotice = 
-				"Copyright (C) 2015-2023  MBSE Training and Consulting Limited (www.executablembse.com)"
+				"Copyright (C) 2015-2024  MBSE Training and Consulting Limited (www.executablembse.com)"
 						+ "\n"
 						+ "SysMLHelperPlugin is free software: you can redistribute it and/or modify "
 						+ "it under the terms of the GNU General Public License as published by "
@@ -886,6 +887,13 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						theSwitcher.switchRequirementsFor( (IRPPackage) theSelectedEl );
 					}
 					
+				} else if( menuItem.equals( _settings.getString(
+						"executablembseplugin.AutoUpdateDiagramContentMenu" ) ) ){
+					
+					IRPPackage theRootPkg = _context.getOwningPackageFor( theSelectedEl );
+					PackageDiagramIndexCreator theCreator = new PackageDiagramIndexCreator( theRootPkg, _context );
+					theCreator.populateContentBasedOnPolicyFor( (IRPDiagram) theSelectedEl );
+					
 				} else {
 					_context.warning( "Unhandled menu: " + _context.elInfo( theSelectedEl ) + " was invoked with menuItem='" + menuItem + "'");
 				}
@@ -1369,7 +1377,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 }
 
 /**
- * Copyright (C) 2018-2023  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2018-2024  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

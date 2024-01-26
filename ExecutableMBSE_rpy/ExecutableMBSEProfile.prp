@@ -13,6 +13,9 @@ Subject ExecutableMBSEProfile
 		Property IsAutoPopulatePackageDiagram Bool "False"          
 		Property IsShowProfileVersionCheckDialogs Bool "True"
 		Property IsDoubleClickFunctionalityEnabled Bool "True"
+		Property PackageDiagramIndexUserDefinedMetaClasses String "OperationalArchitecturePackage,FunctionalArchitecturePackage,LogicalArchitecturePackage,PhysicalArchitecturePackage,ActorPackage,UseCasePackage,RequirementPackage,ContextPackage,SignalsPackage,FeatureFunctionPackage,SystemArchitecturePackage,SubsystemPackage,SubsystemInterfacesPackage,ViewAndViewpointPackage"
+		Property PackageDiagramIndexDiagramMetaClasses String "Package Diagram - Index,Enhanced Use Case Diagram,Textual Activity,Block Definition Diagram - System,Internal Block Diagram - Functional,Requirements Diagram - System,ObjectModelDiagram,StructureDiagram,TableView"
+		Property AutoGenerationOfPackageDiagramContentPolicy Enum "Never,Always,UserDialog" "UserDialog"
 	end
 	Metaclass RequirementsAnalysis
 		Property CreateRequirementTextForPrefixing String "The system shall "
