@@ -1167,6 +1167,9 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			IRPDiagram theDiagram ){
 
 		IRPPackage theOwnerPkg = _context.getOwningPackageFor( theDiagram );
+		
+		_context.info( "The owner of " + _context.elInfo( theDiagram ) + " is " + _context.elInfo( theOwnerPkg ) );
+		
 		PackageDiagramIndexCreator theCreator = new PackageDiagramIndexCreator( theOwnerPkg, _context );
 		theCreator.populateContentBasedOnPolicyFor( theDiagram );
 	}

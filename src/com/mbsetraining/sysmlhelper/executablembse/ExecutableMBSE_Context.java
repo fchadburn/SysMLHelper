@@ -346,20 +346,22 @@ public class ExecutableMBSE_Context extends BaseContext {
 	}
 	
 	// Allow user to change in session
-	public List<String> getPackageDiagramIndexUserDefinedMetaClasses(){
+	public List<String> getPackageDiagramIndexUserDefinedMetaClasses(
+			IRPModelElement theContextEl ){
 
 		List<String> theStereotypeNames = getListFromCommaSeparatedString(
-				_rhpPrj, 
+				theContextEl, 
 				"ExecutableMBSEProfile.General.PackageDiagramIndexUserDefinedMetaClasses" );	
 
 		return theStereotypeNames;
 	}
 	
 	// Allow user to change in session
-	public List<String> getPackageDiagramIndexDiagramMetaClasses(){
+	public List<String> getPackageDiagramIndexDiagramMetaClasses(
+			IRPModelElement theContextEl ){
 
 		List<String> theStereotypeNames = getListFromCommaSeparatedString(
-				_rhpPrj, 
+				theContextEl, 
 				"ExecutableMBSEProfile.General.PackageDiagramIndexDiagramMetaClasses" );	
 
 		return theStereotypeNames;

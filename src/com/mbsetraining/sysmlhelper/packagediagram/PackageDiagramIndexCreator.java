@@ -13,12 +13,11 @@ public class PackageDiagramIndexCreator {
 
 	protected ExecutableMBSE_Context _context;
 	protected IRPPackage _rootPkg;
-	protected String _policy;
 	protected IRPStereotype _pkgIndexDiagramStereotype;
 	protected IRPStereotype _autoDrawnStereotype;
 	protected List<String> _packageMetaClasses;
 	protected List<String> _diagramMetaClasses;
-
+	
 	public static void main(String[] args) {
 
 		ExecutableMBSE_Context context = new ExecutableMBSE_Context( 
@@ -56,20 +55,19 @@ public class PackageDiagramIndexCreator {
 
 		_context = context;
 		_rootPkg = theRootPkg;
-		_policy = _context.getAutoGenerationOfPackageDiagramContentPolicy( _rootPkg );
 		_pkgIndexDiagramStereotype = _context.getNewTermForPackageIndexDiagram();
 		_autoDrawnStereotype = _context.getStereotypeForAutoDrawn();
-		_packageMetaClasses = _context.getPackageDiagramIndexUserDefinedMetaClasses();
-		_diagramMetaClasses = _context.getPackageDiagramIndexDiagramMetaClasses();
 	}
 
 	public void createDiagramBasedOnPolicy() {
 
-		if( _policy.equals( "Always" ) ){
+		String policy = _context.getAutoGenerationOfPackageDiagramContentPolicy( _rootPkg );
+		
+		if( policy.equals( "Always" ) ){
 
 			createNewDiagram();
 
-		} else if( _policy.equals( "UserDialog" ) ){
+		} else if( policy.equals( "UserDialog" ) ){
 
 			boolean answer = UserInterfaceHelper.askAQuestion( 
 					"Do you want to auto-populate the content based on owned packages of " + 
@@ -121,11 +119,13 @@ public class PackageDiagramIndexCreator {
 	public void populateContentBasedOnPolicyFor(
 			IRPDiagram theDiagram ) {
 
-		if( _policy.equals( "Always" ) ){
+		String policy = _context.getAutoGenerationOfPackageDiagramContentPolicy( theDiagram );
+
+		if( policy.equals( "Always" ) ){
 
 			populateContentFor( theDiagram );
 
-		} else if( _policy.equals( "UserDialog" ) ){
+		} else if( policy.equals( "UserDialog" ) ){
 
 			boolean answer = UserInterfaceHelper.askAQuestion( 
 					"Do you want to auto-populate the content based on owned packages of " + 
@@ -154,6 +154,9 @@ public class PackageDiagramIndexCreator {
 
 		applyAutoDrawnStereotype( theDiagram );		
 
+		_diagramMetaClasses = _context.getPackageDiagramIndexDiagramMetaClasses( _rootPkg );
+		_packageMetaClasses = _context.getPackageDiagramIndexUserDefinedMetaClasses( _rootPkg );
+
 		Map<String, List<IRPModelElement>> theElementSetsMap = new LinkedHashMap<>();
 
 		for( String thePackageType : _packageMetaClasses ){
@@ -173,7 +176,7 @@ public class PackageDiagramIndexCreator {
 			String thePackageType = entry.getKey();
 			List<IRPModelElement> theNestedPkgs = entry.getValue();
 
-			_context.debug( "populateContentFor found " + theNestedPkgs.size() + " " + 
+			_context.debug( "populateContentFor found  " + theNestedPkgs.size() + " " + 
 					thePackageType + " owned by " + _context.elInfo( _rootPkg ) );
 
 			for( IRPModelElement theNestedPkg : theNestedPkgs ) {
@@ -232,7 +235,7 @@ public class PackageDiagramIndexCreator {
 	private void updateRTFDescriptionFor(
 			IRPModelElement thePkg ){
 
-		//_context.debug( "updateRTFDescriptionFor invoked for " + _context.elInfo( thePkg ) );
+		//_context.info( "updateRTFDescriptionFor invoked for " + _context.elInfo( thePkg ) );
 		
 		List<IRPModelElement> theRTFLinks = new ArrayList<>();
 		
