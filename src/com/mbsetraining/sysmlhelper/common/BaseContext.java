@@ -782,6 +782,31 @@ public abstract class BaseContext {
 
 		return theOwningPackage;
 	}
+	
+	public IRPDiagram getOwningDiagramFor(
+			IRPModelElement theElement ){
+
+		IRPDiagram theOwningDiagram = null;
+
+		_rhpLog.info( "getOwningDiagram invoked for " + _rhpLog.elInfo( theElement ) );
+		
+		if( theElement == null ){
+
+			_rhpLog.warning( "getOwningDiagramFor for was invoked for a null element" );
+
+		} else if( theElement instanceof IRPDiagram ){
+			theOwningDiagram = (IRPDiagram)theElement;
+
+		} else if( theElement instanceof IRPProject ){
+			_rhpLog.warning( "Unable to find an owning diagram for " + theElement.getFullPathNameIn() + " as I reached project" );
+
+		} else {
+			theOwningDiagram = getOwningDiagramFor( theElement.getOwner() );
+		}
+
+		return theOwningDiagram;
+	}
+
 
 	public boolean isLegalName(
 			String theName, 

@@ -523,7 +523,7 @@ DLLServerCompatible65=1
 
 
 #REM: Add pop-up menu
-name66=MBSE Method: Other\Auto-update diagram content
+name66=MBSE Method: Other\Auto-update package diagram content
 isPluginCommand66=1
 command66=InvokeExecutableMBSEHelper
 applicableTo66=Package Diagram - Index

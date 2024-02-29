@@ -11,13 +11,11 @@ import com.telelogic.rhapsody.core.*;
 
 public class PackageDiagramIndexCreator {
 
+	private static final String PARD_LTRPAR_QC_FS18_BULLET = "\\pard\\ltrpar\\qc\\fs18\\bullet  ";
 	protected ExecutableMBSE_Context _context;
-	protected IRPPackage _rootPkg;
 	protected IRPStereotype _pkgIndexDiagramStereotype;
 	protected IRPStereotype _autoDrawnStereotype;
-	protected List<String> _packageMetaClasses;
-	protected List<String> _diagramMetaClasses;
-	
+
 	public static void main(String[] args) {
 
 		ExecutableMBSE_Context context = new ExecutableMBSE_Context( 
@@ -27,17 +25,12 @@ public class PackageDiagramIndexCreator {
 
 		if( theSelectedEl instanceof IRPPackage ) {
 
-			IRPPackage theRootPkg = (IRPPackage) theSelectedEl;
-
-			PackageDiagramIndexCreator theCreator = new PackageDiagramIndexCreator( theRootPkg, context );
-
-			theCreator.createDiagramBasedOnPolicy();
+			PackageDiagramIndexCreator theCreator = new PackageDiagramIndexCreator( context );
+			theCreator.populateContentBasedOnPolicyFor( (IRPPackage) theSelectedEl );
 
 		} else if( theSelectedEl instanceof IRPObjectModelDiagram ) {
 
-			IRPPackage theRootPkg = context.getOwningPackageFor( theSelectedEl );
-
-			PackageDiagramIndexCreator theCreator = new PackageDiagramIndexCreator( theRootPkg, context );
+			PackageDiagramIndexCreator theCreator = new PackageDiagramIndexCreator( context );
 			theCreator.populateContentBasedOnPolicyFor( (IRPDiagram) theSelectedEl );
 		}
 	}
@@ -50,53 +43,15 @@ public class PackageDiagramIndexCreator {
 	}
 
 	public PackageDiagramIndexCreator( 
-			IRPPackage theRootPkg,
 			ExecutableMBSE_Context context ){
 
 		_context = context;
-		_rootPkg = theRootPkg;
 		_pkgIndexDiagramStereotype = _context.getNewTermForPackageIndexDiagram();
 		_autoDrawnStereotype = _context.getStereotypeForAutoDrawn();
 	}
 
-	public void createDiagramBasedOnPolicy() {
-
-		String policy = _context.getAutoGenerationOfPackageDiagramContentPolicy( _rootPkg );
-		
-		if( policy.equals( "Always" ) ){
-
-			createNewDiagram();
-
-		} else if( policy.equals( "UserDialog" ) ){
-
-			boolean answer = UserInterfaceHelper.askAQuestion( 
-					"Do you want to auto-populate the content based on owned packages of " + 
-							_rootPkg.getName() + "?" );
-
-			if( answer ) {
-				createNewDiagram();
-			} else {
-				_context.info( "User chose to cancel" );
-			}
-		}		
-	}
-
-	public IRPDiagram createNewDiagram() {
-
-		String theProposedName = _context.PACKAGE_DIAGRAM_INDEX_PREFIX + _rootPkg.getName();
-
-		String theUniqueName = _context.determineUniqueNameBasedOn( theProposedName, "ObjectModelDiagram", _rootPkg );
-
-		IRPDiagram theDiagram = _rootPkg.addObjectModelDiagram( theUniqueName );
-		theDiagram.setStereotype( _pkgIndexDiagramStereotype );
-
-		populateContentFor( theDiagram );
-
-		return theDiagram;
-	}
-
-	private void applyAutoDrawnStereotype(
-			IRPDiagram theDiagram) {
+	private void applyAutoDrawnStereotypeTo(
+			IRPDiagram theDiagram ){
 
 		if( _autoDrawnStereotype != null ){
 
@@ -110,8 +65,6 @@ public class PackageDiagramIndexCreator {
 
 				theDiagram.addSpecificStereotype( _autoDrawnStereotype );
 				theDiagram.highLightElement();
-
-				_rootPkg.highLightElement();
 			}
 		}
 	}
@@ -119,7 +72,37 @@ public class PackageDiagramIndexCreator {
 	public void populateContentBasedOnPolicyFor(
 			IRPDiagram theDiagram ) {
 
+		IRPPackage theRootPkg = _context.getOwningPackageFor( theDiagram );
+
 		String policy = _context.getAutoGenerationOfPackageDiagramContentPolicy( theDiagram );
+
+		Map<String, List<IRPModelElement>> theElementSetsMap = getNestedPackageMapToPopulateFor( theRootPkg );
+
+		if( policy.equals( "Always" ) ){
+
+			populateDiagramContentFor( theDiagram, theElementSetsMap );
+
+		} else if( policy.equals( "UserDialog" ) ){
+
+			boolean answer = UserInterfaceHelper.askAQuestion( 
+					"Do you want to auto-populate the content based on owned packages of " + 
+							theRootPkg.getName() + "?" );
+
+			if( answer ) {
+				populateDiagramContentFor( theDiagram, theElementSetsMap );
+			} else {
+				_context.info( "User chose to cancel" );
+			}
+		}	
+	}
+
+	public void populateContentBasedOnPolicyFor(
+			IRPPackage thePackage ) {
+
+		populatePackageContentFor( thePackage );
+
+		/*
+		String policy = _context.getAutoGenerationOfPackageDiagramContentPolicy( thePackage );
 
 		if( policy.equals( "Always" ) ){
 
@@ -128,7 +111,7 @@ public class PackageDiagramIndexCreator {
 		} else if( policy.equals( "UserDialog" ) ){
 
 			boolean answer = UserInterfaceHelper.askAQuestion( 
-					"Do you want to auto-populate the content based on owned packages of " + 
+					"Do you want to recursively auto-populate the content based on owned packages of " + 
 							_rootPkg.getName() + "?" );
 
 			if( answer ) {
@@ -136,11 +119,78 @@ public class PackageDiagramIndexCreator {
 			} else {
 				_context.info( "User chose to cancel" );
 			}
-		}	
+		}*/	
 	}
 
-	protected void populateContentFor( 
-			IRPDiagram theDiagram ){
+	private List<IRPDiagram> getNestedAutoDrawnPackageDiagrams(
+			IRPPackage forPkg ){
+
+		List<IRPDiagram> theAutoDrawnDiagrams = new ArrayList<>();
+
+		@SuppressWarnings("unchecked")
+		List<IRPDiagram> theCandidates = forPkg.getObjectModelDiagrams().toList();
+
+		for( IRPDiagram theCandidate : theCandidates ){
+
+			if( _context.hasStereotypeCalled( 
+					_context.AUTO_DRAWN_STEREOTYPE, theCandidate ) &&
+					_context.hasStereotypeCalled( 
+							_context.PACKAGE_DIAGRAM_INDEX, theCandidate ) ) {
+
+				theAutoDrawnDiagrams.add( theCandidate );
+			}
+		}
+
+		return theAutoDrawnDiagrams;
+	}
+
+	protected void populatePackageContentFor( 
+			IRPPackage thePackage ){
+
+		if( thePackage.isReadOnly() == 0 ){				
+
+			@SuppressWarnings("unchecked")
+			List<IRPPackage> thePkgs = thePackage.getPackages().toList();
+
+			for( IRPPackage thePkg : thePkgs ){
+				populatePackageContentFor( thePkg );
+			}
+
+			List<IRPDiagram> theDiagrams = getNestedAutoDrawnPackageDiagrams( thePackage );
+			int size = theDiagrams.size();
+
+			Map<String, List<IRPModelElement>> theElementSetsMap = getNestedPackageMapToPopulateFor( thePackage );
+
+			IRPDiagram theDiagram = null;
+
+			if( size == 1 ) {
+
+				theDiagram = (IRPDiagram) theDiagrams.get(0);
+				_context.info( "Found " + _context.elInfo( theDiagram ) + " under " + _context.elInfo( thePackage ) );
+
+			} else if( size > 1 ) {
+				_context.warning( "Found " + size + " under " + _context.elInfo( thePackage ) + " hence don't know which one to choose" );
+				theDiagram = (IRPDiagram) theDiagrams.get(0);
+
+			} else {
+
+				String theProposedName = _context.PACKAGE_DIAGRAM_INDEX_PREFIX + thePackage.getName();
+
+				String theUniqueName = _context.determineUniqueNameBasedOn( theProposedName, "ObjectModelDiagram", thePackage );
+
+				theDiagram = thePackage.addObjectModelDiagram( theUniqueName );
+				theDiagram.setStereotype( _pkgIndexDiagramStereotype );
+			}
+
+			if( theDiagram != null ) {				
+				populateDiagramContentFor( theDiagram, theElementSetsMap );
+			}
+		}
+	}
+
+	protected void populateDiagramContentFor( 
+			IRPDiagram theDiagram,
+			Map<String, List<IRPModelElement>> theElementSetsMap ){
 
 		int xLeftMargin = 100;
 		int yTopMargin = 100;
@@ -152,22 +202,9 @@ public class PackageDiagramIndexCreator {
 		int pkgHorizGap = 50;
 		int pkgVertGap = 50;
 
-		applyAutoDrawnStereotype( theDiagram );		
+		applyAutoDrawnStereotypeTo( theDiagram );		
 
-		_diagramMetaClasses = _context.getPackageDiagramIndexDiagramMetaClasses( _rootPkg );
-		_packageMetaClasses = _context.getPackageDiagramIndexUserDefinedMetaClasses( _rootPkg );
-
-		Map<String, List<IRPModelElement>> theElementSetsMap = new LinkedHashMap<>();
-
-		for( String thePackageType : _packageMetaClasses ){
-
-			List<IRPModelElement> theNestedPkgs = _context.
-					findElementsWithMetaClassAndStereotype( "Package", thePackageType, _rootPkg, 0 );
-
-			if( !theNestedPkgs.isEmpty() ) {				
-				theElementSetsMap.put( thePackageType, theNestedPkgs );
-			}
-		}
+		IRPPackage theRootPkg = _context.getOwningPackageFor( theDiagram ); 
 
 		IRPCollection theCompleteRelationsEls = _context.createNewCollection();
 
@@ -177,32 +214,38 @@ public class PackageDiagramIndexCreator {
 			List<IRPModelElement> theNestedPkgs = entry.getValue();
 
 			_context.debug( "populateContentFor found  " + theNestedPkgs.size() + " " + 
-					thePackageType + " owned by " + _context.elInfo( _rootPkg ) );
+					thePackageType + " owned by " + _context.elInfo( theRootPkg ) );
 
 			for( IRPModelElement theNestedPkg : theNestedPkgs ) {
 
-				@SuppressWarnings("unchecked")
-				List<IRPGraphElement> theGraphEls = theDiagram.getCorrespondingGraphicElements( theNestedPkg ).toList();
-				
-				if( theGraphEls.size() != 0 ){
+				if( !( theNestedPkg instanceof IRPProject ) ) {
 					
-					_context.info( "Auto-populate is skipping " + _context.elInfo( theNestedPkg ) + 
-							" as already on " + _context.elInfo( theDiagram ) );
-					
-					for( IRPGraphElement theGraphEl : theGraphEls ){
-						theCompleteRelationsEls.addGraphicalItem( theGraphEl );
+					@SuppressWarnings("unchecked")
+					List<IRPGraphElement> theGraphEls = theDiagram.getCorrespondingGraphicElements( theNestedPkg ).toList();
+
+					if( theGraphEls.size() != 0 ){
+
+						_context.info( "Auto-populate is skipping " + _context.elInfo( theNestedPkg ) + 
+								" as already on " + _context.elInfo( theDiagram ) );
+
+						for( IRPGraphElement theGraphEl : theGraphEls ){
+							theCompleteRelationsEls.addGraphicalItem( theGraphEl );
+						}
+
+					} else {
+											
+						_context.debug( "Graph node added for " + _context.elInfo( theNestedPkg ) );
+
+						IRPGraphNode thePkgGraphNode = theDiagram.addNewNodeForElement( theNestedPkg, xPkgPos, yPkgPos, pkgWidth, pkgHeight );
+						theCompleteRelationsEls.addGraphicalItem( thePkgGraphNode );
+
+						xPkgPos += pkgWidth + pkgHorizGap;
 					}
-					
-				} else {
-					_context.debug( "Graph node added for " + _context.elInfo( theNestedPkg ) );
 
-					IRPGraphNode theGraphNode = theDiagram.addNewNodeForElement( theNestedPkg, xPkgPos, yPkgPos, pkgWidth, pkgHeight );
-					theCompleteRelationsEls.addGraphicalItem( theGraphNode );
+					List<IRPModelElement> theRTFLinks = getElementsToAddHyperLinksFor( theNestedPkg );
 
-					xPkgPos += pkgWidth + pkgHorizGap;
+					updateRTFDescriptionFor( theNestedPkg, theRTFLinks );
 				}
-
-				updateRTFDescriptionFor( theNestedPkg );
 			}
 
 			xPkgPos = xLeftMargin;
@@ -211,13 +254,42 @@ public class PackageDiagramIndexCreator {
 
 		theDiagram.completeRelations( theCompleteRelationsEls, 0 );
 	}
-	
+
+	private Map<String, List<IRPModelElement>> getNestedPackageMapToPopulateFor(
+			IRPPackage theRootPkg ){
+
+		//_context.info( "getNestedPackageMapToPopulateFor invoked for " + _context.elInfo( theRootPkg ) );
+
+		Map<String, List<IRPModelElement>> theElementSetsMap = new LinkedHashMap<>();
+
+		List<IRPModelElement> theSelfList = new ArrayList<>();
+		
+		if( !( theRootPkg instanceof IRPProject ) ) {	
+			theSelfList.add( theRootPkg );
+			theElementSetsMap.put( "", theSelfList );
+		}
+
+		List<String> thePackageMetaClasses = _context.getPackageDiagramIndexUserDefinedMetaClasses( theRootPkg );
+
+		for( String thePackageType : thePackageMetaClasses ){
+
+			List<IRPModelElement> theNestedPkgs = _context.
+					findElementsWithMetaClassAndStereotype( "Package", thePackageType, theRootPkg, 0 );
+
+			if( !theNestedPkgs.isEmpty() ) {				
+				theElementSetsMap.put( thePackageType, theNestedPkgs );
+			}
+		}
+
+		return theElementSetsMap;
+	}
+
 	@SuppressWarnings("unchecked")
 	private List<IRPModelElement> getAllDiagramsUnder(
 			IRPPackage thePkg ){
-		
+
 		List<IRPModelElement> theDiagrams = new ArrayList<>();
-		
+
 		theDiagrams.addAll( thePkg.getObjectModelDiagrams().toList() );
 		theDiagrams.addAll( thePkg.getStructureDiagrams().toList() );
 		theDiagrams.addAll( thePkg.getUseCaseDiagrams().toList() );
@@ -232,34 +304,55 @@ public class PackageDiagramIndexCreator {
 		return theDiagrams;
 	}
 
-	private void updateRTFDescriptionFor(
+	private List<IRPModelElement> getElementsToAddHyperLinksFor(
 			IRPModelElement thePkg ){
 
-		//_context.info( "updateRTFDescriptionFor invoked for " + _context.elInfo( thePkg ) );
-		
-		List<IRPModelElement> theRTFLinks = new ArrayList<>();
-		
+		//_context.info( "getDiagramsAndTableViewsFor invoked for " + _context.elInfo( thePkg ) );
+
+		List<IRPModelElement> theViews = new ArrayList<>();
+
 		List<IRPModelElement> candidateDiagrams = getAllDiagramsUnder( (IRPPackage) thePkg );
 
-		for( String theMetaClass : _diagramMetaClasses ){
+		List<String> theDiagramMetaClasses = _context.getPackageDiagramIndexDiagramMetaClasses( thePkg );
+
+		for( String theMetaClass : theDiagramMetaClasses ){
 
 			for( IRPModelElement theCandidate : candidateDiagrams ){
-				
+
 				String theUserDefinedMetaClass = theCandidate.getUserDefinedMetaClass();
 
 				//_context.info( "Does " +  _context.elInfo( theCandidate ) + " = " + theMetaClass );
-				
+
 				if( theUserDefinedMetaClass.equals( theMetaClass ) &&
-						_diagramMetaClasses.contains( theUserDefinedMetaClass ) ) {
-					
-					if( !theRTFLinks.contains( theCandidate ) ) {
-						theRTFLinks.add( theCandidate );
+						theDiagramMetaClasses.contains( theUserDefinedMetaClass ) ) {
+
+					if( !theViews.contains( theCandidate ) ) {
+						theViews.add( theCandidate );
 					}
 				}
 			}
 		}
 
-		if( !theRTFLinks.isEmpty() ) {
+		return theViews;
+	}
+
+	private void updateRTFDescriptionFor(
+			IRPModelElement thePkg,
+			List<IRPModelElement> theRTFLinks ){
+
+		//_context.info( "updateRTFDescriptionFor invoked for " + _context.elInfo( thePkg ) );
+
+		if( theRTFLinks.isEmpty() ) {
+
+			String theExistingRTF = thePkg.getDescriptionRTF();
+
+			//_context.info( theExistingRTF );
+
+			if( theExistingRTF.contains(PARD_LTRPAR_QC_FS18_BULLET)) {
+				thePkg.setDescription("");
+			}
+
+		} else {
 
 			IRPCollection targets = _context.get_rhpApp().createNewCollection();
 			targets.setSize( theRTFLinks.size() );
@@ -272,7 +365,7 @@ public class PackageDiagramIndexCreator {
 
 				targets.setModelElement( count, theRTFLink );
 
-				rtfText += "\\pard\\ltrpar\\qc\\fs18\\bullet  " + theRTFLink.getUserDefinedMetaClass() + 
+				rtfText += PARD_LTRPAR_QC_FS18_BULLET + theRTFLink.getUserDefinedMetaClass() + 
 						": \\cf1\\ul\\protect " + theRTFLink.getName() + "\\cf0\\ulnone\\protect0\\par";
 
 				count++;
@@ -284,9 +377,9 @@ public class PackageDiagramIndexCreator {
 
 	private List<IRPModelElement> getActivityDiagramsOwnedByUseCasesUnder(
 			IRPPackage thePkg ){
-		
+
 		List<IRPModelElement> theDiagrams = new ArrayList<>();
-		
+
 		@SuppressWarnings("unchecked")
 		List<IRPModelElement> theUseCases = thePkg.getNestedElementsByMetaClass( "UseCase", 0 ).toList();
 
@@ -296,17 +389,17 @@ public class PackageDiagramIndexCreator {
 			List<IRPModelElement> theActivityDiagrams = theUseCase.getNestedElementsByMetaClass( "ActivityDiagram", 0 ).toList();
 			theDiagrams.addAll( theActivityDiagrams );
 		}
-		
+
 		return theDiagrams;
 	}
-	
+
 	private List<IRPModelElement> getDiagramsOwnedByClassesUnder( 
 			IRPPackage thePkg ){
-		
+
 		//_context.info( "getDiagramsOwnedByClassesUnder invoked for " + _context.elInfo( thePkg ) );
-		
+
 		List<IRPModelElement> theDiagrams = new ArrayList<>();
-		
+
 		@SuppressWarnings("unchecked")
 		List<IRPModelElement> theClasses = thePkg.getNestedElementsByMetaClass( "Class", 0 ).toList();
 
@@ -318,7 +411,7 @@ public class PackageDiagramIndexCreator {
 			List<IRPModelElement> theOMDs = theClass.getNestedElementsByMetaClass( "ObjectModelDiagram", 0 ).toList();
 			theDiagrams.addAll( theOMDs );
 		}
-		
+
 		return theDiagrams;
 	}
 }

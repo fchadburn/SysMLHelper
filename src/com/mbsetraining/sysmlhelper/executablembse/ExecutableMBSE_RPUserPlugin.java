@@ -82,6 +82,33 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 	protected CheckForRemoteRequirementSpecificationMatch _checkForRemoteRequirementSpecificationMatch;
 	protected CheckForRequirementNameLength _checkForRequirementNameLength;
 
+	public static void main(String[] args) {
+	
+		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
+		
+		ExecutableMBSE_Context context = new ExecutableMBSE_Context( theRhpApp.getApplicationConnectionString() );
+
+		IRPModelElement theSelectedEl = context.getSelectedElement( true );
+		
+		if( theSelectedEl instanceof IRPStateVertex ) {
+			
+			List<IRPModelElement> theOutgoingFlowTargets = new ArrayList<>();
+			
+			try {
+				
+				theOutgoingFlowTargets = getIncomingFlowSources( (IRPStateVertex) theSelectedEl );
+
+			} catch (Exception e) {
+				context.error( "Execeptio0n e=" + e.getMessage());
+			}
+			
+			for (IRPModelElement theOutgoingFlowTarget : theOutgoingFlowTargets) {
+				context.info( context.elInfo( theOutgoingFlowTarget ) );
+			}
+		}
+
+	}
+	
 	// called when plug-in is loaded
 	public void RhpPluginInit(
 			final IRPApplication theRhapsodyApp ){
@@ -889,10 +916,17 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					
 				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.AutoUpdateDiagramContentMenu" ) ) ){
+
+					if( theSelectedEl instanceof IRPPackage ) {
+						
+						PackageDiagramIndexCreator theCreator = new PackageDiagramIndexCreator( _context );
+						theCreator.populateContentBasedOnPolicyFor( (IRPPackage) theSelectedEl );
 					
-					IRPPackage theRootPkg = _context.getOwningPackageFor( theSelectedEl );
-					PackageDiagramIndexCreator theCreator = new PackageDiagramIndexCreator( theRootPkg, _context );
-					theCreator.populateContentBasedOnPolicyFor( (IRPDiagram) theSelectedEl );
+					} else if( theSelectedEl instanceof IRPDiagram ){
+						
+						PackageDiagramIndexCreator theCreator = new PackageDiagramIndexCreator( _context );
+						theCreator.populateContentBasedOnPolicyFor( (IRPDiagram) theSelectedEl );
+					}
 					
 				} else {
 					_context.warning( "Unhandled menu: " + _context.elInfo( theSelectedEl ) + " was invoked with menuItem='" + menuItem + "'");
@@ -1196,7 +1230,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 			@SuppressWarnings("unchecked")
 			List<IRPDependency> theRemoteDependencies = req.getRemoteDependencies().toList();
 			
-			if( theRemoteDependencies.isEmpty() ) {
+			if( theRemoteDependencies.isEmpty() ){
 				result.addItem( element );
 			}
 		}
@@ -1256,12 +1290,197 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					IRPRequirement theOSLCRequirement = (IRPRequirement)theDependsOn;
 					
 					if( !_context.isRequirementSpecificationMatchingFor(
-							req, theOSLCRequirement ) ) {
+							req, theOSLCRequirement ) ){
 						
 						result.addItem( theDependsOn );
 					}
 				}
 			}
+		}
+	}
+	
+	// Used in context pattern tables
+	void getObjectNodesWithFlowTargets(
+			IRPModelElement element, 
+			IRPCollection result ){
+		
+		if( element instanceof IRPClass ){
+			
+			IRPClass theClass = (IRPClass) element;
+			
+			@SuppressWarnings("unchecked")
+			List<IRPModelElement> theReferences = theClass.getReferences().toList();
+			
+			for( IRPModelElement theReference : theReferences ){
+				
+				if( theReference instanceof IRPObjectNode ){
+					
+					IRPObjectNode theObjectNode = (IRPObjectNode)theReference;
+					
+					List<IRPModelElement> theFlowTargets = getOutgoingFlowTargets( theObjectNode );
+
+					if( !theFlowTargets.isEmpty() ){
+						result.addItem( theObjectNode );
+					}
+				}
+			}	
+		}
+	}
+	
+	// Used in context pattern tables
+	void getObjectNodesWithFlowSources(
+			IRPModelElement element, 
+			IRPCollection result ){
+		
+		if( element instanceof IRPClass ){
+			
+			IRPClass theClass = (IRPClass) element;
+			
+			@SuppressWarnings("unchecked")
+			List<IRPModelElement> theReferences = theClass.getReferences().toList();
+			
+			for( IRPModelElement theReference : theReferences ){
+				
+				if( theReference instanceof IRPObjectNode ){
+					
+					IRPObjectNode theObjectNode = (IRPObjectNode)theReference;
+					
+					List<IRPModelElement> theFlowSources = getIncomingFlowSources( theObjectNode );
+
+					if( !theFlowSources.isEmpty() ){
+						result.addItem( theObjectNode );
+					}
+				}
+			}	
+		}
+	}
+	
+	// Used in context pattern tables
+	void getObjectNodesWithNoFlowTargetsOrSources(
+			IRPModelElement element, 
+			IRPCollection result ){
+		
+		if( element instanceof IRPClass ){
+			
+			IRPClass theClass = (IRPClass) element;
+			
+			@SuppressWarnings("unchecked")
+			List<IRPModelElement> theReferences = theClass.getReferences().toList();
+			
+			for( IRPModelElement theReference : theReferences ){
+				
+				if( theReference instanceof IRPObjectNode ){
+					
+					IRPObjectNode theObjectNode = (IRPObjectNode)theReference;
+					
+					List<IRPModelElement> theFlowTargets = getOutgoingFlowTargets( theObjectNode );
+					List<IRPModelElement> theFlowSources = getIncomingFlowSources( theObjectNode );
+
+					if( theFlowTargets.isEmpty() && theFlowSources.isEmpty() ) {
+						result.addItem( theObjectNode );
+					}
+				}
+			}	
+		}
+	}
+	
+	private static List<IRPModelElement> getOutgoingFlowTargets( 
+			IRPStateVertex forVertex ){
+				
+		//RhapsodyAppServer.getActiveRhapsodyApplication().writeToOutputWindow("", "addOutgoingFlowTargets invoked for " + forVertex.getName() + "/n" );
+		
+		List<IRPModelElement> theFlowTargets = new ArrayList<>();
+		
+		@SuppressWarnings("unchecked")
+		List<IRPTransition> theTransitions = forVertex.getOutTransitions().toList();
+		
+		for( IRPTransition theTransition : theTransitions ){
+			
+			IRPStateVertex theTarget = theTransition.getItsTarget();
+			
+			//RhapsodyAppServer.getActiveRhapsodyApplication().writeToOutputWindow("", "Transition found to " + theTarget.getName() + "/n" );
+
+			if( theTarget instanceof IRPState ){
+				
+				theFlowTargets.add( theTarget );
+				
+			} else if( theTarget instanceof IRPPin ){
+				
+				IRPPin thePin = (IRPPin) theTarget;
+				theFlowTargets.add( thePin.getParent() );
+			
+			} else if( theTarget instanceof IRPConnector ){
+				
+				// recursively call
+				theFlowTargets.addAll( getOutgoingFlowTargets( theTarget ) );
+			}
+		}
+		
+		return theFlowTargets;
+	}
+	
+	private static List<IRPModelElement> getIncomingFlowSources( 
+			IRPStateVertex forVertex ){
+		
+		//RhapsodyAppServer.getActiveRhapsodyApplication().writeToOutputWindow("", "addOutgoingFlowTargets invoked for " + forVertex.getName() + "/n" );
+
+		List<IRPModelElement> theFlowTargets = new ArrayList<>();
+		
+		@SuppressWarnings("unchecked")
+		List<IRPTransition> theTransitions = forVertex.getInTransitions().toList();
+		
+		for( IRPTransition theTransition : theTransitions ){
+			
+			IRPStateVertex theTarget = theTransition.getItsSource();
+			
+			//RhapsodyAppServer.getActiveRhapsodyApplication().writeToOutputWindow("", "Transition found to " + theTarget.getName() + "/n" );
+
+			if( theTarget instanceof IRPState ){
+				
+				theFlowTargets.add( theTarget );
+				
+			} else if( theTarget instanceof IRPPin ){
+				
+				IRPPin thePin = (IRPPin) theTarget;
+				theFlowTargets.add( thePin.getParent() );
+			
+			} else if( theTarget instanceof IRPConnector ){
+				
+				// recursively call
+				theFlowTargets.addAll( getIncomingFlowSources( theTarget ) );
+			}			
+		}
+		
+		return theFlowTargets;
+	}
+	
+	// Used in context pattern tables
+	void getOutgoingObjectFlowTargets(
+			IRPModelElement element, 
+			IRPCollection result ){
+		
+		if( element instanceof IRPStateVertex ){
+			
+			List<IRPModelElement> theFlowTargets = getOutgoingFlowTargets( (IRPStateVertex) element );	
+			
+			for( IRPModelElement theOutgoingFlowTarget : theFlowTargets ){
+				result.addItem( theOutgoingFlowTarget );
+			}		
+		}
+	}
+	
+	// Used in context pattern tables
+	void getIncomingObjectFlowSources(
+			IRPModelElement element, 
+			IRPCollection result ){
+		
+		if( element instanceof IRPStateVertex ){
+			
+			List<IRPModelElement> theIncomingFlowSources = getIncomingFlowSources( (IRPStateVertex) element );
+			
+			for( IRPModelElement theIncomingFlowSource : theIncomingFlowSources ){
+				result.addItem( theIncomingFlowSource );
+			}		
 		}
 	}
 	
