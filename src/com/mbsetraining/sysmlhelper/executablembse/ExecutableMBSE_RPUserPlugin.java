@@ -1309,6 +1309,9 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 		if( element instanceof IRPFlowchart ) { // ActivityDiagram
 			IRPFlowchart theAD = (IRPFlowchart)element;
 			element = theAD.getStatechartDiagram(); // ActivityDiagramGE
+		} else if( element instanceof IRPStatechart ) {
+			IRPStatechart theStatechart = (IRPStatechart)element;
+			element = theStatechart.getStatechartDiagram();
 		}
 		
 		if( element instanceof IRPDiagram ){
@@ -1322,6 +1325,38 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 				
 				if( theEl instanceof IRPRequirement ) {
 					result.addItem( theEl );
+				}
+			}
+		}
+	}
+	
+	// Used in context pattern tables
+	void filterToDiagramsWithRequirements(
+			IRPModelElement element, 
+			IRPCollection result ){
+					
+		//RhapsodyAppServer.getActiveRhapsodyApplication().writeToOutputWindow("", "invoked for " + element.getMetaClass() + " called (2) " + element.getName() + "\n" );
+		
+		if( element instanceof IRPFlowchart ) { // ActivityDiagram
+			IRPFlowchart theAD = (IRPFlowchart)element;
+			element = theAD.getStatechartDiagram(); // ActivityDiagramGE
+		} else if( element instanceof IRPStatechart ) {
+			IRPStatechart theStatechart = (IRPStatechart)element;
+			element = theStatechart.getStatechartDiagram();
+		}
+		
+		if( element instanceof IRPDiagram ){
+			
+			IRPDiagram theDiagram = (IRPDiagram) element;
+			
+			@SuppressWarnings("unchecked")
+			List<IRPModelElement> theEls = theDiagram.getElementsInDiagram().toList();
+			
+			for( IRPModelElement theEl : theEls ){
+				
+				if( theEl instanceof IRPRequirement ) {
+					result.addItem( element );
+					break;
 				}
 			}
 		}
