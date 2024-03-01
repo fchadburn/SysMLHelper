@@ -1048,6 +1048,7 @@ V4.3.c.PreRelease (XX-XXX-XXXX): TBC
 0808 12-FEB-2024: ExecutableMBSE: Initial support to extend update package diagram with context so that it works recursively to sub-packages (menu hidden) (F.J.Chadburn)
 0809 29-FEB-2024: ExecutableMBSE: Added getObjectNodesWithFlowTargets, getObjectNodesWithNoFlowTargetsOrSources, getOutgoingFlowTargets, pluginMethods for table views (F.J.Chadburn)
 0810 29-FEB-2024: ExecutableMBSE: Added getObjectNodesWithFlowSources, getIncomingFlowSources pluginMethods for activity diagram table views (F.J.Chadburn)
+0811 01-MAR-2024: ExecutableMBSE: Added getRequirementsOnDiagram for use in context patterns (F.J.Chadburn)
 
 Backlog/Known issues
 - Consider extending context pattern for requirement to action to have a Function Block column?

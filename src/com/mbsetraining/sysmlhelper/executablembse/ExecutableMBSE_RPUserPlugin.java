@@ -1300,6 +1300,34 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 	}
 	
 	// Used in context pattern tables
+	void getRequirementsOnDiagram(
+			IRPModelElement element, 
+			IRPCollection result ){
+					
+		//RhapsodyAppServer.getActiveRhapsodyApplication().writeToOutputWindow("", "invoked for " + element.getMetaClass() + " called (2) " + element.getName() + "\n" );
+		
+		if( element instanceof IRPFlowchart ) { // ActivityDiagram
+			IRPFlowchart theAD = (IRPFlowchart)element;
+			element = theAD.getStatechartDiagram(); // ActivityDiagramGE
+		}
+		
+		if( element instanceof IRPDiagram ){
+			
+			IRPDiagram theDiagram = (IRPDiagram) element;
+			
+			@SuppressWarnings("unchecked")
+			List<IRPModelElement> theEls = theDiagram.getElementsInDiagram().toList();
+			
+			for( IRPModelElement theEl : theEls ){
+				
+				if( theEl instanceof IRPRequirement ) {
+					result.addItem( theEl );
+				}
+			}
+		}
+	}
+	
+	// Used in context pattern tables
 	void getObjectNodesWithFlowTargets(
 			IRPModelElement element, 
 			IRPCollection result ){
