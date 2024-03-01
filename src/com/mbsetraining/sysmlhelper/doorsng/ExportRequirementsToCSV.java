@@ -316,7 +316,7 @@ public class ExportRequirementsToCSV {
 
 							if( theSourceEl instanceof IRPRequirement ) {
 
-								theName = _context.getNameFromTracedRemoteRequirement( theSourceEl, theIdentifier );
+								theName = _context.getNameFromRequirement( theSourceEl, theIdentifier );
 							} else {
 								theName = "";
 							}
@@ -349,7 +349,7 @@ public class ExportRequirementsToCSV {
 							} else {
 								// Keep name same as remote if applicable to avoid changing it;
 								thePrimaryText = _context.
-										getNameFromTracedRemoteRequirement( theSourceEl, theIdentifier ); 
+										getNameFromRequirement( theSourceEl, theIdentifier ); 
 							}
 
 							String theLine = theIdentifier + separator;

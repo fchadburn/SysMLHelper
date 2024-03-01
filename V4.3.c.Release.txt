@@ -1050,6 +1050,7 @@ V4.3.c.PreRelease (XX-XXX-XXXX): TBC
 0810 29-FEB-2024: ExecutableMBSE: Added getObjectNodesWithFlowSources, getIncomingFlowSources pluginMethods for activity diagram table views (F.J.Chadburn)
 0811 01-MAR-2024: ExecutableMBSE: Added getRequirementsOnDiagram for use in context patterns (F.J.Chadburn)
 0812 01-MAR-2024: ExecutableMBSE: Added tablel - Requirements On Diagrams table layout to _TablesAndMatrices package as a base example of usage (F.J.Chadburn)
+0813 01-MAR-2024: ExecutableMBSE: Changed Export requirements to csv for import into DOORS NG so local names are exported (log window reports if remote name different) (F.J.Chadburn)
 
 Backlog/Known issues
 - Consider extending context pattern for requirement to action to have a Function Block column?

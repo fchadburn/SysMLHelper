@@ -3412,12 +3412,12 @@ public abstract class BaseContext {
 		return theCleanName;
 	}
 
-	public String getNameFromTracedRemoteRequirement(
+	public String getNameFromRequirement(
 			IRPModelElement forModelEl,
 			String theID ){
 
 		String theName = cleanRequirementName( forModelEl.getName(), theID ); 
-
+				
 		List<IRPRequirement> theRemoteReqts = new ArrayList<>( getRemoteRequirementsFor( forModelEl ) );
 
 		if( theRemoteReqts.size() > 1 ){
@@ -3427,7 +3427,10 @@ public abstract class BaseContext {
 		} else if( theRemoteReqts.size() == 1 ){
 
 			IRPRequirement theRemoteReqt = theRemoteReqts.get( 0 );
-			theName = cleanRequirementName( theRemoteReqt.getName(), theID ); 
+			String theRemoteName = cleanRequirementName( theRemoteReqt.getName(), theID );
+			if( !theRemoteName.equals( theName ) ) {
+				info( "It has been detected that the local name '" + theName + "' has a different remote name of '" + theRemoteName + "'" );
+			}
 		}
 
 		return theName;
