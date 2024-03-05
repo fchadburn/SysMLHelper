@@ -681,6 +681,8 @@ Subject Model
 		Property BrowseRequirementsOnDiagramsPattern String "Package+,Class*,ActivityDiagram|ObjectModelDiagram|StructureDiagram|UseCaseDiagram|Statechart|SequenceDiagram|CollaborationDiagram|DeploymentDiagram|TimingDiagram|PanelDiagram,StatechartDiagram*|ActivityDiagramGE*,pluginMethod:getRequirementsOnDiagram"
 		Property BrowseDiagramsWithRequirementName String "Browse Diagrams With Requirements"
 		Property BrowseDiagramsWithRequirementPattern String "Package+,Class*,ActivityDiagram*|ObjectModelDiagram*|StructureDiagram*|UseCaseDiagram*|Statechart*|SequenceDiagram*|CollaborationDiagram*|DeploymentDiagram*|TimingDiagram*|PanelDiagram*,Requirement,pluginMethod:getDiagramsWithRequirementOn"
+		Property BrowseDiagramsWithUsagesName String "Browse Diagrams With Usages"
+		Property BrowseDiagramsWithUsagesPattern String "Package+,Class*,Object,pluginMethod:getDiagramsWithObjectsOn"
 	end
 end
 end

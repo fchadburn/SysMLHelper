@@ -1054,6 +1054,7 @@ V4.3.c.PreRelease (XX-XXX-XXXX): TBC
 0814 05-MAR-2024: ExecutableMBSE: Add a Browse Hierarchy > Browse Requirements On Diagrams browser option to menus for project (F.J.Chadburn)
 0815 05-MAR-2024: ExecutableMBSE: Added getDiagramsWithRequirementOn for context patterns/tables plus new Browse Hierarchy > Browse Diagrams With Requirements menu (F.J.Chadburn)
 0816 05-MAR-2024: ExecutableMBSE: Added action pin and object flow back on to the textual activity drawing toolbar (F.J.Chadburn)
+0817 05-MAR-2024: ExecutableMBSE: Added getDiagramsWithObjectsOn pluginMethod for context patterns/tables plus new Browse Hierarchy > Browse Usages With Requirements menu (F.J.Chadburn)
 
 Backlog/Known issues
 - Issue with activity diagram children showing with context pattern when not expected?
