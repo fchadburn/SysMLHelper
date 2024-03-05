@@ -1331,6 +1331,35 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 	}
 	
 	// Used in context pattern tables
+	void getDiagramsWithRequirementOn(
+			IRPModelElement element, 
+			IRPCollection result ){
+					
+		//RhapsodyAppServer.getActiveRhapsodyApplication().writeToOutputWindow("", "invoked for " + element.getMetaClass() + " called (2) " + element.getName() + "\n" );
+		
+		if( element instanceof IRPRequirement ){
+			
+			@SuppressWarnings("unchecked")
+			List<IRPModelElement> theReferences = element.getReferences().toList();
+			
+			for (IRPModelElement theEl : theReferences) {
+				
+				if( theEl instanceof IRPActivityDiagram ) { // ActivityDiagramGE
+					
+					result.addItem( theEl.getOwner() ); // Activity Diagram
+
+				} else if( theEl instanceof IRPStatechartDiagram ) { // StatechartDiagram
+					
+					result.addItem( theEl.getOwner() ); // Statechart
+					
+				} else if( theEl instanceof IRPDiagram ) {
+					result.addItem( theEl );
+				}
+			}
+		}
+	}
+	
+	// Used in context pattern tables
 	void filterToDiagramsWithRequirements(
 			IRPModelElement element, 
 			IRPCollection result ){

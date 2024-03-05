@@ -1052,6 +1052,7 @@ V4.3.c.PreRelease (XX-XXX-XXXX): TBC
 0812 01-MAR-2024: ExecutableMBSE: Added tablel - Requirements On Diagrams table layout to _TablesAndMatrices package as a base example of usage (F.J.Chadburn)
 0813 01-MAR-2024: ExecutableMBSE: Changed Export requirements to csv for import into DOORS NG so local names are exported (log window reports if remote name different) (F.J.Chadburn)
 0814 05-MAR-2024: ExecutableMBSE: Add a Browse Hierarchy > Browse Requirements On Diagrams browser option to menus for project (F.J.Chadburn)
+0815 05-MAR-2024: ExecutableMBSE: Added getDiagramsWithRequirementOn for context patterns/tables plus new Browse Hierarchy > Browse Diagrams With Requirements menu (F.J.Chadburn)
 
 Backlog/Known issues
 - Issue with activity diagram children showing with context pattern when not expected?
