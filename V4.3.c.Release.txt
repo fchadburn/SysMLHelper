@@ -1053,11 +1053,11 @@ V4.3.c.PreRelease (XX-XXX-XXXX): TBC
 0813 01-MAR-2024: ExecutableMBSE: Changed Export requirements to csv for import into DOORS NG so local names are exported (log window reports if remote name different) (F.J.Chadburn)
 0814 05-MAR-2024: ExecutableMBSE: Add a Browse Hierarchy > Browse Requirements On Diagrams browser option to menus for project (F.J.Chadburn)
 0815 05-MAR-2024: ExecutableMBSE: Added getDiagramsWithRequirementOn for context patterns/tables plus new Browse Hierarchy > Browse Diagrams With Requirements menu (F.J.Chadburn)
+0816 05-MAR-2024: ExecutableMBSE: Added action pin and object flow back on to the textual activity drawing toolbar (F.J.Chadburn)
 
 Backlog/Known issues
 - Issue with activity diagram children showing with context pattern when not expected?
 - Get browse hierarchy commands to work for packages as well as projects
-- Make the action bin and object flow possible on textual activities
 - Consider extending context pattern for requirement to action to have a Function Block column?
 - What if the requirements have multiple stereotypes, e.g., Tier1 and User Need?
 - Getting the move links to requirements package to work on a remote requirement

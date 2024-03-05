@@ -1689,7 +1689,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">3.1.2024::13:16:48</_modifiedTime>
+			<_modifiedTime type="a">3.5.2024::12:59:21</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -11628,7 +11628,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 99d433ee-75c1-40c0-8ef0-8ea14c3d7d23</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileInfo</_name>
-			<_modifiedTime type="a">3.1.2024::13:16:48</_modifiedTime>
+			<_modifiedTime type="a">3.5.2024::12:52:30</_modifiedTime>
 			<_lastID type="a">3</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -11646,7 +11646,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 00c06448-4cf5-4b58-a462-af1a3bccd935</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileDate</_name>
-			<_modifiedTime type="a">3.1.2024::13:16:48</_modifiedTime>
+			<_modifiedTime type="a">3.5.2024::12:52:30</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IType</_hm2Class>
@@ -11657,13 +11657,13 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</_typeOf>
 			<_isOrdered type="a">0</_isOrdered>
 			<AggregatesList type="e">
-				<value>GUID a41ff652-ce4f-4fa0-8c24-f852778d4516</value>
+				<value>GUID 49189298-097a-440d-9e37-27624ac8c34d</value>
 			</AggregatesList>
 		</ITag>
 		<ILiteralSpecification type="e">
-			<_id type="a">GUID a41ff652-ce4f-4fa0-8c24-f852778d4516</_id>
-			<_modifiedTime type="a">3.1.2024::13:16:48</_modifiedTime>
-			<_value type="a">2024/03/01 13:16:00</_value>
+			<_id type="a">GUID 49189298-097a-440d-9e37-27624ac8c34d</_id>
+			<_modifiedTime type="a">3.5.2024::12:52:30</_modifiedTime>
+			<_value type="a">2024/03/05 12:52:00</_value>
 		</ILiteralSpecification>
 		<ITag type="e">
 			<_id type="a">GUID c783ee62-7cd8-4f71-8651-25132d0e1150</_id>
@@ -11783,7 +11783,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 3307dbc4-6282-4d53-88b2-50e3de5ff8c2</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Diagrams</_name>
-			<_modifiedTime type="a">1.24.2024::10:19:55</_modifiedTime>
+			<_modifiedTime type="a">3.5.2024::13:2:40</_modifiedTime>
 			<_lastID type="a">13</_lastID>
 			<_defaultComposite type="s">GUID af3ccc20-8ac1-47a2-8c5f-be1a84c1550e</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -12248,6 +12248,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 												<size type="a">4</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
+													<_Value type="a">Comment,Constraint,Problem,Rationale,Conform,Dependency,ControlledFile,HyperLink,Tag</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -12282,7 +12283,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ContextDiagramFlowsTable</_name>
-			<_modifiedTime type="a">7.5.2022::11:54:42</_modifiedTime>
+			<_modifiedTime type="a">3.5.2024::13:2:40</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -13170,7 +13171,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 												
 												<IProperty type="e">
 													<_Name type="a">DrawingToolbar</_Name>
-													<_Value type="a">Action,AcceptEventAction,SendAction,AcceptTimeEvent,InterruptibleRegion,CallBehavior,InitialFlow,ControlFlow,DecisionNode,MergeNode,DiagramConnector,ForkConnector,JoinConnector,ActivityFinal,FlowFInal,Requirement,Derivation,Dependency,TransitionLabel,Use Case Precondition,Use Case Postcondition,Use Case Description</_Value>
+													<_Value type="a">Action,AcceptEventAction,SendAction,AcceptTimeEvent,InterruptibleRegion,CallBehavior,InitialFlow,ControlFlow,DecisionNode,MergeNode,DiagramConnector,ForkConnector,JoinConnector,ActivityFinal,FlowFInal,Requirement,Derivation,Dependency,TransitionLabel,Use Case Precondition,Use Case Postcondition,Use Case Description,ActionPin,ObjectFlow</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -13199,7 +13200,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Textual Activity</_name>
-			<_modifiedTime type="a">2.13.2023::10:9:43</_modifiedTime>
+			<_modifiedTime type="a">3.5.2024::12:59:21</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
