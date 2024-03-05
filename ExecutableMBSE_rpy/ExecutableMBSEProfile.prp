@@ -677,6 +677,8 @@ Subject Model
 	Metaclass Project
 		Property BrowseTraceabilityName String "Browse Traceability"
 		Property BrowseTraceabilityPattern String "Package*,Requirement+,pluginMethod:getElementsThatTraceFromRequirements"
+		Property BrowseRequirementsOnDiagramsName String "Browse Requirements On Diagrams"
+		Property BrowseRequirementsOnDiagramsPattern String "Package+,Class*,ActivityDiagram|ObjectModelDiagram|StructureDiagram|UseCaseDiagram|Statechart|SequenceDiagram|CollaborationDiagram|DeploymentDiagram|TimingDiagram|PanelDiagram,StatechartDiagram*|ActivityDiagramGE*,pluginMethod:getRequirementsOnDiagram"
 	end
 end
 end
