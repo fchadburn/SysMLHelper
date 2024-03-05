@@ -25,8 +25,8 @@
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTime type="a">3.5.2024::12:57:3</_modifiedTime>
-			<_lastID type="a">30</_lastID>
+			<_modifiedTime type="a">3.5.2024::13:25:39</_modifiedTime>
+			<_lastID type="a">31</_lastID>
 			<_defaultComposite type="s">GUID ed3fccd8-9776-4e76-be65-fed29cadd8e4</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
@@ -59,6 +59,7 @@
 				<value>GUID 2bf480f2-bcd0-4e19-8ca9-7d4606741b6d</value>
 				<value>GUID 69a609ad-76d4-45a4-835d-3d4981be9913</value>
 				<value>GUID 4aa8b4bc-cc54-4926-85c6-a49ac181d127</value>
+				<value>GUID dfb6f5c0-463c-4e5e-b3f1-cdf587f70ba6</value>
 			</AggregatesList>
 		</ISubsystem>
 		<IClass type="e">
@@ -851,7 +852,28 @@
 					<_hid type="a">GUID adab7c1e-aa41-4df3-abfc-63916a92eb38</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">3.5.2024::12:57:39</_modifiedTime>
+			<_modifiedTime type="a">3.5.2024::13:25:36</_modifiedTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID dfb6f5c0-463c-4e5e-b3f1-cdf587f70ba6</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Pin</_name>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\ExecutableMBSEProfile_MetaModelPkg.sbsx</_hfilename>
+					<_hsubsystem type="a">ExecutableMBSEProfile_MetaModelPkg</_hsubsystem>
+					<_hclass type="a">Textual Activity</_hclass>
+					<_hname type="a">MMD - Textual Activity</_hname>
+					<_hid type="a">GUID adab7c1e-aa41-4df3-abfc-63916a92eb38</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">3.5.2024::13:26:2</_modifiedTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
