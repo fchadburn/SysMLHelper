@@ -1055,10 +1055,10 @@ V4.3.c.PreRelease (XX-XXX-XXXX): TBC
 0815 05-MAR-2024: ExecutableMBSE: Added getDiagramsWithRequirementOn for context patterns/tables plus new Browse Hierarchy > Browse Diagrams With Requirements menu (F.J.Chadburn)
 0816 05-MAR-2024: ExecutableMBSE: Added action pin and object flow back on to the textual activity drawing toolbar (F.J.Chadburn)
 0817 05-MAR-2024: ExecutableMBSE: Added getDiagramsWithObjectsOn pluginMethod for context patterns/tables plus new Browse Hierarchy > Browse Usages With Requirements menu (F.J.Chadburn)
+0818 06-MAR-2024: ExecutableMBSE: Added properties so that profile's Browse Hierarchy sub-menus also work on Package right-click + changed menu names to make clearer (F.J.Chadburn)  
 
 Backlog/Known issues
 - Issue with activity diagram children showing with context pattern when not expected?
-- Get browse hierarchy commands to work for packages as well as projects
 - Consider extending context pattern for requirement to action to have a Function Block column?
 - What if the requirements have multiple stereotypes, e.g., Tier1 and User Need?
 - Getting the move links to requirements package to work on a remote requirement
