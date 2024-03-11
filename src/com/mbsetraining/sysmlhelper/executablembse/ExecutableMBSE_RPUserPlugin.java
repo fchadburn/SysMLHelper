@@ -83,32 +83,32 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 	protected CheckForRequirementNameLength _checkForRequirementNameLength;
 
 	public static void main(String[] args) {
-	
+
 		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
-		
+
 		ExecutableMBSE_Context context = new ExecutableMBSE_Context( theRhpApp.getApplicationConnectionString() );
 
 		IRPModelElement theSelectedEl = context.getSelectedElement( true );
-		
+
 		if( theSelectedEl instanceof IRPStateVertex ) {
-			
+
 			List<IRPModelElement> theOutgoingFlowTargets = new ArrayList<>();
-			
+
 			try {
-				
+
 				theOutgoingFlowTargets = getIncomingFlowSources( (IRPStateVertex) theSelectedEl );
 
 			} catch (Exception e) {
 				context.error( "Execeptio0n e=" + e.getMessage());
 			}
-			
+
 			for (IRPModelElement theOutgoingFlowTarget : theOutgoingFlowTargets) {
 				context.info( context.elInfo( theOutgoingFlowTarget ) );
 			}
 		}
 
 	}
-	
+
 	// called when plug-in is loaded
 	public void RhpPluginInit(
 			final IRPApplication theRhapsodyApp ){
@@ -159,9 +159,9 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 		_context.info( "The ExecutableMBSE profile version is " + _context.getPluginVersion() );
 
 		_settings.checkIfSetupProjectIsNeeded( false, true );
-		
+
 		IRPExternalCheckRegistry theCheckRegistry = _context.get_rhpApp().getExternalCheckerRegistry();
-		
+
 		_checkForRequirementAnchors = new CheckForRequirementAnchors( theCheckRegistry );
 		_checkForRequirementChildren = new CheckForRequirementChildren( theCheckRegistry );	
 		_checkForRequirementCFLRChars = new CheckForRequirementCFLRChars( theCheckRegistry, _context );
@@ -229,7 +229,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					} else {
 						_context.error( menuItem + " invoked out of context and only works for packages" );
 					}
-					
+
 				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.SetupRAProperties" ) ) ){
 
@@ -343,7 +343,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 					PopulateClassifiersOfParts theSelector = new PopulateClassifiersOfParts( _context );
 					theSelector.populateClassifiersFor( _context.getSelectedGraphEl() );
-					
+
 				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.SelectChildClassifiersMenu" ) ) ){
 
@@ -416,15 +416,15 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						"executablembseplugin.ExportRequirementsToCsvForImportIntoDOORSNG" ) ) ){
 
 					ExportRequirementsToCSV theExporter = new ExportRequirementsToCSV( _context );
-					
+
 					theExporter.exportRequirementsToCSV( 
 							_context.getSelectedElement( false ), 1 );
-					
+
 				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.SwitchRequirementsToDOORSNG" ) ) ){
 
 					if( theSelectedEl instanceof IRPPackage ) {
-						
+
 						SwitchRhapsodyRequirementsToDNG theSwitcher = 
 								new SwitchRhapsodyRequirementsToDNG( _context );
 
@@ -443,15 +443,15 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						"executablembseplugin.UpdateSurrogateBasedOnRemoteRequirementChanges" ) ) ){
 
 					UpdateSurrogateRequirementsPanel.launchThePanel( theAppID );
-					
+
 				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.SynchronizeLinksBasedOnSurrogate" ) ) ){
 
 					if( theSelectedEl instanceof IRPPackage ) {
-						
+
 						SynchronizeLinksBasedOnSurrogate theSynchronizer = 
 								new SynchronizeLinksBasedOnSurrogate( _context );
-						
+
 						theSynchronizer.synchronizeLinksFromLocalToRemote( (IRPPackage) theSelectedEl );	
 					}
 
@@ -461,12 +461,12 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					Set<IRPModelElement> theCombinedSet = 
 							_context.getSetOfElementsFromCombiningThe(
 									theSelectedEls, theSelectedGraphEls );
-											
+
 					SynchronizeLinksToDiagram theSynchronizer = 
 							new SynchronizeLinksToDiagram( _context );
-						
+
 					theSynchronizer.synchronizeLinksToDiagram( theCombinedSet );
-					
+
 				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.StartLinkMenu" ) ) ){
 
@@ -488,10 +488,10 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 								theAppID, 
 								_startLinkGuids );
 					}
-					
+
 				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.AddToView" ) ) ){
-					
+
 					AddToViewPanel.launchThePanel( theAppID, _context );
 
 				} else if( menuItem.equals( _settings.getString( 
@@ -784,7 +784,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						"executablembseplugin.SwitchStereotype" ) ) ){
 
 					if( theSelectedEl instanceof IRPStereotype ){
-						
+
 						SwitchStereotype theSwitcher = new SwitchStereotype( _context );
 						theSwitcher.switchStereotypeFrom( (IRPStereotype) theSelectedEl );
 					}
@@ -797,7 +797,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 							"UseCase", 
 							_context.REQTS_ANALYSIS_USE_CASE_PACKAGE, 
 							_context.getDefaultUseCasePackagePostfix( _context.get_rhpPrj() ) );
-					
+
 					theMover.performMoveIfConfirmed();
 
 				} else if( menuItem.equals( _settings.getString( 
@@ -808,9 +808,9 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 							_context.FUNCTION_BLOCK, 
 							_context.FUNCT_ANALYSIS_FEATURE_FUNCTION_PACKAGE, 
 							"_FunctionPkg" );
-					
+
 					theMover.performMoveIfConfirmed();
-					
+
 				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.MoveSubsystemIntoSeparatePkg" ) ) ){
 
@@ -819,14 +819,14 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 							_context.SUBSYSTEM_BLOCK, 
 							_context.DESIGN_SYNTHESIS_SUBSYSTEM_PACKAGE, 
 							"_SubsystemPkg" );
-					
+
 					theMover.performMoveIfConfirmed();
-					
+
 				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.CreateFeaturePackageStructureMenu" ) ) ){
-					
+
 					CreateFeaturePkgPanel.launchTheDialog( theAppID );
-					
+
 				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.CreateFeatureFunctionPkg" ) ) ){
 
@@ -859,7 +859,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 							theCreator.createFeatureFunctionPkgs( theUseCases );
 						}
 					}
-					
+
 				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.CreateViewStructureMenu" ) ) ){
 
@@ -885,7 +885,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						"executablembseplugin.CleanUpDeadOSLCLinks" ) ) ){
 
 					CleanUpDeadOSLCLinksPanel.launchThePanel( theAppID );
-					
+
 				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.DeleteChildOSLCLinks" ) ) ){
 
@@ -902,10 +902,10 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					Set<IRPModelElement> theCombinedSet = 
 							_context.getSetOfElementsFromCombiningThe(
 									theSelectedEls, theSelectedGraphEls );
-											
+
 					AddOSLCDependencyLinksToPackage theLinkCreator = new AddOSLCDependencyLinksToPackage( _context );
 					theLinkCreator.chooseAndAddOSLCLinksToPackageFor( theCombinedSet );
-					
+
 				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.SwitchDOORSNGRequirementsToRhapsodyMenu" ) ) ){
 
@@ -913,21 +913,21 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						SwitchDNGRequirementsToRhapsody theSwitcher = new SwitchDNGRequirementsToRhapsody( _context );
 						theSwitcher.switchRequirementsFor( (IRPPackage) theSelectedEl );
 					}
-					
+
 				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.AutoUpdateDiagramContentMenu" ) ) ){
 
 					if( theSelectedEl instanceof IRPPackage ) {
-						
+
 						PackageDiagramIndexCreator theCreator = new PackageDiagramIndexCreator( _context );
 						theCreator.populateContentBasedOnPolicyFor( (IRPPackage) theSelectedEl );
-					
+
 					} else if( theSelectedEl instanceof IRPDiagram ){
-						
+
 						PackageDiagramIndexCreator theCreator = new PackageDiagramIndexCreator( _context );
 						theCreator.populateContentBasedOnPolicyFor( (IRPDiagram) theSelectedEl );
 					}
-					
+
 				} else {
 					_context.warning( "Unhandled menu: " + _context.elInfo( theSelectedEl ) + " was invoked with menuItem='" + menuItem + "'");
 				}
@@ -1217,19 +1217,19 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 			}
 		}		
 	}
-	
+
 	// Used in context pattern tables
 	void getUntracedToRemoteRequirement(
 			IRPModelElement element, 
 			IRPCollection result ){
-		
+
 		if( element instanceof IRPRequirement ){
-			
+
 			IRPRequirement req = (IRPRequirement) element;
-			
+
 			@SuppressWarnings("unchecked")
 			List<IRPDependency> theRemoteDependencies = req.getRemoteDependencies().toList();
-			
+
 			if( theRemoteDependencies.isEmpty() ){
 				result.addItem( element );
 			}
@@ -1242,70 +1242,70 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 			IRPCollection result ){
 
 		if( element instanceof IRPRequirement ){
-			
+
 			IRPRequirement req = (IRPRequirement) element;
-			
+
 			@SuppressWarnings("unchecked")
 			List<IRPDependency> theRemoteDependencies = req.getRemoteDependencies().toList();
-			
+
 			for( IRPDependency theRemoteDependency : theRemoteDependencies ){
-				
+
 				IRPModelElement theDependsOn = theRemoteDependency.getDependsOn();
-				
+
 				if( theDependsOn instanceof IRPRequirement ){
-					
+
 					IRPRequirement theOSLCRequirement = (IRPRequirement)theDependsOn;
-					
+
 					if( _context.isRequirementSpecificationMatchingFor(
 							req, theOSLCRequirement ) ) {
-						
+
 						result.addItem( theDependsOn );
 					}
 				}
 			}
 		}
 	}
-	
+
 	// Used in context pattern tables
 	void getNonMatchingRemoteRequirements(
 			IRPModelElement element, 
 			IRPCollection result ){
 
 		if( element instanceof IRPRequirement ){
-			
+
 			IRPRequirement req = (IRPRequirement) element;
-			
+
 			@SuppressWarnings("unchecked")
 			List<IRPDependency> theRemoteDependencies = req.getRemoteDependencies().toList();
-			
+
 			for( IRPDependency theRemoteDependency : theRemoteDependencies ){
-				
+
 				IRPModelElement theDependsOn = theRemoteDependency.getDependsOn();
-				
+
 				if( theDependsOn instanceof IRPHyperLink ) {
 					result.addItem( theDependsOn );
-					
+
 				} else if( theDependsOn instanceof IRPRequirement ){
-					
+
 					IRPRequirement theOSLCRequirement = (IRPRequirement)theDependsOn;
-					
+
 					if( !_context.isRequirementSpecificationMatchingFor(
 							req, theOSLCRequirement ) ){
-						
+
 						result.addItem( theDependsOn );
 					}
 				}
 			}
 		}
 	}
-	
+
 	// Used in context pattern tables
 	void getRequirementsOnDiagram(
 			IRPModelElement element, 
 			IRPCollection result ){
-					
+
 		//RhapsodyAppServer.getActiveRhapsodyApplication().writeToOutputWindow("", "invoked for " + element.getMetaClass() + " called (2) " + element.getName() + "\n" );
-		
+
 		if( element instanceof IRPFlowchart ) { // ActivityDiagram
 			IRPFlowchart theAD = (IRPFlowchart)element;
 			element = theAD.getStatechartDiagram(); // ActivityDiagramGE
@@ -1313,84 +1313,138 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 			IRPStatechart theStatechart = (IRPStatechart)element;
 			element = theStatechart.getStatechartDiagram();
 		}
-		
-		if( element instanceof IRPDiagram ){
-			
+
+		// We elevate requirements on nested ADs or stms to the owning use case/classifier to work around issues with context patterns and statecharts/activity diagranms
+		if( element instanceof IRPClassifier ){
+
+			// This will harvest both stms and activity diagrams as Rhapsody's AD is a statechart diagram
+			@SuppressWarnings("unchecked")
+			List<IRPModelElement> theActivityDiagramGEs = element.getNestedElementsByMetaClass( "StatechartDiagram", 1 ).toList();
+
+			for( IRPModelElement irpModelElement : theActivityDiagramGEs ){
+				getRequirementsOnDiagram(
+						irpModelElement, 
+						result );
+			}
+
+		} else if( element instanceof IRPDiagram ){
+
+			//RhapsodyAppServer.getActiveRhapsodyApplication().writeToOutputWindow("", element.getMetaClass() + " is a diagram\n" );
+
 			IRPDiagram theDiagram = (IRPDiagram) element;
-			
+
 			@SuppressWarnings("unchecked")
 			List<IRPModelElement> theEls = theDiagram.getElementsInDiagram().toList();
-			
+
 			for( IRPModelElement theEl : theEls ){
-				
+
 				if( theEl instanceof IRPRequirement ) {
+					//RhapsodyAppServer.getActiveRhapsodyApplication().writeToOutputWindow("", "Adding " + theEl.getName() + " as on diagram\n" );
 					result.addItem( theEl );
 				}
 			}
+		} else {
+			//RhapsodyAppServer.getActiveRhapsodyApplication().writeToOutputWindow("", element.getMetaClass() + " is not a diagram\n" );
 		}
 	}
-	
+
 	// Used in context pattern tables
 	void getDiagramsWithRequirementOn(
 			IRPModelElement element, 
 			IRPCollection result ){
-					
+
 		//RhapsodyAppServer.getActiveRhapsodyApplication().writeToOutputWindow("", "invoked for " + element.getMetaClass() + " called (2) " + element.getName() + "\n" );
-		
+
 		if( element instanceof IRPRequirement ){
-			
+
 			@SuppressWarnings("unchecked")
 			List<IRPModelElement> theReferences = element.getReferences().toList();
-			
+
 			for (IRPModelElement theEl : theReferences) {
-				
+
 				if( theEl instanceof IRPActivityDiagram ) { // ActivityDiagramGE
 					result.addItem( theEl.getOwner() ); // Activity Diagram
 
 				} else if( theEl instanceof IRPStatechartDiagram ) { // StatechartDiagram
 					result.addItem( theEl.getOwner() ); // Statechart
-					
+
 				} else if( theEl instanceof IRPDiagram ) {
 					result.addItem( theEl );
 				}
 			}
 		}
 	}
-	
+
 	// Used in context pattern tables
 	void getDiagramsWithObjectsOn(
 			IRPModelElement element, 
 			IRPCollection result ){
-					
+
 		//RhapsodyAppServer.getActiveRhapsodyApplication().writeToOutputWindow("", "invoked for " + element.getMetaClass() + " called (2) " + element.getName() + "\n" );
-		
+
 		if( element instanceof IRPInstance ){
-			
+
 			@SuppressWarnings("unchecked")
 			List<IRPModelElement> theReferences = element.getReferences().toList();
-			
+
 			for( IRPModelElement theEl : theReferences ){
-				
+
 				if( theEl instanceof IRPActivityDiagram ) { // ActivityDiagramGE
 					result.addItem( theEl.getOwner() ); // Activity Diagram
 
 				} else if( theEl instanceof IRPStatechartDiagram ) { // StatechartDiagram
 					result.addItem( theEl.getOwner() ); // Statechart
-					
+
 				} else if( theEl instanceof IRPDiagram ) {
 					result.addItem( theEl );
 				}
 			}
 		}
 	}
-	
+
+	// Used in context pattern tables
+	void getChildActivityDiagrams(
+			IRPModelElement element, 
+			IRPCollection result ){
+
+		//RhapsodyAppServer.getActiveRhapsodyApplication().writeToOutputWindow("", "invoked for " + element.getMetaClass() + " called (2) " + element.getName() + "\n" );
+
+		@SuppressWarnings("unchecked")
+		List<IRPFlowchart> theReferences = element.getNestedElementsByMetaClass( "ActivityDiagram", 0 ).toList();
+
+		for( IRPFlowchart theEl : theReferences ){	
+			//RhapsodyAppServer.getActiveRhapsodyApplication().writeToOutputWindow("", "getChildActivityDiagrams invoked for " + element.getMetaClass() + " called  " + element.getName() + 
+			//		" has nested " + theEl.getMetaClass() + " called " + theEl.getName() +"\n" );
+			result.addItem( theEl.getFlowchartDiagram() ); // Activity Diagram
+		}
+	}
+
+	// Used in context pattern tables
+	void getChildStatechartDiagrams(
+			IRPModelElement element, 
+			IRPCollection result ){
+
+		//RhapsodyAppServer.getActiveRhapsodyApplication().writeToOutputWindow("", " getChildStatechartDiagrams invoked for " + element.getMetaClass() + " called (2) " + element.getName() + "\n" );
+
+		@SuppressWarnings("unchecked")
+		List<IRPFlowchart> theReferences = element.getNestedElementsByMetaClass( "Statechart", 0 ).toList();
+
+		//RhapsodyAppServer.getActiveRhapsodyApplication().writeToOutputWindow("", theReferences.size() +  " nested els doung for " + element.getName() + "\n" );
+
+		for( IRPStatechart theEl : theReferences ){	
+
+			//RhapsodyAppServer.getActiveRhapsodyApplication().writeToOutputWindow("",  theEl.getMetaClass() + " called " + theEl.getName() + "\n" );
+			result.addItem( theEl.getStatechartDiagram() ); // Activity Diagram
+		}
+	}
+
 	// Used in context pattern tables
 	void filterToDiagramsWithRequirements(
 			IRPModelElement element, 
 			IRPCollection result ){
-					
+
 		//RhapsodyAppServer.getActiveRhapsodyApplication().writeToOutputWindow("", "invoked for " + element.getMetaClass() + " called (2) " + element.getName() + "\n" );
-		
+
 		if( element instanceof IRPFlowchart ) { // ActivityDiagram
 			IRPFlowchart theAD = (IRPFlowchart)element;
 			element = theAD.getStatechartDiagram(); // ActivityDiagramGE
@@ -1398,16 +1452,16 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 			IRPStatechart theStatechart = (IRPStatechart)element;
 			element = theStatechart.getStatechartDiagram();
 		}
-		
+
 		if( element instanceof IRPDiagram ){
-			
+
 			IRPDiagram theDiagram = (IRPDiagram) element;
-			
+
 			@SuppressWarnings("unchecked")
 			List<IRPModelElement> theEls = theDiagram.getElementsInDiagram().toList();
-			
+
 			for( IRPModelElement theEl : theEls ){
-				
+
 				if( theEl instanceof IRPRequirement ) {
 					result.addItem( element );
 					break;
@@ -1415,25 +1469,25 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 			}
 		}
 	}
-	
+
 	// Used in context pattern tables
 	void getObjectNodesWithFlowTargets(
 			IRPModelElement element, 
 			IRPCollection result ){
-		
+
 		if( element instanceof IRPClass ){
-			
+
 			IRPClass theClass = (IRPClass) element;
-			
+
 			@SuppressWarnings("unchecked")
 			List<IRPModelElement> theReferences = theClass.getReferences().toList();
-			
+
 			for( IRPModelElement theReference : theReferences ){
-				
+
 				if( theReference instanceof IRPObjectNode ){
-					
+
 					IRPObjectNode theObjectNode = (IRPObjectNode)theReference;
-					
+
 					List<IRPModelElement> theFlowTargets = getOutgoingFlowTargets( theObjectNode );
 
 					if( !theFlowTargets.isEmpty() ){
@@ -1443,25 +1497,25 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 			}	
 		}
 	}
-	
+
 	// Used in context pattern tables
 	void getObjectNodesWithFlowSources(
 			IRPModelElement element, 
 			IRPCollection result ){
-		
+
 		if( element instanceof IRPClass ){
-			
+
 			IRPClass theClass = (IRPClass) element;
-			
+
 			@SuppressWarnings("unchecked")
 			List<IRPModelElement> theReferences = theClass.getReferences().toList();
-			
+
 			for( IRPModelElement theReference : theReferences ){
-				
+
 				if( theReference instanceof IRPObjectNode ){
-					
+
 					IRPObjectNode theObjectNode = (IRPObjectNode)theReference;
-					
+
 					List<IRPModelElement> theFlowSources = getIncomingFlowSources( theObjectNode );
 
 					if( !theFlowSources.isEmpty() ){
@@ -1471,25 +1525,25 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 			}	
 		}
 	}
-	
+
 	// Used in context pattern tables
 	void getObjectNodesWithNoFlowTargetsOrSources(
 			IRPModelElement element, 
 			IRPCollection result ){
-		
+
 		if( element instanceof IRPClass ){
-			
+
 			IRPClass theClass = (IRPClass) element;
-			
+
 			@SuppressWarnings("unchecked")
 			List<IRPModelElement> theReferences = theClass.getReferences().toList();
-			
+
 			for( IRPModelElement theReference : theReferences ){
-				
+
 				if( theReference instanceof IRPObjectNode ){
-					
+
 					IRPObjectNode theObjectNode = (IRPObjectNode)theReference;
-					
+
 					List<IRPModelElement> theFlowTargets = getOutgoingFlowTargets( theObjectNode );
 					List<IRPModelElement> theFlowSources = getIncomingFlowSources( theObjectNode );
 
@@ -1500,123 +1554,123 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 			}	
 		}
 	}
-	
+
 	private static List<IRPModelElement> getOutgoingFlowTargets( 
 			IRPStateVertex forVertex ){
-				
+
 		//RhapsodyAppServer.getActiveRhapsodyApplication().writeToOutputWindow("", "addOutgoingFlowTargets invoked for " + forVertex.getName() + "/n" );
-		
+
 		List<IRPModelElement> theFlowTargets = new ArrayList<>();
-		
+
 		@SuppressWarnings("unchecked")
 		List<IRPTransition> theTransitions = forVertex.getOutTransitions().toList();
-		
+
 		for( IRPTransition theTransition : theTransitions ){
-			
+
 			IRPStateVertex theTarget = theTransition.getItsTarget();
-			
+
 			//RhapsodyAppServer.getActiveRhapsodyApplication().writeToOutputWindow("", "Transition found to " + theTarget.getName() + "/n" );
 
 			if( theTarget instanceof IRPState ){
-				
+
 				theFlowTargets.add( theTarget );
-				
+
 			} else if( theTarget instanceof IRPPin ){
-				
+
 				IRPPin thePin = (IRPPin) theTarget;
 				theFlowTargets.add( thePin.getParent() );
-			
+
 			} else if( theTarget instanceof IRPConnector ){
-				
+
 				// recursively call
 				theFlowTargets.addAll( getOutgoingFlowTargets( theTarget ) );
 			}
 		}
-		
+
 		return theFlowTargets;
 	}
-	
+
 	private static List<IRPModelElement> getIncomingFlowSources( 
 			IRPStateVertex forVertex ){
-		
+
 		//RhapsodyAppServer.getActiveRhapsodyApplication().writeToOutputWindow("", "addOutgoingFlowTargets invoked for " + forVertex.getName() + "/n" );
 
 		List<IRPModelElement> theFlowTargets = new ArrayList<>();
-		
+
 		@SuppressWarnings("unchecked")
 		List<IRPTransition> theTransitions = forVertex.getInTransitions().toList();
-		
+
 		for( IRPTransition theTransition : theTransitions ){
-			
+
 			IRPStateVertex theTarget = theTransition.getItsSource();
-			
+
 			//RhapsodyAppServer.getActiveRhapsodyApplication().writeToOutputWindow("", "Transition found to " + theTarget.getName() + "/n" );
 
 			if( theTarget instanceof IRPState ){
-				
+
 				theFlowTargets.add( theTarget );
-				
+
 			} else if( theTarget instanceof IRPPin ){
-				
+
 				IRPPin thePin = (IRPPin) theTarget;
 				theFlowTargets.add( thePin.getParent() );
-			
+
 			} else if( theTarget instanceof IRPConnector ){
-				
+
 				// recursively call
 				theFlowTargets.addAll( getIncomingFlowSources( theTarget ) );
 			}			
 		}
-		
+
 		return theFlowTargets;
 	}
-	
+
 	// Used in context pattern tables
 	void getOutgoingObjectFlowTargets(
 			IRPModelElement element, 
 			IRPCollection result ){
-		
+
 		if( element instanceof IRPStateVertex ){
-			
+
 			List<IRPModelElement> theFlowTargets = getOutgoingFlowTargets( (IRPStateVertex) element );	
-			
+
 			for( IRPModelElement theOutgoingFlowTarget : theFlowTargets ){
 				result.addItem( theOutgoingFlowTarget );
 			}		
 		}
 	}
-	
+
 	// Used in context pattern tables
 	void getIncomingObjectFlowSources(
 			IRPModelElement element, 
 			IRPCollection result ){
-		
+
 		if( element instanceof IRPStateVertex ){
-			
+
 			List<IRPModelElement> theIncomingFlowSources = getIncomingFlowSources( (IRPStateVertex) element );
-			
+
 			for( IRPModelElement theIncomingFlowSource : theIncomingFlowSources ){
 				result.addItem( theIncomingFlowSource );
 			}		
 		}
 	}
-	
+
 	// Used in context pattern tables
 	void getTracesToUnloadedRemoteRequirements(
 			IRPModelElement element, 
 			IRPCollection result ){
 
 		if( element instanceof IRPRequirement ){
-			
+
 			IRPRequirement req = (IRPRequirement) element;
-			
+
 			@SuppressWarnings("unchecked")
 			List<IRPDependency> theRemoteDependencies = req.getRemoteDependencies().toList();
-			
+
 			for( IRPDependency theRemoteDependency : theRemoteDependencies ){
-				
+
 				IRPModelElement theDependsOn = theRemoteDependency.getDependsOn();
-				
+
 				// If depends on is hyperlink rather than requirement then it's unloaded
 				if( theDependsOn instanceof IRPHyperLink ){					
 					result.addItem( theDependsOn );
@@ -1624,7 +1678,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 			}
 		}
 	}
-	
+
 	private static List<IRPModelElement> getElementsThatTraceToRequirements(
 			IRPModelElement underTheEl ){
 

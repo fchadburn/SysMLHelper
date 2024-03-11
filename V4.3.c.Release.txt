@@ -1046,7 +1046,7 @@ V4.3.b.PreRelease (26-JAN-2024):
 
 V4.3.c.PreRelease (XX-XXX-XXXX): TBC
 0808 12-FEB-2024: ExecutableMBSE: Initial support to extend update package diagram with context so that it works recursively to sub-packages (menu hidden) (F.J.Chadburn)
-0809 29-FEB-2024: ExecutableMBSE: Added getObjectNodesWithFlowTargets, getObjectNodesWithNoFlowTargetsOrSources, getOutgoingFlowTargets, pluginMethods for table views (F.J.Chadburn)
+0809 29-FEB-2024: ExecutableMBSE: Added getObjectNodesWithFlowTargets, getObjectNodesWithNoFlowoTargetsOrSources, getOutgoingFlowTargets, pluginMethods for table views (F.J.Chadburn)
 0810 29-FEB-2024: ExecutableMBSE: Added getObjectNodesWithFlowSources, getIncomingFlowSources pluginMethods for activity diagram table views (F.J.Chadburn)
 0811 01-MAR-2024: ExecutableMBSE: Added getRequirementsOnDiagram for use in context patterns (F.J.Chadburn)
 0812 01-MAR-2024: ExecutableMBSE: Added tablel - Requirements On Diagrams table layout to _TablesAndMatrices package as a base example of usage (F.J.Chadburn)
@@ -1056,9 +1056,9 @@ V4.3.c.PreRelease (XX-XXX-XXXX): TBC
 0816 05-MAR-2024: ExecutableMBSE: Added action pin and object flow back on to the textual activity drawing toolbar (F.J.Chadburn)
 0817 05-MAR-2024: ExecutableMBSE: Added getDiagramsWithObjectsOn pluginMethod for context patterns/tables plus new Browse Hierarchy > Browse Usages With Requirements menu (F.J.Chadburn)
 0818 06-MAR-2024: ExecutableMBSE: Added properties so that profile's Browse Hierarchy sub-menus also work on Package right-click + changed menu names to make clearer (F.J.Chadburn)  
+0819 11-MAR-2024: ExecutableMBSE: Fix Browse Hierarchy > Browse Diagrams And Requirements On Them Rhp 8.3.1 -> 9.0.2 issue by listing reqts under ActivityDiagramGE/StatechartDiagram (F.J.Chadburn)
 
 Backlog/Known issues
-- Issue with activity diagram children showing with context pattern when not expected?
 - Consider extending context pattern for requirement to action to have a Function Block column?
 - What if the requirements have multiple stereotypes, e.g., Tier1 and User Need?
 - Getting the move links to requirements package to work on a remote requirement

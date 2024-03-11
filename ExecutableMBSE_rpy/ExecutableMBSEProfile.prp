@@ -675,24 +675,24 @@ Subject ConfigurationManagement
 end
 Subject Model
 	Metaclass Package
-		Property BrowseTraceabilityName String "Browse Requirements And Elements That Trace"
-		Property BrowseTraceabilityPattern String "Package*,Requirement+,pluginMethod:getElementsThatTraceFromRequirements"
-		Property BrowseRequirementsOnDiagramsName String "Browse Diagrams And Requirements On Them"
-		Property BrowseRequirementsOnDiagramsPattern String "Package*,Class*,ActivityDiagram|ObjectModelDiagram|StructureDiagram|UseCaseDiagram|Statechart|SequenceDiagram|CollaborationDiagram|DeploymentDiagram|TimingDiagram|PanelDiagram,StatechartDiagram*|ActivityDiagramGE*,pluginMethod:getRequirementsOnDiagram"
-		Property BrowseDiagramsWithRequirementName String "Browse Requirements And Diagrams They're On"
-		Property BrowseDiagramsWithRequirementPattern String "Package*,Class*,ActivityDiagram*|ObjectModelDiagram*|StructureDiagram*|UseCaseDiagram*|Statechart*|SequenceDiagram*|CollaborationDiagram*|DeploymentDiagram*|TimingDiagram*|PanelDiagram*,Requirement,pluginMethod:getDiagramsWithRequirementOn"
-		Property BrowseDiagramsWithUsagesName String "Browse Usages And Diagrams They're On"
-		Property BrowseDiagramsWithUsagesPattern String "Package*,Class*,Object,pluginMethod:getDiagramsWithObjectsOn"
+		Property BrowseRequirementsAndElementsThatTraceName String "Browse Requirements And Elements That Trace"
+		Property BrowseRequirementsAndElementsThatTracePattern String "Package*,Requirement+,pluginMethod:getElementsThatTraceFromRequirements"
+		Property BrowseBrowseDiagramsAndRequirementsOnThemName String "Browse Diagrams And Requirements On Them"
+		Property BrowseBrowseDiagramsAndRequirementsOnThemPattern String "Package*,Class*,pluginMethod:getChildActivityDiagrams|pluginMethod:getChildStatechartDiagrams|ObjectModelDiagram|StructureDiagram|UseCaseDiagram|SequenceDiagram|CollaborationDiagram|DeploymentDiagram|TimingDiagram|PanelDiagram|pluginMethod:getRequirementsOnDiagram,pluginMethod:getRequirementsOnDiagram"
+		Property BrowseRequirementsAndDiagramsTheyreOnName String "Browse Requirements And Diagrams They're On"
+		Property BrowseRequirementsAndDiagramsTheyreOnPattern String "Package*,Class*,pluginMethod:getChildActivityDiagrams*|pluginMethod:getChildStatechartDiagrams*|ObjectModelDiagram*|StructureDiagram*|UseCaseDiagram*|SequenceDiagram*|CollaborationDiagram*|DeploymentDiagram*|TimingDiagram*|PanelDiagram*,Requirement,pluginMethod:getDiagramsWithRequirementOn"
+		Property BrowseUsagesAndDiagramsTheyreOnName String "Browse Usages And Diagrams They're On"
+		Property BrowseUsagesAndDiagramsTheyreOnPattern String "Package*,Class*,Object,pluginMethod:getDiagramsWithObjectsOn"
 	end
 	Metaclass Project
-		Property BrowseTraceabilityName String "Browse Requirements And Elements That Trace"
-		Property BrowseTraceabilityPattern String "Package*,Requirement+,pluginMethod:getElementsThatTraceFromRequirements"
-		Property BrowseRequirementsOnDiagramsName String "Browse Diagrams And Requirements On Them"
-		Property BrowseRequirementsOnDiagramsPattern String "Package+,Class*,ActivityDiagram|ObjectModelDiagram|StructureDiagram|UseCaseDiagram|Statechart|SequenceDiagram|CollaborationDiagram|DeploymentDiagram|TimingDiagram|PanelDiagram,StatechartDiagram*|ActivityDiagramGE*,pluginMethod:getRequirementsOnDiagram"
-		Property BrowseDiagramsWithRequirementName String "Browse Requirements And Diagrams They're On"
-		Property BrowseDiagramsWithRequirementPattern String "Package+,Class*,ActivityDiagram*|ObjectModelDiagram*|StructureDiagram*|UseCaseDiagram*|Statechart*|SequenceDiagram*|CollaborationDiagram*|DeploymentDiagram*|TimingDiagram*|PanelDiagram*,Requirement,pluginMethod:getDiagramsWithRequirementOn"
-		Property BrowseDiagramsWithUsagesName String "Browse Usages And Diagrams They're On"
-		Property BrowseDiagramsWithUsagesPattern String "Package+,Class*,Object,pluginMethod:getDiagramsWithObjectsOn"
+		Property BrowseRequirementsAndElementsThatTraceName String "Browse Requirements And Elements That Trace"
+		Property BrowseRequirementsAndElementsThatTracePattern String "Package*,Requirement+,pluginMethod:getElementsThatTraceFromRequirements"
+		Property BrowseBrowseDiagramsAndRequirementsOnThemName String "Browse Diagrams And Requirements On Them"
+		Property BrowseBrowseDiagramsAndRequirementsOnThemPattern String "Package+,Class*,pluginMethod:getChildActivityDiagrams|pluginMethod:getChildStatechartDiagrams|ObjectModelDiagram|StructureDiagram|UseCaseDiagram|SequenceDiagram|CollaborationDiagram|DeploymentDiagram|TimingDiagram|PanelDiagram|pluginMethod:getRequirementsOnDiagram,pluginMethod:getRequirementsOnDiagram"
+		Property BrowseRequirementsAndDiagramsTheyreOnName String "Browse Requirements And Diagrams They're On"
+		Property BrowseRequirementsAndDiagramsTheyreOnPattern String "Package+,Class*,pluginMethod:getChildActivityDiagrams*|pluginMethod:getChildStatechartDiagrams*|ObjectModelDiagram*|StructureDiagram*|UseCaseDiagram*|SequenceDiagram*|CollaborationDiagram*|DeploymentDiagram*|TimingDiagram*|PanelDiagram*,Requirement,pluginMethod:getDiagramsWithRequirementOn"
+		Property BrowseUsagesAndDiagramsTheyreOnName String "Browse Usages And Diagrams They're On"
+		Property BrowseUsagesAndDiagramsTheyreOnPattern String "Package+,Class*,Object,pluginMethod:getDiagramsWithObjectsOn"
 	end
 end
 end
