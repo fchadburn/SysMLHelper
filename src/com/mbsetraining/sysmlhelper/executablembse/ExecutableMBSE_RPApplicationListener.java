@@ -243,6 +243,25 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 						(IRPTableView) modelElement,
 						false );
 
+			} else if( theUserDefinedMetaClass.equals( _context.DIAGRAMS_AND_REQUIREMENTS_ON_THEM_TABLE ) ){
+
+				IRPTableView theTableView = (IRPTableView)modelElement;
+				IRPModelElement theOwner = theTableView.getOwner();
+
+				IRPCollection theScopedEls = _context.createNewCollection();
+				theScopedEls.setSize( 1 );
+				theScopedEls.addItem( theOwner );
+
+				_context.debug( "ExecutableMBSE_RPApplicationListener has set scope of " + 
+						_context.elInfo( theTableView ) + " to " + _context.elInfo( theOwner ) );
+
+				theTableView.setScope( theScopedEls );
+
+				String theProposedName = _context.TABLE_VIEW_PREFIX + " Diagrams And Requirements On Them For " + theOwner.getName();
+				String theUniqueName = _context.determineUniqueNameBasedOn( theProposedName, "TableView", theOwner );
+
+				theTableView.setName( theUniqueName );
+
 			} else if( theUserDefinedMetaClass.equals( _context.REQUIREMENT_TO_ACTION_TABLE ) ) {
 
 				afterAddNewRequirementToActionTable( (IRPTableView) modelElement );
@@ -285,7 +304,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 					afterAddForNewTermPackage( (IRPPackage ) modelElement, _context.ARCHITECTUREPKG_POSTFIX, "", "" );
 				}	
-				
+
 			} else if( theUserDefinedMetaClass.equals( _context.PACKAGE_DIAGRAM_INDEX) ) {
 
 				afterAddForPackageDiagramIndex( (IRPDiagram) modelElement );
@@ -1165,7 +1184,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 	private void afterAddForPackageDiagramIndex(
 			IRPDiagram theDiagram ){
-		
+
 		PackageDiagramIndexCreator theCreator = new PackageDiagramIndexCreator( _context );
 		theCreator.populateContentBasedOnPolicyFor( theDiagram );
 	}
