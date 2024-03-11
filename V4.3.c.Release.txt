@@ -1058,6 +1058,7 @@ V4.3.c.PreRelease (XX-XXX-XXXX): TBC
 0818 06-MAR-2024: ExecutableMBSE: Added properties so that profile's Browse Hierarchy sub-menus also work on Package right-click + changed menu names to make clearer (F.J.Chadburn)  
 0819 11-MAR-2024: ExecutableMBSE: Fix Browse Hierarchy > Browse Diagrams And Requirements On Them Rhp 8.3.1 -> 9.0.2 issue by listing reqts under ActivityDiagramGE/StatechartDiagram (F.J.Chadburn)
 0820 11-MAR-2024: ExectuableMBSE: Added explicit Table View - Diagrams And Requirements On Them table to the MBSE View right-click menu for all packages (F.J.Chadburn)
+0821 11-MAR-2024: ExectuableMBSE: Added explicit Table View - Requirements And Diagrams Theyre On table to the MBSE View right-click menu for requirement packages (F.J.Chadburn)
 
 Backlog/Known issues
 - Consider extending context pattern for requirement to action to have a Function Block column?
