@@ -196,7 +196,8 @@ public class PopulatePartsPanel extends ExecutableMBSEBasePanel {
 			
 			ModelElInfo modelElInfo = (ModelElInfo) iterator.next();
 			
-			if( modelElInfo._part.isTypelessObject() == 1 ) {
+			if( modelElInfo._part != null &&
+					modelElInfo._part.isTypelessObject() == 1 ) {
 				isContainsTypeless = true;
 				break;
 			}
@@ -475,7 +476,7 @@ public class PopulatePartsPanel extends ExecutableMBSEBasePanel {
 }
 
 /**
- * Copyright (C) 2018-2023  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2018-2024  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 
