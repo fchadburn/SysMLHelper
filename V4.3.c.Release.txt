@@ -1044,7 +1044,7 @@ V4.3.b.PreRelease (26-JAN-2024):
 0806 26-JAN-2024: ExecutableMBSE: First implementation of new Package Diagram - Index auto-creation capability and associated properties (F.J.Chadburn)
 0807 26-JAN-2024: ExecutableMBSE: Ensure that Package Diagram - Index auto-creation properties are taken from package, rather than project, level (F.J.Chadburn)
 
-V4.3.c.PreRelease (XX-XXX-XXXX): TBC
+V4.3.c.PreRelease (15-MAR-2024):
 0808 12-FEB-2024: ExecutableMBSE: Initial support to extend update package diagram with context so that it works recursively to sub-packages (menu hidden) (F.J.Chadburn)
 0809 29-FEB-2024: ExecutableMBSE: Added getObjectNodesWithFlowTargets, getObjectNodesWithNoFlowoTargetsOrSources, getOutgoingFlowTargets, pluginMethods for table views (F.J.Chadburn)
 0810 29-FEB-2024: ExecutableMBSE: Added getObjectNodesWithFlowSources, getIncomingFlowSources pluginMethods for activity diagram table views (F.J.Chadburn)
