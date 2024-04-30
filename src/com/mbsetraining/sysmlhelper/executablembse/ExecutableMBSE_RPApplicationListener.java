@@ -1187,7 +1187,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			IRPDiagram theDiagram ){
 
 		PackageDiagramIndexCreator theCreator = new PackageDiagramIndexCreator( _context );
-		theCreator.populateContentBasedOnPolicyFor( theDiagram );
+		theCreator.populateContentBasedOnPolicyForDiagram( theDiagram );
 	}
 
 	private void switchGraphNodeFor(

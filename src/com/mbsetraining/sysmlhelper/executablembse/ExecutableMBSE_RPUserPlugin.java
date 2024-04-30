@@ -920,12 +920,12 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					if( theSelectedEl instanceof IRPPackage ) {
 
 						PackageDiagramIndexCreator theCreator = new PackageDiagramIndexCreator( _context );
-						theCreator.populateContentBasedOnPolicyFor( (IRPPackage) theSelectedEl );
+						theCreator.populateContentBasedOnPolicyForPackage( (IRPPackage) theSelectedEl );
 
 					} else if( theSelectedEl instanceof IRPDiagram ){
 
 						PackageDiagramIndexCreator theCreator = new PackageDiagramIndexCreator( _context );
-						theCreator.populateContentBasedOnPolicyFor( (IRPDiagram) theSelectedEl );
+						theCreator.populateContentBasedOnPolicyForDiagram( (IRPDiagram) theSelectedEl );
 					}
 
 				} else {

@@ -60,7 +60,7 @@ public abstract class BaseContext {
 	protected RhpLog _rhpLog;
 	protected IRPApplication _rhpApp;
 	protected IRPProject _rhpPrj;
-
+	
 	public BaseContext(
 			String theAppID,
 			String enableErrorLoggingProperty,
@@ -3103,13 +3103,44 @@ public abstract class BaseContext {
 		}
 	}
 
-	public void addHyperLink( 
+	public IRPHyperLink createNewOrGetExistingHyperLink(
+			IRPModelElement fromTheEl,
+			IRPModelElement toTheEl ) {
+		
+		IRPHyperLink theHyperLink = null;
+		
+		@SuppressWarnings("unchecked")
+		List<IRPHyperLink> theExistingHyperLinks = fromTheEl.getHyperLinks().toList();
+		
+		for( IRPHyperLink theExistingHyperLink : theExistingHyperLinks ){
+			
+			IRPModelElement theTarget = theExistingHyperLink.getTarget();
+			
+			if( theTarget != null && theTarget.equals( toTheEl) ){
+				
+				theHyperLink = theExistingHyperLink;
+				info( "Found existing hyperlink to " + elInfo (toTheEl) + " owned by " + elInfo(fromTheEl));
+				break;
+			}
+		}
+		
+		if( theHyperLink == null ) {
+			
+			theHyperLink = addHyperLink(fromTheEl, toTheEl);
+		}
+		
+		return theHyperLink;
+	}
+	
+	
+	public IRPHyperLink addHyperLink( 
 			IRPModelElement fromElement, 
 			IRPModelElement toElement ){
 
 		IRPHyperLink theHyperLink = (IRPHyperLink) fromElement.addNewAggr("HyperLink", "");
 		theHyperLink.setDisplayOption( HYPNameType.RP_HYP_NAMETEXT, "" );
 		theHyperLink.setTarget( toElement );
+		return theHyperLink;
 	}
 
 	public IRPDependency getExistingOrAddNewDependency(

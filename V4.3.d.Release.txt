@@ -1061,6 +1061,9 @@ V4.3.c.PreRelease (15-MAR-2024):
 0821 11-MAR-2024: ExecutableMBSE: Added explicit Table View - Requirements And Diagrams Theyre On table to the MBSE View right-click menu for requirement packages (F.J.Chadburn)
 0822 15-MAR-2024: ExecutableMBSE: Added null parts check to Populate Parts helper as not working in generalisation context, where feature inherits from system block (F.J.Chadburn)
 
+V4.3.d.PreRelease (XX-XXX-XXXX): TBC
+0823 20-APR-2024: ExecutableMBSE: Re-implementation of package diagram - index support as a result of wider testing on real projects
+
 Backlog/Known issues
 - Consider extending context pattern for requirement to action to have a Function Block column?
 - What if the requirements have multiple stereotypes, e.g., Tier1 and User Need?
