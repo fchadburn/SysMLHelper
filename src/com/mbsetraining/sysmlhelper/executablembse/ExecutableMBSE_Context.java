@@ -357,17 +357,6 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		return theStereotypeNames;
 	}
-	
-	// Allow user to change in session
-	public List<String> getPackageDiagramIndexDiagramMetaClasses(
-			IRPModelElement theContextEl ){
-
-		List<String> theStereotypeNames = getListFromCommaSeparatedString(
-				theContextEl, 
-				"ExecutableMBSEProfile.General.PackageDiagramIndexDiagramMetaClasses" );	
-
-		return theStereotypeNames;
-	}
 		
 	// Allow user to change in session
 	public List<String> getStereotypeNamesForFeaturePkg(){

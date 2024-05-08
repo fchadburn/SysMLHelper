@@ -526,7 +526,7 @@ DLLServerCompatible65=1
 name66=MBSE Method: Other\Auto-update package diagram content
 isPluginCommand66=1
 command66=InvokeExecutableMBSEHelper
-applicableTo66=Package Diagram - Index
+applicableTo66=Package Diagram - Index,A Operational Architecture,11 Actor Package,10 Context Package,14 Signals Package,12 Use Case Package,13 Requirement Package,B Functional Architecture,12 Working Copy Package,22 Feature Function Package,C Logical Architecture,31 System Architecture Package,D Physical Architecture,32 Subsystem Package,33 Subsystem Interfaces Package,34 Software Design Package,21 Funct Analysis - Scenarios Package,22 Funct Analysis - Design Package,23 Funct Analysis - Interfaces Package,24 Funct Analysis - Test Package,41 View and Viewpoint Package,Package
 isVisible66=1
 DLLServerCompatible66=1
 

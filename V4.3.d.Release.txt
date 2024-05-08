@@ -1062,7 +1062,8 @@ V4.3.c.PreRelease (15-MAR-2024):
 0822 15-MAR-2024: ExecutableMBSE: Added null parts check to Populate Parts helper as not working in generalisation context, where feature inherits from system block (F.J.Chadburn)
 
 V4.3.d.PreRelease (XX-XXX-XXXX): TBC
-0823 20-APR-2024: ExecutableMBSE: Re-implementation of package diagram - index support as a result of wider testing on real projects
+0823 20-APR-2024: ExecutableMBSE: Re-implementation of package diagram - index support as a result of wider testing on real projects (F.J.Chadburn)
+0824 05-MAY-2024: ExecutableMBSE: Advanced package diagram - index support to allow child diagrams of things like function blocks to listed recursively (F.J.Chadburn)
 
 Backlog/Known issues
 - Consider extending context pattern for requirement to action to have a Function Block column?
