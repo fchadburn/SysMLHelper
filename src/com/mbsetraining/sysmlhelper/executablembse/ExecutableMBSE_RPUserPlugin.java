@@ -99,7 +99,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 				theOutgoingFlowTargets = getIncomingFlowSources( (IRPStateVertex) theSelectedEl );
 
 			} catch (Exception e) {
-				context.error( "Execeptio0n e=" + e.getMessage());
+				context.error( "Exeception e=" + e.getMessage());
 			}
 
 			for (IRPModelElement theOutgoingFlowTarget : theOutgoingFlowTargets) {

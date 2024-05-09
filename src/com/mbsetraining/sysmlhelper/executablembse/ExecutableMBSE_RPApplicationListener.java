@@ -21,7 +21,6 @@ import com.mbsetraining.sysmlhelper.common.RequirementMover;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.contextdiagram.CreateEventForFlowPanel;
 import com.mbsetraining.sysmlhelper.graphelementhelpers.GraphNodeResizer;
-import com.mbsetraining.sysmlhelper.packagediagram.PackageDiagramIndexCreator;
 import com.mbsetraining.sysmlhelper.portcreator.PortsForLinksCreator;
 import com.mbsetraining.sysmlhelper.tracedelementpanels.CreateOperationPanel;
 import com.telelogic.rhapsody.core.*;
@@ -304,11 +303,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 				} else if( theUserDefinedMetaClass.equals( _context.DESIGN_SYNTHESIS_LOGICAL_SYSTEM_PACKAGE ) ){
 
 					afterAddForNewTermPackage( (IRPPackage ) modelElement, _context.ARCHITECTUREPKG_POSTFIX, "", "" );
-				}	
-
-			} else if( theUserDefinedMetaClass.equals( _context.PACKAGE_DIAGRAM_INDEX) ) {
-
-				afterAddForPackageDiagramIndex( (IRPDiagram) modelElement );
+				}
 			}
 
 		} catch( Exception e ){
@@ -1181,13 +1176,6 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			IRPGraphElement theElsePortGraphEl = _context.getGraphElIfOnlyOneExistsFor( theElsePort );
 			theElsePortGraphEl.setGraphicalProperty( "Position", theDecisionNodeInfo.getMiddleX() + "," + theDecisionNodeInfo.getBottomLeftY() );
 		}
-	}
-
-	private void afterAddForPackageDiagramIndex(
-			IRPDiagram theDiagram ){
-
-		PackageDiagramIndexCreator theCreator = new PackageDiagramIndexCreator( _context );
-		theCreator.populateContentBasedOnPolicyForDiagram( theDiagram );
 	}
 
 	private void switchGraphNodeFor(
