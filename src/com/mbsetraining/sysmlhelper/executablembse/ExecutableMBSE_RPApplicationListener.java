@@ -212,7 +212,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 					theUserDefinedMetaClass.equals( _context.SUBSYSTEM_TO_FUNCTION_BLOCK_REQUIREMENTS_TABLE )){
 
 				setScopeOfTableToOwningPackageIfOwnerIs( 
-						new String[]{ _context.DESIGN_SYNTHESIS_LOGICAL_SYSTEM_PACKAGE, 
+						new String[]{ _context.DESIGN_SYNTHESIS_SYSTEM_ARCHTECTURE_PACKAGE, 
 								_context.DESIGN_SYNTHESIS_SUBSYSTEM_PACKAGE },
 						(IRPTableView) modelElement,
 						true );
@@ -300,7 +300,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 							_context.REQTS_ANALYSIS_CONTEXT_DIAGRAM_PACKAGE,
 							_context.CONTEXTPKG_POSTFIX );
 
-				} else if( theUserDefinedMetaClass.equals( _context.DESIGN_SYNTHESIS_LOGICAL_SYSTEM_PACKAGE ) ){
+				} else if( theUserDefinedMetaClass.equals( _context.DESIGN_SYNTHESIS_SYSTEM_ARCHTECTURE_PACKAGE ) ){
 
 					afterAddForNewTermPackage( (IRPPackage ) modelElement, _context.ARCHITECTUREPKG_POSTFIX, "", "" );
 				}
@@ -1703,7 +1703,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			}
 
 		} else if( _context.isOwnedUnderPackageHierarchy( 
-				_context.DESIGN_SYNTHESIS_LOGICAL_SYSTEM_PACKAGE, theLink ) ||
+				_context.DESIGN_SYNTHESIS_SYSTEM_ARCHTECTURE_PACKAGE, theLink ) ||
 				_context.isOwnedUnderPackageHierarchy( 
 						_context.FUNCT_ANALYSIS_FEATURE_FUNCTION_PACKAGE, theLink ) ){
 

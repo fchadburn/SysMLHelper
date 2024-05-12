@@ -90,6 +90,9 @@ Subject ExecutableMBSEProfile
 	Metaclass DesignSynthesis
 		Property AutoGenerationOfPortsForLinksPolicy Enum "Never,Always,UserDialog" "Always"
 		Property AutoGenerationOfPortsForLinksDefaultType Enum "No,StandardPorts,ProxyPorts,RapidPorts" "StandardPorts"
+		Property DefaultArchitecturePackageName String "MainSystem"
+		Property DefaultArchitecturePackagePostfix String "_ArchitecturePkg"
+		Property StereotypeNamesForArchitecturePkg String "Logical,Physical"
 	end
 end
 Subject Format

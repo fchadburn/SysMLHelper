@@ -9,6 +9,7 @@ import requirementsanalysisplugin.PopulateRelatedRequirementsPanel;
 import com.mbsetraining.sysmlhelper.activitydiagram.ActivityDiagramChecker;
 import com.mbsetraining.sysmlhelper.activitydiagram.RenameActions;
 import com.mbsetraining.sysmlhelper.allocationpanel.FunctionAllocationPanel;
+import com.mbsetraining.sysmlhelper.architecturepkgcreator.CreateArchitecturePkgPanel;
 import com.mbsetraining.sysmlhelper.autorealizewithcopy.AutoRealizeWithCopyPanel;
 import com.mbsetraining.sysmlhelper.common.ConfigurationSettings;
 import com.mbsetraining.sysmlhelper.common.LayoutHelper;
@@ -826,6 +827,11 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						"executablembseplugin.CreateFeaturePackageStructureMenu" ) ) ){
 
 					CreateFeaturePkgPanel.launchTheDialog( theAppID );
+					
+				} else if( menuItem.equals( _settings.getString( 
+						"executablembseplugin.CreateArchitecturePackageStructureMenu" ) ) ){
+
+					CreateArchitecturePkgPanel.launchTheDialog( theAppID );
 
 				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.CreateFeatureFunctionPkg" ) ) ){

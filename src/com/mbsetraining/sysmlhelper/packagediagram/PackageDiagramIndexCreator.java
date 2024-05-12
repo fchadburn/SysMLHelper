@@ -140,6 +140,8 @@ public class PackageDiagramIndexCreator {
 				
 				IRPDiagram theDiagram = getExistingOrCreateNewPackageIndexDiagramFor( thePackage );
 				theElementTree.buildPackageDiagram( theDiagram );
+				
+				
 			} else {
 				_context.info( "Skipping drawing of " + _context.PACKAGE_DIAGRAM_INDEX + " as nothing to draw for " + _context.elInfo( thePackage ) );
 			}			

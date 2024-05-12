@@ -77,7 +77,7 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String FUNCT_ANALYSIS_TEST_PACKAGE = "24 Funct Analysis - Test Package";
 	public final String FUNCT_ANALYSIS_FEATURE_FUNCTION_PACKAGE = "22 Feature Function Package";
 	public final String DESIGN_SYNTHESIS_SUBSYSTEM_INTERFACES_PACKAGE = "33 Subsystem Interfaces Package";
-	public final String DESIGN_SYNTHESIS_LOGICAL_SYSTEM_PACKAGE = "31 System Architecture Package";
+	public final String DESIGN_SYNTHESIS_SYSTEM_ARCHTECTURE_PACKAGE = "31 System Architecture Package";
 	public final String DESIGN_SYNTHESIS_SUBSYSTEM_PACKAGE = "32 Subsystem Package";
 	public final String DESIGN_SYNTHESIS_SOFTWARE_DESIGN_PACKAGE = "34 Software Design Package";
 	public final String VIEW_AND_VIEWPOINT_PACKAGE = "41 View and Viewpoint Package";
@@ -155,6 +155,8 @@ public class ExecutableMBSE_Context extends BaseContext {
 	protected String _defaultRequirementPackagePostfix;
 	protected String _defaultFeaturePackageName;
 	protected String _defaultFeaturePackagePostfix;
+	protected String _defaultArchitecturePackageName;
+	protected String _defaultArchitecturePackagePostfix;
 	
 	protected String _nonVisibleWhiteSpaceCharsRegEx;
 
@@ -369,6 +371,16 @@ public class ExecutableMBSE_Context extends BaseContext {
 	}
 	
 	// Allow user to change in session
+	public List<String> getStereotypeNamesForArchitecturePkg(){
+
+		List<String> theStereotypeNames = getListFromCommaSeparatedString(
+				_rhpPrj, 
+				"ExecutableMBSEProfile.DesignSynthesis.StereotypeNamesForArchitecturePkg" );	
+
+		return theStereotypeNames;
+	}
+	
+	// Allow user to change in session
 	public List<String> getStereotypeNamesForRequirementsPkgFromActivityDiagrams(){
 
 		List<String> theStereotypeNames = getListFromCommaSeparatedString(
@@ -464,6 +476,28 @@ public class ExecutableMBSE_Context extends BaseContext {
 		return _defaultFeaturePackagePostfix;
 	}
 
+	// Generally single call per session, so use lazy load
+	public String getDefaultArchitecturePackageName(){
+
+		if( _defaultArchitecturePackageName == null ){
+			_defaultArchitecturePackageName = _rhpPrj.getPropertyValue(
+					"ExecutableMBSEProfile.DesignSynthesis.DefaultArchitecturePackageName" );
+		}
+
+		return _defaultArchitecturePackageName;
+	}
+
+	// Generally single call per session, so use lazy load
+	public String getDefaultArchitecturePackagePostfix(){
+
+		if( _defaultArchitecturePackagePostfix == null ){
+			_defaultArchitecturePackagePostfix = _rhpPrj.getPropertyValue(
+					"ExecutableMBSEProfile.DesignSynthesis.DefaultArchitecturePackagePostfix" );
+		}
+
+		return _defaultArchitecturePackagePostfix;
+	}
+	
 	// Multiple calls per session, so use lazy load
 	public Boolean getIsEnableAutoMoveOfEventsOnFlowCreation(){
 
