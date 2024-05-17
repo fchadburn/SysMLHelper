@@ -1068,7 +1068,8 @@ V4.3.d.PreRelease (XX-XXX-XXXX): TBC
 0826 12-MAY-2024: ExecutableMBSE: Added new MBSE Method: Design Synthesis\\Create Architecture Package Structure... menu to speed up new model creation (F.J.Chadburn)
 0827 17-MAY-2024: ExecutableMBSE: Added update project properties check to create architecture/feature/function package menus so they work if first thing done (F.J.Chadburn)
 0828 17-MAY-2024: ExecutableMBSE: Added new MBSE Method: Functional Analysis\\Create Function Package Structure... menu to open new ways to build model structure (F.J.Chadburn)
-0829 17-MAY-2024: ExecutableMBSE: Updated training labs with PracticalMBSE-BookI-InsulinPump-ModuleA-UseCasePackages-V2024-05-16-1401.pdf
+0829 17-MAY-2024: ExecutableMBSE: Updated training labs with PracticalMBSE-BookI-InsulinPump-ModuleA-UseCasePackages-V2024-05-16-1401.pdf (F.J.Chadburn)
+0830 17-MAY-2024: ExecutableMBSE: Updated training labs with PracticalMBSE-BookI-InsulinPump-ModuleB-FeatureFunctionPackages-V2024-05-17-1210.pdf (F.J.Chadburn)
 
 Backlog/Known issues
 - Consider extending context pattern for requirement to action to have a Function Block column?
