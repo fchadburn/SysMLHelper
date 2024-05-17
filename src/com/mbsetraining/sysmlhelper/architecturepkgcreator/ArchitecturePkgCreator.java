@@ -49,8 +49,8 @@ public class ArchitecturePkgCreator {
 		for( IRPUseCase theUseCase : theUseCases ){
 			createFeatureFunctionPkg( 
 					theUseCase, 
-					_context.POST_FIX_FOR_FEATURE_FUNCTION_PKG, 
-					_context.POST_FIX_FOR_FEATURE_FUNCTION_WORKING_COPY_PKG );
+					_context.POST_FIX_FOR_FEATURE_PKG, 
+					_context.POST_FIX_FOR_FEATURE_WORKING_COPY_PKG );
 		}
 	}
 	

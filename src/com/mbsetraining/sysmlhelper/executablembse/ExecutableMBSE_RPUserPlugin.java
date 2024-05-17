@@ -38,7 +38,8 @@ import com.mbsetraining.sysmlhelper.doorsng.UpdateSurrogateRequirementsPanel;
 import com.mbsetraining.sysmlhelper.eventdeletor.EventDeletor;
 import com.mbsetraining.sysmlhelper.executablescenariopackage.CreateFunctionalExecutablePackagePanel;
 import com.mbsetraining.sysmlhelper.featurefunctionpkgcreator.CreateFeaturePkgPanel;
-import com.mbsetraining.sysmlhelper.featurefunctionpkgcreator.FeatureFunctionPkgCreator;
+import com.mbsetraining.sysmlhelper.featurefunctionpkgcreator.CreateFunctionPkgPanel;
+import com.mbsetraining.sysmlhelper.featurefunctionpkgcreator.FeaturePkgCreator;
 import com.mbsetraining.sysmlhelper.gateway.CreateGatewayProjectPanel;
 import com.mbsetraining.sysmlhelper.gateway.MarkedAsDeletedPanel;
 import com.mbsetraining.sysmlhelper.gateway.MoveRequirements;
@@ -826,12 +827,38 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.CreateFeaturePackageStructureMenu" ) ) ){
 
-					CreateFeaturePkgPanel.launchTheDialog( theAppID );
+					if( theSelectedEl instanceof IRPPackage ){
+
+						boolean isContinue = checkAndPerformProfileSetupIfNeeded();
+
+						if( isContinue ){
+							CreateFeaturePkgPanel.launchTheDialog( theAppID );
+						}
+					}
+
+				} else if( menuItem.equals( _settings.getString( 
+						"executablembseplugin.CreateFunctionPackageStructureMenu" ) ) ){
+
+					if( theSelectedEl instanceof IRPPackage ){
+
+						boolean isContinue = checkAndPerformProfileSetupIfNeeded();
+
+						if( isContinue ){
+							CreateFunctionPkgPanel.launchTheDialog( theAppID );
+						}
+					}
 					
 				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.CreateArchitecturePackageStructureMenu" ) ) ){
 
-					CreateArchitecturePkgPanel.launchTheDialog( theAppID );
+					if( theSelectedEl instanceof IRPPackage ){
+
+						boolean isContinue = checkAndPerformProfileSetupIfNeeded();
+
+						if( isContinue ){
+							CreateArchitecturePkgPanel.launchTheDialog( theAppID );
+						}
+					}
 
 				} else if( menuItem.equals( _settings.getString( 
 						"executablembseplugin.CreateFeatureFunctionPkg" ) ) ){
@@ -861,7 +888,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						boolean answer = UserInterfaceHelper.askAQuestion( theMsg );
 
 						if( answer ){
-							FeatureFunctionPkgCreator theCreator = new FeatureFunctionPkgCreator( _context );
+							FeaturePkgCreator theCreator = new FeaturePkgCreator( _context );
 							theCreator.createFeatureFunctionPkgs( theUseCases );
 						}
 					}
@@ -876,6 +903,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					} else {
 						_context.error( menuItem + " invoked out of context and only works for packages" );
 					}
+					
 				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.SwitchAnchorsToDependencies" ) ) ){
 
@@ -887,6 +915,7 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					} else {
 						_context.error( menuItem + " invoked out of context and only works for packages" );
 					}
+					
 				} else if( menuItem.equals( _settings.getString(
 						"executablembseplugin.CleanUpDeadOSLCLinks" ) ) ){
 

@@ -1066,6 +1066,8 @@ V4.3.d.PreRelease (XX-XXX-XXXX): TBC
 0824 05-MAY-2024: ExecutableMBSE: Advanced package diagram - index support to allow child diagrams of things like function blocks to listed recursively (F.J.Chadburn)
 0825 09-MAY-2024: ExecutableMBSE: Removed listener to populate package diagram - index as not found to be robust with large models in call-back situation (F.J.Chadburn)
 0826 12-MAY-2024: ExecutableMBSE: Added new MBSE Method: Design Synthesis\\Create Architecture Package Structure... menu to speed up new model creation (F.J.Chadburn)
+0827 17-MAY-2024: ExecutableMBSE: Added update project properties check to create architecture/feature/function package menus so they work if first thing done (F.J.Chadburn)
+0828 17-MAY-2024: ExecutableMBSE: Added new MBSE Method: Functional Analysis\\Create Function Package Structure... menu to open new ways to build model structure (F.J.Chadburn)
 
 Backlog/Known issues
 - Consider extending context pattern for requirement to action to have a Function Block column?
@@ -1076,7 +1078,6 @@ Backlog/Known issues
 - Double click a use case to follow dependency to feature and offer to open its feature bdd or ibd
 - If user chooses in populate parts helper not to populate logic, then skip creation of connectors between internals
 - Can you add Function Usages to the Context Diagram
-- When you draw flow connector it is not popping up with the event dialog
 - Add right-click menu on diagram to close and reopen to refresh it after logging into requirements remote package 
 - Get helper to automatically move use case/feature/function packages under A.B.C.D architecture package, if present
 - Make sure requirements created on activity diagrams under functions move to same place as if have requirement diagram

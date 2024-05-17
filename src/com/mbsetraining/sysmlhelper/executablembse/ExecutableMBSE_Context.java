@@ -128,8 +128,10 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String QUERY_PREFIX = "query - ";
 	public final String VIEWPOINT_DIAGRAM_PREFIX = "vvd - ";
 	public final String VIEW_STRUCTURE_STEREOTYPE = "ViewStructure";
-	public final String POST_FIX_FOR_FEATURE_FUNCTION_PKG = "_FeaturePkg";
-	public final String POST_FIX_FOR_FEATURE_FUNCTION_WORKING_COPY_PKG = "_WorkingCopyFeaturePkg";
+	public final String POST_FIX_FOR_FEATURE_PKG = "_FeaturePkg";
+	public final String POST_FIX_FOR_FEATURE_WORKING_COPY_PKG = "_WorkingCopyFeaturePkg";
+	public final String POST_FIX_FOR_FUNCTION_PKG = "_FeaturePkg";
+	public final String POST_FIX_FOR_FUNCTION_WORKING_COPY_PKG = "_WorkingCopyFunctionPkg";
 	public final String CUSTOMV_TBD = "customv - TBD";
 	public final String VIEW_TBD = "view - TBD";
 	public final String CUSTOMV_TBD_EXPLICIT_ONLY = "customv - TBD explicit only";
@@ -155,6 +157,8 @@ public class ExecutableMBSE_Context extends BaseContext {
 	protected String _defaultRequirementPackagePostfix;
 	protected String _defaultFeaturePackageName;
 	protected String _defaultFeaturePackagePostfix;
+	protected String _defaultFunctionPackageName;
+	protected String _defaultFunctionPackagePostfix;
 	protected String _defaultArchitecturePackageName;
 	protected String _defaultArchitecturePackagePostfix;
 	
@@ -371,6 +375,16 @@ public class ExecutableMBSE_Context extends BaseContext {
 	}
 	
 	// Allow user to change in session
+	public List<String> getStereotypeNamesForFunctionPkg(){
+
+		List<String> theStereotypeNames = getListFromCommaSeparatedString(
+				_rhpPrj, 
+				"ExecutableMBSEProfile.FunctionalAnalysis.StereotypeNamesForFunctionPkg" );	
+
+		return theStereotypeNames;
+	}
+	
+	// Allow user to change in session
 	public List<String> getStereotypeNamesForArchitecturePkg(){
 
 		List<String> theStereotypeNames = getListFromCommaSeparatedString(
@@ -464,6 +478,17 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		return _defaultFeaturePackageName;
 	}
+	
+	// Generally single call per session, so use lazy load
+	public String getDefaultFunctionPackageName(){
+
+		if( _defaultFunctionPackageName == null ){
+			_defaultFunctionPackageName = _rhpPrj.getPropertyValue(
+					"ExecutableMBSEProfile.FunctionalAnalysis.DefaultFunctionPackageName" );
+		}
+
+		return _defaultFunctionPackageName;
+	}
 
 	// Generally single call per session, so use lazy load
 	public String getDefaultFeaturePackagePostfix(){
@@ -474,6 +499,17 @@ public class ExecutableMBSE_Context extends BaseContext {
 		}
 
 		return _defaultFeaturePackagePostfix;
+	}
+	
+	// Generally single call per session, so use lazy load
+	public String getDefaultFunctionPackagePostfix(){
+
+		if( _defaultFunctionPackagePostfix == null ){
+			_defaultFunctionPackagePostfix = _rhpPrj.getPropertyValue(
+					"ExecutableMBSEProfile.FunctionalAnalysis.DefaultFunctionPackagePostfix" );
+		}
+
+		return _defaultFunctionPackagePostfix;
 	}
 
 	// Generally single call per session, so use lazy load

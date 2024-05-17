@@ -8,7 +8,7 @@ import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.mbsetraining.sysmlhelper.graphelementhelpers.GraphNodeResizer;
 import com.telelogic.rhapsody.core.*;
 
-public class FeatureFunctionPkgCreator {
+public class FeaturePkgCreator {
 
 	ExecutableMBSE_Context _context;
 	
@@ -32,12 +32,12 @@ public class FeatureFunctionPkgCreator {
 		}
 		
 		if( !theUseCases.isEmpty() ){
-			FeatureFunctionPkgCreator theCreator = new FeatureFunctionPkgCreator( theContext );
+			FeaturePkgCreator theCreator = new FeaturePkgCreator( theContext );
 			theCreator.createFeatureFunctionPkgs( theUseCases );
 		}
 	}
 	
-	public FeatureFunctionPkgCreator(
+	public FeaturePkgCreator(
 			ExecutableMBSE_Context context ) {
 		
 		_context = context;
@@ -49,8 +49,8 @@ public class FeatureFunctionPkgCreator {
 		for( IRPUseCase theUseCase : theUseCases ){
 			createFeatureFunctionPkg( 
 					theUseCase, 
-					_context.POST_FIX_FOR_FEATURE_FUNCTION_PKG, 
-					_context.POST_FIX_FOR_FEATURE_FUNCTION_WORKING_COPY_PKG );
+					_context.POST_FIX_FOR_FEATURE_PKG, 
+					_context.POST_FIX_FOR_FEATURE_WORKING_COPY_PKG );
 		}
 	}
 	
@@ -175,7 +175,7 @@ public class FeatureFunctionPkgCreator {
 }
 
 /**
- * Copyright (C) 2022-2023  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2022-2024  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

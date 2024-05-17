@@ -13,9 +13,9 @@ import javax.swing.event.DocumentListener;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
 import com.telelogic.rhapsody.core.*;
 
-public class CreateFeaturePkgChooser {
+public class CreateFunctionPkgChooser {
 
-	public enum CreateFeaturePkgOption {
+	public enum CreateFunctionPkgOption {
 		DoNothing,
 		CreateUnderProject,
 		CreateUnderProjectWithStereotype,
@@ -27,13 +27,13 @@ public class CreateFeaturePkgChooser {
 	private List<String> _packageStereotypeNames = new ArrayList<>();
 	private JTextField _nameTextField = new JTextField();
 	private JTextField _filenameTextField = new JTextField();
-	private final String _doNothingOption = "Skip creation of a feature package";
-	private final String _createNewUnderProjectOption = "Create new feature package under project";
+	private final String _doNothingOption = "Skip creation of a function package";
+	private final String _createNewUnderProjectOption = "Create new function package under project";
 	private final String _createNewUnderProjectWithStereotypeOptionPre = "Create new «";
-	private final String _createNewUnderProjectWithStereotypeOptionPost = "» feature package under project";
-	private final String _createNewUnderPackageOption = "Create new feature package under owning package";
+	private final String _createNewUnderProjectWithStereotypeOptionPost = "» function package under project";
+	private final String _createNewUnderPackageOption = "Create new function package under owning package";
 	private final String _createNewUnderPackageWithStereotypeOptionPre = "Create new «";
-	private final String _createNewUnderPackageWithStereotypeOptionPost = "» feature package under owning package";
+	private final String _createNewUnderPackageWithStereotypeOptionPost = "» function package under owning package";
 	private final String _none = "<None>";
 	private String _postFix;
 	private List<String> _stereotypeChoicesForPackage;
@@ -41,7 +41,7 @@ public class CreateFeaturePkgChooser {
 
 	private ExecutableMBSE_Context _context;
 
-	public CreateFeaturePkgChooser(
+	public CreateFunctionPkgChooser(
 			IRPPackage theInvokedFromPkg,
 			String theName,
 			String thePostfix,
@@ -65,7 +65,7 @@ public class CreateFeaturePkgChooser {
 			_userChoiceComboBox.setSelectedItem( _createNewUnderPackageOption );
 		}
 
-		_stereotypeChoicesForPackage = _context.getStereotypeNamesForFeaturePkg();
+		_stereotypeChoicesForPackage = _context.getStereotypeNamesForFunctionPkg();
 
 		_packageStereotypeNames.addAll( _stereotypeChoicesForPackage ); // E.g. Tier0
 
@@ -142,18 +142,18 @@ public class CreateFeaturePkgChooser {
 		
 		String theProposedName = _context.toLegalClassName( _nameTextField.getText() ) + _postFix;
 		
-		CreateFeaturePkgOption theChoice = getChoice();
+		CreateFunctionPkgOption theChoice = getChoice();
 		
-		if( theChoice == CreateFeaturePkgOption.CreateUnderPackage ||
-				theChoice == CreateFeaturePkgOption.CreateUnderPackageWithStereotype ) {
+		if( theChoice == CreateFunctionPkgOption.CreateUnderPackage ||
+				theChoice == CreateFunctionPkgOption.CreateUnderPackageWithStereotype ) {
 			
 			String theUniqueName = _context.
 					determineUniqueNameBasedOn( theProposedName, "Package", _invokedFromPkg );
 			
 			_filenameTextField.setText( theUniqueName );
 
-		} else if( theChoice == CreateFeaturePkgOption.CreateUnderProject || 
-				theChoice == CreateFeaturePkgOption.CreateUnderProjectWithStereotype ) {
+		} else if( theChoice == CreateFunctionPkgOption.CreateUnderProject || 
+				theChoice == CreateFunctionPkgOption.CreateUnderProjectWithStereotype ) {
 			
 			String theUniqueName = _context.
 					determineUniqueNameBasedOn( theProposedName, "Package", _invokedFromPkg.getProject() );
@@ -174,26 +174,26 @@ public class CreateFeaturePkgChooser {
 		return _userChoiceComboBox;
 	}
 
-	public CreateFeaturePkgOption getChoice(){
+	public CreateFunctionPkgOption getChoice(){
 
-		CreateFeaturePkgOption theOption = null;
+		CreateFunctionPkgOption theOption = null;
 
 		String theUserChoice = (String) _userChoiceComboBox.getSelectedItem();
 
 		if( theUserChoice.equals( _createNewUnderProjectOption ) ){
-			theOption = CreateFeaturePkgOption.CreateUnderProject;
+			theOption = CreateFunctionPkgOption.CreateUnderProject;
 		} else if( ( theUserChoice.startsWith( _createNewUnderProjectWithStereotypeOptionPre ) && 
 				theUserChoice.endsWith( _createNewUnderProjectWithStereotypeOptionPost ) ) ){
-			theOption = CreateFeaturePkgOption.CreateUnderProjectWithStereotype;
+			theOption = CreateFunctionPkgOption.CreateUnderProjectWithStereotype;
 		} else if( theUserChoice.equals( _createNewUnderPackageOption ) ){
-			theOption = CreateFeaturePkgOption.CreateUnderPackage;
+			theOption = CreateFunctionPkgOption.CreateUnderPackage;
 		} else if( ( theUserChoice.startsWith( _createNewUnderPackageWithStereotypeOptionPre ) && 
 				theUserChoice.endsWith( _createNewUnderPackageWithStereotypeOptionPost ) ) ){
-			theOption = CreateFeaturePkgOption.CreateUnderPackageWithStereotype;
+			theOption = CreateFunctionPkgOption.CreateUnderPackageWithStereotype;
 		} else if( theUserChoice.contains( _doNothingOption ) ){
-			theOption = CreateFeaturePkgOption.DoNothing;
+			theOption = CreateFunctionPkgOption.DoNothing;
 		} else {
-			_context.error("Error in getReqtsPkgChoice, unhandled option=" + theUserChoice);
+			_context.error( "Error in getChoice, unhandled option=" + theUserChoice );
 		}
 
 		return theOption;
@@ -224,19 +224,19 @@ public class CreateFeaturePkgChooser {
 		return theStereotypeName;
 	}
 
-	public void createFeaturePackage(){
+	public void createFunctionPackage(){
 
-		CreateFeaturePkgOption theChoice = getChoice();
+		CreateFunctionPkgOption theChoice = getChoice();
 
-		FeaturePkgCreator theCreator = new FeaturePkgCreator( _context );
+		FunctionPkgCreator theCreator = new FunctionPkgCreator( _context );
 		
 		String theBlockName = _nameTextField.getText();
 		String thePkgName = _filenameTextField.getText();
 		
 		IRPStereotype theStereotype = null;
 
-		if( theChoice == CreateFeaturePkgOption.CreateUnderPackageWithStereotype ||
-				theChoice == CreateFeaturePkgOption.CreateUnderProjectWithStereotype ){
+		if( theChoice == CreateFunctionPkgOption.CreateUnderPackageWithStereotype ||
+				theChoice == CreateFunctionPkgOption.CreateUnderProjectWithStereotype ){
 			
 			String theStereotypeName = getStereotypeNameIfChosen(); // or theName?
 
@@ -246,27 +246,27 @@ public class CreateFeaturePkgChooser {
 						findAllByName( theStereotypeName , "Stereotype" );
 				
 				if( theStereotype == null ) {
-					_context.warning( "Unable to find stereotype called " + theStereotypeName + " to apply to feature" );
+					_context.warning( "Unable to find stereotype called " + theStereotypeName + " to apply to function" );
 				}
 			}
 		}
 		
-		if( theChoice == CreateFeaturePkgOption.CreateUnderPackage ||
-				theChoice == CreateFeaturePkgOption.CreateUnderPackageWithStereotype ) {
+		if( theChoice == CreateFunctionPkgOption.CreateUnderPackage ||
+				theChoice == CreateFunctionPkgOption.CreateUnderPackageWithStereotype ) {
 			
-			theCreator.createFeatureFunctionPkg( _invokedFromPkg, thePkgName, theBlockName, theStereotype );
+			theCreator.createFunctionPkg( _invokedFromPkg, thePkgName, theBlockName, theStereotype );
 
 
-		} else if( theChoice == CreateFeaturePkgOption.CreateUnderProject || 
-				theChoice == CreateFeaturePkgOption.CreateUnderProjectWithStereotype ) {
+		} else if( theChoice == CreateFunctionPkgOption.CreateUnderProject || 
+				theChoice == CreateFunctionPkgOption.CreateUnderProjectWithStereotype ) {
 			
-			theCreator.createFeatureFunctionPkg( _invokedFromPkg.getProject(), thePkgName, theBlockName, theStereotype );
+			theCreator.createFunctionPkg( _invokedFromPkg.getProject(), thePkgName, theBlockName, theStereotype );
 		}
 	}
 }
 
 /**
- * Copyright (C) 2023-2024  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2024  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 
