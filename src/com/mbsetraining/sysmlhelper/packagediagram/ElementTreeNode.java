@@ -93,17 +93,28 @@ public class ElementTreeNode {
 
 		this._dimension = getDimensionFor( theModelEl );
 
-		try {
-			_graphNode = _diagram.addNewNodeForElement( 
-					theModelEl, _xPos, _yPos, _dimension.width, _dimension.height );
+		if( theModelEl instanceof IRPProject ) {
 			
-		} catch( Exception e ){
-			_context.info( "Rhapsody did not allow drawing of " + 
-					_context.elInfo( theModelEl ) + " on " + _context.elInfo( _diagram ) );		
+			_dimension.height = 0;
+			_graphNode = null;
 			
-			 _dimension.height = 0;
-		}
+		} else {
+		
+			this._dimension = getDimensionFor( theModelEl );
 
+			try {
+				_graphNode = _diagram.addNewNodeForElement( 
+						theModelEl, _xPos, _yPos, _dimension.width, _dimension.height );
+			
+			} catch( Exception e ){
+				_context.info( "Rhapsody did not allow drawing of " + 
+						_context.elInfo( theModelEl ) + " on " + _context.elInfo( _diagram ) );		
+			
+				_dimension.height = 0;
+				_graphNode = null;
+			}
+		}
+		
 		List<ElementTreeNode> theChildNodes = this.getChildren();
 
 		if( !theChildNodes.isEmpty() ) {

@@ -1072,9 +1072,10 @@ V4.3.d.PreRelease (XX-XXX-XXXX): TBC
 0830 17-MAY-2024: ExecutableMBSE: Updated training labs with PracticalMBSE-BookI-InsulinPump-ModuleB-FeatureFunctionPackages-V2024-05-17-1210.pdf (F.J.Chadburn)
 0831 19-MAY-2024: ExecutableMBSE: Renamed package diagram - index menus to separate the create/update and ensure create works on SysML,Project (F.J.Chadburn)
 0832 19-MAY-2024: ExecutableMBSE: Added Query - Package Diagram - Index to ease finding and opening/deleting them by filtering the browser (F.J.Chadburn)
+0833 19-MAY-2024: ExecutableMBSE: Increase robustness of package diagram - index creation with 9.0.2 by adding check that element is not a project (F.J.Chadburn)
 
 Backlog/Known issues
-- See if way to selectively turn on Graphical GE for diagrams for just index package diagram as can be annoying
+- See if way to selectively turn on Graphical GE 19-for diagrams for just index package diagram as can be annoying
 - Consider extending context pattern for requirement to action to have a Function Block column?
 - What if the requirements have multiple stereotypes, e.g., Tier1 and User Need?
 - Getting the move links to requirements package to work on a remote requirement
