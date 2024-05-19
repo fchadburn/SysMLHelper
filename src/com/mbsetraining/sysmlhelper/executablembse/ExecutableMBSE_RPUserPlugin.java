@@ -950,19 +950,23 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 					}
 
 				} else if( menuItem.equals( _settings.getString(
-						"executablembseplugin.AutoUpdateDiagramContentMenu" ) ) ){
+						"executablembseplugin.AutoCreatePackageDiagramMenu" ) ) ){
 
 					if( theSelectedEl instanceof IRPPackage ) {
 
 						PackageDiagramIndexCreator theCreator = new PackageDiagramIndexCreator( _context );
 						theCreator.populateContentBasedOnPolicyForPackage( (IRPPackage) theSelectedEl );
+					}
 
-					} else if( theSelectedEl instanceof IRPDiagram ){
+				} else if( menuItem.equals( _settings.getString(
+						"executablembseplugin.AutoUpdatePackageDiagramMenu" ) ) ){
+
+					if( theSelectedEl instanceof IRPDiagram ){
 
 						PackageDiagramIndexCreator theCreator = new PackageDiagramIndexCreator( _context );
 						theCreator.populateContentBasedOnPolicyForDiagram( (IRPDiagram) theSelectedEl );
 					}
-
+					
 				} else {
 					_context.warning( "Unhandled menu: " + _context.elInfo( theSelectedEl ) + " was invoked with menuItem='" + menuItem + "'");
 				}
