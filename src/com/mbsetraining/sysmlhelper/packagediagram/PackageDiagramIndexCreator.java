@@ -1,6 +1,9 @@
 package com.mbsetraining.sysmlhelper.packagediagram;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSE_Context;
@@ -8,6 +11,7 @@ import com.telelogic.rhapsody.core.*;
 
 public class PackageDiagramIndexCreator {
 
+	private static final String AUTO_CREATED = "AutoCreated";
 	protected ExecutableMBSE_Context _context;
 	protected IRPStereotype _pkgIndexDiagramStereotype;
 
@@ -160,6 +164,12 @@ public class PackageDiagramIndexCreator {
 
 			theDiagram = theDiagramOwner.addObjectModelDiagram( theUniqueName );
 			theDiagram.setStereotype( _pkgIndexDiagramStereotype );
+			
+			IRPTag theTag = (IRPTag) theDiagram.addNewAggr("Tag", AUTO_CREATED );
+			
+			DateFormat dateFormat = new SimpleDateFormat( "yyyy/MM/dd HH:mm:ss" );
+			Date date = new Date();
+			theTag.setValue( dateFormat.format( date ) );
 		}
 
 		return theDiagram;
@@ -195,11 +205,17 @@ public class PackageDiagramIndexCreator {
 		List<IRPDiagram> theCandidates = forPkg.getObjectModelDiagrams().toList();
 
 		for( IRPDiagram theCandidate : theCandidates ){
-
+			
 			if( _context.hasStereotypeCalled( 
 					_context.PACKAGE_DIAGRAM_INDEX, theCandidate ) ) {
-
-				theAutoDrawnDiagrams.add( theCandidate );
+				
+				IRPTag theTag = theCandidate.getTag( AUTO_CREATED );
+				
+				if( theTag != null ) {
+					_context.info( "Found existing " + _context.elInfo( theCandidate ) + " with " + 
+							_context.elInfo( theTag ) + " " + theTag.getValue() );
+					theAutoDrawnDiagrams.add( theCandidate );
+				}				
 			}
 		}
 
