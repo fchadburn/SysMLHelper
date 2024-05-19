@@ -1689,7 +1689,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">5.19.2024::7:3:36</_modifiedTime>
+			<_modifiedTime type="a">5.19.2024::7:13:19</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -23487,8 +23487,8 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 138a9724-4be9-484f-854f-c52095eb026c</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_QueriesAndCustomViews</_name>
-			<_modifiedTime type="a">10.27.2022::8:50:35</_modifiedTime>
-			<_lastID type="a">1</_lastID>
+			<_modifiedTime type="a">5.19.2024::7:14:22</_modifiedTime>
+			<_lastID type="a">2</_lastID>
 			<_defaultComposite type="s">GUID 485b302d-a0f3-4646-8433-3ddb864d10b1</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
@@ -23503,6 +23503,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 				<value>GUID 4e8c8e74-90e8-4b9d-a61e-136ae9f0238f</value>
 				<value>GUID 5251a2b0-f53d-4b5d-9f6c-dc039336c357</value>
 				<value>GUID f3eb8934-48be-4638-acd3-976a9caec4ec</value>
+				<value>GUID 5ea7cd76-4a93-466b-ab51-080477f11236</value>
 			</AggregatesList>
 		</ISubsystem>
 		<ISubsystem type="e">
@@ -27859,6 +27860,132 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 8de17e57-f574-41a8-8980-09de0d566496</_id>
 			<_modifiedTime type="a">2.15.2017::20:18:1</_modifiedTime>
 			<_value type="a">Satisfaction</_value>
+		</ILiteralSpecification>
+		<ITableLayout type="e">
+			<_id type="a">GUID 5ea7cd76-4a93-466b-ab51-080477f11236</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">TableLayout</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">2</size>
+												<IProperty type="e">
+													<_Name type="a">EnableCriteriaCheck</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">QueryContextPattern</_Name>
+													<_Type type="a">MultiLine</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">Query - Package Diagram - Index</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+							<_hname type="a">Query</_hname>
+							<_hid type="a">GUID 4c77a3b1-822f-466e-bd06-76145c9e3b88</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTime type="a">5.19.2024::7:14:22</_modifiedTime>
+			<TableElementTypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID 5ea7cd76-4a93-466b-ab51-080477f11236</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Package Diagram - Index</TableDataDefinitionName>
+						<_DataType type="a">1769235297</_DataType>
+					</TableDataDefinition>
+					
+				</IRPYRawContainer>
+			</TableElementTypes>
+			<DataColumns type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</DataColumns>
+			<TableFromElementTypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</TableFromElementTypes>
+			<TableToElementTypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</TableToElementTypes>
+			<AggregatesList type="e">
+				<value>GUID ba1f882e-e81d-490a-8d82-5094e2777e80</value>
+			</AggregatesList>
+		</ITableLayout>
+		<ITag type="e">
+			<_id type="a">GUID ba1f882e-e81d-490a-8d82-5094e2777e80</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Unresolved</_name>
+			<_modifiedTime type="a">5.19.2024::7:14:13</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">SearchUnresolvedEnum</_hname>
+					<_hid type="a">GUID 693e6225-b80c-4632-b3d8-9b2c5873c915</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hclass type="a">Query</_hclass>
+					<_hname type="a">Unresolved</_hname>
+					<_hid type="a">GUID 85fc1107-7bf5-4799-ad09-c0fc8d2f8109</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 9ba64b0e-2bdf-4cec-926b-12a2f93e0fd3</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 9ba64b0e-2bdf-4cec-926b-12a2f93e0fd3</_id>
+			<_modifiedTime type="a">5.19.2024::7:14:13</_modifiedTime>
+			<_value type="a">ShowUnresolved</_value>
 		</ILiteralSpecification>
 		<IClass type="e">
 			<_id type="a">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_id>
