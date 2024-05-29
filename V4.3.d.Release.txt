@@ -1061,7 +1061,7 @@ V4.3.c.PreRelease (15-MAR-2024):
 0821 11-MAR-2024: ExecutableMBSE: Added explicit Table View - Requirements And Diagrams Theyre On table to the MBSE View right-click menu for requirement packages (F.J.Chadburn)
 0822 15-MAR-2024: ExecutableMBSE: Added null parts check to Populate Parts helper as not working in generalisation context, where feature inherits from system block (F.J.Chadburn)
 
-V4.3.d.PreRelease (XX-XXX-XXXX): TBC
+V4.3.d.PreRelease (19-MAY-2024):
 0823 20-APR-2024: ExecutableMBSE: Re-implementation of package diagram - index support as a result of wider testing on real projects (F.J.Chadburn)
 0824 05-MAY-2024: ExecutableMBSE: Advanced package diagram - index support to allow child diagrams of things like function blocks to listed recursively (F.J.Chadburn)
 0825 09-MAY-2024: ExecutableMBSE: Removed listener to populate package diagram - index as not found to be robust with large models in call-back situation (F.J.Chadburn)
