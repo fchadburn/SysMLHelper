@@ -1078,6 +1078,8 @@ V4.3.d.PreRelease (19-MAY-2024):
 V4.3.e.PreRelease (XX-XXX-XXXX): TBD
 0835 06-JUN-2024: ExecutableMBSE: Added PackageDiagramIndexLeafElementMetaClasses property to enable use of non-diagram elements as leaf elements on package diagram (F.J.Chadburn)
 0836 06-JUN-2024: ExecutableMBSE: EnableQuickNavigation icons by default on package diagram - index to provide additional usability benefits for navigating (F.J.Chadburn)
+0837 06-JUN-2024: ExecutableMBSE: Fixed auto-move of interfaces into subsystem interfaces packages if dependency found in parent tree (F.J.Chadburn)
+0838 06-JUN-2024: ExecutableMBSE: Added auto-move of actors into actor packages if dependency found in parent tree (F.J.Chadburn)
 
 Backlog/Known issues
 - See if way to selectively turn on Graphical GE 19-for diagrams for just index package diagram as can be annoying

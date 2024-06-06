@@ -67,6 +67,10 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 				afterAddForRequirement( modelElement );
 
+			} else if( modelElement instanceof IRPActor ){
+
+				afterAddForActor( modelElement );
+					
 			} else if( modelElement instanceof IRPClass && 
 					_context.hasStereotypeCalled( "Interface", modelElement )){
 
@@ -826,7 +830,23 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		if( isEnabled ){
 			ElementMover theElementMover = new ElementMover( 
 					modelElement, 
-					_context.getInterfacesPackageStereotype( modelElement ),
+					_context.NEW_TERM_FOR_SUBSYSTEM_INTERFACES_PACKAGE,
+					_context );
+
+			theElementMover.performMove( modelElement );
+		}
+	}
+	
+	private void afterAddForActor(
+			IRPModelElement modelElement ){
+
+		// only do move if property is set
+		boolean isEnabled = _context.getIsEnableAutoMoveOfActors( modelElement );
+
+		if( isEnabled ){
+			ElementMover theElementMover = new ElementMover( 
+					modelElement, 
+					_context.NEW_TERM_FOR_ACTOR_PACKAGE,
 					_context );
 
 			theElementMover.performMove( modelElement );
