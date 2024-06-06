@@ -140,11 +140,16 @@ public class PackageDiagramIndexCreator {
 		
 			ElementTree theElementTree = new ElementTree( thePackage, _context );
 			
-			if( theElementTree._rootNode != null ) {
+			if( theElementTree._rootNode != null &&
+				!theElementTree._rootNode._children.isEmpty() ){
 				
-				IRPDiagram theDiagram = getExistingOrCreateNewPackageIndexDiagramFor( thePackage );
-				theElementTree.buildPackageDiagram( theDiagram );
-				
+				if( theElementTree._rootNode.areNonPackageIndexDiagramChildElementsPresent() ) {
+					
+					IRPDiagram theDiagram = getExistingOrCreateNewPackageIndexDiagramFor( thePackage );
+					theElementTree.buildPackageDiagram( theDiagram );
+				} else {
+					_context.info( "Skipping drawing of " + _context.PACKAGE_DIAGRAM_INDEX + " as nothing to draw for " + _context.elInfo( thePackage ) );
+				}
 				
 			} else {
 				_context.info( "Skipping drawing of " + _context.PACKAGE_DIAGRAM_INDEX + " as nothing to draw for " + _context.elInfo( thePackage ) );
@@ -165,7 +170,7 @@ public class PackageDiagramIndexCreator {
 			theDiagram = theDiagramOwner.addObjectModelDiagram( theUniqueName );
 			theDiagram.setStereotype( _pkgIndexDiagramStereotype );
 			
-			IRPTag theTag = (IRPTag) theDiagram.addNewAggr("Tag", AUTO_CREATED );
+			IRPTag theTag = (IRPTag) theDiagram.addNewAggr( "Tag", AUTO_CREATED );
 			
 			DateFormat dateFormat = new SimpleDateFormat( "yyyy/MM/dd HH:mm:ss" );
 			Date date = new Date();

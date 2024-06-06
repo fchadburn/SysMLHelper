@@ -13,14 +13,14 @@ public class ElementTree {
 	protected IRPDiagram _diagram;
 
 	public ElementTree(
-			IRPPackage forModelEl,
+			IRPPackage forPkg,
 			ExecutableMBSE_Context context ){
 
 		_context = context;
 
-		_context.debug( "ElementTree constructor invoked for " + _context.elInfo( forModelEl ) );
+		_context.debug( "ElementTree constructor invoked for " + _context.elInfo( forPkg ) );
 
-		_rootPkg = forModelEl;
+		_rootPkg = forPkg;
 		_rootNode = recursivelybuildTree( _rootPkg );
 
 		if( _rootNode != null ) {			
@@ -33,18 +33,23 @@ public class ElementTree {
 
 		_context.debug( "recursivelybuildTree invoked for " + _context.elInfo( fromEl ) );
 
-		ElementTreeNode theTreeNode = new ElementTreeNode(fromEl, _context);
+		ElementTreeNode theTreeNode = new ElementTreeNode( fromEl, _context );
 
 		@SuppressWarnings("unchecked")
 		List<IRPModelElement> theChildEls = fromEl.getNestedElements().toList();
 
+		List<String> theLeafMetaClasses = _context.getPackageDiagramIndexLeafElementMetaClasses( _rootPkg );
+
+		String theElsMetaClass = fromEl.getUserDefinedMetaClass();
+		boolean isLeafElementType = theLeafMetaClasses.contains( theElsMetaClass );
+		
 		if( theChildEls.size() > 0 ) {
 
-			List<String> theMetaClasses = _context.getPackageDiagramIndexUserDefinedMetaClasses( fromEl );
+			List<String> theAcceptedMetaClasses = _context.getPackageDiagramIndexUserDefinedMetaClasses( _rootPkg );
 
 			List<ElementTreeNode> theChildNodes = new ArrayList<>();
 
-			for( String theMetaClass : theMetaClasses ){
+			for( String theMetaClass : theAcceptedMetaClasses ){
 
 				for( IRPModelElement theChildEl : theChildEls ){
 
@@ -72,34 +77,29 @@ public class ElementTree {
 
 			_context.debug( "recursivelybuildTree found " + theChildNodes.size() + " for " + _context.elInfo( fromEl ) );
 
-			if( fromEl instanceof IRPDiagram || 
-					fromEl instanceof IRPFlowchart || 
-					fromEl instanceof IRPTableView ||
+			if( isLeafElementType ||
 					!theChildNodes.isEmpty() ) {
 
 				theTreeNode = new ElementTreeNode( fromEl, _context );
 
 				for( ElementTreeNode theChildNode : theChildNodes ){
 
-					if( theChildNode.isDiagramInTree() ) {						
+					if( theChildNode.isLeafInTree() ) {						
 						theTreeNode.addChild( theChildNode );
 					}
 				}			
 			}
 		}
 
-		if( !( fromEl instanceof IRPDiagram || 
-				fromEl instanceof IRPFlowchart ||
-				fromEl instanceof IRPTableView ) &&
+		if( !isLeafElementType &&
 				theTreeNode._children.isEmpty() ){
 			
-			// Don't have a leaf node if not a diagram
+			// Don't have a leaf node
 			theTreeNode = null;
 		}
 
 		return theTreeNode;
 	}
-
 
 	public boolean buildPackageDiagram( 
 			IRPDiagram theDiagram ){
@@ -174,6 +174,7 @@ public class ElementTree {
 			}
 		}
 	}
+
 }
 
 /**

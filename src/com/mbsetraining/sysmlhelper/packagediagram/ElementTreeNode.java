@@ -53,13 +53,14 @@ public class ElementTreeNode {
 		return lowestNode;
     }
     
-    public boolean isDiagramInTree() {
+    public boolean isLeafInTree() {
     	
     	boolean isDiagramInTree = false;
     	
-    	if( _element instanceof IRPDiagram ||
-    			_element instanceof IRPFlowchart ||
-    			_element instanceof IRPTableView ){
+		List<String> theLeafMetaClasses = _context.getPackageDiagramIndexLeafElementMetaClasses( _element );
+		String theElsMetaClass = _element.getUserDefinedMetaClass();		
+    
+    	if( theLeafMetaClasses.contains( theElsMetaClass ) ){
     		
     		isDiagramInTree = true;
     		
@@ -67,7 +68,7 @@ public class ElementTreeNode {
     		
     		for( ElementTreeNode childTreeNode : _children ){
 				
-    			if( childTreeNode.isDiagramInTree() ) {
+    			if( childTreeNode.isLeafInTree() ) {
     				isDiagramInTree = true;
     				break;
     			}
@@ -183,11 +184,15 @@ public class ElementTreeNode {
 		Dimension theDimension;
 
 		if( theEl instanceof IRPPackage ) {
-			theDimension = new Dimension(300, 70);
+			
+			theDimension = new Dimension( 300, 70 );
+			
 		} else if( theEl instanceof IRPUseCase ){
-			theDimension = new Dimension(140, 65);
+			
+			theDimension = new Dimension( 140, 65 );
+			
 		} else {
-			theDimension = new Dimension(300, 48);
+			theDimension = new Dimension( 300, 48 );
 		}
 
 		return theDimension;
@@ -207,6 +212,21 @@ public class ElementTreeNode {
 		}
 
 		return arePackageIndexDiagramsPresent;
+	}
+	
+	public boolean areNonPackageIndexDiagramChildElementsPresent() {
+
+		boolean areNonPackageIndexDiagramElementsPresent = false;
+
+		for( ElementTreeNode inElementTreeNode : _children ){
+
+			if( !isPackageIndexDiagram( inElementTreeNode ) ) {
+				areNonPackageIndexDiagramElementsPresent = true;
+				break;
+			}
+		}
+
+		return areNonPackageIndexDiagramElementsPresent;
 	}
 
 	private boolean isPackageIndexDiagram(

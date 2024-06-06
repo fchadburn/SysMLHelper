@@ -1075,6 +1075,9 @@ V4.3.d.PreRelease (19-MAY-2024):
 0833 19-MAY-2024: ExecutableMBSE: Increase robustness of package diagram - index creation with 9.0.2 by adding check that element is not a project (F.J.Chadburn)
 0834 19-MAY-2024: ExecutableMBSE: Added AutoCreated tag to package diagram - index creation and updating so that manually created diagrams are preserved (F.J.Chadburn)
 
+V4.3.e.PreRelease (XX-XXX-XXXX): TBD
+0835 06-JUN-2024: ExecutableMBSE: Added PackageDiagramIndexLeafElementMetaClasses property to enable use of non-diagram elements as leaf elements on package diagram (F.J.Chadburn)
+
 Backlog/Known issues
 - See if way to selectively turn on Graphical GE 19-for diagrams for just index package diagram as can be annoying
 - Consider extending context pattern for requirement to action to have a Function Block column?
