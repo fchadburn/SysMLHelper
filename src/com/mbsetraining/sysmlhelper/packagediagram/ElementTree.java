@@ -113,10 +113,34 @@ public class ElementTree {
 		} else {
 			wipeDiagram( _diagram );
 			_rootNode.recursivelyAddTreeNodeToDiagram( _diagram, null, 50, 60 );
+			completeRelationsBetweenPackagesIfEnabledOn( _diagram );
 			isBuilt = true;
 		}
 
 		return isBuilt;
+	}
+	
+	private void completeRelationsBetweenPackagesIfEnabledOn( 
+			IRPDiagram theDiagram ){
+		
+		if( _context.getIsCompleteRelationsWhenAutoDrawingPackageDiagramIndexEnabled( theDiagram ) ) {
+			
+			@SuppressWarnings("unchecked")
+			List<IRPGraphElement> theGraphEls = theDiagram.getGraphicalElements().toList();
+			
+			IRPCollection theGraphElsToComplete = _context.get_rhpApp().createNewCollection();
+			
+			for( IRPGraphElement theGraphEl : theGraphEls ){
+				
+				IRPModelElement theModelEl = theGraphEl.getModelObject();
+				
+				if( theModelEl instanceof IRPPackage ) {
+					theGraphElsToComplete.addGraphicalItem( theGraphEl );
+				}
+			}
+			
+			theDiagram.completeRelations( theGraphElsToComplete, 0 );		
+		}
 	}
 
 	private void wipeDiagram(

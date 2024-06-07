@@ -1080,6 +1080,8 @@ V4.3.e.PreRelease (XX-XXX-XXXX): TBD
 0836 06-JUN-2024: ExecutableMBSE: EnableQuickNavigation icons by default on package diagram - index to provide additional usability benefits for navigating (F.J.Chadburn)
 0837 06-JUN-2024: ExecutableMBSE: Fixed auto-move of interfaces into subsystem interfaces packages if dependency found in parent tree (F.J.Chadburn)
 0838 06-JUN-2024: ExecutableMBSE: Added auto-move of actors into actor packages if dependency found in parent tree (F.J.Chadburn)
+0839 07-JUN-2024: ExecutableMBSE: Added auto-draw of dependencies to auto package diagram - index creation with property to enable/disable it (F.J.Chadburn)
+0840 07-JUN-2024: ExecutableMBSE: Added actor package to the leaf nodes so that dependencies to them are shown on auto-drawn package diagram - index  (F.J.Chadburn)
 
 Backlog/Known issues
 - See if way to selectively turn on Graphical GE 19-for diagrams for just index package diagram as can be annoying

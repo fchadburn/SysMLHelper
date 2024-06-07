@@ -364,6 +364,17 @@ public class ExecutableMBSE_Context extends BaseContext {
 
 		return theStereotypeNames;
 	}
+	
+	// Allow user to change in session
+	public boolean getIsCompleteRelationsWhenAutoDrawingPackageDiagramIndexEnabled(
+			IRPModelElement forContextEl ){
+
+		boolean result = getBooleanPropertyValue(
+				forContextEl,
+				"ExecutableMBSEProfile.General.IsCompleteRelationsWhenAutoDrawingPackageDiagramIndexEnabled" );
+
+		return result;
+	}
 		
 	// Allow user to change in session
 	public List<String> getPackageDiagramIndexLeafElementMetaClasses(
