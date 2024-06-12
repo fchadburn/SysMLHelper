@@ -112,8 +112,9 @@ public class ElementTree {
 			_context.info( "Skipping package diagram building as nothing to show" );
 		} else {
 			wipeDiagram( _diagram );
-			_rootNode.recursivelyAddTreeNodeToDiagram( _diagram, null, 50, 60 );
+			_rootNode.recursivelyAddTreeNodeToDiagram( _diagram, null, _rootPkg, 50, 60 );
 			completeRelationsBetweenPackagesIfEnabledOn( _diagram );
+					
 			isBuilt = true;
 		}
 
@@ -123,7 +124,7 @@ public class ElementTree {
 	private void completeRelationsBetweenPackagesIfEnabledOn( 
 			IRPDiagram theDiagram ){
 		
-		if( _context.getIsCompleteRelationsWhenAutoDrawingPackageDiagramIndexEnabled( theDiagram ) ) {
+		if( _context.getPackageDiagramIndexIsAutoCompleteRelationsEnabled( theDiagram ) ) {
 			
 			@SuppressWarnings("unchecked")
 			List<IRPGraphElement> theGraphEls = theDiagram.getGraphicalElements().toList();
@@ -193,7 +194,7 @@ public class ElementTree {
 
 			_context.info( msg );
 
-			for (ElementTreeNode theChild : theChildren) {
+			for( ElementTreeNode theChild : theChildren ){
 				dumpChildrenFor( theChild, count + 1 );
 			}
 		}

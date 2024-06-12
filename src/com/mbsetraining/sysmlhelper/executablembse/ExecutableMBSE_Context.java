@@ -366,12 +366,12 @@ public class ExecutableMBSE_Context extends BaseContext {
 	}
 	
 	// Allow user to change in session
-	public boolean getIsCompleteRelationsWhenAutoDrawingPackageDiagramIndexEnabled(
+	public boolean getPackageDiagramIndexIsAutoCompleteRelationsEnabled(
 			IRPModelElement forContextEl ){
 
 		boolean result = getBooleanPropertyValue(
 				forContextEl,
-				"ExecutableMBSEProfile.General.IsCompleteRelationsWhenAutoDrawingPackageDiagramIndexEnabled" );
+				"ExecutableMBSEProfile.General.PackageDiagramIndexIsAutoCompleteRelationsEnabled" );
 
 		return result;
 	}

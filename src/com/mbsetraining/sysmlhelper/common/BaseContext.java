@@ -3116,10 +3116,11 @@ public abstract class BaseContext {
 			
 			IRPModelElement theTarget = theExistingHyperLink.getTarget();
 			
-			if( theTarget != null && theTarget.equals( toTheEl) ){
+			if( theTarget != null && 
+					theTarget.equals( toTheEl ) ){
 				
 				theHyperLink = theExistingHyperLink;
-				info( "Found existing hyperlink to " + elInfo (toTheEl) + " owned by " + elInfo(fromTheEl));
+				debug( "Found existing hyperlink to " + elInfo (toTheEl) + " owned by " + elInfo(fromTheEl));
 				break;
 			}
 		}

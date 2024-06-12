@@ -81,6 +81,7 @@ public class ElementTreeNode {
 	public void recursivelyAddTreeNodeToDiagram(
 			IRPDiagram theDiagram,
 			IRPGraphNode parentGraphNode,
+			IRPModelElement parentEl,
 			int xPos,
 			int yPos ){
 		
@@ -99,6 +100,17 @@ public class ElementTreeNode {
 			_dimension.height = 0;
 			_graphNode = null;
 			
+		} else if( theModelEl instanceof IRPTableView ){
+
+			IRPHyperLink theHyperLink = _context.createNewOrGetExistingHyperLink( parentEl, theModelEl );
+		
+			_context.info( _context.elInfo( theHyperLink ) + 
+					" owned by " + _context.elInfo( parentEl ) + " has been used as unable to add " + 
+					_context.elInfo(theModelEl) + " to " + _context.elInfo( _diagram ) );
+
+			_dimension.height = 0;
+			_graphNode = null;
+			
 		} else {
 		
 			this._dimension = getDimensionFor( theModelEl );
@@ -108,9 +120,10 @@ public class ElementTreeNode {
 						theModelEl, _xPos, _yPos, _dimension.width, _dimension.height );
 			
 			} catch( Exception e ){
+				
 				_context.info( "Rhapsody did not allow drawing of " + 
 						_context.elInfo( theModelEl ) + " on " + _context.elInfo( _diagram ) );		
-			
+				
 				_dimension.height = 0;
 				_graphNode = null;
 			}
@@ -143,7 +156,7 @@ public class ElementTreeNode {
 
 					// recursive call
 					theChildNode.recursivelyAddTreeNodeToDiagram( 
-							theDiagram, parentGraphNode, _xChildPos, _yChildPos );
+							theDiagram, parentGraphNode, theModelEl, _xChildPos, _yChildPos );
 					
 					if( !theChildEl.getOwner().equals( theModelEl ) ){
 
@@ -243,21 +256,21 @@ public class ElementTreeNode {
 		return isPackageIndexDiagram;
 	}
 
-    public void addChild(ElementTreeNode child) {
-        child.setParent(this);
-        this._children.add(child);
+    public void addChild( ElementTreeNode child ) {
+        child.setParent( this );
+        this._children.add( child );
     }
 
-    public void addChild(IRPModelElement element) {
+    public void addChild( IRPModelElement element ) {
     	ElementTreeNode newChild = new ElementTreeNode( element, _context );
         this.addChild( newChild );
     }
 
-    public void addChildren(List<ElementTreeNode> children) {
-        for(ElementTreeNode t : children) {
-            t.setParent(this);
+    public void addChildren( List<ElementTreeNode> children ) {
+        for( ElementTreeNode t : children ) {
+            t.setParent( this );
         }
-        this._children.addAll(children);
+        this._children.addAll( children );
     }
 
     public List<ElementTreeNode> getChildren() {
