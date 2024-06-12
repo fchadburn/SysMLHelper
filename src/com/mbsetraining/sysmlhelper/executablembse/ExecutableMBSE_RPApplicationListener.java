@@ -207,7 +207,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 			} else if( theUserDefinedMetaClass.equals( _context.SIMPLE_REQUIREMENTS_TABLE ) ){
 
-				setScopeOfTableToOwningPackageIfOwnerIs( 
+				_context.setScopeOfTableToOwningPackageIfOwnerIs( 
 						new String[]{ _context.REQTS_ANALYSIS_REQUIREMENT_PACKAGE },
 						(IRPTableView) modelElement,
 						true );
@@ -215,7 +215,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 			} else if( theUserDefinedMetaClass.equals( _context.SUBSYSTEM_TABLE ) ||
 					theUserDefinedMetaClass.equals( _context.SUBSYSTEM_TO_FUNCTION_BLOCK_REQUIREMENTS_TABLE )){
 
-				setScopeOfTableToOwningPackageIfOwnerIs( 
+				_context.setScopeOfTableToOwningPackageIfOwnerIs( 
 						new String[]{ _context.DESIGN_SYNTHESIS_SYSTEM_ARCHTECTURE_PACKAGE, 
 								_context.DESIGN_SYNTHESIS_SUBSYSTEM_PACKAGE },
 						(IRPTableView) modelElement,
@@ -223,7 +223,7 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 
 			} else if( theUserDefinedMetaClass.equals( _context.CONTEXT_DIAGRAM_FLOWS_TABLE ) ){
 
-				setScopeOfTableToOwningPackageIfOwnerIs( 
+				_context.setScopeOfTableToOwningPackageIfOwnerIs( 
 						new String[]{ _context.REQTS_ANALYSIS_CONTEXT_DIAGRAM_PACKAGE,
 								_context.REQTS_ANALYSIS_EXTERNAL_SIGNALS_PACKAGE },
 						(IRPTableView) modelElement,
@@ -235,14 +235,14 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 					theUserDefinedMetaClass.equals( _context.SURROGATE_REMOTE_REQUIREMENT_TRACEABILITY_REPORT ) ||
 					theUserDefinedMetaClass.equals( _context.REQUIREMENTS_AND_DIAGRAMS_THEYRE_ON_TABLE )){
 
-				setScopeOfTableToOwningPackageIfOwnerIs( 
+				_context.setScopeOfTableToOwningPackageIfOwnerIs( 
 						new String[]{ _context.REQTS_ANALYSIS_REQUIREMENT_PACKAGE }, 
 						(IRPTableView) modelElement,
 						false );
 
 			} else if( theUserDefinedMetaClass.equals( _context.ACTORS_TO_USE_CASES_TABLE )){
 
-				setScopeOfTableToOwningPackageIfOwnerIs( 
+				_context.setScopeOfTableToOwningPackageIfOwnerIs( 
 						new String[]{ _context.REQTS_ANALYSIS_ACTOR_PACKAGE }, 
 						(IRPTableView) modelElement,
 						false );
@@ -631,36 +631,6 @@ public class ExecutableMBSE_RPApplicationListener extends RPApplicationListener 
 		theNoteNode.setGraphicalProperty( 
 				"TextFontSize",
 				"8" );
-	}
-
-	private void setScopeOfTableToOwningPackageIfOwnerIs(
-			String[] theUserDefinedMetaClasses,
-			IRPTableView theView,
-			boolean isRename ){
-
-		IRPModelElement theOwner = theView.getOwner();
-
-		if( theOwner instanceof IRPPackage &&
-				Arrays.stream( theUserDefinedMetaClasses ).
-				anyMatch(theOwner.getUserDefinedMetaClass()::contains ) ){
-
-			IRPCollection theScopedEls = _context.createNewCollection();
-			theScopedEls.setSize( 1 );
-			theScopedEls.addItem( theOwner );
-
-			_context.debug( "ExecutableMBSE_RPApplicationListener has set scope of " + 
-					_context.elInfo( theView ) + " to " + _context.elInfo( theOwner ) );
-
-			theView.setScope( theScopedEls );
-
-			if( isRename ){
-
-				String theProposedName = _context.TABLE_VIEW_PREFIX + " " + theOwner.getName();
-				String theUniqueName = _context.determineUniqueNameBasedOn( theProposedName, "TableView", theOwner );
-
-				theView.setName( theUniqueName );
-			}
-		}
 	}
 
 	private void afterAddForStatechart(

@@ -1,6 +1,7 @@
 package com.mbsetraining.sysmlhelper.executablembse;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -13,6 +14,7 @@ import com.telelogic.rhapsody.core.IRPActor;
 import com.telelogic.rhapsody.core.IRPAttribute;
 import com.telelogic.rhapsody.core.IRPClass;
 import com.telelogic.rhapsody.core.IRPClassifier;
+import com.telelogic.rhapsody.core.IRPCollection;
 import com.telelogic.rhapsody.core.IRPDependency;
 import com.telelogic.rhapsody.core.IRPDiagram;
 import com.telelogic.rhapsody.core.IRPGraphElement;
@@ -26,6 +28,7 @@ import com.telelogic.rhapsody.core.IRPProject;
 import com.telelogic.rhapsody.core.IRPRequirement;
 import com.telelogic.rhapsody.core.IRPStereotype;
 import com.telelogic.rhapsody.core.IRPSysMLPort;
+import com.telelogic.rhapsody.core.IRPTableView;
 import com.telelogic.rhapsody.core.IRPUnit;
 
 public class ExecutableMBSE_Context extends BaseContext {
@@ -52,19 +55,19 @@ public class ExecutableMBSE_Context extends BaseContext {
 	public final String INTERNAL_BLOCK_DIAGRAM_SYSTEM = "Internal Block Diagram - System";
 	public final String INTERNAL_BLOCK_DIAGRAM_FUNCTIONAL = "Internal Block Diagram - Functional";
 	public final String PACKAGE_DIAGRAM_INDEX = "Package Diagram - Index";
-	public final String SIMPLE_REQUIREMENTS_TABLE = "Table View - Simple Requirements Table";
-	public final String SUBSYSTEM_TABLE = "Table View - Subsystem Table";
-	public final String DIAGRAMS_AND_REQUIREMENTS_ON_THEM_TABLE = "Table View - Diagrams And Requirements On Them";
-	public final String REQUIREMENTS_AND_DIAGRAMS_THEYRE_ON_TABLE = "Table View - Requirements And Diagrams Theyre On";
-	public final String SUBSYSTEM_TO_FUNCTION_BLOCK_REQUIREMENTS_TABLE = "Table View - Subsystem To Function Block Requirements";
-	public final String USE_CASE_TO_REQUIREMENT_TABLE = "Table View - Use Case To Requirement";
-	public final String ACTION_TO_REQUIREMENT_TABLE = "Table View - Action To Requirement";
-	public final String REQUIREMENT_TO_USE_CASE_TABLE = "Table View - Requirement To Use Case";
-	public final String REQUIREMENT_TO_FUNCTION_BLOCK_TABLE = "Table View - Requirement To Function Block";
-	public final String REQUIREMENT_TO_ACTION_TABLE = "Table View - Requirement To Action";
-	public final String CONTEXT_DIAGRAM_FLOWS_TABLE = "Table View - Context Diagram Flows";
-	public final String SURROGATE_REMOTE_REQUIREMENT_TRACEABILITY_REPORT = "Table View - Surrogate Remote Requirement Traceability Report";
-	public final String ACTORS_TO_USE_CASES_TABLE = "Table View - Actors To Use Cases";
+	public final String SIMPLE_REQUIREMENTS_TABLE = "table view - Simple Requirements Table";
+	public final String SUBSYSTEM_TABLE = "table view - Subsystems";
+	public final String DIAGRAMS_AND_REQUIREMENTS_ON_THEM_TABLE = "table view - Diagrams And Requirements On Them";
+	public final String REQUIREMENTS_AND_DIAGRAMS_THEYRE_ON_TABLE = "table view - Requirements And Diagrams Theyre On";
+	public final String SUBSYSTEM_TO_FUNCTION_BLOCK_REQUIREMENTS_TABLE = "table view - Subsystem To Function Block Requirements";
+	public final String USE_CASE_TO_REQUIREMENT_TABLE = "table view - Use Case To Requirement";
+	public final String ACTION_TO_REQUIREMENT_TABLE = "table view - Action To Requirement";
+	public final String REQUIREMENT_TO_USE_CASE_TABLE = "table view - Requirement To Use Case";
+	public final String REQUIREMENT_TO_FUNCTION_BLOCK_TABLE = "table view - Requirement To Function Block";
+	public final String REQUIREMENT_TO_ACTION_TABLE = "table view - Requirement To Action";
+	public final String CONTEXT_DIAGRAM_FLOWS_TABLE = "table view - Context Diagram Flows";
+	public final String SURROGATE_REMOTE_REQUIREMENT_TRACEABILITY_REPORT = "table view - Surrogate Remote Requirement Traceability Report";
+	public final String ACTORS_TO_USE_CASES_TABLE = "table view - Actors To Use Cases";
 	public final String REQTS_ANALYSIS_CONTEXT_DIAGRAM_PACKAGE = "10 Context Package";
 	public final String REQTS_ANALYSIS_ACTOR_PACKAGE = "11 Actor Package";
 	public final String REQTS_ANALYSIS_USE_CASE_PACKAGE = "12 Use Case Package";
@@ -1079,6 +1082,16 @@ public class ExecutableMBSE_Context extends BaseContext {
 				((IRPUnit) modelElement).setSeparateSaveUnit( 0 );		
 			}
 		}
+	}
+	
+	public List<String> getUserDefinedMetaClassesForRequirementsPackageTableCreation (
+			IRPModelElement forContextEl ){
+
+		List<String> theStereotypeNames = getListFromCommaSeparatedString(
+				forContextEl, 
+				"ExecutableMBSEProfile.General.UserDefinedMetaClassesForRequirementsPackageTableCreation" );	
+
+		return theStereotypeNames;
 	}
 
 	public List<IRPModelElement> getStereotypesForFunctionalDesignRootPackage(
@@ -2106,6 +2119,35 @@ public class ExecutableMBSE_Context extends BaseContext {
 		}
 		
 		return isMatching;
+	}
+	
+	public void setScopeOfTableToOwningPackageIfOwnerIs(
+			String[] theUserDefinedMetaClasses,
+			IRPTableView theView,
+			boolean isRename ){
+
+		IRPModelElement theOwner = theView.getOwner();
+
+		if( theOwner instanceof IRPPackage &&
+				Arrays.stream( theUserDefinedMetaClasses ).
+				anyMatch(theOwner.getUserDefinedMetaClass()::contains ) ){
+
+			IRPCollection theScopedEls = createNewCollection();
+			theScopedEls.setSize( 1 );
+			theScopedEls.addItem( theOwner );
+
+			this.info( "Set scope of " + elInfo( theView ) + " to " + elInfo( theOwner ) );
+
+			theView.setScope( theScopedEls );
+
+			if( isRename ){
+
+				String theProposedName = theView.getUserDefinedMetaClass() + " for " + theOwner.getName();
+				String theUniqueName = determineUniqueNameBasedOn( theProposedName, "TableView", theOwner );
+
+				theView.setName( theUniqueName );
+			}
+		}
 	}
 }
 

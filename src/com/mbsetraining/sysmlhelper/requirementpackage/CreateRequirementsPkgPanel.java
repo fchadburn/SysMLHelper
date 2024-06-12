@@ -147,7 +147,7 @@ public class CreateRequirementsPkgPanel extends ExecutableMBSEBasePanel {
 
 		if( checkValidity( false ) ){
 
-			_createRequirementsPkgChooser.createRequirementsPackage(_ownerPkg);
+			_createRequirementsPkgChooser.createRequirementsPackage( _ownerPkg );
 		}
 	}
 }

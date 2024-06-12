@@ -465,6 +465,61 @@ public class CreateRequirementsPkgChooser {
 		IRPPackage theReqtsPkg;
 		theReqtsPkg = theReqtsPackageOwner.addNestedPackage( theName );
 		theReqtsPkg.changeTo( _context.REQTS_ANALYSIS_REQUIREMENT_PACKAGE );	
+		
+		List<String> theUserDefinedMetaClasses = _context.getUserDefinedMetaClassesForRequirementsPackageTableCreation( theReqtsPackageOwner );
+		
+		for( String theUserDefinedMetaClass : theUserDefinedMetaClasses ){
+			
+			try {
+				
+				IRPTableView theTableView = (IRPTableView) theReqtsPkg.addNewAggr( 
+						"TableView", "" );
+				
+				theTableView.changeTo( theUserDefinedMetaClass );
+
+				_context.setScopeOfTableToOwningPackageIfOwnerIs( 
+						new String[]{ _context.REQTS_ANALYSIS_REQUIREMENT_PACKAGE },
+						theTableView,
+						true );			
+				
+				IRPStereotype theNewTerm = theTableView.getNewTermStereotype();
+				
+				try {
+					String propertyValue = theNewTerm.getPropertyValueExplicit( "Model.Stereotype.InitialLayoutForTables" );
+					
+					IRPTableLayout theTableLayout = null;
+					
+					if( !propertyValue.isEmpty() ) {
+						
+						@SuppressWarnings("unchecked")
+						List<IRPProfile> theProfiles = _context.get_rhpPrj().getProfiles().toList();
+						
+						for( IRPProfile theProfile : theProfiles ){
+							
+							theTableLayout = (IRPTableLayout) theProfile.findNestedElementRecursive( propertyValue, "TableLayout" );
+							
+							if( theTableLayout != null ) {
+								break;
+							}
+						}
+					}
+					
+					if( theTableLayout != null ) {
+						_context.debug( "Applying " + _context.elInfo( theTableLayout ) + " to " + _context.elInfo( theTableView ));
+						theTableView.setItsTableLayout( theTableLayout );
+					}
+					
+				} catch( Exception e ){
+					_context.error( "Exception when trying to set table layout for " + _context.elInfo( theTableView ) + 
+							" e=" + e.getMessage() );
+				}
+								
+			} catch( Exception e ){
+				_context.error( "Unable to add " + theUserDefinedMetaClass + " to " + 
+						_context.elInfo( theReqtsPkg ) + ", e=" + e.getMessage() );
+			}	
+		}
+
 		_context.setSavedInSeparateDirectoryIfAppropriateFor( theReqtsPkg );
 		theFlowFromPkg.addDependencyTo( theReqtsPkg );
 
@@ -473,7 +528,7 @@ public class CreateRequirementsPkgChooser {
 }
 
 /**
- * Copyright (C) 2018-2023  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2018-2024  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

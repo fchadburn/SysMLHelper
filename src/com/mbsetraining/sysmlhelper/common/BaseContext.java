@@ -1113,6 +1113,25 @@ public abstract class BaseContext {
 
 		return isFound;
 	}
+	
+	public String getStereotypeNameFor( 
+			IRPStereotype theStereotype ) {
+		
+		String theStereotypeName = theStereotype.getName();
+
+		if( theStereotype.getIsNewTerm()==1 ){
+
+			try {
+				// This copes with situation whereby the actual name of stereotype 
+				// differs from it's name set via a property
+				theStereotypeName = theStereotype.getPropertyValueExplicit( "Model.Stereotype.Name" );
+			} catch ( Exception e ){
+				// Silent exception will occur if property is not set
+			}
+		}
+		
+		return theStereotypeName;
+	}
 
 	public IRPStereotype getStereotypeAppliedTo(
 			IRPModelElement theElement, 
