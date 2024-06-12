@@ -18,7 +18,6 @@ import javax.swing.GroupLayout.SequentialGroup;
 import javax.swing.border.EmptyBorder;
 
 import com.mbsetraining.sysmlhelper.common.RhapsodyComboBox;
-import com.mbsetraining.sysmlhelper.executablembse.AutoPackageDiagram;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
 import com.mbsetraining.sysmlhelper.requirementpackage.CreateRequirementsPkgChooser;
 import com.mbsetraining.sysmlhelper.usecasepackage.CreateActorPkg;
@@ -314,19 +313,14 @@ public class CreateContextPackagePanel extends ExecutableMBSEBasePanel {
 			_context.deleteIfPresent( "Structure1", "StructureDiagram", theProject );
 			_context.deleteIfPresent( "Model1", "ObjectModelDiagram", theProject );
 			_context.deleteIfPresent( "Default", "Package", theProject );
-			
-			if( _context.getIsAutoPopulatePackageDiagram( theProject ) ){
-				AutoPackageDiagram theAPD = new AutoPackageDiagram( _context );
-				theAPD.drawDiagram();
-			}
-				    			
+					
 			theProject.save();
 		}
 	}
 }
 
 /**
- * Copyright (C) 2021-2023  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2021-2024  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

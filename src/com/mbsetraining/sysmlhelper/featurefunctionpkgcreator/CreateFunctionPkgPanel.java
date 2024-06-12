@@ -13,7 +13,6 @@ import javax.swing.GroupLayout.ParallelGroup;
 import javax.swing.GroupLayout.SequentialGroup;
 import javax.swing.border.EmptyBorder;
 
-import com.mbsetraining.sysmlhelper.executablembse.AutoPackageDiagram;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
 import com.telelogic.rhapsody.core.*;
 
@@ -153,12 +152,6 @@ public class CreateFunctionPkgPanel extends ExecutableMBSEBasePanel {
 		if( checkValidity( false ) ){
 
 			_createPkgChooser.createFunctionPackage();
-
-			if( _context.getIsAutoPopulatePackageDiagram( _context.get_rhpPrj() ) ){
-				
-				AutoPackageDiagram theAPD = new AutoPackageDiagram( _context );
-				theAPD.drawDiagram();
-			}
 		}
 	}
 }

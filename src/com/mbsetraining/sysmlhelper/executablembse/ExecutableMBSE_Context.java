@@ -943,16 +943,6 @@ public class ExecutableMBSE_Context extends BaseContext {
 		return theValue;
 	}
 
-	public boolean getIsAutoPopulatePackageDiagram(
-			IRPModelElement basedOnContext ){
-
-		boolean result = getBooleanPropertyValue(
-				basedOnContext,
-				"ExecutableMBSEProfile.General.IsAutoPopulatePackageDiagram" );
-
-		return result;		
-	}
-
 	public String getCSVExportArtifactType(
 			IRPModelElement basedOnContext ){
 
@@ -1790,15 +1780,6 @@ public class ExecutableMBSE_Context extends BaseContext {
 					this );
 
 			theElementMover.performMove( theReqt );					
-		}
-	}
-
-	@Override
-	public void autoPopulateProjectPackageDiagramIfNeeded() {
-
-		if( getIsAutoPopulatePackageDiagram( _rhpPrj ) ){
-			AutoPackageDiagram theAPD = new AutoPackageDiagram( this );
-			theAPD.drawDiagram();
 		}
 	}
 

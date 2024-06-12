@@ -12,7 +12,6 @@ import javax.swing.GroupLayout.ParallelGroup;
 import javax.swing.GroupLayout.SequentialGroup;
 import javax.swing.border.EmptyBorder;
 
-import com.mbsetraining.sysmlhelper.executablembse.AutoPackageDiagram;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
 import com.telelogic.rhapsody.core.*;
 
@@ -149,18 +148,12 @@ public class CreateRequirementsPkgPanel extends ExecutableMBSEBasePanel {
 		if( checkValidity( false ) ){
 
 			_createRequirementsPkgChooser.createRequirementsPackage(_ownerPkg);
-
-			if( _context.getIsAutoPopulatePackageDiagram( _context.get_rhpPrj() ) ){
-				
-				AutoPackageDiagram theAPD = new AutoPackageDiagram( _context );
-				theAPD.drawDiagram();
-			}
 		}
 	}
 }
 
 /**
- * Copyright (C) 2018-2023  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2018-2024  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

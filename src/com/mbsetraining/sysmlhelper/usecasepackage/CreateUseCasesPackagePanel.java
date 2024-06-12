@@ -24,7 +24,6 @@ import com.mbsetraining.sysmlhelper.common.UserInterfaceHelper;
 import com.mbsetraining.sysmlhelper.contextdiagram.ContextDiagramCreator;
 import com.mbsetraining.sysmlhelper.contextdiagram.ExternalSignalsPkgCreator;
 import com.mbsetraining.sysmlhelper.contextdiagram.CreateSignalsPkgChooser;
-import com.mbsetraining.sysmlhelper.executablembse.AutoPackageDiagram;
 import com.mbsetraining.sysmlhelper.executablembse.ExecutableMBSEBasePanel;
 import com.mbsetraining.sysmlhelper.requirementpackage.CreateRequirementsPkgChooser;
 import com.mbsetraining.sysmlhelper.requirementpackage.CreateRequirementsPkgChooser.CreateRequirementsPkgOption;
@@ -437,12 +436,7 @@ public class CreateUseCasesPackagePanel extends ExecutableMBSEBasePanel {
 			_context.deleteIfPresent( "Structure1", "StructureDiagram", theProject );
 			_context.deleteIfPresent( "Model1", "ObjectModelDiagram", theProject );
 			_context.deleteIfPresent( "Default", "Package", theProject );
-
-			if( _context.getIsAutoPopulatePackageDiagram( theProject ) ){
-				AutoPackageDiagram theAPD = new AutoPackageDiagram( _context );
-				theAPD.drawDiagram();
-			}
-
+			
 			theProject.save();
 
 			_context.info( "Package structure construction of " + _context.elInfo( theUseCasePkg ) + " has completed");	
@@ -451,7 +445,7 @@ public class CreateUseCasesPackagePanel extends ExecutableMBSEBasePanel {
 }
 
 /**
- * Copyright (C) 2018-2023  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2018-2024  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 
