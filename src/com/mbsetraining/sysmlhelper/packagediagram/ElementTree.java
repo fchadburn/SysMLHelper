@@ -113,6 +113,7 @@ public class ElementTree {
 		} else {
 			wipeDiagram( _diagram );
 			_rootNode.recursivelyAddTreeNodeToDiagram( _diagram, null, _rootPkg, 50, 60 );
+			_rootNode.recursivelyAddHyperLinksIfNeededTo( _rootPkg );
 			completeRelationsBetweenPackagesIfEnabledOn( _diagram );
 					
 			isBuilt = true;

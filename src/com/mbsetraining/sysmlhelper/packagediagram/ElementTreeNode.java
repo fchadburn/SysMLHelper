@@ -78,6 +78,29 @@ public class ElementTreeNode {
     	return isDiagramInTree;
     }
     
+    public void recursivelyAddHyperLinksIfNeededTo(
+    		IRPModelElement parentEl ) {
+
+		IRPModelElement theModelEl = this.getElement();
+		
+		if( theModelEl instanceof IRPTableView ||
+			theModelEl instanceof IRPMatrixView ){
+			
+			IRPHyperLink theHyperLink = _context.createNewOrGetExistingHyperLink( parentEl, theModelEl );
+			
+			_context.info( _context.elInfo( theHyperLink ) + 
+					" owned by " + _context.elInfo( parentEl ) + " has been used as unable to add " + 
+					_context.elInfo( theModelEl ) + " to " + _context.elInfo( _diagram ) );
+		}
+
+		List<ElementTreeNode> theChildNodes = this.getChildren();
+
+		for( ElementTreeNode theChildNode : theChildNodes ){
+		
+			theChildNode.recursivelyAddHyperLinksIfNeededTo( theModelEl );
+		}
+    }
+    		
 	public void recursivelyAddTreeNodeToDiagram(
 			IRPDiagram theDiagram,
 			IRPGraphNode parentGraphNode,
@@ -95,18 +118,13 @@ public class ElementTreeNode {
 
 		this._dimension = getDimensionFor( theModelEl );
 
-		if( theModelEl instanceof IRPProject ) {
-			
-			_dimension.height = 0;
-			_graphNode = null;
-			
-		} else if( theModelEl instanceof IRPTableView ){
-
-			IRPHyperLink theHyperLink = _context.createNewOrGetExistingHyperLink( parentEl, theModelEl );
-		
-			_context.info( _context.elInfo( theHyperLink ) + 
-					" owned by " + _context.elInfo( parentEl ) + " has been used as unable to add " + 
-					_context.elInfo(theModelEl) + " to " + _context.elInfo( _diagram ) );
+		if( theModelEl instanceof IRPProject ||
+				theModelEl instanceof IRPTableView ||
+				theModelEl instanceof IRPMatrixView ){
+					
+			_context.debug( "Skipping adding graph node for " + 
+					" owned by " + _context.elInfo( theModelEl ) + " as unable to add " + 
+					_context.elInfo( theModelEl ) + " to " + _context.elInfo( _diagram ) );
 
 			_dimension.height = 0;
 			_graphNode = null;
