@@ -1689,13 +1689,13 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">6.14.2024::11:50:26</_modifiedTime>
+			<_modifiedTime type="a">6.14.2024::12:47:34</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
-				<value>GUID e891828e-5092-4fb2-ba52-95a192a2cf40</value>
 				<value>GUID 10dd6eb5-c3b6-4a26-afef-767c4d8b2e90</value>
+				<value>GUID 6b1b2b68-f48a-4564-b970-4d7efcae501c</value>
 				<value>GUID f825da1e-3d3d-409d-927a-c62820d97e7c</value>
 				<value>GUID 99d433ee-75c1-40c0-8ef0-8ea14c3d7d23</value>
 				<value>GUID 5df2b3b3-e0d0-4595-a39f-c823d2925305</value>
@@ -1711,18 +1711,18 @@
 			</AggregatesList>
 		</IProfile>
 		<IEmbededFile type="e">
-			<_id type="a">GUID e891828e-5092-4fb2-ba52-95a192a2cf40</_id>
-			<_name type="a">PracticalMBSE-BookI-InsulinPump-ModuleB-FeatureFunctionPackages-V2024-05-17-1210.pdf</_name>
-			<_modifiedTime type="a">5.17.2024::13:24:51</_modifiedTime>
-			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
-			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\PracticalMBSE-BookI-InsulinPump-ModuleB-FeatureFunctionPackages-V2024-05-17-1210.pdf</_LastKnownFullPath>
-		</IEmbededFile>
-		<IEmbededFile type="e">
 			<_id type="a">GUID 10dd6eb5-c3b6-4a26-afef-767c4d8b2e90</_id>
 			<_name type="a">PracticalMBSE-BookI-InsulinPump-ModuleA-UseCasePackages-V2024-06-14-0727.pdf</_name>
 			<_modifiedTime type="a">6.14.2024::11:50:16</_modifiedTime>
 			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
 			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\PracticalMBSE-BookI-InsulinPump-ModuleA-UseCasePackages-V2024-06-14-0727.pdf</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID 6b1b2b68-f48a-4564-b970-4d7efcae501c</_id>
+			<_name type="a">PracticalMBSE-BookI-InsulinPump-ModuleB-FeatureFunctionPackages-V2024-06-14-0819.pdf</_name>
+			<_modifiedTime type="a">6.14.2024::12:47:26</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\PracticalMBSE-BookI-InsulinPump-ModuleB-FeatureFunctionPackages-V2024-06-14-0819.pdf</_LastKnownFullPath>
 		</IEmbededFile>
 		<ISubsystem type="e">
 			<_id type="a">GUID f825da1e-3d3d-409d-927a-c62820d97e7c</_id>
