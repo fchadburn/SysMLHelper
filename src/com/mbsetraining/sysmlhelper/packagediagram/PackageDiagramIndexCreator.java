@@ -51,7 +51,8 @@ public class PackageDiagramIndexCreator {
 		if( policy.equals( "Always" ) ){
 
 			ElementTree theElementTree = new ElementTree( theRootPkg, _context );
-			theElementTree.buildPackageDiagram( theDiagram );		
+			theElementTree.buildPackageDiagram( theDiagram );	
+			theDiagram.openDiagram();
 			
 		} else if( policy.equals( "UserDialog" ) ){
 
@@ -64,6 +65,7 @@ public class PackageDiagramIndexCreator {
 				
 				ElementTree theElementTree = new ElementTree( theRootPkg, _context );
 				theElementTree.buildPackageDiagram( theDiagram );
+				theDiagram.openDiagram();
 				
 			} else {
 				_context.info( "User chose to cancel" );
@@ -147,6 +149,8 @@ public class PackageDiagramIndexCreator {
 					
 					IRPDiagram theDiagram = getExistingOrCreateNewPackageIndexDiagramFor( thePackage );
 					theElementTree.buildPackageDiagram( theDiagram );
+					theDiagram.openDiagram();
+					
 				} else {
 					_context.info( "Skipping drawing of " + _context.PACKAGE_DIAGRAM_INDEX + " as nothing to draw for " + _context.elInfo( thePackage ) );
 				}
