@@ -60,7 +60,7 @@ public abstract class BaseContext {
 	protected RhpLog _rhpLog;
 	protected IRPApplication _rhpApp;
 	protected IRPProject _rhpPrj;
-	
+
 	public BaseContext(
 			String theAppID,
 			String enableErrorLoggingProperty,
@@ -473,7 +473,7 @@ public abstract class BaseContext {
 
 		IRPModelElement theModelEl = null;	
 		IRPStereotype theStereotype = null;
-		
+
 		if( theName.equals( "refine" ) ){		
 			theModelEl = _rhpPrj.findElementsByFullName( "SysML::ModelElements::refine", "Stereotype" );
 		}
@@ -483,7 +483,7 @@ public abstract class BaseContext {
 		}
 
 		if( theModelEl instanceof IRPStereotype ){
-			
+
 			// info( "Found " + elInfo( theModelEl ) + " owned by " + elInfo( theModelEl.getOwner() ) );
 			theStereotype = (IRPStereotype)theModelEl;
 		} else {
@@ -782,14 +782,14 @@ public abstract class BaseContext {
 
 		return theOwningPackage;
 	}
-	
+
 	public IRPDiagram getOwningDiagramFor(
 			IRPModelElement theElement ){
 
 		IRPDiagram theOwningDiagram = null;
 
 		_rhpLog.info( "getOwningDiagram invoked for " + _rhpLog.elInfo( theElement ) );
-		
+
 		if( theElement == null ){
 
 			_rhpLog.warning( "getOwningDiagramFor for was invoked for a null element" );
@@ -1113,10 +1113,10 @@ public abstract class BaseContext {
 
 		return isFound;
 	}
-	
+
 	public String getStereotypeNameFor( 
 			IRPStereotype theStereotype ) {
-		
+
 		String theStereotypeName = theStereotype.getName();
 
 		if( theStereotype.getIsNewTerm()==1 ){
@@ -1129,7 +1129,7 @@ public abstract class BaseContext {
 				// Silent exception will occur if property is not set
 			}
 		}
-		
+
 		return theStereotypeName;
 	}
 
@@ -3122,37 +3122,64 @@ public abstract class BaseContext {
 		}
 	}
 
+	public void deleteDeadHyperLinks( 
+			IRPModelElement fromTheEl ) {
+
+		@SuppressWarnings("unchecked")
+		List<IRPModelElement> theModelEls = fromTheEl.getNestedElementsByMetaClass( "HyperLink", 0 ).toList();
+
+		List<IRPModelElement> theDeadHyperLinks = new ArrayList<>();
+
+		for( IRPModelElement theModelEl : theModelEls ){
+
+			if( ((IRPHyperLink) theModelEl).getTarget() == null ) {
+				theDeadHyperLinks.add( theModelEl );
+			}
+		}
+
+		if( !theDeadHyperLinks.isEmpty() ) {
+
+			warning( "Found " + theDeadHyperLinks.size() + " dead hyperlinks owned by " + elInfo( fromTheEl ) + " that will be deleted" );
+
+			for (IRPModelElement theDeadHyperLink : theDeadHyperLinks) {
+				theDeadHyperLink.deleteFromProject();
+			}
+		}
+	}
+
 	public IRPHyperLink createNewOrGetExistingHyperLink(
 			IRPModelElement fromTheEl,
 			IRPModelElement toTheEl ) {
-		
+
 		IRPHyperLink theHyperLink = null;
-		
+
+		deleteDeadHyperLinks( fromTheEl );
+
 		@SuppressWarnings("unchecked")
 		List<IRPHyperLink> theExistingHyperLinks = fromTheEl.getHyperLinks().toList();
-		
+
 		for( IRPHyperLink theExistingHyperLink : theExistingHyperLinks ){
-			
+
 			IRPModelElement theTarget = theExistingHyperLink.getTarget();
-			
+
 			if( theTarget != null && 
 					theTarget.equals( toTheEl ) ){
-				
+
 				theHyperLink = theExistingHyperLink;
-				debug( "Found existing hyperlink to " + elInfo (toTheEl) + " owned by " + elInfo(fromTheEl));
+				debug( "Found existing hyperlink to " + elInfo ( toTheEl ) + " owned by " + elInfo( fromTheEl ) );
 				break;
 			}
 		}
-		
+
 		if( theHyperLink == null ) {
-			
-			theHyperLink = addHyperLink(fromTheEl, toTheEl);
+
+			theHyperLink = addHyperLink( fromTheEl, toTheEl );
 		}
-		
+
 		return theHyperLink;
 	}
-	
-	
+
+
 	public IRPHyperLink addHyperLink( 
 			IRPModelElement fromElement, 
 			IRPModelElement toElement ){
@@ -3468,7 +3495,7 @@ public abstract class BaseContext {
 			String theID ){
 
 		String theName = cleanRequirementName( forModelEl.getName(), theID ); 
-				
+
 		List<IRPRequirement> theRemoteReqts = new ArrayList<>( getRemoteRequirementsFor( forModelEl ) );
 
 		if( theRemoteReqts.size() > 1 ){
@@ -3657,27 +3684,27 @@ public abstract class BaseContext {
 
 		return theMoveToStereotypes;
 	}
-	
+
 	public List<IRPModelElement> getClassifiersOfPartsOwnedBy(
 			IRPClass theClass ){
-		
+
 		List<IRPModelElement> theClassifiers = new ArrayList<>();
-		
+
 		@SuppressWarnings("unchecked")
 		List<IRPInstance> theParts =  theClass.getNestedElementsByMetaClass( "Part", 1 ).toList();
-		
+
 		for( IRPInstance thePart : theParts ){
-			
+
 			if( thePart.isTypelessObject()==0 ) {
-				
+
 				IRPClassifier theOtherClass = thePart.getOtherClass();
 				theClassifiers.add( theOtherClass );
 			}
 		}
-		
+
 		return theClassifiers;
 	}
-	
+
 	public void deleteAllFromModel(
 			List<IRPModelElement> theEls ) {
 
@@ -3692,21 +3719,21 @@ public abstract class BaseContext {
 			theEl.deleteFromProject();
 		}
 	}
-	
+
 	public String getPortAppropriateNameFor( 
 			IRPModelElement theEl ) {
-	
+
 		String theName = getStringForTagCalled( "ShortName", theEl, null );
-		
+
 		if( theName == null || theName.isEmpty() ) {
 			theName = theEl.getName();
 		}
-		
+
 		theName = capitalize( theName.replace( " ", "" ) );
-		
+
 		return theName;
 	}
-	
+
 	public List<IRPDiagram> getDiagramsBasedOn( 
 			Set<IRPModelElement> theSelectedEls ){
 
@@ -3724,9 +3751,9 @@ public abstract class BaseContext {
 					List<IRPDiagram> theNestedEls = theSelectedEl.getNestedElementsByMetaClass( baseMetaClass, 1 ).toList();
 
 					for( IRPDiagram theNestedEl : theNestedEls ){
-												
+
 						IRPUnit theUnit = theNestedEl.getSaveUnit();
-						
+
 						// Only add is read/write, and not added by reference
 						if( theUnit.isReadOnly()==0 &&
 								theUnit.isReferenceUnit()==0 ) {

@@ -88,7 +88,7 @@ public class ElementTreeNode {
 			
 			IRPHyperLink theHyperLink = _context.createNewOrGetExistingHyperLink( parentEl, theModelEl );
 			
-			_context.info( _context.elInfo( theHyperLink ) + 
+			_context.debug( _context.elInfo( theHyperLink ) + 
 					" owned by " + _context.elInfo( parentEl ) + " has been used as unable to add " + 
 					_context.elInfo( theModelEl ) + " to " + _context.elInfo( _diagram ) );
 		}
