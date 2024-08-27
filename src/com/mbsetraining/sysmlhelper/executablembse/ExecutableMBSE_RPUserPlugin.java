@@ -1,6 +1,7 @@
 package com.mbsetraining.sysmlhelper.executablembse;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -1257,6 +1258,98 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 		}		
 	}
 
+	// Used in context pattern tables
+	public static void getObjectNodeRepresents(
+			IRPModelElement element, 
+			IRPCollection result ){
+
+		if( element instanceof IRPObjectNode ){
+
+			IRPObjectNode theObjectNode = (IRPObjectNode) element;
+			
+			IRPModelElement theRepresents = theObjectNode.getRepresents();
+
+			if( theRepresents != null ) {
+				result.addItem( theRepresents );
+			}
+		}
+	}
+	
+	// Used in context pattern tables
+	public static void getIncomingFlowSources(
+			IRPModelElement element, 
+			IRPCollection result ){
+		
+		if( element instanceof IRPStateVertex ){
+
+			IRPStateVertex theStateVertex = (IRPStateVertex) element;
+
+			List<IRPModelElement> theFlowSources = getIncomingFlowSources( theStateVertex );
+
+			if( !theFlowSources.isEmpty() ){
+				
+				for( IRPModelElement theFlowSource : theFlowSources ){
+					result.addItem( theFlowSource );
+				}
+			}
+		}
+	}
+	
+	// Used in context pattern tables
+	public static void getOutgoingFlowTargets(
+			IRPModelElement element, 
+			IRPCollection result ){
+		
+		if( element instanceof IRPStateVertex ){
+
+			IRPStateVertex theStateVertex = (IRPStateVertex) element;
+
+			List<IRPModelElement> theFlowTargets = getOutgoingFlowTargets( theStateVertex );
+
+			if( !theFlowTargets.isEmpty() ){
+				
+				for( IRPModelElement theFlowTarget : theFlowTargets ){
+					result.addItem( theFlowTarget );
+				}
+			}
+		}
+	}
+	
+	// use on context pattern tables
+	public String getStereotypesByString(String guid) {
+		
+		String result = "";
+				
+		if( _context != null ) {			
+			
+			IRPProject theRhp = _context.get_rhpPrj();
+			
+			if( theRhp != null ) {
+				
+				IRPModelElement theEl = theRhp.findElementByGUID( guid );
+				
+				if( theEl != null ) {
+					
+					@SuppressWarnings("unchecked")
+					List<IRPStereotype> theStereotypes = theEl.getStereotypes().toList();
+					
+					for (Iterator<IRPStereotype> iterator = theStereotypes.iterator(); iterator.hasNext();) {
+						
+						IRPStereotype theStereotype = (IRPStereotype) iterator.next();
+						
+						result += theStereotype.getName();
+						
+						if( iterator.hasNext() ) {
+							result += ", ";
+						}
+					}
+				}
+			}
+		}
+		
+		return result;
+	}
+	
 	// Used in context pattern tables
 	void getUntracedToRemoteRequirement(
 			IRPModelElement element, 
