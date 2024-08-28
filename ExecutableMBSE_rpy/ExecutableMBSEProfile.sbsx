@@ -1689,13 +1689,14 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">8.28.2024::9:49:21</_modifiedTime>
+			<_modifiedTime type="a">8.28.2024::10:28:2</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
 				<value>GUID 10dd6eb5-c3b6-4a26-afef-767c4d8b2e90</value>
 				<value>GUID 6b1b2b68-f48a-4564-b970-4d7efcae501c</value>
+				<value>GUID e07559b0-58b0-4033-9678-50019d4d837b</value>
 				<value>GUID f825da1e-3d3d-409d-927a-c62820d97e7c</value>
 				<value>GUID 99d433ee-75c1-40c0-8ef0-8ea14c3d7d23</value>
 				<value>GUID 5df2b3b3-e0d0-4595-a39f-c823d2925305</value>
@@ -1723,6 +1724,13 @@
 			<_modifiedTime type="a">6.14.2024::12:47:26</_modifiedTime>
 			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
 			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\PracticalMBSE-BookI-InsulinPump-ModuleB-FeatureFunctionPackages-V2024-06-14-0819.pdf</_LastKnownFullPath>
+		</IEmbededFile>
+		<IEmbededFile type="e">
+			<_id type="a">GUID e07559b0-58b0-4033-9678-50019d4d837b</_id>
+			<_name type="a">Executable MBSE Function Block Methodology Overview - V2024-08-28-1111.pdf</_name>
+			<_modifiedTime type="a">8.28.2024::10:28:2</_modifiedTime>
+			<_MayNeedToRelocate type="a">0</_MayNeedToRelocate>
+			<_LastKnownFullPath type="a">C:\Users\frase\IBM\Rational\Rhapsody\8.3.1x64\Share\Profiles\SysMLHelper\ExecutableMBSE_rpy\Executable MBSE Function Block Methodology Overview - V2024-08-28-1111.pdf</_LastKnownFullPath>
 		</IEmbededFile>
 		<ISubsystem type="e">
 			<_id type="a">GUID f825da1e-3d3d-409d-927a-c62820d97e7c</_id>
@@ -2652,23 +2660,7 @@
 					<size type="a">0</size>
 				</IRPYRawContainer>
 			</Operations>
-			<AggregatesList type="e">
-				<value>GUID bdc50f8c-3836-4fd5-bf60-f7f62a1e5bb5</value>
-			</AggregatesList>
 		</CGIClass>
-		<CGICompartment type="e">
-			<_id type="a">GUID bdc50f8c-3836-4fd5-bf60-f7f62a1e5bb5</_id>
-			<m_name type="a">Tag</m_name>
-			<m_displayOption type="a">All</m_displayOption>
-			<m_bShowInherited type="a">0</m_bShowInherited>
-			<m_bOrdered type="a">0</m_bOrdered>
-			<_itemValueOfFontPropertiesMapCount type="a">5</_itemValueOfFontPropertiesMapCount>
-			<_fontPropValues type="a">Tahoma 8 400 0 0 0 0</_fontPropValues>
-			<_fontPropValues type="a">Tahoma 8 400 0 0 0 0</_fontPropValues>
-			<_fontPropValues type="a">Tahoma 8 400 0 0 0 0</_fontPropValues>
-			<_fontPropValues type="a">Tahoma 8 400 0 0 0 0</_fontPropValues>
-			<_fontPropValues type="a">Tahoma 8 400 0 0 0 0</_fontPropValues>
-		</CGICompartment>
 		<CGIInheritance type="e">
 			<_id type="a">GUID 4ee362e5-c89b-45f9-9767-d2b21c36792b</_id>
 			<m_type type="a">128</m_type>
@@ -23196,8 +23188,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 						<_myTable type="r">
 							<IHandle type="e">
 								<_hm2Class type="a">IMatrixLayout</_hm2Class>
-								<_hsubsystem type="a">ExecutableMBSEProfile::_TablesAndMatrices</_hsubsystem>
-								<_hname type="a">MatrixL - Derivation relations</_hname>
 								<_hid type="a">GUID 41bbc743-af05-42c9-8ac2-f49a22d6a621</_hid>
 							</IHandle>
 						</_myTable>
@@ -23213,8 +23203,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 						<_myTable type="r">
 							<IHandle type="e">
 								<_hm2Class type="a">IMatrixLayout</_hm2Class>
-								<_hsubsystem type="a">ExecutableMBSEProfile::_TablesAndMatrices</_hsubsystem>
-								<_hname type="a">MatrixL - Derivation relations</_hname>
 								<_hid type="a">GUID 41bbc743-af05-42c9-8ac2-f49a22d6a621</_hid>
 							</IHandle>
 						</_myTable>
@@ -23230,8 +23218,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 						<_myTable type="r">
 							<IHandle type="e">
 								<_hm2Class type="a">IMatrixLayout</_hm2Class>
-								<_hsubsystem type="a">ExecutableMBSEProfile::_TablesAndMatrices</_hsubsystem>
-								<_hname type="a">MatrixL - Derivation relations</_hname>
 								<_hid type="a">GUID 41bbc743-af05-42c9-8ac2-f49a22d6a621</_hid>
 							</IHandle>
 						</_myTable>
@@ -23247,8 +23233,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 						<_myTable type="r">
 							<IHandle type="e">
 								<_hm2Class type="a">IMatrixLayout</_hm2Class>
-								<_hsubsystem type="a">ExecutableMBSEProfile::_TablesAndMatrices</_hsubsystem>
-								<_hname type="a">MatrixL - Derivation relations</_hname>
 								<_hid type="a">GUID 41bbc743-af05-42c9-8ac2-f49a22d6a621</_hid>
 							</IHandle>
 						</_myTable>
@@ -23264,8 +23248,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 						<_myTable type="r">
 							<IHandle type="e">
 								<_hm2Class type="a">IMatrixLayout</_hm2Class>
-								<_hsubsystem type="a">ExecutableMBSEProfile::_TablesAndMatrices</_hsubsystem>
-								<_hname type="a">MatrixL - Derivation relations</_hname>
 								<_hid type="a">GUID 41bbc743-af05-42c9-8ac2-f49a22d6a621</_hid>
 							</IHandle>
 						</_myTable>
@@ -23281,8 +23263,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 						<_myTable type="r">
 							<IHandle type="e">
 								<_hm2Class type="a">IMatrixLayout</_hm2Class>
-								<_hsubsystem type="a">ExecutableMBSEProfile::_TablesAndMatrices</_hsubsystem>
-								<_hname type="a">MatrixL - Derivation relations</_hname>
 								<_hid type="a">GUID 41bbc743-af05-42c9-8ac2-f49a22d6a621</_hid>
 							</IHandle>
 						</_myTable>
@@ -23323,8 +23303,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 						<_myTable type="r">
 							<IHandle type="e">
 								<_hm2Class type="a">IMatrixLayout</_hm2Class>
-								<_hsubsystem type="a">ExecutableMBSEProfile::_TablesAndMatrices</_hsubsystem>
-								<_hname type="a">MatrixL - Derivation relations</_hname>
 								<_hid type="a">GUID 41bbc743-af05-42c9-8ac2-f49a22d6a621</_hid>
 							</IHandle>
 						</_myTable>
@@ -23351,8 +23329,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 						<_myTable type="r">
 							<IHandle type="e">
 								<_hm2Class type="a">IMatrixLayout</_hm2Class>
-								<_hsubsystem type="a">ExecutableMBSEProfile::_TablesAndMatrices</_hsubsystem>
-								<_hname type="a">MatrixL - Derive Requirement relations</_hname>
 								<_hid type="a">GUID 7c5618bb-ce51-4bd0-baa0-27d6947e348d</_hid>
 							</IHandle>
 						</_myTable>
@@ -23373,8 +23349,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 						<_myTable type="r">
 							<IHandle type="e">
 								<_hm2Class type="a">IMatrixLayout</_hm2Class>
-								<_hsubsystem type="a">ExecutableMBSEProfile::_TablesAndMatrices</_hsubsystem>
-								<_hname type="a">MatrixL - Derive Requirement relations</_hname>
 								<_hid type="a">GUID 7c5618bb-ce51-4bd0-baa0-27d6947e348d</_hid>
 							</IHandle>
 						</_myTable>
@@ -23395,8 +23369,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 						<_myTable type="r">
 							<IHandle type="e">
 								<_hm2Class type="a">IMatrixLayout</_hm2Class>
-								<_hsubsystem type="a">ExecutableMBSEProfile::_TablesAndMatrices</_hsubsystem>
-								<_hname type="a">MatrixL - Derive Requirement relations</_hname>
 								<_hid type="a">GUID 7c5618bb-ce51-4bd0-baa0-27d6947e348d</_hid>
 							</IHandle>
 						</_myTable>
@@ -23423,8 +23395,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 						<_myTable type="r">
 							<IHandle type="e">
 								<_hm2Class type="a">IMatrixLayout</_hm2Class>
-								<_hsubsystem type="a">ExecutableMBSEProfile::_TablesAndMatrices</_hsubsystem>
-								<_hname type="a">MatrixL - Refinement relations</_hname>
 								<_hid type="a">GUID d0f99b87-9d35-453b-a2a9-9e22ec5fee1d</_hid>
 							</IHandle>
 						</_myTable>
@@ -23445,8 +23415,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 						<_myTable type="r">
 							<IHandle type="e">
 								<_hm2Class type="a">IMatrixLayout</_hm2Class>
-								<_hsubsystem type="a">ExecutableMBSEProfile::_TablesAndMatrices</_hsubsystem>
-								<_hname type="a">MatrixL - Derive Requirement relations</_hname>
 								<_hid type="a">GUID 7c5618bb-ce51-4bd0-baa0-27d6947e348d</_hid>
 							</IHandle>
 						</_myTable>
@@ -23467,8 +23435,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 						<_myTable type="r">
 							<IHandle type="e">
 								<_hm2Class type="a">IMatrixLayout</_hm2Class>
-								<_hsubsystem type="a">ExecutableMBSEProfile::_TablesAndMatrices</_hsubsystem>
-								<_hname type="a">MatrixL - Refinement relations</_hname>
 								<_hid type="a">GUID d0f99b87-9d35-453b-a2a9-9e22ec5fee1d</_hid>
 							</IHandle>
 						</_myTable>
