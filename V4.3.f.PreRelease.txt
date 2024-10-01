@@ -1096,6 +1096,7 @@ V4.3.f.PreRelease (XX-XXX-XXXX): TBD
 0850 27-AUG-2024: ExecutableMBSE: Added ExtendedTablesAndViewsProfile.sbsx with some Java helpers to build views with object flows and associated requirements (F.J.Chadburn)
 0851 28-AUG-2024: ExecutableMBSE: Added tablel - Comments On Act And Their Depends On to ExtendedTablesAndViewsProfile.sbsx as additional example (F.J.Chadburn)
 0852 28-AUG-2024: ExecutableMBSE: Added Executable MBSE Function Block Methodology Overview - V2024-08-28-1111.pdf as controlled file to provide introductory guidance (F.J.Chadburn)
+0853 01-OCT-2024: ExecutableMBSE: Update hep file so Create a new requirement and Start link to a requirement menus to work for Function/Feature/Item blocks (F.J.Chadburn)
 
 Backlog/Known issues
 - See if way to selectively turn on Graphical GE 19-for diagrams for just index package diagram as can be annoying

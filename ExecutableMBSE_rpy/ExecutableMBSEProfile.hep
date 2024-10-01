@@ -37,7 +37,7 @@ DLLServerCompatible4=1
 name5=MBSE Method: Requirements Analysis\Create a new requirement
 isPluginCommand5=1
 command5=InvokeExecutableMBSEHelper
-applicableTo5=State,Transition,Comment,AcceptEventAction,SendAction,AcceptTimeEvent,Constraint,Precondition,Postcondition,ControlFlow,Use Case Precondition,Use Case Postcondition,UseCase
+applicableTo5=State,Transition,Comment,AcceptEventAction,SendAction,AcceptTimeEvent,Constraint,Precondition,Postcondition,ControlFlow,Use Case Precondition,Use Case Postcondition,UseCase,Function Block,Feature Block,Item Block
 isVisible5=1
 DLLServerCompatible5=1
 
@@ -45,7 +45,7 @@ DLLServerCompatible5=1
 name6=MBSE Method: Requirements Analysis\Start link to a requirement
 isPluginCommand6=1
 command6=InvokeExecutableMBSEHelper
-applicableTo6=State,Transition,Comment,AcceptEventAction,SendAction,AcceptTimeEvent,Constraint,Precondition,Postcondition,ControlFlow,Attribute,ValueProperty,Operation,Event,Reception,FlowPort,UseCase,Requirement,Test Case,TestCase,Use Case Precondition,Use Case Postcondition,Function Block,Item Block
+applicableTo6=State,Transition,Comment,AcceptEventAction,SendAction,AcceptTimeEvent,Constraint,Precondition,Postcondition,ControlFlow,Attribute,ValueProperty,Operation,Event,Reception,FlowPort,UseCase,Requirement,Test Case,TestCase,Use Case Precondition,Use Case Postcondition,Function Block,Feature Block,Item Block
 isVisible6=1
 DLLServerCompatible6=1
 
