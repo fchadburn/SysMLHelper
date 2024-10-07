@@ -1349,6 +1349,95 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 		
 		return result;
 	}
+		
+	void getLeafClassifierUsagesUnderPkg(
+			IRPModelElement element,
+			IRPCollection result ) {
+		
+//		_context.debug( "getLeafClassifierUsagesUnderPkg" );
+		
+		if( element instanceof IRPPackage ) {
+			
+			@SuppressWarnings("unchecked")
+			List<IRPModelElement> theClasses = element.getNestedElementsByMetaClass( "Class", 0 ).toList();
+			
+//			_context.debug( "found " + theClasses.size() + " classes" );
+			
+			for( IRPModelElement theClass : theClasses ){
+				
+				String theUserDefinedMetaClass = theClass.getUserDefinedMetaClass();
+				
+//				_context.debug( "found " + _context.elInfo( theClass ) );
+
+				if( theUserDefinedMetaClass.equals( "Function Block" ) ) {
+
+					@SuppressWarnings("unchecked")
+					List<IRPModelElement> theObjects = theClass.getNestedElementsByMetaClass( "Object", 0 ).toList();
+
+					if( theObjects.isEmpty() ) {						
+						getElementsDirectlyUsingClassifier( theClass, result );
+					}
+				}
+			}
+		}
+	}
+		
+	void getElementsDirectlyUsingClassifier(
+			IRPModelElement element,
+			IRPCollection result ) {
+
+		if( element instanceof IRPClassifier ){
+			
+			//_context.debug( "getElementsWithUsagesOfThisClassifier invoked for " + _context.elInfo( element ) );
+
+			IRPClassifier theClassifier = (IRPClassifier) element;
+		
+			@SuppressWarnings("unchecked")
+			List<IRPModelElement> theReferences = theClassifier.getReferences().toList();
+			
+			for( IRPModelElement theReference : theReferences ){
+			
+				if( theReference instanceof IRPInstance ) {					
+					result.addItem( theReference );			
+				}
+			}			
+		}
+	}
+	
+	// Used in context pattern tables
+	void getRootElementsForClassifier(
+			IRPModelElement element, 
+			IRPCollection result ){
+
+		if( element instanceof IRPClassifier ){
+							
+			//_context.debug( "getRootClassifiersRecursively invoked for " + _context.elInfo( element ) );
+
+			IRPClassifier theClassifier = (IRPClassifier) element;
+
+			boolean isRootClassifier = true;
+				
+				@SuppressWarnings("unchecked")
+			List<IRPModelElement> theReferences = theClassifier.getReferences().toList();
+				
+			for( IRPModelElement theReference : theReferences ){
+				
+				if( theReference instanceof IRPInstance ) {
+						
+					isRootClassifier = false;
+						
+					IRPInstance theInstance = (IRPInstance)theReference;
+					IRPClassifier theOfClass = theInstance.getOfClass();
+						
+					getRootElementsForClassifier( theOfClass, result );				
+				}
+			}
+				
+			if( isRootClassifier ) {
+				result.addItem( theClassifier );
+			}
+		}
+	}
 	
 	// Used in context pattern tables
 	void getUntracedToRemoteRequirement(
