@@ -11,8 +11,8 @@
 			<_id type="a">GUID 7fff2936-99b4-42aa-8f22-f9993c4080c5</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ExtendedTablesAndViewsProfile</_name>
-			<_modifiedTime type="a">8.28.2024::9:46:39</_modifiedTime>
-			<_lastID type="a">14</_lastID>
+			<_modifiedTime type="a">10.8.2024::13:33:16</_modifiedTime>
+			<_lastID type="a">15</_lastID>
 			<_defaultComposite type="s">GUID 91773f98-baf0-45f2-95fb-82a1bb408ac5</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<AggregatesList type="e">
@@ -20,9 +20,11 @@
 				<value>GUID f4689e55-09d9-48f9-a64e-86e55880c42b</value>
 				<value>GUID 69d7dcab-7534-4b22-a98a-731935408489</value>
 				<value>GUID 169144ab-e4f4-4181-95e6-caa9016d6516</value>
+				<value>GUID fc72f0a0-b52b-4bee-9342-780d5fc0e002</value>
 				<value>GUID b8b0abd7-66e4-4bb3-80e5-9abefab16354</value>
 				<value>GUID ea56cabc-5d23-4405-b916-cc0ddd378e17</value>
 				<value>GUID 574d1b1c-0683-421f-8452-c9c199e2ec22</value>
+				<value>GUID dc529ed2-a91d-4493-98e5-ed30007c09c5</value>
 			</AggregatesList>
 		</IProfile>
 		<IClass type="e">
@@ -922,6 +924,246 @@
 				</IRPYRawContainer>
 			</DataColumns>
 		</ITableLayout>
+		<ITableLayout type="e">
+			<_id type="a">GUID fc72f0a0-b52b-4bee-9342-780d5fc0e002</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">2</size>
+						<IPropertySubject type="e">
+							<_Name type="a">General</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Graphics</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">TableHeaderMenuAlignment</_Name>
+													<_Value type="a">Right</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">Left,Right</_ExtraTypeInfo>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">2</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">TableLayout</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">4</size>
+												<IProperty type="e">
+													<_Name type="a">CollapseFirstColumn</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ContextPattern</_Name>
+													<_Value type="a">{pkg}Package+,{uc}UseCase+,{act}ActivityDiagram,{dn}DecisionNode,{comment}pluginMethod:getRelatedAnnotations|{cf}pluginMethod:getOutgoingFlowsFromStateVertex</_Value>
+													<_Type type="a">MultiLine</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ContextTableColumnNameFormat</_Name>
+													<_Value type="a">$(Property) in $(Context)</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">UserDefinedImplementationXML</_Name>
+													<_Value type="a">&lt;COLUMN id=&quot;4&quot;&gt;
+&lt;IMPLEMENTATION&gt;
+	&lt;CLASSPATH&gt;
+	&lt;/CLASSPATH&gt;
+	&lt;IMPORTS&gt;
+		&lt;IMPORT&gt;com.telelogic.rhapsody.core.IRPApplication&lt;/IMPORT&gt;
+		&lt;IMPORT&gt;com.telelogic.rhapsody.core.IRPModelElement&lt;/IMPORT&gt;
+		&lt;IMPORT&gt;com.telelogic.rhapsody.core.IRPTableView&lt;/IMPORT&gt;
+		&lt;IMPORT&gt;java.util.List&lt;/IMPORT&gt;
+	&lt;/IMPORTS&gt;
+	&lt;USER-DEFINED-METHOD isUserDefinedMethod=&quot;TRUE&quot;&gt;getGuardOnControlFlow&lt;/USER-DEFINED-METHOD&gt;
+	&lt;ALLOW-SELECTOR&gt;TRUE&lt;/ALLOW-SELECTOR&gt;
+	&lt;ALLOW-NEW&gt;TRUE&lt;/ALLOW-NEW&gt;
+	&lt;DISPLAY-PROPERTY&gt;&lt;/DISPLAY-PROPERTY&gt;
+	&lt;RETURN-TYPE&gt;&lt;/RETURN-TYPE&gt;
+	&lt;GETTER&gt;
+		&lt;CODE&gt;&lt;/CODE&gt;
+	&lt;/GETTER&gt;
+	&lt;SETTER&gt;
+		&lt;CODE&gt;&lt;/CODE&gt;
+	&lt;/SETTER&gt;
+	&lt;PICKER&gt;
+		&lt;CODE&gt;&lt;/CODE&gt;
+	&lt;/PICKER&gt;
+&lt;/IMPLEMENTATION&gt;
+&lt;/COLUMN&gt;
+</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+									<IPropertyMetaclass type="e">
+										<_Name type="a">TableView</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">ChangeSelectionOnEnterTo</_Name>
+													<_Value type="a">down</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">left, right, up, down</_ExtraTypeInfo>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">tablel - Decision Node Guards And Comments</_name>
+			<_modifiedTime type="a">10.8.2024::13:32:58</_modifiedTime>
+			<DataColumns type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">7</size>
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID fc72f0a0-b52b-4bee-9342-780d5fc0e002</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">General.Name</TableDataDefinitionName>
+						<_columnName type="a">Use Case</_columnName>
+						<_contextPatternLabel type="a">uc</_contextPatternLabel>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID fc72f0a0-b52b-4bee-9342-780d5fc0e002</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">General.Name</TableDataDefinitionName>
+						<_columnName type="a">Activity Diagram</_columnName>
+						<_contextPatternLabel type="a">act</_contextPatternLabel>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID fc72f0a0-b52b-4bee-9342-780d5fc0e002</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">General.Name</TableDataDefinitionName>
+						<_columnName type="a">Decision Node</_columnName>
+						<_contextPatternLabel type="a">dn</_contextPatternLabel>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID fc72f0a0-b52b-4bee-9342-780d5fc0e002</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">General.Name</TableDataDefinitionName>
+						<_columnName type="a">Outgoing Flow</_columnName>
+						<_contextPatternLabel type="a">cf</_contextPatternLabel>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID fc72f0a0-b52b-4bee-9342-780d5fc0e002</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">UserDefinedMethod.getGuardOnControlFlow</TableDataDefinitionName>
+						<_columnName type="a">Outgoing Flow (Guard)</_columnName>
+						<_contextPatternLabel type="a">cf</_contextPatternLabel>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID fc72f0a0-b52b-4bee-9342-780d5fc0e002</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">General.Name</TableDataDefinitionName>
+						<_columnName type="a">Decision Node's Comment</_columnName>
+						<_contextPatternLabel type="a">comment</_contextPatternLabel>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID fc72f0a0-b52b-4bee-9342-780d5fc0e002</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">General.Description</TableDataDefinitionName>
+						<_columnName type="a">Comment (Description)</_columnName>
+						<_contextPatternLabel type="a">comment</_contextPatternLabel>
+					</TableDataDefinition>
+					
+				</IRPYRawContainer>
+			</DataColumns>
+		</ITableLayout>
 		<ITableInstance type="e">
 			<_id type="a">GUID b8b0abd7-66e4-4bb3-80e5-9abefab16354</_id>
 			<_myState type="a">8192</_myState>
@@ -977,6 +1219,30 @@
 			<_modifiedTime type="a">8.28.2024::9:46:39</_modifiedTime>
 			<LayoutHandle type="r">
 				<IHandle type="e">
+				</IHandle>
+			</LayoutHandle>
+			<ScopeHandles type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IProject</_hm2Class>
+							<_hname type="a">ExecutableMBSE</_hname>
+							<_hid type="a">GUID db2d59f3-a4b2-406d-b2b9-3dd0919de68e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</ScopeHandles>
+		</ITableInstance>
+		<ITableInstance type="e">
+			<_id type="a">GUID dc529ed2-a91d-4493-98e5-ed30007c09c5</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">table - Decision Node Guards And Comments</_name>
+			<_modifiedTime type="a">10.8.2024::13:33:16</_modifiedTime>
+			<LayoutHandle type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITableLayout</_hm2Class>
+					<_hid type="a">GUID fc72f0a0-b52b-4bee-9342-780d5fc0e002</_hid>
 				</IHandle>
 			</LayoutHandle>
 			<ScopeHandles type="c">

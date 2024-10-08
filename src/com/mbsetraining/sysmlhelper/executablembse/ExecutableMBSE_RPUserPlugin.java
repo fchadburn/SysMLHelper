@@ -89,27 +89,19 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 
 		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
 
-		ExecutableMBSE_Context context = new ExecutableMBSE_Context( theRhpApp.getApplicationConnectionString() );
+		ExecutableMBSE_RPUserPlugin thePlugin = new ExecutableMBSE_RPUserPlugin();
+		thePlugin.RhpPluginInit( theRhpApp );
+		
+		IRPModelElement theSelectedEl = theRhpApp.getSelectedElement();
+		
+		if( theSelectedEl instanceof IRPTransition ) {
 
-		IRPModelElement theSelectedEl = context.getSelectedElement( true );
+			String theGUID = theSelectedEl.getGUID();
+			String theGuard = thePlugin.getGuardOnControlFlow( theGUID );
+			
+			theRhpApp.writeToOutputWindow("", theGuard);
 
-		if( theSelectedEl instanceof IRPStateVertex ) {
-
-			List<IRPModelElement> theOutgoingFlowTargets = new ArrayList<>();
-
-			try {
-
-				theOutgoingFlowTargets = getIncomingFlowSources( (IRPStateVertex) theSelectedEl );
-
-			} catch (Exception e) {
-				context.error( "Exeception e=" + e.getMessage());
-			}
-
-			for (IRPModelElement theOutgoingFlowTarget : theOutgoingFlowTargets) {
-				context.info( context.elInfo( theOutgoingFlowTarget ) );
-			}
 		}
-
 	}
 
 	// called when plug-in is loaded
@@ -1296,6 +1288,24 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 	}
 	
 	// Used in context pattern tables
+	public static void getOutgoingFlowsFromStateVertex(
+			IRPModelElement element, 
+			IRPCollection result ){
+		
+		if( element instanceof IRPStateVertex ){
+
+			IRPStateVertex theStateVertex = (IRPStateVertex) element;
+			
+			@SuppressWarnings("unchecked")
+			List<IRPTransition> theTransitions = theStateVertex.getOutTransitions().toList();
+
+			for( IRPTransition theTransition : theTransitions ){
+				result.addItem( theTransition );
+			}
+		}
+	}
+	
+	// Used in context pattern tables
 	public static void getOutgoingFlowTargets(
 			IRPModelElement element, 
 			IRPCollection result ){
@@ -1313,6 +1323,34 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 				}
 			}
 		}
+	}
+	
+	public String getGuardOnControlFlow( String guid ) {
+	
+		String result = "";
+		
+		if( _context != null ) {			
+			
+			IRPProject theRhp = _context.get_rhpPrj();
+			
+			if( theRhp != null ) {
+				
+				IRPModelElement theEl = theRhp.findElementByGUID( guid );
+				
+				if( theEl instanceof IRPTransition) {
+					
+					IRPTransition theTransition = (IRPTransition)theEl;
+					
+					IRPGuard theGuard = theTransition.getItsGuard();
+					
+					if( theGuard != null ) {						
+						result = theGuard.getBody();
+					}
+				}
+			}
+		}
+		
+		return result;
 	}
 	
 	// use on context pattern tables
@@ -1518,6 +1556,32 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 				}
 			}
 		}
+	}
+	
+	// Used in context pattern tables
+	void getRelatedAnnotations(
+			IRPModelElement element,
+			IRPCollection result ) {
+		
+		@SuppressWarnings("unchecked")
+		List<IRPModelElement> theReferences = element.getReferences().toList();
+		
+		for( IRPModelElement theReference : theReferences ){
+			
+			if( theReference instanceof IRPAnnotation ) {
+				
+				result.addItem( theReference );
+								
+			} else if( theReference instanceof IRPDependency ) {
+				
+				IRPDependency theDependency = (IRPDependency)theReference;
+				IRPModelElement theDependent = theDependency.getDependent();
+				
+				if( theDependent instanceof IRPAnnotation ) {
+					result.addItem( theDependent );
+				}
+			}
+		}		
 	}
 
 	// Used in context pattern tables
