@@ -1102,7 +1102,10 @@ V4.3.f.Release (08-OCT-2024):
 0856 07-OCT-2024: ExecutableMBSE: Added new table view - Use Case To Leaf Functions predefined table to right-click of use case packages (F.J.Chadburn)
 0857 07-OCT-2024: ExecutableMBSE: Added table view - Use Case To Function Tree/Leaf Functions tables to feature function packages as well (F.J.Chadburn)
 0858 08-OCT-2024: ExecutableMBSE: Added tablel - Decision Node Guards And Comments to ExtendedTablesAndViewsProfile (F.J.Chadburn)
-0859 08-OCT-2024: ExecutableMBSE: Update version number to V4.3.f.Release and update profile date stamp
+0859 08-OCT-2024: ExecutableMBSE: Update version number to V4.3.f.Release and update profile date stamp (F.J.Chadburn)
+
+V4.3.g.Release (XX-XXX-XXXX): TBD
+0860 25-OCT-2024: ExecutableMBSE: Fix so that when you create requirements for a Function Block (Class) it uses the name of the function block for the text (F.J.Chadburn) 
 
 Backlog/Known issues
 - See if way to selectively turn on Graphical GE 19-for diagrams for just index package diagram as can be annoying

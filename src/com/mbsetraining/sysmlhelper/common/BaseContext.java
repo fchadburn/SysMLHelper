@@ -2438,6 +2438,10 @@ public abstract class BaseContext {
 
 			theSourceInfo = theEl.getName();
 
+		} else if( theEl instanceof IRPClass ){
+
+			theSourceInfo = theEl.getName();
+			
 		} else {
 			_rhpLog.error("Error in getActionTextFrom, " + _rhpLog.elInfo(theEl) + " was not handled as of an unexpected type");
 			theSourceInfo = ""; // default
