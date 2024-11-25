@@ -14,6 +14,7 @@ public class GraphEdgeInfo {
 		
 		_context = context;
 		_graphEdge = theGraphEdge;
+		_polygonInfo = new PolygonInfo( _graphEdge, _context );
 	}
 	
 	public int getStartX(){
@@ -73,6 +74,8 @@ public class GraphEdgeInfo {
 	}
 	
 	private int getBiggestX(){
+		
+		_context.dumpGraphicalPropertiesFor(_graphEdge);
 		
 		int n = _polygonInfo.getValueAt( 0 );
 		int x = 0;
@@ -134,7 +137,7 @@ public class GraphEdgeInfo {
 }
 
 /**
- * Copyright (C) 2016-2023  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2016-2024  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

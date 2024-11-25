@@ -1105,7 +1105,8 @@ V4.3.f.Release (08-OCT-2024):
 0859 08-OCT-2024: ExecutableMBSE: Update version number to V4.3.f.Release and update profile date stamp (F.J.Chadburn)
 
 V4.3.g.Release (XX-XXX-XXXX): TBD
-0860 25-OCT-2024: ExecutableMBSE: Fix so that when you create requirements for a Function Block (Class) it uses the name of the function block for the text (F.J.Chadburn) 
+0860 25-NOV-2024: ExecutableMBSE: Fix so that when you create requirements for a Function Block (Class) it uses the name of the function block for the text (F.J.Chadburn) 
+0861 25-NOV-2024: ExecutableMBSE: Fix exception when rolling up requirements to transition due to failure to call PolygonInfo constructor (F.J.Chadburn) 
 
 Backlog/Known issues
 - See if way to selectively turn on Graphical GE 19-for diagrams for just index package diagram as can be annoying
