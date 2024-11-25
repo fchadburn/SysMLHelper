@@ -74,9 +74,7 @@ public class GraphEdgeInfo {
 	}
 	
 	private int getBiggestX(){
-		
-		_context.dumpGraphicalPropertiesFor(_graphEdge);
-		
+				
 		int n = _polygonInfo.getValueAt( 0 );
 		int x = 0;
 		
