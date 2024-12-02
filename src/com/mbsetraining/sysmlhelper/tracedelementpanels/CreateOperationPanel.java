@@ -19,7 +19,7 @@ public class CreateOperationPanel extends CreateTracedElementPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = -3759980130721314325L;
-	
+
 	private JCheckBox _callOperationIsNeededCheckBox;
 
 	// for testing only
@@ -27,7 +27,7 @@ public class CreateOperationPanel extends CreateTracedElementPanel {
 		IRPApplication theRhpApp = RhapsodyAppServer.getActiveRhapsodyApplication();
 		launchThePanel( theRhpApp.getApplicationConnectionString() );
 	}
-	
+
 	public static void launchThePanel(
 			final String theAppID ){
 
@@ -55,31 +55,31 @@ public class CreateOperationPanel extends CreateTracedElementPanel {
 			}
 		});
 	}
-	
+
 	public CreateOperationPanel(
 			String theAppID ){
-		
+
 		super( theAppID );
-		
+
 		IRPClass theBuildingBlock = 
 				_context.get_selectedContext().getBuildingBlock();
 
 		if( theBuildingBlock == null ){
-			
+
 			buildUnableToRunDialog( 
 					"Sorry, this helper is unable to run this command because \n" +
-					"there was no execution context or block found in the model. \n " +
+							"there was no execution context or block found in the model. \n " +
 					"You need to add the relevant package structure first." );
-			
+
 		} else { // theBuildingBlock != null
-			
+
 			IRPClass theBlock = _context.get_selectedContext().getBlockUnderDev(
 					"Which Block do you want to add the Operation to?" );
-			
+
 			if( theBlock == null ){
 				buildUnableToRunDialog( 
 						"Sorry, this helper is unable to run this command because \n" +
-						"there was no execution context or block found in the model. \n " +
+								"there was no execution context or block found in the model. \n " +
 						"You need to add the relevant package structure first." );
 			} else {
 				createCommonContent(
@@ -90,65 +90,65 @@ public class CreateOperationPanel extends CreateTracedElementPanel {
 		}
 
 	}
-	
+
 	private void createCommonContent(
 			IRPModelElement forSourceModelElement,
 			Set<IRPRequirement> withReqtsAlsoAdded,
 			IRPClassifier onTargetBlock ){
-		
+
 		String theSourceText = _context.getTextToFeedToReqtFrom( forSourceModelElement );	
-		
+
 		if( theSourceText == null ){
 			theSourceText = "function_name";
 		}
-		
+
 		_context.debug( "CreateOperationPanel constructor called with text '" + theSourceText + "'" );
-		
+
 		String theProposedName = _context.determineUniqueNameBasedOn( 
 				_context.toMethodName( theSourceText, 40 ), 
 				"Operation", 
 				onTargetBlock );					
-		
+
 		_context.debug( "The proposed name is '" + theProposedName + "'" );
-		
+
 		setLayout( new BorderLayout(10,10) );
 		setBorder( BorderFactory.createEmptyBorder( 10, 10, 10, 10 ) );
 
 		_requirementSelectionPanel.setAlignmentX( LEFT_ALIGNMENT );
-		
+
 		JPanel theNamePanel = createChosenNamePanelWith( "Create an operation called:  ", theProposedName );
 		theNamePanel.setAlignmentX(LEFT_ALIGNMENT);
-		
+
 		_callOperationIsNeededCheckBox = new JCheckBox("Populate on diagram?");
 		setupPopulateCheckbox( _callOperationIsNeededCheckBox );
-				
+
 		JPanel thePageStartPanel = new JPanel();
 		thePageStartPanel.setLayout( new BoxLayout( thePageStartPanel, BoxLayout.X_AXIS ) );
 		thePageStartPanel.add( theNamePanel );
 		thePageStartPanel.add( _callOperationIsNeededCheckBox );
-		
+
 		add( thePageStartPanel, BorderLayout.PAGE_START );
 		add( _requirementSelectionPanel, BorderLayout.WEST );
 		add( createOKCancelPanel(), BorderLayout.PAGE_END );
 	}
-	
+
 	@Override
 	protected boolean checkValidity(
 			boolean isMessageEnabled ){
-		
+
 		String errorMessage = null;
 		boolean isValid = true;
-		
+
 		String theChosenName = _chosenNameTextField.getText();
 		IRPClass theChosenBlock = _context.get_selectedContext().getChosenBlock();
-		
+
 		boolean isLegalName = _context.isLegalName( theChosenName, theChosenBlock );
-		
+
 		if( !isLegalName ){
-			
+
 			errorMessage = theChosenName + " is not legal as an identifier representing an operation\n";				
 			isValid = false;
-			
+
 		} else if (!_context.isElementNameUnique(
 				theChosenName, 
 				"Operation", 
@@ -163,7 +163,7 @@ public class CreateOperationPanel extends CreateTracedElementPanel {
 
 			UserInterfaceHelper.showWarningDialog( errorMessage );
 		}
-		
+
 		return isValid;
 	}
 
@@ -178,36 +178,34 @@ public class CreateOperationPanel extends CreateTracedElementPanel {
 
 		IRPGraphElement theSourceGraphElement = _context.get_selectedContext().getSelectedGraphEl();
 
-		if( theSourceGraphElement != null ){
+		if( theSourceGraphElement != null && 
+				theSourceGraphElement.getModelObject() instanceof IRPCallOperation ){
 
-			if( theSourceGraphElement.getModelObject() instanceof IRPCallOperation ){
+			IRPCallOperation theCallOp = (IRPCallOperation) theSourceGraphElement.getModelObject();
 
-				IRPCallOperation theCallOp = (IRPCallOperation) theSourceGraphElement.getModelObject();
+			IRPInterfaceItem theExistingOp = theCallOp.getOperation();
 
-				IRPInterfaceItem theExistingOp = theCallOp.getOperation();
+			if( theExistingOp == null ){
 
-				if( theExistingOp == null ){
+				_context.debug( "Setting the " + _context.elInfo( theCallOp ) + 
+						" to " + _context.elInfo(theOperation) );
 
-					_context.debug( "Setting the " + _context.elInfo( theCallOp ) + 
-							" to " + _context.elInfo(theOperation) );
+				theCallOp.setOperation( theOperation );
 
-					theCallOp.setOperation( theOperation );
+				String theProposedName = 
+						_context.determineUniqueNameBasedOn( 
+								_context.toMethodName( theOperation.getName(), 40 ), 
+								"CallOperation", 
+								theCallOp.getOwner() );
 
-					String theProposedName = 
-							_context.determineUniqueNameBasedOn( 
-									_context.toMethodName( theOperation.getName(), 40 ), 
-									"CallOperation", 
-									theCallOp.getOwner() );
-
-					theCallOp.setName( theProposedName );
-				}
-			} else {
-				List<IRPRequirement> theSelectedReqtsList = _requirementSelectionPanel.getSelectedRequirementsList();
-				
-				IRPStereotype theDependencyStereotype =_context.getStereotypeToUseForFunctions();		
-				addTraceabilityDependenciesTo( theOperation, theSelectedReqtsList, theDependencyStereotype );
-				_context.bleedColorToElementsRelatedTo( theSelectedReqtsList );
+				theCallOp.setName( theProposedName );
 			}
+		} else {
+			List<IRPRequirement> theSelectedReqtsList = _requirementSelectionPanel.getSelectedRequirementsList();
+
+			IRPStereotype theDependencyStereotype =_context.getStereotypeToUseForFunctions();		
+			addTraceabilityDependenciesTo( theOperation, theSelectedReqtsList, theDependencyStereotype );
+			_context.bleedColorToElementsRelatedTo( theSelectedReqtsList );
 		}
 
 		if( _callOperationIsNeededCheckBox.isSelected() ){
@@ -219,7 +217,7 @@ public class CreateOperationPanel extends CreateTracedElementPanel {
 }
 
 /**
- * Copyright (C) 2016-2023  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2016-2024  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 
@@ -235,4 +233,4 @@ public class CreateOperationPanel extends CreateTracedElementPanel {
 
     You should have received a copy of the GNU General Public License
     along with SysMLHelperPlugin.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */

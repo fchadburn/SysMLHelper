@@ -10,6 +10,7 @@ import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -84,10 +85,17 @@ public abstract class CreateTracedElementPanel extends JPanel {
 	
 	private void setupRequirementsPanel(){
 		
-		Set<IRPRequirement> tracedToReqts = 
-				_context.getRequirementsThatTraceFrom( 
-						_context.get_selectedContext().getSelectedEl(), 
-						true );
+		Set<IRPRequirement> tracedToReqts = new HashSet<IRPRequirement>();
+		
+		IRPModelElement theSelectedEl = _context.get_selectedContext().getSelectedEl();
+		
+		if( theSelectedEl instanceof IRPModelElement ) {
+			
+			tracedToReqts.addAll( 
+					_context.getRequirementsThatTraceFrom( 
+							theSelectedEl, 
+							true ) );
+		}
 		
 		tracedToReqts.addAll( _context.get_selectedContext().getSelectedReqts() );
 		
@@ -562,7 +570,7 @@ public abstract class CreateTracedElementPanel extends JPanel {
 }
 
 /**
- * Copyright (C) 2016-2022  MBSE Training and Consulting Limited (www.executablembse.com)
+ * Copyright (C) 2016-2024  MBSE Training and Consulting Limited (www.executablembse.com)
 
     This file is part of SysMLHelperPlugin.
 

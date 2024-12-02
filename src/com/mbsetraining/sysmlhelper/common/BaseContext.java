@@ -137,8 +137,18 @@ public abstract class BaseContext {
 	public IRPModelElement getSelectedElement(
 			boolean isFavourDiagramElement ){
 
-		IRPModelElement theSelectedEl = _rhpApp.getSelectedElement();
+		IRPModelElement theSelectedEl = null;
+		
+		@SuppressWarnings("unchecked")
+		List<IRPModelElement> theSelectedEls = _rhpApp.getListOfSelectedElements().toList();
 
+		if( theSelectedEls.size() == 1 ) {
+			theSelectedEl = theSelectedEls.get( 0 );
+
+		} else if( theSelectedEls.size() > 1 ) {
+			theSelectedEl = theSelectedEls.get( 0 );
+		}
+		
 		if( isFavourDiagramElement ){
 
 			@SuppressWarnings("unchecked")
@@ -153,7 +163,7 @@ public abstract class BaseContext {
 				if( theModelObject != null ){				
 					theSelectedEl = theModelObject;
 				}
-			}
+			}			
 		}
 
 		//debug( "getSelectedElement is returning " + elInfo( theSelectedEl ) );

@@ -170,6 +170,17 @@ public class SelectedElementContext {
 			// cast to IRPRequirement
 			_selectedReqts = 
 					(Set<IRPRequirement>)(Set<?>) theMatchingEls;
+			
+			List<IRPModelElement> theCandidates = _context.getSelectedElements();
+			
+			for( IRPModelElement theCandidate : theCandidates ){
+				
+				if( theCandidate instanceof IRPRequirement ) {	
+					if( !_selectedReqts.contains( theCandidate ) ) {
+						_selectedReqts.add( (IRPRequirement) theCandidate );
+					}
+				}
+			}
 		}
 
 		return _selectedReqts;
