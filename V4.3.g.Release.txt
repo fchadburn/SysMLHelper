@@ -1108,6 +1108,7 @@ V4.3.g.Release (XX-XXX-XXXX): TBD
 0860 25-NOV-2024: ExecutableMBSE: Fix so that when you create requirements for a Function Block (Class) it uses the name of the function block for the text (F.J.Chadburn) 
 0861 25-NOV-2024: ExecutableMBSE: Fix exception when rolling up requirements to transition due to failure to call PolygonInfo constructor (F.J.Chadburn) 
 0862 02-DEC-2024: ExecutableMBSE: Enable traced element dialogs to work with multi-selection of just requirements in browser rather than graph elements on diagram (F.J.Chadburn)
+0863 02-DEC-2024: ExecutableMBSE: Update hep file so you can right-click a test scenario to populate requirements, i.e. don’t have to switch to sequence diagram (F.J.Chadburn)
 
 Backlog/Known issues
 - See if way to selectively turn on Graphical GE 19-for diagrams for just index package diagram as can be annoying

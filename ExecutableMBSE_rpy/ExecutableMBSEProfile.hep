@@ -101,7 +101,7 @@ DLLServerCompatible12=1
 name13=MBSE Method: Requirements Analysis\Update Verification dependencies for SD(s) based on populated requirements
 isPluginCommand13=1
 command13=InvokeExecutableMBSEHelper
-applicableTo13=SequenceDiagram,Package
+applicableTo13=SequenceDiagram,Package,TestScenario
 isVisible13=1
 DLLServerCompatible13=1
 
