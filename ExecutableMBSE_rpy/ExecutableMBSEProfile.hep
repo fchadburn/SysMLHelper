@@ -469,7 +469,7 @@ DLLServerCompatible58=1
 name59=MBSE Method: Other\Center straight lines on diagram(s)
 isPluginCommand59=1
 command59=InvokeExecutableMBSEHelper
-applicableTo59=Generalization,Realization,AssociationEnd,Package,Dependency,Satisfaction,Derivation,Refinement,Verification,ActivityDiagram,Textual Activity,Call Operation Activity,ObjectModelDiagram,Block Definition Diagram,Internal Block Diagram,Statechart,SequenceDiagram,UseCaseDiagram,Enhanced Use Case Diagram,Block Definition Diagram - Software,Package Diagram - Index,Block Definition Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - System,Requirements Diagram,Requirements Diagram - System,Metamodel Diagram
+applicableTo59=Generalization,Realization,AssociationEnd,Package,Dependency,Satisfaction,Derivation,Refinement,Verification,ActivityDiagram,Textual Activity,Call Operation Activity,ObjectModelDiagram,Block Definition Diagram,Internal Block Diagram,Statechart,SequenceDiagram,UseCaseDiagram,Enhanced Use Case Diagram,Context Diagram,Block Definition Diagram - Software,Package Diagram - Index,Block Definition Diagram - System,Internal Block Diagram - Functional,Internal Block Diagram - System,Requirements Diagram,Requirements Diagram - System,Metamodel Diagram
 isVisible59=1
 DLLServerCompatible59=1
 
