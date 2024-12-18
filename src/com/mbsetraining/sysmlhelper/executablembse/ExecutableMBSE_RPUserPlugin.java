@@ -960,6 +960,17 @@ public class ExecutableMBSE_RPUserPlugin extends RPUserPlugin {
 						theCreator.populateContentBasedOnPolicyForDiagram( (IRPDiagram) theSelectedEl );
 					}
 					
+				} else if( menuItem.equals( _settings.getString(
+						"executablembseplugin.ReopenDiagramMenu" ) ) ){
+
+					if( theSelectedEl instanceof IRPDiagram ){
+					
+						// Close and reopen diagram to refresh remote requirement text
+						IRPDiagram theDiagram = (IRPDiagram)theSelectedEl;
+						theDiagram.closeDiagram();
+						theDiagram.openDiagram();
+					}					
+					
 				} else {
 					_context.warning( "Unhandled menu: " + _context.elInfo( theSelectedEl ) + " was invoked with menuItem='" + menuItem + "'");
 				}

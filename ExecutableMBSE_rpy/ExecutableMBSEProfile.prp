@@ -1,6 +1,6 @@
 Subject ExecutableMBSEProfile
         Metaclass General
-		Property PluginVersion String "V4.3.g.Release"
+		Property PluginVersion String "V4.3.h.Release"
 		Property EnableInfoLogging Bool "True"
 		Property EnableWarningLogging Bool "True"
 		Property EnableErrorLogging Bool "True"
