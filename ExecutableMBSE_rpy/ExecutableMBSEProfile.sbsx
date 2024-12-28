@@ -1689,7 +1689,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">12.18.2024::15:25:29</_modifiedTime>
+			<_modifiedTime type="a">12.28.2024::10:4:5</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -11644,7 +11644,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 99d433ee-75c1-40c0-8ef0-8ea14c3d7d23</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileInfo</_name>
-			<_modifiedTime type="a">12.18.2024::15:25:29</_modifiedTime>
+			<_modifiedTime type="a">12.28.2024::10:4:5</_modifiedTime>
 			<_lastID type="a">3</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -11662,7 +11662,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID 00c06448-4cf5-4b58-a462-af1a3bccd935</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">ProfileDate</_name>
-			<_modifiedTime type="a">12.18.2024::15:25:21</_modifiedTime>
+			<_modifiedTime type="a">12.28.2024::10:4:5</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IType</_hm2Class>
@@ -11673,13 +11673,13 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</_typeOf>
 			<_isOrdered type="a">0</_isOrdered>
 			<AggregatesList type="e">
-				<value>GUID ff863cc3-e934-4807-a9f0-8294c8c30e14</value>
+				<value>GUID 61beaf6a-e838-4ed1-a064-75f551ba5d26</value>
 			</AggregatesList>
 		</ITag>
 		<ILiteralSpecification type="e">
-			<_id type="a">GUID ff863cc3-e934-4807-a9f0-8294c8c30e14</_id>
-			<_modifiedTime type="a">12.18.2024::15:25:21</_modifiedTime>
-			<_value type="a">2024/12/18 15:25:00</_value>
+			<_id type="a">GUID 61beaf6a-e838-4ed1-a064-75f551ba5d26</_id>
+			<_modifiedTime type="a">12.28.2024::10:4:5</_modifiedTime>
+			<_value type="a">2024/12/28 10:03:00</_value>
 		</ILiteralSpecification>
 		<ITag type="e">
 			<_id type="a">GUID c783ee62-7cd8-4f71-8651-25132d0e1150</_id>
@@ -14750,7 +14750,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID d213ea00-7590-48aa-8f30-a0a61f8fcd08</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_Packages</_name>
-			<_modifiedTime type="a">10.7.2024::12:7:57</_modifiedTime>
+			<_modifiedTime type="a">12.28.2024::10:1:16</_modifiedTime>
 			<_lastID type="a">5</_lastID>
 			<_defaultComposite type="s">GUID 26c8a3f9-6aee-4dff-a42f-bf1cc2880009</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -15241,7 +15241,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 												<size type="a">6</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Package Diagram - Index,table view - Context Diagram Flows,table view - Diagrams And Requirements On Them,ExtendedTableLayout,ExtendedTableView,MatrixView,TableView,Comment,Constraint,Event,Problem,Rationale,Requirement,View,Conform,Dependency,CSVImporter,ControlledFile,Diagram View,HyperLink,MatrixLayout,Query,Stereotype,TableLayout,Tag</_Value>
+													<_Value type="a">Package Diagram - Index,table view - Context Diagram Flows,table view - Diagrams And Requirements On Them,14 Signals Package,ExtendedTableLayout,ExtendedTableView,MatrixView,TableView,Comment,Constraint,Event,Problem,Rationale,Requirement,View,Conform,Dependency,CSVImporter,ControlledFile,Diagram View,HyperLink,MatrixLayout,Query,Stereotype,TableLayout,Tag</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -15288,7 +15288,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SignalsPackage</_name>
-			<_modifiedTime type="a">6.12.2024::14:23:45</_modifiedTime>
+			<_modifiedTime type="a">12.28.2024::9:52:16</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -15365,7 +15365,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 												<size type="a">6</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Block Definition Diagram - System,Package Diagram - Index,table view - Diagrams And Requirements On Them,table view - Subsystem To Function Block Requirements,table view - Subsystems,C++ Class,Context Block,Function Block,Item Block,Software Component,Subsystem Block,System Block,13 Requirement Package,22 Feature Function Package,32 Subsystem Package,33 Subsystem Interfaces Package,Flow Connector,ExtendedTableLayout,ExtendedTableView,MatrixView,SequenceDiagram,TableView,TimingDiagram,Actor,Comment,Constraint,Event,Interface,InterfaceBlock,Problem,Rationale,Requirement,View,Conform,Dependency,Flow,CSVImporter,Component,ControlledFile,Diagram View,HyperLink,MatrixLayout,Query,Stereotype,TableLayout,Tag</_Value>
+													<_Value type="a">Block Definition Diagram - System,Package Diagram - Index,table view - Diagrams And Requirements On Them,table view - Subsystem To Function Block Requirements,table view - Subsystems,C++ Class,Context Block,Function Block,Item Block,Software Component,Subsystem Block,System Block,13 Requirement Package,14 Signals Package,22 Feature Function Package,32 Subsystem Package,33 Subsystem Interfaces Package,Flow Connector,ExtendedTableLayout,ExtendedTableView,MatrixView,SequenceDiagram,TableView,TimingDiagram,Actor,Comment,Constraint,Event,Interface,InterfaceBlock,Problem,Rationale,Requirement,View,Conform,Dependency,Flow,CSVImporter,Component,ControlledFile,Diagram View,HyperLink,MatrixLayout,Query,Stereotype,TableLayout,Tag</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -15412,7 +15412,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SystemArchitecturePackage</_name>
-			<_modifiedTime type="a">6.12.2024::14:23:45</_modifiedTime>
+			<_modifiedTime type="a">12.28.2024::10:1:15</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -15489,7 +15489,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 												<size type="a">6</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Block Definition Diagram - System,Package Diagram - Index,table view - Diagrams And Requirements On Them,table view - Subsystem To Function Block Requirements,table view - Subsystems,C++ Class,Feature Usage,Function Block,Item Block,Software Component,Subsystem Block,13 Requirement Package,22 Feature Function Package,32 Subsystem Package,33 Subsystem Interfaces Package,Flow Connector,ExtendedTableLayout,ExtendedTableView,MatrixView,SequenceDiagram,TableView,TimingDiagram,Comment,Constraint,Event,Interface,InterfaceBlock,Problem,Rationale,Requirement,View,Conform,Dependency,Flow,CSVImporter,Component,ControlledFile,Diagram View,HyperLink,MatrixLayout,Query,Stereotype,TableLayout,Tag</_Value>
+													<_Value type="a">Block Definition Diagram - System,Package Diagram - Index,table view - Diagrams And Requirements On Them,table view - Subsystem To Function Block Requirements,table view - Subsystems,C++ Class,Feature Usage,Function Block,Item Block,Software Component,Subsystem Block,13 Requirement Package,14 Signals Package,22 Feature Function Package,32 Subsystem Package,33 Subsystem Interfaces Package,Flow Connector,ExtendedTableLayout,ExtendedTableView,MatrixView,SequenceDiagram,TableView,TimingDiagram,Comment,Constraint,Event,Interface,InterfaceBlock,Problem,Rationale,Requirement,View,Conform,Dependency,Flow,CSVImporter,Component,ControlledFile,Diagram View,HyperLink,MatrixLayout,Query,Stereotype,TableLayout,Tag</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -15536,7 +15536,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SubsystemPackage</_name>
-			<_modifiedTime type="a">6.12.2024::14:23:46</_modifiedTime>
+			<_modifiedTime type="a">12.28.2024::10:1:15</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -15663,7 +15663,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 												<size type="a">6</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Block Definition Diagram - Software,Package Diagram - Index,table view - Diagrams And Requirements On Them,C++ Class,Software Component,ExtendedTableLayout,ExtendedTableView,MatrixView,PanelDiagram,SequenceDiagram,TableView,Comment,Constraint,Event,Interface,Problem,Rationale,Requirement,View,Conform,Dependency,CSVImporter,Component,ControlledFile,Diagram View,HyperLink,MatrixLayout,Query,Stereotype,TableLayout,Tag</_Value>
+													<_Value type="a">Block Definition Diagram - Software,Package Diagram - Index,table view - Diagrams And Requirements On Them,C++ Class,Software Component,14 Signals Package,ExtendedTableLayout,ExtendedTableView,MatrixView,PanelDiagram,SequenceDiagram,TableView,Comment,Constraint,Event,Interface,Problem,Rationale,Requirement,View,Conform,Dependency,CSVImporter,Component,ControlledFile,Diagram View,HyperLink,MatrixLayout,Query,Stereotype,TableLayout,Tag</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -15710,7 +15710,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SoftwareDesignPackage</_name>
-			<_modifiedTime type="a">6.12.2024::14:23:47</_modifiedTime>
+			<_modifiedTime type="a">12.28.2024::10:1:15</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -15762,7 +15762,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 												<size type="a">6</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Block Definition Diagram - System,Package Diagram - Index,Textual Activity,table view - Diagrams And Requirements On Them,table view - Use Case To Function Tree,table view - Use Case To Leaf Functions,Feature Block,Function Block,Item Block,12 Working Copy Package,13 Requirement Package,22 Feature Function Package,ExtendedTableLayout,ExtendedTableView,MatrixView,TableView,TimingDiagram,Comment,Constraint,Event,Problem,Rationale,Requirement,View,Conform,Dependency,Flow,CSVImporter,ControlledFile,Diagram View,HyperLink,MatrixLayout,Query,Stereotype,TableLayout,Tag</_Value>
+													<_Value type="a">Block Definition Diagram - System,Package Diagram - Index,Textual Activity,table view - Diagrams And Requirements On Them,table view - Use Case To Function Tree,table view - Use Case To Leaf Functions,Feature Block,Function Block,Item Block,12 Working Copy Package,13 Requirement Package,14 Signals Package,22 Feature Function Package,ExtendedTableLayout,ExtendedTableView,MatrixView,TableView,TimingDiagram,Comment,Constraint,Event,Problem,Rationale,Requirement,View,Conform,Dependency,Flow,CSVImporter,ControlledFile,Diagram View,HyperLink,MatrixLayout,Query,Stereotype,TableLayout,Tag</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -15809,7 +15809,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">FeatureFunctionPackage</_name>
-			<_modifiedTime type="a">10.7.2024::12:7:57</_modifiedTime>
+			<_modifiedTime type="a">12.28.2024::10:1:14</_modifiedTime>
 			<_lastID type="a">2</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -16163,7 +16163,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 												<size type="a">5</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Package Diagram - Index,table view - Diagrams And Requirements On Them,13 Requirement Package,21 Funct Analysis - Scenarios Package,22 Feature Function Package,41 View and Viewpoint Package,ExtendedTableLayout,ExtendedTableView,MatrixView,TableView,Comment,Constraint,Problem,Rationale,Requirement,View,Conform,Dependency,CSVImporter,ControlledFile,Diagram View,HyperLink,MatrixLayout,Query,Stereotype,TableLayout,Tag</_Value>
+													<_Value type="a">Package Diagram - Index,table view - Diagrams And Requirements On Them,13 Requirement Package,14 Signals Package,21 Funct Analysis - Scenarios Package,22 Feature Function Package,41 View and Viewpoint Package,ExtendedTableLayout,ExtendedTableView,MatrixView,TableView,Comment,Constraint,Problem,Rationale,Requirement,View,Conform,Dependency,CSVImporter,ControlledFile,Diagram View,HyperLink,MatrixLayout,Query,Stereotype,TableLayout,Tag</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -16204,7 +16204,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">FunctionalArchitecturePackage</_name>
-			<_modifiedTime type="a">6.12.2024::14:23:50</_modifiedTime>
+			<_modifiedTime type="a">12.28.2024::9:52:20</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -16232,7 +16232,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 												<size type="a">5</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Package Diagram - Index,table view - Diagrams And Requirements On Them,13 Requirement Package,21 Funct Analysis - Scenarios Package,31 System Architecture Package,32 Subsystem Package,33 Subsystem Interfaces Package,41 View and Viewpoint Package,ExtendedTableLayout,ExtendedTableView,MatrixView,TableView,Comment,Constraint,Problem,Rationale,Requirement,View,Conform,Dependency,CSVImporter,ControlledFile,Diagram View,HyperLink,MatrixLayout,Query,Stereotype,TableLayout,Tag</_Value>
+													<_Value type="a">Package Diagram - Index,table view - Diagrams And Requirements On Them,13 Requirement Package,14 Signals Package,21 Funct Analysis - Scenarios Package,31 System Architecture Package,32 Subsystem Package,33 Subsystem Interfaces Package,41 View and Viewpoint Package,ExtendedTableLayout,ExtendedTableView,MatrixView,TableView,Comment,Constraint,Problem,Rationale,Requirement,View,Conform,Dependency,CSVImporter,ControlledFile,Diagram View,HyperLink,MatrixLayout,Query,Stereotype,TableLayout,Tag</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -16273,7 +16273,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">LogicalArchitecturePackage</_name>
-			<_modifiedTime type="a">6.12.2024::14:23:50</_modifiedTime>
+			<_modifiedTime type="a">12.28.2024::9:52:20</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -16301,7 +16301,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 												<size type="a">5</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Package Diagram - Index,table view - Diagrams And Requirements On Them,13 Requirement Package,21 Funct Analysis - Scenarios Package,31 System Architecture Package,32 Subsystem Package,33 Subsystem Interfaces Package,41 View and Viewpoint Package,ExtendedTableLayout,ExtendedTableView,MatrixView,TableView,Comment,Constraint,Problem,Rationale,Requirement,View,Conform,Dependency,CSVImporter,ControlledFile,Diagram View,HyperLink,MatrixLayout,Query,Stereotype,TableLayout,Tag</_Value>
+													<_Value type="a">Package Diagram - Index,table view - Diagrams And Requirements On Them,13 Requirement Package,14 Signals Package,21 Funct Analysis - Scenarios Package,31 System Architecture Package,32 Subsystem Package,33 Subsystem Interfaces Package,41 View and Viewpoint Package,ExtendedTableLayout,ExtendedTableView,MatrixView,TableView,Comment,Constraint,Problem,Rationale,Requirement,View,Conform,Dependency,CSVImporter,ControlledFile,Diagram View,HyperLink,MatrixLayout,Query,Stereotype,TableLayout,Tag</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -16342,7 +16342,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">PhysicalArchitecturePackage</_name>
-			<_modifiedTime type="a">6.12.2024::14:23:50</_modifiedTime>
+			<_modifiedTime type="a">12.28.2024::10:1:16</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
