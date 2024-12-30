@@ -1114,6 +1114,7 @@ V4.3.h.Release (XX-XXX-XXXX): TBC
 0864 18-DEC-2024: ExecutableMBSE: Added right-click Reopen diagram menu on diagram to close and reopen to refresh it after logging into requirements remote package (F.J.Chadburn)
 0865 18-DEC-2024: ExecutableMBSE: Added Context Diagram to hep file for Other\\Center straight lines on diagram(s) as right-click menu found missing during profile use (F.J.Chadburn) 
 0866 28-DEC-2024: ExecutableMBSE: Allow Signal packages to be children of other packages, esp. Functional Architecture ones where interfaces are first explored (F.J.Chadburn)
+0867 30-DEC-2024: ExecutableMBSE: Tweak to allow tablev - Requirements and Diagrams Theyre On table to be applicable to any package (F.J.Chadburn) 
 
 Backlog/Known issues
 - See if way to selectively turn on Graphical GE 19-for diagrams for just index package diagram as can be annoying
