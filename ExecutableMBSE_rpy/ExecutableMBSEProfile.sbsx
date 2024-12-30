@@ -1689,7 +1689,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">ExecutableMBSEProfile</_name>
-			<_modifiedTime type="a">12.30.2024::14:15:53</_modifiedTime>
+			<_modifiedTime type="a">12.30.2024::14:32:3</_modifiedTime>
 			<_lastID type="a">28</_lastID>
 			<_defaultComposite type="s">GUID 9b558c07-f4d8-4d66-9711-aaf94ada3d07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -20581,7 +20581,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			<_id type="a">GUID f4cbf55d-b74b-4ef3-9920-6eb8450bb6c2</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">_TablesAndMatrices</_name>
-			<_modifiedTime type="a">12.30.2024::14:16:29</_modifiedTime>
+			<_modifiedTime type="a">12.30.2024::14:32:3</_modifiedTime>
 			<_lastID type="a">5</_lastID>
 			<_defaultComposite type="s">GUID aace3563-7387-48b2-b252-564f3c63fcfc</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -21299,6 +21299,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 					
 				</IRPYRawContainer>
 			</DataColumns>
+			<m_CollapseFirstColumn type="a">1</m_CollapseFirstColumn>
 		</ITableLayout>
 		<ITableLayout type="e">
 			<_id type="a">GUID 6b098095-0651-427c-9c49-b089e7776900</_id>
@@ -21465,6 +21466,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 					
 				</IRPYRawContainer>
 			</DataColumns>
+			<m_CollapseFirstColumn type="a">1</m_CollapseFirstColumn>
 		</ITableLayout>
 		<ITableLayout type="e">
 			<_id type="a">GUID a46e8ac2-f909-4fac-a9b2-50503bd24e5b</_id>
@@ -23172,10 +23174,10 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 										<_Name type="a">TableLayout</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">4</size>
+												<size type="a">3</size>
 												<IProperty type="e">
 													<_Name type="a">CollapseFirstColumn</_Name>
-													<_Value type="a">False</_Value>
+													<_Value type="a">True</_Value>
 													<_Type type="a">Bool</_Type>
 												</IProperty>
 												
@@ -23188,38 +23190,6 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 												<IProperty type="e">
 													<_Name type="a">ContextTableColumnNameFormat</_Name>
 													<_Value type="a">$(Property) in $(Context)</_Value>
-													<_Type type="a">String</_Type>
-												</IProperty>
-												
-												<IProperty type="e">
-													<_Name type="a">UserDefinedImplementationXML</_Name>
-													<_Value type="a">&lt;COLUMN id=&quot;3&quot;&gt;
-&lt;IMPLEMENTATION&gt;
-	&lt;CLASSPATH&gt;
-	&lt;/CLASSPATH&gt;
-	&lt;IMPORTS&gt;
-		&lt;IMPORT&gt;com.telelogic.rhapsody.core.IRPApplication&lt;/IMPORT&gt;
-		&lt;IMPORT&gt;com.telelogic.rhapsody.core.IRPModelElement&lt;/IMPORT&gt;
-		&lt;IMPORT&gt;com.telelogic.rhapsody.core.IRPTableView&lt;/IMPORT&gt;
-		&lt;IMPORT&gt;java.util.List&lt;/IMPORT&gt;
-	&lt;/IMPORTS&gt;
-	&lt;USER-DEFINED-METHOD isUserDefinedMethod=&quot;TRUE&quot;&gt;getStereotypesByString&lt;/USER-DEFINED-METHOD&gt;
-	&lt;ALLOW-SELECTOR&gt;TRUE&lt;/ALLOW-SELECTOR&gt;
-	&lt;ALLOW-NEW&gt;TRUE&lt;/ALLOW-NEW&gt;
-	&lt;DISPLAY-PROPERTY&gt;&lt;/DISPLAY-PROPERTY&gt;
-	&lt;RETURN-TYPE&gt;&lt;/RETURN-TYPE&gt;
-	&lt;GETTER&gt;
-		&lt;CODE&gt;&lt;/CODE&gt;
-	&lt;/GETTER&gt;
-	&lt;SETTER&gt;
-		&lt;CODE&gt;&lt;/CODE&gt;
-	&lt;/SETTER&gt;
-	&lt;PICKER&gt;
-		&lt;CODE&gt;&lt;/CODE&gt;
-	&lt;/PICKER&gt;
-&lt;/IMPLEMENTATION&gt;
-&lt;/COLUMN&gt;
-</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -23252,7 +23222,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">tablel - Requirements And Diagrams Theyre On</_name>
-			<_modifiedTime type="a">12.30.2024::14:16:29</_modifiedTime>
+			<_modifiedTime type="a">12.30.2024::14:32:3</_modifiedTime>
 			<DataColumns type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">6</size>
@@ -23354,6 +23324,7 @@ setElapsedTime( elapsedTime + 1 );</m_str>
 					
 				</IRPYRawContainer>
 			</DataColumns>
+			<m_CollapseFirstColumn type="a">1</m_CollapseFirstColumn>
 		</ITableLayout>
 		<ITableLayout type="e">
 			<_id type="a">GUID 297807cb-0757-4e38-99af-2cd036bcd13f</_id>
