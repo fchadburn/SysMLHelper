@@ -1118,6 +1118,7 @@ V4.3.h.Release (31-DEC-2024):
 0868 30-DEC-2024: ExecutableMBSE: Tweak to include requirement stereotype in tablev - Requirements and Diagrams Theyre On as useful for checking appropriateness (F.J.Chadburn)
 0869 30-DEC-2024: ExecutableMBSE: Switch back to General Attributes > Stereotypes in table layouts to get stereotype list as plugin method found to be not working in 9.0.1+ (F.J.Chadburn)
 0870 31-DEC-2024: ExecutableMBSE: Allow Subsystem Table to be in the right-click of root C. Logical Architecture Package and D. Physical Architecture Packages (F.J.Chadburn)
+0871 31-DEC-2024: ExecutableMBSE: Explicitly set the WrapNameCompartmentText property on Requirement Diagram - System as not set in 9.0.1 by default (F.J.Chadburn)
 
 Backlog/Known issues
 - See if way to selectively turn on Graphical GE 19-for diagrams for just index package diagram as can be annoying
