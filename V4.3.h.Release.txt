@@ -1110,13 +1110,14 @@ V4.3.g.Release (05-DEC-2024):
 0862 02-DEC-2024: ExecutableMBSE: Enable traced element dialogs to work with multi-selection of just requirements in browser rather than graph elements on diagram (F.J.Chadburn)
 0863 02-DEC-2024: ExecutableMBSE: Update hep file so you can right-click a test scenario to populate requirements, i.e. don’t have to switch to sequence diagram (F.J.Chadburn)
 
-V4.3.h.Release (XX-XXX-XXXX): TBC
+V4.3.h.Release (31-DEC-2024):
 0864 18-DEC-2024: ExecutableMBSE: Added right-click Reopen diagram menu on diagram to close and reopen to refresh it after logging into requirements remote package (F.J.Chadburn)
 0865 18-DEC-2024: ExecutableMBSE: Added Context Diagram to hep file for Other\\Center straight lines on diagram(s) as right-click menu found missing during profile use (F.J.Chadburn) 
 0866 28-DEC-2024: ExecutableMBSE: Allow Signal packages to be children of other packages, esp. Functional Architecture ones where interfaces are first explored (F.J.Chadburn)
 0867 30-DEC-2024: ExecutableMBSE: Tweak to allow tablev - Requirements and Diagrams Theyre On table to be applicable to any package (F.J.Chadburn)
 0868 30-DEC-2024: ExecutableMBSE: Tweak to include requirement stereotype in tablev - Requirements and Diagrams Theyre On as useful for checking appropriateness (F.J.Chadburn)
 0869 30-DEC-2024: ExecutableMBSE: Switch back to General Attributes > Stereotypes in table layouts to get stereotype list as plugin method found to be not working in 9.0.1+ (F.J.Chadburn)
+0870 31-DEC-2024: ExecutableMBSE: Allow Subsystem Table to be in the right-click of root C. Logical Architecture Package and D. Physical Architecture Packages (F.J.Chadburn)
 
 Backlog/Known issues
 - See if way to selectively turn on Graphical GE 19-for diagrams for just index package diagram as can be annoying
